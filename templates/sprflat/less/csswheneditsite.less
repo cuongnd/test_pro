@@ -1,0 +1,623 @@
+.fs-editor-wrapper .CodeMirror
+{
+  height: 360px;
+}
+.fs-editor.expanded .datasource-result
+{
+  width: 100%;
+}
+.fs-editor.expanded  .CodeMirror
+{
+  height: 600px;
+}
+a.page-properties
+{
+}
+.text-slogan
+{
+  display: none !important;
+}
+.input-group .chzn-container-single .chzn-single
+{
+  height: 35px;
+  border-radius:0px;
+}
+.main-container
+{
+  padding-top:15px;
+}
+
+.screen-layout {
+
+  position: relative;
+  .main-container {
+
+    &:hover
+    {
+
+/*
+      background-color: #f5f5f5;
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+      box-shadow: 0 1px 13px rgba(0, 0, 0, 0.1) inset;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 20px 0 0;
+      -moz-transition: all 0.2s ease-in;
+      -webkit-transition: all 0.2s ease-in;
+      -o-transition: all 0.2s ease-in;
+      transition: all 0.2s ease-in;
+*/
+
+
+    }
+    .fieldset.block-item.enable-create-drop-element a.config-block.menu-list
+    {
+      opacity: 1;
+    }
+    .block-item.selected-block-item-properties,.grid-stack-item.show-grid-stack-item.selected-block-item-properties,.block-item.selected-module-item-properties
+    {
+      border:1px solid #f68484 !important
+    }
+    .row-content.show-grid-stack-item
+    {
+      color: #9da0a4;
+      font-size: 12px;
+      font-weight: bold;
+      left: -1px;
+      line-height: 2;
+      margin-bottom: 5px;
+      margin-top: 20px;
+      position: relative;
+      min-height: 50px;
+      content: "please create column";
+      background: rgba(255,255,255,0.5);;
+      border-radius: 4px;
+      border: 1px solid #faa523;
+      &:visible:first
+      {
+        margin-top: 35px;
+      }
+      >.item-row,>.config-block,>.add-column-in-row ,>.remove-row,>.move-sub-row,>.move-row
+      {
+        top: -18px;
+      }
+      &.hover-block-item
+      {
+
+        >.item-row,>.config-block,>.add-column-in-row ,>.remove-row,>.move-sub-row,>.move-row
+        {
+          visibility: visible;
+          opacity: 1;
+
+          transition: opacity 1s linear;
+        }
+
+      }
+    }
+    >a.add-row,>.config-block
+    {
+      visibility: visible !important;
+      opacity:1;
+    }
+    .content-row
+    {
+
+    }
+    .module-custom-html
+    {
+    }
+    .control-element
+    {
+      margin: 3px auto;
+
+      >.element-move-handle,>.remove-element,>.config-block
+      {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 1s, opacity 1s linear;
+      }
+      &:hover
+      {
+        >.element-move-handle,>.remove-element,>.config-block
+        {
+          visibility: visible;
+          opacity: 1;
+          transition: opacity 1s linear;
+        }
+      }
+    }
+    .control-item
+    {
+      top: 12px;
+      left: 12px;
+    }
+    .drag.label-default {
+      right: 0px;
+      top: 0px;
+      z-index: 10;
+      cursor: pointer;
+      font-size: 9px;
+      position: absolute;
+      transition: all 500ms ease 0s;
+    }
+    .add.label-danger {
+      position: absolute;
+      right: 42px;
+      top: 0;
+      font-size: 9px;
+      z-index: 10;
+    }
+    .remove.label-danger {
+      position: absolute;
+      right: 21px;
+      top: 0;
+      font-size: 9px;
+      z-index: 10;
+    }
+    .menu.label-danger
+    {
+      position: absolute;
+      right: 63px;
+      top: 0;
+      font-size: 10px;
+      z-index: 10;
+    }
+
+    .drag.label-default {
+      right: 0px;
+      top: 0px;
+      z-index: 10;
+      cursor: pointer;
+      position: absolute;
+      transition: all 500ms ease 0s;
+    }
+    .grid-stack-item-content>.add.label-danger,.grid-stack-item-content>.drag.label-default,.grid-stack-item-content>.remove.label-danger,.grid-stack-item-content>.menu.label-danger,.item-row
+    {
+      top: -18px;
+    }
+    .grid-stack {
+
+      .grid-stack-item
+      {
+
+
+
+        .grid-stack-item-content
+        {
+          border-radius: 4px;
+          border: 1px solid #b24926;
+          margin: 17px 0px 0px;
+          .position-content
+          {
+             padding: 0px;
+            height: 100%;
+            overflow-x: scroll;
+            overflow-x: hidden;
+            .ui-sortable-placeholder {
+          /*    padding-right:10px;
+              padding-left:10px;
+              width:100%;
+              visibility: visible !important;*/
+            }
+
+          }
+          &.hover-block-item
+          {
+            //background-color: #ffffff;
+            //border: 2px solid #dddddd;
+            >.item-row,>.move-column,>.remove-column,>.add-row,>.config-block
+            {
+              visibility: visible;
+              opacity: 1;
+              transition: opacity 0.2s linear;
+            }
+
+          }
+
+        }
+
+      }
+    }
+
+  }
+  .item-row,.move-column,.add-row,.config-block,.remove-column,.add-column-in-row ,.remove-row,.move-sub-row,.move-row
+  {
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
+  }
+  .module-content.module-grid-stack-item
+  {
+    .panel{
+      border: none;
+      background:none;
+      margin:0;
+      padding: 0;
+      &:hover
+      {
+        border-radius:4px;
+        border-color: #428bca;
+        border: 1px solid transparent;
+      }
+      .panel-body
+      {
+        padding: 0;
+        &:hover
+        {
+          padding: 10px;
+        }
+      }
+
+    }
+
+    .remove-module,.module-move-sub-row,.module-config
+    {
+      visibility: hidden;
+    }
+    position: relative;
+    &:hover
+    {
+      .remove-module,.module-move-sub-row,.module-config
+      {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 1s linear;
+      }
+
+    }
+  }
+  .sub-grid-stack
+  {
+    position: relative;
+  }
+  .module-setting {
+    background: #97D3C5;
+    padding: 5px;
+    display: none;
+    border-radius: 5px 5px 0px 0px;
+    color: #fff;
+    a {
+      color: #fff;
+    }
+  }
+}
+.item-row {
+  border: 1px solid #dddddd;
+  border-radius: 2px;
+  color: #9da0a4;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 9px;
+  padding: 2px;
+  position: absolute;
+  right: 87px;
+  top: -1px;
+}
+
+
+
+.panel-body {
+  .ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+    opacity: 1;
+  }
+
+}
+.show-grid-stack-item.grid-stack-item.ui-draggable-dragging
+{
+}
+.module-content .panel-body
+{}
+.module-content.module-grid-stack-item .dropdown-menu > li > a
+{
+  width: 100%;
+  display: block;
+}
+.panel-screen-size {
+  .scroll-div-screen-size {
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    border: none 0px RED;
+  }
+  .scroll-div-screen-size, .panel-body {
+
+  }
+
+  .scroll-div-screen-size {
+    height: 20px;
+  }
+  .panel-body {
+
+  }
+  .scroll-div-screen-size.scroll-div-screen-size-subhead-fixed
+  {
+    top: 52px;
+    z-index: 999;
+  }
+  .scroll-div-screen-size .scroll-div1 {
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+  }
+  .panel-body {
+
+  }
+}
+
+.tool-edit-style
+{
+  top: 200px;
+  left: 200px;
+  z-index: 9999;
+  width: 100px;
+  position: absolute !important;
+  li.font-paragraph
+  {
+    position: relative;
+    .controller-font-paragraph
+    {
+      position: absolute;
+      top: 35px;
+      right: 68px;
+      background: #fff;
+      width: 300px;
+      font-size: 9px;
+    }
+  }
+  .panel-body
+  {
+    padding: 2px;
+    .list-icon-edit
+    {
+      li
+      {
+
+        float: left;
+        >a
+        {
+          padding: 2px;
+        }
+      }
+    }
+    .list-screen
+    {
+      display: none;
+      background: #fff none repeat scroll 0 0 !important;
+      border: 1px solid #428bca;
+      border-radius: 3px;
+      opacity: 1;
+      padding: 0;
+      position: absolute;
+      width: 135px;
+      z-index: 99999;
+      ul
+      {
+        padding: 2px;
+      }
+      ul li
+      {
+        float: left;
+        list-style: none;
+      }
+    }
+  }
+}
+.itemField
+{
+  top: 200px;
+  left: 500px;
+  z-index: 9999;
+  width: 450px;
+  min-width: 300px;
+  position: absolute !important;
+}
+.block-properties
+{
+  top: 200px;
+  left: 200px;
+  z-index: 9999;
+  width: 250px;
+  position: absolute !important;
+  &.fixed
+  {
+    position: fixed !important;
+  }
+  .panel-body
+  {
+    padding: 5px;
+  }
+  .properties
+  {
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    .control-label
+    {
+      font-size: 9px;
+    }
+  }
+  li.font-paragraph
+  {
+    position: relative;
+    .controller-font-paragraph
+    {
+      position: absolute;
+      top: 35px;
+      right: 68px;
+      background: #fff;
+      width: 300px;
+      font-size: 9px;
+    }
+  }
+  .menu-active a
+  {
+    color: red;
+  }
+}
+
+.rotate {
+
+}
+
+.rotate:hover {
+  cursor: pointer;
+  color: silver;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.rotate .line {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.grid-stack-item.ui-draggable
+{
+
+}
+.allow-edit-style.selected {
+  border: 1px solid #000099;
+}
+.allow-edit-style.hover {
+  border: 1px solid #85144B;
+}
+//edit for tool edit style
+.tool-edit-style
+{
+  &.fixed
+  {
+    position: fixed !important;
+  }
+  .list-icon-edit li a
+  {
+    &.selected
+    {
+      background: #99CCFF;
+      border-radius: 3px;
+    }
+    &:focus
+    {
+      border-radius: 3px;
+    }
+  }
+  .list-icon-edit li .tab-edit-tool
+  {
+
+  }
+  &.hide{
+    display: none;
+  }
+
+
+}
+
+.panel-setting-module-item .panel-controls-left > a
+{
+  color: #fff;
+}
+.image-loading
+{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  background: #f5f5f5;
+}
+.item-row.bootstrap-row
+{
+
+}
+.control-element {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  display: table;
+  margin: 2px;
+  padding-top: 15px;
+  position: relative;
+  width: 100%;
+  &:hover
+  {
+    border: 1px solid #ccc;
+  }
+}
+.enable-create-drop-element
+{
+  min-height: 300px;
+}
+.enable-resizable.enable-create-drop-element
+{
+  min-height: auto;
+}
+.add-on-item-content
+{
+  padding:10px ;
+  display: block;
+  border: 1px solid #fff;
+  position: relative;
+  .remove-add-on
+  {
+    position: absolute;
+    right: 0px;
+    border-radius: 4px;
+    padding: 0;
+    top: 0px;
+    .glyphicon-remove
+    {
+      font-size: 11px;
+      line-height: 9px;
+      padding: 0;
+    }
+  }
+  &:hover
+  {
+    border: 1px solid #ccc;
+    border-radius:2px ;
+    text-decoration: none;
+  }
+}
+#contextMenu
+{
+    min-width: 50px;
+    top: 10px;
+}
+.block-properties .minicolors-theme-bootstrap .minicolors-panel {
+  background-clip: padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  left: -10px;
+  padding: 5px;
+  top: 27px;
+  z-index: 13;
+}
+.block-properties .minicolors-theme-bootstrap .minicolors-swatch
+{
+  border-radius: 3px;
+  cursor: pointer;
+  left: 5px;
+  overflow: hidden;
+  position: absolute;
+  top: 4px;
+  z-index: 12;
+}
+.item-element.item-element-ui.ui-draggable.ui-draggable-handle.ui-draggable-dragging,.item-element.item-data-source-ui.ui-draggable.ui-draggable-handle.ui-draggable-dragging
+{
+  z-index: 9999999;
+}
+.panel.menus-config
+{
+  position: absolute;
+  width: 80%;
+  z-index: 10;
+  top: 20px;
+  left: 0px;
+}
+.CodeMirror-wrap.CodeMirror-fullscreen
+{
+  margin-top: 50px;
+}

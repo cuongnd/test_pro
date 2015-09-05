@@ -1,0 +1,461 @@
+.fs-editor-wrapper .CodeMirror {
+	height: 360px;
+}
+.fs-editor.expanded .datasource-result {
+	width: 100%;
+}
+.fs-editor.expanded  .CodeMirror {
+	height: 600px;
+}
+.text-slogan {
+	display: none !important;
+}
+.input-group .chzn-container-single .chzn-single {
+	height: 35px;
+	border-radius: 0px;
+}
+.main-container {
+	padding-top: 15px;
+}
+.screen-layout {
+	position: relative;
+}
+.screen-layout .main-container .fieldset.block-item.enable-create-drop-element a.config-block.menu-list {
+	opacity: 1;
+}
+.screen-layout .main-container .block-item.selected-block-item-properties,
+.screen-layout .main-container .grid-stack-item.show-grid-stack-item.selected-block-item-properties,
+.screen-layout .main-container .block-item.selected-module-item-properties {
+	border: 1px solid #f68484 !important;
+}
+.screen-layout .main-container .row-content.show-grid-stack-item {
+	color: #9da0a4;
+	font-size: 12px;
+	font-weight: bold;
+	left: -1px;
+	line-height: 2;
+	margin-bottom: 5px;
+	margin-top: 20px;
+	position: relative;
+	min-height: 50px;
+	content: "please create column";
+	background: rgba(255,255,255,0.5);
+	border-radius: 4px;
+	border: 1px solid #faa523;
+}
+.screen-layout .main-container .row-content.show-grid-stack-item:visible:first {
+	margin-top: 35px;
+}
+.screen-layout .main-container .row-content.show-grid-stack-item >.item-row,
+.screen-layout .main-container .row-content.show-grid-stack-item >.config-block,
+.screen-layout .main-container .row-content.show-grid-stack-item >.add-column-in-row,
+.screen-layout .main-container .row-content.show-grid-stack-item >.remove-row,
+.screen-layout .main-container .row-content.show-grid-stack-item >.move-sub-row,
+.screen-layout .main-container .row-content.show-grid-stack-item >.move-row {
+	top: -18px;
+}
+.screen-layout .main-container .row-content.show-grid-stack-item.hover-block-item >.item-row,
+.screen-layout .main-container .row-content.show-grid-stack-item.hover-block-item >.config-block,
+.screen-layout .main-container .row-content.show-grid-stack-item.hover-block-item >.add-column-in-row,
+.screen-layout .main-container .row-content.show-grid-stack-item.hover-block-item >.remove-row,
+.screen-layout .main-container .row-content.show-grid-stack-item.hover-block-item >.move-sub-row,
+.screen-layout .main-container .row-content.show-grid-stack-item.hover-block-item >.move-row {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 1s linear;
+}
+.screen-layout .main-container >a.add-row,
+.screen-layout .main-container >.config-block {
+	visibility: visible !important;
+	opacity: 1;
+}
+.screen-layout .main-container .control-element {
+	margin: 3px auto;
+}
+.screen-layout .main-container .control-element >.element-move-handle,
+.screen-layout .main-container .control-element >.remove-element,
+.screen-layout .main-container .control-element >.config-block {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 1s, opacity 1s linear;
+}
+.screen-layout .main-container .control-element:hover >.element-move-handle,
+.screen-layout .main-container .control-element:hover >.remove-element,
+.screen-layout .main-container .control-element:hover >.config-block {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 1s linear;
+}
+.screen-layout .main-container .control-item {
+	top: 12px;
+	left: 12px;
+}
+.screen-layout .main-container .drag.label-default {
+	right: 0px;
+	top: 0px;
+	z-index: 10;
+	cursor: pointer;
+	font-size: 9px;
+	position: absolute;
+	transition: all 500ms ease 0s;
+}
+.screen-layout .main-container .add.label-danger {
+	position: absolute;
+	right: 42px;
+	top: 0;
+	font-size: 9px;
+	z-index: 10;
+}
+.screen-layout .main-container .remove.label-danger {
+	position: absolute;
+	right: 21px;
+	top: 0;
+	font-size: 9px;
+	z-index: 10;
+}
+.screen-layout .main-container .menu.label-danger {
+	position: absolute;
+	right: 63px;
+	top: 0;
+	font-size: 10px;
+	z-index: 10;
+}
+.screen-layout .main-container .drag.label-default {
+	right: 0px;
+	top: 0px;
+	z-index: 10;
+	cursor: pointer;
+	position: absolute;
+	transition: all 500ms ease 0s;
+}
+.screen-layout .main-container .grid-stack-item-content>.add.label-danger,
+.screen-layout .main-container .grid-stack-item-content>.drag.label-default,
+.screen-layout .main-container .grid-stack-item-content>.remove.label-danger,
+.screen-layout .main-container .grid-stack-item-content>.menu.label-danger,
+.screen-layout .main-container .item-row {
+	top: -18px;
+}
+.screen-layout .main-container .grid-stack .grid-stack-item .grid-stack-item-content {
+	border-radius: 4px;
+	border: 1px solid #b24926;
+	margin: 17px 0px 0px;
+}
+.screen-layout .main-container .grid-stack .grid-stack-item .grid-stack-item-content .position-content {
+	padding: 0px;
+	height: 100%;
+	overflow-x: scroll;
+	overflow-x: hidden;
+}
+.screen-layout .main-container .grid-stack .grid-stack-item .grid-stack-item-content.hover-block-item >.item-row,
+.screen-layout .main-container .grid-stack .grid-stack-item .grid-stack-item-content.hover-block-item >.move-column,
+.screen-layout .main-container .grid-stack .grid-stack-item .grid-stack-item-content.hover-block-item >.remove-column,
+.screen-layout .main-container .grid-stack .grid-stack-item .grid-stack-item-content.hover-block-item >.add-row,
+.screen-layout .main-container .grid-stack .grid-stack-item .grid-stack-item-content.hover-block-item >.config-block {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.2s linear;
+}
+.screen-layout .item-row,
+.screen-layout .move-column,
+.screen-layout .add-row,
+.screen-layout .config-block,
+.screen-layout .remove-column,
+.screen-layout .add-column-in-row,
+.screen-layout .remove-row,
+.screen-layout .move-sub-row,
+.screen-layout .move-row {
+	opacity: 0;
+	transition: visibility 0s 1s, opacity 1s linear;
+}
+.screen-layout .module-content.module-grid-stack-item {
+	position: relative;
+}
+.screen-layout .module-content.module-grid-stack-item .panel {
+	border: none;
+	background: none;
+	margin: 0;
+	padding: 0;
+}
+.screen-layout .module-content.module-grid-stack-item .panel:hover {
+	border-radius: 4px;
+	border-color: #428bca;
+	border: 1px solid transparent;
+}
+.screen-layout .module-content.module-grid-stack-item .panel .panel-body {
+	padding: 0;
+}
+.screen-layout .module-content.module-grid-stack-item .panel .panel-body:hover {
+	padding: 10px;
+}
+.screen-layout .module-content.module-grid-stack-item .remove-module,
+.screen-layout .module-content.module-grid-stack-item .module-move-sub-row,
+.screen-layout .module-content.module-grid-stack-item .module-config {
+	visibility: hidden;
+}
+.screen-layout .module-content.module-grid-stack-item:hover .remove-module,
+.screen-layout .module-content.module-grid-stack-item:hover .module-move-sub-row,
+.screen-layout .module-content.module-grid-stack-item:hover .module-config {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 1s linear;
+}
+.screen-layout .sub-grid-stack {
+	position: relative;
+}
+.screen-layout .module-setting {
+	background: #97D3C5;
+	padding: 5px;
+	display: none;
+	border-radius: 5px 5px 0px 0px;
+	color: #fff;
+}
+.screen-layout .module-setting a {
+	color: #fff;
+}
+.item-row {
+	border: 1px solid #dddddd;
+	border-radius: 2px;
+	color: #9da0a4;
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 9px;
+	padding: 2px;
+	position: absolute;
+	right: 87px;
+	top: -1px;
+}
+.panel-body .ui-state-disabled,
+.panel-body .ui-widget-content .ui-state-disabled,
+.panel-body .ui-widget-header .ui-state-disabled {
+	opacity: 1;
+}
+.module-content.module-grid-stack-item .dropdown-menu > li > a {
+	width: 100%;
+	display: block;
+}
+.panel-screen-size .scroll-div-screen-size {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	border: none 0px RED;
+}
+.panel-screen-size .scroll-div-screen-size {
+	height: 20px;
+}
+.panel-screen-size .scroll-div-screen-size.scroll-div-screen-size-subhead-fixed {
+	top: 52px;
+	z-index: 999;
+}
+.panel-screen-size .scroll-div-screen-size .scroll-div1 {
+	overflow-x: scroll;
+	overflow-y: hidden;
+}
+.tool-edit-style {
+	top: 200px;
+	left: 200px;
+	z-index: 9999;
+	width: 100px;
+	position: absolute !important;
+}
+.tool-edit-style li.font-paragraph {
+	position: relative;
+}
+.tool-edit-style li.font-paragraph .controller-font-paragraph {
+	position: absolute;
+	top: 35px;
+	right: 68px;
+	background: #fff;
+	width: 300px;
+	font-size: 9px;
+}
+.tool-edit-style .panel-body {
+	padding: 2px;
+}
+.tool-edit-style .panel-body .list-icon-edit li {
+	float: left;
+}
+.tool-edit-style .panel-body .list-icon-edit li >a {
+	padding: 2px;
+}
+.tool-edit-style .panel-body .list-screen {
+	display: none;
+	background: #fff none repeat scroll 0 0 !important;
+	border: 1px solid #428bca;
+	border-radius: 3px;
+	opacity: 1;
+	padding: 0;
+	position: absolute;
+	width: 135px;
+	z-index: 99999;
+}
+.tool-edit-style .panel-body .list-screen ul {
+	padding: 2px;
+}
+.tool-edit-style .panel-body .list-screen ul li {
+	float: left;
+	list-style: none;
+}
+.itemField {
+	top: 200px;
+	left: 500px;
+	z-index: 9999;
+	width: 450px;
+	min-width: 300px;
+	position: absolute !important;
+}
+.block-properties {
+	top: 200px;
+	left: 200px;
+	z-index: 9999;
+	width: 250px;
+	position: absolute !important;
+}
+.block-properties.fixed {
+	position: fixed !important;
+}
+.block-properties .panel-body {
+	padding: 5px;
+}
+.block-properties .properties {
+	height: 300px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.block-properties .properties .control-label {
+	font-size: 9px;
+}
+.block-properties li.font-paragraph {
+	position: relative;
+}
+.block-properties li.font-paragraph .controller-font-paragraph {
+	position: absolute;
+	top: 35px;
+	right: 68px;
+	background: #fff;
+	width: 300px;
+	font-size: 9px;
+}
+.block-properties .menu-active a {
+	color: red;
+}
+.rotate:hover {
+	cursor: pointer;
+	color: silver;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+.rotate .line {
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: absolute;
+	z-index: 9999;
+	overflow: hidden;
+}
+.allow-edit-style.selected {
+	border: 1px solid #000099;
+}
+.allow-edit-style.hover {
+	border: 1px solid #85144B;
+}
+.tool-edit-style.fixed {
+	position: fixed !important;
+}
+.tool-edit-style .list-icon-edit li a.selected {
+	background: #99CCFF;
+	border-radius: 3px;
+}
+.tool-edit-style .list-icon-edit li a:focus {
+	border-radius: 3px;
+}
+.tool-edit-style.hide {
+	display: none;
+}
+.panel-setting-module-item .panel-controls-left > a {
+	color: #fff;
+}
+.image-loading {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 999;
+	top: 0;
+	background: #f5f5f5;
+}
+.control-element {
+	border: 1px solid #fff;
+	border-radius: 5px;
+	display: table;
+	margin: 2px;
+	padding-top: 15px;
+	position: relative;
+	width: 100%;
+}
+.control-element:hover {
+	border: 1px solid #ccc;
+}
+.enable-create-drop-element {
+	min-height: 300px;
+}
+.enable-resizable.enable-create-drop-element {
+	min-height: auto;
+}
+.add-on-item-content {
+	padding: 10px;
+	display: block;
+	border: 1px solid #fff;
+	position: relative;
+}
+.add-on-item-content .remove-add-on {
+	position: absolute;
+	right: 0px;
+	border-radius: 4px;
+	padding: 0;
+	top: 0px;
+}
+.add-on-item-content .remove-add-on .glyphicon-remove {
+	font-size: 11px;
+	line-height: 9px;
+	padding: 0;
+}
+.add-on-item-content:hover {
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	text-decoration: none;
+}
+#contextMenu {
+	min-width: 50px;
+	top: 10px;
+}
+.block-properties .minicolors-theme-bootstrap .minicolors-panel {
+	background-clip: padding-box;
+	border: 1px solid #dddddd;
+	border-radius: 5px;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	left: -10px;
+	padding: 5px;
+	top: 27px;
+	z-index: 13;
+}
+.block-properties .minicolors-theme-bootstrap .minicolors-swatch {
+	border-radius: 3px;
+	cursor: pointer;
+	left: 5px;
+	overflow: hidden;
+	position: absolute;
+	top: 4px;
+	z-index: 12;
+}
+.item-element.item-element-ui.ui-draggable.ui-draggable-handle.ui-draggable-dragging,
+.item-element.item-data-source-ui.ui-draggable.ui-draggable-handle.ui-draggable-dragging {
+	z-index: 9999999;
+}
+.panel.menus-config {
+	position: absolute;
+	width: 80%;
+	z-index: 10;
+	top: 20px;
+	left: 0px;
+}
+.CodeMirror-wrap.CodeMirror-fullscreen {
+	margin-top: 50px;
+}
