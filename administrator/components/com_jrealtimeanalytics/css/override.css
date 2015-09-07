@@ -1,0 +1,101 @@
+/* Toolbar icon */
+div.icon-48-jfbchat {
+	background-image: url("../images/toolbar_icon.png");
+}
+
+div#toolbar-box div.pagetitle {
+	padding-left: 230px;
+}
+
+/* Toolbar buttons personalizzati */
+span.icon-32-config {
+	background-image: url("../images/icon-32-config.png");
+}
+
+form#adminForm button.btn i.icon-calendar {
+	background-image: url("../images/calendar.png");
+	height: 16px;
+	display: block;
+	width: 16px;
+}
+
+form#adminForm button.btn i.icon-calendar::before {
+	content: none;
+}
+
+fieldset#filter-bar {
+	height: auto;
+}
+
+fieldset#filter-bar label {
+	display: inline;
+}
+
+fieldset#filter-bar div.input-append {
+	display: inline;
+}
+
+div.calendar {
+	z-index: 10000;
+}
+
+div.row-fluid .icon-delete::before {
+	color: #E00;
+}
+
+div.row-fluid .icon-config::before {
+	color: #00F;
+	content: "6";
+}
+
+div.row-fluid .icon-export::before,div.row-fluid .icon-pdf::before {
+	content: "r";
+}
+
+div.row-fluid .icon-back::before {
+	color: #03B303;
+	content: "(";
+}
+
+div.row-fluid .icon-responsemessage::before {
+	color: #03B303;
+	content: "&";
+}
+
+body nav.navbar {
+	z-index: 99;
+}
+
+div.controls label.radio {
+	float: left;
+}
+
+img.jfbc_indicator {
+	margin-left: 5px;
+}
+
+div.controls label.radio:first-child {
+	padding-top: 0px;
+	padding-right: 5px;
+}
+
+div.control-label {
+	min-width: 400px;
+}
+
+#component_status label {
+	float: left;
+}
+
+#component_status img {
+	margin-left: 10px;
+}
+
+div.header.padding {
+	background: #FFF;
+	padding-left: 0;
+	font-size: 22px;
+	font-weight: bold;
+	border-bottom: 1px solid #CCC;
+	margin-bottom: 10px;
+}

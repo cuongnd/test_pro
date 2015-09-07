@@ -1,0 +1,100 @@
+
+.container-main
+{
+    margin: 0;
+    padding: 0 0px !important;
+}
+.headed-component
+{
+    position: relative;
+}
+.toolbar-component
+{
+    height: 40px;
+    background: -webkit-linear-gradient(top, #047a9c, #2c95b5); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(top, #047a9c, #2c95b5); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(top, #047a9c, #2c95b5); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top, #047a9c, #2c95b5); /* Standard syntax (must be last) */
+    border-bottom: 3px solid #666666;
+}
+.nav-list > li > a, .nav-list .nav-header
+{
+    margin-left: 5px !important;
+}
+.icon-header
+{
+    font-size: 12px;
+}
+#content [class^="icon-"], [class*=" icon-"]
+ {
+     font-size: 40px;
+     height: 40px !important;
+     width: 40px !important;
+     background: none !important;
+     line-height: 40px;
+    padding: 0 10px;
+     cursor: pointer;
+ }
+.big-icon
+{
+    border-radius: 5px;
+    border:  1px solid #ccc;
+}
+.big-icon.tour
+{
+    border:  1px solid #f68484;
+    background: #f68484;
+}
+.big-icon.hotel
+{
+    border:  1px solid #75b9e6;
+    background: #75b9e6;
+
+}
+.big-icon.flight
+{
+    border:  1px solid #af91e1;
+    background: #af91e1;
+
+}
+.big-icon.car
+{
+    border:  1px solid #97d3c5;
+    background: #97d3c5;
+
+}
+#content .big-icon [class^="icon-"], [class*=" icon-"]
+{
+    font-size: 35px;
+    width: 35px;
+    line-height: 35px;
+    color: #fff;
+}
+.icon-circle-arrow-right:before
+{
+    content: "\e00a";
+    font-size: 25px;
+}
+.icon-lifebuoy:before
+{
+    content: "\46";
+    line-height: 50px;
+}
+.big-icon
+{
+    position: relative;
+}
+i.more
+{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.count-order
+{
+    color: #fff;
+    font-size: 30px;
+    padding: 10px 30px;
+    line-height: 30px;
+}

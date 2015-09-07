@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset id="general" name="general" label="JCHAT_PREFERENCES"> 
+		<field name="chatrefresh" type="list" default="2" label="SERVERLOAD_CHATREFRESH" description="SERVERLOAD_CHATREFRESH_DESC">
+			<option value="1">100%</option>
+			<option value="2">80%</option>
+			<option value="4">60%</option>
+			<option value="6">40%</option>
+			<option value="8">20%</option>
+		</field>
+		
+   		<field name="lastmessagetime" type="text" size="10" default="60" label="LASTMESSAGETIMESTATUS" description="LASTMESSAGETIMESTATUS_DESC" />
+   		<field name="maxinactivitytime" type="text" size="10" default="60" label="MAXINACTIVITYTIME" description="MAXINACTIVITYTIME_DESC" />
+		<field name="forceavailable" type="radio" class="btn-group" default="0" label="FORCEAVAILABLE" description="FORCEAVAILABLE_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field> 
+		<field name="usefullname" type="radio" class="btn-group" default="username" label="USEFULLNAME" description="USEFULLNAME_DESC">
+   			<option value="username">USER_NAME</option>              
+   			<option value="name">LONGNAME</option>
+   		</field> 
+   		<field name="start_open_mode" type="radio" class="btn-group" default="1" label="START_OPEN_MODE" description="START_OPEN_MODE_DESC">
+			<option value="0">JCHATCLOSE</option>              
+			<option value="1">JCHATOPEN</option>
+		</field> 
+		<field name="chatboxes_open_mode" type="radio" class="btn-group" default="0" label="CHATBOXES_OPEN_MODE" description="CHATBOXES_OPEN_MODE_DESC">
+			<option value="0">JCHATAUTO</option>              
+			<option value="1">JCHATALWAYSOPEN</option>
+		</field> 
+   		<field name="includejquery" type="radio" class="btn-group" default="1" label="INCLUDE_JQUERY" description="INCLUDE_JQUERY_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field> 
+   		<field name="noconflict" type="radio" class="btn-group" default="1" label="JQUERY_NOCONFLICT" description="JQUERY_NOCONFLICT_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="includeevent" type="radio" class="btn-group" default="afterdispatch" label="INCLUDE_POSITION" description="INCLUDE_POSITION_DESC">
+			<option value="afterinitialize">Before component</option>              
+			<option value="afterdispatch">After component</option>
+		</field>
+		<field name="3pdintegration" type="list" default="" label="3PDINTEGRATION" description="3PDINTEGRATION_DESC">
+			<option value="">NO_INTEGRATION</option>
+			<option value="jomsocial">JOMSOCIAL_INTEGRATION</option>        
+			<option value="easysocial">EASYSOCIAL_INTEGRATION</option>        
+			<option value="cbuilder">CBUILDER_INTEGRATION</option>
+			<option value="kunena">KUNENA_INTEGRATION</option>
+		</field>
+		<field name="skypebridge" type="radio" class="btn-group" default="1" label="SKYPEBRIDGE" description="SKYPEBRIDGE_DESC">
+			<option value="0">JDISABLED</option>              
+			<option value="1">JENABLED</option>
+		</field>
+		<field name="groupchat" type="radio" class="btn-group" default="1" label="GROUPCHAT" description="GROUPCHAT_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="guestenabled" type="radio" class="btn-group" default="0" label="GUEST_ENABLED" description="GUEST_ENABLED_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="guestprefix" type="text" default="Guest" label="GUEST_PREFIX" description="GUEST_PREFIX_DESC" />
+   		<field name="chat_title" type="text" default="Chat" label="CHAT_TITLE" description="CHAT_TITLE_DESC" />
+   		<field name="maxtimeinterval_groupmessages" type="text"  size="10" default="12" label="MAXTIMEINTERVAL_GROUPMESSAGES" description="MAXTIMEINTERVAL_GROUPMESSAGES_DESC" />
+	</fieldset>
+	
+	<fieldset id="filesystem" name="filesystem" label="JCHAT_FILESYSTEM">
+		<field name="avatar_allowed_extensions" type="text" default="jpg,jpeg,png,gif" label="AVATAR_ALLOWED_EXTENSIONS" description="AVATAR_ALLOWED_EXTENSIONS DESC"/>
+   		<field name="cropmode" type="radio" class="btn-group" default="0" label="AVATAR_CROP_MODE" description="AVATAR_CROP_MODE_DESC">
+   			<option value="0">Resize</option>   
+   			<option value="1">Trim</option>            
+   		</field>
+   		<field name="avatardisable" type="radio" class="btn-group" default="0" label="AVATAR_DISABLED" description="AVATAR_DISABLED_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+   		<field name="avatarupload" type="radio" class="btn-group" default="1" label="AVATARUPLOAD_ENABLED" description="AVATARUPLOAD_ENABLED_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+   		<field name="maxfilesize" type="text" size="10" default="2" label="MAXFILESIZE" description="MAXFILESIZE_DESC"/>
+   		<field name="disallowed_extensions" type="text" size="10" default="exe,bat,pif" label="DISALLOWEDEXT" description="DISALLOWEDEXT_DESC"/>
+	</fieldset>
+	
+	<fieldset id="notifications" name="notifications" label="JCHAT_NOTIFICATIONS">
+		<field name="offline_message_switcher" type="radio" class="btn-group" default="0" label="NOTIFICATIONS_OFFLINE_MESSAGE_SWITCHER" description="NOTIFICATIONS_OFFLINE_MESSAGE_SWITCHER_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+		<field name="offline_message" type="textarea" cols="50" rows="10" default="" label="NOTIFICATIONS_OFFLINE_MESSAGE" description="NOTIFICATIONS_OFFLINE_MESSAGE_DESC"/>
+		<field name="notification_email_switcher" type="radio" class="btn-group" default="0" label="NOTIFICATIONS_EMAIL_SWITCHER" description="NOTIFICATIONS_EMAIL_SWITCHER_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+		<field name="notification_email" type="text" size="80" default="" label="NOTIFICATIONS_EMAIL" description="NOTIFICATIONS_EMAIL_DESC"/>
+		<field name="email_subject" type="text" size="80" default="JChatSocial - New conversation started" label="NOTIFICATIONS_EMAIL_SUBJECT" description="NOTIFICATIONS_EMAIL_SUBJECT_DESC"/>
+		<field name="email_start_text" type="textarea" cols="50" rows="10" default="" label="NOTIFICATIONS_EMAIL_START_MESSAGE" description="NOTIFICATIONS_EMAIL_START_MESSAGE_DESC"/>
+	</fieldset>
+	
+	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="permissions" name="permissions" label="JCHAT_PERMISSIONS">
+		<field name="allow_guest_fileupload" type="radio" class="btn-group" default="1" label="ALLOW_GUEST_FILEUPLOAD" description="ALLOW_GUEST_FILEUPLOAD_DESC">
+   			<option value="0">DISABLE</option>   
+   			<option value="1">ENABLE</option>            
+   		</field>
+   		<field name="allow_guest_avatarupload" type="radio" class="btn-group" default="1" label="ALLOW_GUEST_AVATARUPLOAD" description="ALLOW_GUEST_AVATARUPLOAD_DESC">
+   			<option value="0">DISABLE</option>   
+   			<option value="1">ENABLE</option>            
+   		</field>
+   		<field name="allow_guest_avatarupload" type="radio" class="btn-group" default="1" label="ALLOW_GUEST_AVATARUPLOAD" description="ALLOW_GUEST_AVATARUPLOAD_DESC">
+   			<option value="0">DISABLE</option>   
+   			<option value="1">ENABLE</option>            
+   		</field>
+   		<field name="allow_guest_skypebridge" type="radio" class="btn-group" default="1" label="ALLOW_GUEST_SKYPEBRIDGE" description="ALLOW_GUEST_SKYPEBRIDGE_DESC">
+   			<option value="0">DISABLE</option>   
+   			<option value="1">ENABLE</option>            
+   		</field>
+  		<field name="chatadmins_gids" type="aclgroupsmultiselect" default="0" size="10" multiple="multiple" label="CHATADMINS_GIDS" description="CHATADMINS_GIDS_DESC" />
+  		<field name="chat_exclusions" type="menumultiselect" default="0" size="20" multiple="multiple" label="CHAT_EXCLUSIONS" description="CHAT_EXCLUSIONS_DESC" />
+	</fieldset>
+</config>

@@ -1,0 +1,37 @@
+#accordion {
+    list-style: none;
+    padding: 0 0 0 0;
+    width: 170px;
+    float: left;
+    width: 15%;
+    margin-right:10px; 
+}
+#accordion h3 {
+    display: block;
+    background-color: #069;
+    color: white;
+    font-weight: bold;
+    margin: 1px;
+    cursor: pointer;
+    padding: 5 5 5 7px;
+    list-style: circle;
+}
+#accordion ul {
+    list-style: none;
+    padding: 0 0 0 0;
+}
+#accordion ul{
+    display: none;
+}
+#accordion ul li {
+    font-weight: normal;
+    cursor: auto;
+    background-color: #fff;
+    padding: 0 0 0 7px;
+}
+#accordion a {
+    text-decoration: none;
+}
+#accordion a:hover {
+    text-decoration: underline;
+}

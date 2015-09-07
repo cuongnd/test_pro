@@ -1,0 +1,30 @@
+// Template
+// "title"	: "",
+// "link"	: "",
+// "class"	: "",
+// "view"	: "",
+// "active": "",
+// "childs": []
+// Migrator Menu
+{
+	"order"	: 13,
+	"title"	: "COM_EASYSOCIAL_MENU_GROUP_MIGRATORS",
+	"link"	: "index.php?option=com_easysocial&view=migrators",
+	"class"	: "migrators",
+	"access": "easysocial.access.migrators",
+	"view"	: "migrators",
+	"active": "layout",
+	"childs":
+	[
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_MIGRAORS_JOMSOCIAL",
+			"class"	: "ies-puzzle",
+			"url"	:
+			{
+				"view"	: "migrators",
+				"layout": "jomsocial"
+			},
+			"childs": []
+		}
+	]
+}

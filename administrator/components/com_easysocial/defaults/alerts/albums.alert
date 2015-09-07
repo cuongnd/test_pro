@@ -1,0 +1,14 @@
+
+// These alert rules are for core features
+[
+	{
+		"element"	: "albums",
+		"rule"	: "comment.add",
+		"value"	:
+		{
+			"email"		: true,
+			"system"	: true,
+			"core"		: true
+		}
+	}
+]

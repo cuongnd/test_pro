@@ -1,0 +1,22 @@
+// Defines the default form for access.
+{
+	"title"		: "COM_EASYSOCIAL_ACCESS_TAB_STREAM",
+	"desc"		: "COM_EASYSOCIAL_ACCESS_TAB_STREAM_DESC",
+	"fields"	:
+	[
+		{
+			"label"	: "COM_EASYSOCIAL_ACCESS_STREAM_ALLOW_HIDING_SINGLE_STREAM_ITEM",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_STREAM_ALLOW_HIDING_SINGLE_STREAM_ITEM_TIPS",
+			"type"	: "boolean",
+			"name"	: "stream.hide",
+			"default"	: true
+		},
+		{
+			"label"	: "COM_EASYSOCIAL_ACCESS_STREAM_ALLOW_DELETE_SINGLE_STREAM_ITEM",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_STREAM_ALLOW_DELETE_SINGLE_STREAM_ITEM_TIPS",
+			"type"	: "boolean",
+			"name"	: "stream.delete",
+			"default"	: false
+		}
+	]
+}

@@ -1,0 +1,95 @@
+#
+#<?php die('Forbidden.'); ?>
+#Date: 2014-10-12 14:38:40 UTC
+#Software: Joomla Platform 13.1.0 Stable [ Curiosity ] 24-Apr-2013 00:00 GMT
+
+#Fields: datetime	priority	category	message
+2014-10-12T14:38:40+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE home=1 AND language='*' AND website_id=1</pre>
+2014-10-12T14:40:47+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE home=1 AND language='*' AND website_id=1</pre>
+2014-10-12T14:57:33+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu AS m
+LEFT JOIN ueb3c_menu_types AS mt ON mt.id=m.menu_type_id
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE m.home=1 AND m.language='*' AND mt.website_id=2</pre>
+2014-10-12T14:57:43+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu AS m
+LEFT JOIN ueb3c_menu_types AS mt ON mt.id=m.menu_type_id
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE m.home=1 AND m.language='*' AND mt.website_id=2</pre>
+2014-10-12T14:58:01+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu AS m
+LEFT JOIN ueb3c_menu_types AS mt ON mt.id=m.menu_type_id
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE m.home=1 AND m.language='*' AND mt.website_id=1</pre>
+2014-10-12T14:59:09+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu AS m
+LEFT JOIN ueb3c_menu_types AS mt ON mt.id=m.menu_type_id
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE m.home=1 AND m.language='*' AND mt.website_id=0</pre>
+2014-10-12T15:47:39+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu AS m
+LEFT JOIN ueb3c_menu_types AS mt ON mt.id=m.menu_type_id
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE m.home=1 AND m.language='*' AND mt.website_id=2</pre>
+2014-10-12T19:06:41+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu AS m
+LEFT JOIN ueb3c_menu_types AS mt ON mt.id=m.menu_type_id
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE m.home=1 AND m.language='*' AND mt.website_id=1</pre>
+2014-10-12T19:16:41+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu AS m
+LEFT JOIN ueb3c_menu_types AS mt ON mt.id=m.menu_type_id
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE m.home=1 AND m.language='*' AND mt.website_id=2</pre>
+2014-10-12T19:26:27+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu AS m
+LEFT JOIN ueb3c_menu_types AS mt ON mt.id=m.menu_type_id
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE m.home=1 AND m.language='*' AND mt.website_id=2</pre>
+2014-10-12T19:27:04+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu AS m
+LEFT JOIN ueb3c_menu_types AS mt ON mt.id=m.menu_type_id
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE m.home=1 AND m.language='*' AND mt.website_id=2</pre>
+2014-10-14T07:36:44+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu AS m
+LEFT JOIN ueb3c_menu_types AS mt ON mt.id=m.menu_type_id
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE m.home=1 AND m.language='*' AND mt.website_id=1</pre>
+2014-10-14T08:54:15+00:00	DEBUG	-	Start update home menu:<pre class="jdatabasequery">
+UPDATE ueb3c_menu AS m
+LEFT JOIN ueb3c_menu_types AS mt ON mt.id=m.menu_type_id
+SET home=0
+	, checked_out=0
+	, checked_out_time='0000-00-00 00:00:00'
+WHERE m.home=1 AND m.language='*' AND mt.website_id=4</pre>

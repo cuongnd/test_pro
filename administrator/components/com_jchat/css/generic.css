@@ -1,0 +1,182 @@
+h1.page-title {
+	background: url("../images/jchat-32x32.png") no-repeat;
+	padding-left: 36px;
+}
+
+img.inner_spia {
+	margin-left: 3px;
+}
+
+table.admintable td {
+	height: 30px;
+}
+
+table.admintable.response td {
+	border-bottom: 1px solid #ccc;
+}
+
+table.admintable tr.nomessage td {
+	border-bottom: 0px;
+}
+
+table.admintable td.left_title {
+	background-color: #E7E7E7;
+}
+
+table.admintable td.right_details {
+	background-color: #F4F4F4;
+}
+
+table.admintable td.messageresponse {
+	padding: 10px 0 0 10px;
+}
+
+a.clearopen:link {
+	color: #FFF;
+}
+
+a.clearopen:visited {
+	color: #FFF;
+}
+
+a.clearopen:hover {
+	text-decoration: none;
+	-moz-box-shadow: 1px 1px 4px #333;
+	-webkit-box-shadow: 1px 1px 4px #333;
+	box-shadow: 1px 1px 4px #333;
+}
+
+a.clearopen {
+	font-size: 15px;
+	text-decoration: underline;
+	padding: 2px 5px 2px 5px;
+	background-color: rgb(103, 137, 240);
+	border: 1px solid #AAA;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	-moz-box-shadow: 2px 2px 3px #333;
+	-webkit-box-shadow: 2px 2px 3px #333;
+	box-shadow: 2px 2px 3px #333;
+}
+
+fieldset.adminform label.radiobtn {
+	clear: none;
+	min-width: 20px;
+}
+
+dd.tabs label.hasTip {
+	width: 230px;
+}
+
+img.jfbc_sysinfo {
+	margin-top: 8px;
+}
+
+label.hasTip {
+	color: #666;
+	font-weight: bold;
+	border-bottom: 1px solid #E9E9E9;
+}
+
+div.current {
+	border: none;
+	border-top: 1px solid #CCC;
+}
+
+div#element-box div.m {
+	background-color: #FFF;
+}
+
+fieldset#filter-bar {
+	height: auto;
+}
+
+form#adminForm button.btn i.icon-calendar {
+	background-image: url("../images/calendar.png");
+	height: 16px;
+	display: block;
+	width: 16px;
+}
+
+form#adminForm button.btn i.icon-calendar::before {
+	content: none;
+}
+
+fieldset#filter-bar div.input-append {
+	display: inline;
+}
+
+fieldset#filter-bar label {
+	display: inline;
+}
+
+fieldset#filter-bar div.filter-search.fltlft:first-child {
+	margin-bottom: 10px;
+}
+
+fieldset#filter-bar div.filter-search.fltlft.last {
+	float: left;
+}
+
+div.row-fluid .icon-delete::before {
+	color: #E00;
+}
+
+div.row-fluid .icon-config::before {
+	color: #00F;
+	content: "6";
+}
+
+div.row-fluid .icon-export::before,div.row-fluid .icon-pdf::before {
+	content: "r";
+}
+
+div.row-fluid .icon-back::before {
+	color: #03B303;
+	content: "(";
+}
+
+.icon-32-export {
+	background-image: url(../images/icon-32-export.png);
+}
+
+.icon-32-responsemessage {
+	background-image: url(../images/icon-32-response.png);
+}
+
+/**
+ * Configuration compliance
+ */
+fieldset.radio {
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+}
+
+div.control-label {
+	width: 300px;
+	border-bottom: 1px solid #EEE;
+	margin: 16px 0 0 0;
+	color: #666;
+	display: block;
+	float: left;
+	clear: left;
+}
+
+div.control-label label {
+	font-weight: bold;
+	display: inline-block;
+}
+
+img.jfbc_sysinfo {
+	margin-top: 8px;
+}
+
+div#element-box div.m {
+	background-color: #FFF;
+}
+
+label.btn {
+	margin: 0 !important;
+}

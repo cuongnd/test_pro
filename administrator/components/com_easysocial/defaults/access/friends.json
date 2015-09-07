@@ -1,0 +1,21 @@
+// Defines the default form for access.
+{
+	"title"		: "COM_EASYSOCIAL_ACCESS_TAB_FRIENDS",
+	"desc"		: "COM_EASYSOCIAL_ACCESS_TAB_FRIENDS_DESC",
+	"fields"	:
+	[
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_FRIENDS_CREATE_LIST",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_FRIENDS_CREATE_LIST_TOOLTIP",
+			"name"		: "friends.list.enabled",
+			"type"		: "boolean"
+		},
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_FRIENDS_LIST_LIMIT",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_FRIENDS_LIST_LIMIT_TOOLTIP",
+			"name"		: "friends.list.limit",
+			"type"		: "text",
+			"class"		: "input-mini center"
+		}
+	]
+}

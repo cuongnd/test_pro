@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config addfieldpath="/administrator/components/com_bookpro/elements/">
+	
+    <fieldset name="MainSettings" label="Main Settings">
+        <field name="company_name" type="text" label="Company name" default="" description="Company name" />
+        <field name="company_logo" type="media" label="Company logo" default="" description="Company logo" />
+        <field name="company_address" type="text" label="Company address" default="" description="Company address" />
+
+
+
+        <field name="mode" type="radio" label="Offline" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+			
+        <field name="main_currency" type="text" label="Main Currency" default="USD" />
+        <field name="currency_symbol" type="text" label="HLP_CURRENCY_SYMBOL" default="$" 
+                       description="HLP_CURRENCY_SYMBOL_DESC" />
+        <field type="radio" name="business" default="1" label="Business price" class="btn-group">
+				<option value="0">JNo</option>
+				<option value="1">JYes</option>
+			</field>	
+		<field type="radio" name="economy" default="1" label="Economy price" class="btn-group">
+				<option value="0">JNo</option>
+				<option value="1">JYes</option>
+		</field>   
+		<field type="radio" name="anonymous" default="1" label="Anonymous" class="btn-group">
+				<option value="0">JNo</option>
+				<option value="1">JYes</option>
+		</field>               
+        <field type="list" name="currency_display" label="HLP_CURRENCY_DISPLAY"
+                       default="0" description="HLP_CURRENCY_DISPLAY_DESC">
+            <option value="0">00Symb</option>
+            <option value="1">00 Symb</option>
+            <option value="2">Symb00</option>
+            <option value="3">Symb 00</option>
+        </field>
+        
+        <field name="sale_group" type="usergroup" label="HLP_SALE_USER_GROUP"
+                       description="HLP_SALE_USER_GROUP_DESC" />
+        <field name="currency_seperator" type="text" label="HLP_CURRENCY_SEPERATOR"
+                       description="HLP_CURRENCY_SEPERATOR_DESC" />
+        <field name="point_money" type="text" label="HLP_POINT_MONEY"
+                               description="HLP_POINT_MONEY_DESC" />
+        <field type="radio" name="date_type" default="0" label="Date format"
+                       description="HLP_DATE TYPE" class="btn-group">
+            <option value="0">Use component translation constants</option>
+            <option value="1">Use custom format</option>
+        </field>
+        <field type="text" name="date_long" default="" label="Long date"
+                       description="HLP_DATE LONG" />
+        <field type="text" name="date_normal" default="" label="Normal date"
+                       description="HLP_DATE NORMAL" />
+        <field type="text" name="date_day" default="" label="Day date"
+                       description="HLP_DATE DAY" />
+        <field type="text" name="date_day_short" default=""
+                       label="Day date short" description="HLP_DATE DAY SHORT" />
+
+        <field name="term_content_id" type="text" label="HLP_PAYMENT_TERM"
+                       description="Payment term content ID" size="10" />
+        <field name="images" type="text" label="Image Path" description="HLP_IMAGE PATH"
+                       size="100" />
+        <field type="text" name="jpg_quality" label="JPG quality"
+                       default="85" description="HLP_JPG QUALITY" />
+        <field type="list" name="png_quality" label="PNG quality"
+                       default="9" description="HLP_PNG QUALITY">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </field>
+        <field type="list" name="png_filter" label="PNG filter" default="0"
+                       description="HLP_PNG FILTER">
+            <option value="0">PNG NO</option>
+            <option value="8">PNG NONE</option>
+            <option value="16">PNG SUB</option>
+            <option value="32">PNG UP</option>
+            <option value="64">PNG AVG</option>
+            <option value="128">PNG PAETH</option>
+            <option value="248">PNG ALL</option>
+        </field>
+    </fieldset>
+    <fieldset name="AccountSetting" label="Account Setting">
+		
+        <field name="allow_reservations" type="list" default="1"
+                       label="Reservation Permission">
+            <option value="0">Registered</option>
+            <option value="1">Unregistered</option>
+        </field>
+        <field name="customers_usergroup" type="usergroup" label="Customers user group"
+                       description="HLP_CUSTOMERS USER GROUP" />
+        <field name="supplier_usergroup" type="usergroup" label="Supplier user group"
+               description="HLP_SUPPLIER USER GROUP" />
+        <field name="agent_usergroup" type="usergroup" label="Agent user group"
+                       description="Agent user group" />
+			
+        <field type="radio" name="auto_login" label="Auto login after register" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+    </fieldset>
+    <fieldset name="expediaconfig" label="Expedia Setting">
+        <field name="expediamode" type="radio" default="1" label="Test mode" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field name="cid" type="text" default="55505" label="Cid" />
+        <field name="secret" type="text" default="" label="Secret" />
+        <field name="api_key" type="text" default="cbrzfta369qwyrm9t5b8y8kf" label="API key" />
+        <field name="minor_rev" type="text" default="" label="Minor rev" />
+        <field name="locale" type="text" default="en_US" label="Locale" />
+        <field name="currency_code" type="text" default="USD" label="Currency code" />
+        <field name="search_result_count" type="text" default="100" label="Search result count" />
+        <field type="list" name="sort_default" default="1" label="Sort default" description="Sort default">
+            <option value="price_lh">Price (Low to High)</option>
+            <option value="price_hl">Price (High to Low)</option>
+            <option value="stars_lh">Star Rating (Low to High)</option>
+            <option value="stars_hl">Star Rating (High to Low)</option>
+            <option value="traveler_lh">Traveler Rating (Low to High)</option>
+            <option value="traveler_hl">Traveler Rating (High to Low)</option>
+            <option value="alpha">Alpha</option>
+            <option value="promo">Promo</option>
+            <option value="overall_value">Overall value</option>
+        </field>
+    </fieldset>
+    <fieldset name="expediaremotedatabaseconfig" label="Expedia Remove database Setting">
+
+        <field name="driver" type="text" default="mysql" label="Driver" />
+        <field name="host" type="text" default="localhost" label="Host" />
+        <field name="user" type="text" default="" label="User" />
+        <field name="password" type="text" default="" label="Password" />
+        <field name="database" type="text" default="" label="Database" />
+        <field name="prefix" type="text" default="" label="prefix" />
+    </fieldset>
+
+	
+    <fieldset name="RegistrationReservationFields" label="Registration Fields">
+        <field type="spacer" default="Reservation setting info" />
+        <field type="list" name="rs_firstname" default="1" label="Firstname"
+                       description="HLP_FIRSTNAME">
+            <option value="0">No hide</option>
+            <option value="1">Yes optional</option>
+            <option value="2">Yes compulsory</option>
+        </field>
+        <field type="list" name="rs_lastname" default="1" label="Lastname"
+                       description="HLP_MIDDLENAME">
+            <option value="0">No hide</option>
+            <option value="1">Yes optional</option>
+            <option value="2">Yes compulsory</option>
+        </field>
+        <field type="list" name="rs_address" default="1" label="Street"
+                       description="HLP_STREET">
+            <option value="0">No hide</option>
+            <option value="1">Yes optional</option>
+            <option value="2">Yes compulsory</option>
+        </field>
+        <field type="list" name="rs_states" default="1" label="State"
+                       description="HLP_NOTE">
+            <option value="0">No hide</option>
+            <option value="1">Yes optional</option>
+            <option value="2">Yes compulsory</option>
+        </field>
+        <field type="list" name="rs_city" default="1" label="City"
+                       description="HLP_CITY">
+            <option value="0">No hide</option>
+            <option value="1">Yes optional</option>
+            <option value="2">Yes compulsory</option>
+        </field>
+        <field type="list" name="rs_country" default="1" label="Country"
+                       description="HLP_COUNTRY">
+            <option value="0">No hide</option>
+            <option value="1">Yes optional</option>
+            <option value="2">Yes compulsory</option>
+        </field>
+        <field type="list" name="rs_zip" default="1" label="Zip"
+                       description="HLP_ZIP">
+            <option value="0">No hide</option>
+            <option value="1">Yes optional</option>
+            <option value="2">Yes compulsory</option>
+        </field>
+        <field type="list" name="rs_email" default="1" label="Email"
+                       description="HLP_EMAIL">
+            <option value="0">No hide</option>
+            <option value="1">Yes optional</option>
+            <option value="2">Yes compulsory</option>
+        </field>
+        <field type="list" name="rs_telephone" default="1" label="Telephone"
+                       description="HLP_TELEPHONE">
+            <option value="0">No hide</option>
+            <option value="1">Yes optional</option>
+            <option value="2">Yes compulsory</option>
+        </field>
+		
+        <field type="list" name="rs_mobile" default="1" label="Mobile"
+                       description="HLP_MOBILE">
+            <option value="0">No hide</option>
+            <option value="1">Yes optional</option>
+            <option value="2">Yes compulsory</option>
+        </field>
+        <field type="list" name="rs_fax" default="1" label="Fax"
+                       description="HLP_FAX">
+            <option value="0">No hide</option>
+            <option value="1">Yes optional</option>
+            <option value="2">Yes compulsory</option>
+        </field>
+    </fieldset>
+
+    <fieldset name="PassengerFields" label="Passenger Fields">
+        <field type="spacer" default="Passenger setting info" />
+        <field type="radio" name="passenger_status" label="Required Passenger" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field type="radio" name="ps_gender" default="1" label="Gender" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field type="radio" name="ps_firstname" default="1" label="Firstname" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field type="radio" name="ps_lastname" default="1" label="Last name" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field type="radio" name="ps_group" default="1" label="Group" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field type="radio" name="ps_passport" default="0" label="Passport" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field type="radio" name="ps_ppvalid" default="0" label="Passport Valid" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field type="radio" name="ps_country" default="0" label="Country" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field type="radio" name="ps_birthday" default="1" label="Birthday" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+		
+    </fieldset>
+    <fieldset name="GallerySetting" label="Gallery Setting">
+        <field type="radio" name="display_image_subject_detail" label="Show Image"
+                       description="HLP_SHOW IMAGE" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field name="display_thumbs_subject_detail_width" type="text"
+                       label="Image Width" description="HLP_IMAGE WIDTH" size="10" />
+        <field name="display_thumbs_subject_detail_height" type="text"
+                       label="Image Height" description="HLP_IMAGE HEIGHT" size="10" />
+        <field type="radio" name="display_gallery_subject_detail" label="Show Photogallery"
+                       description="HLP_SHOW PHOTOGALLERY" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field name="display_gallery_thumbs_subject_detail_width" type="text"
+                       label="Gallery Thumb width" description="HLP_GALLERY THUMB WIDTH"
+                       size="10" />
+        <field name="display_gallery_thumbs_subject_detail_height" type="text"
+                       label="Gallery Thumb height" description="HLP_GALLERY THUMB HEIGHT"
+                       size="10" />
+        <field name="display_gallery_preview_subject_detail_width" type="text"
+                       label="Gallery Preview width" description="HLP_GALLERY PREVIEW WIDTH"
+                       size="10" />
+        <field name="display_gallery_preview_subject_detail_height"
+                       type="text" label="Gallery Preview height" description="HLP_GALLERY PREVIEW HEIGHT"
+                       size="10" />
+
+    </fieldset>
+	
+    <fieldset name="EmailRegistration" label="Notification - Registration">
+        <field type="list" name="send_registrations_emails" label="Send E-mails"
+                       description="HLP_SEND REGISTRATION E-MAILS">
+            <option value="0">- OFF -</option>
+            <option value="1">to admin and customers</option>
+            <option value="2">only admin</option>
+            <option value="3">only customers</option>
+        </field>
+        <field name="send_registrations_emails_from" type="text" label="COM_BOOKPRO_CONFIG_FROM_EMAIL"
+                       description="HLP_TO E-MAILS" size="60" />
+        <field name="send_registrations_emails_fromname" type="text"
+                       label="From Name" description="HLP_FROM NAME" size="60" />
+        <field name="send_registrations_emails_subject_customer" type="text"
+                       label="COM_BOOKPRO_CONFIG_CUSTOMER_SUBJECT" description="HLP_E-MAIL SUBJECT CUSTOMER"
+                       size="60" />
+        <field name="send_registrations_emails_subject_admin" type="text"
+                       label="COM_BOOKPRO_CONFIG_ADMIN_SUBJECT" description="HLP_E-MAIL SUBJECT ADMIN"
+                       size="60" />
+        <field type="radio" name="send_registrations_mode" label="E-mail Format" class="btn-group"
+                       description="HLP_E-MAIL FORMAT">
+            <option value="plain_text">Plain text</option>
+            <option value="html">HTML</option>
+        </field>
+        <field type="spacer" default="Registration E-mail Body Info" />
+        <field name="send_registrations_body_customer" type="editor"
+                       label="COM_BOOKPRO_CONFIG_CUSTOMER_BODY" description="HLP_E-MAIL BODY CUSTOMER" />
+        <field name="send_registrations_body_admin" type="editor"
+                       label="COM_BOOKPRO_CONFIG_ADMIN_BODY" description="HLP_E-MAIL BODY ADMIN" />
+    </fieldset>
+    <fieldset name="Invoice" label="Invoice">
+
+        <field name="invoice_header" type="editor" label="COM_BOOKPRO_INVOICE_HEADER"
+                       description="COM_BOOKPRO_INVOICE_HEADER" />
+        <field name="invoice_footer" type="editor" label="COM_BOOKPRO_INVOICE_FOOTER"
+                       description="COM_BOOKPRO_INVOICE_FOOTER" />
+    </fieldset>
+    <!--
+    <fieldset name="Registration" label="Registration">
+            <field name="bookpro_key" type="text" label="License key"
+                    description="" size="50" />
+            <field name="hostname" type="text" label="Domain Name"
+                    description="" size="50" />
+    </fieldset>
+    -->
+
+    <fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL">
+        <field name="asset_id" type="hidden" default="com_bookpro" />
+    </fieldset>
+</config>

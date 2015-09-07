@@ -1,0 +1,92 @@
+#main_diagram {
+	height: 700px;
+	padding: 0;
+	width: 100%;
+	margin: 0;
+	position: relative;
+	margin: 0 auto;
+}
+.node1 {
+	position: absolute;
+	width: 100px;
+	background: #666;
+	color: #fff;
+	padding: 10px;
+	cursor: pointer;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.container-main {
+	padding: 0 !important;
+}
+.main-diagram-design {
+	padding: 0 !important;
+}
+.main-paper-container {
+	width: 60%;
+}
+.main-stencil {
+	width: 20%;
+}
+.main-inspector-navigator {
+	width: 20%;
+}
+.node2 {
+	position: absolute;
+	width: 100px;
+	background: #F99;
+	left: 300px;
+	padding: 10px;
+	cursor: pointer;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+#main_diagram .air-table {
+	position: absolute;
+	top: 0;
+}
+#main_diagram .air-table .item-table {
+	background: #ccc;
+	border: 1px solid #000000;
+	display: table;
+	padding: 5px;
+	margin: 0;
+}
+#main_diagram .air-table .item-table .field {
+	background: #fff;
+	border-bottom: 1px solid #CCCCCC;
+	padding: 5px;
+	list-style: none;
+	display: table;
+	width: 93%;
+	position: relative;
+}
+#main_diagram .air-table .item-table .field.table-title {
+	background: #c3c3c3;
+}
+#main_diagram #origin-point {
+	color: white;
+	font-weight: bold;
+	background-color: #06a;
+	margin: 5em auto;
+	text-align: center;
+	line-height: 70px;
+	height: 70px;
+	width: 70px;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	border-radius: 100%;
+}
+#main_diagram #new-link-line {
+	position: absolute;
+	width: 3px;
+	background-color: #06a;
+	z-index: 100;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	transform-origin: top left;
+}
+#content .modal-body {
+	max-height: none;
+	overflow-y: visible;
+}

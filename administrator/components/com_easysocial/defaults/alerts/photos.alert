@@ -1,0 +1,16 @@
+
+// These alert rules are for core features
+[
+	{
+		"element"	: "photos",
+		"rule"	: "comment.add"
+	},
+	{
+		"element"	: "photos",
+		"rule"	: "tagged"
+	},
+	{
+		"element"	: "photos",
+		"rule"	: "likes"
+	}
+]

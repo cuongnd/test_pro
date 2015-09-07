@@ -1,0 +1,80 @@
+.view-tour-default {
+	background: #fff;
+}
+.view-tour-default .main-subhead {
+	margin: 0 5px;
+}
+.view-tour-default .main-subhead .subhead.subhead-fixed {
+	margin: 0px 0px 0px -20px;
+}
+.view-tour-default .form-view-tour-default {
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 10px 20px;
+}
+.view-tour-default .form-view-tour-default h4 {
+	text-transform: uppercase;
+	margin: 15px 10px 0 10px;
+}
+.view-tour-default .form-view-tour-default .build-form {
+	margin: 10px;
+	border: 1px solid #ccc;
+	padding: 15px 10px;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .add-info textarea {
+	width: 98%;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .text-info {
+	text-align: center;
+	text-transform: uppercase;
+	padding: 10px 0 0 0;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .activities-select .checkboxes #triple {
+	width: 100%;
+	overflow: hidden;
+	margin-left: 0;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .activities-select .checkboxes #triple .title-checkbox {
+	margin-left: 15px;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .activities-select .checkboxes #triple .input-checkbox {
+	float: right;
+	margin-right: 15px;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .activities-select .checkboxes #triple .checkbox {
+	padding-left: 0;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .activities-select .checkboxes #triple li {
+	line-height: 1.5em;
+	float: left;
+	display: inline;
+	width: 33.333%;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .type-checkbox {
+	margin-left: 0;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .type-checkbox #triple {
+	width: 100%;
+	overflow: hidden;
+	margin-left: 0;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .type-checkbox #triple li {
+	line-height: 1.5em;
+	float: left;
+	display: inline;
+	width: 25%;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .type-checkbox #triple li .checkbox {
+	padding-left: 0;
+	height: 50px;
+	text-align: center;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .type-checkbox #triple li .checkbox .input-checkbox input {
+	margin-left: -7px !important;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .form-horizontal .control-label {
+	text-align: left;
+}
+.view-tour-default .form-view-tour-default .build-form .build-form-edit .form-horizontal .control-label-type {
+	width: 110px;
+}

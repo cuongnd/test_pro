@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field
+                id="id"
+                name="id"
+                type="text"
+                default="0"
+                readonly="true"
+                class="readonly"
+                label="COM_TOUR_VIEW_BROCHURE_FILED_ID"
+                description ="COM_TOUR_VIEW_BROCHURE_DESC_FILED_ID" />
+        <field
+                id="name"
+                name="name"
+                type="text"
+                default=""
+                required="true"
+                label="COM_TOUR_VIEW_BROCHURE_FILED_NAME"
+                description ="COM_TOUR_VIEW_BROCHURE_DESC_FILED_NAME" />
+
+        <field name="email" id="email" type="email" buttons="true"
+               default=""
+               label="COM_TOUR_VIEW_BROCHURE_FILED_EMAIL"
+               description ="COM_TOUR_VIEW_BROCHURE_DESC_FILED_EMAIL" />
+
+
+    </fieldset>
+
+
+
+</form>

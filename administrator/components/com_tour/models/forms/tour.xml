@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/administrator/components/com_tour/elements">
+        <field
+                id="id"
+                name="id"
+                type="text"
+                default="0"
+                readonly="true"
+                class="readonly"
+                label="COM_TOUR_VIEW_TOUR_FILED_ID"
+                description ="COM_TOUR_VIEW_TOUR_DESC_FILE_ID" />
+
+        <field
+                name="name"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_NAME"
+                description="COM_TOUR_VIEW_TOUR_DESC_FILE_NAME"
+                size="50"
+                required="true" />
+
+        <field
+                name="title"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_TITLE"
+                description="COM_TOUR_VIEW_TOUR_DESC_FILE_TITLE"
+                size="50"
+                required="true" />
+        <field
+                name="code"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_CODE"
+                description="COM_TOUR_VIEW_TOUR_DESC_FILE_CODE"
+                size="50"
+                required="true" />
+
+
+        <field name="description" type="editor" buttons="true"
+               hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+               label="COM_TOUR_VIEW_TOUR_FILED_DESC" description="COM_TOUR_VIEW_TOUR_DESC_FILE_DESC" />
+
+
+        <field
+                name="brief_itinerary"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_DRIEF_ITINERARY"
+                description="COM_TOUR_VIEW_TOUR_DESC_FILE_DRIEF_ITINERARY"
+                size="50"
+                />
+        <field
+                name="long_itinerary"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_LONG_ITINERARY"
+                description="COM_TOUR_VIEW_TOUR_DESC_FILE_LONG_ITINERARY"
+                size="50"
+                />
+        <field
+                name="length"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_LENGTH"
+                description="COM_TOUR_VIEW_TOUR_DESC_FILE_LENGTH"
+                size="50"
+                />
+        <field
+                name="start_city"
+                type="country"
+                label="COM_TOUR_VIEW_TOUR_FILED_START_CITY"
+                description="COM_TOUR_VIEW_TOUR_DESC_START_CITY"
+                size="50"
+                />
+        <field
+                name="end_city"
+                type="country"
+                label="COM_TOUR_VIEW_TOUR_FILED_END_CITY"
+                description="COM_TOUR_VIEW_TOUR_DESC_END_CITY"
+                size="50"
+                />
+        <field
+                name="trip_note"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_TRIP_NOTE"
+                description="COM_TOUR_VIEW_TOUR_DESC_TRIP_NOTE"
+                size="50"
+                />
+        <field
+                name="grade"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_GRADE"
+                description="COM_TOUR_VIEW_TOUR_DESC_GRADE"
+                size="50"
+                />
+        <field
+                name="type"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_TYPE"
+                description="COM_TOUR_VIEW_TOUR_DESC_TYPE"
+                size="50"
+                />
+        <field
+                name="groupsize"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_GROUPSIZE"
+                description="COM_TOUR_VIEW_TOUR_DESC_GROUPSIZE"
+                size="50"
+                />
+        <field
+                name="passenger_age"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_PASSSENGER_AGE"
+                description="COM_TOUR_VIEW_TOUR_DESC_PASSSENGER_AGE"
+                size="50"
+                />
+        <field
+                name="service_class"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_SERVICE_CLASS"
+                description="COM_TOUR_VIEW_TOUR_DESC_SERVICE_CLASS"
+                size="50"
+                />
+        <field
+                name="idtourstyle"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_IDTOURSTYLE"
+                description="COM_TOUR_VIEW_TOUR_DESC_IDTOURSTYLE"
+                size="50"
+                />
+        <field
+                name="idphotos"
+                type="media"
+                label="COM_TOUR_VIEW_TOUR_FILED_IDPHOTOS"
+                description="COM_TOUR_VIEW_TOUR_DESC_IDPHOTOS"
+                size="50"
+                />
+        <field
+                name="idtariff"
+                type="text"
+                label="COM_TOUR_VIEW_TOUR_FILED_IDTARIFF"
+                description="COM_TOUR_VIEW_TOUR_DESC_IDTARIFF"
+                size="50"
+                />
+
+
+        <field name="what-to-see" type="editor" buttons="true"
+               hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+               label="COM_TOUR_VIEW_TOUR_FILED_WHAT_TO_SEE" description="COM_TOUR_VIEW_TOUR_DESC_WHAT_TO_SEE" />
+
+
+        <field
+                name="state"
+                type="list"
+                label="COM_TOUR_VIEW_TOUR_FILED_STATE"
+                description="COM_TOUR_VIEW_TOUR_DESC_STATE"
+                size="1"
+                default="1">
+            <option value="1">Published</option>
+            <option value="0">Unpublished</option>
+
+        </field>
+
+    </fieldset>
+
+
+
+</form>

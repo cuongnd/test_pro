@@ -1,0 +1,8 @@
+
+// These alert rules are for core features
+[
+	{
+		"element"	: "badges",
+		"rule"	: "unlocked"
+	}
+]

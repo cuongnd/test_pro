@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.1" method="upgrade">
+	<name>com_tour</name>
+	<author>Son Nguyen</author>
+	<creationDate>20/05/2015</creationDate>
+	<copyright>(C) 2005 - 2014 Open Source
+	</copyright>
+	<license>GNU General Public License version 2 or later; see
+		LICENSE.txt</license>
+	<authorEmail>sonnvhaui@gmail.com</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<version>3.0.0</version>
+	<description>COM_TESTS_XML_DESCRIPTION</description>
+
+	 
+ 
+	<administration>
+		<menu img="class:weblinks">com_tour</menu>
+	 
+		<files folder="admin">
+			<filename>tour.php</filename>
+		 
+			 
+		</files>
+		<languages folder="admin">		 
+			<language tag="en-GB">language/en-GB/en-GB.com_tour.sys.ini</language>
+		</languages>
+	</administration>
+</extension>
+
+ 

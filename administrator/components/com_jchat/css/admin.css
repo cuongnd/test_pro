@@ -1,0 +1,50 @@
+div.codeinfo_domain,div.codeinfo_expire {
+	font-size: 12px;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+	width: 20%;
+}
+
+div.codeinfo {
+	height: 30px;
+	margin: 5px 0 5px 0;
+	font-size: 12px;
+}
+
+div.expired {
+	color: red;
+}
+
+div.error {
+	color: #E00;
+}
+
+span.spacer {
+	margin: 0 5px 0 5px;
+}
+
+span.notify {
+	text-decoration: underline;
+	color: #E00;
+}
+
+#activate_domain_license {
+	margin: 0 0 15px 0;
+}
+
+#activate_expire_license {
+	margin: 0 0 15px 0;
+}
+
+#component_status {
+	float: right;
+	margin-top: -35px;
+	padding: 3px 15px;
+	border-right: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-top: 1px solid #CCC;
+	font-weight: bold;
+	color: #0B55C4;
+	line-height: 12px;
+	height: 12px;
+}

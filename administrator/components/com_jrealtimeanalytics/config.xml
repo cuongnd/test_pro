@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset id="preferenze" name="preferenze" label="PREFERENZE"> 
+		<field name="chatrefresh" type="text" size="10" default="2" label="CHAT REFRESH" description="CHAT REFRESH DESC" />
+		<field name="realtime_refresh" type="text" size="10" default="2" label="REALTIME_REFRESH" description="REALTIME_REFRESH DESC" />
+   		<field name="maxlifetime_session" type="text" size="10" default="20" label="MAXINACTIVITYTIME" description="MAXINACTIVITYTIME DESC" /> 
+		<field name="guestprefix" type="text" size="10" default="Guest" label="GUESTPREFIX" description="GUESTPREFIX DESC" />
+	</fieldset> 
+	<fieldset id="avanzate" name="avanzate" label="ADVANCED"> 
+		<field name="gcenabled" class="btn-group" type="radio" default="1" label="GARBAGEONOFF" description="GARBAGEONOFF DESC">
+   			<option value="0">No</option>              
+   			<option value="1">Yes</option>
+   		</field>
+   		<field name="probability" type="list" size="1" default="5" label="GARBAGEPROB" description="GARBAGEPROB DESC" >
+   			<option value="2">2%</option> 
+   			<option value="5">5%</option> 
+   			<option value="10">10%</option>
+   			<option value="20">20%</option>
+   			<option value="30">30%</option>
+   			<option value="40">40%</option>
+   			<option value="50">50%</option>
+   		</field> 
+   		<field name="noconflict" class="btn-group" type="radio" default="1" label="JQUERY NOCONFLICT" description="JQUERY NOCONFLICT DESC">
+   			<option value="0">No</option>              
+   			<option value="1">Yes</option>
+   		</field> 
+   		<field name="includeevent" class="btn-group" type="radio" default="afterdispatch" label="INCLUDE POSITION" description="INCLUDE POSITION DESC">
+			<option value="afterinitialize">Before component</option>              
+			<option value="afterdispatch">After component</option>
+		</field>
+		<field name="includejquery" class="btn-group" type="radio" default="1" label="INCLUDE JQUERY" description="INCLUDE JQUERY DESC">
+			<option value="0">No</option>              
+			<option value="1">Yes</option>
+		</field>
+		<field name="cbnoconflict" class="btn-group" type="radio" default="1" label="CBNOCONFLICT" description="CBNOCONFLICT DESC">
+   			<option value="0">No</option>   
+   			<option value="1">Yes</option>            
+   		</field>
+	</fieldset>
+</config>

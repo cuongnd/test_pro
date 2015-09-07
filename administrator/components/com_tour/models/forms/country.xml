@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field
+                id="id"
+                name="id"
+                type="text"
+                default="0"
+                readonly="true"
+                class="readonly"
+                label="COM_TOUR_VIEW_COUNTRY_FILED_ID"
+                description ="COM_TOUR_VIEW_COUNTRY_DESC_FILED_ID" />
+
+        <field
+                name="name"
+                type="text"
+                label="COM_TOUR_VIEW_COUNTRY_FILED_NAME"
+                description="COM_TOUR_VIEW_COUNTRY_DESC_FILED_NAME"
+                size="50"
+                required="true"
+                />
+        <field
+                name="code"
+                type="text"
+                label="COM_TOUR_VIEW_COUNTRY_FILED_CODE"
+                description="COM_TOUR_VIEW_COUNTRY_DESC_FILED_CODE"
+                size="50"
+                />
+
+
+    </fieldset>
+
+
+
+</form>

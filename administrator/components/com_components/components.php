@@ -1,0 +1,20 @@
+<?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_components
+ *
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+JHtml::_('behavior.tabstate');
+require_once JPATH_ROOT.'/administrator/components/com_website/helpers/website.php';
+if (!JFactory::getUser()->authorise('core.manage', 'com_components'))
+{
+	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+}
+
+$controller	= JControllerLegacy::getInstance('components');
+$controller->execute(JFactory::getApplication()->input->get('task'));
+$controller->redirect();

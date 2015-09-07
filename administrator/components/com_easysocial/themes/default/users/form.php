@@ -1,0 +1,45 @@
+<?php
+/**
+* @package		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license		GNU/GPL, see LICENSE.php
+* EasySocial is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+* See COPYRIGHT.php for copyright notices and details.
+*/
+defined( '_JEXEC' ) or die( 'Unauthorized Access' );
+?>
+<form name="adminForm" id="adminForm" class="profileForm" method="post" enctype="multipart/form-data" data-user-form>
+
+<div class="row-fluid es-user-form">
+	<div class="span7">
+		<?php echo $this->includeTemplate( 'admin/users/form.profile.content' ); ?>
+	</div>
+
+	<div class="span5">
+
+		<div class="row-fluid widget-box">
+			<h3><?php echo JText::_( 'COM_EASYSOCIAL_USERS_INTERACTION_GRAPH' );?></h3>
+
+			<?php echo $this->loadTemplate( 'admin/users/form.chart' , array( 'stats' => $stats ) ); ?>
+		</div>
+
+		<div class="row-fluid widget-box">
+			<h3><?php echo JText::_( 'COM_EASYSOCIAL_USERS_RECENT_ACTIVITY' );?></h3>
+
+			<div data-form-activity>
+				<span data-form-activity-loader><?php echo JText::_( 'COM_EASYSOCIAL_USERS_RETRIEVING_USERS_ACTIVITY' ); ?></span>
+			</div>
+		</div>
+
+	</div>
+</div>
+<input type="hidden" name="option" value="com_easysocial" />
+<input type="hidden" name="controller" value="users" />
+<input type="hidden" name="task" value="" />
+<input type="hidden" name="id" value="<?php echo isset( $user ) ? $user->id : ''; ?>" />
+<?php echo JHTML::_( 'form.token' );?>
+
+</form>

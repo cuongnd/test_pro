@@ -1,0 +1,32 @@
+// Defines the default form for access.
+{
+	"title"		: "COM_EASYSOCIAL_ACCESS_TAB_PHOTOS",
+	"desc"		: "COM_EASYSOCIAL_ACCESS_TAB_PHOTOS_DESC",
+	"fields"	:
+	[
+		{
+			"label"	: "COM_EASYSOCIAL_ACCESS_PHOTOS_CREATE_ALBUMS",
+			"type"	: "boolean",
+			"name"	: "albums.create",
+			"default"	: true,
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_PHOTOS_CREATE_ALBUMS_TIPS"
+		},
+		{
+			"label"	: "COM_EASYSOCIAL_ACCESS_PHOTOS_TOTAL_ALBUMS",
+			"type"	: "text",
+			"class"	: "center input-mini",
+			"name"	: "albums.total",
+			"suffix"	: "albums",
+			"default"	: 20,
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_PHOTOS_TOTAL_ALBUMS_TIPS"
+		},
+		{
+			"label"		: "Maximum file size",
+			"type"		: "text",
+			"class"		: "center input-mini",
+			"name"		: "photos.uploader.maxsize",
+			"suffix"	: "MB",
+			"tooltip"	: "Set the number of photos that are allowed per album."
+		}
+	]
+}

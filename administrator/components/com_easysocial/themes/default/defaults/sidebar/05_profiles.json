@@ -1,0 +1,18 @@
+// Template
+// "title"	: "",
+// "link"	: "",
+// "class"	: "",
+// "view"	: "",
+// "active": "",
+// "childs": []
+// Profiles menu
+{
+	"order"	: 4,
+	"title"	: "COM_EASYSOCIAL_MENU_GROUP_PROFILES",
+	"link"	: "index.php?option=com_easysocial&view=profiles",
+	"class"	: "briefcase",
+	"access": "easysocial.access.profiles",
+	"view"	: "profiles",
+	"active": "layout",
+	"childs": []
+}

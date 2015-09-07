@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <layout title="Products">
+    <message>Products</message>
+  </layout>
+  <state>
+    <name>Products</name>
+    <description>Products</description>
+
+    <params>
+    </params>
+    <fields name="request">
+	</fields>
+  </state>
+</metadata>

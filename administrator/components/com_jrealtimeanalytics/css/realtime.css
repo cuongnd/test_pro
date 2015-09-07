@@ -1,0 +1,121 @@
+div#placeholder_textstats,div#placeholder_chartpie,div#placeholder_chartbar
+	{
+	float: left;
+	position: relative;
+	border: 5px solid #CCC;
+	-webkit-box-shadow: 1px 1px 20px #888;
+	-moz-box-shadow: 1px 1px 20px #888;
+	box-shadow: 1px 1px 20px #888;
+	margin-right: 15px;
+	margin-bottom: 20px;
+	min-width: 450px;
+	min-height: 400px;
+}
+
+div#placeholder_text,div#placeholder_perpage {
+	clear: both;
+	border: 5px solid #CCC;
+	-webkit-box-shadow: 1px 1px 20px #888;
+	-moz-box-shadow: 1px 1px 20px #888;
+	box-shadow: 1px 1px 20px #888;
+	margin-right: 15px;
+	margin-bottom: 20px;
+	width: 95%;
+	height: 400px;
+	border: 5px solid #CCC;
+	overflow: auto;
+}
+
+div#placeholder_text span,div#placeholder_perpage span {
+	width: 28%;
+	display: inline-block;
+}
+
+div#placeholder_text span.little {
+	width: 18%;
+}
+
+div#placeholder_text span.little.fixed {
+	width: 12%;
+}
+
+div#placeholder_text span.large {
+	width: 32%;
+}
+
+div#placeholder_perpage span.little.fixed {
+	width: 20%;
+}
+
+div#placeholder_perpage span.large {
+	width: 50%;
+	margin-right: 50px;
+}
+
+div#placeholder_textstats {
+	min-width: 350px;
+}
+
+div.texttitle {
+	font: 16px Arial, Helvetica, sans-serif;
+	color: #8E8E8E;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+div.userdatarow {
+	padding: 15px;
+	font-size: 12px;
+	border-bottom: 1px dotted #CCC;
+	font-weight: bold;
+	color: #726E6E;
+	width: 90%;
+}
+
+div.datarow,div.titlerow {
+	padding: 15px;
+	font-size: 15px;
+	border-bottom: 1px dotted #CCC;
+	font-weight: bold;
+	color: #726E6E;
+	width: 90%;
+}
+
+div.datarow span.datarow_value {
+	margin-left: 5px;
+}
+
+div#box {
+	width: 8px;
+	height: 8px;
+	background-color: #F16929;
+	float: left;
+	margin-top: 12px;
+	margin: 20px 8px 0 12px;
+}
+
+a:link.preview,a:visited.preview,a:hover.preview {
+	color: #4E5E5E;
+}
+
+a.preview {
+	width: 100%;
+	overflow: auto;
+	font-size: 11px;
+	margin: 3px;
+	padding: 5px 8px 3px 8px;
+	cursor: pointer;
+	float: left;
+	text-align: center;
+	background-color: white;
+	border: 1px solid #999;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 12px 2px #CCC;
+	-moz-box-shadow: inset 0 0 12px 2px #CCC;
+	-o-box-shadow: inset 0 0 12px 2px #CCC;
+	box-shadow: inset 0 0 12px 2px #CCC;
+}

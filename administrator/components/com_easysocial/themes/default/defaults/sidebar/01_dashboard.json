@@ -1,0 +1,17 @@
+// Template
+// "title"	: "",
+// "link"	: "",
+// "class"	: "",
+// "view"	: "",
+// "active": "",
+// "childs": []
+// Dashboard menu
+{
+	"order"	: 1,
+	"title"	: "COM_EASYSOCIAL_MENU_GROUP_DASHBOARD",
+	"link"	: "index.php?option=com_easysocial",
+	"class"	: "home",
+	"view"	: "easysocial",
+	"active": "view",
+	"childs": []
+}

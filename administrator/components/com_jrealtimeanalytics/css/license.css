@@ -1,0 +1,88 @@
+div#placeholder_expirecode,div#placeholder_domaincode {
+	float: left;
+	position: relative;
+	border: 5px solid #CCC;
+	-webkit-box-shadow: 1px 1px 20px #888;
+	-moz-box-shadow: 1px 1px 20px #888;
+	box-shadow: 1px 1px 20px #888;
+	margin-right: 15px;
+	margin-bottom: 20px;
+	min-width: 450px;
+	height: 150px;
+	padding: 10px;
+}
+
+div.texttitle {
+	font: 16px Arial, Helvetica, sans-serif;
+	color: #8E8E8E;
+	text-align: center; 
+	margin-bottom: 15px;
+}
+
+div.codeinfo div {
+	font-size: 14px;
+	padding: 5px;
+}
+
+div.codeinfo_domain,div.codeinfo_expire {
+	font-size: 16px;
+}
+
+div.codeinfo {
+	height: 30px;
+	margin: 5px 0 5px 0;
+	font-size: 12px;
+}
+
+div.expired {
+	color: red;
+}
+
+div.expired label {
+	color: #000;
+	font-size: 12px;
+}
+
+div#activate_domain_license label {
+	color: #000;
+	font-size: 12px;
+}
+
+div.error {
+	color: #E00;
+}
+
+div.spacer {
+	margin: 0 5px 0 5px;
+}
+
+div.notify {
+	text-decoration: underline;
+	color: #E00;
+}
+
+#activate_domain_license {
+	margin: 0 0 15px 0;
+}
+
+#activate_expire_license {
+	margin: 0 0 15px 0;
+}
+
+#component_status {
+	padding: 3px 15px;
+	border-bottom: 1px solid #CCC;
+	padding-bottom: 15px;
+	font-weight: bold;
+	color: #0B55C4;
+	line-height: 12px;
+	height: 12px;
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+
+div#box {
+	background-color: #F16929;
+	float: left;
+	margin: 8px 8px 0 12px;
+}

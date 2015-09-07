@@ -1,0 +1,64 @@
+.view-bookpro-mainmenu-default {
+	background: #fff;
+}
+.view-bookpro-mainmenu-default #tab_group_menu_bookproContent .tab-pane {
+	min-height: 82px;
+}
+.view-bookpro-mainmenu-default #tab_group_menu_bookproContent .pull-left {
+	width: 150px;
+	height: 77px;
+	background-image: linear-gradient(transparent,transparent), linear-gradient(#f6f7f8,#b8bdc2);
+	-moz-background-size: 1px 100%;
+	background-size: 1px 100%;
+	background-position: 0 0, 100% 0;
+	background-repeat: no-repeat;
+}
+.view-bookpro-mainmenu-default #tab_group_menu_bookproContent .pull-left li a i {
+	height: 23px !important;
+	margin-right: 15px;
+}
+.view-bookpro-mainmenu-default #tab_group_menu_bookproContent .pull-left li a {
+	color: #666666;
+}
+.view-bookpro-mainmenu-default #tab_group_menu_bookproContent .pull-left li a:hover {
+	color: #007799;
+	text-decoration: none;
+}
+.view-bookpro-mainmenu-default #tab_group_menu_bookproTabs {
+	margin: 0px;
+}
+.view-bookpro-mainmenu-default #tab_group_menu_bookproContent ul li {
+	list-style: none;
+	line-height: 20px;
+}
+.view-bookpro-mainmenu-default #tab_group_menu_bookproContent [class^="icon-"],
+.view-bookpro-mainmenu-default #tab_group_menu_bookproContent [class*=" icon-"] {
+	font-size: 12px;
+	width: 12px !important;
+	line-height: 12px;
+}
+.view-bookpro-mainmenu-default .tabbable_main_menu .tab-pane {
+	min-height: 100px;
+	background: -webkit-linear-gradient(bottom,#ffffff,#e9edf1);
+	background: -o-linear-gradient(bottom,#ffffff,#e9edf1);
+	background: -moz-linear-gradient(bottom,#ffffff,#e9edf1);
+	background: linear-gradient(to bottom,#ffffff,#e9edf1);
+	padding: 5px;
+	border-bottom: 1px solid #8b9097;
+}
+.view-bookpro-mainmenu-default .tabbable_main_menu .quick {
+	color: #2674a1;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 14px;
+	margin-right: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	width: 14px;
+	word-wrap: break-word;
+}
+.view-bookpro-mainmenu-default .search-tour {
+	background: #fffafa;
+	padding: 15px 25px;
+	border: 1px solid #9c9c9c;
+}

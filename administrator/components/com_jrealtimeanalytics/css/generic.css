@@ -1,0 +1,71 @@
+img.inner_spia {
+	margin-left: 3px;
+}
+
+table.admintable td {
+	height: 30px;
+}
+
+table.admintable.response td {
+	border-bottom: 1px solid #ccc;
+}
+
+table.admintable tr.nomessage td {
+	border-bottom: 0px;
+}
+
+table.admintable td.left_title {
+	background-color: #E7E7E7;
+}
+
+table.admintable td.right_details {
+	background-color: #F4F4F4;
+}
+
+table.admintable td.messageresponse {
+	padding: 10px 0 0 10px;
+}
+
+a.clearopen {
+	font-size: 15px;
+	text-decoration: underline;
+	padding: 2px 5px 2px 5px;
+	background-color: #EDEDF5;
+	border: 1px solid #AAA;
+}
+
+fieldset.adminform label.radiobtn {
+	clear: none;
+	min-width: 20px;
+}
+
+dd.tabs label.hasTip {
+	width: 230px;
+}
+
+img.jfbc_sysinfo {
+	margin-top: 8px;
+}
+
+label.hasTip {
+	color: #666;
+	font-weight: bold;
+	border-bottom: 1px solid #E9E9E9;
+}
+
+div.current {
+	border: none;
+	border-top: 1px solid #CCC;
+}
+
+div#element-box div.m {
+	background-color: #FFF;
+}
+
+.icon-32-export {
+	background-image: url(../images/icon-32-export.png);
+}
+
+.icon-32-responsemessage {
+	background-image: url(../images/icon-32-response.png);
+}

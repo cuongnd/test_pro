@@ -1,0 +1,176 @@
+.col-md-3 label {
+	color: #890E00;
+	font-size: 25px;
+	margin-bottom: 20px;
+}
+.view-countries-default {
+	margin: 0 15px 15px 15px;
+}
+.view-countries-default input {
+	opacity: 1 !important;
+}
+.view-countries-default .table-infomation .view-border-right {
+	border-right: 1px #ccc solid;
+	border-top: none;
+}
+.view-countries-default .table-infomation .view-border-right input {
+	margin-bottom: 0;
+}
+.view-countries-default .table-infomation .icon-action {
+	margin-left: 30px;
+}
+.view-countries-default table {
+	border: 1px solid #CBCBCB;
+	border-top: none;
+}
+.view-countries-default table label,
+.view-countries-default table th {
+	color: #2573a1;
+	font-weight: bold;
+}
+.view-countries-default table td .modal {
+	background-clip: padding-box;
+	background-color: #ffffff;
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 0px;
+	box-shadow: none;
+	left: auto;
+	margin-left: 0px;
+	outline: medium none;
+	position: relative;
+	top: auto;
+	width: auto;
+	z-index: auto;
+}
+.view-countries-default table td #jform_path {
+	border-radius: 0;
+	margin-right: 0;
+}
+.view-countries-default #filter-bar {
+	background: #f0f0f0 !important;
+	border: 1px solid #DDDDDD;
+	padding-top: 10px !important;
+}
+.view-countries-default #filter-bar .filter-search .pull-left {
+	margin-left: 30px !important;
+	padding-bottom: 20px;
+	padding-top: 10px;
+}
+.view-countries-default #filter-bar .filter-search .pull-left p {
+	margin: 0 !important;
+}
+.view-countries-default #filter-bar .filter-search .pull-left select,
+.view-countries-default #filter-bar .filter-search .pull-left input {
+	height: 30px;
+}
+.view-countries-default #filter-bar .filter-search .pull-left #select-tour-name {
+	width: 200px;
+}
+.view-countries-default #filter-bar .filter-search .pull-left #select-tour-style,
+.view-countries-default #filter-bar .filter-search .pull-left #select-tour-type {
+	width: 200px;
+}
+.view-countries-default #filter-bar .filter-search .search {
+	margin-left: 65px;
+	padding: 14px 15px !important;
+	font-size: 16px;
+	background: #007799;
+	color: #ffffff;
+	font-weight: bold;
+	float: left;
+}
+.view-countries-default #filter-bar .filter-search label {
+	color: #666666;
+	font-weight: normal !important;
+}
+.view-countries-default #filter-bar .filter-search .pull-left {
+	margin-left: 20px;
+}
+.view-countries-default .pagination-limitbox {
+	border: 1px solid #DDDDDD;
+	background: #F4F4F4;
+}
+.view-countries-default .pagination-limitbox .pagination {
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: -10px;
+}
+.view-countries-default .pagination-limitbox ul.pagination-list {
+	list-style: none;
+	padding-left: 0px;
+}
+.view-countries-default .pagination-limitbox li.hidden-phone {
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	width: 30px;
+	margin-left: 7px;
+	border: 1px solid;
+	color: #F4F4F4;
+	border-radius: 2em;
+}
+.view-countries-default .pagination-limitbox li.hidden-phone:hover {
+	color: #B4B4B4;
+	cursor: pointer;
+}
+.view-countries-default .pagination-limitbox li.active {
+	background: #D8D8D8;
+}
+.view-countries-default .pagination-limitbox li {
+	float: left;
+}
+.view-countries-default .pagination-limitbox li a {
+	font-size: 14px;
+	color: #444472;
+	text-decoration: none;
+}
+.view-countries-default .pagination-limitbox li a.hasTooltip {
+	float: left;
+	border: 1px solid #B4B4B4;
+	height: 2em;
+	width: 2em;
+	margin-left: 5px;
+	border-radius: 2em;
+}
+.view-countries-default .pagination-limitbox li a.hasTooltip i.icon-next {
+	height: 16px;
+	width: 16px;
+	float: left;
+	background: url("../images/sprite.png");
+	background-position: 0 -12px;
+	margin-left: 7px;
+	margin-top: 1px;
+}
+.view-countries-default .pagination-limitbox li a.hasTooltip i.icon-last {
+	height: 16px;
+	width: 16px;
+	float: left;
+	background: url("../images/sprite.png");
+	background-position: 0 -76px;
+	margin-left: 6px;
+	margin-top: 2px;
+}
+.view-countries-default .pagination-limitbox li a.hasTooltip i.icon-previous {
+	height: 16px;
+	width: 16px;
+	float: left;
+	background: url("../images/sprite.png");
+	background-position: 0 -48px;
+	margin-left: 4px;
+	margin-top: 5px;
+}
+.view-countries-default .pagination-limitbox li a.hasTooltip i.icon-first {
+	height: 16px;
+	width: 16px;
+	float: left;
+	background: url("../images/sprite.png");
+	background-position: 0 -112px;
+	margin-left: 4px;
+	margin-top: 5px;
+}
+.view-countries-default .pagination-limitbox #limit {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+	height: 25px;
+}

@@ -1,0 +1,16 @@
+
+// These alert rules are for core features
+[
+	{
+		"element"	: "comments",
+		"rule"		: "item"
+	},
+	{
+		"element"	: "comments",
+		"rule"		: "involved"
+	},
+	{
+		"element"	: "comments",
+		"rule"		: "like"
+	}
+]

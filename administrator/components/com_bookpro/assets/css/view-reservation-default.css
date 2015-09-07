@@ -1,0 +1,362 @@
+.booking-tab {
+	background: #eaf3ff;
+}
+.booking-tab .nav-tabs {
+	background: #4a6c9c;
+	padding-left: 50px;
+}
+.booking-tab .tab-content {
+	padding-top: 15px;
+	background: #e9edf1;
+}
+.booking-tab .tab-content .tab-pane {
+	background: #eaf3ff;
+}
+.booking-tab .tab-content .tab-pane .row {
+	padding: 10px 5px;
+}
+.booking-tab .tab_booking_detail .panel-body {
+	background: #eaf3ff;
+}
+.booking-tab input {
+	opacity: 1 !important;
+}
+.booking-tab li a {
+	background: #eaf3ff !important;
+	font-weight: bold;
+	color: #5978a4;
+}
+.booking-tab li.active a {
+	background: #e9edf1 !important;
+}
+.booking-tab .booking-details {
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 15px;
+}
+.booking-tab .booking-details i {
+	color: #1d5b75;
+	font-size: 15px;
+	float: right;
+}
+.booking-tab .booking-details i:hover {
+	color: #aedfee;
+	cursor: pointer;
+}
+.booking-tab .booking-details h6 {
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+.booking-tab .booking-details fieldset {
+	height: 290px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.booking-tab .booking-details .form-group {
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 10px;
+}
+.booking-tab .notes {
+	padding-left: 5px;
+	padding-right: 0px;
+}
+.booking-tab .notes fieldset {
+	height: 290px;
+}
+.booking-tab .notes textarea {
+	margin-left: 4px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	width: 96%;
+	height: 265px;
+}
+.booking-tab .documents {
+	padding-left: 5px;
+	padding-right: 0px;
+}
+.booking-tab .documents fieldset {
+	height: 290px;
+}
+.booking-tab .documents ul {
+	list-style: none;
+}
+.booking-tab .documents ul li {
+	line-height: 25px;
+}
+.booking-tab .documents ul li i {
+	float: right;
+	padding-right: 15px;
+	font-size: 15px;
+	color: #43c62d;
+	line-height: 25px;
+}
+.booking-tab .documents ul li:last-child {
+	padding-bottom: 116px;
+}
+.booking-tab .transaction {
+	padding-right: 0;
+	padding-left: 6px;
+}
+.booking-tab .transaction .price {
+	font-weight: bold;
+	color: #0066ff;
+}
+.booking-tab .transaction select {
+	width: 100%;
+	margin-bottom: 43px;
+}
+.button {
+	padding-bottom: 15px;
+}
+.button .add-adhoc,
+.button .add-book,
+.button .add-flight,
+.button .add-passenger {
+	float: left;
+	background: -webkit-linear-gradient(#fdfeff,#b0dda8);
+	background: -o-linear-gradient(#fdfeff,#b0dda8);
+	background: -moz-linear-gradient(#fdfeff,#b0dda8);
+	background: linear-gradient(#fdfeff,#b0dda8);
+	border: 1px solid #4a6c9c;
+	margin: 5px;
+}
+.button .add-adhoc h6,
+.button .add-book h6,
+.button .add-flight h6,
+.button .add-passenger h6 {
+	margin: 3px !important;
+	color: #037003;
+}
+.button .add-adhoc h6 i,
+.button .add-book h6 i,
+.button .add-flight h6 i,
+.button .add-passenger h6 i {
+	font-size: 15px;
+}
+.table table {
+	border: 1px solid #cecece;
+	margin-bottom: 0 !important;
+}
+fieldset {
+	border: 1px solid #99ccff !important;
+	margin-bottom: 30px;
+}
+fieldset legend {
+	width: inherit;
+	margin-left: 10px;
+	border: none;
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: -3px;
+	color: #4a6c9c;
+}
+fieldset legend i {
+	font-size: 15px;
+	color: #43c62d;
+	margin-bottom: 3px;
+	margin-left: 3px;
+}
+#ad-hoc {
+	background: #E9EDF1;
+}
+#ad-hoc .wrapper-ad-hoc {
+	background: #EAF3FF;
+	border: 2px solid #4A6C9C;
+	margin-top: 30px;
+	padding-top: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+#ad-hoc .wrapper-ad-hoc textarea {
+	width: 100%;
+}
+#ad-hoc .wrapper-ad-hoc input[type="text"],
+#ad-hoc .wrapper-ad-hoc select {
+	width: 100%;
+}
+#ad-hoc .wrapper-ad-hoc .date {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+#ad-hoc .wrapper-ad-hoc .date input {
+	width: 90%;
+}
+#ad-hoc .wrapper-ad-hoc .reference-no,
+#ad-hoc .wrapper-ad-hoc .assign-to {
+	padding-left: 0 !important;
+	padding-right: 5px !important;
+	padding-bottom: 15px;
+}
+#ad-hoc .wrapper-ad-hoc .price i.icon-price {
+	border: 1px solid black;
+	border-radius: 7px;
+}
+#ad-hoc .wrapper-ad-hoc .price h5 {
+	color: #009900;
+}
+#ad-hoc .wrapper-ad-hoc .service {
+	padding-left: 0;
+	padding-right: 0;
+	background: white;
+	border: 1px solid #99ccff;
+}
+#ad-hoc .wrapper-ad-hoc .service .class-border {
+	border-bottom: 1px solid #808080;
+	padding-right: 15px;
+}
+#ad-hoc .wrapper-ad-hoc .select-passenger input {
+	opacity: 1 !important;
+}
+#add-passenger {
+	background: #E9EDF1;
+}
+#add-passenger .wrapper-add-passenger {
+	background: #EAF3FF;
+	margin-top: 30px;
+	padding-top: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+#add-passenger .wrapper-add-passenger .datepicker {
+	width: 94% !important;
+}
+#add-passenger .wrapper-add-passenger h5 {
+	color: #006699;
+}
+#add-passenger .wrapper-add-passenger h5 i {
+	float: right;
+}
+#add-passenger .wrapper-add-passenger .radio-confirm {
+	text-align: center;
+	color: #990000;
+}
+#add-passenger .wrapper-add-passenger .form-group input[type="text"],
+#add-passenger .wrapper-add-passenger .form-group select {
+	width: 100%;
+}
+#add-passenger .wrapper-add-passenger .form-group label {
+	font-weight: normal;
+}
+#add-passenger .wrapper-add-passenger .wraper-addition-info {
+	background: white !important;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#add-passenger .wrapper-add-passenger .wraper-addition-info .addition-info {
+	padding-left: 0;
+}
+#add-passenger .wrapper-add-passenger .wraper-addition-info p {
+	padding-left: 0;
+}
+#add-passenger .wrapper-add-passenger .wraper-addition-info h5 {
+	color: #006699;
+	margin-left: -10px;
+	font-weight: bold;
+}
+#add-passenger .wrapper-add-passenger .wraper-addition-info .warning-info-pre-existing,
+#add-passenger .wrapper-add-passenger .wraper-addition-info .warning-info-special {
+	border: 1px solid lightgray;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+#add-passenger .wrapper-add-passenger .wraper-addition-info .warning-info-pre-existing label,
+#add-passenger .wrapper-add-passenger .wraper-addition-info .warning-info-special label {
+	color: #990000;
+}
+.add-addons {
+	background: #E9EDF1;
+}
+.add-addons .wrapper-add-addons {
+	background: #EAF3FF;
+	border: 2px solid #4A6C9C;
+	margin-top: 30px;
+	padding-top: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+.add-addons .wrapper-add-addons textarea {
+	width: 99%;
+}
+.add-addons .wrapper-add-addons input[type="text"],
+.add-addons .wrapper-add-addons select {
+	width: 100%;
+}
+.add-addons .wrapper-add-addons .info-left {
+	padding-left: 0;
+	padding-bottom: 10px;
+}
+.add-addons .wrapper-add-addons .info-left .datepicker {
+	width: 96%;
+}
+.add-addons .wrapper-add-addons .info-right {
+	padding-right: 0;
+	padding-bottom: 10px;
+}
+.add-addons .wrapper-add-addons #lastfieldset {
+	background: #FFFFFF;
+}
+.add-addons .wrapper-add-addons #lastfieldset .checkbox {
+	padding: 0;
+}
+.add-addons .wrapper-add-addons #lastfieldset .arival-time-text {
+	padding-right: 0;
+}
+.add-addons .wrapper-add-addons #lastfieldset .form-group {
+	margin: 0;
+}
+.add-addons .wrapper-add-addons #lastfieldset .form-group .flight-no,
+.add-addons .wrapper-add-addons #lastfieldset .form-group .arrival-time {
+	width: 100%;
+}
+.add-add-flight {
+	background: #E9EDF1;
+}
+.add-add-flight .wrapper-add-addons {
+	background: #EAF3FF;
+	border: 2px solid #4A6C9C;
+	margin-top: 30px;
+	padding-top: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+.add-add-flight .wrapper-add-addons textarea {
+	width: 99%;
+}
+.add-add-flight .wrapper-add-addons input[type="text"],
+.add-add-flight .wrapper-add-addons select {
+	width: 100%;
+}
+.add-add-flight .wrapper-add-addons .info-left {
+	padding-left: 0;
+	padding-bottom: 10px;
+}
+.add-add-flight .wrapper-add-addons .info-left .datepicker {
+	width: 96%;
+}
+.add-add-flight .wrapper-add-addons .info-right {
+	padding-right: 0;
+	padding-bottom: 10px;
+}
+.add-add-flight .wrapper-add-addons #lastfieldset {
+	background: #FFFFFF;
+}
+.add-add-flight .wrapper-add-addons #lastfieldset .checkbox {
+	padding: 0;
+}
+.add-add-flight .wrapper-add-addons #lastfieldset .arival-time-text {
+	padding-right: 0;
+}
+.add-add-flight .wrapper-add-addons #lastfieldset .form-group {
+	margin: 0;
+}
+.add-add-flight .wrapper-add-addons #lastfieldset .form-group .flight-no,
+.add-add-flight .wrapper-add-addons #lastfieldset .form-group .arrival-time {
+	width: 100%;
+}
+.room-select {
+	text-align: center;
+}
+.add-hoc-item {
+	background: #eaf3ff;
+}

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+<fieldset addfieldpath="/administrator/components/com_bookpro/elements">	
+	<fields>
+
+		<field
+			name="id"
+			type="hidden"
+			default="0"
+			required="true"
+			readonly="true"/>							
+		<field
+			name="asset_id"
+			type="hidden"
+			filter="unset" />
+		<field
+			name="lft"
+			type="hidden"
+			filter="unset" />
+
+		<field
+			name="rgt"
+			type="hidden"
+			filter="unset" />
+	
+		<field
+			name="level"
+			type="hidden"
+			filter="unset" />	
+		<field name="image" type="media" directory="com_bookpro"
+   			hide_none="1" label="Image" size="40"
+   				description="Image" />														
+		<field
+			id="title"
+			name="title"
+			type="text"
+			required="true"
+			label="Title"
+			description="title_Desc"
+			class="inputbox"
+			size="40"/>						
+		<field
+			id="pickup"
+			name="pickup"
+			type="textarea"
+			label="pickup"
+			description="pickup_Desc"
+			class="inputbox"
+			/>
+		<field
+			id="dropoff"
+			name="dropoff"
+			type="textarea"
+			label="dropoff"
+			description="pickup_Desc"
+			class="inputbox"
+			/>
+
+		<field
+			id="alias"
+			name="alias"
+			type="text"
+			label="JFIELD_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC"
+			class="inputbox"
+			size="45" />												
+		<field
+			id="value"
+			name="value"
+			type="text"
+			required="false"
+			label="Value"
+			description="value_Desc"
+			class="inputbox"
+			size="40"/>						
+		<field
+			id="code"
+			name="code"
+			type="text"
+			required="false"
+			label="Code"
+			description="value_Desc"
+			class="inputbox"
+			size="40"/>					
+		<field
+		name="parent_id"
+		type="categoryedit"
+		label="Parent"
+		description="COM_CATEGORIES_FIELD_PARENT_DESC"
+		 />													
+		<field
+			id="country_id"
+			name="country_id"
+			type="country"
+			required="false"
+			label="Country"
+			description="country_id_Desc"
+			class="inputbox"
+			size="40"/>	
+
+		<field
+		name="airport_code"
+		type="text"
+		label="Airport code"
+		description="COM_CATEGORIES_FIELD_PARENT_DESC"
+		 />			
+		<field
+		name="location_airport"
+		type="text"
+		label="Location airport"
+		description="COM_CATEGORIES_FIELD_PARENT_DESC"
+		 />			
+		 	<field
+		name="capacity_airport"
+		type="text"
+		label="Capacity airport"
+		description="COM_CATEGORIES_FIELD_PARENT_DESC"
+		 />			
+		<field
+		name="airport_lodging"
+		type="text"
+		label="Airport lodging"
+		description="COM_CATEGORIES_FIELD_PARENT_DESC"
+		 />							
+								
+		<field name="asian_air" type="editor" buttons="true"
+		hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+		label="COM_BOOKPRO_AIRPORT_ASIAN_AIR" description="COM_BOOKPRO_AIRPORT_ASIAN_AIR" />
+		
+		
+		<field name="worldwide_air" type="editor" buttons="true"
+		hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+		label="COM_BOOKPRO_AIRPORT_WORLDWIDE_AIR" description="COM_BOOKPRO_AIRPORT_ASIAN_AIR" />
+		<field name="air_carries" type="editor" buttons="true"
+		hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+		label="COM_BOOKPRO_AIRPORT_AIR_CARRIES" description="COM_BOOKPRO_AIRPORT_AIR_CARRIES" />		
+													
+		<field
+			id="state"
+			name="state"
+			type="list"
+			label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC"
+			class="inputbox"
+			size="1"
+			default="1">
+			<option
+				value="1">
+				JPUBLISHED</option>
+			<option
+				value="0">
+				JUNPUBLISHED</option>
+			<option
+				value="2">
+				JARCHIVED</option>
+			<option
+				value="-2">
+				JTRASHED</option>
+		</field>					
+
+		<field name="desc" type="editor" buttons="true"
+	   hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+	   label="JGLOBAL_DESCRIPTION" description="COM_BOOKPRO_ITEMS_DESCRIPTION_DESC" />					
+		<field name="intro" type="editor" buttons="true"
+	   hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+	   label="JGLOBAL_DESCRIPTION" description="COM_BOOKPRO_ITEMS_DESCRIPTION_DESC" />														
+		
+		  <field name="air" type="radio" label="Is Airport" description="JFIELD_PUBLISHED_DESC"
+		   class="btn-group" size="1" default="1">
+		   <option value="1">YES</option>
+		   <option value="0">NO</option>
+		  </field>		
+		  <field name="province" type="radio" label="Is Province/City" description="JFIELD_PUBLISHED_DESC"
+		   class="btn-group" size="1" default="1">
+		   <option value="1">YES</option>
+		   <option value="0">NO</option>
+		  </field>
+		<field name="tour" type="radio" label="Is Tour" description="JFIELD_PUBLISHED_DESC"
+		   class="btn-group" size="1" default="1">
+		   <option value="1">YES</option>
+		   <option value="0">NO</option>
+		  </field>				
+		<field name="bus" type="radio" label="Is bus" description="JFIELD_BUS_DESC"
+		   class="btn-group" size="1" default="1">
+		   <option value="1">YES</option>
+		   <option value="0">NO</option>
+		  </field>
+
+	</fields>	
+</fieldset>		
+</form>	

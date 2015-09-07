@@ -1,0 +1,26 @@
+div.maincontainer {
+	width: 50%;
+}
+
+#content-box div.header.padding {
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px solid #CCC;
+	line-height: normal;
+	margin-bottom: 10px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+div.maincontainer p {
+	font-size: 15px;
+}
+
+img.pretitle {
+	float: left;
+}
+
+div.clrhelp {
+	height: 20px;
+	border-top: 1px solid #CCC;
+}

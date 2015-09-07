@@ -1,0 +1,197 @@
+div.statsdatarow {
+	border: 5px solid #CCC;
+	-webkit-box-shadow: 1px 1px 20px #888;
+	-moz-box-shadow: 1px 1px 20px #888;
+	box-shadow: 1px 1px 20px #888;
+	margin-right: 15px;
+	margin-bottom: 20px;
+	width: 98%;
+	height: 300px;
+	overflow: auto;
+}
+
+/* Graph responsive */
+@media only screen and (min-width : 1280px) {
+	div.rightgraph_stats img {
+		width: 310px;
+		height: 270px;
+	}
+	div.statsdatarow.left {
+		width: 47%;
+		float: left;
+	}
+	div.statsdatarow.right {
+		width: 47%;
+		float: left;
+	}
+}
+
+div.statsdatarow.clear {
+	clear: both;
+}
+
+div.lefttext_stats {
+	float: left;
+	width: 40%;
+	position: relative;
+}
+
+div.rightgraph_stats {
+	float: left;
+	width: 60%;
+	position: relative;
+}
+
+div.rightgraph_stats img {
+	margin-top: 15px
+}
+
+/* Graph responsive */
+@media only screen and (max-width : 768px) {
+	div.rightgraph_stats img {
+		width: 350px;
+		height: 270px;
+	}
+	div.lefttext_stats {
+		float: left;
+		width: 30%;
+		position: relative;
+	}
+	div.rightgraph_stats {
+		float: left;
+		width: 70%;
+		position: relative;
+	}
+}
+
+@media only screen and (min-width : 1400px) {
+	div.lefttext_stats {
+		width: 38%;
+	}
+	div.rightgraph_stats {
+		width: 62%;
+	}
+	div.rightgraph_stats.pie img {
+		width: 370px;
+		height: 270px;
+	}
+	div.rightgraph_stats img {
+		width: 370px;
+		height: 270px;
+	}
+	div.statsdatarow.left {
+		width: 48%;
+		float: left;
+	}
+	div.statsdatarow.right {
+		width: 48%;
+		float: left;
+	}
+}
+
+div.datarow {
+	padding: 15px;
+	font-size: 12px;
+	border-bottom: 1px dotted #CCC;
+	font-weight: bold;
+	color: #726E6E;
+	width: 90%;
+}
+
+div.datarow span.datarow_value {
+	margin-left: 5px;
+}
+
+/* Liste dettagli */
+div.texttitle {
+	font: 16px Arial, Helvetica, sans-serif;
+	color: #8E8E8E;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+div.titlerow {
+	padding: 15px;
+	font-size: 15px;
+	border-bottom: 1px dotted #CCC;
+	font-weight: bold;
+	color: #726E6E;
+	width: 90%;
+}
+
+div.recordrow {
+	padding: 15px;
+	font-size: 12px;
+	border-bottom: 1px dotted #CCC;
+	font-weight: bold;
+	color: #726E6E;
+	width: 90%;
+}
+
+span {
+	display: inline-block;
+}
+
+span.little {
+	width: 18%;
+}
+
+span.large {
+	width: 20%;
+}
+
+span.verylarge {
+	width: 62%;
+	overflow: auto;
+}
+
+span.detailslarge {
+	width: 78%;
+	overflow: auto;
+}
+
+span.detailslittle {
+	width: 18%;
+}
+
+
+div#box {
+	width: 8px;
+	height: 8px;
+	background-color: #F16929;
+	float: left;
+	margin-top: 12px;
+	margin: 20px 8px 0 12px;
+}
+
+div#filters {
+	margin-bottom: 20px;
+}
+
+a:link.preview,a:visited.preview,a:hover.preview {
+	color: #4E5E5E;
+}
+
+a.preview {
+	min-width: 50px;
+	font-size: 11px;
+	margin: 3px;
+	padding: 5px 8px 3px 8px;
+	cursor: pointer;
+	float: left;
+	text-align: center;
+	background-color: white;
+	border: 1px solid #999;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 12px 2px #CCC;
+	-moz-box-shadow: inset 0 0 12px 2px #CCC;
+	-o-box-shadow: inset 0 0 12px 2px #CCC;
+	box-shadow: inset 0 0 12px 2px #CCC;
+	font-size: 11px;
+}
+
+.icon-32-pdf  { background-image: url(../images/pdf.png); }

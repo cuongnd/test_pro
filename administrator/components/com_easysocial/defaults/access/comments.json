@@ -1,0 +1,62 @@
+// Defines the default form for access.
+{
+	"title"		: "COM_EASYSOCIAL_ACCESS_TAB_COMMENTS",
+	"desc"		: "COM_EASYSOCIAL_ACCESS_TAB_COMMENTS_DESC",
+	"icon"		: "ies-comments",
+	"fields"	:
+	[
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_COMMENTS_ADD",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_COMMENTS_ADD_TOOLTIP",
+			"type"		: "boolean",
+			"name"		: "comments.add",
+			"default"	: true
+		},
+
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_COMMENTS_READ",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_COMMENTS_READ_TOOLTIP",
+			"type"		: "boolean",
+			"name"		: "comments.read",
+			"default"	: true
+		},
+
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_COMMENTS_REPORT",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_COMMENTS_REPORT_TOOLTIP",
+			"type"		: "boolean",
+			"name"		: "comments.report",
+			"default"	: true
+		},
+
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_COMMENTS_EDIT",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_COMMENTS_EDIT_TOOLTIP",
+			"type"		: "boolean",
+			"name"		: "comments.edit",
+			"default"	: true
+		},
+
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_COMMENTS_EDITOWN",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_COMMENTS_EDITOWN_TOOLTIP",
+			"type"		: "boolean",
+			"name"		: "comments.editown",
+			"default"	: true
+		},
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_COMMENTS_DELETE",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_COMMENTS_DELETE_TOOLTIP",
+			"type"		: "boolean",
+			"name"		: "comments.delete",
+			"default"	: true
+		},
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_COMMENTS_DELETEOWN",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_COMMENTS_DELETEOWN_TOOLTIP",
+			"type"		: "boolean",
+			"name"		: "comments.deleteown",
+			"default"	: true
+		}
+	]
+}

@@ -1,0 +1,65 @@
+div.slidercontents {
+	background-color: #FFF;
+	min-height: 150px;
+	padding: 20px;
+}
+
+div.slidercontents div {
+	font-size: 14px;
+	color: #333;
+}
+
+div.slidercontents img.floatleft {
+	float: left;
+	margin-right: 10px;
+}
+
+img.floatleft {
+	float: left;
+	margin: 10px 10px 5px 10px;
+}
+
+h2 {
+	border-bottom: 1px solid #333;
+}
+
+div.row-fluid .icon-config::before {
+	color: #00F;
+	content: "6";
+}
+ 
+div#jmapsliders {
+	position: relative;
+	width: 70%;
+	float: right;
+}
+
+div.panel {
+	margin-bottom: 3px;
+	border: solid 1px #ccc;
+}
+
+div.panel h3 {
+	background: #fafafa;
+	color: #666;
+	margin: 0;
+	padding: 2px 2px 2px 5px;
+	cursor: pointer;
+	border-bottom: 1px solid #ccc;
+	font-size: 1.182em;
+}
+
+div.panel h3.explanation_popup {
+	background: #fafafa;
+	color: #666;
+	margin: 0;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	font-size: 1em;
+}
+
+div.pane-slider {
+	padding: 20px;
+}

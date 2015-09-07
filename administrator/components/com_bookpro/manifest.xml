@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+	<name>com_bookpro</name>
+	<creationDate>June 2011</creationDate>
+	<author>Nguyen Dinh Cuong</author>
+	<authorEmail>quan@ibookingonline.com</authorEmail>
+	<authorUrl>http://ibookingonline.com</authorUrl>
+	<copyright>Copyright Info</copyright>
+	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<version>1.0</version>
+	<description>Travel Booking</description>
+	<languages folder="language/site">
+		<language tag="en-GB">en-GB/en-GB.com_bookpro.ini</language>
+	</languages>
+	<scriptfile>script.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">sql/uninstall.mysql.sql</file>
+		</sql>
+	</uninstall>
+
+	<files folder="site">
+		<folder>views</folder>
+		<folder>classes</folder>
+		<folder>layouts</folder>
+		<folder>models</folder>
+		<folder>assets</folder>
+		<folder>controllers</folder>
+		<filename>index.html</filename>
+		<filename>bookpro.php</filename>
+		<filename>controller.php</filename>
+		<filename>router.php</filename>
+	</files>
+
+	<administration>
+		<!-- Administration Menu Section -->
+		<menu>BookPro</menu>
+		<languages folder="language/admin">
+			<language tag="en-GB">en-GB/en-GB.com_bookpro.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_bookpro.sys.ini</language>
+		</languages>
+		<files folder="admin">
+			<folder>controllers</folder>
+			<folder>elements</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>joomfish</folder>
+			<folder>views</folder>
+			<folder>assets</folder>
+			<filename>bookpro.php</filename>
+			<filename>controller.php</filename>
+			<filename>config.xml</filename>
+			<filename>defines.php</filename>
+			<filename>access.xml</filename>
+			<filename>index.html</filename>
+		</files>
+	</administration>
+	<plugins>
+    	<plugin plugin="payment_offline" group="bookpro"/>    
+  	</plugins>
+</extension>

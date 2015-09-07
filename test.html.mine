@@ -1,0 +1,1181 @@
+<input type="hidden" name="jform[id]" id="jform_id" value="1091"/>
+<div class="control-group ">
+    <div class="control-label"><label id="jform_website_id-lbl" for="jform_website_id" class="hasTooltip"
+                                      title="<strong>JGLOBAL_WEBSITE</strong><br />COM_MODULES_FIELD_WEBSITE_DESC">JGLOBAL_WEBSITE</label>
+    </div>
+    <div class="controls"></div>
+</div>
+<div class="control-group ">
+    <div class="control-label"><label id="jform_title-lbl" for="jform_title" class="hasTooltip required"
+                                      title="<strong>Title</strong><br />Module must have a title">Title<span
+            class="star">&#160;*</span></label></div>
+    <div class="controls"><input type="text" name="jform[title]" id="jform_title" value="mod_login" class="form-control"
+                                 size="40" maxlength="100" required aria-required="true"/></div>
+</div>
+<div class="control-group ">
+    <div class="control-label"><label id="jform_note-lbl" for="jform_note" class="hasTooltip"
+                                      title="<strong>Note</strong><br />An optional note to display in module list.">Note</label>
+    </div>
+    <div class="controls"><input type="text" name="jform[note]" id="jform_note" value="" class="span12" size="40"
+                                 maxlength="100"/></div>
+</div>
+<input type="hidden" name="jform[module]" id="jform_module" value="mod_login"/>
+<div class="control-group ">
+    <div class="control-label"><label id="jform_showtitle-lbl" for="jform_showtitle" class="hasTooltip"
+                                      title="<strong>Show Title</strong><br />Show/Hide module title on display. Effect will depend on the chrome style in the template.">Show
+        Title</label></div>
+    <div class="controls">
+        <fieldset id="jform_showtitle" class="radio btn-group btn-group-yesno"><input type="radio" id="jform_showtitle0"
+                                                                                      name="jform[showtitle]" value="1"
+                                                                                      checked="checked"/><label
+                for="jform_showtitle0">Show</label><input type="radio" id="jform_showtitle1" name="jform[showtitle]"
+                                                          value="0"/><label for="jform_showtitle1">Hide</label>
+        </fieldset>
+    </div>
+</div>
+<div class="control-group ">
+    <div class="control-label"><label id="jform_published-lbl" for="jform_published" class="hasTooltip"
+                                      title="<strong>Status</strong><br />If published, this module will display on your site frontend or backend depending on the module.">Status</label>
+    </div>
+    <div class="controls"><select id="jform_published" name="jform[published]" class="chzn-color-state" size="1">
+        <option value="1" selected="selected">Published</option>
+        <option value="0">Unpublished</option>
+        <option value="-2">Trashed</option>
+    </select></div>
+</div>
+<div class="control-group ">
+    <div class="control-label"><label id="jform_publish_up-lbl" for="jform_publish_up" class="hasTooltip"
+                                      title="<strong>Start Publishing</strong><br />An optional date to Start Publishing the module.">Start
+        Publishing</label></div>
+    <div class="controls">
+        <div class="input-append"><input type="text" title="" name="jform[publish_up]" id="jform_publish_up" value=""
+                                         size="22" maxlength="45" class="input-medium hasTooltip"/>
+            <button type="button" class="btn" id="jform_publish_up_img"><i class="icon-calendar"></i></button>
+        </div>
+    </div>
+</div>
+<div class="control-group ">
+    <div class="control-label"><label id="jform_publish_down-lbl" for="jform_publish_down" class="hasTooltip"
+                                      title="<strong>Finish Publishing</strong><br />An optional date to Finish Publishing the module.">Finish
+        Publishing</label></div>
+    <div class="controls">
+        <div class="input-append"><input type="text" title="" name="jform[publish_down]" id="jform_publish_down"
+                                         value="" size="22" maxlength="45" class="input-medium hasTooltip"/>
+            <button type="button" class="btn" id="jform_publish_down_img"><i class="icon-calendar"></i></button>
+        </div>
+    </div>
+</div>
+<input type="hidden" name="jform[client_id]" id="jform_client_id" value="0"/>
+<div class="control-group ">
+    <div class="control-label"><label id="jform_position-lbl" for="jform_position" class="hasTooltip"
+                                      title="<strong>Position</strong><br />You may select a module position from the modal display of pre-defined positions where you can filter by type and template, or enter your own module position by typing the name in the field and Save.">Position</label>
+    </div>
+    <div class="controls">
+        <div class="input-append"><input type="text" name="jform[position]" id="jform_position" value="position-2051"
+                                         maxlength="50"/><a class="btn modal" title="Change"
+                                                            href="index.php?option=com_modules&view=positions&layout=modal&tmpl=component&function=jSelectPosition_jform_position&amp;client_id=0"
+                                                            rel="{handler: 'iframe', size: {x: 800, y: 450}}">Select</a>
+        </div>
+    </div>
+</div>
+<div class="control-group ">
+    <div class="control-label"><label id="jform_access-lbl" for="jform_access" class="hasTooltip"
+                                      title="<strong>Access</strong><br />Access level for this content">Access</label>
+    </div>
+    <div class="controls"><select id="jform_access" name="jform[access]" size="1">
+        <option value="1" selected="selected">Public</option>
+        <option value="168">Public</option>
+        <option value="165">Public</option>
+        <option value="160">Public</option>
+        <option value="176">Public</option>
+        <option value="92">Public</option>
+        <option value="172">Public</option>
+        <option value="88">Public</option>
+        <option value="2">Registered</option>
+        <option value="169">Registered</option>
+        <option value="161">Registered</option>
+        <option value="166">Registered</option>
+        <option value="173">Registered</option>
+        <option value="93">Registered</option>
+        <option value="89">Registered</option>
+        <option value="177">Registered</option>
+        <option value="167">Special</option>
+        <option value="170">Special</option>
+        <option value="3">Special</option>
+        <option value="174">Special</option>
+        <option value="90">Special</option>
+        <option value="162">Special</option>
+        <option value="178">Special</option>
+        <option value="94">Special</option>
+        <option value="175">Customer Access Level (Example)</option>
+        <option value="171">Customer Access Level (Example)</option>
+        <option value="164">Customer Access Level (Example)</option>
+        <option value="163">Customer Access Level (Example)</option>
+        <option value="95">Customer Access Level (Example)</option>
+        <option value="91">Customer Access Level (Example)</option>
+        <option value="4">Customer Access Level (Example)</option>
+        <option value="179">Customer Access Level (Example)</option>
+    </select></div>
+</div>
+<div class="control-group ">
+    <div class="control-label"><label id="jform_ordering-lbl" for="jform_ordering" class="hasTooltip"
+                                      title="<strong>Ordering</strong><br />Ordering of the article within the category">Ordering</label>
+    </div>
+    <div class="controls">
+        <script type="text/javascript"> var originalOrder = "0";
+        var originalPos = "position-2051";
+        var orders = new Array();
+        orders[0] = new Array("", "1", "1. EasySocial Login");
+        orders[1] = new Array("", "2", "2. EasySocial Login");
+        orders[2] = new Array("", "3", "3. EasySocial Login");
+        orders[3] = new Array("", "4", "4. EasySocial Login");
+        orders[4] = new Array("", "5", "5. EasySocial Login");
+        orders[5] = new Array("", "6", "6. EasySocial Login");
+        orders[6] = new Array("", "7", "7. EasySocial Login");
+        orders[7] = new Array("header1", "1", "1. AcyMailing Module");
+        orders[8] = new Array("header2", "1", "1. EasySocial OAuth Login");
+        orders[9] = new Array("header2", "2", "2. AcyMailing Module");
+        orders[10] = new Array("header5", "1", "1. mod_breadcrumbs");
+        orders[11] = new Array("header7", "1", "1. EasySocial Menu");
+        orders[12] = new Array("header7", "2", "2. EasySocial Leader Board");
+        orders[13] = new Array("header4", "1", "1. mod_custom");
+        orders[14] = new Array("header2", "3", "3. mod_feed");
+        orders[15] = new Array("header1", "2", "2. K2 Comments");
+        orders[16] = new Array("header7", "3", "3. K2 Comments");
+        orders[17] = new Array("header1", "3", "3. AcyMailing Module");
+        orders[18] = new Array("header8", "1", "1. AcyMailing Module");
+        orders[19] = new Array("header4", "2", "2. AcyMailing Module");
+        orders[20] = new Array("header1", "4", "4. mod_articles_archive");
+        orders[21] = new Array("header8", "2", "2. AcyMailing Module");
+        orders[22] = new Array("header8", "3", "3. AcyMailing Module");
+        orders[23] = new Array("header8", "4", "4. AcyMailing Module");
+        orders[24] = new Array("header8", "5", "5. AcyMailing Module");
+        orders[25] = new Array("header8", "6", "6. AcyMailing Module");
+        orders[26] = new Array("header1", "5", "5. AcyMailing Module");
+        orders[27] = new Array("header6", "1", "1. AcyMailing Module");
+        orders[28] = new Array("header6", "2", "2. AcyMailing Module");
+        orders[29] = new Array("header2", "4", "4. mod_custom");
+        orders[30] = new Array("header6", "3", "3. AcyMailing Module");
+        orders[31] = new Array("header6", "4", "4. AcyMailing Module");
+        orders[32] = new Array("header5", "2", "2. AcyMailing Module");
+        orders[33] = new Array("header1", "6", "6. AcyMailing Module");
+        orders[34] = new Array("header6", "5", "5. Alexa stats and google pagerank");
+        orders[35] = new Array("header2", "5", "5. AcyMailing Module");
+        orders[36] = new Array("header2", "6", "6. AcyMailing Module");
+        orders[37] = new Array("header2", "7", "7. AcyMailing Module");
+        orders[38] = new Array("header1", "7", "7. Alexa stats and google pagerank");
+        orders[39] = new Array("header7", "4", "4. Alexa stats and google pagerank");
+        orders[40] = new Array("header1", "8", "8. mod_articles_category");
+        orders[41] = new Array("header1", "9", "9. mod_breadcrumbs");
+        orders[42] = new Array("header4", "3", "3. mod_articles_category");
+        orders[43] = new Array("header7", "5", "5. AcyMailing Module");
+        orders[44] = new Array("header7", "6", "6. AcyMailing Module");
+        orders[45] = new Array("header5", "3", "3. AcyMailing Module");
+        orders[46] = new Array("header5", "4", "4. mod_articles_archive");
+        orders[47] = new Array("header5", "5", "5. mod_articles_categories");
+        orders[48] = new Array("header5", "6", "6. mod_breadcrumbs");
+        orders[49] = new Array("header5", "7", "7. mod_breadcrumbs");
+        orders[50] = new Array("header5", "8", "8. mod_breadcrumbs");
+        orders[51] = new Array("header1", "10", "10. mod_breadcrumbs");
+        orders[52] = new Array("header1", "11", "11. mod_breadcrumbs");
+        orders[53] = new Array("header1", "12", "12. mod_breadcrumbs");
+        orders[54] = new Array("header1", "13", "13. mod_breadcrumbs");
+        orders[55] = new Array("header1", "14", "14. mod_breadcrumbs");
+        orders[56] = new Array("header1", "15", "15. mod_breadcrumbs");
+        orders[57] = new Array("header1", "16", "16. mod_breadcrumbs");
+        orders[58] = new Array("header1", "17", "17. mod_breadcrumbs");
+        orders[59] = new Array("header6", "6", "6. mod_articles_category");
+        orders[60] = new Array("header6", "7", "7. Alexa stats and google pagerank");
+        orders[61] = new Array("header6", "8", "8. mod_custom");
+        orders[62] = new Array("header6", "9", "9. mod_custom");
+        orders[63] = new Array("header6", "10", "10. EasySocial Leader Board");
+        orders[64] = new Array("header1", "18", "18. AcyMailing Module");
+        orders[65] = new Array("header1", "19", "19. AcyMailing Module");
+        orders[66] = new Array("header7", "7", "7. EasySocial Log Box");
+        orders[67] = new Array("header6", "11", "11. EasySocial Albums");
+        orders[68] = new Array("header6", "12", "12. mod_menu");
+        orders[69] = new Array("header6", "13", "13. mod_login");
+        orders[70] = new Array("header2", "8", "8. mod_users_latest");
+        orders[71] = new Array("top1", "1", "1. AcyMailing Module");
+        orders[72] = new Array("top1", "2", "2. mod_articles_archive");
+        orders[73] = new Array("top1", "3", "3. mod_articles_categories");
+        orders[74] = new Array("top1", "4", "4. mod_breadcrumbs");
+        orders[75] = new Array("top4", "1", "1. AcyMailing Module");
+        orders[76] = new Array("header1", "20", "20. mod_breadcrumbs");
+        orders[77] = new Array("header2", "9", "9. mod_breadcrumbs");
+        orders[78] = new Array("", "8", "8. JA Side News");
+        orders[79] = new Array("", "9", "9. JB DropDown Menu");
+        orders[80] = new Array("", "10", "10. mod_footer");
+        orders[81] = new Array("", "11", "11. mod_breadcrumbs");
+        orders[82] = new Array("header1", "21", "21. mod_breadcrumbs");
+        orders[83] = new Array("", "12", "12. mod_footer");
+        orders[84] = new Array("header2", "10", "10. EasySocial Login");
+        orders[85] = new Array("header5", "9", "9. AcyMailing Module");
+        orders[86] = new Array("header3", "1", "1. mod_articles_categories");
+        orders[87] = new Array("header3", "2", "2. mod_breadcrumbs");
+        orders[88] = new Array("", "13", "13. AcyMailing Module");
+        orders[89] = new Array("", "14", "14. ");
+        orders[90] = new Array("header4", "4", "4. AcyMailing Module");
+        orders[91] = new Array("header1", "22", "22. mod_breadcrumbs");
+        orders[92] = new Array("header4", "5", "5. mod_login");
+        orders[93] = new Array("header4", "6", "6. mod_menu");
+        orders[94] = new Array("", "15", "15. AcyMailing Module");
+        orders[95] = new Array("header1", "23", "23. mod_menu");
+        orders[96] = new Array("header7", "8", "8. mod_custom");
+        orders[97] = new Array("header2", "11", "11. mod_virtuemart_category");
+        orders[98] = new Array("header3", "3", "3. mod_breadcrumbs");
+        orders[99] = new Array("header1", "24", "24. K2 Comments");
+        orders[100] = new Array("header1", "25", "25. AcyMailing Module");
+        orders[101] = new Array("header2", "12", "12. K2 Comments");
+        orders[102] = new Array("header2", "13", "13. mod_search");
+        orders[103] = new Array("", "16", "16. AcyMailing Module");
+        orders[104] = new Array("", "17", "17. ");
+        orders[105] = new Array("header1", "26", "26. mod_breadcrumbs");
+        orders[106] = new Array("header1", "27", "27. mod_breadcrumbs");
+        orders[107] = new Array("header1", "28", "28. mod_login");
+        orders[108] = new Array("", "18", "18. mod_articles_categories");
+        orders[109] = new Array("", "19", "19. mod_custom");
+        orders[110] = new Array("", "20", "20. K2 User");
+        orders[111] = new Array("", "21", "21. EasySocial Log Box");
+        orders[112] = new Array("module-position", "1", "1. mod_login");
+        orders[113] = new Array("", "22", "22. EasySocial Login");
+        orders[114] = new Array("1651", "1", "1. AcyMailing Module");
+        orders[115] = new Array("position-1677", "1", "1. mod_login");
+        orders[116] = new Array("position-1654", "1", "1. mod_login");
+        orders[117] = new Array("position-1659", "1", "1. mod_footer");
+        orders[118] = new Array("position-1661", "1", "1. mod_login");
+        orders[119] = new Array("position-1664", "1", "1. mod_login");
+        orders[120] = new Array("position-1677", "2", "2. mod_menu");
+        orders[121] = new Array("position-1656", "1", "1. mod_footer");
+        orders[122] = new Array("position-1677", "3", "3. mod_menu");
+        orders[123] = new Array("position-1677", "4", "4. mod_menu");
+        orders[124] = new Array("position-1677", "5", "5. mod_menu");
+        orders[125] = new Array("position-1677", "6", "6. mod_menu");
+        orders[126] = new Array("position-1690", "1", "1. AcyMailing Module");
+        orders[127] = new Array("position-1690", "2", "2. mod_menu");
+        orders[128] = new Array("position-1690", "3", "3. mod_login");
+        orders[129] = new Array("position-1691", "1", "1. mod_footer");
+        orders[130] = new Array("position-1691", "2", "2. mod_menu");
+        orders[131] = new Array("position-1701", "1", "1. mod_menu");
+        orders[132] = new Array("position-1702", "1", "1. mod_footer");
+        orders[133] = new Array("position-1704", "1", "1. mod_footer");
+        orders[134] = new Array("position-2012", "1", "1. AcyMailing Module");
+        orders[135] = new Array("position-2012", "2", "2. mod_breadcrumbs");
+        orders[136] = new Array("position-2018", "1", "1. AcyMailing Module");
+        orders[137] = new Array("position-2019", "1", "1. AcyMailing Module");
+        orders[138] = new Array("position-2029", "1", "1. mod_custom");
+        orders[139] = new Array("position-2038", "1", "1. AcyMailing Module");
+        orders[140] = new Array("position-2038", "2", "2. AcyMailing Module");
+        orders[141] = new Array("position-2039", "1", "1. mod_breadcrumbs");
+        orders[142] = new Array("position-2040", "1", "1. AcyMailing Module");
+        orders[143] = new Array("position-2043", "1", "1. AcyMailing Module");
+        orders[144] = new Array("position-2044", "1", "1. Alexa stats and google pagerank");
+        orders[145] = new Array("position-2047", "1", "1. AcyMailing Module");
+        orders[146] = new Array("position-2050", "1", "1. AcyMailing Module");
+        orders[147] = new Array("position-2051", "1", "1. mod_custom");
+        orders[148] = new Array("position-2051", "2", "2. AcyMailing Module");
+        orders[149] = new Array("position-2051", "3", "3. mod_login");
+        orders[150] = new Array("position-3", "1", "1. Breadcrumbs");
+        orders[151] = new Array("position-1", "1", "1. JA SlideShow Lite");
+        orders[152] = new Array("", "23", "23. Extension category");
+        orders[153] = new Array("", "24", "24. EasySocial Menu");
+        orders[154] = new Array("position-9", "1", "1. Random product");
+        orders[155] = new Array("home-page", "1", "1. Random product");
+        orders[156] = new Array("languageswitcherload", "1", "1. GTranslate");
+        orders[157] = new Array("navhelper", "1", "1. Breadcrumbs (2)");
+        orders[158] = new Array("position-4", "1", "1. logo");
+        orders[159] = new Array("", "25", "25. Template category");
+        orders[160] = new Array("", "26", "26. Template category");
+        orders[161] = new Array("", "27", "27. Template category");
+        orders[162] = new Array("", "28", "28. EasySocial Menu");
+        orders[163] = new Array("position-1", "2", "2. JA SlideShow Lite");
+        orders[164] = new Array("position-3", "2", "2. Breadcrumbs");
+        orders[165] = new Array("position-4", "2", "2. logo");
+        orders[166] = new Array("position-9", "2", "2. Random product");
+        orders[167] = new Array("position-8", "1", "1. position-8");
+        orders[168] = new Array("position-7", "1", "1. position-7");
+        orders[169] = new Array("position-5", "1", "1. Breadcrumbs");
+        orders[170] = new Array("as-position-1", "1", "1. Main menu");
+        orders[171] = new Array("position-1", "3", "3. Main menu");
+        orders[172] = new Array("position-1", "4", "4. Main menu");
+        orders[173] = new Array("position-1", "5", "5. Main menu");
+        orders[174] = new Array("position-1", "6", "6. Main menu");
+        orders[175] = new Array("position-1", "7", "7. Main menu");
+        orders[176] = new Array("position-1", "8", "8. hello me");
+        orders[177] = new Array("header_admin", "1", "1. edit website");
+        orders[178] = new Array("admin_left", "1", "1. admin_left");
+        orders[179] = new Array("position-1", "9", "9. Main menu");
+        orders[180] = new Array("admin_left", "2", "2. admin_left (2)");
+        orders[181] = new Array("admin_left", "3", "3. admin_left (3)");
+        orders[182] = new Array("position-2047", "2", "2. mod_custom");
+        orders[183] = new Array("position-4", "3", "3. GTranslate");
+        orders[184] = new Array("position-0", "1", "1. login");
+        orders[185] = new Array("home-page", "2", "2. Why Choose Websitetemplatepro.com and Join?");
+        orders[186] = new Array("home-page", "3", "3. Why Choose Websitetemplatepro.com and Join ?");
+        orders[187] = new Array("toolbar-ct-2", "1", "1. login");
+        orders[188] = new Array("home-page", "4", "4. Why Choose Websitetemplatepro.com and Join?");
+        orders[189] = new Array("position-0", "2", "2. login");
+        orders[190] = new Array("position-4", "4", "4. GTranslate");
+        orders[191] = new Array("position-2047", "3", "3. AcyMailing Module");
+        orders[192] = new Array("position-2047", "4", "4. AcyMailing Module");
+        writeDynaList('name="jform[ordering]" id="jform_ordering"', orders, originalPos, originalPos, originalOrder); </script>
+    </div>
+</div>
+<div class="control-group ">
+    <div class="control-label"><label id="jform_content-lbl" for="jform_content" class="hasTooltip"
+                                      title="<strong>Text</strong>">Text</label></div>
+    <div class="controls"><label for="jform_content" style="display:none;"
+                                 aria-visible="false">jform_content_textarea</label><textarea id="jform_content"
+                                                                                              name="jform[content]"
+                                                                                              cols="" rows=""
+                                                                                              style="width:100%;height:500px;"
+                                                                                              class="wfEditor mce_editable source"
+                                                                                              wrap="off"></textarea>
+
+        <div id="editor-xtd-buttons" class="btn-toolbar pull-left">
+            <div class="btn-toolbar">
+                <div class="button2-left">
+                    <div class="nonumber icon-modulesanywhere"><a class="modal-button btn" title="Insert Module"
+                                                                  class="btn"
+                                                                  href="http://admin.etravelservice.com:81/index.php?nn_qp=1&folder=plugins.editors-xtd.modulesanywhere&file=modulesanywhere.inc.php&name=jform_content"
+                                                                  onclick="IeCursorFix(); return false;"
+                                                                  rel="{handler: 'iframe', size: {x:window.getSize().x-100, y: window.getSize().y-100}}"><i
+                            class="icon-nonumber icon-modulesanywhere"></i> Insert Module</a>
+
+                        <div class="button2-left">
+                            <div class="file-add"><a class="modal-button btn" title="Article" class="btn"
+                                                     href="http://admin.etravelservice.com:81/index.php?option=com_content&amp;view=articles&amp;layout=modal&amp;tmpl=component&amp;8013e9aa1529acd4843dc6f0be1b164f=1"
+                                                     onclick="IeCursorFix(); return false;"
+                                                     rel="{handler: 'iframe', size: {x: 800, y: 500}}"><i
+                                    class="icon-file-add"></i> Article</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_language-lbl" for="jform_language" class="hasTooltip"
+                                                      title="<strong>Language</strong><br />JFIELD_MODULE_LANGUAGE_DESC">Language</label>
+                    </div>
+                    <div class="controls"><select id="jform_language" name="jform[language]">
+                        <option value="*">All</option>
+                        <option value="en-GB">English (UK)</option>
+                        <option value="vi-VN">vietnam (VN)</option>
+                    </select></div>
+                </div>
+                <input type="hidden" name="jform[assignment]" id="jform_assignment" value="0"/>
+                <input type="hidden" name="jform[assigned]" id="jform_assigned" value=""/>
+                <input type="hidden" name="jform[asset_id]" id="jform_asset_id" value="3154"/>
+
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_rules-lbl" for="jform_rules"
+                                                      class="">JFIELD_RULES_LABEL</label></div>
+                    <div class="controls"><p class="rule-desc">Manage the permission settings for the user groups below.
+                        See notes at the bottom.</p>
+
+                        <div id="permissions-sliders" class="tabbable tabs-left">
+                            <ul class="nav nav-tabs">
+                                <li class=""><a href="#permission-246" data-toggle="tab"> Registered </a></li>
+                                <li class=""><a href="#permission-114" data-toggle="tab"> Public </a></li>
+                                <li class=""><a href="#permission-247" data-toggle="tab"> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> Author </a></li>
+                                <li class=""><a href="#permission-248" data-toggle="tab"> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> Editor </a></li>
+                                <li class=""><a href="#permission-249" data-toggle="tab"> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> Publisher </a>
+                                </li>
+                                <li class=""><a href="#permission-253" data-toggle="tab"> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> Shop Suppliers (Example) </a></li>
+                                <li class=""><a href="#permission-250" data-toggle="tab"> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> Manager </a></li>
+                                <li class=""><a href="#permission-251" data-toggle="tab"> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> Administrator
+                                </a></li>
+                                <li class=""><a href="#permission-252" data-toggle="tab"> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> <span class="level">&ndash;</span> <span
+                                        class="level">&ndash;</span> Super Users </a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane" id="permission-246">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th class="actions" id="actions-th246"><span
+                                                    class="acl-action">Action</span></th>
+                                            <th class="settings" id="settings-th246"><span class="acl-action">Select New Setting <sup>1</sup></span>
+                                            </th>
+                                            <th id="aclactionth246"><span
+                                                    class="acl-action">Calculated Setting <sup>2</sup></span></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td headers="actions-th246"><label for="jform_rules_core.delete_246"
+                                                                               class="hasTooltip"
+                                                                               title="Delete JACTION_DELETE_COMPONENT_DESC">
+                                                Delete </label></td>
+                                            <td headers="settings-th246"><select class="input-small"
+                                                                                 name="jform[rules][core.delete][246]"
+                                                                                 id="jform_rules_core.delete_246"
+                                                                                 title="Allow or deny Delete for users in the Registered group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth246"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th246"><label for="jform_rules_core.edit_246"
+                                                                               class="hasTooltip"
+                                                                               title="Edit JACTION_EDIT_COMPONENT_DESC">
+                                                Edit </label></td>
+                                            <td headers="settings-th246"><select class="input-small"
+                                                                                 name="jform[rules][core.edit][246]"
+                                                                                 id="jform_rules_core.edit_246"
+                                                                                 title="Allow or deny Edit for users in the Registered group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth246"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th246"><label for="jform_rules_core.edit.state_246"
+                                                                               class="hasTooltip"
+                                                                               title="Edit State JACTION_EDITSTATE_COMPONENT_DESC">
+                                                Edit State </label></td>
+                                            <td headers="settings-th246"><select class="input-small"
+                                                                                 name="jform[rules][core.edit.state][246]"
+                                                                                 id="jform_rules_core.edit.state_246"
+                                                                                 title="Allow or deny Edit State for users in the Registered group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth246"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="permission-114">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th class="actions" id="actions-th114"><span
+                                                    class="acl-action">Action</span></th>
+                                            <th class="settings" id="settings-th114"><span class="acl-action">Select New Setting <sup>1</sup></span>
+                                            </th>
+                                            <th id="aclactionth114"><span
+                                                    class="acl-action">Calculated Setting <sup>2</sup></span></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td headers="actions-th114"><label for="jform_rules_core.delete_114"
+                                                                               class="hasTooltip"
+                                                                               title="Delete JACTION_DELETE_COMPONENT_DESC">
+                                                Delete </label></td>
+                                            <td headers="settings-th114"><select class="input-small"
+                                                                                 name="jform[rules][core.delete][114]"
+                                                                                 id="jform_rules_core.delete_114"
+                                                                                 title="Allow or deny Delete for users in the Public group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth114"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th114"><label for="jform_rules_core.edit_114"
+                                                                               class="hasTooltip"
+                                                                               title="Edit JACTION_EDIT_COMPONENT_DESC">
+                                                Edit </label></td>
+                                            <td headers="settings-th114"><select class="input-small"
+                                                                                 name="jform[rules][core.edit][114]"
+                                                                                 id="jform_rules_core.edit_114"
+                                                                                 title="Allow or deny Edit for users in the Public group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth114"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th114"><label for="jform_rules_core.edit.state_114"
+                                                                               class="hasTooltip"
+                                                                               title="Edit State JACTION_EDITSTATE_COMPONENT_DESC">
+                                                Edit State </label></td>
+                                            <td headers="settings-th114"><select class="input-small"
+                                                                                 name="jform[rules][core.edit.state][114]"
+                                                                                 id="jform_rules_core.edit.state_114"
+                                                                                 title="Allow or deny Edit State for users in the Public group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth114"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="permission-247">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th class="actions" id="actions-th247"><span
+                                                    class="acl-action">Action</span></th>
+                                            <th class="settings" id="settings-th247"><span class="acl-action">Select New Setting <sup>1</sup></span>
+                                            </th>
+                                            <th id="aclactionth247"><span
+                                                    class="acl-action">Calculated Setting <sup>2</sup></span></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td headers="actions-th247"><label for="jform_rules_core.delete_247"
+                                                                               class="hasTooltip"
+                                                                               title="Delete JACTION_DELETE_COMPONENT_DESC">
+                                                Delete </label></td>
+                                            <td headers="settings-th247"><select class="input-small"
+                                                                                 name="jform[rules][core.delete][247]"
+                                                                                 id="jform_rules_core.delete_247"
+                                                                                 title="Allow or deny Delete for users in the Author group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth247"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th247"><label for="jform_rules_core.edit_247"
+                                                                               class="hasTooltip"
+                                                                               title="Edit JACTION_EDIT_COMPONENT_DESC">
+                                                Edit </label></td>
+                                            <td headers="settings-th247"><select class="input-small"
+                                                                                 name="jform[rules][core.edit][247]"
+                                                                                 id="jform_rules_core.edit_247"
+                                                                                 title="Allow or deny Edit for users in the Author group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth247"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th247"><label for="jform_rules_core.edit.state_247"
+                                                                               class="hasTooltip"
+                                                                               title="Edit State JACTION_EDITSTATE_COMPONENT_DESC">
+                                                Edit State </label></td>
+                                            <td headers="settings-th247"><select class="input-small"
+                                                                                 name="jform[rules][core.edit.state][247]"
+                                                                                 id="jform_rules_core.edit.state_247"
+                                                                                 title="Allow or deny Edit State for users in the Author group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth247"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="permission-248">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th class="actions" id="actions-th248"><span
+                                                    class="acl-action">Action</span></th>
+                                            <th class="settings" id="settings-th248"><span class="acl-action">Select New Setting <sup>1</sup></span>
+                                            </th>
+                                            <th id="aclactionth248"><span
+                                                    class="acl-action">Calculated Setting <sup>2</sup></span></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td headers="actions-th248"><label for="jform_rules_core.delete_248"
+                                                                               class="hasTooltip"
+                                                                               title="Delete JACTION_DELETE_COMPONENT_DESC">
+                                                Delete </label></td>
+                                            <td headers="settings-th248"><select class="input-small"
+                                                                                 name="jform[rules][core.delete][248]"
+                                                                                 id="jform_rules_core.delete_248"
+                                                                                 title="Allow or deny Delete for users in the Editor group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth248"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th248"><label for="jform_rules_core.edit_248"
+                                                                               class="hasTooltip"
+                                                                               title="Edit JACTION_EDIT_COMPONENT_DESC">
+                                                Edit </label></td>
+                                            <td headers="settings-th248"><select class="input-small"
+                                                                                 name="jform[rules][core.edit][248]"
+                                                                                 id="jform_rules_core.edit_248"
+                                                                                 title="Allow or deny Edit for users in the Editor group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth248"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th248"><label for="jform_rules_core.edit.state_248"
+                                                                               class="hasTooltip"
+                                                                               title="Edit State JACTION_EDITSTATE_COMPONENT_DESC">
+                                                Edit State </label></td>
+                                            <td headers="settings-th248"><select class="input-small"
+                                                                                 name="jform[rules][core.edit.state][248]"
+                                                                                 id="jform_rules_core.edit.state_248"
+                                                                                 title="Allow or deny Edit State for users in the Editor group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth248"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="permission-249">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th class="actions" id="actions-th249"><span
+                                                    class="acl-action">Action</span></th>
+                                            <th class="settings" id="settings-th249"><span class="acl-action">Select New Setting <sup>1</sup></span>
+                                            </th>
+                                            <th id="aclactionth249"><span
+                                                    class="acl-action">Calculated Setting <sup>2</sup></span></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td headers="actions-th249"><label for="jform_rules_core.delete_249"
+                                                                               class="hasTooltip"
+                                                                               title="Delete JACTION_DELETE_COMPONENT_DESC">
+                                                Delete </label></td>
+                                            <td headers="settings-th249"><select class="input-small"
+                                                                                 name="jform[rules][core.delete][249]"
+                                                                                 id="jform_rules_core.delete_249"
+                                                                                 title="Allow or deny Delete for users in the Publisher group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth249"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th249"><label for="jform_rules_core.edit_249"
+                                                                               class="hasTooltip"
+                                                                               title="Edit JACTION_EDIT_COMPONENT_DESC">
+                                                Edit </label></td>
+                                            <td headers="settings-th249"><select class="input-small"
+                                                                                 name="jform[rules][core.edit][249]"
+                                                                                 id="jform_rules_core.edit_249"
+                                                                                 title="Allow or deny Edit for users in the Publisher group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth249"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th249"><label for="jform_rules_core.edit.state_249"
+                                                                               class="hasTooltip"
+                                                                               title="Edit State JACTION_EDITSTATE_COMPONENT_DESC">
+                                                Edit State </label></td>
+                                            <td headers="settings-th249"><select class="input-small"
+                                                                                 name="jform[rules][core.edit.state][249]"
+                                                                                 id="jform_rules_core.edit.state_249"
+                                                                                 title="Allow or deny Edit State for users in the Publisher group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth249"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="permission-253">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th class="actions" id="actions-th253"><span
+                                                    class="acl-action">Action</span></th>
+                                            <th class="settings" id="settings-th253"><span class="acl-action">Select New Setting <sup>1</sup></span>
+                                            </th>
+                                            <th id="aclactionth253"><span
+                                                    class="acl-action">Calculated Setting <sup>2</sup></span></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td headers="actions-th253"><label for="jform_rules_core.delete_253"
+                                                                               class="hasTooltip"
+                                                                               title="Delete JACTION_DELETE_COMPONENT_DESC">
+                                                Delete </label></td>
+                                            <td headers="settings-th253"><select class="input-small"
+                                                                                 name="jform[rules][core.delete][253]"
+                                                                                 id="jform_rules_core.delete_253"
+                                                                                 title="Allow or deny Delete for users in the Shop Suppliers (Example) group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth253"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th253"><label for="jform_rules_core.edit_253"
+                                                                               class="hasTooltip"
+                                                                               title="Edit JACTION_EDIT_COMPONENT_DESC">
+                                                Edit </label></td>
+                                            <td headers="settings-th253"><select class="input-small"
+                                                                                 name="jform[rules][core.edit][253]"
+                                                                                 id="jform_rules_core.edit_253"
+                                                                                 title="Allow or deny Edit for users in the Shop Suppliers (Example) group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth253"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th253"><label for="jform_rules_core.edit.state_253"
+                                                                               class="hasTooltip"
+                                                                               title="Edit State JACTION_EDITSTATE_COMPONENT_DESC">
+                                                Edit State </label></td>
+                                            <td headers="settings-th253"><select class="input-small"
+                                                                                 name="jform[rules][core.edit.state][253]"
+                                                                                 id="jform_rules_core.edit.state_253"
+                                                                                 title="Allow or deny Edit State for users in the Shop Suppliers (Example) group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth253"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="permission-250">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th class="actions" id="actions-th250"><span
+                                                    class="acl-action">Action</span></th>
+                                            <th class="settings" id="settings-th250"><span class="acl-action">Select New Setting <sup>1</sup></span>
+                                            </th>
+                                            <th id="aclactionth250"><span
+                                                    class="acl-action">Calculated Setting <sup>2</sup></span></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td headers="actions-th250"><label for="jform_rules_core.delete_250"
+                                                                               class="hasTooltip"
+                                                                               title="Delete JACTION_DELETE_COMPONENT_DESC">
+                                                Delete </label></td>
+                                            <td headers="settings-th250"><select class="input-small"
+                                                                                 name="jform[rules][core.delete][250]"
+                                                                                 id="jform_rules_core.delete_250"
+                                                                                 title="Allow or deny Delete for users in the Manager group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth250"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th250"><label for="jform_rules_core.edit_250"
+                                                                               class="hasTooltip"
+                                                                               title="Edit JACTION_EDIT_COMPONENT_DESC">
+                                                Edit </label></td>
+                                            <td headers="settings-th250"><select class="input-small"
+                                                                                 name="jform[rules][core.edit][250]"
+                                                                                 id="jform_rules_core.edit_250"
+                                                                                 title="Allow or deny Edit for users in the Manager group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth250"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th250"><label for="jform_rules_core.edit.state_250"
+                                                                               class="hasTooltip"
+                                                                               title="Edit State JACTION_EDITSTATE_COMPONENT_DESC">
+                                                Edit State </label></td>
+                                            <td headers="settings-th250"><select class="input-small"
+                                                                                 name="jform[rules][core.edit.state][250]"
+                                                                                 id="jform_rules_core.edit.state_250"
+                                                                                 title="Allow or deny Edit State for users in the Manager group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth250"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="permission-251">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th class="actions" id="actions-th251"><span
+                                                    class="acl-action">Action</span></th>
+                                            <th class="settings" id="settings-th251"><span class="acl-action">Select New Setting <sup>1</sup></span>
+                                            </th>
+                                            <th id="aclactionth251"><span
+                                                    class="acl-action">Calculated Setting <sup>2</sup></span></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td headers="actions-th251"><label for="jform_rules_core.delete_251"
+                                                                               class="hasTooltip"
+                                                                               title="Delete JACTION_DELETE_COMPONENT_DESC">
+                                                Delete </label></td>
+                                            <td headers="settings-th251"><select class="input-small"
+                                                                                 name="jform[rules][core.delete][251]"
+                                                                                 id="jform_rules_core.delete_251"
+                                                                                 title="Allow or deny Delete for users in the Administrator group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth251"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th251"><label for="jform_rules_core.edit_251"
+                                                                               class="hasTooltip"
+                                                                               title="Edit JACTION_EDIT_COMPONENT_DESC">
+                                                Edit </label></td>
+                                            <td headers="settings-th251"><select class="input-small"
+                                                                                 name="jform[rules][core.edit][251]"
+                                                                                 id="jform_rules_core.edit_251"
+                                                                                 title="Allow or deny Edit for users in the Administrator group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth251"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th251"><label for="jform_rules_core.edit.state_251"
+                                                                               class="hasTooltip"
+                                                                               title="Edit State JACTION_EDITSTATE_COMPONENT_DESC">
+                                                Edit State </label></td>
+                                            <td headers="settings-th251"><select class="input-small"
+                                                                                 name="jform[rules][core.edit.state][251]"
+                                                                                 id="jform_rules_core.edit.state_251"
+                                                                                 title="Allow or deny Edit State for users in the Administrator group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth251"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="permission-252">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th class="actions" id="actions-th252"><span
+                                                    class="acl-action">Action</span></th>
+                                            <th class="settings" id="settings-th252"><span class="acl-action">Select New Setting <sup>1</sup></span>
+                                            </th>
+                                            <th id="aclactionth252"><span
+                                                    class="acl-action">Calculated Setting <sup>2</sup></span></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td headers="actions-th252"><label for="jform_rules_core.delete_252"
+                                                                               class="hasTooltip"
+                                                                               title="Delete JACTION_DELETE_COMPONENT_DESC">
+                                                Delete </label></td>
+                                            <td headers="settings-th252"><select class="input-small"
+                                                                                 name="jform[rules][core.delete][252]"
+                                                                                 id="jform_rules_core.delete_252"
+                                                                                 title="Allow or deny Delete for users in the Super Users group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth252"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th252"><label for="jform_rules_core.edit_252"
+                                                                               class="hasTooltip"
+                                                                               title="Edit JACTION_EDIT_COMPONENT_DESC">
+                                                Edit </label></td>
+                                            <td headers="settings-th252"><select class="input-small"
+                                                                                 name="jform[rules][core.edit][252]"
+                                                                                 id="jform_rules_core.edit_252"
+                                                                                 title="Allow or deny Edit for users in the Super Users group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth252"></td>
+                                        </tr>
+                                        <tr>
+                                            <td headers="actions-th252"><label for="jform_rules_core.edit.state_252"
+                                                                               class="hasTooltip"
+                                                                               title="Edit State JACTION_EDITSTATE_COMPONENT_DESC">
+                                                Edit State </label></td>
+                                            <td headers="settings-th252"><select class="input-small"
+                                                                                 name="jform[rules][core.edit.state][252]"
+                                                                                 id="jform_rules_core.edit.state_252"
+                                                                                 title="Allow or deny Edit State for users in the Super Users group">
+                                                <option value="" selected="selected">Inherited</option>
+                                                <option value="1">Allowed</option>
+                                                <option value="0">Denied</option>
+                                            </select>&#160; </td>
+                                            <td headers="aclactionth252"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert"> 1. If you change the setting, it will apply to this item. Note
+                            that:<br/><em>Inherited</em> means that the permissions from global configuration, parent
+                            group and category will be used.<br/><em>Denied</em> means that no matter what the global
+                            configuration, parent group or category settings are, the group being edited cannot take
+                            this action on this item.<br/><em>Allowed</em> means that the group being edited will be
+                            able to take this action for this item (but if this is in conflict with the global
+                            configuration, parent group or category it will have no impact; a conflict will be indicated
+                            by <em>Not Allowed (Locked)</em> under Calculated Settings).<br/>2. If you select a new
+                            setting, click <em>Save</em> to refresh the calculated settings.
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_module_tag-lbl" for="jform_params_module_tag"
+                                                      class="hasTooltip"
+                                                      title="<strong>Module Tag</strong><br />The HTML tag for module">Module
+                        Tag</label></div>
+                    <div class="controls"><select id="jform_params_module_tag" name="jform[params][module_tag]">
+                        <option value="div" selected="selected">div</option>
+                        <option value="section">section</option>
+                        <option value="aside">aside</option>
+                        <option value="nav">nav</option>
+                        <option value="address">address</option>
+                        <option value="article">article</option>
+                    </select></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_bootstrap_size-lbl"
+                                                      for="jform_params_bootstrap_size" class="hasTooltip"
+                                                      title="<strong>Bootstrap Size</strong><br />An option to specify how many columns the module will use.">Bootstrap
+                        Size</label></div>
+                    <div class="controls"><select id="jform_params_bootstrap_size" name="jform[params][bootstrap_size]">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_header_tag-lbl" for="jform_params_header_tag"
+                                                      class="hasTooltip"
+                                                      title="<strong>Header Tag</strong><br />The HTML tag for module header/title">Header
+                        Tag</label></div>
+                    <div class="controls"><select id="jform_params_header_tag" name="jform[params][header_tag]">
+                        <option value="h1">h1</option>
+                        <option value="h2">h2</option>
+                        <option value="h3" selected="selected">h3</option>
+                        <option value="h4">h4</option>
+                        <option value="h5">h5</option>
+                        <option value="h6">h6</option>
+                        <option value="p">p</option>
+                    </select></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_header_class-lbl" for="jform_params_header_class"
+                                                      class="hasTooltip"
+                                                      title="<strong>Header Class</strong><br />The CSS class for module header/title">Header
+                        Class</label></div>
+                    <div class="controls"><input type="text" name="jform[params][header_class]"
+                                                 id="jform_params_header_class" value=""/></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_style-lbl" for="jform_params_style"
+                                                      class="hasTooltip"
+                                                      title="<strong>Module Style</strong><br />Use this option to override the template style for it's position.">Module
+                        Style</label></div>
+                    <div class="controls"><select id="jform_params_style" name="jform[params][style]">
+                        <optgroup label="---From Template---">
+                            <option value="0">Inherited</option>
+                        </optgroup>
+                        <optgroup label="System">
+                            <option value="System-none">none</option>
+                            <option value="System-html5">html5</option>
+                            <option value="System-table">table</option>
+                            <option value="System-horz">horz</option>
+                            <option value="System-xhtml">xhtml</option>
+                            <option value="System-rounded">rounded</option>
+                            <option value="System-outline">outline</option>
+                        </optgroup>
+                        <optgroup label="Sprflat">
+                            <option value="Sprflat-title">title</option>
+                            <option value="Sprflat-no">no</option>
+                            <option value="Sprflat-well">well</option>
+                        </optgroup>
+                    </select></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_pretext-lbl" for="jform_params_pretext"
+                                                      class="hasTooltip"
+                                                      title="<strong>Pre-text</strong><br />This is the text or HTML that is displayed above the login form.">Pre-text</label>
+                    </div>
+                    <div class="controls"><textarea name="jform[params][pretext]" id="jform_params_pretext" cols="30"
+                                                    rows="5"></textarea></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_posttext-lbl" for="jform_params_posttext"
+                                                      class="hasTooltip"
+                                                      title="<strong>Post-text</strong><br />This is the text or HTML that is displayed below the login form.">Post-text</label>
+                    </div>
+                    <div class="controls"><textarea name="jform[params][posttext]" id="jform_params_posttext" cols="30"
+                                                    rows="5"></textarea></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_login-lbl" for="jform_params_login"
+                                                      class="hasTooltip"
+                                                      title="<strong>Login Redirection Page</strong><br />Select the page the user will be redirected to after a successful login. Select from all the pages listed in the dropdown menu. Choosing &quot;Default&quot; will return to the same page.">Login
+                        Redirection Page</label></div>
+                    <div class="controls"><select id="jform_params_login" name="jform[params][login]">
+                        <option value="" selected="selected">Default</option>
+                        <optgroup label="adminmenu"></optgroup>
+                        <optgroup label="admin_menu"></optgroup>
+                        <optgroup label="main"></optgroup>
+                        <optgroup label="main-menu"></optgroup>
+                    </select></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_logout-lbl" for="jform_params_logout"
+                                                      class="hasTooltip"
+                                                      title="<strong>Logout Redirection Page</strong><br />Select the page the user will be redirected to after successfully ending their current session by logging out. Select from all the pages listed in the dropdown menu. Choosing &quot;Default&quot; will return to the same page.">Logout
+                        Redirection Page</label></div>
+                    <div class="controls"><select id="jform_params_logout" name="jform[params][logout]">
+                        <option value="" selected="selected">Default</option>
+                        <optgroup label="adminmenu"></optgroup>
+                        <optgroup label="admin_menu"></optgroup>
+                        <optgroup label="main"></optgroup>
+                        <optgroup label="main-menu"></optgroup>
+                    </select></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_greeting-lbl" for="jform_params_greeting"
+                                                      class="hasTooltip"
+                                                      title="<strong>Show Greeting</strong><br />Show/Hide the simple greeting text">Show
+                        Greeting</label></div>
+                    <div class="controls">
+                        <fieldset id="jform_params_greeting" class="radio btn-group btn-group-yesno"><input type="radio"
+                                                                                                            id="jform_params_greeting0"
+                                                                                                            name="jform[params][greeting]"
+                                                                                                            value="1"
+                                                                                                            checked="checked"/><label
+                                for="jform_params_greeting0">Yes</label><input type="radio" id="jform_params_greeting1"
+                                                                               name="jform[params][greeting]"
+                                                                               value="0"/><label
+                                for="jform_params_greeting1">No</label></fieldset>
+                    </div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_name-lbl" for="jform_params_name"
+                                                      class="hasTooltip"
+                                                      title="<strong>Show Name/Username</strong><br />Displays name or username after logging">Show
+                        Name/Username</label></div>
+                    <div class="controls"><select id="jform_params_name" name="jform[params][name]">
+                        <option value="0" selected="selected">Name</option>
+                        <option value="1">Username</option>
+                    </select></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_usesecure-lbl" for="jform_params_usesecure"
+                                                      class="hasTooltip"
+                                                      title="<strong>Encrypt Login Form</strong><br />Submit encrypted login data (requires SSL). Do not enable this option if Joomla is not accessible using the https:// protocol prefix.">Encrypt
+                        Login Form</label></div>
+                    <div class="controls">
+                        <fieldset id="jform_params_usesecure" class="radio btn-group btn-group-yesno"><input
+                                type="radio" id="jform_params_usesecure0" name="jform[params][usesecure]"
+                                value="1"/><label for="jform_params_usesecure0">Yes</label><input type="radio"
+                                                                                                  id="jform_params_usesecure1"
+                                                                                                  name="jform[params][usesecure]"
+                                                                                                  value="0"
+                                                                                                  checked="checked"/><label
+                                for="jform_params_usesecure1">No</label></fieldset>
+                    </div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_usetext-lbl" for="jform_params_usetext"
+                                                      class="hasTooltip"
+                                                      title="<strong>Display Labels</strong><br />Choose text or icons to display the fields labels. Default is icons">Display
+                        Labels</label></div>
+                    <div class="controls"><select id="jform_params_usetext" name="jform[params][usetext]">
+                        <option value="0" selected="selected">Icons</option>
+                        <option value="1">Text</option>
+                    </select></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_layout-lbl" for="jform_params_layout"
+                                                      class="hasTooltip"
+                                                      title="<strong>JFIELD_ALT_LAYOUT_LABEL</strong><br />JFIELD_ALT_MODULE_LAYOUT_DESC">JFIELD_ALT_LAYOUT_LABEL</label>
+                    </div>
+                    <div class="controls"><select id="jform_params_layout" name="jform[params][layout]">
+                        <optgroup id="jform_params_layout__" label="JOPTION_FROM_MODULE">
+                            <option value="_:helper">helper</option>
+                        </optgroup>
+                    </select></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_moduleclass_sfx-lbl"
+                                                      for="jform_params_moduleclass_sfx" class="hasTooltip"
+                                                      title="<strong>Module Class Suffix</strong><br />A suffix to be applied to the CSS class of the module. This allows for individual module styling.">Module
+                        Class Suffix</label></div>
+                    <div class="controls"><textarea name="jform[params][moduleclass_sfx]"
+                                                    id="jform_params_moduleclass_sfx" rows="3"></textarea></div>
+                </div>
+                <div class="control-group ">
+                    <div class="control-label"><label id="jform_params_cache-lbl" for="jform_params_cache"
+                                                      class="hasTooltip"
+                                                      title="<strong>Caching</strong><br />Select whether to cache the content of this module">Caching</label>
+                    </div>
+                    <div class="controls"><select id="jform_params_cache" name="jform[params][cache]">
+                        <option value="0" selected="selected">No caching</option>
+                    </select></div>
+                </div>

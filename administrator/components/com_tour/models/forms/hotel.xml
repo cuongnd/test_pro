@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/administrator/components/com_tour/elements">
+        <field
+                id="id"
+                name="id"
+                type="text"
+                default="0"
+                readonly="true"
+                class="readonly"
+                label="COM_TOUR_VIEW_HOTEL_FILED_ID"
+                description ="COM_TOUR_VIEW_HOTEL_DESC_FILED_ID" />
+        <field
+                id="name"
+                name="name"
+                type="text"
+                default=""
+                required="true"
+                label="COM_TOUR_VIEW_HOTEL_FILED_NAME"
+                description ="COM_TOUR_VIEW_HOTEL_DESC_FILED_NAME" />
+        <field
+                id="title"
+                name="title"
+                type="text"
+                default=""
+                label="COM_TOUR_VIEW_HOTEL_FILED_TITLE"
+                description ="COM_TOUR_VIEW_HOTEL_DESC_FILED_TITLE" />
+
+
+        <field name="description" type="editor" buttons="true"
+               hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+               label="COM_TOUR_VIEW_HOTEL_FILED_DESC" description="COM_TOUR_VIEW_HOTEL_DESC_FILED_DESC" />
+
+        <field
+                id="facility"
+                name="facility"
+                type="text"
+                default=""
+                label="COM_TOUR_VIEW_HOTEL_FILED_FACILITY"
+                description ="COM_TOUR_VIEW_HOTEL_DESC_FILED_FACILITY" />
+        <field
+                id="note"
+                name="note"
+                type="text"
+                default=""
+                label="COM_TOUR_VIEW_HOTEL_FILED_NOTE"
+                description ="COM_TOUR_VIEW_HOTEL_DESC_FILED_NOTE" />
+        <field
+                id="idcity"
+                name="idcity"
+                type="city"
+                default=""
+                label="COM_TOUR_VIEW_HOTEL_FILED_IDCITY"
+                description ="COM_TOUR_VIEW_HOTEL_DESC_FILED_IDCITY" />
+        <field
+                id="idphotos"
+                name="idphotos"
+                type="media"
+                default=""
+                required="true"
+                label="COM_TOUR_VIEW_HOTEL_FILED_IDPHOTO"
+                description ="COM_TOUR_VIEW_HOTEL_DESC_FILED_IDPHOTO" />
+
+
+
+    </fieldset>
+
+
+
+</form>

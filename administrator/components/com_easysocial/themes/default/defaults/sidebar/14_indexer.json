@@ -1,0 +1,18 @@
+// Template
+// "title"	: "",
+// "link"	: "",
+// "class"	: "",
+// "view"	: "",
+// "active": "",
+// "childs": []
+// Apps menu
+{
+	"order"	: 12,
+	"title"	: "COM_EASYSOCIAL_MENU_GROUP_INDEXER",
+	"link"	: "index.php?option=com_easysocial&view=indexer",
+	"class"	: "indexer",
+	"access": "easysocial.access.indexer",
+	"view"	: "indexer",
+	"active": "layout",
+	"childs": []
+}

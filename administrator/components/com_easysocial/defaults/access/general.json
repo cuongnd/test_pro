@@ -1,0 +1,21 @@
+// Defines the default form for access.
+{
+	"title"		: "COM_EASYSOCIAL_ACCESS_TAB_GENERAL",
+	"desc"		: "COM_EASYSOCIAL_ACCESS_TAB_GENERAL_DESC",
+	"fields"	:
+	[
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_GENERAL_SUBMIT_REPORTS",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_GENERAL_SUBMIT_REPORTS_TOOLTIP",
+			"type"		: "boolean",
+			"name"		: "reports.submit"
+		},
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_GENERAL_TOTAL_REPORTS",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_GENERAL_TOTAL_REPORTS_TOOLTIP",
+			"type"		: "text",
+			"name"		: "reports.limit",
+			"class"		: "center input-mini"
+		}
+	]
+}

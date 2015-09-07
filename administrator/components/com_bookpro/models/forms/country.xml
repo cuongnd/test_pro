@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field name="id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+		<field name="country_name" type="text" label="COM_BOOKPRO_COUNTRY_NAME" class="inputbox"
+			size="100" required="true" />
+		<field name="country_code" type="text" label="COM_BOOKPRO_COUNTRY_CODE" class="inputbox"
+			size="100" required="true" />
+		<field name="phone_code" type="text" label="COM_BOOKPRO_COUNTRY_PHONE_CODE" class="inputbox"
+			size="100" required="true" />	
+		<field
+				name="flag"
+				type="media"
+				label="COM_BOOKPRO_COUNTRY_FLAG"
+				description="COM_BOOKPRO_COUNTRY_FLAG_DESC" />
+		<field
+				name="image_map"
+				type="media"
+				label="COM_BOOKPRO_COUNTRY_MAP"
+				description="COM_BOOKPRO_COUNTRY_MAP_DESC"/>
+				
+		<field name="guarantee" type="editor" buttons="true"
+			hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+			label="COM_BOOKPRO_COUNTRY_GUARANTEE" description="COM_BOOKPRO_COUNTRY_GUARANTEE" />
+			
+		<field name="club" type="editor" buttons="true"
+			hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+			label="COM_BOOKPRO_COUNTRY_CLUB" description="COM_BOOKPRO_COUNTRY_CLUB" />
+			
+		<field name="reviews" type="editor" buttons="true"
+			hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+			label="COM_BOOKPRO_COUNTRY_REVIEWS" description="COM_BOOKPRO_COUNTRY_REVIEWS" />				
+			
+		<field name="intro" type="editor" buttons="true"
+		hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+		label="COM_BOOKPRO_COUNTRY_INTRO" description="COM_BOOKPRO_FIELD_DESCRIPTION_DESC" />
+		
+		<field name="desc" type="editor" buttons="true"
+			hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+			label="JGLOBAL_DESCRIPTION" description="COM_BOOKPRO_FIELD_DESCRIPTION_DESC" />
+		<field name="asian_air" type="editor" buttons="true"
+			hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+			label="COM_BOOKPRO_COUNTRY_ASIAN_AIR" description="COM_BOOKPRO_FIELD_DESCRIPTION_DESC" />
+			
+			
+		<field name="worldwide_air" type="editor" buttons="true"
+			hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+			label="COM_BOOKPRO_COUNTRY_WORLDWIDE_AIR" description="COM_BOOKPRO_COUNTRY_WORLDWIDE_AIR" />
+		
+		<field name="air_carries" type="editor" buttons="true"
+			hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+			label="COM_BOOKPRO_COUNTRY_AIR_CARRIES" description="COM_BOOKPRO_COUNTRY_AIR_CARRIES" />
+			
+		<field name="state" type="list" label="COM_BOOKPRO_STATE"
+			description="COM_BOOKPRO_STATE" class="inputbox span12 small"
+			size="1" default="1">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+
+
+	</fieldset>
+
+</form>

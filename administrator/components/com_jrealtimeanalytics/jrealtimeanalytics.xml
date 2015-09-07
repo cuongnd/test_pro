@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.0" method="upgrade">
+	<name>JRealtimeAnalytics</name>
+	<author>Joomla! Extensions Store</author>
+	<creationDate>March 2013</creationDate>
+	<copyright>Copyright (C) 2013 - Joomla! Extensions Store. All Rights Reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>ecommerce@storejoomla.org</authorEmail>
+	<authorUrl>http://storejoomla.org</authorUrl>
+	<version>1.0</version>
+	<description>INSTALLATION_MESSAGES</description>
+	<scriptfile>installscript.php</scriptfile> 
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install> 
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	 
+	<!-- FRONTEND -->
+	<files folder="site">
+		<filename>jrealtimeanalytics.php</filename> 
+		<filename>index.html</filename>
+		<filename>license.txt</filename>
+		<!-- CONTROLLERS -->
+		<folder>controllers</folder> 
+		<!-- MODEL -->
+		<folder>models</folder> 
+		<!-- JS -->
+		<folder>js</folder>  
+	</files>
+ 
+	<!-- BACKEND -->
+	<administration>
+		<menu link="option=com_jrealtimeanalytics" img="components/com_jrealtimeanalytics/images/realtimeanalytics_menu_icon.png">JREALTIMEANALYTICS</menu>
+		<files folder="admin">
+			<filename>jrealtimeanalytics.php</filename> 
+			<filename>index.html</filename>
+			<filename>config.xml</filename>
+			<!-- CACHE -->
+			<folder>cache</folder> 
+			<!-- CONTROLLERS -->
+			<folder>controllers</folder> 
+			<!-- CSS -->
+			<folder>css</folder>  
+			<!-- JS -->
+			<folder>js</folder> 
+			<!-- LIBRARIES -->
+			<folder>libraries</folder> 
+			<!-- MODELS -->
+			<folder>models</folder> 
+			<!-- VIEWS -->
+			<folder>views</folder> 
+			<!-- CSS -->
+			<folder>css</folder> 
+			<!-- IMAGES -->
+			<folder>images</folder> 
+			<!-- SQL files section -->
+			<folder>sql</folder>  
+			<!-- LANGUAGE -->
+			<folder>language</folder>
+		</files>  
+	</administration> 
+</extension>

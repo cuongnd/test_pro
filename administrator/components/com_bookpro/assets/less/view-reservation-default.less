@@ -1,0 +1,406 @@
+.booking-tab {
+  .nav-tabs
+  {
+    background: #4a6c9c;
+    padding-left: 50px;
+  }
+  .tab-content
+  {
+    padding-top: 15px;
+    background: #e9edf1;
+    .tab-pane
+    {
+      background: #eaf3ff;
+      .row
+      {
+        padding: 10px 5px;
+      }
+    }
+  }
+  .tab_booking_detail .panel-body
+  {
+    background: #eaf3ff;
+  }
+  input {
+    opacity: 1 !important;
+  }
+
+
+  li {
+    a {
+      background: #eaf3ff !important;
+      font-weight: bold;
+
+      color: #5978a4;
+    }
+  }
+  li.active a {
+    background: #e9edf1 !important;
+  }
+    background: #eaf3ff;
+    .booking-details {
+
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-bottom: 15px;
+      i {
+        color: #1d5b75;
+        font-size: 15px;
+        float: right;
+        &:hover {
+          color: #aedfee;
+          cursor: pointer;
+        }
+      }
+
+      h6 {
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      fieldset {
+        height: 290px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+      }
+
+      .form-group {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+
+    }
+    .notes {
+      fieldset {
+        height: 290px;
+      }
+      padding-left: 5px;
+      padding-right: 0px;
+      textarea {
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-bottom: 4px;
+        width: 96%;
+        height: 265px;
+      }
+    }
+    .documents {
+      fieldset {
+        height: 290px;
+      }
+      padding-left: 5px;
+      padding-right: 0px;
+      ul {
+        list-style: none;
+        li {
+          line-height: 25px;
+          i {
+            float: right;
+            padding-right: 15px;
+            font-size: 15px;
+            color: #43c62d;
+            line-height: 25px;
+          }
+          &:last-child {
+            padding-bottom: 116px;
+          }
+        }
+
+      }
+    }
+    .transaction {
+      padding-right: 0;
+      padding-left: 6px;
+      .price {
+        font-weight: bold;
+        color: #0066ff;
+      }
+      select {
+        width: 100%;
+        margin-bottom: 43px;
+      }
+    }
+
+  }
+  .button {
+    padding-bottom: 15px;
+    .add-adhoc, .add-book, .add-flight, .add-passenger {
+      float: left;
+      background: -webkit-linear-gradient(#fdfeff, #b0dda8); /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(#fdfeff, #b0dda8); /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(#fdfeff, #b0dda8); /* For Firefox 3.6 to 15 */
+      background: linear-gradient(#fdfeff, #b0dda8); /* Standard syntax (must be last) */
+      border: 1px solid #4a6c9c;
+      margin: 5px;
+      h6 {
+        margin: 3px !important;
+        color: #037003;
+        i {
+          font-size: 15px;;
+
+        }
+      }
+    }
+
+  }
+  .table {
+    table {
+      border: 1px solid #cecece;
+      margin-bottom: 0 !important;
+    }
+
+}
+
+fieldset {
+  border: 1px solid #99ccff !important;
+  margin-bottom: 30px;
+  legend {
+    width: inherit;
+    margin-left: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: -3px;
+    color: #4a6c9c;
+
+    i {
+      font-size: 15px;
+      color: #43c62d;
+      margin-bottom: 3px;
+      margin-left: 3px;
+    }
+  }
+}
+
+// popup tab ad-hoc
+#ad-hoc {
+  background: #E9EDF1;
+
+  .wrapper-ad-hoc {
+    background: #EAF3FF;
+    border: 2px solid #4A6C9C;
+    margin-top: 30px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+
+    textarea {
+      width: 100%;
+    }
+    input[type="text"], select {
+      width: 100%;
+    }
+    .date {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      input {
+        width: 90%;
+      }
+    }
+    .reference-no, .assign-to {
+      padding-left: 0 !important;
+      padding-right: 5px !important;
+      padding-bottom: 15px;
+    }
+
+    .price {
+      i.icon-price {
+        border: 1px solid black;
+        border-radius: 7px
+      }
+      h5 {
+        color: #009900;
+      }
+    }
+
+    .service {
+      padding-left: 0;
+      padding-right: 0;
+      background: white;
+      border: 1px solid #99ccff;
+      .class-border {
+        border-bottom: 1px solid #808080;
+        padding-right: 15px;
+      }
+
+    }
+    .select-passenger {
+      input {
+        opacity: 1 !important;
+      }
+    }
+
+  }
+
+}
+
+// END popup tab ad-hoc
+
+// popup tab addpassenger
+#add-passenger {
+  background: #E9EDF1;
+  .wrapper-add-passenger {
+    background: #EAF3FF;
+
+    margin-top: 30px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    .datepicker {
+      width: 94% !important;
+    }
+    h5 {
+      color: #006699;
+      i {
+        float: right;
+      }
+    }
+    .radio-confirm {
+      text-align: center;
+      color: #990000;
+    }
+    .form-group {
+      input[type="text"], select {
+        width: 100%;
+      }
+      label {
+        font-weight: normal;
+      }
+    }
+
+    .wraper-addition-info {
+      background: white !important;
+      padding-left: 15px;
+      padding-right: 15px;
+      .addition-info {
+        padding-left: 0;
+      }
+      p {
+        padding-left: 0;
+      }
+      h5 {
+        color: #006699;
+        margin-left: -10px;
+        font-weight: bold;
+      }
+      .warning-info-pre-existing, .warning-info-special {
+        border: 1px solid lightgray;
+        padding: 10px;
+        margin-bottom: 10px;
+        label {
+          color: #990000;
+        }
+      }
+    }
+  }
+
+}
+
+//END popup tab addpassenger
+
+// popup add addons
+.add-addons {
+  background: #E9EDF1;
+  .wrapper-add-addons {
+    background: #EAF3FF;
+    border: 2px solid #4A6C9C;
+    margin-top: 30px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+
+    textarea {
+      width: 99%;
+    }
+    input[type="text"], select {
+      width: 100%;
+    }
+
+    .info-left {
+      padding-left: 0;
+      padding-bottom: 10px;
+      .datepicker {
+        width: 96%;
+      }
+    }
+    .info-right {
+      padding-right: 0;
+      padding-bottom: 10px;
+    }
+
+    #lastfieldset {
+      background: #FFFFFF;
+      .checkbox {
+        padding: 0;
+      }
+
+      .arival-time-text {
+        padding-right: 0;
+      }
+      .form-group {
+        margin: 0;
+        .flight-no, .arrival-time {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.add-add-flight {
+  background: #E9EDF1;
+  .wrapper-add-addons {
+    background: #EAF3FF;
+    border: 2px solid #4A6C9C;
+    margin-top: 30px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+
+    textarea {
+      width: 99%;
+    }
+    input[type="text"], select {
+      width: 100%;
+    }
+
+    .info-left {
+      padding-left: 0;
+      padding-bottom: 10px;
+      .datepicker {
+        width: 96%;
+      }
+    }
+    .info-right {
+      padding-right: 0;
+      padding-bottom: 10px;
+    }
+
+    #lastfieldset {
+      background: #FFFFFF;
+      .checkbox {
+        padding: 0;
+      }
+
+      .arival-time-text {
+        padding-right: 0;
+      }
+      .form-group {
+        margin: 0;
+        .flight-no, .arrival-time {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.room-select {
+  text-align: center;
+}
+.add-hoc-item
+{
+  background: #eaf3ff;
+}
+//END popup add addons

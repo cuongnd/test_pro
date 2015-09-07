@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <layout title="cpanel">
+    <message>cpanel</message>
+  </layout>
+  <state>
+    <name>cpanel</name>
+    <description>cpanel</description>
+
+    <params>
+    </params>
+    <fields name="request">
+	</fields>
+  </state>
+</metadata>

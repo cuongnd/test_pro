@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <layout title="icons">
+    <message>Shapes</message>
+  </layout>
+  <state>
+    <name>Shapes</name>
+    <description>Shapes</description>
+    <params>
+    </params>
+    <fields name="request">
+	</fields>
+  </state>
+</metadata>

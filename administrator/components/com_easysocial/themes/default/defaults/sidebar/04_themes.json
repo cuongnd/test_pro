@@ -1,0 +1,30 @@
+// Template
+// "title"	: "",
+// "link"	: "",
+// "class"	: "",
+// "view"	: "",
+// "active": "",
+// "childs": []
+// Profiles menu
+{
+	"order"	: 3,
+	"title"	: "COM_EASYSOCIAL_MENU_GROUP_THEMES",
+	"link"	: "index.php?option=com_easysocial&view=themes",
+	"access": "easysocial.access.themes",
+	"class"	: "themes",
+	"view"	: "themes",
+	"active": "layout",
+	"childs":
+	[
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_THEMES_INSTALL",
+			"class"	: "ies-upload",
+			"url"	:
+			{
+				"view"	: "themes",
+				"layout": "install"
+			},
+			"childs": []
+		}
+	]
+}

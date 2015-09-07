@@ -1,0 +1,169 @@
+.container-main {
+	margin: 0;
+	padding: 0 0px !important;
+}
+.headed-component {
+	position: relative;
+}
+.toolbar-component {
+	height: 40px;
+	background: -webkit-linear-gradient(top,#f5f5f5,#ececec);
+	background: -o-linear-gradient(top,#f5f5f5,#ececec);
+	background: -moz-linear-gradient(top,#f5f5f5,#ececec);
+	background: linear-gradient(to top,#f5f5f5,#ececec);
+	border-bottom: 3px solid #666666;
+}
+.admin.com_bookpro #filter-bar {
+	padding: 30px 10px;
+	border: 1px solid #c8c8c8;
+}
+.admin.com_bookpro #filter-bar button.search {
+	background: #007799;
+	text-shadow: none;
+	border-radius: 0px;
+	padding: 15px 30px;
+	text-transform: uppercase;
+	color: #fff;
+	font-weight: bold;
+}
+.admin.com_bookpro .main-subhead #toolbar {
+	margin-top: 4px;
+	margin-bottom: 0px;
+}
+.admin.com_bookpro .main-subhead #toolbar.btn-toolbar {
+	margin-bottom: 5px;
+}
+.admin.com_bookpro .main-subhead #toolbar.btn-toolbar .btn-wrapper {
+	display: inline-block;
+	margin: 0 0 5px 5px;
+}
+.admin.com_bookpro .main-subhead #toolbar span {
+	width: 15px;
+	height: 15px;
+	border: 1px solid black;
+	border-radius: 10px;
+	background: white;
+}
+.admin.com_bookpro .main-subhead #toolbar .icon-new::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-plus::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-edit::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-publish::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-save::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-ok::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-save-new::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-save-copy::before,
+.admin.com_bookpro .main-subhead #toolbar .btn-toolbar .icon-copy::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-unpublish::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-not-ok::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-eye-close::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-ban-circle::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-minus-sign::before,
+.admin.com_bookpro .main-subhead #toolbar .btn-toolbar .icon-cancel::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-delete::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-remove::before,
+.admin.com_bookpro .main-subhead #toolbar .icon-cancel-2::before {
+	content: url("");
+}
+.admin.com_bookpro .main-subhead .subhead-fixed {
+	margin: 0px 0px !important;
+}
+.admin.com_bookpro .pagination-limitbox {
+	padding-top: 5px;
+	background: #f4f4f4;
+	border: 1px solid #cccccc;
+}
+.admin.com_bookpro .pagination-limitbox span {
+	color: #9e9e9e;
+}
+.admin.com_bookpro .pagination-limitbox #limit {
+	margin-top: 4px;
+	background-color: #ebebeb !important;
+	margin-left: 10px;
+	text-align: center;
+	width: 70px;
+}
+.admin.com_bookpro .pagination-limitbox #limit option {
+	border: none;
+}
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar {
+	margin-bottom: 0;
+	float: left;
+	border: none;
+}
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list {
+	border: none;
+	box-shadow: none;
+	margin-bottom: -12px;
+	border: none !important;
+}
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list li {
+	border: none;
+}
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list li a {
+	border: none;
+	background-color: transparent;
+	line-height: 3 !important;
+	font-size: 12px;
+	padding: 0px 15px !important;
+}
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list li a .icon-next::before,
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list li a .icon-forward::before,
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list li a .icon-last::before {
+	content: url("../images/icon-next.png") !important;
+}
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list li a .icon-previous::before,
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list li a .icon-backward::before,
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list li a .icon-first::before {
+	content: url("../images/icon-pre.png") !important;
+}
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list li span {
+	display: none;
+	line-height: 3 !important;
+	font-size: 12px;
+	padding: 0px 15px !important;
+}
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list .hidden-phone {
+	margin-left: 10px !important;
+}
+.admin.com_bookpro .pagination-limitbox .pagination-toolbar .pagination-list .hidden-phone a {
+	padding: unset !important;
+	margin-left: 20px;
+	font-size: 13px;
+}
+.admin.com_bookpro #editcell {
+	background: #f4f4f4;
+	margin-left: 15px;
+	margin-right: 15px;
+	border: 1px solid #cccccc;
+	border-top: none;
+}
+.admin.com_bookpro .main-page-title {
+	background: #fff;
+}
+.admin.com_bookpro .main-page-title .page-tile {
+	color: #990000;
+	font-size: 40px;
+	font-weight: bold;
+	line-height: 60px;
+	padding: 20px 4px;
+}
+.main-subhead .subhead {
+	border: 1px solid #d3d3d3;
+	color: #0c192e;
+	text-shadow: 0 1px 0 #fff;
+}
+.main-subhead .subhead #toolbar.btn-toolbar {
+	float: right;
+}
+.main-subhead .subhead #toolbar.btn-toolbar .btn {
+	border: 1px solid #ccc;
+	color: #666666;
+	background-color: inherit;
+	background-image: linear-gradient(to bottom,#fff,#dfdfdf);
+	text-transform: uppercase;
+	width: auto;
+	padding: 5px 10px;
+}
+.main-subhead .subhead #toolbar.btn-toolbar .btn:hover {
+	background-position: 0 0;
+}

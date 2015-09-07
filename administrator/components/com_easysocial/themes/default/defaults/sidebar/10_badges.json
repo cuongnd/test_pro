@@ -1,0 +1,32 @@
+{
+	"order"	: 8,
+	"title"	: "COM_EASYSOCIAL_MENU_GROUP_USER_BADGES",
+	"link"	: "index.php?option=com_easysocial&view=badges",
+	"class"	: "badges",
+	"access": "easysocial.access.badges",
+	"view"	: "badges",
+	"active": "layout",
+	"childs":
+	[
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_BADGES_INSTALL",
+			"class"	: "ies-upload",
+			"url"	:
+			{
+				"view"	: "badges",
+				"layout": "install"
+			},
+			"childs": []
+		},
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_BADGES_DISCOVER",
+			"class"	: "ies-upload-2",
+			"url"	:
+			{
+				"view"	: "badges",
+				"layout": "discover"
+			},
+			"childs": []
+		}
+	]
+}

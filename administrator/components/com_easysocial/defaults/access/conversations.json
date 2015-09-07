@@ -1,0 +1,20 @@
+// Defines the default form for access.
+{
+	"title"		: "COM_EASYSOCIAL_ACCESS_TAB_CONVERSATIONS",
+	"desc"		: "COM_EASYSOCIAL_ACCESS_TAB_CONVERSATIONS_DESC",
+	"fields"	:
+	[
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_CONVERSATIONS_START_CONVERSATION",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_CONVERSATIONS_START_CONVERSATION_TOOLTIP",
+			"name"		: "conversations.create",
+			"type"		: "boolean"
+		},
+		{
+			"label"		: "COM_EASYSOCIAL_ACCESS_CONVERSATIONS_INVITE_TO_GROUP_CONVERSATION",
+			"tooltip"	: "COM_EASYSOCIAL_ACCESS_CONVERSATIONS_INVITE_TO_GROUP_CONVERSATION_TOOLTIP",
+			"name"		: "conversations.invite",
+			"type"		: "boolean"
+		}
+	]
+}

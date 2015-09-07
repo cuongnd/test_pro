@@ -1,0 +1,79 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+
+// Administrator theme
+
+@import "component";
+@import "variables";
+
+// Installer should be out of the component wrapper since we have full control of contents.
+@import "installer";
+
+(~"@{EasySocial}") {
+
+	// base/elements
+	@import "elements";
+	@import "avatar";
+	@import "buttons"; // extend twb
+
+	// page structure
+	@import "layout";
+
+
+	// states/trigger
+	@import "states";
+
+	// block
+	@import "blocks";
+	@import "navbar"; // extend twb
+	@import "sidebar";
+	@import "widget";
+	@import "list"; // items listing apply to <ul>
+
+	@import "forms";
+	@import "tables";
+	@import "pagination"; //extend twb
+	@import "tree"; //acl nested tree
+	// @import "modules";
+
+	// Custom fields in profiles.
+	@import "fields";
+
+	// Badges page.
+	@import "badges";
+
+	// Badges page.
+	@import "languages";
+
+	// User page.
+	@import "users";
+
+	//	$Icons
+	// have to gain 1 more specificity to override default icon
+	// e.g.: body div#wrapper
+	body & {
+		@import "icons";
+	}
+
+}
+
+
+
+@import "ui";
+@import "custom"; // custom hack for admin templates
+
+.no-focus-outline() {
+	outline: none !important;
+	&::-moz-focus-inner {
+		border: 0 !important;
+	}
+}
+
+
+
+// Responsive
+@import "responsive";

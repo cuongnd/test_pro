@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field name="id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+        <field name="tour_id" type="hidden" label="JGLOBAL_TITLE" class="inputbox"
+            size="100" required="true" />
+		<field name="title" type="text" label="JGLOBAL_TITLE" class="inputbox"
+			size="100" required="true" />
+		<field name="type"
+				type="list"
+				class="inputbox"
+				label="Type"
+				description="COM_BOOKPRO_FAQ_TYPE"
+                                defaul="Hotel"
+                                    >
+                                <option value="Hotel">HOTEL</option>
+                                <option value="Tour">TOUR</option>
+                                
+                </field>
+		<field name="obj_id" 
+			   type="hidden" 
+			  >
+			   
+		</field>
+		<field name="desc" type="editor" buttons="true" hide="pagebreak,readmore"
+			class="inputbox" filter="JComponentHelper::filterText" label="JGLOBAL_DESCRIPTION"
+			description="COM_BOOKPRO_FIELD_DESCRIPTION_DESC" />
+
+		<field name="state"
+			   type="list" 
+			   label="JSTATUS"
+			   description="COM_BOOKPRO_FIELD_STATE_DESC" 
+			   class="inputbox span12 small"
+			   size="1" default="1">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+		
+	</fieldset>
+</form>

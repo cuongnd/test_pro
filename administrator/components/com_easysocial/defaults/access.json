@@ -1,0 +1,42 @@
+{
+	"friends" :
+	{
+		"list"	:
+		{
+			"enabled"	: true,
+			"limit"		: 15
+		}
+	},
+	"conversations":
+	{
+		"create" : true,
+		"invite" : true
+	},
+	"comments" :
+	{
+		"add"			: true,
+		"read"			: true,
+		"report"		: true,
+		"edit"			: false,
+		"editown" 		: true,
+		"delete" 		: false,
+		"deleteown" 	: true
+	},
+	"photos" :
+	{
+		"uploader" :
+		{
+			"maxsize"	: 32
+		}
+	},
+	"albums":
+	{
+		"create": true,
+		"total": 20
+	},
+	"reports" :
+	{
+		"submit"	: true,
+		"limit"		: 50
+	}
+}

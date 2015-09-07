@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/administrator/components/com_tour/elements">
+        <field
+                id="id"
+                name="id"
+                type="text"
+                default="0"
+                readonly="true"
+                class="readonly"
+                label="COM_TOUR_VIEW_TOURACTIVITY_FILED_ID"
+                description ="COM_TOUR_VIEW_TOURACTIVITY_DESC_FILED_ID" />
+
+        <field
+                id="title"
+                name="title"
+                type="text"
+                label="COM_TOUR_VIEW_TOURACTIVITY_FILED_TITLE"
+                description="COM_TOUR_VIEW_TOURACTIVITY_DESC_FILED_TITLE"
+                size="50"
+                required="true"
+                />
+        <field
+                id="idtour"
+                name="idtour"
+                type="listtour"
+                label="COM_TOUR_VIEW_TOURACTIVITY_FILED_IDTOUR"
+                description="COM_TOUR_VIEW_TOURACTIVITY_DESC_FILED_IDTOUR"
+                size="50"
+                />
+        <field
+                id="image"
+                name="image"
+                type="media"
+                label="COM_TOUR_VIEW_TOURACTIVITY_FILED_IMAGE"
+                description="COM_TOUR_VIEW_TOURACTIVITY_DESC_FILED_IMAGE"
+                size="50"
+                />
+
+
+
+    </fieldset>
+
+
+
+</form>

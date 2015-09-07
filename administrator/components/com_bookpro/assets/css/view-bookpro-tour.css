@@ -1,0 +1,156 @@
+.nav-list > li > a,
+.nav-list .nav-header {
+	margin-left: 5px !important;
+}
+.icon-header {
+	font-size: 12px;
+}
+#content [class^="icon-"],
+[class*=" icon-"] {
+	font-size: 25px;
+	height: 25px;
+	width: 25px;
+	background: none;
+	line-height: 25px;
+	padding: 0 10px;
+	cursor: pointer;
+}
+.big-icon {
+	border-radius: 5px;
+}
+.big-icon {
+	background: -webkit-linear-gradient(bottom,#f5f5f5,#ececec);
+	background: -o-linear-gradient(bottom,#f5f5f5,#ececec);
+	background: -moz-linear-gradient(bottom,#f5f5f5,#ececec);
+	background: linear-gradient(to bottom,#f5f5f5,#ececec);
+}
+#content .big-icon [class^="icon-"],
+[class*=" icon-"] {
+	font-size: 35px;
+	width: 16px;
+	line-height: 35px;
+	color: #fff;
+}
+.icon-circle-arrow-right:before {
+	content: "\e00a";
+	font-size: 25px;
+}
+.icon-lifebuoy:before {
+	content: "\46";
+	line-height: 50px;
+}
+.big-icon {
+	position: relative;
+}
+i.more {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+}
+.big-icon i.more {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 20px;
+}
+.view-bookpro-tour {
+	padding: 0 10px;
+	background: #fff;
+}
+.screen-dashboard {
+	color: #999999;
+}
+.toolbar2 .margin-dashboard {
+	margin-top: 10px;
+}
+.toolbar2 .icon-loop {
+	color: #f68484;
+}
+.toolbar2 .icon-menu-3:before,
+.toolbar2 .icon-edit:before,
+.toolbar2 .icon-question-sign:before {
+	color: #75b9e6 !important;
+}
+#content .big-icon i.more {
+	background: none repeat scroll 0 0 #e65097;
+	border-radius: 25px 25px 0;
+	font-size: 22px;
+	height: 26px;
+	line-height: 27px;
+	padding: 5px;
+	width: 24px;
+}
+#content .big-icon i.more.icon-wrench {
+	background: none repeat scroll 0 0 #75b9e6;
+}
+#content .big-icon i.more.icon-downarrow {
+	background: none repeat scroll 0 0 #f4b162;
+}
+#content .big-icon i.more.icon-comments-2 {
+	background: none repeat scroll 0 0 #71d398;
+}
+#content .big-icon i.more.icon-database {
+	background: none repeat scroll 0 0 #af91e1;
+}
+#content .big-icon i.more.icon-flag-2 {
+	background: none repeat scroll 0 0 #75b9e6;
+}
+.view-bookpro-tour .i-icon-header {
+	margin: 25px 0px 0 0;
+}
+.view-bookpro-tour .big-icon .count-order h2 {
+	color: #5188ac;
+	font-size: 20px;
+	line-height: 24px;
+	padding: 7px 25px 0 25px;
+	margin-bottom: 5px;
+}
+.view-bookpro-tour .big-icon .count-order label {
+	color: #5188ac;
+	font-size: 14px;
+	padding: 0 25px 5px 25px;
+}
+.view-bookpro-tour .bg-chart {
+	background: #f5f6f7;
+	margin-top: 20px;
+}
+.view-bookpro-tour .bg-chart .bg-chart-margin {
+	margin: 20px;
+}
+.view-bookpro-tour .bg-chart .bg-chart-margin .border-chart {
+	border: #ccc solid 1px;
+	margin-bottom: 20px;
+	background: #fff;
+}
+.view-bookpro-tour .bg-chart .bg-chart-margin .border-chart .panel-heading {
+	margin: 15px 10px;
+}
+.view-bookpro-tour .bg-chart .bg-chart-margin .border-chart .panel-heading h4 {
+	color: #2674a1;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+.view-bookpro-tour .bg-chart .bg-chart-margin .border-chart .panel-body {
+	margin: 15px 10px;
+}
+.view-bookpro-tour .bg-chart-2 {
+	margin-top: 20px;
+}
+.view-bookpro-tour .bg-chart-2 .bg-chart-margin {
+	margin: 0 20px 20px 20px;
+}
+.view-bookpro-tour .bg-chart-2 .bg-chart-margin .border-calendar {
+	border: #ccc solid 1px;
+}
+.view-bookpro-tour .bg-chart-2 .bg-chart-margin .border-calendar .panel-body {
+	margin: 15px 10px;
+}
+.view-bookpro-tour .bg-chart-2 .bg-chart-margin .bg-chart-margin-border {
+	margin-bottom: 20px;
+}
+.view-bookpro-tour .bg-Latest-booking {
+	margin: 20px;
+}
+.view-bookpro-tour .bg-list-messages {
+	margin: 20px;
+}

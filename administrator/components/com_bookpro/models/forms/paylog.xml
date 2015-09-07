@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+      
+        <field name="id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+                   description="JGLOBAL_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+            
+        <field name="title" type="text" label="COM_BOOKPRO_PAYMENT_LOG_TITLE" class="inputbox"
+                   size="100" required="true" />
+            
+<!--        <field name="order_id" type="hidden"  required="" />-->
+        <field name="order_id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+        <field name="state" type="list" label="COM_BOOKPRO_STATE"
+                   description="COM_BOOKPRO_STATE" class="inputbox span12 small"
+                   size="1" default="1">
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+            
+           
+        <field name="gateway" type="text" label="COM_BOOKPRO_FIELD_PAYMENT_LOG_GATEWAY"
+                   class="inputbox small" size="1" required="true" />
+
+        <field name="amount" type="text" label="COM_BOOKPRO_FIELD_PAYMENT_LOG_AMOUNT"
+                   class="inputbox small" size="1" required="true" />
+		
+        <field name="tx_id" type="text" label="COM_BOOKPRO_FIELD_PAYMENT_LOG_TRANSACTION"
+                   class="inputbox small" size="1" />
+			
+        <field class="readonly"  name="created" type="calendar"
+                   label="JGLOBAL_FIELD_CREATED_LABEL" description="JGLOBAL_FIELD_CREATED_DESC"
+                    format="%Y-%m-%d"
+                   filter="user_utc" />
+
+        <field class="readonly" name="created_by" type="user" default=""
+                   label="JGLOBAL_FIELD_CREATED_BY_LABEL" description="JGLOBAL_FIELD_CREATED_BY_Desc" />
+
+    </fieldset>
+    
+</form>

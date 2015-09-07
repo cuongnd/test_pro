@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <layout title="Diagram">
+    <message>Diagram</message>
+  </layout>
+  <state>
+    <name>Diagram</name>
+    <description>Diagram</description>
+    <params>
+    </params>
+    <fields name="request">
+	</fields>
+  </state>
+</metadata>

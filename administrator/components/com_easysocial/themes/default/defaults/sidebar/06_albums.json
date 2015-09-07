@@ -1,0 +1,20 @@
+// Template
+// "title"	: "",
+// "link"	: "",
+// "class"	: "",
+// "view"	: "",
+// "active": "",
+// "childs": []
+// Points menu
+{
+	"order"	: 6,
+	"title"	: "COM_EASYSOCIAL_MENU_GROUP_ALBUMS",
+	"link"	: "index.php?option=com_easysocial&view=albums",
+	"class"	: "albums",
+	"access": "easysocial.access.albums",
+	"view"	: "albums",
+	"active": "layout",
+	"childs":
+	[
+	]
+}

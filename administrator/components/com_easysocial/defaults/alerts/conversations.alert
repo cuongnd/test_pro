@@ -1,0 +1,24 @@
+
+// These alert rules are for core features
+[
+	{
+		"element": "conversations",
+		"rule"	: "reply"
+	},
+	{
+		"element": "conversations",
+		"rule"	: "invite"
+	},
+	{
+		"element": "conversations",
+		"rule"	: "new"
+	},
+	{
+		"element": "conversations",
+		"rule"	: "invited"
+	},
+	{
+		"element": "conversations",
+		"rule"	: "leave"
+	}
+]
