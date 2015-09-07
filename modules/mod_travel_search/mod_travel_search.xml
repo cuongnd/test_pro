@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="element" version="3.1" client="site">
+    <name>tabs</name>
+    <author>Joomla! Project</author>
+    <creationDate>July 2004</creationDate>
+    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>admin@joomla.org</authorEmail>
+    <authorUrl>www.joomla.org</authorUrl>
+    <version>3.0.0</version>
+    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
+    <customContent />
+    <files>
+        <filename module="mod_custom">mod_custom.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">en-GB.mod_custom.ini</language>
+        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
+    </languages>
+    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
+    <config>
+        <fields name="params">
+            <fields name="data">
+                <fieldset name="data"  description="Data config" label="Data config">
+                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
+                </fieldset>
+            </fields>
+        </fields>
+        <fields name="params">
+            <fieldset name="element"  description="Element config" label="Element config">
+                <field name="country"
+                       type="radio"
+                       default="0"
+                       class="btn-group"
+                       label="Country filter"
+                       description="Show/Hide country field">
+                    <option value="1">Show</option>
+                    <option value="0">Hide</option>
+                </field>
+                <field name="dest"
+                       type="radio"
+                       default="1"
+                       class="btn-group"
+                       label="Destination filter"
+                       description="Show/Hide destination field">
+                    <option value="1">Show</option>
+                    <option value="0">Hide</option>
+                </field>
+                <field name="duration"
+                       type="radio"
+                       default="1"
+                       label="Duration filter"
+                       class="btn-group"
+                       description="Show/Hide duration field">
+                    <option value="1">Show</option>
+                    <option value="0">Hide</option>
+                </field>
+                <field name="keyword"
+                       type="radio"
+                       default="1"
+                       label="Keyword filter"
+                       class="btn-group"
+                       description="Show/Hide keyword field">
+                    <option value="1">Show</option>
+                    <option value="0">Hide</option>
+                </field>
+                <field name="depart_date"
+                       type="radio"
+                       default="1"
+                       label="Depart filter"
+                       class="btn-group"
+                       description="Show/Hide depart field">
+                    <option value="1">Show</option>
+                    <option value="0">Hide</option>
+                </field>
+                <field name="category"
+                       type="radio"
+                       default="1"
+                       label="Category filter"
+                       class="btn-group"
+                       description="Show/Hide Category field">
+                    <option value="1">Show</option>
+                    <option value="0">Hide</option>
+                </field>
+                <field name="tour"
+                       type="radio"
+                       default="1"
+                       label="Tour tabs"
+                       class="btn-group"
+                       description="Show/Hide \tour tabs">
+                    <option value="1">Show</option>
+                    <option value="0">Hide</option>
+                </field>
+                <field name="hotel"
+                       type="radio"
+                       default="1"
+                       label="Hotels tabs"
+                       class="btn-group"
+                       description="Show/Hide \Hotels tabs">
+                    <option value="1">Show</option>
+                    <option value="0">Hide</option>
+                </field>
+                <field name="flight"
+                       type="radio"
+                       default="1"
+                       label="Flights tabs"
+                       class="btn-group"
+                       description="Show/Hide \Flights tabs">
+                    <option value="1">Show</option>
+                    <option value="0">Hide</option>
+                </field>
+                <field name="car"
+                       type="radio"
+                       default="1"
+                       label="Cars tabs"
+                       class="btn-group"
+                       description="Show/Hide \cars tabs">
+                    <option value="1">Show</option>
+                    <option value="0">Hide</option>
+                </field>
+                <field name="moduleclass_sfx" type="text"
+                       label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                       description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+                <field name="cache" type="list" default="1"
+                       label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field name="cache_time" type="text" default="900"
+                       label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC"/>
+                <field name="cachemode" type="hidden" default="static">
+                    <option value="static"></option>
+                </field>
+            </fieldset>
+        </fields>
+
+
+    </config>
+</extension>

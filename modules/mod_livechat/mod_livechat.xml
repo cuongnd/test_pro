@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.6.0" client="site" method="upgrade">
+	<!-- Name of the Module -->
+	<name>LiveChat</name> 
+
+	<!-- Name of the Author -->
+	<author>LIVECHAT Software</author> 
+
+	<!-- Version Date of the Module -->
+	<creationDate>2011-09-05</creationDate> 
+
+	<!-- Copyright information -->
+	<copyright>Copyright (C) 2011 LIVECHAT Software (www.livechatinc.com). All rights reserved.</copyright>
+
+	<!-- License Information -->
+	<license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
+
+	<!-- Author's email address -->
+	<authorEmail>support@livechatinc.com</authorEmail> 
+
+	<!-- Author's website -->
+	<authorUrl>www.livechatinc.com</authorUrl> 
+
+	<!-- Module version number -->
+	<version>3.0.0</version> 
+
+	<!-- Description of what the module does -->
+	<description>Live chat software for live help, online sales and customer support. Plugin allows to easily integrate your Joomla!-based website with LiveChat solution.</description>
+
+	<!-- Listing of all files that should be installed for the module to function -->
+	<files>
+		<!-- The "module" attribute signifies that this is the main controller file -->
+		<filename module="mod_livechat">mod_livechat.php</filename>
+		<filename>files/codes/chat_button.php</filename>
+		<filename>files/codes/monitoring_code.php</filename>
+		<filename>files/css/livechat.css</filename>
+		<filename>files/css/images/ajax_loader.gif</filename>
+		<filename>files/css/images/border.png</filename>
+		<filename>files/css/images/controls.png</filename>
+		<filename>files/css/images/loading.gif</filename>
+		<filename>files/css/images/loading_background.png</filename>
+		<filename>files/css/images/overlay.png</filename>
+		<filename>files/css/images/internet_explorer/borderBottomCenter.png</filename>
+		<filename>files/css/images/internet_explorer/borderBottomLeft.png</filename>
+		<filename>files/css/images/internet_explorer/borderBottomRight.png</filename>
+		<filename>files/css/images/internet_explorer/borderMiddleLeft.png</filename>
+		<filename>files/css/images/internet_explorer/borderMiddleRight.png</filename>
+		<filename>files/css/images/internet_explorer/borderTopCenter.png</filename>
+		<filename>files/css/images/internet_explorer/borderTopLeft.png</filename>
+		<filename>files/css/images/internet_explorer/borderTopRight.png</filename>
+		<filename>files/js/jquery.colorbox-min.js</filename>
+		<filename>files/js/jquery-1.4.2.min.js</filename>
+		<filename>files/js/livechat_joomla_signup.js</filename>
+		<filename>files/js/signup.js</filename>
+		<filename>files/js/license_number.js</filename>
+		<filename>files/js/livechat_joomla_license_number.js</filename>
+	</files>
+
+	<!-- Optional parameters -->
+	<config>
+	<fields name="params">
+	<fieldset name="basic">
+		<field name="@spacer" type="spacer" default="" label="Don't have LiveChat account? &lt;span id=&quot;new-license-container&quot;&gt;&lt;a href=&quot;#&quot; onclick=&quot;(function()
+	{
+	var $license_container=document.getElementById('new-license-container');
+	if (/&lt;\/a&gt;$/.test($license_container.innerHTML) == true)
+	{
+		$license_container.innerHTML += ' Please wait&amp;hellip;';
+	};
+
+	var runLivechatJoomla = function()
+	{
+		Livechat_Joomla_Signup();
+		if (/&lt;\/a&gt;$/.test($license_container.innerHTML) == false)
+		{
+			var html = $license_container.innerHTML;
+			$license_container.innerHTML = html.replace(/Please wait&amp;hellip;$/, '');
+		};
+	};
+
+	var JSIsLoaded = function()
+	{
+		return(typeof Livechat_Joomla_Signup!='undefined');
+	};
+
+	if (JSIsLoaded())
+	{
+		$.colorbox({
+			height: '500px',
+			width: '500px',
+			inline: true,
+			href: '#livechat_new_account',
+			onComplete: function()
+			{
+				$('#livechat_account_full_name').focus();
+			}
+		});
+
+		return false;
+	};
+
+	var lc=document.createElement('script');
+	lc.type = 'text/javascript';
+	lc.async = false;
+	lc.src = '../modules/mod_livechat/files/js/livechat_joomla_signup.js?rand='+Math.random();
+	var s=document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(lc,s);
+
+	var onJSLoaded = function(callback)
+	{
+		if(JSIsLoaded()==false)
+		{
+			setTimeout(function()
+			{
+				onJSLoaded(callback);
+			}, 100);
+			return false;
+		};
+		callback();
+	};
+
+	onJSLoaded(function()
+	{
+		runLivechatJoomla();
+	});
+	})();return false;&quot;&gt;Get it for free!&lt;/a&gt;&lt;/span&gt;" description="" />
+	<field name="license_number" type="text" default="0" label="License number" description="Click the link below to get your license number." />
+	<field name="@spacer2" type="spacer" default="" label="&lt;span id=&quot;license-no-container&quot;&gt;&lt;a href=&quot;#&quot; onclick=&quot;(function()
+	{
+	var $license_no_container=document.getElementById('license-no-container');
+	if (/&lt;\/a&gt;$/.test($license_no_container.innerHTML) == true)
+	{
+		$license_no_container.innerHTML += ' Please wait&amp;hellip;';
+	};
+
+	var runLivechatJoomlaLicense = function()
+	{
+		Livechat_Joomla_License_Number();
+		if (/&lt;\/a&gt;$/.test($license_no_container.innerHTML) == false)
+		{
+			var html = $license_no_container.innerHTML;
+			$license_no_container.innerHTML = html.replace(/Please wait&amp;hellip;$/, '');
+		};
+	};
+
+	var JSIsLoaded = function()
+	{
+		return(typeof Livechat_Joomla_License_Number!='undefined');
+	};
+
+	if (JSIsLoaded())
+	{
+		$.colorbox({
+			height: '300px',
+			width: '500px',
+			inline: true,
+			href: '#livechat_license_no',
+			onComplete: function()
+			{
+				$('#livechat_account_email').focus();
+			}
+		});
+
+		return false;
+	};
+
+	var lc=document.createElement('script');
+	lc.type = 'text/javascript';
+	lc.async = false;
+	lc.src = '../modules/mod_livechat/files/js/livechat_joomla_license_number.js?rand='+Math.random();
+	var s=document.getElementsByTagName('script')[1];
+	s.parentNode.insertBefore(lc,s);
+
+	var onJSLoaded = function(callback)
+	{
+		if(JSIsLoaded()==false)
+		{
+			setTimeout(function()
+			{
+				onJSLoaded(callback);
+			}, 100);
+			return false;
+		};
+		callback();
+	};
+
+	onJSLoaded(function()
+	{
+		runLivechatJoomlaLicense();
+	});
+	})();return false;&quot;&gt;Get your license number&amp;hellip;&lt;/a&gt;&lt;/span&gt;" description="" />
+	<field name="skill" type="text" default="0" label="Skill" description="You can assign different skills to your LiveChat agents. Default value: 0." />
+	<field name="button_code" type="radio" default="1" label="Show chat button" description="">
+	  <option value="1">Yes</option>
+	  <option value="0">No</option>
+	</field>
+	<field name="@spacer3" type="spacer" default="" label="Read the &lt;a href=&quot;http://www.livechatinc.com/addons/joomla/integration-tutorial/&quot; target=&quot;_blank&quot;&gt;LiveChat integration tutorial&lt;/a&gt;." description="" />
+	</fieldset>
+	</fields>
+	</config>
+	
+</extension>

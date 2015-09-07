@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<form>
+	<fields 
+		addfieldpath="/modules/mod_jaanimation/elements"
+		name="params">
+		<fieldset 
+			name="basic">
+				
+			<field 
+				name="group" 
+				type="jadepend" 
+				function="@group">
+					<option for="movetype" value="sine" hideRow="true">radius,step</option>
+					<option for="movetype" value="preset" hideRow="true">pre_pos_xy,delay</option>		
+					<option for="chooseprofile" value="1" hideRow="true">profile,list-profiles</option>
+					<option for="changebg" value="1" hideRow="true">bgurl,framesize,frameitem,framewidth,frameheight,frameorder,changespeed</option>
+					<option for="showdesc" value="1" hideRow="true">description,tooltip_offset</option>
+					<option for="mod_absolute" value="1" hideRow="true">mod_top,mod_left</option>
+			</field>
+			
+			<field 
+				name="resourcesetting"
+				type="jadepend" 
+				default="" 
+				function="@title"
+				label="IMAGE_LOCATION_DIMENSION" 
+				description="IMAGE_LOCATION_DIMENSION" 
+				level="2"/>
+				
+			<field
+				name="image_url" 
+				type="text" 
+				size="40" 
+				default="modules/mod_jaanimation/assets/images/Ballooning2.png"
+				label="IMAGE_URL" 
+				description="IMAGE_URL_DESC" />
+				
+			<field 
+			name="zindex" 
+			size="20"
+			type="text"
+			default="1"
+			class="validate-numeric"
+			label="ZINDEX"
+			description="ZINDEX_DESC" />
+			
+			<field 
+				name="twidth"  
+				size="10" 
+				type="text" 
+				default="" 
+				class="validate-numeric"
+				label="TWIDTH" 
+				description="TWIDTH_DESC" />
+				
+			<field 
+			name="theight"  
+			size="10"
+			type="text"
+			default=""
+			class="validate-numeric"
+			label="THEIGHT"
+			description="THEIGHT_DESC" />
+			
+			<field 
+				name="animsetting" 
+				type="jadepend" 
+				default="" 
+				function="@title" 
+				label="ANIMATION_SETTINGS" 
+				description="ANIMATION_SETTINGS_DESC" 
+				level="2"/>
+			
+			<field 
+				name="direction" 
+				type="list"
+				default="v" 
+				label="DIRECTION" 
+				description="DIRECTION_DESC">
+					<option value="v">Vertical</option>
+					<option value="h">Horizontal</option>
+			</field>
+			
+			<field 
+				name="movetype"
+				type="list" 
+				default="sine" 
+				label="MOVE_TYPE" 
+				description="MOVE_TYPE_DESC">
+					<option value="sine">Sine</option>
+					<option value="straight">Straight</option>
+					<option value="random">Random</option>
+					<option value="preset">Preset</option>
+			</field>
+			
+			<field 
+				name="radius"  
+				size="10" 
+				type="text" 
+				default="" 
+				label="RADIUS" 
+				description="RADIUS_DESC" />
+				
+			<field 
+				name="step"  
+				size="10" 
+				type="text" 
+				default="4" 
+				label="Step" 
+				description="STEP_DESC" />
+				
+			<field 
+				name="pre_pos_xy" 
+				type="textarea" 
+				cols="60" 
+				rows="10" 
+				default="" 
+				label="PRESET_POSITION"
+				description="PRESET_POSITION_DESC"/>
+				
+			<field 
+				name="delay" 
+				size="10" 
+				type="text"
+				default="5000" 
+				label="Delay" 
+				description="DELAY_DESC"/>
+				
+			<field 
+				name="org_pos"  
+				size="30" 
+				type="text" 
+				default="200:200" 
+				label="ORIGIN_POS" 
+				description="ORIGIN_POS_DESC" />
+				
+			<field 
+				name="begin_pos" 
+				size="30" 
+				type="text" 
+				default="200:500" 
+				label="BEGIN_POS" 
+				description="BEGIN_POS_DESC" />
+				
+			<field 
+				name="end_pos"  
+				size="30" 
+				type="text" 
+				default="200:0" 
+				label="END_POS" 
+				description="END_POS_DESC" />
+				
+			<field 
+				name="repeat"
+				type="list" 
+				default="0" 
+				label="REPEAT" 
+				description="REPEAT_DESC">
+					<option value="0">Noloop</option>
+					<option value="1">Normal loop</option>
+					<option value="2">Circle loop</option>
+			</field>
+			
+			<field 
+				name="duration"  
+				size="30" 
+				type="text" 
+				default="20000" 
+				class="validate-numeric"
+				label="Speed" 
+				description="SPEED_DESC" />
+				
+			<field 
+				name="changebg"
+				type="radio"
+				default="0" 
+				label="CHANGE_BACKGROUND" 
+				description="CHANGE_BACKGROUND_DESC">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+			</field>
+			
+			<field 
+				name="framesize" 
+				size="20" 
+				type="text"
+				default="" 
+				class="validate-numeric"
+				label="FRAME_SIZE" 
+				description="FRAME_SIZE_DESC"/>
+				
+			<field
+				name="frameitem"
+				size="20" 
+				type="text" 
+				default="" 
+				class="validate-numeric"
+				label="FRAME_ITEM"
+				description="FRAME_ITEM_DESC"/>
+				
+			<field 
+				name="framewidth" 
+				size="20" 
+				type="text"
+				default="" 
+				class="validate-numeric"
+				label="FRAME_WIDTH" 
+				description="FRAME_WIDTH_DESC"/>
+				
+			<field 
+				name="frameorder"
+				type="list" 
+				default="v" 
+				label="FRAME_ORDER" 
+				description="FRAME_ORDER_DESC">
+					<option value="v">Vertical</option>
+					<option value="h">Horizontal</option>
+			</field>
+			
+			<field 
+				name="changespeed" 
+				size="20" 
+				type="text"
+				default="" 
+				class="validate-numeric"
+				label="CHANGE_SPEED" 
+				description="CHANGE_SPEED_DESC"/>		
+			
+			<field 
+				name="contentsetting" 
+				type="jadepend" 
+				default="" 
+				function="@title" 
+				label="TOOLTIP_SETTINGS" 
+				description="TOOLTIP_SETTINGS" 
+				level="2"/>
+				
+			<field 
+				name="showdesc" 
+				type="radio" 
+				default="0"
+				label="SHOW_DESCRIPTION" 
+				description="SHOW_DESCRIPTION_DESC">
+					<option value="1">Enable</option>
+					<option value="0">Disable</option>
+			</field>
+			
+			<field 
+				name="tooltip_offset"
+				size="20" 
+				type="text" 
+				default="120:20" 
+				label="TOOLTIP_OFFSET"
+				description="TOOLTIP_OFFSET_DESC"/>
+				
+			<field 
+				name="description" 
+				type="textarea"
+				cols="60"
+				rows="10"
+				default="Lorem ipsome....." 
+				label="DESCRIPTION_PARAMETERS" 
+				description="DESCRIPTION_PARAM_DESC" />		
+			<field
+				name="modulesetting"
+				type="jadepend"
+				default=""
+				function="@title"
+				label="SCREEN_IMAGE_POSITION_SETTINGS"
+				description="SCREEN_IMAGE_POSITION_SETTINGS" 
+				level="2"/>
+				
+			<field 
+				name="mod_absolute" 
+				type="list"
+				default="0" 
+				label="SET_MODULE_POSITION" 
+				description="SET_MODULE_POSITION_DESC">
+					<option value="0">Absolute with module postion container</option>
+					<option value="1">Absolute with the page</option>
+					<option value="2">Absolute with user screen</option>
+			</field>
+			
+			<field 
+				name="mod_top"  
+				size="10" 
+				type="text" 
+				default="" 
+				label="MODULE_TOP" 
+				description="MODULE_TOP_DESC" />
+				
+			<field 
+				name="mod_left"  
+				size="10" 
+				type="text" 
+				default="" 
+				label="MODULE_LEFT" 
+				description="MODULE_LEFT_DESC" />
+		</fieldset>
+	</fields>
+</form>

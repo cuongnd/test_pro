@@ -1,0 +1,64 @@
+// Pointing to /components/com_easysocial/themes/wireframe/styles/modules.less
+@import "modules";
+// @import "elements";
+
+(~"@{Module}") {
+
+	// EasySocial Logbox Modules
+	&.mod-es-logbox { 
+		
+		// Elements need to use for this this module
+		@import "bootstrap/grid";
+		@import "bootstrap/buttons"; //bootstrap core buttons styles
+		@import "modules/buttons"; //custom buttons for modules
+		// @import "bootstrap/button-groups";
+		// @import "dropdowns"; // Note: custom .dropdown-menu
+		@import "button-groups"; // Note: extra classes button-groups-es
+		@import "modules/forms"; //custom forms for modules
+		// @import "bootstrap/labels-badges";
+		@import "bootstrap/media";
+		// @import "avatars";
+
+		@import "icons-sprites"; //32x32
+		@import "modules/icons-es"; //load font-face icons
+		// /media/com_easysocial/styles/icons-es.less
+		.ies-facebook:before {
+			content: "\e0d5";
+		}
+
+		// Blocks
+		@import "login-box";
+
+		// Custom elements
+		h3 {
+			font-size: 22px;
+			line-height: 30px;
+			margin: 8px 0;
+		}
+		hr{
+		  margin: @baseLineHeight 0;
+		  border: 0;
+		  border-top: 1px solid @hrBorder;
+		  border-bottom: 1px solid @white;
+		}
+
+		.text-error          { color: @errorText; }
+		a.text-error:hover   { color: darken(@errorText, 10%); }
+		
+		// Vertical line
+		.vertical-line {
+			position: relative;
+			&:before {
+				content: '';
+				display: block;
+				width: 1px;
+				position: absolute;
+				background-color: rgba(0, 0, 0, 0.1);
+				// left: 50%;
+				top: 0px;
+				bottom: 0;
+			}
+		}
+
+	}
+}

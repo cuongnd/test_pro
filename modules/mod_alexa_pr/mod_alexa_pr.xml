@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="module">
+	<name>Alexa stats and google pagerank</name>
+	<author>Waleed Ajabnoor (http://www.risemyweb.com)</author>
+	<creationDate>3 March 2013</creationDate>
+	<copyright>(C) 2013 Risemyweb.com All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@risemyweb.com</authorEmail>
+	<authorUrl>http://www.risemyweb.com</authorUrl>
+	<version>0.1</version>
+	<description>The elegant alexa and pagrank button.It is ready now.</description>
+	    <files>
+	       <filename module="mod_alexa_pr">mod_alexa_pr.php</filename>
+        </files>
+    <params description="this module has no parameteres" >
+    </params>
+</extension>

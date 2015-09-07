@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="module" client="site" method="upgrade">
+	<name>EasySocial Login</name>
+	<author>Stack Ideas Sdn Bhd</author>
+	<creationDate>03/08/2013</creationDate>
+	<copyright>Copyright (C) 2009 - 2013 Stack Ideas Sdn Bhd. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>support@stackideas.com</authorEmail>
+	<authorUrl>http://stackideas.com</authorUrl>
+	<version>1.0</version>
+	<description><![CDATA[MOD_EASYSOCIAL_LOGIN_DESC]]></description>
+	<files>
+		<folder>styles</folder>
+		<folder>tmpl</folder>
+		<filename module="mod_easysocial_login">mod_easysocial_login.php</filename>
+		<filename>mod_easysocial_login.xml</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.mod_easysocial_login.ini</language>
+		<language tag="en-GB">en-GB.mod_easysocial_login.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="show_register_link" type="radio" class="btn-group" default="1" label="MOD_EASYSOCIAL_LOGIN_SHOW_REGISTRATION" description="MOD_EASYSOCIAL_LOGIN_SHOW_REGISTRATION_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="show_forget_username" type="radio" class="btn-group" default="1" label="MOD_EASYSOCIAL_LOGIN_SHOW_FORGET_USERNAME" description="MOD_EASYSOCIAL_LOGIN_SHOW_FORGET_USERNAME_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="show_forget_password" type="radio" class="btn-group" default="1" label="MOD_EASYSOCIAL_LOGIN_SHOW_FORGET_PASSWORD" description="MOD_EASYSOCIAL_LOGIN_SHOW_FORGET_PASSWORD_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="show_remember_me" type="radio" class="btn-group" default="1" label="MOD_EASYSOCIAL_LOGIN_SHOW_REMEMBER_ME" description="MOD_EASYSOCIAL_LOGIN_SHOW_REMEMBER_ME_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="show_logout_button" type="radio" class="btn-group" default="1" label="MOD_EASYSOCIAL_LOGIN_SHOW_LOGOUT_BUTTON" description="MOD_EASYSOCIAL_LOGIN_SHOW_LOGOUT_BUTTON_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="show_facebook_login" type="radio" class="btn-group" default="1" label="MOD_EASYSOCIAL_LOGIN_SHOW_FACEBOOK_LOGIN" description="MOD_EASYSOCIAL_LOGIN_SHOW_FACEBOOK_LOGIN_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="return" type="menuitem" disable="separator" label="MOD_EASYSOCIAL_LOGIN_REDIRECT_URL" description="MOD_EASYSOCIAL_LOGIN_REDIRECT_URL_DESC" >
+					<option value="">JDEFAULT</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

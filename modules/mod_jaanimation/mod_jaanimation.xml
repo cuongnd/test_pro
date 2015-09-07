@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+
+	<name>JA Animation</name>
+	<author>JoomlArt.com</author>
+	<creationDate>April 2014</creationDate>
+	<copyright>Copyright (C), J.O.O.M Solutions Co., Ltd. All Rights
+		Reserved.</copyright>
+	<license>license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+	</license>
+	<authorEmail>webmaster@joomlart.com</authorEmail>
+	<authorUrl>www.joomlart.com</authorUrl>
+	<version>2.5.3</version>
+	<updateservers>
+		<server type="collection">http://update.joomlart.com/service/tracking/list.xml</server>
+	</updateservers>
+	<description>
+		<![CDATA[
+			<span style="color: #008000;"><strong>JA Animation module for Joomla! 2.5 & 3.x</strong></span><br />
+			<div style="font-weight: normal">
+			<ol></ol>JA Animation module lets you enable image animation on your Joomla! site.<ol></ol>
+			<p><img src="http://joomlart.s3.amazonaws.com/images/extensions/mod_ja_anim/ja_animation.jpg"></p>
+			<p><span style="color: #ff6600;"><strong>Features:</strong></span></p>
+			<ol>
+				<li>Advanced animation module.</li>
+				<li>Rich backend with advanced features for easy configuration.</li>
+				<li>Comes with preset animation profiles. Advanced users can clone and edit the aniamtion profile to their requirements.</li><li> ../assets/images folder has default image set for various animation usage. Clouds, planes, flying halloween pumpkin and few balloons. You can also add your own images and use them.</li>
+			</ol>
+			<p><strong><span style="color: #ff0000;">Important Instructions:</span><br /></strong></p>
+			<ol></ol>
+			<ol>
+				<li>Module Zip size is over 2 MB thus the module will not install, you should configure PHP default upload setting to increase first.</li>
+				<li>In some cases, the animation in user browser may <strong>increase the user side CPU usage.</strong></li>
+				<li>Keep your module updated with the latest version</li>
+			</ol>
+			<p><strong><span style="color: #ff0000;">Usage Instructions:</span><br /></strong></p>
+			<ol></ol>
+			The module comes with many preset animation profiles with option to clone them and customize as your need. 
+			<ol>
+				<li><strong>Clone Animation Profile</strong></br><br/>
+				If you wish to change the settings of any preset animation profile. It is recommended to clone the profile first and then edit the parameters.</li>
+				<li>Some settings are complicated and should be used by advanced users only. ToolTips are added to each setting option, mouseover on the setting name for detailed information & instructions.</li>
+			</ol>
+			<p><strong><span style="color: #ff0000;">Upgrade Methods:</span><br /></strong></p>
+			<ol></ol>
+			<ol><li>You can install new version directly over this version. Uninstallation is not required. Backup any customized file before upgrading, your settings would be saved though. OR</li>
+				<li>Use <strong><a href="http://extensions.joomla.org/extensions/core-enhancements/installers/12077" target="_blank">JA Extensions Manager</a></strong> Component for easy upgrades and rollbacks. <strong><a href="http://www.youtube.com/user/JoomlArt#p/c/BC9B0C0BFE98657E/2/mNAuJRmifG8" target="_blank">Watch Video.</a></strong></li>
+			</ol>
+			<ol></ol>
+			<p><span style="color: #008000;"><strong>Links:</strong></span></p>
+			<ul>
+				<li><a target="_blank" href="http://www.joomlart.com/forums/forumdisplay.php?250">JA Animation Module Forum</a></li>
+				<li><a target="_blank" href="http://pm.joomlart.com/browse/JAECMODANIMATION">Changelog</a></li>
+				<li><a target="_blank" href="http://update.joomlart.com">Updates &amp; Versions</a></li>
+			</ul>
+			<p>Copyright 2004 - 2012 <a href="http://www.joomlart.com/" title="Visit Joomlart.com!">JoomlArt.com</a>.</p> 
+			</div>
+		]]>
+	</description>
+
+	<languages>
+		<language tag="en-GB">en-GB.mod_jaanimation.ini</language>
+	</languages>
+
+	<files>
+		<filename module="mod_jaanimation">mod_jaanimation.php</filename>
+		<filename module="mod_jaanimation">index.html</filename>
+		<folder>assets</folder>
+		<folder>admin</folder>
+		<folder>helpers</folder>
+		<folder>profiles</folder>
+		<folder>elements</folder>
+		<folder>tmpl</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/modules/mod_jaanimation/elements">
+				<field name="moduleclass_sfx" type="text" default="_jaanim"
+					label="MODULE_CLASS_SUFFIX" description="MODULE_CLASS_SUFFIX_DESC" />
+				<field name="profile" type="jadepend" function="@profile"
+					extpath="modules/mod_jaanimation"
+					default="hallowen2" label="SELECT_ANIMATION_PROFILE" description="SELECT_ANIMATION_PROFILE_DESC" />
+
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field name="cache" type="list" default="1" label="CACHING"
+					description="CACHING_DESC">
+					<option value="1">USER_GLOABL</option>
+					<option value="0">NO_CACHING</option>
+				</field>
+
+				<field name="cache_time" type="text" default="900" filter="integer" label="CACHE_TIME"
+					description="CACHE_TIME_DESC" />
+
+				<field name="fps" size="10" type="text" filter="integer" default="50"
+					label="FRAME_PER_SECOND" description="FRAME_PER_SECOND_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

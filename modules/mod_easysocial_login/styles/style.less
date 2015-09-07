@@ -1,0 +1,59 @@
+// Pointing to /components/com_easysocial/themes/wireframe/styles/modules.less
+@import "modules";
+
+(~"@{Module}") {
+
+	// EasySocial Login Modules
+	&.mod-es-login { 
+			
+		// Elements need to use for this this module
+		@import "bootstrap/buttons"; //bootstrap core buttons styles
+		@import "modules/buttons"; //custom buttons for modules
+		@import "modules/forms"; //custom forms for modules
+		@import "modules/icons-es"; //load font-face icons
+
+		label {
+			font-size: 11px;
+		}
+		
+		// /media/com_easysocial/styles/icons-es.less
+		.ies-facebook:before {
+			content: "\e0d5";
+		}
+
+		.es-signin-social {
+
+			p {
+				margin-top: 20px;
+			}
+			.line {
+				position: relative;
+				&:before {
+					content: '';
+					width: 100%;
+					position: absolute;
+					// background-color: rgba(0, 0, 0, 0.1) !important;
+					left: 0;
+					right: 0;
+					top: 9px;
+					height: 1px;
+					// bottom: 0;
+				}
+				strong {
+					// background: #EFF0F4;
+					padding: 0 6px;
+					position: relative;
+					z-index: 2;
+				}
+			}
+			.text-error,
+			.text-error a {
+				color: #B94A48;
+			}
+		}//es-signin-social
+
+		.btn-login {
+			margin-top: 10px;
+		}
+	}
+}

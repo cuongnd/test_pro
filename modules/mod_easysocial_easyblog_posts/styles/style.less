@@ -1,0 +1,45 @@
+// Pointing to /components/com_easysocial/themes/wireframe/styles/modules.less
+@import "modules";
+
+(~"@{Module}") {
+
+	// EasySocial EasyBlog posts Modules
+	&.mod-es-recent-blogs { 
+		
+		// twbs media object
+		@import "bootstrap/media";
+		// media/com_easysocial/styles/lists.less
+		@import "list"; // items listing styles
+		@import "avatars";
+		
+		// Elements
+		.pull-left {
+			float: left;
+		}
+
+		.es-mod-title {
+			font-weight: bold;
+			margin-bottom: 5px;
+			font-size: 14px;
+		}
+		.es-mod-desp {
+			margin-bottom: 5px;
+		}
+		.es-mod-author {
+			
+		}
+		ul.es-nav-blogs {
+			> li{
+				padding: 15px 0 !important;
+
+				.author-meta{
+					margin-top:3px;
+				}
+			}
+
+			> li + li {
+				border-top: 1px solid #d7d7d7;
+			}
+		}		
+	}
+}

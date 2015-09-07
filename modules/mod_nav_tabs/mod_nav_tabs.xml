@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+        type="module"
+        version="3.1"
+        client="site"
+        method="upgrade">
+    <name>mod_nav_tabs</name>
+    <author>Joomla! Project</author>
+    <creationDate>July 2004</creationDate>
+    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>admin@joomla.org</authorEmail>
+    <authorUrl>www.joomla.org</authorUrl>
+    <version>3.0.0</version>
+    <description>MOD_MENU_XML_DESCRIPTION</description>
+    <files>
+        <filename module="mod_nav_tabs">mod_nav_tabs.php</filename>
+        <folder>tmpl</folder>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <filename>mod_nav_tabs.xml</filename>
+    </files>
+    <languages>
+        <language tag="en-GB">en-GB.mod_nav_tabs.ini</language>
+        <language tag="en-GB">en-GB.mod_nav_tabs.sys.ini</language>
+    </languages>
+    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_MENU"/>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="tabs" type="text" label="List Tabs" description="format is t1;t2;t3" required="true"/>
+                <field name="background_tabs" type="color" label="Background Tabs" description="Background Tabs"/>
+                <field name="active" type="color" label="Active" description="Active"/>
+                <field name="color_tabs" type="color" label="Color Tabs" description="Color tabs"/>
+                <field name="background_content" type="color" label="Background Contents" description="Background Contents"/>
+            </fieldset>
+
+        </fields>
+    </config>
+</extension>

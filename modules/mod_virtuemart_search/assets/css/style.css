@@ -1,0 +1,109 @@
+.irs {
+    position: relative;
+    display: block;
+    height: 40px
+}
+
+.irs-line {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 13px;
+    top: 25px;
+    background-color: #b3e1a2;
+    border-radius: 5px
+}
+
+.irs-line > span {
+    display: none
+}
+
+.irs-min, .irs-max {
+    position: absolute;
+    cursor: default;
+    color: #999;
+    font-size: 13px;
+    line-height: 15px;
+    text-shadow: none;
+    top: -5px;
+    padding: 2px 3px;
+    background: #e5e5e5;
+    border-radius: 4px
+}
+
+.irs-min {
+    left: 0
+}
+
+.irs-max {
+    right: 0
+}
+
+.irs-single {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    cursor: default;
+    white-space: nowrap;
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    text-shadow: none;
+    padding: 3px 5px;
+    background: #999;
+    border-radius: 5px
+}
+
+.irs-single:after {
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 3px solid #999;
+    border-bottom: none;
+    height: 0;
+    width: 0;
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 50%;
+    margin-left: -3px;
+    overflow: hidden
+}
+
+.irs-slider {
+    position: absolute;
+    cursor: ew-resize;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+    top: 16px;
+    background-color: #63c242;
+    border: 3px solid #fff;
+    border-radius: 14px;
+    left: 10px
+}
+
+.irs-slider.single:before {
+    position: absolute;
+    content: "";
+    top: -50%;
+    left: -100%;
+    width: 300%;
+    height: 200%;
+    background: rgba(0, 0, 0, 0)
+}
+
+.irs--currency .irs-single {
+    display: none
+}
+
+.irs--currency .irs-min, .irs--currency .irs-max {
+    display: block !important
+}
+
+.irs--currency .irs-min:before, .irs--currency .irs-max:before {
+    content: "$"
+}
+.l-become-author__rates-slider
+{
+    padding: 0px;
+}

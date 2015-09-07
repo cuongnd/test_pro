@@ -1,0 +1,38 @@
+// Pointing to /components/com_easysocial/themes/wireframe/styles/modules.less
+@import "modules";
+
+(~"@{Module}") {
+
+	// EasySocial Albums Modules
+	&.mod-es-recent-albums { 
+		
+		// Elements need to use for this this module
+		//@import "bootstrap/buttons"; //bootstrap core buttons styles
+		//@import "modules/buttons"; //custom buttons for modules
+		//@import "modules/forms"; //custom forms for modules
+		//@import "modules/icons-es"; //load font-face icons
+
+		// /media/com_easysocial/styles/icons-es.less
+		// .ies-facebook:before {
+		// 	content: "\e0d5";
+		// }
+		// twbs media object
+		// @import "bootstrap/media";
+		
+		// media/com_easysocial/styles/lists.less
+		@import "list"; // items listing styles
+
+		.mod-es-album-cover {
+			display: block;
+			padding: 70% 2px 0;
+			width: 100%;
+			background-size: cover;
+		}
+		// override list.less
+		.es-item-grid > li {
+			margin-bottom: 1%;
+			width: 60px;
+		}
+		
+	}
+}

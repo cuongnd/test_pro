@@ -1,0 +1,40 @@
+// Pointing to /components/com_easysocial/themes/wireframe/styles/modules.less
+@import "modules";
+
+
+(~"@{Module}") {
+
+	// EasySocial Users Modules
+	&.mod-es-users { 
+		
+		// @import "dashboard";
+		// @import "stream";
+		// @import "comment";
+		// @import "elements";		
+
+		// Elements need to use for this this module
+
+		// Pointing to /components/com_easysocial/themes/wireframe/styles/widget.less
+		@import "widget";
+
+		// Customize .widget-list-grid
+		.es-avatar {
+			background: #fff !important;
+			.square(42px) !important;
+			line-height: 42px !important;
+			overflow: hidden !important;
+			.border-radius(2px) !important;
+		}
+		.widget-list-grid {
+			padding-top: 5px;
+			> li {
+				margin-bottom: 10px;
+				> a {
+					display: inline-block;
+					background: white;
+					.border-radius(3px);
+				}
+			}
+		}
+	}
+}

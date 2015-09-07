@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="3.1"
+	client="administrator">
+	<name>mod_mymenu</name>
+	<author>Son nguyen</author>
+	<creationDate>4/2015</creationDate>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>sonnvhaui@gmail.com</authorEmail>
+	<authorUrl>http://asianventure.com</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_MYMENU_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_mymenu">mod_mymenu.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+        <filename>tmpl/default.php</filename>
+		<folder>tmpl</folder>
+	</files>
+
+	<!--<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_MENU" />-->
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+                <field
+                        name="showtotal"
+                        type="list"
+                        default="never"
+                        label="Show total"
+                        description="MOD_MENU_FIELD_SHOWTOTAL_DESC">
+                    <option value="never">never</option>
+                    <option value="always">always</option>
+                    <option value="onhover">onhover</option>
+                </field>
+
+                <field
+                        name="color"
+                        type="text"
+                        default="1"
+                        label="Color"
+                        description="MOD_MENU_FIELD_COLOR_DESC">
+
+                </field>
+
+                <field
+                        name="showArrows"
+                        type="list"
+                        default="yes"
+                        label="show Arrows"
+                        description="MOD_MENU_FIELD_SHOWTOTAL_DESC">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                 </field>
+
+
+				<!--<field-->
+					<!--name="showhelp"-->
+					<!--type="list"-->
+					<!--default="1"-->
+					<!--label="MOD_MENU_FIELD_SHOWHELP"-->
+					<!--description="MOD_MENU_FIELD_SHOWHELP_DESC">-->
+					<!--<option value="0">JHIDE</option>-->
+					<!--<option value="1">JSHOW</option>-->
+				<!--</field>-->
+
+				<!--<field-->
+					<!--name="forum_url"-->
+					<!--type="url"-->
+					<!--filter="url"-->
+					<!--size="30"-->
+					<!--default=""-->
+					<!--label="MOD_MENU_FIELD_FORUMURL_LABEL"-->
+					<!--description="MOD_MENU_FIELD_FORUMURL_DESC"-->
+				<!--/>-->
+
+				<!--<field-->
+					<!--name="cache"-->
+					<!--type="list"-->
+					<!--default="0"-->
+					<!--label="COM_MODULES_FIELD_CACHING_LABEL"-->
+					<!--description="COM_MODULES_FIELD_CACHING_DESC">-->
+					<!--<option-->
+						<!--value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>-->
+				<!--</field>-->
+			</fieldset>
+		</fields>
+	</config>
+</extension>
