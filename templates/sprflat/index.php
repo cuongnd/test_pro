@@ -135,7 +135,7 @@ if ($enableEditWebsite) {
         JHtml::_('formbehavior.chosen', 'select');
         //$doc->addScript(JUri::root().'/media/system/js/jquery.ba-bbq.js');
         $doc->addScript(JUri::root() . '/media/system/js/lodash.min.js');
-        $doc->addScript(JUri::root() . '/media/system/js/Responsive-Fluid-Drag-and-Drop-Grid-Layout-with-jQuery-gridstack-js/src/gridstack.js');
+        $doc->addScript(JUri::root() . '/media/system/js/gridstack/src/gridstack.js');
         //$doc->addScript(JUri::root().'/media/system/js/Nestable-master/jquery.nestable.js');
         $doc->addScript(JUri::root() . '/templates/sprflat/js/jquery.editstyle.js');
         $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jRespond.min.js');
@@ -178,10 +178,10 @@ if ($enableEditWebsite) {
         $doc->addStyleSheet(JUri::root() . "/templates/sprflat/css/template.css");
 
         //css for gridstack
-        $lessInput = JPATH_ROOT . '/media/system/js/Responsive-Fluid-Drag-and-Drop-Grid-Layout-with-jQuery-gridstack-js/less/gridstack.less';
-        $cssOutput = JPATH_ROOT . '/media/system/js/Responsive-Fluid-Drag-and-Drop-Grid-Layout-with-jQuery-gridstack-js/src/gridstack.css';
+        $lessInput = JPATH_ROOT . '/media/system/js/gridstack/less/gridstack.less';
+        $cssOutput = JPATH_ROOT . '/media/system/js/gridstack/src/gridstack.css';
         templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . "/media/system/js/Responsive-Fluid-Drag-and-Drop-Grid-Layout-with-jQuery-gridstack-js/src/gridstack.css");
+        $doc->addStyleSheet(JUri::root() . "/media/system/js/gridstack/src/gridstack.css");
         //end css for gridstack
 
         $lessInput = JPATH_ROOT . '/templates/sprflat/assets/less/main.less';
@@ -315,14 +315,14 @@ if ($enableEditWebsite) {
 
         $doc->addStyleSheet("$this->baseurl/templates/$this->template/css/custom.css");
         $doc->addScript(JUri::root() . '/media/system/js/lodash.min.js');
-        $doc->addScript(JUri::root() . '/media/system/js/Responsive-Fluid-Drag-and-Drop-Grid-Layout-with-jQuery-gridstack-js/src/gridstack.js');
+        $doc->addScript(JUri::root() . '/media/system/js/gridstack/src/gridstack.js');
 
-        $lessInput = JPATH_ROOT . '/media/system/js/Responsive-Fluid-Drag-and-Drop-Grid-Layout-with-jQuery-gridstack-js/less/gridstack.less';
-        $cssOutput = JPATH_ROOT . '/media/system/js/Responsive-Fluid-Drag-and-Drop-Grid-Layout-with-jQuery-gridstack-js/src/gridstack.css';
+        $lessInput = JPATH_ROOT . '/media/system/js/gridstack/less/gridstack.less';
+        $cssOutput = JPATH_ROOT . '/media/system/js/gridstack/src/gridstack.css';
         templateSprflatHelper::compileLess($lessInput, $cssOutput);
 
 
-        $doc->addStyleSheet(JUri::root() . '/media/system/js/Responsive-Fluid-Drag-and-Drop-Grid-Layout-with-jQuery-gridstack-js/src/gridstack.css');
+        $doc->addStyleSheet(JUri::root() . '/media/system/js/gridstack/src/gridstack.css');
 
         $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jRespond.min.js');
         $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/quicksearch/jquery.quicksearch.js');
