@@ -13,7 +13,7 @@ class Template extends JavaScriptFunction {
     public function value() {
         if($this->jquery_element)
         {
-            return "kendo.template(jQuery('".$this->value."'))";
+            return "kendo.template(jQuery('".$this->value."')[0].outerHTML)";
         }
         else
         {
