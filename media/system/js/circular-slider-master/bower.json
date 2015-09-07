@@ -1,0 +1,24 @@
+{
+  "name": "circular-slider",
+  "version": "1.0.4",
+  "homepage": "https://github.com/princejwesley/circular-slider",
+  "authors": [
+    "princejwesley <princejohnwesley@gmail.com>"
+  ],
+  "main" : "dist/circular-slider.min.js",
+  "license": "MIT",
+  "ignore": [
+    "!(dist)"
+  ],
+  "description" : "Circular slider - a jquery plugin",
+  "dependencies": {
+	"jquery": ">=1.10.2"
+  },
+  "keywords": [
+    "slider",
+    "circular slider",
+    "image slider",
+    "range slider",
+    "image carousel"
+  ]
+}

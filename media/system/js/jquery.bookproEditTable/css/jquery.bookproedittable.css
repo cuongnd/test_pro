@@ -1,0 +1,102 @@
+.icon-sorting {
+	width: 16px;
+	height: 16px;
+	background: url("../images/sprite.png") no-repeat;
+	background-position: 0 -288px;
+	cursor: pointer;
+}
+.infoSofting {
+	border: 1px solid #969696;
+	position: absolute;
+	z-index: 100;
+	background: #ebebeb;
+	padding-left: 0px;
+	list-style: none;
+}
+.infoSofting .option {
+	margin-bottom: 7px;
+	padding-right: 7px;
+	padding-top: 7px;
+	cursor: pointer;
+	border-top: 1px solid #DBD9D9;
+	width: 140px;
+}
+.infoSofting .option .form-inline {
+	border: 1px solid #969696;
+	background: #ebebeb;
+	display: block;
+	position: absolute;
+	width: 140px;
+	left: 140px;
+	top: -1px;
+}
+.infoSofting .option .form-inline ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	padding-left: 5px;
+}
+.infoSofting .option .form-inline ul li {
+	border-bottom: 1px solid #DBD9D9;
+}
+.infoSofting .option .form-inline ul label {
+	padding-left: 3px;
+	padding-top: 7px;
+}
+.infoSofting .option:first-child {
+	border: none;
+}
+.infoSofting .i-option-asc {
+	float: left;
+	width: 16px;
+	height: 16px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background: url("../images/sprite.png") no-repeat;
+	background-position: -112px -240px;
+}
+.infoSofting .i-option-desc {
+	float: left;
+	width: 16px;
+	height: 16px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background: url("../images/sprite.png") no-repeat;
+	background-position: -112px -256px;
+}
+.infoSofting .i-option-columns {
+	float: left;
+	width: 16px;
+	height: 16px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background: url("../images/sprite.png") no-repeat;
+	background-position: -112px -304px;
+}
+.infoSofting .i-option-filter {
+	float: left;
+	width: 16px;
+	height: 16px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background: url("../images/sprite.png") no-repeat;
+	background-position: -32px -80px;
+}
+.wrapper-columns {
+	position: absolute;
+	background: #EBEBEB;
+	border: 1px solid #969696;
+	z-index: 200;
+	margin-left: 153px;
+	padding: 20px;
+	list-style: none;
+	font-weight: normal;
+}
+.wrapper-columns .infoColumns {
+	padding-top: 10px;
+	border-top: 1px solid #666666;
+	cursor: pointer;
+}
+.wrapper-columns .infoColumns:first-child {
+	border: none;
+}
