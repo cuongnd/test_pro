@@ -1,0 +1,109 @@
+body {
+	background: url(../preview/bg.png) repeat;
+}
+
+.navbar .brand {
+	font-size: 16px;
+	padding: 0;
+	line-height: 40px;
+	color: #000000;
+	float: right;
+	font-weight: bold;
+	margin-left: 20px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125);
+}
+
+#main-container {
+	margin-top: 40px;
+}
+
+#logo {
+	display: block;
+	margin: 0 auto 30px;
+}
+
+#content > div {
+	margin-bottom: 60px;
+}
+
+#buy-ribbon {
+	background: url(../preview/buy.png) no-repeat;
+	display: block;
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	width: 78px;
+	height: 78px;
+}
+
+.page-header {
+	border-bottom: 1px solid #dfdfdf;
+	padding-bottom: 0;
+	-webkit-box-shadow: 0px 1px 0px 0px #ffffff;
+	box-shadow: 0px 1px 0px 0px #ffffff; 
+}
+
+.api-buttons {
+	margin-top: 20px;
+}
+
+.api-buttons > a {
+	margin-right: 10px;
+}
+
+h2 small {
+	font-size: 16px;
+}
+
+.price {
+	font-size: 25px !important;
+	line-height: 26px !important;
+}
+
+.output {
+	width: 100%;
+	height: 200px;
+	background: #fff;
+	border: 1px solid #e6e6e6;
+	overflow: auto;
+}
+
+.output p {
+	padding-left: 10px;
+}
+
+pre {
+	font-size: 10px;
+	margin-bottom: 20px !important;
+}
+
+.controls > div {
+	margin-bottom: 10px;
+}
+
+.controls {
+	margin-bottom: 28px;
+}
+
+.control-label {
+	color: #555555;
+	font-weight: bold;
+}
+
+.offset-top {
+	margin-top: 20px;
+}
+
+#ipod-designer > div {
+	height: 400px;
+}
+
+
+#ipod-designer > div > div {
+	height: 370px;
+}
+
+
+#businnescard-designer > .fpd-product-container {
+	width: 620px;
+}

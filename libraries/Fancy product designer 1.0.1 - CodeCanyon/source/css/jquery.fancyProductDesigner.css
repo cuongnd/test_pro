@@ -1,0 +1,420 @@
+/*
+ * The main style sheets for the Fancy Product Designer
+ *
+ */
+
+.fpd-container div, .fpd-container ul, .fpd-container li, .fpd-container span, .fpd-container a, .fpd-container img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	list-style: none;
+	max-width: none;
+}
+
+.fpd-container {
+	width: 940px;
+}
+
+.fpd-product, .fpd-design {
+	display: none;
+}
+
+/* The 3 main boxes - Product Selection, Product Container and Design Selection */
+.fpd-container > div {
+	width: 100%;
+	height: 600px;
+	overflow: hidden;
+	float: left;
+	margin-right: 10px;
+	background: #eeeeee;
+	background: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#eeeeee));
+	background: -webkit-linear-gradient(top, #ffffff 0%,#eeeeee 100%);
+	background: -o-linear-gradient(top, #ffffff 0%,#eeeeee 100%);
+	background: -ms-linear-gradient(top, #ffffff 0%,#eeeeee 100%);
+	background: linear-gradient(to bottom, #ffffff 0%,#eeeeee 100%);
+	border: 1px solid #d3d3d3;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	padding: 5px 7px 7px 5px;
+	-webkit-box-shadow: 0px 1px 0px 0px #fff;
+	box-shadow: 0px 1px 0px 0px #fff;  
+}
+
+/* The 3 inner boxes */
+.fpd-container > div > div {
+	width: 100%;
+	height: 570px;
+	overflow: hidden;
+	background-color: #fafafa;
+	border: 1px solid #c3c3c3;
+	outline: none;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 1px 0px 0px #ffffff, inset 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 0px 0px #ffffff, inset 0px 2px 3px 0px rgba(0, 0, 0, 0.1); 
+}
+
+
+/* Product Selection/Design Selection */
+.fpd-container .fpd-product-selection {
+	width: 100px;
+}
+
+.fpd-product-selection > div > ul, .fpd-design-selection > div > ul {
+	top: 0;
+	position: relative;
+}
+
+.fpd-product-selection ul li, .fpd-design-selection ul li {
+	margin: 0;
+	padding: 20px 0;
+	border-top: 1px solid #ffffff;
+	border-bottom: 1px solid #d3d3d3;
+	cursor: pointer;
+}
+
+.fpd-product-selection ul li:first-child, .fpd-design-selection ul li:first-child, .fpd-design-selection ul li:nth-child(2) {
+	border-top: 1px solid transparent;
+}
+
+.fpd-product-selection ul li:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+}
+
+.fpd-product-selection ul li:hover, .fpd-design-selection ul li:hover, ul.fpd-views > li:hover {
+	background: #fff;
+	-webkit-transition: background 3000ms ease-out;
+	-moz-transition: background 300ms ease-out;
+	-ms-transition: background 300ms ease-out;
+	-o-transition: background 300ms ease-out;
+	transition: background 300ms ease-out;
+}
+
+.fpd-product-selection ul li > img, .fpd-design-selection ul li > img {
+	max-width: 90%;
+	max-height: 70px;
+	margin: 0 auto;
+	display: block;
+}
+
+.fpd-container .fpd-design-selection {
+	width: 200px;
+}
+
+.fpd-design-selection ul li {
+	float: left;
+	width: 49%;
+	height: 60px;
+	border-right: 1px solid #d3d3d3;
+	padding: 10px 0;
+}
+
+.fpd-design-selection ul li:nth-child(2n) {
+	border-right: none;
+	width: 50%;
+}
+
+.fpd-design-selection ul li > img {
+	max-height: 60px !important;
+}
+
+
+/* Product Container */
+.fpd-container .fpd-product-container {
+	width: 575px;
+}
+
+.fpd-product-container > div {
+	width: 100%;
+	position: relative;
+	background: url(../images/fpd/grid.png);
+}
+
+/* Editor Bar - Adding custom text button, element switcher */
+.fpd-product-container > section {
+	width: 100%;
+	height: 27px;
+	margin-top: 5px;
+}
+
+.fpd-product-container > section button {
+	color: #8C8A8C;
+	font-size: 11px;
+	font-weight: bold;
+	float: left;
+	margin-right: 10px;
+	padding: 2px 4px;
+	background: none;
+	border: 1px solid #b8b8b8;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 1);
+	box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 1);
+	text-shadow: 0px 1px 0px #ffffff;
+}
+
+.fpd-product-container > section button:hover {
+	background: #f3f3f3;
+}
+
+.fpd-product-container > section > .fpd-element-switcher {
+	float: right;
+}
+
+/* The divs within the inner box of the product container */
+.fpd-product-container > div > div {
+	position: absolute;
+	border: 1px dashed transparent;
+}
+
+.fpd-product-container > div > div.fpd-toolbar {
+	display: none;
+	width: 90%;
+	top: 15px;
+	left: 5%;
+	padding: 4px 0;
+	height: 22px;
+	border: 1px solid #e1e1e1;
+	background: #eeeeee;
+	background: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#eeeeee));
+	background: -webkit-linear-gradient(top, #ffffff 0%,#eeeeee 100%);
+	background: -o-linear-gradient(top, #ffffff 0%,#eeeeee 100%);
+	background: -ms-linear-gradient(top, #ffffff 0%,#eeeeee 100%);
+	background: linear-gradient(to bottom, #ffffff 0%,#eeeeee 100%);
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+div.fpd-toolbar > div {
+	position: relative;
+	float: left;
+	cursor: pointer;
+	margin-left: 10px;
+	padding: 2px;
+	width: 16px;
+	height: 16px;
+	background: none;
+	border: 1px solid #e1e1e1;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 1);
+	box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 1); 
+}
+
+div.fpd-toolbar > div:last-child {
+	margin-right: 10px !important;
+	float: right !important;
+}
+
+div.fpd-toolbar > .fpd-color-picker {
+	display: none;
+	width: auto;
+}
+
+.fpd-color-picker > input, .fpd-color-picker > input:focus {
+	float: left;
+	display: block;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+div.fpd-toolbar > select.fpd-fonts-dropdown {
+	display: none;
+	float: left;
+	border: 1px solid #e1e1e1;
+	height: 22px;
+	width: 150px;
+	margin: 0 0 0 10px;
+	padding: 2px;
+	font-size: 12px;
+	-webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 1);
+	box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 1); 
+}
+
+select.fpd-fonts-dropdown > option {
+	margin-bottom: 3px;
+}
+
+.fpd-product-container > div > div.containment {
+	border: 1px dashed blue;
+	pointer-events: none;
+}
+
+.fpd-product-container > div > div.selected {
+	border: 1px dashed #990000 !important;
+}
+
+.fpd-product-container > div > div > div.fpd-warning {
+	background: url(../images/fpd/warning.png) no-repeat;
+	position: absolute;
+	padding: 10px;
+	width: 24px;
+	height: 24px;
+	top: 50%;
+	left: 50%;
+	margin-left: -12px;
+	margin-top: -12px;
+}
+
+/* Views list */
+
+.fpd-product-container > div > ul.fpd-views {
+	background: #FAFAFA;
+	position: absolute;
+	list-style: none;
+	right: 10px;
+	bottom: 20px;
+}
+
+ul.fpd-views > li {
+	float: left;
+	margin-right: 10px;
+	padding: 5px;
+	border: 1px solid #D3D3D3;
+	cursor: pointer;
+}
+
+ul.fpd-views > li:hover {
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+	-webkit-transition: all 3000ms ease-out;
+	-moz-transition: all 300ms ease-out;
+	-ms-transition: all 300ms ease-out;
+	-o-transition: all 300ms ease-out;
+	transition: all 300ms ease-out;
+}
+
+ul.fpd-views > li > img {
+	display: block;
+	max-width: 50px;
+	max-height: 40px;
+	margin: 0 auto;
+}
+
+/* The transformation/remove button */
+.fpd-product-container > div > div.selected > button {
+	position: absolute;
+	display: block;
+	padding: 0;
+	width: 18px;
+	height: 18px;
+}
+
+.fpd-product-container > div > div.selected > button.fpd-rotate {
+	top: -9px;
+	left: -9px;
+}
+
+.fpd-product-container > div > div.selected > button.fpd-drag {
+	top: -9px;
+	right: -9px;
+}
+
+.fpd-product-container > div > div.selected > button.fpd-resize {
+	bottom: -9px;
+	right: -9px;
+}
+
+.fpd-product-container > div > div.selected > button.fpd-remove {
+	bottom: -9px;
+	left: -9px;
+}
+
+/* The scroll up/down buttons for the product/Design selection*/
+a.fpd-scroll-up, a.fpd-scroll-down {
+	width: 100%;
+	outline: none;
+}
+
+a.fpd-scroll-up > span, a.fpd-scroll-down > span {
+	margin: 0 auto;
+}
+
+/* Browser Alert */
+
+.fpd-container > .fpd-browser-alert {
+	height: auto !important;
+	width: auto;
+	padding: 10px;
+}
+
+.fpd-browser-alert > p {
+	font-weight: bold;
+}
+
+.fpd-browser-alert > span > a {
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	background-repeat: no-repeat;
+	margin-right: 10px;
+}
+
+.fpd-browser-alert > span > .firefox {
+	background: url(../images/fpd/firefox.png);
+}
+
+.fpd-browser-alert > span > .chrome {
+	background: url(../images/fpd/chrome.png);
+}
+
+.fpd-browser-alert > span > .opera {
+	background: url(../images/fpd/opera.png);
+}
+
+/* The optional editor box */
+.fpd-container > div.fpd-editor-box {
+	clear: both;
+	margin-top: 20px;
+	background: #D9EDF7;
+	border: 1px solid #BCE8F1;
+	width: 300px;
+	height: auto;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.fpd-container > div.fpd-editor-box h3 {
+	color: #3A87AD;
+	font-size: 14px;
+	line-height: 14px;
+	font-weight: bold;
+}
+
+.fpd-container > div.fpd-editor-box > p {
+	margin: 0;
+}
+
+.fpd-container > div.fpd-editor-box > p > span:first-child {
+	font-weight: bold;
+}
+
+/* Input reset */
+.fpd-product-container > div > div > input, .fpd-product-container > div > div > input:focus {
+	height: 100%;
+	line-height: 100%;
+	background: none;
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	-webkit-border-radius: none;
+	border-radius: none;
+	margin: 0;
+	width: auto;
+	outline: none;  
+}
+
+/* Helper */
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+.clear {clear: both;}
+.hidden {display: none;}

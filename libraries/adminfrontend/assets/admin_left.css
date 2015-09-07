@@ -1,0 +1,30 @@
+.admin_menu_left .ui-listview > .ui-li-static
+{
+    padding: 0;
+}
+.admin_menu_left .ui-listview > li h1,.admin_menu_left .ui-listview > li h2,.admin_menu_left .ui-listview > li h3, .admin_menu_left .ui-listview > li h4, .admin_menu_left .ui-listview > li h5,.admin_menu_left .ui-listview > li h6
+{
+    margin: 0;
+}
+.plugin_item .icheckbox_flat-blue
+{
+    display: inline-block !important;
+}
+#sidebar #sideNav li .chzn-container a
+{
+    background: -moz-linear-gradient(center top , #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%) repeat scroll 0 0 padding-box rgba(0, 0, 0, 0);
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-shadow: 0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #444;
+    display: block;
+    height: 23px;
+    line-height: 24px;
+    overflow: hidden;
+    padding: 0 0 0 8px;
+    position: relative;
+    text-decoration: none;
+    white-space: nowrap;
+    border: none;
+
+}

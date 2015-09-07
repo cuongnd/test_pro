@@ -1,0 +1,8 @@
+.itemField {
+	width: 700px;
+}
+.itemField .properties.block {
+	height: 300px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
