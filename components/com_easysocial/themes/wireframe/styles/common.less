@@ -1,0 +1,164 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+/* 1. GLOBAL
+================================================== */
+
+a:focus {
+  outline:none !important;
+}
+a b
+{
+	color:inherit;
+	font-weight:bold;
+}
+.small
+{
+	font-size:11px;
+	margin:auto;
+	padding:auto;
+	color:#999;
+}
+.none
+{
+	display:none;
+}
+.hidden
+{
+	visibility:hidden;
+}
+.show
+{
+	display:block;
+}
+.inline
+{
+	display:inline;
+}
+hr{
+  margin: @baseLineHeight 0;
+  border: 0;
+  border-top: 1px solid @hrBorder;
+  border-bottom: 1px solid @white;
+}
+
+
+
+
+/* RESET
+================================================== */
+.reset-heading
+{
+	background:none;
+	border:none;
+	clear:none;
+	float:none;
+	display:block;
+	padding:0;
+	margin:0;
+	width:auto;
+	position:static;
+}
+.reset-list,
+.reset-list li
+{
+	background:none;
+	border:0;
+	clear:none;
+	display:block;
+	float:none;
+	list-style:none;
+	list-style-image:none;
+	line-height:normal;
+	margin:0;
+	padding:0;
+	overflow:visible;
+	width:auto;
+}
+.reset-list
+{
+	&.inline > li
+	{
+		display:inline-block;
+		float:left;
+		position:relative;
+
+			&.pull-right
+			{
+				float:right;
+			}
+	}
+}
+
+
+/* CLEARFIX
+================================================== */
+
+.clear
+{
+	clear:both;
+	font-size:0 !important;
+	height:0 !important;
+	line-height:0 !important
+}
+.clearfix
+{
+	clear:none;
+	display:block;
+	height:auto;
+	overflow:visible;
+	zoom:1;
+}
+.clearfix:after
+{
+	content:".";
+	clear:both;
+	display:block;
+	height:0;
+	visibility:hidden
+}
+.cleartab:before,
+.cleartab:after
+{
+	content:"";
+	display:table;
+}
+.cleartab:after
+{
+	clear:both;
+}
+.cleartab
+{
+		*zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+.clearfull
+{
+	display:inline-block;
+	width:100%
+}
+.input.fake
+{
+	border:1px solid #ccc;
+	.border-radius( 3px );
+	.box-shadow( 0 1px 1px rgba(0, 0, 0, 0.075) inset );
+
+	label,
+	input
+	{
+		.shape-reset();
+	}
+}
+.opacity-50
+{
+	opacity:0.5;
+}
+
+
+
+
+/* PAGE HEADLINE
+================================================== */
+

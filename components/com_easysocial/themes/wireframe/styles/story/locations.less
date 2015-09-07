@@ -1,0 +1,273 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+.es-story-footer {
+
+	.es-story-content {
+		overflow: visible;
+	}	
+
+	+.es-story-submit {
+		z-index: 1;
+	}
+
+	&.swap-zindex {
+		.es-story-panel-contents {
+			z-index: 2;
+		}
+		.es-story-panel-buttons {
+			z-index: 1;
+		}
+	}
+}
+
+.es-story-panel-button.for-locations {
+
+	.words {
+
+		> i {
+			float: left;
+			// top: 4px;
+		}
+
+		> span {
+			float: left;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+		    max-width: 160px;
+		}
+    }
+}
+
+.es-story-panel-content.for-locations {
+	&.active {
+		overflow: visible; // so autocomplete can show
+	}
+}
+
+.es-story-locations {
+
+	position: relative;
+
+	.es-story-location-viewport {
+		height: 140px;
+		width: 100%;
+		clear: both;
+		background: @esStoryLocationBackground;
+		text-align: center;
+		position: relative;
+		background-position: 50% 50%;
+		background-size: cover;
+	}
+
+	.es-story-location-default-map {
+		background-image: url("@{media_uri}/../images/map-bg.png");
+		background-position: center center;
+		background-repeat: repeat;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		.border-radius(3px 3px 0px 0px);
+	}
+
+	.es-story-location-detect-button {
+		line-height: 20px;
+		margin-top: -13px;
+		position: relative;
+		top: 50%;
+		z-index: 2;
+
+		i {
+			font-size: 10px;
+			height: 10px;
+			left: -1px;
+			margin-right: 2px;
+			position: relative;
+			top: 0;
+			width: 10px;
+		}
+	}
+
+	.es-story-location-buttons {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		// width: 16px;
+		display: inline-block;
+		z-index: 2;
+		display: none;
+
+		.btn {
+			height: 32px;
+			font-size: 11px;
+			line-height: 20px;
+			.border-radius(0 3px 3px 0);
+		}
+	}
+
+	.es-story-location-autocomplete {
+		position: absolute;
+		width: 100%;
+		padding: 0 15px 15px;
+		overflow: hidden;
+
+		&.active {
+			.es-story-location-suggestions {
+				top: 0px;
+			}
+			.es-story-location-autocomplete-shadow {
+				opacity: 1;
+			}
+		}
+	}
+
+	.es-story-location-autocomplete-shadow {
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		height: 1px;
+		padding: 0px 5px;
+		z-index: 2;
+		opacity: 0;
+
+		.real-shadow {
+			height: 5px;
+			width: 100%;
+			margin-top: -5px;
+			box-shadow: @esStoryLocationBoxShadow;
+		}
+	}
+
+	.es-story-location-suggestions {
+		border: 1px solid @esStoryLocationSuggestionsBorder;
+		.border-radius(~"0px 0px 3px 3px");
+		background: @esStoryLocationSuggestionsBackground;
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-height: 160px;
+		position: relative;
+		z-index: 1;
+		top: -160px;
+		.transition(all .5s ease);
+	}
+
+	.es-story-location-suggestion {
+
+		padding: 5px;
+		cursor: pointer;
+
+		+ .es-story-location-suggestion {
+			border-top: 1px solid @esStoryLocationSuggestionsBorder;
+		}
+
+		&.active {
+			background: @dropdownLinkBackgroundHover;
+		}
+	}
+
+	.es-story-location-textbox {
+
+		display: block;
+		padding: 0;
+		padding-right: 32px;
+		width: 100%;
+		min-height: 32px;
+		position: relative;
+
+		input {
+			width: 100%;
+			height: 32px !important;
+			border: none !important;
+			background: none !important;
+			.box-shadow(~"none");
+			margin-bottom: 0 !important;
+		}
+
+		&.busy,
+		&.busy.active {
+			.es-story-location-loading-indicator {
+				display: block;
+			}
+
+			.es-story-location-remove-button {
+				display: none;
+			}
+		}
+	}
+
+	&.has-location {
+		.es-story-location-remove-button {
+			display: block;
+		}
+
+		.es-story-location-textbox {
+			&:hover {
+				.es-story-location-loading-indicator {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.es-story-location-remove-button,
+	.es-story-location-loading-indicator {
+		height: 32px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 32px;
+		cursor: pointer;
+		display: none;
+	}
+
+	.es-story-location-remove-button {
+
+		z-index: 2;
+
+		i {
+		    color: @esStoryLocationRemoveButtonColor;
+		    font-size: 10px;
+		    position: relative;
+		    right: -12px;
+		    top: 8px;
+		}
+
+		&:hover i {
+			color: @esStoryLocationRemoveButtonHoverColor;
+		}
+
+	}
+
+	.loading-indicator {
+		z-index: 1;
+		padding: 16px;
+	}
+
+	// .es-story-location-current-map {
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// 	z-index: 0;
+	// 	opacity: 0;
+	// }
+
+	&.has-location {
+
+		.es-story-location-default-map,
+		.es-story-location-detect-button {
+			opacity: 0;
+		}
+
+		// .es-story-location-current-map {
+		// 	opacity: 1;
+		// 	z-index: 3;
+		// }
+	}
+}

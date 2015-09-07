@@ -1,0 +1,9 @@
+#jchat_contacts_toggle {
+	margin-top: -10px;
+	background-position-x: 60px;
+	float:right;
+}
+
+div.jchat_userlist {
+	height: 38px;
+}

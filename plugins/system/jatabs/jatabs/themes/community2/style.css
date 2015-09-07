@@ -1,0 +1,197 @@
+/**
+ * ------------------------------------------------------------------------
+ * JA Tabs Plugin for J25 & J3.2
+ * ------------------------------------------------------------------------
+ * Copyright (C) 2004-2011 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+ * @license - GNU/GPL, http://www.gnu.org/licenses/gpl.html
+ * Author: J.O.O.M Solutions Co., Ltd
+ * Websites: http://www.joomlart.com - http://www.joomlancers.com
+ * ------------------------------------------------------------------------
+ */
+.community2 .ja-tabswrap {
+	border: 1px solid #CCCCCC;
+}
+
+.community2 .ja-tabswrap div.ja-tab-content {
+	width: 95%;
+}
+
+/* JA Tabs top*/
+.community2 .ja-tabs-title-top {
+	background: #E8E5DF;
+	border-left: 1px solid #EFECE7;
+	border-right: 1px solid #EFECE7;
+	height: 32px !important;
+	position: relative;
+}
+
+.community2 .ja-tab-panels-top .ja-tab-subcontent {
+	background: url(grad2.gif) repeat-x left top #F9F8F6;
+	border: 1px solid #EFECE7;
+	border-top: 0;
+	padding: 20px 0 0 0;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+}
+
+.community2 .ja-tabs-title-top ul.ja-tabs-title {
+	padding-left: 5px !important;
+}
+
+.community2 .ja-tabs-title-top ul.ja-tabs-title {
+	padding-left: 5px;
+}
+
+.community2 .ja-tabs-title-top ul.ja-tabs-title li {
+	background: url(tabtop-l.png) no-repeat left top;
+	font-size: 92%;
+	margin: 3px 3px 0 0;
+	padding: 0 0 0 8px;
+}
+
+.community2 .ja-tabs-title-top ul.ja-tabs-title li h3 {
+	background: url(tabtop-r.png) no-repeat right top;
+	border: 0;
+	font-size: 100%;
+	font-weight: bold !important;
+	line-height: 29px;
+	margin: 0;
+	padding: 0 15px 0 7px;
+	color: #999999;
+}
+
+.community2 .ja-tabs-title-top ul.ja-tabs-title li.hover,.community2 .ja-tabs-title-top ul.ja-tabs-title li.firsthover,.community2 .ja-tabs-title-top ul.ja-tabs-title li.lasthover
+	{
+	
+}
+
+.community2 .ja-tabs-title-top ul.ja-tabs-title li.active,.community2 .ja-tabs-title-top ul.ja-tabs-title li.firstactive,.community2 .ja-tabs-title-top ul.ja-tabs-title li.lastactive
+	{
+	background: url(tabtop-active-l.png) no-repeat left top;
+}
+
+.community2 .ja-tabs-title-top ul li.active h3,.community2 .ja-tabs-title-top ul li.firstactive h3,.community2 .ja-tabs-title-top ul li.lastactive h3
+	{
+	background: url(tabtop-active-r.png) no-repeat right top;
+	color: #8b8077;
+}
+
+/* JA Tabs left*/
+.community2 .ja-tabs-title-left {
+	position: relative;
+	float: left;
+	height: 100%;
+	background: url(17pxblank.gif) repeat-y right #F7F7F7;
+}
+
+.community2 .ja-tabs-title-left ul.ja-tabs-title li {
+	height: 100%;
+	margin: 0 0 0 1px;
+	padding: 0;
+	cursor: pointer;
+	display: block;
+	background: none;
+}
+
+.community2 .ja-tabs-title-left ul.ja-tabs-title li h3 {
+	font-size: 11px;
+	font-weight: bold !important;
+	line-height: 30px;
+	margin: 0;
+	padding: 0 10px;
+	background: none;
+	font-family: "Lucida Grande", Arial, sans-serif;
+	letter-spacing: normal;
+}
+
+.community2 .ja-tabs-title-left ul li.active,.community2 .ja-tabs-title-left ul li.firstactive,.community2 .ja-tabs-title-left ul li.lastactive
+	{
+	background: url(left-active.gif) no-repeat right #FFFFFF;
+}
+
+.community2 .ja-tabs-title-left ul li.active H3,.community2 .ja-tabs-title-left ul li.firstactive H3,.community2 .ja-tabs-title-left ul li.lastactive H3
+	{
+	color: #333333;
+}
+
+/* JA Tabs right*/
+.community2 .ja-tab-panels-right .ja-tab-subcontent {
+	padding-left: 15px !important;
+}
+
+.community2 .ja-tabs-title-right {
+	background: url(17pxblank2.gif) repeat-y left #F7F7F7;
+}
+
+.community2 .ja-tabs-title-right ul.ja-tabs-title li {
+	background: url(tabtop-bg.png) no-repeat left top;
+	height: 100%;
+	margin: 0 0 0 1px;
+	padding: 0 0 0 10px;
+	cursor: pointer;
+	display: block;
+}
+
+.community2 .ja-tabs-title-right ul.ja-tabs-title li h3 {
+	background: url(tabtop-bg.png) no-repeat right top;
+	font-size: 11px;
+	font-weight: bold !important;
+	line-height: 29px;
+	margin: 0;
+	padding: 0 10px 0 0;
+	font-family: "Lucida Grande", Arial, sans-serif;
+	letter-spacing: normal;
+}
+
+.community2 .ja-tabs-title-right ul li.active,.community2 .ja-tabs-title-right ul li.firstactive,.community2 .ja-tabs-title-right ul li.lastactive
+	{
+	background: url(right-active.gif) no-repeat left #FFFFFF;
+}
+
+.community2 .ja-tabs-title-right ul li.active h3,.community2 .ja-tabs-title-right ul li.firstactive h3,.community2 .ja-tabs-title-right ul li.lastactive h3
+	{
+	color: #333333;
+}
+
+/* JA Tabs bottom*/
+.community2 .ja-tabs-title-bottom {
+	height: 30px;
+	border-top: 1px solid #CCCCCC;
+	position: relative;
+	width: 100%;
+}
+
+.community2 .ja-tabs-title-bottom ul.ja-tabs-title li {
+	background: #F7F7F7;
+	border: 1px solid #CCCCCC;
+	margin-left: 5px;
+	margin-top: -1px;
+}
+
+.community2 .ja-tabs-title-bottom ul.ja-tabs-title li h3 {
+	font-size: 100%;
+	font-weight: bold !important;
+	line-height: 28px;
+	margin: 0;
+	padding: 0 10px;
+	border: 1px solid #F7F7F7;
+	color: #999999;
+	border-top: none;
+}
+
+.community2 .ja-tabs-title-bottom ul.ja-tabs-title li.hover,.community2 .ja-tabs-title-bottom ul.ja-tabs-title li.firsthover,.community2 .ja-tabs-title-bottom ul.ja-tabs-title li.lasthover
+	{
+	
+}
+
+.community2 .ja-tabs-title-bottom ul.ja-tabs-title li.active,.community2 .ja-tabs-title-bottom ul.ja-tabs-title li.firstactive,.community2 .ja-tabs-title-bottom ul.ja-tabs-title li.lastactive
+	{
+	background: #FFFFFF;
+	border-top: 1px solid #FFFFFF;
+}
+
+.community2 .ja-tabs-title-bottom ul li.active h3,.community2 .ja-tabs-title-bottom ul li.firstactive h3,.community2 .ja-tabs-title-bottom ul li.lastactive h3
+	{
+	color: #333333;
+}

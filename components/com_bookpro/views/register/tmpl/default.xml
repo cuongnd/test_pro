@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+        <layout title="COM_BOOKPRO_REGISTER_VIEW_DEFAULT_TITLE">
+                 <message><![CDATA[COM_BOOKPRO_REGISTER_VIEW_DEFAULT_DESC]]></message>
+        </layout>
+          <fields name="request">
+        <fieldset name="request" addfieldpath="/administrator/components/com_bookpro/elements">
+            <field name="group_id" type="bpusergroups" label="Register Hotel" required="true"/> 
+        </fieldset>                                                                            
+    </fields>
+</metadata>

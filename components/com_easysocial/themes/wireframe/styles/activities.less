@@ -1,0 +1,51 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+/*------------------------------------*\
+	$Activities - activities.less
+\*------------------------------------*/
+
+div.activity-logs{
+	.activity-title{
+		font-size: 11px;
+	}
+	.activity-content{
+		background: @esActivityBackground;
+		padding: 8px;
+		margin-top: 10px;
+		clear: both;
+	}
+	.activity-meta{
+		font-size: 11px;
+		color: @esActivityColor;
+		margin-left: 5px;
+		margin-top: 10px;
+		clear: both;
+
+		> span{
+			vertical-align:middle;
+			margin-left: 2px;
+		}
+	}
+
+	.es-stream {
+		// when stream is hidden
+		&.isHidden {
+			border: 1px solid @esActivityHiddenBorder;
+			.activity-title,
+			.activity-meta {
+				.opacity(50);
+			}
+		}
+	}
+}
+
+
+&.view-activities {
+	.es-stream-item-photo-cover {
+		margin: 0;
+	}
+}

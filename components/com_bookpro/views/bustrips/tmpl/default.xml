@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="bus default" option="com_bookpro_busstrip_view_default_option123">
+        <help
+                key = "JHELP_MENUS_MENU_ITEM_BUSS"
+                />		<message>
+        <![CDATA[COM_BOOKPRO_BUSS_VIEW_DEFAULT_DESC]]>
+    </message>
+    </layout>
+    <!-- Add fields to the request variables for the layout. -->
+    <fields name="request">
+        <fieldset name="request"
+                >
+            <field name="layout" type="componentlayout"
+                   description="JFIELD_ALT_COMPONENT_LAYOUT"
+                   label="JFIELD_ALT_LAYOUT"
+                   extension="com_bookpro"
+                   menuitems="true"
+                   view="bustrips"
+                    />
+        </fieldset>
+    </fields>
+
+
+
+
+</metadata>

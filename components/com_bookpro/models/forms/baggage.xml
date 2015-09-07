@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+<fieldset addfieldpath="/administrator/components/com_bookpro/elements">	
+	<fields>
+
+		<field name="id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC" size="10" default="0" readonly="true" />					
+		
+                          								
+		<field
+			id="weight"
+			name="weight"
+			type="text"
+			required="false"
+			label="Weight"
+			description="weight_Desc"
+			class="inputbox"
+			size="40"/>						
+								
+														
+		<field name="airline_id" type="airline"
+			class="inputbox"
+			description="COM_BOOKPRO_FLIGHT_AIRLINE"
+			label="COM_BOOKPRO_FLIGHT_AIRLINE"
+			required="true"
+			size="30"
+		/>		
+														
+		<field
+			id="qty"
+			name="qty"
+			type="text"
+			required="false"
+			label="Qty"
+			description="qty_Desc"
+			class="inputbox"
+			size="40"/>						
+								
+														
+		<field
+			id="price"
+			name="price"
+			type="text"
+			required="false"
+			label="Price"
+			description="price_Desc"
+			class="inputbox"
+			size="40"/>						
+								
+		<field name="state" type="radio" label="JSTATUS"
+			description="COM_BOOKPRO_FIELD_STATE_DESC" class="inputbox btn-group small"
+			size="1" default="1">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>				
+	</fields>	
+</fieldset>		
+</form>	

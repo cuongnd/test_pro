@@ -1,0 +1,182 @@
+/**
+ * ------------------------------------------------------------------------
+ * JA Tabs Plugin for J25 & J3.2
+ * ------------------------------------------------------------------------
+ * Copyright (C) 2004-2011 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+ * @license - GNU/GPL, http://www.gnu.org/licenses/gpl.html
+ * Author: J.O.O.M Solutions Co., Ltd
+ * Websites: http://www.joomlart.com - http://www.joomlancers.com
+ * ------------------------------------------------------------------------
+ */
+ 
+ 
+.ja-tabswrap {
+    border: solid 1px #e3e3e3;
+    border-top: none;
+    border-bottom: none;
+}
+
+.ja-tabswrap div.ja-tab-content {
+ 	padding: 20px 0px;
+}
+
+.ja-tabswrap div.ja-tab-subcontent {
+	margin-left: 20px;
+}
+
+.ja-tab-subcontent .ja-sidenews-list {
+	margin: 0px 0px 0px -20px;
+}
+
+.ja-tab-subcontent .ja-slidenews-item-inner {
+	padding: 0px 10px 15px 20px;
+	margin: 0px 0px 15px 0px;
+	border-bottom: dotted 1px #cacaca;
+}
+
+.ja-tab-subcontent .last_news_item .ja-slidenews-item-inner {
+	border-bottom: none; 
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.ja-tab-subcontent .ja-slidenews-item {
+	padding: 0px;
+}
+
+.ja-tab-subcontent .ja-slidenews-item .ja-title {
+	color: #171717;
+	font-weight: normal;
+	text-transform: none;
+	font-size: 120%;
+	margin-bottom: 0px;
+}
+
+.ja-tab-subcontent .ja-slidenews-item .ja-createdate {
+	color: #999;
+	font-weight: normal;
+	display: block;
+}
+
+/* JA Tabs top*/
+.mendozite .ja-tabs-title-top {
+	position: relative;
+	width: 100%;
+	z-index: 1;
+}
+
+.mendozite .ja-tabs-title-top ul.ja-tabs-title {
+	width: 100%;
+	background: #393939;
+	height: 40px;
+}
+
+.mendozite .ja-tabs-title-top ul.ja-tabs-title li {
+	color: #aaa;
+	text-align: center;
+	height: 40px;
+	border-bottom: solid 1px #e3e3e3;
+}
+
+.mendozite .ja-tabs-title-top ul.ja-tabs-title li h3 {
+	color: #aaa;
+	background: none;
+	line-height: 40px;
+	padding: 0 20px;
+}
+
+.mendozite .ja-tabs-title-top ul.ja-tabs-title li.hover,
+.mendozite .ja-tabs-title-top ul.ja-tabs-title li.firsthover,
+.mendozite .ja-tabs-title-top ul.ja-tabs-title li.lasthover {
+	color: #fff;
+}
+
+.mendozite .ja-tabs-title-top ul.ja-tabs-title li.hover h3,
+.mendozite .ja-tabs-title-top ul.ja-tabs-title li.firsthover h3,
+.mendozite .ja-tabs-title-top ul.ja-tabs-title li.lasthover h3 {
+	color: #fff;
+}
+
+.mendozite .ja-tabs-title-top ul.ja-tabs-title li.active,
+.mendozite .ja-tabs-title-top ul.ja-tabs-title li.firstactive,
+.mendozite .ja-tabs-title-top ul.ja-tabs-title li.lastactive {
+	color: #121212;
+	background: #fff;
+	border-top: solid 1px #e3e3e3;
+	border-bottom: none;
+	
+}
+
+.mendozite .ja-tabs-title-top ul li.active h3,
+.mendozite .ja-tabs-title-top ul li.firstactive h3,
+.mendozite .ja-tabs-title-top ul li.lastactive h3 {
+	color: #121212;
+}
+
+.mendozite .ja-tab-panels-top {
+	border-bottom: solid 1px #E3E3E3;
+}
+
+/* JA Tabs bottom*/
+.ja-tab-panels-bottom {
+	left: 0px;
+}
+.mendozite .ja-tab-panels-bottom {
+	border-top: solid 1px #E3E3E3;
+}
+
+.mendozite .ja-tabs-title-bottom {
+	height: 40px;
+	position: relative;
+	width: 100%;
+	border-bottom: solid 1px #E3E3E3;
+}
+
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title {
+	width: 100%;
+	background: #393939;
+	height: 40px;
+}
+
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title li {
+	color: #aaa;
+	text-align: center;
+	height: 40px;
+	background: none;
+}
+
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title li h3 {
+	color: #aaa;
+	background: none;
+	padding: 0;
+	line-height: 40px;
+	padding: 0 20px;
+}
+
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title li.hover,
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title li.firsthover,
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title li.lasthover {
+	color: #fff;
+}
+
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title li.hover h3,
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title li.firsthover h3,
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title li.lasthover h3 {
+	color: #fff;
+}
+
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title li.active,
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title li.firstactive,
+.mendozite .ja-tabs-title-bottom ul.ja-tabs-title li.lastactive {
+	color: #121212;
+	background: #fff;
+	
+}
+
+.mendozite .ja-tabs-title-bottom ul li.active h3,
+.mendozite .ja-tabs-title-bottom ul li.firstactive h3,
+.mendozite .ja-tabs-title-bottom ul li.lastactive h3 {
+	color: #121212;
+}
+
+

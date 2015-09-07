@@ -1,0 +1,332 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+/*------------------------------------*\
+	$Header - header.less
+\*------------------------------------*/
+.es-header {
+	border: 1px solid @esHeaderBorder;
+	// margin-bottom: 20px;
+	.clearfix();
+	.es-header-content {
+		margin-left: 205px;
+		min-height: 120px;
+		position: relative;
+		
+		.user-actions {
+			.dropdown-menu {
+				.modal-body {
+					border: none;
+				}
+			}
+		}
+	}
+	.es-badge-list {
+		// bottom: -148px;
+		// height: 22px;
+		// left: 8px;
+		overflow: hidden;
+		position: relative;
+		width: auto;
+	}
+	.es-action {
+		margin-right: 10px;
+	}
+
+	&.es-header-profile {
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		margin-bottom: 0;
+		.es-header-main {
+			display: block;
+			float: left;
+			width: 200px;
+			position: relative;
+			text-align: center;
+			.es-avatar {
+				margin: 0 auto;
+			}
+		}
+		.es-header-sub {
+			margin-left: 220px;
+			position: relative;
+			left: -1px;
+			// overflow: hidden;
+		}
+
+	}//profile
+
+	//mini
+	&.es-header-mini {
+		font-size: 11px;
+		position: relative;
+		background: @esHeaderMiniBackground;
+		
+		.es-header-mini-cover {
+			background-size: cover;
+			position: absolute;
+			width: 100%;
+			height: 110px;
+			top: 0;
+			b {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				.box-shadow(200px -30px 100px @esHeaderBoxShadow inset);
+				#gradient > .vertical(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+
+				+ b {
+					right: 0;
+					.box-shadow(-100px -50px 50px @esHeaderBoxShadow inset);
+					display: none;
+				}
+			}
+		}
+
+		.es-header-info {
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+
+			// Issues with J2.5
+			> ul.unstyled {
+				margin-bottom: 0;
+				h2 {
+					margin-bottom: 0 !important;
+				}
+			}
+			> div.small {
+				margin: 0;
+			}					
+		}
+
+		.es-header-avatar {
+			float: left;
+			top: 70px;
+			left: 15px;
+			position: absolute;
+		}
+
+		.es-header-content {
+			margin-left: 100px;
+			min-height: 110px;
+			position: relative;
+
+			.btn-clean,
+			.btn{
+				background: @esHeaderContentBtnBackground;
+			}
+		}
+
+		.es-header-footer {
+			background: @esHeaderFooterBackground;
+
+			> div {
+				padding-left: 100px;
+			}
+
+			padding: 10px 0;
+			border-top: 1px solid @esHeaderFooterBorder;
+
+			.pull-right{
+				.action {
+					margin-right: 10px;
+				}
+			}
+
+			span {
+				&.action {
+					font-size: 11px;
+					position: relative;
+				}
+			}
+
+			.btn {
+				font-size: 11px;
+			}
+		}
+
+		.es-action {
+			width: 385px;
+			height: 60px;
+			margin-right: 24px;
+			overflow: hidden;
+			position: absolute;
+			top: 10px;
+			right: 0;
+		}
+		.btn-scroll {
+			position: absolute;
+			top: 15px;
+			right: 0;
+			z-index: 2;
+			opacity: 0.4;
+			.btn {
+				display: block;
+				width: 18px;
+				height: 20px;
+				padding: 2px;
+				.box-shadow(none);
+				position: relative;
+				background: @esHeaderBtnScrollBackground;
+				[class^="ies-"],
+				[class*=" ies-"] {
+					line-height: 12px;
+					width: 12px;
+					height: 12px;
+					color: @esHeaderBtnScrollColor;
+					&:before {
+						position: relative;
+						left: -2px;
+						top: 1px;
+					}
+				}
+			}
+			.btn-left {
+				.border-radius(2px 0 0 0);
+			}
+			.btn-right {
+				top: -1px;
+				.border-radius(0 0 0 2px);
+			}
+		}
+		.es-nav-apps {
+			position: relative;
+			float: right;
+			height: 55px;
+			overflow: hidden;
+
+			.btn {
+				width: 64px;
+				height: 50px;
+				padding: 5px 10px;
+				font-size: 11px;
+				text-align: center;
+				> span {
+					display: block;
+					height: 14px;
+					overflow: hidden;
+					margin-bottom: 2px;
+					.text-overflow();
+					// background: @grayLighter;
+				}
+			}
+			.es-nav-apps-icons {
+				width: 16px;
+				height: 16px;
+			}
+		}
+	}//mini
+}//header
+
+
+
+
+
+//Responsive
+&.w480 {
+	.es-header {
+		// border: none;
+		.es-header-content {
+			margin-left: 0px;
+			margin-top: 100px;
+			min-height: 30px;
+			.es-action {
+				height: auto;
+				margin: 0;
+				position: relative;
+				top: auto;
+				right: auto;
+				// float: left;
+				.es-nav {
+					float: none;
+					> li > .btn {
+						width: 130px;
+					}
+				}
+			}
+			.es-header-info {
+				clear: both;
+				margin-left: 15px;
+				padding-top: 10px;
+				position: relative;
+				bottom: auto;
+				left: auto;
+			}
+		}
+		&.es-header-mini {
+			.es-header-content {
+				.es-action {
+					width: auto;
+					.es-nav {
+						> li {
+							margin: 0;
+							margin-bottom: 5px;
+						}
+						> li > .btn {
+							width: 80px;
+						}
+					}
+				}
+			}
+			.es-header-avatar {
+				top: 55px;
+			}
+			.es-header-footer {
+				> div {
+					padding-left: 10px;
+				}
+				.pull-left {
+					float: none;
+					margin-bottom: 10px;
+				}
+				// message
+				.pull-right {
+					float: none;
+					margin-top: 10px;
+				}
+			}
+			.es-nav-apps {
+				height: auto;
+				margin: 10px 15px;
+			}
+			.btn-scroll {
+				display: none;
+			}
+		}
+	}//header
+}
+&.w480 {
+	.es-header {
+		// border: none;
+		.es-header-content {
+			margin-left: 0px;
+			margin-top: 100px;
+			min-height: 30px;
+			.es-action {
+				height: auto;
+				margin: 0;
+				position: relative;
+				top: auto;
+				right: auto;
+				float: left;
+				width: 100%;
+				.es-nav {
+					float: none;
+					> li > .btn {
+						width: 100%;
+						text-align: center;
+						padding: 10px;
+					}
+				}
+			}
+		}//content
+	}//header
+}//320	
+

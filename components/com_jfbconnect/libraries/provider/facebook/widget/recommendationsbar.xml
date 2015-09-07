@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_HREF_DESCRIPTION" default="" />
+                <field name="trigger" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_TRIGGER_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_TRIGGER_DESCRIPTION" default="onvisible">
+                    <option value="onvisible">COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_TRIGGER_OPTION_ONVISIBLE</option>
+                    <option value="percent">COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_TRIGGER_OPTION_PERCENT</option>
+                    <option value="manual">COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_TRIGGER_OPTION_MANUAL</option>
+                </field>
+                <field name="trigger_percent" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_TRIGGER_PERCENT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_TRIGGER_PERCENT_DESCRIPTION" default="" />
+                <field name="read_time" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_READ_TIME_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_READ_TIME_DESCRIPTION" default="" />
+                <field name="action" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_ACTION_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_ACTION_DESCRIPTION" default="like">
+                    <option value="like">COM_JFBCONNECT_WIDGET_FACEBOOK_ACTION_OPTION_LIKE</option>
+                    <option value="recommend">COM_JFBCONNECT_WIDGET_FACEBOOK_ACTION_OPTION_RECOMMEND</option>
+                </field>
+                <field name="side" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_SIDE_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_SIDE_DESCRIPTION" default="right">
+                    <option value="left">COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_SIDE_OPTION_LEFT</option>
+                    <option value="right">COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_SIDE_OPTION_RIGHT</option>
+                </field>
+                <field name="site" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_SITE_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_SITE_DESCRIPTION" default="" />
+                <field name="ref" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_REF_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_REF_DESCRIPTION" default="" />
+                <field name="num_recommendations" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_NUM_RECOMMENDATIONS_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONSBAR_NUM_RECOMMENDATIONS_DESCRIPTION" default="" />
+                <field name="max_age" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_MAX_AGE_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_MAX_AGE_DESCRIPTION" default="" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

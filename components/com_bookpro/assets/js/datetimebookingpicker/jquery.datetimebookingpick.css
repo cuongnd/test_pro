@@ -1,0 +1,239 @@
+/* Default styling for jQuery datetimebookingpicker v4.1.0. */
+.datetimebookingpick {
+    background-color: #fff;
+    color: #000;
+    border-radius: 0.25em;
+    -moz-border-radius: 0.25em;
+    -webkit-border-radius: 0.25em;
+    font-family: Arial,Helvetica,Sans-serif;
+    font-size: 90%;
+    width: auto;
+}
+.datetimebookingpick-rtl {
+    direction: rtl;
+}
+.datetimebookingpick-popup {
+    z-index: 1000;
+}
+.datetimebookingpick-disable {
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+.datetimebookingpick a {
+    color: #000;
+    text-decoration: none;
+}
+.datetimebookingpick a.datetimebookingpick-disabled {
+    color: #888;
+    cursor: auto;
+}
+.datetimebookingpick button {
+    margin: 0.25em;
+    padding: 0.125em 0em;
+    background-color: #fcc;
+    border: none;
+    border-radius: 0.25em;
+    -moz-border-radius: 0.25em;
+    -webkit-border-radius: 0.25em;
+    font-weight: bold;
+}
+.datetimebookingpick-nav, .datetimebookingpick-ctrl {
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    font-size: 90%;
+    font-weight: bold;
+    height: 30px;
+    text-transform: uppercase;
+}
+.datetimebookingpick-ctrl {
+    background-color: #600;
+}
+.datetimebookingpick-cmd {
+    width: 30%;
+}
+.datetimebookingpick-cmd:hover {
+    background-color: #fff;
+    color: #000;
+}
+.datetimebookingpick-ctrl .datetimebookingpick-cmd:hover {
+    background-color: #f08080;
+}
+.datetimebookingpick-cmd-prevJump, .datetimebookingpick-cmd-nextJump {
+    width: 8%;
+}
+a.datetimebookingpick-cmd {
+    height: 1.5em;
+}
+button.datetimebookingpick-cmd {
+    text-align: center;
+}
+.datetimebookingpick-cmd-prev, .datetimebookingpick-cmd-prevJump, .datetimebookingpick-cmd-clear {
+    float: left;
+    padding-left: 2%;
+}
+.datetimebookingpick-cmd-current, .datetimebookingpick-cmd-today {
+    float: left;
+    width: 35%;
+    text-align: center;
+}
+.datetimebookingpick-cmd-next, .datetimebookingpick-cmd-nextJump, .datetimebookingpick-cmd-close {
+    float: right;
+    padding-right: 2%;
+    text-align: right;
+}
+.datetimebookingpick-rtl .datetimebookingpick-cmd-prev, .datetimebookingpick-rtl .datetimebookingpick-cmd-prevJump,
+.datetimebookingpick-rtl .datetimebookingpick-cmd-clear {
+    float: right;
+    padding-left: 0%;
+    padding-right: 2%;
+    text-align: right;
+}
+.datetimebookingpick-rtl .datetimebookingpick-cmd-current, .datetimebookingpick-rtl .datetimebookingpick-cmd-today {
+    float: right;
+}
+.datetimebookingpick-rtl .datetimebookingpick-cmd-next, .datetimebookingpick-rtl .datetimebookingpick-cmd-nextJump,
+.datetimebookingpick-rtl .datetimebookingpick-cmd-close {
+    float: left;
+    padding-left: 2%;
+    padding-right: 0%;
+    text-align: left;
+}
+.datetimebookingpick-month-nav {
+    float: left;
+    background-color: #777;
+    text-align: center;
+}
+.datetimebookingpick-month-nav div {
+    float: left;
+    width: 12.5%;
+    margin: 1%;
+    padding: 1%;
+}
+.datetimebookingpick-month-nav span {
+    color: #888;
+}
+.datetimebookingpick-month-row {
+    clear: left;
+}
+.datetimebookingpick-month {
+    float: left;
+    text-align: center;
+
+}
+.datetimebookingpick-month.first
+{
+    margin-right: 5px;
+}
+.datetimebookingpick-month-header, .datetimebookingpick-month-header select, .datetimebookingpick-month-header input {
+    height: 30px;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+}
+.datetimebookingpick-month-header select, .datetimebookingpick-month-header input {
+
+    font-size: 100%;
+    width: auto;
+    padding: 0px;
+}
+.datetimebookingpick-month-header input {
+    position: absolute;
+    display: none;
+}
+.datetimebookingpick-month table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.datetimebookingpick-month thead {
+    border-bottom: 1px solid #aaa;
+}
+.datetimebookingpick-month th, .datetimebookingpick-month td {
+    margin: 0em;
+    padding: 0em;
+    font-weight: normal;
+    text-align: center;
+}
+.datetimebookingpick-month th {
+    border: 1px solid #000;
+}
+.datetimebookingpick-month th, .datetimebookingpick-month th a {
+    background-color: #fff;
+    color: #000;
+}
+.datetimebookingpick-month td {
+
+    background-color: #fff;
+    border: 1px solid #aaa;
+    width: 53.8px;
+    height: 80.8px;
+
+    vertical-align: top;
+}
+.datetimebookingpick-month td.datetimebookingpick-week {
+    border: 1px solid #777;
+}
+.datetimebookingpick-month td.datetimebookingpick-week * {
+    background-color: #fff;
+    color: #000;
+    border: none;
+}
+.datetimebookingpick-month a {
+    display: block;
+
+    padding: 0.125em 0em;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+.datetimebookingpick-month span {
+    display: block;
+    width: 100%;
+    padding: 0.125em 0em;
+}
+.datetimebookingpick-month td span {
+    color: #000;
+}
+.datetimebookingpick-selected
+{
+    background: #88BFE8 !important;
+    font-weight: bold;
+
+}
+.datetimebookingpick-month td:hover
+{
+    background-color: #E9E9CE;
+}
+.datetimebookingpick-month td .datetimebookingpick-other-month {
+    background-color: #fff;
+}
+.datetimebookingpick-month td .datetimebookingpick-weekend {
+
+}
+.datetimebookingpick-month td .datetimebookingpick-today {
+    background-color: #f0c0c0;
+}
+.datetimebookingpick-month td .datetimebookingpick-highlight {
+    background-color: #E9E9CE;
+}
+.datetimebookingpick-month td .datetimebookingpick-selected {
+    background-color: #777;
+    color: #000;
+}
+.datetimebookingpick-month th.datetimebookingpick-week {
+    background-color: #777;
+    color: #000;
+}
+.datetimebookingpick-status {
+    clear: both;
+    background-color: #ddd;
+    text-align: center;
+}
+.datetimebookingpick-clear-fix {
+    clear: both;
+}

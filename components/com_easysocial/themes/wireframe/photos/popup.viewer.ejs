@@ -1,0 +1,42 @@
+<?php
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+*/
+defined( '_JEXEC' ) or die( 'Unauthorized Access' );
+?>
+<div data-photo-viewer class="es-photo-viewer">
+
+	<div data-photo-viewport
+		 class="es-photo-viewport">
+
+		<img data-photo-image class="es-photo-image" src="" />
+
+		<div data-photo-tags class="es-photo-tags"></div>
+
+		<div data-photo-next-button
+			 class="es-photo-next-button es-photo-nav-button">
+			<i class="ies-arrow-left-2"></i>
+		</div>
+		<div data-photo-prev-button
+		     class="es-photo-prev-button es-photo-nav-button">
+		    <i class="ies-arrow-right-2"></i>
+		</div>
+
+		<div class="es-photo-hint tag-hint">
+			<?php echo JText::_("COM_EASYSOCIAL_TAGGING_INSTRUCTIONS"); ?>
+			<a href="javascript: void(0);" data-photo-tag-button><?php echo JText::_("COM_EASYSOCIAL_DONE_TAGGING"); ?></a>
+		</div>
+
+		<div class="es-photo-hint create-avatar-hint">
+			<?php echo JText::_("COM_EASYSOCIAL_CREATE_AVATAR_INSTRUCTIONS"); ?>
+			<a href="javascript: void(0);" data-photo-profilephoto-button><?php echo JText::_("COM_EASYSOCIAL_CANCEL_BUTTON"); ?></a>
+		</div>
+	</div>
+
+	<div class="es-photo-thumbnails-holder" data-photo-thumbnails-holder></div>
+
+	<div class="es-photo-content-holder" data-photo-content-holder></div>
+</div>

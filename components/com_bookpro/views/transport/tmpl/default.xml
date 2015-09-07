@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_BOOKPRO_TRANSPORT_VIEW_DEFAULT_TITLE">
+		<message><![CDATA[COM_BOOKPRO_TRANSPORT_VIEW_DEFAULT_DESC]]></message>
+	</layout>
+
+	<fields name="request" >
+		<fieldset name="request">
+			<field name="service" type="list" default=""
+				description="COM_BOOKPRO_SERVICE_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_SERVICE_SELECT_TITLE">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</field>
+		</fieldset>
+	</fields>
+	<fields name="params" >
+		<fieldset name="basic" label="JGLOBAL_LIST_LAYOUT_OPTIONS">
+		</fieldset>
+	</fields>
+	
+</metadata>

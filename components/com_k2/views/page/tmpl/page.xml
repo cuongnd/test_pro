@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <layout title="K2_PAGE">
+    <message>K2_CREATE_A_MENU_PAGE_LINKING_DIRECTLY_TO_AN_PAGE_IN_K2</message>
+  </layout>
+  <state>
+    <name>K2_PAGE</name>
+    <description>K2_CREATE_A_MENU_PAGE_LINKING_DIRECTLY_TO_AN_PAGE_IN_K2</description>
+    <url addpath="/administrator/components/com_k2/elements">
+      <param name="id" type="item" default="" label="K2_SELECT_PAGE" description="K2_SELECT_AN_PAGE_TO_LINK_TO_DIRECTLY"/>
+    </url>
+    <params>
+    </params>
+    <fields name="request">
+		<fieldset name="request" addfieldpath="/administrator/components/com_k2/elements">
+			<field name="page" type="filelist" directory="/components/com_k2/views/page/tmpl/includefiles" default="" label="K2_SELECT_PAGE" description="K2_SELECT_AN_PAGE_TO_LINK_TO_DIRECTLY" required="true"/>
+		</fieldset>
+	</fields>
+  </state>
+</metadata>

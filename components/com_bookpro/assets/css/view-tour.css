@@ -1,0 +1,75 @@
+div.trip {
+    width: 378px;
+    height: 112px;
+    background: url('../images/bg_title.png') no-repeat 0 0 transparent;
+	border-top:none!important;
+	border-right:1px solid #b8b8b6;
+	border-left:1px solid #b8b8b6;
+    
+}
+div.trip p.text-photo-gallery {
+    text-align: right;
+    font-size: 24px;
+    color:#009900;
+    margin-top: 86px;
+    margin-right: 20px;
+    
+}
+#tourpackage img
+{
+    max-width:none !important;
+}
+.content_div2_date_private .state .available
+{
+    background:  url('../images/icon_a.png');
+    height: 16px;
+    width: 16px;
+    display: block;
+    opacity: 1;
+}
+.content_div2_date_private .state .request
+{
+    background:  url('../images/icon_r.png');
+    height: 16px;
+    width: 16px;
+    display: block;
+    opacity: 1;
+}
+.content_div2_date_private .state .guaranteed
+{
+    background:  url('../images/icon_g.png');
+    height: 16px;
+    width: 16px;
+    display: block;
+    opacity: 1;
+}
+.adult_promo
+{
+    text-decoration: line-through;
+    padding-left:5px;
+    
+}
+.adult_promo_price
+{
+    color: #CC0000;
+}
+.content_div2_date_private .state .promo
+{
+    background:  url('../images/icon_p.png');
+    height: 16px;
+    width: 16px;
+    display: block;
+    opacity: 1;
+}
+.content_div2_date_private .state .close
+{
+    background:  url('../images/icon_c.png');
+    height: 16px;
+    width: 16px;
+    display: block;
+    opacity: 1;
+}
+.content_div2_date_private .state span
+{
+    float:left;
+}

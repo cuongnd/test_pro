@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_EASYSOCIAL_DASHBOARD_LAYOUT_DEFAULT">
+		<message>
+			<![CDATA[COM_EASYSOCIAL_DASHBOARD_LAYOUT_DEFAULT_DESC]]>
+		</message>
+		<view>dashboard</view>
+	</layout>
+
+	<!-- Add fields to the request variables for the layout. -->
+	<fields name="request">
+		<fieldset name="request">
+			<field name="filter" type="list" default="all" label="COM_EASYSOCIAL_DASHBOARD_LAYOUT_SELECT_FILTER" description="COM_EASYSOCIAL_DASHBOARD_LAYOUT_SELECT_FILTER_DESC">
+				<option value="all">COM_EASYSOCIAL_DASHBOARD_LAYOUT_FILTER_ALL</option>
+				<option value="following">COM_EASYSOCIAL_DASHBOARD_LAYOUT_FILTER_FOLLOWING</option>
+			</field>
+		</fieldset>
+	</fields>
+
+</metadata>

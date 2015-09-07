@@ -1,0 +1,118 @@
+/**
+ * @version		$Id$
+ * @author		NooTheme
+ * @package		Joomla.Site
+ * @subpackage	mod_noo_slider
+ * @copyright	Copyright (C) 2013 NooTheme. All rights reserved.
+ * @license		License GNU General Public License version 2 or later; see LICENSE.txt, see LICENSE.php
+*/
+
+.noo-slider {
+}
+
+.noo-slider .noo-slider-control {
+    text-align: right;
+}
+
+.noo-slider .noo-slider-wapper {
+}
+
+.noo-slider .noo-slider-item {
+    /*    padding:5px;*/
+}
+
+.noo-slider .noo-slider-item .noo-content-slider {
+    padding: 10px;
+    background-color: #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 6px rgba(0,0,0,0.05);
+    -webkit-box-shadow: 0px 0px 6px rgba(0,0,0,0.05);
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.noo-slider.image-slider .noo-slider-item .noo-content-slider h2 {
+    text-align: center;
+}
+.noo-slider .noo-slider-image {
+    height: auto;
+    margin: 0 10px 10px 0;
+    float: left;
+}
+
+.noo-slider.image-slider .noo-slider-image {
+    margin: 0;
+    padding: 0;
+    float: none;
+}
+
+.noo-slider .noo-slider-info {
+}
+
+.noo-slider .noo-slider-info h2 {
+    font-size: 14px;
+    line-height: 150%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.noo-slider .noo-slider-info h2 a {
+}
+
+.noo-slider.vertical {
+}
+
+.noo-slider.vertical .noo-slider-control a {
+    background: url("../images/button-nav-vertical.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 30px;
+    text-align: left;
+    text-indent: -9999em;
+    width: 30px;
+}
+
+.noo-slider.vertical .noo-slider-control .btn-next {
+    background-position: -30px 0 !important;
+}
+
+.noo-slider.vertical .noo-slider-control .btn-prev {
+}
+
+.noo-slider.vertical .noo-slider-control .btn-next:hover {
+    background-position: -30px -30px !important;
+}
+
+.noo-slider.vertical .noo-slider-control .btn-prev:hover {
+    background-position: 0 -30px !important;
+}
+
+.noo-slider.horizontal {
+}
+
+.noo-slider.horizontal .noo-slider-control a {
+    background: url("../images/button-nav.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 30px;
+    text-align: left;
+    text-indent: -9999em;
+    width: 30px;
+}
+
+.noo-slider.horizontal .noo-slider-control .btn-next {
+    background-position: -30px 0 !important;
+    float: right;
+}
+
+.noo-slider.horizontal .noo-slider-control .btn-prev {
+}
+
+.noo-slider.horizontal .noo-slider-control .btn-next:hover {
+    background-position: -30px -30px !important;
+}
+
+.noo-slider.horizontal .noo-slider-control .btn-prev:hover {
+    background-position: 0 -30px !important;
+}

@@ -1,0 +1,49 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+
+.es-header-cover {
+
+	position: relative;
+
+	.es-cover {
+		z-index: 1;
+	}
+
+	.es-profile-avatar {
+		z-index: 2;
+		padding: 1px;
+		background: rgba(0,0,0,.1);
+	}
+
+	// Standardizes flyout
+	.es-flyout-content {
+
+		background: rgba(0,0,0,.6);
+		text-align: right;
+		font-size: 11px;
+		padding: 10px;
+		opacity: 0;
+		.transition(opacity .2s ease);
+
+		.es-flyout-button {
+			color: #fff;
+		}
+
+		.dropdown-menu {
+			left: auto;
+			right: 0;
+			text-align: left;
+			margin-top: 6px;
+		}
+	}
+}
+
+.without-cover {
+	+ .es-header-content {
+		margin-left: 145px;
+	}
+}

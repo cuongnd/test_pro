@@ -1,0 +1,122 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+// Wireframe default theme
+
+// @import "bootstrap/variables";
+@import "component";
+@import "variables";
+
+
+// Elements < Blocks < States < Views
+(~"@{EasySocial}") {
+	display:inline-block;
+	width:100%;
+	font-family: @baseFontFamily;
+	font-size: @baseFontSize;
+	// color: @esColor;
+	
+	line-height: 18px;
+	//background: @esBackground; // temporary remove white background as default #1204
+	font-size-adjust: none;
+
+
+	// Individual/single classes can apply to everywhere
+	@import "elements";
+	@import "icons"; //icons extend
+
+	//Scaffolding
+	@import "layout";
+	@import "header";
+
+	// Blocks aka modules in html apply rely on few classes
+	@import "blocks";
+	@import "notifications";
+	@import "onlinestatus";
+	@import "remind";
+
+	// Location service
+	@import "location";
+
+	body & {
+		@import "toolbar";
+	}
+
+	// Activity logs
+	@import "activities";
+	
+	@import "widget";
+	@import "badges";
+	@import "points";
+	@import "story";
+	@import "stream";
+	@import "comment";
+	@import "conversations";
+	@import "filterbar";
+	@import "friend-approve-list";
+
+	// Privacy dropdown menu
+	// @import "privacy";
+
+	// For handbook
+	@import "handbook";
+
+	// For styleguide
+	@import "styleguide";
+
+	// elements/blocks view control class
+	@import "views";
+
+	// Dashboard styles
+	@import "dashboard";
+
+	// Profile styles
+	@import "profile";
+
+	// Profiles styles
+	@import "profiles";
+
+	// Friend styles
+	@import "friends";
+
+	// Followers styles
+	@import "followers";
+
+	// Application styles
+	@import "apps";
+
+	// Unity view styles
+	@import "unity";
+
+	// Users view styles
+	@import "users";
+
+	// Leaderboard styles
+	@import "leaderboard";
+
+	// Registration
+	@import "registration";
+
+	// Search Result
+	@import "search-result";
+
+	// Media, albums & photos
+	@import "media";
+	@import "photos";
+	@import "albums";
+	
+	// Points History
+	@import "pointshistory";
+	
+	// Social Integrations
+	@import "social-integrations";
+	
+	// elements/blocks state control class
+	@import "states";
+}
+
+// Custom hack for common templates
+@import "custom";

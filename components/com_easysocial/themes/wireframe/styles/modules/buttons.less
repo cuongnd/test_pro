@@ -1,0 +1,297 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+
+// ES-Buttons
+// -------------------------
+@btnEsTextShadow: 0 1px 1px rgba(0,0,0,.1);
+
+@btnEsPrimaryBackground: #91c2ea;
+@btnEsPrimaryBackgroundHighlight: #6d9cca;
+
+@btnEsWarningBackground: #fde59d;
+@btnEsWarningBackgroundHighlight: #f4bb30;
+
+@btnEsSuccessBackground: #bcd669;
+@btnEsSuccessBackgroundHighlight: #97bb41;
+
+@btnEsDangerBackground: #be1f23;
+@btnEsDangerBackgroundHighlight: #a6170f;
+
+@btnEsInverseBackground: #797979;
+@btnEsInverseBackgroundHighlight: #585858;
+//
+// Buttons
+// --------------------------------------------------
+a.btn {
+	text-decoration: none;
+}
+.btn {
+	&.btn-es {
+		// font-size: 12px;
+		// padding: 4px 16px;
+		.buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, @btnEsTextShadow);
+	}
+}
+.btn-clear {
+	.icon-es-x {
+		top: 5px;
+	}
+}
+.btn-clean {
+	background: none;
+	text-shadow: none;
+	&:hover {
+		background: none;
+	}
+}
+.btn-notext {
+	height: 31px;
+	padding: 4px 8px; //default size
+	.icon-es-white,
+	.icon-es-black {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	&.btn-mini {
+		height: 23px;
+		[class^="ies-"],
+		[class*=" ies-"] {
+			// width: ;
+		}
+	}
+}
+.btn-radius {
+	.border-radius(@borderRadiusSmall);
+}
+.btn-group {
+	> .btn-radius {
+		&:first-child {
+			.border-radius(@borderRadiusSmall);
+		}
+	}
+}
+
+// extend .btn
+.btn {
+	&.btn-dashed {
+		border: 1px dashed @esBorder;
+		background: none;
+	}
+}
+
+.btn {
+	&.btn-stream-updates{
+		font-size: 11px;
+		width: 100%;
+	}
+}
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+// Provide *some* extra contrast for those who can get it
+.btn-es-primary.active,
+.btn-es-warning.active,
+.btn-es-danger.active,
+.btn-es-success.active,
+.btn-es-info.active,
+.btn-es-inverse.active {
+	color: rgba(255,255,255,.75);
+}
+
+// Set the backgrounds
+// -------------------------
+.btn {
+	// reset here as of 2.0.3 due to Recess property order
+	// border-color: #c5c5c5;
+	// border-color: rgba(0,0,0,.15) rgba(0,0,0,.15) rgba(0,0,0,.25);
+}
+.btn-es-primary,
+.btn-es-primary:focus {
+	.buttonBackground(@btnEsPrimaryBackground, @btnEsPrimaryBackgroundHighlight);
+
+	> a {
+		color: #fff;
+		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);	
+	}
+}
+// Success appears as green
+.btn-es-success,
+.btn-es-success:focus {
+	.buttonBackground(@btnEsSuccessBackground, @btnEsSuccessBackgroundHighlight);
+}
+// Warning appears are orange
+.btn-es-warning,
+.btn-es-warning:focus {
+	.buttonBackground(@btnEsWarningBackground, @btnEsWarningBackgroundHighlight);
+}
+// Danger and error appear as red
+.btn-es-danger,
+.btn-es-danger:focus {
+	.buttonBackground(@btnEsDangerBackground, @btnEsDangerBackgroundHighlight);
+}
+// Info appears as a neutral blue
+// .btn-es-info {
+// 	.buttonBackground(@btnEsInfoBackground, @btnEsInfoBackgroundHighlight);
+// }
+// Inverse appears as dark gray
+.btn-es-inverse,
+.btn-es-inverse:focus {
+	.buttonBackground(@btnEsInverseBackground, @btnEsInverseBackgroundHighlight);
+}
+
+// Buttons ES Sizes
+// ----------------
+// Large
+.btn-es,
+[class^="btn-es-"],
+[class*=" btn-es-"] {
+	&:focus {
+		color: #fff;	
+	}
+	&.btn-large {
+		// padding: @paddingLarge;
+		// font-size: @fontSizeLarge;
+		// .border-radius(@borderRadiusLarge);
+	}
+	&.btn-large [class^="icon-"],
+	&.btn-large [class*=" icon-"] {
+		margin-top: 2px;
+	}
+
+	// Small
+	&.btn-small {
+		font-size: 12px;
+	}
+	&.btn-small [class^="icon-"],
+	&.btn-small [class*=" icon-"] {
+		margin-top: 0;
+	}
+
+	// Mini
+	&.btn-mini {
+		padding: @paddingMini;
+		font-size: @fontSizeMini;
+		.border-radius(@borderRadiusSmall);
+		[class^="ies-"],
+		[class*=" ies-"] {
+			line-height: 11px;
+		}
+	}
+}
+.btn-es {
+	&:focus {
+		color: @grayDark;
+	}
+}
+
+// .btn-action-followers{
+
+// 	&.is-following,
+// 	&.is-following:hover,
+// 	&.is-following:focus{
+
+// 		[class^="ies-"],
+// 		[class*=" ies-"] {
+// 			&:before {
+// 				font-size: 9px;
+// 			}
+// 		}
+// 		#gradient > .vertical(#8dbde6, #72a1d1);
+// 		color: white !important;
+// 	}
+// }
+
+// add friends buttons group
+// ----------------
+// .btn-action-friends {
+// 	.dropdown-toggle {
+// 		width: 180px;
+// 		overflow: hidden;
+// 		padding: 5px 12px;
+// 		text-align: left;
+// 		z-index: 2;
+// 		background: white;
+// 		font-size: 11px;
+// 		[class^="ies-"],
+// 		[class*=" ies-"] {
+// 			margin-right: 8px;
+// 			vertical-align: text-top;
+// 			&:before {
+// 				color: #595959;
+// 				font-size: 11px;
+// 				position: relative;
+// 				top: 2px;
+// 				left: 1px;
+// 			}
+// 		}
+// 	}//toggle
+// 	.dropdown-menu {
+// 		// display: block;
+// 		width: 180px;
+// 		left: 0;
+// 		top: 25px;
+// 		z-index: 100;
+// 		border-top: 1px solid #ddd;
+// 		.border-radius(0 0 3px 3px);
+// 		.divider {
+// 			border-bottom: 1px solid #F5F5F5;
+// 			display: block;
+// 		}
+// 	}
+
+// 	//state control
+// 	&.is-notfriend {
+// 		[class^="ies-"],
+// 		[class*=" ies-"] {
+// 			&:before {
+// 				// content: "\e02d";
+// 				content: "\e013"; //user plus
+// 				font-size: 16px;
+// 			}
+// 		}
+// 	}
+// 	&.is-requestfriend {
+		
+// 	}
+// 	&.is-respondfriend {
+// 		.dropdown-toggle {
+// 		}
+// 	}
+// 	&.is-friends,
+// 	&.is-friends:hover,
+// 	&.is-friends:focus{
+// 		#gradient > .vertical(#8dbde6, #72a1d1);
+// 		color: white !important;
+// 	}
+// }//action-friends
+
+
+//social button
+.btn-es-social {
+	.border-radius(10px);
+	font-size: 11px;
+	position: relative;
+}
+.btn-es-facebook {
+	.buttonBackground(#5692ce, #2b6cb3, #fff, @btnEsTextShadow);
+}
+.btn-es-twitter {
+	.buttonBackground(#61cef4, #05b3f4, #fff, @btnEsTextShadow);
+}
+.btn-es-linkedin {
+	.buttonBackground(#6cb3d3, #4b97c3, #fff, @btnEsTextShadow);
+}
+
+
+.btn:focus {
+	outline: none;
+	outline: none;
+	outline-offset: 0;
+	background-position: 0;
+}

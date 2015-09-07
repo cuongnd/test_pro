@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" version="3.0" group="system" method="upgrade">
+    <name>PLG_EASYJOOMLABACKUPCRONJOB</name>
+    <version>3-4</version>
+    <creationDate>2014-06-27</creationDate>
+    <license>http://www.gnu.org/licenses/gpl-3.0</license>
+    <copyright>Copyright 2014 Viktor Vogel. All rights reserved.</copyright>
+    <author>Viktor Vogel</author>
+    <authoremail>admin@kubik-rubik.de</authoremail>
+    <authorurl>http://joomla-extensions.kubik-rubik.de/</authorurl>
+    <description>PLG_EASYJOOMLABACKUPCRONJOB_XML_DESCRIPTION</description>
+    <files>
+        <filename plugin="easyjoomlabackupcronjob">easyjoomlabackupcronjob.php</filename>
+        <filename plugin="easyjoomlabackupcronjob">index.html</filename>
+        <folder plugin="easyjoomlabackupcronjob">fields</folder>
+    </files>
+    <languages folder="language">
+        <language tag="de-DE">de-DE/de-DE.plg_system_easyjoomlabackupcronjob.ini</language>
+        <language tag="de-DE">de-DE/de-DE.plg_system_easyjoomlabackupcronjob.sys.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_system_easyjoomlabackupcronjob.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_system_easyjoomlabackupcronjob.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params" addfieldpath="/plugins/system/easyjoomlabackupcronjob/fields">
+            <fieldset name="settings">
+                <field type="krdonationcodecheck" />
+                <field name="token" type="text" default="" size="40" filter="raw" label="PLG_EASYJOOMLABACKUPCRONJOB_TOKEN" description="PLG_EASYJOOMLABACKUPCRONJOB_TOKENDESC" />
+                <field name="type" type="list" default="1" label="PLG_EASYJOOMLABACKUPCRONJOB_TYPE" description="PLG_EASYJOOMLABACKUPCRONJOB_TYPEDESC">
+                    <option value="1">PLG_EASYJOOMLABACKUPCRONJOB_FULLBACKUP</option>
+                    <option value="2">PLG_EASYJOOMLABACKUPCRONJOB_DATABASEBACKUP</option>
+                    <option value="3">PLG_EASYJOOMLABACKUPCRONJOB_FILEBACKUP</option>
+                </field>
+            </fieldset>
+            <fieldset name="donation">
+                <field type="krdonationcodecheck" />
+                <field name="donation_code" type="text" default="" size="40" label="KR_DONATION_CODE" description="KR_DONATION_CODEDESC" />
+            </fieldset>
+            <fieldset name="versioncheck">
+                <field type="krdonationcodecheck" />
+                <field type="krversioncheck" name="krversioncheck" default="ejb|3-4" />
+                <field name="versioncheck_enable" type="list" default="1" label="KR_VERSION_CHECK" description="KR_VERSION_CHECKDESC">
+                    <option value="1">KR_VERSION_CHECK_ONCESESSION</option>
+                    <option value="2">KR_VERSION_CHECK_ONEVERYLOAD</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

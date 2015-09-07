@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form> 
+	<fieldset addfieldpath="/administrator/components/com_bookpro/elements"/>
+	<fieldset name="myfields">
+		<field name="id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+		<field name="from" type="destinationflight" class="inputbox" size="40"
+			label="COM_BOOKPRO_FLIGHTROUTER_FROM" description="COM_FOLIO_FIELD_TITLE_FROM"
+			required="true" />
+		 
+		<field name="to" type="destinationflight" class="inputbox" size="40"
+			label="COM_BOOKPRO_FLIGHTROUTER_TO" description="COM_FOLIO_FIELD_TITLE_TO"
+			required="true" />
+			
+			<field name="title" type="text" class="inputbox" size="40"
+			label="JGLOBAL_TITLE" description="COM_FOLIO_FIELD_TITLE_TITLE"
+			required="true" />
+			
+		<field name="state" type="radio" label="JSTATUS"
+			description="COM_BOOKPRO_FIELD_STATE_DESC" class="inputbox btn-group small"
+			size="1" default="1">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+			 
+			 
+		 <field name="desc" type="editor" buttons="true"
+  hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+  label="JGLOBAL_DESCRIPTION" description="COM_BOOKPRO_FIELD_DESCRIPTION_DESC" />
+	</fieldset>
+</form>

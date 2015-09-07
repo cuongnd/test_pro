@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="2.5" group="system" method="upgrade">
+	<name>System - JU BlockIP</name>
+	<author>JoomUltra</author>
+	<creationDate>Aug 2013</creationDate>
+	<copyright>Copyright (C) 2010 - 2013 JoomUltra. All rights reserved.</copyright>
+	<license>license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<authorEmail>admin@joomultra.com</authorEmail>
+	<authorUrl>www.joomultra.com</authorUrl>
+	<version>1.0</version>
+	<updateservers>
+		<server type="collection">http://www.joomultra.com/service/tracking/list.xml</server>
+	</updateservers>
+	<description>
+		<![CDATA[
+		<div style='font-weight: normal'>
+		<h2 style='color: #0A71A5;'>JU BlockIP Plugin</strong></h2>
+		<span style='color: #ff0000;'><strong>Features:</strong></span>
+		<br/><br/>
+		- Add one more protection layer to protect backend of your website.<br/>
+		- Block IP by given IP Whitelist/IP Blacklist.<br/>
+		The whitelist should include ip addresses that should not be blocked, the
+		blacklist should contain ip addresses to be blocked. The whitelist is 
+		checked first and will overide the blacklist ip addresses.<br/><br/>
+		<ul>
+		<li>If an IP is found in the whitelist, that user will be allowed to access your site and plugin will NOT check that IP in the blacklist.</li>
+		<li>If an IP is not found in the whitelist, plugin will check that IP in the blacklist, if that IP is found in the blacklist, user will be blocked.</li>
+		<li>If an IP is not found in both whitelist and blacklist, user will be allowed to access your site.</li>
+		</ul>
+		<br/><br/>
+		<strong><span style='color: #ff0000;'>Usage Instructions:</span></strong><br/><br/>
+		
+		<b><u>IPv4:</u></b><br/>
+		<ul>
+		<li><b>Single IP address:</b> 25.25.25.0</li>
+		<li><b>CIDR Mask:</b> 255.255.255.0/25</li>
+		<li><b>IP address with mask:</b> 255.255.255.0/255.255.255.128</li>
+		<li><b>Wildcard:</b> 25.25.25.*</li>
+		<li><b>Low to high IP address:</b> 25.25.25.0-25.25.25.128</li>
+		</ul>
+		<br/><br/>
+		
+		<b><u>IPv6:</u></b><br/>
+		<ul>
+		<li><b>Single IP address:</b> 2001:0db8:85a3:0042:1000:8a2e:0370:7334</li>
+		<li><b>CIDR Mask:</b> 2001:0db8:85a3:0042:1000:8a2e:0370:7334/64</li>
+		<li><b>IP address with Mask:</b> 2001:0db8:85a3:0042:1000:8a2e:0370:7334/ffff:ffff:ffff:ffff::</li>
+		<li><b>Low to high IP address:</b> 2001:0db8:85a3:0042:1000:8a2e:0370:7000-2001:0db8:85a3:0042:1000:8a2e:0370:7fff</li>
+		</ul>
+		<br/><br/>
+		<b><u>Comment:</u></b><br/>
+		Comments may be added to a line starting with '<b>#</b>' character and inline comments may be added starting with '<b>#</b>' character.<br/><br/><br/>
+		
+		<b><u>IP List example:</u></b><br/><br/>
+		<code>
+		# A comment line<br/>
+		<br/>
+		200.0.0.0/8    # an inline comment<br/>
+		#<br/>
+		78.34.23.64-78.34.23.79<br/>
+		#<br/>
+		156.0.0.0/255.255.0.0<br/>
+		<br/>
+		## Blank lines are allowed<br/>
+		##<br/>
+		25.128.0.0 - 25.128.128.0<br/>
+		<br/>
+		# IPv6 Range<br/>
+		2001:0db8:85a3:0042:1000:8a2e:0370:7334/112<br/>
+		1f00::-1f00::01f0<br/>
+		f555::/ffff::<br/>
+		</code>
+		<br/><br />
+		<strong><span style='color: #ff0000;'>Requirements:</span></strong><br/>
+		Joomla! 2.5.x, Joomla! 3.x<br/><br/>
+		<strong><span style='color: #ff0000;'>Upgrade Methods:</span><br /></strong>
+		<ol>
+		  <li>Standard joomla uninstall / reinstall method. Module supports upgrade method. </li>
+		  <li>You can install new version directly over this version. Uninstallation is not required. </li>
+		  <li>Backup any customized file before upgrading.</li>
+		</ol>
+		<br />
+		<strong><span style='color: #ff0000;'>Support:</span></strong>
+		<br />
+		<ul>
+		<li>If you need any help, please ask in <a href="http://www.joomultra.com/forums.html" title="JoomUltra Forum">our forum</a>.</li>
+		<li>If you use JU BlockIP, please post a review for <a href="http://extensions.joomla.org/extensions/access-a-security/site-access/ip-blocking/25247" target="_blank" title="Post a review for JU BlockIP">JU BlockIP on JED</a></li>
+		</ul>
+		<br /><br />
+		<small>Copyright © 2010 - 2013 <a href='http://www.joomultra.com/' title='Visit JoomUltra.com!'>JoomUltra.com</a>.</small>
+		</div>
+		]]>
+	</description>
+	<files>
+		<filename plugin="jublockip">jublockip.php</filename>
+		<filename>index.html</filename>
+		<filename>ipblocklist.class.php</filename>
+		<folder>admin</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.plg_system_jublockip.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/plugins/system/jublockip/admin/elements/">
+				<field 
+					name="juformstyle" 
+					type="juformstyle" />
+				
+				<field name="token"
+					type="text"
+					size="20"
+					default=""
+					class=""
+					label="PLG_JUBLOCKIP_TOKEN"
+					description="PLG_JUBLOCKIP_TOKEN_DESC" 
+				/>
+				
+				<field name="filterip" 
+					type="radio" 
+					default="1" 
+					class="radio btn-group"
+					label="PLG_JUBLOCKIP_FILTER_IP" 
+					description="PLG_JUBLOCKIP_FILTER_IP_DESC">
+					<option value="1">PLG_JUBLOCKIP_FRONT_END</option>
+					<option value="2">PLG_JUBLOCKIP_BACK_END</option>
+					<option value="3">PLG_JUBLOCKIP_BOTH</option>
+				</field>
+				
+				<field name="whitelistip"
+					type="textarea"
+					cols="35"
+					rows="15"
+					default=""
+					class=""
+					label="PLG_JUBLOCKIP_WHITELIST"
+					description="PLG_JUBLOCKIP_WHITELIST_DESC" 
+				/>
+				
+				<field name="blacklistip"
+					type="textarea"
+					cols="35"
+					rows="15"
+					default=""
+					class=""
+					label="PLG_JUBLOCKIP_BLACKLIST"
+					description="PLG_JUBLOCKIP_BLACKLIST_DESC" 
+				/>
+				
+				<field 
+					name="restricted_action" 
+					type="radio" 
+					default="1" 
+					class="jufilter btn-group" 
+					label="PLG_JUBLOCKIP_RESTRICTED_ACTION" 
+					description="PLG_JUBLOCKIP_RESTRICTED_ACTION_DESC">
+					<option 
+						value="1">PLG_JUBLOCKIP_REDIRECT</option>
+					<option 
+						value="2">PLG_JUBLOCKIP_SHOW_MESSAGE</option>
+				</field>
+				
+				<field name="redirect_to"
+					type="text"
+					size="40"
+					default="http://google.com"
+					class="jufilter-restricted_action-1"
+					label="PLG_JUBLOCKIP_REDIRECT_TO"
+					description="PLG_JUBLOCKIP_REDIRECT_TO_DESC" 
+				/>
+				
+				<field name="error_message"
+					type="text"
+					size="40"
+					default="Your IP has been blocked!"
+					class="jufilter-restricted_action-1"
+					label="PLG_JUBLOCKIP_ERROR_MESSAGE"
+					description="PLG_JUBLOCKIP_ERROR_MESSAGE_DESC" 
+				/>
+				
+				<field name="restricted_message"
+					type="textarea"
+					cols="35"
+					rows="15"
+					default="Your IP has been blocked!"
+					filter="raw"
+					class="jufilter-restricted_action-2"
+					label="PLG_JUBLOCKIP_RESTRICTED_MESSAGE"
+					description="PLG_JUBLOCKIP_RESTRICTED_MESSAGE_DESC" 
+				/>
+			</fieldset>
+			<fieldset name="advanced" addfieldpath="/plugins/system/jutoc/admin/elements/">
+				<field type="jumessage"
+					description="PLG_JUBLOCKIP_PATH_REGEX_INSTRUCTION"
+					class="juicon-info"
+				/>
+				
+				<field name="enablepaths"
+					type="textarea"
+					cols="40"
+					rows="5"
+					default=""
+					filter="raw"
+					label="PLG_JUBLOCKIP_ENABLE_PATHS"
+					description="PLG_JUBLOCKIP_ENABLE_PATHS_DESC" 
+				/>
+				
+				<field name="disablepaths"
+					type="textarea"
+					cols="40"
+					rows="5"
+					default=""
+					filter="raw"
+					label="PLG_JUBLOCKIP_DISABLE_PATHS"
+					description="PLG_JUBLOCKIP_DISABLE_PATHS_DESC" 
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

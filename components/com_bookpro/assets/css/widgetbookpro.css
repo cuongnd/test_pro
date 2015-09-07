@@ -1,0 +1,53 @@
+.widgetbookpro-loading
+{
+    background : url("../images/loading.gif");
+    background-position: 50% 50%;
+    background-repeat:no-repeat;
+}
+#widgetbookpro #wap-content .hotel_search
+{
+    padding: 10px;
+}
+
+.iDivdialog #room_checkin_date ,.iDivdialog #room_checkout_date
+{
+    width: 80px;
+    font-size: 11px;
+}
+.iDivdialog .customer_detail
+{
+    
+}
+.iDivdialog .customer_detail input
+{
+    width: 200px;
+}
+.iDivdialog .date-select .control-group
+{
+    float: left;
+}
+.iDivdialog .date-select .control-group label
+{
+    float: left; 
+    padding: 5px;   
+}
+.iDivdialog .date-select .control-group .input-append
+{
+    float: left;
+}
+.iDivdialog #roomlist select
+{
+    width:50px;
+}
+.iDivdialog .ui-datepicker-trigger
+{
+    padding: 3px 15px;
+}
+.iDivdialog .date-select
+{
+    display: inline-block;
+}
+.iDivdialog .date-select #check_available
+{
+     margin-left: 5px;
+}

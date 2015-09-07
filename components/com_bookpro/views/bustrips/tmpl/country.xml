@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="bus contry" option="com_bookpro_buss_view_default_option">
+        <help
+                key = "JHELP_MENUS_MENU_ITEM_BUSS"
+                />		<message>
+        <![CDATA[COM_BOOKPRO_BUSS_VIEW_DEFAULT_DESC]]>
+    </message>
+    </layout>
+    <!-- Add fields to the request variables for the layout. -->
+
+
+
+    <fields name="request">
+        <fieldset name="request"
+                >
+        </fieldset>
+    </fields>
+    <fields name="params">
+
+        <!-- Basic options. -->
+        <fieldset name="basic"
+                  label="Country option">
+            <field name="content_cat_id" type="category" extension="com_content"
+                   multiple="false"
+                   label="JCATEGORY"
+                   description="MOD_ARTICLES_CATEGORY_FIELD_CATEGORY_DESC"
+                    >
+
+            </field>
+
+
+            <field name="filtering_top_destination" type="list"
+                   default="top_order"
+                   label="filtering top destination"
+                   description="MOD_ARTICLES_CATEGORY_FIELD_AUTHORFILTERING_DESC"
+                    >
+                <option value="top_order">Top order
+                </option>
+                <option value="top_car_to_destination">Top car to destination
+                </option>
+                <option value="feature">Feature
+                </option>
+                <option value="all">All car to this
+                </option>
+            </field>
+
+            <field name="number_popular_car_rental" type="text" default="10"
+                   label="number_popular_car_rental"
+                   description="number_popular_car_rental" />
+
+
+
+        </fieldset>
+    </fields>
+
+</metadata>

@@ -1,0 +1,122 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+// Wireframe default theme
+
+// @import "bootstrap/variables";
+@import "component";
+@import "@{site_base}/variables";
+@import "variables";
+
+
+// Elements < Blocks < States < Views
+(~"@{EasySocial}") {
+	// display:inline-block;
+	// width:100%;
+	// font-family: @baseFontFamily;
+	// font-size: @baseFontSize;
+	// // color: @esColor;
+	
+	// line-height: 18px;
+	// // background: @esBackground; // temporary remove white background as default #1204
+	// font-size-adjust: none;
+
+
+	// Individual/single classes can apply to everywhere
+	@import "@{site_base}/elements";
+	@import "@{site_base}/icons"; //icons extend
+
+	//Scaffolding
+	@import "@{site_base}/layout";
+	@import "@{site_base}/header";
+
+	// Blocks aka modules in html apply rely on few classes
+	@import "@{site_base}/blocks";
+	@import "@{site_base}/notifications";
+	@import "@{site_base}/onlinestatus";
+	@import "@{site_base}/remind";
+
+	// Location service
+	@import "@{site_base}/location";
+
+	body & {
+		@import "@{site_base}/toolbar";
+	}
+
+	// Activity logs
+	@import "@{site_base}/activities";
+	
+	@import "@{site_base}/widget";
+	@import "@{site_base}/badges";
+	@import "@{site_base}/points";
+	@import "@{site_base}/story";
+	@import "@{site_base}/stream";
+	@import "@{site_base}/comment";
+	@import "@{site_base}/conversations";
+	@import "@{site_base}/filterbar";
+
+	// Privacy dropdown menu
+	// @import "@{site_base}/privacy";
+
+	// For handbook
+	@import "@{site_base}/handbook";
+
+	// For styleguide
+	@import "@{site_base}/styleguide";
+
+	// elements/blocks view control class
+	@import "@{site_base}/views";
+
+	// Dashboard styles
+	@import "@{site_base}/dashboard";
+
+	// Profile styles
+	@import "@{site_base}/profile";
+
+	// Profiles styles
+	@import "@{site_base}/profiles";
+
+	// Friend styles
+	@import "@{site_base}/friends";
+
+	// Followers styles
+	@import "@{site_base}/followers";
+
+	// Application styles
+	@import "@{site_base}/apps";
+
+	// Unity view styles
+	@import "@{site_base}/unity";
+
+	// Users view styles
+	@import "@{site_base}/users";
+
+	// Leaderboard styles
+	@import "@{site_base}/leaderboard";
+
+	// Registration
+	@import "@{site_base}/registration";
+
+	// Search Result
+	@import "@{site_base}/search-result";
+
+	// Media, albums & photos
+	@import "@{site_base}/media";
+	@import "@{site_base}/photos";
+	@import "@{site_base}/albums";
+	
+	// Points History
+	@import "@{site_base}/pointshistory";
+	
+	// Social Integrations
+	@import "@{site_base}/social-integrations";
+	
+	// elements/blocks state control class
+	@import "@{site_base}/states";
+}
+
+// Custom hack for common templates
+@import "@{site_base}/custom";

@@ -1,0 +1,10 @@
+<div class="currentstep">
+    <div class="steps">
+        <?php $i=1 ?>
+        <span class="step step1<?php echo $this->currentstep==1?' selected':'' ?>"><span class="nunber"><?php echo $i++ ?></span><?php if($this->currentstep>=$i){ ?><a href="index.php?option=com_bookpro&view=tourbook"><?php echo JText::_('COM_BOOKPRO_SELECT_DATE') ?></a><?php }else{ ?><?php echo JText::_('COM_BOOKPRO_SELECT_DATE') ?><?php } ?></span>
+        <?php if($this->cart->stype=='nonedaytripprivate'){ ?><span class="step step2<?php echo $this->currentstep==2?' selected':'' ?>"><span class="nunber"><?php echo $i++ ?></span><?php if($this->currentstep>=$i){ ?><a href="index.php?option=com_bookpro&view=tourbook&layout=option&tpl=default"><?php echo JText::_('COM_BOOKPRO_OPTION') ?></a><?php }else{ ?><?php echo JText::_('COM_BOOKPRO_OPTION') ?><?php } ?></span> <?php } ?>
+        <span class="step step3<?php echo $this->currentstep==3?' selected':'' ?>"><span class="nunber"><?php echo $i++ ?></span><?php if($this->currentstep>=$i){ ?><a href="index.php?option=com_bookpro&view=tourbook&layout=passenger&tpl=default"><?php echo JText::_('COM_BOOKPRO_PASSENGERS') ?></a><?php }else{ ?><?php echo JText::_('COM_BOOKPRO_PASSENGERS') ?><?php } ?></span>
+        <span class="step step4<?php echo $this->currentstep==4?' selected':'' ?>"><span class="nunber"><?php echo $i++ ?></span><?php if($this->currentstep>=$i){ ?><a href="index.php?option=com_bookpro&view=tourbook&layout=payment&tpl=default"><?php echo JText::_('COM_BOOKPRO_PAYMENT') ?></a><?php }else{ ?><?php echo JText::_('COM_BOOKPRO_PAYMENT') ?><?php } ?></span>
+        <span class="step step5<?php echo $this->currentstep==5?' selected':'' ?>"><span class="nunber"><?php echo $i++ ?></span><?php if($this->currentstep>=$i){ ?><a href="index.php?option=com_bookpro&view=tourbook&layout=confirm&tpl=default"><?php echo JText::_('COM_BOOKPRO_CONFIRMATION') ?></a><?php }else{ ?><?php echo JText::_('COM_BOOKPRO_CONFIRMATION') ?><?php } ?></span>
+    </div>
+</div>

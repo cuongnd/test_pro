@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+        <layout title="Country flight">
+                 <message><![CDATA[COM_BOOKPRO_COUNTRY_VIEW_DEFAULT_DESC]]></message>
+        </layout>
+	<fields name="request">
+		<fieldset name="request">
+			<field addfieldpath="/administrator/components/com_bookpro/elements" name="country_id" type="country" default="230"
+				description="COM_BOOKPRO_COUNTRY_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_COUNTRY_SELECT_TITLE" required="false" />
+				
+		</fieldset>
+			
+	</fields>
+	<fields name="params">
+		<fieldset name="basic" label="JGLOBAL_LIST_LAYOUT_OPTIONS">
+			<field name="products_per_row" type="text" default="2"
+				description="COM_BOOKPRO_PRODUCT_PER_ROW_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_PRODUCT_PER_ROW_SELECT_TITLE"/>
+				
+			<field name="count" type="text" default="4"
+				description="COM_BOOKPRO_COUNT_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_COUNT_SELECT_TITLE" required="false" />
+			
+		</fieldset>
+	</fields>
+</metadata>

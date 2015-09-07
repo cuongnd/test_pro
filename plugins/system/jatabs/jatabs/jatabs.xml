@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="2.5" group="system" method="upgrade">
+	<name>System - JA Tabs</name>
+	<author>JoomlArt.com</author>
+	<creationDate>04 May 2013</creationDate>
+	<copyright>Copyright (C), J.O.O.M Solutions Co., Ltd. All Rights
+		Reserved.</copyright>
+	<license>license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+	</license>
+	<authorEmail>webmaster@joomlart.com</authorEmail>
+	<authorUrl>www.joomlart.com</authorUrl>
+	<version>2.6.0</version>
+	<updateservers>
+		<server type="collection">http://update.joomlart.com/service/tracking/list.xml</server>
+	</updateservers>
+	<description>
+		<![CDATA[
+		<div style="text-align:left">
+			<span style="color: #008000;"><strong>JA Tabs Plugin for Joomla! 2.5</strong></span>
+			<div style="font-weight: normal">
+			<p><strong><img src='../plugins/system/jatabs/jatabs/tabs.png' />
+			<span style='margin-top:10px;'>JA Tabs plugin is a plugin which helps you to create tabs in any positions in Joomla contents</span></strong></p>
+			<p><span style="color: #ff6600;"><strong>Features:</strong></span></p>
+			<ol class="checklist" style='clear:both'>
+			<li>Support multiple types of content: Module Position, Module name, HTML Content, Article IDs, Category ID</li>
+			<li>Configurable animations: Left/right, up/down, fading...</li>
+			<li>Multiple themes support</li>
+			<li>Extensive configuration options</li>
+			</ol>
+			</div>
+			<p><strong><span style="color: #ff0000;">Usage Instructions:</span><br /></strong></p>
+			<p><span style="color: #ff6600;"><strong>General Parameter Options:</strong></span></p>
+			<h3 style="color: blue">All available parameter options for JA Tabs Plugin.</h3>
+			<div  style="font-weight: normal">
+			<ol>
+			<li><strong>type:</strong> <br /> (modules, module, content, articles). JA Tabs type.</li>
+			<li><strong>position:</strong> <br /> (top, left, right, bottom). Position of the tabs. Default value is top.</li>
+			<li><strong>style:</strong><br /> JA Tabs styling (basic). The default setting is basic. </li>
+			<li><strong>width:</strong><br /> Width of the tabs. It can be fixed or automatic. Example: empty or '100%' or '600'</li>
+			<li><strong>height:</strong><br /> Height of the tabs. It can be fixed or automatic. Example: empty or 'auto' or '400'.</li>
+			<li><strong>widthTabs:</strong><br /> Width of the tabs. It should be 'empty' for the 'Top/Bottom' position of tabs title and fixed (such as '150') for the 'Left/Right' position of tabs title.</li>
+			<li><strong>heightTabs:</strong><br /> Height of the tabs. It should be 'empty' for 'Left/Right' position of tabs title and fixed (such as '30') for 'Top/Bottom' position of tabs title.</li>
+			<li><strong>duration (ms):</strong><br /> Time interval of effect transition (in milliseconds). The default setting is 1000. </li>
+			<li><strong>animType:</strong><br /> (animFade, animMoveHor, animMoveVir, none). Define type of effect transition. The default setting is animMoveVir.</li>
+			<li><strong>mouseType:</strong><br /> (click, mouseover, none). Action behavior of Control Panel. Default value is click. </li>
+			<li><strong>skipAnim:</strong> <br /> (true, false). Skip animation. The default setting is false.</li>
+			<li><strong>ajax:</strong> <br /> (true, false). Set to "True" if you want to use AJAX to load content in tabs (Does not apply for HTML Content type). The default setting is False.</li>
+			<li><strong>view:</strong> <br /> (introtext, fulltext). Apply for Articles.</li>
+			<li><strong>jaclass:</strong> <br /> Input the class for each tab in format: 1:class1,2:class2. The supported class depend on the tab style.</li>
+			<li><strong>module:</strong> <br /> Apply for type="modules". Input module position which will display in tabs. For example: articleslatestload</li>
+			<li><strong>modulename:</strong> <br /> Apply for type="module". Input one or more module names which are separated by commas. For example: mod_articles_news, mod_articles_latest</li>
+			<li><strong>ids:</strong> <br /> Apply for type="articles". Input one or more article IDs which are separated by commas. For example: 1, 2, 3, 4</li>
+			<li><strong>catid:</strong> <br /> Apply for type="articles". Input one catergory from which you want to display its articles in tabs. For example: 1</li>
+			<li><strong>maxitems:</strong> <br /> Maximum number of articles to display</li>
+			</div>			
+			<p><span style="color: #ff6600;"><strong>For Example tags:</strong></span></p>
+			<div  style="font-weight: normal">
+			<b>1. Type = modules</b>		
+			<p>
+			<code>{jatabs type="modules" module="position-7" position="top" 
+				mouseType="click" animType="animFade"}
+			{/jatabs}</code>
+			</p>			
+			<b>2. Type = module</b>		
+			<p>
+			<code>{jatabs type="module" modulename="mod_menu, mod_login" 
+			position="left" widthTabs="150" animType="animMoveVir"}
+			{/jatabs}</code>
+			</p>		
+			<b>3. Type = content</b>		
+			<p>
+			<code>{jatabs  type="content" position="top" height="240" mouseType="mouseover" 
+				animType="animMoveHor"}
+			  [tab title="Entertainment"]
+			    &lt;img src="images/sampledata/fruitshop/apple.jpg" 
+			    alt="Sample image" align="left" class="caption" /&gt;...
+			  [/tab]
+			  [tab title="Travel"]
+			    &lt;img src="images/sampledata/fruitshop/bananas_2.jpg" /&gt;
+			  [/tab]
+			  [tab title="Artist"]
+			    &lt;img src="images/sampledata/fruitshop/tamarind.jpg" /&gt;
+			  [/tab]
+			{/jatabs}</code>
+			</p>			
+			<b>4. Type = articles</b>		
+			<p>
+			<code>{jatabs type="articles" ids="25, 26, 27" ajax=true view="introtext" position="right" 
+				widthTabs=150 width=530 animType="animMoveVir"}
+			{/jatabs}</code>
+			</p>		
+			<b>5. Type = articles</b>		
+			<p>
+			<code>{jatabs type="articles" catid="55" view="introtext" ajax=true position="bottom"
+				animType="animMoveHor"}
+			{/jatabs}</code>
+			</p>			
+			</div>
+			<p><strong><span style="color: #ff0000;">Upgrade Methods:</span><br /></strong></p>
+			<ol>
+				<li>You can install new version directly over this version. Uninstallation is not required. Backup any customized files before upgrading.</li>		
+			</ol>
+			<p><span style="color: #008000;"><strong>Links :</strong></span></p>						
+				<ul><li><a target="_blank" href="http://www.joomlart.com/forums/showthread.php?50267">General Userguide</a></li>
+		 	<li><a target='_blank' href='http://update.joomlart.com/'>Updates &amp; Versions</a></li></ul>			
+			<p>Copyright 2004 - 2012 <a href="http://www.joomlart.com/" title="Visit Joomlart.com!">JoomlArt.com</a>.</p> 
+		</div>
+		]]>
+	</description>
+
+	<files>
+		<filename plugin="jatabs">index.html</filename>
+		<filename plugin="jatabs">jatabs.php</filename>
+		<folder>jatabs</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.plg_system_jatabs.ini</language>
+	</languages>
+	<config>
+		<fields name="params" addfieldpath="/plugins/system/jatabs/jatabs/assets/elements">
+			<fieldset 
+				name="basic" 
+				label="BASIC_SETTINGS">
+				
+				<field type="japanel" path="/plugins/system/jatabs/jatabs/assets/elements/"/>				
+					
+				<field 
+					name="disable_tab" 
+					type="radio" 
+					class="btn-group"
+					default="0" 
+					label="DISABLE_TABS"
+					description="DISABLE_TABS_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field 
+					name="style" 
+					type="folderlist"
+					directory="plugins/system/jatabs/jatabs/themes/" 
+					default="default"
+					label="DEFAULT_STYLE" 
+					description="DEFAULT_STYLE_DESC" />
+				
+				<field 
+					name="position" 
+					type="list" 
+					default="top" 
+					label="TAB_POSITION"
+					description="TAB_POSITION_DESC">
+					<option value="top">Top</option>
+					<option value="bottom">Bottom</option>
+					<option value="left">Left</option>
+					<option value="right">Right</option>
+				</field>
+					
+				<field 
+					name="width" 
+					type="text" 
+					default="100%" 
+					size="6"
+					label="WIDTH"
+					description="WIDTH_DESC" />
+					
+				<field 
+					name="height" 
+					type="text" 
+					default="auto" 
+					size="6"
+					label="HEIGHT"
+					description="HEIGHT_DESC" />
+				<field 
+					name="widthTabs" 
+					type="text" 
+					default="100%"
+					size="6"
+					label="WIDHT_OF_TAB"
+					description="WIDHT_OF_TAB_DESC" />
+				<field 
+					name="heightTabs" 
+					type="text" 
+					default="30" 
+					size="6"
+					label="HEIGHT_OF_TAB"
+					description="HEIGHT_OF_TAB_DESC" />
+
+				<field 
+					name="view" 
+					type="list" 
+					default="introtext" 
+					label="FOR_ARTICLES"
+					description="FOR_ARTICLES_DESC">
+						<option value="introtext">View Introtext</option>
+						<option value="fulltext">View Fulltext</option>
+				</field>
+				
+				<field 
+					name="jaclass" 
+					type="text" 
+					size="30" 
+					default="" 
+					label="JACLASS"
+					description="JACLASS_DESC" />
+			
+			</fieldset>
+			
+			<fieldset 
+					name="animationsettings"					
+					label="ANIMATIONS_SETTINGS">
+				
+				<field 
+					name="duration" 
+					type="text" 
+					default="1000" 
+					label="DURATION"
+					description="DURATION_DESC" class="validate-numeric"/>
+				
+				<field 
+					name="animType" 
+					type="list" 
+					default="animMoveVir"
+					label="EFFECT" 
+					description="EFFECT_DESC">
+						<option value="animFade">Fade</option>
+						<option value="animMoveHor">Move Horizontal</option>
+						<option value="animMoveVir">Move Vertical</option>
+						<option value="none">None</option>
+				</field>
+				<field 
+					name="skipAnim" 
+					type="radio"
+					class="btn-group" 
+					default="false" 
+					label="SKIP_ANIMATION"
+					description="SKIP_ANIMATION_DESC">
+						<option value="false">JNO</option>
+						<option value="true">JYES</option>
+				</field>
+				
+				<field 
+					name="mouseType" 
+					type="list" 
+					default="click" 
+					label="MOUSE_TYPE"
+					description="MOUSE_TYPE_DESC">
+						<option value="click">Click</option>
+						<option value="mouseover">Mouseover</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

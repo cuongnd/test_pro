@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field name="id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+		<field name="title" type="text" label="JGLOBAL_TITLE" class="inputbox"
+			size="100" required="true" />
+		
+		<field name="image" type="imagelistbookpro" default=""  label="Select an image" description="" directory="images/bookpro/activityicon" exclude="" stripext="" />
+
+		<field name="state" type="list" label="JSTATUS"
+			description="COM_BOOKPRO_FIELD_STATE_DESC" class="inputbox span12 small"
+			size="1" default="1">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+		<field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL"
+			description="JFIELD_ACCESS_DESC" class="inputbox span12 small" size="1" />
+
+		<field name="language" type="contentlanguage" label="JFIELD_LANGUAGE_LABEL"
+			description="COM_BOOKPRO_FIELD_LANGUAGE_DESC" class="inputbox span12 small">
+			<option value="*">JALL</option>
+		</field>
+
+		<field name="metakey" type="textarea" label="JFIELD_META_KEYWORDS_LABEL"
+			description="JFIELD_META_KEYWORDS_DESC" class="inputbox" rows="3"
+			cols="30" />
+
+		<field name="metadesc" type="textarea" label="JFIELD_META_DESCRIPTION_LABEL"
+			description="JFIELD_META_DESCRIPTION_DESC" class="inputbox" rows="3"
+			cols="30" />
+		<fields name="images">
+			<field
+				name="image_first"
+				type="media"
+				label="COM_WEBLINKS_FIELD_FIRST_LABEL"
+				description="COM_WEBLINKS_FIELD_FIRST_DESC" />
+			<field
+				name="float_first"
+				type="list"
+				label="COM_WEBLINKS_FLOAT_LABEL"
+				description="COM_WEBLINKS_FLOAT_DESC">
+					<option value="">JGLOBAL_USE_GLOBAL</option>
+					<option value="right">COM_WEBLINKS_RIGHT</option>
+					<option value="left">COM_WEBLINKS_LEFT</option>
+					<option value="none">COM_WEBLINKS_NONE</option>
+			</field>
+			<field name="image_first_alt"
+				type="text"
+				label="COM_WEBLINKS_FIELD_IMAGE_ALT_LABEL"
+				description="COM_WEBLINKS_FIELD_IMAGE_ALT_DESC"
+				class="inputbox"
+				size="20" />
+			<field name="image_first_caption"
+				type="text"
+				label="COM_WEBLINKS_FIELD_IMAGE_CAPTION_LABEL"
+				description="COM_WEBLINKS_FIELD_IMAGE_CAPTION_DESC"
+				class="inputbox"
+				size="20" />
+
+			<field
+				name="image_second"
+				type="media"
+				label="COM_WEBLINKS_FIELD_SECOND_LABEL"
+				description="COM_WEBLINKS_FIELD_SECOND_DESC" />
+			<field
+				name="float_second"
+				type="list"
+				label="COM_WEBLINKS_FLOAT_LABEL"
+				description="COM_WEBLINKS_FLOAT_DESC">
+					<option value="">JGLOBAL_USE_GLOBAL</option>
+					<option value="right">COM_WEBLINKS_RIGHT</option>
+					<option value="left">COM_WEBLINKS_LEFT</option>
+					<option value="none">COM_WEBLINKS_NONE</option>
+			</field>
+			<field name="image_second_alt"
+				type="text"
+				label="COM_WEBLINKS_FIELD_IMAGE_ALT_LABEL"
+				description="COM_WEBLINKS_FIELD_IMAGE_ALT_DESC"
+				class="inputbox"
+				size="20" />
+			<field name="image_second_caption"
+				type="text"
+				label="COM_WEBLINKS_FIELD_IMAGE_CAPTION_LABEL"
+				description="COM_WEBLINKS_FIELD_IMAGE_CAPTION_DESC"
+				class="inputbox"
+				size="20" />
+	</fields>
+		
+		<fields name="metadata">
+			<fieldset name="jmetadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
+
+			</fieldset>
+		</fields>
+
+	</fieldset>
+
+</form>

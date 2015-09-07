@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/administrator/components/com_bookpro/elements">
+		<fields>
+		<field name="id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+		
+		<field name="desfrom" type="destinationflight"
+			class="inputbox"
+			description="COM_BOOKPRO_FLIGHT_FROM"
+			label="COM_BOOKPRO_FLIGHT_FROM"
+			required="true"
+			size="30"
+		/>
+		
+		<field name="desto" type="destinationflight"
+			class="inputbox"
+			description="COM_BOOKPRO_FLIGHT_TO"
+			label="COM_BOOKPRO_FLIGHT_TO"
+			required="true"
+			size="30"
+		/>
+		<field name="airline_id" type="airline"
+			class="inputbox"
+			description="COM_BOOKPRO_FLIGHT_AIRLINE"
+			label="COM_BOOKPRO_FLIGHT_AIRLINE"
+			required="true"
+			size="30"
+		/>
+		<field name="frequency" type="frequency"
+			class="inputbox"
+			
+			description="COM_BOOKPRO_FLIGHT_AIRLINE"
+			label="Frequency"
+			required="true"
+			size="30"
+		/>
+		
+		<field name="base_seat" type="text"
+			label="COM_BOOKPRO_FLIGHT_BASE_SEAT"
+			description="COM_BOOKPRO_FLIGHT_BASE_SEAT"
+			default="0"
+			class="inputbox"
+			size="30"
+		/>
+		<field name="eco_seat" type="text"
+			label="COM_BOOKPRO_FLIGHT_ECO_SEAT"
+			description="COM_BOOKPRO_FLIGHT_ECO_SEAT"
+			default="0"
+			class="inputbox"
+			size="30"
+		/>
+
+		
+
+		<field name="bus_seat" type="text"
+			label="COM_BOOKPRO_FLIGHT_BUS_SEAT"
+			description="COM_BOOKPRO_FLIGHT_BUS_SEAT"
+			class="inputbox"
+			default="0"
+			size="30"
+		/>
+		
+		
+		<field name="flightnumber"	type="text"
+			
+			label="COM_BOOKPRO_FLIGHT_NUMBER"
+			description="COM_BOOKPRO_FLIGHT_NUMBER"
+			class="inputbox"
+			size="30"
+		/>
+		<field name="start"	type="text"
+			
+			label="COM_BOOKPRO_FLIGHT_START"
+			description="COM_BOOKPRO_FLIGHT_START"
+			class="inputbox"
+			size="30"
+		/>
+		<field name="stop"	type="text"
+			
+			label="COM_BOOKPRO_FLIGHT_STOP"
+			description="COM_BOOKPRO_FLIGHT_STOP"
+			class="inputbox"
+			size="30"
+		/>
+		<field name="end"	type="text"
+			
+			label="COM_BOOKPRO_FLIGHT_END"
+			description="COM_BOOKPRO_FLIGHT_END"
+			class="inputbox"
+			size="30"
+		/>
+		<field name="duration"	type="text"
+			
+			label="COM_BOOKPRO_FLIGHT_DURATION"
+			description="COM_BOOKPRO_FLIGHT_DURATION"
+			class="inputbox"
+			size="30"
+		/>
+		<field name="desc" type="editor" buttons="true"
+		hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+		label="COM_BOOKPRO_FLIGHT_DESC" description="COM_BOOKPRO_FLIGHT_DESC" />
+		<field name="farerule" type="editor" buttons="true"
+		hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+		label="COM_BOOKPRO_FLIGHT_FARERULE" description="COM_BOOKPRO_FLIGHT_FARERULE" />
+		
+		<field name="state" type="radio" label="JSTATUS"
+			description="COM_BOOKPRO_FIELD_STATE_DESC" class="inputbox btn-group small"
+			size="1" default="1">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+			
+	</fields>
+	</fieldset>
+
+</form>

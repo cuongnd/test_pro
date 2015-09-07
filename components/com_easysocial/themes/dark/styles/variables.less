@@ -1,0 +1,522 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+/*------------------------------------*\
+	$Theme - Variables
+\*------------------------------------*/
+
+@baseFontSize:          12px;
+@baseLineHeight:        16px;
+@borderRadius: 			3px;
+
+
+
+// Dark theme value
+// Grays (minxin dark3n change to light3n)
+// -------------------------
+// @xblack:                 #fff;
+@grayDarker:            #eee;
+@grayDark:              #999;
+@gray:                  #555;
+@grayLight:             #333;
+@grayLighter:           #222;
+// @xwhite:                 #000;
+
+// Main Color
+@esBackground: 			#222; // main bg color fff
+@esColor: 				#eee; // main text color 666
+@esBorder:			#333; // main border color d7d7d7
+@esUnreadBackground: #202224;
+@esSelectedBackground: #46463C;
+
+@esTextShadow: 0 1px 1px rgba(255,255,255,.55); // default 0
+@esTextShadowAlt: 0 1px 1px rgba(0,0,0,.55); // default 255
+
+
+/*------------------------------------*\
+	$ components.less
+\*------------------------------------*/
+@bodyBackground: @esBackground;
+@headingsColor: @esColor;
+
+// HR
+@hrBorder: lighten(@esBorder, -2%);
+@hrBorderBottom: lighten(@hrBorder, -8%);
+
+// Pagination
+// -------------------------
+@paginationBackground: @esBackground;
+@paginationBorder: @esBorder;
+@paginationActiveBackground: lighten(@esBackground, 4%); //f5f5f5;
+@paginationColor: @esColor;
+
+// Buttons
+// -------------------------
+@btnBackground:                     @esBackground;
+@btnBackgroundHighlight:            lighten(@esBackground, 10%);
+@btnBorder:                         #bbb;
+
+@btnPrimaryBackground:              @linkColor;
+@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
+
+@btnInfoBackground:                 #5bc0de;
+@btnInfoBackgroundHighlight:        #2f96b4;
+
+@btnSuccessBackground:              #62c462;
+@btnSuccessBackgroundHighlight:     #51a351;
+
+@btnDangerBackground:               #ee5f5b;
+@btnDangerBackgroundHighlight:      #bd362f;
+
+@btnInverseBackground:              #444;
+@btnInverseBackgroundHighlight:     @grayDarker;
+
+@btnTextShadow: 0 1px 1px rgba(0,0,0,.5);
+
+// btn-group-yesno
+@esYesnoBackground: lighten(@esBackground, 10.2%); //e5e5e5
+@esYesnoColor: @esColor; //666
+@esYesnoBtnBackground: lighten(@esBackground, 22.8%); //c5c5c5
+@esYesnoBtnBackgroundHighlight: lighten(@esBackground, 5%); //f2f2f2
+@esYesnoBtnActiveBackground: @esBackground; //fff 
+// @esYesnoBtnColor: lighten(@esColor, 10%); //333
+@esYesnoBtnBorder: lighten(@esBackground, 22.8%); //c5c5c5
+@esYesnoBtnBorderBottom: lighten(@esYesnoBtnBorder, 11.6%); //a7a7a7
+@esYesnoActiveColor: @esColor; //666
+@esYesnoTextShadow: 0 1px 1px rgba(0,0,0,.1);
+
+// Dropdowns
+@dropdownBackground: @esBackground;
+@dropdownBorder:                rgba(255, 255, 255, 0.2);
+@dropdownDividerTop:            lighten(@dropdownBorder, 9%); //e5e5e5
+@dropdownDividerBottom:         lighten(@dropdownBorder, 4%); 
+
+@dropdownDividerHoverTop: @esBorder; //bed3ea
+@dropdownDividerHoverBottom: @dropdownDividerHoverTop;
+
+@dropdownLinkColor:             @grayDark;
+@dropdownLinkColorHover:        @grayDark;
+@dropdownLinkColorActive:       @grayDark;
+
+@dropdownLinkBackgroundActive:  lighten(@esBackground, 9.5%); //E7EDF3
+@dropdownLinkBackgroundHover:   @dropdownLinkBackgroundActive;
+
+@esArrowBackground: @esBackground;
+
+// Modals
+@esModalColor: @esColor;
+@esModalBackground: @esBackground;
+@esModalBackdropBackground: #000;
+@esModalBorder: #303030; //c0c0c0
+@esModalHeaderBackgroundHighlight: lighten(@esModalBackground, 2.8%); //f8f8f8
+@esModalHeaderBackground: lighten(@esModalBackground, 8%); //ebebeb
+@esModalFooterBackground: lighten(@esBackground, 4%); //f5f5f5
+
+// Dialog
+@esDialogColor: #595959; //595959
+@esDialogTitleColor: @esColor;
+
+// Datepicker
+@esDatePickerBackground: @esBackground;
+@esDatePickerColor: #fff;
+@esDatePickerBorder: lighten(@esBackground, 20%); //ccc
+@esDatePickerHeaderBackgroundHighlight: lighten(@esModalBackground, 8%); //ebebeb
+@esDatePickerHeaderBackground: lighten(@esModalBackground, 2.8%); //f8f8f8
+@esDatePickerTdBorder: #333; //181818
+
+// Privacy
+@esPrivacyBackground: @btnBackground;
+@esPrivacyBackgroundHighlight: @btnBackgroundHighlight;
+@esPrivacyActiveBackground: lighten(@esBackground, 9.5%); //e0e8f0
+@esPrivacyColor: lighten(@esBackground, 47%); //858585
+@esPrivacyBorder: lighten(@esBorder, -4%);
+@esPrivacyTextshadow: @btnEsTextShadow;
+@esPrivacyMenuActiveColor: lighten(@esBackground, 80%); //black
+
+// Avatar
+@esAvatarBackground: @esBackground;
+@esAvatarBorder: @esAvatarBackground;
+
+// Popbox
+@esPopboxBackground: @esBackground;
+@esPopboxBorder: rgba(0,0,0,.2);
+@esPopboxBoxShadow: 0 5px 10px rgba(0,0,0,.2);
+@esPopboxDetailsColor: white; //have to white
+@esPopboxDetailsTextShadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+@esPopboxCoverBackground: #333;
+@esPopboxFooterBackground: lighten(@esPopboxBackground, 5%); //f2f2f2
+@esPopboxItemColor: #555;
+@esPopboxAvatarBorder: @esPopboxBackground;
+@esPopboxAvatarBackground: @esPopboxBackground;
+@esPopboxBtnBackground: #fff;
+@esPopboxBtnBackgroundHighlight: lighten(@esPopboxBtnBackground, 10%);
+@esPopboxBtnColor: @grayDark;
+@esPopboxBtnTextShadow: @btnTextShadowNone;
+@esPopboxBtnBorder: @esBorder;
+@esPopboxBtnHoverBackground: #e6e6e6;
+
+
+
+/*------------------------------------*\
+	$ wifreframe/styles/style.less
+\*------------------------------------*/
+// Form
+// Naming remain for back/frontend
+@inputBackground: @esBackground;
+@inputBorder: @esBorder;
+@formActionsBackground: lighten(@esBackground, 4%);
+// Elements
+@esCountBackground: lighten(@esBackground, 10.2%); //left side e5e5e5
+@esCountBorder: 	@esBorder;
+@esCountColor: 		@esColor;
+
+@esViewHeadingBorder: lighten(@esBackground, 4%); //f5f5f5
+
+@esLabelNotificationBackground: #e16273; //light red
+@esLabelNotificationColor: #fff;
+@esLabelNotificationBorder: #e27a93;
+
+@esHighlightBackground: #ff9;
+@esHighlightColor: #333;
+
+// Layout
+@esSidebarBackground: @esBackground;
+
+// Header
+@esHeaderBorder: @esBorder;
+@esHeaderMiniBackground: #f5f5f5;
+@esHeaderBoxShadow: #fff;
+
+@esHeaderContentBtnBackground: #fff;
+@esHeaderFooterBackground: @esBackground;
+@esHeaderFooterBorder: #eee;
+
+@esHeaderBtnScrollBackground: #f5f5f5;
+@esHeaderBtnScrollColor: #aaa;
+
+// Blocks
+@esFilterActiveBackground: #f5f5f5;
+@esFilterActiveColor: #555;
+
+// Notification (custom)
+@esNotificationsTimeline: rgba(255, 255, 255, .03);
+@esNotificationsHoverBackground: #213547; //fffee2
+@esNotificationDotBackground: #5b93ce;
+@esNotificationTimeColor: #888;
+@esNotificationContentBorder: #ddd;
+@esNotificationUnreadBackground: #212325; //eaf5ff
+@esNotificationEmptyBorder: #eee;
+
+// Remind
+@esRemindBorder: #EFF0F4;
+@esRemindBackground: #F8F9FB;
+
+// Online Status
+@esOnlineStatusBorder: #fff;
+@esOnlineStatusOnBackground: #91c73c;
+@esOnlineStatusOffBackground: #f38282;
+
+// Location
+@esLocationBackground: @esBackground;
+@esLocationColor: @esColor;
+@esLocationBorder: @esBorder;
+@esLocationSuggestionsBorder: lighten(@esBackground, 20%); //ccc
+@esLocationSuggestionsActiveBackground: #E7EDF3;
+@esLocationTextboxBorder: @esLocationSuggestionsBorder;
+
+// Toolbar
+@esToolbarBackgroundHighlight: #6baee2; //light blue
+@esToolbarBackground: #699ed4; //light blue
+@esToolbarColor: #fff;
+@esToolbarBorder: #6ca0d9;
+@esToolbarVerticalBorderLeft: #5b8fbe;
+@esToolbarVerticalBorderRight: #6AA7DD;
+@esToolbarDropdownDividerBorder: lighten(@esBackground, 4%); //f5f5f5
+@esToolbarDropdownColor: @esColor;
+@esToolbarDropdownLoginColor: #999;
+
+@esToolbarItemSocialBackground: #E0F2F6;
+@esToolbarDropdownFooterColor: @esColor;
+
+@esToolbarActionsColor: #08c;
+@esToolbarActionsIconColor: #fff;
+@esToolbarItemBorder: lighten(@esBorder, -8%); //ebebeb
+
+@esToolbarDropdownIconColor: #999;
+@esToolbarDropdownObjectImageBackground: lighten(@esBackground, 3%);
+
+@esToolbarDropdownLogoutColor: #fff;
+@esToolbarDropdownCaretBorderTop: #3a77b6;
+@esToolbarDropdownCaretBorderBottom: #3a77b6;
+
+@esNavbarSearchBackground: #5b95cd;
+@esNavbarSearchBoxShadow: inset 0 1px 1px rgba(0,0,0,.0);
+
+@esToolbarNoticeUnreadBackground: @esUnreadBackground; //f6fbff
+
+@esToolbarSearchFooterBackground: lighten(@esBackground, 3%); //f5f5f5
+
+// Activity
+@esActivityBackground: lighten(@esBackground, 4%); //f5f5f5
+@esActivityHiddenBorder: lighten(@esBackground, 4%); //f5f5f5
+@esActivityColor: @esColor;
+
+// Widget
+@esWidgetDividerColor: @esBorder; //e1e1e1
+@esWidgetBorder: @esBorder;
+@esWidgetNavActiveBackground: lighten(@esBackground, 2.5%);
+@esWidgetNavErrorBackground: #ffb2bc;
+@esWidgetNavErrorColor: #fff;
+@esWidgetNavErrorBorder: #E27A93;
+@esWidgetFilterItemDefaultColor: #6AA8DC;
+@esWidgetTotalnoColor: @grayLight;
+@esWidgetSearchBackground: #f5f5f5;
+
+// Badges
+@esBadgesWrapperBackground: url("../images/points-wrapper-bg.png") no-repeat bottom center;
+@esBadgesBackground: lighten(@esBackground, 2%); //fafafa
+@esBadgesBorder: @esBorder;
+@esBadgesFootBackground: lighten(@esBadgesBackground, 8%); //888
+@esBadgesFootBorder: lighten(@esBorder, -1%);
+@esBadgesFootBoxShadow: inset 0 1px 0 lighten(@esBadgesFootBorder, -5%);
+
+@esAchievementDateColor: @esColor;
+
+// Points
+@esPointsWrapperBackground: url("../images/points-wrapper-bg.png") no-repeat bottom center;
+@esPointsEmptyBackground: #f5f5f5;
+@esPointsEmptyBoderColor: #eee;
+
+@esPointBackground: lighten(@esBackground, 2%); //fafafa
+@esPointBorder: @esBorder;
+@esPointFootBackground: lighten(@esPointBackground, 8%); //888
+@esPointFootBorder: lighten(@esBorder, 50%);
+@esPointFootBoxShadow: inset 0 1px 0 rgba(180,180,180,.7);
+@esPointResultBorder: lighten(@esBorder, 50%);
+@esPointResultTextShadow: inset 0 1px 0 rgba(255,255,255,.1);
+
+@esPointResultBackgroundHighlight: #fde092;
+@esPointResultBackground: #f4b92d;
+@esPointResultBorder: #c1af65;
+
+@esPointResultGreenBackgroundHighlight: #9EDD3C;
+@esPointResultGreenBackground: #92BE4F;
+@esPointResultGreenBorder: #93BD51;
+
+@esPointResultRedBackgroundHighlight: #FAB290;
+@esPointResultRedBackground: #E27F4F;
+@esPointResultRedBorder: #DA8E6A;
+
+
+// Story
+@esStoryContainerBorder: @esBorder;
+@esStoryContainerBackground: @esBackground;
+@esStoryActiveContainerBackground: lighten(@esStoryContainerBackground, 10.2%); //left side e5e5e5
+@esStoryWrapBackground: lighten(@esStoryContainerBackground, 2%); //right side fafafa
+
+@esStoryTextColor: #7DC211;
+@esStoryPhotoColor: #F8829B;
+@esStoryLinkColor: #91C2EA;
+
+@esStoryAttachmentButtonBorder: @esBorder;
+@esStoryAttachmentButtonActiveBorder: @esBorder;
+@esStoryAttachmentIconColor: #fff;
+
+@esStoryActiveSidebarBorder: rgba(255,255,255,.3);
+@esStoryHeaderBackground: @esBackground;
+@esStoryBodyBackground: @esStoryWrapBackground;
+@esStoryContentBackground: @esBackground;
+@esStoryContentBorder: @esBorder; //eee
+@esStoryFooterBackground: @esStoryWrapBackground;
+
+// Story panel
+@esStoryPanelContentBackground: @esBackground;
+@esStoryPanelContentColor: @esColor;
+@esStoryPanelActiveBorder: @esBorder;
+@esStoryPanelButtonBorder: @esBorder;
+
+@esStoryPanelButtonWordsColor: @esColor;
+@esStoryPanelButtonWordsTextShadow: 1px 1px 0 @esBackground;
+@esStoryPanelButtonWordsHoverColor: #0088CC;
+
+@esStoryLocationBackground: @esBackground;
+@esStoryLocationBoxShadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
+@esStoryLocationSuggestionsBackground: @esStoryLocationBackground;
+@esStoryLocationSuggestionsBorder: lighten(@esBorder, 3%);
+@esStoryLocationRemoveButtonColor: #aaa;
+@esStoryLocationRemoveButtonHoverColor: #0088cc;
+
+@esMentionsInputBackground: #fff;
+@esMentionsTextareaBorder: #dcdcdc;
+@esMentionsAutocompleteBorder: #b2b2b2;
+@esMentionsAutocompleteBorderBottom: #eee;
+@esMentionsAutocompleteHoverBackground: #f2f2f2;
+@esMentionsAutocompleteB: #ffff99;
+@esMentionsColor: #fff;
+
+@esAlbumPhotoBackground: #eee;
+@esAlbumPhotoHoverBackground: #ddd;
+@esAlbumPhotoRemoveButtonBackground: rgba(0,0,0,0.6);
+@esAlbumPhotoRemoveButtonColor: #fff;
+@esAlbumPhotoRemoveButtonTextShadow: 0 1px 1px rgba(0, 0, 0, 0.75);
+
+@esAlbumPhotoUploadButtonBackground: #eee;
+@esAlbumPhotoUploadButtonHoverBackground: #ddd;
+@esAlbumPhotoUploadButtonHoverColor: #555;
+@esAlbumPhotoHintColor: #999;
+
+@esStoryLinkBackground: lighten(@esBackground, 10%);
+@esStoryLinkTextboxBorder: #ccc;
+@esStoryLinkTextboxBackground: #fff;
+@esStoryLinkTitleColor: @esColor;
+
+@esStoryLinkHoverBackground: lighten(@esBackground, 1.8%);  //fafafa
+@esStoryLinkHoverBorder: lighten(@esBackground, 10%); //bbb
+
+@esStoryLinkUrlColor: @blueDark;
+@esStoryLinkUrlHoverColor: @blue;
+
+@esStoryLinkImagesBorder: #ccc;
+@esStoryLinkImagesBackground: #fff;
+
+@esStoryLinkFormBusyColor: #aaa;
+
+// Stream
+@esStreamSharedBorder: #ccc;
+@esStreamBorder: @esBorder;
+@esStreamBackground: @esBackground;
+@esStreamPreviewBackground: lighten(@esBackground, 4%); //f5f5f5
+@esStreamCounterBackground: lighten(@esBackground, 3%); //f8f8f8
+
+@esRepostWrapBackground: lighten(@esBackground, 3%); //f8f8f8
+
+@esStreamControlBackground: @esBackground;
+@esStreamControlBorder: @esStreamControlBackground;
+@esStreamControlMenuBorder: @esBorder;
+
+// Comment
+@esCommentColor: @esColor;
+@esCommentBackground: lighten(@esBackground, 4%);
+@esCommentBorder: @esBorder;
+@esCommentActionBackground: @esCommentBackground;
+@esCommentActionColor: @esColor;
+@esCommentActionBorder: @esBorder;
+@esCommentTextareaBackground: @esBackground;
+@esCommentTextareaBorder: @esBorder;
+@esCommentLoadBackground: lighten(@esBackground, 3%); //f8f8f8
+@esCommentLikeCountBackground: @esCommentTextareaBackground;
+@esCommentLikeCountBorder: @esCommentBorder;
+
+// Conversation
+@esConversationBackground: lighten(@esBackground, 1.8%);
+@esConversationBorder: @esBorder;
+@esConversationUnreadBackground: lighten(@esBackground, 4%); //f5f5f5
+@esConversationSelectedBackground: @esSelectedBackground;
+@esConversationTimeColor: lighten(@esBackground, 20%);
+@esConversationTimestampColor: @esConversationTimeColor;
+@esConversationAttachmentPreviewBackground: @esBackground;
+@esConversationAttachmentPreviewBorder: lighten(@esConversationAttachmentPreviewBackground, 4%);
+
+
+// Profile
+@esHeaderContentColor: lighten(@esBackground, 65%); //595959
+
+// Friends
+@esFriendsItemBackground: @esBackground;
+@esFriendsItemColor: lighten(@esBackground, 40%);
+@esFriendsMutedColor: #ccc; //333
+@esFriendsMutedHoverColor: #eee;//1a1a1a
+
+// Unity
+@esUnityBackground: @esBackground;
+@esUnityBorder: @esBorder;
+
+// Points History
+@esPointsHistoryBackground: @esBackground;
+@esPointsHistoryColor: @esColor;
+@esPointsHistoryBorder: @esBorder;
+@esPointsHistoryTimeline: @esBorder;
+
+// Media
+@esMediaGroupBackground: lighten(@esBackground, 1.8%); //fafafa
+@esMediaGroupColor: #aaa;
+@esMediaHeaderBorder: @esBorder;
+@esMediaStatsBorder: lighten(@esBackground, 20%); ; //ccc
+@esMediaArrowBackground: @esBackground;
+@esMediaArrowBorder: rgba(255, 255, 255, 0.2);
+
+// media/browser
+@esBrowserLoadingBackground: #f8f8f8;
+@esBrowserNavIconBackground: #ccc;
+@esBrowserNavStatBackground: #eee;
+@esBrowserNavStatBorder: #ddd;
+@esBrowserNavStatColor: #666;
+@esBrowserBorder: @esBorder;
+@esBrowserBtnColor: lighten(@esBackground, 66.8%); //555
+@esBrowserBtnTextShadow: @esBackground;
+@esBrowserBtnPrimaryColor: #fff;
+@esBrowserHintColor: #999;
+
+// Photos/item
+@esPhotoContentBackground: lighten(@esBackground, 6.8%); //eee
+@esPhotoSelectedBorder: #8BD34A;
+@esPhotoTitleColor: @esBackground;
+@esPhotoTextShadow: @esTextShadow;
+@esPhotoLocationBorder: lighten(@esBackground, 20%); //ccc
+@esPhotoHeaderBackground: lighten(@esBackground, 2.5%); //f9f9f9
+
+// Photos/upload
+@esPhotoUploadBackground: #f5f5f5;
+@esPhotoUploadBtnColor: @linkColor;
+
+// Phtoto/tag
+@esPhotoTagBackground: #aaa;
+@esPhotoTagBorder: rgba(255,255,255,.5);
+@esPhotoTagBoxShadow: 0 0 1px rgba(0, 0, 0, 1);
+@esPhotoTagFormBackground: #fff;
+@esPhotoTagFormBorder: #ccc;
+@esPhotoTagMenuBorder: #f5f5f5;
+@esPhotoTagMenuColor: @esColor;
+@esPhotoTagMenuActiveBackground: #E7EDF3;
+@esPhotoTagListBorder: #ccc;
+@esPhotoTagListActiveBackground: #ddd;
+@esPhotoTagListActiveBorder: #ddd;
+
+// Photos/avatar
+// Photos/Popup
+// Photos/viewer
+// Photos/navigation
+// Photos/response
+// Photos/taglist
+// Photos/stats
+// Photos/form
+
+// Albums
+
+// Albums/album
+// Albums/item
+@esAlbumsBackground: @esBackground;
+@esAlbumCoverBackground: lighten(@esBackground, 4%); //f5f5f5
+@esAlbumsBorder: lighten(@esBackground, 13.5%); //ddd
+@esAlbumsCoverGradientBackground: rgba(0, 0, 0, 0);
+@esAlbumsCoverGradientBackgroundHighlight: rgba(0, 0, 0, 1);
+@esAlbumsCoverGradientShadowBackground: black;
+
+// Albums/form
+@esAlbumFormBackground: @esBackground;
+@esAlbumFormBorder: lighten(@esBackground, 20%); //ccc
+@esAlbumCoreAlbumBackground: lighten(@esBackground, 2.5%); //f9f9f9
+
+// Albums/photo
+// Albums/upload
+// Albums/response
+
+// Registration
+@esRegistrationBorder: @esBorder;
+@esListProfileBorder: lighten(@esBackground, 20%); //ccc
+
+
+

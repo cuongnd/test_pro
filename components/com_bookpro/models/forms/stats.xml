@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/administrator/components/com_bookpro/elements">
+		<fields>
+		
+		
+		<field name="desfrom" type="destcode"
+			class="inputbox"
+			description="COM_BOOKPRO_FLIGHT_FROM"
+			label="COM_BOOKPRO_FLIGHT_FROM"
+			required="true"
+			size="30"
+		/>
+		
+		<field name="desto" type="destcode"
+			class="inputbox"
+			description="COM_BOOKPRO_FLIGHT_TO"
+			label="COM_BOOKPRO_FLIGHT_TO"
+			required="true"
+			size="30"
+		/>
+		
+		<field
+			id="start"
+			name="start"
+			type="calendar"
+			required="true"
+			label="COM_BOOKPRO_FLIGHT_START_DEPART"
+			description=""
+			class="inputbox"
+			size="16"
+			format="%Y-%m-%d"/>	
+		<field
+			id="end"
+			name="end"
+			type="calendar"
+			required="true"
+			label="COM_BOOKPRO_FLIGHT_END_DEPART"
+			description=""
+			class="inputbox"
+			size="16"
+			format="%Y-%m-%d"/>		
+		<field name="frequency" type="frequency"
+			class="inputbox"
+			
+			description="COM_BOOKPRO_FLIGHT_AIRLINE"
+			label="Frequency"
+			required="true"
+			size="30"
+		/>	
+	</fields>
+	</fieldset>
+
+</form>

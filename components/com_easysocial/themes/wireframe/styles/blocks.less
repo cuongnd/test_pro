@@ -1,0 +1,95 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+/*------------------------------------*\
+	$blocks - blocks.less
+\*------------------------------------*/
+// Blocks aka modules in html apply rely on few classes
+
+.es-action {
+	.es-nav {
+		> li {
+			margin: 0 5px 5px;
+			> .btn {
+				font-size: 11px;
+				padding: 5px 12px;
+				width: 180px;
+				text-align: left;
+				position: relative;
+				.label-notification {
+					position: absolute;
+					right: 3px;
+					top: 5px;
+					font-size: 11px;
+					font-weight: normal;
+				}
+				.caret {
+					// margin-top: 5px;
+				}
+			}
+		}
+	}
+}
+
+
+.es-friend-list {
+	> li {
+		border-bottom: 1px solid @esBorder;
+		padding: 6px 0px;
+	}
+}
+
+
+//sidebar filter
+.es-filter {
+	.es-nav {
+		> li {
+			margin-bottom: 6px;
+			position: relative;
+			> a {
+				display: block;
+				font-weight: bold;
+				border: 1px solid @esBorder;
+				.border-radius(3px);
+				padding: 5px 6px;
+				position: relative;
+				font-size: 12px;
+			}
+			.close {
+				position: absolute;
+				right: 6px;
+				top: 5px;
+			}
+			&.active {
+				> a {
+					background: @esFilterActiveBackground;
+					color: @esFilterActiveColor;
+				}
+			}
+		}
+	}
+	.btn-dashed {
+		font-size: 12px;
+		text-align: left;
+		padding-left: 8px;
+		i {
+			vertical-align: bottom;
+		}
+	}
+}//es-filter
+
+.es-sidebar {
+	.es-filter {
+		padding: 0 10px;
+	}
+}
+
+
+.es-pagination-footer{
+	text-align:center;
+
+	font-size: 11px;
+}

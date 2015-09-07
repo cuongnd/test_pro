@@ -1,0 +1,103 @@
+.es-photo-viewer {
+
+	.es-photo-item {
+		float: none;
+	}
+
+	.es-photo-viewport {
+
+		&.inline-mode {
+			height: 500px;
+			background-color: @grayLighter;
+			// This was used for initial photo preview
+			// background-size: contain;
+			// background-position: 50% 50%;
+			// background-repeat: no-repeat;
+
+			.es-photo-nav-button {
+				height: 500px;
+			}
+		}
+
+		position: relative;
+		z-index: 1;
+
+		&.loading {
+			background-image: url("@{media_uri}/../images/loading.gif");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: auto;
+		}
+
+		&.no-transition {
+			.es-photo-image {
+				&.active {
+					.transition(none);
+				}
+			}
+		}
+	}
+
+	.es-photo-image {
+		position: absolute;
+		opacity: 0;
+		.transition(none);
+
+		&.initial {
+			.scale(0.8);
+		}
+
+		&.active {
+			display: block;
+			opacity: 1;
+			.transition(all 0.3s ease-in-out);
+		}
+	}
+
+
+	.es-photo-album {
+		font-size: 11px;
+		color: @grayLight;
+	}
+
+	// .es-photo-menu {
+	// 	position: relative;
+	// 	top: auto;
+	// 	right: auto;
+	// 	margin: 0;
+	// 	list-style: none;
+
+	// 	li {
+	// 		padding: 3px 0;
+
+	// 		&:hover {
+	// 			text-decoration: underline;
+	// 		}
+	// 	}
+
+	// 	.divider {
+	// 		border-bottom: 1px solid @grayLighter;
+	// 	}
+	// }
+
+	.es-photo-viewport:hover {
+		.es-photo-nav-button {
+			opacity: 0.2;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+
+
+	.es-item-action-buttons {
+
+		.btn-like,
+		.btn-comment,
+		b {
+			color: @linkColor;
+			cursor: pointer;
+		}
+	}
+}

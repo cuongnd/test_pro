@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="2.5"  client="site" method="upgrade">
+	<name>Vietnamese (Việt Nam)</name>
+	<version>3.0.0</version>
+	<creationDate>09/09/2012</creationDate>
+	<author>www.cgrocket.com</author>
+	<authorEmail>info.thanhle@gmail.com</authorEmail>
+	<authorUrl>www.cgrocket.com</authorUrl>
+	<copyright>Copyright (C) 2011 - 2012 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Ngôn ngữ tiếng Việt cho Joomla 2.5.x và Joomla 3.0.x (Front-end)</description>
+	<metadata>
+		<name>Vietnamese (Việt Nam)</name>
+		<tag>vi-VN</tag>
+		<rtl>0</rtl>
+		<locale>vi_VN, vie_VN, vn, vietnam, viet nam, vietnamese, Việt Nam</locale>
+		<firstDay>1</firstDay>
+	</metadata>
+</metafile>

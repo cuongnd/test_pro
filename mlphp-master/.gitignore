@@ -1,0 +1,4 @@
+api/docs-ghpages/
+
+/vendor/
+composer.lock

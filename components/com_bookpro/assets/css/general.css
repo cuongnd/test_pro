@@ -1,0 +1,1947 @@
+
+.btn-toolbar .button {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.btn-toolbar .btn-wrapper {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+a.button {
+  text-decoration: none;
+  line-height: 20px;
+}
+
+/* --------------- C - O - L - O - R - S ----- S - T - A - R - T ------------------ */
+
+/* --------------------------- Border colors --------------------------- */
+table.boxes th, table.boxes td,
+table.list th, table.list td,
+.head, .head .description,
+.monthlyCalendar, .monthlyCalendar th, .monthlyCalendar td.day, .monthlyCalendar td.week,
+.reservationTypes td, .reservationTypes th,
+.subjectsList .subject .properties td, .subjectsList .subject .properties th,
+.bookInterval .buttons .checkButton, .bookInterval .bookit .checkButton,
+#bookSetting .properties td, #bookSetting .properties th,
+#list .filter .items, #list .subjectsList .subject {
+                                   border-color: #A0A0A0; }
+div#imageBrowse div.listing {      border-color: #999999; }
+.aIconSeparator, .filter input {   border-color: #000000; }
+
+/* --------------------------- Background colors --------------------------- */ 
+input[disabled] {              background-color: #DDDDDD; }
+div#imageBrowse div.listing {  background-color: #F3F3F3; }
+
+table.boxes th,
+.monthlyCalendar th, .monthlyCalendar td.empty,
+.monthlyCalendar td.unactual, .monthlyCalendar td.week,
+.reservationTypes td, .reservationTypes th,
+.subjectsList .subject .properties td, .subjectsList .subject .properties th,
+.bookInterval .buttons .checkButton, .bookInterval .bookit .checkButton,
+#list .filter .items, #bookSetting .properties td, #bookSetting .properties th {
+                               background-color: #F6F6F6; }
+
+table.boxes tr.actual, .monthlyCalendar td.actual,
+.quickNavigator a#iday_button, .head .description {
+                               background-color: #FFFFFF; }
+
+table.boxes tr.reserved,
+.weeklyCalendar td.reserved,
+.monthlyCalendar td.reserved { background-color: #FFE6E6; }
+.red {                         background-color: #E41F1F; }
+.green {                       background-color: #8CBF40; }
+.bookInterval #bookIt {        background-color: #8CCF5A; }
+
+#bookSetting table.boxes .selected,
+.bookInterval .checkTools .checkButtonActive,
+#bookSetting .monthlyCalendar .selected { background-color: #0E54A9; }
+.info .photogallery .leftButton, .info .photogallery .rightButton {
+                               background-color: #FFFFFF; }
+.info .photogallery .leftButton:hover, .info .photogallery .rightButton:hover {
+                               background-color: #DFF5FF; } 
+
+/* --------------------------- Text colors --------------------------- */
+
+table.boxes .selected, .monthlyCalendar td.selected,
+.bookInterval .checkTools .checkButtonActive {
+                                      color: #FFFFFF; }
+.bookInterval #bookIt {               color: #333333; }
+                                      
+table.boxes tr.actual,
+.monthlyCalendar td.actual {          color: #000000; }
+
+table.boxes tr.reserved,
+.monthlyCalendar td.reserved {        color: #AA6666; } /* mainly red */
+.bookInterval .checkInfoNotice {      color: #FFDB6E; }
+.bookInterval .checkInfoError {       color: #E41F1F; }
+
+.subjectsList .bookit .button:hover { color: #8BBBFF; } /* mainly blue */
+.bookInterval .checkInfoMessage {     color: #5F9EBB; }
+.topInfo span {                       color: #003399; }
+.head .description {                  color: #1166EE; }
+
+.info {                               color: #006600; } /* mainly green */
+
+/* --------------- C - O - L - O - R - S ----- E - N - D ------------------ */
+
+img.clock {
+  cursor: pointer;
+  left: 4px;
+  margin: 0;
+  opacity: 1;
+  position: relative;
+  top: 4px;
+  z-index: 100;
+}
+
+img.calendar {
+  cursor: pointer;
+  float: left;
+  left: 4px;
+  margin: 0 5px 0 0;
+  position: relative;
+  vertical-align: bottom;
+}
+
+img.subjectImage {
+	float: left;
+	/*margin: 0 0 20px 0;*/
+}
+
+form#list div.subjectsList div.subject a.preview {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0 10px 10px 0;
+}
+form#list div.subjectsList div.subject a.preview img {
+  margin: 0;
+  padding: 0;
+}
+
+.compulsory {
+  background: url("../images/star.png") no-repeat scroll right top transparent;
+  margin-left: 5px;
+  padding-right: 10px !important;
+  text-align: left;
+}
+
+td.key {
+  text-align: right;
+  width: 130px;
+}
+
+form.reservation fieldset legend {
+  font-size: 1.2em;
+  font-weight: bold;
+} 
+ 
+form.reservation table {
+  border: medium none;
+}
+ 
+form.reservation tr {
+  border: medium none;  
+}
+ 
+form.reservation td.key {
+  font-weight: bold;
+  padding: 3px 5px 3px 0;
+  text-align: right;
+}
+ 
+form.reservation td {
+  padding: 2px;
+  border: medium none;  
+}
+ 
+form.reservation td strong.title {
+  display: block;
+  float: left;
+  padding: 0 15px 0 0;
+  text-align: right;
+  width: 85px;
+}
+ 
+form.reservation td strong.value {
+  display: block;
+  float: left;
+  font-weight: normal;
+  padding: 0 15px 0 0;
+  text-align: left;
+  width: 70px;
+}
+ 
+#adminForm.reservation #accept_terms_of_privacy {
+  height: auto;
+  width: auto;
+}
+ 
+form.reservation input {
+  border: 1px solid #DDDDDD;
+  height: 23px;
+}
+
+div.compulsory {
+	margin-left: 10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-size: 90%;
+}
+
+.reservations-legend {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.aIcon {
+	display: block;
+	width: 16px;
+	height: 16px;
+	margin: 0 auto;
+}
+
+.aIconPointer {
+	cursor: pointer;
+}
+
+.aIconLegend {
+	/*display: inline;*/
+	/*float: left;*/
+	height: 16px;
+	line-height: 16px;
+	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 5px;
+}
+
+.aIconSeparator {
+	border-width: 0 0 0 1px;
+  border-style: solid;
+	margin-left: 12px;
+}
+
+div.bookingToolbar {
+  margin: 0;
+  padding: 0;
+}
+
+div.bookingToolbar table, 
+div.bookingToolbar table td {
+	border: 0px !important;
+}
+
+.bookit-back { float: right; }
+
+div.bookingToolbar .tool {
+	display: block;
+	float: left;
+	height: 28px;
+	padding-right: 20px;
+	padding-left: 36px;
+	padding-top: 11px;
+	padding-bottom: 0;
+}
+
+div.boxesDay {
+	float: left;
+	margin-right: 10px;
+	margin-top: 0;
+}
+
+div.boxesDay h2 {
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+table.boxes {
+	border-collapse: collapse;
+}
+
+.reservationBox .time { font-weight: bold; float: left; }
+
+table.boxes th, table.boxes td {
+  border-style: solid;
+  border-width: 1px;
+  padding: 0;
+}
+
+table.boxes td span,table.boxes th span {
+  display: block;
+  float: left;
+  padding: 1px 4px;
+}
+
+#bookSetting table.boxes span.price {
+  display: block;
+  height: 18px;
+  padding: 4px 0 0;
+  text-align: center;
+  width: 25px;
+}
+
+#adminForm .filter {
+  border-bottom: 1px solid silver;
+  margin: 0;
+  padding: 0 0 5px;
+}
+ 
+#adminForm .filter input {
+  background-color: #F1F1F1;
+  border: 1px solid silver;
+}
+ 
+#adminForm .filter .filterItem {
+  clear: left;
+  float: left;
+  margin: 0;
+  padding: 10px 0 0;
+}
+
+/*
+#filter_from,#filter_to {
+	width: 130px;
+}
+*/
+
+.filter .buttons {
+  float: right;
+  margin: 0;
+  padding: 12px 0 0;
+}
+
+.filter .buttons .button {
+  background: none repeat scroll 0 0 #F1F1F1;
+  border: 1px solid silver;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 13px;
+  margin: 0;
+  padding: 3px;
+}
+
+table.list {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table.list th, table.list td {
+	border-width: 1px;
+  border-style: solid;
+	padding: 5px 5px 2px;
+}
+
+table.list th.check {
+	width: 20px;
+}
+
+table.list th.price {
+	width: 10%;
+}
+
+table.list th.capacity {
+	width: 8%;
+}
+
+table.list th.pay,table.list th.state {
+	width: 5%;
+}
+
+table.list th.from,table.list th.to {
+	width: 16%;
+}
+
+.subjectsList .bookit {
+  text-align: right;
+}
+
+.subjectsList .bookit .button {
+  display: block;
+  float: right;
+  padding: 10px;
+}
+
+.subjectsList .bookit .button:hover {
+  text-decoration: none;
+}
+
+/*default style fro joomla pagination*/
+div.list-footer {
+	margin-top: 20px;
+}
+
+div.list-footer div.limit {
+	float: left;
+}
+
+div.list-footer div.limit select.inputbox {
+	margin-left: 5px;
+}
+
+div.list-footer span.pagination {
+	display: block;
+	float: left;
+	padding: 5px;
+}
+
+div.list-footer div.counter {
+	float: right;
+	padding: 5px;
+}
+
+.aIconReservationInfo {
+	float: left;
+	height: 16px;
+	position: relative;
+	top: 1px;
+	width: 16px;
+}
+
+.aIconReservationEdit {
+	float: left;
+	height: 18px;
+	width: 18px;
+}
+
+.aIconReservationInvoice {
+	float: left;
+	height: 18px;
+	width: 18px;
+}
+
+.subjectsTotalCapacity {
+	margin-top: 15px;
+}
+
+.subjectsTotalCapacity strong {
+	
+}
+
+.subjectsTotalCapacity span {
+	
+}
+
+.mustLoginOrRegister {
+  color: red;
+  font-size: 1.2em;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.mustLoginOrRegister a {
+  color: #D64646;
+  text-decoration: underline;
+}
+
+.icon-48-artio {
+	background-image: url(../images/icon-48-artio.png);
+}
+
+.icon-48-bookit {
+	background-image: url(../images/logo-48.png);
+}
+
+.icon-48-upgrade {
+	background-image: url(../images/icon-48-upgrade.png);
+}
+
+.icon-48-cbadmins {
+	background-image: url(../images/icon-48-cbadmins.png);
+}
+
+.icon-48-payment {
+	background-image: url(../images/icon-48-payment.png);
+}
+
+.icon-48-object {
+	background-image: url(../images/icon-48-object.png);
+}
+
+.icon-48-object {
+	background-image: url(../images/icon-48-object.png);
+}
+
+.icon-48-template {
+	background-image: url(../images/icon-48-template.png);
+}
+
+.icon-48-configuration {
+	background-image: url(../images/icon-48-configuration.png);
+}
+ 
+.icon-48-changelog {
+	background-image: url(../images/icon-48-changelog.png);
+}
+
+.icon-48-email {
+	background-image: url(../images/icon-48-email.png);
+}
+
+.icon-48-location {
+	background-image: url(../images/icon-48-location.png);
+}
+ 
+h2, #bookSetting h2 {
+  font-size: 1.3em;
+  line-height: 1.3em;
+  margin: 0;
+  padding: 0.5em 0 0.2em;
+}
+
+h2.subjectSubtitle {
+	margin: 10px 0;
+}
+
+.cfilter {
+  display: block;
+  float: left;
+  margin: 0 0 0 10px;
+}
+
+.cfilter img {
+	
+}
+
+.cfilter .text {
+	bottom: 3px;
+	position: relative;
+}
+
+.thumb {
+	border: medium none;
+	float: left;
+	margin-right: 20px;
+}
+
+#list .subjectsList .subject {
+	margin-bottom: 20px;
+	border-width: 0 0 1px;
+	border-style: dotted;
+}
+
+#list .introtext {
+  margin-bottom: 20px;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+div.calendarPagination {
+	margin: 10px 0 20px;
+	text-align: center !important;
+}
+
+div.calendarPagination a {
+	margin-right: 10px;
+}
+
+.monthlyCalendar {
+	border-width: 1px;
+  border-style: solid;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.monthlyCalendar th {
+	border-width: 1px;
+  border-style: solid;
+	padding: 5px;
+}
+
+.monthlyCalendar td.day {
+	border-width: 1px;
+  border-style: solid;
+	padding: 5px;
+	vertical-align: top;
+}
+
+.monthlyCalendar td.actual {
+	cursor: pointer;
+}
+
+.monthlyCalendar td.reserved {
+	cursor: text;
+}
+
+.monthlyCalendar td.week {
+	border-width: 1px;
+  border-style: solid;
+	height: 50px;
+	padding: 5px;
+	width: 30px;
+}
+
+.monthlyCalendar td.day .date {
+  font-size: 0.9em;
+  font-weight: bold;
+  padding-bottom: 2px;
+}
+.monthlyCalendar td.day .date,
+.monthlyCalendat td.day .price { display: block; }
+
+.reservationTypes {
+	border-collapse: collapse;
+}
+
+.reservationTypes td {
+	border-width: 1px;
+  border-style: solid;
+	padding: 5px;
+}
+
+.reservationTypes th {
+	border-width: 1px;
+  border-style: solid;
+	padding: 5px;
+}
+
+#bookSetting .properties,
+.subjectsList .subject .properties {
+	border-collapse: collapse;
+}
+
+#bookSetting .properties td {
+	border-width: 1px;
+  border-style: solid;
+	padding: 5px;
+}
+.subjectsList .subject .properties td {
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px 3px;
+}
+
+#bookSetting .properties th {
+	border-width: 1px;
+  border-style: solid;
+	padding: 3px 6px 2px;
+}
+.subjectsList .subject .properties th {
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px 3px;
+  text-align: left;
+}
+
+
+.calendarsSelect {
+	margin-top: 10px;
+}
+
+.calendarsSelect span {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+table.admin th {
+  background-color: #DDDDDD;
+}
+ 
+table.admin th, table.admin td {
+  border: 1px solid #DDDDDD;
+}
+ 
+ table.admin th a, table.admin td a {}
+ 
+table.admin th.check {
+	width: 1%;
+}
+
+table.admin th.customer {
+	
+}
+
+table.admin th.subject {
+	
+}
+
+table.admin th.email {
+	
+}
+
+table.admin th.telephone {
+	
+}
+
+table.admin th.price {
+	width: 8%;
+}
+
+table.admin th.capacity {
+	width: 7%;
+}
+
+table.admin th.paid {
+	width: 4%;
+}
+
+table.admin th.state {
+	width: 4%;
+}
+
+table.admin th.from, table.admin th.to {
+  width: 18%;
+}
+
+table.admin th.id {
+  width: 4%;
+}
+
+#adminForm .inputRadio,
+#adminForm .inputCheckbox,
+#adminForm .checkboxCell input {
+  background: none repeat scroll 0 0 transparent;
+  border: 0 none;
+}
+
+/* FILES SELECTION */
+ 
+div.file { 
+	width:245px;
+	min-height:32px;
+	padding:5px;
+	float:left;
+	margin:5px;
+	border: 1px solid gray;
+}
+
+div.fileOver {
+	border: 2px solid red;
+	padding: 4px;
+}
+
+div.file img {
+	width:32px;
+	display:block;
+	float:left;
+	margin:0px;
+	padding:0px;
+}
+ 
+div.file .filename {
+	margin:0px;
+	padding:9px;
+	width:193px;
+	display:block;
+	float:left;
+	white-space: pre;           /* CSS 2.0 */ /*http://perishablepress.com/press/2010/06/01/wrapping-content/*/
+	white-space: pre-wrap;      /* CSS 2.1 */
+	white-space: pre-line;      /* CSS 3.0 */
+	white-space: -pre-wrap;     /* Opera 4-6 */
+	white-space: -o-pre-wrap;   /* Opera 7 */
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap;  /* HP Printers */
+	word-wrap: break-word;      /* IE 5+ */
+}
+ 
+/* CUSTOMIZATION: END */
+
+img.thumb {
+	margin: 5px;
+	padding: 3px;
+	border: 1px solid gray;
+	float: none;
+}
+
+.imageCkeckbox {
+	border: none;
+	margin: 5px;
+}
+
+img.thumbOver {
+    border: 2px solid red;
+    margin: 4px;
+}
+
+img.thumbDefault {
+    background-color: gold;
+}
+
+div#imageBrowse div.listing {
+	border-width: 1px 0 0;
+  border-style: solid;
+	margin: 10px;
+	clear: both;
+	padding: 4px;
+}
+
+.quickNavigator select#imonth,
+.quickNavigator select#iweek {
+  font-size: 90%;
+}
+
+.quickNavigator a#iday_button {
+  cursor: pointer;
+  padding: 2px 16px 3px 0px;
+  display: inline-block;
+  background-image: url('../images/calendar.png');
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+.quickNavigator a#iday_button:hover {
+  text-decoration: none;
+}
+
+.bookInterval {
+  margin: 0;
+}
+
+.bookInterval .cal {
+  display: block;
+  padding-bottom: 5px;
+}
+
+.weeklyCalendar .bookInterval .cal input,
+.dailyCalendar .bookInterval .cal input { width: 100px; }
+
+.bookInterval .fromTo {
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+.bookInterval .buttons {
+  float: left;
+  width: 368px;
+}
+
+.bookInterval .cal label {
+	width: 90px;
+	display: inline-block;
+}
+
+.bookInterval .cal input {
+  font-size: 90%;
+  height: 15px;
+  width: 100px;
+}
+
+.bookInterval button {
+	float: left;
+}
+
+.bookInterval .checkTools {
+	padding-top: 1px;
+}
+
+.bookInterval .buttons .checkButton,
+.bookInterval .bookit .checkButton {
+	border-width: 1px;
+  border-style: solid;
+	display: block;
+	float: left;
+	margin: 0 5px 0 0;
+	padding: 3px 5px;
+	text-decoration: none;
+}
+
+.bookInterval #bookIt {
+  height: 31px;
+  line-height: 31px;
+  font-weight: bold;
+  padding: 0;
+  border: none;
+  display: inline-block;
+  margin: 0 auto;
+  float: none;
+  width: 90px;
+  background-image: url('../images/bookit-button.png');
+  background-position: left top;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+#bookSetting .bookInterval .bookit {
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-align: center !important;
+  width: 100%;
+}
+
+.bookInterval .checkTools .checkButtonUnactive {
+	
+}
+
+.bookInterval .checkInfo {
+	font-size: 100%;
+	font-weight: bold;
+	min-height: 2.2em;
+	_height: 2.2em;
+	margin: 5px 0 0;
+}
+
+.cleaner,.clr {
+	clear: both;
+}
+
+p.buy {
+	font-size: 1.4em;
+}
+
+.aIconBuy {
+	display: block;
+	float: left;
+	font-size: 16px;
+	height: 29px;
+	padding-left: 58px;
+	padding-top: 8px;
+}
+
+.info {
+	display: block;
+	padding-left: 35px;
+	text-indent: 0px;
+}
+
+.ieHelper {
+  clear: both;
+  font-size: 0;
+  height: 0;
+  position: relative;
+}
+
+.fullWidth {
+	width: 100%;
+}
+
+.blind {
+	position: absolute;
+	left: -10000px;
+	top: -10000px;
+}
+
+.rigthToolbar {
+	float: right;
+}
+
+.leftToolbar {
+	float: left;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.filterTable {
+	width: 100%;
+}
+
+.filterInput {
+	width: 20%;
+}
+
+.filterInputSmall {
+	width: 5%;
+}
+
+.clearLeft {
+	clear: left;
+}
+
+#list div.filter span.filter {
+  padding: 5px;
+  display: block;
+  margin: 0;
+}
+
+#list .filter .item {
+  float: left;
+  margin: 0;
+  padding: 0 13px 0 0;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+#list .filter .item label {
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding-right: 2px;
+}
+
+#list .filter .items {
+  border-style: dotted;
+  border-width: 1px 0;
+  clear: right;
+  display: block;
+  padding: 5px;
+}
+
+form#list div.filter {
+  margin: 0;
+  padding: 0 0 20px;
+}
+form#list div.filter div.toolbar {
+  float: right;
+  padding: 5px;
+}
+form#list div.filter div.toolbar span.label {
+  display: block;
+  float: left;
+  padding-right: 10px;
+}
+form#list div.filter div.toolbar span.submit {
+  background: url("../images/icon-16-apply.png") no-repeat scroll 0 0 transparent;
+  cursor: pointer;
+  display: block;
+  float: left;
+  height: 16px;
+  padding-right: 5px;
+  width: 16px;
+}
+form#list div.filter div.toolbar span.reset {
+  background: url("../images/icon-16-cancel.png") no-repeat scroll 0 0 transparent;
+  cursor: pointer;
+  display: block;
+  float: left;
+  height: 16px;
+  width: 16px;
+}
+
+#list .filter .item select,
+#list .filter .item input {
+  font-size: 90%;
+}
+
+#list .filter .item .checkbox {
+  background-color: transparent;
+  border: medium none;
+  position: relative;
+  top: 2px;
+}
+
+form#list div.subjectsList div.subject h2 {
+  line-height: 1em;
+  margin: 0;
+  padding: 0 0 15px;
+}
+
+form#list div.subjectsList div.subject p.readmore {
+  background-image: none;
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+}
+
+form#list div.subjectsList div.subject div.properties {
+  float: right;
+  margin-left: 15px;
+  width: 210px;
+}
+
+select.notify {
+	color: red;
+	font-weight: bold;
+}
+
+#adminForm .lefttoolbar {
+	float: left;
+}
+
+#adminForm .righttoolbar {
+  float: right;
+  padding-bottom: 10px;
+}
+
+#adminForm.reservation table {
+	width:100%;
+}
+
+table.reserved_item {
+	width:100%;
+}
+ 
+#adminForm.reservation input,
+#adminForm.reservation textarea {
+  width: 300px;
+}
+
+#adminForm.reservation input.capacity, #adminForm.reservation select.capacity { 
+	width:50px;
+}
+/*
+#adminForm input#payment_method_id_paypal {
+	width: auto;
+}
+*/
+.topInfo {
+	background: url("../images/icon-16-info.png") no-repeat scroll 5px 5px transparent;
+	cursor: pointer;
+	margin: 0;
+	padding: 7px 5px 5px;
+}
+
+.topInfo span {
+	display: block;
+	font-weight: bold;
+	height: 20px;
+	padding-left: 22px;
+}
+
+.topInfo p {
+	margin: 0;
+	float: left;
+}
+
+#adminForm .emptyList {
+	color: red;
+	font-weight: bold;
+	padding: 10px;
+	text-align: center;
+}
+
+#adminForm .emptyParentList {
+	color: red;
+	font-weight: bold;
+	padding-left: 10px;
+}
+
+.width-100 {
+	width: 100%;
+}
+
+.checkall {
+	background: url("../images/icon-13-checkall.png") no-repeat scroll 0 0 transparent;
+	cursor: pointer;
+	display: block;
+	height: 13px;
+	width: 13px;
+}
+
+.uncheckall {
+	background: url("../images/icon-13-uncheckall.png") no-repeat scroll 0 0 transparent;
+	cursor: pointer;
+	display: block;
+	height: 13px;
+	width: 13px;
+}
+
+#bookSetting .head {
+  border-width: 3px;
+  border-style: double;
+  margin-top: 10px;
+  margin-bottom: 3px;
+  width: 302px;
+}
+.head .description {
+  padding: 5px 10px;
+  width: 282px;
+  border-width: 1px 0 0;
+  border-style: solid;
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+  height: 110px;
+  position: relative;
+}
+.head .description .content {
+  padding: 0;
+  position: relative;
+  top: 0;
+}
+#bookSetting .info {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  padding: 0;
+}
+.info .photogallery .leftButton {
+  float: left;
+  width: 20px;
+  height: 50px;
+  background-image: url('../images/arrow-left.png');
+  background-position: left top;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.info .photogallery .display {
+  float: left;
+  width: 262px;
+  height: 50px;
+  display: inline;
+  overflow: hidden;
+  margin: 0 3px;
+  position: relative;
+}
+.info .photogallery .images {
+  display: block;
+  position: relative;
+  width: 302px;
+}
+.info .photogallery .rightButton {
+  float: left;
+  width: 20px;
+  height: 50px;
+  background-image: url('../images/arrow-right.png');
+  background-position: left top;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+#bookSetting div.fulltext,
+#bookSetting h2.subjectSubtitle,
+#bookSetting h2.filesSubtitle,
+#bookSetting div.properties,
+#bookSetting div.reservationTypes,
+#bookSetting div.calendarsSelect {
+  margin-left: 328px;
+}
+#bookSetting div.properties table,
+#bookSetting div.reservationTypes table {
+  width: 100%;
+}   
+#bookSetting div.calendarsSelect { margin-bottom: 10px; }
+
+#bookSetting div.bookInterval {
+  clear: both;
+}
+#bookSetting h2.calendarTitle {
+  float: left;
+  margin: 10px 0 10px;
+  clear: both;
+  width: 100%;
+}
+
+.bookIntervalCal #iFrom {
+  margin-right: 10px;
+}
+
+#bookSetting .prices {
+  background-color: #F6F6F6;
+  border-color: #A0A0A0;
+  border-style: dotted;
+  border-width: 1px 0;
+  margin-bottom: 10px;
+  padding: 0.5em 0.5em 0;
+}
+
+#bookSetting .prices h3 {
+  float: left;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1em;
+  margin: 0;
+  padding: 0.3em 1em 0 0;
+}
+
+#bookSetting .prices h3 input {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+#bookSetting .prices h3 label {
+  display: block;
+  float: left;
+  font-size: 1em;
+  line-height: 1em;
+  margin: 0;
+  padding: 0 0 0 0.5em;
+}
+
+#bookSetting .prices .rtype {
+  float: left;
+  padding-bottom: 0.5em;
+  padding-right: 2em;
+}
+
+#bookSetting .price {
+  color: #FFFFFF;
+  cursor: pointer;
+  float: left;
+  font-size: 13px;
+  height: 15px;
+  line-height: 13px;
+  padding: 3px 10px;
+}
+
+#bookSetting .prices .price {
+ 	height: auto;
+}
+
+#bookSetting .price0 {
+	background-color: #AFD8F8;
+}
+ 
+#bookSetting .price1 {
+	background-color: #F6BD0F;
+}
+ 
+#bookSetting .price2 {
+	background-color: #8BBA00;
+}
+ 
+#bookSetting .price3 {
+	background-color: #FF8E46;
+}
+ 
+#bookSetting .price4 {
+	background-color: #008E8E;
+}
+ 
+#bookSetting .price5 {
+	background-color: #D64646;
+}
+ 
+#bookSetting .price6 {
+	background-color: #8E468E;
+}
+ 
+#bookSetting .price7 {
+	background-color: #588526;
+}
+ 
+#bookSetting .price8 {
+	background-color: #B3AA00;
+}
+ 
+#bookSetting .price9 {
+	background-color: #008ED6;
+}
+ 
+#bookSetting .price10 {
+	background-color: #9D080D;
+}
+ 
+#bookSetting .price11 {
+	background-color: #A186BE;
+}
+ 
+#bookSetting .price12 {
+	background-color: #CC6600;
+}
+ 
+#bookSetting .price13 {
+	background-color: #FDC689;
+}
+ 
+#bookSetting .price14 {
+	background-color: #ABA000;
+}
+ 
+#bookSetting .price15 {
+	background-color: #F26D7D;
+}
+ 
+#bookSetting .price16 {
+	background-color: #FFF200;
+}
+ 
+#bookSetting .price17 {
+	background-color: #0054A6;
+}
+ 
+#bookSetting .price18 {
+	background-color: #F7941C;
+}
+ 
+#bookSetting .price19 {
+	background-color: #CC3300;
+}
+ 
+#bookSetting .price20 {
+	background-color: #006600;
+}
+ 
+#bookSetting .price21 {
+	background-color: #663300;
+}
+ 
+#bookSetting .price22 {
+	background-color: #6DCFF6;
+}
+
+.payment {
+  float: left;
+  padding-right: 10px;
+  padding-top: 20px;
+}
+
+.payment strong {
+
+}
+ 
+.payment .button, .payment .button:hover {
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.payments {
+ 	
+}
+
+.payments .payment {
+  float: none;
+  padding: 1px;
+}
+
+.cantReserveInLimit {
+  color: #F8001A;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 0;
+  text-align: center;
+}
+.col {
+	float: left;	
+}
+
+/*
+#adminForm label {
+  clear: none;
+  display: inline;
+  font-size: 1em;
+  margin: 0;
+  min-width: 0;
+  padding: 3px;
+  text-align: left;
+}
+*/
+
+#toolbar_image, #toolbar_images {
+ 	float: left;	
+}
+
+select#template {
+  margin: 6px 5px 0 0;
+}
+
+p.tmpInfo {
+  margin: 0;
+  padding-top: 3px;
+}
+
+.hasTip img {
+  float: none;
+  margin: 1px 0 0;
+}
+
+#state0, #state1 {
+  float: left;
+}
+
+#hits_disabled {
+  margin: 2px 5px 0 0;
+}
+#hits_disabled_btn {
+  margin: 1px 0 0;
+}
+
+#adminForm fieldset.adminform {
+  border: 1px solid #CCCCCC;
+}
+
+#adminForm div.toolbar {
+  float: left;
+}
+
+.leftAlign label {
+	float: left;
+}
+
+#adminForm .emailCell {
+  padding-bottom: 0;
+  padding-top: 10px;
+}
+
+.editlinktip {
+  color: #333333;
+  float: left;
+  padding-right: 3px;
+  text-decoration: none;
+}
+
+.editlinktip img {
+  margin: 0;
+  padding: 0;
+}
+
+.imagesFilter #filter {
+  position: relative;
+  top: 3px;
+}
+
+.imagesFilter .inputCheckbox {
+  margin: 0;
+  position: relative;
+  top: 9px;
+}
+
+#imageBrowse .imagesFilter .checkAll {
+  position: relative;
+  top: 7px;
+}
+
+#bookSetting td.box {
+  float: none;
+  margin: 0;
+  min-height: 0;
+  width: auto;
+}
+
+.time {
+  width: 7em;
+}
+
+#adminForm textarea.fullwidth {
+	width: 100%; 
+}
+
+table.template textarea.price {
+  float: left;
+  height: 70px;
+  margin: 4px;
+  overflow: hidden;
+  width: 40px;
+}
+table.template input.price {
+  display: block;
+  float: none;
+}
+
+#supplements {
+  background-color: #F6F6F6;
+  border-color: #A0A0A0;
+  border-style: dotted;
+  border-width: 1px 0;
+  height: auto;
+  margin: 0 0 10px;
+  overflow: hidden;
+  padding: 0.5em 0.5em 0;
+  position: relative;
+}
+
+#supplements .supplement {
+  float: left;
+  margin: 0;
+  padding: 0 1.5em 0.5em 0;
+}
+
+#supplements .supplement h3 {
+  float: left;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1em;
+  margin: 0;
+  padding-right: 0.5em;
+  padding-top: 0.5em;
+}
+ 
+#supplements .supplement h3 label {
+  float: none;
+  font-size: 1em;
+  height: auto;
+  line-height: 1em;
+  margin: 0;
+  padding: 0;
+  position: static;
+  width: auto;
+}
+  
+#supplements .supplement .field {
+  display: block;
+  float: left;
+}
+
+#supplements .supplement .fieldBoolean {
+  padding: 0.4em 0 0;
+  vertical-align: top;
+}
+
+#supplements .supplement .field .separator {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 20px;
+}
+
+#supplements .supplement .field .checkbox {
+  border: medium none;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+#supplements .supplement .field select {
+	float: left;
+}
+#supplements .supplement .price {
+  color: #000000;
+  cursor: auto;
+  display: block;
+  float: left;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1em;
+  margin: 0;
+  padding: 0.5em 0.5em 0 0.5em;
+}
+
+#supplements .supplement .quantity_select {
+ 	float:left;
+}
+
+#supplements .supplement .quantity_select label {  
+  float: none;
+  font-size: 1em;
+  height: auto;
+  line-height: 1em;
+  margin: 0;
+  padding: 0;
+  padding-top: 0.5em;
+  position: static;
+  width: auto;
+}
+ 
+.noCustomer {
+  color: red;
+  font-size: 1.1em;
+}
+
+.becomeCustomer, .becomeCustomer:hover {
+  background-image: url("../images/become-customer.png");
+  background-repeat: no-repeat;
+  display: block;
+  height: 26px;
+  line-height: 26px;
+  margin: 5px 0 10px;
+  padding: 0 0 0 30px;
+}
+
+td.price {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.dir {
+  background-image: url("../images/dir.png");
+  background-repeat: no-repeat;
+  display: block;
+  float: left;
+  height: 15px;
+  padding-top: 45px;
+  text-align: center;
+  width: 48px;
+}
+ 
+/* Calendar display area */ 
+.calendar_da {
+  background-color: #F1F1F1;
+  border: 1px solid silver;
+  display: block;
+  float: left;
+  min-height: 14px;
+  min-width: 80px;
+  padding: 2px 5px;
+  text-align: left;
+}
+ 
+/* Erase calendar button */ 
+.calendar_era {
+  border: 1px solid #CCCCCC;
+  cursor: pointer;
+  float: left;
+  left: 2px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+ 
+.filterItem #filter_from_label, .filterItem #filter_to_label {
+  display: block;
+  float: left;
+  padding: 0 3px 0 0;
+  text-align: right;
+  width: 60px;
+}
+ 
+.filterTable #filter_from_era, .filterTable #filter_to_era {
+  margin-right: 20px;
+}
+ 
+.filterItem #filter_surname_label, .filterItem #filter_subject_label {
+  display: block;
+  float: left;
+  padding: 0 5px 0 0;
+  text-align: right;
+  width: 70px;
+}
+ 
+.filterItem #filter_reservation-surname, .filterItem #filter_items-subject_title {
+  float: left;
+}
+ 
+ /* DHTMLX calendar */
+ 
+form#list div.subjectsList div.subject div.calendars {
+  padding: 20px 0 0;
+}
+ 
+form#list div.subjectsList div.subject div.calendars div.calendar {
+  background-color: transparent;
+  border: medium none;
+  float: left;
+  height: 205px;
+  position: relative;
+  width: 200px;
+}
+ 
+form#list div.subjectsList div.subject div.calendars div.calendar .dhtmlxcalendar_month_arrow {
+  display: none;	
+}
+ 
+form#list div.subjectsList div.subject div.calendars div.calendar .dhtmlxcalendar_container ul.dhtmlxcalendar_line { /* fix for Joomla 2.5 default template*/
+  margin: 0;
+  padding: 0;
+}
+ 
+/* object's properties as list with icons and texts */
+#bookSetting div.properties ul {
+  float: left;
+  list-style: none outside none;
+  padding: 0;
+  width: 95%;
+}
+#bookSetting div.properties ul {
+  border: medium none;
+  float: left;
+  list-style: none outside none;
+  padding: 5px 0;
+  width: 100%;
+}
+#bookSetting .properties ul li {
+  background-color: #F6F6F6;
+  border: 1px solid #DDDDDD;
+  display: block;
+  float: left;
+  margin: 1px;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+#bookSetting ul.prices {
+  background-color: transparent;
+  border: medium none;
+  float: left;
+  list-style: none outside none;
+  width: 100%;
+}
+#bookSetting ul.prices li {
+  float: left;
+  padding: 0 10px 0 5px;
+}
+#bookSetting ul.prices li span.price {
+  cursor: default;
+}
+ 
+ #adminForm .current #tprices .inputCheckbox{}
+ 
+#googlemap {
+  background: url("../images/google-maps.png") no-repeat scroll 0 0 transparent;
+  cursor: pointer;
+  display: block;
+  float: right;
+  height: 61px;
+  width: 48px;
+}
+ 
+/* week in objects list */
+ 
+form#list div.subjectsList div.subject div.week {
+  background-color: #F1F1F1;
+  float: left;
+}
+form#list div.subjectsList div.subject div.week ul.day {
+  float: left;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+}
+form#list div.subjectsList div.subject div.week ul.day li.date {
+  background-image: none;
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: 3px;
+}
+form#list div.subjectsList div.subject div.week ul.day li.hour {
+  background-color: #FFFFFF;
+  background-image: none;
+  border: 1px solid silver;
+  font-size: 0.9em;
+  line-height: 1em;
+  margin: 1px;
+  padding: 2px;
+}
+form#list div.subjectsList div.subject div.week ul.day li.reserved {
+  background-color: #F1F1F1;
+}
+ 
+form#adminForm fieldset.adminlist table.admintable tbody tr td.key {
+  text-align: left;
+} 
+ 
+form#adminForm fieldset.adminlist table.admintable tbody tr.masterChild td.key {
+  padding-left: 15px;
+}
+
+/* locations on objects list */
+
+form#list div#locations {
+  padding: 0 0 30px;
+}
+ 
+form#list div#locations div.location label#pickupLocationLabel, form#list div#locations div.location label#droppoffLocationLabel {
+  display: block;
+  float: left;
+  height: auto;
+  padding: 5px 0;
+  width: 160px;
+}
+ 
+form#list div#locations div.location label#pickupLocationTimeLabel, form#list div#locations div.location label#droppoffLocationTimeLabel {
+  display: block;
+  float: left;
+  height: auto;
+  padding: 5px 0;
+  width: auto;
+} 
+
+form#list div#locations div.location select#pickup_location, form#list div#locations div.location select#dropoff_location {
+  width: 155px;
+}
+ 
+/* locations on object detail - display mode */ 
+ 
+#bookSetting #locations {
+  clear: both;
+  float: left;
+  line-height: 1em;
+  padding: 10px 0;
+}
+#bookSetting #locations .location {
+  padding: 0 0 5px;
+}
+#bookSetting #locations .location .label {
+  display: block;
+  font-weight: bold;
+  padding: 0 0 3px;
+}
+#bookSetting #locations .location .location {
+  display: block;
+  float: left;
+  padding: 0 0 0 5px;
+  width: 150px;
+}
+#bookSetting #locations .location .time {
+  display: block;
+  float: left;
+  padding: 0;
+  width: 100px;
+}
+#bookSetting #locations .location .back {
+  border: 1px solid silver;
+  cursor: pointer;
+  padding: 1px 5px;
+}
+ 
+/* locations on object detail - edit mode */
+ 
+form#bookSetting div.bookInterval div#locations div.location label#pickupLocationLabel, form#bookSetting div.bookInterval div#locations div.location label#droppoffLocationLabel {
+  display: block;
+  float: left;
+  height: auto;
+  padding: 5px 0;
+  width: 160px;
+}
+ 
+form#bookSetting div.bookInterval div#locations div.location label#pickupLocationTimeLabel, form#bookSetting div.bookInterval div#locations div.location label#droppoffLocationTimeLabel {
+  display: block;
+  float: left;
+  height: auto;
+  padding: 5px 0;
+  width: auto;
+}
+    
+form#bookSetting div.bookInterval div#locations div.location select#pickup_location, form#bookSetting div.bookInterval div#locations div.location select#dropoff_location {
+  width: 155px;
+} 	
+ 
+/* reservation detail */
+div.reservation fieldset legend {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+div.reservation fieldset table {
+  border: medium none;
+  width: 100%;
+}
+div.reservation fieldset table tbody tr {
+  border: medium none;
+}
+div.reservation fieldset table tbody tr td.key {
+  font-weight: bold;
+  padding: 1px 10px 1px 0;
+  width: 20%;
+}
+div.reservation fieldset table tbody tr td {
+  border: medium none;
+  padding: 1px 0;
+}
+
+.period fieldset {
+  border: 1px solid black;
+  padding: 10px;
+}
+.period .recurrence-pattern .type {
+  border-right: 1px solid black;
+  float: left;
+  padding: 0 20px 0 0;
+}
+.period .recurrence-pattern .type input {
+  clear: both;
+  float: left;
+}
+.period .recurrence-pattern .type label {
+  float: left;
+  padding: 0 0 5px 10px;
+}
+.period .recurrence-pattern .intensity {
+  float: left;
+  padding: 0 0 0 20px;
+}
+.period .recurrence-pattern .intensity .clr {
+  clear: both;
+  padding: 5px;
+}
+.period .recurrence-range .begin {
+  float: left;
+  padding: 0 20px 0 0;
+}
+.period .recurrence-range .end {
+  float: left;
+}
+.period .recurrence-range .end .end-by #period_date_down_date, .period .recurrence-range .begin #period_date_up {
+  float: left;
+  width: 80px;
+}
+.period .recurrence-range .end input {
+  float: left;
+  height: 15px;
+}
+.period .recurrence-range .end label {
+  float: left;
+  padding: 0 10px 10px;
+}
+.period .recurrence-range .end label#period_occurrences_lbl, .period .recurrence-range .end label#period_date_down_lbl {
+  width: 60px;
+}
+.period .recurrence-range .begin label {
+  float: left;
+  padding: 0 10px 0 0;
+}

@@ -1,0 +1,188 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+.es-story-attachment-icon {
+	text-align: center;
+
+	.transition(all .5s ease);
+	position: absolute;
+	top: -300px;
+	left: 0;
+	opacity: 0;
+
+	i {
+		font-size: 26px;
+	    width: 60px;
+	    height: 26px;
+	    line-height: 26px;
+	    color: @esStoryAttachmentIconColor;
+    }
+}
+
+.es-story-attachment-buttons {
+	.clearfix();
+	position: relative;
+	z-index: 2;
+	margin-top: 10px;
+	float: right;
+	margin-right: -5px;
+
+	label {
+		font-size: 11px;
+		font-weight: bold;
+		float: left;
+		margin: 0 3px 0 0;
+		cursor: default;
+	}
+}
+
+.es-story-attachment-button {
+	float: left;
+	padding: 0 8px;
+	cursor: pointer;
+	font-size: 11px;
+	border-color: @esStoryAttachmentButtonBorder;
+
+	> i {
+		.transition(all .5s ease);
+		margin-right: 2px;
+		font-size: 14px;
+		height: 14px;
+		vertical-align: baseline;
+	}
+
+	> span {
+		position: relative;
+		top: -2px;
+	}
+
+	&:hover {
+		> span {
+			text-decoration: underline;
+		}
+	}
+
+	+ .es-story-attachment-button {
+		border-left-width: 1px;
+		border-left-style: solid;
+	}
+
+	&.for-text {
+
+		&:hover,
+		&.active {
+			> i,
+			> span {
+				color: @esStoryTextColor;
+			}
+		}
+	}
+
+	&.for-photos {
+		&:hover,
+		&.active {
+			> i,
+			> span {
+				color: @esStoryPhotoColor;
+			}
+		}
+	}
+
+	&.for-links {
+		&:hover,
+		&.active {
+			> i,
+			> span {
+				color: @esStoryLinkColor;
+			}
+		}
+	}
+}
+
+.es-story-attachment-items {
+	position: relative;
+	z-index: 1;
+}
+
+.es-story-attachment-item {
+		.transition(all .5s ease);
+	position: absolute;
+	margin-top: -300px;
+	opacity: 0;
+	z-index: 1;
+
+	&.active {
+		position: relative;
+		margin-top: 0px;
+		opacity: 1;
+		z-index: 2;
+
+	}
+
+	.media {
+		margin: 0;
+	}
+	.media-object {
+		img {
+			width: 120px;
+			height: 100px;
+		}
+	}
+}
+
+.es-story-attachment-content {
+	position: relative;
+	z-index: 1;
+}
+
+/*
+
+Currently unused, but good to keep it for future use.
+
+.es-story-attachment-toolbar {
+	position: absolute;
+	height: 0;
+	width: 100%;
+	overflow: visible;
+	z-index: 2;
+	top: 0;
+	left: 0;
+}
+
+.es-story-attachment-drag-handle {
+	height: 16px;
+	width: 16px;
+	float: left;
+	top: 4px;
+	left: 4px;
+	cursor: pointer;
+	display: none;
+	position: absolute;
+
+	.icon-es-drag {
+	}
+}
+
+.es-story-attachment-remove-button {
+	cursor: pointer;
+	float: right;
+	height: 18px;
+	padding: 0;
+	position: absolute;
+	right: -8px;
+	top: -7px;
+	width: 17px;
+	.border-radius(20px);
+	display: none;
+
+	.ies-cancel-2 {
+		font-size: 7px;
+		margin-left: 0;
+		margin-top: -2px;
+	}
+}
+
+*/

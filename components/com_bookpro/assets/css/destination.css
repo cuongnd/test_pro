@@ -1,0 +1,297 @@
+.main-body .package_tour .text_title .title{
+	font-weight:bold;
+	font-size:16px;
+	margin:0px;
+}
+.main-body .package_tour .text_title{
+	margin-left:14px;
+	border-top:4px solid #cdcdcd;
+	margin-top:12px;
+	padding-top:8px;
+	padding-left:12px;
+	text-align:justify;
+}
+.main-body .col_left .package_tour{
+	margin-left:12px;
+}
+/*---------------------------------------------------top-destination----------------------------------------------*/
+.main-body .col_left .top_destinations{
+	margin-left:10px;
+}
+.main-body .col_left .top_destinations .title_destinations {
+	font-weight:bold;
+	font-size:18px;
+	color:#006699;
+}
+/*-------------------------------------------------------fearture-tours------------------------------------------*/
+.fearture_tours .title_fearture_tours{
+	padding-top:20px;
+	padding-bottom:20px;
+	padding-left:8px;
+	background: url("../images/great_detail.png")no-repeat scroll 99% 50% #eeeeee; 
+	border:1px solid #d7d7d7;
+	padding-right:6px;
+	border-bottom:none;
+}
+.main-body .col_left .fearture_tours{
+	margin-top:20px;
+}	
+.fearture_tours .title_fearture_tours .div_title_fearture_tours{
+	text-transform:uppercase;
+	color:#ff9900;
+	font-weight:bold;
+	background:#fff;
+	position:relative;
+	top:14px;
+	right:-80px;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:10px;
+	padding-top:5px;
+	border-top:1px solid #cccccc;
+	border-left:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+}
+.tours_price{
+	margin-right:5px!important;
+	background:url("../images/price_tours.png")no-repeat scroll 80% 60% #ebf1f4!important; 
+}
+.title_fearture_tours .div1_title_fearture_tours{
+	font-size:24px;
+	color:#2078a4;
+	padding-bottom:20px;
+	font-weight:bold;
+	float:right;
+	padding-right:50px;
+}
+.container_fearture_tours .span8  .title_span8{
+	color:#006699;
+	margin:0px;
+}
+.container_fearture_tours .span8 .detail_span8{
+	margin:0px;
+}
+.container_fearture_tours .span8 .view-detail{
+	color:#339933;
+	font-weight:bold;
+}
+.container_fearture_tours .best_deals{
+	color:#993300;
+	text-transform:uppercase;
+	font-weight:bold;
+	padding-left:30px;
+	background: url("../images/icon_money.png")no-repeat scroll top left #ebf1f4; 
+	padding-bottom:1px;
+
+	padding-top:4px;
+}
+.content_best_deals{
+	padding-left:10px!important;
+	border-right:1px solid #cdcdcd;
+	height:100%;
+	margin-top:10px;
+	padding-right:5px;
+}
+.tours_price{
+	background: url("../images/icon_money.png")no-repeat scroll top left #ebf1f4; 
+}
+.content_table_span8 .table th{
+	background:#ebf1f4;
+	text-transform:uppercase;
+	padding:4px;
+	color:#333;
+	
+}
+.content_table_span8 .table th, .table td{
+	line-height:18px!important;
+	padding:0px!important;
+	padding-top:6px!important;
+	padding-left:8px!important;
+}
+.container_fearture_tours .content_table_span8{
+	margin-top:10px;
+	padding-right:5px;
+	padding-left:3px;
+	background: url("../images/line_vertical.png")no-repeat scroll top left; 
+}
+.fearture_tours .container_fearture_tours{
+	border:1px solid #cccccc!important;
+}
+.content_table_span8 .images_stars{
+	margin-top:10px;
+}
+.content_span_detail .limited_offer{
+	background: url("../images/limited.jpg")no-repeat scroll top right ; 
+	padding-bottom:5px;
+	color:#006699;
+	font-weight:bold;
+	padding-top:20px;	
+	float:right;
+	padding-right:55px;
+	position:relative;
+	right:11px;
+	
+}
+.content_table_span8 .table tr{
+	border-bottom:1px dotted #cdcdcd;
+}
+/*----------------------------------------------------------------molify-content_city----------------------------------------------*/
+.col_left .div1_title_col_left{
+	font-size:24px;
+	color:#106f9f;
+	padding-left:10px;
+	padding-top:8px;
+	margin:0px;
+}
+.col_left .div2_title_col_left{
+	font-size:18px;
+	
+	padding-right:10px;
+	padding-bottom:2px;
+	margin:0px;
+	text-align: right;
+}
+.destination-info{
+	padding:0;
+}
+.col_left .overview_tour .title{
+	text-transform:uppercase;
+	font-size:14px;
+	font-weight:bold;
+	padding-bottom:10px;
+}
+
+.col_left .overview_tour {
+	
+	padding-top:15px;
+}
+.Popular_tours .content_title_popular_tours{
+	
+	
+}
+.content_span4_vacation_tips{
+	margin-top:36px;
+}
+.content_title_popular_tours .div1_popular_tour{
+	font-weight:bold;
+	font-size:14px;
+	border-bottom:2px solid #cccccc;
+}
+.detail_popular .read_more{
+	font-size:9px;
+	padding:0px;
+	background: #4881bd; /* Old browsers */
+	background: -moz-linear-gradient(top,  #4881bd 1%, #0c5da4 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#4881bd), color-stop(100%,#0c5da4)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #4881bd 1%,#0c5da4 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #4881bd 1%,#0c5da4 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #4881bd 1%,#0c5da4 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #4881bd 1%,#0c5da4 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4881bd', endColorstr='#0c5da4',GradientType=0 ); /* IE6-9 */
+	color:#fff;
+	text-shadow:none;
+	padding:0 2px;
+}
+.detail_popular .read_more:hover{
+	color:#fff;
+	background: #4881bd; /* Old browsers */
+	background: -moz-linear-gradient(top,  #4881bd 1%, #0c5da4 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#4881bd), color-stop(100%,#0c5da4)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #4881bd 1%,#0c5da4 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #4881bd 1%,#0c5da4 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #4881bd 1%,#0c5da4 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #4881bd 1%,#0c5da4 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4881bd', endColorstr='#0c5da4',GradientType=0 ); /* IE6-9 */
+
+}
+.overview_tour  .content_span4_vacation_tips{
+	background:#f6f6f6;
+}
+.vacation_tip{
+	padding:0 10px;
+}
+.overview_tour  .content_span4_vacation_tips ul li{
+	
+	background: url("../../../../images/circle.png")no-repeat scroll left 7px transparent;
+	list-style:none;
+	
+	padding-left:12px;
+}
+.overview_tour  .content_span4_vacation_tips ul{
+	margin:0px;
+	margin-left:5px;
+}
+.overview_tour  .content_span4_vacation_tips ul li a{
+	color:#000000;
+}
+.content_span4_vacation_tips .vacation_tips .content_ul{
+	border-bottom:1px dotted #cdcdcd;
+}
+/*--------------------------------------------------------Feature car rental----------------------------------------------*/
+.content-text{
+	text-align:right;
+	
+}
+.content-text .text-1{
+	color:#006699;
+	font-weight:bold;
+	margin:0px;
+}
+.content-text .text-3{
+	color:#f89308;
+	text-transform:uppercase;
+	font-weight:bold;
+	margin:0px;
+}
+.content-text .text-2{
+	margin:0px;
+}
+
+.content-images .content-price{
+	background:#fff; 
+	opacity:0.8;
+	position:relative;
+	top:-39px;
+	text-align:center;
+	width:70%;
+	right:15px;
+}
+.content-images .images-search{
+	position:relative;
+	top:-68px;
+	right:-38px;
+}
+.content-text .images-sale{
+	position:relative;
+}
+#t3-mainbody #t3-content .t3-module{
+	margin-bottom:10px;
+}
+
+/*----------------------------------------------------Find-tours-----------------------------------------------*/
+.col_right .content_find_tours{
+	padding-top:10px;
+
+	background: url("../images/background_bottom.jpg")repeat-x scroll bottom left transparent;
+	position:relative;
+	}
+.col_right .content_find_tours .title_find_tours{
+	text-transform:uppercase;
+	background:#e2e0de;
+	font-weight:bold;
+	float:left;
+	width:97%;
+	color:#990100;
+	line-height:28px;
+	padding-left:10px;
+}
+.drop_title_find_tour{
+	background: url("../images/icon_drop_title.png")no-repeat scroll 10% 0% transparent!important;
+	height: 20px;
+	float: left;
+	width: 100%;
+}
+.col_right .content_find_tours ul li{
+	list-style:none;
+	border-bottom:1px dotted #cdcdcd;
+}

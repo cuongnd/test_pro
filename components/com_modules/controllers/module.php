@@ -1,0 +1,409 @@
+<?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_modules
+ *
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+
+/**
+ * Module controller class.
+ *
+ * @package     Joomla.Administrator
+ * @subpackage  com_modules
+ * @since       1.6
+ */
+class ModulesControllerModule extends JControllerForm
+{
+	/**
+	 * Override parent add method.
+	 *
+	 * @return  mixed  True if the record can be added, a JError object if not.
+	 *
+	 * @since   1.6
+	 */
+	public function add()
+	{
+
+		$app = JFactory::getApplication();
+
+		// Get the result of the parent method. If an error, just return it.
+		$result = parent::add();
+		if ($result instanceof Exception) {
+			return $result;
+		}
+
+		// Look for the Extension ID.
+		$extensionId = $app->input->get('eid', 0, 'int');
+		if (empty($extensionId)) {
+			$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_item . '&layout=edit', false));
+			return JError::raiseWarning(500, JText::_('COM_MODULES_ERROR_INVALID_EXTENSION'));
+		}
+
+		$app->setUserState('com_modules.add.module.extension_id', $extensionId);
+		$app->setUserState('com_modules.add.module.params', null);
+
+		// Parameters could be coming in for a new item, so let's set them.
+		$params = $app->input->get('params', array(), 'array');
+		$app->setUserState('com_modules.add.module.params', $params);
+	}
+	public function AjaxRemoveModule()
+	{
+		$app=JFactory::getApplication();
+		$module_id=$app->input->get('module_id',0,'int');
+		$tableModule=JTable::getInstance('Module','JTable');
+		$tableModule->load($module_id);
+		$tableModule->delete();
+		die;
+	}
+	public  function aJaxAddPositionInScreen()
+	{
+		$app=JFactory::getApplication();
+		$post=$app->input->getArray($_POST);
+		$screenSize=$post['screenSize'];
+		$position=$post['position'];
+		$positionSetting['screensize']=$screenSize;
+		JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
+		$tablePosition=JTable::getInstance('position','JTable');
+		$website=JFactory::getWebsite();
+		$positionSetting['alias']=$positionSetting['position'];
+		$positionSetting['website_id']=$website->website_id;
+		$tablePosition->bind($positionSetting);
+		if(!$tablePosition->store())
+		{
+			echo $tablePosition->getError();
+			die;
+		}
+		die;
+	}
+	public  function aJaxSaveContent()
+	{
+		$app=JFactory::getApplication();
+		$module_id=$app->input->get('module_id',0,'int');
+		$content=$app->input->get('content','','string');
+		$content=base64_decode($content);
+		$tableModule=JTable::getInstance('Module','JTable');
+		$tableModule->load($module_id);
+		$tableModule->content=$content;
+		if(!$tableModule->store())
+		{
+			echo $tableModule->getError();
+		}
+		die;
+	}
+	public  function aJaxInsertModule()
+	{
+		$app=JFactory::getApplication();
+		$modelModule= $this->getModel();
+		$module_id=$app->input->get('module_id',0,'int');
+		$position=$app->input->get('position','','string');
+		$tableExtension=JTable::getInstance('Extension','JTable');
+		$tableExtension->load($module_id);
+		require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
+		$screenSize=UtilityHelper::getCurrentScreenSizeEditing();
+		$tableModule=JTable::getInstance('Module','JTable');
+		$tableModule->id=0;
+		$tableModule->title=$tableExtension->name;
+		$tableModule->module=$tableExtension->element;
+		$tableModule->showtitle=1;
+		$tableModule->position='position-'.$position;
+		$tableModule->screensize=$screenSize;
+		$tableModule->published=1;
+		$tableModule->params=$tableExtension->params;
+		$tableModule->website_id=$tableExtension->website_id;
+		$tableModule->client_id=0;
+		$tableModule->access=1;
+		$tableModule->store();
+
+		$newModuleId=$tableModule->id;
+
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		//	 * $query->insert('#__a')->set('id = 1');
+
+		$query->insert('#__modules_menu')->set('moduleid='.(int)$newModuleId.',menuid=0');
+		$db->setQuery($query);
+		if(!$db->execute())
+		{
+			echo $db->getErrorMsg();
+			die;
+		}
+
+		$module = &JModuleHelper::getModuleById($newModuleId);
+		require_once JPATH_ROOT.'/libraries/joomla/document/html/renderer/module.php';
+		$renderModule=new JDocumentRendererModule(JFactory::getDocument());
+		$contents=$renderModule->render($module);
+		//$contents = JModuleHelper::renderModule($module);
+		ob_end_clean();
+		$respone_bject=new stdClass();
+		$respone_bject->modulecontent=$contents;
+		echo json_encode($respone_bject);
+		die;
+	}
+	public function ajaxSavePropertyBlock()
+	{
+		echo "hello";
+	}
+	public function ajaxLoadFieldTypeOfModule()
+	{
+		$app=JFactory::getApplication();
+		$module_id=$app->input->get('module_id',0,'int');
+		$field=$app->input->get('field','','string');
+		$modelModule= $this->getModel();
+		$modelModule->setState('module.id', $module_id);
+		$form=$modelModule->getForm();
+		ob_start();
+		$respone_array=array();
+		$contents = $form->getInput($field);
+
+		ob_end_clean(); // get the callback function
+		$respone_array[] = array(
+			'key' => '.itemField .panel-body',
+			'contents' => $contents
+		);
+		echo json_encode($respone_array);
+		die;
+	}
+	public function ajaxSavePropertiesModule()
+	{
+		$app=JFactory::getApplication();
+		$form=$app->input->get('jform',array(),'array');
+		$tableModule=JTable::getInstance('Module','JTable');
+
+		$tableModule->load($form['id']);
+		$tableModule->bind($form);
+		$tableModule->params=json_encode($form['params']);
+		if(!$tableModule->store())
+		{
+			echo $tableModule->getError();
+		}
+		die;
+	}
+	public function ajaxSavePropertyModule()
+	{
+		$app=JFactory::getApplication();
+		$form=$app->input->get('jform',array(),'array');
+
+		$module_id=$app->input->get('module_id',0,'int');
+		$tableModule=JTable::getInstance('Module','JTable');
+		$tableModule->load($module_id);
+		$tableModule->bind($form);
+		//$tableModule->params=json_encode($form['params']);
+		if(!$tableModule->store())
+		{
+			echo $tableModule->getError();
+		}
+		die;
+	}
+	public  function ajaxLoadPropertiesModule()
+	{
+
+
+		$app=JFactory::getApplication();
+		$module_id=$app->input->get('module_id',0,'int');
+		$app->input->set('id',$module_id);
+		$modelModule= $this->getModel();
+		$modelModule->setState('module.id', $module_id);
+		$form=$modelModule->getForm();
+		$options=$form->getFieldsets();
+		ob_start();
+		?>
+		<div class="properties module">
+			<div class="panel-group" id="accordion<?php echo $module_id ?>" role="tablist" aria-multiselectable="true">
+				<?php
+				foreach($options as $key=>$option)
+				{
+					$fieldSet = $form->getFieldset($key);
+					?>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="heading<?php echo $key ?>">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion<?php echo $module_id ?>" href="#collapse<?php echo $key ?>" aria-expanded="true" aria-controls="collapse<?php echo $key ?>">
+									<?php echo $option->label ?>
+								</a>
+							</h4>
+						</div>
+						<div id="collapse<?php echo $key ?>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<?php echo $key ?>">
+							<div class="panel-body">
+								<?php
+								foreach ($fieldSet as $field)
+								{
+									?>
+									<div class="form-horizontal">
+										<?php echo $field->renderField(array(),true); ?>
+									</div>
+								<?php } ?>
+							</div>
+						</div>
+					</div>
+				<?php } ?>
+
+			</div>
+		</div>
+		<?php
+		$contents=ob_get_clean();
+		$doc=JFactory::getDocument();
+		$respone_array[] = array(
+			'key' => '.block-properties .panel-body',
+			'contents' => $contents
+		);
+		echo json_encode($respone_array);
+		die;
+	}
+	/**
+	 * Proxy for getModel
+	 * @since   1.6
+	 */
+	public function getModel($name = 'module', $prefix = 'ModulesModel', $config = array())
+	{
+		return parent::getModel($name, $prefix, array('ignore_request' => true));
+	}
+	public function aJaxGetOptionModule()
+	{
+		$modelModule= $this->getModel();
+		$view = &$this->getView('module', 'html', 'ModulesView');
+		$view->setModel($modelModule , true );
+		ob_start();
+		$view->setLayout('edit');
+		$view->display();
+		$respone_array=array();
+		$contents = ob_get_contents();
+
+		ob_end_clean(); // get the callback function
+		$respone_array[] = array(
+			'key' => '#dialog-body',
+			'contents' => $contents
+		);
+		echo json_encode($respone_array);
+		die;
+
+	}
+	/**
+	 * Override parent cancel method to reset the add module state.
+	 *
+	 * @param   string  $key  The name of the primary key of the URL variable.
+	 *
+	 * @return  boolean  True if access level checks pass, false otherwise.
+	 *
+	 * @since   1.6
+	 */
+	public function cancel($key = null)
+	{
+		$app = JFactory::getApplication();
+
+		$result = parent::cancel();
+
+		$app->setUserState('com_modules.add.module.extension_id', null);
+		$app->setUserState('com_modules.add.module.params', null);
+
+		return $result;
+	}
+
+	/**
+	 * Override parent allowSave method.
+	 *
+	 * @param   array   $data  An array of input data.
+	 * @param   string  $key   The name of the key for the primary key.
+	 *
+	 * @return  boolean
+	 *
+	 * @since   1.6
+	 */
+	protected function allowSave($data, $key = 'id')
+	{
+		// use custom position if selected
+		if (isset($data['custom_position']))
+		{
+			if (empty($data['position']))
+			{
+				$data['position'] = $data['custom_position'];
+			}
+
+			unset($data['custom_position']);
+		}
+
+		return parent::allowSave($data, $key);
+	}
+
+	/**
+	 * Method override to check if you can edit an existing record.
+	 *
+	 * @param   array   $data  An array of input data.
+	 * @param   string  $key   The name of the key for the primary key.
+	 *
+	 * @return  boolean
+	 *
+	 * @since   3.2
+	 */
+	protected function allowEdit($data = array(), $key = 'id')
+	{
+		// Initialise variables.
+		$recordId = (int) isset($data[$key]) ? $data[$key] : 0;
+		$user = JFactory::getUser();
+		$userId = $user->get('id');
+
+		// Check general edit permission first.
+		if ($user->authorise('core.edit', 'com_modules.module.' . $recordId))
+		{
+			return true;
+		}
+
+		// Since there is no asset tracking, revert to the component permissions.
+		return parent::allowEdit($data, $key);
+	}
+
+	/**
+	 * Method to run batch operations.
+	 *
+	 * @param   string  $model  The model
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   1.7
+	 */
+	public function batch($model = null)
+	{
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+		// Set the model
+		$model	= $this->getModel('Module', '', array());
+
+		// Preset the redirect
+		$this->setRedirect(JRoute::_('index.php?option=com_modules&view=modules'.$this->getRedirectToListAppend(), false));
+
+		return parent::batch($model);
+	}
+
+	/**
+	 * Function that allows child controller access to model data after the data has been saved.
+	 *
+	 * @param   JModelLegacy  $model      The data model object.
+	 * @param   array         $validData  The validated data.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
+	 */
+	protected function postSaveHook(JModelLegacy $model, $validData = array())
+	{
+		$app = JFactory::getApplication();
+		$task = $this->getTask();
+
+		switch ($task)
+		{
+			case 'save2new':
+				$app->setUserState('com_modules.add.module.extension_id', $model->getState('module.extension_id'));
+				break;
+
+			default:
+				$app->setUserState('com_modules.add.module.extension_id', null);
+				break;
+		}
+
+		$app->setUserState('com_modules.add.module.params', null);
+	}
+}

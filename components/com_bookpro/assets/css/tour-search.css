@@ -1,0 +1,71 @@
+@CHARSET "ISO-8859-1";
+.tour-search{
+	font-size: 30px;
+	text-transform: uppercase;
+	color:#339933;
+	text-align: center;
+}
+.box-search{
+	border:1px solid #999999;
+	margin-bottom: 10px;
+}
+.box-search-head{
+	height: 38px;
+	background: url('../images/bg-search.png') repeat-x;
+}
+.search-img{
+	background: url('../images/search-tour.png') no-repeat;
+	width:31px;
+	height:38px;
+	float:left;
+	
+}
+.box-search-head .search-title{
+	line-height: 38px;
+	font-size: 13px;
+	color:#990000;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-left:10px;
+}
+.sort-box{
+	line-height: 38px !important;
+	padding-right:10px;
+	margin: 0 !important;
+}
+.box-search-content .total{
+	font-weight: bold;
+	font-size: 13px;
+	color:#000000;
+	padding-left:10px;
+}
+.search-menu{
+	list-style: none;
+	
+}
+.search-menu li a{
+	color:#007799;
+
+	font-size:14px;
+	font-weight:bold;
+	padding-right:10px;
+}
+.search-menu li{
+	float:left;
+}
+.sort-label{
+	line-height: 38px;
+	padding:0 !important;
+	font-weight: bold;
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color:#000000;
+	width:auto !important;
+}
+.select-search{
+	height: 20px;
+	border: 1px solid #000;
+	padding:1px;
+	color:#000;
+}

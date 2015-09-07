@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <layout title="K2_TIMELINE">
+    <message>K2_CREATE_A_MENU_TIMELINE_LINKING_DIRECTLY_TO_AN_TIMELINE_IN_K2</message>
+  </layout>
+  <state>
+    <name>K2_TIMELINE</name>
+    <description>K2_CREATE_A_MENU_TIMELINE_LINKING_DIRECTLY_TO_AN_TIMELINE_IN_K2</description>
+    <url addpath="/administrator/components/com_k2/elements">
+      <param name="id" type="item" default="" label="K2_SELECT_TIMELINE" description="K2_SELECT_AN_TIMELINE_TO_LINK_TO_DIRECTLY"/>
+    </url>
+    <params>
+    </params>
+    <fields name="request">
+		<fieldset name="request" addfieldpath="/administrator/components/com_k2/elements">
+            <field
+                    name="tmpl"
+                    type="list"
+                    default="1"
+                    label="tmpl"
+                    description="tmpl">
+                <option
+                        value="component">component</option>
+                <option
+                        value="0">NO</option>
+            </field>
+
+        </fieldset>
+	</fields>
+  </state>
+</metadata>

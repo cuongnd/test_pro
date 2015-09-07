@@ -1,0 +1,182 @@
+@CHARSET "ISO-8859-1";
+.tour-details{
+    border: 1px solid #999999;
+    margin-bottom:10px;
+}
+.tour-list-header{
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 5px;
+}
+.details-title{
+    color:#007799;
+    font-size: 12px;
+    font-weight: bold;
+    padding:0;
+    margin: 0;
+    text-transform: uppercase;
+    padding-left:5px;
+}
+.tours-duration{
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+    color:#006699;
+    margin-right: 71px;
+    margin-top: 10px;
+}
+.tours-destination{
+    text-align: right;
+    font-size: 11px;
+    font-weight: bold;
+    color: #000000;
+    margin-right: 10px;
+}
+
+.img-tour-list {
+    position: relative;
+    margin: 6px 7px;
+}
+.img-tour-list img{
+    width:100%;
+    height: 132px;
+}
+.list-details{
+    border-bottom: 1px dotted #cccccc;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.details-right-border{
+    border-right: 1px dotted #cccccc;
+    
+}
+.detail-midde{
+    min-height: 132px;
+    margin: 6px 7px;
+}
+.tour-departuredate {
+    border: 1px solid #000000;
+    margin-left: 80px;
+    width: 115px;
+    height: 20px;
+
+}
+.tour-departuredate a:hover {
+    text-decoration: none;
+    color: #ff9900;
+}
+.tour-departuredate a {
+    color: #ff9900;
+    margin-left: 5px;
+    padding-right: 20px;
+    background: url('../images/tour-depature.png') no-repeat right;
+    
+}
+
+i.img-tour-departuredate{
+    width: 12px;
+    height: 20px;
+}
+
+
+.price-tour-list {
+    position: absolute;
+    height: 25px;
+    background-color: #8c8c8c;
+    opacity: 0.90;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    line-height: 25px;
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.highlights-tour-details {
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+}
+.tour-destination {
+    color: #666666;
+    font-size: 12px;
+    font-weight: regular;
+}
+.tour-list-bottom {
+    background-color: #f2f2f2;
+}
+
+.field-reviews-recommend {
+    border: 1px solid #cccccc !important;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ff9900;
+    min-height: 50px;
+}
+legend.reviews-legend {
+    border-style: none;
+    color: #ff9900;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 0;
+    margin-top: 20px;
+    width: auto;
+    margin-right: 30px;
+}
+.number-reviews-recommend{
+    color: #000;
+}
+.right-details-tour {
+    color: #006699;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 46px;
+}
+.right-tour-list-bottom {
+    color: #007799;
+    font-size: 12px;
+    font-weight: bold;
+}
+.tours-map {
+    
+    background: url('../images/tours-map.png') no-repeat right;
+}
+.tours-map a {
+   padding-right: 21px;
+   width: 85px;
+}
+.tours-map, .right-details-tour, .tours-activity, .tour-bookmark, .tours-grade {
+    padding-top: 5px;
+    padding-left: 5px;
+    text-transform: uppercase;
+}
+.tours-activity {
+    margin-left: 20px;
+}
+.tours-detail-center {
+    height: 20px;
+    width: 96px;
+    border: 1px solid #000;
+    padding-left: 5px;
+    background: #fff;
+    position: absolute;
+    top: -10px;
+    right: 20px;
+}
+.tours-detail-center a{
+    font-size: 12px;
+    color: 006699;
+    font-weight: bold;
+}
+.tours-detail {
+    position: relative; 
+}
+i.img-tours-detail {
+    float: right;
+    background: url('../images/img-tours-detail.png') no-repeat center;
+    width: 24px;
+    height: 20px;
+
+
+}

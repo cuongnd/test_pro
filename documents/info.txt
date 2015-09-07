@@ -1,0 +1,7 @@
+gui email toi nhung nguoi so huu extentsion nay thoa thuan lay 50 den 60%
+
+localhost/test_pro/index.php?disable_component=1&only_module=265&only_t3=1
+only_t3=1 or 0
+enable_only_plugin_except_t3=34
+
+

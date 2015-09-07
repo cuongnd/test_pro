@@ -1,0 +1,232 @@
+.widgetbookpro-loading
+{
+    background : url("../images/loading.gif");
+    background-position: 50% 50%;
+    background-repeat:no-repeat;
+}
+.date-select
+{
+    border: 1px solid #DADADA;
+    border-radius: 3px;
+    
+}
+.room .roomselect
+{
+    width: auto;
+}
+#widgetbookpro #wap-content .hotel_search
+{
+    padding: 10px;
+    width: 250px;
+}
+.date-select input, .date-select textarea,.date-select select
+{
+    width: auto;
+}
+.date-select input
+{
+    width: 100px;
+}
+.customer_detail td
+{
+    border-top:none;
+}
+.date-select.form-horizontal .control-label
+{
+    width: auto;
+}
+.date-select.form-horizontal .controls
+{
+    margin-left: 0;
+}
+#widgetbookpro #wap-content .hotel_search .hotel_search_button,.iDivdialog .date-select #check_available
+{
+    background: linear-gradient(to bottom, #F62121 0%, #D82020 41%, #CD0000 50%, #BA0000 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    color: #FFFFFF;
+    font-size: 18px;
+    text-shadow: none;
+    text-transform: uppercase;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    padding: 5px 16px;
+}
+.iDivdialog .customer_detail .control-group .control-label
+{
+    line-height: 30px;
+    float: left;
+}
+.iDivdialog .room_detail
+{
+
+}
+.iDivdialog .customer_detail .control-group
+{
+    width: 100%;
+    float: left;
+}
+.iDivdialog .customer_detail .control-group .controls
+{
+    float: left;
+}
+#widgetbookpro #wap-content .hotel_search .inputbox ,.iDivdialog .inputbox
+{
+    width: 150px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    border-radius: 3px;
+    padding: 4px;
+    line-height: 18px;
+    vertical-align: middle;
+    border: 1px solid #CCCCCC;
+
+    float: left;
+}
+#widgetbookpro #wap-content
+{
+    width: 400px;
+}
+#widgetbookpro #wap-content .hotel_search .control-group
+{
+    float: left;
+    padding: 5px;
+}
+#widgetbookpro #wap-content .hotel_search .control-group label
+{
+    line-height: 25px;
+    font-size: 15px;
+}
+#widgetbookpro #wap-content .hotel_search .row-fluid
+{
+    float: left;
+}
+#widgetbookpro #wap-content .hotel_search .ui-datepicker-trigger
+{
+    float: left;
+    padding: 0 5px;
+}
+.iDivdialog #room_checkin_date ,.iDivdialog #room_checkout_date
+{
+    width: 80px;
+    font-size: 11px;
+}
+.iDivdialog .customer_detail
+{
+
+}
+.iDivdialog .customer_detail input
+{
+    width: 159px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    border-radius: 3px;
+    padding: 4px;
+    line-height: 18px;
+    vertical-align: middle;
+    border: 1px solid #CCCCCC;
+}
+.iDivdialog .date-select .control-group
+{
+    float: left;
+}
+.iDivdialog .date-select .control-group label
+{
+    float: left; 
+    padding: 5px;   
+}
+.iDivdialog .date-select .control-group .input-append
+{
+    float: left;
+}
+.iDivdialog #roomlist select
+{
+    width:50px;
+}
+.iDivdialog .ui-datepicker-trigger
+{
+    padding: 0 5px;
+}
+.iDivdialog .date-select
+{
+    display: inline-block;
+}
+#roomlist .table-condensed
+{
+    width: 100%;
+}
+.iDivdialog .date-select #check_available
+{
+    margin-left: 5px;
+}
+.error-message .error {
+    color: #FF0000;
+    font-weight: bold;
+    margin-top: 2px;
+    padding: 2px 8px;
+}
+.iDivdialog .error-highlight
+{
+    border-color: #B94A48;
+    color: #B94A48;
+}
+.iDivdialog table td
+{
+    font-size: 12px; 
+    vertical-align: top;
+    padding: 5px;
+}
+.iDivdialog table th
+{
+    background: #ddd;
+    font-size: 12px;
+    padding: 5px;
+    color: #000;
+}
+#widgetbookpro ,.iDivdialog
+{
+    font-size: 12px;
+}
+.iDivdialog .a_room_detail
+{
+    width: 100%;
+}
+.a_room_detail td
+{
+
+}
+.iDivdialog table td span.label-info
+{
+    border-radius: 4px;
+    background-color: #0077BB;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 10.152px;
+    font-weight: bold;
+    line-height: 14px;
+    padding: 2px 4px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+.iDivdialog .checkroomandsubmit
+{
+    background: linear-gradient(to bottom, #F62121 0%, #D82020 41%, #CD0000 50%, #BA0000 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    color: #FFFFFF;
+    font-size: 18px;
+    text-shadow: none;
+    text-transform: uppercase;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    padding: 5px 16px;
+}
+.iDivdialog .text-right
+{
+    text-align: right;
+}
+.iDivdialog .a_room_detail tfoot tr td
+{
+    background: #ddd;
+}

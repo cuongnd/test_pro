@@ -1,0 +1,183 @@
+/**
+ * ------------------------------------------------------------------------
+ * JA Tabs Plugin for J25 & J3.2
+ * ------------------------------------------------------------------------
+ * Copyright (C) 2004-2011 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+ * @license - GNU/GPL, http://www.gnu.org/licenses/gpl.html
+ * Author: J.O.O.M Solutions Co., Ltd
+ * Websites: http://www.joomlart.com - http://www.joomlancers.com
+ * ------------------------------------------------------------------------
+ */
+.ja-tabswrap.rave {
+	background: #F2F2F2;
+	padding: 3px;
+}
+
+.ja-tabswrap.rave .container {
+	background: #fff;
+	border: solid 1px #ddd;
+}
+
+.rave .container:hover li h3,.rave .container:hover li:hover h3 {
+	border: none;
+}
+
+.rave .ja-tab-panels-top div.ja-tab-content {
+	padding: 10px 0px;
+}
+
+.rave .ja-tab-panels-top li {
+	background: none !important;
+	border-bottom: dotted 1px #dedede;
+	margin: 0px;
+	padding: 10px 0px !important;
+}
+
+.rave .ja-tab-panels-top li a {
+	color: #333;
+}
+
+.rave .ja-tab-panels-top li a:hover,.rave ul li.active h3 {
+	color: #9a2016;
+}
+
+.rave .ja-tab-panels-top li span {
+	color: #888;
+	font-size: 85%;
+}
+
+/* JA Tabs bottom*/
+.rave .ja-tabs-title-bottom {
+	background: url(tabs-bg-bt.png) repeat-x top center;
+	height: 40px;
+	width: 100%;
+}
+
+.rave .ja-tabs-title-bottom ul li.active {
+	margin-top: 0px;
+}
+
+.rave .ja-tabs-title-bottom ul li.active h3 {
+	background: url(active-bottom.png) no-repeat top center;
+	padding-top: 16px;
+}
+
+.rave .ja-tabs-title-bottom ul.ja-tabs-title {
+	position: relative !important;
+}
+
+.rave .ja-tabs-title-bottom ul.ja-tabs-title li {
+	background: none;
+	border: none;
+	border-left: solid 1px #ddd;
+	margin: 16px 0px 0px 0px;
+	padding: 0px 10px;
+}
+
+.rave .ja-tabs-title-bottom ul.ja-tabs-title li.active,
+.rave .ja-tabs-title-top ul.ja-tabs-title li.active {
+	background: url(ver-sep.gif) no-repeat left top;
+	border: none !important;
+	padding-left: 11px;
+}
+
+.rave .ja-tabs-title-bottom ul.ja-tabs-title li.first,
+.rave .ja-tabs-title-top ul.ja-tabs-title li.first	{
+	border-left: none;
+}
+
+.rave .ja-tabs-title-bottom ul.ja-tabs-title li.first.active,
+.rave .ja-tabs-title-top ul.ja-tabs-title li.first.active {
+	background: none;
+	padding-left: 10px;
+}
+
+/* JA Tabs left*/
+.rave .ja-tabs-title-left ul.ja-tabs-title {
+	margin-bottom: 5px;
+}
+
+.rave .ja-tabs-title-left ul.ja-tabs-title li {
+	background: none;
+	border-bottom: solid 1px #dedede;
+	border-right: solid 1px #dedede;
+	height: 26px;
+	line-height: 26px;
+}
+
+.rave .ja-tabs-title-left ul.ja-tabs-title li h3,
+.rave .ja-tabs-title-right ul.ja-tabs-title li h3 {
+	margin-top: 5px;
+}
+
+.rave .ja-tabs-title-left ul.ja-tabs-title li.active {
+	background: url(tabs-active-r.png) no-repeat right;
+	border-right: none;
+}
+
+.rave .ja-tabs-title-left ul.ja-tabs-title li.last.active,
+.rave .ja-tabs-title-right ul.ja-tabs-title li.last.active {
+	border-bottom: none;
+}
+
+/* JA Tabs right*/
+.rave .ja-tabs-title-right ul.ja-tabs-title {
+	margin-bottom: 5px;
+	top: 0px;
+}
+
+.rave .ja-tabs-title-right ul.ja-tabs-title li {
+	background: none;
+	border-bottom: solid 1px #dedede;
+	border-left: solid 1px #dedede;
+	height: 26px;
+	line-height: 26px;
+}
+
+.rave .ja-tabs-title-right ul.ja-tabs-title li.active {
+	background: url(tabs-active-l.png) no-repeat left;
+	border-left: none;
+}
+
+/* JA Tabs top*/
+.rave .ja-tabs-title-top {
+	background: url(tabs-bg.png) repeat-x bottom center;
+}
+
+.rave .ja-tabs-title-top ul li.active h3 {
+	background: url(tabs-active.png) no-repeat bottom center;
+	color: #9a2016;
+	padding-bottom: 16px;
+}
+
+.rave .ja-tabs-title-top ul.ja-tabs-title li {
+	background: none;
+	border: none;
+	border-left: solid 1px #ddd;
+	margin: 10px 0px;
+	padding: 0px 10px;
+}
+
+.rave .ja-tab-subcontent li img {
+	float: left;
+	margin-right: 10px;
+}
+
+.rave .ja-tab-subcontent li p {
+	color: #888;
+	font-size: 92%;
+	margin: 0px;
+}
+
+.rave div.ja-tab-subcontent {
+	margin: 0px 15px;
+}
+
+.rave ul li h3 {
+	background: none;
+	border: none;
+	font-weight: normal;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}

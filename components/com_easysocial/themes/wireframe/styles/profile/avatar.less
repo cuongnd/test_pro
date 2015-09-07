@@ -1,0 +1,96 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+
+.es-profile-avatar {
+
+	position: absolute;
+
+	// Half of the avatar height appears
+	// outside of the cover
+	bottom: -90px; /* 180 / 2 */
+	left: 10px;	
+
+	.es-flyout-content {
+		bottom: 4px;
+		left: 4px;
+		width: 172px;
+		text-align: center;
+
+		.dropdown-menu {
+			left: 0;
+			right: auto;
+		}
+	}
+}
+
+.es-header-cover {
+
+	&.without-cover {
+		.es-profile-avatar {
+			margin-top: 8px;
+			bottom: auto;
+		}
+		.es-avatar.es-avatar-large {
+			width: 110px;
+			height: 110px;
+			img {
+				width: 102px;
+				height: 102px;
+			}
+		}
+		.es-flyout-content {
+			width: 102px;
+		}
+	}
+}
+
+// Responsive
+&.w480 {
+	
+	.es-header-cover {
+		.es-profile-avatar {
+			margin-top: -30px;
+			left: 50%;
+			margin-left: -64px;
+			.es-avatar {
+				.square(120px) !important;
+				img {
+					.square(120px) !important;
+				}
+			}
+		}
+
+		// TODO: Fix this it is not working
+		.es-flyout-content {
+			//  in mobile view able to click on avatar to trigger
+			width: 112px;
+			height: 112px;
+			opacity: 0;
+		}
+	}
+}
+
+.es-avatar-form {
+
+	.es-avatar-file {
+		width: 100%;
+	}
+
+	.es-avatar-filename {
+		display: none;
+		line-height: 16px;
+	}
+
+	&.loading {
+		.es-avatar-file {
+			display: none;
+		}
+		.es-avatar-filename {
+			display: block;
+		}
+	}
+}

@@ -1,0 +1,71 @@
+.content_div2_overview .dest-title{
+	text-transform:uppercase;
+	color:#016597;
+	padding-right:20px;
+	float:left;
+	width:138px;
+}
+.content_div2_overview .meal-title{
+	color:#016597;
+	text-transform:uppercase;
+	float:left;
+	width:103px;
+}
+.content_div2_overview .itinerary-title{
+	text-transform:uppercase;
+	color:#000000;
+	margin:0px;
+	font-weight:bold;
+}
+.div2_overview_nav_tabs  .itinerary_head{
+	color:#cd0001;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:14px;
+}
+.content_img img{
+	padding-left:8px
+}
+.content_img img:first-of-type{
+	padding-left:0px;
+}
+.div2_overview_nav_tabs{
+	padding-top:18px;
+}
+.content_div2_overview .dest-title .dest-icon{
+	background:url("../images/home.png")no-repeat;
+	float:left;
+	width:30px;
+	height:20px;
+}
+.content_div2_overview .meal-title .meal-icon{
+	background:url("../images/icon_1.jpg")no-repeat;
+	float:left;
+	width:30px;
+	height:20px;
+}
+.overview-footer{
+	margin-top: 10px;
+}
+.div4_span8_col_left .tab-content{
+	background: #ecf1f4; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ecf1f4 0%, #f9fafc 27%, #ffffff 44%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ecf1f4), color-stop(27%,#f9fafc), color-stop(44%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ecf1f4 0%,#f9fafc 27%,#ffffff 44%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ecf1f4 0%,#f9fafc 27%,#ffffff 44%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ecf1f4 0%,#f9fafc 27%,#ffffff 44%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ecf1f4 0%,#f9fafc 27%,#ffffff 44%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecf1f4', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+	border:1px solid #e4e4e2;
+	padding:10px;
+}
+.text_div1_overview{
+	font-weight:bold;
+	color:#323465;
+	margin:0px;
+}
+#myTabTabs li a:hover{
+	background:#eaeff3;
+	color:#9a0003;
+}
+/*----------------------------------------------------------Overview-----------------------------------------*/

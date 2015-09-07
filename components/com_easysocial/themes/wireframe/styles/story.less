@@ -1,0 +1,313 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+/*------------------------------------*\
+	$story - story.less
+\*------------------------------------*/
+
+/*
+shortcode
+.es-story>.es-story-form>form>textarea+(.es-story-panels>.es-story-panelbuttons+.es-story-panelbutton)+(.es-story-panelcontents>.es-story-panelcontent)^.row-fluid>button.btn{Share}
+*/
+.dashboard-story-wrapper {
+	padding-top: 15px;
+}
+.es-story {
+
+	position: relative;
+
+	.es-story-container {
+		position: relative;
+		.clearfix();
+		.border-radius(3px);
+		border: 1px solid @esStoryContainerBorder;
+		overflow: hidden;
+
+		.transition(all .5s ease);
+		background: @esStoryContainerBackground;
+		
+		height: 58px;
+
+		> .loading-indicator {
+			display: none;
+			background: url("@{media_uri}/../images/loading.gif") center no-repeat rgba(255,255,255,0.8);
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			position: absolute;
+			z-index: 2;
+		}
+	}
+
+	.es-story-wrap {
+		margin-left: 60px;
+		background: @esStoryWrapBackground;
+		position: relative;
+		z-index: 1;
+	}
+
+	[data-message-group] .alert {
+		margin-bottom: 10px;
+	}
+
+	@regularHeight: 36px;
+	@expandedHeight: 54px;
+
+	&.active {
+
+		.es-story-container {
+			background: @esStoryActiveContainerBackground;
+			height: 147px;
+		}
+
+		.es-story-wrap {
+		}
+
+		.es-story-shadow-wrap {
+			opacity: 1;
+		}
+
+		.es-story-header {
+			.es-story-content {
+				padding: 10px;
+			}
+		}
+		
+		.es-story-textfield {
+			font-size: 12px;
+			line-height: 14px;
+			height: @expandedHeight;
+		}
+
+		.es-story-footer {
+			display: block;
+		}
+
+		.es-story-submit {
+			height: 26px;
+		}
+	}
+
+	&.no-transition {
+		.es-story-container {
+			.transition(none);
+		}
+	}
+
+	&.expanded {
+		overflow: visible; // fixed issues #1283 class name conflict with Rockettheme
+		.es-story-container {
+			height: auto;
+			overflow: visible;
+		}
+	}
+
+	&.saving {
+		.es-story-container {
+			> .loading-indicator {
+				display: block;
+			}
+		}
+	}
+
+	/* Status type */
+
+	&.attaching-photos {
+		.es-story-container {
+			background: @esStoryPhotoColor;
+		}
+	}
+
+	&.attaching-links {
+		.es-story-container {
+			background: @esStoryLinkColor;
+		}
+	}
+
+	&[class^="attaching-"],
+	&[class*=" attaching-"] {
+
+		.es-story-attachment-button {
+			opacity: .3;
+			border-color: @esStoryAttachmentButtonBorder;
+
+			&.active,
+			&:hover {
+				opacity: 1;
+				border-color: @esStoryAttachmentButtonActiveBorder;
+			}
+		}
+	}
+
+	/* Common layouts */
+	.es-story-sidebar {
+		width: 60px;
+		margin-left: -60px;
+		float: left;
+	}
+
+	.es-story-section {
+		.clearfix();
+		position: relative;
+		z-index: 2;
+	}
+
+	.es-story-content {
+		position: relative;
+		overflow: hidden;
+		padding: 10px 10px 10px 0;
+
+		form {
+			margin: 0;
+		}
+
+		textarea {
+			width: 100%;
+			margin: 0;
+			border: none;
+			resize: none;
+			background: none;
+			.getContrast(@esStoryContainerBackground);
+		}
+	}
+
+	.es-story-header {
+		background: @esStoryHeaderBackground;
+
+		.es-story-content {
+		}
+
+		.es-avatar { //@extend es-avatar
+			position: relative;
+			top: 10px;
+			left: 50%;
+			margin-top: 0px;
+			margin-bottom: 0px;
+			margin-left: -17px;
+		}
+	}
+
+	.es-story-body {
+		position: relative;
+		background: @esStoryBodyBackground;
+
+		.es-story-sidebar {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.es-story-content {
+			background: @esStoryContentBackground;
+			border-bottom: 1px solid @esStoryContentBorder;
+			padding: 0px;
+		}
+
+		&.active {
+
+			.es-story-sidebar {
+				border-top: 1px solid @esStoryActiveSidebarBorder;
+				min-height: 46px;
+			}
+			.es-story-content {
+				background: transparent;
+				border-top: 1px solid @esStoryContentBorder;
+				border-bottom: none;
+				padding: 10px;
+				padding-bottom: 0px;
+			}
+
+			.es-story-attachment-icon.active {
+				top: 10px;
+				opacity: 1;
+			}
+
+			.es-story-attachment-items {
+				top: 0;
+			}
+		}
+	}
+
+	.es-story-footer {
+		padding-top: 0px;
+		background: @esStoryFooterBackground;
+		
+		.es-story-content {
+			padding: 10px 0 10px 10px; //for safari issue #987
+		}
+		
+		&.active {
+			.es-story-content {
+				border-top: 1px solid @esStoryContentBorder;
+			}
+		}
+	}
+
+	.es-story-textbox {
+		position: relative;
+	}
+
+	.es-story-textfield {
+		.transition(font-size .5s ease);
+		.box-shadow(~"none");
+		min-height: @regularHeight; // outerHeight of avatar
+		height: @regularHeight;
+		font-size: 14px;
+		line-height: @regularHeight;
+		padding: 0;
+		overflow: hidden;
+	}
+
+	.textareaClone {
+		font-size: 14px;
+		min-height: @expandedHeight;
+	}
+
+	.es-story-submit {
+		.transition(all .5s ease);
+		height: @regularHeight;
+		font-size: 14px;
+		float: right;
+	}
+
+	.es-story-core-buttons {
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		height: 26px;
+	}
+
+	.es-story-privacy {
+		float: right;
+		margin-right: 4px;
+
+		.es-privacy-toggle {
+			height: 26px;
+			line-height: 26px;
+		}
+	}
+
+	@import "story/panel";
+	@import "story/attachment";
+
+	@import "story/friends";
+	@import "story/locations";
+	@import "story/mentions";
+
+	@import "story/photos";
+	@import "story/links";
+}
+
+// Responsive
+&.w320 {
+	.es-story {
+		.es-story-core-buttons {
+			position: relative;
+			float: left;
+			margin-top: 10px;
+		}
+	}
+}

@@ -1,0 +1,387 @@
+table.filter-table {
+	width: 330px;
+	float: left;
+	border: 0px;
+	background-color: #f1f1f1;
+}
+
+div.bpblock {
+	padding-top: 10px;
+}
+
+div.bpblock h2 {
+	border-bottom: 1px solid #ccc;
+}
+.calendar_avail{
+	background-color: #9DC1FF !important;
+}
+a.paynow {
+	width: 115px;
+	height: 20px;
+	background: #666;
+	padding: 5px;
+	margin-left: 10px;
+	text-align: center;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+}
+
+optgroup option {
+	padding-left: 10px;
+}
+
+.clr {
+	clear: both;
+}
+
+.clear{
+	clear: both;
+}
+
+table.filter-table #start {
+	width: 100px;
+}
+
+table.filter-table #end {
+	width: 100px;
+}
+
+table.flight-search thead tr td,.flight-search tbody tr td {
+	border: none;
+	height: 32px;
+}
+
+.flight-search {
+	border: none;
+	width: 350px;
+}
+
+table.flight-list {
+	width: 100%;
+	margin-top: 10px;
+	border: 1px solid #ccc;
+}
+
+.pathway {
+	font-weight: bold;
+	font-size: 14px;
+	color: #0A84C1;
+}
+
+.bookpro_title {
+	color: #0A84C1;
+	font-weight: bold;
+}
+
+
+
+table#order thead tr td {
+	font-weight: bold;
+	border: solid 0px #666666;
+	padding: 10px;
+	background-color: #ccc;
+}
+
+table#order tbody tr td {
+	border: solid 0px #666666;
+	padding: 10px;
+}
+
+table#passenger thead tr td {
+	font-weight: bold;
+	border: solid 0px #666666;
+	padding: 10px;
+}
+
+
+
+.items-row {
+	border-bottom: 1px dotted #F0EAE4;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+img.mainimg {
+	border: 3px solid #ccc;
+}
+
+.form_title h3 {
+	border-bottom: 2px groove white;
+	text-transform: uppercase;
+	padding-bottom: 10px !important;
+}
+
+.tbutton {
+	background: url("../images/button-form.gif") repeat-x scroll left top;
+	border: none;
+	cursor: pointer;
+	display: inline;
+	font-size: 13px;
+	height: 26px;
+	line-height: 26px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	overflow: visible;
+	padding: 0 10px;
+	color: #FCF6E8;
+	border-radius: 5px;
+}
+
+div.center-button {
+	padding: 10px;
+	text-align: center;
+}
+
+div.right-button {
+	padding: 10px;
+	text-align: right;
+}
+
+.traveller_input span {
+	padding-left: 4px;
+}
+
+h2.block_head {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 120%;
+	font-weight: normal;
+	line-height: 17px;
+	padding-bottom: 15px;
+	text-transform: uppercase;
+}
+
+h2.block_head span {
+	border-bottom: 2px solid #F24A6F;
+	display: block;
+	padding-bottom: 3px;
+	border-color: #0D99F6;
+}
+
+.button_footer {
+	border-bottom: 1px dotted #ccc;
+	border-top: 1px dotted #ccc;
+}
+
+.payment_form {
+	border: 1px solid #ccc;
+}
+
+
+dl#content-pane.tabs {
+	margin: 1px 0 0 0;
+}
+
+dl#summary {
+	margin-bottom: 10px;
+	width: 100%;
+	padding: 5px;
+}
+
+dl#summary dt {
+	float: left;
+	font-weight: bold;
+	padding: 5px;
+	width: 50%;
+}
+
+dl#summary dd {
+	margin: 2px;
+	padding: 5px;
+	text-align: right;
+}
+
+table.order_sum {
+	border-top: 1px solid #dfdfdf;
+	width: 100%;
+}
+
+table.order_sum tbody tr th {
+	padding: 5px;
+	background-color: #f8f8f8;
+	border-bottom: 1px solid #dfdfdf;
+	border-left: 1px solid #dfdfdf;
+}
+
+table.order_sum tbody tr td {
+	padding: 5px;
+	border-bottom: 1px solid #dfdfdf;
+	border: 1px solid #dfdfdf;
+}
+
+table.tripinfo {
+	margin-top: 10px;
+	border-top: 1px solid #dfdfdf;
+	width: 100%;
+}
+
+table.tripinfo thead tr th {
+	padding: 5px;
+	background-color: #f8f8f8;
+	border-bottom: 1px solid #dfdfdf;
+	border-left: 1px solid #dfdfdf;
+	color: black;
+}
+
+table.tripinfo tbody tr td {
+	padding: 5px;
+	border-bottom: 1px solid #dfdfdf;
+	border: 1px solid #dfdfdf;
+}
+
+#card_form p {
+	padding: 5px;
+}
+
+span.old_price {
+	text-decoration: line-through;
+	padding-right: 5px;
+}
+@media only screen and (max-device-width: 480px) {
+	span.old_price {
+		text-decoration: line-through;
+		padding-right: 5px;
+		display: block;
+	}
+	span.discount_price {
+	padding-right: 5px;
+	font-size: 110%;
+	font-weight: bold;
+	color: red;
+	display: block;
+}
+}
+
+span.discount_price {
+	text-decoration: blink;
+	padding-right: 5px;
+	font-size: 110%;
+	font-weight: bold;
+	color: red;
+}
+
+span.calendar_da {
+	background-color: #F1F1F1;
+	border: 1px solid silver;
+	display: block;
+	float: left;
+	min-height: 14px;
+	min-width: 80px;
+	padding: 2px 5px;
+	text-align: left;
+}
+
+img.calendar {
+	cursor: pointer;
+	left: 4px;
+	margin: 0 5px 0 0;
+	position: relative;
+	vertical-align: bottom;
+	float: left;
+}
+
+img.calendar_era {
+	border: 1px solid #CCCCCC;
+	cursor: pointer;
+	float: left;
+	left: 2px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+.bookbar  span {
+	float:left;
+	margin-left: 10px;
+}
+dl.tabs {
+	float: left;
+	margin-bottom: -1px;
+}
+dl.tabs dt.tabs {
+	float: left;
+	margin-left: 3px;
+	padding: 4px 10px;
+	background-color: #F0F0F0;
+	border-top: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+}
+dl.tabs dt:hover {
+	background-color: #F9F9F9;
+}
+dl.tabs dt.open {
+	background-color: #FFF;
+	border-bottom: 1px solid #FFF;
+}
+dl.tabs dt.tabs h3 {
+	margin: 0;
+	font-weight: normal;
+}
+dl.tabs dt.tabs h3 a {
+	color: #0088CC;
+}
+dl.tabs dt.tabs h3 a:hover {
+	color: #005580;
+	text-decoration: none;
+}
+dl.tabs dt.open h3 a {
+	color: #000;
+	text-decoration: none;
+}
+div.current dd.tabs {
+	margin: 0;
+	padding: 10px;
+	clear: both;
+	border: 1px solid #CCC;
+	background-color: #FFF;
+}
+.hotelinfo .info .head,.hotelinfo .info .photogallery
+{
+	/*float: left;*/
+} 
+ul.supplier-menu li {
+	list-style: none;
+	float: left;
+    margin-left:5px;
+}
+
+.checkboxes ul li {
+    list-style: none;
+}
+
+.checkboxes ul li input {
+    float: left;
+    margin-right:5px;
+}
+.contact_us .address, .contact_us .phone, .contact_us .email,.contact_us .website {
+  padding-bottom: 10px;
+  padding-left: 19px;
+}
+.contact_us .address 
+{
+    background: url("../images/destination.png") no-repeat;
+}
+.contact_us .phone 
+{
+    background: url("../images/phone.png")  no-repeat;
+}
+
+.contact_us .email 
+{
+    background: url("../images/email.png") no-repeat;
+}
+
+.contact_us .website 
+{
+    background: url("../images/links.png") no-repeat;
+}  
+
+.carousel-indicators .active {
+    background-color: #990100 !important;
+}
+
+.carousel-indicators li {
+    background-color: #FFFFFF !important;
+}

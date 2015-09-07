@@ -1,0 +1,1 @@
+<img style="height:265px;" class="image-full" src="images/package_tours.jpg">

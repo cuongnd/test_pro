@@ -1,0 +1,424 @@
+div.og_activity .row, form.og_action_settings .row {
+    border-bottom:1px solid #CCC;
+    padding:10px 5px;
+}
+
+form.og_action_settings input {
+    margin-right:10px;
+}
+
+#ogActionPopup {
+    z-index:999999;
+    position:fixed;
+    bottom:0;
+    right:0;
+    min-width:320px;
+    margin:0 5px 5px 0;
+    padding:10px;
+    border:solid 2px #FFF;
+    background-color:#3B5998;
+    color:#FFF;
+    font-size:.85em;
+    font-weight:normal;
+}
+
+#ogActionPopup .ogOptions {
+    color:#FFF;
+    font-size:.80em;
+    font-weight:normal;
+    display:block;
+}
+
+#ogActionPopup a {
+    color:#FFF;
+    text-decoration:underline;
+}
+
+#jfbc-share-modal {
+    text-align:left;
+}
+
+#composer-message-data:before {
+    content:" - ";
+}
+
+#composer-message-data .friend:after {
+    content:", ";
+}
+
+#composer-message-data .friend:last-child:after {
+    content:"";
+}
+
+#composer-friends-group-fields .friend {
+    padding-top:2px;
+    padding-bottom:2px;
+    padding-right:0;
+    padding-left:5px;
+    background-color:#dee7f8;
+    border-color:#a4bdec;
+    border-style:solid;
+    border-width:1px;
+    border-radius:3px;
+    color:#18559D;
+}
+
+#composer-friends-group-fields .friend:hover {
+    background-color:#bbcef1;
+}
+
+#composer-friends-group-fields .friend a,
+#composer-friends-group-fields .friend button {
+    text-decoration:none;
+}
+
+#composer-friends-group-fields button {
+    color:#627aad;
+    padding:0 4px;
+    line-height:inherit;
+    padding-bottom:3px;
+}
+
+/* Social Buttons */
+
+div.scsocialbuttons.button_count div.sc_gplusone {
+    margin-right:-15px;
+}
+
+div.scsocialbuttons.button_count div.sc_pinterest {
+    margin-right:30px;
+}
+
+div.scsocialbuttons.box_count div.sc_pinterest {
+    margin-top:30px;
+}
+
+div.scsocialbuttons.box_count div.sc_pinterest a.span {
+    height:40px;
+}
+
+div.scsocialbuttons {
+    width:100%
+}
+
+div.scsocialbuttons div {
+    float:left;
+    margin-right:5px; //Should this be here for facebook too?
+}
+
+div.scsocialbuttons.box_count div,
+div.scsocialbuttons.standard div,
+div.scsocialbuttons.button div{
+    margin-right:5px;
+}
+
+div.scsocialbuttons.vertical >div {
+    clear:left;
+    margin-bottom:5px;
+}
+
+.fb-comments, .fb-comments >span, .fb-comments iframe[style] {
+    width:100% !important;
+}
+
+.jfbclike iframe, .jfbcsend iframe {
+    max-width:none !important;
+}
+
+.jfbcfan, .jfbcfan .fb-like-box >span, .jfbcfan iframe, .jfbcfan .fb-like-box {
+    width:100% !important;
+}
+
+#jfbcLoginModal {
+    text-align:center;
+}
+
+.jfbcsocialshare {
+    z-index:999999;
+}
+
+#jfbcAdminStats {
+    z-index:999999;
+    position:fixed;
+    bottom:0;
+    left:5px;
+    min-width:225px;
+    margin:0 5px 5px 0;
+    padding:10px;
+    border:solid 2px #CCC;
+    background-color:#FFF;
+    color:#000;
+    font-size:.90em;
+    font-weight:normal;
+}
+
+#jfbcAdminStats table {
+    color:#000;
+    font-size:.90em;
+    font-weight:normal;
+    display:block;
+}
+
+#jfbcAdminStats button.close {
+    margin:-28px 4px 0 0;
+}
+
+/* Google */
+
+span.scGoogleLoginButton {
+    -moz-border-radius-bottomleft: 0 !important;
+    -moz-border-radius-bottomright: 2px !important;
+    -moz-border-radius-topleft: 0 !important;
+    -moz-border-radius-topright: 2px !important;
+    background-color: #DF4A32 !important;
+    background-image: -moz-linear-gradient(center top , #FEFEFE 0%, #DF4A32 100%) !important;
+    border-right: 1px solid #BFBFBF !important;
+    border-left: 1px solid #BFBFBF !important;
+    border-bottom: 1px solid #B9B9B9 !important;
+    border-top: 1px solid #E2E2E2 !important;
+    color: #FFFFFF !important;
+    cursor: pointer !important;
+    display: block !important;
+    float: left !important;
+    height: 18px !important;
+    line-height: 20px !important;
+    left: -1px !important;
+    position: relative !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    padding-bottom: 0 !important;
+    padding-left: 5px !important;
+    padding-right: 4px !important;
+    padding-top: 0 !important;
+    text-align: center !important;
+    vertical-align: top !important;
+    white-space: nowrap !important;
+    text-decoration: none;
+    font-family: Arial,sans-serif !important;
+    font-size: 11px !important;
+    font-style: normal !important;
+    font-weight: bold !important;
+    vertical-align: top !important;
+    z-index: 1;
+}
+
+span.scGoogleLoginButton.small
+{
+    padding-left: 9px !important;
+    padding-right: 8px !important;
+}
+
+span.scGoogleLoginButton.medium
+{
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
+
+span.scGoogleLoginButton.large
+{
+    font-size: 13px !important;
+    padding-left: 20px !important;
+    padding-right: 19px !important;
+}
+
+span.scGoogleLoginButton.xlarge
+{
+    line-height: 33px !important;
+    height: 31px !important;
+    font-size: 24px !important;
+    padding-left: 33px !important;
+    padding-right: 32px !important;
+}
+
+span.scGoogleLoginButton.icon
+{
+    display: none !important;
+}
+
+span.scGoogleButton {
+    -moz-background-clip: border !important;
+    -moz-background-origin: padding !important;
+    -moz-background-size: auto auto !important;
+    background-attachment: scroll !important;
+    background-color: transparent !important;
+    background-image: url("sc_google_icon.png") !important;
+    background-repeat: no-repeat !important;
+    border-bottom-color: -moz-use-text-color !important;
+    border-bottom-style: none !important;
+    border-bottom-width: 0 !important;
+    border-left-color-ltr-source: physical !important;
+    border-left-color-rtl-source: physical !important;
+    border-left-color-value: -moz-use-text-color !important;
+    border-left-style-ltr-source: physical !important;
+    border-left-style-rtl-source: physical !important;
+    border-left-style-value: none !important;
+    border-left-width-ltr-source: physical !important;
+    border-left-width-rtl-source: physical !important;
+    border-left-width-value: 0 !important;
+    border-right-color-ltr-source: physical !important;
+    border-right-color-rtl-source: physical !important;
+    border-right-color-value: -moz-use-text-color !important;
+    border-right-style-ltr-source: physical !important;
+    border-right-style-rtl-source: physical !important;
+    border-right-style-value: none !important;
+    border-right-width-ltr-source: physical !important;
+    border-right-width-rtl-source: physical !important;
+    border-right-width-value: 0 !important;
+    border-top-color: -moz-use-text-color !important;
+    border-top-style: none !important;
+    border-top-width: 0 !important;
+    cursor: pointer !important;
+    display: block !important;
+    float: left !important;
+    height: 20px !important;
+    left: 0px !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    padding: 0 !important;
+    position: relative !important;
+    text-indent: -9999em !important;
+    top: 0 !important;
+    width: 20px !important;
+    z-index: 2;
+}
+
+span.scGoogleButton.xlarge {
+    background-position: 0 -218px !important;
+    height: 33px !important;
+    width: 33px !important;
+}
+
+div.scGoogleLogin a{
+    text-decoration: none;
+}
+
+/* Twitter */
+
+span.scTwitterLoginButton {
+    -moz-border-radius-bottomleft: 0 !important;
+    -moz-border-radius-bottomright: 2px !important;
+    -moz-border-radius-topleft: 0 !important;
+    -moz-border-radius-topright: 2px !important;
+    background-color: #ECECEC !important;
+    background-image: -moz-linear-gradient(center top , #FEFEFE 0%, #ECECEC 100%) !important;
+    border-right: 1px solid #BFBFBF !important;
+    border-left: 1px solid #BFBFBF !important;
+    border-bottom: 1px solid #B9B9B9 !important;
+    border-top: 1px solid #E2E2E2 !important;
+    color: #000000 !important;
+    cursor: pointer !important;
+    display: block !important;
+    float: left !important;
+    height: 18px !important;
+    line-height: 20px !important;
+    left: -1px !important;
+    position: relative !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    padding-bottom: 0 !important;
+    padding-left: 5px !important;
+    padding-right: 4px !important;
+    padding-top: 0 !important;
+    text-align: center !important;
+    vertical-align: top !important;
+    white-space: nowrap !important;
+    text-decoration: none;
+    font-family: Arial,sans-serif !important;
+    font-size: 11px !important;
+    font-style: normal !important;
+    font-weight: bold !important;
+    vertical-align: top !important;
+    z-index: 1;
+}
+
+span.scTwitterLoginButton.small
+{
+    padding-left: 9px !important;
+    padding-right: 8px !important;
+}
+
+span.scTwitterLoginButton.medium
+{
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
+
+span.scTwitterLoginButton.large
+{
+    font-size: 13px !important;
+    padding-left: 20px !important;
+    padding-right: 19px !important;
+}
+
+span.scTwitterLoginButton.xlarge
+{
+    line-height: 33px !important;
+    height: 31px !important;
+    font-size: 24px !important;
+    padding-left: 33px !important;
+    padding-right: 32px !important;
+}
+
+span.scTwitterLoginButton.icon
+{
+    display: none !important;
+}
+
+span.scTwitterButton {
+    -moz-background-clip: border !important;
+    -moz-background-origin: padding !important;
+    -moz-background-size: auto auto !important;
+    background-attachment: scroll !important;
+    background-color: transparent !important;
+    background-image: url("sc_twitter_icon.png") !important;
+    background-repeat: no-repeat !important;
+    border-bottom-color: -moz-use-text-color !important;
+    border-bottom-style: none !important;
+    border-bottom-width: 0 !important;
+    border-left-color-ltr-source: physical !important;
+    border-left-color-rtl-source: physical !important;
+    border-left-color-value: -moz-use-text-color !important;
+    border-left-style-ltr-source: physical !important;
+    border-left-style-rtl-source: physical !important;
+    border-left-style-value: none !important;
+    border-left-width-ltr-source: physical !important;
+    border-left-width-rtl-source: physical !important;
+    border-left-width-value: 0 !important;
+    border-right-color-ltr-source: physical !important;
+    border-right-color-rtl-source: physical !important;
+    border-right-color-value: -moz-use-text-color !important;
+    border-right-style-ltr-source: physical !important;
+    border-right-style-rtl-source: physical !important;
+    border-right-style-value: none !important;
+    border-right-width-ltr-source: physical !important;
+    border-right-width-rtl-source: physical !important;
+    border-right-width-value: 0 !important;
+    border-top-color: -moz-use-text-color !important;
+    border-top-style: none !important;
+    border-top-width: 0 !important;
+    cursor: pointer !important;
+    display: block !important;
+    float: left !important;
+    height: 20px !important;
+    left: 0px !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    padding: 0 !important;
+    position: relative !important;
+    text-indent: -9999em !important;
+    top: 0 !important;
+    width: 20px !important;
+    z-index: 2;
+}
+
+span.scTwitterButton.xlarge {
+    background-position: 0 -218px !important;
+    height: 33px !important;
+    width: 33px !important;
+}
+
+div.scTwitterLogin a{
+    text-decoration: none;
+}

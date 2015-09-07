@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/administrator/components/com_bookpro/elements">
+        <fields>
+
+            <field name="id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+                   description="JGLOBAL_FIELD_ID_DESC" size="10" readonly="true"/>
+
+            <field
+                    name="from"
+                    type="from"
+                    required="true"
+                    />
+            <field
+                    name="to"
+                    type="to"
+                    required="true"
+                    />
+            <field
+                    name="bus_id"
+                    type="bus"
+                    required="true"
+                    label="Bus"
+                    />
+            <field
+                    name="tax"
+                    type="text"
+                    required="true"
+                    label="Tax"
+                    />
+
+
+            <field
+                    id="duration"
+                    name="duration"
+                    type="text"
+                    required="true"
+                    label="duration"
+                    class="inputbox"
+                    size="40"/>
+            <field
+                    id="start_time"
+                    name="start_time"
+                    type="datetime"
+                    required="true"
+                    label="start_time"
+                    class="inputbox"
+                    size="40"/>
+            <field
+                    id="duration2"
+                    name="duration2"
+                    type="text"
+                    required="true"
+                    label="duration2"
+                    class="inputbox"
+                    size="40"/>
+            <field name="summary" type="editor" buttons="true"
+                   hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+                   label="summary" description="summary"/>
+            <field name="trip_information" type="editor" buttons="true"
+                   hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText"
+                   label="trip_information" description="trip_information"/>
+
+
+            <field
+                    id="roundtrip"
+                    name="roundtrip"
+                    type="list"
+                    label="roundtrip"
+                    description="roundtrip"
+                    class="inputbox"
+                    size="1"
+                    default="1">
+                <option
+                        value="1">
+                    JYES
+                </option>
+                <option
+                        value="0">
+                    JNO
+                </option>
+            </field>
+
+            <field
+                    id="state"
+                    name="state"
+                    type="list"
+                    label="JSTATUS"
+                    description="JFIELD_PUBLISHED_DESC"
+                    class="inputbox"
+                    size="1"
+                    default="1">
+                <option
+                        value="1">
+                    JPUBLISHED
+                </option>
+                <option
+                        value="0">
+                    JUNPUBLISHED
+                </option>
+                <option
+                        value="2">
+                    JARCHIVED
+                </option>
+                <option
+                        value="-2">
+                    JTRASHED
+                </option>
+            </field>
+
+
+        </fields>
+    </fieldset>
+</form>	

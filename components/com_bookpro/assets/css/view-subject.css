@@ -1,0 +1,144 @@
+/**
+ * CSS for edit subject page
+ * 
+ * @version $Id: view-subject.css 19 2012-06-26 12:58:05Z quannv $
+ * @package ARTIO Booking
+ * @subpackage assets
+ * @copyright Copyright (C) 2010 ARTIO s.r.o.. All rights reserved.
+ * @author ARTIO s.r.o., http://www.artio.net
+ * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ * @link http://www.artio.net Official website
+ */
+
+@CHARSET "UTF-8";
+
+div.buttonsToolbar {
+	text-align: center;
+	margin: 3px;
+}
+
+table.template {
+  background: none repeat scroll 0 0 #F6F6F6;
+  border: 1px solid #CCCCCC;
+  margin-top: 5px;
+}
+
+table.template th {
+	border-bottom: 1px solid #CCCCCC;
+	border-right: 1px solid #E9E9E9;
+	padding-right: 5px;
+}
+
+table.template th h2 {
+	color: #666666;
+	padding: 2px;
+	margin: 0px;
+	font-size: 11px;
+}
+
+table.template td {
+	background-color: #F6F6F6;
+	border-bottom: 1px solid #E9E9E9;
+	border-right: 1px solid #E9E9E9;
+	color: #666666;
+	text-align: left;
+}
+
+table.template td.label {
+	font-weight: bold;
+	text-align: right;
+}
+
+table.template td.check {
+	width: 10px;
+}
+
+table.template input.text_area,table.template textarea {
+	width: 500px;
+}
+
+table.template textarea {
+	height: 200px;
+}
+
+table.template td.id {
+	width: 30px;
+	padding-top: 4px;
+}
+
+table.template input.title {
+	width: 240px;
+	margin-top: 4px;
+}
+
+table.template input.number {
+	width: 40px;
+	margin-top: 4px;
+}
+
+table.template input.time {
+	width: 50px;
+}
+
+table.template td.select select {
+  margin: 3px 0 0;
+  width: 130px;
+}
+
+table.template td.time {
+	width: 70px;
+}
+
+table.template td.date {
+  white-space: nowrap;
+  width: 140px;
+}
+
+table.template td.date input {
+	width: 100px;
+}
+
+table.template textarea.description {
+	height: 70px;
+	width: 240px;
+	margin: 4px;
+}
+
+#adminForm div.toolbar-list {
+  float: none;
+  padding: 0;
+  text-align: left;
+}
+
+table.toolbar a {
+  border: 1px solid #FBFBFB;
+  cursor: pointer;
+  display: block;
+  float: left;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+
+table.toolbar td {
+  color: #666666;
+  height: 48px;
+  padding: 1px 1px 1px 4px;
+  text-align: center;
+}
+#adminForm div.toolbar-list {
+  float: none;
+  padding: 0;
+  text-align: left;
+}
+
+form.property div.main div.toolbarContainer table.toolbar {
+  margin: 0 auto;
+}
+
+table.toolbar span {
+  display: block;
+  float: none;
+  height: 32px;
+  margin: 0 auto;
+  width: 32px;
+}

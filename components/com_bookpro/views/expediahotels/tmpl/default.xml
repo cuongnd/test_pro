@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+        <layout title="COM_BOOKPRO_HOTELS_VIEW_DEFAULT_TITLE">
+                 <message><![CDATA[COM_BOOKPRO_HOTELS_VIEW_DEFAULT_DESC]]></message>
+        </layout>
+	<fields name="request">
+		<fieldset name="request">
+			<field name="rank" type="list" default=""
+				description="COM_BOOKPRO_RANK_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_RANK_SELECT_TITLE">
+				<option value="0">JNONE</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</field>
+				
+			<field addfieldpath="/administrator/components/com_bookpro/elements" name="dest_id" type="destination" default=""
+				description="COM_BOOKPRO_DESTINATION_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_DESTINATION_SELECT_TITLE" required="false" />
+			
+			<field name="featured" type="radio" default="1"
+				description="COM_BOOKPRO_FEATURED_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_FEATURED_SELECT_TITLE" required="false" class="btn-group">	
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>			
+		</fieldset>
+	</fields>
+	<fields name="params">
+		<fieldset name="basic" label="JGLOBAL_LIST_LAYOUT_OPTIONS">
+			<field name="products_per_row" type="text" default="2"
+				description="COM_BOOKPRO_PRODUCT_PER_ROW_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_PRODUCT_PER_ROW_SELECT_TITLE"/>
+				
+			<field name="count" type="text" default="4"
+				description="COM_BOOKPRO_COUNT_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_COUNT_SELECT_TITLE" required="false" />
+			
+		</fieldset>
+	</fields>
+</metadata>

@@ -1,0 +1,666 @@
+.posttripacoom .room .h3.title
+{
+
+}
+.needasignchildren
+{
+    margin-top: 3px;
+    padding: 0 5px;
+
+}
+.mainfarm input[type="checkbox"],.mainfarm input[type="radio"]
+{
+    border: none;
+}
+.mainfarm .passenger_form select
+{
+    width: 51%;
+}
+
+
+.mainfarm .passenger_form .textarea
+{
+    width: 98%;
+    height: 100px;
+}
+.setroom_for_person input[name="needasignchildren"]
+{
+    margin-top: 0;
+}
+.setroom_for_person
+{
+    background: #EEEEEE;
+}
+.plusimage
+{
+    background: url('../images/cong.png') 1% 48% no-repeat;
+    display: block;
+    padding: 5px;
+    cursor: pointer;
+}
+.passenger_form table tr td,.passenger_form table tr th
+{
+    padding: 10px;
+    border: 1px solid;
+}
+.content.noice,.setroom_select.noice
+{
+    border: 1px solid red;
+}
+.booknow.plusimage
+{
+    background: url("../images/drop_private_1.png") no-repeat scroll 86% 70% rgba(0, 0, 0, 0);
+    padding: 5px 7px 16px;
+}
+.booknow.minusimage
+{
+    background: url("../images/up_private_2.png") no-repeat scroll 86% 70% rgba(0, 0, 0, 0);
+    padding: 5px 7px 16px;
+    cursor: pointer;
+
+}
+.booknow.booknow_item.minusimage,.booknow.booknow_item.plusimage
+{
+    background-position: 95% 67%;
+}
+.booknow.minusimage.additionnaltrip,.booknow.plusimage.additionnaltrip
+{
+    background-position: 95% 67%;
+}
+
+.flight-passenger .box
+{
+    background:url('../images/tru.png') 1% 48% no-repeat;
+}
+.minusimage
+{
+    background:url('../images/tru.png') 1% 48% no-repeat;
+    display: block;
+    padding: 5px;
+    cursor: pointer;
+}
+.mainfarm .controls .hasDatepicker
+{
+    width: 105px;
+    background:url("../images/calendar.jpg") no-repeat scroll 99% 59% rgba(0, 0, 0, 0);
+    cursor: pointer;
+
+}
+.mainfarm .controls .flight_arrival_time.hasDatepicker
+{
+    background: none;
+}
+.mainfarm .form-horizontal .control-group
+{
+    margin-bottom: 0px;
+}
+.mainfarm h3
+{
+    margin:0px;
+}
+.mainfarm .block_right
+{
+
+}
+.mainfarm .form-horizontal .control-label
+{
+    padding-top: 2px;
+}
+.mainfarm  .checkinandcheckout_title
+{
+    background: none repeat scroll 0 0 #007799;
+    color: #FFFFFF;
+    font-size: 40px;
+    height: 23px;
+    padding: 28px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.mainfarm .block_right h3
+{
+    background: #EEEEEE;
+}
+.mainfarm .block_right h3.tour_title
+{
+    margin-top: 10px;
+    padding: 10px;
+    margin: 5px;
+}
+.right_level
+{
+	margin: 5px;
+}
+.mainfarm .block_right .start_date_and_city
+{
+    color: #9A0000;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.mainfarm h3.title
+{
+    background-color: #EEEEEE;
+    padding: 5px 25px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    cursor: pointer;
+}
+.room.room_group input[name="delete"]
+{
+    background:url('../images/delete.png') 41% 46% no-repeat;
+    border: medium none;
+    content: "";
+    padding: 5px;
+    width: 21px;
+}
+.mainfarm select
+{
+    padding: 0px;
+    margin: 1px;
+    border: 1px solid #000;
+    height: 20px;
+}
+.mainfarm .setroomselected .content.noice
+{
+    border: 1px solid #FF0000;
+
+}
+.mainfarm  .controls input {
+    border: 1px solid #000000;
+    padding: 0;
+    width: auto;
+}
+.mainfarm .airpost_transfer .controls
+{
+    float: left;
+}
+.mainfarm .form-content
+{
+    background: #FBFBFB;
+}
+.mainfarm .setroom_select,.mainfarm .form-acommodation
+{
+    background: #FBFBFB url('../images/white_note.png') 30% 46% repeat-y;
+    margin-bottom: 10px;
+}
+.datetimebookingpick-month td .close
+{
+    background:  url('../images/icon_c.png');
+    height: 16px;
+    width: 16px;
+    display: block;
+    opacity: 1;
+
+}
+.mainfarm .btn.next
+{
+    background:#95A5A5  url('../images/arry_right.png') no-repeat 90% 40%;
+    padding: 5px 25px;
+}
+.mainfarm .btn.next:hover
+{
+    background:#95A5A5  url('../images/arry_right.png') no-repeat 90% 40%;
+    padding: 5px 25px;
+}
+.mainfarm .btn.back
+{
+    background:#95A5A5  url('../images/arry_left.png') no-repeat 10% 40%;
+    line-height: 19px;
+    padding: 3px 24px;
+
+}
+.mainfarm .btn.back:hover
+{
+    background:#95A5A5  url('../images/arry_left.png') no-repeat 10% 40%;
+    line-height: 19px;
+    padding: 3px 24px;
+
+}
+.currentstep
+{
+    height: 125px;
+    position: relative;
+}
+.currentstep .steps
+{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    text-transform: uppercase;
+}
+.currentstep .steps .nunber
+{
+    background: none repeat scroll 0 0 #738498;
+    border: 1px solid #738498;
+    border-radius: 12px;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    height: 20px;
+    margin-right: 10px;
+    text-align: center;
+    width: 20px;
+}
+.currentstep .steps a:hover
+{
+    text-decoration: none;
+}
+.currentstep .steps .step
+{
+    float: left;
+    margin-left: 5px;
+
+}
+.currentstep .steps .step.selected
+{
+    color: #9A0000;
+}
+.currentstep .steps .step.selected .nunber
+{
+    background: none repeat scroll 0 0 #9A0000;
+    color: #fff;
+}
+.form-horizontal.passenger_item .controls input
+{
+    width: 100px;
+}
+.div1_span8_col_left
+{
+    margin-bottom: 10px;
+    border-bottom: 1px dotted #738498;
+    clear: both;
+}
+.block_right
+{
+}
+.block_right > div
+{
+}
+.datetimebookingpick-month td .request
+{
+    background:  url('../images/icon_r.png');
+    height: 16px;
+    width: 16px;
+    display: block;
+    opacity: 1;
+}
+.block_right
+{
+	border-left: 2px solid #CCCCCC;
+}
+.passengers {
+    margin: 5px 0 0 5px;
+}
+.datetimebookingpick-month td .available
+{
+    background:  url('../images/icon_a.png');
+    height: 16px;
+    width: 16px;
+    display: block;
+    opacity: 1;
+}
+input.btn_gone[name="go"]
+{
+    margin-right: 10px;
+}
+.total_price_person.discount
+{
+    text-decoration: line-through;
+}
+.list_extra
+{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+
+}
+.list_extra span
+{
+    display:inline;
+    font-weight: bold;
+}
+.list_extra span:nth-child(odd)
+{
+    text-decoration: underline;
+}
+.datetimebookingpick-month td.adult_promo
+{
+    color: #990000;
+    font-weight: bold;
+}
+.datetimebookingpick-month td .guaranteed
+{
+    background:  url('../images/icon_g.png');
+    height: 16px;
+    width: 16px;
+    display: block;
+    opacity: 1;
+}
+
+.datetimebookingpick-month td .request
+{
+    background:  url('../images/icon_r.png');
+    height: 16px;
+    width: 16px;
+    display: block;
+    opacity: 1;
+}
+.mainfarm .label_roomtype
+{
+    color: #9A0000;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.mainfarm  .div_description
+{
+    color: #4198B3;
+    text-align: justify;
+}
+.mainfarm .setroom_select
+{
+}
+
+.mainfarm .select_room_title ,.mainfarm  .additionnaltrip .inclusion
+{
+    background: url("../images/arry_drop.png") no-repeat scroll 9% 86% rgba(0, 0, 0, 0);
+    padding: 0 7px 21px 5px;
+    text-transform: uppercase;
+
+}
+.mainfarm  .additionnaltrip .checkin_checkout ul.passengers
+{
+    list-style: none;
+}
+.mainfarm .additionnaltrip_passenger
+{
+
+
+}
+.mainfarm .form-content.additionnaltrip
+{
+    position: relative;
+}
+.mainfarm .additionnaltrip_passenger_price
+{
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+
+
+}
+.mainfarm .btn
+{
+    background: none repeat scroll 0 0 #95A5A5;
+    border: medium none;
+    box-shadow: none !important;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+.mainfarm .btn:hover
+{
+    background: none repeat scroll 0 0 #95A5A5;
+    color: #FFFFFF;
+}
+
+.mainfarm  .additionnaltrip .inclusion
+{
+    background-position: 16% 86%;
+}
+
+.mainfarm .btn_close.colse
+{
+    background: url("../images/delete.png") no-repeat scroll 2% -3% rgba(0, 0, 0, 0);
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding: 10px;
+    width: 0;
+}
+
+
+.mainfarm  .price_booknow
+{
+    color: #9A0000;
+    text-transform: uppercase;
+    text-align: right;
+}
+.passenger_full_name{
+    color:#000;
+    font-size:14px;
+    text-transform:uppercase;
+}
+.passenger_detail{
+    color:#016596;
+    font-size:14px;
+    font-weight:normal;
+}
+.form-horizontal .passenger_item .controls input{
+    padding:2px!important;
+    width:50%;
+
+}
+.form-horizontal .passenger_item{
+    border-bottom:1px solid #e1e2dd!important;
+    padding-bottom:5px;
+}
+.click_box{
+    border:1px solid #000000;
+    margin-bottom:10px;
+    padding:10px;
+    color:#980000;
+    font-weight:bold;
+}
+.clr{
+    clear:both;
+}
+.passenger_textarea textarea{
+    width:98%;
+    margin-bottom:10px;
+    height:100px;
+    border:1px solid #000;
+}
+/*--------------------------------------------------neddsomehelp--------------------------------*/
+.need_some_help{
+    margin-top:10px;
+}
+.div1_need_some_help p{
+    color:#990000;
+    text-transform:uppercase;
+    font-weight:bold;
+    font-size:14px;
+    padding-left:15px;
+}
+.div1_need_some_help{
+    background:#e2e0de;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.div2_need_some_help{
+    background:#ebf1f4;
+}
+.container_div2_need_some_help{
+    background:#fff;
+    border:1px solid #cccccc;
+    margin-left:8px;
+    margin-right:8px;
+}
+.title_div3_2{
+    background:#fff;
+    border:1px solid #cccccc;
+    margin-left:8px;
+    margin-right:8px;
+    font-weight:normal;
+}
+.container_div3_need_some_help p{
+    padding-left:10px;
+    padding-right:10px;
+    font-weight:bold;
+    color:#990000;
+    padding-top:8px;
+}
+.container_div2_need_some_help p{
+    padding-left:36px;
+    font-weight:bold;
+    padding-top:8px;
+}
+.container_div2_need_some_help .phone{
+    background: url("../images/phone.png")no-repeat scroll 8px 6px!important;
+}
+.container_div2_need_some_help .chat{
+    background: url("../images/chat.png")no-repeat scroll 8px 6px!important;
+}
+.container_div2_need_some_help .email{
+    background: url("../images/email.png")no-repeat scroll 8px 6px!important;
+}
+.content_need_some_help{
+    padding-right:4px;
+}
+.tilte_div2_need_some_help{
+    font-weight:bold;
+    color:#000!important;
+    padding-left:30px!important;
+    padding-top:0px!important;
+    background: url("../images/icon_title.png")no-repeat scroll 8px 6px!important;
+}
+.div3_need_som_help{
+    background:#f9f9f9;
+    padding-bottom:10px;
+}
+.tilte_div3_need_some_help{
+    font-weight:bold;
+    color:#000;
+    padding-left:28px;
+    padding-top:2px;
+    background: url("../images/icon_title.png")no-repeat scroll 8px 6px!important;
+}
+
+.right_level .right_level1{
+    color: #9A0000;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.right_level .right_level1_1{
+    margin-left: 20px;
+    font-weight: bold;
+    color: #000000;
+}
+.mainfarm select option:disabled
+{
+    color:red;
+    display: none;
+}
+.mainfarm select option
+{
+    display: block;
+}
+.right_level .right_level11{
+    margin-left: 25px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.right_level .right_level1{
+    color: #9A0000;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.right_level .right_level12{
+    color: #9A0000;
+    text-align: right;
+    margin-right: 10px;;
+    text-transform: uppercase;
+}
+.border-bottom1{
+    border-bottom: 1px dotted #738498;
+}
+
+.right_level .right_bold{
+    color: #000000;
+}
+.widgetbookpro-loading
+{
+    background : url("../images/loading.gif");
+    background-position: 50% 50%;
+    background-repeat:no-repeat;
+}
+.mainfarm  .listtour_discription
+{
+    padding: 10px 10px;
+}
+.mainfarm  .listtour_discription span.icon
+{
+    background-repeat: no-repeat;
+    border: 1px solid #000000;
+    float: none;
+    height: 16px;
+    margin: 10px;
+    padding: 4px 11px;
+    width: 16px;
+    font-size: small;
+}
+.mainfarm #listtour.hasdatetimebookingpick
+{
+    margin-top: 20px;
+}
+.mainfarm  .listtour_discription .request
+{
+    background : url("../images/icon_r.png") no-repeat  50% 50%;
+}
+.mainfarm  .listtour_discription .close
+{
+    background : url("../images/icon_c.png") no-repeat  50% 50%;
+    opacity: 1;
+}
+.mainfarm  .listtour_discription .selected
+{
+    background-color: #95A5A5;
+}
+.mainfarm  .listtour_discription .promotion
+{
+    background-color:#990000;
+}
+.nav_up{
+    padding:7px;
+    background-color:white;
+    border:1px solid #CCC;
+    position:fixed;
+    background:transparent url(../images/arrow_up.png) no-repeat top left;
+    background-position:50% 50%;
+    width:20px;
+    height:20px;
+    top:120px;
+    opacity:0.7;
+    right:4px;
+    white-space:nowrap;
+    cursor: pointer;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-top-left-radius:3px;
+    -webkit-border-top-right-radius:3px;
+    -khtml-border-top-left-radius:3px;
+    -khtml-border-top-right-radius:3px;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+}
+.nav_down{
+    padding:7px;
+    background-color:white;
+    border:1px solid #CCC;
+    position:fixed;
+    background:transparent url(../images/arrow_down.png) no-repeat top left;
+    background-position:50% 50%;
+    width:20px;
+    height:20px;
+    top:120px;
+    opacity:0.7;
+    right:42px;
+    white-space:nowrap;
+    cursor: pointer;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-top-left-radius:3px;
+    -webkit-border-top-right-radius:3px;
+    -khtml-border-top-left-radius:3px;
+    -khtml-border-top-right-radius:3px;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+}

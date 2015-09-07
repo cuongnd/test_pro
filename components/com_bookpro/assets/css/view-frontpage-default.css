@@ -1,0 +1,205 @@
+.view-frontpage-default .ui-sortable {
+	margin-bottom: 30px;
+}
+.view-frontpage-default .ui-sortable .box-element {
+	border-bottom: 2px #cc6600 solid;
+}
+.view-frontpage-default .ui-sortable .box-element .view h3 {
+	color: #007799;
+	font-size: 20px !important;
+}
+.view-frontpage-default .ui-sortable .box-element-caption h4 {
+	text-transform: uppercase;
+	color: #007799;
+	font-size: 12px;
+}
+.view-frontpage-default .ui-sortable .box-element-caption img {
+	margin-bottom: 20px;
+	width: 100%;
+}
+.view-frontpage-default .ui-sortable .box-element-caption .caption {
+	background: #f2f2f2;
+	padding: 5px;
+}
+.view-frontpage-default .ui-sortable .box-element-caption .border-caption {
+	border: 1px #999999 solid;
+	margin-bottom: 10px;
+}
+.view-frontpage-default .ui-sortable .box-element-caption .border-caption .caption-center {
+	padding: 5px;
+}
+.view-frontpage-default .ui-sortable .box-element-caption .border-caption img {
+	width: 100%;
+}
+.view-frontpage-default .ui-sortable .hotel-deals h3 {
+	text-transform: uppercase;
+	margin-left: 15px;
+	font-size: 16px;
+	color: #007799;
+	border-bottom: 2px #007799 solid;
+	margin-right: 15px;
+}
+.view-frontpage-default .ui-sortable .hotel-deals h5 {
+	float: right;
+	background: url("../../assets/images/bg-price.jpg");
+	width: 108px;
+	height: 22px;
+	padding: 3px;
+	color: #fff;
+	margin-top: -10px;
+}
+.view-frontpage-default .ui-sortable .hotel-deals .bg-pice-flight {
+	background: #990000;
+	margin-top: 0;
+	padding: 2px 5px;
+}
+.view-frontpage-default .ui-sortable .hotel-deals .bg-pice-flight h6 {
+	color: #fff;
+	font-size: 14px;
+}
+.view-frontpage-default .ui-sortable .hotel-deals p {
+	font-size: 12px;
+}
+.view-frontpage-default .bg-thumbnail {
+	background: #f2f2f2;
+	margin: 15px;
+}
+.view-frontpage-default .destination {
+	margin-left: 15px;
+	font-size: 16px;
+	color: #990000;
+	text-transform: uppercase;
+}
+.view-frontpage-default .bg-city ul {
+	background: #333333;
+	margin-top: -47px;
+}
+.view-frontpage-default .bg-city ul li {
+	color: #009900;
+	list-style: none;
+}
+.view-frontpage-default .bg-city h5 {
+	text-transform: uppercase;
+	opacity: 0.5;
+	background: #000000;
+	position: relative;
+	top: -35px;
+	padding: 5px;
+	color: #fff;
+	font-size: 13px;
+}
+.view-frontpage-default .ui-sortable-6 {
+	background: #f5f5f5;
+}
+.view-frontpage-default .ui-sortable-6 h4 {
+	color: #007799;
+	padding: 0 5px 0 0;
+}
+.view-frontpage-default .ui-sortable-6 h4 img {
+	margin-right: 10px;
+}
+.view-frontpage-default .ui-sortable-6 p {
+	color: #007799;
+	padding: 0 5px 30px 5px;
+}
+.view-frontpage-default .ui-sortable-6 .more-info {
+	background: #006699;
+	width: 120px;
+	float: right;
+	border-radius: 10px;
+	color: #fff;
+	padding: 3px;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: center;
+	margin-top: -25px;
+	margin-right: 20px;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-container {
+	margin-bottom: 15px;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-container-horizontal {
+	padding: 0px;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-clip {
+	overflow: hidden;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-item-horizontal {
+	margin-left: 0;
+	margin-right: 20px;
+	margin-bottom: 5px;
+	width: 211px;
+	overflow: hidden;
+	background: #fff;
+	border: #e9e9e9 solid 1px;
+	position: relative;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-item-horizontal .details-destination {
+	padding: 5px;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-item-horizontal .details-destination h5 {
+	color: #990000;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-clip-vertical {
+	width: 100%;
+	max-height: 211px;
+	overflow: hidden;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-item-horizontal {
+	margin-left: 10px;
+	margin-right: 0;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-item-horizontal .details-destination {
+	padding: 5px;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-item-horizontal .details-destination h5 {
+	color: #990000;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-prev-horizontal {
+	left: auto;
+	right: 0px;
+	background: #000 url(../../assets/images/rightArrow.png) no-repeat center;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-item-placeholder {
+	background: #fff;
+	color: #000;
+	color: #000;
+	background: #fff;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-prev-horizontal {
+	position: absolute;
+	top: 30%;
+	margin-top: -21px;
+	left: 0px;
+	width: 25px;
+	height: 42px;
+	cursor: pointer;
+	background: #000 url(../../assets/images/leftArrow.png) no-repeat center;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-next-horizontal {
+	position: absolute;
+	top: 30%;
+	margin-top: -21px;
+	right: 0px;
+	width: 25px;
+	height: 42px;
+	cursor: pointer;
+	background: #000 url(../../assets/images/rightArrow.png) no-repeat center;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-next-horizontal:active {
+	opacity: 0.7;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-container-vertical {
+	height: 480px;
+	padding: 0;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-item {
+	height: auto;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-item-vertical {
+	margin-bottom: 18px;
+	width: 100%;
+}
+.view-frontpage-default .jcarousel-skin-tango .jcarousel-prev-horizontal:active {
+	opacity: 0.7;
+}

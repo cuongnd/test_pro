@@ -1,0 +1,91 @@
+/**
+ * CSS for template
+ * 
+ * @version $Id: template.css 19 2012-06-26 12:58:05Z quannv $
+ * @package ARTIO Booking
+ * @subpackage assets
+ * @copyright Copyright (C) 2010 ARTIO s.r.o.. All rights reserved.
+ * @author ARTIO s.r.o., http://www.artio.net
+ * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ * @link http://www.artio.net Official website
+ */
+ @CHARSET "UTF-8";
+
+form.property div.main {
+	padding: 20px;
+}
+
+form.property div.main label.bold {
+	display: block;
+	font-weight: bold;
+	margin-top: 3px;
+}
+
+form.property div.main label.fright {
+	display: inline;
+	font-weight: bold;
+	margin-top: 3px;
+}
+
+form.property div.main label {
+	margin: 0px 3px 0px 0px;
+}
+
+form.property div.main input, form.property div.main textarea {
+  width: 250px;
+}
+
+form.property div.main div.toolbarContainer {
+	text-align: center;
+	margin-top: 10px;
+}
+
+form.property div.main div.toolbarContainer table.toolbar {
+	margin: 0px auto;
+}
+
+img.tool {
+	cursor: pointer;
+}
+
+img.icon,img.tool,div.emptyIcon {
+	float: left;
+	margin: 0px 3px 0px 3px;
+}
+
+div.emptyIcon {
+	width: 16px;
+	height: 16px;
+}
+
+form.property div.main input.rcType {
+	width: 15px;
+	position: relative;
+	top: 3px;
+	margin: 0px 3px 0px 0px;
+}
+
+div.glossary {
+	margin-left: 25px;
+	margin-top: 30px;
+}
+
+div.glossary span {
+	display: block;
+	float: left;
+	height: 16px;
+	margin-right: 10px;
+}
+
+div.icons {
+	height: 95px;
+	overflow-y: scroll;
+}
+
+img.tmpIcon {
+	border: 3px solid white;
+}
+
+img.tmpIconSet {
+	border: 3px solid red;
+}

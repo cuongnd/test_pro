@@ -1,0 +1,15 @@
+{
+	"name"		: "Wireframe",
+	"element"	: "wireframe",
+	"desc"		: "This is the base theme for EasySocial and other themes will inherit from this base theme. Any customizations should be done on this base theme.",
+	"author"	: "Stack Ideas Sdn Bhd",
+	"email"		: "support@stackideas.com",
+	"website"	: "http://stackideas.com",
+	"created"	: "26th May 2013",
+	"version"	: "1.0.1",
+	"servers"	: 
+	{
+		"update"	: "http://stackideas.com/",
+		"version"	: "http://stackideas.com"
+	}
+}

@@ -1,0 +1,1227 @@
+html {
+    overflow: -moz-scrollbars-vertical
+}
+
+body {
+    text-align: left;
+    padding: 0 !important;
+    line-height: normal !important
+}
+
+#jchat_base {
+    position: fixed;
+    bottom: -3px;
+    display: block;
+    height: 28px;
+    font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+    font-size: 11px;
+    z-index: 10001;
+    width: 100%
+}
+
+#jchat_chatboxes {
+    height: 25px;
+    overflow: hidden;
+    float: right
+}
+
+#jchat_chatboxes_wide {
+    height: 25px;
+    width: 0
+}
+
+#jchat_chatbox_left {
+    float: right;
+    cursor: pointer;
+    width: 10px;
+    height: 18px;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 6px -350px;
+    padding-left: 11px;
+    padding-top: 6px;
+    color: #333;
+    border-left: 1px solid #ccc;
+    margin-top: 1px
+}
+
+#jchat_chatbox_right {
+    float: right;
+    cursor: pointer;
+    width: 17px;
+    height: 18px;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 8px -572px;
+    padding-left: 3px;
+    padding-top: 6px;
+    color: #333;
+    border-left: 1px solid #ccc;
+    margin-top: 1px
+}
+
+.jchat_chatbox_right_last {
+    background-position: 8px -611px !important;
+    cursor: default !important;
+    color: #a7a7a7 !important
+}
+
+.jchat_chatbox_left_last {
+    background-position: 6px -389px !important;
+    cursor: default !important;
+    color: #a7a7a7 !important
+}
+
+.jchat_chatbox_lr {
+    display: none !important
+}
+
+.jchat_chatbox_lr_mouseover {
+    background-color: #fff !important
+}
+
+#jchat_optionsbutton, #jchat_closesidebarbutton {
+    width: 22px;
+    border: 0;
+    border-left: 2px solid #CCC;
+    display: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0
+}
+
+.jchat_userstabclick #jchat_optionsbutton, .jchat_userstabclick #jchat_closesidebarbutton {
+    display: block
+}
+
+#jchat_wall_popup {
+    top: 0;
+    right: 0;
+    height: 50%
+}
+
+#jchat_wallbutton {
+    width: 18px;
+    border-right: 1px solid #ccc
+}
+
+#jchat_wallbutton img {
+    width: 24px;
+    position: relative;
+    margin: -25px 0 0 0
+}
+
+#jchat_userstab {
+    width: 246px;
+    padding-left: 9px;
+    background-color: #e6e6e6;
+    border: 3px solid #cdcbca
+}
+
+#jchat_userstab.jchat_userstabclick {
+    text-decoration: underline;
+    color: #111 !important;
+    background-position: 5px 3px !important;
+    padding-left: 0 !important;
+    width: 254px !important;
+    border-radius: 0;
+    background-color: #f4f6f9
+}
+
+    }
+
+.jchat_closebox {
+    width: 21px;
+    height: 12px;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 4px -934px;
+    float: right
+}
+
+.jchat_closebox_bottom {
+    width: 16px;
+    height: 12px;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -1052px !important;
+    float: right
+}
+
+.jchat_closebox_bottomhover {
+    background-position: 0 -1030px !important
+}
+
+.jchat_chatboxmouseoverclose {
+    background-position: 4px -973px !important
+}
+
+.jchat_name {
+    float: left;
+    color: #fff
+}
+
+#jchat_chatbox_buttons {
+    float: right
+}
+
+.jchat_tabmouseovertext {
+    text-decoration: underline
+}
+
+.jchat_tab {
+    height: 25px;
+    border-right: 2px solid #CCC;
+    float: right;
+    cursor: pointer;
+    font-weight: bold;
+    width: 140px;
+    color: #444;
+    background-color: #EEE;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px
+}
+
+.jchat_usertabclick {
+    width: 226px !important;
+    padding-left: 0 !important
+}
+
+.jchat_tabpopup {
+    position: absolute;
+    background-color: #fff;
+    position: fixed;
+    width: 230px;
+    font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+    font-size: 11px;
+    text-align: left
+}
+
+div.jchat_tabpopup span.jchat_chatboxmessagefrom img {
+    height: 32px !important;
+    vertical-align: inherit;
+    margin-bottom: 2px
+}
+
+.jchat_tabpopup .jchat_tab {
+    height: 20px;
+    float: right;
+    cursor: move;
+    font-weight: bold;
+    width: 228px !important;
+    color: #FFF;
+    border-right: 1px solid #627bae;
+    border-left: 1px solid #627bae;
+    border-top: 1px solid #627bae;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 195px -424px;
+    background-color: #627bae;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    padding-top: 5px
+}
+
+.jchat_tabpopup .jchat_tab a:link, .jchat_tabpopup .jchat_tab a:visited {
+    font-weight: bold
+}
+
+.jchat_tabpopup .jchat_tab * {
+    cursor: auto
+}
+
+.jchat_tabpopup .jchat_tab .jchat_closebox_bottom {
+    cursor: pointer
+}
+
+#jchat_userstab_popup {
+    width: 260px;
+    text-align: left;
+    height: 50%
+}
+
+.jchat_walltab_popup {
+    width: 260px
+}
+
+#jchat_optionsbutton_popup {
+    width: 224px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -112px;
+    margin-top: -70px;
+    z-index: 15000 !important
+}
+
+.jchat_tabopen {
+    display: block !important;
+    z-index: 10000
+}
+
+.jchat_tabopen.dragging {
+    z-index: 15000 !important
+}
+
+.jchat_userstabtitle {
+    border-left: 3px solid #cdcbca;
+    border-top: 3px solid #cdcbca;
+    border-right: 3px solid #cdcbca;
+    border-bottom: 1px solid #CCC;
+    color: #8a8a8a;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    padding: 8px;
+    font-weight: bold;
+    background-color: #f4f6f9 !important
+}
+
+.jchat_nousers_placeholder {
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px dashed #CCC;
+    font-weight: bold;
+    color: #777
+}
+
+#jchat_users_search {
+    width: 140px;
+    margin-left: 10px;
+    font-size: 10px;
+    background-position: 0 2px !important;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    padding: 2px 0 2px 15px;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    max-height: 16px;
+    margin-bottom: 0
+}
+
+#jchat_optionsbutton_popup .jchat_userstabtitle {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 200px -1080px !important;
+    cursor: pointer;
+    padding-top: 5px
+}
+
+.jchat_chatboxtabtitlemouseover {
+    background-position: 195px -457px !important
+}
+
+.jchat_tabsubtitle {
+    border-left: 2px solid #cdcbca;
+    border-right: 2px solid #cdcbca;
+    padding: 5px;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    font-size: 9px;
+    color: #666;
+    height: 8px
+}
+
+#jchat_userstab_popup div.jchat_tabsubtitle {
+    border-left: 3px solid #cdcbca;
+    border-right: 3px solid #cdcbca
+}
+
+.jchat_tabcontent {
+    border-right: 3px solid #cdcbca;
+    border-left: 3px solid #cdcbca;
+    border-bottom: 3px solid #cdcbca;
+    background-color: #fff;
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    padding-bottom: 1px;
+    color: #333;
+    overflow-x: hidden;
+    overflow-y: auto;
+    word-wrap: break-word
+}
+
+.jchat_tabcontent.messagelist {
+    border-right: 1px solid #cdcbca;
+    border-left: 1px solid #cdcbca
+}
+
+.jchat_walltab_popup .jchat_tabcontent.messagelist {
+    border-right: 3px solid #cdcbca;
+    border-left: 3px solid #cdcbca
+}
+
+.jchat_trigger_emoticon {
+    background-image: url('../images/default/trigger_emoticons.png');
+    background-position: -24px 2px;
+    background-repeat: no-repeat;
+    height: 20px;
+    margin-left: 4px;
+    cursor: pointer;
+    width: 20px;
+    float: left
+}
+
+.jchat_trigger_refresh {
+    background-image: url('../images/default/jchat.png');
+    background-position: 1px -189px;
+    background-repeat: no-repeat;
+    height: 20px;
+    margin-left: 4px;
+    cursor: pointer;
+    width: 20px;
+    float: left
+}
+
+.jchat_trigger_users_informations {
+    background-image: url('../images/default/jchat.png');
+    background-position: 1px -886px;
+    background-repeat: no-repeat;
+    height: 20px;
+    margin-left: 4px;
+    width: 20px;
+    float: left
+}
+
+.jchat_trigger_refresh.jchat_refresh_mousedown {
+    background-image: url('../images/default/jchat.png');
+    background-position: 1px -226px
+}
+
+.jchat_trigger_emoticon.toggle_on {
+    background-color: #627bae !important;
+    background-position: 2px 2px
+}
+
+.jchat_emoticonstooltip img {
+    margin: 0 0 0 3px
+}
+
+.jchat_emoticonstooltip {
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    position: fixed;
+    display: none;
+    padding-right: 4px;
+    height: 133px
+}
+
+.jchat_emoticonstooltip div.jchat_tooltip_content {
+    border-left: 1px solid #627bae;
+    border-right: 1px solid #627bae;
+    background-color: #FFF !important;
+    max-height: 18px
+}
+
+.jchat_emoticonstooltip div.jchat_tooltip_content:first-child {
+    border-top: 1px solid #627bae
+}
+
+.jchat_emoticonstooltip div.jchat_tooltip_content:last-child {
+    border-bottom: 1px solid #627bae
+}
+
+.jchat_avatar_upload_tooltip {
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    position: fixed;
+    display: none;
+    padding-right: 3px;
+    height: 300px;
+    width: 305px
+}
+
+.jchat_avatar_upload_tooltip iframe {
+    border-left: 3px solid #cdcbca;
+    border-right: 3px solid #cdcbca;
+    border-bottom: 3px solid #CCC;
+    border-top: 1px solid #cdcbca;
+    background-color: #FFF !important;
+    height: 205px;
+    width: 300px
+}
+
+#avatar_delete {
+    width: 16px;
+    height: 16px;
+    background: url(../images/default/fmdelete.png) no-repeat top left;
+    background-position: 0 0;
+    border: 0;
+    cursor: pointer
+}
+
+#avatar_upload {
+    width: 16px;
+    height: 16px;
+    background: url(../images/default/fmupload.png) no-repeat top left;
+    background-position: 0 0;
+    border: 0;
+    cursor: pointer
+}
+
+img.avatar_img {
+    border: 3px dotted #CCC;
+    padding: 5px
+}
+
+#deleteform {
+    margin-bottom: 2px
+}
+
+#deleteform fieldset {
+    height: 80px
+}
+
+#uploadform {
+    border-bottom: 1px solid #CCC;
+    margin-bottom: 5px;
+    padding-bottom: 5px
+}
+
+#uploadform fieldset {
+    min-height: 70px
+}
+
+label.buttonlabel {
+    color: #333;
+    padding-left: 3px;
+    font-size: 10px
+}
+
+.jchat_trigger_fileupload {
+    background-image: url('../images/default/trigger_fileupload.png');
+    background-position: 2px;
+    background-repeat: no-repeat;
+    height: 20px;
+    margin-left: 4px;
+    cursor: pointer;
+    width: 20px;
+    float: left
+}
+
+.jchat_trigger_fileupload.toggle_on {
+    background-color: #627bae !important;
+    background-position: -26px 2px
+}
+
+.jchat_fileuploadtooltip {
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    position: fixed;
+    display: none;
+    padding-right: 4px;
+    height: 60px;
+    width: 400px
+}
+
+.jchat_fileuploadtooltip iframe {
+    width: 400px;
+    height: 97%;
+    border: 1px solid #627bae;
+    background-color: #FFF
+}
+
+.jchat_tooltip_fileupload_header {
+    height: 10px;
+    background-color: #f4f6f9 !important;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 380px -992px;
+    padding-bottom: 4px;
+    color: #8a8a8a;
+    cursor: pointer;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    font-weight: bold;
+    border-left: 1px solid #627bae;
+    border-right: 1px solid #627bae;
+    border-top: 1px solid #627bae;
+    width: 400px
+}
+
+.jchat_trigger_export {
+    background-image: url('../images/default/jchat.png');
+    background-position: 0 -155px;
+    background-repeat: no-repeat;
+    height: 20px;
+    margin-left: 4px;
+    cursor: pointer;
+    width: 20px;
+    float: left
+}
+
+.jchat_trigger_skypesave {
+    background-image: url('../images/default/jchat.png');
+    background-position: 0 -155px;
+    background-repeat: no-repeat;
+    height: 20px;
+    margin-left: 3px;
+    cursor: pointer;
+    width: 20px;
+    float: left;
+    z-index: 15001
+}
+
+.jchat_trigger_skypedelete {
+    background-image: url('../images/default/jchat.png');
+    background-position: 0 -449px;
+    background-repeat: no-repeat;
+    height: 20px;
+    margin-left: 3px;
+    cursor: pointer;
+    width: 20px;
+    float: left;
+    z-index: 15001
+}
+
+.jchat_trigger_delete {
+    background-image: url('../images/default/jchat.png');
+    background-position: 0 -449px;
+    background-repeat: no-repeat;
+    height: 20px;
+    margin-left: 4px;
+    cursor: pointer;
+    width: 20px;
+    float: left
+}
+
+.jchat_trigger_export a {
+    width: 20px;
+    height: 20px;
+    display: block
+}
+
+.jchat_tooltip_header {
+    height: 10px;
+    background-color: #f4f6f9 !important;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 205px -992px;
+    padding-bottom: 4px;
+    color: #8a8a8a;
+    cursor: pointer;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    font-weight: bold;
+    border-left: 1px solid #627bae;
+    border-top: 1px solid #627bae;
+    border-right: 1px solid #627bae;
+    border-bottom: 0;
+    width: 224px
+}
+
+.jchat_tooltip_avatar_upload_header {
+    width: auto;
+    background-position: 280px -1080px;
+    padding: 5px 8px 8px 8px;
+    border-left: 3px solid #CCC;
+    border-right: 3px solid #CCC;
+    border-top: 3px solid #CCC
+}
+
+.jchat_tabcontent.userslist {
+    height: 85%;
+    padding-top: 5px;
+    padding-bottom: 5px
+}
+
+.jchat_tabcontent.messagelist {
+    height: 100%;
+    width: 218px;
+    border-bottom: 1px solid #CCC
+}
+
+.jchat_walltab_popup .jchat_tabcontent.messagelist {
+    width: auto
+}
+
+.jchat_tabcontent.messagelist .jchat_tabcontenttext.private {
+    height: 200px
+}
+
+.jchat_tabcontenttext {
+    border-bottom: 1px solid #f6f6f6;
+    padding: 5px;
+    overflow-x: hidden;
+    overflow-y: auto
+}
+
+.jchat_userscontent {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 95%
+}
+
+@media (max-height: 620px) {
+    .jchat_userscontent {
+        height: 85%
+    }
+}
+
+@media (max-height: 480px) {
+    .jchat_userscontent {
+        height: 75%
+    }
+}
+
+@media (max-height: 320px) {
+    .jchat_userscontent {
+        height: 60%
+    }
+}
+
+.jchat_tabcontentinput {
+    padding: 4px 0 0 25px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 5px -1235px;
+    outline: 0;
+    margin-bottom: 2px
+}
+
+.jchat_textarea {
+    width: 180px;
+    border: 0;
+    height: 21px;
+    overflow: hidden;
+    font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+    font-size: 11px;
+    color: #444;
+    outline: 0
+}
+
+.jchat_textarea_wall {
+    width: 200px
+}
+
+.jchat_userlist_hover {
+    background-color: #d8f2ff !important;
+    color: #000
+}
+
+.jchat_tooltip_content {
+    color: #fff;
+    padding: 4px;
+    font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+    background-color: #333 !important;
+    font-size: 11px;
+    white-space: nowrap
+}
+
+.jchat_userlist {
+    cursor: pointer;
+    height: 20px;
+    clear: both;
+    margin-bottom: 5px
+}
+
+.jchat_userscontentname {
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 1px;
+    float: left
+}
+
+.jchat_userscontentname img {
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 5px
+}
+
+.jchat_userscontentdot {
+    float: right;
+    background-repeat: no-repeat;
+    background-position: 0 2px;
+    width: 30px;
+    height: 16px
+}
+
+.jchat_userscontentdot.jchat_away {
+    display: none
+}
+
+.jchat_contact {
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    float: right
+}
+
+.jchat_skypecall {
+    background-image: url('../images/default/icon_skype.png');
+    background-repeat: no-repeat;
+    height: 20px;
+    margin-left: 4px;
+    cursor: pointer;
+    width: 20px;
+    float: right
+}
+
+a.skypeicon:link, a.skypeicon:visited, a.skypeicon:hover {
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-color: transparent !important
+}
+
+p.jchat_skypecall_tooltip {
+    background-image: url('../images/default/skype_call.png');
+    background-repeat: no-repeat;
+    height: 25px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    font-size: 13px;
+    border-bottom: 1px solid #CCC;
+    text-align: center
+}
+
+p.jchat_skypeinfo_tooltip {
+    background-image: url('../images/default/skype_info.png');
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    font-size: 10px;
+    text-align: left
+}
+
+#jchat_skypecall .jchat_tooltip_content {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px
+}
+
+.jchat_tab_shortname {
+    margin-left: 15px;
+    float: left;
+    color: #FFF;
+    cursor: pointer
+}
+
+.jchat_tab_shortname a:link, .jchat_tab_shortname a:hover, .jchat_tab_shortname a:visited {
+    color: #FFF;
+    cursor: pointer;
+    background-color: transparent
+}
+
+.jchat_tab_shortname a:hover::before {
+    position: absolute;
+    top: -20px;
+    left: 5px;
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 5px
+}
+
+.jchat_timeinfo {
+    background-repeat: no-repeat;
+    float: right;
+    width: 30px;
+    font-size: 8px;
+    margin-top: 1px;
+    text-align: center
+}
+
+.jchat_tab .jchat_timeinfo {
+    float: left;
+    color: #EEE
+}
+
+.jchat_contact.noactive {
+    background-image: url(../images/default/icon_gray.png)
+}
+
+.jchat_contact.owned {
+    background-image: url(../images/default/icon_yellow.png);
+    padding-bottom: 2px
+}
+
+.jchat_contact.active {
+    background-image: url(../images/default/icon_green.png);
+    padding-bottom: 0
+}
+
+.jchat_available {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -129px !important
+}
+
+.jchat_offline {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -1088px !important
+}
+
+#jchat_tooltip, #jchat_refresh_tooltip, #jchat_users_informations_tooltip, .jchat_generic_tooltip {
+    background-image: url(../images/default/pointer.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    position: fixed;
+    display: none;
+    padding-bottom: 4px;
+    z-index: 10002
+}
+
+#jchat_trigger_skypesave_tooltip, #jchat_trigger_skypedelete_tooltip {
+    z-index: 15001
+}
+
+#jchat_avatartooltip {
+    background-image: url(../images/default/pointer_side.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    position: fixed;
+    display: none;
+    padding-right: 3px;
+    font-weight: bold
+}
+
+.jchat_closebox_bottom_status {
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    background-repeat: no-repeat;
+    background-position: 0 -1px
+}
+
+.jchat_tabalert {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -535px;
+    color: #333;
+    font-size: 8px;
+    padding-top: 1px;
+    text-align: center;
+    text-decoration: none !important
+}
+
+.jchat_tabalertlr {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -537px;
+    color: #333;
+    font-size: 8px;
+    padding-top: 1px;
+    text-align: center
+}
+
+div.jchat_chatboxmessage {
+    margin-left: 1em;
+    clear: both;
+    margin-bottom: 5px
+}
+
+span.jchat_chatboxmessagefrom {
+    margin-left: -1em;
+    font-weight: bold;
+    float: left
+}
+
+span.jchat_chatboxmessagecontent {
+    margin-left: 28px;
+    display: block
+}
+
+.jchat_chatboxmessagefrom a:link, .jchat_chatboxmessagefrom a:visited {
+    color: #000
+}
+
+.jchat_chatboxmessagefrom a:hover {
+    background-color: #FFF
+}
+
+div.jchat_trigger_export a:hover {
+    background: transparent
+}
+
+.jchat_statustextarea {
+    border: 1px solid #ccc;
+    width: 200px;
+    padding: 4px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+    font-size: 11px;
+    color: #444;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 42px;
+    outline: 0
+}
+
+.jchat_optionsstatus {
+    padding-left: 2px;
+    padding-bottom: 5px;
+    float: left;
+    padding-top: 1px;
+    cursor: pointer
+}
+
+.jchat_optionsstatus2 {
+    float: left
+}
+
+.jchat_friendtextbox {
+    border: 1px solid #ccc;
+    width: 200px;
+    padding: 2px;
+    margin-top: 4px;
+    font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+    font-size: 11px;
+    color: #444;
+    font-weight: normal
+}
+
+.jchat_tabsubtitle a {
+    color: #000
+}
+
+.jchat_tabcontent a {
+    color: #287197
+}
+
+.jchat_user_offline {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -890px !important;
+    width: 16px;
+    height: 16px
+}
+
+.jchat_user_available {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -752px !important;
+    width: 16px;
+    height: 16px
+}
+
+.jchat_user_busy {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -798px !important;
+    width: 16px;
+    height: 16px
+}
+
+#jchat_userstab_icon {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -753px;
+    width: 16px;
+    height: 16px;
+    float: left;
+    padding-right: 5px;
+    margin-top: 4px
+}
+
+.jchat_userstabclick #jchat_userstab_icon {
+    margin-left: 8px
+}
+
+#jchat_userstab_text {
+    margin-top: 4px
+}
+
+.jchat_user_offline {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -687px !important
+}
+
+.jchat_user_available2 {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -753px !important
+}
+
+.jchat_optionsimages {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 3px -304px !important
+}
+
+.jchat_exitimages {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 3px -259px !important
+}
+
+.jchat_wallimages {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 1px -1124px !important
+}
+
+.jchat_backlink {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: -4px -1215px !important;
+    width: 10px;
+    padding-left: 2px;
+    padding-top: 2px;
+    margin-top: 1px;
+    cursor: auto
+}
+
+.jchat_backlink_novisible {
+    width: 0;
+    cursor: auto;
+    display: none
+}
+
+.jchat_backlink a {
+    color: transparent
+}
+
+.jchat_optionsimages_click {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 6px -310px !important
+}
+
+.jchat_optionsimages_exclamation {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 6px -263px !important
+}
+
+.jchat_wallimages_click {
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 1px -1124px !important
+}
+
+span.poweredby a, span.poweredby a:visited, span.poweredby a:hover {
+    font-size: 8px;
+    color: #fff;
+    margin-left: 55px
+}
+
+a#setstatusmessage, a#setstatusmessage:visited, a#setstatusmessage:hover {
+    color: #627bae;
+    background-color: #FFF
+}
+
+.jchat_sounds {
+    cursor: pointer;
+    margin-top: 5px;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -79px;
+    padding-left: 20px;
+    border-bottom: 1px solid #CCC;
+    padding-bottom: 10px
+}
+
+.jchat_sounds.noaudio {
+    background-position: -1px -103px
+}
+
+.speakericon {
+    margin-right: 8px
+}
+
+.jchat_avatar {
+    cursor: pointer;
+    margin-top: 15px;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 0 -809px;
+    padding-left: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #CCC
+}
+
+.jchat_skype {
+    cursor: pointer;
+    background: url(../images/default/icon_skype.png) no-repeat top left;
+    padding-left: 20px;
+    height: 20px
+}
+
+#skype_id {
+    float: left;
+    margin-bottom: 5px;
+    padding: 1px 2px !important;
+    max-width: 155px
+}
+
+#file_upload_button {
+    width: 16px;
+    height: 16px;
+    background: url(../images/default/fmupload.png) no-repeat top left;
+    background-position: 0 0;
+    border: 0;
+    cursor: pointer
+}
+
+div.formbutton {
+    width: 58px;
+    margin-top: 5px
+}
+
+div.upload_usermessage {
+    background-color: #ffe5e0 !important;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 5px -1125px !important;
+    border: 1px solid #e67e55;
+    padding: 5px 0 0 25px;
+    min-height: 35px;
+    display: none;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    position: relative;
+    margin-bottom: 10px
+}
+
+div.closemsgbtn {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    cursor: pointer;
+    background: url(../images/default/jchat.png) no-repeat top left;
+    background-position: 4px -1085px !important
+}
+
+div.upload_usermessage.visible {
+    display: block
+}
+
+img.clessidra {
+    width: 12px;
+    height: 12px;
+    float: left
+}
+
+span.filestatus {
+    color: #19E;
+    margin-left: 3px;
+    font-size: 8px
+}
+
+span.filemessage {
+    color: #666
+}
+
+div.filename {
+    font-weight: bold;
+    font-size: 8px
+}
+
+a.msgfile:link, a.msgfile:visited, a.msgfile:hover {
+    cursor: pointer;
+    color: #33F;
+    background: transparent;
+    text-decoration: underline
+}
+
+div#jchat_msg {
+    width: 212px;
+    cursor: auto;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -109px;
+    margin-top: 0;
+    -webkit-box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.4);
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    z-index: 20000;
+    background-color: #EEE;
+    padding: 3px
+}
+
+div#jchat_msgtext {
+    width: 210px;
+    height: 30px;
+    clear: both;
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center
+}

@@ -1,0 +1,10 @@
+EasySocial.require()
+	.script("photos/cover")
+	.done(function($){
+		$("[data-profile-cover]")
+			.addController(
+				"EasySocial.Controller.Photos.Cover",
+				{
+				}
+			);
+	});

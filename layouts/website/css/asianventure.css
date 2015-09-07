@@ -1,0 +1,32 @@
+body {
+	background: #f5f6f7 !important;
+}
+@media (min-width: 768px) {
+	.container {
+		width: 750px;
+	}
+}
+@media (min-width: 992px) {
+	.container {
+		width: 970px;
+	}
+}
+@media (min-width: 1200px) {
+	.container.container_226,
+	.container.container_5,
+	.container.container_207 {
+		width: 100%;
+		box-shadow: none;
+	}
+}
+@media (min-width: 1300px) {
+	.container.container_226,
+	.container.container_5,
+	.container.container_207 {
+		width: 1300px;
+		box-shadow: none;
+	}
+}
+.container {
+	background: #fff;
+}

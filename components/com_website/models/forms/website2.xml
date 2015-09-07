@@ -1,0 +1,1957 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+    <field name="id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+           description="JGLOBAL_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+    </fieldset>
+    <fields name="params" label="params">
+        <fields name="colors" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="gray_base" type="text"
+                       label="gray base"
+                       description="gray base"
+                       default="#000"
+                       size="20"/>
+
+                <field name="gray_darker" type="text"
+                       label="gray_darker"
+                       description="gray_darker"
+                       default="lighten(@gray_base, 13.5%)"
+                       size="20"/>
+                <field name="gray_dark" type="text"
+                       label="gray_dark"
+                       description="gray_dark"
+                       default="lighten(@gray_base, 20%)"
+                       size="20"/>
+                <field name="gray" type="text"
+                       label="gray"
+                       description="gray"
+                       default="lighten(@gray_base, 33.5%)"
+                       size="20"/>
+                <field name="gray_light" type="text"
+                       label="gray_light"
+                       description="gray_light"
+                       default="lighten(@gray_base, 46.7%)"
+                       size="20"/>
+                <field name="gray_lighter" type="text"
+                       label="gray_lighter"
+                       description="gray_lighter"
+                       default="lighten(@gray_base, 93.5%)"
+                       size="20"/>
+                <field name="brand_primary" type="text"
+                       label="brand_primary"
+                       description="brand_primary"
+                       default="darken(#428bca, 6.5%)"
+                       size="20"/>
+                <field name="brand_success" type="text"
+                       label="brand_success"
+                       description="brand_success"
+                       default="#5cb85c"
+                       size="20"/>
+                <field name="brand_info" type="text"
+                       label="brand_info"
+                       description="brand_info"
+                       default="#5bc0de"
+                       size="20"/>
+                <field name="brand_warning" type="text"
+                       label="brand_warning"
+                       description="brand_warning"
+                       default="#f0ad4e"
+                       size="20"/>
+                <field name="brand_danger" type="text"
+                       label="brand_danger"
+                       description="brand_danger"
+                       default="#d9534f"
+                       size="20"/>
+
+            </fieldset>
+        </fields>
+        <fields name="scaffolding" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="body_bg" type="text"
+                       label="body_bg"
+                       description="body_bg"
+                       default="#fff"
+                       size="20"/>
+                <field name="text_color" type="text"
+                       label="text_color"
+                       description="text_color"
+                       default="@gray_dark"
+                       size="20"/>
+                <field name="link_color" type="text"
+                       label="link_color"
+                       description="link_color"
+                       default="@brand_primary"
+                       size="20"/>
+                <field name="link_hover_color" type="text"
+                       label="link_hover_color"
+                       description="link_hover_color"
+                       default="darken(@link_color, 15%)"
+                       size="20"/>
+                <field name="link_hover_decoration" type="text"
+                       label="link_hover_decoration"
+                       description="link_hover_decoration"
+                       default="underline"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="typography" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="font_family_sans_serif" type="text"
+                       label="font_family_sans_serif"
+                       description="font_family_sans_serif"
+                       default='"Helvetica Neue", Helvetica, Arial, sans_serif'
+                       size="20"/>
+
+                <field name="font_family_serif" type="text"
+                       label="font_family_serif"
+                       description="font_family_serif"
+                       default='Georgia, "Times New Roman", Times, serif'
+                       size="20"/>
+
+                <field name="font_family_monospace" type="text"
+                       label="font_family_monospace"
+                       description='Default monospace fonts for &#60;code&#62;, &#60;kbd&#62;, and &#60;pre&#62;.'
+                       default='Menlo, Monaco, Consolas, "Courier New", monospace'
+                       size="20"/>
+
+            </fieldset>
+        </fields>
+        <fields name="iconography" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="icon_font_path" type="text"
+                       label="icon_font_path"
+                       description="Load fonts from this directory."
+                       default='"../fonts/"'
+                       size="20"/>
+                <field name="icon_font_name" type="text"
+                       label="icon_font_name"
+                       description="File name for all font files."
+                       default='"glyphicons_halflings_regular"'
+                       size="20"/>
+                <field name="icon_font_svg_id" type="text"
+                       label="icon_font_svg_id"
+                       description="Element ID within SVG icon file."
+                       default='"glyphicons_halflingsregular"'
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="components" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="padding_base_vertical" type="text"
+                       label="padding_base_vertical"
+                       description="padding_base_vertical"
+                       default="6px"
+                       size="20"/>
+                <field name="padding_base_horizontal" type="text"
+                       label="padding_base_horizontal"
+                       description="padding_base_horizontal"
+                       default="12px"
+                       size="20"/>
+                <field name="padding_large_vertical" type="text"
+                       label="padding_large_vertical"
+                       description="padding_large_vertical"
+                       default="10px"
+                       size="20"/>
+                <field name="padding_large_horizontal" type="text"
+                       label="padding_large_horizontal"
+                       description="padding_large_horizontal"
+                       default="16px"
+                       size="20"/>
+                <field name="padding_small_vertical" type="text"
+                       label="padding_small_vertical"
+                       description="padding_small_vertical"
+                       default="5px"
+                       size="20"/>
+                <field name="padding_small_horizontal" type="text"
+                       label="padding_small_horizontal"
+                       description="padding_small_horizontal"
+                       default="10px"
+                       size="20"/>
+                <field name="padding_xs_vertical" type="text"
+                       label="padding_xs_vertical"
+                       description="padding_xs_vertical"
+                       default="1px"
+                       size="20"/>
+                <field name="padding_xs_horizontal" type="text"
+                       label="padding_xs_horizontal"
+                       description="padding_xs_horizontal"
+                       default="5px "
+                       size="20"/>
+                <field name="line_height_large" type="text"
+                       label="line_height_large"
+                       description="line_height_large"
+                       default="1.3333333"
+                       size="20"/>
+                <field name="line_height_small" type="text"
+                       label="line_height_small"
+                       description="line_height_small"
+                       default="1.5"
+                       size="20"/>
+                <field name="border_radius_base" type="text"
+                       label="border_radius_base"
+                       description="border_radius_base"
+                       default="4px"
+                       size="20"/>
+                <field name="border_radius_large" type="text"
+                       label="border_radius_large"
+                       description="border_radius_large"
+                       default="6px"
+                       size="20"/>
+                <field name="border_radius_small" type="text"
+                       label="border_radius_small"
+                       description="border_radius_small"
+                       default="3px"
+                       size="20"/>
+                <field name="component_active_color" type="text"
+                       label="component_active_color"
+                       description="Global color for active items (e.g., navs or dropdowns)."
+                       default="#fff"
+                       size="20"/>
+                <field name="component_active_bg" type="text"
+                       label="component_active_bg"
+                       description="Global background color for active items (e.g., navs or dropdowns)."
+                       default="@brand_primary"
+                       size="20"/>
+                <field name="caret_width_base" type="text"
+                       label="caret_width_base"
+                       description="Width of the border for generating carets that indicator dropdowns."
+                       default="4px"
+                       size="20"/>
+                <field name="caret_width_large" type="text"
+                       label="caret_width_large"
+                       description="Carets increase slightly in size for larger components."
+                       default="5px"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="tables" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="table_cell_padding" type="text"
+                       label="table_cell_padding"
+                       description="Padding for &lt;th&gt;s and &lt;td&gt; s."
+                       default="8px"
+                       size="20"/>
+                <field name="table_condensed_cell_padding" type="text"
+                       label="table_condensed_cell_padding"
+                       description="Padding for cells in .table_condensed."
+                       default="5px"
+                       size="20"/>
+                <field name="table_bg" type="text"
+                       label="table_bg"
+                       description="Default background color used for all tables."
+                       default="transparent"
+                       size="20"/>
+                <field name="table_bg_accent" type="text"
+                       label="table_bg_accent"
+                       description="Background color used for .table_striped."
+                       default="#f9f9f9"
+                       size="20"/>
+                <field name="table_bg_hover" type="text"
+                       label="table_bg_hover"
+                       description="Background color used for .table_hover."
+                       default="#f5f5f5"
+                       size="20"/>
+                <field name="table_bg_active" type="text"
+                       label="table_bg_active"
+                       description="table_bg_active"
+                       default="@table_bg_hover"
+                       size="20"/>
+                <field name="table_border_color" type="text"
+                       label="table_border_color"
+                       description="Border color for table and cell borders."
+                       default="#ddd"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="buttons" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="btn_font_weight" type="text"
+                       label="btn_font_weight"
+                       description="btn_font_weight"
+                       default="normal"
+                       size="20"/>
+                <field name="btn_default_color" type="text"
+                       label="btn_default_color"
+                       description="btn_default_color"
+                       default="#333"
+                       size="20"/>
+                <field name="btn_default_bg" type="text"
+                       label="btn_default_bg"
+                       description="btn_default_bg"
+                       default="#fff"
+                       size="20"/>
+                <field name="btn_default_border" type="text"
+                       label="btn_default_border"
+                       description="btn_default_border"
+                       default="#ccc"
+                       size="20"/>
+                <field name="btn_primary_color" type="text"
+                       label="btn_primary_color"
+                       description="btn_primary_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="btn_primary_bg" type="text"
+                       label="btn_primary_bg"
+                       description="btn_primary_bg"
+                       default="@brand_primary"
+                       size="20"/>
+                <field name="btn_primary_border" type="text"
+                       label="btn_primary_border"
+                       description="btn_primary_border"
+                       default="darken(@btn_primary_bg, 5%)"
+                       size="20"/>
+                <field name="btn_success_color" type="text"
+                       label="btn_success_color"
+                       description="btn_success_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="btn_success_bg" type="text"
+                       label="btn_success_bg"
+                       description="btn_success_bg"
+                       default="@brand_success"
+                       size="20"/>
+                <field name="btn_success_border" type="text"
+                       label="btn_success_border"
+                       description="btn_success_border"
+                       default="darken(@btn_success_bg, 5%)"
+                       size="20"/>
+                <field name="btn_info_color" type="text"
+                       label="btn_info_color"
+                       description="btn_info_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="btn_info_bg" type="text"
+                       label="btn_info_bg"
+                       description="btn_info_bg"
+                       default="@brand_info"
+                       size="20"/>
+                <field name="btn_info_border" type="text"
+                       label="btn_info_border"
+                       description="btn_info_border"
+                       default="darken(@btn_info_bg, 5%)"
+                       size="20"/>
+                <field name="btn_warning_color" type="text"
+                       label="btn_warning_color"
+                       description="btn_warning_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="btn_warning_bg" type="text"
+                       label="btn_warning_bg"
+                       description="btn_warning_bg"
+                       default="@brand_warning"
+                       size="20"/>
+                <field name="btn_warning_border" type="text"
+                       label="btn_warning_border"
+                       description="btn_warning_border"
+                       default="darken(@btn_warning_bg, 5%)"
+                       size="20"/>
+                <field name="btn_danger_color" type="text"
+                       label="btn_danger_color"
+                       description="btn_danger_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="btn_danger_bg" type="text"
+                       label="btn_danger_bg"
+                       description="btn_danger_bg"
+                       default="@brand_danger"
+                       size="20"/>
+                <field name="btn_danger_border" type="text"
+                       label="btn_danger_border"
+                       description="btn_danger_border"
+                       default="darken(@btn_danger_bg, 5%)"
+                       size="20"/>
+                <field name="btn_link_disabled_color" type="text"
+                       label="btn_link_disabled_color"
+                       description="btn_link_disabled_color"
+                       default="@gray_light"
+                       size="20"/>
+            </fieldset>
+        </fields>
+
+        <fields name="forms" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="input_bg" type="text"
+                       label="input_bg"
+                       description="&lt;input&gt; background color"
+                       default="#fff"
+                       size="20"/>
+                <field name="input_bg_disabled" type="text"
+                       label="input_bg_disabled"
+                       description="&lt;input disabled&gt; background color"
+                       default="@gray_lighter"
+                       size="20"/>
+                <field name="input_color" type="text"
+                       label="input_color"
+                       description="Text color for &lt;input&gt;s"
+                       default="@gray"
+                       size="20"/>
+                <field name="input_border" type="text"
+                       label="input_border"
+                       description="&lt;input &gt; border color"
+                       default="#ccc"
+                       size="20"/>
+                <field name="input_border_radius" type="text"
+                       label="input_border_radius"
+                       description="Default .form_control border radius"
+                       default="@border_radius_base"
+                       size="20"/>
+                <field name="input_border_radius_large" type="text"
+                       label="input_border_radius_large"
+                       description="Large .form_control border radius"
+                       default="@border_radius_large"
+                       size="20"/>
+                <field name="input_border_radius_small" type="text"
+                       label="input_border_radius_small"
+                       description="Small .form_control border radius"
+                       default="@border_radius_small"
+                       size="20"/>
+                <field name="input_border_focus" type="text"
+                       label="input_border_focus"
+                       description="Border color for inputs on focus"
+                       default="#66afe9"
+                       size="20"/>
+                <field name="input_color_placeholder" type="text"
+                       label="input_color_placeholder"
+                       description="Placeholder text color"
+                       default="#999"
+                       size="20"/>
+                <field name="input_height_base" type="text"
+                       label="input_height_base"
+                       description="Default .form_control height"
+                       default="(@line_height_computed + (@padding_base_vertical * 2) + 2)"
+                       size="20"/>
+                <field name="input_height_large" type="text"
+                       label="input_height_large"
+                       description="Large .form_control height"
+                       default="(ceil(@font_size_large * @line_height_large) + (@padding_large_vertical * 2) + 2)"
+                       size="20"/>
+                <field name="input_height_small" type="text"
+                       label="input_height_small"
+                       description="Small .form_control height"
+                       default="(floor(@font_size_small * @line_height_small) + (@padding_small_vertical * 2) + 2)"
+                       size="20"/>
+                <field name="form_group_margin_bottom" type="text"
+                       label="form_group_margin_bottom"
+                       description=".form_group margin"
+                       default="15px"
+                       size="20"/>
+                <field name="legend_color" type="text"
+                       label="legend_color"
+                       description="legend_color"
+                       default="@gray_dark"
+                       size="20"/>
+                <field name="legend_border_color" type="text"
+                       label="legend_border_color"
+                       description="legend_border_color"
+                       default="#e5e5e5"
+                       size="20"/>
+                <field name="input_group_addon_bg" type="text"
+                       label="input_group_addon_bg"
+                       description="Background color for textual input addons"
+                       default="@gray_lighter"
+                       size="20"/>
+                <field name="input_group_addon_border_color" type="text"
+                       label="input_group_addon_border_color"
+                       description="Border color for textual input addons"
+                       default="@input_border"
+                       size="20"/>
+                <field name="cursor_disabled" type="text"
+                       label="cursor_disabled"
+                       description="Disabled cursor for form controls and buttons"
+                       default="not_allowed"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="dropdowns" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="dropdown_bg" type="text"
+                       label="dropdown_bg"
+                       description="Background for the dropdown menu."
+                       default="#fff"
+                       size="20"/>
+                <field name="dropdown_border" type="text"
+                       label="dropdown_border"
+                       description="Dropdown menu border_color."
+                       default="rgba(0,0,0,.15)"
+                       size="20"/>
+                <field name="dropdown_fallback_border" type="text"
+                       label="dropdown_fallback_border"
+                       description="Dropdown menu border_color for IE8."
+                       default="#ccc"
+                       size="20"/>
+                <field name="dropdown_divider_bg" type="text"
+                       label="dropdown_divider_bg"
+                       description="Divider color for between dropdown items."
+                       default="#e5e5e5"
+                       size="20"/>
+                <field name="dropdown_link_color" type="text"
+                       label="dropdown_link_color"
+                       description="Dropdown link text color."
+                       default="@gray_dark"
+                       size="20"/>
+                <field name="dropdown_link_hover_color" type="text"
+                       label="dropdown_link_hover_color"
+                       description="Hover color for dropdown links"
+                       default="darken(@gray_dark, 5%)"
+                       size="20"/>
+                <field name="dropdown_link_hover_bg" type="text"
+                       label="dropdown_link_hover_bg"
+                       description="Hover background for dropdown links"
+                       default="#f5f5f5"
+                       size="20"/>
+                <field name="dropdown_link_active_color" type="text"
+                       label="dropdown_link_active_color"
+                       description="Active dropdown menu item text color."
+                       default="@component_active_color"
+                       size="20"/>
+                <field name="dropdown_link_active_bg" type="text"
+                       label="dropdown_link_active_bg"
+                       description="Active dropdown menu item background color"
+                       default="@component_active_bg"
+                       size="20"/>
+                <field name="dropdown_link_disabled_color" type="text"
+                       label="dropdown_link_disabled_color"
+                       description="Disabled dropdown menu item background color."
+                       default="@gray_light"
+                       size="20"/>
+                <field name="dropdown_header_color" type="text"
+                       label="dropdown_header_color"
+                       description="Text color for headers within dropdown menus."
+                       default="@gray_light"
+                       size="20"/>
+                <field name="dropdown_caret_color" type="text"
+                       label="dropdown_caret_color"
+                       description="Deprecated @dropdown_caret_color as of v3.1.0"
+                       default="#000"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="media_queries_breakpoints" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="screen_xs" type="text"
+                       label="screen_xs"
+                       description="Deprecated @screen_xs as of v3.0.1"
+                       default="480px"
+                       size="20"/>
+                <field name="screen_xs_min" type="text"
+                       label="screen_xs_min"
+                       description="Deprecated @screen_xs_min as of v3.2.0"
+                       default="@screen_xs"
+                       size="20"/>
+                <field name="screen_phone" type="text"
+                       label="screen_phone"
+                       description="Deprecated @screen_phone as of v3.0.1"
+                       default="@screen_xs_min"
+                       size="20"/>
+                <field name="screen_sm" type="text"
+                       label="screen_sm"
+                       description="Deprecated @screen_sm as of v3.0.1"
+                       default="768px"
+                       size="20"/>
+                <field name="screen_sm_min" type="text"
+                       label="screen_sm_min"
+                       description="screen_sm_min"
+                       default="@screen_sm"
+                       size="20"/>
+                <field name="screen_tablet" type="text"
+                       label="screen_tablet"
+                       description="Deprecated @screen_tablet as of v3.0.1"
+                       default="@screen_sm_min"
+                       size="20"/>
+                <field name="screen_md" type="text"
+                       label="screen_md"
+                       description="Deprecated @screen_md as of v3.0.1"
+                       default="992px"
+                       size="20"/>
+                <field name="screen_md_min" type="text"
+                       label="screen_md_min"
+                       description="screen_md_min"
+                       default="@screen_md"
+                       size="20"/>
+                <field name="screen_desktop" type="text"
+                       label="screen_desktop"
+                       description="Deprecated @screen_desktop as of v3.0.1"
+                       default="@screen_md_min"
+                       size="20"/>
+                <field name="screen_lg" type="text"
+                       label="screen_lg"
+                       description="Deprecated @screen_lg as of v3.0.1"
+                       default="1200px"
+                       size="20"/>
+                <field name="screen_lg_min" type="text"
+                       label="screen_lg_min"
+                       description="screen_lg_min"
+                       default="@screen_lg"
+                       size="20"/>
+                <field name="screen_lg_desktop" type="text"
+                       label="screen_lg_desktop"
+                       description="Deprecated @screen_lg_desktop as of v3.0.1"
+                       default="@screen_lg_min"
+                       size="20"/>
+                <field name="screen_xs_max" type="text"
+                       label="screen_xs_max"
+                       description="screen_xs_max"
+                       default="(@screen_sm_min _ 1)"
+                       size="20"/>
+                <field name="screen_sm_max" type="text"
+                       label="screen_sm_max"
+                       description="screen_sm_max"
+                       default="(@screen_md_min _ 1)"
+                       size="20"/>
+                <field name="screen_md_max" type="text"
+                       label="screen_md_max"
+                       description="screen_md_max"
+                       default="(@screen_lg_min _ 1)"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="grid_system" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="grid_columns" type="text"
+                       label="grid_columns"
+                       description="Number of columns in the grid."
+                       default="12"
+                       size="20"/>
+                <field name="grid_gutter_width" type="text"
+                       label="grid_gutter_width"
+                       description="Padding between columns. Gets divided in half for the left and right."
+                       default="30px"
+                       size="20"/>
+                <field name="grid_float_breakpoint" type="text"
+                       label="grid_float_breakpoint"
+                       description="Point at which the navbar becomes uncollapsed."
+                       default="@screen_sm_min"
+                       size="20"/>
+                <field name="grid_float_breakpoint_max" type="text"
+                       label="grid_float_breakpoint_max"
+                       description="Point at which the navbar begins collapsing."
+                       default="(@grid_float_breakpoint _ 1)"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="container_sizes" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="container_tablet" type="text"
+                       label="container_tablet"
+                       description="container_tablet"
+                       default="(720px + @grid_gutter_width)"
+                       size="20"/>
+                <field name="container_sm" type="text"
+                       label="container_sm"
+                       description="For @screen_sm_min and up."
+                       default="@container_tablet"
+                       size="20"/>
+                <field name="container_desktop" type="text"
+                       label="container_desktop"
+                       description="container_desktop"
+                       default="(940px + @grid_gutter_width)"
+                       size="20"/>
+                <field name="container_md" type="text"
+                       label="container_md"
+                       description="For @screen_md_min and up."
+                       default="@container_desktop"
+                       size="20"/>
+                <field name="container_large_desktop" type="text"
+                       label="container_large_desktop"
+                       description="container_large_desktop"
+                       default="(1140px + @grid_gutter_width)"
+                       size="20"/>
+                <field name="container_lg" type="text"
+                       label="container_lg"
+                       description="For @screen_lg_min and up."
+                       default="@container_large_desktop"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="navbar" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="navbar_height" type="text"
+                       label="navbar_height"
+                       description="navbar_height"
+                       default="50px"
+                       size="20"/>
+                <field name="navbar_margin_bottom" type="text"
+                       label="navbar_margin_bottom"
+                       description="navbar_margin_bottom"
+                       default="@line_height_computed"
+                       size="20"/>
+                <field name="navbar_border_radius" type="text"
+                       label="navbar_border_radius"
+                       description="navbar_border_radius"
+                       default="@border_radius_base"
+                       size="20"/>
+                <field name="navbar_padding_horizontal" type="text"
+                       label="navbar_padding_horizontal"
+                       description="navbar_padding_horizontal"
+                       default="floor((@grid_gutter_width / 2))"
+                       size="20"/>
+                <field name="navbar_padding_vertical" type="text"
+                       label="navbar_padding_vertical"
+                       description="navbar_padding_vertical"
+                       default="((@navbar_height _ @line_height_computed) / 2)"
+                       size="20"/>
+                <field name="navbar_collapse_max_height" type="text"
+                       label="navbar_collapse_max_height"
+                       description="navbar_collapse_max_height"
+                       default="340px"
+                       size="20"/>
+                <field name="navbar_default_color" type="text"
+                       label="navbar_default_color"
+                       description="navbar_default_color"
+                       default="#777"
+                       size="20"/>
+                <field name="navbar_default_bg" type="text"
+                       label="navbar_default_bg"
+                       description="navbar_default_bg"
+                       default="#f8f8f8"
+                       size="20"/>
+                <field name="navbar_default_border" type="text"
+                       label="navbar_default_border"
+                       description="navbar_default_border"
+                       default="darken(@navbar_default_bg, 6.5%)"
+                       size="20"/>
+                <field name="navbar_default_link_color" type="text"
+                       label="navbar_default_link_color"
+                       description="navbar_default_link_color"
+                       default="#777"
+                       size="20"/>
+                <field name="navbar_default_link_hover_color" type="text"
+                       label="navbar_default_link_hover_color"
+                       description="navbar_default_link_hover_color"
+                       default="#333"
+                       size="20"/>
+                <field name="navbar_default_link_hover_bg" type="text"
+                       label="navbar_default_link_hover_bg"
+                       description="navbar_default_link_hover_bg"
+                       default="transparent"
+                       size="20"/>
+                <field name="navbar_default_link_active_color" type="text"
+                       label="navbar_default_link_active_color"
+                       description="navbar_default_link_active_color"
+                       default="#555"
+                       size="20"/>
+                <field name="navbar_default_link_active_bg" type="text"
+                       label="navbar_default_link_active_bg"
+                       description="navbar_default_link_active_bg"
+                       default="darken(@navbar_default_bg, 6.5%)"
+                       size="20"/>
+                <field name="navbar_default_link_disabled_color" type="text"
+                       label="navbar_default_link_disabled_color"
+                       description="navbar_default_link_disabled_color"
+                       default="#ccc"
+                       size="20"/>
+                <field name="navbar_default_link_disabled_bg" type="text"
+                       label="navbar_default_link_disabled_bg"
+                       description="navbar_default_link_disabled_bg"
+                       default="transparent"
+                       size="20"/>
+                <field name="navbar_default_brand_color" type="text"
+                       label="navbar_default_brand_color"
+                       description="navbar_default_brand_color"
+                       default="@navbar_default_link_color"
+                       size="20"/>
+                <field name="navbar_default_brand_hover_color" type="text"
+                       label="navbar_default_brand_hover_color"
+                       description="navbar_default_brand_hover_color"
+                       default="darken(@navbar_default_brand_color, 10%)"
+                       size="20"/>
+                <field name="navbar_default_brand_hover_bg" type="text"
+                       label="navbar_default_brand_hover_bg"
+                       description="navbar_default_brand_hover_bg"
+                       default="transparent"
+                       size="20"/>
+                <field name="navbar_default_toggle_hover_bg" type="text"
+                       label="navbar_default_toggle_hover_bg"
+                       description="navbar_default_toggle_hover_bg"
+                       default="#ddd"
+                       size="20"/>
+                <field name="navbar_default_toggle_icon_bar_bg" type="text"
+                       label="navbar_default_toggle_icon_bar_bg"
+                       description="navbar_default_toggle_icon_bar_bg"
+                       default="#888"
+                       size="20"/>
+                <field name="navbar_default_toggle_border_color" type="text"
+                       label="navbar_default_toggle_border_color"
+                       description="navbar_default_toggle_border_color"
+                       default="#ddd"
+                       size="20"/>
+                <field name="navbar_inverse_color" type="text"
+                       label="navbar_inverse_color"
+                       description="navbar_inverse_color"
+                       default="lighten(@gray_light, 15%)"
+                       size="20"/>
+                <field name="navbar_inverse_bg" type="text"
+                       label="navbar_inverse_bg"
+                       description="navbar_inverse_color"
+                       default="lighten(@gray_light, 15%)"
+                       size="20"/>
+                <field name="navbar_inverse_border" type="text"
+                       label="navbar_inverse_border"
+                       description="navbar_inverse_border"
+                       default="darken(@navbar_inverse_bg, 10%)"
+                       size="20"/>
+                <field name="navbar_inverse_link_color" type="text"
+                       label="navbar_inverse_link_color"
+                       description="navbar_inverse_link_color"
+                       default="lighten(@gray_light, 15%)"
+                       size="20"/>
+                <field name="navbar_inverse_link_hover_color" type="text"
+                       label="navbar_inverse_link_hover_color"
+                       description="navbar_inverse_link_hover_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="navbar_inverse_link_hover_bg" type="text"
+                       label="navbar_inverse_link_hover_bg"
+                       description="navbar_inverse_link_hover_bg"
+                       default="transparent"
+                       size="20"/>
+                <field name="navbar_inverse_link_active_color" type="text"
+                       label="navbar_inverse_link_active_color"
+                       description="navbar_inverse_link_active_color"
+                       default="@navbar_inverse_link_hover_color"
+                       size="20"/>
+                <field name="navbar_inverse_link_active_bg" type="text"
+                       label="navbar_inverse_link_active_bg"
+                       description="navbar_inverse_link_active_bg"
+                       default="darken(@navbar_inverse_bg, 10%)"
+                       size="20"/>
+                <field name="navbar_inverse_link_disabled_color" type="text"
+                       label="navbar_inverse_link_disabled_color"
+                       description="navbar_inverse_link_disabled_color"
+                       default="#444"
+                       size="20"/>
+                <field name="navbar_inverse_link_disabled_bg" type="text"
+                       label="navbar_inverse_link_disabled_bg"
+                       description="navbar_inverse_link_disabled_bg"
+                       default="transparent"
+                       size="20"/>
+                <field name="navbar_inverse_brand_color" type="text"
+                       label="navbar_inverse_brand_color"
+                       description="navbar_inverse_brand_color"
+                       default="@navbar_inverse_link_color"
+                       size="20"/>
+                <field name="navbar_inverse_brand_hover_color" type="text"
+                       label="navbar_inverse_brand_hover_color"
+                       description="navbar_inverse_brand_hover_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="navbar_inverse_brand_hover_bg" type="text"
+                       label="navbar_inverse_brand_hover_bg"
+                       description="navbar_inverse_brand_hover_bg"
+                       default="transparent"
+                       size="20"/>
+                <field name="navbar_inverse_toggle_hover_bg" type="text"
+                       label="navbar_inverse_toggle_hover_bg"
+                       description="navbar_inverse_toggle_hover_bg"
+                       default="#333"
+                       size="20"/>
+                <field name="navbar_inverse_toggle_icon_bar_bg" type="text"
+                       label="navbar_inverse_toggle_icon_bar_bg"
+                       description="navbar_inverse_toggle_icon_bar_bg"
+                       default="#fff"
+                       size="20"/>
+                <field name="navbar_inverse_toggle_border_color" type="text"
+                       label="navbar_inverse_toggle_border_color"
+                       description="navbar_inverse_toggle_border_color"
+                       default="#333"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="shared_nav_styles" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="nav_link_padding" type="text"
+                       label="nav_link_padding"
+                       description="nav_link_padding"
+                       default="10px 15px"
+                       size="20"/>
+                <field name="nav_link_hover_bg" type="text"
+                       label="nav_link_hover_bg"
+                       description="nav_link_hover_bg"
+                       default="@gray_lighter"
+                       size="20"/>
+                <field name="nav_disabled_link_color" type="text"
+                       label="nav_disabled_link_color"
+                       description="nav_disabled_link_color"
+                       default="@gray_light"
+                       size="20"/>
+                <field name="nav_disabled_link_hover_color" type="text"
+                       label="nav_disabled_link_hover_color"
+                       description="nav_disabled_link_hover_color"
+                       default="@gray_light"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="tabs" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="nav_tabs_border_color" type="text"
+                       label="nav_tabs_border_color"
+                       description="nav_tabs_border_color"
+                       default="#ddd"
+                       size="20"/>
+                <field name="nav_tabs_link_hover_border_color" type="text"
+                       label="nav_tabs_link_hover_border_color"
+                       description="nav_tabs_link_hover_border_color"
+                       default="@gray_lighter"
+                       size="20"/>
+                <field name="nav_tabs_active_link_hover_bg" type="text"
+                       label="nav_tabs_active_link_hover_bg"
+                       description="nav_tabs_active_link_hover_bg"
+                       default="@body_bg"
+                       size="20"/>
+                <field name="nav_tabs_active_link_hover_color" type="text"
+                       label="nav_tabs_active_link_hover_color"
+                       description="nav_tabs_active_link_hover_color"
+                       default="@gray"
+                       size="20"/>
+                <field name="nav_tabs_active_link_hover_border_color" type="text"
+                       label="nav_tabs_active_link_hover_border_color"
+                       description="nav_tabs_active_link_hover_border_color"
+                       default="#ddd"
+                       size="20"/>
+                <field name="nav_tabs_justified_link_border_color" type="text"
+                       label="nav_tabs_justified_link_border_color"
+                       description="nav_tabs_justified_link_border_color"
+                       default="#ddd"
+                       size="20"/>
+                <field name="nav_tabs_justified_active_link_border_color" type="text"
+                       label="nav_tabs_justified_active_link_border_color"
+                       description="nav_tabs_justified_active_link_border_color"
+                       default="@body_bg"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="pills" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="nav_pills_border_radius" type="text"
+                       label="nav_pills_border_radius"
+                       description="nav_pills_border_radius"
+                       default="@border_radius_base"
+                       size="20"/>
+                <field name="nav_pills_active_link_hover_bg" type="text"
+                       label="nav_pills_active_link_hover_bg"
+                       description="nav_pills_active_link_hover_bg"
+                       default="@component_active_bg"
+                       size="20"/>
+                <field name="nav_pills_active_link_hover_color" type="text"
+                       label="nav_pills_active_link_hover_color"
+                       description="nav_pills_active_link_hover_color"
+                       default="@component_active_color"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="pagination" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="pagination_color" type="text"
+                       label="pagination_color"
+                       description="pagination_color"
+                       default="@link_color"
+                       size="20"/>
+                <field name="pagination_bg" type="text"
+                       label="pagination_bg"
+                       description="pagination_bg"
+                       default="#fff"
+                       size="20"/>
+                <field name="pagination_border" type="text"
+                       label="pagination_border"
+                       description="pagination_border"
+                       default="#ddd"
+                       size="20"/>
+                <field name="pagination_hover_color" type="text"
+                       label="pagination_hover_color"
+                       description="pagination_hover_color"
+                       default="@link_hover_color"
+                       size="20"/>
+                <field name="pagination_hover_bg" type="text"
+                       label="pagination_hover_bg"
+                       description="pagination_hover_bg"
+                       default="@gray_lighter"
+                       size="20"/>
+                <field name="pagination_hover_border" type="text"
+                       label="pagination_hover_border"
+                       description="pagination_hover_border"
+                       default="#ddd"
+                       size="20"/>
+                <field name="pagination_active_color" type="text"
+                       label="pagination_active_color"
+                       description="pagination_active_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="pagination_active_bg" type="text"
+                       label="pagination_active_bg"
+                       description="pagination_active_bg"
+                       default="@brand_primary"
+                       size="20"/>
+                <field name="pagination_active_border" type="text"
+                       label="pagination_active_border"
+                       description="pagination_active_border"
+                       default="@brand_primary"
+                       size="20"/>
+                <field name="pagination_disabled_color" type="text"
+                       label="pagination_disabled_color"
+                       description="pagination_disabled_color"
+                       default="@gray_light"
+                       size="20"/>
+                <field name="pagination_disabled_bg" type="text"
+                       label="pagination_disabled_bg"
+                       description="pagination_disabled_bg"
+                       default="#fff"
+                       size="20"/>
+                <field name="pagination_disabled_border" type="text"
+                       label="pagination_disabled_border"
+                       description="pagination_disabled_border"
+                       default="#ddd"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="pager" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="pager_bg" type="text"
+                       label="pager_bg"
+                       description="pager_bg"
+                       default="@pagination_bg"
+                       size="20"/>
+                <field name="pager_border" type="text"
+                       label="pager_border"
+                       description="pager_border"
+                       default="@pagination_border"
+                       size="20"/>
+                <field name="pager_border_radius" type="text"
+                       label="pager_border_radius"
+                       description="pager_border_radius"
+                       default="15px"
+                       size="20"/>
+                <field name="pager_hover_bg" type="text"
+                       label="pager_hover_bg"
+                       description="pager_hover_bg"
+                       default="@pagination_hover_bg"
+                       size="20"/>
+                <field name="pager_active_bg" type="text"
+                       label="pager_active_bg"
+                       description="pager_active_bg"
+                       default="@pagination_active_bg"
+                       size="20"/>
+                <field name="pager_active_color" type="text"
+                       label="pager_active_color"
+                       description="pager_active_color"
+                       default="@pagination_active_color"
+                       size="20"/>
+                <field name="pager_disabled_color" type="text"
+                       label="pager_disabled_color"
+                       description="pager_disabled_color"
+                       default="@pagination_disabled_color"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="jumbotron" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="jumbotron_padding" type="text"
+                       label="jumbotron_padding"
+                       description="jumbotron_padding"
+                       default="30px"
+                       size="20"/>
+                <field name="jumbotron_color" type="text"
+                       label="jumbotron_color"
+                       description="jumbotron_color"
+                       default="inherit"
+                       size="20"/>
+                <field name="jumbotron_bg" type="text"
+                       label="jumbotron_bg"
+                       description="jumbotron_bg"
+                       default="@gray_lighter"
+                       size="20"/>
+                <field name="jumbotron_heading_color" type="text"
+                       label="jumbotron_heading_color"
+                       description="jumbotron_heading_color"
+                       default="inherit"
+                       size="20"/>
+                <field name="jumbotron_font_size" type="text"
+                       label="jumbotron_font_size"
+                       description="jumbotron_font_size"
+                       default="ceil((@font_size_base * 1.5))"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="form_states_and_alerts" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="state_success_text" type="text"
+                       label="state_success_text"
+                       description="state_success_text"
+                       default="#3c763d"
+                       size="20"/>
+                <field name="state_success_bg" type="text"
+                       label="state_success_bg"
+                       description="state_success_bg"
+                       default="#dff0d8"
+                       size="20"/>
+                <field name="state_success_border" type="text"
+                       label="state_success_border"
+                       description="state_success_border"
+                       default="darken(spin(@state_success_bg, _10), 5%)"
+                       size="20"/>
+                <field name="state_info_text" type="text"
+                       label="state_info_text"
+                       description="state_info_text"
+                       default="#31708f"
+                       size="20"/>
+                <field name="state_info_bg" type="text"
+                       label="state_info_bg"
+                       description="state_info_bg"
+                       default="#d9edf7"
+                       size="20"/>
+                <field name="state_info_border" type="text"
+                       label="state_info_border"
+                       description="state_info_border"
+                       default="darken(spin(@state_info_bg, _10), 7%)"
+                       size="20"/>
+                <field name="state_warning_text" type="text"
+                       label="state_warning_text"
+                       description="state_warning_text"
+                       default="#8a6d3b"
+                       size="20"/>
+                <field name="state_warning_bg" type="text"
+                       label="state_warning_bg"
+                       description="state_warning_bg"
+                       default="#fcf8e3"
+                       size="20"/>
+                <field name="state_warning_border" type="text"
+                       label="state_warning_border"
+                       description="state_warning_border"
+                       default="darken(spin(@state_warning_bg, _10), 5%)"
+                       size="20"/>
+                <field name="state_danger_text" type="text"
+                       label="state_danger_text"
+                       description="state_danger_text"
+                       default="#a94442"
+                       size="20"/>
+                <field name="state_danger_bg" type="text"
+                       label="state_danger_bg"
+                       description="state_danger_bg"
+                       default="#f2dede"
+                       size="20"/>
+                <field name="state_danger_border" type="text"
+                       label="state_danger_border"
+                       description="state_danger_border"
+                       default="darken(spin(@state_danger_bg, _10), 5%)"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="tooltips" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="tooltip_max_width" type="text"
+                       label="tooltip_max_width"
+                       description="tooltip_max_width"
+                       default="200px"
+                       size="20"/>
+                <field name="tooltip_color" type="text"
+                       label="tooltip_color"
+                       description="tooltip_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="tooltip_bg" type="text"
+                       label="tooltip_bg"
+                       description="tooltip_bg"
+                       default="#000"
+                       size="20"/>
+                <field name="tooltip_opacity" type="text"
+                       label="tooltip_opacity"
+                       description="tooltip_opacity"
+                       default=".9"
+                       size="20"/>
+                <field name="tooltip_arrow_width" type="text"
+                       label="tooltip_arrow_width"
+                       description="tooltip_arrow_width"
+                       default="5px"
+                       size="20"/>
+                <field name="tooltip_arrow_color" type="text"
+                       label="tooltip_arrow_color"
+                       description="tooltip_arrow_color"
+                       default="@tooltip_bg"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="popovers" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="popover_bg" type="text"
+                       label="popover_bg"
+                       description="popover_bg"
+                       default="#fff"
+                       size="20"/>
+                <field name="popover_max_width" type="text"
+                       label="popover_max_width"
+                       description="popover_max_width"
+                       default="276px"
+                       size="20"/>
+                <field name="popover_border_color" type="text"
+                       label="popover_border_color"
+                       description="popover_border_color"
+                       default="rgba(0,0,0,.2)"
+                       size="20"/>
+                <field name="popover_fallback_border_color" type="text"
+                       label="popover_fallback_border_color"
+                       description="Popover fallback border color"
+                       default="#ccc"
+                       size="20"/>
+                <field name="popover_title_bg" type="text"
+                       label="popover_title_bg"
+                       description="Popover title background color"
+                       default="darken(@popover_bg, 3%)"
+                       size="20"/>
+                <field name="popover_arrow_width" type="text"
+                       label="popover_arrow_width"
+                       description="popover_arrow_width"
+                       default="10px"
+                       size="20"/>
+                <field name="popover_arrow_color" type="text"
+                       label="popover_arrow_color"
+                       description="popover_arrow_color"
+                       default="@popover_bg"
+                       size="20"/>
+                <field name="popover_arrow_outer_width" type="text"
+                       label="popover_arrow_outer_width"
+                       description="popover_arrow_outer_width"
+                       default="(@popover_arrow_width + 1)"
+                       size="20"/>
+                <field name="popover_arrow_outer_color" type="text"
+                       label="popover_arrow_outer_color"
+                       description="popover_arrow_outer_color"
+                       default="fadein(@popover_border_color, 5%)"
+                       size="20"/>
+                <field name="popover_arrow_outer_fallback_color" type="text"
+                       label="popover_arrow_outer_fallback_color"
+                       description="Popover outer arrow fallback color"
+                       default="darken(@popover_fallback_border_color, 20%)"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="labels" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="label_default_bg" type="text"
+                       label="label_default_bg"
+                       description="Default label background color"
+                       default="@gray_light"
+                       size="20"/>
+                <field name="label_primary_bg" type="text"
+                       label="label_primary_bg"
+                       description="Primary label background color"
+                       default="@brand_primary"
+                       size="20"/>
+                <field name="label_success_bg" type="text"
+                       label="label_success_bg"
+                       description="Success label background color"
+                       default="@brand_success"
+                       size="20"/>
+                <field name="label_info_bg" type="text"
+                       label="label_info_bg"
+                       description="Info label background color"
+                       default="@brand_info"
+                       size="20"/>
+                <field name="label_warning_bg" type="text"
+                       label="label_warning_bg"
+                       description="Warning label background color"
+                       default="@brand_warning"
+                       size="20"/>
+                <field name="label_danger_bg" type="text"
+                       label="label_danger_bg"
+                       description="Danger label background color"
+                       default="@brand_danger"
+                       size="20"/>
+                <field name="label_color" type="text"
+                       label="label_color"
+                       description="Default label text color"
+                       default="#fff"
+                       size="20"/>
+                <field name="label_link_hover_color" type="text"
+                       label="label_link_hover_color"
+                       description="Default text color of a linked label"
+                       default="#fff"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="modals" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="modal_inner_padding" type="text"
+                       label="modal_inner_padding"
+                       description="Padding applied to the modal body"
+                       default="15px"
+                       size="20"/>
+                <field name="modal_title_padding" type="text"
+                       label="modal_title_padding"
+                       description="Padding applied to the modal title"
+                       default="15px"
+                       size="20"/>
+                <field name="modal_title_line_height" type="text"
+                       label="modal_title_line_height"
+                       description="Modal title line_height"
+                       default="@line_height_base"
+                       size="20"/>
+                <field name="modal_content_bg" type="text"
+                       label="modal_content_bg"
+                       description="Background color of modal content area"
+                       default="#fff"
+                       size="20"/>
+                <field name="modal_content_border_color" type="text"
+                       label="modal_content_border_color"
+                       description="Modal content border color"
+                       default="rgba(0,0,0,.2)"
+                       size="20"/>
+                <field name="modal_content_fallback_border_color" type="text"
+                       label="modal_content_fallback_border_color"
+                       description="Modal content border color for IE8"
+                       default="#999"
+                       size="20"/>
+                <field name="modal_backdrop_bg" type="text"
+                       label="modal_backdrop_bg"
+                       description="Modal backdrop background color"
+                       default="#000"
+                       size="20"/>
+                <field name="modal_backdrop_opacity" type="text"
+                       label="modal_backdrop_opacity"
+                       description="Modal backdrop opacity"
+                       default=".5"
+                       size="20"/>
+                <field name="modal_header_border_color" type="text"
+                       label="modal_header_border_color"
+                       description="Modal header border color"
+                       default="#e5e5e5"
+                       size="20"/>
+                <field name="modal_footer_border_color" type="text"
+                       label="modal_footer_border_color"
+                       description="Modal footer border color"
+                       default="@modal_header_border_color"
+                       size="20"/>
+                <field name="modal_lg" type="text"
+                       label="modal_lg"
+                       description="modal_lg"
+                       default="900px"
+                       size="20"/>
+                <field name="modal_md" type="text"
+                       label="modal_md"
+                       description="modal_md"
+                       default="600px"
+                       size="20"/>
+                <field name="modal_sm" type="text"
+                       label="modal_sm"
+                       description="modal_sm"
+                       default="300px"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="alerts" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="alert_padding" type="text"
+                       label="alert_padding"
+                       description="alert_padding"
+                       default="15px"
+                       size="20"/>
+                <field name="alert_border_radius" type="text"
+                       label="alert_border_radius"
+                       description="alert_border_radius"
+                       default="@border_radius_base"
+                       size="20"/>
+                <field name="alert_link_font_weight" type="text"
+                       label="alert_link_font_weight"
+                       description="alert_link_font_weight"
+                       default="bold"
+                       size="20"/>
+                <field name="alert_success_bg" type="text"
+                       label="alert_success_bg"
+                       description="alert_success_bg"
+                       default="@state_success_bg"
+                       size="20"/>
+                <field name="alert_success_text" type="text"
+                       label="alert_success_text"
+                       description="alert_success_text"
+                       default="@state_success_text"
+                       size="20"/>
+                <field name="alert_success_border" type="text"
+                       label="alert_success_border"
+                       description="alert_success_border"
+                       default="@state_success_border"
+                       size="20"/>
+                <field name="alert_info_bg" type="text"
+                       label="alert_info_bg"
+                       description="alert_info_bg"
+                       default="@state_info_bg"
+                       size="20"/>
+                <field name="alert_info_text" type="text"
+                       label="alert_info_text"
+                       description="alert_info_text"
+                       default="@state_info_text"
+                       size="20"/>
+                <field name="alert_info_border" type="text"
+                       label="alert_info_border"
+                       description="alert_info_border"
+                       default="@state_info_border"
+                       size="20"/>
+                <field name="alert_warning_bg" type="text"
+                       label="alert_warning_bg"
+                       description="alert_warning_bg"
+                       default="@state_warning_bg"
+                       size="20"/>
+                <field name="alert_warning_text" type="text"
+                       label="alert_warning_text"
+                       description="alert_warning_text"
+                       default="@state_warning_text"
+                       size="20"/>
+                <field name="alert_warning_border" type="text"
+                       label="alert_warning_border"
+                       description="alert_warning_border"
+                       default="@state_warning_border"
+                       size="20"/>
+                <field name="alert_danger_bg" type="text"
+                       label="alert_danger_bg"
+                       description="alert_danger_bg"
+                       default="@state_danger_bg"
+                       size="20"/>
+                <field name="alert_danger_text" type="text"
+                       label="alert_danger_text"
+                       description="alert_danger_text"
+                       default="@state_danger_text"
+                       size="20"/>
+                <field name="alert_danger_border" type="text"
+                       label="alert_danger_border"
+                       description="alert_danger_border"
+                       default="@state_danger_border"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="progress_bars" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="progress_bg" type="text"
+                       label="progress_bg"
+                       description="Background color of the whole progress component"
+                       default="#f5f5f5"
+                       size="20"/>
+                <field name="progress_bar_color" type="text"
+                       label="progress_bar_color"
+                       description="Progress bar text color"
+                       default="#fff"
+                       size="20"/>
+                <field name="progress_border_radius" type="text"
+                       label="progress_border_radius"
+                       description="Variable for setting rounded corners on progress bar."
+                       default="@border_radius_base"
+                       size="20"/>
+                <field name="progress_bar_bg" type="text"
+                       label="progress_bar_bg"
+                       description="Default progress bar color"
+                       default="@brand_primary"
+                       size="20"/>
+                <field name="progress_bar_success_bg" type="text"
+                       label="progress_bar_success_bg"
+                       description="Success progress bar color"
+                       default="@brand_success"
+                       size="20"/>
+                <field name="progress_bar_warning_bg" type="text"
+                       label="progress_bar_warning_bg"
+                       description="Warning progress bar color"
+                       default="@brand_warning"
+                       size="20"/>
+                <field name="progress_bar_danger_bg" type="text"
+                       label="progress_bar_danger_bg"
+                       description="Danger progress bar color"
+                       default="@brand_danger"
+                       size="20"/>
+                <field name="progress_bar_info_bg" type="text"
+                       label="progress_bar_info_bg"
+                       description="Info progress bar color"
+                       default="@brand_info"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="list_group" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="list_group_bg" type="text"
+                       label="list_group_bg"
+                       description="Background color on .list_group_item"
+                       default="#fff"
+                       size="20"/>
+                <field name="list_group_border" type="text"
+                       label="list_group_border"
+                       description=".list_group_item border color"
+                       default="#ddd"
+                       size="20"/>
+                <field name="list_group_border_radius" type="text"
+                       label="list_group_border_radius"
+                       description="List group border radius"
+                       default="@border_radius_base"
+                       size="20"/>
+                <field name="list_group_hover_bg" type="text"
+                       label="list_group_hover_bg"
+                       description="Background color of single list items on hover"
+                       default="#f5f5f5"
+                       size="20"/>
+                <field name="list_group_active_color" type="text"
+                       label="list_group_active_color"
+                       description="Text color of active list items"
+                       default="@component_active_color"
+                       size="20"/>
+                <field name="list_group_active_bg" type="text"
+                       label="list_group_active_bg"
+                       description="Background color of active list items"
+                       default="@component_active_bg"
+                       size="20"/>
+                <field name="list_group_active_border" type="text"
+                       label="list_group_active_border"
+                       description="Border color of active list elements"
+                       default="@list_group_active_bg"
+                       size="20"/>
+                <field name="list_group_active_text_color" type="text"
+                       label="list_group_active_text_color"
+                       description="Text color for content within active list items"
+                       default="lighten(@list_group_active_bg, 40%)"
+                       size="20"/>
+                <field name="list_group_disabled_color" type="text"
+                       label="list_group_disabled_color"
+                       description="Text color of disabled list items"
+                       default="@gray_light"
+                       size="20"/>
+                <field name="list_group_disabled_bg" type="text"
+                       label="list_group_disabled_bg"
+                       description="Background color of disabled list items"
+                       default="@gray_lighter"
+                       size="20"/>
+                <field name="list_group_disabled_text_color" type="text"
+                       label="list_group_disabled_text_color"
+                       description="Text color for content within disabled list items"
+                       default="@list_group_disabled_color"
+                       size="20"/>
+                <field name="list_group_link_color" type="text"
+                       label="list_group_link_color"
+                       description="list_group_link_color"
+                       default="#555"
+                       size="20"/>
+                <field name="list_group_link_hover_color" type="text"
+                       label="list_group_link_hover_color"
+                       description="list_group_link_hover_color"
+                       default="@list_group_link_color"
+                       size="20"/>
+                <field name="list_group_link_heading_color" type="text"
+                       label="list_group_link_heading_color"
+                       description="list_group_link_heading_color"
+                       default="#333"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="panels" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="panel_bg" type="text"
+                       label="panel_bg"
+                       description="panel_bg"
+                       default="#fff"
+                       size="20"/>
+                <field name="panel_body_padding" type="text"
+                       label="panel_body_padding"
+                       description="panel_body_padding"
+                       default="15px"
+                       size="20"/>
+                <field name="panel_heading_padding" type="text"
+                       label="panel_heading_padding"
+                       description="panel_heading_padding"
+                       default="10px 15px"
+                       size="20"/>
+                <field name="panel_footer_padding" type="text"
+                       label="panel_footer_padding"
+                       description="panel_footer_padding"
+                       default="@panel_heading_padding"
+                       size="20"/>
+                <field name="panel_border_radius" type="text"
+                       label="panel_border_radius"
+                       description="panel_border_radius"
+                       default="@border_radius_base"
+                       size="20"/>
+                <field name="panel_inner_border" type="text"
+                       label="panel_inner_border"
+                       description="Border color for elements within panels"
+                       default="#ddd"
+                       size="20"/>
+                <field name="panel_footer_bg" type="text"
+                       label="panel_footer_bg"
+                       description="panel_footer_bg"
+                       default="#f5f5f5"
+                       size="20"/>
+                <field name="panel_default_text" type="text"
+                       label="panel_default_text"
+                       description="panel_default_text"
+                       default="@gray_dark"
+                       size="20"/>
+                <field name="panel_default_border" type="text"
+                       label="panel_default_border"
+                       description="panel_default_border"
+                       default="#ddd"
+                       size="20"/>
+                <field name="panel_default_heading_bg" type="text"
+                       label="panel_default_heading_bg"
+                       description="panel_default_heading_bg"
+                       default="#f5f5f5"
+                       size="20"/>
+                <field name="panel_primary_text" type="text"
+                       label="panel_primary_text"
+                       description="panel_primary_text"
+                       default="#fff"
+                       size="20"/>
+                <field name="panel_primary_border" type="text"
+                       label="panel_primary_border"
+                       description="panel_primary_border"
+                       default="@brand_primary"
+                       size="20"/>
+                <field name="panel_primary_heading_bg" type="text"
+                       label="panel_primary_heading_bg"
+                       description="panel_primary_heading_bg"
+                       default="@brand_primary"
+                       size="20"/>
+                <field name="panel_success_text" type="text"
+                       label="panel_success_text"
+                       description="panel_success_text"
+                       default="@state_success_text"
+                       size="20"/>
+                <field name="panel_success_border" type="text"
+                       label="panel_success_border"
+                       description="panel_success_border"
+                       default="@state_success_border"
+                       size="20"/>
+                <field name="panel_success_heading_bg" type="text"
+                       label="panel_success_heading_bg"
+                       description="panel_success_heading_bg"
+                       default="@state_success_bg"
+                       size="20"/>
+                <field name="panel_info_text" type="text"
+                       label="panel_info_text"
+                       description="panel_info_text"
+                       default="@state_info_text"
+                       size="20"/>
+                <field name="panel_info_border" type="text"
+                       label="panel_info_border"
+                       description="panel_info_border"
+                       default="@state_info_border"
+                       size="20"/>
+                <field name="panel_info_heading_bg" type="text"
+                       label="panel_info_heading_bg"
+                       description="panel_info_heading_bg"
+                       default="@state_info_bg"
+                       size="20"/>
+                <field name="panel_warning_text" type="text"
+                       label="panel_warning_text"
+                       description="panel_warning_text"
+                       default="@state_warning_text"
+                       size="20"/>
+                <field name="panel_warning_border" type="text"
+                       label="panel_warning_border"
+                       description="panel_warning_border"
+                       default="@state_warning_border"
+                       size="20"/>
+                <field name="panel_warning_heading_bg" type="text"
+                       label="panel_warning_heading_bg"
+                       description="panel_warning_heading_bg"
+                       default="@state_warning_bg"
+                       size="20"/>
+                <field name="panel_danger_text" type="text"
+                       label="panel_danger_text"
+                       description="panel_danger_text"
+                       default="@state_danger_text"
+                       size="20"/>
+                <field name="panel_danger_border" type="text"
+                       label="panel_danger_border"
+                       description="panel_danger_border"
+                       default="@state_danger_border"
+                       size="20"/>
+                <field name="panel_danger_heading_bg" type="text"
+                       label="panel_danger_heading_bg"
+                       description="panel_danger_heading_bg"
+                       default="@state_danger_bg"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="thumbnails" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="thumbnail_padding" type="text"
+                       label="thumbnail_padding"
+                       description="Padding around the thumbnail image"
+                       default="4px"
+                       size="20"/>
+                <field name="thumbnail_bg" type="text"
+                       label="thumbnail_bg"
+                       description="Thumbnail background color"
+                       default="@body_bg"
+                       size="20"/>
+                <field name="thumbnail_border" type="text"
+                       label="thumbnail_border"
+                       description="Thumbnail border color"
+                       default="#ddd"
+                       size="20"/>
+                <field name="thumbnail_border_radius" type="text"
+                       label="thumbnail_border_radius"
+                       description="Thumbnail border radius"
+                       default="@border_radius_base"
+                       size="20"/>
+                <field name="thumbnail_caption_color" type="text"
+                       label="thumbnail_caption_color"
+                       description="Custom text color for thumbnail captions"
+                       default="@text_color"
+                       size="20"/>
+                <field name="thumbnail_caption_padding" type="text"
+                       label="thumbnail_caption_padding"
+                       description="Padding around the thumbnail caption"
+                       default="9px"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="wells" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="well_bg" type="text"
+                       label="well_bg"
+                       description="well_bg"
+                       default="#f5f5f5"
+                       size="20"/>
+                <field name="well_border" type="text"
+                       label="well_border"
+                       description="well_border"
+                       default="darken(@well_bg, 7%)"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="badges" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="badge_color" type="text"
+                       label="badge_color"
+                       description="badge_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="badge_link_hover_color" type="text"
+                       label="badge_link_hover_color"
+                       description="badge_link_hover_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="badge_bg" type="text"
+                       label="badge_bg"
+                       description="badge_bg"
+                       default="@gray_light"
+                       size="20"/>
+                <field name="badge_active_color" type="text"
+                       label="badge_active_color"
+                       description="Badge text color in active nav link"
+                       default="@link_color"
+                       size="20"/>
+                <field name="badge_active_bg" type="text"
+                       label="badge_active_bg"
+                       description="Badge background color in active nav link"
+                       default="#fff"
+                       size="20"/>
+                <field name="badge_font_weight" type="text"
+                       label="badge_font_weight"
+                       description="badge_font_weight"
+                       default="bold"
+                       size="20"/>
+                <field name="badge_line_height" type="text"
+                       label="badge_line_height"
+                       description="badge_line_height"
+                       default="1"
+                       size="20"/>
+                <field name="badge_border_radius" type="text"
+                       label="badge_border_radius"
+                       description="badge_border_radius"
+                       default="10px"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="breadcrumbs" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="breadcrumb_padding_vertical" type="text"
+                       label="breadcrumb_padding_vertical"
+                       description="breadcrumb_padding_vertical"
+                       default="8px"
+                       size="20"/>
+                <field name="breadcrumb_padding_horizontal" type="text"
+                       label="breadcrumb_padding_horizontal"
+                       description="breadcrumb_padding_horizontal"
+                       default="15px"
+                       size="20"/>
+                <field name="breadcrumb_bg" type="text"
+                       label="breadcrumb_bg"
+                       description="Breadcrumb background color"
+                       default="#f5f5f5"
+                       size="20"/>
+                <field name="breadcrumb_color" type="text"
+                       label="breadcrumb_color"
+                       description="Breadcrumb text color"
+                       default="#ccc"
+                       size="20"/>
+                <field name="breadcrumb_active_color" type="text"
+                       label="breadcrumb_active_color"
+                       description="Text color of current page in the breadcrumb"
+                       default="@gray_light"
+                       size="20"/>
+                <field name="breadcrumb_separator" type="text"
+                       label="breadcrumb_separator"
+                       description="Textual separator for between breadcrumb elements"
+                       default='"/"'
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="carousel" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="carousel_text_shadow" type="text"
+                       label="carousel_text_shadow"
+                       description="carousel_text_shadow"
+                       default="0 1px 2px rgba(0,0,0,.6)"
+                       size="20"/>
+                <field name="carousel_control_color" type="text"
+                       label="carousel_control_color"
+                       description="carousel_control_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="carousel_control_width" type="text"
+                       label="carousel_control_width"
+                       description="carousel_control_width"
+                       default="15%"
+                       size="20"/>
+                <field name="carousel_control_opacity" type="text"
+                       label="carousel_control_opacity"
+                       description="carousel_control_opacity"
+                       default=".5"
+                       size="20"/>
+                <field name="carousel_control_font_size" type="text"
+                       label="carousel_control_font_size"
+                       description="carousel_control_font_size"
+                       default="20px"
+                       size="20"/>
+                <field name="carousel_indicator_active_bg" type="text"
+                       label="carousel_indicator_active_bg"
+                       description="carousel_indicator_active_bg"
+                       default="#fff"
+                       size="20"/>
+                <field name="carousel_indicator_border_color" type="text"
+                       label="carousel_indicator_border_color"
+                       description="carousel_indicator_border_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="carousel_caption_color" type="text"
+                       label="carousel_caption_color"
+                       description="carousel_caption_color"
+                       default="#fff"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="close" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="close_font_weight" type="text"
+                       label="close_font_weight"
+                       description="close_font_weight"
+                       default="bold"
+                       size="20"/>
+                <field name="close_color" type="text"
+                       label="close_color"
+                       description="close_color"
+                       default="#000"
+                       size="20"/>
+                <field name="close_text_shadow" type="text"
+                       label="close_text_shadow"
+                       description="close_text_shadow"
+                       default="0 1px 0 #fff"
+                       size="20"/>
+            </fieldset>
+        </fields>
+
+        <fields name="code" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="code_color" type="text"
+                       label="code_color"
+                       description="code_color"
+                       default="#c7254e"
+                       size="20"/>
+                <field name="code_bg" type="text"
+                       label="code_bg"
+                       description="code_bg"
+                       default="#f9f2f4"
+                       size="20"/>
+                <field name="kbd_color" type="text"
+                       label="kbd_color"
+                       description="kbd_color"
+                       default="#fff"
+                       size="20"/>
+                <field name="kbd_bg" type="text"
+                       label="kbd_bg"
+                       description="kbd_bg"
+                       default="#333"
+                       size="20"/>
+                <field name="pre_bg" type="text"
+                       label="pre_bg"
+                       description="pre_bg"
+                       default="#f5f5f5"
+                       size="20"/>
+                <field name="pre_color" type="text"
+                       label="pre_color"
+                       description="pre_color"
+                       default="@gray_dark"
+                       size="20"/>
+                <field name="pre_border_color" type="text"
+                       label="pre_border_color"
+                       description="pre_border_color"
+                       default="#ccc"
+                       size="20"/>
+                <field name="pre_scrollable_max_height" type="text"
+                       label="pre_scrollable_max_height"
+                       description="pre_scrollable_max_height"
+                       default="340px"
+                       size="20"/>
+            </fieldset>
+        </fields>
+        <fields name="type" label="com_website_ATTRIBS_FIELDSET_LABEL">
+            <fieldset>
+                <field name="component_offset_horizontal" type="text"
+                       label="component_offset_horizontal"
+                       description="Horizontal offset for forms and lists"
+                       default="180px"
+                       size="20"/>
+                <field name="text_muted" type="text"
+                       label="text_muted"
+                       description="Text muted color"
+                       default="@gray_light"
+                       size="20"/>
+                <field name="abbr_border_color" type="text"
+                       label="abbr_border_color"
+                       description="Abbreviations and acronyms border color"
+                       default="@gray_light"
+                       size="20"/>
+                <field name="headings_small_color" type="text"
+                       label="headings_small_color"
+                       description="Headings small color"
+                       default="@gray_light"
+                       size="20"/>
+                <field name="blockquote_small_color" type="text"
+                       label="blockquote_small_color"
+                       description="Blockquote small color"
+                       default="@gray_light"
+                       size="20"/>
+                <field name="blockquote_font_size" type="text"
+                       label="blockquote_font_size"
+                       description="Blockquote font size"
+                       default="(@font_size_base * 1.25)"
+                       size="20"/>
+                <field name="blockquote_border_color" type="text"
+                       label="blockquote_border_color"
+                       description="Blockquote border color"
+                       default="@gray_lighter"
+                       size="20"/>
+                <field name="page_header_border_color" type="text"
+                       label="page_header_border_color"
+                       description="Page header border color"
+                       default="@gray_lighter"
+                       size="20"/>
+                <field name="dl_horizontal_offset" type="text"
+                       label="dl_horizontal_offset"
+                       description="Width of horizontal description list titles"
+                       default="@component_offset_horizontal"
+                       size="20"/>
+                <field name="hr_border" type="text"
+                       label="hr_border"
+                       description="Horizontal line color."
+                       default="@gray_lighter"
+                       size="20"/>
+            </fieldset>
+        </fields>
+    </fields>
+
+
+</form>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="socialprofiles" method="upgrade" client="site">
+    <name>Social Profiles - K2</name>
+    <version>6.0.0</version>
+    <creationDate>2014/02/17</creationDate>
+    <author>SourceCoast | www.sourcecoast.com</author>
+    <authorEmail>support@sourcecoast.com</authorEmail>
+    <authorUrl>http://www.sourcecoast.com</authorUrl>
+    <copyright>Copyright (C) 2010-2014 SourceCoast. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>K2 social network profile integration for JFBConnect (Facebook) and JLinked (LinkedIn)</description>
+    <files>
+        <filename plugin="k2">k2.php</filename>
+        <filename>k2/tmpl/configuration.php</filename>
+        <filename>forms/config.xml</filename>
+    </files>
+    <languages folder="translations">
+        <language tag="de-DE">de-DE.plg_socialprofiles_k2.ini</language>
+        <language tag="en-GB">en-GB.plg_socialprofiles_k2.ini</language>
+        <language tag="it-IT">it-IT.plg_socialprofiles_k2.ini</language>
+        <language tag="ro-RO">ro-RO.plg_socialprofiles_k2.ini</language>
+        <language tag="ru-RU">ru-RU.plg_socialprofiles_k2.ini</language>
+        <language tag="vi-VN">vi-VN.plg_socialprofiles_k2.ini</language>
+    </languages>
+</extension>

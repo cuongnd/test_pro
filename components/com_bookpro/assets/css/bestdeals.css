@@ -1,0 +1,91 @@
+@CHARSET "ISO-8859-1";
+.deal-thumbnail{
+	position: relative;
+}
+.deal-price{
+	position: absolute;
+	bottom:0;
+	left:0;
+	width:96px;
+	height: 20px;
+	top:69px;
+	background: #cadbdb;
+	opacity:0.9;
+	color:#000066;
+	font-weight: bold;
+	text-align: center;
+}
+.content-bestdeals{
+	padding-left:4px;
+	text-align:justify;
+	height:90px;
+}
+.dealprice{
+	font-size: 11px;
+	
+}
+.deal-pers{
+	font-size: 11px;
+}
+.bestdeal-title{
+	margin: 0;
+	padding:0;
+	line-height: normal;
+	font-size: 12px;
+	font-family: Arial;
+	font-weight: normal;
+	
+	line-height:15px;
+	
+}
+.contair-bestdeals{
+	height:75px;
+}
+.bestdeal-desc{
+	font-size: 11px;
+	color:#333333;
+	line-height:15px;
+	height:45px;
+	
+}
+.bestdeal-row{
+	margin-bottom:12px!important;
+}
+.view-details{
+	color:#339933;
+	font-weight:bold;
+	float:right;
+	background:url("../images/arry_view_details.png")no-repeat scroll 75px 6px transparent;
+	padding-right:20px;
+	height:15px;
+}
+.slide-up-1:hover{
+	float:left;
+	background:url("../images/arry_hover_3.png")no-repeat left top scroll !important;
+	width:16px !important;
+	height:16px !important;
+}
+.slide-down-1{
+	float:left;
+	width:16px !important;
+	height:16px !important;
+	background:url("../images/arry_hover_4.png")no-repeat left top scroll !important;
+	cursor:pointer;
+	margin-left:2px;
+
+}
+.slide-down-1:hover{
+	background:url("../images/arry_hover_4.png")no-repeat left top scroll !important;
+	width:16px !important;
+	height:16px !important;
+}
+.slide-up-1{
+	float:left;
+	width:16px !important;
+	height:16px !important;
+	padding:0px!important;
+	background:url("../images/arry_hover_3.png")no-repeat left top scroll !important;
+	
+	cursor:pointer;
+	
+}

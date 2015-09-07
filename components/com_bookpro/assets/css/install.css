@@ -1,0 +1,35 @@
+/**
+ * Styles for after install page
+ * 
+ * @version $Id: install.css 19 2012-06-26 12:58:05Z quannv $
+ * @package ARTIO Booking
+ * @subpackage assets
+ * @copyright Copyright (C) 2010 ARTIO s.r.o.. All rights reserved.
+ * @author ARTIO s.r.o., http://www.artio.net
+ * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ * @link http://www.artio.net Official website
+ */
+@CHARSET "UTF-8";
+
+.install {
+	background-color: #FFF;
+	padding: 20px;
+}
+
+.install img {
+	float: left;
+	padding-right: 20px;
+}
+
+.install h2 {
+	margin: 0px;
+	font-size: 30px;
+	line-height: 30px;
+	color: rgb(11, 85, 196);
+}
+
+.install p {
+	font-size: 14px;
+	width: 50%;
+	padding-left: 170px;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="content" method="upgrade">
+        <name>Subiz live chat</name>
+        <author>Mrsubiz</author>
+        <creationDate>march 13th, 2014</creationDate>
+        <copyright>Subiz.com</copyright>
+        <license>GNU General Public License</license>
+        <authorEmail>support@subiz.com</authorEmail>
+        <authorUrl>http://subiz.com</authorUrl>
+        <version>1.0</version>
+        <description>Subiz is live chat software based on cloud service. With Subiz, you can support visitors in a quick and effective way. Enter Subiz license id into the form below to complete. &lt;a target="_blank" href="https://subiz.freshdesk.com/support/solutions/articles/3000002936-frequently-asked#how_to_get_lincense_id"&gt;How to get Subiz license id?&lt;/a&gt;. &lt;a target="_blank" href="http://subiz.com/?utm_source=plugin_joomla&amp;utm_medium=link&amp;utm_campaign=plugin_joomla1.0"&gt;Sigup Subiz &lt;/a&gt;</description>
+        <files>
+                <filename plugin="subiz_live_chat">subiz_live_chat.php</filename>
+                <filename>index.html</filename>
+        </files>
+		  <config>
+                <fields name="params">
+                        <fieldset name="basic">
+                                <field name="subiz_licence_id" type="text" default="" description="Licence id subiz" label="Licence Id" size="5"   />
+                        </fieldset>
+ 
+                </fields>
+        </config>
+</extension>

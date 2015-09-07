@@ -1,0 +1,313 @@
+.affiliates {
+    height: 330px;
+    background: url(/static/img/banner-affiliates.jpg?v=0c71160daedb8521ec47035f3220e7c1&amp;m=2) no-repeat bottom;
+    padding-top: 10px
+}
+
+.affiliates a:link {
+    color: #008bcb
+}
+
+.affiliates a:link.btn {
+    color: #fff
+}
+
+.affiliates ul {
+    margin: 0
+}
+
+.affiliates li {
+    list-style: none;
+    margin: 1px
+}
+
+.affiliates p {
+    font-size: 100%;
+    margin: 0
+}
+
+.affiliates small {
+    font-size: 12px
+}
+
+.affiliates div {
+    width: 440px
+}
+
+.affiliates ul.tick li {
+    background: url(/static/img/sprite-icons.png?v=e90640970351223446e79c12e7503a44&amp;m=2) no-repeat;
+    background-position: -16px -3430px;
+    font-size: 16px;
+    height: 30px;
+    line-height: 18px;
+    padding-left: 35px;
+    padding-top: 10px
+}
+
+#content {
+    font-size: 13px
+}
+
+#content h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 20px
+}
+
+#content h2 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 15px;
+    padding-bottom: 0
+}
+
+#content h3 {
+    font-size: 14px;
+    font-weight: 700;
+    padding-bottom: 10px;
+    line-height: normal
+}
+
+#content h4 {
+    font-size: 100%
+}
+
+#content h4.banner-label, #content h4.code-label {
+    padding-bottom: 10px
+}
+
+#content img {
+    border: 0
+}
+
+#content ol.accordion {
+    padding: 0;
+    margin: 0 0 40px;
+    list-style: none
+}
+
+#content ol.accordion code {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -khtml-border-radius: 3px;
+    background-color: #fcf6d0;
+    border: #f8d784 solid 1px;
+    clear: both;
+    color: #000;
+    display: block;
+    font-family: "Courier New", Courier, monospace;
+    margin-bottom: 30px;
+    padding: 20px
+}
+
+#content ol.accordion code span {
+    color: #008bcb
+}
+
+#content ol.accordion li {
+    display: list-item;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: auto;
+    zoom: 1
+}
+
+#content ol.accordion li#javascript_section h4 {
+    float: left
+}
+
+#content ol.accordion li#javascript_section h4 + p {
+    float: right;
+    padding-bottom: 10px
+}
+
+#content ol.accordion li#javascript_section p:first-child {
+    padding-bottom: 10px
+}
+
+#content ol.accordion li#ad_units .details p:first-child, #content ol.accordion li#affiliate_api .details p:first-child, #content ol.accordion li#data_feeds .details p:first-child, #content ol.accordion li#rss_feeds .details p:first-child {
+    padding-bottom: 10px
+}
+
+#content ol.accordion li#data_feeds li {
+    list-style-type: disc
+}
+
+#content ol.accordion li#text_links .details p {
+    padding-bottom: 10px
+}
+
+#content ol.accordion li#text_links .details p:last-child {
+    padding-bottom: 20px
+}
+
+#content ol.accordion li h3 {
+    background: #FFF;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#cdcccc');
+    background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#cdcccc));
+    background: -moz-linear-gradient(top, #fafafa, #cdcccc);
+    border: #CCC solid 1px;
+    border-bottom: 0;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    height: 45px;
+    line-height: 45px;
+    margin: 0;
+    padding: 0 25px 0 50px
+}
+
+#content ol.accordion li h3.selected, #content ol.accordion li h3:hover {
+    color: #008bcb
+}
+
+#content ol.accordion li .details {
+    padding: 20px;
+    text-align: left
+}
+
+#content #earn-steps.row-fluid {
+    padding: 0;
+    margin: 20px 0 40px
+}
+
+#content #earn-steps.row-fluid .span4 {
+    background: #eaf9fe;
+    display: block
+}
+
+#content #earn-steps.row-fluid .span4 div {
+    height: 50px;
+    padding: 20px 20px 23px;
+    border: #bbd9ef solid 1px
+}
+
+#content #earn-steps.row-fluid .span4 h3 {
+    color: #008bcb;
+    height: 16px;
+    padding: 0 0 3px
+}
+
+#content #earn-steps.row-fluid .span4 p {
+    font-size: 12px
+}
+
+#content #earn-steps.row-fluid .span4 span.icon-32 {
+    background: url(/static/img/sprite-icons.png?v=e90640970351223446e79c12e7503a44&amp;m=2) no-repeat;
+    display: block;
+    float: left;
+    height: 32px;
+    margin: 10px 5px 5px 0;
+    width: 32px
+}
+
+#content #earn-steps.row-fluid .span4 span.icon-32.copy {
+    background-position: -16px -2942px
+}
+
+#content #earn-steps.row-fluid .span4 span.icon-32.earn {
+    background-position: -16px -3654px
+}
+
+#content #earn-steps.row-fluid .span4 span.icon-32.register {
+    background-position: -16px -3602px
+}
+
+#content #earn-steps.row-fluid li.last {
+    margin-right: 0
+}
+
+#content #commision_payouts {
+    float: left;
+    margin-right: 20px;
+    width: 520px
+}
+
+#content #commision_payouts small {
+    display: block;
+    padding-bottom: 20px
+}
+
+#content #commision_payouts .row-fluid {
+    border-bottom: #CCC solid 1px;
+    border-left: #CCC solid 1px;
+    border-top: #CCC solid 1px;
+    margin-bottom: 15px;
+    width: 100%
+}
+
+#content #commision_payouts .row-fluid div {
+    margin: 0
+}
+
+#content #commision_payouts .row-fluid .box-head {
+    background: #FFF;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#cdcccc));
+    background: -moz-linear-gradient(top, #fafafa, #cdcccc);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#cdcccc');
+    border-right: #ccc solid 1px;
+    font-weight: 400;
+    padding: 15px 0;
+    text-align: center;
+    vertical-align: middle
+}
+
+#content #commision_payouts .row-fluid .box-content {
+    border-top: #ccc solid 1px;
+    border-right: #ccc solid 1px;
+    padding: 15px 5px;
+    text-align: center;
+    vertical-align: middle
+}
+
+#content #commision_payouts .row-fluid .span3 {
+    width: 25%
+}
+
+#content #commision_payouts .row-fluid .span6 {
+    width: 50%
+}
+
+#content #program_benefits {
+    float: left;
+    margin-left: 20px;
+    width: 360px
+}
+
+#content #program_benefits p {
+    padding-bottom: 10px
+}
+
+#content #program_benefits + div + h2 {
+    margin-top: 30px
+}
+
+#content-main p {
+    font-size: 100%;
+    line-height: 1.2em;
+    padding: 0 0 20px;
+    word-wrap: break-word
+}
+
+#content-main img {
+    padding-bottom: 30px
+}
+
+#content-main ul {
+    list-style-type: disc;
+    padding: 0 0 10px 30px
+}
+
+.link-param {
+    color: #008bcb
+}
+
+.extra_instruction {
+    color: #555;
+    font-size: 12px
+}
+

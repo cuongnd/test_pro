@@ -1,0 +1,417 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+
+@import "streamtypes";
+
+/*------------------------------------*\
+	$Stream - stream.less
+\*------------------------------------*/
+
+.stream-title {
+	margin: 0 0 5px;
+}
+
+.es-streams {
+	padding: 10px 0 0 20px;
+	// background: #fff;
+	.getContrast(@esStoryContainerBackground);
+	
+	.es-story {
+		margin-bottom: 16px;
+	}
+}
+
+.stream-shared-border {
+	border-left: 5px solid @esStreamSharedBorder;
+}
+
+//stream list ul
+.es-stream-list {
+	list-style: none;
+	margin: 0;
+	min-height: 370px;
+	padding-bottom: 20px;
+	> li {
+
+		&.hidden {
+			opacity: 0;
+		}
+
+		&.hide-stream {
+			.es-stream {
+				display: none;
+			}
+		}
+		+ li {
+			margin-top: 16px;
+		}
+	}
+}
+
+//stream loop items
+.es-stream {
+	position: relative;
+	border: 1px solid @esStreamBorder;
+	background: @esStreamBackground;
+	.border-radius(3px);
+
+	&.es-feed-loading {
+		min-height: 50px;
+		height: 50px;
+		background: url('@{media_uri}/../images/loading.gif') no-repeat center center;
+		> * {
+			display: none;
+		}
+	}
+}
+
+//meta area
+.es-stream-meta {
+	padding: 10px;
+	border-bottom: 1px solid @esStreamBorder;
+	.es-stream-type {
+		margin-bottom: 3px;
+		text-transform: uppercase;
+	}
+	.es-stream-title {
+		font-size: 11px;
+		a {
+			font-size: 11px; // enforce <a> with diffrent font-size
+		}
+		i {
+			position: relative;
+			top: 1px;
+		}
+	}
+}
+
+.es-stream-content {
+	font-size: 11px;
+	padding: 10px 10px 0;
+	word-break: break-word;
+	.getContrast(@esStreamBackground);
+	a {
+		font-size: 11px; //enforce <a> with diffrent font-size
+	}
+}
+
+.es-stream-info-meta{
+	color: #777;
+}
+
+.es-stream-content-avatar {
+	width: 100px;
+	height: 100px;
+	max-width: none;
+}
+
+.es-stream-content-thumb {
+	padding: 0 10px 10px 0;
+	float: left;
+}
+
+//share link preview
+.es-stream-preview {
+	padding: 8px;
+	.stream-preview-title {
+		background: @esStreamPreviewBackground;
+		padding: 10px;
+		font-size: 13px;
+		line-height: 20px;
+		font-weight: bold;
+		.border-radius(3px);
+		.text-overflow();
+		i {
+			color: #ccc;
+		}
+	}
+
+}
+
+//stream-actions
+.es-stream-actions {
+	+ .es-stream-actions {
+		margin-top: 3px;
+	}
+	+ .es-stream-counter {
+		margin-top: 3px;
+	}
+}
+.es-stream-actions.pull-right {
+	margin-top: 0;
+}
+.es-stream-counter {
+	background: @esStreamCounterBackground;
+	// margin-bottom: 3px;
+	.clearfix();
+	.es-stream-actions {
+		display: inline-block;
+	}
+	+ .es-stream-actions {
+		margin-top: 3px;
+	}
+
+	.dropdown-menu.dropdown-menu-counter {
+		width: 340px;
+		padding: 0;
+		// padding: 10px;
+		&:before {
+			border-bottom: 7px solid rgba(0, 0, 0, 0.2);
+			border-left: 7px solid transparent;
+			border-right: 7px solid transparent;
+			content: "";
+			display: inline-block;
+			left: 9px;
+			position: absolute;
+			top: -7px;
+		}
+		&:after {
+			border-bottom: 6px solid #f8f8f8;
+			border-left: 6px solid transparent;
+			border-right: 6px solid transparent;
+			content: "";
+			display: inline-block;
+			left: 10px;
+			position: absolute;
+			top: -6px;
+		}
+		.view-all-title {
+			background: #f8f8f8;
+			color: #555;
+			padding: 8px 10px;
+			font-weight: bold;
+		}
+		ul.es-avatar-list {
+			padding: 5px 10px;
+			> li {
+				display: inline-block;
+				a {
+					padding: 0;
+				}
+			}
+		}
+		.scrollbar-wrap .viewport {
+			height: 220px;
+		}
+	}//dropdown-menu-counter
+	// .es-action-wrap ul > li
+	.pull-right {
+		.dropdown-menu.dropdown-menu-counter {
+			left: auto;
+			&:before{
+				left: auto;
+				right: 19px;
+			}
+			right: 0;
+			&:after{
+				left: auto;
+				right: 20px;
+			}
+		}
+	}
+}
+
+.es-likes-wrap,
+.es-repost-wrap {
+	background: @esRepostWrapBackground;
+	position: relative;
+	font-size: 10px;
+	clear: both;
+	word-break: break-all;
+	// top: 10px;
+	// margin-bottom: 4px;
+	padding: 5px;
+	[class^="icon-es-"],
+	[class*=" icon-es-"] {
+		position: relative;
+		top: -1px;
+	}
+}
+
+.es-stream-hide-notice{
+	background: #f6f9fc;
+	border: 1px dashed #D7D7D7;
+	padding: 20px;
+	color: #666;
+	font-size: 11px;
+
+	a{
+		float: right;
+	}
+}
+
+//stream top right author control
+.es-stream-control {
+	position: absolute;
+	right: 6px;
+	top: 10px;
+	.btn-control {
+		
+		.icon-es-dropdown {
+			position: absolute;
+			top: 6px;
+			left: 4px;
+		}
+	}
+	.dropdown-menu {
+		border: 1px solid @esStreamControlMenuBorder;
+		li {
+			> a {
+				font-size: 11px;
+			}
+		}
+	}
+	&:hover {
+		z-index: 5;
+		.btn-control {
+			border-bottom: 1px solid @esStreamControlBorder;
+		}
+		> .dropdown-menu {
+			display: block;
+
+		}
+	}
+
+	.btn-control {
+		display: block;
+		width: 16px;
+		height: 16px;
+		line-height: 16px;
+		text-align: center;
+		position: relative;
+		z-index: 2;
+		border: 1px solid @esStreamControlMenuBorder;
+		background: @esStreamControlBackground;
+		.border-radius(2px);
+		i {
+			vertical-align: middle;
+			font-size: 10px;
+			color: #888;
+		}
+	}
+	> .dropdown-menu {
+		// display: block;
+		font-size: 12px;
+		.border-radius(3px 0 3px 3px);
+		margin: -1px 0 0;
+		z-index: 1;
+		> li {
+			a {
+				&:hover,
+				&:focus {
+					// background: #5c93ce;
+				}
+			}
+			&.divider {
+				border-bottom: 1px solid @dropdownBorder;
+				margin: 5px 10px;
+			}
+		}
+	}
+}//control
+
+
+//stream action
+.es-action-wrap {
+	clear: both;
+	padding: 3px 10px 0;
+	ul {
+		> li {
+			display: inline;
+			position: relative;
+		}
+	}
+
+	a{
+		outline: 0;
+	}
+}
+
+.es-action-feedback {
+	> li {
+		position: relative;
+		margin-right: 12px;
+		+ li {
+			&:before {
+				content: ".";
+				position: absolute;
+				display: inline-block;
+				font-size: 11px;
+				// font-weight: bold;
+				line-height: 10px;
+				left: -9px;
+				top: 0;
+				color: #888;
+			}
+		}
+	}
+}
+
+
+// Single Stream View
+// ----------------
+&.view-stream,
+.view-stream {
+	.es-streams {
+		padding: 10px 0 0 0;
+	}
+}
+
+
+// Single Activities Log View
+// ----------------
+&.view-activities {
+	.es-stream {
+		padding: 10px;
+		.media {
+			margin-top: 0;
+		}
+		.es-privacy {
+			position: absolute;
+			left: auto;
+			right: 26px;
+			top: 5px;
+			width: 40px;
+		}
+		.es-stream-control {
+			top: 7px;
+		}
+	}//stream
+
+}
+
+.stream-updates-counter
+{
+    background: none repeat scroll 0 0 #E16273;
+    border: 1px solid #E27A93;
+    border-radius: 3px;
+    display: none;
+    font-size: 8px;
+    line-height: 12px;
+    padding: 0 3px;
+}
+
+
+// Responsive
+&.w480 {
+	.es-streams {
+		padding: 10px 0 0 0;
+	}
+
+	.es-stream-counter {
+		.dropdown-menu.dropdown-menu-counter {
+			width: 250px;
+		}
+	}
+
+}
+
+&.popbox-repost {
+	width: 341px;
+	min-height: 64px;
+}
+

@@ -1,0 +1,98 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+/*------------------------------------*\
+    $icon.less
+\*------------------------------------*/
+
+// Remove bootstrap icons
+// ----------------
+[class^="icon-"],
+[class*=" icon-"] {
+	// background-image: none;
+	// vertical-align: baseline;
+	// height: auto
+}
+
+// icon mixins
+// ----------------
+// =Icon -add in custom icon (@element)
+@sprite-px: 18px; //icon grid
+.spriteGrid(@x, @y) {
+	background-position: -((@x*@sprite-px)-@sprite-px) -((@y*@sprite-px)-@sprite-px);
+}
+.spriteSize(@size) {
+	width: @size;
+	height: @size;
+	line-height:@size;
+}
+[class^="icon-es-"],
+[class*=" icon-es-"] {
+	// display: inline-block;
+	// width:@sprite-px;
+	// height:@sprite-px; // '@{discussIconSpritePath}/../images/icon-sprite.png'
+	// background-repeat: no-repeat;
+	// line-height:@sprite-px;
+	//background-image: url("@{site_base_uri}");
+	// vertical-align: text-top
+}
+[class^="icon-es-tb-"],
+[class*=" icon-es-tb-"] {
+	margin-top: 0;
+	width:@sprite-px;
+	height:@sprite-px;
+	background-image: url("@{site_base_uri}/../images/icon-toolbar-white.png") !important;
+	.spriteSize(18px);
+	//background-image: url("@{discussToolbarSpritePath}");
+}
+[class^="icon-es-"]:last-child,
+[class*=" icon-es-"]:last-child {
+	// *margin-left:0
+}
+
+
+
+//toolbar
+.icon-es-tb-home {
+	.spriteGrid(1, 1);
+}
+.icon-es-tb-users {
+	.spriteGrid(2, 1);
+}
+.icon-es-tb-msg {
+	.spriteGrid(3, 1);
+}
+.icon-es-tb-globe {
+	.spriteGrid(4, 1);
+}
+.icon-es-tb-locked {
+	.spriteGrid(5, 1);
+}
+.icon-es-tb-stream {
+	.spriteGrid(6, 1);
+}
+.icon-es-tb-tri-down {
+	.spriteGrid(9, 1);
+	width: 8px;
+	height: 4px;
+}
+.icon-es-tb-magnifier {
+	.spriteGrid(10, 1);
+	.square(12px);
+}
+
+//has-notice
+.has-notice {
+	.icon-es-tb-users {
+		.spriteGrid(2, 2);
+	}
+	.icon-es-tb-msg {
+		.spriteGrid(3, 2);
+	}
+	.icon-es-tb-globe {
+		.spriteGrid(4, 2);
+	}
+}

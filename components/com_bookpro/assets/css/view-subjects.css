@@ -1,0 +1,31 @@
+/**
+ * CSS for list subjects page
+ * 
+ * @version $Id: view-subjects.css 19 2012-06-26 12:58:05Z quannv $
+ * @package ARTIO Booking
+ * @subpackage assets
+ * @copyright Copyright (C) 2010 ARTIO s.r.o.. All rights reserved.
+ * @author ARTIO s.r.o., http://www.artio.net
+ * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ * @link http://www.artio.net Official website
+ */
+ @CHARSET "UTF-8";
+
+/**
+ * Custom toolbar button for create new subject
+ */
+div.toolbarTitle {
+	text-align: center;
+}
+
+td#toolbar-custom div.toolbarTitle a.toolbar {
+	float: none;
+}
+
+div.toolbarSelect {
+	margin-right: 5px;
+}
+
+div.toolbarSelect select {
+	width: 150px;
+}

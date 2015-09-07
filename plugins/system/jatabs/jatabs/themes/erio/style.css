@@ -1,0 +1,172 @@
+/**
+ * ------------------------------------------------------------------------
+ * JA Tabs Plugin for J25 & J3.2
+ * ------------------------------------------------------------------------
+ * Copyright (C) 2004-2011 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+ * @license - GNU/GPL, http://www.gnu.org/licenses/gpl.html
+ * Author: J.O.O.M Solutions Co., Ltd
+ * Websites: http://www.joomlart.com - http://www.joomlancers.com
+ * ------------------------------------------------------------------------
+ */
+/* JA Tabs top*/
+.erio .ja-tab-panels-top {
+	
+}
+
+.erio .ja-tabs-title-top {
+	position: relative;
+	width: 100%;
+	background: none repeat scroll 0 0 #E7E8E9;
+}
+
+.erio .ja-tabs-title-top ul.ja-tabs-title {
+	height: 55px;
+}
+
+.erio .ja-tabs-title-top ul.ja-tabs-title li {
+	color: #7b7d80;
+	border-top: 5px solid #e7e8e9;
+	background-color: #1a1a1a;
+	height: 50px;
+	width: 90px;
+	text-align: center;
+	background-image: url(grey_border_l.gif);
+	background-repeat: repeat-y;
+	background-position: 0 0;
+}
+
+.erio .ja-tabs-title-top ul.ja-tabs-title li.first {
+	width: 79px;
+	background-image: none;
+}
+
+.erio .ja-tabs-title-top ul.ja-tabs-title li.last {
+	width: 70px;
+	margin-right: -1px;
+}
+
+.erio .ja-tabs-title-top ul.ja-tabs-title li h3 {
+	font-size: 92%;
+	font-weight: 700;
+	background: none;
+	color: #7b7d80;
+	margin: 0;
+	padding: 0;
+	line-height: 4.5;
+	text-transform: uppercase;
+}
+
+.erio .ja-tabs-title-top ul.ja-tabs-title li.hover,.erio .ja-tabs-title-top ul.ja-tabs-title li.firsthover,.erio .ja-tabs-title-top ul.ja-tabs-title li.lasthover
+	{
+	
+}
+
+.erio .ja-tabs-title-top ul.ja-tabs-title li.active,.erio .ja-tabs-title-top ul.ja-tabs-title li.firstactive,.erio .ja-tabs-title-top ul.ja-tabs-title li.lastactive
+	{
+	border-top: 5px solid #61abd6;
+	color: #222;
+	background-image: none;
+	background-color: #fff;
+}
+
+.erio .ja-tabs-title-top ul li.active h3,.erio .ja-tabs-title-top ul li.firstactive h3,.erio .ja-tabs-title-top ul li.lastactive h3
+	{
+	color: #222;
+}
+
+/* JA Tabs left*/
+.erio .ja-tabs-title-left {
+	position: relative;
+	float: left;
+	height: 100%;
+}
+
+.erio .ja-tabs-title-left ul.ja-tabs-title li {
+	height: 100%;
+	cursor: pointer;
+}
+
+.erio .ja-tabs-title-left ul.ja-tabs-title li h3 {
+	font-size: 92%;
+	font-weight: 700;
+}
+
+.erio .ja-tabs-title-left ul li.active,.erio .ja-tabs-title-left ul li.firstactive,.erio .ja-tabs-title-left ul li.lastactive
+	{
+	
+}
+
+.erio .ja-tabs-title-left ul li.active H3,.erio .ja-tabs-title-left ul li.firstactive H3,.erio .ja-tabs-title-left ul li.lastactive H3
+	{
+	
+}
+
+/* JA Tabs right*/
+.erio .ja-tab-panels-right .ja-tab-subcontent {
+	
+}
+
+.erio .ja-tabs-title-right {
+	
+}
+
+.erio .ja-tabs-title-right ul.ja-tabs-title li {
+	height: 100%;
+	cursor: pointer;
+}
+
+.erio .ja-tabs-title-right ul.ja-tabs-title li h3 {
+	font-size: 92%;
+	font-weight: 700;
+	background: none;
+}
+
+.erio .ja-tabs-title-right ul li.active,.erio .ja-tabs-title-right ul li.firstactive,.erio .ja-tabs-title-right ul li.lastactive
+	{
+	
+}
+
+.erio .ja-tabs-title-right ul li.active H3,.erio .ja-tabs-title-right ul li.firstactive H3,.erio .ja-tabs-title-right ul li.lastactive H3
+	{
+	color: #333333;
+}
+
+/* JA Tabs bottom*/
+.erio .ja-tabs-title-bottom {
+	height: 30px;
+	position: relative;
+	width: 100%;
+}
+
+.erio .ja-tabs-title-bottom ul.ja-tabs-title li {
+	background: #F7F7F7;
+	margin-left: 5px;
+	margin-top: -1px;
+}
+
+.erio .ja-tabs-title-bottom ul.ja-tabs-title li h3 {
+	font-size: 100%;
+	font-weight: bold !important;
+	margin: 0;
+	padding: 0 10px;
+	color: #999999;
+}
+
+.erio .ja-tabs-title-bottom ul.ja-tabs-title li.hover,.erio .ja-tabs-title-bottom ul.ja-tabs-title li.firsthover,.erio .ja-tabs-title-bottom ul.ja-tabs-title li.lasthover
+	{
+	
+}
+
+.erio .ja-tabs-title-bottom ul.ja-tabs-title li.active,.erio .ja-tabs-title-bottom ul.ja-tabs-title li.firstactive,.erio .ja-tabs-title-bottom ul.ja-tabs-title li.lastactive
+	{
+	background: #FFFFFF;
+}
+
+.erio .ja-tabs-title-bottom ul li.active h3,.erio .ja-tabs-title-bottom ul li.firstactive h3,.erio .ja-tabs-title-bottom ul li.lastactive h3
+	{
+	color: #333333;
+}
+
+.ja-tabswrap div.ja-tab-subcontent {
+	padding: 0 20px;
+}

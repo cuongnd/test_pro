@@ -1,0 +1,138 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+*{outline:none;}
+html{
+min-height: 100%; /*Sets the min height to the
+  height of the viewport.*/
+ width: 100%;
+ height: 100%; /*Effectively, this is min height
+  for IE5+/Win, since IE wrongly expands
+  an element to enclose its content.
+  This mis-behavior screws up modern
+  browsers*/
+ margin: 0;
+ padding: 0;
+ }
+BODY
+{
+    font-family:Verdana,Arial,sans-serif,;
+    color:#444444;
+    font-size:62.5%;
+    min-height: 100%; /*Sets the min height to the
+  height of the viewport.*/
+ width: 100%;
+ height: 100%; /*Effectively, this is min height
+  for IE5+/Win, since IE wrongly expands
+  an element to enclose its content.
+  This mis-behavior screws up modern
+  browsers*/
+ margin: 0;
+ padding: 0;
+ background-image:url('bg.gif');
+}
+/* thumbnail list */
+
+    
+    
+    
+        
+    
+    
+/* // thumbnail list */
+
+#header{
+    height:100px;
+    background:transparent url(slideshow.png) no-repeat 50% 16px ;
+}
+
+#footer{
+    height: 43px; /* .push must be the same height as .footer */
+    padding-top:10px;
+    /*border-top:1px solid black; */
+    width:979px;
+    margin:0pt auto 0px;
+}
+#footer div p{
+  width:979px;
+}
+
+ #push {
+    height: 43px; /* .push must be the same height as .footer */
+    padding-top:10px;
+}
+#wrapper{
+    width:979px;
+    min-height: 96%;
+    height: auto !important;
+    height: 96%;
+    text-align:left;
+    margin: 0 auto -30px;
+    padding:0 10px 0px 10px;
+}
+
+.clearfix{
+    clear:both;
+    float:none;
+}
+#bigPic{
+    width:940px;
+    height:300px;
+    padding:1px;
+    border:1px solid #CCC;
+    background-color:#FFF;
+    margin-bottom:10px;
+}
+#bigPic img{
+    position:absolute;
+    display:none;    
+    height: 300px !important;    
+    width: 940px !important;
+}
+ul#thumbs li.active{
+    border:2px solid #000;    
+    background:#fff;
+    padding:2px;
+}
+ul#thumbs, ul#thumbs li{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+    
+ul#thumbs li{
+    float:left;
+    margin-right:7px;
+    margin-bottom:5px;
+    border:1px solid #CCC;    
+    padding:3px;
+    cursor:pointer;
+}
+ul#thumbs img{
+    float:left;
+    width:80px;
+    height:80px;
+    line-height:80px;
+    overflow:hidden;
+    position:relative;
+    z-index:1;        
+}
+
+.t3-mainbody{
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+}

@@ -1,0 +1,901 @@
+@CHARSET "ISO-8859-1";
+
+#header2{
+    padding-bottom:0px;
+    padding-top: 10px;
+}
+ul li{
+    list-style:none;
+}
+#content2 ul li{
+    list-style: none !important;
+}
+
+#list-car > .row-fluid > .span9{
+    border: 0.5px solid #999999;
+    background: #eee;
+    font-size: 11px;
+}
+
+.background-gray{
+    background:#ECF1F5 !important;
+}
+
+#list1,#list2,#list3{
+    padding-top:21px;
+    background:white;
+    padding-left:17px;
+
+}
+#list2,#list3{
+    border-top:0.5px solid #999999;
+    margin-top:7px;
+}
+.blue{
+    color:#6DAEC2;
+}
+
+h6{
+    font-size: 14px;
+
+}
+#list1 ul, #list2 ul, #list3 ul{
+    margin: 0 auto;
+}
+#header2 h3{
+    font-size: 21px;
+    color: #006599;
+    line-height: 27px;
+    padding-left: 10px;
+    font-weight: lighter;
+}
+#header2 >.row-fluid >.span9 >.row-fluid >.span12{
+    background:#EDF2F6;
+
+}
+
+h4{
+    font-size: 19px;
+    padding-top: 16px;
+    padding-bottom: 12px;
+}
+table{
+    width:100%;
+
+}
+table tr td{
+    padding-left: 0px;
+    padding-top:10px;
+}
+
+#header2 .span6 strong{
+    font-size: 20px;
+}
+.padding-t{
+    padding-top:25px;
+}
+#header2 hr{
+    border: 1px solid #ccc;
+    margin-top: 0px;
+}
+.top_destinations .pagination.pagination-centered
+{
+    background: none repeat scroll 0 0 #fff !important;
+    float: right;
+    margin: 0;
+    position: relative;
+    z-index: 99;
+}
+
+.featured-car-rental-title {
+    width: 100px;
+    height: 55px;
+    background: #007799;
+    position: relative;
+}
+
+.featured-car-rental-title:before {
+    content: "";
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 25px solid #007799;
+}
+
+.featured-car-rental-title:after {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 25px solid #007799;
+}
+
+.main-vacation-tip
+{
+    background: #eeeeee;
+    padding: 5px;
+}
+.main-vacation-tip h3
+{
+    text-transform: uppercase;
+}
+.main-vacation-tip ul li
+{
+    list-style: disc outside none;
+}
+.car-rental-offers .header
+{
+
+}
+.wapper-car-search .float-left
+{
+    float: left;
+}
+.wapper-car-search  .header
+{
+    font-weight: bold;
+    color: #9a0003;
+    text-transform: uppercase;
+}
+.wapper-car-search .float-right
+{
+    float: right;
+}
+.car-rental-offers  .header .special-car-rental
+{
+    background: url('../images/icons/icon-search.png') no-repeat 1% center;
+    padding: 5px 35px 5px;
+}
+.car-rental-offers .header .change-currency
+{
+    background: url('../images/icons/icon-bag.png') no-repeat right center;
+    padding: 5px 20px 5px;
+}
+.car-rental-offers
+{
+    border: 1px #cccccc solid ;
+}
+.car-rental-offers .body .item
+{
+    border-right:  1px #cccccc dotted;
+    text-align: center;
+    padding: 10px;
+}
+.car-rental-offers .footer
+{
+    background: #ddd;
+}
+.show-more
+{
+    background: url('../images/icons/icon-blue-next.png') no-repeat 99% center;
+    padding: 5px 20px 5px;
+    text-align: right;
+}
+.car-rental-offers .body .item:last-child
+{
+
+}
+.car-rentals
+{
+    padding-top: 20px;
+}
+.car-rentals .header
+{
+    background: #d2d2d2;
+
+}
+.car-rentals .car-rental-left,.car-rentals .car-rental-right
+{
+    padding: 10px;
+}
+.car-rentals .header
+{
+    font-weight: normal;
+    color: inherit;
+    text-transform: none;
+}
+.car-rentals .header .title
+{
+    font-weight: bold;
+    color: #9a0003;
+    text-transform: uppercase;
+}
+.car-rentals  .car-rental-left
+{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.car-rental-left .from-to,.car-rental-left .time
+{
+    padding-left: 65px ;
+    text-align: center;
+}
+.car-rental-right > .prev-day,.car-rental-right > .next-day
+{
+    margin-right: 5px;
+    padding: 0px 20px;
+    background: #fff;
+    border: 1px #b5b5b5 solid;
+}
+.from-to-icon
+{
+    padding: 0 5px;
+}
+.car-rental-right .title-prev-day
+{
+    background: url('../images/icons/icon-black-prev.png') no-repeat left center;
+    padding-left: 15px ;
+}
+.car-rental-right .title-next-day
+{
+    background: url('../images/icons/icon-black-next.png') no-repeat right center;
+}
+.car-rental-right .chart-map
+{
+    background: url('../images/icons/bg-chart-map.png') no-repeat  center;
+    height: 40px;
+    width: 40px;
+
+}
+.car-rentals .body
+{
+    padding-top: 20px;
+}
+.car-rentals .body thead th
+{
+    padding: 10px;
+}
+.one-way-icon
+{
+    background: url('../images/icons/icon-one-way.png') no-repeat left  center;
+    padding-left:30px ;
+}
+.round-trip
+{
+    background: url('../images/icons/icon-round-trip.png') no-repeat left  center;
+    padding-left:30px ;
+}
+.car-rentals .body table
+{
+    border: 1px #ccc solid;
+}
+.car-rentals .body tbody td
+{
+    padding: 10px;
+}
+.footer-item
+{
+    text-transform: uppercase;
+    color: #0071b1;
+    font-weight: bold;
+    background-color: #d0d0d0;
+    padding: 10px;
+}
+.trip-detail
+{
+    background: url('../images/icons/icon-to.png') no-repeat center right;
+    padding-right:15px ;
+}
+.price-rule
+{
+    background: url('../images/icons/icon-to.png') no-repeat center right;
+    padding-right:15px ;
+}
+.car-rentals .wapper-footer
+{
+    padding: 10px;
+    text-align: right;
+}
+.car-rentals .footer .more-offers
+{
+
+}
+.car-rentals .footer .prev-icon
+{
+    padding: 5px;
+    margin-right: 10px;
+}
+.car-rentals .footer .next-icon
+{
+    padding: 5px;
+}
+.wapper-footer .more-offers,.wapper-footer .control-top,.wapper-footer .control-down
+{
+    padding-right:10px ;
+}
+.refine-your-result
+{
+    border: 1px #ccc solid;
+
+}
+.refine-your-result .header
+{
+    background: #d2d2d2;
+    padding: 10px 0px;
+}
+.refine-your-result .price-range
+{
+    padding-top: 20px;
+    background: #ECF1F5;
+
+}
+.refine-your-result .price-range .header
+{
+    background: none;
+}
+.price-range .body
+{
+    padding: 20px;
+    background: #fff;
+}
+.price-range .body .slider-range
+{
+    margin: 20px;
+}
+
+.div2_need_some_help{
+    background:#ebf1f4;
+    padding-bottom:12px;
+}
+.container_div2_need_some_help{
+    background:#fff;
+    border:1px solid #cccccc;
+    margin-left:8px;
+    margin-right:8px;
+}
+.title_div3_2{
+    background:#fff;
+    border:1px solid #cccccc;
+    margin-left:8px;
+    margin-right:8px;
+    font-weight:normal;
+}
+.container_div3_need_some_help p{
+    padding-left:10px;
+    padding-right:10px;
+    font-weight:bold;
+    color:#990000;
+    padding-top:1px;
+    padding-bottom:0px;
+}
+.container_div2_need_some_help p{
+    padding-left:36px;
+    font-weight:bold;
+    padding-top:8px;
+    margin:0px;
+}
+.container_div2_need_some_help .phone{
+    background: url("../images/phone.png")no-repeat scroll 8px 6px!important;
+}
+.container_div2_need_some_help .chat{
+    background: url("../images/chat.png")no-repeat scroll 8px 6px!important;
+}
+.container_div2_need_some_help .email{
+    background: url("../images/email.png")no-repeat scroll 8px 6px!important;
+    padding-bottom:5px;
+}
+.content_need_some_help{
+    padding-right:4px;
+}
+.tilte_div2_need_some_help{
+    font-weight:bold;
+    color:#000!important;
+    padding-left:30px!important;
+    padding-top:0px!important;
+    background: url("../images/icon_title.png")no-repeat scroll 8px 4px!important;
+    margin-bottom:2px;
+}
+.div3_need_som_help{
+    background:#f9f9f9;
+}
+.bg_div2_need_some_help{
+    border: 1px solid #cdcdcd;
+    background: #fff;
+    margin-left: 10px;
+    height: 50px;
+    margin-right: 10px;
+    z-index:99;
+}
+.bg_1_need_some_help{
+    background:#e1e0de;
+    margin:0px;
+    top:-20px;
+    padding-bottom:20px!important;
+}
+.tilte_div3_need_some_help{
+    font-weight:bold;
+    color:#000;
+    padding-left:28px;
+    padding-top:2px;
+    background: url("../images/icon_title.png")no-repeat scroll 8px 6px!important;
+    margin-bottom:2px;
+}
+.login-error
+{
+    color: red;
+}
+.login-account .header
+{
+    text-align: center;
+}
+.traveller-detail > .header ,.select-pickup-drop-off > .header ,.traveller-add-ons > .header, .booking-summary > .header
+{
+
+    background: #95A5A5;
+
+}
+.traveller-detail > .header h3,.select-pickup-drop-off h3,.traveller-add-ons h3, .booking-summary h3
+{
+    color: #fff;
+    padding:5px  10px;
+    margin: 0px;
+    text-transform: uppercase;
+}
+.traveller-detail,.select-pickup-drop-off ,.traveller-add-ons,.additional-request,.booking-summary
+{
+    margin-top: 20px;
+    border: 1px #95A5A5 solid;
+}
+.widgetbookpro-loading .msg {
+    background: none repeat scroll 0 0 #ccc;
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 40px;
+    margin: 180px auto 0;
+    text-align: center;
+    width: 400px;
+}
+.select-pickup-drop-off .input-pickup-info
+{
+
+}
+.icon-place
+{
+    background: url('../images/icons/icon-bag.png') no-repeat right center;
+    padding: 5px 20px 5px;
+}
+.traveller-add-ons table thead th
+{
+    padding: 10px;
+    background: #ECECEC;
+    color: #9A0000;
+}
+.additional-request .header
+{
+    text-transform: uppercase;
+}
+.additional-request
+{
+    border: none;
+}
+.additional-request textarea
+{
+    width: 90%;
+}
+.select-payment
+{
+    border: 1px #CCCCCC solid;
+}
+.select-payment legend
+{
+    background: #666666;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+fieldset.select-payment {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+    box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend.select-payment {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width:auto;
+    padding:0 10px;
+    border-bottom:none;
+    margin: 0;
+}
+.wapper-car-booking input[type="checkbox"]
+{
+    margin-right: 5px;
+}
+.icon-cw
+{
+    background: url('../images/icons/icon-question.png') no-repeat right center;
+    padding: 5px 20px 5px;
+}
+.booking-summary > .header
+{
+    background: #EEEEEE;
+
+}
+.booking-summary > .header h3
+{
+    color: #990002;
+}
+.car-car_type
+{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.booking-summary .service,.trip-details .rental
+{
+    background: #666666;
+    color: #fff;
+    padding:5px 10px;
+    margin: 10px;
+}
+.wapper-booking-detail .wapper
+{
+    padding: 10px;
+    font-weight: bold;
+}
+.round-car-bg
+{
+    background: url('../images/icons/bg-car-round.png') no-repeat center 150%;
+    text-align: center;
+    font-weight: bold;
+
+
+}
+.round-car-bg .wapper
+{
+    padding: 15px;
+}
+.icon-clock
+{
+    background: url('../images/icons/icon-clock.png') no-repeat left center;
+
+}
+.round-car-bg .wapper .time
+{
+    padding: 0 0 0 20px;
+}
+.round-car-bg .wapper .space
+{
+    padding: 0 10px;
+}
+.header.trip-details
+{
+    background: url('../images/icons/icon-to.png') no-repeat left center;
+    border-bottom: 1px #0C7D9D solid;
+    padding: 5px 20px;
+    text-transform: capitalize;
+    color: #1C85A3;
+    font-weight: bold;
+
+}
+table.trip-detail .icon-question
+{
+    background: url('../images/icons/icon-question.png') no-repeat left center;
+    padding: 5px 20px;
+
+}
+.select-pickup-drop-off .icon-place
+{
+    background: url('../images/icons/icon-place.png') no-repeat right center;
+    padding: 10px 40px 10px 5px;
+    line-height: 35px;
+
+}
+table.trip-detail
+{
+    font-weight: bold;
+}
+table.trip-detail th
+{
+    background: none;
+    color: #666666;
+    font-weight: bold;
+}
+.main-price
+{
+    background: #666666;
+    padding: 10px 0;
+    color: #fff;
+}
+.must-pay .price
+{
+    font-weight: bold;
+    font-size: 30px;
+}
+.main-price .rental-rule
+{
+    text-transform: uppercase;
+    padding: 0 10px;
+}
+.select-bustrip
+{
+    border: 2px #006697 solid;
+    border-radius: 3px;
+    padding: 2px !important;
+    background: #E2ECF8;
+    margin: 0px;
+}
+.price
+{
+    font-weight: bold;
+    text-align: center;
+}
+.main-select-trip
+{
+    padding: 10px;
+}
+.widgetbookpro-loading
+{
+    background : url("../images/loading.gif");
+    background-position: 50% 50%;
+    background-repeat:no-repeat;
+}
+#search-car-rentals .item-image
+{
+    max-width: 200px !important;
+    max-height: 300px !important;
+}
+.booking-summary .item-image
+{
+    max-width: 200px !important;
+    max-height: 300px !important;
+}
+.warped-content
+{
+    padding: 10px;
+}
+.warped-content .space,.warped-content .title
+{
+    padding: 0 5px;
+}
+.wapper-car-search input[type="checkbox"]
+{
+    margin: 0px;
+}
+.sub-wrapper-content
+{
+    padding: 5px;
+}
+.traveller-detail .plus
+{
+    background: #f9f9f9;
+    border: 1px #cccccc solid;
+    padding: 4px 10px;
+    margin: 0 1px;
+}
+.traveller-detail .code
+{
+    border: 1px #cccccc solid;
+    padding: 4px 10px;
+    margin: 0 1px;
+}
+.select-date select
+{
+    margin: 0 1px;
+}
+.select-pickup-date-time .date-time
+{
+    margin: 0 1px;
+}
+button.ui-datepicker-trigger {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+}
+div.icon-checked
+{
+    background: url('../images/icons/icon-checked.png') no-repeat center center;
+    height: 20px !important;
+    width: 20px !important;
+    border: 1px #cccccc solid;
+    display: block;
+    cursor: pointer;
+}
+div.icon-checked.uncheck
+{
+    background: none;
+}
+.input-pickup-info .space-and
+{
+    border-right: 1px #ccc solid;
+    position: relative;
+}
+.input-pickup-info .space-and .radius-and {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    color: #660000;
+    font-weight: bold;
+    padding: 4px 2px;
+    position: absolute;
+    right: -15px;
+    text-transform: uppercase;
+    top: 39%;
+}
+.select-pickup-drop-off .input-place
+{
+    width: 88%;
+    overflow-y: scroll;
+    resize:none;
+
+
+}
+img.add-one-detail
+{
+    cursor: pointer;
+}
+tr.add-one-detail
+{
+    display: none;
+}
+tr.add-one-detail.show
+{
+    display: table-row;
+}
+.select-payment .moth-year select
+{
+    margin: 0 1px;
+}
+.additional-request textarea
+{
+    width: 99%;
+    overflow-y: scroll;
+    resize:none;
+}
+img.question
+{
+    padding: 5px;
+}
+.sign-in
+{
+    padding-top:10px ;
+}
+.sign-in .header
+{
+    background: #e2e0de;
+    color: #000;
+}
+.sign-in .content-header
+{
+    padding: 5px 5px;
+}
+.sign-in .send-email
+{
+    padding: 5px 0px;
+}
+
+
+label {
+    display: inline;
+}
+.regular-checkbox {
+    display: none;
+}
+.regular-checkbox + label {
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 -15px 10px -12px rgba(0, 0, 0, 0.05) inset;
+    display: block;
+    float: left;
+    height: 25px;
+    margin: 0;
+    padding: 4px 0 1px 6px;
+    position: relative;
+    width: 25px;
+}
+.regular-checkbox + label:active, .regular-checkbox:checked + label:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+.regular-checkbox:checked + label {
+    background-color: #e9ecee;
+    border: 1px solid #adb8c0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+    color: #99a1a7;
+}
+.regular-checkbox:checked + label:after {
+    color: #99a1a7;
+    content: "✔";
+    float: left;
+    font-size: 22px;
+    left: 6px;
+}
+.big-checkbox + label {
+    padding: 18px;
+}
+.big-checkbox:checked + label:after {
+    font-size: 28px;
+    left: 6px;
+}
+.tag {
+    display: block;
+    float: left;
+    font-family: Arial,sans-serif;
+    font-weight: bold;
+    padding-left: 12px;
+    position: relative;
+    text-transform: uppercase;
+    top: 5px;
+    width: 200px;
+}
+.phone-number .plus
+{
+    background: #faf6f6;
+    border: 1px #cdcecf solid;
+    padding: 4px 12px;
+
+}
+.phone-number .prefix-number
+{
+    background: #faf6f6;
+    border: 1px #cdcecf solid;
+    padding: 4px 9px;
+    margin-left: 2px;
+}
+.phone-number .suffix-number
+{
+    margin-left: 2px;
+}
+.phone-number
+{
+    padding:5px 0;
+}
+.login.btn-primary.input-submit-login
+{
+   width: 98%;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.login-account .max-characters
+{
+    padding: 8px 0px;
+}
+.login-account .sub-wrapper-content
+{
+    border-left: 1px #ccc solid;
+    margin-left: 10px;
+}
+
+.btn-primary.input-submit-booking,.btn-primary.input-submit-login
+{
+    background-color:#ff6b00 !important ;
+    background-image: linear-gradient(to bottom, #ff4c00, #ff6700) !important;
+    padding: 10px;
+    width: 100%;
+}
+.sign-in .sub-wrapper-content
+{
+    border: 1px #e2e0de solid;
+}
+.card-type .card-type-item,.select-time-payment .payment
+{
+    margin: 0 2px;
+}
+#booking-login
+{
+}
+img
+{
+    max-width: inherit !important;
+}
+.top_destinations .blog_itemimage img.thumbnail
+{
+    width: 150px;
+    height: 90px;
+}
+.top_destinations .content
+{
+    width: 150px;
+}

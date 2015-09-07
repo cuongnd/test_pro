@@ -1,0 +1,189 @@
+// Attaches itself as part of #es-wrap
+&.es-photo-popup {
+
+	position: relative;
+
+    background: rgba(0,0,0,0.3);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    .box-sizing(border-box);
+    padding: 30px;
+
+    &.active {
+    	display: block !important;
+    }
+
+    /*
+	.es-photo-popup-container {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	*/
+
+	.es-popup-close-button {
+		position: absolute;
+		z-index: 2;
+		top: 95px;
+		right: 95px;
+
+		i {
+			font-size: 12px;
+			width: 12px;
+			height: 12px;
+		}
+	}
+
+	.es-photo-viewer {
+		width: 100%;
+		height: 100%;
+		position: relative;
+		z-index: 1;
+		.box-shadow(0 0 25px rgba(0,0,0,0.7));
+
+		.es-photo-viewport {
+			position: relative;
+			margin-left: 80px;
+			margin-right: 320px;
+			height: 100%;
+			background-color: black;
+			background-color: rgba(0,0,0,0.85);
+			z-index: 1;
+		}
+
+		.es-photo-nav-button {
+			height: 100%;
+		}
+
+		.es-photo-content-holder {
+			position: absolute;
+			width: 320px;
+			height: 100%;
+			background: white;
+			top: 0;
+			right: 0;
+			z-index: 2;
+		}
+
+		.es-photo-thumbnails-holder {
+			position: absolute;
+			width: 80px;
+			height: 100%;
+			top: 0;
+			left: 0;
+			z-index: 2;
+			background: @gray;
+		}
+
+		.es-photo-thumbnail {
+			cursor: pointer;
+		}
+
+		.es-photo-thumbnail-image {
+		    background-position: 50% 50%;
+		    background-size: cover;
+		    height: 70px;
+		    margin: 5px;
+		    width: 70px;		
+		}
+
+		.es-photo-content {
+			.box-sizing(border-box);
+			height: 100%;
+			margin: 0;
+			position: relative;
+
+			.tabbable {
+				height: 100%;
+
+				.nav-tabs {
+					height: 100%;
+					margin: 0;
+					border: none;
+					background: gray;
+					width: 50px;
+					float: none;
+					position: absolute;
+					right: 0;					
+
+					> li {
+						margin: 0;
+						cursor: pointer;
+					}		
+
+					> li > a {
+						margin: 0;
+						.border-radius(0);
+						border: none;
+						min-width: 0;
+						height: 50px;
+						padding: 0;
+
+						> i {
+							line-height: 50px;
+						}
+					}
+				}
+
+				.tab-content {
+					margin-right: 50px;
+					padding: 10px;
+					text-align: left;
+				}
+			}
+		}
+
+
+
+		.es-photo-comments-holder {
+			height: 100%;
+
+			.viewport {
+				height: 100%;
+			}
+		}
+
+		// .es-photo-menu {
+		// 	position: absolute;
+		// 	top: 15px;
+		// 	left: -43px;
+		// 	text-align: left;
+		// 	margin: 0;
+		// 	padding: 0;
+
+		// 	> a {
+		// 		padding: 5px;
+		// 		float: right;
+		// 	}
+
+		// 	li {
+		// 		padding: 0;
+		// 	}
+
+		// 	.dropdown-menu {
+		// 		left: auto;
+		// 		right: 0;
+
+		// 		li:hover {
+		// 			text-decoration: none !important;
+		// 		}
+
+		// 		.divider {
+		// 			padding: 0;
+		// 		}
+		// 	}
+		// }
+
+		&.tagging,
+		&.creatingAvatar {
+			.es-photo-viewport {
+				margin-top: 0;
+			}
+		}
+	}
+}

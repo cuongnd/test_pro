@@ -1,0 +1,9 @@
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>index</title>
+</head>
+<body id="index" >
+
+       <script type="text/javascript"> var joombookpro_account_id = "17";var remote_url="template.ibookingonline.com/site/busesandhotels/";(function() {var joombookpro = document.createElement("script");joombookpro.type = "text/javascript";joombookpro.async = true;joombookpro.src = ("https:" == document.location.protocol ? "https://" : "http://") +remote_url+"components/com_bookpro/assets/js/widgetbookpro/widgetbookpro.js";var script_node = document.getElementsByTagName("script")[0]; script_node.parentNode.insertBefore(joombookpro, script_node); })(); </script> <div id="widgetbookpro"></div>
+
+</body>

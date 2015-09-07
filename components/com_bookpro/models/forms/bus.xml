@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/administrator/components/com_bookpro/elements">
+        <fields>
+
+            <field
+                    name="id"
+                    type="hidden"
+                    default="0"
+                    required="true"
+                    readonly="true"/>
+            <field
+                    name="title"
+                    type="text"
+                    required="true"
+                    />
+            <field
+                    name="code"
+                    type="text"
+                    required="true"
+                    />
+            <field
+                    name="image"
+                    type="media"
+                    required="true"
+                    />
+            <field
+                    name="desc"
+                    type="editor"
+                    required="true"
+                    />
+
+
+        </fields>
+    </fieldset>
+</form>	

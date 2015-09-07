@@ -1,0 +1,642 @@
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+	background-color: #EDF2F5 !important;
+	border: none !important;
+}
+ul#myTab {
+	border: none !important;
+}
+.wrapper-top {
+	background: #f4f4f4;
+	padding-bottom: 50px;
+}
+.wrapper-top .left-info {
+	background: #f4f4f4 url("../images/layout-default-tour/background-infotop.png") no-repeat;
+}
+.wrapper-top .left-info .title {
+	padding-top: 29px;
+	color: #009900;
+}
+.wrapper-top .left-info .title i.fa-comments {
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+}
+.wrapper-top .left-info .columns {
+	background: #ffffff;
+	border: 1px solid #cccccc;
+}
+.wrapper-top .left-info .columns h6 {
+	color: #660000;
+	text-align: center;
+}
+.wrapper-top .left-info .activity {
+	margin: 0;
+	padding: 0;
+}
+.wrapper-top .left-info .activity i {
+	font-size: 25px;
+	color: #6eb43f;
+}
+.wrapper-top .left-info .activity .activity-title {
+	margin: 0;
+	padding: 0;
+	padding-top: 10px;
+}
+.wrapper-top .left-info .activity .icons {
+	margin: 0;
+	padding: 0;
+	padding-top: 15px;
+}
+.wrapper-top .left-info .activity .icons i {
+	margin-left: 15px !important;
+}
+.wrapper-top .left-info .title-price-tour {
+	font-size: 13px;
+	font-weight: normal;
+	color: #ffffff;
+	padding-left: 20px;
+}
+.wrapper-top .left-info .columns1 ul,
+.wrapper-top .left-info .columns2 ul {
+	list-style: none;
+	padding: 0px !important;
+}
+.wrapper-top .left-info .title-price-tour b {
+	font-size: 30px;
+	padding-top: 10px;
+}
+.tour {
+	background: #4e4538;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: -30px;
+	margin-left: 20px !important;
+	margin-right: 20px !important;
+}
+.tour h5 {
+	color: white;
+}
+.tab-infomation {
+	padding-top: 15px;
+}
+.tab-infomation .holiday {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+.tab-infomation .holiday p {
+	margin: 0 !important;
+	line-height: 1.5;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 25px;
+	background: url("../images/layout-default-tour/bg-text-holiday.jpg") no-repeat;
+}
+.tab-infomation .win-up-to {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+.tab-infomation .relative-tour {
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	margin-top: 5px;
+	background: #f2f2f2;
+}
+.tab-infomation .relative-tour .glimpse {
+	background: #ffffff;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	margin-bottom: 15px;
+}
+.tab-infomation .relative-tour .glimpse .img-glimpse {
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	padding-top: 5px;
+}
+.tab-infomation .relative-tour .glimpse .glimpse-info {
+	padding-left: 5px !important;
+}
+.tab-infomation .relative-tour .glimpse .glimpse-info h6 {
+	margin-bottom: 5px;
+	margin-top: 5px;
+	color: #1b85a3;
+	text-align: right;
+}
+.tab-infomation .relative-tour .glimpse .glimpse-info .icon-star {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	margin-bottom: 0 !important;
+	color: #f88e01;
+}
+.tab-infomation .relative-tour .glimpse .glimpse-info .icon-star p {
+	font-weight: bold;
+	color: #08789b;
+	margin-bottom: 0 !important;
+}
+.tab-infomation .relative-tour .glimpse .glimpse-info .icon-star p b {
+	font-size: 20px;
+}
+.tab-infomation .relative-tour .glimpse .glimpse-info .booking-online {
+	padding: 0 !important;
+	margin: 0 !important;
+	font-size: 10px;
+	border-radius: 10px;
+	background: #95a5a5;
+	padding: 4px;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+}
+.tab-infomation .relative-tour .glimpse .travelling {
+	padding-top: 0 !important;
+	margin-top: 0 !important;
+}
+.tab-infomation .relative-tour .glimpse .travelling h6 {
+	padding-top: 0 !important;
+	margin-top: 0 !important;
+}
+.tab-infomation .need-some-help {
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-top: 5px;
+	border: 1px solid #dcdcdc;
+}
+.tab-infomation .need-some-help .title-help {
+	background: #e2e0de;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.tab-infomation .need-some-help .title-help h5 {
+	margin: 0 !important;
+	padding: 10px !important;
+	color: #990000;
+}
+.tab-infomation .need-some-help .instant-support {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: #eeeeee;
+}
+.tab-infomation .need-some-help .instant-support .info-support {
+	background: white;
+	border: 1px solid #dcdcdc;
+	margin: 5px;
+	padding-left: 10px;
+}
+.tab-infomation .need-some-help .instant-support .info-support i {
+	color: #6bcb4c;
+}
+.tab-infomation .need-some-help .office-hours {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: #eeeeee;
+}
+.tab-infomation .need-some-help .office-hours .info-office-hours {
+	background: white;
+	border: 1px solid #dcdcdc;
+	margin: 5px;
+	padding-left: 10px;
+}
+.tab-infomation .need-some-help .community {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: #eeeeee;
+}
+.tab-infomation .need-some-help .community textarea {
+	margin: 5px;
+	padding-left: 10px;
+}
+.tab-infomation #myTabContent {
+	border: none !important;
+}
+.tab-infomation #myTabContent .border-top {
+	margin-top: -15px;
+	background: -webkit-linear-gradient(#ebf1f4,#ffffff);
+	background: -o-linear-gradient(#ebf1f4,#ffffff);
+	background: -moz-linear-gradient(#ebf1f4,#ffffff);
+	background: linear-gradient(#ebf1f4,#ffffff);
+}
+.tab-infomation #myTabContent .title-left {
+	text-align: center;
+	padding-left: 0px !important;
+	border-right: 1px;
+	border-right-style: solid;
+	-webkit-border-image: -webkit-gradient(linear,0 0,0 100%,from(black),to(rgba(0,0,0,0))) 1 100%;
+	-webkit-border-image: -webkit-linear-gradient(black,rgba(0,0,0,0)) 1 100%;
+	-moz-border-image: -moz-linear-gradient(black,rgba(0,0,0,0)) 1 100%;
+	-o-border-image: -o-linear-gradient(black,rgba(0,0,0,0)) 1 100%;
+	border-image: linear-gradient(to bottom,black,rgba(0,0,0,0)) 1 100%;
+}
+.tab-infomation #myTabContent .title-left .this-tour {
+	color: #e49016;
+}
+.tab-infomation #myTabContent .title-left .this-tour i {
+	font-size: 30px;
+	margin-right: 2px !important;
+	float: none;
+}
+.tab-infomation #myTabContent .rating h1 {
+	color: #e49016;
+}
+.tab-infomation #myTabContent .icon-request {
+	color: #e49016;
+	font-size: 80px;
+}
+.tab-infomation #myTabContent .trip-reviews {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.tab-infomation #myTabContent .overall-score {
+	color: #007799;
+	font-weight: bold;
+}
+.tab-infomation #myTabContent .overall-score sub {
+	font-size: 30px;
+	margin-top: 10px;
+}
+.tab-infomation #myTabContent .write-review {
+	color: #007799;
+}
+.tab-infomation #myTabContent .write-review .im-pen {
+	color: #017d01;
+	font-size: 25px;
+}
+.tab-infomation #myTabContent .news {
+	padding-top: 15px;
+	background: #f8f7f5;
+	margin-bottom: 15px;
+}
+.tab-infomation #myTabContent .news h6 {
+	text-align: center;
+	color: #007799;
+}
+.tab-infomation #myTabContent .news h5 {
+	color: #007799;
+}
+.tab-infomation #myTabContent .news h5 i {
+	color: #ff665c;
+}
+.tab-infomation #myTabContent .news h5.review {
+	color: #339933;
+}
+.tab-infomation #myTabContent .experience h5 {
+	color: #2582a0;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.tab-infomation #myTabContent .experience .icon-star {
+	color: #339933;
+	padding-left: 53px;
+}
+.tab-infomation #myTabContent .date h6 {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.tab-infomation #myTabContent .icon-ok {
+	padding-top: 4px;
+	font-size: 15px;
+	color: #999999;
+}
+.tab-infomation #myTabContent .read-full-review i {
+	font-size: 15px;
+	color: #999999 !important;
+}
+.tab-infomation #myTabContent .read-full-review h5 {
+	color: #009900;
+}
+.tab-infomation #overview {
+	margin: 0 !important;
+	padding: 0 !important;
+	margin-top: 13px !important;
+}
+.tab-infomation #overview .info-tour-days {
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+}
+.tab-infomation #overview .info-tour-days h5 {
+	margin-bottom: 2px !important;
+}
+.tab-infomation #overview .info-tour-days p {
+	margin-bottom: 2px !important;
+}
+.tab-infomation #overview .location-foot {
+	padding-top: 0 !important;
+	border-bottom: 1px dotted #808080;
+}
+.tab-infomation #overview h6 {
+	color: #006699;
+	margin-bottom: 2px !important;
+	margin-top: 2px !important;
+	padding-right: 0 !important;
+}
+.tab-infomation #overview h6 i {
+	font-size: 20px;
+	float: none;
+}
+.tab-infomation #overview .icon-arrow-up-dow {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.tab-infomation #overview .icon-arrow-up-dow .im-arrow-down2,
+.tab-infomation #overview .icon-arrow-up-dow .im-arrow-up3 {
+	font-size: 15px;
+	color: #007799;
+	padding-left: 5px;
+}
+.tab-infomation #overview .wraper-include {
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+}
+.tab-infomation #overview .wraper-include >h5 {
+	background: #f1f1f1;
+	padding: 5px;
+	color: #990033;
+}
+.tab-infomation #overview .wraper-include .info-note-tour {
+	border-bottom: 1px dotted #a9a9a9;
+	margin: 0px !important;
+	padding: 0px !important;
+}
+.tab-infomation #overview .wraper-include .info-note-tour h5 {
+	padding: 0 !important;
+	margin: 0 !important;
+	margin-bottom: 3px;
+	color: #006699;
+	margin-top: 10px !important;
+}
+.tab-infomation #overview .wraper-include .info-note-tour p {
+	margin-bottom: 5px !important;
+	padding: 0px !important;
+}
+.tab-infomation #overview .last-overview {
+	padding-right: 0 !important;
+}
+.tab-infomation #overview .last-overview .price-from {
+	margin-top: 10px;
+	padding: 5px;
+	background: #f1f1f1 !important;
+	border-radius: 5px;
+}
+.tab-infomation #overview .last-overview .price-from label {
+	color: #007799;
+}
+.tab-infomation #overview .last-overview .price-from .details-price-from {
+	font-weight: bold;
+	color: #cc0000;
+	padding-left: 60px !important;
+}
+.tab-infomation #overview .last-overview .price-from .details-price-from h6 {
+	color: #3b5a6f;
+	padding-top: 10px !important;
+	padding-bottom: 20px;
+}
+.tab-infomation #overview .last-overview .price-from .details-price-from i {
+	color: #3b5a6f;
+	font-size: 15px;
+}
+.tab-infomation #overview .last-overview .price-from .details-price-from sub {
+	font-size: 25px;
+}
+.tab-infomation #overview .last-overview button.btn-primary {
+	float: right;
+	margin-right: 10px;
+	margin-top: -15px;
+}
+.tab-infomation #overview .last-overview img {
+	padding-top: 20px;
+	padding-left: 20px;
+}
+.tab-infomation #itinerary {
+	margin: 0 !important;
+	padding: 0 !important;
+	margin-top: 13px !important;
+}
+.tab-infomation #itinerary h5.big-title {
+	color: #cc0000;
+}
+.tab-infomation #itinerary .info-itinerary {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #808080;
+}
+.tab-infomation #itinerary .info-itinerary h6 {
+	color: #007799;
+}
+.tab-infomation #itinerary .info-itinerary .icon-note {
+	background: #f7f7f7;
+}
+.tab-infomation #itinerary .info-itinerary .icon-note .icon {
+	font-size: 55px;
+	color: #20679a;
+	padding-left: 0 !important;
+}
+.tab-infomation #itinerary .icon-arrow-up-dow {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.tab-infomation #itinerary .icon-arrow-up-dow .im-arrow-down2,
+.tab-infomation #itinerary .icon-arrow-up-dow .im-arrow-up3 {
+	font-size: 15px;
+	color: #007799;
+	padding-left: 5px;
+}
+.tab-infomation #price-date {
+	margin: 0 !important;
+	padding: 0 !important;
+	margin-top: 13px !important;
+}
+.tab-infomation #price-date .date-input {
+	background: #dcdcdc;
+	padding: 5px;
+}
+.tab-infomation #price-date .date-input .date-input-childen {
+	margin: 0 !important;
+	padding: 0 !important;
+	line-height: 28px;
+}
+.tab-infomation #price-date .date-input .date-input-childen .date {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.tab-infomation #price-date .date-input .date-input-childen .date i {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	font-size: 20px;
+	color: #000000;
+}
+.tab-infomation #price-date .date-input .date-input-childen .input {
+	margin: 0 !important;
+	padding: 0 !important;
+	margin-left: -12px;
+}
+.tab-infomation #price-date .table {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.tab-infomation #price-date .table i.br-info {
+	color: #3b5a6f;
+	font-size: 20px;
+	margin-right: 3px;
+}
+.tab-infomation #price-date .table i.im-fire {
+	color: red;
+	font-size: 20px;
+}
+.tab-infomation #price-date .table-option {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.tab-infomation #price-date .table-option h6 {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.tab-infomation #price-date .table-option i {
+	font-size: 20px;
+	color: #007799;
+	float: none;
+}
+.tab-infomation #price-date .icon-note-price-date {
+	background: #f7f7f7;
+}
+.tab-infomation #price-date .icon-note-price-date .icon {
+	font-size: 55px;
+	color: #20679a;
+	padding-left: 5px !important;
+}
+.tab-infomation #price-date .class-tour {
+	padding-left: 0 !important;
+}
+.tab-infomation #price-date .class-tour h5 {
+	color: #007799;
+}
+.tab-infomation #price-date .last-child {
+	text-align: right;
+}
+.tab-infomation #price-date .last-child i {
+	font-size: 20px;
+	float: none;
+	margin-left: 10px;
+}
+.tab-infomation #price-date .col-md-12 {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.tab-infomation #price-date .class-tour-info-wrapper {
+	padding-left: 0px !important;
+	padding-right: 5px !important;
+}
+.tab-infomation #price-date .class-tour-info-wrapper-last {
+	padding-right: 0px !important;
+	padding-left: 5px !important;
+}
+.tab-infomation #price-date .class-tour-info {
+	margin-bottom: 10px !important;
+	padding: 0 !important;
+	background: #f6f9fa;
+}
+.tab-infomation #price-date .class-tour-info .img {
+	padding-left: 0 !important;
+}
+.tab-infomation #price-date .class-tour-info .info {
+	padding-top: 0 !important;
+}
+.tab-infomation #price-date .class-tour-info .info h5.hanoi {
+	text-align: center;
+	border-bottom: 1px solid #808080;
+	margin-bottom: 3px !important;
+	margin-left: 3px !important;
+	margin-right: 3px !important;
+}
+.tab-infomation #price-date .class-tour-info .info .deluxe {
+	border: none;
+	text-align: left;
+	padding-left: 5px;
+}
+.tab-infomation #price-date .class-tour-info .info .rating {
+	float: left;
+}
+.tab-infomation #price-date .class-tour-info .info .rating h6,
+.tab-infomation #price-date .class-tour-info .info .rating h5 {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.tab-infomation #price-date .class-tour-info .info .rating .deluxe {
+	color: #007799;
+	text-align: center;
+}
+.tab-infomation #price-date .class-tour-info .info .star {
+	float: right;
+	padding: 0 !important;
+	margin: 0 !important;
+	color: #007799;
+	text-align: center;
+}
+.tab-infomation #price-date .class-tour-info .info .star h1 {
+	margin: -3px !important;
+}
+.tab-infomation #price-date .class-tour-info .info .star h5,
+.tab-infomation #price-date .class-tour-info .info .star i {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.tab-infomation #price-date .class-tour-info .info .star i {
+	font-size: 25px;
+}
+.tab-infomation #documents {
+	margin: 0 !important;
+	padding: 0 !important;
+	margin-top: 13px !important;
+}
+.tab-infomation #documents .info-right {
+	padding-right: 0px !important;
+}
+.tab-infomation #documents .info-right .download-document {
+	background: #f1f1f1;
+	text-align: center;
+	border-radius: 5px;
+	padding-right: 0 !important;
+}
+.tab-infomation #documents .info-right .download-document h6 {
+	color: #006699;
+}
+.tab-infomation #documents .info-right .download-document h3 {
+	color: #cc0000;
+	margin-top: 0 !important;
+}
+.tab-infomation #documents .readings {
+	padding-right: 0 !important;
+	margin-top: 5px;
+	background: #f6f6f6;
+}
+.tab-infomation #documents .readings h6 {
+	color: #a80432;
+}
+.tab-infomation #documents .readings h6 i {
+	font-size: 20px;
+}
+.tab-infomation #documents .info-question {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.tab-infomation #documents .info-question h6 {
+	border: 1px solid #a9a9a9;
+	padding: 5px;
+	color: #006699;
+	margin-bottom: 0 !important;
+}
+.tab-infomation #documents .info-question p {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	font-size: 13px;
+	padding: 10px;
+	background: #f9f9f9;
+}
+.tab-infomation #reviews {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	margin-top: -2px !important;
+}

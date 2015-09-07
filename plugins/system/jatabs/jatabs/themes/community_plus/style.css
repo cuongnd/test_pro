@@ -1,0 +1,182 @@
+/**
+ * ------------------------------------------------------------------------
+ * JA Tabs Plugin for J25 & J3.2
+ * ------------------------------------------------------------------------
+ * Copyright (C) 2004-2011 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+ * @license - GNU/GPL, http://www.gnu.org/licenses/gpl.html
+ * Author: J.O.O.M Solutions Co., Ltd
+ * Websites: http://www.joomlart.com - http://www.joomlancers.com
+ * ------------------------------------------------------------------------
+ */
+.community_plus .ja-tabswrap {
+	border: 1px solid #CCCCCC;
+}
+
+.community_plus .ja-tabswrap div.ja-tab-content {
+	width: 95%;
+}
+
+/* JA Tabs top*/
+.community_plus .ja-tabs-title-top {
+	height: 30px;
+	border-bottom: 1px solid #CCCCCC;
+	position: relative;
+	width: 100%;
+}
+
+.community_plus .ja-tabs-title-top ul.ja-tabs-title li {
+	background: #F7F7F7;
+	border: 1px solid #CCCCCC;
+	margin-left: 5px;
+}
+
+.community_plus .ja-tabs-title-top ul.ja-tabs-title li h3 {
+	font-size: 100%;
+	font-weight: bold !important;
+	line-height: 28px;
+	margin: 0;
+	padding: 0 10px;
+	border: 1px solid #F7F7F7;
+	color: #999999;
+	border-bottom: none;
+}
+
+.community_plus .ja-tabs-title-top ul.ja-tabs-title li.hover,.community_plus .ja-tabs-title-top ul.ja-tabs-title li.firsthover,.community_plus .ja-tabs-title-top ul.ja-tabs-title li.lasthover
+	{
+	
+}
+
+.community_plus .ja-tabs-title-top ul.ja-tabs-title li.active,.community_plus .ja-tabs-title-top ul.ja-tabs-title li.firstactive,.community_plus .ja-tabs-title-top ul.ja-tabs-title li.lastactive
+	{
+	background: #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+}
+
+.community_plus .ja-tabs-title-top ul li.active h3,.community_plus .ja-tabs-title-top ul li.firstactive h3,.community_plus .ja-tabs-title-top ul li.lastactive h3
+	{
+	color: #333333;
+}
+
+/* JA Tabs left*/
+.community_plus .ja-tabs-title-left {
+	position: relative;
+	float: left;
+	height: 100%;
+	padding: 40px 0 0 0;
+	background: url(sidebar-bg.png) no-repeat right top;
+}
+
+.community_plus .ja-tabs-title-left ul.ja-tabs-title li {
+	background: url(tab-sep.png) no-repeat center bottom;
+	height: 100%;
+	margin: 0 0 0 40px;
+	padding: 0;
+	cursor: pointer;
+	display: block;
+	text-transform: uppercase;
+}
+
+.community_plus .ja-tabs-title-left ul.ja-tabs-title li h3 {
+	background: url(arrow-r.png) no-repeat 5px 18px;
+	color: #5A9C14;
+	font-size: 11px;
+	font-weight: bold !important;
+	line-height: 49px;
+	margin: 0;
+	padding: 0 10px 0 20px;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 100%;
+}
+
+.community_plus .ja-tabs-title-left ul li.active,.community_plus .ja-tabs-title-left ul li.firstactive,.community_plus .ja-tabs-title-left ul li.lastactive
+	{
+	background: url(tab-active.png) no-repeat right;
+}
+
+.community_plus .ja-tabs-title-left ul li.active h3,.community_plus .ja-tabs-title-left ul li.firstactive h3,.community_plus .ja-tabs-title-left ul li.lastactive h3
+	{
+	background: none;
+	color: #fff;
+}
+
+/* JA Tabs right*/
+.community_plus .ja-tab-panels-right .ja-tab-subcontent {
+	padding-left: 15px !important;
+}
+
+.community_plus .ja-tabs-title-right {
+	background: url(17pxblank2.gif) repeat-y left #F7F7F7;
+}
+
+.community_plus .ja-tabs-title-right ul.ja-tabs-title li {
+	height: 100%;
+	margin: 0 0 0 1px;
+	padding: 0;
+	cursor: pointer;
+	display: block;
+	background: none;
+}
+
+.community_plus .ja-tabs-title-right ul.ja-tabs-title li h3 {
+	font-size: 11px;
+	font-weight: bold !important;
+	line-height: 30px;
+	margin: 0;
+	padding: 0 10px 0 25px;
+	background: none;
+	font-family: "Lucida Grande", Arial, sans-serif;
+	letter-spacing: normal;
+}
+
+.community_plus .ja-tabs-title-right ul li.active,.community_plus .ja-tabs-title-right ul li.firstactive,.community_plus .ja-tabs-title-right ul li.lastactive
+	{
+	background: url(right-active.gif) no-repeat left #FFFFFF;
+}
+
+.community_plus .ja-tabs-title-right ul li.active H3,.community_plus .ja-tabs-title-right ul li.firstactive H3,.community_plus .ja-tabs-title-right ul li.lastactive H3
+	{
+	color: #333333;
+}
+
+/* JA Tabs bottom*/
+.community_plus .ja-tabs-title-bottom {
+	height: 30px;
+	border-top: 1px solid #CCCCCC;
+	position: relative;
+	width: 100%;
+}
+
+.community_plus .ja-tabs-title-bottom ul.ja-tabs-title li {
+	background: #F7F7F7;
+	border: 1px solid #CCCCCC;
+	margin-left: 5px;
+	margin-top: -1px;
+}
+
+.community_plus .ja-tabs-title-bottom ul.ja-tabs-title li h3 {
+	font-size: 100%;
+	font-weight: bold !important;
+	line-height: 28px;
+	margin: 0;
+	padding: 0 10px;
+	border: 1px solid #F7F7F7;
+	color: #999999;
+	border-top: none;
+}
+
+.community_plus .ja-tabs-title-bottom ul.ja-tabs-title li.hover,.community_plus .ja-tabs-title-bottom ul.ja-tabs-title li.firsthover,.community_plus .ja-tabs-title-bottom ul.ja-tabs-title li.lasthover
+	{
+	
+}
+
+.community_plus .ja-tabs-title-bottom ul.ja-tabs-title li.active,.community_plus .ja-tabs-title-bottom ul.ja-tabs-title li.firstactive,.community_plus .ja-tabs-title-bottom ul.ja-tabs-title li.lastactive
+	{
+	background: #FFFFFF;
+	border-top: 1px solid #FFFFFF;
+}
+
+.community_plus .ja-tabs-title-bottom ul li.active h3,.community_plus .ja-tabs-title-bottom ul li.firstactive h3,.community_plus .ja-tabs-title-bottom ul li.lastactive h3
+	{
+	color: #333333;
+}

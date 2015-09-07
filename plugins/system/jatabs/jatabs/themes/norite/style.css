@@ -1,0 +1,157 @@
+/**
+ * ------------------------------------------------------------------------
+ * JA Tabs plugin for Joomla 1.7.x
+ * ------------------------------------------------------------------------
+ * Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+ * @license - GNU/GPL, http://www.gnu.org/licenses/gpl.html
+ * Author: J.O.O.M Solutions Co., Ltd
+ * Websites: http://www.joomlart.com - http://www.joomlancers.com
+ * ------------------------------------------------------------------------
+ */
+
+.ja-tabswrap {
+	margin: 0;
+	padding: 0;
+}
+
+.norite .container {
+	overflow: hidden;
+	position: relative;
+	z-index: 10;
+}
+
+/* JA Tabs top */
+.norite .container .ja-tabs-title-top {
+	position: relative;
+	height: 32px !important;
+}
+
+.norite .container .ja-tabs-title-top ul.ja-tabs-title {
+	height: 37px;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+}
+
+.norite .container .ja-tabs-title-top ul.ja-tabs-title li {
+	background: none;
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin: 0;
+	height: 37px;
+}
+
+.norite .container .ja-tabs-title-top ul.ja-tabs-title li h3 {
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	line-height: 30px;
+	font-size: 110%;
+	margin: 0;
+	padding: 5px 20px !important;
+	font-weight: bold;
+	color: #656565;
+	border: none;
+	background: url(h3-sep.gif) right top no-repeat;
+}
+
+.norite .container .ja-tabs-title-top ul.ja-tabs-title li.hover { 
+	background: #1a1a1a url(tab_active_bg.gif) left top repeat-x;
+}
+
+.norite .container .ja-tabs-title-top ul.ja-tabs-title li.hover h3 { color: #fff; }
+
+.norite .container .ja-tabs-title-top ul.ja-tabs-title li.active {
+	background: #1a1a1a url(tab_active_bg.gif) left top repeat-x;
+}
+
+.norite .container .ja-tabs-title-top ul.ja-tabs-title li.active h3 {
+	color: #fff;
+	font-weight: bold;
+}
+
+.norite .ja-tab-panels-top {
+	padding-top: 10px;
+	background: #1a1a1a url(t-lr.gif) right top no-repeat;
+}
+
+.ja-tabswrap div.ja-tab-subcontent {
+	padding: 0 20px;
+}
+
+ja-tab-content {
+	background: url(b-lr.gif) left bottom no-repeat;
+}
+
+
+/* JA Tabs bottom*/
+.norite .ja-tabs-title-bottom {
+	background: #f7f7f7 none repeat scroll 0%;
+	border-top: 1px solid #cccccc;
+	height: 30px;
+	position: relative;
+}
+
+.ja-tabs-title-bottom ul.ja-tabs-title { top: -1px; }
+
+.norite .ja-tabs-title-bottom ul.ja-tabs-title li {
+	background: #ebf2f9 none repeat scroll 0%;
+	border: 1px solid #cccccc;
+	border-top: none;
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin: 0pt 1px;
+}
+
+.norite .ja-tabs-title-bottom ul.ja-tabs-title li h3 {
+	border-color: #f0f0f0;
+	border-style: solid solid none;
+	border-width: 1px 1px medium;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 20px;
+	margin: 0pt;
+	padding: 0pt 10px;
+	text-transform: uppercase;
+}
+
+.norite .ja-tabs-title-bottom ul.ja-tabs-title li.active,
+.norite .ja-tabs-title-bottom ul.ja-tabs-title li.firstactive,
+.norite .ja-tabs-title-bottom ul.ja-tabs-title li.lastactive {
+	background: #fff none repeat scroll 0%;
+	border-top: 1px solid #fff;
+}
+
+.norite .ja-tabs-title-bottom ul li.active h3,
+.norite .ja-tabs-title-bottom ul li.firstactive h3,
+.norite .ja-tabs-title-bottom ul li.lastactive h3 {
+	background: none;
+	border-bottom: none;
+	color: #006699;
+	margin: 0pt;
+	padding: 0pt 10px;
+}
+
+.norite .container .mostread {
+	color: #fff;
+	font-weight: bold;
+}
+
+.norite .ja-tab-content li {
+	border-bottom: 0 !important;
+	padding: 10px 0;
+	min-height: 50px;
+}
+
+.norite ul.ja-bullettin img {
+	padding: 4px;
+	background: #202020;
+	border: 1px solid #2a2a2a;
+	float: left;
+	margin-right: 10px;
+}
+

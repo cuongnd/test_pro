@@ -1,0 +1,126 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+.es-story-panel-buttons {
+	.clearfix();
+	position: relative;
+	margin-left: -6px;
+	z-index: 2;
+	min-height: 26px;
+	margin-right: 10px; //for safari issue #987
+	// .arrow(@size, @color, @direction, @left-offset, @right-offset, @border-size: 0, @border-color: inherit) {
+
+	.es-story-panel-button {
+		position: relative;
+		height: 24px;
+		line-height: 24px;
+		padding: 0 6px;
+		cursor: pointer;
+
+		+.es-story-panel-button {
+			border-left: 1px solid @esStoryPanelButtonBorder;
+		}
+
+		> b {
+			.arrow(7px, @esStoryPanelContentBackground, bottom, 0, 0, 0, @esStoryPanelActiveBorder);
+		    height: 0;
+		    left: 50%;
+		    margin-left: -6px;
+		    position: absolute;
+		    top: -9px;
+		    width: 0;
+		    opacity: 0;
+		    .transition(all .5s ease);
+
+		    // Micro-adjustments
+		    &:before {
+		    	left: -1px;
+		    }
+		}
+
+		.words {
+			> i {
+				// line-height: 14px;
+				vertical-align: top;
+			}
+			> span.without-data {
+				color: @esStoryPanelButtonWordsColor;
+				text-shadow: @esStoryPanelButtonWordsTextShadow;
+				line-height: 26px;
+			}
+
+			&:hover { > span, > i { color: @esStoryPanelButtonWordsHoverColor; }  }
+		}
+
+		i {
+			position: relative;
+			// top: 2px;
+			margin-right: 2px;
+
+			&:before {
+				text-shadow: @esStoryPanelButtonWordsTextShadow;
+			}
+
+			// Micro-adjustments
+			.ies-location-2 {
+				margin-left: -1px;
+			}
+		}
+
+		&.active {
+
+			> b {
+				display: block;
+				opacity: 1;
+			}
+
+			.words { > span, > i { color: @esStoryPanelButtonWordsHoverColor; } }
+		}
+	}
+}
+
+.es-story-panel-contents {
+	.clearfix();
+	clear: both;
+	.transition(all .5s ease);
+	max-height: 0px;
+	overflow: hidden;
+	opacity: 0;
+	position: relative;
+	z-index: 1;
+	margin-right: 10px; //for safari issue #987
+
+	&.active {
+		max-height: 200px;
+		margin-bottom: 8px;
+		opacity: 1;
+		overflow: visible;
+
+	}
+
+	.es-story-panel-content {
+		.transition(all .5s ease);
+		position: relative;
+		overflow: hidden;
+		max-height: 0px;
+		opacity: 0;
+		z-index: 1;
+		background: @esStoryPanelContentBackground;
+		color: @esStoryPanelContentColor;
+		.border-radius(3px);
+
+		input[type="text"] {
+			background: @esStoryPanelContentBackground;
+			color: @esStoryPanelContentColor;
+		}
+		&.active {
+			max-height: 200px;
+			opacity: 1;
+			border: 1px solid @esStoryPanelActiveBorder;
+			z-index: 2;
+		}
+	}
+}

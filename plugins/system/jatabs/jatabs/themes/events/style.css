@@ -1,0 +1,322 @@
+/**
+ * ------------------------------------------------------------------------
+ * JA Tabs plugin for Joomla 1.7.x
+ * ------------------------------------------------------------------------
+ * Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+ * @license - GNU/GPL, http://www.gnu.org/licenses/gpl.html
+ * Author: J.O.O.M Solutions Co., Ltd
+ * Websites: http://www.joomlart.com - http://www.joomlancers.com
+ * ------------------------------------------------------------------------
+ */
+
+.events .container {
+	overflow: visible;
+}
+
+.events .ja-tabswrap {
+	border: 1px solid #CCCCCC;
+}
+
+.events .ja-tabswrap div.ja-tab-content {	
+	width: 95%;
+}
+
+/* JA Tabs top*/
+.events .ja-tabs-title-top {
+	height: 30px;
+	border-bottom: 1px solid #CCCCCC;
+	position: relative;
+	width: 100%;
+}
+
+.events .ja-tabs-title-top ul.ja-tabs-title li {
+	background: #F7F7F7;
+	border: 1px solid #CCCCCC;
+	margin-left: 5px;
+}
+
+.events .ja-tabs-title-top ul.ja-tabs-title li h3 {
+	font-size: 100%;
+	font-weight: bold !important;
+	line-height: 28px;
+	margin: 0;
+	padding: 0 10px;
+	border: 1px solid #F7F7F7;
+	color: #999999;
+	border-bottom: none;
+}
+
+.events .ja-tabs-title-top ul.ja-tabs-title li.hover,
+.events .ja-tabs-title-top ul.ja-tabs-title li.firsthover,
+.events .ja-tabs-title-top ul.ja-tabs-title li.lasthover {
+}
+
+.events .ja-tabs-title-top ul.ja-tabs-title li.active,
+.events .ja-tabs-title-top ul.ja-tabs-title li.firstactive,
+.events .ja-tabs-title-top ul.ja-tabs-title li.lastactive {
+	background: #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+}
+
+.events .ja-tabs-title-top ul li.active h3 ,
+.events .ja-tabs-title-top ul li.firstactive h3,
+.events .ja-tabs-title-top ul li.lastactive h3 {
+	color: #333333;
+}
+
+/* JA Tabs left*/
+.events .ja-tabs-title-left {
+	position: relative;
+	float: left;	
+	height: 100%;
+	background: url(17pxblank.gif) repeat-y right #F7F7F7;
+}
+
+.events .ja-tabs-title-left ul.ja-tabs-title li {
+	height: 100%;
+	margin: 0 0 0 1px;
+	padding: 0;
+	cursor: pointer;
+	display: block;
+	background: none;
+}
+
+.events .ja-tabs-title-left ul.ja-tabs-title li h3 {
+	font-size: 11px;
+	font-weight: bold !important;
+	line-height: 30px;
+	margin: 0;
+	padding: 0 10px;
+	background: none;
+	font-family: "Lucida Grande", Arial, sans-serif;
+	letter-spacing: normal;
+}
+
+.events .ja-tabs-title-left ul li.active,
+.events .ja-tabs-title-left ul li.firstactive,
+.events .ja-tabs-title-left ul li.lastactive {
+	background: url(left-active.gif) no-repeat right #FFFFFF;
+}
+
+.events .ja-tabs-title-left ul li.active H3 ,
+.events .ja-tabs-title-left ul li.firstactive H3,
+.events .ja-tabs-title-left ul li.lastactive H3 {
+	color: #333333;
+}
+
+
+/* JA Tabs right*/
+.events .ja-tab-panels-right .ja-tab-subcontent {
+	padding-left: 18px !important;
+	padding-right: 18px;
+}
+
+.events .ja-tabs-title-right {
+	background: none;
+	margin-right: 1px\0/;
+}
+
+.events .ja-tabs-title-right ul.ja-tabs-title li {
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	display: block;
+	background: url(menu-sep.gif) no-repeat right bottom;
+	overflow: visible;
+	font-family: 'Neuton';
+	margin: 0 -30px 0 0;
+}
+
+.events .ja-tabs-title-right ul.ja-tabs-title li h3 {
+	padding-left: 15px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	text-transform: uppercase;
+	font-size: 110%;
+	font-weight: bold;
+	color: #fff;
+	line-height: 30px;
+	margin: 0;
+}
+
+.events .ja-tabs-title-right ul li.active h3,
+.events .ja-tabs-title-right ul li.firstactive h3,
+.events .ja-tabs-title-right ul li.lastactive h3 {
+	background: url(grad.png) no-repeat right bottom;
+	color: #5292c9;
+	text-decoration: none;
+}
+
+.events .ja-tabs-title-right ul.ja-tabs-title li h3 span {
+	display: block;
+	overflow: hidden;
+}
+
+.events .ja-tabs-title-right ul.ja-tabs-title li h3 img {
+	position: absolute;
+	right: 30px;
+}
+
+.events .ja-tabs-title-right ul.ja-tabs-title li h3 span img {
+	margin-right: 10px;
+	position: static;
+}
+
+.events .ja-tab-panels-right {
+	min-height: 350px;
+}
+
+/* JA Tabs bottom*/
+.events .ja-tabs-title-bottom {
+	height: 30px;
+	border-top: 1px solid #CCCCCC;
+	position: relative;
+	width: 100%;
+}
+
+.events .ja-tabs-title-bottom ul.ja-tabs-title li {
+	background: #F7F7F7;
+	border: 1px solid #CCCCCC;
+	margin-left: 5px;
+	margin-top: -1px;
+}
+
+.events .ja-tabs-title-bottom ul.ja-tabs-title li h3 {
+	font-size: 100%;
+	font-weight: bold !important;
+	line-height: 28px;
+	margin: 0;
+	padding: 0 10px;
+	border: 1px solid #F7F7F7;
+	color: #999999;
+	border-top: none;
+}
+
+.events .ja-tabs-title-bottom ul.ja-tabs-title li.hover,
+.events .ja-tabs-title-bottom ul.ja-tabs-title li.firsthover,
+.events .ja-tabs-title-bottom ul.ja-tabs-title li.lasthover {
+}
+
+.events .ja-tabs-title-bottom ul.ja-tabs-title li.active,
+.events .ja-tabs-title-bottom ul.ja-tabs-title li.firstactive,
+.events .ja-tabs-title-bottom ul.ja-tabs-title li.lastactive {
+	background: #FFFFFF;
+	border-top: 1px solid #FFFFFF;
+}
+
+.events .ja-tabs-title-bottom ul li.active h3 ,
+.events .ja-tabs-title-bottom ul li.firstactive h3,
+.events .ja-tabs-title-bottom ul li.lastactive h3 {
+	color: #333333;
+}
+
+/* RTL
+----------------------------------------------------- */
+/* Tabs Top */
+.rtl .ja-tabs-title-top ul.ja-tabs-title li {
+	float: right;
+}
+
+.rtl .ja-tab-panels-top {
+	left: auto;
+	right: 0px;
+}
+
+/* Tabs left */
+.rtl .ja-tabs-title-left {
+	float: right;
+}
+
+.rtl .ja-tabs-title-left ul.ja-tabs-title {
+	left: auto;
+	right: 0px;
+}
+
+.rtl .ja-tabs-title-left ul.ja-tabs-title li {
+	margin: 0px 1px 0 0;
+}
+
+.rtl .ja-tab-panels-left {
+	left: auto;
+	right: 10px;
+}
+
+/* Tabs right */
+.rtl .ja-tabs-title-right {
+	float: left;	
+}
+
+.rtl .ja-tabs-title-right ul.ja-tabs-title {
+	right: auto;
+	left: 0;
+}
+
+.rtl .ja-tabs-title-right ul.ja-tabs-title li {
+	margin: 0 1px 0 0;
+}
+
+/* for tabs bottom */
+.rtl .ja-tabs-title-bottom ul.ja-tabs-title li {
+	float: right;
+}
+
+.rtl .ja-tab-panels-bottom {
+	right: auto;
+	left: 0px;
+}
+
+/* JA Tabs top*/
+.rtl .events .ja-tabs-title-top ul.ja-tabs-title li {
+	margin-right: 0;
+	margin-left: 5px;
+}
+
+/* JA Tabs left*/
+.rtl .events .ja-tabs-title-left {
+	float: right;	
+	background: url(rtl/17pxblank.gif) repeat-y left #F7F7F7;
+}
+
+.rtl .events .ja-tabs-title-left ul.ja-tabs-title li {
+	margin: 0 1px 0 0;
+}
+
+.rtl .events .ja-tabs-title-left ul li.active,
+.rtl .events .ja-tabs-title-left ul li.firstactive,
+.rtl .events .ja-tabs-title-left ul li.lastactive {
+	background: url(rtl/left-active.gif) no-repeat left #fff;
+}
+
+/* JA Tabs right*/
+.rtl .events .ja-tabs-title-right ul.ja-tabs-title li {
+	background: url(rtl/nav-sep.gif) no-repeat left bottom;
+	margin: 0 0 0 -30px;
+}
+
+.rtl .events .ja-tabs-title-right ul.ja-tabs-title li h3 {
+	padding-left: 0;
+	padding-right: 15px;
+}
+
+.rtl .events .ja-tabs-title-right ul li.active h3,
+.rtl .events .ja-tabs-title-right ul li.firstactive h3,
+.rtl .events .ja-tabs-title-right ul li.lastactive h3 {
+	background: url(rtl/grad.png) no-repeat left bottom;
+}
+
+.rtl .events .ja-tabs-title-right ul.ja-tabs-title li h3 img {
+	float: right;
+	left: 30px;
+	right: auto;
+}
+
+.rtl .events .ja-tabs-title-right ul.ja-tabs-title li h3 span img {
+	margin-left: 10px;
+	margin-right: auto;
+}
+
+/* JA Tabs bottom*/
+.rtl .events .ja-tabs-title-bottom ul.ja-tabs-title li {
+	margin-left: 0;
+	margin-right: 5px;
+}

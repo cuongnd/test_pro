@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="view-tours-test">
+		<message><![CDATA[COM_BOOKPRO_TOURS_VIEW_DEFAULT_DESC]]></message>
+	</layout>
+
+	<fields name="request" >
+		<fieldset name="request">
+			<field addfieldpath="/administrator/components/com_bookpro/elements" name="cat_id" type="tourtheme" default=""
+				description="COM_BOOKPRO_THEME_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_THEME_SELECT_TITLE" required="false" />
+			<field addfieldpath="/administrator/components/com_bookpro/elements" name="dest_id" type="destination" default=""
+				description="COM_BOOKPRO_DESTINATION_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_DESTINATION_SELECT_TITLE" required="false" />
+			<field addfieldpath="/administrator/components/com_bookpro/elements" name="duration" type="duration" default=""
+				description="COM_BOOKPRO_DURATION_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_DURATION_SELECT_TITLE" required="false" />
+		</fieldset>
+	</fields>
+	<fields name="params" >
+		<fieldset name="basic" label="JGLOBAL_LIST_LAYOUT_OPTIONS">
+			<field name="products_per_row" type="text" default="2"
+				description="COM_BOOKPRO_PRODUCT_PER_ROW_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_PRODUCT_PER_ROW_SELECT_TITLE"/>
+				
+			<field name="count" type="text" default="4"
+				description="COM_BOOKPRO_COUNT_SELECT_DESC" extension="com_bookpro"
+				label="COM_BOOKPRO_COUNT_SELECT_TITLE" required="false" />
+			
+			<field name="showheading" type="radio"
+				class="btn-group"
+				description="COM_BOOKPRO_TOURS_SHOWHEADING_DESC"
+				label="COM_BOOKPRO_TOURS_SHOWHEADING_TITLE"
+				default="1"
+			>
+				<option value="0">JNO </option>
+				<option value="1">JYES</option>
+			</field>	
+			
+			<field name="listlayout" type="componentlayout" extension="com_bookpro" view="tours" label="JFIELD_ALT_LAYOUT" useglobal="true" description="JFIELD_ALT_COMPONENT_LAYOUT" />
+			
+		</fieldset>
+	</fields>
+	
+</metadata>

@@ -1,0 +1,265 @@
+@CHARSET "ISO-8859-1";
+.package_tour .text_title .title{
+	font-weight:bold;
+	font-size:16px;
+	margin:0px;
+	border-top:4px solid #e8e8e8;
+	padding-top:10px;
+}
+.package_tour .text_title{
+	margin-top:12px;
+	text-align:justify;
+	padding-right:24px;
+	border-right:1px dotted #cccccc!important;
+	padding-right:6px!important;
+	
+}
+.package_tour .text_title:nth-last-child(1){
+	border-right:none!important;
+}
+.package_tour .text_title p{
+	line-height:20px;
+}
+.package_tour .text_title:nth-last-of-type{
+	border-right:none;
+}
+.col_left .package_tour{
+	padding-top:28px;
+}
+/*---------------------------------------------------top-destination----------------------------------------------*/
+.col_left .top_destinations{
+	padding-top:30px;
+}
+.col_left .top_destinations .title_destinations {
+	font-weight:bold;
+	font-size:18px;
+	color:#006699;
+	background:#fff!important;
+	position:relative;
+	z-index:99;
+	margin-left:20px;
+}
+.content_hotels_products .blog_itemimage .thumbnail{
+	border:none;
+	padding:0px;
+}
+.content_hotels_detail .title_top_destination a{
+	color:#333333;
+	font-size:12px;
+	
+}
+.price_detail_tours{
+	background: url("../images/top_price.png")no-repeat scroll 40px 8px #ebf1f4!important; 
+}
+.title_top_destination{
+	margin:0px;
+	margin-top: 10px;
+	line-height:8px;
+	padding-bottom:6px;
+}
+/*-------------------------------------------------------fearture-tours------------------------------------------*/
+.fearture_tours .title_fearture_tours{
+	padding-top:20px;
+	padding-bottom:20px;
+	padding-left:8px;
+	background: url("../images/great_detail.png")no-repeat scroll 99% 50% #eeeeee; 
+	border:1px solid #d7d7d7;
+	padding-right:6px;
+	border-bottom:none;
+}
+.col_left .fearture_tours{
+	margin-top:20px;
+}	
+.fearture_tours .title_fearture_tours .div_title_fearture_tours{
+	text-transform:uppercase;
+	color:#ff9900;
+	font-weight:bold;
+	background:#fff;
+	position:relative;
+	top:14px;
+	right:-80px;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:10px;
+	padding-top:5px;
+	border-top:1px solid #cccccc;
+	border-left:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+}
+.tours_price{
+	margin-right:5px!important;
+	background:url("../images/price_tours.png")no-repeat scroll 80% 50% #ebf1f4!important; 
+}
+.title_fearture_tours .div1_title_fearture_tours{
+	font-size:24px;
+	color:#2078a4;
+	padding-bottom:20px;
+	font-weight:bold;
+	text-transform: uppercase;
+	float:right;
+	padding-right:50px;
+}
+.container_fearture_tours .span8  .title_span8{
+	color:#006699;
+	margin:0px;
+}
+.container_fearture_tours .span8 .detail_span8{
+	margin:0px;
+}
+.container_fearture_tours .span8 .view-detail{
+	color:#339933;
+	font-weight:bold;
+}
+.container_fearture_tours .best_deals{
+	color:#993300;
+	text-transform:uppercase;
+	font-weight:bold;
+	padding-left:30px;
+	background: url("../images/icon_money.png")no-repeat scroll top left #ebf1f4; 
+	padding-bottom:1px;
+
+	padding-top:4px;
+}
+.content_best_deals{
+	padding-left:10px!important;
+	border-right:1px solid #cdcdcd;
+	height:100%;
+	margin-top:50px;
+	padding-right:5px;
+}
+
+.content_table_span8 .table th{
+	background:#ebf1f4;
+	text-transform:uppercase;
+	padding:4px;
+	color:#000;
+	padding-left:10px!important;
+}
+.content_table_span8 .table td{
+	vertical-align:inherit!important;	
+	line-height:14px;
+	padding:4px!important;
+}
+.content_table_span8 .table td p{
+	vertical-align:inherit!important;
+	margin-bottom:5px;
+	margin-top:3px;
+}
+.content_table_span8 .table th{
+	height:26px;
+	padding:0px!important;
+	vertical-align:inherit!important;
+}
+
+.content_table_span8 .table th, .table td a{
+	color:#003366;
+}
+.container_fearture_tours .content_table_span8{
+	margin-top:50px;
+	padding-right:8px;
+	margin-bottom:20px;
+}
+.fearture_tours .container_fearture_tours{
+	border:1px solid #cccccc!important;
+}
+.content_table_span8 .img_stars{
+	margin-top:10px;
+}
+.content_span_detail .limited_offer{
+	background: url("../images/limited.jpg")no-repeat scroll top right ; 
+	padding-bottom:25px;
+	color:#006699;
+	font-weight:bold;
+	padding-top:20px;	
+	float:right;
+	padding-right:55px;
+	position:relative;
+	right:11px;
+}
+td{
+	border:none!important;
+}
+.content_table_span8 .table th, .table td{
+	border-bottom:1px dotted #818e98!important;	
+	
+}
+.content_table_span8 .table th, .table tr:first-of-type{
+	border-bottom:none!important;	
+}
+.content_table_span8 .table th, .table td:first-of-type{
+	padding:0px;
+}
+
+
+/*--------------------------------------------------------Feature car rental----------------------------------------------*/
+.content-text{
+	text-align:right;
+	
+}
+.content-text .text-1{
+	color:#006699;
+	font-weight:bold;
+	margin:0px;
+}
+.content-text .text-3{
+	color:#f89308;
+	text-transform:uppercase;
+	font-weight:bold;
+	margin:0px;
+}
+.content-text .text-2{
+	margin:0px;
+}
+
+
+
+#t3-mainbody #t3-content .t3-module{
+	margin-bottom:10px;
+}
+
+/*----------------------------------------------------Find-tours-----------------------------------------------*/
+.col_right .content_find_tours{
+	margin-bottom:10px;
+	margin-right:5px;
+	background: url("../images/background_bottom.jpg")repeat-x scroll bottom left transparent;
+}
+.col_right .content_find_tours .title_find_tours{
+	text-transform:uppercase;
+	background:#e2e0de;
+	font-weight:bold;
+}
+.col_right .content_find_tours ul li{
+	list-style:none;
+	border-bottom:1px dotted #cdcdcd;
+}
+/*------------------------------------------------------sign-up-------------------------------------*/
+
+.sign_up_col_right .form-search{
+	
+}
+.detail_content_best_deals{
+	padding-left:8px;
+}
+.sign_up_col_right p{
+	font-weight:bold;
+	padding-top:5px;
+}
+.sign_up_col_right .form-search .btn{
+	margin-top:12px;
+}
+.col_right .content_find_tours .title_find_tours{
+	text-transform:uppercase;
+	background:#e2e0de;
+	font-weight:bold;
+	float:left;
+	width:97%;
+	color:#990100;
+	line-height:28px;
+	padding-left:10px;
+}
+.drop_title_find_tour{
+	background: url("../images/icon_drop_title.png")no-repeat scroll 10% 0% transparent!important;
+	height: 20px;
+	float: left;
+	width: 100%;
+}

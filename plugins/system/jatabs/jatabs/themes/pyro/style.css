@@ -1,0 +1,168 @@
+/**
+ * ------------------------------------------------------------------------
+ * JA Tabs Plugin for J25 & J3.2
+ * ------------------------------------------------------------------------
+ * Copyright (C) 2004-2011 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+ * @license - GNU/GPL, http://www.gnu.org/licenses/gpl.html
+ * Author: J.O.O.M Solutions Co., Ltd
+ * Websites: http://www.joomlart.com - http://www.joomlancers.com
+ * ------------------------------------------------------------------------
+ */
+.ja-col div.moduletable_tabs {
+	margin-top: -10px;
+}
+
+.ja-col div.moduletable_tabs .ja-box-ct {
+	background: none;
+	padding: 0px;
+}
+
+#ja-tabwrap div.moduletable {
+	background: url(box-bg.gif);
+}
+
+#ja-tabwrap div.moduletable h3 {
+	border-top: none;
+}
+
+#ja-tabwrap div.ja-boxct {
+	padding: 0px;
+}
+
+.pyro .ja-tabswrap div.ja-tab-content {
+	width: 95%;
+}
+
+.ja-tabswrap div.ja-tab-subcontent {
+	background: url(subcontent-bg.gif) no-repeat top left;
+	color: #777;
+	padding: 10px 10px 0 20px !important;
+}
+
+.pyro ul.ja-tabs-title li.hover h3,.pyro ul.ja-tabs-title li.firsthover h3,.pyro ul.ja-tabs-title li.lasthover h3,.pyro ul.ja-tabs-title li.active h3,.pyro ul.ja-tabs-title li.firstactive h3,.pyro ul.ja-tabs-title li.lastactive h3
+	{
+	color: #800;
+}
+
+/* JA Tabs top*/
+.pyro .ja-tabs-title-top {
+	background: url("h3-bg.gif") no-repeat scroll left top #FFFFFF;
+	position: relative;
+	width: 100%;
+	height: 39px !important;
+}
+
+.pyro .ja-tabs-title-top ul.ja-tabs-title {
+	padding: 0;
+	display: block;
+	left: 0;
+	top: 1px;
+}
+
+.pyro .ja-tabs-title-top ul.ja-tabs-title li {
+	padding: 0;
+	margin: 0;
+}
+
+.pyro .ja-tabs-title-top ul.ja-tabs-title li.active,.pyro .ja-tabs-title-top ul.ja-tabs-title li.firstactive,.pyro .ja-tabs-title-top ul.ja-tabs-title li.lastactive
+	{
+	background: url(menu-active.gif) no-repeat center bottom;
+}
+
+.pyro .ja-tabs-title-top ul.ja-tabs-title li h3 {
+	background: url(sep.gif) no-repeat right 4px;
+	font-size: 12px;
+	font-weight: bold !important;
+	padding: 14px 20px 22px;
+	margin-right: 1px;
+	letter-spacing: normal;
+	float: left;
+}
+
+.pyro .ja-tabs-title-top ul.ja-tabs-title li.last h3 {
+	background: none;
+	margin-right: 0;
+}
+
+/* JA Tabs bottom */
+.ja-tab-panels-bottom .ja-tab-content div.ja-tab-subcontent {
+	padding: 20px 10px 0 !important;
+}
+
+.pyro .ja-tabs-title-bottom {
+	background: url(h3-bg.gif) repeat-x left bottom;
+	position: relative;
+	height: 35px;
+	z-index: 3;
+	width: 100%;
+}
+
+.pyro .ja-tabs-title-bottom ul.ja-tabs-title {
+	padding: 0;
+	top: 0;
+	left: 0;
+}
+
+.pyro .ja-tabs-title-bottom ul.ja-tabs-title li {
+	background: url(sep.gif) no-repeat right bottom;
+	margin-right: 1px;
+}
+
+.pyro .ja-tabs-title-bottom ul.ja-tabs-title li h3 {
+	background: none;
+	border: none;
+	font-size: 12px;
+	font-weight: bold !important;
+	margin: 0;
+	padding: 12px 10px 8px;
+	letter-spacing: normal;
+	text-transform: uppercase;
+}
+
+.pyro .ja-tabs-title-bottom ul.ja-tabs-title li h3 span {
+	background: none !important;
+}
+
+.pyro .ja-tabs-title-bottom ul.ja-tabs-title li.active,.pyro .ja-tabs-title-bottom ul.ja-tabs-title li.firstactive,.pyro .ja-tabs-title-bottom ul.ja-tabs-title li.lastactive
+	{
+	background: url(menu-active-bot.gif) no-repeat center top;
+	border-top: none;
+}
+
+.pyro .ja-tabs-title-bottom ul li.active h3,.pyro .ja-tabs-title-bottom ul li.firstactive h3,.pyro .ja-tabs-title-bottom ul li.lastactive h3
+	{
+	background: none;
+	color: #800;
+}
+
+.pyro .ja-tab-panels-bottom {
+	background: url(box-bg.gif);
+	color: #333333;
+	left: 0;
+}
+
+/* JA Table content */
+.pyro .container .mostread {
+	display: block;
+}
+
+.pyro .ja-tab-content li {
+	padding: 10px 0;
+	min-height: 50px;
+	position: relative;
+}
+
+.ja-tabswrap .ja-tab-content li a.mostread-image {
+	position: absolute;
+}
+
+.pyro ul.ja-bullettin img {
+	padding: 4px;
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	top: 10px;
+}
+
+.pyro ul.ja-bullettin div {
+	line-height: normal;
+}

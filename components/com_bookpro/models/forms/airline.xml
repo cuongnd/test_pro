@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/administrator/components/com_bookpro/elements">
+        <field name="id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+        <field name="title" type="text" label="JGLOBAL_TITLE" class="inputbox" size="100" required="true" />
+        <field name="code" type="text" label="COM_BOOKPRO_AIRLINE_IATA_CODE" class="inputbox" size="100" required="true" />
+        <field name="ordering" type="Ordering" class="inputbox"
+			label="JFIELD_ORDERING_LABEL"
+			description="JFIELD_ORDERING_DESC" />
+		<field name="description" type="editor" buttons="true" hide="pagebreak,readmore"
+			class="inputbox"
+			filter="JComponentHelper::filterText"
+			label="JGLOBAL_DESCRIPTION" description="COM_BOOKPRO_FIELD_DESCRIPTION_DESC" />
+		<field name="baggage_tip" type="editor" buttons="true" hide="pagebreak,readmore"
+			class="inputbox"
+			filter="JComponentHelper::filterText"
+			label="COM_BOOKPRO_AIRLINE_BAGGAGE_TIP" description="COM_BOOKPRO_AIRLINE_BAGGAGE_TIP" />
+		<field name="fare_rule" type="editor" buttons="true" hide="pagebreak,readmore"
+			class="inputbox"
+			filter="JComponentHelper::filterText"
+			label="COM_BOOKPRO_AIRLINE_FARE_RULE" description="COM_BOOKPRO_AIRLINE_BAGGAGE_TIP" />		
+		<field
+			id="country_id"
+			name="country_id"
+			type="country"
+			required="false"
+			label="Country"
+			description="country_id_Desc"
+			class="inputbox"
+			size="40"/>		
+        <field
+			name="state"
+			type="list"
+			label="JSTATUS"
+			description="COM_BOOKPRO_FIELD_STATE_DESC"
+			class="inputbox span12 small"
+			size="1"
+			default="1">
+			<option
+				value="1">JPUBLISHED</option>
+			<option
+				value="0">JUNPUBLISHED</option>
+		</field>
+		<field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL"
+			description="JFIELD_ACCESS_DESC" class="inputbox span12 small" size="1" />
+
+		<field
+			name="language"
+			type="contentlanguage"
+			label="JFIELD_LANGUAGE_LABEL"
+			description="COM_BOOKPRO_FIELD_LANGUAGE_DESC"
+			class="inputbox span12 small">
+			<option value="*">JALL</option>
+		</field>
+		
+		
+		<field name="metakey" type="textarea"
+			label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC"
+			class="inputbox" rows="3" cols="30" />
+			
+		
+		<field name="image"
+			type="media"
+			hide_none="1"
+			label="COM_BOOKPRO_AIRLINE_LOGO"
+			description="COM_BOOKPRO_AIRLINE_LOGO"
+			/>
+		<field name="metadesc" type="textarea"
+			label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC"
+			class="inputbox" rows="3" cols="30" />
+		
+
+	
+	<fields name="metadata">
+		<fieldset name="jmetadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
+
+		</fieldset>
+	</fields>
+		   
+    </fieldset>
+    
+</form>

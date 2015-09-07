@@ -1,0 +1,81 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+
+// Modules 
+@import "bootstrap/variables";
+@import "variables";
+@import "bootstrap/mixins";
+@import "contrast"; //mixins
+
+@Module: "body div.es-mod";
+
+// Global styling for EasySocial Modules
+(~"@{Module}") {
+
+	// Reset for all modules
+	& {
+		//safe to use width:100% without caring the padding
+		.box-sizing(border-box);
+	}
+	@import "reset";
+	display:inline-block;
+	width:100%;
+	font-family: @baseFontFamily;
+	font-size: 12px;
+	line-height: 16px;
+	
+	// Good to clear all the styling for ul/ol in modules
+	ol,ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	//.es-mod control classes
+	// for quickily apply modified thru backend>modules>css suffix
+	// combine width/margin/padding control classes
+	@import "modules/helper";
+
+	// Standardized layout for modules
+	@import "modules/layout";
+	
+	// Generic elements
+	@import "modules/type";
+	
+
+	// Optional - import accordingly to the module itself to reduce .css file size
+
+	// Buttons
+	//@import "bootstrap/buttons"; //bootstrap core buttons styles
+	//@import "modules/buttons"; //custom buttons for modules (must include bootstrap/buttons)
+	
+	// Forms
+	//@import "modules/forms"; //custom forms for modules
+
+	// Icons
+	//@import "modules/icons-es"; //icomoon font-face only 
+	// refer /media/com_easysocial/styles/icons-es.less apply the specific icons you want to load
+	// e.g.:;
+	// .ies-facebook:before {
+	// 	content: "\e0d5";
+	// }
+	
+	// Media Object
+	// @import "bootstrap/media"; // media object
+	
+	// Avatars
+	// @import "avatars"; // avatar styles
+
+	// Lists
+	// @import "lists"; // items listing styles
+
+	
+	// @import "modules/navs"; //navigation
+	
+
+	
+}

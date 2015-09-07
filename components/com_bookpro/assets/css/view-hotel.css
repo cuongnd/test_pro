@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+.photogallery .display-left
+{
+	float: left;
+	margin-right: 10px;
+}
+.photogallery
+{
+	display: block;
+    float: left;
+    width: 100%;
+}
+

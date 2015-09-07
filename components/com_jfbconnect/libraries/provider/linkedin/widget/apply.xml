@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="jobid" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_JOBID_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_JOBID_DESCRIPTION" default="" />
+                <field name="companyid" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_COMPANYID_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_COMPANYID_DESCRIPTION" default="" />
+                <field name="companyname" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_COMPANYNAME_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_COMPANYNAME_DESCRIPTION" default="" />
+                <field name="jobtitle" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_JOBTITLE_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_JOBTITLE_DESCRIPTION" default="" />
+                <field name="joblocation" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_JOBLOCATION_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_JOBLOCATION_DESCRIPTION" default="" />
+                <field name="email" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_EMAIL_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_EMAIL_DESCRIPTION" default="" />
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_HREF_DESCRIPTION" default="" />
+                <field name="urlformat" type="list" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_URLFORMAT_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_URLFORMAT_DESCRIPTION" default="xml">
+                    <option value="xml">XML</option>
+                    <option value="json">JSON</option>
+                </field>
+                <field name="logo" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_LOGO_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_LOGO_DESCRIPTION" default=""/>
+                <field name="phone" type="radio" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_PHONE_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_PHONE_DESCRIPTION" default="hidden">
+                    <option value="optional">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_OPTIONAL</option>
+                    <option value="hidden">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_HIDDEN</option>
+                    <option value="required">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_REQUIRED</option>
+                </field>
+                <field name="coverletter" type="radio" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_COVERLETTER_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_COVERLETTER_DESCRIPTION" default="hidden">
+                    <option value="optional">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_OPTIONAL</option>
+                    <option value="hidden">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_HIDDEN</option>
+                    <option value="required">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_REQUIRED</option>
+                </field>
+                <field name="showtext" type="radio" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_SHOWTEXT_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_SHOWTEXT_DESCRIPTION" default="0">
+                    <option value="0">COM_JFBCONNECT_WIDGET_OPTION_HIDE</option>
+                    <option value="1">COM_JFBCONNECT_WIDGET_OPTION_SHOW</option>
+                </field>
+                <field name="meta" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_META_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_META_DESCRIPTION" default="" />
+                <field name="themecolor" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_THEMECOLOR_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_THEMECOLOR_DESCRIPTION" default="" />
+                <field name="question1" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_QUESTION1_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_QUESTION_DESCRIPTION" default="" />
+                <field name="question2" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_QUESTION2_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_QUESTION_DESCRIPTION" default="" />
+                <field name="size" type="list" label="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_SIZE_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_SIZE_DESCRIPTION" default="normal">
+                    <option value="normal">COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_SIZE_OPTION_NORMAL</option>
+                    <option value="medium">COM_JFBCONNECT_WIDGET_LINKEDIN_APPLY_SIZE_OPTION_SMALL</option>
+                </field>
+            </fieldset>
+        </fields>
+    </fields>
+</form>

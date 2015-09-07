@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/administrator/components/com_bookpro/models/fields">
+        <field name="id" type="hidden" class="readonly" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" size="10" default="0" readonly="true" />
+        <field name="title" type="text" label="JGLOBAL_TITLE" class="inputbox" size="100" required="true" />
+        <field name="price" type="text" label="JGLOBAL_PRICE" class="inputbox" size="100" required="true" />
+        <field name="image" type="imagelistbookpro" default=""  label="Select an image" description="" directory="images/bookpro/facilityicon" exclude="" stripext="" />
+        <field name="desc" type="editor" default=""  label="Description" description=""  />
+        <field
+			name="state"
+			type="list"
+			label="JSTATUS"
+			description="COM_BOOKPRO_FIELD_STATE_DESC"
+			class="inputbox span12 small"
+			size="1"
+			default="1">
+			<option
+				value="1">JPUBLISHED</option>
+			<option
+				value="0">JUNPUBLISHED</option>
+		</field>
+        <field name="type" type="hidden" class="readonly" label="JGLOBAL_FIELD_TYPE_LABEL" description="JGLOBAL_FIELD_TYPE_DESC" size="10" default="0" readonly="true" />
+        <field name="object_id" type="hidden" class="readonly" label="COM_BOOKPRO_FIELD_OBJECT_ID_LABEL" description="JGLOBAL_FIELD_OBJECT_ID_DESC" size="10" default="0" readonly="true" />
+
+
+
+        
+		 
+		<field name="metakey" type="textarea"
+			label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC"
+			class="inputbox" rows="3" cols="30" />
+
+		<field name="metadesc" type="textarea"
+			label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC"
+			class="inputbox" rows="3" cols="30" />
+		
+		
+		
+	
+	<fields name="metadata">
+		<fieldset name="jmetadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
+
+		</fieldset>
+	</fields>
+		   
+    </fieldset>
+    
+</form>

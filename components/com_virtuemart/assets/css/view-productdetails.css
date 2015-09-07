@@ -1,0 +1,67 @@
+.pd-quick-info {
+    background: none repeat scroll 0 0 #ced7e2;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.pd-quick-info .quick-info, .pd-quick-info .main-pd-cta {
+    float: left;
+    width: 50%;
+}
+.quick-info {
+    background: none repeat scroll 0 0 #ced7e2;
+    border-radius: 3px;
+    padding: 20px;
+}
+.pd-quick-info .pd-cta {
+    background: none repeat scroll 0 0 #29739d;
+    border-radius: 0 3px 3px 0;
+    padding: 10px 20px;
+    text-align: center;
+}
+.pd-quick-info .pd-cta .btn {
+    display: block;
+    margin: 10px 0;
+    text-align: left;
+}
+.btn-lg {
+    box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.05) inset;
+}
+.info-list li {
+    border-bottom: 0 none;
+    border-top: 1px dotted #dee4ec;
+    list-style: none outside none;
+    margin: 0;
+    padding: 10px 0;
+    position: relative;
+}
+.quick-info h3 {
+    font-size: 14px;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+.addtocart-bar .quantity-controls
+{
+    padding-top: 0;
+}
+.carousel-example-generic
+{
+    position: relative;
+
+}
+.images-list li {
+    display: inline-block;
+    list-style: none outside none;
+    margin: 0 10px 20px;
+    position: relative;
+    vertical-align: top;
+}
+.addtocart-area .quantity-controls
+{
+    float: none;
+}
+.pd-item-intro .carousel-inner > .item
+{
+    height: 570px;
+}
