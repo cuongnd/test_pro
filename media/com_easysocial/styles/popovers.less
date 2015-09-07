@@ -1,0 +1,173 @@
+//
+// Popovers
+// --------------------------------------------------
+
+//  Suffix -fd prevent conflict with twbs .popover
+.popover-fd {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10020 !important; 
+	&.popover-profile {
+		z-index: 10000 !important;
+	}
+	display: none;
+	width: 236px;
+	padding: 1px !important;
+	background-color: @popoverBackground !important;
+	-webkit-background-clip: padding-box !important;
+		 -moz-background-clip: padding !important;
+					background-clip: padding-box !important;
+	border: 1px solid #ccc !important;
+	border: 1px solid rgba(0,0,0,.2) !important;
+	.border-radius(6px) !important;
+	.box-shadow(0 5px 10px rgba(0,0,0,.2)) !important;
+
+	// Overrides for proper insertion
+	white-space: normal !important;
+
+	// Offset the popover to account for the popover arrow
+	&.top     { margin-top: -10px !important; }
+	&.right   { margin-left: 10px !important; }
+	&.bottom  { margin-top: 10px !important; }
+	&.left    { margin-left: -10px !important; }
+}
+
+.popover-title {
+	margin: 0 !important; // reset heading margin
+	padding: 8px 14px !important;
+	font-size: 14px !important;
+	font-weight: normal !important;
+	line-height: 18px !important;
+	background-color: @popoverTitleBackground !important;
+	border-bottom: 1px solid darken(@popoverTitleBackground, 5%) !important;
+	.border-radius(5px 5px 0 0) !important;
+}
+
+.popover-content {
+	padding: 9px 14px !important;
+	p, ul, ol {
+		margin-bottom: 0 !important;
+	}
+}
+
+// Arrows
+.popover-fd .arrow,
+.popover-fd .arrow:after {
+	position: absolute !important;
+	display: inline-block !important;
+	width: 0 !important;
+	height: 0 !important;
+	border-color: transparent !important;
+	border-style: solid !important;
+}
+.popover-fd .arrow:after {
+	content: "" !important;
+	z-index: -1 !important;
+}
+
+.popover-fd {
+	&.top .arrow {
+		bottom: -@popoverArrowWidth !important;
+		left: 50% !important;
+		margin-left: -@popoverArrowWidth !important;
+		border-width: @popoverArrowWidth @popoverArrowWidth 0 !important;
+		border-top-color: @popoverArrowColor !important;
+		&:after {
+			border-width: @popoverArrowOuterWidth @popoverArrowOuterWidth 0 !important;
+			border-top-color: @popoverArrowOuterColor !important;
+			bottom: -1px !important;
+			left: -@popoverArrowOuterWidth !important;
+			margin: 0 !important;
+		}
+	}
+	&.right .arrow {
+		top: 50% !important;
+		left: -@popoverArrowWidth !important;
+		margin-top: -@popoverArrowWidth !important;
+		border-width: @popoverArrowWidth @popoverArrowWidth @popoverArrowWidth 0 !important;
+		border-right-color: @popoverArrowColor !important;
+		&:after {
+			border-width: @popoverArrowOuterWidth @popoverArrowOuterWidth @popoverArrowOuterWidth 0 !important;
+			border-right-color: @popoverArrowOuterColor !important;
+			bottom: -@popoverArrowOuterWidth !important;
+			left: -1px !important;
+		}
+	}
+
+	.bottom-arrow() {
+		.arrow {
+			top: -@popoverArrowWidth !important;
+			left: 50% !important;
+			margin-left: -@popoverArrowWidth !important;
+			border-width: 0 @popoverArrowWidth @popoverArrowWidth !important;
+			border-bottom-color: @popoverArrowColor !important;
+			&:after {
+				border-width: 0 @popoverArrowOuterWidth @popoverArrowOuterWidth !important;
+				border-bottom-color: @popoverArrowOuterColor !important;
+				top: -1px !important;
+				left: -@popoverArrowOuterWidth !important;
+				margin: 0 !important;
+			}
+		}	
+	}
+	&.bottom {
+		.bottom-arrow();
+	}
+	&.bottom-left {
+		.bottom-arrow();
+		.arrow {
+			left: 0px !important;
+			right: auto !important;
+		}
+	}
+	&.bottom-right {
+		.bottom-arrow();
+		.arrow {
+			left: auto !important;
+			right: 0px !important;
+			margin-left: auto;
+			margin-right: @popoverArrowWidth !important;			
+		}
+	}
+	&.left .arrow {
+		top: 50% !important;
+		right: -@popoverArrowWidth !important;
+		margin-top: -@popoverArrowWidth !important;
+		border-width: @popoverArrowWidth 0 @popoverArrowWidth @popoverArrowWidth !important;
+		border-left-color: @popoverArrowColor !important;
+		&:after {
+			border-width: @popoverArrowOuterWidth 0 @popoverArrowOuterWidth @popoverArrowOuterWidth !important;
+			border-left-color: @popoverArrowOuterColor !important;
+			bottom: -@popoverArrowOuterWidth !important;
+			right: -1px !important;
+		}
+	}
+}
+
+// Customize
+.popover-fd {
+	text-align: left !important;
+	// z-index: 10002 !important; // to appear on top of es-dialog 10001
+	
+	.popover-title {
+		background: #fff !important;
+		padding: 6px 14px 0 !important;
+		font-size: 12px !important;
+		color: #666;
+		line-height: 16px !important;
+		border-bottom: 1px solid transparent !important;
+		border-radius: 5px 5px 0 0 !important;
+		font-weight: 700 !important;
+		margin: 0 !important;
+	}
+	.popover-content {
+		font-size: 11px !important;
+		line-height: 16px !important;
+		padding: 3px 14px 6px !important;
+		p {
+			margin: 0 !important;
+			line-height: 16px !important;
+		}
+	}
+}

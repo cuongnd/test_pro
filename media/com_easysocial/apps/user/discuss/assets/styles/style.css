@@ -1,0 +1,82 @@
+/**
+ * Profile
+ */
+#es-wrap .profile-easydiscuss .stat-meta{
+	margin-top: 15px;
+	border-top: 1px solid #f6f6f6;
+	padding-top: 15px;
+}
+#es-wrap .profile-easydiscuss .stat-meta .stat-points{
+	text-align: center;
+	font-size: 26px;
+	font-weight: 700;
+	margin-top: 10px;
+}
+
+#es-wrap .profile-easydiscuss .stat-meta .stat-item + .stat-item{
+	border-left: 1px solid #f6f6f6;
+	height: 60px;
+}
+
+#es-wrap .profile-easydiscuss .discussions-list{
+	margin-top: 30px;
+}
+#es-wrap .profile-easydiscuss .discussions-list + .discussions-list{
+	margin-top: 50px;
+}
+#es-wrap .profile-easydiscuss .discussions-list .empty{
+	background: #f6f6f6;
+	border: 1px solid #eee;
+	padding: 40px;
+	color: #666;
+	text-align:center;
+}
+#es-wrap .profile-easydiscuss h4{
+	border-bottom: 1px solid #f6f6f6;
+	padding-bottom: 5px;
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+#es-wrap .profile-easydiscuss .discussions-list .post-item{
+	clear: both;
+}
+
+#es-wrap .profile-easydiscuss .discussions-list .post-item + .post-item{
+	margin-top: 25px;
+}
+#es-wrap .profile-easydiscuss .discussions-list .post-item .vote-count{
+	padding: 6px 12px;
+	width: 38px;
+	background: #219a7f;
+	color: #fff;
+	text-align: center;
+	float: left;
+	margin-right: 10px;
+}
+
+#es-wrap .profile-easydiscuss .discussions-list .post-item .post-info{
+	margin-left: 50px;
+}
+
+#es-wrap .profile-easydiscuss .discussions-list .post-item .post-title a,
+#es-wrap .profile-easydiscuss .discussions-list .post-item .post-title a:hover{
+	font-size: 14px;
+	line-height: 24px;
+	color: #666;
+}
+
+#es-wrap .profile-easydiscuss .discussions-list .post-item .post-meta{
+	font-size: 11px;
+}
+
+
+/**
+ * Stream
+ */
+#es-wrap .discuss-stream-content div.post-details{
+	padding: 8px;
+}
+
+#es-wrap .discuss-stream-content div.post-details h3 a{
+	font-size: 20px;
+}

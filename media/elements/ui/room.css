@@ -1,0 +1,24 @@
+.control-element.control-element-div {
+	position: relative;
+}
+.control-element .block-item-div {
+	min-height: 100px;
+	width: 100%;
+}
+.control-element .block-item-div:hover {
+	border: 1px solid #ccc;
+}
+.control-element[get-data-from="datasource"] {
+	overflow-y: scroll;
+	display: block;
+	max-height: 300px;
+}
+.block-item.block-item-room input[type="date"] {
+	line-height: normal;
+}
+.block-item.block-item-room textarea {
+	resize: none;
+}
+.block-item.block-item-room select.passenger_room {
+	width: 100%;
+}

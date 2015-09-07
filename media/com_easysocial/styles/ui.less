@@ -1,0 +1,266 @@
+//
+// UI
+// --------------------------------------------------
+
+/* Popovers */
+.example-popover {
+	padding-bottom: 24px;
+	background-color: #f9f9f9;
+	.popover {
+		position: relative !important;
+		display: block !important;
+		float: left !important;
+		width: 260px;
+		margin: 20px;
+	}
+}
+// Tooltips popover styling Backend #1080, !important all if necessary
+.popover.popover-fd {
+	background: white !important;
+	color: #666 !important;
+	z-index: 20002 !important;
+	.popover-inner {
+		text-align: left;
+	}
+	.popover-title {
+		background: white;
+		color: #666;
+		font-size: 12px;
+		font-weight: bold;
+		border: none;
+		padding: 5px 10px 0;
+		line-height: 18px !important;
+	}
+	.popover-content {
+		padding: 0 10px 5px;
+		font-size: 11px;
+		line-height: 18px !important;
+		p, ul, ol {
+			margin: 0;
+			line-height: 18px !important;
+		}
+	}
+	&.bottom .arrow {
+		&:after {
+			margin-left: 0;
+			z-index: 0;
+		}
+
+	}
+}
+
+/* Tooltip */
+div.tooltip.tooltip-es {
+	background: none;
+	border: none;
+	float: none;
+	margin: 0;
+	width: auto;
+	position: absolute;
+	z-index: 20002; // es-dialog 10001
+	&.topleft .tooltip-arrow {
+		bottom: 0;
+		left: 15%;
+		margin-left: -@tooltipArrowWidth;
+		border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
+		border-top-color: @tooltipArrowColor;
+	}
+	&.topright .tooltip-arrow {
+		bottom: 0;
+		right: 10%;
+		margin-left: -@tooltipArrowWidth;
+		border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
+		border-top-color: @tooltipArrowColor;
+	}
+	&.bottomleft .tooltip-arrow {
+		top: 0;
+		left: 15%;
+		margin-left: -@tooltipArrowWidth;
+		border-width: 0 @tooltipArrowWidth @tooltipArrowWidth;
+		border-bottom-color: @tooltipArrowColor;
+	}
+	&.bottomright .tooltip-arrow {
+		top: 0;
+		right: 10%;
+		margin-left: -@tooltipArrowWidth;
+		border-width: 0 @tooltipArrowWidth @tooltipArrowWidth;
+		border-bottom-color: @tooltipArrowColor;
+	}
+	
+	// rare cases #1448
+	&.top {
+		margin: -3px 0 0;
+		height: auto;
+	}
+}
+.example-tooltip {
+	position: relative;
+	.tooltip-es {
+		&.top {
+			top: 70px;
+			left: 250px;
+		}
+		&.topleft {
+			top: 42px;
+			left: 280px;
+		}
+		&.topright {
+			top: 16px;
+			left: 190px;
+		}
+		&.bottom {
+			top: 200px;
+			left: 250px;
+		}
+		&.bottomleft {
+			top: 226px;
+			left: 285px;
+		}
+		&.bottomright {
+			top: 252px;
+			left: 185px;
+		}
+		&.left {
+			top: 130px;
+			left: 10px;
+		}
+		&.right {
+			top: 130px;
+			right: 5px;
+		}
+	}
+	.dummy {
+		width: 400px;
+		height: 100px;
+		background: #ccc;
+		position: absolute;
+		top: 100px;
+		left: 50%;
+		margin-left: -200px;
+	}
+}
+
+
+// dropdown @ extend
+// ----------------
+.dropdown-menu-large {
+	width: 300px;
+	min-width: 300px;
+}
+.dropdown-menu-medium {
+	width: 250px;
+	min-width: 250px;
+}
+
+/*Backend icons state*/
+[class^="es-state-"],
+[class*=" es-state-"] {
+	display: inline-block;
+	width: 28px;
+	height: 18px;
+	background-image: url(@{media_uri}/../images/ui/ui-state.png) !important;
+	background-repeat: no-repeat;
+}
+.es-state-publish {
+	background-position: 0 0 !important;
+}
+.es-state-unpublish{
+	background-position: 0 -18px !important;
+}
+.es-state-trash {
+	background-position: 0 -36px !important;
+}
+.es-state-locked {
+	background-position: 0 -54px !important;
+}
+.es-state-unactivated {
+	background-position: 0 -72px !important;	
+}
+.es-state-default {
+	background-position: -28px 0 !important;
+	.square(16px) !important;
+}
+.es-state-featured {
+	background-position: -28px -16px !important;
+	.square(16px) !important;
+}
+
+
+//pagination
+//Added wrapper for place the pagination to the bottom of the es-content
+.pagination-wrapper {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	.pagination-es,
+	.pagination {
+		border-top: 1px solid #DDDDDD;
+	}
+}
+
+
+//loader for outside wrapper
+.popover-profile-loader {
+	// width: 50px !important;
+	// height: 50px !important;
+	// border: 1px solid @esBorder !important;
+	// background: white !important;
+	display: block !important;
+	// .border-radius(3px) !important;
+
+	width: 420px !important;
+	max-width: 420px !important;
+	min-width: 420px !important;
+	height: 200px !important;
+	background-color: white !important;
+	.border-radius(1px) !important;
+	padding: 0 !important;
+	border: 1px solid #ccc !important;
+	border: 1px solid rgba(0,0,0,.2) !important;
+	.box-shadow(0 5px 10px rgba(0,0,0,.2)) !important;
+
+	&.top .arrow {
+		border-top-color: #fff !important;
+		left: 40px !important;
+	}
+	i.es-loading-indicator {
+		position: relative;
+		top: 70px;
+	}
+}
+i.es-loading-indicator{  // suffix es- prevent collision with other templates
+	&.small{
+		text-indent: -9999px !important;
+		display: block !important;
+		padding: 25px !important;
+		background: url("@{media_uri}/../images/loading.gif") center no-repeat !important;
+	}
+
+	&.large{
+		text-indent: -9999px !important;
+		display: block !important;
+		padding: 25px !important;
+		background: url("@{media_uri}/../images/loading-large.gif") center no-repeat !important;
+	}
+}
+
+
+
+// Disable auto zoom in safari3+, chrome1+ on iPhone
+@media (max-width:479px) and (-webkit-min-device-pixel-ratio:0) {
+	#es-wrap {
+		select:focus, textarea:focus, input:focus {
+			font-size: 16px !important;
+		}
+	}
+}
+
+// Responsive control for append elements
+@media (max-width: 767px) {
+	#es-wrap.es-dialog {
+		width: 300px !important;
+		.dialog-body {
+			width: 300px !important;
+		}
+	}
+}

@@ -1,0 +1,55 @@
+// The items here would be mapped back to `#__social_fields` when a new profile type
+// is created on the site.
+{
+	// Specify the label title for this field.
+	"title"			: "COM_EASYSOCIAL_CORE_FIELD_PASSWORD",
+
+	// Specify whether this field should show the title.
+	"display_title"	: true,
+
+	// Specify the description for this field.
+	"description"	: "COM_EASYSOCIAL_CORE_FIELD_PASSWORD_DESC",
+
+	// Specify whether this field should show the description.
+	"display_description"	: true,
+
+	// Specify the default value for this field.
+	"default"		: "",
+
+	// Specify whether this field should be available during registration by default.
+	"registration"	: true,
+
+	// Specify whether this field should be published by default.
+	"state"			: true,
+
+	// Specify whether this field should be searchable by default.
+	"searchable"	: false,
+
+	// Specify whether this field should be required.
+	"required"		: true,
+
+	// Specify default minimum value of this input.
+	"min"			: 4,
+
+	// Specify default maximum value of this input.
+	"max"			: 255,
+
+	// This field should be visible during editing
+	"visible_edit"	: true,
+
+	// This field should be visible during registration
+	"visible_registration" : true,
+
+	// This field should not be visible during display,
+	"visible_display"		: false,
+
+	// Specify default parameters here
+	"params"		:
+	{
+		"reconfirm_password" 	: true,
+		"password_strength"		: true
+	},
+
+	// By default, when a new profile type is created, username would always be the first item.
+	"ordering"		: 2
+}

@@ -1,0 +1,20 @@
+/*------------------------------------*\
+	$contrast - contrast.less
+\*------------------------------------*/
+
+// Contrast text color base on background
+// Example:
+// @bgcolor: #303030;
+// body {
+//     background-color: @bgcolor !important;
+//     .getContrast(@bgcolor) !important;
+// }
+.getContrast(@color) when (iscolor(@color)) {
+  .return_contrast_color(@yiq) when (@yiq >= 128) { color: rgba(0, 0, 0, 0.8); }
+  .return_contrast_color(@yiq) when (@yiq < 128)  { color: rgba(255, 255, 255, 0.8); }
+  @r: red(@color);
+  @g: green(@color);
+  @b: blue(@color);
+  @yiq: ((@r*299)+(@g*587)+(@b*114))/1000;
+  .return_contrast_color(@yiq);
+}

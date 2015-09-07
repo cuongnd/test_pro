@@ -1,0 +1,34 @@
+{
+	// Settings for admin to disallow specific domains from registering.
+	"format": {
+		"name"		: "format",
+		"label"		: "PLG_FIELDS_JOOMLA_FULLNAME_FORMAT",
+		"tooltip"	: "PLG_FIELDS_JOOMLA_FULLNAME_FORMAT_DESC",
+		"type"		: "select",
+		"default"	: 1,
+		"option"	: [
+			{
+				"label"		: "PLG_FIELDS_JOOMLA_FULLNAME_FORMAT_FIRST_MIDDLE_LAST",
+				"value"		: 1
+			},
+			{
+				"label"		: "PLG_FIELDS_JOOMLA_FULLNAME_FORMAT_LAST_MIDDLE_FIRST",
+				"value"		: 2
+			},
+			{
+				"label"		: "PLG_FIELDS_JOOMLA_FULLNAME_FORMAT_NAME",
+				"value"		: 3
+			}
+		]
+	},
+
+	"title": {
+		"default": "PLG_FIELDS_JOOMLA_FULLNAME_DEFAULT_TITLE"
+	},
+
+	"description": {
+		"default": "PLG_FIELDS_JOOMLA_FULLNAME_DEFAULT_DESCRIPTION"
+	},
+
+	"default": false
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<social type="apps" group="user">
+	<name>Albums</name>
+	<element>albums</element>
+	<author>Stack Ideas Sdn Bhd</author>
+	<url>http://stackideas.com</url>
+	<created>19/08/2013</created>
+	<version>1.0.1</version>
+	<copyright>Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<installable>true</installable>
+	<core>true</core>
+	<widget>true</widget>
+	<description><![CDATA[APP_ALBUMS_APP_DESCRIPTION]]></description>
+	<files>
+		<folder>assets</folder>
+		<folder>config</folder>
+		<folder>themes</folder>
+		<folder>widgets</folder>
+		<file>albums.php</file>
+		<file>albums.xml</file>
+		<file>index.html</file>
+	</files>
+	<languages>
+		<language type="en-GB">en-GB.plg_app_user_albums.ini</language>
+	</languages>
+	<updates>
+		<version>http://stackideas.com/updater/easysocial/apps/version</version>
+		<patch>http://stackideas.com/updater/easysocial/apps/patch</patch>
+	</updates>
+</social>

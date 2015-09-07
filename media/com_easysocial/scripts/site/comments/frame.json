@@ -1,0 +1,17 @@
+[
+    {
+        "library": [
+            "expanding"
+        ],
+        "script": [
+            "site/comments/item",
+            "site/comments/control"
+        ],
+        "language": [
+            "COM_EASYSOCIAL_COMMENTS_LOADED_OF_TOTAL",
+            "COM_EASYSOCIAL_COMMENTS_STATUS_SAVING",
+            "COM_EASYSOCIAL_COMMENTS_STATUS_SAVED"
+        ],
+        "adapter": "EasySocial"
+    }
+]

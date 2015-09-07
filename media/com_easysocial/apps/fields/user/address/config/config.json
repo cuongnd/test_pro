@@ -1,0 +1,120 @@
+{
+	"default": false,
+
+	"required": false,
+
+	// Determine if this field input should be using a geocode.
+	// "geocode":
+	// {
+	// 	// This is the label that appears to the admin.
+	// 	"label"		: "Geocode address",
+
+	// 	// This is the description that would appear when the user hovers over the label.
+	// 	"tooltip"	: "If enabled, address will be geocoded and is stored with the coordinates.",
+
+	// 	// This is the type of the field.
+	// 	"type"		: "boolean",
+
+	// 	// This is the default value.
+	// 	"default"	: true
+	// },
+
+	"title": {
+		"default": "PLG_FIELDS_ADDRESS_DEFAULT_TITLE"
+	},
+
+	"description": {
+		"default": "PLG_FIELDS_ADDRESS_DEFAULT_DESCRIPTION"
+	},
+
+	"friend_suggest":
+	{
+		"label"		: "COM_EASYSOCIAL_PROFILES_FORM_FIELDS_PARAMS_CORE_FRIEND_SUGGEST",
+		"tooltip"	: "COM_EASYSOCIAL_PROFILES_FORM_FIELDS_PARAMS_CORE_FRIEND_SUGGEST_DESC",
+		"type"		: "boolean",
+		"default"	: true,
+		"group"		: "advance"
+	},
+
+	"required_address1":
+	{
+		"label"		: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_ADDRESS1",
+		"tooltip"	: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_ADDRESS1_DESC",
+		"type"		: "boolean",
+		"default"	: true
+	},
+
+	"required_address2":
+	{
+		"label"		: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_ADDRESS2",
+		"tooltip"	: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_ADDRESS2_DESC",
+		"type"		: "boolean",
+		"default"	: true
+	},
+
+	"required_city":
+	{
+		"label"		: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_CITY",
+		"tooltip"	: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_CITY_DESC",
+		"type"		: "boolean",
+		"default"	: true
+	},
+
+	"required_state":
+	{
+		"label"		: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_STATE",
+		"tooltip"	: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_STATE_DESC",
+		"type"		: "boolean",
+		"default"	: true
+	},
+
+	"required_zip":
+	{
+		"label"		: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_ZIP",
+		"tooltip"	: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_ZIP_DESC",
+		"type"		: "boolean",
+		"default"	: true
+	},
+
+	"required_country":
+	{
+		"label"		: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_COUNTRY",
+		"tooltip"	: "PLG_FIELDS_ADDRESS_CONFIG_REQUIRED_COUNTRY_DESC",
+		"type"		: "boolean",
+		"default"	: true
+	},
+
+	"sort_type": {
+		"label"		: "PLG_FIELDS_ADDRESS_CONFIG_SORT_TYPE",
+		"tooltip"	: "PLG_FIELDS_ADDRESS_CONFIG_SORT_TYPE_DESC",
+		"type"		: "select",
+		"default"	: "name",
+		"option"	: [
+			{
+				"label"	: "PLG_FIELDS_ADDRESS_CONFIG_SORT_TYPE_CODE",
+				"value"	: "code"
+			},
+			{
+				"label"	: "PLG_FIELDS_ADDRESS_CONFIG_SORT_TYPE_NAME",
+				"value"	: "name"
+			}
+		]
+	},
+
+	"title_type": {
+		"label"		: "PLG_FIELDS_ADDRESS_CONFIG_TITLE_TYPE",
+		"tooltip"	: "PLG_FIELDS_ADDRESS_CONFIG_TITLE_TYPE_DESC",
+		"type"		: "select",
+		"default"	: "name",
+		"option"	: [
+			{
+				"label"	: "PLG_FIELDS_ADDRESS_CONFIG_TITLE_TYPE_NAME",
+				"value"	: "name"
+			},
+			{
+				"label"	: "PLG_FIELDS_ADDRESS_CONFIG_TITLE_TYPE_CODE",
+				"value"	: "code"
+			}
+		]
+	}
+}

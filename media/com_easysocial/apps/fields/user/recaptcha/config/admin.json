@@ -1,0 +1,55 @@
+[
+	{
+		"title"		: "Recaptcha Configuration",
+		"fields"	:
+		[
+			{
+				"label"		: "Use SSL",
+				"tooltip"	: "If enabled, recaptcha would be loaded with SSL",
+				"name"		: "ssl",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Public Key",
+				"tooltip"	: "Set the public key that you obtained from http://recaptcha.net",
+				"name"		: "public",
+				"type"		: "text",
+				"default"	: ""
+			},
+			{
+				"label"		: "Private Key",
+				"tooltip"	: "Set the private key that you obtained from http://recaptcha.net",
+				"name"		: "private",
+				"type"		: "text",
+				"default" 	: ""
+			},
+			{
+				"label"		: "Recaptcha Theme",
+				"tooltip"	: "Set the recaptcha theme that you would like to use",
+				"name"		: "theme",
+				"type"		: "select",
+				"options"	:
+				[
+					{
+						"title"	: "Clean",
+						"value" : "clean"
+					},
+					{
+						"title"	: "White",
+						"value" : "white"
+					},
+					{
+						"title"	: "Red",
+						"value" : "red"
+					},
+					{
+						"title"	: "Black Glass",
+						"value" : "blackglass"
+					}
+				],
+				"default"	: "red"
+			}
+		]
+	}
+]

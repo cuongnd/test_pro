@@ -1,0 +1,17 @@
+fieldset {
+	border: 1px solid #99ccff !important;
+	margin-bottom: 30px;
+}
+.fieldset > .div-row.enable-create-drop-element {
+	margin-top: 18px;
+	padding-bottom: 29px;
+}
+legend {
+	border: medium none;
+	color: #4a6c9c;
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: -3px;
+	margin-left: 10px;
+	width: initial;
+}

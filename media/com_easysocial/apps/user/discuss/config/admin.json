@@ -1,0 +1,39 @@
+[
+	{
+		"title"		: "Profile",
+		"desc"		: "Configure the application of user's EasyDiscuss status in profile.",
+		"fields"	:
+		[
+			{
+				"label"		: "Display your discussions",
+				"tooltip"	: "Specify the numbers of recently created new posts of the user to display",
+				"name"		: "discuss-recent",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Total Recent Discussions",
+				"tooltip"	: "Specify the numbers of recently created new posts of the user to display",
+				"name"		: "discuss-recent-limit",
+				"class"		: "input-mini center",
+				"type"		: "text",
+				"default"	: 10
+			},
+			{
+				"label"		: "Display participated discussions",
+				"tooltip"	: "Specify the numbers of recently created new posts of the user to display",
+				"name"		: "discuss-participating",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Total Participated Discussions",
+				"tooltip"	: "Specify the numbers of recently participated posts of the user to display",
+				"name"		: "discuss-participating-limit",
+				"class"		: "input-mini center",
+				"type"		: "text",
+				"default"	: 10
+			}
+		]
+	}
+]

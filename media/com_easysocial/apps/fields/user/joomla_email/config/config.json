@@ -1,0 +1,34 @@
+{
+	"title": {
+		"default": "PLG_FIELDS_JOOMLA_EMAIL_DEFAULT_TITLE"
+	},
+
+	"description": {
+		"default": "PLG_FIELDS_JOOMLA_EMAIL_DEFAULT_DESCRIPTION"
+	},
+
+	// Settings for admin to disallow specific domains from registering.
+	"disallowed":
+	{
+		"label"		: "PLG_FIELDS_CONFIG_JOOMLA_EMAIL_DISALLOWED_DOMAINS",
+		"tooltip"	: "PLG_FIELDS_CONFIG_JOOMLA_EMAIL_DISALLOWED_DOMAINS_DESC",
+		"type"		: "textarea",
+		"default"	: "mailinator.com,devnullmail.com,binkmail.com,chogmail.com,frapmail.com"
+	},
+
+	// Settings for admin to disallow specific domains from registering.
+	"forbidden":
+	{
+		"label"		: "PLG_FIELDS_CONFIG_JOOMLA_EMAIL_FORBIDDEN_WORDS",
+		"tooltip"	: "PLG_FIELDS_CONFIG_JOOMLA_EMAIL_FORBIDDEN_WORDS_DESC",
+		"type"		: "textarea",
+		"default"	: ""
+	},
+
+	"visible_display":
+	{
+		"default": false
+	},
+
+	"default": false
+}

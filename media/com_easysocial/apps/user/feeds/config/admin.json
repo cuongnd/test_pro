@@ -1,0 +1,17 @@
+[
+	{
+		"title"		: "Profile",
+		"desc"		: "Configure application related settings for the feeds app on the user's profile.",
+		"fields"	:
+		[
+			{
+				"label"		: "Total feed items to display",
+				"tooltip"	: "Specify the number of feed items to display in the profile",
+				"name"		: "total",
+				"type"		: "text",
+				"class"		: "input-mini center",
+				"default"	: 5
+			}
+		]
+	}
+]

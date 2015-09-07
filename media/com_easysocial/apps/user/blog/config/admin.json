@@ -1,0 +1,17 @@
+[
+	{
+		"title"		: "Default Settings",
+		"desc"		: "This settings will only be affected when you set this app as the default application for users on the site. Configure the default application settings for this app here.",
+		"fields"	:
+		[
+			{
+				"label"		: "Total blog posts to display",
+				"tooltip"	: "Specify the number of feed items to display in the profile",
+				"name"		: "total",
+				"class"		: "input-mini center",
+				"type"		: "text",
+				"default"	: 5
+			}
+		]
+	}
+]

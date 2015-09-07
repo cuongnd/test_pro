@@ -1,0 +1,11 @@
+[
+    {
+        "library": [
+            "ui/autocomplete"
+        ],
+        "view": [
+            "site/location/delete.confirmation"
+        ],
+        "adapter": "EasySocial"
+    }
+]

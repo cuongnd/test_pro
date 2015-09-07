@@ -1,0 +1,14 @@
+[
+    {
+        "language": [
+            "COM_EASYSOCIAL_COMMENTS_STATUS_SAVE_ERROR",
+            "COM_EASYSOCIAL_COMMENTS_STATUS_LOADING",
+            "COM_EASYSOCIAL_COMMENTS_STATUS_LOAD_ERROR",
+            "COM_EASYSOCIAL_COMMENTS_STATUS_DELETING",
+            "COM_EASYSOCIAL_COMMENTS_STATUS_DELETE_ERROR",
+            "COM_EASYSOCIAL_LIKES_LIKE",
+            "COM_EASYSOCIAL_LIKES_UNLIKE"
+        ],
+        "adapter": "EasySocial"
+    }
+]

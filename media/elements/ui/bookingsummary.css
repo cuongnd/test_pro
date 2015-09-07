@@ -1,0 +1,18 @@
+.control-element.control-element-div {
+	position: relative;
+}
+.control-element .block-item-div {
+	min-height: 100px;
+	width: 100%;
+}
+.control-element .block-item-div:hover {
+	border: 1px solid #ccc;
+}
+.control-element[get-data-from="datasource"] {
+	overflow-y: scroll;
+	display: block;
+	max-height: 300px;
+}
+.block-item.block-item-passengers input[type="date"] {
+	line-height: normal;
+}

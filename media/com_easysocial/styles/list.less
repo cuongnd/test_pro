@@ -1,0 +1,180 @@
+//
+// List
+// --------------------------------------------------
+// apply to ul .unstyled modified
+// for main content/dialog listing only
+// * cant apply it sidebar widget
+
+// .es-item-list,
+.es-item-grid {
+	width: 100%;
+	.clearfix();
+	> li {
+		.clearfix();
+		margin-bottom: 10px;
+	}
+}
+
+.es-item-list {
+	display: block;
+	list-style: none outside none;
+	> li {
+		position: relative;
+	}
+}
+.es-item-grid {
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+	line-height: normal;
+	> li {
+		float: left;
+		position: relative;
+		margin-right: 1%;
+		&:nth-child(2n+1) {
+
+		}
+	}
+	// 1 col
+	&.es-item-grid_1col {
+		> li {
+			float: none;
+			width: 100%;
+			margin-bottom: 10px;
+			margin-right: 0;
+			.clearfix();
+		}
+	}
+	// 2 col
+	&.es-item-grid_2col {
+		> li {
+			width: 49%;
+			&:nth-child(2n+1) {
+				clear: left;
+			}
+		}
+	}
+	// 3 col
+	&.es-item-grid_3col {
+		> li {
+			width:32.333%;
+			&:nth-child(3n+1) {
+				clear: left;
+			}
+		}
+	}
+	// 4 col
+	&.es-item-grid_4col {
+		> li {
+			width:23.777%;
+			&:nth-child(4n+1) {
+				clear: left;
+			}
+		}
+	}
+	// 5 col
+	&.es-item-grid_5col {
+		> li {
+			width:18.888%;
+			&:nth-child(5n+1) {
+				clear: left;
+			}
+		}
+	}
+}
+
+//Narrow view es-item change to full-width
+&.w480 {
+	.es-item-grid {
+		// 2 col
+		&.es-item-grid_2col,
+		&.es-item-grid_3col,
+		&.es-item-grid_4col,
+		&.es-item-grid_5col {
+			> li {
+				width: 100%;
+				&:nth-child(2n+1) {
+					clear: none;
+				}
+			}
+		}
+		&.es-item-grid_3col {
+			> li {
+				&:nth-child(3n+1) {
+					clear: none;
+				}
+			}
+		}
+	}//grid
+}
+
+
+// container for item-list
+.es-item {
+	.clearfix();
+	border: 1px solid @esBorder;
+	.border-radius(3px);
+	padding: 10px;
+	.es-item-title {
+		font-weight: bold;
+		.text-overflow();
+	}
+	.es-item-body {
+		.clearfix();
+		margin-left: 50px;
+	}
+	&.es-item-borderless {
+		border: none;
+	}
+}
+
+
+.es-avatar-list {
+	margin: 0;
+	padding: 0;
+	.clearfix();
+	> li {
+		margin-top: 10px;
+		display: inline-block;
+		.es-avatar {
+			// border: 2px solid @esBorder;
+			img {
+				// border: 2px solid white;
+				background: #f5f5f5;
+				// width: 60px;
+				// height: 60px;
+			}
+		}
+		&.active {
+			.es-avatar {
+				border: 2px solid #5b93ce;
+				img {
+					border: 2px solid white;
+				}
+			}
+		}
+	}
+}
+
+
+.es-cover-list {
+	.clearfix();
+	> li {
+		margin-top: 10px;
+		display: inline-block;
+		.es-cover {
+			border: 2px solid @esBorder;
+			img {
+				border: 2px solid white;
+			}
+		}
+		&.active {
+			.es-cover {
+				border: 2px solid #5b93ce;
+				img {
+					border: 2px solid white;
+				}
+			}
+		}
+	}
+}

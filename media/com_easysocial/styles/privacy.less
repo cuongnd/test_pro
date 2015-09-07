@@ -1,0 +1,149 @@
+/*------------------------------------*\
+	$privacy - privacy.less
+\*------------------------------------*/
+
+.solid .es-privacy {
+	.es-privacy-toggle {
+		.buttonBackground(@esPrivacyBackground, @esPrivacyBackgroundHighlight, @esPrivacyColor, @esPrivacyTextshadow);
+		.caret {
+			.opacity(100);
+		}
+	}	
+}
+
+.es-privacy {
+	position: relative;
+	&.solid,
+	&:hover {
+		.es-privacy-toggle {
+			.buttonBackground(@esPrivacyBackground, @esPrivacyBackgroundHighlight, @esPrivacyColor, @esPrivacyTextshadow);
+			.caret {
+				.opacity(100);
+			}
+		}
+	}
+	.es-privacy-toggle-label {
+		color: @esPrivacyColor;
+		height: 24px;
+		padding: 0 4px 0;
+		background: none;
+		line-height: 24px;
+		[class^="ies-"],
+		[class*=" ies-"] {
+			font-size: 13px;
+			position: relative;
+			top: 3px;
+		}
+	}
+	.es-privacy-toggle {
+		color: @esPrivacyColor;
+		height: 24px;
+		padding: 0 3px 0;
+		background: none;
+		border: 1px solid transparent;
+		line-height: 24px;
+		.box-shadow(none);
+		[class^="ies-"],
+		[class*=" ies-"] {
+			font-size: 13px;
+			vertical-align: top;
+			// position: relative;
+			// top: 3px;
+		}
+		.caret {
+			position: relative;
+			top: 3px;
+			.opacity(0);
+		}
+	}
+
+	.es-privacy-menu {
+		display: none;
+		margin-top: 8px;
+		.arrow(6px, @esPrivacyBackground, top, auto, 10px, 0, @esPrivacyBorder);
+		padding: 3px 0;
+		left: auto;
+		right: 0;
+		position: absolute;
+		border: 1px solid @esPrivacyBorder;
+		li {
+			&.active {
+				a {
+					color: @esPrivacyMenuActiveColor;
+				}
+			}
+		}
+		a {
+			color: @esPrivacyColor;
+			font-size: 11px;
+			&:hover {
+				border-top-color: rgba(0, 0, 0, 0);
+				border-bottom-color: rgba(0, 0, 0, 0);
+			}
+		}
+		[class^="ies-"],
+		[class*=" ies-"] {
+			font-size: 12px;
+		}
+		.divider {
+			border-bottom: 1px solid @grayLighter;
+		}
+	}
+
+	.es-privacy-custom-form {
+		padding: 10px;
+		width: 300px;
+
+		.btn {
+			float: right;
+			margin-left: 5px;
+		}
+	}
+
+	&.active {
+		.es-privacy-toggle {
+			.buttonBackground(@esPrivacyActiveBackground, @esPrivacyActiveBackground, @grayDark, @btnEsTextShadow);
+			.caret {
+				.opacity(100);
+			}
+		}
+		.es-privacy-menu {
+			display: block;
+		}
+		.es-privacy-custom-form {
+			display: none;
+		}
+
+		&.custom-privacy {
+			.es-privacy-menu {
+				display: none;
+			}
+			.es-privacy-custom-form {
+				display: block;
+			}
+		}
+	}
+}//es-privacy
+
+
+//Privacy positioning in different views or blocks
+&.es-profile {
+	.es-privacy {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 20;
+	}
+}
+.es-stream {
+	.es-privacy {
+		// right: 30px;
+		display: inline;
+		position: relative;
+		top: -2px;
+		left: -4px;
+	}
+}
+
+
+

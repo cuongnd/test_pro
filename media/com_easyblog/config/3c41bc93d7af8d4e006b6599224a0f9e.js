@@ -1,0 +1,2 @@
+
+FD31.component("EasyBlog", {"environment":"optimized","source":"local","mode":"compressed","baseUrl":"http:\/\/websitetemplatepro.com\/index.php?option=com_easyblog&lang=none&Itemid=510","version":"3.9.14919","scriptVersioning":true,"responsive":false});

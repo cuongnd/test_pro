@@ -1,0 +1,56 @@
+#es-wrap .app-tasks-wrapper .filter-tasks{
+	text-align: right;
+}
+
+#es-wrap .app-tasks-wrapper .filter-tasks .active{
+	border-bottom: 3px solid #83B3DE;
+}
+
+#es-wrap .app-tasks-wrapper .tasks-list li {
+	line-height: 28px;
+	padding: 4px 0;
+}
+
+#es-wrap .app-tasks-wrapper .tasks-list li label{
+	font-size: 11px;
+	margin-right: 5px;
+}
+
+#es-wrap .app-tasks-wrapper .tasks-list li.formItem .title-input{
+	display: inline;
+}
+
+#es-wrap .app-tasks-wrapper .tasks-list li.formItem input{
+	width: 80%;
+}
+
+#es-wrap .app-tasks-wrapper .tasks-list li + li{
+	border-top: 1px solid #f4f4f4;
+}
+
+/**
+ * Dropdown button.
+ */
+#es-wrap .app-tasks-wrapper .tasks-list .btn-group > .btn-dropdown:first-child{
+	height: 16px;
+	line-height: 16px;
+	width: 16px;
+	padding-top: 3px;
+}
+
+/**
+ * Resolved items.
+ */
+#es-wrap .app-tasks-wrapper .tasks-list li.resolved{
+	background: #ffffcc;
+}
+#es-wrap .app-tasks-wrapper .tasks-list li.resolved label{
+	text-decoration: line-through;
+}
+
+/**
+ * Unresolved items.
+ */
+#es-wrap .app-tasks-wrapper .tasks-list li.unresolved label{
+	text-decoration: none;
+}

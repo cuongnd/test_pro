@@ -1,0 +1,58 @@
+{
+	"default": false,
+
+	"calendar": {
+		"label"		: "PLG_FIELDS_DATETIME_CONFIG_USE_CALENDAR",
+		"tooltip"	: "PLG_FIELDS_DATETIME_CONFIG_USE_CALENDAR_DESC",
+		"type"		: "boolean",
+		"default"	: true
+	},
+
+	"date_format": {
+		"label"		: "PLG_FIELDS_DATETIME_CONFIG_DATE_FORMAT",
+		"tooltip"	: "PLG_FIELDS_DATETIME_CONFIG_DATE_FORMAT_DESC",
+		"type"		: "select",
+		"default"	: 1,
+		"option"	: [
+			{
+				"label"		: "PLG_FIELDS_DATETIME_CONFIG_DATE_FORMAT_DDMMYY",
+				"value"		: 1
+			},
+			{
+				"label"		: "PLG_FIELDS_DATETIME_CONFIG_DATE_FORMAT_MMDDYY",
+				"value"		: 2
+			},
+			{
+				"label"		: "PLG_FIELDS_DATETIME_CONFIG_DATE_FORMAT_YYDDMM",
+				"value"		: 3
+			},
+			{
+				"label"		: "PLG_FIELDS_DATETIME_CONFIG_DATE_FORMAT_YYMMDD",
+				"value"		: 4
+			}
+		]
+	},
+
+
+
+	// "date_time": {
+	// 	"label"		: "PLG_FIELDS_DATETIME_CONFIG_DISPLAY_TIME",
+	// 	"tooltip"	: "PLG_FIELDS_DATETIME_CONFIG_DISPLAY_TIME_DESC",
+	// 	"type"		: "boolean",
+	// 	"default"	: 1
+	// },
+
+	"yearfrom": {
+		"label"		: "PLG_FILEDS_DATETIME_CONFIG_YEAR_RANGE_FROM",
+		"tooltip"	: "PLG_FILEDS_DATETIME_CONFIG_YEAR_RANGE_FROM_DESC",
+		"type"		: "text",
+		"default"	: "1930"
+	},
+
+	"yearto": {
+		"label"		: "PLG_FILEDS_DATETIME_CONFIG_YEAR_RANGE_TO",
+		"tooltip"	: "PLG_FILEDS_DATETIME_CONFIG_YEAR_RANGE_TO_DESC",
+		"type"		: "text",
+		"default"	: "2013"
+	}
+}

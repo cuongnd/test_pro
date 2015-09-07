@@ -1,0 +1,136 @@
+@import "bootstrap/variables";
+@import "variables";
+@import "bootstrap/mixins";
+@import "arrow"; //mixins
+@import "contrast"; //mixins
+
+@EasySocial: "div#es-wrap";
+
+(~"@{EasySocial}") {
+// [id^="es-"] {
+	// CSS Reset
+	@import "bootstrap/reset";
+	@import "reset"; // Note: extended reset to prevent conflict for Joomla Template
+
+	// Grid system and page structure
+
+	@import "bootstrap/grid";
+	@import "bootstrap/layouts";
+
+	// Base CSS
+	//@import "type"; // Modified from bootstrap/type to make font type inherit from template itself instead of component
+	// have to gain 1 more specificity to override #template!
+	// e.g.: body div#wrapper
+	body & {
+		@import "type";
+	}
+
+	@import "bootstrap/code";
+	@import "forms";
+	@import "bootstrap/tables";
+
+	// Components: common
+
+	@import "sentence";
+	@import "dropdowns"; // Note: custom .dropdown-menu
+	@import "wells";
+	@import "bootstrap/component-animations";
+	@import "bootstrap/close";
+
+	// Components: Buttons & Alerts
+	@import "bootstrap/buttons";
+	@import "buttons"; //Note: extended .btn custom buttons
+	@import "bootstrap/button-groups";
+	@import "button-groups"; // Note: extra classes button-groups-es
+
+	// Note: alerts share common CSS with buttons and thus have styles in buttons
+	@import "alerts"; // Note: custom .alert
+
+	// Components: Nav
+	@import "bootstrap/navs";
+	@import "bootstrap/navbar";
+	@import "bootstrap/breadcrumbs";
+	@import "bootstrap/pagination"; // Note: .pagination added prefix to
+	@import "bootstrap/pager";
+	@import "navs"; // clean/simple nav classes .es-nav
+	@import "pagination"; // Note: extend .pagination;
+
+	@import "stepbar"; // Note: extended .navbar
+	@import "tabs"; // Note: extended .nav-tabs
+	@import "login-box";
+	@import "list"; //Note: es-item-list es-item-grid
+	@import "privacy"; // Privacy dropdown menu
+	@import "loader"; // Loader
+	@import "reports"; // reports
+
+	// EasySocial
+	@import "avatars";
+	@import "photos";
+	@import "badges";
+
+	// Components: Misc
+	@import "bootstrap/thumbnails";
+	@import "modals"; //modals styling for #es-wrap is different from #dialog
+	@import "dialog";
+
+	@import "bootstrap/media";
+	@import "bootstrap/labels-badges";
+	@import "bootstrap/progress-bars";
+	@import "progress-bars"; // Note: extended .progress custom progress bar
+	@import "bootstrap/accordion";
+
+
+	@import "flyout"; //inline popover
+
+	// 3rd party/JS
+
+	@import "markitup/default";
+	@import "chosen/default";
+	@import "uniform/default";
+	@import "ibuttons";
+	@import "uploader";
+	@import "sharing";
+	@import "selection";
+	@import "popbox";
+
+	// Utility classes
+
+	@import "bootstrap/notify";
+	//@import "notify"; //Note: extended notify
+	//@import "location"; //Note: location map auto suggest
+
+	@import "bootstrap/utilities"; // Has to be last to override when necessary
+
+	body & {
+		@import "utilities"; // width/margin/padding control classes
+	}
+
+	// Frontend/Backend shared classes name
+	// ----------------
+	//custom icons
+	//@import "icons-20"; //20x20
+	@import "icons-sprites"; //32x32
+	@import "icons-32"; //32x32
+	@import "icons-es"; //icomoon
+}
+
+@import "textboxlist";
+
+
+// Icons
+// ----------------
+
+// @import "popup";
+@import "bootstrap/tooltip";
+@import "bootstrap/popovers"; // re import popovers styling for J2.5 #1080
+
+@import "ui";
+
+(~"@{Foundry}") {
+	&.ui {
+		@import "ui/core";
+		@import "ui/theme";
+		@import "ui/datepicker";
+		@import "ui/slider";
+	}
+}

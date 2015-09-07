@@ -1,0 +1,14 @@
+[
+    {
+        "library": [
+            "history"
+        ],
+        "view": [
+            "site/loading/small"
+        ],
+        "script": [
+            "site/conversations/composer"
+        ],
+        "adapter": "EasySocial"
+    }
+]

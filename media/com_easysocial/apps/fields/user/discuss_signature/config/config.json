@@ -1,0 +1,9 @@
+{
+	"title": {
+		"default": "PLG_FIELDS_DISCUSS_SIGNATURE_DEFAULT_TITLE"
+	},
+
+	"description": {
+		"default": "PLG_FIELDS_DISCUSS_SIGNATURE_DEFAULT_DESCRIPTION"
+	}
+}

@@ -1,0 +1,12 @@
+.block-item.block-item-excel .wtHolder {
+	height: auto !important;
+	width: 100% !important;
+}
+.control-element.control-element-excell {
+	width: 100% !important;
+}
+.control-element.control-element-excell .wtHolder,
+.control-element.control-element-excell .ht_clone_left.handsontable {
+	height: auto !important;
+	width: 100% !important;
+}

@@ -1,0 +1,11 @@
+[
+    {
+        "view": [
+            "site/loading/small"
+        ],
+        "library": [
+            "tinyscrollbar"
+        ],
+        "adapter": "EasySocial"
+    }
+]

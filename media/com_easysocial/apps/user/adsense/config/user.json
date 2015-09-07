@@ -1,0 +1,17 @@
+[
+	{
+		"title"		: "Profile",
+		"desc"		: "Configure application related settings for the adsense app on your profile.",
+		"fields"	:
+		[
+			{
+				"label"		: "Adsense Code",
+				"tooltip"	: "Paste the adsense code that is provided by Google Adsense here.",
+				"name"		: "profile_adsense_code",
+				"type"		: "textarea",
+				"class"		: "input-full",
+				"default"	: ""
+			}
+		]
+	}
+]

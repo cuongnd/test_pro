@@ -1,0 +1,45 @@
+[
+	{
+		"title"		: "Default Settings",
+		"desc"		: "This settings will only be affected when you set this app as the default application for users on the site. Configure the default application settings for this app here.",
+		"fields"	:
+		[
+			{
+				"label"		: "Show recent albums in profile",
+				"tooltip"	: "If enabled, your recent albums will be displayed to you and other users when they access your profile",
+				"name"		: "showalbums",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Show albums count",
+				"tooltip"	: "If enabled, the albums count will be displayed in the title of the widget.",
+				"name"		: "showcount",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Albums ordering",
+				"tooltip"	: "How would you like your albums to be displayed?",
+				"name"		: "ordering",
+				"type"		: "select",
+				"default"	: "latest",
+				"options"	:
+				[
+					{
+						"title"	: "Latest first",
+						"value"	: "latest"
+					},
+					{
+						"title"	: "Randomize",
+						"value"	: "random"
+					},
+					{
+						"title"	: "Oldest first",
+						"value"	: "oldest"
+					}
+				]
+			}
+		]
+	}
+]

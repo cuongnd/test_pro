@@ -1,0 +1,16 @@
+[
+	{
+		"title"		: "Dashboard",
+		"desc"		: "Configure application related settings for the birthday app on dashboard page",
+		"fields"	:
+		[
+			{
+				"label": "Unique key",
+				"tooltip": "Define which unique key of this field to act as the main field to retrieve data from.",
+				"name": "dashboard_show_uniquekey",
+				"type": "text",
+				"default": "BIRTHDAY"
+			}
+		]
+	}
+]

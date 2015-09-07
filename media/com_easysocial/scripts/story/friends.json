@@ -1,0 +1,13 @@
+[
+    {
+        "library": [
+            "textboxlist"
+        ],
+        "language": [
+            "COM_EASYSOCIAL_WITH_FRIENDS",
+            "COM_EASYSOCIAL_AND_ONE_OTHER",
+            "COM_EASYSOCIAL_AND_MANY_OTHERS"
+        ],
+        "adapter": "EasySocial"
+    }
+]

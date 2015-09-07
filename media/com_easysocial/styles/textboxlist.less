@@ -1,0 +1,220 @@
+//
+// Textboxlist
+// --------------------------------------------------
+/*=plugin autocomplete
+================================================== */
+#photo-list {
+
+	.clearfix();
+
+	.photo-item {
+
+		.box-sizing(border-box);
+		float: left;
+		width: 25%;
+		min-width: 96px;
+		min-height: 96px;
+		cursor: pointer;
+
+		i {
+			width: 100%;
+			height: 100%;
+			min-width: 96px;
+			min-height: 96px;
+			display: block;
+			background-repeat: none;
+			background-size: cover;
+			background-position: 50% 25%;
+			.transition(all .6s ease);
+		}
+	}
+}
+
+.textboxlist {
+	border: 1px solid #ccc;
+	padding: 4px 0 0 4px;
+	.border-radius(3px);
+	min-height: 32px;
+	cursor: text;
+	position: relative;
+	.clearfix();
+
+	&.disabled {
+		background-color: #EEEEEE;	
+	}
+}
+
+.textboxlist-textField {
+	height: 22px !important;
+	line-height: 22px !important;
+	float: left;
+
+	/* reset */
+	border: none !important;
+	padding: 0 !important;
+	margin: 0 0 4px 0 !important;
+	box-shadow: none !important;
+	font-size: 12px !important;
+
+	float: left;
+}
+
+.textboxlist-itemGroup { //ul
+	margin: 0;
+	padding: 0;
+	.clearfix();
+	list-style: none;
+	li {
+		float: left;
+		list-style: none;
+	}
+}
+
+.textboxlist-item { //li
+	float: left;
+	
+	background: #E7F3FE;
+	border: 1px solid #C6D5E6;
+	.border-radius(5px);
+	color: #729BCD;
+
+	position: relative;
+	height: 22px;
+	line-height: 18px;	
+	margin: 0px 4px 4px 0px;
+	padding: 0 18px 0 4px;
+	overflow: hidden; // long name issue
+	.textboxlist-itemContent {
+
+		img {
+			width: 12px;
+			height: 12px;
+			margin-top: -2px;
+		}
+	}
+
+	.textboxlist-field { //li
+		margin: 0;
+		padding: 0;
+		white-space: nowrap;
+	}
+}
+
+.textboxlist-autocomplete {
+	position: absolute;
+	z-index: 99999;
+	.box-shadow(0 3px 2px rgba(0,0,0,.15));
+	margin-top: 8px;
+
+	&.loading {
+		.textboxlist-autocomplete-loading {
+			display: block;
+		}
+
+		.textboxlist-menu {
+			display: none;
+		}
+	}
+
+	&.empty {
+		.textboxlist-autocomplete-empty {
+			display: block;
+		}
+		.textboxlist-menu {
+			display: none;
+		}
+
+		// Loading takes precendence
+		&.loading {
+			.textboxlist-autocomplete-empty {
+				display: none;
+			}
+		}
+	}
+}
+
+.textboxlist-autocomplete-loading,
+.textboxlist-autocomplete-empty {
+	display: none;
+}
+
+.textboxlist-autocomplete-loading-indicator {
+	display: block;
+	padding: 8px 0px;
+	height: 16px;
+	background: url("@{media_uri}/../images/loading.gif") center center no-repeat;
+}
+
+.textboxlist-autocomplete-empty-text {
+	padding: 8px 0px;
+	line-height: 16px;
+	font-size: 12px;
+	text-align: center;
+	display: block;
+	color: #888;
+}
+
+.textboxlist-autocomplete-inner {
+	border: 1px solid #aaa;
+	.border-radius(3px);
+	background: white;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.textboxlist-menu { //ul
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	background: none !important;
+
+	.textboxlist-menuItem { //li
+		cursor: pointer;
+		padding: 6px;
+		text-align: left;
+		font-size: 13px;
+		margin: 0;
+
+		+ .textboxlist-menuItem {
+			border-top: 1px solid #ddd;
+		}
+
+		&.active {
+			background: #E7EDF3;
+		}
+
+		&.hidden {
+			display: none;
+		}
+	}
+}
+
+.textboxlist-itemRemoveButton {   
+    position: absolute;
+    height: 20px;
+    padding: 0;    
+    right: 0;
+    top: 0;
+    width: 20px;
+    opacity: 0.8;
+    cursor: pointer;
+
+    &:hover {
+    	opacity: 1;
+    }
+
+    > i {
+	    width: 8px !important;
+	    height: 8px !important;
+	    font-size: 8px !important;
+	    margin: 4px 0 0 6px !important;
+	    line-height: 10px !important;
+    }
+}
+
+.textboxlist-menu-avatar {
+	width: 16px;
+	height: 16px;
+	position: relative;
+    top: 1px;
+}

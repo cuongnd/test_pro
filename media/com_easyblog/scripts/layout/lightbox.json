@@ -1,0 +1,8 @@
+[
+    {
+        "script": [
+            "legacy"
+        ],
+        "adapter": "EasyBlog"
+    }
+]

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="element" version="3.1" client="site">
+    <name>tabs</name>
+    <author>Joomla! Project</author>
+    <creationDate>July 2004</creationDate>
+    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>admin@joomla.org</authorEmail>
+    <authorUrl>www.joomla.org</authorUrl>
+    <version>3.0.0</version>
+    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
+    <customContent />
+    <files>
+        <filename module="mod_custom">mod_custom.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">en-GB.mod_custom.ini</language>
+        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
+    </languages>
+    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
+    <config>
+        <fields name="params">
+            <fields name="data">
+                <fieldset name="data"  description="Data config" label="Data config">
+                    <field name="value" readonly="readonly" type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Text" label="Text"/>
+                </fieldset>
+            </fields>
+        </fields>
+        <fields name="params">
+            <fieldset name="element"  description="Element config" label="Element config">
+                <field name="label" type="text" default="lable here" label="Label"/>
+                <field name="placeholder" type="text" default="lable here" label="Placeholder"/>
+                <field name="name" type="text" default="" label="Name"/>
+                <field name="id" type="text" default="" label="Id"/>
+                <field name="text" type="text" default="" label="Text"/>
+                <field name="input_type" default="input" type="list">
+                    <option value="input">Input</option>
+                    <option value="select">Select</option>
+                    <option value="textarea">Textarea</option>
+                    <option value="radio">radio</option>
+                    <option value="checkbox">checkbox</option>
+                </field>
+                <field name="colspan" type="text" default="" label="Colspan" class="colspan"/>
+                <field name="rowspan" type="text" default="" label="Rowspan" class="rowspan"/>
+                <field name="list-radiocheckbox" type="textarea" default="" label="List Item"/>
+                <field name="formtype" type="list"
+                       class="chzn-color-state"
+                       default="form-inline"
+                       description="formtype"
+                       label="formtype"
+                       size="1"
+                        >
+                    <option value="form-inline">form-inline</option>
+                    <option value="form-horizontal">form-horizontal</option>
+
+                </field>
+                <field name="required" type="list"
+                       class="chzn-color-state"
+                       default="true"
+                       description="required"
+                       label="required"
+                       size="1"
+                        >
+                    <option value="true">true</option>
+                    <option value="false">false</option>
+                </field>
+                <field name="column_width" type="select2"  description="col-md-2:col-md-10" default="" tags="1" label="Width" maximumSelectionSize="1">
+                    <option value="">none</option>
+                    <option value="col-md-2:col-md-10">col-md-2:col-md-10</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,77 @@
+
+
+#es-wrap .app-notes-wrapper a.note-title{
+	font-size: 14px;
+}
+
+#es-wrap .app-notes-wrapper ul.note-items > li + li{
+	margin-top: 10px;
+	border-top: 1px solid #f6f6f6;
+	padding-top: 10px;
+}
+
+
+/**
+ * Profile layout
+ */
+#es-wrap .app-notes-wrapper.profile .note-items .note-meta{
+	margin-top: 15px;
+}
+#es-wrap .app-notes-wrapper.profile .note-item a.note-title{
+	font-size: 16px;
+	font-weight: 700;
+	margin: 10px 0 5px;
+}
+#es-wrap .app-notes-wrapper.profile .note-item div.note-excerpt{
+	margin-top: 10px;
+	font-size: 11px;
+}
+#es-wrap .app-notes-wrapper.profile .note-item time.note-date{
+	margin-top: 8px;
+	font-size: 11px;
+	color: #666;
+}
+#es-wrap .app-notes-wrapper.profile .note-item time.note-date > i{
+	margin-right: 2px;
+}
+#es-wrap .app-notes-wrapper .note-items .note-meta{
+	font-size: 11px;
+}
+
+#es-wrap .app-notes-wrapper .note-item .es-action-wrap{
+	padding-left: 0;
+}
+
+/**
+ * Dashboard layout
+ */
+#es-wrap .app-notes-wrapper.dashboard .note-item a.note-title{
+	font-size: 16px;
+	font-weight: 700;
+	margin: 10px 0 5px;
+}
+#es-wrap .app-notes-wrapper.dashboard .note-item .note-date{
+	margin-top:4px;
+}
+#es-wrap .app-notes-wrapper.dashboard .notes-meta > a{
+	font-size: 11px;
+	color: #666;
+}
+
+/**
+ * Canvas layout
+ */
+#es-wrap .app-notes-wrapper.canvas {
+	margin-top: 20px;
+}
+
+#es-wrap .app-notes-wrapper.canvas .note-title{
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+
+#es-wrap .app-notes-wrapper.canvas .note-excerpt{
+	margin-top: 25px;
+	font-size: 11px;
+}

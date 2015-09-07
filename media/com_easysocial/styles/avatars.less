@@ -1,0 +1,150 @@
+/*------------------------------------*\
+	$Avatars - avatars.less
+\*------------------------------------*/
+
+// avatar
+// ----------------
+// apply to div,span,a to wrap img
+.es-avatar-wrap {
+	position: relative;
+}
+.es-avatar {
+	display: block;
+	// padding: 4px;
+	line-height: @baseLineHeight;
+	// border: 1px solid #ddd;
+	.border-radius(2px);
+	// .box-shadow(0 1px 3px rgba(0,0,0,.055));
+	.transition(all .2s ease-in-out);
+
+	overflow: hidden;
+	background-color: @esAvatarBackground;
+	-webkit-border-radius: 2px;
+	padding:0;
+	margin: 0px;
+
+	//default
+	height: 40px;
+	width: 40px;
+	border: 2px solid @esAvatarBorder;
+	img {
+		display: block;
+		max-width: none;
+		height: 36px;
+		width: 36px;
+		background: @esAvatarBackground;
+		image-rendering: optimizeQuality;
+	}
+
+	&.es-avatar-large {
+		height: 180px;
+		width: 180px;
+		border: 4px solid @esAvatarBorder;
+		img {
+			height: 172px;
+			width: 172px;
+		}
+	}
+	&.es-avatar-medium {
+		height: 64px;
+		width: 64px;
+		border: 2px solid @esAvatarBorder;
+		img {
+			height: 62px;
+			width: 62px;
+		}
+	}
+	&.es-avatar-small {
+		height: 34px;
+		width: 34px;
+		border: 2px solid @esAvatarBorder;
+		margin: 2px;
+		img {
+			height: 30px;
+			width: 30px;
+		}
+	}
+	&.es-avatar-mini {
+		height: 24px;
+		width: 24px;
+		border: 1px solid @esAvatarBorder;
+		img {
+			height: 22px;
+			width: 22px;
+		}
+	}
+	&.es-avatar-rounded {
+		.border-radius(50%);
+		img {
+			.border-radius(50%);
+		}
+	}
+	&.es-avatar-unstyled {
+		border: 0;
+		margin: 0;
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+}
+
+// Add a hover state for linked versions only
+a.es-avatar:hover {
+	// border-color: @linkColor;
+	border-color: @esAvatarBorder;
+	background: none;
+	// .box-shadow(0 1px 4px rgba(0,105,214,.25));
+}
+
+// Images and captions
+.es-avatar > img {
+	// display: block;
+	// max-width: 100%;
+	// margin-left: auto;
+	// margin-right: auto;
+}
+
+
+//border
+.es-avatar {
+	&.es-borderless {
+		border: none;
+		&.es-avatar-small {
+			img {
+				width: 34px;
+				height: 34px;
+			}
+		}
+		&.es-avatar-mini {
+			img {
+				width: 24px;
+				height: 24px;
+			}
+		}
+	}
+	&.es-shadowless {
+		.box-shadow(none);
+	}
+	&.es-borderthin {
+		border-width: 1px;
+	}
+	&.es-bordergray {
+		border-color: #ccc;
+		&:hover {
+			border-color: #eee;
+		}
+	}
+
+	&.es-inset {
+		border: 0;
+		margin: 0;
+		img {
+			.box-shadow(inset 0px 1px 2px rgba(0,0,0,0.3));
+			.border-radius(3px);
+		}
+	}
+}
+
+

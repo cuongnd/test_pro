@@ -1,0 +1,25 @@
+
+[
+	{
+		"title"		: "Profile",
+		"desc"		: "Configure application related settings for the comments app on your dashboard.",
+		"fields"	:
+		[
+			{
+				"label"		: "Total comments to display",
+				"tooltip"	: "Specify the number of comments to display in the dashboard.",
+				"name"		: "total-profile",
+				"class"		: "input-mini center",
+				"type"		: "text",
+				"default"	: 5
+			},
+			{
+				"label"		: "Display Comments Widget",
+				"tooltip"	: "If this option is enabled, a list of recent comments will appear as a widget in your profile.",
+				"name"		: "widget-profile",
+				"type"		: "boolean",
+				"default"	: true
+			}
+		]
+	}
+]

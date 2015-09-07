@@ -1,0 +1,65 @@
+[
+	{
+		"title"		: "Profile",
+		"desc"		: "Configure application related settings for the friends app on your profile.",
+		"fields"	:
+		[
+			{
+				"label"		: "Show friends",
+				"tooltip"	: "If enabled, your friends will be displayed in your profile as a widget to others who view your profile.",
+				"name"		: "profile_show_friends",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Show mutual friends",
+				"tooltip"	: "If enabled, your mutual friends will be displayed in your profile as a widget to others who view your profile.",
+				"name"		: "profile_show_mutual",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Item limit",
+				"tooltip"	: "Configure how many users you want to display.",
+				"name"		: "profile_show_limit",
+				"type"		: "text",
+				"default"	: 10
+			}
+		]
+	},
+	{
+		"title"		: "Dashboard",
+		"desc"		: "Configure application related settings for the friends app on your dashboard.",
+		"fields"	:
+		[
+			{
+				"label"		: "Show friends",
+				"tooltip"	: "If enabled, your friends will be displayed in your dashboard.",
+				"name"		: "dashboard_show_friends",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Show online friends",
+				"tooltip"	: "If enabled, your online friends will be displayed in your dashboard.",
+				"name"		: "dashboard_show_online",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Show friend suggestions",
+				"tooltip"	: "If enabled, a list of friend suggestions will be displayed in your dashboard.",
+				"name"		: "dashboard_show_suggest",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Item limit",
+				"tooltip"	: "Configure how many users you want to display.",
+				"name"		: "dashboard_show_limit",
+				"type"		: "text",
+				"default"	: 10
+			}
+		]
+	}
+]

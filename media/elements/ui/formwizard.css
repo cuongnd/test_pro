@@ -1,0 +1,6 @@
+.control-element-form-wizard .element-form-wizard-content {
+	display: none;
+}
+.control-element-form-wizard .element-form-wizard-content:first-child {
+	display: block;
+}

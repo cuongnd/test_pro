@@ -1,0 +1,28 @@
+// Field configuration for admins
+{
+	"title": {
+		"default": "PLG_FIELDS_EMAIL_DEFAULT_TITLE"
+	},
+
+	"description": {
+		"default": "PLG_FIELDS_EMAIL_DEFAULT_DESCRIPTION"
+	},
+
+	// Settings for admin to disallow specific domains from registering.
+	"disallowed":
+	{
+		"label"		: "PLG_FIELDS_EMAIL_DISALLOWED_DOMAINS",
+		"tooltip"	: "PLG_FIELDS_EMAIL_DISALLOWED_DOMAINS_DESC",
+		"type"		: "textarea",
+		"default"	: ""
+	},
+
+	// Settings for admin to disallow specific domains from registering.
+	"forbidden":
+	{
+		"label"		: "PLG_FIELDS_EMAIL_FORBIDDEN_WORDS",
+		"tooltip"	: "PLG_FIELDS_EMAIL_FORBIDDEN_WORDS_DESC",
+		"type"		: "textarea",
+		"default"	: ""
+	}
+}

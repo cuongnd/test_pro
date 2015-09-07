@@ -1,0 +1,65 @@
+[
+	{
+		"title"		: "APP_FRIENDS_PARAMS_PROFILE_GROUP",
+		"desc"		: "APP_FRIENDS_PARAMS_PROFILE_GROUP_DESC",
+		"fields"	:
+		[
+			{
+				"label"		: "APP_FRIENDS_PARAMS_PROFILE_GROUP_SHOW_FRIENDS",
+				"tooltip"	: "APP_FRIENDS_PARAMS_PROFILE_GROUP_SHOW_FRIENDS_DESC",
+				"name"		: "profile_show_friends",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "APP_FRIENDS_PARAMS_PROFILE_GROUP_SHOW_MUTUAL_FRIENDS",
+				"tooltip"	: "APP_FRIENDS_PARAMS_PROFILE_GROUP_SHOW_MUTUAL_FRIENDS_DESC",
+				"name"		: "profile_show_mutual",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "APP_FRIENDS_PARAMS_PROFILE_GROUP_LIMIT",
+				"tooltip"	: "APP_FRIENDS_PARAMS_PROFILE_GROUP_LIMIT_DESC",
+				"name"		: "profile_show_limit",
+				"type"		: "text",
+				"default"	: 10
+			}
+		]
+	},
+	{
+		"title"		: "APP_FRIENDS_PARAMS_DASHBOARD_GROUP",
+		"desc"		: "APP_FRIENDS_PARAMS_DASHBOARD_GROUP_DESC",
+		"fields"	:
+		[
+			{
+				"label"		: "APP_FRIENDS_PARAMS_DASHBOARD_GROUP_SHOW_FRIENDS",
+				"tooltip"	: "APP_FRIENDS_PARAMS_DASHBOARD_GROUP_SHOW_FRIENDS_DESC",
+				"name"		: "dashboard_show_friends",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "APP_FRIENDS_PARAMS_DASHBOARD_GROUP_SHOW_ONLINE_FRIENDS",
+				"tooltip"	: "APP_FRIENDS_PARAMS_DASHBOARD_GROUP_SHOW_ONLINE_FRIENDS_DESC",
+				"name"		: "dashboard_show_online",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "APP_FRIENDS_PARAMS_DASHBOARD_GROUP_SHOW_FRIEND_SUGGESTIONS",
+				"tooltip"	: "APP_FRIENDS_PARAMS_DASHBOARD_GROUP_SHOW_FRIEND_SUGGESTIONS_DESC",
+				"name"		: "dashboard_show_suggest",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "APP_FRIENDS_PARAMS_DASHBOARD_GROUP_LIMIT",
+				"tooltip"	: "APP_FRIENDS_PARAMS_DASHBOARD_GROUP_LIMIT_DESC",
+				"name"		: "dashboard_show_limit",
+				"type"		: "text",
+				"default"	: 10
+			}
+		]
+	}
+]

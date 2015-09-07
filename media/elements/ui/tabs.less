@@ -1,0 +1,46 @@
+.control-element {
+
+
+  border-radius: 4px 0;
+  .more-tab-content.config-block
+  {
+    opacity: 1;
+  }
+  .tab_ui {
+
+    .tab-pane {
+      position: relative;
+    }
+    .nav-tabs li {
+      position: relative;
+      .remove-tab-content,.more-tab-content {
+        border: none;
+        color: #d9534f;
+        display: block;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 9999;
+        &:hover {
+          color: #d9534f;
+          cursor: pointer;
+        }
+
+      }
+      a.config-block,a.remove-element
+      {
+        padding: 2px;
+      }
+      a.config-block
+      {
+        right: 35px;
+        opacity: 1;
+      }
+      .more-tab-content
+      {
+        right: 20px;
+      }
+    }
+  }
+}

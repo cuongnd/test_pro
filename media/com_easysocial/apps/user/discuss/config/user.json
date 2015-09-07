@@ -1,0 +1,39 @@
+[
+	{
+		"title"		: "Profile",
+		"desc"		: "Configure the application of user's EasyDiscuss status in profile.",
+		"fields"	:
+		[
+			{
+				"label"		: "Display your discussions",
+				"tooltip"	: "Show discussions you have created.",
+				"name"		: "discuss-recent",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Total Recent Discussions",
+				"tooltip"	: "How many of your created discussions shall we show?",
+				"name"		: "discuss-recent-limit",
+				"class"		: "input-mini center",
+				"type"		: "text",
+				"default"	: 10
+			},
+			{
+				"label"		: "Display participated discussions",
+				"tooltip"	: "Show discussions you have participated in?",
+				"name"		: "discuss-participating",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Total Participated Discussions",
+				"tooltip"	: "How many of the discussions you've participated in shall we show?",
+				"name"		: "discuss-participating-limit",
+				"class"		: "input-mini center",
+				"type"		: "text",
+				"default"	: 10
+			}
+		]
+	}
+]

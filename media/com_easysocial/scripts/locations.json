@@ -1,0 +1,15 @@
+[
+    {
+        "library": [
+            "gmaps",
+            "scrollTo"
+        ],
+        "view": [
+            "apps/user/locations/suggestion"
+        ],
+        "language": [
+            "COM_EASYSOCIAL_AT_LOCATION"
+        ],
+        "adapter": "EasySocial"
+    }
+]

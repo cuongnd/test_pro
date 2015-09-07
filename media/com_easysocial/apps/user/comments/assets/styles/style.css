@@ -1,0 +1,30 @@
+/**
+ * Dashboard
+ */
+#es-wrap .profile-comments li + li{
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px solid #f6f6f6;
+}
+
+#es-wrap .profile-comments .comment-action,
+#es-wrap .profile-comments .comment-text{
+	font-size: 11px;
+}
+
+#es-wrap .profile-comments .comment-time span{
+	vertical-align: middle;
+	margin-left: 3px;
+}
+
+#es-wrap .profile-comments .comment-text{
+	margin-top: 8px;
+}
+
+#es-wrap .es-widget.comments li.widget-comment-row .comment-meta span{
+	vertical-align: middle;
+}
+
+#es-wrap .es-widget.comments li + li{
+	margin-top: 10px;
+}

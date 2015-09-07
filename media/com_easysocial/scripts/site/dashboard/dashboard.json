@@ -1,0 +1,10 @@
+[
+    {
+        "script": [
+            "site/dashboard/apps",
+            "site/dashboard/feeds",
+            "site/dashboard/sidebar"
+        ],
+        "adapter": "EasySocial"
+    }
+]

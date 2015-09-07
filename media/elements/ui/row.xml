@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <config>
+        <fieldset name="option" description="Option" label="Option">
+            <field name="css_class" type="select2" default="" tags="1" label="Css class" onselecting="element_ui_element.add_css_class(e,$(this))" onremoveitem="element_ui_element.remove_class_css(e,$(this))"  maximumSelectionSize="10">
+                <option value="form-group">form-group</option>
+            </field>
+        </fieldset>
+        <fields name="params">
+            <fieldset name="element"  description="Element config" label="Element config">
+                <field name="cell_height" type="number" label="Cell height" description="Cell height" default="60"/>
+                <field name="vertical_margin" type="number" label="Vertical margin" description="Vertical margin" default="0"/>
+                <field name="amount_of_columns" type="number" label="Amount of columns" description="Amount of columns" default="12"/>
+            </fieldset>
+        </fields>
+    </config>
+</form>

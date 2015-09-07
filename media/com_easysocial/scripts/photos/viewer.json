@@ -1,0 +1,10 @@
+[
+    {
+        "script": [],
+        "library": [
+            "image",
+            "tinyscrollbar"
+        ],
+        "adapter": "EasySocial"
+    }
+]

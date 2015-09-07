@@ -1,0 +1,2 @@
+
+FD31.component("EasySocial", {"environment":"optimized","source":"local","mode":"compressed","baseUrl":"http:\/\/websitetemplatepro.com\/index.php?option=com_easysocial&lang=none","version":"1.0.7"});

@@ -1,0 +1,24 @@
+[
+    {
+        "language": [
+            "COM_EASYSOCIAL_WITH_FRIENDS",
+            "COM_EASYSOCIAL_AND_ONE_OTHER",
+            "COM_EASYSOCIAL_AND_MANY_OTHERS",
+            "COM_EASYSOCIAL_LOCATION_PERMISSION_ERROR",
+            "COM_EASYSOCIAL_STORY_SUBMIT_ERROR",
+            "COM_EASYSOCIAL_STORY_CONTENT_EMPTY"
+        ],
+        "view": [
+            "apps/user/links/story.attachment.item",
+            "apps/user/locations/suggestion",
+            "site/albums/upload.item"
+        ],
+        "library": [
+            "expanding"
+        ],
+        "script": [
+            "site/stream/item"
+        ],
+        "adapter": "EasySocial"
+    }
+]

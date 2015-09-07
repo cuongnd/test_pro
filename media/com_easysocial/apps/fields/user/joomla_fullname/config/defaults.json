@@ -1,0 +1,48 @@
+// The items here would be mapped back to `#__social_fields` when a new profile type
+// is created on the site.
+{
+	// Specify the label title for this field.
+	"title"			: "COM_EASYSOCIAL_CORE_FIELD_FULLNAME",
+
+	// Specify the description for this field.
+	"description"	: "COM_EASYSOCIAL_CORE_FIELD_FULLNAME_DESC",
+
+	// Specify the default position for this field.
+	"position"		: "",
+
+	// Specify the default value for this field.
+	"default"		: "COM_EASYSOCIAL_CORE_FIELD_FULLNAME_DEFAULT",
+
+	// Specify whether this field should show the title.
+	"display_title"	: true,
+
+	// Specify whether this field should have custom validation
+	"validation"	: "",
+
+	// Specify whether this field should be available during registration by default.
+	"registration"	: true,
+
+	// Specify whether this field should be published by default.
+	"state"			: true,
+
+	// Specify whether this field should be visible by default.
+	"visibility"	: false,
+
+	// Specify whether this field should be searchable by default.
+	"searchable"	: false,
+
+	// Specify whether this field should be required.
+	"required"		: true,
+
+	// Specify default minimum value of this input.
+	"min"			: 1,
+
+	// Specify default maximum value of this input.
+	"max"			: 255,
+
+	// Specify default parameters in json string here.
+	"params"		: "",
+
+	// By default, when a new profile type is created, username would always be the first item.
+	"ordering"		: 0
+}

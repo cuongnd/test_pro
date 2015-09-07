@@ -1,0 +1,32 @@
+.control-element.control-element-modal {
+	position: relative;
+	float: left;
+	width: auto;
+}
+.block-item-modal-content.modal {
+	position: absolute;
+	bottom: auto;
+}
+.block-item-modal-content.modal .config-block,
+.block-item-modal-content.modal .add-row {
+	opacity: 1;
+}
+.block-item-modal-content.modal .modal-backdrop {
+	display: none;
+}
+.block-item-modal-content.modal .control-element.control-element-modal.modal-body {
+	float: none;
+	width: 100%;
+}
+.block-item-modal-content.modal .modal-dialog {
+	width: 100%;
+}
+.control-element-modal-open.modal-open {
+	overflow: scroll;
+}
+body.control-element-modal-open .main-container > .row-content {
+	display: none;
+}
+.control-element-modal-open #contextMenu {
+	z-index: 999999;
+}

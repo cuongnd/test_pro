@@ -1,0 +1,11 @@
+// Field configuration for admins
+{
+	"items": {
+		"label"		: "PLG_FIELDS_DROPDOWN_CONFIG_CHOICE",
+		"tooltip"	: "PLG_FIELDS_DROPDOWN_CONFIG_CHOICE_DESC",
+		"type"		: "choices",
+		"unique"	: true
+	},
+
+	"default": false
+}

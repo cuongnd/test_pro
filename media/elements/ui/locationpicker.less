@@ -1,0 +1,27 @@
+.control-element.control-element-div
+{
+  position: relative;
+}
+.control-element.control-element-div.ui-resizable > .ui-resizable-handle.ui-resizable-s
+{
+  display: none !important;
+}
+.control-element
+{
+  .block-item-div
+  {
+    min-height: 100px;
+    width: 100%;
+    &:hover
+    {
+      border: 1px solid #ccc;
+    }
+
+  }
+  &[get-data-from="datasource"]
+  {
+    overflow-y: scroll;
+    display: block;
+    max-height: 300px;
+  }
+}

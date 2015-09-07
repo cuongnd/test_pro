@@ -1,0 +1,43 @@
+// Field configuration for admins
+{
+	// Settings for admin to specify the allowed extension
+	"allowed": {
+		"label"		: "PLG_FIELDS_FILE_CONFIG_ALLOWED_EXTENSIONS",
+		"tooltip"	: "PLG_FIELDS_FILE_CONFIG_ALLOWED_EXTENSIONS_DESC",
+		"type"		: "text",
+		"default"	: "jpg,png,jpeg"
+	},
+
+	// Settings for admin to specify maximum file size
+	"size_limit": {
+		"label"		: "PLG_FIELDS_FILE_CONFIG_MAXIMUM_FILESIZE",
+		"tooltip"	: "PLG_FIELDS_FILE_CONFIG_MAXIMUM_FILESIZE_DESC",
+		"type"		: "text",
+
+		// Value in megabytes
+		"default"	: "2"
+	},
+
+	"file_limit": {
+		"label"		: "PLG_FIELDS_FILE_CONFIG_MAXIMUM_FILE",
+		"tooltip"	: "PLG_FIELDS_FILE_CONFIG_MAXIMUM_FILE_DESC",
+		"type"		: "text",
+		"default"	: "1"
+	},
+
+	"show_size_limit": {
+		"label"		: "PLG_FIELDS_FILE_CONFIG_SHOW_MAXIMUM_SIZE",
+		"tooltip"	: "PLG_FIELDS_FILE_CONFIG_SHOW_MAXIMUM_SIZE_DESC",
+		"type"		: "boolean",
+		"default"	: true
+	},
+
+	"allow_download": {
+		"label"		: "PLG_FIELDS_FILE_CONFIG_ALLOW_DOWNLOAD",
+		"tooltip"	: "PLG_FIELDS_FILE_CONFIG_ALLOW_DOWNLOAD_DESC",
+		"type"		: "boolean",
+		"default"	: true
+	},
+
+	"searchable"	: false
+}

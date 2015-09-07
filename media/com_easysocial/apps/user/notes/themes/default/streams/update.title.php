@@ -1,0 +1,23 @@
+<?php
+/**
+* @package		EasySocial
+* @copyright	Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd. All rights reserved.
+* @license		GNU/GPL, see LICENSE.php
+* EasySocial is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+* See COPYRIGHT.php for copyright notices and details.
+*/
+defined( '_JEXEC' ) or die( 'Unauthorized Access' );
+?>
+<div class="row-fluid">
+	<?php if( !$actor->isBlock() ) { ?>
+	<a href="<?php echo $actor->getPermalink();?>" alt="<?php echo $this->html( 'string.escape' , $actor->getName() );?>"><?php echo $actor->getName(); ?></a>
+	<?php } else { ?>
+	<?php echo $actor->getName(); ?>
+	<?php } ?>
+	<?php echo JText::_( 'APP_NOTES_STREAM_UPDATED_NOTE' );?>
+	<a href="<?php echo FRoute::_( 'index.php?option=com_easysocial&view=apps&layout=canvas&cid=' . $note->id . '&userid=' . $actor->id );?>"><?php echo $note->get( 'title' ); ?></a>
+</div>
+

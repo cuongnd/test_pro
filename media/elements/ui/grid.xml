@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="element" version="3.1" client="site">
+    <name>tabs</name>
+    <author>Joomla! Project</author>
+    <creationDate>July 2004</creationDate>
+    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>admin@joomla.org</authorEmail>
+    <authorUrl>www.joomla.org</authorUrl>
+    <version>3.0.0</version>
+    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
+    <customContent />
+    <files>
+        <filename module="mod_custom">mod_custom.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">en-GB.mod_custom.ini</language>
+        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
+    </languages>
+    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
+    <config>
+        <fieldset name="option" description="Option" label="Option">
+            <field name="css_class" type="select2" default="" tags="1" label="Css class" onselecting="element_ui_element.add_css_class(e,$(this))" onremoveitem="element_ui_element.remove_class_css(e,$(this))"  maximumSelectionSize="10">
+            </field>
+            <field name="formart_header" readonly="readonly" type="gridformartheader" description="grid formart header" label="grid formart header"/>
+            <field name="config_update" readonly="readonly" type="configupdate" description="Config update" label="Config update"/>
+            <field name="get_items" readonly="readonly" type="coding" description="Get items" label="Get items"/>
+
+        </fieldset>
+
+        <fields name="params">
+            <fields name="data">
+                <fieldset name="data"  description="Data config" label="Data config">
+                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
+                    <field name="update_binding_source" readonly="readonly" type="bindingSource" description="Update binding source" label="Update binding source"/>
+                    <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
+                </fieldset>
+            </fields>
+        </fields>
+        <fields name="params">
+            <fieldset name="element"  description="Element config" label="Element config">
+                <field name="link_detail" type="menuitem" label="Link detail" description="Link detail" required="true" size="1"/>
+                <field name="page_size" type="number" label="Page size" description="Page size" required="true" size="1"/>
+
+                <field name="enable_ajax_load_data" type="list" default="1" label="Enable ajax load data" description="Enable ajax load data">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="use_file_template_row" type="list" default="0" label="use file template row" description="use file template row">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+
+                <field name="file_template_row" type="filelist" directory="layouts/kendo_grid_layout" label="file template row" description="file template row" />
+
+
+                <field name="use_template_edit_row" type="list" default="0" label="use template edit row" description="use template edit row">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="template_edit_row_file" type="filelist" directory="layouts/kendo_grid_layout" label="template edit row" description="template edit row" />
+
+
+                <field name="edit_row_type" type="list" default="inline" label="use template mode row" description="use template mode row">
+                    <option value="inline">Inline</option>
+                    <option value="popup">Popup</option>
+                    <option value="form">Form</option>
+                </field>
+                <field name="template_by_element"  type="selectblock" tags="0" maximumSelectionSize="1" description="Template by element" label="Template by element"/>
+
+                <field name="columnMenu" type="list" default="true" label="show column menu" description="show column menu">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </field>
+                <field name="sortable" type="list" default="true" label="show sortable" description="show sortable">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </field>
+
+                <field name="filterable" type="list" default="true" label="show filterable" description="show filterable">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </field>
+                <field name="scrollable" type="list" default="1" label="scrollable" description="scrollable">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+
+                <field name="pageable" type="list" default="true" label="enable pageable" description="enable pageable">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </field>
+                <field name="gridtoolbar" readonly="readonly" type="gridtoolbar" description="grid formart toolbar" label="grid formart toolbar"/>
+
+                <field name="mode_select_column" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="mode select column" description="mode select column" />
+                <field name="mode_select_column_template" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="mode select column_template" description="mode select column template" />
+
+                <field name="config_update_data" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="config update data" description="config update data" />
+                <field name="get_items" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="Modal get items" description="Modal get items" />
+
+
+                <field name="toolbar_commands" type="list" multiple="true" size="4" default="" label="commands toolbar" description="commands toolbar">
+                    <option value="">none</option>
+                    <option value="add">Add</option>
+                    <option value="pdf">Pdf</option>
+                    <option value="csv">csv</option>
+                </field>
+                <field name="row_commands" type="list" multiple="true" size="4" default="" label="commands row" description="commands row">
+                    <option value="">none</option>
+                    <option value="delete">Delete</option>
+                    <option value="edit">Edit</option>
+                </field>
+
+
+
+                <field name="grid_height" type="text" default="700" label="Grid height" description="Grid height" />
+                <field name="keyPrimary" type="text" default="id" label="Key primary" description="Key primary" />
+
+                <field name="table_update" readonly="readonly"  type="table" default="" label="Table update" description="Table update" />
+
+
+
+                <field name="table_key" type="text" default="id" label="Table key" description="Table key" />
+
+                <field name="width_column_action" type="text" default="" label="Width column action" description="Width column action" />
+                <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+
+                <field name="cachemode" type="hidden" default="static">
+                    <option value="static" />
+                </field>
+            </fieldset>
+        </fields>
+
+
+    </config>
+</extension>

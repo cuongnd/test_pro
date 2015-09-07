@@ -1,0 +1,9 @@
+[
+	{
+		"element": "relationship",
+		"rule": "request",
+		"group"	: "user",
+		"field" : true,
+		"app"	: false
+	}
+]

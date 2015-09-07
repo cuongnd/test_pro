@@ -1,0 +1,85 @@
+//
+// es-login-box
+// --------------------------------------------------
+//Login dialog
+.es-login-box {
+	.border-radius(@baseBorderRadius);
+	border: 1px solid @grayLighter;
+	// width: 780px !important;
+	// max-width: 780px !important;
+	position: relative;
+	.modal-body {
+		max-height: 440px !important;
+	}
+	&:before {
+		// content: '';
+		width: 2px;
+		// position: absolute;
+		background-color: rgba(0, 0, 0, 0.04);
+		left: 50%;
+		// top: 0px;
+		// bottom: 0;
+	}
+	legend {
+		font-weight: bold;
+		font-size: 18px;
+	}
+	legend,
+	h3,
+	.center {
+		text-align: center;
+	}
+	hr {
+		border-bottom: none;
+	}
+	.es-signin-social {
+		p {
+			margin-top: 20px;
+
+		}
+		.line {
+			position: relative;
+			&:before {
+				content: '';
+				width: 100%;
+				position: absolute;
+				// background-color: @hrBorder;
+				left: 0;
+				right: 0;
+				top: 9px;
+				height: 1px;
+				// bottom: 0;
+			}
+			strong {
+				// background: @esUnityBackground;
+				padding: 0 6px;
+				position: relative;
+				z-index: 2;
+			}
+		}
+		.text-error,
+		.text-error a {
+			color: #B94A48;
+		}
+	}//es-signin-social
+
+	.modal-es-register {
+		padding-top: 100px;
+	}
+}//es-login-box
+
+// Responsive
+&.w480 {
+	.es-login-box {
+		[class*="span"] {
+			width: 100%;
+			margin-left: 0;
+		}
+		.modal-es-register {
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+	}
+}
+
+

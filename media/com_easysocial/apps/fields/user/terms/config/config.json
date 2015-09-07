@@ -1,0 +1,29 @@
+{
+	// Determine if this field input should be using a calendar.
+	"message":
+	{
+		// This is the label that appears to the admin.
+		"label"		: "PLG_FIELDS_TERMS_CONFIG_CONDITION_MESSAGE",
+
+		// This is the description that would appear when the user hovers over the label.
+		"tooltip"	: "PLG_FIELDS_TERMS_CONFIG_CONDITION_MESSAGE_DESC",
+
+		// This is the type of the field.
+		"type"		: "textarea",
+
+		// This is the default value.
+		"default"	: "PLG_FIELDS_TERMS_CONFIG_CONDITION_MESSAGE_TEXT"
+	},
+
+	"required"		: {
+		"default": true
+	},
+
+	"searchable"	: false,
+
+	"default"		: false,
+
+	"privacy"		: false,
+
+	"visible_display": false
+}

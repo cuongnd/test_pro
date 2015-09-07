@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="element" version="3.1" client="site">
+    <name>tabs</name>
+    <author>Joomla! Project</author>
+    <creationDate>July 2004</creationDate>
+    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>admin@joomla.org</authorEmail>
+    <authorUrl>www.joomla.org</authorUrl>
+    <version>3.0.0</version>
+    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
+    <customContent />
+    <files>
+        <filename module="mod_custom">mod_custom.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">en-GB.mod_custom.ini</language>
+        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
+    </languages>
+    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
+    <config>
+        <fields name="params">
+            <fields name="data">
+                <fieldset name="data"  description="Data config" label="Data config">
+                    <field name="text_from"  type="bindingSource" tags="0" maximumSelectionSize="1" description="Text from"  label="Text from"/>
+                    <field name="text_to"  type="bindingSource" tags="0" maximumSelectionSize="1" description="Text from" label="Text to"/>
+                </fieldset>
+            </fields>
+        </fields>
+        <fields name="params">
+            <fieldset name="element"  description="Element config" label="Element config">
+                <field name="label" type="text" default="lable here" label="Label"/>
+                <field name="name_from" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name from"/>
+                <field name="name_to" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name to"/>
+                <field name="id" type="text" default="" label="Id"/>
+                <field name="text_from" type="date" default="" label="Text from"/>
+                <field name="text_to" type="date" default="" label="Text to"/>
+
+            </fieldset>
+        </fields>
+
+
+    </config>
+</extension>

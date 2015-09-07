@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<social type="apps" group="user">
+	<name>Mentions</name>
+	<element>mentions</element>
+	<author>EasySocial</author>
+	<url>http://stackideas.com</url>
+	<created>21/05/2013</created>
+	<version>1.0.1</version>
+	<copyright>Copyright (C) 2010 - 2013 Stack Ideas Sdn Bhd</copyright>
+	<core>true</core>
+	<!-- This tells the system that this app is solely used for processing only. Does not serve other purposes -->
+	<system>true</system>
+	<description>
+		<![CDATA[APP_MENTIONS_APP_DESCRIPTION]]>
+	</description>
+	<files>
+		<folder>config</folder>
+		<folder>themes</folder>
+		<file>story.js</file>
+		<file>mentions.php</file>
+		<file>mentions.xml</file>
+	</files>
+
+	<languages>
+		<language type="en-GB">en-GB.plg_app_user_mentions.ini</language>
+	</languages>
+
+	<update>
+		<version>http://stackideas.com/updates/easysocial/apps/user/mentions/version</version>
+		<server>http://stackideas.com/updates/easysocial/apps/user/mentions/patch</server>
+	</update>
+	<params>
+		<!--
+			Joomla parameters which can be rendered in the admin section when user adds
+			a new custom field.
+		-->
+	</params>
+</social>

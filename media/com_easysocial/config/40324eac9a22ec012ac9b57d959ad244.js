@@ -1,0 +1,2 @@
+
+FD31.component("EasySocial", {"environment":"static","source":"local","mode":"compressed","baseUrl":"http:\/\/shoponline123.net\/index.php?option=com_easysocial&lang=none&Itemid=69","version":"1.0.7"});

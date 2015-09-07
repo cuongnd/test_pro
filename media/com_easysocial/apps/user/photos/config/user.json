@@ -1,0 +1,45 @@
+[
+	{
+		"title"		: "Profile",
+		"desc"		: "Configure application related settings for the photos app on your profile.",
+		"fields"	:
+		[
+			{
+				"label"		: "Show recent photos in profile",
+				"tooltip"	: "If enabled, your recent photos will be displayed to you and other users when they access your profile",
+				"name"		: "showphotos",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Show photo count",
+				"tooltip"	: "If enabled, the photo count will be displayed in the title of the widget.",
+				"name"		: "showcount",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Photos ordering",
+				"tooltip"	: "How would you like your photos to be displayed?",
+				"name"		: "ordering",
+				"type"		: "select",
+				"default"	: "latest",
+				"options"	:
+				[
+					{
+						"title"	: "Latest first",
+						"value"	: "latest"
+					},
+					{
+						"title"	: "Randomize",
+						"value"	: "random"
+					},
+					{
+						"title"	: "Oldest first",
+						"value"	: "oldest"
+					}
+				]
+			}
+		]
+	}
+]

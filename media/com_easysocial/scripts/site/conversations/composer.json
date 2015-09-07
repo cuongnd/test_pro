@@ -1,0 +1,17 @@
+[
+    {
+        "library": [
+            "expanding"
+        ],
+        "script": [
+            "site/friends/suggest",
+            "uploader/uploader",
+            "location"
+        ],
+        "language": [
+            "COM_EASYSOCIAL_CONVERSATIONS_ERROR_EMPTY_RECIPIENTS",
+            "COM_EASYSOCIAL_CONVERSATIONS_ERROR_EMPTY_MESSAGE"
+        ],
+        "adapter": "EasySocial"
+    }
+]

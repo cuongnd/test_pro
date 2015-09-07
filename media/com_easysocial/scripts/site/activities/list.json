@@ -1,0 +1,11 @@
+[
+    {
+        "view": [
+            "site/loading/small"
+        ],
+        "script": [
+            "site/activities/item"
+        ],
+        "adapter": "EasySocial"
+    }
+]
