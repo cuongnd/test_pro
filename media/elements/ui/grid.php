@@ -89,13 +89,31 @@ class elementGridHelper extends elementHelper
         $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.numerictextbox.js');
         $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editor.js');
 
-
-
-        $doc->addStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/styles/kendo.common.min.css');
+        $list_file_less_css=array(
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.common",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.rtl",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.default",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz.default"
+           // "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.bootstrap"
+        );
+        foreach($list_file_less_css as $less_css_file)
+        {
+            $lessInput = JPATH_ROOT . $less_css_file.".less";
+            $cssOutput = JPATH_ROOT . $less_css_file.".css";
+            $error=JUtility::compileLess($lessInput, $cssOutput);
+            if($error!=true)
+            {
+                echo   $lessInput;
+                echo "<br/>";
+                echo $error;
+                echo "<br/>";
+                echo   $cssOutput;
+                die;
+            }
+            $doc->addStyleSheet(JUri::root() . $less_css_file.'.css');
+        }
         $doc->addStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/styles/kendo.rtl.min.css');
-        $doc->addStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/styles/kendo.default.min.css');
-        $doc->addStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/styles/kendo.dataviz.min.css');
-        $doc->addStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/styles/kendo.dataviz.default.min.css');
 
 
 
@@ -288,10 +306,8 @@ class elementGridHelper extends elementHelper
         $use_template_edit_row = $params->get('use_template_edit_row', 0);
         $template_edit_row_file = $params->get('template_edit_row_file', '');
 
-        $editAble = new \Kendo\UI\GridEditable();
-        $mode_edit_row = $params->get('edit_row_type', 'inline');
-        $editAble->mode($mode_edit_row);
-        $editAble->confirmation(JText::_('do you want delete this item ?'));
+
+
         $grid_height = $params->get('grid_height', '700');
         $columnMenu = $params->get('columnMenu', true);
         $template_by_element = $params->get('template_by_element', 0);
@@ -334,16 +350,15 @@ class elementGridHelper extends elementHelper
             $grid->rowTemplateId(str_replace('.php', '', $file_template_row))
                 ->altRowTemplateId('alt_' . str_replace('.php', '', $file_template_row));
         }
+        $editAble = new \Kendo\UI\GridEditable();
         if ($use_template_edit_row == 1) {
 
             $editAble->templateId(str_replace('.php', '', $template_edit_row_file));
         }
 
-        /*if ($template_by_element) {
-            $block_item='.block-item[data-block-id="'.$template_by_element.'"]';
-            $editAble->templateJquery($block_item);
-        }*/
-
+        $mode_edit_row = $params->get('edit_row_type', 'inline');
+        $editAble->mode($mode_edit_row);
+        $editAble->confirmation(JText::_('do you want delete this item ?'));
         $grid
             ->dataSource($dataSource)
             ->height($grid_height)
@@ -358,6 +373,9 @@ class elementGridHelper extends elementHelper
             ->dataBound('onDataBound_'.$block->id)
             ->dataBinding('onDataBinding_'.$block->id)
             ->change('onChange_'.$block->id)
+            ->edit("edit_row_".$block->id)
+            ->save("save_row_".$block->id)
+            ->cancel("cancel_row_".$block->id)
         ;
 
         //render editor
@@ -374,13 +392,13 @@ class elementGridHelper extends elementHelper
             <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"
                class="remove label label-danger remove-element" href="javascript:void(0)"><i
                     class="glyphicon-remove glyphicon"></i></a>
-            <?php echo elementGridHelper::render_element($grid, $block); ?>
+            <?php echo elementGridHelper::render_element($grid, $block,$enableEditWebsite); ?>
             <?php ?>
         <?php
 
 
         } else {
-            echo elementGridHelper::render_element($grid, $block);
+            echo elementGridHelper::render_element($grid, $block,$enableEditWebsite);
             ?>
 
         <?php
@@ -522,7 +540,7 @@ class elementGridHelper extends elementHelper
 
     }
 
-    public function render_element($grid, $block)
+    public function render_element($grid, $block,$enableEditWebsite=false)
     {
         ob_start();
         $html = '';
@@ -530,11 +548,36 @@ class elementGridHelper extends elementHelper
         $grid->attr('data-block-id', $block->id);
         $grid->attr('data-block-parent-id', $block->parent_id);
         $grid->attr('data-enable-select-item-by-checked', $block->enable_select_item_by_checked);
+
+        $params = new JRegistry;
+        $params->loadString($block->params);
+
+        $template_by_element = $params->get('template_by_element', '');
+        if(trim($template_by_element)!='')
+            $template_by_element=explode(',',$template_by_element);
+        else
+            $template_by_element=array();
+        $mode_edit_row = $params->get('edit_row_type', 'inline');
         echo $grid->render();
         ?>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
                 element_ui_grid.int_ui_grid();
+                <?php
+               if($mode_edit_row=="popup" && !$enableEditWebsite && count($template_by_element) )
+               {
+                   foreach($template_by_element as $element_id)
+                   {
+                       $block_item='.block-item[data-block-id="'.$element_id.'"]';
+                       ?>
+                        jQuery('<?php echo $block_item ?>').css( {
+                            display:"none"
+                        });
+                        <?php
+                    }
+                }
+                ?>
+
             });
             function onChange_<?php echo $block->id ?>(arg) {
 
@@ -547,6 +590,85 @@ class elementGridHelper extends elementHelper
 
             function onDataBinding_<?php echo $block->id ?>(arg) {
                 console.log("Grid data binding");
+            }
+            function edit_row_<?php echo $block->id ?>(e) {
+                var popupWindow = e.container.getKendoWindow();
+                popupWindow.setOptions({
+                    width: 1000,
+                    autosize:true
+                });
+                popup_content=popupWindow.element.find('.k-popup-content');
+                <?php
+                 if($mode_edit_row=="popup" && count($template_by_element))
+                {
+                    ?>
+                    popup_content.empty();
+                    <?php
+                }
+                if($mode_edit_row=="popup" && count($template_by_element))
+                {
+                    foreach($template_by_element as $element_id)
+                    {
+                        $block_item='.block-item[data-block-id="'.$element_id.'"]';
+                        ?>
+
+                        jQuery('<?php echo $block_item ?>').wrap( '<div wrap-block-id="<?php echo $element_id ?>"></div>' );
+                        jQuery('<?php echo $block_item ?>').css( {
+                            display:"block"
+                        });
+                        jQuery('<?php echo $block_item ?>').appendTo(popup_content);
+                        <?php
+                    }
+                }
+                ?>
+
+
+            }
+            function save_row_<?php echo $block->id ?>(e) {
+                var popupWindow = e.container.getKendoWindow();
+               console.log(popupWindow);
+                <?php
+                if($mode_edit_row=="popup" && count($template_by_element))
+                {
+                    foreach($template_by_element as $element_id)
+                    {
+                        $block_item='.block-item[data-block-id="'.$element_id.'"]';
+                        ?>
+                        jQuery('<?php echo $block_item ?>').appendTo(jQuery('div[wrap-block-id="<?php echo $element_id ?>"]'));
+                        jQuery('<?php echo $block_item ?>').css( {
+                            display:"none"
+                        });
+                        jQuery('<?php echo $block_item ?>').unwrap();
+                        <?php
+                    }
+                }
+                ?>
+
+
+
+            }
+            function cancel_row_<?php echo $block->id ?>(e) {
+                var popupWindow = e.container.getKendoWindow();
+               console.log(popupWindow);
+                <?php
+                if(count($template_by_element))
+                {
+                    foreach($template_by_element as $element_id)
+                    {
+                        $block_item='.block-item[data-block-id="'.$element_id.'"]';
+                        ?>
+                        jQuery('<?php echo $block_item ?>').appendTo(jQuery('div[wrap-block-id="<?php echo $element_id ?>"]'));
+                        jQuery('<?php echo $block_item ?>').css( {
+                            display:"none"
+                        });
+                        jQuery('<?php echo $block_item ?>').unwrap();
+                        <?php
+                    }
+                }
+                ?>
+
+
+
             }
         </script>
 

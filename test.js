@@ -295,7 +295,7 @@ jQuery(function ($) {
         "editable": {
             "mode": "popup",
             "confirmation": "do you want delete this item ?",
-            "template": kendo.template(jQuery('.block-item[data-block-id="3114"]'))
+            "template": kendo.template(jQuery('.block-item[data-block-id="3114"]')[0].outerHTML)
         },
         "autoBind": true,
         "scrollable": true,
@@ -309,6 +309,7 @@ jQuery(function ($) {
         "groupable": null,
         "dataBound": onDataBound_3117,
         "dataBinding": onDataBinding_3117,
-        "change": onChange_3117
+        "change": onChange_3117,
+        "edit": edit_row_3117()
     });
 });

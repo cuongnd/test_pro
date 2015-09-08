@@ -270,7 +270,6 @@
             functionBody += useWithBlock ? "with(" + paramName + "){" : "";
 
             functionBody += "$kendoOutput=";
-
             parts = template
                 .replace(escapedCurlyRegExp, "__CURLY__")
                 .replace(encodeRegExp, "#=$kendoHtmlEncode($1)#")

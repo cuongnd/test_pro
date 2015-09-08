@@ -68,7 +68,7 @@
                     <option value="popup">Popup</option>
                     <option value="form">Form</option>
                 </field>
-                <field name="template_by_element"  type="selectblock" tags="0" maximumSelectionSize="1" description="Template by element" label="Template by element"/>
+                <field name="template_by_element"  type="selectblock" tags="1" maximumSelectionSize="4" description="Template by element" label="Template by element"/>
 
                 <field name="columnMenu" type="list" default="true" label="show column menu" description="show column menu">
                     <option value="true">Yes</option>

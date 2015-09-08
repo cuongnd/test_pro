@@ -20,6 +20,7 @@
         extend = $.extend,
         each = $.each,
         template = kendo.template,
+        //BODY = "body",
         BODY = "body",
         templates,
         NS = ".kendoWindow",

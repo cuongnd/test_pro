@@ -1,0 +1,16 @@
+#
+#<?php die('Forbidden.'); ?>
+#Date: 2015-09-07 21:14:52 UTC
+#Software: Joomla Platform 13.1.0 Stable [ Curiosity ] 24-Apr-2013 00:00 GMT
+
+#Fields: datetime	priority	category	message
+2015-09-07T21:14:52+00:00	DEBUG	-	class:JApplicationCms
+2015-09-07T21:14:52+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2015-09-07T21:15:01+00:00	DEBUG	-	class:JApplicationCms
+2015-09-07T21:15:01+00:00	DEBUG	-	legacy $url:/component/users/profile.html
+2015-09-08T01:17:27+00:00	DEBUG	-	class:JApplicationCms
+2015-09-08T01:17:27+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2015-09-08T07:45:35+00:00	DEBUG	-	class:JApplicationCms
+2015-09-08T07:45:35+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2015-09-08T07:46:29+00:00	DEBUG	-	class:JApplicationCms
+2015-09-08T07:46:29+00:00	DEBUG	-	legacy $url:/component/users/profile.html

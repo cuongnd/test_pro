@@ -14,7 +14,7 @@ jQuery(document).ready(function ($) {
                     hint: $.noop,
                     axis: "y",
                     cursor: "move",
-                    ignore: "input,a,.k-dropdown",
+                    ignore: "input,a.k-button,.k-dropdown",
                     placeholder: function (element) {
                         return element.clone().addClass("k-state-hover").css("opacity", 0.65);
                     },

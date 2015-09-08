@@ -178,6 +178,7 @@ class JUtility
         catch (Exception $e)
         {
             $app->enqueueMessage($e->getMessage(), 'error');
+            return $e->getMessage();
         }
 
     }

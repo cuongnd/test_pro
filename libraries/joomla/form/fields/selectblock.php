@@ -214,13 +214,7 @@ class JFormFieldSelectBlock extends JFormField
 			$a_item->text=$item->title;
 			$options[] =$a_item;
 		}
-		if($tags)
-		{
-			$selectOPtion['data']=$options;
-		}else
-		{
-			$selectOPtion['tags']=$options;
-		}
+		$selectOPtion['tags']=$options;
 		$html='';
 		JHtml::_('formbehavior.select2','.select2[name="'.$this->name.'"]',null,$selectOPtion,JUserHelper::genRandomPassword());
 		ob_start();

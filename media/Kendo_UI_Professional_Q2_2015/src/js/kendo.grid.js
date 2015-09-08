@@ -2989,6 +2989,7 @@
                     }
                 }
             } else {
+                html+='<div class="k-popup-content row">';
                 for (idx = 0, length = columns.length; idx < length; idx++) {
                     column = columns[idx];
 
@@ -3016,6 +3017,7 @@
                         }
                     }
                 }
+                html+='</div>';
             }
 
             if (command) {
@@ -3034,7 +3036,7 @@
             var container;
 
             if (!that._isMobile) {
-                html += '<div class="k-edit-buttons k-state-default">';
+                html += '<div class="k-edit-buttons k-state-default row">';
                 html += that._createButton({ name: "update", text: updateText, attr: attr }) + that._createButton({ name: "canceledit", text: cancelText, attr: attr });
                 html += '</div></div></div>';
 
