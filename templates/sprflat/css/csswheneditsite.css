@@ -388,9 +388,9 @@
 	margin: 2px;
 	padding-top: 15px;
 	position: relative;
-	width: 100%;
+	width: 99%;
 }
-.control-element:hover {
+.control-element:not(.position-content):not(.grid-stack):hover {
 	border: 1px solid #ccc;
 }
 .enable-create-drop-element {

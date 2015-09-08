@@ -1219,7 +1219,7 @@ jQuery(document).ready(function ($) {
         });
         $('.control-element[data-block-id="' + blockId + '"]').css({
             float: a_float,
-            'min-width': 250
+            'width': '100%'
         });
     }
 
