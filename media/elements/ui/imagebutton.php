@@ -37,6 +37,7 @@ class elementImageButtonHelper extends  elementHelper
         $css_class=explode(',',$css_class);
         $css_class=implode(' ',$css_class);
         $link_to_page=$params->get('link_to_page',0);
+        $icon=$params->get('icon','br-refresh');
         $name=$params->get('name','');
         $id=$params->get('id','');
         $imagebutton_type=$params->get('imagebutton_type','submit');
@@ -60,17 +61,43 @@ class elementImageButtonHelper extends  elementHelper
             <span data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="drag label label-default  element-move-handle element-move-handle_<?php echo $block->parent_id ?>"><i class="glyphicon glyphicon-move"></i></span>
             <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="menu label config-block label-danger menu-list" href="javascript:void(0)"><i class="im-menu2"></i></a>
             <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"class="remove label label-danger remove-element" href="javascript:void(0)"><i class="glyphicon-remove glyphicon"></i></a>
-            <a data-method-submit="<?php echo $method_submit ?>" link-to-page="<?php echo $link_to_page ?>" type="<?php echo $imagebutton_type ?>" class="block-item block-item-imagebutton <?php echo $css_class ?> " name="<?php echo $name ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" id="<?php echo $id; ?>" element-type="<?php echo $block->type ?>"> <i class="fa-circle-blank"></i><?php echo $text ?></a>
-
-
+            <?php echo elementImageButtonHelper::render_element($block); ?>
         <?php
         }else{
         ?>
-            <a type="<?php echo $imagebutton_type ?>" link-to-page="<?php echo $link_to_page ?>" class="block-item block-item-imagebutton  <?php echo $css_class ?>" name="<?php echo $name ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" id="<?php echo $id; ?>" element-type="<?php echo $block->type ?>"><i class="fa-circle-blank"></i><?php echo $text ?></a>
+            <?php echo elementImageButtonHelper::render_element($block); ?>
 
         <?php
         }
         $html.=ob_get_clean();
+        return $html;
+    }
+    public  function  render_element($block)
+    {
+        $params = new JRegistry;
+        $params->loadString($block->params);
+
+        $size=$params->get('size','');
+        $css_class=$block->css_class;
+        $css_class=explode(',',$css_class);
+        $css_class=implode(' ',$css_class);
+        $link_to_page=$params->get('link_to_page',0);
+        $icon=$params->get('icon','br-refresh');
+        $name=$params->get('name','');
+        $id=$params->get('id','');
+        $text=$params->get('text','text_'.$block->id);
+        $placeholder=$params->get('placeholder','placeholder_'.$block->id);
+        $bindingSource=$params->get('data')->bindingSource;
+        if(!$text&&$bindingSource){
+            $text=parent::getValueDataSourceByKey($bindingSource);
+        }
+
+        $html='';
+        ob_start();
+        ?>
+        <a href="javascript:void(0)"  link-to-page="<?php echo $link_to_page ?>" class="block-item block-item-imagebutton  <?php echo $css_class ?>" name="<?php echo $name ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" id="<?php echo $id; ?>" element-type="<?php echo $block->type ?>"><i class="<?php echo $icon ?>"></i></a>
+        <?php
+        $html=ob_get_clean();
         return $html;
     }
     function getFooterHtml($block,$enableEditWebsite)

@@ -963,6 +963,7 @@ abstract class JFormField
                     'inputitem',
                     'advancedbindingsourceselect2',
                     'gridselected',
+                    'stylegenerator',
                     ''
                 );
                 if (in_array(strtolower($this->type), $list_type_textarea)) {

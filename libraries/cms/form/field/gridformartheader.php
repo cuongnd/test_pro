@@ -581,11 +581,12 @@ class JFormFieldGridformartheader extends JFormField
 
                 gridformartheader.init_gridformartheader();
             }
+            <?php echo $scriptId ?>();
         </script>
         <?php
         $script_content=ob_get_clean();
         $script_content=JUtility::remove_string_javascript($script_content);
-        $doc->addAjaxCallFunction($scriptId,$script_content,$scriptId);
+        $doc->addScriptDeclaration($script_content, "text/javascript", $scriptId);
 
 
 

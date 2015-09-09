@@ -456,8 +456,7 @@ class elementGridHelper extends elementHelper
                 }
                 if ($ob_value->button_checked) {
                     $block->enable_select_item_by_checked = true;
-                    $column->title("<input id='check_all_" . $block->id . "', type='checkbox', class='check_box_all' />");
-                    $column->title("No");
+                    $column->title("<div class='checkbox'><label><input id='check_all_" . $block->id . "', type='checkbox', class='check_box_all' /><span>".$ob_value->column_title."</span></label></div>");
                 }
 
                 if (is_numeric($ob_value->column_width)) {
@@ -483,7 +482,7 @@ class elementGridHelper extends elementHelper
 
                 }
                 if ($ob_value->button_checked) {
-                    $column->template("<input class='check_box' type=\"checkbox\" />");
+                    $column->template("<div class='checkbox'><label><input class='check_box' value='#:".$ob_value->column_name."#' type=\"checkbox\" /><span>#:".$ob_value->column_name."#</span></label></div>");
                 }
                 $editor_type = strtolower($ob_value->editor_type);
                 $link_key = $ob_value->link_key;

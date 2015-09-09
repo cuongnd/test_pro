@@ -1,39 +1,4 @@
-.control-element {
-	border-radius: 4px 0;
-}
-.control-element .more-tab-content.config-block {
-	opacity: 1;
-}
-.control-element .tab_ui .tab-pane {
-	position: relative;
-}
-.control-element .tab_ui .nav-tabs li {
-	position: relative;
-}
-.control-element .tab_ui .nav-tabs li .remove-tab-content,
-.control-element .tab_ui .nav-tabs li .more-tab-content {
-	border: none;
-	color: #d9534f;
+.block-item.quick_edit {
 	display: block;
-	padding: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
-	z-index: 9999;
-}
-.control-element .tab_ui .nav-tabs li .remove-tab-content:hover,
-.control-element .tab_ui .nav-tabs li .more-tab-content:hover {
-	color: #d9534f;
-	cursor: pointer;
-}
-.control-element .tab_ui .nav-tabs li a.config-block,
-.control-element .tab_ui .nav-tabs li a.remove-element {
-	padding: 2px;
-}
-.control-element .tab_ui .nav-tabs li a.config-block {
-	right: 35px;
-	opacity: 1;
-}
-.control-element .tab_ui .nav-tabs li .more-tab-content {
-	right: 20px;
+	margin: 10px 0;
 }

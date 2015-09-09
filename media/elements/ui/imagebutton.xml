@@ -71,7 +71,7 @@
                 </field>
                 <field name="config_update_data" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="config update data" description="config update data" />
                 <field name="code_process"  readonly="readonly" type="coding" description="code process" label="code process"/>
-
+                <field name="icon" type="icon" default="" label="Icon"/>
 
 
                 <field

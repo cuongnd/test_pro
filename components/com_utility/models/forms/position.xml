@@ -40,6 +40,7 @@
                 <option value="0">No</option>
             </field>
             <field name="css3_gradient_generator" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="css3 gradient generator" description="css3 gradient generator" />
+            <field name="stylegenerator" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="css3 style generator" description="css3 style generator" />
 
         </fieldset>
     </fields>
@@ -155,6 +156,14 @@
                 <field name="bottom" type="text" description="bottom" label="Bottom" />
                 <field name="left" type="text" description="Left" label="Left" />
                 <field name="clip" type="text" description="clip" label="Clip" />
+
+                <field name="box-sizing" type="select2" default="" tags="false" label="box-sizing" maximumSelectionSize="1">
+                    <option value="auto">auto</option>
+                    <option value="content-box">content-box</option>
+                    <option value="border-box">border-box</option>
+                    <option value="initial">initial</option>
+                    <option value="inherit">inherit</option>
+                </field>
 
                 <field name="overflow" type="select2" default="" tags="false" label="overflow" maximumSelectionSize="1">
                     <option value="auto">auto</option>
@@ -348,6 +357,14 @@
                 <field name="bottom" type="text" description="bottom" label="Bottom" />
                 <field name="left" type="text" description="Left" label="Left" />
                 <field name="clip" type="text" description="clip" label="Clip" />
+                <field name="box-sizing" type="select2" default="" tags="false" label="box-sizing" maximumSelectionSize="1">
+                    <option value="auto">auto</option>
+                    <option value="content-box">content-box</option>
+                    <option value="border-box">border-box</option>
+                    <option value="initial">initial</option>
+                    <option value="inherit">inherit</option>
+                </field>
+
                 <field name="overflow" type="select2" default="" tags="false" label="overflow" maximumSelectionSize="1">
                     <option value="auto">auto</option>
                     <option value="visible">visible</option>

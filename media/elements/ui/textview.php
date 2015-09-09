@@ -35,7 +35,7 @@ class elementTextViewHelper extends  elementHelper
 
         $name=$params->get('name','name_'.$block->id);
         $id=$params->get('id','id_'.$block->id);
-        $text=$params->get('text','');
+        $text=$params->get('text','textview_'.$block->id);
         $placeholder=$params->get('placeholder','');
         $data_text=$params->get('data')->text;
 
@@ -56,17 +56,45 @@ class elementTextViewHelper extends  elementHelper
             <span data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="drag label label-default  element-move-handle element-move-handle_<?php echo $block->parent_id ?>"><i class="glyphicon glyphicon-move"></i></span>
             <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="menu label config-block label-danger menu-list" href="javascript:void(0)"><i class="im-menu2"></i></a>
             <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"class="remove label label-danger remove-element" href="javascript:void(0)"><i class="glyphicon-remove glyphicon"></i></a>
-            <?php echo $text ?>
+            <?php echo elementTextViewHelper::render_element($block) ?>
 
 
         <?php
         }else{
             ?>
-            <?php echo $text ?>
+            <?php echo elementTextViewHelper::render_element($block) ?>
 
         <?php
         }
         $html.=ob_get_clean();
+        return $html;
+    }
+    public function render_element($block)
+    {
+        $params = new JRegistry;
+        $params->loadString($block->params);
+        $css_class=$block->css_class;
+        $css_class=explode(',',$css_class);
+        $css_class=implode(' ',$css_class);
+        $size=$params->get('size','');
+
+        $name=$params->get('name','name_'.$block->id);
+        $id=$params->get('id','id_'.$block->id);
+        $text=$params->get('text','text_'.$block->id);
+        $placeholder=$params->get('placeholder','');
+        $data_text=$params->get('data')->text;
+
+        if(!$text&&$data_text){
+            $text=parent::getValueDataSourceByKey($data_text);
+        }
+
+
+        $html='';
+        ob_start();
+        ?>
+        <span  class="block-item block-item-textview" placeholder="<?php echo $placeholder ?>"  name="<?php echo $name ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" id="<?php echo $id; ?>" element-type="<?php echo $block->type ?>"><?php echo $text ?></span>
+        <?php
+        $html=ob_get_clean();
         return $html;
     }
     function getFooterHtml($block,$enableEditWebsite)

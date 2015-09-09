@@ -27,7 +27,6 @@
                     <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
                     <field name="key"  type="text" description="Key" label="Key"/>
                     <field name="value"  type="text" description="Value" label="Value"/>
-                    <field name="value_selected"  type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Value selected" label="Value selected"/>
 
                 </fieldset>
             </fields>

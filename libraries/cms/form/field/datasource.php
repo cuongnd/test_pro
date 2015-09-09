@@ -402,6 +402,7 @@ class JFormFieldDatasource extends JFormField
                             $('#grid_result').hide();
                         }
                         else {
+                            $('#grid_result').show();
                             var grid_result=$('#grid_result').data("kendoGrid");
                             var columns=[];
                             $.each(response.r[0], function( key, value ) {
