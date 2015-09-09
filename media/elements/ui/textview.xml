@@ -21,24 +21,29 @@
     </languages>
     <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
     <config>
+        <fieldset name="option" description="Option" label="Option">
+            <field name="css_class" type="select2" default="" tags="1" label="Css class" onselecting="element_ui_element.add_css_class(e,$(this))" onremoveitem="element_ui_element.remove_class_css(e,$(this))"  maximumSelectionSize="10">
+            </field>
+        </fieldset>
+
         <fields name="params">
             <fields name="data">
                 <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="text"  type="bindingSource" tags="0" maximumSelectionSize="1" description="Text" label="Text"/>
-                    <field name="bindingSourceUpdate" readonly="readonly" type="bindingSource" description="binding Source Update" label="Binding Source Update"/>
-                    <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
+                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
+                    <field name="text"  type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Text" label="Text"/>
                 </fieldset>
             </fields>
+        </fields>
+        <fields name="params">
             <fieldset name="element"  description="Element config" label="Element config">
-                <field name="text" type="text" default="" label="Text"/>
+                <field name="label" type="text" default="lable here" label="Label"/>
                 <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
                 <field name="id" type="text" default="" label="Id"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="editable" onchange="element_ui_quick_edit.change_state_edit_able($(this))" type="list" class="btn-group btn-group-yesno" label="Enable edit" description="Enable edit" default="1">
-                    <option value="1">JYES</option>
-                    <option value="0">JNO</option>
-                </field>
+                <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
+                <field name="placeholder" type="text" default="" label="placeholder"/>
             </fieldset>
         </fields>
+
+
     </config>
 </extension>

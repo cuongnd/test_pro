@@ -14,3 +14,11 @@
 2015-09-08T07:45:35+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
 2015-09-08T07:46:29+00:00	DEBUG	-	class:JApplicationCms
 2015-09-08T07:46:29+00:00	DEBUG	-	legacy $url:/component/users/profile.html
+2015-09-08T22:11:50+00:00	DEBUG	-	class:JApplicationCms
+2015-09-08T22:11:50+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2015-09-08T22:12:22+00:00	DEBUG	-	class:JApplicationCms
+2015-09-08T22:12:22+00:00	DEBUG	-	legacy $url:/component/users/profile.html
+2015-09-09T02:49:06+00:00	DEBUG	-	class:JApplicationCms
+2015-09-09T02:49:06+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2015-09-09T02:49:14+00:00	DEBUG	-	class:JApplicationCms
+2015-09-09T02:49:14+00:00	DEBUG	-	legacy $url:/component/users/profile.html

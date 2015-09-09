@@ -36,8 +36,8 @@ $doc->addScript(JUri::root().'/media/system/js/jquery.ba-bbq.js');
 $doc->addScript(JUri::root().'/media/system/js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js');
 $doc->addStyleSheet(JUri::root().'/media/system/js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css');
 $doc->addStyleSheet(JUri::root().'media/jui/jquery-ui-1.11.0.custom/jquery-ui.css');
-$doc->addScript(JUri::root().'/media/system/js/Responsive-Fluid-Drag-and-Drop-Grid-Layout-with-jQuery-gridstack-js/src/gridstack.js');
-$doc->addStyleSheet(JUri::root().'/media/system/js/Responsive-Fluid-Drag-and-Drop-Grid-Layout-with-jQuery-gridstack-js/src/gridstack.css');
+$doc->addScript(JUri::root().'/media/system/js/gridstack/src/gridstack.js');
+$doc->addStyleSheet(JUri::root().'/media/system/js/gridstack/src/gridstack.css');
 $doc->addScript(JUri::root().'/media/system/js/Nestable-master/jquery.nestable.js');
 if($enableEditWebsite) {
     $doc->addScript(JUri::root() . '/templates/shoponline123/js/design.js');

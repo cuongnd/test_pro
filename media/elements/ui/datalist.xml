@@ -24,21 +24,25 @@
         <fields name="params">
             <fields name="data">
                 <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="text"  type="bindingSource" tags="0" maximumSelectionSize="1" description="Text" label="Text"/>
-                    <field name="bindingSourceUpdate" readonly="readonly" type="bindingSource" description="binding Source Update" label="Binding Source Update"/>
-                    <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
+                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
+                    <field name="key"  type="text" description="Key" label="Key"/>
+                    <field name="value"  type="text" description="Value" label="Value"/>
+                    <field name="value_selected"  type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Value selected" label="Value selected"/>
+
                 </fieldset>
             </fields>
+        </fields>
+        <fields name="params">
             <fieldset name="element"  description="Element config" label="Element config">
-                <field name="text" type="text" default="" label="Text"/>
                 <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
                 <field name="id" type="text" default="" label="Id"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="editable" onchange="element_ui_quick_edit.change_state_edit_able($(this))" type="list" class="btn-group btn-group-yesno" label="Enable edit" description="Enable edit" default="1">
-                    <option value="1">JYES</option>
-                    <option value="0">JNO</option>
+                <field name="items" type="select2" default="" tags="1" label="Items" description="Items" maximumSelectionSize="100">
+
                 </field>
+
             </fieldset>
         </fields>
+
+
     </config>
 </extension>

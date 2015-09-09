@@ -3,10 +3,6 @@ jQuery(document).ready(function($){
     element_ui_quick_edit={
 
         init_ui_quick_edit:function(){
-            if (typeof editable === 'undefined' || !$.isFunction(editable)) {
-                $('head').append($('<script src="'+this_host+'/media/system/js/x-editable-master/dist/bootstrap3-editable/js/bootstrap-editable.js'+'" type="text/javascript"></script>'));
-                $('head').append($('<link href="'+this_host+'/media/system/js/x-editable-master/dist/bootstrap3-editable/css/bootstrap-editable.css'+'" media="screen" type="text/css" rel="stylesheet">'));
-            }
             $('.quick_edit[editable="true"]').each(function(){
                 $(this).editable({
                     type: 'text',

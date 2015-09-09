@@ -4,7 +4,7 @@ jQuery(document).ready(function($){
            /* $('#window').draggable({
                 handle: '#windowtitle'
             });*/
-            var d = new SQL.Designer();
+            //var d = new SQL.Designer();
 
 
 

@@ -24,6 +24,8 @@ class elementQuickEditHelper extends  elementHelper
         $doc=JFactory::getDocument();
         $doc->addStyleSheet(JUri::root() . "/$dirName/$filename.css");
         $doc->addScript(JUri::root() . "/$dirName/$filename.js");
+        $doc->addScript(JUri::root().'/media/system/js/x-editable-master/dist/bootstrap3-editable/js/bootstrap-editable.js');
+        $doc->addStyleSheet(JUri::root().'/media/system/js/x-editable-master/dist/bootstrap3-editable/css/bootstrap-editable.css');
         $params = new JRegistry;
         $params->loadString($block->params);
 
@@ -35,6 +37,10 @@ class elementQuickEditHelper extends  elementHelper
         $textSource=$params->get('data')->text;
         if($textSource)
             $text=parent::getValueDataSourceByKey($textSource);
+        if(is_object($text)||is_array($text))
+        {
+            $text="object or array";
+        }
         $html='';
         ob_start();
         if($enableEditWebsite) {

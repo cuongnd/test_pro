@@ -238,18 +238,62 @@ class JFormFieldDatasource extends JFormField
 
         //load for kendo
 
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.core.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.data.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.pager.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.userevents.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.list.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.dropdownlist.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.popup.js');
-        $doc->addScript(JUri::root() . '/media/kendotest/kendo.groupable.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.draganddrop.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.core.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.data.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.virtuallist.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.list.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.dropdownlist.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.pager.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.userevents.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.draganddrop.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.sortable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.menu.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.columnmenu.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.popup.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.binder.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.filtermenu.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.validator.js');
+
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.combobox.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.selectable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.groupable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.columnsorter.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.resizable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.window.js');
+        //$doc->addScript(JUri::root().'/media/kendotest/php/data/products.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.grid.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.multiselect.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.numerictextbox.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editor.js');
 
 
-        $doc->addScript(JUri::root() . '/media/kendotest/kendo.grid.js');
+        $list_file_less_css=array(
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.common",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.default",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz.default"
+            // "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.bootstrap"
+        );
+        foreach($list_file_less_css as $less_css_file)
+        {
+            $lessInput = JPATH_ROOT . $less_css_file.".less";
+            $cssOutput = JPATH_ROOT . $less_css_file.".css";
+            $error=JUtility::compileLess($lessInput, $cssOutput);
+            if($error!=true)
+            {
+                echo   $lessInput;
+                echo "<br/>";
+                echo $error;
+                echo "<br/>";
+                echo   $cssOutput;
+                die;
+            }
+            $doc->addStyleSheet(JUri::root() . $less_css_file.'.css');
+        }
+        $doc->addStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/styles/kendo.rtl.min.css');
+
+
 
 
         $doc->addStyleSheet(JUri::root() . "/libraries/cms/form/field/datasource.css");
@@ -318,9 +362,72 @@ class JFormFieldDatasource extends JFormField
         ob_start();
         ?>
         <script type="text/javascript">
+            function getDataByQuery() {
+                query = window.editor.getValue();
+                ajaxGetStanderQuery = $.ajax({
+                    type: "GET",
+                    url: this_host + '/index.php',
+
+                    data: (function () {
+
+                        dataPost = {
+                            option: 'com_phpmyadmin',
+                            task: 'datasource.ajaxGetDataByQuery',
+                            query: query,
+                            type:'data_source',
+                            source_id:<?php echo $data->get('id',0) ?>
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        response = $.parseJSON(response);
+
+                        if (response.e == 1) {
+                            $('#grid_result_error').html(response.m).show();
+                            $('#grid_result').hide();
+                        }
+                        else {
+                            var grid_result=$('#grid_result').data("kendoGrid");
+                            var columns=[];
+                            $.each(response.r[0], function( key, value ) {
+                                var column={};
+                                column.field=key;
+                                column.width=150;
+                                columns.push(column);
+                            });
+
+                            grid_result. setOptions({
+                                columns: columns
+                            });
+                            grid_result.dataSource.data(response.r);
+                        }
+                    }
+                });
+
+            }
+
+
+            function <?php echo $scriptId ?>() {
+                console.log('hello 213');
                 var jfield_data_source = {
                     kendo_grid_option: {
                         height: 300,
+                        width:1000,
                         groupable: true,
                         scrollable: true,
                         pageable: {
@@ -331,31 +438,7 @@ class JFormFieldDatasource extends JFormField
                     }
                 };
 
-
-                var grid_result = createGridDataByQuery();
-
-                function createGridDataByQuery() {
-
-                    if ($('link[href="<?php echo JUri::root() ?>/media/kendotest/kendo.common.min.css"]').length == 0) {
-                        $('head').append('<link href="<?php echo JUri::root() ?>/media/kendotest/kendo.common.min.css" type="text/css" rel="stylesheet"/>');
-                    }
-                    if ($('link[href="<?php echo JUri::root() ?>/media/kendotest/kendo.default.min.css"]').length == 0) {
-                        $('head').append('<link href="<?php echo JUri::root() ?>/media/kendotest/kendo.default.min.css" type="text/css" rel="stylesheet"/>');
-                    }
-                    if ($('script[src="<?php echo JUri::root() ?>/media/kendotest/kendo.grid.js"]').length == 0) {
-                        $('head').append('<\script src="<?php echo JUri::root() ?>/media/kendotest/kendo.grid.js" type="text/javascript"></\script>');
-                        $('script[src="<?php echo JUri::root() ?>/media/kendotest/kendo.grid.js"]').load(function () {
-                            grid_result = $('#grid_result').kendoGrid(jfield_data_source.kendo_grid_option).data("kendoGrid");
-                            return grid_result;
-
-
-                        });
-                    } else {
-                        grid_result = $('#grid_result').kendoGrid(jfield_data_source.kendo_grid_option).data("kendoGrid");
-                        return grid_result;
-                    }
-                }
-
+                $('#grid_result').kendoGrid(jfield_data_source.kendo_grid_option);
                 $('#table-result a:first').tab('show');
 
 
@@ -401,63 +484,6 @@ class JFormFieldDatasource extends JFormField
                         //default code block
                     }
                 });
-                function getDataByQuery() {
-                    query = window.editor.getValue();
-                    ajaxGetStanderQuery = $.ajax({
-                        type: "GET",
-                        url: this_host + '/index.php',
-
-                        data: (function () {
-
-                            dataPost = {
-                                option: 'com_phpmyadmin',
-                                task: 'datasource.ajaxGetDataByQuery',
-                                query: query,
-                                type:'data_source',
-                                source_id:<?php echo $data->get('id',0) ?>
-
-                            };
-                            return dataPost;
-                        })(),
-                        beforeSend: function () {
-                            $('.div-loading').css({
-                                display: "block"
-
-
-                            });
-
-                            // $('.loading').popup();
-                        },
-                        success: function (response) {
-                            $('.div-loading').css({
-                                display: "none"
-
-
-                            });
-                            response = $.parseJSON(response);
-
-                            if (response.e == 1) {
-                                $('#grid_result_error').html(response.m).show();
-                                $('#grid_result').hide();
-                            }
-                            else {
-                                if (typeof grid_result == "undefined") {
-                                    grid_result = createGridDataByQuery();
-                                }
-                                grid_result.destroy();
-                                grid_result.wrapper.empty();
-                                $('#grid_result_error').hide();
-                                $('#grid_result').show();
-                                grid_result = createGridDataByQuery();
-                                console.log('grid_result');
-                                console.log(grid_result);
-                                console.log('end grid_result');
-                                grid_result.dataSource.data(response.r);
-                            }
-                        }
-                    });
-
-                }
 
                 query = $('textarea[name="<?php echo $this->name ?>"]').val();
                 console.log(query);
@@ -564,14 +590,14 @@ class JFormFieldDatasource extends JFormField
                     onMinimize: function () {
                     } // on switch to inline mode callback
                 });
-                utilityDataSource.init_utility_dataSource();
-
-
+                //utilityDataSource.init_utility_dataSource();
+            };
+            <?php echo $scriptId ?>();
         </script>
         <?php
         $script=ob_get_clean();
         $script=JUtility::remove_string_javascript($script);
-        $doc->addAjaxCallFunction($scriptId,$script,$scriptId);
+        $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
         $listFunction = JFormFieldDatasource::getListAllFunction();
 
         $html = '';
@@ -1023,8 +1049,6 @@ class JFormFieldDatasource extends JFormField
 
             </div>
         </div>
-        <script type="text/javascript" src="<?php echo JUri::root() ?>/libraries/cms/form/field/datasource.js"/>
-        <link href="<?php echo JUri::root() ?>/libraries/cms/form/field/datasource.css" rel="stylesheet"/>
         <style>
 
             .item {
