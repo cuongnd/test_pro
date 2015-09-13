@@ -32,7 +32,26 @@ class DataSourceHelper
         UtilityHelper::_compress($data, $content_tytpe);
 
     }
+    public function get_data_source_by_function($function='')
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('data_source.id')
+            ->from('#__datasource AS data_source')
+            ->where('data_source.name='.$query->q($function))
+            ;
+        $data_source_id=$db->setQuery($query)->loadResult();
+        JTable::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/tables');
+        $tableDataSource=JTable::getInstance('DataSource','JTable');
+        $tableDataSource->load($data_source_id);
+        $query= $tableDataSource->datasource;
+        $stringQuery = DataSourceHelper::OverWriteDataSource($query);
+        $query = $db->getQuery(true);
+        $query->setQuery($stringQuery);
+        $data = $db->setQuery($query)->loadObjectList();
+        return  $data;
 
+    }
     public function OverWriteDataSource($datasource)
     {
         $datasource = str_replace('t__', '#__', $datasource);

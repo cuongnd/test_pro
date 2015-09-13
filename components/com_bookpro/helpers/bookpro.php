@@ -10,7 +10,7 @@
  * */
 defined('_JEXEC') or die('Restricted access');
 
-class BookProHelper {
+class BookProHelperFrontEnd {
 
 	
 	
@@ -31,7 +31,7 @@ class BookProHelper {
         AdminUIHelper::startAdminArea();
     }
 
-    function getyearold($BirthDate) {
+    static function getyearold($BirthDate) {
 
         list($Year, $Month, $Day) = explode("/", $BirthDate);
 

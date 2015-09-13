@@ -4,6 +4,7 @@
 
 
 <?php
+require_once JPATH_ROOT . '/components/com_phpmyadmin/helpers/datasource.php';
 require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
 
 $this->debugScreen = 0;
@@ -131,6 +132,63 @@ if ($enableEditWebsite) {
         $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.material.mobile.min.css');
         $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.dataviz.min.css');
         $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.dataviz.default.min.css');*/
+
+
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.core.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.data.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.virtuallist.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.list.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.dropdownlist.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.pager.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.userevents.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.draganddrop.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.sortable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.menu.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.columnmenu.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.popup.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.binder.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.filtermenu.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.validator.js');
+
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.combobox.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.selectable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.groupable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.columnsorter.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.resizable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.window.js');
+        //$doc->addScript(JUri::root().'/media/kendotest/php/data/products.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.grid.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.multiselect.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.numerictextbox.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editor.js');
+
+        $list_file_less_css=array(
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.common",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.rtl",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.default",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz.default"
+            // "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.bootstrap"
+        );
+        foreach($list_file_less_css as $less_css_file)
+        {
+            $lessInput = JPATH_ROOT . $less_css_file.".less";
+            $cssOutput = JPATH_ROOT . $less_css_file.".css";
+            $error=JUtility::compileLess($lessInput, $cssOutput);
+            if($error!=true)
+            {
+                echo   $lessInput;
+                echo "<br/>";
+                echo $error;
+                echo "<br/>";
+                echo   $cssOutput;
+                die;
+            }
+            $doc->addStyleSheet(JUri::root() . $less_css_file.'.css');
+        }
+        $doc->addStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/styles/kendo.rtl.min.css');
+
 
         JHtml::_('formbehavior.chosen', 'select');
         //$doc->addScript(JUri::root().'/media/system/js/jquery.ba-bbq.js');
@@ -596,19 +654,9 @@ if ($ajaxGetContent) {
                     <div class="panel panel-primary panel-teal toggle  panelRefresh panel-screen-size">
                         <!-- Start .panel -->
                         <div class="panel-body" style="overflow: auto">
-                             <div class="list-add-one">
-                                 <?php
-                                 JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/models');
-                                 $dataSourceModal=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
-                                 $currentDataSource=$dataSourceModal->getCurrentDataSources();
-                                 foreach($currentDataSource as $item)
-                                 {
-                                     ?>
-                                     <div data-add-on-id="<?php echo $item->datasource->id ?>" class="add-on-item-content pull-left"><a  class="remove label label-danger remove-add-on" data-add-on-id="<?php echo $item->datasource->id ?>" href="javascript:void(0)"><i class="glyphicon-remove glyphicon"></i></a><a  data-add-on-id="<?php echo $item->datasource->id ?>" href="javascript:void(0)"><i class="br-database"></i><?php echo $item->datasource->title ?></a></div>
-                                 <?php
-                                 }
-                                 ?>
-                             </div>
+                            <?php
+                                include_once JPATH_ROOT.'/templates/sprflat/html/layouts/joomla/system/data_source.php';
+                            ?>
                         </div>
 
                     </div>
@@ -657,5 +705,11 @@ if ($ajaxGetContent) {
 <?php } ?>
 <!-- Javascripts -->
 <!-- Load pace first -->
+<script>
+    jQuery(document).ready(function($){
+        Joomla.design_website.init_design_website();
+    });
+
+</script>
 </body>
 </html>

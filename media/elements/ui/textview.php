@@ -56,20 +56,20 @@ class elementTextViewHelper extends  elementHelper
             <span data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="drag label label-default  element-move-handle element-move-handle_<?php echo $block->parent_id ?>"><i class="glyphicon glyphicon-move"></i></span>
             <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="menu label config-block label-danger menu-list" href="javascript:void(0)"><i class="im-menu2"></i></a>
             <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"class="remove label label-danger remove-element" href="javascript:void(0)"><i class="glyphicon-remove glyphicon"></i></a>
-            <?php echo elementTextViewHelper::render_element($block) ?>
+            <?php echo elementTextViewHelper::render_element($block,$enableEditWebsite) ?>
 
 
         <?php
         }else{
             ?>
-            <?php echo elementTextViewHelper::render_element($block) ?>
+            <?php echo elementTextViewHelper::render_element($block,$enableEditWebsite) ?>
 
         <?php
         }
         $html.=ob_get_clean();
         return $html;
     }
-    public function render_element($block)
+    public function render_element($block,$enableEditWebsite)
     {
         $params = new JRegistry;
         $params->loadString($block->params);
@@ -80,15 +80,17 @@ class elementTextViewHelper extends  elementHelper
 
         $name=$params->get('name','name_'.$block->id);
         $id=$params->get('id','id_'.$block->id);
-        $text=$params->get('text','text_'.$block->id);
+        $text=$params->get('text','');
         $placeholder=$params->get('placeholder','');
-        $data_text=$params->get('data')->text;
-
+        $data_text=$params->get('data.bindingSource','');
         if(!$text&&$data_text){
             $text=parent::getValueDataSourceByKey($data_text);
         }
 
-
+        if($enableEditWebsite&&trim($text)=='')
+        {
+            $text='Empty';
+        }
         $html='';
         ob_start();
         ?>

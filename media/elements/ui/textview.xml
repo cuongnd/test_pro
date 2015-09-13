@@ -30,7 +30,6 @@
             <fields name="data">
                 <fieldset name="data"  description="Data config" label="Data config">
                     <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
-                    <field name="text"  type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Text" label="Text"/>
                 </fieldset>
             </fields>
         </fields>

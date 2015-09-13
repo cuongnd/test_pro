@@ -2,104 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="sdfdsfds">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/fonts/Chunkfive-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/fonts/Chunkfive-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/fonts/Monacoish-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/fonts/Monacoish-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/fonts/Snickles-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/fonts/Snickles-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/bg_footer.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/bg_footer_separator.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/bg_header.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/bg_panel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/bg_panel_active.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/bg_panel_disabled.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/blank.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_hex.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_hsb_b.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_hsb_h.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_hsb_s.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_indic.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_overlay.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_rgb_b.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_rgb_g.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_rgb_r.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_select.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/colorpicker_submit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/custom_background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/custom_hex.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/custom_hsb_b.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/custom_hsb_h.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/custom_hsb_s.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/custom_indic.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/custom_rgb_b.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/custom_rgb_g.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/custom_rgb_r.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/custom_submit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/icon_chrome.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/icon_expand.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/icon_firefox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/icon_gear.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/icon_ie.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/images/icon_safari.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/select.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/select2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/images/slider.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-bg_diagonals-thick_18_b81900_40x40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-bg_diagonals-thick_20_666666_40x40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-bg_flat_10_000000_40x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-bg_glass_100_f6f6f6_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-bg_glass_100_fdf5ce_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-bg_glass_65_ffffff_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-bg_gloss-wave_35_f6a828_500x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-icons_222222_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-icons_228ef1_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-icons_ef8c08_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-icons_ffd27a_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/images/ui-icons_ffffff_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/css/colorpicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/js/colorpicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/js/eye.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/index2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/js/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/jquery.slider.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/jquery.slider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/js/layout.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/plugin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/scripts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/stylegenerator.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/stylegenerator.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/stylegenerator.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/css/styles.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/button-generator-master/js/colorpicker/js/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/sprflat/html/layouts/joomla/system/data_source.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cache/_system/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-_system-1625f66878b648ea3d8a6ed520c11370.php" afterPath="$PROJECT_DIR$/cache/_system/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-_system-1625f66878b648ea3d8a6ed520c11370.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cache/mod_travel_search/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-mod_travel_search-fe96cb8a4f8744f5851e919c64361126.php" afterPath="$PROJECT_DIR$/cache/mod_travel_search/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-mod_travel_search-fe96cb8a4f8744f5851e919c64361126.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/chart.css" afterPath="$PROJECT_DIR$/media/elements/ui/chart.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/datalist.php" afterPath="$PROJECT_DIR$/media/elements/ui/datalist.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/datalist.xml" afterPath="$PROJECT_DIR$/media/elements/ui/datalist.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/form/field/datasource.php" afterPath="$PROJECT_DIR$/libraries/cms/form/field/datasource.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/dropdown.css" afterPath="$PROJECT_DIR$/media/elements/ui/dropdown.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/form/field.php" afterPath="$PROJECT_DIR$/libraries/joomla/form/field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/form/field/gradient.css" afterPath="$PROJECT_DIR$/libraries/cms/form/field/gradient.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/form/fields/advancedbindingsourceselect2.css" afterPath="$PROJECT_DIR$/libraries/joomla/form/fields/advancedbindingsourceselect2.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_bookpro/helpers/bookpro.php" afterPath="$PROJECT_DIR$/components/com_bookpro/helpers/bookpro.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/form/field/coding.css" afterPath="$PROJECT_DIR$/libraries/cms/form/field/coding.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/form/field/coding.js" afterPath="$PROJECT_DIR$/libraries/cms/form/field/coding.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/form/field/coding.php" afterPath="$PROJECT_DIR$/libraries/cms/form/field/coding.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configuration/configuration_61.php" afterPath="$PROJECT_DIR$/configuration/configuration_61.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_phpmyadmin/helpers/datasource.php" afterPath="$PROJECT_DIR$/components/com_phpmyadmin/helpers/datasource.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/js/design.js" afterPath="$PROJECT_DIR$/templates/sprflat/js/design.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/grid.php" afterPath="$PROJECT_DIR$/media/elements/ui/grid.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/form/field/gridformartheader.php" afterPath="$PROJECT_DIR$/libraries/cms/form/field/gridformartheader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/h1.css" afterPath="$PROJECT_DIR$/media/elements/ui/h1.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/imagebutton.php" afterPath="$PROJECT_DIR$/media/elements/ui/imagebutton.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/imagebutton.xml" afterPath="$PROJECT_DIR$/media/elements/ui/imagebutton.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/imagebutton.css" afterPath="$PROJECT_DIR$/media/elements/ui/imagebutton.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/imagebutton.less" afterPath="$PROJECT_DIR$/media/elements/ui/imagebutton.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/index.php" afterPath="$PROJECT_DIR$/templates/sprflat/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/js/jquery.blockproperties.js" afterPath="$PROJECT_DIR$/templates/sprflat/js/jquery.blockproperties.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/juri_flow1.text" afterPath="$PROJECT_DIR$/logs/juri_flow1.text" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/label.css" afterPath="$PROJECT_DIR$/media/elements/ui/label.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/label.less" afterPath="$PROJECT_DIR$/media/elements/ui/label.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/models/forms/position.xml" afterPath="$PROJECT_DIR$/components/com_utility/models/forms/position.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/quickedit.css" afterPath="$PROJECT_DIR$/media/elements/ui/quickedit.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/quickedit.less" afterPath="$PROJECT_DIR$/media/elements/ui/quickedit.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/quickedit.xml" afterPath="$PROJECT_DIR$/media/elements/ui/quickedit.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layouts/website/css/style_61_229.css" afterPath="$PROJECT_DIR$/layouts/website/css/style_61_229.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/textview.css" afterPath="$PROJECT_DIR$/media/elements/ui/textview.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/textview.less" afterPath="$PROJECT_DIR$/media/elements/ui/textview.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/textview.php" afterPath="$PROJECT_DIR$/media/elements/ui/textview.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/title.css" afterPath="$PROJECT_DIR$/media/elements/ui/title.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/textview.xml" afterPath="$PROJECT_DIR$/media/elements/ui/textview.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/html/mod_menu/tourmanagermenu.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/mod_menu/tourmanagermenu.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="test_pro.iws" />
@@ -124,86 +50,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="position.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/com_utility/models/forms/position.xml">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/sprflat/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="231" max-vertical-offset="8277">
-              <caret line="42" column="39" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="12053" max-vertical-offset="12189">
+              <caret line="709" column="39" selection-start-line="709" selection-start-column="39" selection-end-line="709" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/media/system/js/button-generator-master/index.html">
+      <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/mod_travel_search/tmpl/default.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="14.384615" vertical-offset="374" max-vertical-offset="7401">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1122">
+              <caret line="60" column="12" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data_source.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/sprflat/html/layouts/joomla/system/data_source.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1088">
+              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="design.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/sprflat/js/design.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="7344" max-vertical-offset="47364">
+              <caret line="440" column="31" selection-start-line="440" selection-start-column="31" selection-end-line="440" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery.sprFlat.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/sprflat/assets/js/jquery.sprFlat.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="23528">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bindingSource.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libraries/joomla/form/fields/bindingSource.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154" vertical-offset="2669" max-vertical-offset="5242">
-              <caret line="172" column="20" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="datasource.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/datasource.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46625766" vertical-offset="6462" max-vertical-offset="20287">
-              <caret line="404" column="50" selection-start-line="404" selection-start-column="50" selection-end-line="404" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gradient.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/gradient.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="187.0" vertical-offset="4862" max-vertical-offset="15051">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stylegenerator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/stylegenerator.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.846154" vertical-offset="764" max-vertical-offset="15051">
-              <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
               <folding>
-                <marker date="1441794723912" expanded="true" signature="36185:37645" placeholder="..." />
-                <marker date="1441794723912" expanded="true" signature="36185:37633" placeholder="..." />
-                <marker date="1441794723912" expanded="true" signature="36185:37449" placeholder="..." />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="field.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libraries/joomla/form/field.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5" vertical-offset="16082" max-vertical-offset="17533">
-              <caret line="965" column="35" selection-start-line="965" selection-start-column="35" selection-end-line="965" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gridformartheader.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/gridformartheader.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.076923" vertical-offset="9469" max-vertical-offset="12484">
-              <caret line="583" column="38" selection-start-line="583" selection-start-column="38" selection-end-line="583" selection-end-column="38" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -211,19 +105,52 @@
       <file leaf-file-name="grid.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/media/elements/ui/grid.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.346154" vertical-offset="5070" max-vertical-offset="16581">
-              <caret line="311" column="8" selection-start-line="311" selection-start-column="8" selection-end-line="311" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5321" max-vertical-offset="15963">
+              <caret line="313" column="0" selection-start-line="313" selection-start-column="0" selection-end-line="313" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="grid.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/media/elements/ui/grid.js">
+      <file leaf-file-name="grid.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/media/elements/ui/grid.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.896552" vertical-offset="1110" max-vertical-offset="2281">
-              <caret line="89" column="32" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="2380">
+              <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="coding.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/coding.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="5168" max-vertical-offset="10370">
+              <caret line="304" column="30" selection-start-line="304" selection-start-column="16" selection-end-line="304" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="coding.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/coding.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="7956" max-vertical-offset="10200">
+              <caret line="474" column="42" selection-start-line="474" selection-start-column="28" selection-end-line="474" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="configuration_61.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/configuration/configuration_61.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4903846" vertical-offset="408" max-vertical-offset="2101">
+              <caret line="39" column="6" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
+              <folding>
+                <marker date="1442066720562" expanded="true" signature="1023:1162" placeholder="//..." />
+                <marker date="1442066720562" expanded="true" signature="1023:1162" placeholder="//..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -242,7 +169,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/sprflat/index.php" />
         <option value="$PROJECT_DIR$/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.window.js" />
         <option value="$PROJECT_DIR$/test.js" />
         <option value="$PROJECT_DIR$/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.common.css" />
@@ -256,10 +182,7 @@
         <option value="$PROJECT_DIR$/libraries/joomla/form/fields/selectblock.php" />
         <option value="$PROJECT_DIR$/media/elements/ui/grid.js" />
         <option value="$PROJECT_DIR$/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.grid.js" />
-        <option value="$PROJECT_DIR$/templates/sprflat/js/design.js" />
         <option value="$PROJECT_DIR$/templates/sprflat/less/csswheneditsite.less" />
-        <option value="$PROJECT_DIR$/media/elements/ui/quickedit.xml" />
-        <option value="$PROJECT_DIR$/configuration/configuration_61.php" />
         <option value="$PROJECT_DIR$/components/com_website/views/design/tmpl/default.php" />
         <option value="$PROJECT_DIR$/media/elements/ui/quickedit.js" />
         <option value="$PROJECT_DIR$/libraries/cms/form/field/datasource.js" />
@@ -269,14 +192,29 @@
         <option value="$PROJECT_DIR$/media/elements/ui/datalist.xml" />
         <option value="$PROJECT_DIR$/media/elements/ui/datalist.php" />
         <option value="$PROJECT_DIR$/media/elements/ui/quickedit.less" />
-        <option value="$PROJECT_DIR$/media/elements/ui/textview.php" />
         <option value="$PROJECT_DIR$/media/elements/ui/label.less" />
         <option value="$PROJECT_DIR$/libraries/cms/form/field/stylegenerator.php" />
         <option value="$PROJECT_DIR$/components/com_utility/models/forms/position.xml" />
         <option value="$PROJECT_DIR$/libraries/joomla/form/field.php" />
         <option value="$PROJECT_DIR$/libraries/cms/form/field/gridformartheader.php" />
-        <option value="$PROJECT_DIR$/media/elements/ui/grid.php" />
         <option value="$PROJECT_DIR$/libraries/cms/form/field/datasource.php" />
+        <option value="$PROJECT_DIR$/media/elements/ui/textview.xml" />
+        <option value="$PROJECT_DIR$/media/elements/ui/textview.less" />
+        <option value="$PROJECT_DIR$/media/elements/ui/imagebutton.less" />
+        <option value="$PROJECT_DIR$/media/elements/ui/textview.php" />
+        <option value="$PROJECT_DIR$/media/elements/ui/quickedit.xml" />
+        <option value="$PROJECT_DIR$/templates/sprflat/js/jquery.blockproperties.js" />
+        <option value="$PROJECT_DIR$/components/com_phpmyadmin/helpers/datasource.php" />
+        <option value="$PROJECT_DIR$/libraries/cms/form/field/coding.php" />
+        <option value="$PROJECT_DIR$/components/com_bookpro/helpers/bookpro.php" />
+        <option value="$PROJECT_DIR$/cache/get_data_by_data_source_113.php" />
+        <option value="$PROJECT_DIR$/templates/sprflat/html/mod_menu/tourmanagermenu.php" />
+        <option value="$PROJECT_DIR$/libraries/cms/form/field/coding.js" />
+        <option value="$PROJECT_DIR$/templates/sprflat/index.php" />
+        <option value="$PROJECT_DIR$/templates/sprflat/html/layouts/joomla/system/data_source.php" />
+        <option value="$PROJECT_DIR$/media/elements/ui/grid.php" />
+        <option value="$PROJECT_DIR$/templates/sprflat/js/design.js" />
+        <option value="$PROJECT_DIR$/configuration/configuration_61.php" />
       </list>
     </option>
   </component>
@@ -287,8 +225,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -313,7 +251,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -329,6 +266,220 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="joomla" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="joomla" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -514,14 +665,241 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configuration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_phpmyadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_phpmyadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_phpmyadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_bookpro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_bookpro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="administrator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="administrator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="administrator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_bookpro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="administrator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_bookpro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.php&#10;grid&#9;FILE&#9;file://H:/project/test_pro/media/elements/ui/grid.php&#10;for&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/gridformartheader.php&#10;jfield&#9;null&#9;null&#10;dataso&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.php&#10;bindingSource&#9;FILE&#9;file://H:/project/test_pro/libraries/joomla/form/fields/bindingSource.php&#10;design&#9;FILE&#9;file://H:/project/test_pro/templates/sprflat/js/design.js&#10;helpers/website&#9;FILE&#9;file://H:/project/test_pro/components/com_website/helpers/website.php&#10;filterselect2&#9;null&#9;null&#10;selectblock&#9;null&#9;null&#10;datasource&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.js" />
+    <property name="SearchEverywhereHistoryKey" value="design.js&#9;FILE&#9;file://H:/project/test_pro/templates/sprflat/js/design.js&#10;coding&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/coding.php&#10;juti&#9;null&#9;null&#10;grid&#9;FILE&#9;file://H:/project/test_pro/media/elements/ui/grid.php&#10;for&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/gridformartheader.php&#10;jfield&#9;null&#9;null&#10;dataso&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.php&#10;bindingSource&#9;FILE&#9;file://H:/project/test_pro/libraries/joomla/form/fields/bindingSource.php&#10;design&#9;FILE&#9;file://H:/project/test_pro/templates/sprflat/js/design.js&#10;helpers/website&#9;FILE&#9;file://H:/project/test_pro/components/com_website/helpers/website.php&#10;filterselect2&#9;null&#9;null&#10;selectblock&#9;null&#9;null&#10;datasource&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/sprflat/html/mod_menu/tourmanagermenu.php" />
+    <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -553,15 +931,15 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="false" name="DB Method Runner" type="DBNMethodRunConfiguration" factoryName="DB Method">
@@ -604,7 +982,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -613,7 +991,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3470437" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3524962" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -621,14 +999,14 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4255911" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3463143" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -654,142 +1032,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/media/Kendo_UI_Professional_Q2_2015/src/styles/web/common/forms.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769" vertical-offset="255" max-vertical-offset="1686">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/Kendo_UI_Professional_Q2_2015/src/styles/web/common/base.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.576923" vertical-offset="11813" max-vertical-offset="15528">
-          <caret line="708" column="1" selection-start-line="708" selection-start-column="1" selection-end-line="708" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.popup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1870" max-vertical-offset="11032">
-          <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/kendotest/php/lib/Kendo/UI/GridEditable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923" vertical-offset="1122" max-vertical-offset="2098">
-          <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/kendotest/php/lib/Kendo/Template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="442">
-          <caret line="4" column="41" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4307" max-vertical-offset="71144">
-          <caret line="272" column="0" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/gridselected.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10557">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/form/fields/filterselect2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1360">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/form/fields/selectblock.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3587" max-vertical-offset="4522">
-          <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/elements/ui/grid.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2770">
-          <caret line="70" column="48" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_website/helpers/website.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.818182" vertical-offset="1367" max-vertical-offset="9348">
-          <caret line="102" column="25" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sprflat/js/design.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.9310346" vertical-offset="21639" max-vertical-offset="46808">
-          <caret line="1283" column="127" selection-start-line="1283" selection-start-column="111" selection-end-line="1283" selection-end-column="127" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sprflat/less/csswheneditsite.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1272726" vertical-offset="8915" max-vertical-offset="11048">
-          <caret line="541" column="11" selection-start-line="541" selection-start-column="11" selection-end-line="541" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/elements/ui/h3.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1294">
-          <caret line="31" column="53" selection-start-line="31" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configuration/configuration_61.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537" vertical-offset="459" max-vertical-offset="2246">
-          <caret line="39" column="35" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sprflat/field.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6872181" vertical-offset="1122" max-vertical-offset="8536">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2106">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="708">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_utility/views/field/tmpl/properties.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1303">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/sprflat/ajax_json.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1575">
@@ -808,14 +1050,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06466165" vertical-offset="8423" max-vertical-offset="17903">
           <caret line="498" column="20" selection-start-line="498" selection-start-column="20" selection-end-line="498" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/utilities/utility.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.692307" vertical-offset="2800" max-vertical-offset="11514">
-          <caret line="184" column="44" selection-start-line="184" selection-start-column="20" selection-end-line="184" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -847,13 +1081,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/coding.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.615385" vertical-offset="5996" max-vertical-offset="9542">
-          <caret line="378" column="65" selection-start-line="378" selection-start-column="8" selection-end-line="378" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/ui/quickedit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.109091" vertical-offset="416" max-vertical-offset="2016">
@@ -861,19 +1088,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/media/elements/ui/quickedit.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1102">
-          <caret line="25" column="85" selection-start-line="25" selection-start-column="85" selection-end-line="25" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/ui/icon.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1030">
           <caret line="33" column="72" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -881,7 +1099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19026549" vertical-offset="1112" max-vertical-offset="2208">
           <caret line="73" column="33" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -889,15 +1106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="2165">
           <caret line="35" column="34" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/elements/ui/imagebutton.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.013803681" vertical-offset="1657" max-vertical-offset="2709">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -905,7 +1113,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2187">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -913,7 +1120,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21533923" vertical-offset="347" max-vertical-offset="1443">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -921,7 +1127,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2312">
           <caret line="90" column="32" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -929,7 +1134,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.07669173" vertical-offset="0" max-vertical-offset="716">
           <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -937,15 +1141,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="2182">
           <caret line="64" column="23" selection-start-line="64" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/elements/ui/textview.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1598" max-vertical-offset="2658">
-          <caret line="94" column="52" selection-start-line="94" selection-start-column="52" selection-end-line="94" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -953,7 +1148,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20451128" vertical-offset="0" max-vertical-offset="784">
           <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -961,7 +1155,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="14.384615" vertical-offset="374" max-vertical-offset="7401">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -969,27 +1162,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.8846154" vertical-offset="2669" max-vertical-offset="5242">
           <caret line="172" column="20" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/gradient.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="187.0" vertical-offset="4862" max-vertical-offset="15051">
+        <state vertical-scroll-proportion="-9.35" vertical-offset="4862" max-vertical-offset="14919">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/stylegenerator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.846154" vertical-offset="764" max-vertical-offset="15051">
+        <state vertical-scroll-proportion="0.4923077" vertical-offset="764" max-vertical-offset="14919">
           <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
-          <folding>
-            <marker date="1441794723912" expanded="true" signature="36185:37645" placeholder="..." />
-            <marker date="1441794723912" expanded="true" signature="36185:37633" placeholder="..." />
-            <marker date="1441794723912" expanded="true" signature="36185:37449" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -997,47 +1183,224 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="231" max-vertical-offset="8277">
           <caret line="42" column="39" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/form/field.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5" vertical-offset="16082" max-vertical-offset="17533">
+        <state vertical-scroll-proportion="0.425" vertical-offset="16082" max-vertical-offset="17401">
           <caret line="965" column="35" selection-start-line="965" selection-start-column="35" selection-end-line="965" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/gridformartheader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.076923" vertical-offset="9469" max-vertical-offset="12484">
+        <state vertical-scroll-proportion="0.65384614" vertical-offset="9469" max-vertical-offset="12352">
           <caret line="583" column="38" selection-start-line="583" selection-start-column="38" selection-end-line="583" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/ui/grid.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.896552" vertical-offset="1110" max-vertical-offset="2281">
+        <state vertical-scroll-proportion="0.7794971" vertical-offset="1110" max-vertical-offset="2149">
           <caret line="89" column="32" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/elements/ui/textview.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1328">
+          <caret line="31" column="46" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/elements/ui/textview.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="652">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/elements/ui/imagebutton.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075" vertical-offset="1462" max-vertical-offset="2577">
+          <caret line="97" column="88" selection-start-line="97" selection-start-column="88" selection-end-line="97" selection-end-column="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/elements/ui/imagebutton.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="686">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/elements/ui/textview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.923077" vertical-offset="1133" max-vertical-offset="2692">
+          <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/joomla/utilities/utility.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075" vertical-offset="1700" max-vertical-offset="11804">
+          <caret line="117" column="60" selection-start-line="117" selection-start-column="60" selection-end-line="117" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/js/jquery.blockproperties.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2305" max-vertical-offset="18137">
+          <caret line="141" column="27" selection-start-line="141" selection-start-column="27" selection-end-line="141" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_phpmyadmin/controllers/datasources.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="980">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_phpmyadmin/controllers/datasource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.23077" vertical-offset="4660" max-vertical-offset="14711">
+          <caret line="308" column="60" selection-start-line="305" selection-start-column="11" selection-end-line="308" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/elements/ui/quickedit.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1392">
+          <caret line="26" column="116" selection-start-line="26" selection-start-column="116" selection-end-line="26" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/datasource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846" vertical-offset="6375" max-vertical-offset="20287">
+          <caret line="395" column="0" selection-start-line="395" selection-start-column="0" selection-end-line="395" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/components/com_bookpro/helpers/bookpro.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="16139">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_bookpro/helpers/bookpro.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614" vertical-offset="187" max-vertical-offset="16139">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cache/get_data_by_data_source_113.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="1073">
+          <caret line="6" column="68" selection-start-line="6" selection-start-column="68" selection-end-line="6" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/html/mod_menu/tourmanagermenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="1859">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_phpmyadmin/helpers/datasource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.461538" vertical-offset="374" max-vertical-offset="3623">
+          <caret line="44" column="68" selection-start-line="44" selection-start-column="68" selection-end-line="44" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/assets/js/jquery.sprFlat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="24023">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/mod_travel_search/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1122">
+          <caret line="60" column="12" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="12053" max-vertical-offset="12189">
+          <caret line="709" column="39" selection-start-line="709" selection-start-column="39" selection-end-line="709" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/coding.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5050" max-vertical-offset="10616">
+          <caret line="304" column="30" selection-start-line="304" selection-start-column="16" selection-end-line="304" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/coding.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7956" max-vertical-offset="10200">
+          <caret line="474" column="42" selection-start-line="474" selection-start-column="28" selection-end-line="474" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/html/layouts/joomla/system/data_source.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1088">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/elements/ui/grid.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1496" max-vertical-offset="2758">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/ui/grid.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.346154" vertical-offset="5070" max-vertical-offset="16581">
-          <caret line="311" column="8" selection-start-line="311" selection-start-column="8" selection-end-line="311" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5321" max-vertical-offset="15963">
+          <caret line="313" column="0" selection-start-line="313" selection-start-column="0" selection-end-line="313" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/datasource.php">
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/js/design.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46625766" vertical-offset="6462" max-vertical-offset="20287">
-          <caret line="404" column="50" selection-start-line="404" selection-start-column="50" selection-end-line="404" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="7344" max-vertical-offset="47364">
+          <caret line="440" column="31" selection-start-line="440" selection-start-column="31" selection-end-line="440" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration/configuration_61.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4903846" vertical-offset="408" max-vertical-offset="2101">
+          <caret line="39" column="6" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
+          <folding>
+            <marker date="1442066720562" expanded="true" signature="1023:1162" placeholder="//..." />
+            <marker date="1442066720562" expanded="true" signature="1023:1162" placeholder="//..." />
+          </folding>
         </state>
       </provider>
     </entry>

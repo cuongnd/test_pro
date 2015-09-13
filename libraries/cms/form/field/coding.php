@@ -260,18 +260,63 @@ class JFormFieldCoding extends JFormField
 
         $doc->addScript(JUri::root() . "/media/system/js/base64.js");
 
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.core.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.data.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.pager.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.userevents.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.list.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.dropdownlist.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.popup.js');
-        $doc->addScript(JUri::root() . '/media/kendotest/kendo.groupable.js');
-        $doc->addScript(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/js/kendo.draganddrop.js');
+        //load for kendo
+
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.core.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.data.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.virtuallist.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.list.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.dropdownlist.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.pager.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.userevents.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.draganddrop.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.sortable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.menu.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.columnmenu.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.popup.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.binder.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.filtermenu.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.validator.js');
+
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.combobox.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.selectable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.groupable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.columnsorter.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.resizable.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.window.js');
+        //$doc->addScript(JUri::root().'/media/kendotest/php/data/products.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.grid.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.multiselect.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.numerictextbox.js');
+        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editor.js');
 
 
-        $doc->addScript(JUri::root() . '/media/kendotest/kendo.grid.js');
+        $list_file_less_css=array(
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.common",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.default",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz",
+            "/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz.default"
+            // "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.bootstrap"
+        );
+        foreach($list_file_less_css as $less_css_file)
+        {
+            $lessInput = JPATH_ROOT . $less_css_file.".less";
+            $cssOutput = JPATH_ROOT . $less_css_file.".css";
+            $error=JUtility::compileLess($lessInput, $cssOutput);
+            if($error!=true)
+            {
+                echo   $lessInput;
+                echo "<br/>";
+                echo $error;
+                echo "<br/>";
+                echo   $cssOutput;
+                die;
+            }
+            $doc->addStyleSheet(JUri::root() . $less_css_file.'.css');
+        }
+        $doc->addStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/styles/kendo.rtl.min.css');
+
 
 
         $doc->addStyleSheet(JUri::root() . "/media/system/js/CodeMirror-master/lib/codemirror.css");
@@ -408,6 +453,18 @@ class JFormFieldCoding extends JFormField
                         </ul>
                     </div>
                 </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <?php
+                $data=$this->form->getData();
+                $currenrt_url=$app->input->get('currenrt_url','','string');
+                $currenrt_url=base64_decode($currenrt_url);
+                $uri=JFactory::getURI($currenrt_url);
+                $uri->setVar('file_name_change','get_data_by_data_source_'.$data->get('id',0));
+                ?>
+                <a href="<?php echo $uri->toString() ?>"><?php echo $uri->toString() ?></a>
             </div>
         </div>
         <div class="row">

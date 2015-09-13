@@ -100,24 +100,7 @@ jQuery(document).ready(function ($) {
         },
         createGridDataByQuery:function () {
 
-        if ($('link[href="<?php echo JUri::root() ?>/media/kendotest/kendo.common.min.css"]').length == 0) {
-            $('head').append('<link href="<?php echo JUri::root() ?>/media/kendotest/kendo.common.min.css" type="text/css" rel="stylesheet"/>');
-        }
-        if ($('link[href="<?php echo JUri::root() ?>/media/kendotest/kendo.default.min.css"]').length == 0) {
-            $('head').append('<link href="<?php echo JUri::root() ?>/media/kendotest/kendo.default.min.css" type="text/css" rel="stylesheet"/>');
-        }
-        if ($('script[src="<?php echo JUri::root() ?>/media/kendotest/kendo.grid.js"]').length == 0) {
-            $('head').append('<\script src="<?php echo JUri::root() ?>/media/kendotest/kendo.grid.js" type="text/javascript"></\script>');
-            $('script[src="<?php echo JUri::root() ?>/media/kendotest/kendo.grid.js"]').load(function () {
-                grid_result = $('#grid_result').kendoGrid(jfield_data_source.kendo_grid_option).data("kendoGrid");
-                return grid_result;
-
-
-            });
-        } else {
-            grid_result = $('#grid_result').kendoGrid(coding_php_content_loader.kendo_grid_option).data("kendoGrid");
-            return grid_result;
-        }
+            $('#grid_result').kendoGrid(coding_php_content_loader.kendo_grid_option);
     },
 
     getDataByQuery: function () {
@@ -161,17 +144,19 @@ jQuery(document).ready(function ($) {
                         $('#grid_result').hide();
                     }
                     else {
-                        if (typeof grid_result == "undefined") {
-                            grid_result = coding_php_content_loader.createGridDataByQuery();
-                        }
-                        grid_result.destroy();
-                        grid_result.wrapper.empty();
-                        $('#grid_result_error').hide();
                         $('#grid_result').show();
-                        grid_result = coding_php_content_loader.createGridDataByQuery();
-                        console.log('grid_result');
-                        console.log(grid_result);
-                        console.log('end grid_result');
+                        var grid_result=$('#grid_result').data("kendoGrid");
+                        var columns=[];
+                        $.each(response.r[0], function( key, value ) {
+                            var column={};
+                            column.field=key;
+                            column.width=150;
+                            columns.push(column);
+                        });
+
+                        grid_result. setOptions({
+                            columns: columns
+                        });
                         grid_result.dataSource.data(response.r);
                     }
                 }

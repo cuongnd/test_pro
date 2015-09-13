@@ -33,11 +33,11 @@ class JConfig {
 	public $ftp_user = '';
 	public $gzip = '1';
 	public $helpurl = 'http://help.joomla.org/proxy/index.php?option=com_help&keyref=Help{major}{minor}:{keyref}';
-	//public $host = 'asianventure.ddns.net';
+	public $host = 'asianventure.ddns.net';
 	//public $host = 'asian-pc';
 	//public $host = '14.162.87.113';
 	//public $host = '192.168.1.253';
-	public $host = '169.254.128.224';
+	//public $host = '169.254.128.224';
 	//public $host = 'localhost';
 	public $lifetime = '150';
 	public $list_limit = '20';

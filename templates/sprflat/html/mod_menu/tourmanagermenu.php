@@ -2,7 +2,7 @@
 $lessInput = JPATH_ROOT . '/templates/sprflat/html/mod_menu/assets/less/tourmanagermenu.less';
 $cssOutput = JPATH_ROOT . '/templates/sprflat/html/mod_menu/assets/css/tourmanagermenu.css';
 require_once JPATH_ROOT.'/components/com_bookpro/helpers/bookpro.php';
-BookProHelper::compileLess($lessInput, $cssOutput);
+BookProHelperFrontEnd::compileLess($lessInput, $cssOutput);
 $doc = JFactory::getDocument();
 $doc->addStyleSheet(JUri::root() . '/templates/sprflat/html/mod_menu/assets/css/tourmanagermenu.css');
 $doc->addScript(JUri::root().'/templates/sprflat/html/mod_menu/assets/js/tourmanagermenu.js');

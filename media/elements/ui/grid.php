@@ -311,7 +311,6 @@ class elementGridHelper extends elementHelper
         $grid_height = $params->get('grid_height', '700');
         $columnMenu = $params->get('columnMenu', true);
         $template_by_element = $params->get('template_by_element', 0);
-        $columnMenu=false;
         $sortable = $params->get('sortable', 1);
         $scrollable = (bool)$params->get('scrollable', 0);
         if ($grid_height == '100%') {
@@ -363,7 +362,7 @@ class elementGridHelper extends elementHelper
             ->dataSource($dataSource)
             ->height($grid_height)
             ->columnMenu($columnMenu)
-            ->filterable(false)
+            ->filterable($filterable)
             ->sortable($sortable)
             ->editable($editAble)
             ->autoBind($enable_ajax_load_data == 1 ? true : false)

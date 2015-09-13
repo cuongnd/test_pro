@@ -139,7 +139,7 @@
             field=self.attr('data-field');
             add_on_id=$('input[name="jform[id]"]').val();
             ajaxLoadFieldTypeOfBlock=$.ajax({
-                type: "GET",
+                type: "POST",
                 cache:false,
                 dataType: "json",
                 url: this_host+'/index.php',
@@ -150,7 +150,8 @@
                         view: 'datasource',
                         tmpl: 'ajax_json',
                         add_on_id:add_on_id,
-                        field:field
+                        field:field,
+                        currenrt_url:base64.encode(currentLink)
                     };
                     return dataPost;
                 })(),

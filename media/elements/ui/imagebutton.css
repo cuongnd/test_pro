@@ -2,3 +2,7 @@
 	float: left;
 	width: auto;
 }
+.block-item.block-item-imagebutton {
+	display: block;
+	padding: 6px 0px;
+}

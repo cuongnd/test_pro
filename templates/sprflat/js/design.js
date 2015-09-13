@@ -112,6 +112,13 @@ jQuery(document).ready(function ($) {
 
 
     Joomla.design_website = {
+        seting:{
+            list_data_source:{}
+        },
+        init_design_website:function(){
+
+            Joomla.design_website.build_grid_database_manager(Joomla.design_website.seting.list_data_source);
+        },
         auto_build_less_again: function () {
             $.ajax({
                 type: "GET",
@@ -406,6 +413,30 @@ jQuery(document).ready(function ($) {
                 }
             });
 
+        },
+        build_grid_database_manager:function(data_source){
+            $('#database_detail').kendoGrid({
+                dataSource: new kendo.data.DataSource({
+                    data: data_source
+                }),
+                height: 550,
+                groupable: true,
+                sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5
+                },
+                pageSize: 25,
+                columnMenu:true,
+                filterable:true,
+                editable:fale,
+                columns: [
+                    { field: "datasource.id", title: "Id", width: "130px" },
+                    { field: "datasource.title", title: "Title", width: "130px" },
+                    { field: "datasource.name",title: "Name", width: "130px" }
+                ]
+            });
         },
         save_content_php_datasource:function(self,binding_source_id,close_edit){
             var php_content=$('#php_content').val();

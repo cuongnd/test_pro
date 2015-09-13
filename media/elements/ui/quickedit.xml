@@ -24,7 +24,7 @@
         <fields name="params">
             <fields name="data">
                 <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="text"  type="bindingSource" tags="0" maximumSelectionSize="1" description="Text" label="Text"/>
+                    <field name="text"  type="bindingSource" tags="0" maximumSelectionSize="1" description="binding Source" label="binding Source"/>
                     <field name="bindingSourceUpdate" readonly="readonly" type="bindingSource" description="binding Source Update" label="Binding Source Update"/>
                     <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
                 </fieldset>
