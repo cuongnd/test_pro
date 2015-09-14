@@ -81,6 +81,7 @@ class elementSelectHelper extends elementHelper
 
 
         $disable_chosen = $params->get('disable_chosen', 1);
+        $confirm = $params->get('confirm', 0);
         $enable_submit = $params->get('enable_submit', 1);
         $placeholder = $params->get('placeholder', 'placeholder_' . $block->id);
         $bindingSource = $params->get('data')->bindingSource;
@@ -141,7 +142,25 @@ class elementSelectHelper extends elementHelper
         <script type="text/javascript">
             jQuery(document).ready(function($){
                 $(document).on('change','select.block-item.block-item-select[data-block-id="<?php echo $block->id ?>"]',function(){
+                    var lastRole = $(this).data('lastValue');
+                    var newRole = $(this).val();
+                    <?php
+                        if($confirm==1){
+                        $confirm_msg = $params->get('confirm_msg', "are your sure change ?");
+                        ?>
+                        if (!confirm("<?php echo $confirm_msg ?>")) {
+                            console.log(lastRole);
+                            $(this).val(lastRole); //set back
+                            return;                  //abort!
+                        }
+                        <?php
+                        }
+                    ?>
                     <?php echo $on_change_by_code_php==1?$on_change:'' ?>
+                });
+                $(document).on('focus','select.block-item.block-item-select[data-block-id="<?php echo $block->id ?>"]',function(){
+                    console.log('hello 121');
+                    $(this).data('lastValue',$(this).val());
                 });
             });
         </script>

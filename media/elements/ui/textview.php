@@ -83,10 +83,15 @@ class elementTextViewHelper extends  elementHelper
         $text=$params->get('text','');
         $placeholder=$params->get('placeholder','');
         $data_text=$params->get('data.bindingSource','');
-        if(!$text&&$data_text){
+        if(!$text&&$data_text!="code_php"  && $data_text){
             $text=parent::getValueDataSourceByKey($data_text);
         }
 
+        $binding_source_by_php=$params->get('data.binding_source_by_php','');
+        if($data_text=="code_php"){
+            $file_php = JPATH_ROOT . '/cache/binding_source_by_php_' . $block->id . '.php';
+            $text = JUtility::get_content_file($block, $file_php, parent::$table_position_name, 'params.on_change_by_code_php');
+        }
         if($enableEditWebsite&&trim($text)=='')
         {
             $text='Empty';

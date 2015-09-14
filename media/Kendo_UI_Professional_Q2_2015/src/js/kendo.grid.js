@@ -5345,6 +5345,10 @@
 
                 for (var idx = 0, length = cells.length; idx < length; idx++) {
                     column = columns[idx];
+                    if(typeof column ==="undefined")
+                    {
+                        continue;
+                    }
                     var cell = cells.eq(idx);
 
                     if (!column.command && (column.field || cell.attr("data-" + kendo.ns + "field"))) {

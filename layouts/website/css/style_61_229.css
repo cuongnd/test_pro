@@ -4240,6 +4240,8 @@ text-decoration:inherit !important;
 text-transform:inherit !important;
 vertical-align:inherit !important;
 white-space:inherit !important;
+background-color:none !important;
+color:none !important;
 display:auto !important;
 
 }
@@ -4251,6 +4253,8 @@ text-decoration:inherit !important;
 text-transform:inherit !important;
 vertical-align:inherit !important;
 white-space:inherit !important;
+background-color:none !important;
+color:none !important;
 float:auto !important;
 display:auto !important;
 
@@ -4504,8 +4508,6 @@ text-decoration:inherit !important;
 text-transform:inherit !important;
 vertical-align:inherit !important;
 white-space:inherit !important;
-background-color:none !important;
-color:none !important;
 display:auto !important;
 
 }
@@ -4517,8 +4519,6 @@ text-decoration:inherit !important;
 text-transform:inherit !important;
 vertical-align:inherit !important;
 white-space:inherit !important;
-background-color:none !important;
-color:none !important;
 float:auto !important;
 display:auto !important;
 

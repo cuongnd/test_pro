@@ -505,10 +505,21 @@ class JFormFieldGridformartheader extends JFormField
         $item=$db->loadObject();
         $list_key=array();
         foreach($item as $key=>$value) {
-            $list_key[]=array(
-                'id'=>$key,
-                'text'=>$key
-            );
+
+            if (JUtility::isJson($value)) {
+                $item1=json_decode($value);
+                foreach($item1 as $key1=>$value1) {
+                    $list_key[]=array(
+                        'id'=>$key.'.'.$key1,
+                        'text'=>$key.'.'.$key1
+                    );
+                }
+            }else{
+                $list_key[]=array(
+                    'id'=>$key,
+                    'text'=>$key
+                );
+            }
         }
 
 

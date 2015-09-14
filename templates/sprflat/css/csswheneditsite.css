@@ -399,6 +399,10 @@
 .enable-resizable.enable-create-drop-element {
 	min-height: auto;
 }
+td[role="gridcell"] .add-on-item-content {
+	padding: 0;
+	border: none;
+}
 .add-on-item-content {
 	padding: 10px;
 	display: block;

@@ -236,6 +236,7 @@ class JFormFieldCoding extends JFormField
         $mode = $this->element['mode'];
         JUtility::compileLess($lessInput, $cssOutput);
         $field_param = $this->element['field_param'];
+        $function = $this->element['function'];
 
         if (!trim($field_param)) {
             $field_param_value = $this->value;
@@ -463,6 +464,10 @@ class JFormFieldCoding extends JFormField
                 $currenrt_url=base64_decode($currenrt_url);
                 $uri=JFactory::getURI($currenrt_url);
                 $uri->setVar('file_name_change','get_data_by_data_source_'.$data->get('id',0));
+                if($function!="")
+                {
+                    $uri->setVar('file_name_change',$function.$data->get('id',0));
+                }
                 ?>
                 <a href="<?php echo $uri->toString() ?>"><?php echo $uri->toString() ?></a>
             </div>

@@ -45,6 +45,11 @@
                     <option value="0">No</option>
                 </field>
 
+                <field name="confirm" type="list"  label="show confirm" description="show confirm" default="0">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="confirm_msg" type="textarea" default="are your sure change ?" label="confirm messeger"/>
                 <field name="gridselected" readonly="readonly" type="gridselected" description="grid formart selected" label="grid formart selected"/>
 
                 <field name="on_change" type="coding" mode="javascript" default="" label="On Change"/>

@@ -192,6 +192,7 @@ if ($enableEditWebsite) {
 
         JHtml::_('formbehavior.chosen', 'select');
         //$doc->addScript(JUri::root().'/media/system/js/jquery.ba-bbq.js');
+        $doc->addScript(JUri::root() . '/media/system/js/core-uncompressed.js');
         $doc->addScript(JUri::root() . '/media/system/js/lodash.min.js');
         $doc->addScript(JUri::root() . '/media/system/js/gridstack/src/gridstack.js');
         //$doc->addScript(JUri::root().'/media/system/js/Nestable-master/jquery.nestable.js');
@@ -705,11 +706,22 @@ if ($ajaxGetContent) {
 <?php } ?>
 <!-- Javascripts -->
 <!-- Load pace first -->
-<script>
-    jQuery(document).ready(function($){
-        Joomla.design_website.init_design_website();
-    });
+<?php
+if($enableEditWebsite) {
+    ob_start();
+    ?>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            Joomla = window.Joomla || {};
+            Joomla.design_website.init_design_website();
+        });
 
-</script>
+    </script>
+    <?php
+    $script_content = ob_get_clean();
+    $script_content = JUtility::remove_string_javascript($script_content);
+    $doc->addScriptDeclaration($script_content);
+}
+?>
 </body>
 </html>

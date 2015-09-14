@@ -44,6 +44,13 @@ class DataSourceHelper
         JTable::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/tables');
         $tableDataSource=JTable::getInstance('DataSource','JTable');
         $tableDataSource->load($data_source_id);
+        if($tableDataSource->use_type=="code_php")
+        {
+            $file_php = JPATH_ROOT . '/cache/get_data_by_data_source_' . $tableDataSource->id . '.php';
+            $list = JUtility::get_content_file($tableDataSource, $file_php, '#__datasource', 'php_content');
+            return $list;
+
+        }
         $query= $tableDataSource->datasource;
         $stringQuery = DataSourceHelper::OverWriteDataSource($query);
         $query = $db->getQuery(true);

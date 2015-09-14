@@ -30,6 +30,8 @@
             <fields name="data">
                 <fieldset name="data"  description="Data config" label="Data config">
                     <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
+                    <field name="binding_source_by_php" function="binding_source_by_php_" type="coding" default="" label="Binding source by php"/>
+
                 </fieldset>
             </fields>
         </fields>

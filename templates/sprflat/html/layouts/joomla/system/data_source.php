@@ -10,6 +10,8 @@ $dataSourceModal = JModelLegacy::getInstance('DataSources', 'phpMyAdminModel');
 $currentDataSource = $dataSourceModal->getCurrentDataSources();
 $doc=JFactory::getDocument();
 ob_start();
+require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function($){

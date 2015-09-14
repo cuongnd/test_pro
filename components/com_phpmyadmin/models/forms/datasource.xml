@@ -25,7 +25,7 @@
                default=""
                readonly="true"
                 />
-        <field name="php_content" readonly="readonly" type="coding" description="Data source by php" label="Data source by php"/>
+        <field name="php_content" readonly="readonly" function="get_data_by_data_source_" type="coding" description="Data source by php" label="Data source by php"/>
 
         <field name="update_datasource" type="datasource"
                label="Update data Source"
@@ -136,11 +136,10 @@
                size="1"
                 />
 
-        <field name="position" type="moduleposition"
+        <field name="introtext" type="textarea"
                default=""
-               description="COM_MODULES_FIELD_POSITION_DESC"
-               label="COM_MODULES_FIELD_POSITION_LABEL"
-               maxlength="50"
+               description="Description"
+               label="Description"
                 />
 
         <field name="access" type="accesslevel"

@@ -114,7 +114,7 @@
     <input type="hidden" name="option" value="com_bookpro">
     <input type="hidden" name="controller" value="tour">
     <input type="hidden" name="task" value="searchadv">
-    <input type="hidden" name="843cb6dbd7419a1b3a5e64f8047656f7" value="1" /></form>
+    <input type="hidden" name="4667603f6cbfef7443138d103f1c9f31" value="1" /></form>
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
@@ -174,7 +174,7 @@
     <input type="hidden" name="option" value="com_bookpro">
     <input type="hidden" name="controller" value="hotel">
     <input type="hidden" name="task" value="searchadv">
-    <input type="hidden" name="843cb6dbd7419a1b3a5e64f8047656f7" value="1" /></form>
+    <input type="hidden" name="4667603f6cbfef7443138d103f1c9f31" value="1" /></form>
         </div>
         <div role="tabpanel" class="tab-pane" id="flight">
             <form action='/component/bookpro/?view=tour&amp;Itemid=' method="post" id="frm_tour_search" name="tour_search" class="form-inline">
@@ -246,7 +246,7 @@
     <input type="hidden" name="option" value="com_bookpro">
     <input type="hidden" name="controller" value="flight">
     <input type="hidden" name="task" value="searchadv">
-    <input type="hidden" name="843cb6dbd7419a1b3a5e64f8047656f7" value="1" /></form>
+    <input type="hidden" name="4667603f6cbfef7443138d103f1c9f31" value="1" /></form>
         </div>
         <div role="tabpanel" class="tab-pane" id="car">
             <form action='/component/bookpro/?view=tour&amp;Itemid=' method="post" id="frm_tour_search" name="tour_search" class="form-inline">
@@ -318,7 +318,7 @@
     <input type="hidden" name="option" value="com_bookpro">
     <input type="hidden" name="controller" value="flight">
     <input type="hidden" name="task" value="searchadv">
-    <input type="hidden" name="843cb6dbd7419a1b3a5e64f8047656f7" value="1" /></form>
+    <input type="hidden" name="4667603f6cbfef7443138d103f1c9f31" value="1" /></form>
         </div>
     </div>
 </div>

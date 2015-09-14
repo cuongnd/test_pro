@@ -38,3 +38,13 @@
 2015-09-12T14:39:50+00:00	DEBUG	-	legacy $url:/component/users/?view=login
 2015-09-12T14:40:22+00:00	DEBUG	-	class:JApplicationCms
 2015-09-12T14:40:22+00:00	DEBUG	-	legacy $url:/component/users/?view=login
+2015-09-13T14:42:29+00:00	DEBUG	-	class:JApplicationCms
+2015-09-13T14:42:29+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2015-09-13T14:42:38+00:00	DEBUG	-	class:JApplicationCms
+2015-09-13T14:42:38+00:00	DEBUG	-	legacy $url:/component/users/profile.html
+2015-09-14T01:32:20+00:00	DEBUG	-	class:JApplicationCms
+2015-09-14T01:32:20+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2015-09-14T04:48:30+00:00	DEBUG	-	class:JApplicationCms
+2015-09-14T04:48:31+00:00	DEBUG	-	legacy $url:/?Itemid=169
+2015-09-14T09:37:56+00:00	DEBUG	-	class:JApplicationCms
+2015-09-14T09:37:57+00:00	DEBUG	-	legacy $url:/component/users/?view=login

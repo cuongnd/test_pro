@@ -416,25 +416,31 @@ jQuery(document).ready(function ($) {
         },
         build_grid_database_manager:function(data_source){
             $('#database_detail').kendoGrid({
-                dataSource: new kendo.data.DataSource({
-                    data: data_source
-                }),
+                dataSource:{
+                    data:  Joomla.design_website.seting.list_data_source,
+                    pageSize: 20
+                },
                 height: 550,
                 groupable: true,
                 sortable: true,
                 pageable: {
                     refresh: true,
-                    pageSizes: true,
                     buttonCount: 5
                 },
-                pageSize: 25,
                 columnMenu:true,
                 filterable:true,
-                editable:fale,
+                editable:false,
                 columns: [
-                    { field: "datasource.id", title: "Id", width: "130px" },
-                    { field: "datasource.title", title: "Title", width: "130px" },
-                    { field: "datasource.name",title: "Name", width: "130px" }
+                    { field: "datasource.id", title: "Id", width: "50px" },
+                    {
+                        field: "datasource.title", title: "Title", width: "200px",
+                        template:'<div class="add-on-item-content pull-left ui-sortable-handle" data-add-on-id="#:datasource.id#">' +
+                                    '<a href="javascript:void(0)" data-add-on-id="#:datasource.id#">' +
+                                        '<i class="br-database"></i>#:datasource.title#' +
+                                    '</a></div>'
+                    },
+                    { field: "datasource.name",title: "Name", width: "400px" },
+                    { field: "datasource.introtext",title: "Description", width: "400px" }
                 ]
             });
         },

@@ -2,9 +2,9 @@ jQuery(function ($) {
     jQuery("#grid_3117").kendoGrid({
         "columns": [{
             "field": "id",
-            "title": "No",
+            "title": "<div class='checkbox'><label><input id='check_all_3117', type='checkbox', class='check_box_all' \/><span><\/span><\/label><\/div>",
             "width": 30,
-            "template": "<input class='check_box' type=\"checkbox\" \/>",
+            "template": "<div class='checkbox'><label><input class='check_box' value='#:id#' type=\"checkbox\" \/><span>#:id#<\/span><\/label><\/div>",
             "sortable": false,
             "filterable": false,
             "menu": false,
@@ -207,22 +207,22 @@ jQuery(function ($) {
         "dataSource": {
             "transport": {
                 "create": {
-                    "url": "http:\/\/etravelservice.com:81\/index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&type=create&block_id=3117&order_id=1",
+                    "url": "http:\/\/admin.etravelservice.com:81\/index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&type=create&block_id=3117&order_id=1",
                     "contentType": "application\/json",
                     "type": "POST"
                 },
                 "read": {
-                    "url": "http:\/\/etravelservice.com:81\/index.php?option=com_phpmyadmin&task=datasource.readData&block_id=3117&order_id=1",
+                    "url": "http:\/\/admin.etravelservice.com:81\/index.php?option=com_phpmyadmin&task=datasource.readData&block_id=3117&order_id=1",
                     "contentType": "application\/json",
                     "type": "POST"
                 },
                 "update": {
-                    "url": "http:\/\/etravelservice.com:81\/index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&type=update&block_id=3117&order_id=1",
+                    "url": "http:\/\/admin.etravelservice.com:81\/index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&type=update&block_id=3117&order_id=1",
                     "contentType": "application\/json",
                     "type": "POST"
                 },
                 "destroy": {
-                    "url": "http:\/\/etravelservice.com:81\/index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&type=destroy&block_id=3117&order_id=1",
+                    "url": "http:\/\/admin.etravelservice.com:81\/index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&type=destroy&block_id=3117&order_id=1",
                     "contentType": "application\/json",
                     "type": "POST"
                 },
@@ -289,14 +289,10 @@ jQuery(function ($) {
             "autoSync": false
         },
         "height": "500",
-        "columnMenu": false,
-        "filterable": false,
+        "columnMenu": "true",
+        "filterable": "true",
         "sortable": "true",
-        "editable": {
-            "mode": "popup",
-            "confirmation": "do you want delete this item ?",
-            "template": kendo.template(jQuery('.block-item[data-block-id="3114"]')[0].outerHTML)
-        },
+        "editable": {"mode": "popup", "confirmation": "do you want delete this item ?"},
         "autoBind": true,
         "scrollable": true,
         "pageable": {
@@ -310,6 +306,8 @@ jQuery(function ($) {
         "dataBound": onDataBound_3117,
         "dataBinding": onDataBinding_3117,
         "change": onChange_3117,
-        "edit": edit_row_3117()
+        "edit": edit_row_3117,
+        "save": save_row_3117,
+        "cancel": cancel_row_3117
     });
 });
