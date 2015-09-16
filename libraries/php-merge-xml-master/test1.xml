@@ -5,12 +5,13 @@ sample configuration
 @author      Vallo Reima
 @copyright   (C)2012
 -->
-<cfg xmlns="http://www.vallo.me/">
+<form xmlns="http://www.vallo.me/">
   <!-- Application properties -->
-  <apn>
-    <name>vRegistrator</name>
-    <vers>1.1</vers>
-  </apn>
+  <fields name="params" description="params" label="params">
+    <fields name="data66666666"  label="data config">
+    </fields>
+
+  </fields>
   <!-- Modules -->
   <mod>
     <ath flag="O">auth</ath>
@@ -31,4 +32,4 @@ sample configuration
       <J opt="load">signup</J>
     </snu>
   </ldm>
-</cfg>
+</form>

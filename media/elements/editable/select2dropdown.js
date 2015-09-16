@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
     element_ui_quick_edit={
 
         init_ui_quick_edit:function(){
-            $('.quick_edit[editable="true"]').each(function(){
+            $('.block-item.select2dropdown[editable="true"]').each(function(){
                 self=$(this);
                 var allow_clear=self.data('allow_clear');
                 $(this).editable({

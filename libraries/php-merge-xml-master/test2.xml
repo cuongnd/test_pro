@@ -5,7 +5,19 @@ sample configuration
 @author      Vallo Reima
 @copyright   (C)2013
 -->
-<cfg xmlns="http://www.vallo.me/" xmlns:rgn="http://www.vregistry.com/">
+<form xmlns="http://www.vallo.me/" xmlns:rgn="http://www.vregistry.com/">
+  <fields name="paramswew" description="params" label="params">
+    <fields name="data22"  label="nothing">
+    </fields>
+    <fields name="data12"  label="data config">
+    </fields>
+  </fields>
+
+  <apn>
+    <name>ggggggg</name>
+    <vers>1.1</vers>
+  </apn>
+
   <!-- Application properties -->
   <rgn:apn>
     <name>vRegistry</name>
@@ -25,7 +37,7 @@ sample configuration
       <J opt="loader">login</J>
     </sni>
   </ldm>
-</cfg>
+</form>
 <!--
 merged with system
 -->

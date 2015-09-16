@@ -4,13 +4,26 @@ jQuery(document).ready(function($){
 
         init_ui_quick_edit:function(){
             $('.quick_edit[editable="true"]').each(function(){
+                self=$(this);
+                var allow_clear=self.data('allow_clear');
                 $(this).editable({
                     type: 'text',
+                    allowClear: allow_clear,
                     pk: 1,
                     url: 'index.php?option=com_utility&task=utility.updateData',
                     title: function()
                     {
                         return $(this).attr('data-title');
+                    },
+                    ajax: {
+                        url: '/getCountries',
+                        dataType: 'json',
+                        data: function (term, page) {
+                            return { query: term };
+                        },
+                        results: function (data, page) {
+                            return { results: data };
+                        }
                     }
                 });
 

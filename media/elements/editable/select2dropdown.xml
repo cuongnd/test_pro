@@ -1,67 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fields name="params">
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="bindingSource"  type="bindingSource" tags="0" maximumSelectionSize="1" description="binding Source" label="binding Source"/>
-                    <field name="bindingSourceUpdate" readonly="readonly" type="bindingSource" description="binding Source Update" label="Binding Source Update"/>
-                    <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
-                    <field name="data_source"  type="bindingSource" tags="0" maximumSelectionSize="1" description="Data source" label="Data source"/>
-                    <field name="source_key"  type="bindingSource" description="Key" label="Key"/>
-                    <field name="source_value"  type="bindingSource" description="Value" label="Value"/>
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset name="option" description="Option" label="Option">
+        <field name="css_class12" type="select2" default="" tags="1" label="Css class111" maximumSelectionSize="10"/>
+    </fieldset>
+    <fields name="params">
+        <fields name="data"  description="Data config" label="Data config">
+            <field name="bindingSource"  type="bindingSource" tags="0" maximumSelectionSize="1" description="binding Source" label="binding Source"/>
+            <field name="bindingSourceUpdate" readonly="readonly" type="bindingSource" description="binding Source Update" label="Binding Source Update"/>
+            <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
+            <field name="data_source"  type="bindingSource" tags="0" maximumSelectionSize="1" description="Data source" label="Data source"/>
+            <field name="source_key"  type="bindingSource" description="Key" label="Key"/>
+            <field name="source_value"  type="bindingSource" description="Value" label="Value"/>
 
-                </fieldset>
-            </fields>
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="text" type="text" default="" label="Text"/>
-                <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="editable" onchange="element_ui_quick_edit.change_state_edit_able($(this))" type="list" class="btn-group btn-group-yesno" label="Enable edit" description="Enable edit" default="1">
-                    <option value="1">JYES</option>
-                    <option value="0">JNO</option>
-                </field>
-                <field name="allow_clear"  type="list" class="btn-group btn-group-yesno" label="Allow clear" description="Allow clear" default="1">
-                    <option value="1">JYES</option>
-                    <option value="0">JNO</option>
-                </field>
-                <field name="data_type"  label="Data type"  description="Data type" type="list" default="text">
-                    <option value="text">text</option>
-                    <option value="textarea">textarea</option>
-                    <option value="select">select</option>
-                    <option value="date">date</option>
-                    <option value="datetime">datetime</option>
-                    <option value="dateui">dateui</option>
-                    <option value="combodate">combodate</option>
-                    <option value="html5types">html5types</option>
-                    <option value="checklist">checklist</option>
-                    <option value="wysihtml5">wysihtml5</option>
-                    <option value="typeahead">typeahead</option>
-                    <option value="typeaheadjs">typeaheadjs</option>
-                    <option value="select2">select2</option>
-                </field>
-            </fieldset>
         </fields>
-    </config>
-</extension>
+        <fields name="element"  description="Element config" label="Element config">
+            <field name="text" type="text" default="" label="Text"/>
+            <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
+            <field name="id" type="text" default="" label="Id"/>
+            <field name="id" type="text" default="" label="Id"/>
+            <field name="editable" onchange="element_ui_quick_edit.change_state_edit_able($(this))" type="list" class="btn-group btn-group-yesno" label="Enable edit" description="Enable edit" default="1">
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="allow_clear"  type="list" class="btn-group btn-group-yesno" label="Allow clear" description="Allow clear" default="1">
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="data_type"  label="Data type"  description="Data type" type="list" default="text">
+                <option value="text">text</option>
+                <option value="textarea">textarea</option>
+                <option value="select">select</option>
+                <option value="date">date</option>
+                <option value="datetime">datetime</option>
+                <option value="dateui">dateui</option>
+                <option value="combodate">combodate</option>
+                <option value="html5types">html5types</option>
+                <option value="checklist">checklist</option>
+                <option value="wysihtml5">wysihtml5</option>
+                <option value="typeahead">typeahead</option>
+                <option value="typeaheadjs">typeaheadjs</option>
+                <option value="select2">select2</option>
+            </field>
+        </fields>
+    </fields>
+</config>

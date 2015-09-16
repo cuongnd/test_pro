@@ -1,5 +1,5 @@
 <?php
-class elementQuickEditHelper extends  elementHelper
+class elementSelect2DropdownHelper extends  elementHelper
 {
     function initElement($TablePosition)
     {
@@ -51,11 +51,11 @@ class elementQuickEditHelper extends  elementHelper
                 <span data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="drag label label-default  element-move-handle element-move-handle_<?php echo $block->parent_id ?>"><i class="glyphicon glyphicon-move"></i></span>
                 <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="menu label config-block label-danger menu-list" href="javascript:void(0)"><i class="im-menu2"></i></a>
                 <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"class="remove label label-danger remove-element" href="javascript:void(0)"><i class="glyphicon-remove glyphicon"></i></a>
-                <?php echo elementQuickEditHelper::render_element($block,$enableEditWebsite); ?>
+                <?php echo elementselect2dropdownHelper::render_element($block,$enableEditWebsite); ?>
         <?php
         }else{
             ?>
-            <?php echo elementQuickEditHelper::render_element($block,$enableEditWebsite); ?>
+            <?php echo elementselect2dropdownHelper::render_element($block,$enableEditWebsite); ?>
 
         <?php
         }
@@ -96,7 +96,7 @@ class elementQuickEditHelper extends  elementHelper
             });
         </script>
 
-        <a data-type="<?php echo $data_type ?>" data-allow_clear="<?php echo $allow_clear ?>" id="<?php echo $id ?>" data-title="<?php echo $title  ?>" <?php echo $editable?'editable="true"':'' ?> class="block-item quick_edit <?php echo $css_class ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" ><?php echo $text ?>
+        <a data-type="<?php echo $data_type ?>" data-allow_clear="<?php echo $allow_clear ?>" id="<?php echo $id ?>" data-title="<?php echo $title  ?>" <?php echo $editable?'editable="true"':'' ?> class="block-item select2dropdown <?php echo $css_class ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" ><?php echo $text ?>
 
         <?php
         $html.=ob_get_clean();

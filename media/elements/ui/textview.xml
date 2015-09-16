@@ -21,28 +21,23 @@
     </languages>
     <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
     <config>
-        <fieldset name="option" description="Option" label="Option">
+        <fields name="option" description="Option" label="Option">
             <field name="css_class" type="select2" default="" tags="1" label="Css class" onselecting="element_ui_element.add_css_class(e,$(this))" onremoveitem="element_ui_element.remove_class_css(e,$(this))"  maximumSelectionSize="10">
             </field>
-        </fieldset>
+        </fields>
 
         <fields name="params">
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
-                    <field name="binding_source_by_php" function="binding_source_by_php_" type="coding" default="" label="Binding source by php"/>
-
-                </fieldset>
+            <fields name="data"  description="Data config" label="Data config">
+                <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
+                <field name="binding_source_by_php" function="binding_source_by_php_" type="coding" default="" label="Binding source by php"/>
             </fields>
         </fields>
-        <fields name="params">
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="label" type="text" default="lable here" label="Label"/>
-                <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
-                <field name="placeholder" type="text" default="" label="placeholder"/>
-            </fieldset>
+        <fields name="element"  description="Element config" label="Element config">
+            <field name="label" type="text" default="lable here" label="Label"/>
+            <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
+            <field name="id" type="text" default="" label="Id"/>
+            <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
+            <field name="placeholder" type="text" default="" label="placeholder"/>
         </fields>
 
 

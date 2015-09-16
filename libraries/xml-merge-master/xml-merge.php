@@ -32,25 +32,25 @@ $i = 0;
 
 /* XML File Paths */
 $Old_XML = "OLD_XML_File.xml"; /* Path to Old XML File. Values will be read from this file. */
-$New_XML = "New_XML_File.xml"; /* Path to New XML File. Values for the same fields will be 
+$New_XML = "New_XML_File.xml"; /* Path to New XML File. Values for the same fields will be
 				  updated into this file from Old XML File but the XML file
 				  structure used will be of this New XML File. */
 $Tmp_XML = "$Old_XML.tmp";
 $Merged_XML = "Merged_XML_File.xml"; /* Path to generated new XML File. */
 $Schema_XSD = ""; /* Path to Schema XSD File. This file will be used to vaildate
 		     the generated new XML file. This field is optional and can be
-		     set as blank if it is not needed i.e. if validation is not 
+		     set as blank if it is not needed i.e. if validation is not
 		     required. */
 
 $Same_Field_List = array("CamName"); /* List of Parent/Child field names in ascending order of their appearance
 					in XML file which are having same field names. Usually, this needs
 					to be empty unless you have any field name that is being repeated
-					multiple times in your XML file. 
+					multiple times in your XML file.
 NOTE: If the same field list is not set or is set but the field name entered here
-are wrong/invalid, and the XML files being merged have multiple fields that are 
-being repeated then, all those fields will have same values in merged NEW XML file 
+are wrong/invalid, and the XML files being merged have multiple fields that are
+being repeated then, all those fields will have same values in merged NEW XML file
 even though they had different values in OLD XML file. So, to avoid this problem
-Same_Field_List array should be filled properly if your XML file consists of 
+Same_Field_List array should be filled properly if your XML file consists of
 multiple fields with same name. */
 
 /* Simple XML Elements */

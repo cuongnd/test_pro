@@ -54,17 +54,17 @@ jQuery(document).ready(function($){
         {
             properties=self.closest('.properties.block');
             block_id=properties.attr('data-object-id');
-            element_type=self.val();
+            element_path=self.val();
 
             aJaxConvertToElementType=$.ajax({
-                type: "GET",
+                type: "POST",
                 url: this_host+'/index.php',
                 data: (function () {
 
                     dataPost = {
                         option: 'com_utility',
                         task: 'utility.aJaxConvertToElementType',
-                        element_type: element_type,
+                        element_path: element_path,
                         block_id: block_id
 
                     };

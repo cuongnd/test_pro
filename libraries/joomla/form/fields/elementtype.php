@@ -17,7 +17,7 @@ defined('_JEXEC') or die(__FILE__);
  * @subpackage  Form
  * @since       11.1
  */
-class JFormFieldElementType extends JFormField
+class JFormFieldElementType extends JFormFieldList
 {
 	/**
 	 * The form field type.
@@ -37,10 +37,16 @@ class JFormFieldElementType extends JFormField
 	 */
 	protected function getInput()
 	{
+		JHtml::_('jquery.framework');
 		$html = array();
 		$attr = '';
 		JHtml::_('formbehavior.chosen', 'select',null,array(),JUserHelper::genRandomPassword());
 		$doc=JFactory::getDocument();
+		$data=$this->form->getData();
+
+
+		$type= $data->get('type','');
+		$ui_path= $data->get('ui_path','');
 		$scriptId='lib_joomla_form_fields_element_type';
 		ob_start();
 		?>
@@ -75,28 +81,25 @@ class JFormFieldElementType extends JFormField
 
 		// Initialize JavaScript field attributes.
 		$attr .= $this->onchange ? ' onchange="' . $this->onchange . '"' : '';
-		$listElement=JFolder::files(JPATH_ROOT.'/media/elements/ui','.php');
-		$options=array();
-		foreach($listElement  as $key=>$value)
-		{
-			$element=str_replace('.php','',$value);
-			$options[$element]=$element;
-		}
-		// Get the field options.
+		jimport('joomla.filesystem.folder');
+		$listFolder=JFolder::folders(JPATH_ROOT.'/media/elements');
 
-		// Create a read-only list (no name) with a hidden input to store the value.
-		if ((string) $this->readonly == '1' || (string) $this->readonly == 'true')
+		$option=array();
+		foreach($listFolder as $folder)
 		{
-			$html[] = JHtml::_('select.genericlist', $options, '', trim($attr), 'value', 'text', $this->value, $this->id);
-			$html[] = '<input type="hidden" name="' . $this->name . '" value="' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"/>';
-		}
-		else
-		// Create a regular list.
-		{
-			$html[] = JHtml::_('select.genericlist', $options, $this->name, trim($attr), 'value', 'text', $this->value, $this->id);
-		}
+			$options[] = JHTML::_('select.option', '<OPTGROUP>',$folder);
+			$listElement=JFolder::files(JPATH_ROOT.'/media/elements/'.$folder,'.php');
+			foreach($listElement as $element)
+			{
+				$current_ui_path='/media/elements/'.$folder.'/'.$element;
+				$element=str_replace('.php','',$element);
+				$options[] = JHTML::_('select.option', $current_ui_path,$element);
+			}
 
-		return implode($html);
+
+		}
+		// Merge any additional options in the XML definition.
+		return JHtml::_('select.genericlist', $options, $name,  trim($attr),'value','text', $ui_path);
 	}
 
 	/**
@@ -106,60 +109,4 @@ class JFormFieldElementType extends JFormField
 	 *
 	 * @since   11.1
 	 */
-	protected function getOptions()
-	{
-		$options = array();
-
-		foreach ($this->element->children() as $option)
-		{
-			// Only add <option /> elements.
-			if ($option->getName() != 'option')
-			{
-				continue;
-			}
-
-			// Filter requirements
-			if ($requires = explode(',', (string) $option['requires']))
-			{
-				// Requires multilanguage
-				if (in_array('multilanguage', $requires) && !JLanguageMultilang::isEnabled())
-				{
-					continue;
-				}
-
-				// Requires associations
-				if (in_array('associations', $requires) && !JLanguageAssociations::isEnabled())
-				{
-					continue;
-				}
-			}
-
-			$value = (string) $option['value'];
-
-			$disabled = (string) $option['disabled'];
-			$disabled = ($disabled == 'true' || $disabled == 'disabled' || $disabled == '1');
-
-			$disabled = $disabled || ($this->readonly && $value != $this->value);
-
-			// Create a new option object based on the <option /> element.
-			$tmp = JHtml::_(
-				'select.option', $value,
-				JText::alt(trim((string) $option), preg_replace('/[^a-zA-Z0-9_\-]/', '_', $this->fieldname)), 'value', 'text',
-				$disabled
-			);
-
-			// Set some option attributes.
-			$tmp->class = (string) $option['class'];
-
-			// Set some JavaScript option attributes.
-			$tmp->onclick = (string) $option['onclick'];
-
-			// Add the option object to the result set.
-			$options[] = $tmp;
-		}
-
-		reset($options);
-
-		return $options;
-	}
 }

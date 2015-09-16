@@ -554,7 +554,7 @@ class JForm
 	 */
 	public function getInput($name, $group = null, $value = null)
 	{
-
+		 echo  $name;
 		// Attempt to get the form field.
 		if ($field = $this->getField($name, $group, $value))
 		{
