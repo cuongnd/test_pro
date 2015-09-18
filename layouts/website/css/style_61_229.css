@@ -4333,11 +4333,6 @@ text-transform:inherit !important;
 vertical-align:inherit !important;
 white-space:inherit !important;
 display:auto !important;
-
-}
-
-
-.control-element[data-block-id="3417"][data-block-parent-id="3416"]{
 text-align:auto !important;
 text-decoration:inherit !important;
 text-transform:inherit !important;
@@ -4347,6 +4342,8 @@ float:auto !important;
 display:auto !important;
 
 }
+
+
 
 
 .main-container .block-item[data-block-id="3420"][data-block-parent-id="3419"]{

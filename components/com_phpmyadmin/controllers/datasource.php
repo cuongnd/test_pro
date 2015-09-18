@@ -58,6 +58,98 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         die;
 
     }
+    function   read_data_by_editable()
+    {
+        $db=JFactory::getDbo();
+        $config=JFactory::getConfig();
+        require_once JPATH_ROOT.'/media/kendotest/php/lib/DataSourceResult.php';
+        require_once JPATH_ROOT.'/media/kendotest/php/lib/Kendo/Autoload.php';
+        $app=JFactory::getApplication();
+        $block_id=$app->input->get('block_id',0,'int');
+        $key_value=$app->input->get('key_value','','string');
+        $keyword=$app->input->get('keyword','','string');
+        $keyword=strtolower($keyword);
+        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
+        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition->load($block_id);
+        $params = new JRegistry;
+        $params->loadString($tablePosition->params);
+        $bindingSource=$params->get('data.data_source_editable','');
+        $source_key=$params->get('data.source_key','');
+        $source_key=explode('.',$source_key);
+        $source_key=end($source_key);
+
+        $source_value=$params->get('data.source_value','');
+        $source_value=explode('.',$source_value);
+        $source_value=end($source_value);
+
+
+
+
+        $modalDataSources=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
+        $list_item=$modalDataSources->getListDataSource($bindingSource,$tablePosition);
+        $list=array();
+        foreach($list_item as $key=>$item)
+        {
+            if($key_value!='') {
+                  if($item->$source_key==$key_value)
+                  {
+                      $list[]=$item;
+                      break;
+                  }
+            }elseif($keyword!=''){
+                if (strpos(strtolower($item->$source_value),$keyword) !== false) {
+                    $list[]=$item;
+                }
+            }
+        }
+        require_once JPATH_ROOT.'/libraries/upgradephp-19/upgrade.php';
+
+        $mode_select_column_template=$params->get('mode_select_column_template','');
+        $array_column=array();
+        if($mode_select_column_template!='')
+        {
+            $mode_select_column_template=up_json_decode($mode_select_column_template,false, 512, JSON_PARSE_JAVASCRIPT);
+            foreach($mode_select_column_template as $column)
+            {
+                $item=new stdClass();
+                $item->max_character= $column->max_character;
+                $item->type= $column->type;
+                $item->column= $column->column_name;
+                $array_column[$column->column_name]= $item;
+            }
+        }
+        if(count($array_column))
+        {
+            foreach($list as $key=>$item)
+            {
+
+                foreach($array_column as $column)
+                {
+                    $max_character= $column->max_character;
+                    $column_name= $column->column;
+                    if($max_character && $column_name!='')
+                    {
+                        $list[$key]->{$column_name}=strip_tags(JString::truncate($item->{$column_name},$max_character,'...',false,true));
+                    }
+                    $type=$column->type;
+                    if($type=='object' && $column_name!=''&&!is_object($item->{$column_name}))
+                    {
+                        $list[$key]->{$column_name}=new stdClass();
+                    }
+                }
+
+            }
+        }
+
+
+        $data=new stdClass();
+        $data->total=count($list);
+        $data->data=$list;
+        header('Content-Type: application/json');
+        echo json_encode($list,JSON_NUMERIC_CHECK);
+        die;
+    }
     public function ajax_load_database()
     {
         $conn=JFactory::getDbo();
@@ -508,6 +600,57 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
     }
 
     public  function ajax_save_data()
+    {
+        $app=JFactory::getApplication();
+        $db=JFactory::getDbo();
+        $data= $app->input->get('data',array(),'array');
+        JTable::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/tables');
+        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
+        $block_id=$app->input->get('block_id',0);
+        $table_block=JTable::getInstance('Position','JTable');
+        $table_block->load($block_id);
+        $params = new JRegistry;
+
+        $params->loadString($table_block->params);
+        $process_type=$params->get('process_type','auto');
+        $config_update_data= $params->get('config_update_data','');
+        if($config_update_data!='') {
+            require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+            $config_update_data = up_json_decode($config_update_data, false, 512, JSON_PARSE_JAVASCRIPT);
+            //check data type first
+            //phpMyAdminControllerDataSource::check_data_post($data,array($config_update_data));
+            require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+            if($process_type=='code_php')
+            {
+                $code_php = $params->get('code_process', '');
+                $code_php=trim($code_php);
+                if (base64_encode(base64_decode($code_php, true)) === $code_php) {
+                    $code_php = base64_decode($code_php);
+                } else {
+                    $code_php = '';
+                }
+
+                jimport('joomla.filesystem.file');
+                $file_php = JPATH_ROOT . '/cache/' . JUserHelper::genRandomPassword() . '.php';
+
+                JFile::write($file_php, $code_php);
+
+                $data = (array)include_once($file_php);
+
+                JFile::delete($file_php);
+
+            }else
+            {
+                $data=phpMyAdminControllerDataSource::update_data_post($data,$config_update_data);
+            }
+            echo json_encode($data);
+            die;
+        }else{
+            echo '$config_update_data is null';
+        }
+        die;
+    }
+    public  function update_data_by_editable()
     {
         $app=JFactory::getApplication();
         $db=JFactory::getDbo();

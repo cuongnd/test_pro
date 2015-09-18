@@ -962,6 +962,7 @@ abstract class JFormField
                     'coding',
                     'inputitem',
                     'advancedbindingsourceselect2',
+                    'configupdate',
                     'gridselected',
                     'stylegenerator',
                     ''

@@ -579,9 +579,13 @@
             if(!plugin.settings.sideNav.hover) {
                 navLink.on("click", function(e){
                     var _this = $(this);
-                    if($(e.target).hasClass('fa-list-alt'))
+                     var e_taget= $(e.target);
+                    if(e_taget.hasClass('fa-list-alt')&&e_taget.attr('menu')!== undefined)
                     {
                         Joomla.design_website.menu_manager();
+                        return;
+                    }else if(e_taget.hasClass('fa-list-alt')&&e_taget.attr('element-config') !== undefined){
+                        Joomla.design_website.element_config(e_taget);
                         return;
                     }
                     if(_this.hasClass('notExpand')) {

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-    <fieldset name="option" description="Option" label="Option">
+    <fieldset  description="Option" label="Option">
+        <field name="config_update" readonly="readonly" type="configupdate" description="Config update" label="Config update"/>
+
         <field name="id" type="hidden" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" default="0" />
+        <field name="type" type="hidden" label="type" description="type" />
+        <field name="ui_path" type="hidden" label="ui_path" description="ui_path" />
         <field name="title" type="text" description="COM_MODULES_FIELD_TITLE_DESC" label="JGLOBAL_TITLE" class="input-xxlarge input-large-text" size="40" maxlength="100" required="true" />
         <field name="note" type="text" description="Note" label="Note" maxlength="100" size="40" class="span12" />
         <field name="source_less" type="filelist" directory="layouts/kendo_grid_layout/less" label="Source less" description="Source less" />
@@ -11,22 +15,15 @@
             <option value="1">Yes</option>
             <option value="0">No</option>
         </field>
-        <field name="advanced_params" type="advancedbindingsourceselect2" tags="1" maximumSelectionSize="1" description="Advanced" label="Advanced" />
 
+        <field name="advanced_params" type="advancedbindingsourceselect2" tags="1" maximumSelectionSize="1" description="Advanced" label="Advanced" />
         <field name="menu_item_id" type="showinpage" label="show in page" description="show in page" required="true" size="1" />
         <field name="convert_type" type="elementtype" label="Convert to element type" description="Convert to element type" onchange="element_ui_element.convert_to_element($(this))" />
     </fieldset>
-    <fields name="params">
-        <fields name="data">
-            <fieldset name="data" description="Data config" label="Data config">
-            </fieldset>
+    <fields name="params" description="params" label="params">
+        <fields name="data"  label="data config">
         </fields>
-    </fields>
-    <fieldset name="css3_style_element" description="Style element" label="Css3 Style element">
-        <field readonly="readonly" name="css3_gradient_generator" out_put_name="jform[params][css3_gradient_generator]" type="gradient" description="Gradient" label="Gradient" />
-    </fieldset>
-    <fields name="params">
-        <fieldset name="element" description="Element config" label="Element config">
+        <fields name="element" description="Element config" label="Element config">
             <field name="debug" type="list" description="Debug" default="0" label="Debug">
                 <option value="1">Yes</option>
                 <option value="0">No</option>
@@ -42,12 +39,13 @@
             <field name="css3_gradient_generator" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="css3 gradient generator" description="css3 gradient generator" />
             <field name="stylegenerator" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="css3 style generator" description="css3 style generator" />
 
-        </fieldset>
-    </fields>
+        </fields>
+        <fields name="style" label="Style element and control">
+            <fields name="style_element" description="Style element" label="Style element">
+                <fields name="convert_type1"  description="Option1" label="Option1">
+                    <field name="convert_type123" type="elementtype" label="Convert to element type" description="Convert to element type" onchange="element_ui_element.convert_to_element($(this))" />
+                </fields>
 
-    <fields name="params">
-        <fields name="style">
-            <fieldset name="style_element" description="Style element" label="Style element">
                 <field name="font_family" type="text" description="font family" label="Font family" />
                 <field name="font_size" type="text" description="font size" label="Font size" default="" />
                 <field name="font_weight" type="text" description="font weight" label="Font weight" />
@@ -245,10 +243,8 @@
                 <field name="cursor" type="text" description="cursor" label="Cursor" />
                 <field name="direction" type="text" description="direction" label="Direction" />
                 <field name="unicode_bidi" type="text" description="unicode bidi" label="unicode bidi" />
-            </fieldset>
-        </fields>
-        <fields name="style_controller">
-            <fieldset name="style_controller" description="Style controller" label="Style controller">
+            </fields>
+            <fields name="style_controller" description="Style controller" label="Style controller">
                 <field name="font_family" type="text" description="font family" label="Font family" />
                 <field name="font_size" type="text" description="font size" label="Font size" default="" />
                 <field name="font_weight" type="text" description="font weight" label="Font weight" />
@@ -443,7 +439,7 @@
                 <field name="cursor" type="text" description="cursor" label="Cursor" />
                 <field name="direction" type="text" description="direction" label="Direction" />
                 <field name="unicode_bidi" type="text" description="unicode bidi" label="unicode bidi" />
-            </fieldset>
+            </fields>
         </fields>
     </fields>
 </form>

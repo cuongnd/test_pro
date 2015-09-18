@@ -234,7 +234,7 @@ $foldersElement = JFolder::folders(JPATH_ROOT . '/media/elements');
         </ul>
     </li>
     <li class=""><a class="list-menu" href="javascript:void(0)">Pages <i class=st-files></i><span
-                class="manager-menu"><i class="fa-list-alt"></i></span> </a>
+                class="manager-menu"><i class="fa-list-alt" menu="menu"></i></span> </a>
         <ul class="nav sub">
 
             <?php foreach ($a_listMenu as $menu_type => $menus) { ?>
@@ -364,7 +364,7 @@ $foldersElement = JFolder::folders(JPATH_ROOT . '/media/elements');
             <?php } ?>
         </ul>
     </li>
-    <li><a href="javascript:void(0)">Elements <i class=im-paragraph-justify></i></a>
+    <li><a href="javascript:void(0)">Elements <i class=im-paragraph-justify></i><span class="element-property-manager"><i element-config="global_element_config" class="fa-list-alt"></i></span></a>
         <ul class="nav sub">
             <?php foreach ($foldersElement as $element) { ?>
                 <li>
@@ -380,7 +380,7 @@ $foldersElement = JFolder::folders(JPATH_ROOT . '/media/elements');
                                 <?php
                                 $path_parts = pathinfo($fileElement);
                                 ?>
-                                <a href=forms.html><i class=ec-pencil2></i> <?php echo $path_parts['filename'] ?></a>
+                                <a href="javascript:void(0)"><i class=ec-pencil2></i> <?php echo $path_parts['filename'] ?><span class="ui-property-manager"><i element-config="<?php echo $path_parts['filename'] ?>"  class="fa-list-alt"></i></span></a>
 
                             </li>
                         <?php } ?>

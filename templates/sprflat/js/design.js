@@ -214,6 +214,69 @@ jQuery(document).ready(function ($) {
             });
 
         },
+        element_config:function(e_taget){
+            var element_config=e_taget.attr('element-config');
+            var item_element_ui=e_taget.closest('.item-element.item-element-ui');
+            var element_path=item_element_ui.attr('data-element-path');
+            ajax_web_design=$.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: this_host+'/index.php',
+                data: (function () {
+
+                    dataPost = {
+                        option: 'com_utility',
+                        view: 'block',
+                        tmpl:'ajax_json',
+                        layout:'config',
+                        element_path:element_path,
+                        element_config:element_config
+
+                    };
+                    return dataPost;
+                })(),
+                beforeSend: function () {
+                    $('.div-loading').css({
+                        display: "block"
+                    });
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+                    $('.div-loading').css({
+                        display: "none"
+
+
+                    });
+                    var html='';
+                    if(!$('.element-config').length) {
+                        html = $('<div class="panel element panel-primary element-config  panelMove toggle panelRefresh panelClose"  >' +
+                            '<div class="panel-heading element-handle">' +
+                            '<h4 class="panel-title">element manager</h4>' +
+
+                            '</div>' +
+                            '<div class="panel-body element"></div>' +
+                            '<div class="panel-footer element-handle-footer">' +
+                            '<button class="btn btn-danger save-block-property pull-right" onclick="view_config.save_and_close(self)" ><i class="fa-save"></i>Save&close</button>&nbsp;&nbsp;' +
+                            '<button class="btn btn-danger apply-block-property pull-right" onclick="view_config.save(self)" ><i class="fa-save"></i>Save</button>&nbsp;&nbsp;' +
+                            '<button class="btn btn-danger cancel-block-property pull-right" onclick="view_config.cancel(self)"><i class="fa-save"></i>Cancel</button>' +
+                            '</div>'+
+                            '</div>'
+                        );
+                        $('body').prepend(html);
+
+                        html.draggable({
+                            handle: '.element-handle,.element-handle-footer'
+                        });
+                    }
+                    Joomla.sethtmlfortag1(response);
+
+
+
+                }
+            });
+
+        },
         rebuild_root_block:function(){
             if (confirm('Are you sure you want rebuid root block?')) {
                 $.ajax({

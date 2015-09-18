@@ -199,12 +199,26 @@ class UtilityControllerUtility extends UtilityController
     {
         $app=JFactory::getApplication();
         $block_id=$app->input->get('block_id',0,'int');
-        $element_type=$app->input->get('element_type','');
+        $element_path=$app->input->get('element_path','','string');
+        $element_info=pathinfo($element_path);
+        $element_dirname=$element_info['dirname'];
+        $element_dirname=explode('/',$element_dirname);
+        foreach($element_dirname as $key=>$value)
+        {
+            if(trim($value)=="")
+            {
+                unset($element_dirname[$key]);
+            }
+        }
+        $element_dirname=array_reverse($element_dirname);
+        array_pop($element_dirname);
+        $element_dirname=array_reverse($element_dirname);
+        $element_type=implode('_',$element_dirname).'_'.$element_info['filename'];
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
         $tablePosition=JTable::getInstance('Position','JTable');
         $tablePosition->load($block_id);
         $tablePosition->type=$element_type;
-        $tablePosition->ui_path='/media/elements/ui/'.$element_type.'.php';
+        $tablePosition->ui_path=$element_path;
         if(!$tablePosition->store())
         {
             echo $tablePosition->getError();

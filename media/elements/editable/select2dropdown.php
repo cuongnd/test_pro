@@ -25,6 +25,7 @@ class elementSelect2DropdownHelper extends  elementHelper
         $doc->addStyleSheet(JUri::root() . "/$dirName/$filename.css");
         $doc->addScript(JUri::root() . "/$dirName/$filename.js");
         $doc->addScript(JUri::root().'/media/system/js/x-editable-master/test/libs/mockjax/jquery.mockjax.js');
+        $doc->addScript(JUri::root().'/media/jui_front_end/js/select2.jquery.js');
         $doc->addScript(JUri::root().'/media/system/js/x-editable-master/dist/bootstrap3-editable/js/bootstrap-editable.js');
         $doc->addStyleSheet(JUri::root().'/media/system/js/x-editable-master/dist/bootstrap3-editable/css/bootstrap-editable.css');
         $params = new JRegistry;
@@ -73,6 +74,16 @@ class elementSelect2DropdownHelper extends  elementHelper
         $name=$params->get('name','name_'.$block->id);
         $editable=$params->get('editable',true);
         $textSource=$params->get('data.bindingSource','');
+
+        $source_key=$params->get('data.source_key','');
+        $source_key=explode('.',$source_key);
+        $source_key=end($source_key);
+
+
+        $source_value=$params->get('data.source_value','');
+        $source_value=explode('.',$source_value);
+        $source_value=end($source_value);
+
         if($textSource)
             $text=parent::getValueDataSourceByKey($textSource);
         if(is_object($text)||is_array($text))
@@ -80,6 +91,7 @@ class elementSelect2DropdownHelper extends  elementHelper
             $text="object or array";
         }
         $data_source= $params->get('data.data_source','');
+
         $data_type= $params->get('data_type','text');
         $allow_clear= $params->get('allow_clear',true);
 
@@ -89,14 +101,24 @@ class elementSelect2DropdownHelper extends  elementHelper
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
 
-                if(typeof init_ui_quick_edit==="undefined")
+                if(typeof init_ui_select2_dropdown==="undefined")
                 {
-                    var init_ui_quick_edit=element_ui_quick_edit.init_ui_quick_edit();
+                    var init_ui_select2_dropdown=element_ui_select2_dropdown.init_ui_select2_dropdown();
                 }
             });
         </script>
 
-        <a data-type="<?php echo $data_type ?>" data-allow_clear="<?php echo $allow_clear ?>" id="<?php echo $id ?>" data-title="<?php echo $title  ?>" <?php echo $editable?'editable="true"':'' ?> class="block-item select2dropdown <?php echo $css_class ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" ><?php echo $text ?>
+        <a
+            data-type="select2"
+            data-allow_clear="<?php echo $allow_clear ?>"
+            data-pk="<?php echo $source_key ?>"
+            data-value="<?php echo $text ?>"
+            data-source_key="<?php echo $source_key ?>"
+            data-source_value="<?php echo $source_value ?>"
+            data-url="<?php echo JUri::root().'/index.php?option=com_phpmyadmin&task=datasource.update_data_by_editable&block_id='.$block->id ?>"
+            id="<?php echo $id ?>" data-title="<?php echo $title  ?>" <?php echo $editable?'editable="true"':'' ?> class="block-item select2dropdown <?php echo $css_class ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" >
+            <?php echo $text ?>
+        </a>
 
         <?php
         $html.=ob_get_clean();

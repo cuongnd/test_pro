@@ -31,106 +31,106 @@
         </fieldset>
 
         <fields name="params">
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
-                    <field name="update_binding_source" readonly="readonly" type="bindingSource" description="Update binding source" label="Update binding source"/>
-                    <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
-                </fieldset>
+            <fields name="data"  description="Data config" label="Data config">
+                <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
+                <field name="update_binding_source" readonly="readonly" type="bindingSource" description="Update binding source" label="Update binding source"/>
+                <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
             </fields>
         </fields>
         <fields name="params">
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="link_detail" type="menuitem" label="Link detail" description="Link detail" required="true" size="1"/>
-                <field name="page_size" type="number" label="Page size" description="Page size" required="true" size="1"/>
+            <field name="link_detail" type="menuitem" label="Link detail" description="Link detail" required="true" size="1"/>
+            <field name="page_size" type="number" label="Page size" description="Page size" required="true" size="1"/>
 
-                <field name="enable_ajax_load_data" type="list" default="1" label="Enable ajax load data" description="Enable ajax load data">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </field>
-                <field name="use_file_template_row" type="list" default="0" label="use file template row" description="use file template row">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </field>
+            <field name="enable_ajax_load_data" type="list" default="1" label="Enable ajax load data" description="Enable ajax load data">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </field>
+            <field name="use_file_template_row" type="list" default="0" label="use file template row" description="use file template row">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </field>
 
-                <field name="file_template_row" type="filelist" directory="layouts/kendo_grid_layout" label="file template row" description="file template row" />
-
-
-                <field name="use_template_edit_row" type="list" default="0" label="use template edit row" description="use template edit row">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </field>
-                <field name="template_edit_row_file" type="filelist" directory="layouts/kendo_grid_layout" label="template edit row" description="template edit row" />
+            <field name="file_template_row" type="filelist" directory="layouts/kendo_grid_layout" label="file template row" description="file template row" />
 
 
-                <field name="edit_row_type" type="list" default="inline" label="use template mode row" description="use template mode row">
-                    <option value="inline">Inline</option>
-                    <option value="popup">Popup</option>
-                    <option value="form">Form</option>
-                </field>
-                <field name="template_by_element"  type="selectblock" tags="1" maximumSelectionSize="4" description="Template by element" label="Template by element"/>
-
-                <field name="columnMenu" type="list" default="true" label="show column menu" description="show column menu">
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </field>
-                <field name="sortable" type="list" default="true" label="show sortable" description="show sortable">
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </field>
-
-                <field name="filterable" type="list" default="true" label="show filterable" description="show filterable">
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </field>
-                <field name="scrollable" type="list" default="1" label="scrollable" description="scrollable">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </field>
-
-                <field name="pageable" type="list" default="true" label="enable pageable" description="enable pageable">
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </field>
-                <field name="gridtoolbar" readonly="readonly" type="gridtoolbar" description="grid formart toolbar" label="grid formart toolbar"/>
-
-                <field name="mode_select_column" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="mode select column" description="mode select column" />
-                <field name="mode_select_column_template" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="mode select column_template" description="mode select column template" />
-
-                <field name="config_update_data" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="config update data" description="config update data" />
-                <field name="get_items" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="Modal get items" description="Modal get items" />
+            <field name="use_template_edit_row" type="list" default="0" label="use template edit row" description="use template edit row">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </field>
+            <field name="template_edit_row_file" type="filelist" directory="layouts/kendo_grid_layout" label="template edit row" description="template edit row" />
 
 
-                <field name="toolbar_commands" type="list" multiple="true" size="4" default="" label="commands toolbar" description="commands toolbar">
-                    <option value="">none</option>
-                    <option value="add">Add</option>
-                    <option value="pdf">Pdf</option>
-                    <option value="csv">csv</option>
-                </field>
-                <field name="row_commands" type="list" multiple="true" size="4" default="" label="commands row" description="commands row">
-                    <option value="">none</option>
-                    <option value="delete">Delete</option>
-                    <option value="edit">Edit</option>
-                </field>
+            <field name="edit_row_type" type="list" default="inline" label="use template mode row" description="use template mode row">
+                <option value="inline">Inline</option>
+                <option value="popup">Popup</option>
+                <option value="form">Form</option>
+            </field>
+            <field name="template_by_element"  type="selectblock" tags="1" maximumSelectionSize="4" description="Template by element" label="Template by element"/>
+
+            <field name="columnMenu" type="list" default="true" label="show column menu" description="show column menu">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </field>
+            <field name="sortable" type="list" default="true" label="show sortable" description="show sortable">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </field>
+
+            <field name="filterable" type="list" default="true" label="show filterable" description="show filterable">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </field>
+            <field name="scrollable" type="list" default="1" label="scrollable" description="scrollable">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </field>
+
+            <field name="pageable" type="list" default="true" label="enable pageable" description="enable pageable">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </field>
+            <field name="gridtoolbar" readonly="readonly" type="gridtoolbar" description="grid formart toolbar" label="grid formart toolbar"/>
+
+            <field name="mode_select_column" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="mode select column" description="mode select column" />
+            <field name="mode_select_column_template" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="mode select column_template" description="mode select column template" />
+
+            <field name="config_update_data" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="config update data" description="config update data" />
+            <field name="get_items" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="Modal get items" description="Modal get items" />
 
 
-
-                <field name="grid_height" type="text" default="700" label="Grid height" description="Grid height" />
-                <field name="keyPrimary" type="text" default="id" label="Key primary" description="Key primary" />
-
-                <field name="table_update" readonly="readonly"  type="table" default="" label="Table update" description="Table update" />
+            <field name="toolbar_commands" type="list" multiple="true" size="4" default="" label="commands toolbar" description="commands toolbar">
+                <option value="">none</option>
+                <option value="add">Add</option>
+                <option value="pdf">Pdf</option>
+                <option value="csv">csv</option>
+            </field>
+            <field name="row_commands" type="list" multiple="true" size="4" default="" label="commands row" description="commands row">
+                <option value="">none</option>
+                <option value="delete">Delete</option>
+                <option value="edit">Edit</option>
+            </field>
 
 
 
-                <field name="table_key" type="text" default="id" label="Table key" description="Table key" />
+            <field name="grid_height" type="text" default="700" label="Grid height" description="Grid height" />
+            <field name="keyPrimary" type="text" default="id" label="Key primary" description="Key primary" />
 
-                <field name="width_column_action" type="text" default="" label="Width column action" description="Width column action" />
-                <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+            <field name="table_update" readonly="readonly"  type="table" default="" label="Table update" description="Table update" />
 
-                <field name="cachemode" type="hidden" default="static">
-                    <option value="static" />
-                </field>
-            </fieldset>
+
+
+            <field name="table_key" type="text" default="id" label="Table key" description="Table key" />
+
+            <field name="width_column_action" type="text" default="" label="Width column action" description="Width column action" />
+            <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+
+            <field name="cachemode" type="hidden" default="static">
+                <option value="static" />
+            </field>
+            <fields name="element"  description="Element config" label="Element config">
+
+            </fields>
+
         </fields>
 
 
