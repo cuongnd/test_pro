@@ -233,7 +233,6 @@ class JFormFieldText extends JFormField
 	protected function getOptions()
 	{
 		$options = array();
-
 		foreach ($this->element->children() as $option)
 		{
 			// Only add <option /> elements.

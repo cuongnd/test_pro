@@ -8,11 +8,13 @@ JHtml::_('jquery.framework');
 JUtility::compileLess($lessInput, $cssOutput);
 $doc->addStyleSheet(JUri::root() . "/components/com_utility/views/block/tmpl/assets/css/view_config.css");
 $doc->addStyleSheet(JUri::root() . "/media/jui_front_end/css/select2.css");
+$doc->addStyleSheet(JUri::root() . "/media/system/js/jquery.appendGrid-master/jquery.appendGrid-development.css");
 $doc->addScript(JUri::root() . "/media/system/js/Nestable-master/jquery.nestable.js");
 $doc->addScript(JUri::root() . "/media/jui_front_end/js/select2.jquery.js");
 $doc->addScript(JUri::root() . "/media/system/js/cassandraMAP-cassandra/lib/cassandraMap.js");
 $doc->addScript(JUri::root() . "/components/com_utility/views/block/tmpl/assets/js/view_config.js");
 $doc->addScript(JUri::root() . "/media/system/js/base64.js");
+$doc->addScript(JUri::root() . "/media/system/js/jquery.appendGrid-master/jquery.appendGrid-development.js");
 $element_path=$app->input->get('element_path','','string');
 $element_config=$app->input->get('element_config','','string');
 if($element_config=="global_element_config") {
@@ -45,6 +47,10 @@ $list_field_type1=JFolder::files(JPATH_ROOT.'/libraries/joomla/form/fields','.ph
 $list_field_type2=JFolder::files(JPATH_ROOT.'/libraries/cms/form/field','.php');
 $list_field_type=array_merge($list_field_type1,$list_field_type2);
 
+//get list field table position config
+$list_field_table_position_config=$db->getTableColumns('#__position_config');
+$list_field_table_position_config=array_keys($list_field_table_position_config);
+//end get list field table position config
 
 require_once JPATH_ROOT.'/libraries/joomla/form/fields/groupedlist.php';
 
@@ -60,7 +66,7 @@ ob_start();
     ?>
     jQuery(document).ready(function ($) {
 
-
+        view_config.field_name_option.tags=<?php echo json_encode($list_field_table_position_config) ?>;
         view_config.init_view_config();
     });
     <?php
@@ -72,18 +78,21 @@ ob_start();
 ob_get_clean();
 $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 
-function create_html_list($nodes,$list_field_type)
+function create_html_list($nodes,$indent='',$list_field_type,$list_field_table_position_config)
 {
 
 
 echo '<ol class="dd-list">';
-
+ $i=1;
 foreach ($nodes as $item) {
+$indent1=$indent!=''?$indent.'_'.$i:$i;
+
 $groupedlist=new JFormFieldGroupedList();
 $groupedlist->setValue($item->group);
 $childNodes = $item->children;
 ob_start();
 ?>
+
 <li class="dd-item"
     <?php foreach ($item as $key => $value) { ?>
         data-<?php echo $key ?>="<?php echo $value ?>"
@@ -103,7 +112,8 @@ ob_start();
             <button class="add_sub_node">add sub node</button>
         </div>
 
-        <label>Name<input class="form-control" onchange="view_config.update_data_column(this,'name')"
+
+        <label>Name<input class="form-control select_field_name" style="width: 200px"  onchange="view_config.update_data_column(this,'name')"
                           value="<?php echo $item->name ?>" type="text"/></label>
         <label>default<input class="form-control" onchange="view_config.update_data_column(this,'default')"
                           value="<?php echo $item->default ?>" type="text"/></label>
@@ -127,7 +137,7 @@ ob_start();
 
         <label>
             type
-            <select disableChosen="false" style="width: 100%" onchange="view_config.update_data_column(this,'type')" type="hidden"  class="select2"   >
+            <select disableChosen="true" style="width: 200px" onchange="view_config.update_data_column(this,'type')" type="hidden"  class="select2 field_type"   >
                 <?php
                     foreach($list_field_type as $a_item){
                         $a_item=str_replace('.php','',$a_item);
@@ -137,14 +147,18 @@ ob_start();
             </select>
 
         </label>
+        <div>
+            <table class="tbl_append_grid" id="tblAppendGrid_<?php echo $indent1 ?>"></table>
+        </div>
     </div>
 
     <?php
     echo ob_get_clean();
     if (count($childNodes) > 0) {
-        create_html_list($childNodes,$list_field_type);
+        create_html_list($childNodes,$indent1,$list_field_type,$list_field_table_position_config);
     }
     echo "</li>";
+    $i++;
     }
     echo '</ol>';
     }
@@ -167,7 +181,7 @@ ob_start();
                 <div class="row">
                     <div class="menu_type_item col-md-12" data-menu-type-id="<?php echo $menu_type_id ?>">
                         <div id="field_block">
-                            <?php echo create_html_list($fields,$list_field_type); ?>
+                            <?php echo create_html_list($fields,'',$list_field_type,$list_field_table_position_config); ?>
                         </div>
                     </div>
 

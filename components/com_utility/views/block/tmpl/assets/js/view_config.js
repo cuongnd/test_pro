@@ -1,5 +1,7 @@
 jQuery(document).ready(function($){
     view_config={
+        setting:{
+        },
         option_draggable:{
             appendTo: 'body',
             /*helper: function(){
@@ -54,6 +56,10 @@ jQuery(document).ready(function($){
             },
             escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
             minimumInputLength: 1
+        },
+        field_name_option:{
+            tags: {},
+            maximumSelectionSize: 1
         },
         access_option:{
             ajax: {
@@ -215,8 +221,46 @@ jQuery(document).ready(function($){
             view_config.set_auto_complete();
             // activate Nestable for list 1
             view_config.init_config_nestable();
+            view_config.init_append_grid();
             view_config.update_nestable();
 
+
+        },
+        init_append_grid:function(){
+            var columns= [
+                { name: 'Album', display: 'Album', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px' }, onChange: function (evt, rowIndex) { alert('You have changed the value of `Album` at row ' + rowIndex); } },
+                { name: 'Artist', display: 'Artist', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100px'} },
+                { name: 'Year', display: 'Year', type: 'text', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '40px'} },
+                { name: 'Origin', display: 'Origin', type: 'select', ctrlOptions: { 0: '{Choose}', 1: 'Hong Kong', 2: 'Taiwan', 3: 'Japan', 4: 'Korea', 5: 'US', 6: 'Others'} },
+                { name: 'Poster', display: 'With Poster?', type: 'checkbox', onClick: function (evt, rowIndex) { alert('You have clicked on the `With Poster?` at row ' + rowIndex); } },
+                { name: 'Price', display: 'Price', type: 'text', ctrlAttr: { maxlength: 10 }, ctrlCss: { width: '50px', 'text-align': 'right' }, value: 0 }
+            ];
+            $('.tbl_append_grid').each(function(){
+                self=$(this);
+                var id=self.attr('id');
+                var init_data=[
+                    { 'Album': 'Dearest', 'Artist': 'Theresa Fu', 'Year': '2009', 'Origin': 1, 'Poster': true, 'Price': 168.9 },
+                    { 'Album': 'To be Free', 'Artist': 'Arashi', 'Year': '2010', 'Origin': 3, 'Poster': true, 'Price': 152.6 },
+                    { 'Album': 'Count On Me', 'Artist': 'Show Luo', 'Year': '2012', 'Origin': 2, 'Poster': false, 'Price': 306.8 },
+                    { 'Album': 'Wonder Party', 'Artist': 'Wonder Girls', 'Year': '2012', 'Origin': 4, 'Poster': true, 'Price': 108.6 },
+                    { 'Album': 'Reflection', 'Artist': 'Kelly Chen', 'Year': '2013', 'Origin': 1, 'Poster': false, 'Price': 138.2 }
+                ];
+                $('#'+id).appendGrid({
+                    caption: 'My CD Collections',
+                    initRows: 1,
+                    columns: columns,
+                    initData:init_data ,
+                    rowDragging: true,
+                    afterRowDragged: function (caller, rowIndex) {
+                        var msg = 'You have dragged a row. The new row index is ' + rowIndex + '!';
+                        $('#spnMessage').text(msg).css('background-color', '#ffff66').animate({
+                            backgroundColor: '#ffffff'
+                        }, 800);
+                    },
+                    hideButtons: { moveUp: true, moveDown: true }
+                });
+
+            });
 
         },
         show_more_options:function(self){
@@ -297,16 +341,32 @@ jQuery(document).ready(function($){
         add_node:function(self){
             li=self.closest('.dd-item');
             li_clone=li.clone(false);
+            li_clone.find('.dd-list').remove();
+            li_clone.find('button[data-action="collapse"]').remove();
+            li_clone.find('button[data-action="expand"]').remove();
             li_clone.data('id',0);
             li_clone.data('parent_id',0);
             li_clone.data('title','');
             li_clone.data('alias','');
             li_clone.data('icon','');
             li_clone.insertAfter(li);
+
+
             li_clone.find('.select2-container.icon').remove();
             li_clone.find('input.icon').removeClass('select2-offscreen').removeData();
-            li_clone.removeData();
             li_clone.find(".icon").select2(view_config.icon_option);
+
+            li_clone.find('.select2-container.select_field_name').remove();
+            li_clone.find('input.select_field_name').removeClass('select2-offscreen').removeData();
+            li_clone.find(".select_field_name").select2(view_config.field_name_option);
+
+            li_clone.find('.select2-container.field_type').remove();
+            li_clone.find('input.field_type').removeClass('select2-offscreen').removeData();
+            li_clone.find(".field_type").select2();
+
+
+            li_clone.removeData();
+
             view_config.update_nestable();
             menu_type_id=li.attr('data-menu_type_id');
             id=li.attr('data-id');
@@ -314,62 +374,42 @@ jQuery(document).ready(function($){
         add_sub_node:function(self){
             li=self.closest('.dd-item');
             li_clone=li.clone(false);
+            li_clone.find('.dd-list').remove();
             li_clone.data('id',0);
             li_clone.data('parent_id',0);
             li_clone.data('title','');
             li_clone.data('alias','');
             li_clone.data('icon','');
-            ol= self.find(' > ol');
-            if(ol.length)
+            li_clone.find('button[data-action="collapse"]').remove();
+            li_clone.find('button[data-action="expand"]').remove();
+            ol= li.children('.dd-list');
+            if(ol.length>=1)
             {
-                li_clone.insertAfter(ol);
+                ol.append(li_clone);
             }else{
                 ol=$('<ol class="dd-list"></ol>');
                 ol.append(li_clone);
                 ol.appendTo(li);
+                li.prepend('<button type="button" data-action="collapse">Collapse</button>' +
+                '<button type="button" data-action="expand" style="display: none;">Expand</button>').fadeIn('slow');
             }
 
             li_clone.find('.select2-container.icon').remove();
             li_clone.find('input.icon').removeClass('select2-offscreen').removeData();
-
             li_clone.find("input.icon").select2(view_config.icon_option);
+
+            li_clone.find('.select2-container.select_field_name').remove();
+            li_clone.find('input.select_field_name').removeClass('select2-offscreen').removeData();
+            li_clone.find("input.select_field_name").select2(view_config.field_name_option);
+
+
+            li_clone.find('.select2-container.field_type').remove();
+            li_clone.find('input.field_type').removeClass('select2-offscreen').removeData();
+            li_clone.find("input.field_type").select2();
+
+
             view_config.update_nestable();
             id=li.attr('data-id');
-            ajax_web_design=$.ajax({
-                type: "GET",
-                dataType: "json",
-                cache: false,
-                url: this_host+'/index.php',
-                data: (function () {
-
-                    dataPost = {
-                        option: 'com_menus',
-                        task: 'item.ajax_add_sub_item_menu',
-                        id:id
-
-                    };
-                    return dataPost;
-                })(),
-                beforeSend: function () {
-                    $('.div-loading').css({
-                        display: "block"
-
-
-                    });
-                    // $('.loading').popup();
-                },
-                success: function (response) {
-                    $('.div-loading').css({
-                        display: "none"
-
-
-                    });
-
-
-
-
-                }
-            });
 
 
 
@@ -402,8 +442,10 @@ jQuery(document).ready(function($){
             });
         },
         set_auto_complete:function(){
+            $(".select_field_name").select2(view_config.field_name_option);
             $(".icon_menu_item").select2(view_config.icon_option);
             $(".column_access").select2(view_config.access_option);
+            $(".field_type").select2();
         },
         update_nestable:function(){
             view_config.updateOutput($('#field_block').data('output', $('#field_block-output')));
@@ -411,10 +453,20 @@ jQuery(document).ready(function($){
 
         },
         remove_item_nestable:function(self) {
-            self = $(self);
-            dd_item = self.closest('.dd-item');
-            if ($('.dd-item').length > 1)
+            self=$(self);
+            dd_item=self.closest('.dd-item');
+            dd_list=self.closest('.dd-list');
+            if(dd_list.find('>.dd-item').length==1)
+            {
+
+                dd_item_parent=dd_list.parent('.dd-item');
+                dd_item_parent.find('button[data-action="collapse"]').remove();
+                dd_item_parent.find('button[data-action="expand"]').remove();
+                dd_list.remove();
+            }
+            else{
                 dd_item.remove();
+            }
             view_config.update_nestable();
         },
 
