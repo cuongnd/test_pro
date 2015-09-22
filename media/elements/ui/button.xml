@@ -1,92 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fieldset name="option" description="Option" label="Option">
-            <field name="css_class" type="select2" default="" tags="1" label="Css class" onselecting="element_ui_button.add_css_class(e,$(this))" onremoveitem="element_ui_button.remove_class_css(e,$(this))"  maximumSelectionSize="10">
-                <option value="btn">btn</option>
-                <option value="btn-default">btn-default</option>
-                <option value="btn-primary">btn-primary</option>
-                <option value="btn-success">btn-success</option>
-                <option value="btn-info">btn-info</option>
-                <option value="btn-warning">btn-warning</option>
-                <option value="btn-danger">btn-danger</option>
-                <option value="btn-brown">btn-brown</option>
-                <option value="btn-dark">btn-dark</option>
-                <option value="btn-yellow">btn-yellow</option>
-                <option value="btn-purple">btn-purple</option>
-                <option value="btn-pink">btn-pink</option>
-                <option value="btn-lime">btn-lime</option>
-                <option value="btn-magenta">btn-magenta</option>
-                <option value="btn-link">btn-link</option>
-            </field>
-            <field name="config_update" readonly="readonly" type="configupdate" description="Config update" label="Config update"/>
-        </fieldset>
-        <fields name="params">
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
-                    <field name="text"  type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Text" label="Text"/>
-                </fieldset>
-            </fields>
-        </fields>
-        <fields name="params">
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="label" type="text" default="lable here" label="Label"/>
+<config>					<fields name="params">
+						
+					<field type="list" default="" name="is_booking" />
 
-                <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="text" type="text" default="" onchange="element_ui_button.update_text($(this))" label="Text"/>
-                <field name="process_type" type="list"  label="process type"  description="process type" default="auto">
-                    <option value="auto">Auto</option>
-                    <option value="code_php">code_php</option>
-                </field>
-                <field name="button_type" default="submit" type="list" label="Button type">
-                    <option value="button">Button</option>
-                    <option value="submit">Submit</option>
-                    <option value="reset">Reset</option>
-                </field>
-                <field name="method_submit" default="get" type="list" label="Method Submit">
-                    <option value="get">Get</option>
-                    <option value="post">Post</option>
-                </field>
-                <field name="config_update_data" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="config update data" description="config update data" />
-                <field name="code_process"  readonly="readonly" type="coding" description="code process" label="code process"/>
+								
+					<field type="mapcopy" default="" name="mapcopy" />
 
-
-
-                <field
-                        name="link_to_page"
-                        type="menuitem"
-                        label="Link to page"
-                        description="Link to page"
-                        required="true"
-                        size="1" />
-                <field name="table_update" readonly="readonly"  type="table" default="" label="Table update" description="Table update" />
-                <field name="table_key" type="text" default="id" label="Table key" description="Table key" />
-
-            </fieldset>
-        </fields>
-
-
-    </config>
-</extension>
+													</fields>
+								</config>

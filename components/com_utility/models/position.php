@@ -717,7 +717,6 @@ class UtilityModelPosition extends JModelAdmin
 		{
 
 			$item		= $this->getItem();
-
 			$clientId	= $item->client_id;
 			$module		= $item->module;
 			$id			= $item->id;
@@ -991,6 +990,35 @@ class UtilityModelPosition extends JModelAdmin
 	 * @since   1.6
 	 * @throws  Exception if there is an error loading the form.
 	 */
+	function render_to_xml($fields,$maxLevel = 9999, $level = 0)
+	{
+		if($level<=$maxLevel)
+		{
+			foreach ($fields as $item) {
+				if(is_array($item->children)&&count($item->children)>0 ) {
+					?>
+					<fields name="<?php echo $item->name ?>">
+						<?php UtilityModelPosition::render_to_xml($item->children,  $maxLevel, $level++); ?>
+					</fields>
+				<?php
+				}else{
+					?>
+
+					<field type="<?php echo $item->type ?>" default="<?php echo $item->default ?>" name="<?php echo $item->name ?>" />
+
+				<?php
+				}
+				?>
+				<?php
+			}
+
+		}
+
+	}
+
+
+
+
 	protected function preprocessForm(JForm $form, $data, $group = 'content')
 	{
 		jimport('joomla.filesystem.path');
@@ -1005,6 +1033,30 @@ class UtilityModelPosition extends JModelAdmin
 		$dirName=$pathInfo['dirname'];
 		$client   = JApplicationHelper::getClientInfo($clientId);
 		$formFile = JPath::clean(JPATH_ROOT."/$dirName/$filename.xml");
+
+		$ui_path= $data->get('ui_path');
+
+		if($ui_path[0]=='/')
+		{
+			$ui_path = substr($ui_path, 1);
+		}
+		$db=JFactory::getDbo();
+		require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+		$table_control=new JTableUpdateTable($db,'control');
+
+
+		$table_control->load(array("element_path"=>$ui_path));
+		$fields=$table_control->fields;
+		$fields=base64_decode($fields);
+
+		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		ob_start();
+		UtilityModelPosition::render_to_xml($fields);
+		$string_xml=ob_get_clean();
+		$string_xml='<config>'.$string_xml.'</config>';
+		jimport('joomla.filesystem.file');
+		JFile::write($formFile,$string_xml);
 		if($data->type=="row")
 		{
 			$formFile=JPATH_ROOT."/media/elements/ui/row.xml";
@@ -1046,7 +1098,6 @@ class UtilityModelPosition extends JModelAdmin
 		// Trigger the default form events.
 		parent::preprocessForm($form, $data, $group);
 	}
-
 	/**
 	 * Loads ContentHelper for filters before validating data.
 	 *

@@ -94,3 +94,13 @@
 2015-09-18T11:19:31+00:00	DEBUG	-	legacy $url:/component/users/profile.html
 2015-09-18T11:24:44+00:00	DEBUG	-	class:JApplicationCms
 2015-09-18T11:24:44+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2015-09-21T15:59:37+00:00	DEBUG	-	class:JApplicationCms
+2015-09-21T15:59:37+00:00	DEBUG	-	legacy $url:/component/utility/?view=modules
+2015-09-21T16:00:26+00:00	DEBUG	-	class:JApplicationCms
+2015-09-21T16:00:26+00:00	DEBUG	-	legacy $url:/component/utility/?view=modules
+2015-09-21T16:00:47+00:00	DEBUG	-	class:JApplicationCms
+2015-09-21T16:00:47+00:00	DEBUG	-	legacy $url:/component/utility/?view=modules
+2015-09-21T16:01:11+00:00	DEBUG	-	class:JApplicationCms
+2015-09-21T16:01:12+00:00	DEBUG	-	legacy $url:/component/utility/?view=modules
+2015-09-21T16:03:22+00:00	DEBUG	-	class:JApplicationCms
+2015-09-21T16:03:22+00:00	DEBUG	-	legacy $url:/component/utility/?view=modules

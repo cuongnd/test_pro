@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-    config_inputmask={
+    config_update={
         option_draggable:{
             appendTo: 'body',
             /*helper: function(){
@@ -77,6 +77,38 @@ jQuery(document).ready(function($){
             escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
             minimumInputLength: 0
         },
+        foreign_key_option:{
+            ajax: {
+                url: this_host+"/index.php?option=com_phpmyadmin&task=tables.ajax_get_list_flied_table",
+                dataType: 'json',
+                delay: 250,
+                data: function (term, page) {
+                    dd_list=$(this).closest('ol.dd-list');
+                    dd_item=dd_list.closest('li.dd-item');
+                    return {
+                        keyword: term,
+                        table_name:function(){
+                            table_name=dd_item.data('table_name');
+                            return table_name;
+                        }
+                    };
+                },
+
+                results: function (data) {
+                    return {results: data};
+                },
+                cache: true
+            },
+            initSelection: function(element, callback) {
+                item={
+                    id:element.val(),
+                    text:element.val()
+                };
+                return callback(item);
+            },
+            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+            minimumInputLength: 0
+        },
         post_name_option:{
             data: function() {
                 data_post={};
@@ -123,9 +155,9 @@ jQuery(document).ready(function($){
                 droppable=$(this);
                 if(uiDraggable.hasClass('configupdate-item-table'))
                 {
-                    config_inputmask.render_table_fields(uiDraggable,droppable);
+                    config_update.render_table_fields(uiDraggable,droppable);
                 }else if(uiDraggable.hasClass('configupdate-item-field')){
-                    config_inputmask.render_table_field(uiDraggable,droppable);
+                    config_update.render_table_field(uiDraggable,droppable);
                 }
             }
         },
@@ -135,120 +167,45 @@ jQuery(document).ready(function($){
             handleClass:'dd-handle-move'
         },
         init_config_nestable:function(){
-            $('#config_inputmask1').nestable(config_inputmask.option_nestable)
-                .on('change', config_inputmask.updateOutput);
+            $('#config_update1').nestable(config_update.option_nestable)
+                .on('change', config_update.updateOutput);
 
 
 
 
         },
-        init_config_inputmask:function(){
+        init_config_update:function(){
 
 
-            $(document).on('click','.add_node',function(){
-                config_inputmask.add_node($(this));
+            $('.add_node').click(function add_node_click(){
+                config_update.add_node($(this));
             });
-            $(document).on('click','.add_sub_node',function(){
-                config_inputmask.add_sub_node($(this));
+            $('.add_sub_node').click(function add_sub_node_click(){
+                config_update.add_sub_node($(this));
             });
-            config_inputmask.set_auto_complete();
+
+
+
+
+            config_update.set_auto_complete();
             // activate Nestable for list 1
-            config_inputmask.init_config_nestable();
-            $( ".configupdate-item-table" ).draggable(config_inputmask.option_draggable);
-            config_inputmask.update_nestable();
-            $('.dd-list-droppable').droppable(config_inputmask.option_droppable);
+            config_update.init_config_nestable();
+            $( ".configupdate-item-table" ).draggable(config_update.option_draggable);
+            config_update.update_nestable();
+            $('.dd-list-droppable').droppable(config_update.option_droppable);
             $('.configupdate-item-table a.plus').click(function(){
-                config_inputmask.get_list_field_table($(this));
-            });
-            config_inputmask.set_auto_complete_content_edit_able();
-
-        },
-        get_key_li_ol_root: function(li,list_key){
-            if(li.length) {
-                ol = li.closest('ol.dd-list');
-                li_parent = ol.closest('.dd-item');
-
-                var key = li_parent.find('span.key').html();
-                if(typeof key!='undefined')
-                {
-                    list_key.push(key);
-                }
-                if (li_parent.length) {
-                    config_inputmask.get_key_li_ol_root(li_parent,list_key);
-                }
-            }
-        },
-        get_list_var:function(list_key,var_default){
-           if(list_key.length)
-           {
-               key=list_key.pop();
-               var_default=var_default.key;
-               config_inputmask.get_list_var(list_key,var_default);
-           }else{
-               return  var_default;
-           }
-        },
-        set_auto_complete_content_edit_able:function(){
-            $('.key').on('autocomplete:request', function(event, query, callback) {
-                li=$(this).closest('.dd-item');
-                var list_key=new Array();
-                var var_default=window.inputmask.prototype.defaults;
-                config_inputmask.get_key_li_ol_root(li,list_key);
-                list_key=list_key.reverse();
-                var return_list_var=new Array();
-                return_list_var=config_inputmask.get_list_var(list_key,var_default);
-                suggestions=new Array();
-                $.each( return_list_var, function( index, value ){
-
-                    if (typeof value !== "function") {
-                        suggestions.push(index);
-                    }
-                });
-                query = query.toLowerCase();
-                callback(suggestions.filter(function(country) {
-                    return country.toLowerCase().indexOf(query) !== -1;
-                }));
-            });
-            $('.value').on('autocomplete:request', function(event, query, callback) {
-                var suggestions = config_inputmask.getSuggestionsValueArrayFor(query);
-                callback(suggestions);
-            });
-            $('.key').on('autocomplete:select', function(event, selected) {
-                console.log('selected item:', selected);
-            });
-            $('.value').on('autocomplete:select', function(event, selected) {
-                console.log('selected item:', selected);
+                config_update.get_list_field_table($(this));
             });
 
 
-        },
-        getSuggestionsKeyArrayFor:function(query){
-
-            return Array('key1','key2');
-        },
-        getSuggestionsValueArrayFor:function(query){
-            return Array('value1','value2');
         },
         add_node:function(self){
-            console.log(self);
             li=self.closest('.dd-item');
             li_clone=li.clone(false);
             li_clone.find('.dd-list').remove();
             li_clone.find('button[data-action="collapse"]').remove();
             li_clone.find('button[data-action="expand"]').remove();
             li_clone.insertAfter(li);
-            li_clone.find('span[data-autocomplete=""]').each(function(){
-                key= $(this).find('span.key');
-                key.insertBefore($(this));
-                key.attr('data-autocomplete-spy','');
-                key.removeClass('contenteditable-block');
-                value= $(this).find('span.value');
-                value.insertBefore($(this));
-                value.removeClass('contenteditable-block');
-                value.attr('data-autocomplete-spy','');
-                $(this).remove();
-            });
-
             li_clone.find('.select2-container.table_name').remove();
             li_clone.find('input.table_name').removeClass('select2-offscreen').removeData();
 
@@ -258,27 +215,32 @@ jQuery(document).ready(function($){
              //clear data post name
             li_clone.find('.select2-container.post_name').remove();
             li_clone.find('input.post_name').removeClass('select2-offscreen').removeData();
+            //cleare foreign_key
+            li_clone.find('.select2-container.foreign_key').remove();
+            li_clone.find('input.foreign_key').removeClass('select2-offscreen').removeData();
 
-            config_inputmask.over_wrire_data_id();
+            li_clone.find('.add_node').click(function add_node_click(){
+                config_update.add_node($(this));
+            });
+            li_clone.find('.add_sub_node').click(function add_sub_node_click(){
+                config_update.add_sub_node($(this));
+            });
             li_clone.removeData();
             li_clone.find(".table_name").val('');
+            li_clone.find(".foreign_key").val('');
             li_clone.find(".column_name").val('');
             li_clone.find(".post_name").val('');
-            li_clone.find("input.table_name").select2(config_inputmask.table_name_option);
-            li_clone.find("input.column_name").select2(config_inputmask.column_name_option);
-            li_clone.find("input.post_name").select2(config_inputmask.post_name_option).select2("data",config_inputmask.data_post,true);
-            config_inputmask.set_auto_complete_content_edit_able();
-            config_inputmask.update_nestable();
-        },
-        change_key:function(){
-            console.log('change key');
+            li_clone.find("input.table_name").select2(config_update.table_name_option);
+            li_clone.find("input.column_name").select2(config_update.column_name_option);
+            li_clone.find("input.foreign_key").select2(config_update.foreign_key_option);
+            li_clone.find("input.post_name").select2(config_update.post_name_option).select2("data",config_update.data_post,true);
+            config_update.update_nestable();
         },
         add_sub_node:function(self){
             li=self.closest('.dd-item');
             li_clone=li.clone(false);
             li_clone.find('.dd-list').remove();
-            li_clone.find('button[data-action="collapse"]').remove();
-            li_clone.find('button[data-action="expand"]').remove();
+
             ol= li.children('.dd-list');
             if(ol.length>=1)
             {
@@ -290,24 +252,17 @@ jQuery(document).ready(function($){
                 li.prepend('<button type="button" data-action="collapse">Collapse</button>' +
                 '<button type="button" data-action="expand" style="display: none;">Expand</button>').fadeIn('slow');
             }
-            li_clone.find('span[data-autocomplete=""]').each(function(){
-                key= $(this).find('span.key');
-                key.insertBefore($(this));
-                key.attr('data-autocomplete-spy','');
-                key.removeClass('contenteditable-block');
-                value= $(this).find('span.value');
-                value.insertBefore($(this));
-                value.removeClass('contenteditable-block');
-                value.attr('data-autocomplete-spy','');
-                $(this).remove();
-            });
 
-
-            config_inputmask.over_wrire_data_id();
             li_clone.find('.select2-container.table_name').remove();
             li_clone.find('input.table_name').removeClass('select2-offscreen').removeData();
+
+
+
             li_clone.find('.select2-container.column_name').remove();
             li_clone.find('input.column_name').removeClass('select2-offscreen').removeData();
+            //cleare foreign_key
+            li_clone.find('.select2-container.foreign_key').remove();
+            li_clone.find('input.foreign_key').removeClass('select2-offscreen').removeData();
 
             //clear post name
             li_clone.find('.select2-container.post_name').remove();
@@ -316,19 +271,26 @@ jQuery(document).ready(function($){
             li_clone.removeData();
             li_clone.find(".table_name").val('');
             li_clone.find(".column_name").val('');
+            li_clone.find(".foreign_key").val('');
             li_clone.find(".post_name").val('');
             level=li_clone.attr('data-level');
             level++;
             li_clone.attr('data-level',level);
             primary_key=li_clone.find('input[type="radio"].primary-key');
             primary_key.attr('name','primary_key_'+level);
-            li_clone.find("input.table_name").select2(config_inputmask.table_name_option);
-            li_clone.find("input.column_name").select2(config_inputmask.column_name_option);
+            li_clone.find("input.table_name").select2(config_update.table_name_option);
+            li_clone.find("input.column_name").select2(config_update.column_name_option);
+            li_clone.find("input.foreign_key").select2(config_update.foreign_key_option);
 
-            //set select 2 post name
-            li_clone.find("input.post_name").select2(config_inputmask.post_name_option);
-            config_inputmask.set_auto_complete_content_edit_able();
-            config_inputmask.update_nestable();
+            li_clone.find('.add_node').click(function add_node_click(){
+                config_update.add_node($(this));
+            });
+            li_clone.find('.add_sub_node').click(function add_sub_node_click(){
+                config_update.add_sub_node($(this));
+            });
+             //set select 2 post name
+            li_clone.find("input.post_name").select2(config_update.post_name_option);
+            config_update.update_nestable();
 
         },
         update_data_column:function(self,key,type_input) {
@@ -343,7 +305,7 @@ jQuery(document).ready(function($){
             }
             dd_item = self.closest('.dd-item');
             dd_item.data(key, self_value);
-            config_inputmask.update_nestable();
+            config_update.update_nestable();
         },
         primary_key_update_value:function(self){
             self = $(self);
@@ -355,38 +317,28 @@ jQuery(document).ready(function($){
             self = $(self);
             name=self.attr('name');
             $('input[type="radio"][name="'+name+'"]').each(function(){
-                config_inputmask.update_data_column(this,'primary_key','radio');
+                config_update.update_data_column(this,'primary_key','radio');
             });
         },
         set_auto_complete:function(){
-            $(".table_name").select2(config_inputmask.table_name_option);
-            $(".column_name").select2(config_inputmask.column_name_option);
+            $(".table_name").select2(config_update.table_name_option);
+            $(".column_name").select2(config_update.column_name_option);
+            $(".foreign_key").select2(config_update.foreign_key_option);
 
 
 
-            $(".post_name").select2(config_inputmask.post_name_option);
+            $(".post_name").select2(config_update.post_name_option);
 
         },
         update_nestable:function(){
-            config_inputmask.updateOutput($('#config_inputmask1').data('output', $('#config_inputmask1-output')));
+            config_update.updateOutput($('#config_update1').data('output', $('#config_update1-output')));
         },
         remove_item_nestable:function(self){
             self=$(self);
             dd_item=self.closest('.dd-item');
-            dd_list=self.closest('.dd-list');
-            if(dd_list.find('>.dd-item').length==1)
-            {
-
-                dd_item_parent=dd_list.parent('.dd-item');
-                dd_item_parent.find('button[data-action="collapse"]').remove();
-                dd_item_parent.find('button[data-action="expand"]').remove();
-                dd_list.remove();
-            }
-            else{
+            if($('.dd-item').length>1)
                 dd_item.remove();
-            }
-
-            config_inputmask.update_nestable();
+            config_update.update_nestable();
         },
         get_list_field_table:function(self){
             table=self.data('table');
@@ -488,24 +440,10 @@ jQuery(document).ready(function($){
                 droppable.append(dd_list);
                 droppable.find('.dd-empty').remove();
             }
-            //config_inputmask.update_nestable();
-            dd_item.droppable(config_inputmask.option_droppable);
-        },
-        over_wrire_data_id:function(root){
-            if(typeof root=='undefined')
-            {
-                root=$('.dd>.dd-list');
-            }
-            root.find('>li').each(function(index){
-               self=$(this);
-                self.attr('data-id',index+1);
-                self.data('id',index+1);
-                self.removeData('level');
-                config_inputmask.over_wrire_data_id(self.find('>ol.dd-list'));
-            });
+            //config_update.update_nestable();
+            dd_item.droppable(config_update.option_droppable);
         },
         updateOutput:function(e){
-            console.log('change key');
             var list = e.length ? e : $(e.target),
                 output = list.data('output');
             if (typeof output == "undefined")
@@ -522,8 +460,8 @@ jQuery(document).ready(function($){
             data_type = self.val();
             dd_item = self.closest('.dd-item');
             dd_item.data('type', data_type);
-            config_inputmask.updateOutput($('#config_inputmask1').data('output', $('#config_inputmask1-output')));
-            config_inputmask.updateOutput($('#config_inputmask2').data('output', $('#config_inputmask2-output')));
+            config_update.updateOutput($('#config_update1').data('output', $('#config_update1-output')));
+            config_update.updateOutput($('#config_update2').data('output', $('#config_update2-output')));
         },
         update_data_editable:function(){
 

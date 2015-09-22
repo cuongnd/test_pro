@@ -131,9 +131,6 @@ ob_start();
             echo JHtml::_('access.level', 'access_level',$item->access,array("class"=>'menu_access_level'));
             ?>
         </label>
-        <label>hide<input <?php echo $item->hide == 1 ? 'checked' : '' ?>  type="checkbox"
-                                                                                     onchange="view_config.update_data_column(this,'hide','checkbox')"
-                                                                                     value="1"/></label>
 
         <label>
             type
@@ -147,8 +144,8 @@ ob_start();
             </select>
 
         </label>
-        <div>
-            <table class="tbl_append_grid" id="tblAppendGrid_<?php echo $indent1 ?>"></table>
+        <div class="config_params">
+            <table class="tbl_append_grid" data-config_params="<?php echo $item->config_params  ?>" id="tblAppendGrid_<?php echo $indent1 ?>"></table>
         </div>
     </div>
 

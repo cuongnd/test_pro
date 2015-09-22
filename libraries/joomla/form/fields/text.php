@@ -195,25 +195,7 @@ class JFormFieldText extends JFormField
 
 		/* Get the field options for the datalist.
 		Note: getSuggestions() is deprecated and will be changed to getOptions() with 4.0. */
-		$options  = (array) $this->getSuggestions();
 
-		if ($options)
-		{
-			$datalist = '<datalist id="' . $this->id . '_datalist">';
-
-			foreach ($options as $option)
-			{
-				if (!$option->value)
-				{
-					continue;
-				}
-
-				$datalist .= '<option value="' . $option->value . '">' . $option->text . '</option>';
-			}
-
-			$datalist .= '</datalist>';
-			$list     = ' list="' . $this->id . '_datalist"';
-		}
 
 		$html[] = '<input type="text" name="' . $this->name . '" id="' . $this->id . '"' . $dirname . ' value="'
 			. htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"' . $class . $size . $disabled . $readonly . $list

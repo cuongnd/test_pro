@@ -193,15 +193,10 @@ jQuery(document).ready(function($){
 
         },
         init_view_config:function(){
-
-
-
-
-
-            $(document).on('click','.add_node',function(){
+            $('.add_node').click(function add_node_click(){
                 view_config.add_node($(this));
             });
-            $(document).on('click','.add_sub_node',function(){
+            $('.add_sub_node').click(function add_sub_node_click(){
                 view_config.add_sub_node($(this));
             });
 
@@ -227,38 +222,14 @@ jQuery(document).ready(function($){
 
         },
         init_append_grid:function(){
-            var columns= [
-                { name: 'Album', display: 'Album', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px' }, onChange: function (evt, rowIndex) { alert('You have changed the value of `Album` at row ' + rowIndex); } },
-                { name: 'Artist', display: 'Artist', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100px'} },
-                { name: 'Year', display: 'Year', type: 'text', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '40px'} },
-                { name: 'Origin', display: 'Origin', type: 'select', ctrlOptions: { 0: '{Choose}', 1: 'Hong Kong', 2: 'Taiwan', 3: 'Japan', 4: 'Korea', 5: 'US', 6: 'Others'} },
-                { name: 'Poster', display: 'With Poster?', type: 'checkbox', onClick: function (evt, rowIndex) { alert('You have clicked on the `With Poster?` at row ' + rowIndex); } },
-                { name: 'Price', display: 'Price', type: 'text', ctrlAttr: { maxlength: 10 }, ctrlCss: { width: '50px', 'text-align': 'right' }, value: 0 }
-            ];
             $('.tbl_append_grid').each(function(){
                 self=$(this);
                 var id=self.attr('id');
-                var init_data=[
-                    { 'Album': 'Dearest', 'Artist': 'Theresa Fu', 'Year': '2009', 'Origin': 1, 'Poster': true, 'Price': 168.9 },
-                    { 'Album': 'To be Free', 'Artist': 'Arashi', 'Year': '2010', 'Origin': 3, 'Poster': true, 'Price': 152.6 },
-                    { 'Album': 'Count On Me', 'Artist': 'Show Luo', 'Year': '2012', 'Origin': 2, 'Poster': false, 'Price': 306.8 },
-                    { 'Album': 'Wonder Party', 'Artist': 'Wonder Girls', 'Year': '2012', 'Origin': 4, 'Poster': true, 'Price': 108.6 },
-                    { 'Album': 'Reflection', 'Artist': 'Kelly Chen', 'Year': '2013', 'Origin': 1, 'Poster': false, 'Price': 138.2 }
-                ];
-                $('#'+id).appendGrid({
-                    caption: 'My CD Collections',
-                    initRows: 1,
-                    columns: columns,
-                    initData:init_data ,
-                    rowDragging: true,
-                    afterRowDragged: function (caller, rowIndex) {
-                        var msg = 'You have dragged a row. The new row index is ' + rowIndex + '!';
-                        $('#spnMessage').text(msg).css('background-color', '#ffff66').animate({
-                            backgroundColor: '#ffffff'
-                        }, 800);
-                    },
-                    hideButtons: { moveUp: true, moveDown: true }
-                });
+                var config_params=self.attr('data-config_params');
+                config_params=base64.decode(config_params);
+                config_params= $.parseJSON(config_params);
+                view_config.append_grid_option.initData=config_params;
+                $('#'+id).appendGrid( view_config.append_grid_option);
 
             });
 
@@ -275,7 +246,21 @@ jQuery(document).ready(function($){
              }
 
         },
+        update_data_grid:function(){
+            $('.tbl_append_grid').each(function(){
+                self=$(this);
+                var id=self.attr('id');
+                var data=$('#'+id).appendGrid('getAllValue');
+                data=JSON.stringify(data);
+                data= base64.encode(data);
+                dd_item = self.closest('.dd-item');
+                dd_item.data('config_params', data);
+                view_config.update_nestable();
+            });
+        },
         save_fields:function(close){
+
+            view_config.update_data_grid();
             var fields=$('#field_block-output').val();
             control_id=$('#field_block-output').attr('control-id');
             fields= base64.encode(fields);
@@ -365,11 +350,43 @@ jQuery(document).ready(function($){
             li_clone.find(".field_type").select2();
 
 
-            li_clone.removeData();
+            li_clone.find('.config_params').empty();
+            var id=  view_config.makeid();
+            var table_grid=$('<table class="tbl_append_grid" data-config_params="" id="tblAppendGrid_'+id+'"></table>');
+            li_clone.find('.config_params').append($(table_grid));
+            li_clone.find('.tbl_append_grid').appendGrid(view_config.append_grid_option);
 
+            li_clone.find('.add_node').click(function add_node_click(){
+                view_config.add_node($(this));
+            });
+            li_clone.find('.add_sub_node').click(function add_sub_node_click(){
+                view_config.add_sub_node($(this));
+            });
+            li_clone.removeData();
             view_config.update_nestable();
             menu_type_id=li.attr('data-menu_type_id');
             id=li.attr('data-id');
+        },
+        append_grid_option:{
+            caption: 'Option params',
+            initRows: 1,
+            columns: [
+                { name: 'param_key', display: 'Key', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px' } },
+                { name: 'param_value', display: 'Value', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100px'} },
+            ],
+            initData:[] ,
+            rowDragging: true,
+            hideButtons: { moveUp: true, moveDown: true }
+        },
+        makeid:function makeid()
+        {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for( var i=0; i < 5; i++ )
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            return text;
         },
         add_sub_node:function(self){
             li=self.closest('.dd-item');
@@ -407,6 +424,18 @@ jQuery(document).ready(function($){
             li_clone.find('input.field_type').removeClass('select2-offscreen').removeData();
             li_clone.find("input.field_type").select2();
 
+            li_clone.find('.config_params').empty();
+            var id=  view_config.makeid();
+            var table_grid=$('<table class="tbl_append_grid" data-config_params="" id="tblAppendGrid_'+id+'"></table>');
+            li_clone.find('.config_params').append($(table_grid));
+            li_clone.find('.tbl_append_grid').appendGrid(view_config.append_grid_option);
+
+            li_clone.find('.add_node').click(function add_node_click(){
+                view_config.add_node($(this));
+            });
+            li_clone.find('.add_sub_node').click(function add_sub_node_click(){
+                view_config.add_sub_node($(this));
+            });
 
             view_config.update_nestable();
             id=li.attr('data-id');

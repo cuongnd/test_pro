@@ -41,6 +41,7 @@ class elementButtonHelper extends  elementHelper
         $id=$params->get('id','');
         $button_type=$params->get('button_type','submit');
         $method_submit=$params->get('method_submit','get');
+        $is_booking=$params->get('is_booking',1);
         $text=$params->get('text','text_'.$block->id);
         $placeholder=$params->get('placeholder','placeholder_'.$block->id);
         $bindingSource=$params->get('data')->bindingSource;

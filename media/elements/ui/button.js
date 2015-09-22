@@ -39,7 +39,7 @@ jQuery(document).ready(function($){
         data_submit.parse_query= parse_query;
         //data_submit.parser_url=parser_url;
         ajaxLoadFieldTypeOfModule=$.ajax({
-            type: "POST",
+            type: "GET",
             dataType: "json",
             url: this_host+'/index.php',
             data: (function () {

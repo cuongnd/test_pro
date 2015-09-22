@@ -42,9 +42,6 @@
         </fields>
         <fields name="style" label="Style element and control">
             <fields name="style_element" description="Style element" label="Style element">
-                <fields name="convert_type1"  description="Option1" label="Option1">
-                    <field name="convert_type123" type="elementtype" label="Convert to element type" description="Convert to element type" onchange="element_ui_element.convert_to_element($(this))" />
-                </fields>
 
                 <field name="font_family" type="text" description="font family" label="Font family" />
                 <field name="font_size" type="text" description="font size" label="Font size" default="" />

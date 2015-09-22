@@ -598,7 +598,51 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         die;
 
     }
+    function action_map_copy($mapcopy,$key_value=0,$foreign_table='',$maxLevel = 9999, $level = 0)
+    {
+        if($level<=$maxLevel)
+        {
+            foreach ($mapcopy as $item) {
 
+                $table_name = $item->table_name;
+                if(!$table_name)
+                {
+                    echo "table must not empty";
+                    die;
+                }
+                $column_name = $item->column_name;
+                if(!$column_name)
+                {
+                    echo "table $table_name not config column_name";
+                    die;
+                }
+                $foreign_key = $item->foreign_key;
+                if($level>0&&!$foreign_key)
+                {
+                    echo "table $table_name not config foreign_key";
+                    die;
+                }
+                $db = JFactory::getDbo();
+                $item_table = new JTableUpdateTable($db, $table_name);
+                $item_table->load(array($column_name => $key_value));
+                $item_table->$column_name = 0;
+                $item_table->parent_id = $key_value;
+                $item_table->create_by_booking = 1;
+                $item_table->store();
+                if($level>0&&is_object($foreign_table)) {
+                    $foreign_table->$foreign_key = $item_table->$column_name;
+                    $foreign_table->store();
+                }
+                $key_value1 = $item_table->$column_name;
+                if(is_array($item->children)&&count($item->children)>0 ) {
+                    $level1=$level+1;
+                    phpMyAdminControllerDataSource::action_map_copy($item->children,$key_value1,$item_table, $maxLevel,$level1);
+                }
+            }
+
+        }
+
+    }
     public  function ajax_save_data()
     {
         $app=JFactory::getApplication();
@@ -612,6 +656,19 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         $params = new JRegistry;
 
         $params->loadString($table_block->params);
+
+        $is_booking=$params->get('is_booking',1);
+        if($is_booking==1)
+        {
+            $mapcopy=$params->get('mapcopy','');
+            require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+            $mapcopy = (array)up_json_decode($mapcopy, false, 512, JSON_PARSE_JAVASCRIPT);
+            require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+            phpMyAdminControllerDataSource::action_map_copy($mapcopy,8);
+            die;
+
+        }
+
         $process_type=$params->get('process_type','auto');
         $config_update_data= $params->get('config_update_data','');
         if($config_update_data!='') {

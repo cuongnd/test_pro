@@ -11,8 +11,10 @@ $form=$modelPosition->getForm();
 $db=JFactory::getDbo();
 require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
 require_once JPATH_ROOT.'/libraries/joomla/form/field.php';
-
-$item->ui_path = substr($item->ui_path, 1);
+if($item->ui_path[0]=='/')
+{
+    $item->ui_path = substr($item->ui_path, 1);
+}
 $table_control=new JTableUpdateTable($db,'control');
 
 
@@ -21,7 +23,6 @@ $fields=$table_control->fields;
 $fields=base64_decode($fields);
 require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
 $fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
-
 $table_control->load(array("element_path"=>"root_element"));
 $main_fields=$table_control->fields;
 $main_fields=base64_decode($main_fields);
@@ -79,20 +80,18 @@ function stree_node_xml($fields,$block_id=0,$key_path='',$indent='',$form,$maxLe
                     $name='jform'.$name;
                     $item_field->__set('id',$name);
                     $item_field->__set('name',$name);
+                    $item_field->__set('label',$item->label);
                     $item_field->value=$value;
+                    require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+                    $item->config_params=base64_decode($item->config_params);
+                    $item->config_params = (array)up_json_decode($item->config_params, false, 512, JSON_PARSE_JAVASCRIPT);
+                    $item_field->config_params=$item->config_params;
                     $item_field->element=new stdClass();
 
                     ?>
 
 
-                    <div class="form-group">
-                        <div class="col-xs-5 control-label">
-                            <?php echo $item->label ?>
-                        </div>
-                        <div class="col-xs-7">
-                            <?php echo $item_field->renderField(array(),true);  ?>
-                        </div>
-                    </div>
+                    <?php echo $item_field->renderField(array(),true);  ?>
 
 
 
