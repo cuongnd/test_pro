@@ -63,7 +63,10 @@ class elementFormWizardHelper extends  elementHelper
         $html.=ob_get_clean();
         return $html;
     }
+    public function render_element($block,$enableEditWebsite)
+    {
 
+    }
     function getFooterHtml($block,$enableEditWebsite)
     {
         $html='';

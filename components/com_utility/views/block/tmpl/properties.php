@@ -7,7 +7,9 @@ $block_id=$app->input->get('block_id',0,'int');
 $app->input->set('id',$block_id);
 $modelPosition=JModelLegacy::getInstance('Position','UtilityModel');
 $item=$modelPosition->getItem();
+
 $form=$modelPosition->getForm();
+
 $db=JFactory::getDbo();
 require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
 require_once JPATH_ROOT.'/libraries/joomla/form/field.php';
@@ -74,6 +76,7 @@ function stree_node_xml($fields,$block_id=0,$key_path='',$indent='',$form,$maxLe
                     }
                     $item->type=$item->type?$item->type:'text';
                     $item_field=JFormHelper::loadFieldType($item->type, true);
+
                     $value=$form->getData()->get(implode('.',$name),$item->default);
 
                     $name='['.implode('][',$name).']';

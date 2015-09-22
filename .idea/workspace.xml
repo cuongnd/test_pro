@@ -5,39 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="sdfdsfds">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/array2xml-master/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/array2xml-master/Tests/Array2xmlTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/array2xml-master/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/array2xml-master/array2xml.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/array2xml-master/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/mapcopy.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/mapcopy.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/mapcopy.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/mapcopy.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cache/_system/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-_system-1625f66878b648ea3d8a6ed520c11370.php" afterPath="$PROJECT_DIR$/cache/_system/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-_system-1625f66878b648ea3d8a6ed520c11370.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cache/mod_travel_search/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-mod_travel_search-fe96cb8a4f8744f5851e919c64361126.php" afterPath="$PROJECT_DIR$/cache/mod_travel_search/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-mod_travel_search-fe96cb8a4f8744f5851e919c64361126.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/bookingsummary.css" afterPath="$PROJECT_DIR$/media/elements/ui/bookingsummary.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/button.js" afterPath="$PROJECT_DIR$/media/elements/ui/button.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/button.php" afterPath="$PROJECT_DIR$/media/elements/ui/button.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/button.xml" afterPath="$PROJECT_DIR$/media/elements/ui/button.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/calenderserivce.css" afterPath="$PROJECT_DIR$/media/elements/ui/calenderserivce.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php" afterPath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_phpmyadmin/controllers/datasource.php" afterPath="$PROJECT_DIR$/components/com_phpmyadmin/controllers/datasource.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/form/field.php" afterPath="$PROJECT_DIR$/libraries/joomla/form/field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/form/form.php" afterPath="$PROJECT_DIR$/libraries/joomla/form/form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/formwizard.css" afterPath="$PROJECT_DIR$/media/elements/ui/formwizard.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/h2.css" afterPath="$PROJECT_DIR$/media/elements/ui/h2.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/form/field/inputmask.js" afterPath="$PROJECT_DIR$/libraries/cms/form/field/inputmask.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/mod_travel_search/tmpl/default.php" afterPath="$PROJECT_DIR$/modules/mod_travel_search/tmpl/default.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/formwizard.php" afterPath="$PROJECT_DIR$/media/elements/ui/formwizard.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/formwizard.xml" afterPath="$PROJECT_DIR$/media/elements/ui/formwizard.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/juri_flow1.text" afterPath="$PROJECT_DIR$/logs/juri_flow1.text" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/form/fields/list.php" afterPath="$PROJECT_DIR$/libraries/joomla/form/fields/list.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/passengers.css" afterPath="$PROJECT_DIR$/media/elements/ui/passengers.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/models/position.php" afterPath="$PROJECT_DIR$/components/com_utility/models/position.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/models/forms/position.xml" afterPath="$PROJECT_DIR$/components/com_utility/models/forms/position.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php" afterPath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/views/field/tmpl/properties.php" afterPath="$PROJECT_DIR$/components/com_utility/views/field/tmpl/properties.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/room.css" afterPath="$PROJECT_DIR$/media/elements/ui/room.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layouts/website/css/style_61_169.css" afterPath="$PROJECT_DIR$/layouts/website/css/style_61_169.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layouts/website/css/style_61_230.css" afterPath="$PROJECT_DIR$/layouts/website/css/style_61_230.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/form/fields/text.php" afterPath="$PROJECT_DIR$/libraries/joomla/form/fields/text.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/assets/js/view_config.js" afterPath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/assets/js/view_config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="test_pro.iws" />
@@ -62,71 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="config_default.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php">
+      <file leaf-file-name="formwizard.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/media/elements/ui/formwizard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.7307692" vertical-offset="379" max-vertical-offset="4088">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="datasource.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/components/com_phpmyadmin/controllers/datasource.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6838843" vertical-offset="10294" max-vertical-offset="17943">
-              <caret line="631" column="29" selection-start-line="631" selection-start-column="29" selection-end-line="631" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="configuration_61.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/configuration/configuration_61.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614" vertical-offset="646" max-vertical-offset="2078">
-              <caret line="39" column="35" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="position.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/com_utility/models/position.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.538462" vertical-offset="16601" max-vertical-offset="23349">
-              <caret line="1017" column="0" selection-start-line="992" selection-start-column="0" selection-end-line="1017" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_config.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/assets/js/view_config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7208" max-vertical-offset="9316">
-              <caret line="437" column="15" selection-start-line="432" selection-start-column="12" selection-end-line="437" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mapcopy.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/mapcopy.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.538462" vertical-offset="4036" max-vertical-offset="9052">
-              <caret line="258" column="48" selection-start-line="258" selection-start-column="23" selection-end-line="258" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mapcopy.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/mapcopy.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3519" max-vertical-offset="8755">
-              <caret line="229" column="50" selection-start-line="229" selection-start-column="50" selection-end-line="229" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.69982845" vertical-offset="935" max-vertical-offset="2266">
+              <caret line="79" column="48" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -146,8 +62,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cache/binding_source_by_php_3407.php" />
-        <option value="$PROJECT_DIR$/components/com_phpmyadmin/models/forms/datasource.xml" />
         <option value="$PROJECT_DIR$/cache/get_data_by_data_source_114.php" />
         <option value="$PROJECT_DIR$/cache/binding_source_by_php_3442.php" />
         <option value="$PROJECT_DIR$/cache/binding_source_by_php_3437.php" />
@@ -186,7 +100,6 @@
         <option value="$PROJECT_DIR$/libraries/joomla/form/fields/list.php" />
         <option value="$PROJECT_DIR$/libraries/joomla/form/field.php" />
         <option value="$PROJECT_DIR$/media/elements/ui/button.php" />
-        <option value="$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php" />
         <option value="$PROJECT_DIR$/components/com_utility/models/forms/position.xml" />
         <option value="$PROJECT_DIR$/libraries/joomla/form/form.php" />
         <option value="$PROJECT_DIR$/configuration/configuration_61.php" />
@@ -197,6 +110,9 @@
         <option value="$PROJECT_DIR$/libraries/cms/form/field/mapcopy.js" />
         <option value="$PROJECT_DIR$/libraries/cms/form/field/mapcopy.php" />
         <option value="$PROJECT_DIR$/components/com_phpmyadmin/controllers/datasource.php" />
+        <option value="$PROJECT_DIR$/modules/mod_travel_search/tmpl/default.php" />
+        <option value="$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php" />
+        <option value="$PROJECT_DIR$/media/elements/ui/formwizard.php" />
       </list>
     </option>
   </component>
@@ -302,166 +218,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="joomla" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="joomla" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filesystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="form" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="form" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="field" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="array2xml-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="array2xml-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -647,46 +403,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com_phpmyadmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com_phpmyadmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -696,7 +412,7 @@
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="SearchEverywhereHistoryKey" value="mapco&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/mapcopy.php&#10;models/position&#9;FILE&#9;file://H:/project/test_pro/components/com_utility/models/position.php&#10;jform&#9;null&#9;null&#10;configupdate&#9;null&#9;null&#10;jfield&#9;null&#9;null&#10;position&#9;FILE&#9;file://H:/project/test_pro/components/com_utility/models/forms/position.xml&#10;bindingSource&#9;null&#9;null&#10;field&#9;FILE&#9;file://H:/project/test_pro/libraries/joomla/form/field.php&#10;select2.php&#9;FILE&#9;file://H:/project/test_pro/libraries/joomla/form/fields/select2.php&#10;jficon&#9;null&#9;null&#10;datasource&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.js&#10;design&#9;FILE&#9;file://H:/project/test_pro/templates/sprflat/js/design.js&#10;select2.&#9;FILE&#9;file://H:/project/test_pro/libraries/joomla/form/fields/bindingsourceselect2.php&#10;helpers/website&#9;FILE&#9;file://H:/project/test_pro/components/com_website/helpers/website.php&#10;posi&#9;FILE&#9;file://H:/project/test_pro/components/com_utility/models/forms/position.xml&#10;elementtype&#9;null&#9;null&#10;position.xml&#9;FILE&#9;file://H:/project/test_pro/components/com_utility/models/forms/position.xml&#10;gridfo&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/gridformartheader.php&#10;coding&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/coding.php&#10;design.js&#9;FILE&#9;file://H:/project/test_pro/templates/sprflat/js/design.js&#10;juti&#9;null&#9;null&#10;grid&#9;FILE&#9;file://H:/project/test_pro/media/elements/ui/grid.php&#10;for&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/gridformartheader.php&#10;dataso&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.php&#10;filterselect2&#9;null&#9;null&#10;selectblock&#9;null&#9;null" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libraries/joomla/form/fields/list.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
     <property name="LayoutCode.rearrangeEntriesXML" value="false" />
     <property name="FullScreen" value="false" />
@@ -790,12 +506,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23365785" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09596662" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -861,39 +577,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/filesystem/folder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="12104">
-          <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/form/fields/icon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4539" max-vertical-offset="5372">
-          <caret line="273" column="0" selection-start-line="268" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sprflat/assets/js/jquery.sprFlat.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="9724" max-vertical-offset="24172">
-          <caret line="587" column="52" selection-start-line="587" selection-start-column="52" selection-end-line="587" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sprflat/js/design.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3446" max-vertical-offset="48669">
-          <caret line="217" column="19" selection-start-line="217" selection-start-column="19" selection-end-line="217" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libraries/adminfrontend/adminleft.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.423077" vertical-offset="5899" max-vertical-offset="8455">
@@ -1142,14 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.423077" vertical-offset="1310" max-vertical-offset="3022">
-          <caret line="93" column="74" selection-start-line="75" selection-start-column="20" selection-end-line="93" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/filesystem/file.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5384617" vertical-offset="85" max-vertical-offset="9988">
@@ -1208,7 +888,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/models/position.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.538462" vertical-offset="16601" max-vertical-offset="23349">
+        <state vertical-scroll-proportion="1.2107438" vertical-offset="16601" max-vertical-offset="23349">
           <caret line="1017" column="0" selection-start-line="992" selection-start-column="0" selection-end-line="1017" selection-end-column="0" />
           <folding />
         </state>
@@ -1216,7 +896,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/configuration/configuration_61.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614" vertical-offset="646" max-vertical-offset="2078">
+        <state vertical-scroll-proportion="0.03420523" vertical-offset="646" max-vertical-offset="2078">
           <caret line="39" column="35" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="35" />
           <folding />
         </state>
@@ -1224,40 +904,80 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/mapcopy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3519" max-vertical-offset="8755">
+        <state vertical-scroll-proportion="0.73333335" vertical-offset="3519" max-vertical-offset="8755">
           <caret line="229" column="50" selection-start-line="229" selection-start-column="50" selection-end-line="229" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/assets/js/view_config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7208" max-vertical-offset="9316">
-          <caret line="437" column="15" selection-start-line="432" selection-start-column="12" selection-end-line="437" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/mapcopy.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.538462" vertical-offset="4036" max-vertical-offset="9052">
-          <caret line="258" column="48" selection-start-line="258" selection-start-column="23" selection-end-line="258" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7307692" vertical-offset="379" max-vertical-offset="4088">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.5123967" vertical-offset="4036" max-vertical-offset="9052">
+          <caret line="258" column="23" selection-start-line="258" selection-start-column="23" selection-end-line="258" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_phpmyadmin/controllers/datasource.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6838843" vertical-offset="10294" max-vertical-offset="17943">
+        <state vertical-scroll-proportion="0.29752067" vertical-offset="10481" max-vertical-offset="17943">
           <caret line="631" column="29" selection-start-line="631" selection-start-column="29" selection-end-line="631" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/assets/js/view_config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6009852" vertical-offset="6791" max-vertical-offset="9415">
+          <caret line="421" column="13" selection-start-line="421" selection-start-column="0" selection-end-line="421" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/elements/ui/formwizard.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="690">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/elements/ui/formwizardcontent.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.30706075" vertical-offset="187" max-vertical-offset="1391">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1903945" vertical-offset="76" max-vertical-offset="3303">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/mod_travel_search/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4871355" vertical-offset="770" max-vertical-offset="1654">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6123499" vertical-offset="1955" max-vertical-offset="4187">
+          <caret line="136" column="157" selection-start-line="136" selection-start-column="147" selection-end-line="136" selection-end-column="157" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/elements/ui/formwizard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69982845" vertical-offset="935" max-vertical-offset="2266">
+          <caret line="79" column="48" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="48" />
           <folding />
         </state>
       </provider>

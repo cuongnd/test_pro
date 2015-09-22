@@ -57,8 +57,8 @@ defined('_JEXEC') or die;
 </div>
 
 <script>
-    $(function () {
-        $('#tab_search_<?php echo $module->id ?> a:last').tab('show')
-    })
+    jQuery(document).ready(function($){
+        $('#tab_search_<?php echo $module->id ?> a:last').tab('show');
+    });
 </script>
 
