@@ -1785,7 +1785,6 @@ class JForm
 
 		// Get the field type.
 		$type = $element['type'] ? (string) $element['type'] : 'text';
-
 		// Load the JFormField object for the field.
 		$field = $this->loadFieldType($type);
 

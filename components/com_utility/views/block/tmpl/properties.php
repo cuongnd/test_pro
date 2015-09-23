@@ -66,39 +66,19 @@ function stree_node_xml($fields,$block_id=0,$key_path='',$indent='',$form,$maxLe
 
                 <div class="form-horizontal property-item">
                     <?php
-                    $name=explode('.',$key_path1);
+                    $group=explode('.',$key_path);
 
-                    if(strtolower($name[0])=='option')
+                    if(strtolower($group[0])=='option')
                     {
-                        $name=array_reverse($name);
-                        array_pop($name);
-                        $name=array_reverse($name);
+                        $name=array_reverse($group);
+                        array_pop($group);
+                        $group=array_reverse($group);
                     }
-                    $item->type=$item->type?$item->type:'text';
-                    $item_field=JFormHelper::loadFieldType($item->type, true);
-
-                    $value=$form->getData()->get(implode('.',$name),$item->default);
-
-                    $name='['.implode('][',$name).']';
-                    $name='jform'.$name;
-                    $item_field->__set('id',$name);
-                    $item_field->__set('name',$name);
-                    $item_field->__set('label',$item->label);
-                    $item_field->value=$value;
-                    require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
-                    $item->config_params=base64_decode($item->config_params);
-                    $item->config_params = (array)up_json_decode($item->config_params, false, 512, JSON_PARSE_JAVASCRIPT);
-                    $item_field->config_params=$item->config_params;
-                    $item_field->element=new stdClass();
-
+                    $group=implode('.',$group);
+                    //echo "$item->name $group";
+                    $item_field= $form->getField($item->name,$group);
+                    echo $item_field->renderField(array(),true);
                     ?>
-
-
-                    <?php echo $item_field->renderField(array(),true);  ?>
-
-
-
-
                 </div>
 
             <?php

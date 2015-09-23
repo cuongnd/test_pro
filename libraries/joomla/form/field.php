@@ -425,7 +425,6 @@ abstract class JFormField
             case 'pattern':
             case 'group':
             case 'default':
-            case 'label':
                 $this->$name = (string)$value;
                 break;
 
@@ -485,9 +484,6 @@ abstract class JFormField
 
             case 'size':
                 $this->$name = (int)$value;
-                break;
-            case 'element':
-                $this->$name = (array)$value;
                 break;
 
             default:
@@ -966,7 +962,6 @@ abstract class JFormField
                     'coding',
                     'inputitem',
                     'advancedbindingsourceselect2',
-                    'configupdate',
                     'gridselected',
                     'stylegenerator',
                     ''
@@ -990,7 +985,7 @@ abstract class JFormField
             $html = '
 				<div class="form-group">
 					<div class="col-xs-5 control-label">
-						' . JText::_($this->label) . '
+						' . JText::_($this->element['label']) . '
 					</div>
 					<div class="col-xs-7">
 						' . $valueHtml . '

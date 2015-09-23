@@ -1,34 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<config>
-    <fieldset name="option" description="Option" label="Option">
-        <field name="css_class12" type="select2" default="" tags="1" label="Css class111" maximumSelectionSize="10"/>
-    </fieldset>
-    <fields name="params">
-        <fields name="data"  description="Data config" label="Data config">
-            <field name="bindingSource"  type="bindingSource" tags="0" maximumSelectionSize="1" description="binding Source" label="binding Source"/>
-            <field name="bindingSourceUpdate" readonly="readonly" type="bindingSource" description="binding Source Update" label="Binding Source Update"/>
-            <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
-            <field name="data_source_editable"  type="bindingSource" tags="0" maximumSelectionSize="1" description="Data source editable" label="Data source editable"/>
-            <field name="source_key"  type="bindingSource" description="Key" label="Key"/>
-            <field name="source_value"  type="bindingSource" description="Value" label="Value"/>
-
-        </fields>
-
-        <field name="config_update" readonly="readonly" type="configupdate" description="Config update" label="Config update"/>
-
-        <fields name="element"  description="Element config" label="Element config">
-            <field name="text" type="text" default="" label="Text"/>
-            <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
-            <field name="id" type="text" default="" label="Id"/>
-            <field name="id" type="text" default="" label="Id"/>
-            <field name="editable" onchange="element_ui_quick_edit.change_state_edit_able($(this))" type="list" class="btn-group btn-group-yesno" label="Enable edit" description="Enable edit" default="1">
-                <option value="1">JYES</option>
-                <option value="0">JNO</option>
-            </field>
-            <field name="allow_clear"  type="list" class="btn-group btn-group-yesno" label="Allow clear" description="Allow clear" default="1">
-                <option value="1">JYES</option>
-                <option value="0">JNO</option>
-            </field>
-        </fields>
-    </fields>
-</config>
+<config><fields name="params"><fields name="data">
+					<field type="bindingSource" label="binding Source" default="" name="bindingSource" >
+																										</field>
+								
+					<field type="filterselect2" label="Filter by" default="" name="filter_by" >
+																										</field>
+								
+					<field type="advancedbindingsourceselect2" label="Data source" default="" name="data_source" >
+																										</field>
+								
+					<field type="bindingSource" label="Key" default="" name="source_key" >
+																										</field>
+								
+					<field type="bindingSource" label="Value" default="" name="source_value" >
+																										</field>
+								</fields>				</fields>				</config>

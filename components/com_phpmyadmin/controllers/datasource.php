@@ -88,6 +88,7 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
 
         $modalDataSources=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
         $list_item=$modalDataSources->getListDataSource($bindingSource,$tablePosition);
+
         $list=array();
         foreach($list_item as $key=>$item)
         {

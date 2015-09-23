@@ -35,6 +35,7 @@ if(!$element_path->id)
 }
 $fields=$table_control->fields;
 $fields=base64_decode($fields);
+$field_block_output=$fields;
 require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
 $fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
 if(!count($fields))
@@ -144,6 +145,10 @@ ob_start();
             </select>
 
         </label>
+        <label>Read only<input <?php echo $item->readonly == 1 ? 'checked' : '' ?>  type="checkbox"
+                                                                                     onchange="view_config.update_data_column(this,'readonly','checkbox')"
+                                                                                     value="1"/></label>
+
         <div class="config_params">
             <table class="tbl_append_grid" data-config_params="<?php echo $item->config_params  ?>" id="tblAppendGrid_<?php echo $indent1 ?>"></table>
         </div>
@@ -189,7 +194,7 @@ ob_start();
 
         </div>
     </div>
-    <input type="hidden" control-id="<?php echo $table_control->id ?>"  value="<?php echo $table_control->fields ?>"  id="field_block-output"/>
+    <input type="hidden" control-id="<?php echo $table_control->id ?>"  value="<?php echo $field_block_output ?>"  id="field_block-output"/>
 
 
 

@@ -1,442 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
 <form>
-    <fieldset  description="Option" label="Option">
-        <field name="config_update" readonly="readonly" type="configupdate" description="Config update" label="Config update"/>
-
-        <field name="id" type="hidden" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" default="0" />
-        <field name="type" type="hidden" label="type" description="type" />
-        <field name="ui_path" type="hidden" label="ui_path" description="ui_path" />
-        <field name="title" type="text" description="COM_MODULES_FIELD_TITLE_DESC" label="JGLOBAL_TITLE" class="input-xxlarge input-large-text" size="40" maxlength="100" required="true" />
-        <field name="note" type="text" description="Note" label="Note" maxlength="100" size="40" class="span12" />
-        <field name="source_less" type="filelist" directory="layouts/kendo_grid_layout/less" label="Source less" description="Source less" />
-        <field name="css_class" type="select2" default="" tags="1" label="Css class" maximumSelectionSize="10"/>
-        <field name="access" type="accesslevel" description="JFIELD_ACCESS_DESC" label="JFIELD_ACCESS_LABEL" size="1" />
-        <field name="only_page" type="list" class="chzn-color-state" default="0" description="Only Page" label="Only Page" size="1">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </field>
-
-        <field name="advanced_params" type="advancedbindingsourceselect2" tags="1" maximumSelectionSize="1" description="Advanced" label="Advanced" />
-        <field name="menu_item_id" type="showinpage" label="show in page" description="show in page" required="true" size="1" />
-        <field name="convert_type" type="elementtype" label="Convert to element type" description="Convert to element type" onchange="element_ui_element.convert_to_element($(this))" />
-    </fieldset>
-    <fields name="params" description="params" label="params">
-        <fields name="data"  label="data config">
-        </fields>
-        <fields name="element" description="Element config" label="Element config">
-            <field name="debug" type="list" description="Debug" default="0" label="Debug">
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-            </field>
-            <field name="enable_submit" type="list" description="Enable submit" default="1" label="Enable submit">
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-            </field>
-            <field name="enable" type="list" description="Enable" default="1" label="Enable">
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-            </field>
-            <field name="css3_gradient_generator" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="css3 gradient generator" description="css3 gradient generator" />
-            <field name="stylegenerator" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="css3 style generator" description="css3 style generator" />
-
-        </fields>
-        <fields name="style" label="Style element and control">
-            <fields name="style_element" description="Style element" label="Style element">
-
-                <field name="font_family" type="text" description="font family" label="Font family" />
-                <field name="font_size" type="text" description="font size" label="Font size" default="" />
-                <field name="font_weight" type="text" description="font weight" label="Font weight" />
-                <field name="font_style" type="text" description="font style" label="Font style" />
-                <field name="font_variant" type="text" description="font variant" label="Font variant" />
-                <field name="line_height" type="text" description="line height" label="Line height" default="" />
-                <field name="letter_spacing" type="text" description="letter spacing" label="Letter spacing" default="" />
-                <field name="word_spacing" type="text" description="Word spacing" label="Word spacing" default="" />
-                <field name="text_align" type="list" default="auto" description="text align" label="Text align">
-                    <option value="auto">auto</option>
-                    <option value="inherit">Inherit</option>
-                    <option value="left">Left</option>
-                    <option value="right">Right</option>
-                    <option value="center">Center</option>
-                    <option value="justify">justify</option>
-                    <option value="initial">initial</option>
-                </field>
-                <field name="text_decoration" type="list" description="text decoration" label="Text decoration">
-                    <option value="inherit">Inherit</option>
-                    <option value="none">None</option>
-                    <option value="underline">Underline</option>
-                    <option value="overline">Overline</option>
-                    <option value="line-through">Line through</option>
-                    <option value="blink">Blink</option>
-                </field>
-                <field name="text_indent" type="text" description="text indent" label="Text indent" />
-                <field name="text_transform" type="list" description="text transform" label="Text transform">
-                    <option value="inherit">Inherit</option>
-                    <option value="uppercase">Uppercase</option>
-                    <option value="capitalize">Capitalize</option>
-                    <option value="full-size-kana">Full size kana</option>
-                    <option value="full-width">Full width</option>
-                    <option value="lowercase">Lowercase</option>
-                    <option value="none">None</option>
-                </field>
-                <field name="vertical_align" type="list" description="vertical align" label="Vertical align">
-                    <option value="inherit">Inherit</option>
-                    <option value="baseline">Baseline</option>
-                    <option value="bottom">Bottom</option>
-                    <option value="sub">Sub</option>
-                    <option value="super">Super</option>
-                    <option value="top">Top</option>
-                    <option value="middle">Middle</option>
-                    <option value="text-bottom">Text bottom</option>
-                </field>
-                <field name="white_space" type="list" description="white space" label="White space">
-                    <option value="inherit">Inherit</option>
-                    <option value="normal">Normal</option>
-                    <option value="pre">Pre</option>
-                    <option value="nowrap">Nowrap</option>
-                    <option value="pre-wrap">Pre wrap</option>
-                    <option value="pre-line">Pre line</option>
-                </field>
-                <field name="background_color" type="color" default="" description="background color" control="minicolors" label="Background color" />
-                <field name="background_image" type="browserserver" description="Background image" label="Background image" />
-                <field name="background_repeat" type="text" description="background repeat" label="Background-repeat" />
-                <field name="background_position" type="text" description="background position" label="Background position" />
-                <field name="background_attachment" type="text" description="background attachment" label="Background-attachment" />
-                <field name="color" type="color" default="" description="color" label="Color" />
-                <field name="padding_top" type="text" description="padding top" label="Padding top" default="" />
-                <field name="padding_right" type="text" description="padding right" label="Padding right" default="" />
-                <field name="padding_bottom" type="text" description="padding bottom" label="Padding bottom" default="" />
-                <field name="padding_left" type="text" description="padding left" label="Padding left" default="" />
-                <field name="border_top_left_radius" type="text" description="border-top-left-radius" label="border-top-left-radius " />
-                <field name="border_top_right_radius" type="text" description="border-top-right-radius" label="border-top-right-radius" />
-                <field name="border_bottom_right_radius" type="text" description="border-bottom-right-radius" label="border-bottom-right-radius" />
-                <field name="border_bottom_left_radius" type="text" description="border-bottom-left-radius" label="border-bottom-left-radius" />
-                <field name="border_top_style" type="text" description="border top style" label="Border top style" />
-                <field name="border_top_color" type="text" description="border top color" label="Border top color" />
-                <field name="border_top_width" type="text" description="border top width" label="Border top width" />
-                <field name="border_right_style" type="text" description="border right style" label="Border right style" />
-                <field name="border_right_color" type="text" description="border right color" label="Border right color" />
-                <field name="border_right_width" type="text" description="border right width" label="Border right width" />
-                <field name="border_bottom_style" type="text" description="border bottom style" label="Border bottom style" />
-                <field name="border_bottom_color" type="text" description="border bottom color" label="Border bottom color" />
-                <field name="border_bottom_width" type="text" description="border bottom width" label="Border bottom width" />
-                <field name="border_left_style" type="text" description="border left style" label="Border left style" />
-                <field name="border_left_color" type="text" description="border left color" label="Border left color" />
-                <field name="border_left_width" type="text" description="border left width" label="Border left width" />
-                <field name="outline_style" type="text" description="outline style" label="Outline style" />
-                <field name="outline_color" type="text" description="outline color" label="Outline color" />
-                <field name="margin_top" type="text" description="margin top" label="Margin top" />
-                <field name="margin_right" type="text" description="margin right" label="Margin right" default="" />
-                <field name="margin_bottom" type="text" description="margin bottom" label="Margin bottom" default="" />
-                <field name="margin_left" type="text" description="margin left" label="Margin left" default="" />
-                <field name="width" type="select2" default="" tags="1" label="Width" maximumSelectionSize="1">
-                    <option value="auto">Auto</option>
-                    <option value="initial">Initial</option>
-                </field>
-                <field name="height" type="text" description="height" label="Height" />
-                <field name="min_width" type="text" description="min width" label="Min width" />
-                <field name="max_width" type="text" description="max width" label="Max width" />
-                <field name="min_height" type="text" description="min height" label="Min height" />
-                <field name="max_height" type="text" description="max height" label="Max height" />
-                <field name="position" type="select2" default="" tags="false" label="Position" description="Position" maximumSelectionSize="1">
-                    <option value="">none</option>
-                    <option value="static">static</option>
-                    <option value="absolute">absolute</option>
-                    <option value="fixed">fixed</option>
-                    <option value="relative">relative</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-                <field name="top" type="text" description="top" label="Top" />
-                <field name="right" type="text" description="right" label="Right" />
-                <field name="bottom" type="text" description="bottom" label="Bottom" />
-                <field name="left" type="text" description="Left" label="Left" />
-                <field name="clip" type="text" description="clip" label="Clip" />
-
-                <field name="box-sizing" type="select2" default="" tags="false" label="box-sizing" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="content-box">content-box</option>
-                    <option value="border-box">border-box</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-
-                <field name="overflow" type="select2" default="" tags="false" label="overflow" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="visible">visible</option>
-                    <option value="hidden">hidden</option>
-                    <option value="scroll">scroll</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-                <field name="overflow-x" type="select2" default="" tags="false" label="overflow x" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="visible">visible</option>
-                    <option value="hidden">hidden</option>
-                    <option value="scroll">scroll</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-                <field name="overflow-y" type="select2" default="" tags="false" label="overflow y" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="visible">visible</option>
-                    <option value="hidden">hidden</option>
-                    <option value="scroll">scroll</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-
-
-
-                <field name="z_index" type="text" description="z index" label="Z index" />
-                <field name="float" type="select2" default="" tags="false" label="Float" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="left">left</option>
-                    <option value="right">right</option>
-                    <option value="none">none</option>
-                </field>
-                <field name="clear" type="text" description="clear" label="Clear" />
-                <field name="display" type="select2" default="auto" tags="false" label="Display" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="inline">inline</option>
-                    <option value="block">block</option>
-                    <option value="flex">flex</option>
-                    <option value="inline-block">inline-block</option>
-                    <option value="inline-flex">inline-flex</option>
-                    <option value="inline-table">inline-table</option>
-                    <option value="list-item">list-item</option>
-                    <option value="run-in">run-in</option>
-                    <option value="table">table</option>
-                    <option value="table-caption">table-caption</option>
-                    <option value="table-column-group">table-column-group</option>
-                    <option value="table-header-group">table-header-group</option>
-                    <option value="table-footer-group">table-footer-group</option>
-                    <option value="table-row-group">table-row-group</option>
-                    <option value="table-cell">table-cell</option>
-                    <option value="table-column">table-column</option>
-                    <option value="table-row">table-row</option>
-                    <option value="none">none</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-                <field name="visibility" type="text" description="visibility" label="Visibility" />
-                <field name="list_style" type="text" description="list style" label="List style" />
-                <field name="list_style_type" type="text" description="list style type" label="List style type" />
-                <field name="list_style_image" type="text" description="list style image" label="List style image" />
-                <field name="list_style_position" type="text" description="list style position" label="List style position" />
-                <field name="table_layout" type="text" description="table layout" label="table layout" />
-                <field name="border_collapse" type="text" description="border collapse" label="Border collapse" />
-                <field name="border_spacing" type="text" description="border spacing" label="Border spacing" />
-                <field name="empty_cells" type="text" description="empty cells" label="Empty cells" />
-                <field name="caption_side" type="text" description="caption side" label="Caption side" />
-                <field name="content" type="text" description="content" label="Content" />
-                <field name="counter_increment" type="text" description="counter increment" label="Counter increment" />
-                <field name="counter_reset" type="text" description="counter reset" label="Counter reset" />
-                <field name="quotes" type="text" description="quotes" label="Quotes" />
-                <field name="page_break_before" type="text" description="page break before" label="Page break before" />
-                <field name="page_break_after" type="text" description="page break after" label="Page break after" />
-                <field name="page_break_inside" type="text" description="page break inside" label="Page break inside" />
-                <field name="orphans" type="text" description="orphans" label="Orphans" />
-                <field name="widows" type="text" description="widows" label="Widows" />
-                <field name="cursor" type="text" description="cursor" label="Cursor" />
-                <field name="direction" type="text" description="direction" label="Direction" />
-                <field name="unicode_bidi" type="text" description="unicode bidi" label="unicode bidi" />
-            </fields>
-            <fields name="style_controller" description="Style controller" label="Style controller">
-                <field name="font_family" type="text" description="font family" label="Font family" />
-                <field name="font_size" type="text" description="font size" label="Font size" default="" />
-                <field name="font_weight" type="text" description="font weight" label="Font weight" />
-                <field name="font_style" type="text" description="font style" label="Font style" />
-                <field name="font_variant" type="text" description="font variant" label="Font variant" />
-                <field name="line_height" type="text" description="line height" label="Line height" default="" />
-                <field name="letter_spacing" type="text" description="letter spacing" label="Letter spacing" default="" />
-                <field name="word_spacing" type="text" description="Word spacing" label="Word spacing" default="" />
-                <field name="text_align" type="list" default="auto" description="text align" label="Text align">
-                    <option value="auto">auto</option>
-                    <option value="inherit">Inherit</option>
-                    <option value="left">Left</option>
-                    <option value="right">Right</option>
-                    <option value="center">Center</option>
-                    <option value="justify">justify</option>
-                    <option value="initial">initial</option>
-                </field>
-                <field name="text_decoration" type="list" description="text decoration" label="Text decoration">
-                    <option value="inherit">Inherit</option>
-                    <option value="none">None</option>
-                    <option value="underline">Underline</option>
-                    <option value="overline">Overline</option>
-                    <option value="line-through">Line through</option>
-                    <option value="blink">Blink</option>
-                </field>
-                <field name="text_indent" type="text" description="text indent" label="Text indent" />
-                <field name="text_transform" type="list" description="text transform" label="Text transform">
-                    <option value="inherit">Inherit</option>
-                    <option value="uppercase">Uppercase</option>
-                    <option value="capitalize">Capitalize</option>
-                    <option value="full-size-kana">Full size kana</option>
-                    <option value="full-width">Full width</option>
-                    <option value="lowercase">Lowercase</option>
-                    <option value="none">None</option>
-                </field>
-                <field name="vertical_align" type="list" description="vertical align" label="Vertical align">
-                    <option value="inherit">Inherit</option>
-                    <option value="baseline">Baseline</option>
-                    <option value="bottom">Bottom</option>
-                    <option value="sub">Sub</option>
-                    <option value="super">Super</option>
-                    <option value="top">Top</option>
-                    <option value="middle">Middle</option>
-                    <option value="text-bottom">Text bottom</option>
-                </field>
-                <field name="white_space" type="list" description="white space" label="White space">
-                    <option value="inherit">Inherit</option>
-                    <option value="normal">Normal</option>
-                    <option value="pre">Pre</option>
-                    <option value="nowrap">Nowrap</option>
-                    <option value="pre-wrap">Pre wrap</option>
-                    <option value="pre-line">Pre line</option>
-                </field>
-                <field name="background_color" type="color" default="" description="background color" control="minicolors" label="Background color" />
-                <field name="background_image" type="browserserver" description="Background image" label="Background image" />
-                <field name="background_repeat" type="text" description="background repeat" label="Background-repeat" />
-                <field name="background_position" type="text" description="background position" label="Background position" />
-                <field name="background_attachment" type="text" description="background attachment" label="Background-attachment" />
-                <field name="color" type="color" default="" description="color" label="Color" />
-                <field name="padding_top" type="text" description="padding top" label="Padding top" default="" />
-                <field name="padding_right" type="text" description="padding right" label="Padding right" default="" />
-                <field name="padding_bottom" type="text" description="padding bottom" label="Padding bottom" default="" />
-                <field name="padding_left" type="text" description="padding left" label="Padding left" default="" />
-                <field name="border_top_left_radius" type="text" description="border-top-left-radius" label="border-top-left-radius " />
-                <field name="border_top_right_radius" type="text" description="border-top-right-radius" label="border-top-right-radius" />
-                <field name="border_bottom_right_radius" type="text" description="border-bottom-right-radius" label="border-bottom-right-radius" />
-                <field name="border_bottom_left_radius" type="text" description="border-bottom-left-radius" label="border-bottom-left-radius" />
-                <field name="border_top_style" type="text" description="border top style" label="Border top style" />
-                <field name="border_top_color" type="text" description="border top color" label="Border top color" />
-                <field name="border_top_width" type="text" description="border top width" label="Border top width" />
-                <field name="border_right_style" type="text" description="border right style" label="Border right style" />
-                <field name="border_right_color" type="text" description="border right color" label="Border right color" />
-                <field name="border_right_width" type="text" description="border right width" label="Border right width" />
-                <field name="border_bottom_style" type="text" description="border bottom style" label="Border bottom style" />
-                <field name="border_bottom_color" type="text" description="border bottom color" label="Border bottom color" />
-                <field name="border_bottom_width" type="text" description="border bottom width" label="Border bottom width" />
-                <field name="border_left_style" type="text" description="border left style" label="Border left style" />
-                <field name="border_left_color" type="text" description="border left color" label="Border left color" />
-                <field name="border_left_width" type="text" description="border left width" label="Border left width" />
-                <field name="outline_style" type="text" description="outline style" label="Outline style" />
-                <field name="outline_color" type="text" description="outline color" label="Outline color" />
-                <field name="margin_top" type="text" description="margin top" label="Margin top" />
-                <field name="margin_right" type="text" description="margin right" label="Margin right" default="" />
-                <field name="margin_bottom" type="text" description="margin bottom" label="Margin bottom" default="" />
-                <field name="margin_left" type="text" description="margin left" label="Margin left" default="" />
-                <field name="width" type="select2" default="" tags="1" label="Width" maximumSelectionSize="1">
-                    <option value="auto">Auto</option>
-                    <option value="initial">Initial</option>
-                </field>
-                <field name="height" type="text" description="height" label="Height" />
-                <field name="min_width" type="text" description="min width" label="Min width" />
-                <field name="max_width" type="text" description="max width" label="Max width" />
-                <field name="min_height" type="text" description="min height" label="Min height" />
-                <field name="max_height" type="text" description="max height" label="Max height" />
-                <field name="position" type="select2" default="" tags="false" label="Position" description="Position" maximumSelectionSize="1">
-                    <option value="">none</option>
-                    <option value="static">static</option>
-                    <option value="absolute">absolute</option>
-                    <option value="fixed">fixed</option>
-                    <option value="relative">relative</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-                <field name="top" type="text" description="top" label="Top" />
-                <field name="right" type="text" description="right" label="Right" />
-                <field name="bottom" type="text" description="bottom" label="Bottom" />
-                <field name="left" type="text" description="Left" label="Left" />
-                <field name="clip" type="text" description="clip" label="Clip" />
-                <field name="box-sizing" type="select2" default="" tags="false" label="box-sizing" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="content-box">content-box</option>
-                    <option value="border-box">border-box</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-
-                <field name="overflow" type="select2" default="" tags="false" label="overflow" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="visible">visible</option>
-                    <option value="hidden">hidden</option>
-                    <option value="scroll">scroll</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-                <field name="overflow-x" type="select2" default="" tags="false" label="overflow x" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="visible">visible</option>
-                    <option value="hidden">hidden</option>
-                    <option value="scroll">scroll</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-                <field name="overflow-y" type="select2" default="" tags="false" label="overflow y" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="visible">visible</option>
-                    <option value="hidden">hidden</option>
-                    <option value="scroll">scroll</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-
-                <field name="z_index" type="text" description="z index" label="Z index" />
-                <field name="float" type="select2" default="auto" tags="false" label="Float" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="left">left</option>
-                    <option value="right">right</option>
-                    <option value="none">none</option>
-                </field>
-                <field name="clear" type="text" description="clear" label="Clear" />
-                <field name="display" type="select2" default="auto" tags="false" label="Display" maximumSelectionSize="1">
-                    <option value="auto">auto</option>
-                    <option value="inline">inline</option>
-                    <option value="block">block</option>
-                    <option value="flex">flex</option>
-                    <option value="inline-block">inline-block</option>
-                    <option value="inline-flex">inline-flex</option>
-                    <option value="inline-table">inline-table</option>
-                    <option value="list-item">list-item</option>
-                    <option value="run-in">run-in</option>
-                    <option value="table">table</option>
-                    <option value="table-caption">table-caption</option>
-                    <option value="table-column-group">table-column-group</option>
-                    <option value="table-header-group">table-header-group</option>
-                    <option value="table-footer-group">table-footer-group</option>
-                    <option value="table-row-group">table-row-group</option>
-                    <option value="table-cell">table-cell</option>
-                    <option value="table-column">table-column</option>
-                    <option value="table-row">table-row</option>
-                    <option value="none">none</option>
-                    <option value="initial">initial</option>
-                    <option value="inherit">inherit</option>
-                </field>
-                <field name="visibility" type="text" description="visibility" label="Visibility" />
-                <field name="list_style" type="text" description="list style" label="List style" />
-                <field name="list_style_type" type="text" description="list style type" label="List style type" />
-                <field name="list_style_image" type="text" description="list style image" label="List style image" />
-                <field name="list_style_position" type="text" description="list style position" label="List style position" />
-                <field name="table_layout" type="text" description="table layout" label="table layout" />
-                <field name="border_collapse" type="text" description="border collapse" label="Border collapse" />
-                <field name="border_spacing" type="text" description="border spacing" label="Border spacing" />
-                <field name="empty_cells" type="text" description="empty cells" label="Empty cells" />
-                <field name="caption_side" type="text" description="caption side" label="Caption side" />
-                <field name="content" type="text" description="content" label="Content" />
-                <field name="counter_increment" type="text" description="counter increment" label="Counter increment" />
-                <field name="counter_reset" type="text" description="counter reset" label="Counter reset" />
-                <field name="quotes" type="text" description="quotes" label="Quotes" />
-                <field name="page_break_before" type="text" description="page break before" label="Page break before" />
-                <field name="page_break_after" type="text" description="page break after" label="Page break after" />
-                <field name="page_break_inside" type="text" description="page break inside" label="Page break inside" />
-                <field name="orphans" type="text" description="orphans" label="Orphans" />
-                <field name="widows" type="text" description="widows" label="Widows" />
-                <field name="cursor" type="text" description="cursor" label="Cursor" />
-                <field name="direction" type="text" description="direction" label="Direction" />
-                <field name="unicode_bidi" type="text" description="unicode bidi" label="unicode bidi" />
-            </fields>
-        </fields>
-    </fields>
-</form>
+					<field type="text" readonly="true" label="Id" default="" name="id" >
+											</field>
+								
+					<field type="text" readonly="false" label="Name" default="" name="name" >
+											</field>
+								
+					<field type="text" readonly="false" label="Title" default="" name="title" >
+											</field>
+												<fields name="params"><fields name="element">
+					<field type="text" readonly="false" label="Element config" default="" name="debug" >
+											</field>
+								
+					<field type="text" readonly="false" label="enable" default="" name="enable" >
+											</field>
+								
+					<field type="gradient" readonly="false" label="css3 gradient generator" default="" name="css3_gradient_generator" >
+											</field>
+								
+					<field type="stylegenerator" readonly="false" label="css3 style generator" default="" name="stylegenerator" >
+											</field>
+								</fields>				<fields name="style"><fields name="style_element"><fields name="font_setup">
+					<field type="text" readonly="false" label="font family" default="" name="font_family" >
+											</field>
+								
+					<field type="text" readonly="false" label="font size" default="" name="font_size" >
+											</field>
+								
+					<field type="text" readonly="false" label="font weight" default="" name="font_weight" >
+											</field>
+								
+					<field type="text" readonly="false" label="font style" default="" name="font_style" >
+											</field>
+								</fields>				
+					<field type="text" readonly="false" label="line height" default="" name="line_height" >
+											</field>
+								
+					<field type="text" readonly="false" label="letter spacing" default="" name="letter_spacing" >
+											</field>
+								
+					<field type="text" readonly="false" label="Word spacing" default="" name="word_spacing" >
+											</field>
+								
+					<field type="list" readonly="false" label="text align" default="" name="text_align" >
+																							<option value="auto">auto</option>
+																																<option value="inherit">Inherit</option>
+																																<option value="left">Left</option>
+																																<option value="right">Right</option>
+																																<option value="center">Center</option>
+																																<option value="justify">justify</option>
+																																<option value="initial">initial</option>
+																				</field>
+								
+					<field type="list" readonly="false" label="text decoration" default="" name="text_decoration" >
+																							<option value="inherit">Inherit</option>
+																																<option value="none">None</option>
+																																<option value="underline">Underline</option>
+																																<option value="overline">Overline</option>
+																																<option value="line-through">Line through</option>
+																																<option value="blink">Blink</option>
+																				</field>
+								</fields>				</fields>				</fields>				</form>

@@ -728,6 +728,45 @@ class UtilityModelPosition extends JModelAdmin
 			$id			= JArrayHelper::getValue($data, 'id');
 		}
 
+		$ui_path= $item->ui_path;
+
+		if($ui_path[0]=='/')
+		{
+			$ui_path = substr($ui_path, 1);
+		}
+		$db=JFactory::getDbo();
+		require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+		$table_control=new JTableUpdateTable($db,'control');
+		$table_control->load(array("element_path"=>$ui_path));
+		$fields=$table_control->fields;
+		$fields=base64_decode($fields);
+
+		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		ob_start();
+		UtilityModelPosition::render_to_xml($fields);
+		$string_xml=ob_get_clean();
+		$string_xml='<config>'.$string_xml.'</config>';
+		jimport('joomla.filesystem.file');
+		JFile::write($formFile,$string_xml);
+
+
+
+
+		$table_control->load(array("element_path"=>'root_element'));
+		$fields=$table_control->fields;
+		$fields=base64_decode($fields);
+
+		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		ob_start();
+		UtilityModelPosition::render_to_xml($fields);
+		$string_xml=ob_get_clean();
+		$string_xml='<form>'.$string_xml.'</form>';
+		jimport('joomla.filesystem.file');
+		JFile::write(JPATH_ROOT.'/components/com_utility/models/forms/position.xml',$string_xml);
+
+
+
 		// These variables are used to add data from the plugin XML files.
 		$this->setState('item.client_id', $clientId);
 		$this->setState('item.module', $module);
@@ -995,17 +1034,41 @@ class UtilityModelPosition extends JModelAdmin
 		if($level<=$maxLevel)
 		{
 			foreach ($fields as $item) {
+				$level1=$level+1;
 				if(is_array($item->children)&&count($item->children)>0 ) {
-					?>
-					<fields name="<?php echo $item->name ?>">
-						<?php UtilityModelPosition::render_to_xml($item->children,  $maxLevel, $level++); ?>
-					</fields>
-				<?php
+					if($level==0){
+						if(strtolower($item->name)!='option')
+						{
+							echo '<fields name="'.$item->name.'">';
+						}
+					}else{
+						echo '<fields name="'.$item->name.'">';
+					}
+					UtilityModelPosition::render_to_xml($item->children,  $maxLevel, $level1);
+					if($level==0){
+						if(strtolower($item->name)!='option')
+						{
+							echo '</fields>';
+						}
+					}else{
+						echo '</fields>';
+					}
 				}else{
+					$config_params=$item->config_params;
+					$config_params=base64_decode($config_params);
+					$config_params = (array)up_json_decode($config_params, false, 512, JSON_PARSE_JAVASCRIPT);
 					?>
 
-					<field type="<?php echo $item->type ?>" default="<?php echo $item->default ?>" name="<?php echo $item->name ?>" />
+					<field type="<?php echo $item->type?$item->type:'text' ?>" readonly="<?php echo $item->readonly==1?'true':'false' ?>" label="<?php echo $item->label ?>" default="<?php echo $item->default ?>" name="<?php echo $item->name ?>" >
+						<?php if(count($config_params)){
 
+							foreach($config_params as $a_item){ ?>
+								<?php if($a_item->param_key&&$a_item->param_value){ ?>
+									<option value="<?php echo $a_item->param_key ?>"><?php echo $a_item->param_value ?></option>
+								<?php } ?>
+							<?php }
+						} ?>
+					</field>
 				<?php
 				}
 				?>
@@ -1021,6 +1084,7 @@ class UtilityModelPosition extends JModelAdmin
 
 	protected function preprocessForm(JForm $form, $data, $group = 'content')
 	{
+
 		jimport('joomla.filesystem.path');
 		JForm::addFormPath(JPATH_ROOT . '/components/com_utility/models/forms');
 		$form->loadFile('position', false);
@@ -1033,30 +1097,6 @@ class UtilityModelPosition extends JModelAdmin
 		$dirName=$pathInfo['dirname'];
 		$client   = JApplicationHelper::getClientInfo($clientId);
 		$formFile = JPath::clean(JPATH_ROOT."/$dirName/$filename.xml");
-
-		$ui_path= $data->get('ui_path');
-
-		if($ui_path[0]=='/')
-		{
-			$ui_path = substr($ui_path, 1);
-		}
-		$db=JFactory::getDbo();
-		require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
-		$table_control=new JTableUpdateTable($db,'control');
-
-
-		$table_control->load(array("element_path"=>$ui_path));
-		$fields=$table_control->fields;
-		$fields=base64_decode($fields);
-
-		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
-		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
-		ob_start();
-		UtilityModelPosition::render_to_xml($fields);
-		$string_xml=ob_get_clean();
-		$string_xml='<config>'.$string_xml.'</config>';
-		jimport('joomla.filesystem.file');
-		JFile::write($formFile,$string_xml);
 		if($data->type=="row")
 		{
 			$formFile=JPATH_ROOT."/media/elements/ui/row.xml";

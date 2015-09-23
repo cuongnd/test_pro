@@ -1,4 +1,4 @@
-<?php die("Access Denied"); ?>#x#a:2:{s:6:"output";a:2:{s:4:"body";s:0:"";s:4:"head";a:0:{}}s:6:"result";s:1585:"<div class="row tab-seach">
+<?php die("Access Denied"); ?>#x#a:2:{s:6:"output";a:2:{s:4:"body";s:0:"";s:4:"head";a:0:{}}s:6:"result";s:1607:"<div class="row tab-seach">
     <h3 class="pull-left">Search:</h3>
     <ul class="nav pull-left" role="tablist" id="tab_search_1068">
                     <li role="presentation" class="active"><a href="#tour" aria-controls="tour" role="tab" data-toggle="tab">Tours</a></li>
@@ -31,9 +31,9 @@
 </div>
 
 <script>
-    $(function () {
-        $('#tab_search_1068 a:last').tab('show')
-    })
+    jQuery(document).ready(function($){
+        $('#tab_search_1068 a:last').tab('show');
+    });
 </script>
 
 ";}
