@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/assets/js/view_config.js" line="225" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/assets/js/view_config.js" line="144" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="sdfdsfds">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_utility/models/forms/position1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cache/mod_travel_search/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-mod_travel_search-d31c2e4fe1ce6c1f8c589e48b21e19ba.php" afterPath="$PROJECT_DIR$/cache/mod_travel_search/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-mod_travel_search-d31c2e4fe1ce6c1f8c589e48b21e19ba.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cache/mod_travel_search/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-mod_travel_search-fe96cb8a4f8744f5851e919c64361126.php" afterPath="$PROJECT_DIR$/cache/mod_travel_search/stories_61/159767e5f7e72d070e98e19c4b0268dc-cache-mod_travel_search-fe96cb8a4f8744f5851e919c64361126.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php" afterPath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_phpmyadmin/controllers/datasource.php" afterPath="$PROJECT_DIR$/components/com_phpmyadmin/controllers/datasource.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/form/field.php" afterPath="$PROJECT_DIR$/libraries/joomla/form/field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/form/form.php" afterPath="$PROJECT_DIR$/libraries/joomla/form/form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/form/fields/list.php" afterPath="$PROJECT_DIR$/libraries/joomla/form/fields/list.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/models/position.php" afterPath="$PROJECT_DIR$/components/com_utility/models/position.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/models/forms/position.xml" afterPath="$PROJECT_DIR$/components/com_utility/models/forms/position.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php" afterPath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/editable/select2dropdown.xml" afterPath="$PROJECT_DIR$/media/elements/editable/select2dropdown.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
     </list>
     <ignored path="test_pro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,9 +20,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DaemonCodeAnalyzer">
-    <disable_hints />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="test_pro" />
@@ -44,9 +29,12 @@
       <file leaf-file-name="config_default.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.769231" vertical-offset="2193" max-vertical-offset="4272">
-              <caret line="147" column="77" selection-start-line="147" selection-start-column="77" selection-end-line="147" selection-end-column="77" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="98" column="54" selection-start-line="98" selection-start-column="54" selection-end-line="98" selection-end-column="54" />
+              <folding>
+                <marker date="1454032672174" expanded="true" signature="1817:1888" placeholder="{...}" />
+                <marker date="1454032672174" expanded="true" signature="7592:8350" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,9 +42,11 @@
       <file leaf-file-name="properties.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40308747" vertical-offset="1006" max-vertical-offset="2963">
-              <caret line="73" column="42" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
-              <folding />
+            <state vertical-scroll-proportion="-0.69022554">
+              <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+              <folding>
+                <marker date="1454032672174" expanded="true" signature="3418:3431" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,8 +54,8 @@
       <file leaf-file-name="position.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/com_utility/models/position.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3454545" vertical-offset="17615" max-vertical-offset="24099">
-              <caret line="1053" column="41" selection-start-line="1053" selection-start-column="41" selection-end-line="1053" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1006" column="6" selection-start-line="1006" selection-start-column="6" selection-end-line="1006" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -74,9 +64,13 @@
       <file leaf-file-name="position.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/com_utility/models/forms/position.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1629">
+            <state vertical-scroll-proportion="0.0">
               <caret line="1" column="54" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="53" />
-              <folding />
+              <folding>
+                <marker date="1454032672168" expanded="true" signature="3038:3054" placeholder="..." />
+                <marker date="1454032672168" expanded="true" signature="3038:3067" placeholder="..." />
+                <marker date="1454032672168" expanded="true" signature="3038:3080" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,9 +78,12 @@
       <file leaf-file-name="field.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/joomla/form/field.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.2727275" vertical-offset="16136" max-vertical-offset="17435">
-              <caret line="969" column="49" selection-start-line="969" selection-start-column="49" selection-end-line="969" selection-end-column="49" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="921" column="40" selection-start-line="921" selection-start-column="40" selection-end-line="921" selection-end-column="40" />
+              <folding>
+                <marker date="1454032672770" expanded="true" signature="436:29230" placeholder="{...}" />
+                <marker date="1454032672770" expanded="true" signature="29073:29228" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,9 +91,14 @@
       <file leaf-file-name="view_config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/assets/js/view_config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7362" max-vertical-offset="9415">
-              <caret line="445" column="8" selection-start-line="445" selection-start-column="8" selection-end-line="445" selection-end-column="8" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="328" column="8" selection-start-line="328" selection-start-column="8" selection-end-line="328" selection-end-column="8" />
+              <folding>
+                <marker date="1454032672172" expanded="true" signature="34:18212" placeholder="{...}" />
+                <marker date="1454032672172" expanded="true" signature="52:18205" placeholder="{...}" />
+                <marker date="1454032672172" expanded="true" signature="3768:3852" placeholder="{&quot;group&quot;: 1...}" />
+                <marker date="1454032672172" expanded="true" signature="16375:16386" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -104,9 +106,11 @@
       <file leaf-file-name="list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/joomla/form/fields/list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614" vertical-offset="1700" max-vertical-offset="3184">
-              <caret line="107" column="30" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="100" column="6" selection-start-line="100" selection-start-column="6" selection-end-line="100" selection-end-column="6" />
+              <folding>
+                <marker date="1454032672777" expanded="true" signature="480:4230" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -114,7 +118,7 @@
       <file leaf-file-name="text.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/joomla/form/fields/text.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3454545" vertical-offset="3114" max-vertical-offset="4651">
+            <state vertical-scroll-proportion="0.0">
               <caret line="200" column="112" selection-start-line="200" selection-start-column="104" selection-end-line="200" selection-end-column="112" />
               <folding />
             </state>
@@ -124,9 +128,14 @@
       <file leaf-file-name="gridformartheader.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/gridformartheader.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.730769" vertical-offset="5236" max-vertical-offset="12602">
-              <caret line="335" column="109" selection-start-line="335" selection-start-column="109" selection-end-line="335" selection-end-column="109" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="295" column="30" selection-start-line="295" selection-start-column="30" selection-end-line="295" selection-end-column="30" />
+              <folding>
+                <marker date="1454032672736" expanded="true" signature="557:29595" placeholder="{...}" />
+                <marker date="1454032672736" expanded="true" signature="6423:6998" placeholder="{...}" />
+                <marker date="1454032672736" expanded="true" signature="6509:6998" placeholder="..." />
+                <marker date="1454032672736" expanded="true" signature="28736:28816" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,7 +143,7 @@
       <file leaf-file-name="web-forms2.rnc" pinned="false" current-in-tab="false">
         <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/web-forms2.rnc">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="9449" max-vertical-offset="14715">
+            <state vertical-scroll-proportion="0.0">
               <caret line="568" column="22" selection-start-line="568" selection-start-column="22" selection-end-line="568" selection-end-column="22" />
               <folding />
             </state>
@@ -203,14 +212,18 @@
         <option value="$PROJECT_DIR$/libraries/joomla/form/form.php" />
         <option value="$PROJECT_DIR$/components/com_utility/models/forms/position.xml" />
         <option value="$PROJECT_DIR$/libraries/joomla/form/field.php" />
-        <option value="$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php" />
         <option value="$PROJECT_DIR$/components/com_utility/models/position.php" />
         <option value="$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php" />
+        <option value="$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php" />
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
@@ -242,6 +255,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -944,26 +958,28 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DBNStatementRunConfiguration" factoryName="DB Statement">
+    <configuration default="true" type="DBNMethodRunConfiguration" factoryName="DB Method">
+      <category value="TEMPLATE" />
       <compile-dependencies value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DBNStatementRunConfiguration" factoryName="DB Statement">
+      <category value="TEMPLATE" />
+      <compile-dependencies value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
       <method />
     </configuration>
-    <configuration default="true" type="DBNMethodRunConfiguration" factoryName="DB Method">
-      <compile-dependencies value="true" />
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
       <method />
     </configuration>
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
-      <BehatRunner />
       <method />
     </configuration>
     <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
@@ -973,15 +989,18 @@
       <node-options />
       <gulpfile />
       <tasks />
+      <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
       <method />
     </configuration>
     <configuration default="false" name="DB Method Runner" type="DBNMethodRunConfiguration" factoryName="DB Method">
+      <category value="TEMPLATE" />
       <compile-dependencies value="true" />
       <method />
     </configuration>
     <configuration default="false" name="DB Statement Runner" type="DBNStatementRunConfiguration" factoryName="DB Statement">
+      <category value="TEMPLATE" />
       <compile-dependencies value="true" />
       <method />
     </configuration>
@@ -1024,30 +1043,31 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09596662" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13046272" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2377892" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24100257" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09596662" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1068,10 +1088,10 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2624811" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1086,9 +1106,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="myTodoPanelSettings">
-      <TodoPanelSettings />
-    </option>
     <MESSAGE value="sdfdsfds" />
     <option name="LAST_COMMIT_MESSAGE" value="sdfdsfds" />
   </component>
@@ -1101,347 +1118,307 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/media/system/js/jquery.appendGrid-master/jquery.appendGrid-development.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.642858" vertical-offset="4114" max-vertical-offset="28883">
+        <state vertical-scroll-proportion="-8.642858">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/system/js/jquery.appendGrid-master/test/Basic01.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40490797" vertical-offset="1912" max-vertical-offset="2964">
+        <state vertical-scroll-proportion="0.40490797">
           <caret line="128" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/coding.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4063" max-vertical-offset="10285">
+        <state vertical-scroll-proportion="0.0">
           <caret line="245" column="17" selection-start-line="245" selection-start-column="17" selection-end-line="245" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/gridtoolbar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5516224" vertical-offset="6256" max-vertical-offset="11745">
+        <state vertical-scroll-proportion="0.5516224">
           <caret line="390" column="9" selection-start-line="381" selection-start-column="0" selection-end-line="390" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/inputmask.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2254" max-vertical-offset="9977">
+        <state vertical-scroll-proportion="0.0">
           <caret line="147" column="45" selection-start-line="147" selection-start-column="45" selection-end-line="147" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/configupdate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0" vertical-offset="90" max-vertical-offset="9020">
+        <state vertical-scroll-proportion="-7.0">
           <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/document/opensearch/opensearch.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4073033" vertical-offset="2355" max-vertical-offset="5592">
+        <state vertical-scroll-proportion="1.4073033">
           <caret line="174" column="21" selection-start-line="174" selection-start-column="21" selection-end-line="174" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/system/js/dhtmlxScheduler_v4.3.1/codebase/connector/xss_filter.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35674158" vertical-offset="1420" max-vertical-offset="3467">
+        <state vertical-scroll-proportion="0.35674158">
           <caret line="105" column="29" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/phpunit-master/src/Util/XML.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-30.73077" vertical-offset="2057" max-vertical-offset="15826">
+        <state vertical-scroll-proportion="-30.73077">
           <caret line="210" column="45" selection-start-line="210" selection-start-column="45" selection-end-line="210" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/array2xml-master/Tests/Array2xmlTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="129.46153" vertical-offset="3366" max-vertical-offset="5201">
+        <state vertical-scroll-proportion="129.46153">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/array2xml-master/README.md">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="MarkdownPreviewEditor">
         <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2664">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/legacy/model/admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.269231" vertical-offset="118" max-vertical-offset="23609">
+        <state vertical-scroll-proportion="-5.269231">
           <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/filesystem/file.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617" vertical-offset="85" max-vertical-offset="9988">
+        <state vertical-scroll-proportion="-6.5384617">
           <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/legacy/model/form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1923075" vertical-offset="3681" max-vertical-offset="6009">
+        <state vertical-scroll-proportion="-6.1923075">
           <caret line="232" column="23" selection-start-line="232" selection-start-column="23" selection-end-line="232" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/ui/button.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+        <state vertical-scroll-proportion="0.0">
           <caret line="5" column="66" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/ui/button.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614" vertical-offset="714" max-vertical-offset="2099">
+        <state vertical-scroll-proportion="-0.65384614">
           <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/ui/button.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1625239" vertical-offset="612" max-vertical-offset="2325">
+        <state vertical-scroll-proportion="0.1625239">
           <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/mapcopy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73333335" vertical-offset="3519" max-vertical-offset="8755">
+        <state vertical-scroll-proportion="0.73333335">
           <caret line="229" column="50" selection-start-line="229" selection-start-column="50" selection-end-line="229" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/mapcopy.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5123967" vertical-offset="4036" max-vertical-offset="9052">
+        <state vertical-scroll-proportion="0.5123967">
           <caret line="258" column="23" selection-start-line="258" selection-start-column="23" selection-end-line="258" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/ui/formwizard.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="690">
+        <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/ui/formwizardcontent.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.30706075" vertical-offset="187" max-vertical-offset="1391">
+        <state vertical-scroll-proportion="-0.30706075">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/mod_travel_search/tmpl/default.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4871355" vertical-offset="770" max-vertical-offset="1654">
+        <state vertical-scroll-proportion="0.4871355">
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/ui/formwizard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923" vertical-offset="935" max-vertical-offset="2134">
+        <state vertical-scroll-proportion="-1.3076923">
           <caret line="57" column="50" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_phpmyadmin/controllers/datasource.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8076925" vertical-offset="1497" max-vertical-offset="17927">
+        <state vertical-scroll-proportion="-7.8076925">
           <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/editable/select2dropdown.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1565">
+        <state vertical-scroll-proportion="0.0">
           <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/configuration/configuration_61.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537" vertical-offset="459" max-vertical-offset="2177">
+        <state vertical-scroll-proportion="-7.8461537">
           <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
-          <folding>
-            <marker date="1442971874564" expanded="true" signature="-1:-1" placeholder="//..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/editable/select2dropdown.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.538462" vertical-offset="1309" max-vertical-offset="3014">
+        <state vertical-scroll-proportion="-23.538462">
           <caret line="113" column="43" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/editable/combodate.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1714">
+        <state vertical-scroll-proportion="0.0">
           <caret line="41" column="59" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/elements/editable/select2dropdown.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
+        <state vertical-scroll-proportion="0.0">
           <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/form/fields/filterselect2.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075" vertical-offset="748" max-vertical-offset="1892">
+        <state vertical-scroll-proportion="-7.1923075">
           <caret line="61" column="107" selection-start-line="61" selection-start-column="51" selection-end-line="61" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/views/blocks/tmpl/default.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769" vertical-offset="374" max-vertical-offset="1790">
+        <state vertical-scroll-proportion="-3.9230769">
           <caret line="28" column="49" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/form/helper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1538463" vertical-offset="877" max-vertical-offset="5819">
+        <state vertical-scroll-proportion="-6.1538463">
           <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/views/field/tmpl/default.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/default.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="639">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2075472" vertical-offset="1870" max-vertical-offset="4493">
+        <state vertical-scroll-proportion="-3.2075472">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_menus/views/item/tmpl/edit_options.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="1225">
+        <state vertical-scroll-proportion="-18.307692">
           <caret line="34" column="34" selection-start-line="29" selection-start-column="24" selection-end-line="34" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/views/field/tmpl/properties.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075" vertical-offset="187" max-vertical-offset="1225">
+        <state vertical-scroll-proportion="-7.1923075">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_menus/models/forms/item.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4362">
+        <state vertical-scroll-proportion="0.0">
           <caret line="5" column="24" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/controllers/block.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3454547" vertical-offset="29" max-vertical-offset="13032">
+        <state vertical-scroll-proportion="-5.3454547">
           <caret line="25" column="72" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/controllers/utility.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="12823">
+        <state vertical-scroll-proportion="-9.807693">
           <caret line="21" column="67" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/form/form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3454545" vertical-offset="25231" max-vertical-offset="39144">
+        <state vertical-scroll-proportion="-3.3454545">
           <caret line="1501" column="4" selection-start-line="1501" selection-start-column="0" selection-end-line="1501" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/form/fields/list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614" vertical-offset="1700" max-vertical-offset="3184">
-          <caret line="107" column="30" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="100" column="6" selection-start-line="100" selection-start-column="6" selection-end-line="100" selection-end-column="6" />
+          <folding>
+            <marker date="1454032672777" expanded="true" signature="480:4230" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/web-forms2.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="9449" max-vertical-offset="14715">
+        <state vertical-scroll-proportion="0.0">
           <caret line="568" column="22" selection-start-line="568" selection-start-column="22" selection-end-line="568" selection-end-column="22" />
           <folding />
         </state>
@@ -1449,23 +1426,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/models/position.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3454545" vertical-offset="17615" max-vertical-offset="24099">
-          <caret line="1053" column="41" selection-start-line="1053" selection-start-column="41" selection-end-line="1053" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1006" column="6" selection-start-line="1006" selection-start-column="6" selection-end-line="1006" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/form/field.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2727275" vertical-offset="16136" max-vertical-offset="17435">
-          <caret line="969" column="49" selection-start-line="969" selection-start-column="49" selection-end-line="969" selection-end-column="49" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="921" column="40" selection-start-line="921" selection-start-column="40" selection-end-line="921" selection-end-column="40" />
+          <folding>
+            <marker date="1454032672770" expanded="true" signature="436:29230" placeholder="{...}" />
+            <marker date="1454032672770" expanded="true" signature="29073:29228" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/form/fields/text.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3454545" vertical-offset="3114" max-vertical-offset="4651">
+        <state vertical-scroll-proportion="0.0">
           <caret line="200" column="112" selection-start-line="200" selection-start-column="104" selection-end-line="200" selection-end-column="112" />
           <folding />
         </state>
@@ -1473,41 +1453,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/models/forms/position.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1629">
+        <state vertical-scroll-proportion="0.0">
           <caret line="1" column="54" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="53" />
-          <folding />
+          <folding>
+            <marker date="1454032672168" expanded="true" signature="3038:3054" placeholder="..." />
+            <marker date="1454032672168" expanded="true" signature="3038:3067" placeholder="..." />
+            <marker date="1454032672168" expanded="true" signature="3038:3080" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/gridformartheader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769" vertical-offset="5236" max-vertical-offset="12602">
-          <caret line="335" column="109" selection-start-line="335" selection-start-column="109" selection-end-line="335" selection-end-column="109" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="295" column="30" selection-start-line="295" selection-start-column="30" selection-end-line="295" selection-end-column="30" />
+          <folding>
+            <marker date="1454032672736" expanded="true" signature="557:29595" placeholder="{...}" />
+            <marker date="1454032672736" expanded="true" signature="6423:6998" placeholder="{...}" />
+            <marker date="1454032672736" expanded="true" signature="6509:6998" placeholder="..." />
+            <marker date="1454032672736" expanded="true" signature="28736:28816" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/assets/js/view_config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7362" max-vertical-offset="9415">
-          <caret line="445" column="8" selection-start-line="445" selection-start-column="8" selection-end-line="445" selection-end-column="8" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="328" column="8" selection-start-line="328" selection-start-column="8" selection-end-line="328" selection-end-column="8" />
+          <folding>
+            <marker date="1454032672172" expanded="true" signature="34:18212" placeholder="{...}" />
+            <marker date="1454032672172" expanded="true" signature="52:18205" placeholder="{...}" />
+            <marker date="1454032672172" expanded="true" signature="3768:3852" placeholder="{&quot;group&quot;: 1...}" />
+            <marker date="1454032672172" expanded="true" signature="16375:16386" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231" vertical-offset="2193" max-vertical-offset="4272">
-          <caret line="147" column="77" selection-start-line="147" selection-start-column="77" selection-end-line="147" selection-end-column="77" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="98" column="54" selection-start-line="98" selection-start-column="54" selection-end-line="98" selection-end-column="54" />
+          <folding>
+            <marker date="1454032672174" expanded="true" signature="1817:1888" placeholder="{...}" />
+            <marker date="1454032672174" expanded="true" signature="7592:8350" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/properties.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40308747" vertical-offset="1006" max-vertical-offset="2963">
-          <caret line="73" column="42" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
-          <folding />
+        <state vertical-scroll-proportion="-0.69022554">
+          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+          <folding>
+            <marker date="1454032672174" expanded="true" signature="3418:3431" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
