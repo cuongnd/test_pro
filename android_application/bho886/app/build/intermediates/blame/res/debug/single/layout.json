@@ -1,0 +1,266 @@
+[
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\layout\\design_navigation_item.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main2.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\activity_main2.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popup_horizontal.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\popup_horizontal.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\render_type_text.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.daimajia.slider\\library\\1.1.5\\res\\layout\\render_type_text.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\group_item.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\group_item.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\thumbnail.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\thumbnail.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\table_cell_image.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\table_cell_image.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\horiz_separator.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\horiz_separator.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popup_vertical.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\popup_vertical.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\table_cell_power.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\table_cell_power.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\render_type_default.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.daimajia.slider\\library\\1.1.5\\res\\layout\\render_type_default.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_tab_icon.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\layout\\layout_tab_icon.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_tab_text.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\layout\\layout_tab_text.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_snackbar_include.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\layout\\layout_snackbar_include.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\item.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\font_awesome_text.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\font_awesome_text.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\action_item_vertical.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\action_item_vertical.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\indicator_layout.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.daimajia.slider\\library\\1.1.5\\res\\layout\\indicator_layout.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\layout\\design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sortable_header.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\bho886\\tableview\\unspecified\\res\\layout\\sortable_header.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\slider_layout.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.daimajia.slider\\library\\1.1.5\\res\\layout\\slider_layout.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\list_item.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\action_item_horizontal.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\action_item_horizontal.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\notification_template_lines.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_snackbar.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\layout\\layout_snackbar.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\thumbnail_circle.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\layout\\thumbnail_circle.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_simple_dropdown_hint.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_simple_dropdown_hint.xml"
+    }
+]

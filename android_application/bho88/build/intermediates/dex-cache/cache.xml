@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="F:\sdk\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="H:\project\test_pro\android_application\bho88\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_e9da6ded49469cc2d068d18ccf37f52eb77e559c.jar" />
+    </item>
+    <item
+        jar="H:\project\test_pro\android_application\bho88\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="H:\project\test_pro\android_application\bho88\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.1.1_f57a30783926972be7c75e19d021ddbc854eddde.jar" />
+    </item>
+    <item
+        jar="H:\project\test_pro\android_application\bho88\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="H:\project\test_pro\android_application\bho88\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_f8148b766fff65fa208f57bdf4a0d688d9cc261f.jar" />
+    </item>
+    <item
+        jar="H:\project\test_pro\android_application\bho88\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="H:\project\test_pro\android_application\bho88\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.1.1_97ab416ef3f21c36b9a69e7cb68b5f0fbe1acc5d.jar" />
+    </item>
+    <item
+        jar="H:\project\test_pro\android_application\bho88\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="H:\project\test_pro\android_application\bho88\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_bc2f2e8a5f367b68354cafa4b514b8891f8ec974.jar" />
+    </item>
+    <item
+        jar="H:\project\test_pro\android_application\bho88\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="H:\project\test_pro\android_application\bho88\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_7309076a745719c515fa6f4dee43e77e3ed1eaef.jar" />
+    </item>
+
+</items>

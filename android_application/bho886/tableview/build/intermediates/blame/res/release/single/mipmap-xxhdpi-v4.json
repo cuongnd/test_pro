@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_light_sortable.png",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\src\\main\\res\\mipmap-xxhdpi\\ic_light_sortable.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_dark_sorted_desc.png",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\src\\main\\res\\mipmap-xxhdpi\\ic_dark_sorted_desc.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_dark_sortable.png",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\src\\main\\res\\mipmap-xxhdpi\\ic_dark_sortable.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_light_sorted_asc.png",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\src\\main\\res\\mipmap-xxhdpi\\ic_light_sorted_asc.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_light_sorted_desc.png",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\src\\main\\res\\mipmap-xxhdpi\\ic_light_sorted_desc.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_dark_sorted_asc.png",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\tableview\\src\\main\\res\\mipmap-xxhdpi\\ic_dark_sorted_asc.png"
+    }
+]

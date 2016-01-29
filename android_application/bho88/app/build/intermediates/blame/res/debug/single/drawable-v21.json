@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho88\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho88\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho88\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho88\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    }
+]
