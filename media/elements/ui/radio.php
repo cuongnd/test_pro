@@ -4,7 +4,6 @@ class elementRadioHelper
     public function __construct()
     {
         $doc=JFactory::getDocument();
-        $doc->addScript(JUri::root() . "/media/system/js/ydn-db-master/jsc/ydn.db-dev.jss");
         $doc->addScript(JUri::root().'/media/elements/ui/dataelement.js');
         $doc->addScript(JUri::root() . "/media/elements/ui/element.js");
     }

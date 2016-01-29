@@ -590,7 +590,7 @@ abstract class JTable extends JObject implements JObservableInterface
 	 * @since   11.1
 	 * @throws  InvalidArgumentException
 	 */
-	public function bind($src, $ignore = array())
+	public function bind($src, $ignore = array(),$test=0)
 	{
 		// If the source value is not an array or object return false.
 		if (!is_object($src) && !is_array($src))

@@ -1,7 +1,9 @@
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 if (typeof jfbcJQuery == "undefined")
     jfbcJQuery = jQuery;
@@ -82,6 +84,16 @@ var jfbcAdmin = {
         showSettings: function (ret)
         {
             jfbcJQuery('#widget_settings').html(ret);
+
+            $$('.hasTip').each(function(el) {
+                var title = el.get('title');
+                if (title) {
+                    var parts = title.split('::', 2);
+                    el.store('tip:title', parts[0]);
+                    el.store('tip:text', parts[1]);
+                }
+            });
+            var JTooltips = new Tips($$('.hasTip'), { maxTitleChars: 50, fixed: false});
         }
     },
 
@@ -89,13 +101,13 @@ var jfbcAdmin = {
         outbound: {
             fetchChannels: function (name)
             {
-                jfbcJQuery('#channel-attribs').html("Please select a Provider and Channel type above.");
+                jfbcJQuery('#channel-attribs').html('<div class="jfbc-error">' + jfbc_language_select_provider + '</div>');
                 if (name != '--')
                     jfbcAdmin.ajax('option=com_jfbconnect&controller=ajax&task=channelGetOutboundChannels&provider=' + name, jfbcAdmin.channels.outbound.showChannels);
             },
             showChannels: function (ret)
             {
-                jfbcJQuery('#channel-attribs').html("Please select a Provider and Channel type above.");
+                jfbcJQuery('#channel-attribs').html('<div class="jfbc-error">' + jfbc_language_select_provider + '</div>');
                 jfbcJQuery('#jform_type').parent().html(ret);
             },
             fetchChannelSettings: function (name)
@@ -105,9 +117,91 @@ var jfbcAdmin = {
             },
             showSettings: function (ret)
             {
-                jfbcJQuery('#channel-attribs').html("Please hit save to load settings for the channel selected.");
-//                jfbcJQuery('#channel-attribs').html(ret);
+                var provider = jfbcJQuery("#jform_provider").val();
+                var type = jfbcJQuery("#jform_type").val();
+
+                if(type == "--" || provider == "--")
+                {
+                    jfbcAdmin.ajax('option=com_jfbconnect&controller=ajax&task=channelGetOutboundChannelSettings&provider=' + provider + '&channel=' + name, jfbcAdmin.channels.outbound.showSetupMessage);
+                }
+                else
+                {
+                    jfbcAdmin.ajax('option=com_jfbconnect&controller=ajax&task=channelShowAttributes&provider='+provider+'&type='+type, jfbcAdmin.channels.outbound.showAttribs);
+                }
+            },
+            showAttribs: function (ret)
+            {
+                jfbcJQuery('#channel-attribs').html(ret);
+
+                jfbcJQuery(function($) {
+                    SqueezeBox.initialize({});
+                    SqueezeBox.assign(jfbcJQuery('a.modal_jform_attribs_user_id').get(), {
+                        parse: 'rel'
+                    });
+                });
+                jfbcMakePrettyRadioButtons();
+            },
+            showSetupMessage: function (ret)
+            {
+                jfbcJQuery('#channel-attribs').html('<div class="jfbc-error">' + jfbc_language_click_save + '</div>');
+            },
+            onuserchange: function (ret)
+            {
+                var userid = jfbcJQuery("#jform_attribs_user_id_id").val();
+                var provider = jfbcJQuery("#jform_provider").val();
+                var type = jfbcJQuery("#jform_type").val();
+                jfbcAdmin.ajax('option=com_jfbconnect&controller=ajax&task=channelUpdateUser&provider='+provider+'&type='+type+'&userid='+userid, jfbcAdmin.channels.outbound.showAttribs);
             }
         }
+    },
+    checkForUpdate: function ()
+    {
+        /**
+         * @copyright    Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+         * @license        GNU General Public License version 2 or later; see LICENSE.txt
+         */
+        jfbcJQuery(document).ready(function ()
+        {
+            var ajax_structure = {
+                success: function (data, textStatus, jqXHR)
+                {
+                    try
+                    {
+                        var updateInfoList = jfbcJQuery.parseJSON(data);
+                    } catch (e)
+                    {
+                        // An error occured
+                        jfbcJQuery('#jfbconnect_update_icon').find('span').html(jfbconnect_update_text.ERROR);
+                    }
+                    if (updateInfoList instanceof Array)
+                    {
+                        if (updateInfoList.length < 1)
+                        {
+                            // No updates
+                            jfbcJQuery('#jfbconnect_update_icon').find('span').html(jfbconnect_update_text.UPTODATE);
+                        } else
+                        {
+                            jfbcJQuery('#jfbconnect_update_icon').find('span').html(jfbconnect_update_text.UPTODATE);
+                            jfbcJQuery.each(updateInfoList, function (k, v)
+                            {
+                                if (v.extension_id == jfbconnect_extension_id)
+                                    jfbcJQuery('#jfbconnect_update_icon').find('span').html(jfbconnect_update_text.UPDATEFOUND);
+                            });
+                        }
+                    } else
+                    {
+                        // An error occured
+                        jfbcJQuery('#jfbconnect_update_icon').find('span').html(jfbconnect_update_text.ERROR);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    // An error occured
+                    jfbcJQuery('#jfbconnect_update_icon').find('span').html(jfbconnect_update_text.ERROR);
+                },
+                url: jfbconnect_update_ajax_url + '&eid=0&skip=700'
+            };
+            ajax_object = new jfbcJQuery.ajax(ajax_structure);
+        });
     }
 }

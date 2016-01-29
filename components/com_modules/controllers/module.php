@@ -43,13 +43,46 @@ class ModulesControllerModule extends JControllerForm
 			return JError::raiseWarning(500, JText::_('COM_MODULES_ERROR_INVALID_EXTENSION'));
 		}
 
-		$app->setUserState('com_modules.add.module.extension_id', $extensionId);
+		$app->setUserState('com_modules.add.module.id', $extensionId);
 		$app->setUserState('com_modules.add.module.params', null);
 
 		// Parameters could be coming in for a new item, so let's set them.
 		$params = $app->input->get('params', array(), 'array');
 		$app->setUserState('com_modules.add.module.params', $params);
 	}
+
+	public function ajax_save_field_params()
+	{
+		$app=JFactory::getApplication();
+		$website=JFactory::getWebsite();
+		$fields=$app->input->get('fields','','string');
+		$element_path=$app->input->get('element_path','','string');
+		$db=JFactory::getDbo();
+		require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+		$table_control=new JTableUpdateTable($db,'control');
+		$table_control->load(array(
+			'element_path'=>$element_path,
+			'type'=>'module',
+			'website_id'=>$website->website_id
+		));
+		$table_control->website_id=$website->website_id;
+		$table_control->element_path=$element_path;
+		$table_control->type='module';
+		$table_control->fields=$fields;
+		$response=new stdClass();
+		$response->e=0;
+		if(!$table_control->store())
+		{
+			$response->e=1;
+			$response->r=$table_control->getError();
+		}else{
+			$response->r="save success";
+		}
+		echo json_encode($response);
+		die;
+	}
+
+
 	public function AjaxRemoveModule()
 	{
 		$app=JFactory::getApplication();
@@ -116,7 +149,11 @@ class ModulesControllerModule extends JControllerForm
 		$tableModule->website_id=$tableExtension->website_id;
 		$tableModule->client_id=0;
 		$tableModule->access=1;
-		$tableModule->store();
+        if(!$tableModule->store())
+        {
+            echo $tableModule->getErrorMsg();
+            die;
+        }
 
 		$newModuleId=$tableModule->id;
 
@@ -169,33 +206,47 @@ class ModulesControllerModule extends JControllerForm
 	}
 	public function ajaxSavePropertiesModule()
 	{
-		$app=JFactory::getApplication();
-		$form=$app->input->get('jform',array(),'array');
+		$app = JFactory::getApplication();
+		$post = file_get_contents('php://input');
+		$post = json_decode($post);
+		$form=(array)$post->jform;
 		$tableModule=JTable::getInstance('Module','JTable');
 
 		$tableModule->load($form['id']);
 		$tableModule->bind($form);
 		$tableModule->params=json_encode($form['params']);
+
+		$response=new stdClass();
+		$response->e=0;
+		$response->r="save success";
 		if(!$tableModule->store())
 		{
-			echo $tableModule->getError();
+			$response->e=1;
+			$response->r=$tableModule->getError();
 		}
+		echo json_encode($response);
 		die;
 	}
 	public function ajaxSavePropertyModule()
 	{
+
 		$app=JFactory::getApplication();
 		$form=$app->input->get('jform',array(),'array');
 
 		$module_id=$app->input->get('module_id',0,'int');
 		$tableModule=JTable::getInstance('Module','JTable');
 		$tableModule->load($module_id);
+
 		$tableModule->bind($form);
-		//$tableModule->params=json_encode($form['params']);
+		$result = new stdClass();
+		$result->e=0;
+		$result->m=JText::_('copy success');
 		if(!$tableModule->store())
 		{
-			echo $tableModule->getError();
+			$result->e=1;
+			$result->m=$tableModule->getError();
 		}
+		echo json_encode($result);
 		die;
 	}
 	public  function ajaxLoadPropertiesModule()
@@ -297,7 +348,7 @@ class ModulesControllerModule extends JControllerForm
 
 		$result = parent::cancel();
 
-		$app->setUserState('com_modules.add.module.extension_id', null);
+		$app->setUserState('com_modules.add.module.id', null);
 		$app->setUserState('com_modules.add.module.params', null);
 
 		return $result;
@@ -396,11 +447,11 @@ class ModulesControllerModule extends JControllerForm
 		switch ($task)
 		{
 			case 'save2new':
-				$app->setUserState('com_modules.add.module.extension_id', $model->getState('module.extension_id'));
+				$app->setUserState('com_modules.add.module.id', $model->getState('module.id'));
 				break;
 
 			default:
-				$app->setUserState('com_modules.add.module.extension_id', null);
+				$app->setUserState('com_modules.add.module.id', null);
 				break;
 		}
 

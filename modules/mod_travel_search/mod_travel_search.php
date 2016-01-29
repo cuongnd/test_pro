@@ -14,7 +14,7 @@ $document->addStyleSheet(JURI::root().'modules/mod_travel_search/assets/css/trav
 $document->addScript(JURI::root().'modules/mod_travel_search/assets/js/helper.js');
 $tour = $params->get('tour');
 $date_format=$params->get("date_format");
-
+return;
 require_once JPATH_ROOT.'/components/com_bookpro/models/tourcart.php';
 $cart = JModelLegacy::getInstance('TourCart', 'bookpro');
 $cart->load();

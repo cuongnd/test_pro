@@ -254,6 +254,7 @@
 
         dragStart: function(e)
         {
+
             var mouse    = this.mouse,
                 target   = $(e.target),
                 dragItem = target.closest(this.options.itemNodeName);
@@ -306,6 +307,7 @@
 
         dragMove: function(e)
         {
+
             var list, parent, prev, next, depth,
                 opt   = this.options,
                 mouse = this.mouse;

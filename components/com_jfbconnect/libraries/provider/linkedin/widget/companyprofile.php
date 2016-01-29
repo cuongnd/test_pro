@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -12,6 +15,7 @@ class JFBConnectProviderLinkedinWidgetCompanyprofile extends JFBConnectWidget
     var $name = "Company Profile";
     var $systemName = "companyprofile";
     var $className = "jlinkedCompanyProfile";
+    var $tagName = "jlinkedcompanyprofile";
 
     var $examples = array (
         '{JLinkedCompanyProfile}',
@@ -22,8 +26,7 @@ class JFBConnectProviderLinkedinWidgetCompanyprofile extends JFBConnectWidget
 
     protected function getTagHtml()
     {
-        $tag = '<style type="text/css">.IN-canvas-company iframe{left:20px !important; top:135px !important;}</style>';
-        $tag .= '<span class="IN-canvas-company"><script type="IN/CompanyProfile"';
+        $tag = '<span class="IN-canvas-company"><script type="IN/CompanyProfile"';
         $tag .= $this->getField('companyid', null, null, '', 'data-id');
         $tag .= $this->getField('related', null, 'boolean', 'true', 'data-related');
 

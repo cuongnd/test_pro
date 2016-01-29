@@ -272,7 +272,7 @@ class JInstallerAdapterLanguage extends JAdapterInstance
 			$update->delete($uid);
 		}
 
-		return $row->get('extension_id');
+		return $row->get('id');
 	}
 
 	/**
@@ -416,7 +416,7 @@ class JInstallerAdapterLanguage extends JAdapterInstance
 			return false;
 		}
 
-		return $row->get('extension_id');
+		return $row->get('id');
 	}
 
 	/**
@@ -633,7 +633,7 @@ class JInstallerAdapterLanguage extends JAdapterInstance
 
 			return false;
 		}
-		return $this->parent->extension->get('extension_id');
+		return $this->parent->extension->get('id');
 	}
 
 	/**

@@ -54,7 +54,7 @@ class BookproModelBus extends JModelAdmin
 
 		if (!$pk)
 		{
-			if ($extensionId = (int) $app->getUserState('com_bookpro.add.bus.extension_id'))
+			if ($extensionId = (int) $app->getUserState('com_bookpro.add.bus.id'))
 			{
 				$this->setState('extension.id', $extensionId);
 			}

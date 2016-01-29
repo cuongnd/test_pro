@@ -188,12 +188,13 @@ class PlgUserJoomla extends JPlugin
 		{
 			$options['group'] = 'USERS';
 		}
+
 		// Check the user can login.
 		$result = $instance->authorise($options['action']);
+
 		if (!$result)
 		{
 			$this->app->enqueueMessage(JText::_('JERROR_LOGIN_DENIED'), 'warning');
-
 			return false;
 		}
 
@@ -203,7 +204,6 @@ class PlgUserJoomla extends JPlugin
 		// Register the needed session variables
 		$session = JFactory::getSession();
 		$session->set('user', $instance);
-
 		// Check to see the the session already exists.
 		$this->app->checkSession();
 

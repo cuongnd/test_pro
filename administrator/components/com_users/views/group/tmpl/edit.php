@@ -37,14 +37,21 @@ JHtml::_('formbehavior.chosen', 'select');
 				<?php echo $this->form->getInput('title'); ?>
 			</div>
 		</div>
-		<div class="control-group">
-			<div class="control-label">
-				<?php echo $this->form->getLabel('website_id'); ?>
+		<?php
+		$supperAdmin=JFactory::isSupperAdmin();
+		if($supperAdmin) {
+			?>
+			<div class="control-group">
+				<div class="control-label">
+					<?php echo $this->form->getLabel('website_id'); ?>
+				</div>
+				<div class="controls">
+					<?php echo $this->form->getInput('website_id'); ?>
+				</div>
 			</div>
-			<div class="controls">
-				<?php echo $this->form->getInput('website_id'); ?>
-			</div>
-		</div>
+		<?php
+		}
+		?>
 		<div class="control-group">
 			<?php $parent_id = $this->form->getField('parent_id');?>
 			<?php if (!$parent_id->hidden) : ?>

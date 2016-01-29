@@ -27,7 +27,7 @@ jQuery(document).ready(function($){
                 });
 
             });
-            element_ui_button.list_function_run_befor_submit.push(element_ui_rangeofintegers.update_data);
+            Joomla_post.list_function_run_befor_submit.push(element_ui_rangeofintegers.update_data);
         },
         update_data:function(data_submit)
         {

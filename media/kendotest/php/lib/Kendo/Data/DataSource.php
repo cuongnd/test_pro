@@ -150,6 +150,7 @@ total number of data items should also be returned in the response. Use the sche
         return $this->setProperty('transport', $value);
     }
 
+
     /**
     * Loads transport with preconfigured settings. Currently supports only "odata" (Requires kendo.data.odata.js to be included).
     * @param string $value

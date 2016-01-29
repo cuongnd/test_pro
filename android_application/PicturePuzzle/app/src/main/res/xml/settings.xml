@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+   <CheckBoxPreference 
+       android:key="show_numbers"
+       android:title="@string/show_numbers"
+       android:summary="@string/show_numbers_summary"
+       android:defaultValue="false"
+   />
+   <ListPreference
+       android:key="grid_size"
+       android:title="@string/grid_size_title"
+       android:summary="@string/grid_size_summary" 
+       android:entries="@array/gridSizeTitles"
+       android:entryValues="@array/gridSizeValues"
+       android:defaultValue="3"
+   />
+</PreferenceScreen>

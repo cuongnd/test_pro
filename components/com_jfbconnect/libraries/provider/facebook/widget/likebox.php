@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -12,9 +15,10 @@ class JFBConnectProviderFacebookWidgetLikebox extends JFBConnectProviderFacebook
     var $name = "Like Box";
     var $systemName = "likebox";
     var $className = "jfbcfan";
+    var $tagName = "jfbcfan";
     var $examples = array (
         '{JFBCFan}',
-        '{JFBCFan height=200 width=200 colorscheme=light href=http://www.sourcecoast.com show_faces=true stream=false header=true show_border=true force_wall=false}'
+        '{JFBCFan height=200 width=200 colorscheme=light href=http://www.facebook.com/SourceCoast show_faces=true stream=false header=true show_border=true force_wall=false}'
     );
 
     protected function getTagHtml()

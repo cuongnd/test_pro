@@ -53,7 +53,7 @@ class phpMyAdminModelDataSource extends JModelAdmin
         $pk = $app->input->getInt('id');
 
         if (!$pk) {
-            if ($extensionId = (int)$app->getUserState('com_phpmyadmin.add.datasource.extension_id')) {
+            if ($extensionId = (int)$app->getUserState('com_phpmyadmin.add.datasource.id')) {
                 $this->setState('extension.id', $extensionId);
             }
         }
@@ -65,6 +65,44 @@ class phpMyAdminModelDataSource extends JModelAdmin
         $this->setState('params', $params);
     }
 
+
+    public function list_field_by_data_source($data_source,$block_id)
+    {
+        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
+        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition->load($block_id);
+        $modalDataSources=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
+        $list_item=$modalDataSources->getListDataSource($data_source,$tablePosition);
+        $params_item = new JRegistry ;
+        foreach($list_item as $key=> $item)
+        {
+            $params_item1 = new JRegistry;
+            $params_item1->loadObject($item);
+            $params_item1->merge($params_item);
+            $params_item=$params_item1;
+
+        }
+        $item=$params_item->toObject();
+        $list_field=array();
+        phpMyAdminModelDataSource::push_to_object($item,$list_field);
+        return $list_field;
+
+    }
+    function push_to_object($item,&$list_field=array(),$path='')
+    {
+        if(is_object($item)||is_array($item))
+        {
+            foreach ($item as $key_node=> $node) {
+                $path1=$path?$path.'.'.$key_node:$key_node;
+                if(is_object($node)||is_array($node))
+                {
+                    phpMyAdminModelDataSource::push_to_object($node,$list_field,$path1);
+                }else {
+                    $list_field[]=$path1;
+                }
+            }
+        }
+    }
 
 
     public function duplicateAndAssign(&$pks, $website_id = 0)
@@ -929,7 +967,7 @@ class phpMyAdminModelDataSource extends JModelAdmin
 
         // Compute the extension id of this datasource in case the controller wants it.
         $query = $db->getQuery(true)
-            ->select('e.id as extension_id')
+            ->select('e.id as id')
             ->from('#__extensions AS e')
             ->join('LEFT', '#__datasources AS m ON e.element = m.datasource')
             ->where('m.id = ' . (int)$table->id);
@@ -943,7 +981,7 @@ class phpMyAdminModelDataSource extends JModelAdmin
             return false;
         }
 
-        $this->setState('datasource.extension_id', $extensionId);
+        $this->setState('datasource.id', $extensionId);
         $this->setState('datasource.id', $table->id);
 
         // Clear datasources cache

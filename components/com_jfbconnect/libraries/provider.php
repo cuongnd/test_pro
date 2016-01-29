@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -23,11 +26,9 @@ class JFBConnectProvider extends JObject
     var $usernamePrefix;
 
     protected $providerUserId;
-    private static $libraryInstance;
-    private static $cssIncluded = false;
-    var $needsCss = false;
     var $needsJavascript = false;
     var $widgetRendered = false;
+    var $extraJS = array();
 
     function __construct()
     {
@@ -35,7 +36,7 @@ class JFBConnectProvider extends JObject
         $this->appId = $this->configModel->getSetting($this->systemName . '_app_id');
         $this->secretKey = $this->configModel->getSetting($this->systemName . '_secret_key');
 
-        $profileClass = 'JFBConnectProfile' . $this->name;
+        $profileClass = 'JFBConnectProfile' . ucfirst($this->systemName);
         $this->profile = new $profileClass($this);
     }
 
@@ -74,7 +75,7 @@ class JFBConnectProvider extends JObject
 
         if (JFolder::exists($path))
         {
-            $names = JFolder::files($path, '.*.php');
+            $names = JFolder::files($path, '\.php$');
             foreach ($names as $name)
             {
                 $name = str_replace(".php", "", $name);
@@ -128,7 +129,8 @@ class JFBConnectProvider extends JObject
         return in_array($scope, $currentScope);
     }
 
-    public function getUserScope($uid) {
+    public function getUserScope($uid)
+    {
         return array();
     }
 
@@ -150,46 +152,6 @@ class JFBConnectProvider extends JObject
         return true;
     }
 
-    function loginButton($params = null)
-    {
-        return "";
-    }
-
-    function connectButton($params)
-    {
-        $connectHtml = '';
-        // This is ugly. Need a real call to get the data for a user
-        $userData = JFBCFactory::usermap()->getUser(JFactory::getUser()->id, $this->systemName)->_data;
-        if ($this->appId != "" && empty($userData->provider_user_id))
-        {
-            if ($params['buttonType'] == 'javascript')
-            {
-                $connectText = $params['buttonText'];
-                $buttonSize = $params['buttonSize'];
-
-                $this->needsCss = true;
-                $connectHtml = '<div class="sc-' . $this->systemName . '-connect-user">';
-                $connectHtml .= '<div class="sc' . $this->name . 'Login"><a href="javascript:void(0)" onclick="jfbc.login.provider(\'' . $this->systemName . '\');"><span class="sc' . ucwords($this->name) . 'Button ' . $buttonSize . '"></span><span class="sc' . ucwords($this->name) . 'LoginButton ' . $buttonSize . '">' . $connectText . '</span></a></div>';
-                $connectHtml .= '</div>';
-            }
-            else
-                $connectHtml = $this->getLoginButtonWithImage($params, 'sc' . ucwords($this->name) . 'Connect', 'sc_' . $this->systemName . 'connect');
-        }
-
-        return $connectHtml;
-    }
-
-    public function getStylesheet()
-    {
-        $newText = '';
-        if (!self::$cssIncluded)
-        {
-            self::$cssIncluded = true;
-            $newText = '<link rel="stylesheet" href="' . JUri::root(true) . '/components/com_jfbconnect/assets/jfbconnect.css" type="text/css" />';
-        }
-        return $newText;
-    }
-
     function logoutButton($params)
     {
         return "";
@@ -205,68 +167,54 @@ class JFBConnectProvider extends JObject
     // This allows automatically adding the FB/Google buttons to apps that would normally add only FB
     public function getLoginButton($text = null)
     {
-        $providers = JFBCFactory::getAllProviders();
-        $html = "";
-        foreach ($providers as $p)
-            $html .= $p->loginButton();
-
-        if ($text == null)
-        {
-            list(, $caller) = debug_backtrace(false);
-            // Check if this is the JomSocial homepage calling us, and if so, add the JText'ed Login with string
-            if (array_key_exists('class', $caller) && $caller['class'] == 'CommunityViewFrontpage')
-            {
-                SCStringUtilities::loadLanguage('com_jfbconnect');
-                $text = JText::_('COM_JFBCONNECT_LOGIN_WITH');
-            }
-        }
-
-        if ($html != "")
-        {
-            $text = empty($text) ? "" : '<div class="pull-left intro">' . $text . '</div>';
-            $html = '<span class="sourcecoast"><div class="social-login row-fluid">' . $text . $html . '</div></span>';
-        }
-        return $html;
+        $params = array('text' => $text);
+        return JFBCFactory::getLoginButtons($params);
     }
 
-    protected function getImageButton($buttonImage, $display, $alignment, $loginClass, $loginId)
+    /*
+     *  Introduced in 6.0, deprecated in 6.1.
+     *  Please use JFBCFactory::loginButtons() instead.
+     *  Right now, this will:
+     *   - Show all login buttons if the provider isn't set
+     *   - Show
+     */
+    function loginButton($params = null)
     {
+        if ($params == null && $this->systemName != 'facebook')
+                return "";
+
+        $loginWidget = JFBCFactory::widget(strtolower($this->name), 'login', $params);
+        return $loginWidget->render();
+    }
+
+    function connectButton($params)
+    {
+        if (!isset($params['providers']))
+            $params['providers'] = $this->systemName;
+        $params['show_reconnect'] = 'true';
+        return JFBCFactory::widget('facebook', 'login', $params)->render();
+    }
+
+    public function getLoginButtonWithImage($params, $loginClass, $loginID)
+    {
+        if (is_array($params))
+        {
+            $reg = new JRegistry();
+            $reg->loadArray($params);
+            $params = $reg;
+        }
+        else if (!$params)
+            $params = new JRegistry();
+
+        $alignment = $params->get('alignment', 'left');
+
+        $image = $params->get('image', JFBCFactory::config()->get($this->systemName . '_login_button', 'icon_label.png'));
         SCStringUtilities::loadLanguage('com_jfbconnect');
         $buttonAltTitle = JText::_('COM_JFBCONNECT_LOGIN_USING_' . strtoupper($this->name));
-        return '<div class="' . $loginClass . ' pull-' . $alignment . '"><a' . $display . ' id="' . $loginId . '" href="javascript:void(0)" onclick="jfbc.login.provider(\'' . $this->systemName . '\');"><img src="' . $buttonImage . '" alt="' . $buttonAltTitle . '" title="' . $buttonAltTitle . '"/></a></div>';
-    }
-
-    protected function getLoginButtonWithImage($params, $loginClass, $loginID)
-    {
-        $buttonType = isset($params['buttonType']) ? $params['buttonType'] : "icon_text_button";
-        $alignment = isset($params['alignment']) ? $params['alignment'] : "left";
-        $orientation = isset($params['orientation']) ? $params['orientation'] : "";
-
-        if ($buttonType == 'icon_text_button')
-        {
-            $display = ' class="show"';
-            $html = $this->getImageButton(JUri::root(true) . '/media/sourcecoast/images/provider/button_' . $this->systemName . '.png', $display, $alignment, $loginClass, $loginID);
-        }
-        else if ($buttonType == 'icon_button')
-        {
-            if ($orientation == 'side')
-                $display = ' class="show"';
-            else
-                $display = '';
-            $html = $this->getImageButton(JUri::root(true) . '/media/sourcecoast/images/provider/icon_' . $this->systemName . '.png', $display, $alignment, $loginClass, $loginID);
-        }
-        else if ($buttonType == "image_link")
-        {
-            $linkImage = $params[$this->systemName . 'LinkImage'];
-            $display = ' class="show"';
-            $html = $this->getImageButton($linkImage, $display, $alignment, $loginClass, $loginID);
-        }
-        else
-        {
-            $html = '';
-        }
-
-        return $html;
+        return '<div class="social-login ' . $this->systemName . ' ' . $loginClass . ' pull-' . $alignment . '">
+        <a id="' . $loginID . '" href="javascript:void(0)" onclick="jfbc.login.provider(\'' . $this->systemName . '\');">
+            <img src="' . JURI::root(true) . '/media/sourcecoast/images/provider/' . $this->systemName . '/' . $image . '" alt="' . $buttonAltTitle . '" title="' . $buttonAltTitle . '"/></a>
+            </div>';
     }
 
     /* getProviderUserId
@@ -340,5 +288,10 @@ class JFBConnectProvider extends JObject
 
     public function getHeadData()
     {
+    }
+
+    public function addJavascriptInit()
+    {
+        return $this->extraJS;
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gridSizeTitles">
+	   <item>3x3</item>
+	   <item>4x4</item>
+	   <item>5x5</item>
+	   <item>6x6</item>
+   </string-array>
+ 
+	<string-array name="gridSizeValues">
+	   <item>3</item>
+	   <item>4</item>
+	   <item>5</item>
+	   <item>6</item>
+	</string-array>
+	
+	<string-array name="insults">
+	    <item>That was pathetic. You should be ashamed of yourself.</item>
+	    <item>You give other morons a bad reputation.</item>
+	    <item>Did you ride the short bus to school?</item>
+	    <item>Maybe you should try playing when you\'re not drunk.</item>
+	    <item>If you were any dumber, you\'d be elected to Congress.</item>
+	    <item>Does a grown-up know you\'re using their phone?</item>
+	    <item>Oh, you must be a graduate of the University of Alabama.</item>
+	    <item>Don\'t be embarrassed; lots of people didn\'t finish the 2nd grade.</item>
+	    <item>I\'d suggest something more on your level, like finger painting or staring blankly into space.</item>
+	    <item>Kids, this is why you shouldn\'t do drugs.</item>
+	    <item>Great job, Mrs. Palin.</item>
+	</string-array>
+</resources>

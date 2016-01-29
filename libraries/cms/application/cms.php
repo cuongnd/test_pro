@@ -239,9 +239,9 @@ class JApplicationCms extends JApplicationWeb
 	 */
 	public function execute()
 	{
+
 		// Perform application routines.
 		$this->doExecute();
-
 		// If we have an application document object, render it.
 		if ($this->document instanceof JDocument)
 		{
@@ -249,7 +249,7 @@ class JApplicationCms extends JApplicationWeb
 			$this->render();
 		}
 		// If gzip compression is enabled in configuration and the server is compliant, compress the output.
-		if ($this->get('gzip') && !ini_get('zlib.output_compression') && (ini_get('output_handler') != 'ob_gzhandler'))
+		if ($this->get('gzip') && ini_get('zlib.output_compression') && (ini_get('output_handler') != 'ob_gzhandler'))
 		{
 			$this->compress();
 
@@ -322,7 +322,6 @@ class JApplicationCms extends JApplicationWeb
 			}
 			static::$instances[$name] = new $classname;
 		}
-
 		return static::$instances[$name];
 	}
 
@@ -724,7 +723,6 @@ class JApplicationCms extends JApplicationWeb
 
 		// Import the user plugin group.
 		JPluginHelper::importPlugin('user');
-
 		if ($response->status === JAuthentication::STATUS_SUCCESS)
 		{
 			/*
@@ -732,6 +730,7 @@ class JApplicationCms extends JApplicationWeb
 			 * This permits authentication plugins blocking the user.
 			 */
 			$authorisations = $authenticate->authorise($response, $options);
+
 			foreach ($authorisations as $authorisation)
 			{
 				$denied_states = array(JAuthentication::STATUS_EXPIRED, JAuthentication::STATUS_DENIED);
@@ -793,6 +792,7 @@ class JApplicationCms extends JApplicationWeb
 				// The user is successfully logged in. Run the after login events
 				$this->triggerEvent('onUserAfterLogin', array($options));
 			}
+
 
 			return true;
 		}
@@ -966,7 +966,6 @@ class JApplicationCms extends JApplicationWeb
 		{
 			$this->docOptions['directory'] = defined('JPATH_THEMES') ? JPATH_THEMES : (defined('JPATH_BASE') ? JPATH_BASE : __DIR__) . '/themes';
 		}
-
 		// Parse the document.
 		$this->document->parse($this->docOptions);
 

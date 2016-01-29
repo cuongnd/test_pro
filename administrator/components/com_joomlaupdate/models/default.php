@@ -78,7 +78,7 @@ class JoomlaupdateModelDefault extends JModelLegacy
 				'INNER', $db->quoteName('#__update_sites') . ' AS ' . $db->quoteName('us')
 				. ' ON (' . 'us.update_site_id = map.update_site_id)'
 			)
-			->where('map.extension_id = ' . $db->quote(700));
+			->where('map.id = ' . $db->quote(700));
 		$db->setQuery($query);
 		$update_site = $db->loadObject();
 
@@ -92,7 +92,7 @@ class JoomlaupdateModelDefault extends JModelLegacy
 			// Remove cached updates
 			$query->clear()
 				->delete($db->quoteName('#__updates'))
-				->where($db->quoteName('extension_id') . ' = ' . $db->quote('700'));
+				->where($db->quoteName('id') . ' = ' . $db->quote('700'));
 			$db->setQuery($query);
 			$db->execute();
 		}
@@ -144,7 +144,7 @@ class JoomlaupdateModelDefault extends JModelLegacy
 		$query = $db->getQuery(true)
 			->select('*')
 			->from($db->quoteName('#__updates'))
-			->where($db->quoteName('extension_id') . ' = ' . $db->quote(700));
+			->where($db->quoteName('id') . ' = ' . $db->quote(700));
 		$db->setQuery($query);
 		$updateObject = $db->loadObject();
 
@@ -579,7 +579,7 @@ ENDDATA;
 		// we can assume that it was (badly) uninstalled
 		// If it isn't, add an entry to extensions
 		$query = $db->getQuery(true)
-			->select($db->quoteName('extension_id'))
+			->select($db->quoteName('id'))
 			->from($db->quoteName('#__extensions'))
 			->where($db->quoteName('type') . ' = ' . $db->quote('file'))
 			->where($db->quoteName('element') . ' = ' . $db->quote('joomla'));
@@ -640,11 +640,11 @@ ENDDATA;
 			}
 
 			// Set the insert id
-			$row->set('extension_id', $db->insertid());
+			$row->set('id', $db->insertid());
 
 			// Since we have created a module item, we add it to the installation step stack
 			// so that if we have to rollback the changes we can undo it.
-			$installer->pushStep(array('type' => 'extension', 'extension_id' => $row->extension_id));
+			$installer->pushStep(array('type' => 'extension', 'id' => $row->id));
 		}
 
 		/*
@@ -652,7 +652,7 @@ ENDDATA;
 		 */
 		if ($manifest->update)
 		{
-			$result = $installer->parseSchemaUpdates($manifest->update->schemas, $row->extension_id);
+			$result = $installer->parseSchemaUpdates($manifest->update->schemas, $row->id);
 			if ($result === false)
 			{
 				// Install failed, rollback changes

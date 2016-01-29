@@ -80,6 +80,8 @@ joint.shapes.devs.Model = joint.shapes.basic.Generic.extend(_.extend({}, joint.s
         return attrs;
     }
 }));
+
+
 joint.shapes.devs.Atomic = joint.shapes.devs.Model.extend({
 
     defaults: joint.util.deepSupplement({
@@ -89,42 +91,6 @@ joint.shapes.devs.Atomic = joint.shapes.devs.Model.extend({
         attrs: {
             '.body': { fill: 'salmon' },
             '.label': { text: 'Atomic' },
-            '.inPorts .port-body': { fill: 'PaleGreen' },
-            '.outPorts .port-body': { fill: 'Tomato' }
-        }
-
-    }, joint.shapes.devs.Model.prototype.defaults)
-
-});
-joint.shapes.devs.Table = joint.shapes.devs.Model.extend({
-
-
-    defaults: joint.util.deepSupplement({
-
-        type: 'devs.Atomic',
-        size: { width: 80, height: 80 },
-        attrs: {
-
-            '.body': { fill: 'salmon' },
-            '.label': { text: 'Table' },
-            '.inPorts .port-body': { fill: 'PaleGreen' },
-            '.outPorts .port-body': { fill: 'Tomato' }
-        }
-
-    }, joint.shapes.devs.Model.prototype.defaults)
-
-});
-joint.shapes.devs.Tab = joint.shapes.devs.Model.extend({
-
-
-    defaults: joint.util.deepSupplement({
-
-        type: 'devs.Atomic',
-        size: { width: 80, height: 80 },
-        attrs: {
-
-            '.body': { fill: 'salmon' },
-            '.label': { text: 'Table' },
             '.inPorts .port-body': { fill: 'PaleGreen' },
             '.outPorts .port-body': { fill: 'Tomato' }
         }

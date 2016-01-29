@@ -79,7 +79,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
         }
     }
 </script>
-<div class="div-loading"></div>
+
 <form action="<?php echo JRoute::_('index.php?option=com_menus&layout=edit&id=' . (int)$this->item->id); ?>"
       method="post" name="adminForm" id="item-form" class="form-validate">
 

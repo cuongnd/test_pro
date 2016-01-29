@@ -122,7 +122,7 @@
             // the plugin's final properties are the merged default and
             // user-provided options (if any)
             plugin.settings = $.extend({}, defaults, options);
-            console.log(options);
+
             //activate transit plugin
             this.transit();
 
@@ -131,7 +131,7 @@
             if (!$.support.transition) {
                 $.fn.transition = $.fn.animate;
             }
-
+            this.popup_window_js();
             //respondjs handle responsive view
             this.respondjs();
             //activate storejs plugin
@@ -267,7 +267,17 @@
                 //plugin.centerModal();
             });
         }
+        plugin.popup_window_js=function(){
+            $element.find('i[data-type="menu_params"][menu="menu"]').popupWindow({
+                windowURL:this_host+'/index.php?option=com_menus&view=menus&tmpl=field&layout=ajaxloader&hide_panel_component=1',
+                scrollbars:1,
+                windowName:'menu Manager',
+                centerBrowser:1,
+                width:'1200',
+                height:'800'
+            });
 
+        };
         //get breakpoint
         plugin.getBreakPoint = function () {
             var jRes = jRespond([
@@ -491,7 +501,8 @@
             var nav = $('#sideNav');
             var navCurrent = nav.find('li.current');
             var navLi = nav.find('li');
-            var navLink = nav.find('a');
+            var navLink = nav.find('a.link_javascript');
+            var nav_link_ajax = nav.find('a.link_ajax');
             var navSub = nav.find('li>ul.sub');
 
             //generate unique id for each link
@@ -577,40 +588,75 @@
             );
 
             if(!plugin.settings.sideNav.hover) {
-                navLink.on("click", function(e){
+                navLink.each(function(){
                     var _this = $(this);
-                     var e_taget= $(e.target);
-                    if(e_taget.hasClass('fa-list-alt')&&e_taget.attr('menu')!== undefined)
+                    console.log(_this.data('click_nav_link'));
+                    if(typeof _this.data('click_nav_link')=="undefined") {
+                            _this.on("click", function nav_link_click(e) {
+                            _this.data('click_nav_link',true);
+                            plugin.side_nav_click(_this, e);
+                        });
+                    }
+                });
+
+                // set only event click
+                nav_link_ajax.each(function(){
+                    var _this = $(this);
+                    if(typeof _this.data('click_nav_link')=="undefined")
                     {
-                        Joomla.design_website.menu_manager();
-                        return;
-                    }else if(e_taget.hasClass('fa-list-alt')&&e_taget.attr('element-config') !== undefined){
-                        Joomla.design_website.element_config(e_taget);
-                        return;
+                        _this.on("click", function nav_link_click(e){
+                            _this.data('click_nav_link',true);
+                            var e_taget= $(e.target);
+                            if(e_taget.data('type')=='menu_params')
+                            {
+                            }else if(e_taget.data('type')=='param_element'){
+                                Joomla.design_website.element_config(e_taget);
+                            }else if(e_taget.data('type')=="config_field_module"){
+                                Joomla.design_website.module_config(e_taget);
+                            }else if(e_taget.data('type')=='binding_source') {
+                                Joomla.design_website.load_binding_source(e_taget,_this,e);
+                            }else if(e_taget.data('type')=='menu_page') {
+                                Joomla.design_website.ajax_load_menu_page(e_taget,_this,e);
+                            }else if(e_taget.data('type')=='element') {
+                                Joomla.design_website.ajax_load_element(e_taget,_this,e);
+                            }else if(e_taget.data('type')=='component') {
+                                Joomla.design_website.ajax_load_component(e_taget,_this,e);
+                            }else if(e_taget.data('type')=='modules') {
+                                Joomla.design_website.ajax_load_modules(e_taget,_this,e);
+                            }else if(e_taget.data('type')=='plugins') {
+                                Joomla.design_website.ajax_load_plugins(e_taget,_this,e);
+                            }else if(e_taget.data('type')=='datasources') {
+                                Joomla.design_website.ajax_load_datasources(e_taget,_this,e);
+                            }
+
+                        });
                     }
-                    if(_this.hasClass('notExpand')) {
-                        e.preventDefault();
-                        //expand ul and change class to expand
-                        _this.next('ul').slideDown(plugin.settings.sideNav.subOpenSpeed, plugin.settings.sideNav.animationEasing);
-                        _this.next('ul').addClass('show');
-                        _this.addClass('expand').removeClass('notExpand');
-                        if(plugin.settings.sideNav.showArrows) {
-                            _this.find('.sideNav-arrow').transition({rotate: '-180deg'});
-                        }
-                    } else if (_this.hasClass('expand')) {
-                        e.preventDefault();
-                        //collapse ul and change class to notExpand
-                        _this.next('ul').removeClass('show');
-                        _this.next('ul').slideUp(plugin.settings.sideNav.subCloseSpeed, plugin.settings.sideNav.animationEasing);
-                        _this.addClass('notExpand').removeClass('expand');
-                        if(plugin.settings.sideNav.showArrows) {
-                            _this.find('.sideNav-arrow').transition({rotate: '0deg'});
-                        }
-                    }
+
                 });
             }
         }
+        plugin.side_nav_click=function(_this,e){
+            if(_this.hasClass('notExpand')) {
+                e.preventDefault();
+                //expand ul and change class to expand
+                _this.next('ul').slideDown(plugin.settings.sideNav.subOpenSpeed, plugin.settings.sideNav.animationEasing);
+                _this.next('ul').addClass('show');
+                _this.addClass('expand').removeClass('notExpand');
+                if(plugin.settings.sideNav.showArrows) {
+                    _this.find('.sideNav-arrow').transition({rotate: '-180deg'});
+                }
+            } else if (_this.hasClass('expand')) {
+                e.preventDefault();
+                //collapse ul and change class to notExpand
+                _this.next('ul').removeClass('show');
+                _this.next('ul').slideUp(plugin.settings.sideNav.subCloseSpeed, plugin.settings.sideNav.animationEasing);
+                _this.addClass('notExpand').removeClass('expand');
+                if(plugin.settings.sideNav.showArrows) {
+                    _this.find('.sideNav-arrow').transition({rotate: '0deg'});
+                }
+            }
 
+        }
         //set current nav element
         plugin.setCurrentNav = function () {
             var domain = document.domain;

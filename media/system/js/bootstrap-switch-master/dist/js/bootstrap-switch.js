@@ -424,6 +424,7 @@
         })(this));
         this._handleWidth = this.$on.outerWidth();
         this._labelWidth = this.$label.outerWidth();
+
         this.$container.width((this._handleWidth * 2) + this._labelWidth);
         return this.$wrapper.width(this._handleWidth + this._labelWidth);
       };

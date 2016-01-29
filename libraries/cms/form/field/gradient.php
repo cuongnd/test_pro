@@ -251,7 +251,8 @@ class JFormFieldGradient extends JFormField
 			JHtml::_('bootstrap.framework');
 			JHtml::_('bootstrap.modal');
 		}
-		$out_put_name= $this->element['out_put_name'];
+
+		$out_put_name= $this->name;
 		$doc=JFactory::getDocument();
 		$lessInput = JPATH_ROOT . '/libraries/cms/form/field/gradient.less';
 		$cssOutput = JPATH_ROOT . '/libraries/cms/form/field/gradient.css';

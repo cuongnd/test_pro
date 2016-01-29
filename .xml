@@ -1,0 +1,67 @@
+<config>
+					<field type="text" readonly="false" label="" default=""
+						   name=""
+
+												>
+											</field>
+					<field type="checkbox" label="" default="0"
+						   name="enable_" onchange="">
+
+					</field>
+
+									<fields name="">
+					<field type="text" readonly="false" label="" default=""
+						   name=""
+
+												>
+											</field>
+					<field type="checkbox" label="" default="0"
+						   name="enable_" onchange="">
+
+					</field>
+
+									</fields>				<fields name="">
+					<field type="text" readonly="false" label="" default=""
+						   name=""
+
+												>
+											</field>
+					<field type="checkbox" label="" default="0"
+						   name="enable_" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="" default=""
+						   name=""
+
+												>
+											</field>
+					<field type="checkbox" label="" default="0"
+						   name="enable_" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="" default=""
+						   name=""
+
+												>
+											</field>
+					<field type="checkbox" label="" default="0"
+						   name="enable_" onchange="">
+
+					</field>
+
+									</fields>				<fields name="">
+					<field type="text" readonly="false" label="" default=""
+						   name=""
+
+												>
+											</field>
+					<field type="checkbox" label="" default="0"
+						   name="enable_" onchange="">
+
+					</field>
+
+									</fields>				</config>

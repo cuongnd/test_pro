@@ -1,17 +1,18 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.controller');
 jimport('joomla.user.helper');
-jimport('sourcecoast.utilities');
 
-class JFBConnectControllerLoginRegister extends JControllerLegacy
+class JFBConnectControllerLoginRegister extends JFBConnectController
 {
     var $_newUserPassword = "";
 
@@ -38,7 +39,7 @@ class JFBConnectControllerLoginRegister extends JControllerLegacy
         {
             $redirect = $loginRegisterModel->getLoginRedirect($provider);
             $returnParam = '&return=' . base64_encode($redirect);
-            $this->setRedirect(JRoute::_('index.php?option=com_jfbconnect&view=loginregister&provider=' . strtolower($provider->name) . $returnParam, false));
+            $this->setRedirect(JRoute::_('index.php?option=com_jfbconnect&view=loginregister&provider=' . $provider->systemName . $returnParam, false));
         }
     }
 
@@ -57,7 +58,7 @@ class JFBConnectControllerLoginRegister extends JControllerLegacy
 
         $providerUserId = $provider->getProviderUserId();
         if (!$providerUserId)
-            $app->redirect(JRoute::_('index.php?option=com_jfbconnect&view=loginregister&provider=' . strtolower($provider->name) . $returnParam, false));
+            $app->redirect(JRoute::_('index.php?option=com_jfbconnect&view=loginregister&provider=' . $provider->systemName . $returnParam, false));
 
         // Populate the data array:
         $data = array();
@@ -70,12 +71,12 @@ class JFBConnectControllerLoginRegister extends JControllerLegacy
         // Check if the log in succeeded.
         if (JError::isError($error) || $error == false)
         {
-            $app->redirect(JRoute::_('index.php?option=com_jfbconnect&view=loginregister&provider=' . strtolower($provider->name) . $returnParam, false));
+            $app->redirect(JRoute::_('index.php?option=com_jfbconnect&view=loginregister&provider=' . $provider->systemName . $returnParam, false));
         }
         else //Logged in successfully
         {
             $jUser = JFactory::getUser();
-            if (JFBCFactory::usermap()->map($jUser->get('id'), $providerUserId, strtolower($provider->name), $provider->client->getToken()))
+            if (JFBCFactory::usermap()->map($jUser->get('id'), $providerUserId, $provider->systemName, $provider->client->getToken()))
                 $app->enqueueMessage(JText::sprintf('COM_JFBCONNECT_MAP_USER_SUCCESS', $provider->name));
 
             /* Don't import on just a mapping update, for now. Need to investigate.

@@ -230,14 +230,11 @@ class JFormFieldChangeView extends JFormField
     protected function getInput()
     {
         $doc = JFactory::getDocument();
-        $lessInput = JPATH_ROOT . '/libraries/cms/form/field/ChangeView.less';
-        $cssOutput = JPATH_ROOT . '/libraries/cms/form/field/ChangeView.css';
-        JUtility::compileLess($lessInput, $cssOutput);
         JHtml::_('jquery.framework');
         JHtml::_('bootstrap.framework');
 
 
-        $doc->addStyleSheet(JUri::root() . "/libraries/cms/form/field/ChangeView.css");
+        $doc->addLessStyleSheet(JUri::root() . "/libraries/cms/form/field/ChangeView.less");
         $doc->addScript(JUri::root().'/media/system/js/base64.js');
         $doc->addScript(JUri::root().'/libraries/cms/form/field/changeview.js');
         $db = JFactory::getDbo();

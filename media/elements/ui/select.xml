@@ -1,73 +1,199 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fields name="params">
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
-                    <field name="key"  type="text" description="Key" label="Key"/>
-                    <field name="value"  type="text" description="Value" label="Value"/>
-                    <field name="value_selected"  type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Value selected" label="Value selected"/>
+<config><fields name="params"><fields name="data">
+					<field type="bindingSource" readonly="false" label="bindingSource" default=""
+						   name="bindingSource"
 
-                </fieldset>
-            </fields>
-        </fields>
-        <fields name="params">
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="label" type="text" default="lable here" label="Label"/>
-                <field name="on_change_by_code_php" type="list"  label="On change by code php" onchange="" description="On change by code php" default="0">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </field>
+												>
+											</field>
+					<field type="checkbox" label="bindingSource" default="0"
+						   name="enable_bindingsource" onchange="">
 
-                <field name="use_selected_grid" type="list"  label="use selected grid" onchange="" description="use selected grid" default="0">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </field>
+					</field>
 
-                <field name="confirm" type="list"  label="show confirm" description="show confirm" default="0">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </field>
-                <field name="confirm_msg" type="textarea" default="are your sure change ?" label="confirm messeger"/>
-                <field name="gridselected" readonly="readonly" type="gridselected" description="grid formart selected" label="grid formart selected"/>
+									
+					<field type="autocompletetext" readonly="false" label="Key" default=""
+						   name="key"
 
-                <field name="on_change" type="coding" mode="javascript" default="" label="On Change"/>
+													 filter_field="params.data.bindingSource" 												>
+											</field>
+					<field type="checkbox" label="Key" default="0"
+						   name="enable_key" onchange="">
 
-                <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="disable_chosen" type="list"  label="Disable Chosen" onchange="element_ui_select.disable_chosen(this)" description="Disable Chosen" default="1">
-                    <option value="1">JYES</option>
-                    <option value="0">JNO</option>
-                </field>
-                <field name="items" readonly="readonly" type="inputitem" description="List item" label="list item"/>
+					</field>
 
+									
+					<field type="autocompletetext" readonly="false" label="value" default=""
+						   name="value"
 
+													 filter_field="params.data.bindingSource" 												>
+											</field>
+					<field type="checkbox" label="value" default="0"
+						   name="enable_value" onchange="">
 
+					</field>
 
-            </fieldset>
-        </fields>
+									
+					<field type="advancedbindingsourceselect2" readonly="false" label="Value selected" default=""
+						   name="value_selected"
 
+												>
+											</field>
+					<field type="checkbox" label="Value selected" default="0"
+						   name="enable_value_selected" onchange="">
 
-    </config>
-</extension>
+					</field>
+
+									</fields>				<fields name="element">
+					<field type="text" readonly="false" label="label" default=""
+						   name="label"
+
+												>
+											</field>
+					<field type="checkbox" label="label" default="0"
+						   name="enable_label" onchange="">
+
+					</field>
+
+									
+					<field type="radioyesno" readonly="false" label="On change by code php" default=""
+						   name="on_change_by_code_php"
+
+												>
+											</field>
+					<field type="checkbox" label="On change by code php" default="0"
+						   name="enable_on_change_by_code_php" onchange="">
+
+					</field>
+
+									
+					<field type="radioyesno" readonly="false" label="use selected grid" default=""
+						   name="use_selected_grid"
+
+												>
+											</field>
+					<field type="checkbox" label="use selected grid" default="0"
+						   name="enable_use_selected_grid" onchange="">
+
+					</field>
+
+									
+					<field type="radioyesno" readonly="false" label="confirm" default=""
+						   name="confirm"
+
+												>
+											</field>
+					<field type="checkbox" label="confirm" default="0"
+						   name="enable_confirm" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="confirm messeger" default="are your sure change ?"
+						   name="confirm_msg"
+
+												>
+											</field>
+					<field type="checkbox" label="confirm messeger" default="0"
+						   name="enable_confirm_msg" onchange="">
+
+					</field>
+
+									
+					<field type="gridselected" readonly="false" label="grid formart selected" default=""
+						   name="gridselected"
+
+												>
+											</field>
+					<field type="checkbox" label="grid formart selected" default="0"
+						   name="enable_gridselected" onchange="">
+
+					</field>
+
+									
+					<field type="coding" readonly="false" label="On Change" default="On Change"
+						   name="on_change"
+
+													 mode="javascript" 												>
+											</field>
+					<field type="checkbox" label="On Change" default="0"
+						   name="enable_on_change" onchange="">
+
+					</field>
+
+									
+					<field type="fieldnamebindingsourceselect2" readonly="false" label="Name" default=""
+						   name="name"
+
+												>
+											</field>
+					<field type="checkbox" label="Name" default="0"
+						   name="enable_name" onchange="">
+
+					</field>
+
+									
+					<field type="inputitem" readonly="false" label="Items" default=""
+						   name="items"
+
+												>
+											</field>
+					<field type="checkbox" label="Items" default="0"
+						   name="enable_items" onchange="">
+
+					</field>
+
+									
+					<field type="radioyesno" readonly="false" label="Enable select2" default="1"
+						   name="enable_select2"
+
+												>
+											</field>
+					<field type="checkbox" label="Enable select2" default="0"
+						   name="enable_enable_select2" onchange="element_ui_select.disable_chosen(this)">
+
+					</field>
+
+									
+					<field type="icon" readonly="false" label="Icon left" default="0"
+						   name="group_add_on_left"
+
+												>
+											</field>
+					<field type="checkbox" label="Icon left" default="0"
+						   name="enable_group_add_on_left" onchange="">
+
+					</field>
+
+									
+					<field type="icon" readonly="false" label="Icon right" default="0"
+						   name="group_add_on_right"
+
+												>
+											</field>
+					<field type="checkbox" label="Icon right" default="0"
+						   name="enable_group_add_on_right" onchange="">
+
+					</field>
+
+									<fields name="element_required">
+					<field type="radioyesno" readonly="false" label="required" default="0"
+						   name="required"
+
+												>
+											</field>
+					<field type="checkbox" label="required" default="0"
+						   name="enable_required" onchange="">
+
+					</field>
+
+									
+					<field type="textarea" readonly="false" label="message" default="This field is required"
+						   name="message"
+
+												>
+											</field>
+					<field type="checkbox" label="message" default="0"
+						   name="enable_message" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</fields>				</config>

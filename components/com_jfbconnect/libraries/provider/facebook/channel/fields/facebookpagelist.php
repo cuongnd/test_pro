@@ -1,9 +1,10 @@
 <?php
-
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2014 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -18,8 +19,27 @@ class JFormFieldFacebookPageList extends JFormFieldList
     protected function getOptions()
     {
         $options = array();
-        $options[] = JHtml::_('select.option', "--", "-- Select a Page --");
+        $options[] = JHtml::_('select.option', "--", "-- ".JText::_('COM_JFBCONNECT_CHANNEL_FACEBOOK_PAGE_SELECT_LABEL')." --");
 
+        $jid = $this->form->getValue('attribs.user_id');
+        $uid = JFBCFactory::usermap()->getProviderUserId($jid, 'facebook');
+        $access_token = JFBCFactory::usermap()->getUserAccessToken($jid, 'facebook');
+        $params['access_token'] = $access_token;
+        $pages = JFBCFactory::provider('facebook')->api('/' . $uid . '/accounts/', $params, true, 'GET');
+
+        if (isset($pages['data']) && count($pages['data']) > 0)
+        {
+            foreach ($pages['data'] as $p)
+            {
+                $options[] = JHtml::_('select.option', strtolower($p['id']), $p['name'] . " (" . $p['category'] . ')');
+            }
+        }
+
+        return $options;
+    }
+
+    function getInput()
+    {
         $jid = $this->form->getValue('attribs.user_id');
         if ($jid)
         {
@@ -27,27 +47,19 @@ class JFormFieldFacebookPageList extends JFormFieldList
             if ($uid)
             {
                 if (!JFBCFactory::provider('facebook')->hasScope($uid, 'manage_pages'))
-                    JFactory::getApplication()->enqueueMessage("The selected user has not granted the 'manage_pages' permission. Please have them login on the front-end of the site and accept the correct permission.", 'warning');
-                else if (!JFBCFactory::provider('facebook')->hasScope($uid, 'publish_actions'))
-                    JFactory::getApplication()->enqueueMessage("The selected user has not granted the 'publish_actions' permission. Please have them login on the front-end of the site and accept the correct permission.", 'warning');
+                    return '<div class="jfbc-error">'.JText::_('COM_JFBCONNECT_CHANNEL_FACEBOOK_PERM_MANAGE_PAGES_ERROR_LABEL').'</div>';
+                else if (!JFBCFactory::provider('facebook')->hasScope($uid, 'publish_actions') && $this->form->getValue('attribs.allow_posts'))
+                    return '<div class="jfbc-error">'.JText::_('COM_JFBCONNECT_CHANNEL_FACEBOOK_PERM_PUBLISH_ACTIONS_ERROR_LABEL').'</div>';
                 else
-                {
-                    $access_token = JFBCFactory::usermap()->getUserAccessToken($jid, 'facebook');
-                    $params['access_token'] = $access_token;
-                    $pages = JFBCFactory::provider('facebook')->api('/' . $uid . '/accounts/', $params, true, 'GET');
-
-                    if (isset($pages['data']) && count($pages['data']) > 0)
-                    {
-                        foreach ($pages['data'] as $p)
-                        {
-                            $options[] = JHtml::_('select.option', strtolower($p['id']), $p['name'] . " (" . $p['category'] . ')');
-                        }
-                    }
-                }
+                    return parent::getInput();
             }
             else
-                JFactory::getApplication()->enqueueMessage("The selected user has not authenticated with Facebook. Please have them do so on the front-end of the site.", 'warning');
+            {
+                return '<div class="jfbc-error">'.JText::_('COM_JFBCONNECT_CHANNEL_FACEBOOK_PERM_PAGE_USER_AUTH_ERROR_LABEL').'</div>';
+            }
+
         }
-        return $options;
+        else
+            return '<div class="jfbc-error">'.JText::_('COM_JFBCONNECT_CHANNEL_SELECT_USER_ERROR_LABEL').'</div>';
     }
-}
+ }

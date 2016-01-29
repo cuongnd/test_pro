@@ -1,30 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fields name="params">
-            <field name="class" type="text" default="" label="Class" description="class" />
-            <field name="div" type="textarea" default="" label="Text" description="Text" />
+<config><fields name="params"><fields name="data">
+					<field type="bindingSource" readonly="false" label="binding Source" default=""
+						   name="bindingSource"
 
-        </fields>
-    </config>
-</extension>
+												>
+											</field>
+					<field type="checkbox" label="binding Source" default="0"
+						   name="enable_bindingsource" onchange="">
+
+					</field>
+
+									
+					<field type="autocompletetext" readonly="false" label="binding Source key" default=""
+						   name="binding_source_key"
+
+													 filter_field="params.data.bindingSource" 												>
+											</field>
+					<field type="checkbox" label="binding Source key" default="0"
+						   name="enable_binding_source_key" onchange="">
+
+					</field>
+
+									
+					<field type="table" readonly="false" label="Table update" default=""
+						   name="table_update"
+
+												>
+											</field>
+					<field type="checkbox" label="Table update" default="0"
+						   name="enable_table_update" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Primary key of table" default=""
+						   name="primary_key_of_table"
+
+												>
+											</field>
+					<field type="checkbox" label="Primary key of table" default="0"
+						   name="enable_primary_key_of_table" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

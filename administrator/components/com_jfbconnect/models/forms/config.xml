@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
     <fieldset name="user">
-        <field name="create_new_users"
+        <field name="automatic_registration"
                type="radio"
                label="COM_JFBCONNECT_CONFIG_USER_AUTOMATIC_REGISTRATION_LABEL"
                description="COM_JFBCONNECT_CONFIG_USER_AUTOMATIC_REGISTRATION_DESC"
@@ -9,8 +9,8 @@
                labelclass="config_setting"
                class="btn-group"
                 >
-            <option value="1">JNO</option>
-            <option value="0">JYES</option>
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
         </field>
         <field name="registration_component"
                type="socialprofileregistration"
@@ -119,6 +119,16 @@
             <option value="1">COM_JFBCONNECT_CONFIG_USER_SHOW</option>
             <option value="2">COM_JFBCONNECT_CONFIG_USER_SHOW_DISABLE</option>
         </field>
+        <field name="registration_show_name"
+                type="list"
+                label="COM_JFBCONNECT_CONFIG_USER_REG_NAME_LABEL"
+                description="COM_JFBCONNECT_CONFIG_USER_NAME_USERNAME_DESC"
+                default="1"
+                labelclass="config_setting"
+                >
+            <option value="0">COM_JFBCONNECT_CONFIG_USER_HIDE</option>
+            <option value="1">COM_JFBCONNECT_CONFIG_USER_SHOW</option>
+        </field>
     </fieldset>
     <fieldset name="login_logout">
         <field name="facebook_new_user_redirect"
@@ -152,16 +162,65 @@
             <option value="3">COM_JFBCONNECT_SOCIAL_BOTH_LABEL</option>
         </field>
     </fieldset>
-    <fieldset name="misc">
-        <field name="jquery_load"
+    <fieldset name="advanced">
+        <field name="social_force_scheme"
                type="radio"
-               label="COM_JFBCONNECT_CONFIG_JQUERY_LOAD_LABEL"
-               description="COM_JFBCONNECT_CONFIG_JQUERY_LOAD_DESC"
+               label="COM_JFBCONNECT_CONFIG_FORCE_SCHEME_LABEL"
+               description="COM_JFBCONNECT_CONFIG_FORCE_SCHEME_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">None</option>
+            <option value="1">http://</option>
+            <option value="2">https://</option>
+        </field>
+        <field name="social_tags_always_parse"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_ALWAYS_PARSE_TAGS_LABEL"
+               description="COM_JFBCONNECT_CONFIG_ALWAYS_PARSE_TAGS_DESC"
                default="0"
                labelclass="config_setting"
                class="btn-group">
             <option value="0">JNO</option>
             <option value="1">JYES</option>
+        </field>
+        <field name="social_toolbar_enable"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_SOCIAL_TOOLBAR_ENABLE_LABEL"
+               description="COM_JFBCONNECT_CONFIG_SOCIAL_TOOLBAR_ENABLE_DESC"
+               default="1"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="jquery_load"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_JQUERY_LOAD_LABEL"
+               description="COM_JFBCONNECT_CONFIG_JQUERY_LOAD_DESC"
+               default="1"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="bootstrap_css"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_BOOTSTRAP_CSS_LOAD_LABEL"
+               description="COM_JFBCONNECT_CONFIG_BOOTSTRAP_CSS_LOAD_DESC"
+               default="1"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="cache_duration"
+               type="text"
+               label="COM_JFBCONNECT_CONFIG_CACHE_DURATION_LABEL"
+               description="COM_JFBCONNECT_CONFIG_CACHE_DURATION_DESC"
+               default="15"
+               labelclass="config_setting"
+                >
         </field>
         <field name="facebook_display_errors"
                type="radio"
@@ -173,6 +232,8 @@
             <option value="0">JNO</option>
             <option value="1">JYES</option>
         </field>
+    </fieldset>
+    <fieldset name="misc">
         <field name="sc_download_id"
                type="text"
                label="COM_JFBCONNECT_CONFIG_MISC_SOURCECOAST_SUBSCRIPTION_ID_LABEL"

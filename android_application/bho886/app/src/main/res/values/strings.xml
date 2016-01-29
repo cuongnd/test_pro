@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">bho88</string>
+    <string name="root_url">http://www.banhangonline88.com/</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_slider">slider</string>
+    <string name="default_text_ps">180PS</string>
+    <string name="separator">/</string>
+    <string name="default_text_kws">120kW</string>
+
+    <string name="car_producer_image_content_description">Car Producer</string>
+</resources>

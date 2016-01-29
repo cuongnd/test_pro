@@ -1,8 +1,41 @@
-jQuery(document).ready(function ($) {
+(function ($) {
 
-    element_ui_grid = {
-        int_ui_grid: function () {
+    // here we go!
+    $.ui_grid = function (element, options) {
 
+        // plugin's default options
+        var defaults = {
+            mode_select_column_template:[],
+            hide_footer:false,
+            grid_option:{
+                groupable: true
+            }
+        }
+
+        // current instance of the object
+        var plugin = this;
+
+        // this will hold the merged default, and user-provided options
+        plugin.settings = {}
+
+        var $element = $(element), // reference to the jQuery version of DOM element
+            element = element;    // reference to the actual DOM element
+        // the "constructor" method that gets called when the object is created
+        plugin.init = function () {
+            plugin.settings = $.extend({}, defaults, options);
+            grid_option=plugin.settings.grid_option;
+            mode_select_column_template=plugin.settings.mode_select_column_template;
+
+            grid_option.columns=mode_select_column_template;
+            var hide_footer=plugin.settings.hide_footer;
+            if(hide_footer)
+            {
+                grid_option.pageable=false;
+            }
+            plugin.ui_grid=$element.kendoGrid(grid_option);
+
+
+/*
             $('.k-grid.k-widget').each(function () {
                 self = $(this);
                 attr_id = self.attr('id');
@@ -41,9 +74,9 @@ jQuery(document).ready(function ($) {
                                 data[index].ordering= index;
                             }
                         });
-                         var dataSource = new kendo.data.DataSource({
-                         data:data
-                         });
+                        var dataSource = new kendo.data.DataSource({
+                            data:data
+                        });
 
                         kendo_grid.setDataSource(dataSource);
                         if(typeof web_design !== 'undefined'){
@@ -75,9 +108,9 @@ jQuery(document).ready(function ($) {
 
 
                                 });
-                               /* var dataSource = new kendo.data.DataSource({
-                                    data:response.models
-                                });*/
+                                /!* var dataSource = new kendo.data.DataSource({
+                                 data:response.models
+                                 });*!/
 
 
 
@@ -90,9 +123,32 @@ jQuery(document).ready(function ($) {
                 //setup checkbox
                 enable_select_item_by_checked  = self.attr('data-enable-select-item-by-checked');
             });
+*/
+
         }
 
-    };
+
+        plugin.init();
+
+    }
+
+    // add the plugin to the jQuery.fn object
+    $.fn.ui_grid = function (options) {
+
+        // iterate through the DOM elements we are attaching the plugin to
+        return this.each(function () {
+            // if plugin has not already been attached to the element
+            if (undefined == $(this).data('ui_grid')) {
+                var plugin = new $.ui_grid(this, options);
+                $(this).data('ui_grid', plugin);
+
+            }
+
+        });
+
+    }
+
+})(jQuery);
 
 
-});
+

@@ -1,32 +1,18 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+defined('_JEXEC') or die('Restricted access');
 
-if (!class_exists('JOauth1Client'))
-{
-    JLoader::register('JOauth1Client', JPATH_SITE . '/components/com_jfbconnect/libraries/joomla/oauth1/client.php');
-}
+require_once JPATH_SITE . '/components/com_jfbconnect/autoloader.php';
+JFBConnectAutoloader::register();
 
+JLoader::register('JFBCOAuth1Client', JPATH_SITE . '/components/com_jfbconnect/libraries/joomla/oauth1/client.php');
 JLoader::register('JFBConnectAuthenticationOauth2', JPATH_SITE . '/components/com_jfbconnect/libraries/authentication/oauth2.php');
-
-JLoader::register('JFBConnectChannel', JPATH_SITE . '/components/com_jfbconnect/libraries/channel.php');
-JLoader::register('JFBConnectProvider', JPATH_SITE . '/components/com_jfbconnect/libraries/provider.php');
-JLoader::register('JFBConnectProfile', JPATH_SITE . '/components/com_jfbconnect/libraries/profile.php');
-JLoader::register('JFBConnectWidget', JPATH_SITE . '/components/com_jfbconnect/libraries/widget.php');
-JLoader::register('JFBConnectProviderFacebookWidget', JPATH_SITE . '/components/com_jfbconnect/libraries/provider/facebook/widget.php');
-JLoader::register('JFBConnectProviderPinterestWidget', JPATH_SITE . '/components/com_jfbconnect/libraries/provider/pinterest/widget.php');
-
-JLoader::discover('JFBConnectProvider', JPATH_SITE . '/components/com_jfbconnect/libraries/provider/');
-JLoader::discover('JFBConnectProfile', JPATH_SITE . '/components/com_jfbconnect/libraries/profile/');
-
-JLoader::discover('JFBConnectProviderFacebookWidget', JPATH_SITE . '/components/com_jfbconnect/libraries/provider/facebook/widget/');
-JLoader::discover('JFBConnectProviderGoogleWidget', JPATH_SITE . '/components/com_jfbconnect/libraries/provider/google/widget/');
-JLoader::discover('JFBConnectProviderLinkedInWidget', JPATH_SITE . '/components/com_jfbconnect/libraries/provider/linkedin/widget/');
-JLoader::discover('JFBConnectProviderPinterestWidget', JPATH_SITE . '/components/com_jfbconnect/libraries/provider/pinterest/widget/');
-JLoader::discover('JFBConnectProviderTwitterWidget', JPATH_SITE . '/components/com_jfbconnect/libraries/provider/twitter/widget/');
 
 include_once(JPATH_ADMINISTRATOR . '/components/com_jfbconnect/models/usermap.php');
 
@@ -36,10 +22,12 @@ class JFBCFactory
 {
     public static function provider($name)
     {
+        $name = strtolower($name);
+
         static $providers = array();
         if (!isset($providers[$name]))
         {
-            $className = 'JFBConnectProvider' . $name;
+            $className = 'JFBConnectProvider' . ucfirst($name);
 
             if (class_exists($className))
             {
@@ -61,10 +49,12 @@ class JFBCFactory
         if (!isset($allProviders))
         {
             $allProviders = array();
-            $files = JFolder::files(JPATH_SITE . '/components/com_jfbconnect/libraries/provider/');
+            $files = JFolder::files(JPATH_SITE . '/components/com_jfbconnect/libraries/provider/', '\.php$');
             foreach ($files as $file)
             {
-                $allProviders[] = self::provider(str_replace(".php", "", $file));
+                $p = self::provider(str_replace(".php", "", $file));
+                if ($p)
+                    $allProviders[] = $p;
             }
         }
         return $allProviders;
@@ -100,6 +90,17 @@ class JFBCFactory
             $configModel = new JFBConnectModelConfig();
         }
         return $configModel;
+    }
+
+    public static function cache()
+    {
+        static $cache = null;
+        if (!isset($cache))
+        {
+            require_once(JPATH_SITE . '/components/com_jfbconnect/libraries/cache.php');
+            $cache = new JFBConnectCache();
+        }
+        return $cache;
     }
 
     // Return an instance of the usermap model, always creating it
@@ -143,7 +144,7 @@ class JFBCFactory
             $widgetFolder = JPATH_SITE . '/components/com_jfbconnect/libraries/provider/' . $provider . '/widget/';
             if(JFolder::exists($widgetFolder))
             {
-                $widgetFiles = JFolder::files($widgetFolder, '.xml');
+                $widgetFiles = JFolder::files($widgetFolder, '\.xml$');
                 if ($widgetFiles && count($widgetFiles) > 0)
                 {
                     foreach ($widgetFiles as $file)
@@ -156,4 +157,34 @@ class JFBCFactory
         }
         return $allWidgets[$provider];
     }
+
+    public static function getLoginButtons($params = null)
+    {
+        // Any provider can actually be used here. All roads lead to the same login widget
+        return JFBCFactory::widget('facebook', 'login', $params)->render();
+    }
+
+    public static function getReconnectButtons($params = null)
+    {
+        $params['show_reconnect'] = 'true';
+        return JFBCFactory::widget('facebook', 'login', $params)->render();
+    }
+
+    /***
+     * Adds a stylesheet to the list of inclusions that need to be added to the page
+     * Managed this way as some are added before the page is rendered, and some after
+     * @var path to filename relative to /components/com_jfbconnect/
+     */
+    static protected $css = array();
+    public static function addStylesheet($name)
+    {
+        if (!in_array($name, self::$css))
+            self::$css[] = $name;
+    }
+
+    public static function getStylesheets()
+    {
+        return self::$css;
+    }
+
 }

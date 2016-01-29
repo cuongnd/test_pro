@@ -199,20 +199,19 @@ class JFormFieldSelectBlock extends JFormField
 		// Including fallback code for HTML5 non supported browsers.
 		JHtml::_('jquery.framework');
 		JHtml::_('script', 'system/html5fallback.js', false, true);
+		require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
 		$listPositionsSetting= UtilityHelper::getPositionByPage();
 		$a_item=new stdClass();
 		$a_item->id='';
 		$a_item->text="None";
 		$options[]=$a_item;
 		foreach($listPositionsSetting as $item){
-			if(trim($item->title)=='')
-			{
-				continue;
+			if(trim($item->title)!='' && trim($item->name)!='') {
+				$a_item = new stdClass();
+				$a_item->id = $item->id;
+				$a_item->text = "$item->title($item->name)";
+				$options[] = $a_item;
 			}
-			$a_item=new stdClass();
-			$a_item->id=$item->id;
-			$a_item->text=$item->title;
-			$options[] =$a_item;
 		}
 		$selectOPtion['tags']=$options;
 		$html='';

@@ -138,6 +138,15 @@ class JFormFieldFolderList extends JFormFieldList
 	 * @see     JFormField::setup()
 	 * @since   3.2
 	 */
+	public function get_attribute_config()
+	{
+		return array(
+			directory=>'',
+			filter=>'',
+			exclude=>'',
+			hide_default=>''
+		);
+	}
 	public function setup(SimpleXMLElement $element, $value, $group = null)
 	{
 		$return = parent::setup($element, $value, $group);

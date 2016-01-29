@@ -238,6 +238,27 @@
             that.element.html(html);
 
             items = that.items();
+            if(that.options.columns>1) {
+
+                var item_arrays = [], size = that.options.columns;
+                var column_bootstrap=Math.round(12/size);
+                while (items.length > 0)
+                    item_arrays.push(items.splice(0, size));
+                for (i = 0; i < item_arrays.length; i++) {
+                    var items1 = item_arrays[i];
+                    $row=$('<div class="row form-group"></div>');
+
+                    for (j = 0; j < items1.length; j++) {
+                        item = items1[j];
+                        $column=$('<div class="col-md-'+column_bootstrap+'"></div>');
+                        $(item).appendTo($column);
+
+                        $column.appendTo($row);
+                    }
+                    $row.appendTo(this.element);
+
+                }
+            }
             for (idx = 0, length = view.length; idx < length; idx++) {
                 items.eq(idx).attr(kendo.attr("uid"), view[idx].uid)
                              .attr("role", "option")

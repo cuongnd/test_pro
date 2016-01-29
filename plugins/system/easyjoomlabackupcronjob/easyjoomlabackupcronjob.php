@@ -96,7 +96,7 @@ class PlgSystemEasyJoomlaBackupCronjob extends JPlugin
     private function backup_create($type)
     {
         // Try to increase all relevant settings to prevent timeouts on big sites
-        ini_set('memory_limit', '128M');
+        ini_set('memory_limit', '8M');
         ini_set('error_reporting', 0);
         @set_time_limit(3600);
 

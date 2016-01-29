@@ -43,6 +43,7 @@ class JCacheController
 	 */
 	public function __construct($options)
 	{
+
 		$this->cache = new JCache($options);
 		$this->options = & $this->cache->_options;
 
@@ -105,8 +106,9 @@ class JCacheController
 				throw new RuntimeException('Unable to load Cache Controller: ' . $type, 500);
 			}
 		}
+		$item_class= new $class($options);
 
-		return new $class($options);
+		return $item_class;
 	}
 
 	/**
@@ -175,6 +177,8 @@ class JCacheController
 	 */
 	public function get($id, $group = null)
 	{
+
+
 		$data = $this->cache->get($id, $group);
 
 		if ($data === false)
@@ -186,6 +190,7 @@ class JCacheController
 			$locktest = $this->cache->lock($id, $group);
 			if ($locktest->locked == true && $locktest->locklooped == true)
 			{
+
 				$data = $this->cache->get($id, $group);
 			}
 			if ($locktest->locked == true)

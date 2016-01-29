@@ -375,7 +375,7 @@ class JInstallerAdapterPackage extends JAdapterInstance
 			$this->parent->set('extension_message', $msg);
 		}
 
-		return $row->extension_id;
+		return $row->id;
 	}
 
 	/**
@@ -559,7 +559,7 @@ class JInstallerAdapterPackage extends JAdapterInstance
 		$db = $this->parent->getDbo();
 
 		$query = $db->getQuery(true)
-			->select('extension_id')
+			->select('id')
 			->from('#__extensions')
 			->where('type = ' . $db->quote($type))
 			->where('element = ' . $db->quote($id));

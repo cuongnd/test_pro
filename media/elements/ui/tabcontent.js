@@ -1,3 +1,72 @@
+// jQuery Plugin for SprFlat admin template
+// Control options and basic function of template
+// version 1.0, 28.02.2013
+// by SuggeElson www.suggeelson.com
+
+(function ($) {
+
+    // here we go!
+    $.ui_tabcontent = function (element, options) {
+
+
+
+
+        // plugin's default options
+        var defaults = {
+            tabcontent_option:{
+
+            }
+        }
+
+        // current instance of the object
+        var plugin = this;
+
+        // this will hold the merged default, and user-provided options
+        plugin.settings = {}
+
+        var $element = $(element), // reference to the jQuery version of DOM element
+            element = element;    // reference to the actual DOM element
+        // the "constructor" method that gets called when the object is created
+        var element_id=$element.attr('id');
+        plugin.init = function () {
+
+            plugin.settings = $.extend({}, defaults, options);
+            tabcontent_option=plugin.settings.tabcontent_option;
+
+
+
+
+
+        }
+        plugin.example_function = function () {
+
+        }
+        plugin.init();
+
+    }
+
+    // add the plugin to the jQuery.fn object
+    $.fn.ui_tabcontent = function (options) {
+
+        // iterate through the DOM elements we are attaching the plugin to
+        return this.each(function () {
+            // if plugin has not already been attached to the element
+            if (undefined == $(this).data('ui_tabcontent')) {
+                var plugin = new $.ui_tabcontent(this, options);
+                $(this).data('ui_tabcontent', plugin);
+
+            }
+
+        });
+
+    }
+
+})(jQuery);
+
+
+
+
+
 jQuery(document).ready(function($){
 
     element_ui_tab_content={

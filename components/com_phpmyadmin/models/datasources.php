@@ -30,6 +30,7 @@ class phpMyAdminModelDataSources extends JModelList
 	var $listPropertyTable=array();
 	var $listDataSource=array();
 	var $listPropertyColumn=array();
+	static $current_data_source=array();
 	public function __construct($config = array())
 	{
 		if (empty($config['filter_fields']))
@@ -85,28 +86,22 @@ class phpMyAdminModelDataSources extends JModelList
 	}
 	public function getCurrentDataSources()
 	{
+		if(count(static::$current_data_source)>0)
+		{
+			return static::$current_data_source;
+		}
 		$website = JFactory::getWebsite();
 		require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
 		$screenSize = UtilityHelper::getCurrentScreenSizeEditing();
 		$db=JFactory::getDbo();
 		JTable::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/tables');
 		$tableDataSource=JTable::getInstance('DataSource','JTable');
+		$table_name_table_datasource=$tableDataSource->getTableName();
 		$query=$db->getQuery(true);
-		$query->from('#__datasource AS datasource')
-			->select('id')
-			->where('datasource.website_id='.(int)$website->website_id)
-			->where('datasource.parent_id=id')
-		;
-		$db->setQuery($query);
-		$ids=$db->loadColumn();
-		$ids=implode(',',$ids);
-		$ids=$ids!=''?$ids:'0';
-
-		$query=$db->getQuery(true);
-		$query->from('#__datasource AS datasource')
+		$query->from($table_name_table_datasource.' AS datasource')
 			->select('*')
-			->where('datasource.parent_id IN('.$ids.')')
 			->where('datasource.parent_id!=id')
+			->where('datasource.website_id='.(int)$website->website_id)
 		;
 		$db->setQuery($query);
 		$listDataSource=$db->loadObjectList();
@@ -124,6 +119,7 @@ class phpMyAdminModelDataSources extends JModelList
 			$listObject[]=$object;
 		}
 		$app=JFactory::getApplication();
+		static::$current_data_source=$listObject;
 		return  $listObject;
 	}
 	public function getListDataSource($bindingSource,$block)
@@ -133,6 +129,7 @@ class phpMyAdminModelDataSources extends JModelList
 		$debug=$params->get('debug',0);
 		$app=JFactory::getApplication();
 		$input=$app->input;
+		$db=JFactory::getDbo();
 		$bindingSource=explode('.',$bindingSource);
 		$dataSourceId=$bindingSource[0];
 		if($this->listDataSource[$dataSourceId]){
@@ -177,6 +174,7 @@ class phpMyAdminModelDataSources extends JModelList
 
 		}else {
 			$datasource= $tableDataSource->datasource;
+			$stringQuery1=$datasource;
 			require_once JPATH_ROOT.'/components/com_phpmyadmin/helpers/datasource.php';
 			$datasource=DataSourceHelper::OverWriteDataSource($datasource);
 			$query=$this->_db->getQuery(true);
@@ -193,7 +191,62 @@ class phpMyAdminModelDataSources extends JModelList
 				return array();
 			}
 			$this->_db->redirectPage(false);
+
 			$list=$this->_db->loadObjectList();
+			$list=DataSourceHelper::tree_node_data($stringQuery1,$list);
+			if(!count($list))
+			{
+				require_once JPATH_ROOT.'/libraries/PHP-SQL-Parser/src/PHPSQLParser.php';
+				$parser_query = new PHPSQLParser((string)$query, true);
+				$list_field_select=$parser_query->parsed['SELECT'];
+				$from=$parser_query->parsed['FROM'];
+				$item=new stdClass();
+				foreach($list_field_select as $field)
+				{
+					if(is_array($field['alias'])) {
+						$name = $field['alias']['name'];
+						$item->$name = '';
+					}else
+					{
+						$base_expr=$field['base_expr'];
+						$base_expr=explode('.',$base_expr);
+						$table_name=$base_expr[0];
+						$table_start=$base_expr[1];
+						$table_select='';
+
+						if($table_start=='*')
+						{
+							$list_field=array();
+							foreach($from as $item_from)
+							{
+								$expr_type=$item_from['expr_type'];
+								if($expr_type=='table')
+								{
+									$alias=$item_from['alias'];
+									if(is_array($alias))
+									{
+										if(trim($alias['name'])==trim($table_name))
+										{
+											$table_select=$item_from['table'];
+											break;
+										}
+									}
+								}
+							}
+						}
+						if($table_select!=='')
+						{
+							$list_field=$db->getTableColumns($table_select);
+						}
+						foreach($list_field as $field_name =>$type)
+						{
+							$item->$field_name = '';
+						}
+					}
+				}
+				$list[]=$item;
+			}
+
 			for($i=0;$i<count($list);$i++)
 			{
 				$item=$list[$i];

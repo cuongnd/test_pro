@@ -1,0 +1,235 @@
+<form>
+					<field type="text" readonly="true" label="Id" default=""
+						   name="id"
+
+												>
+											</field>
+
+					<field type="text" readonly="false" label="Name" default=""
+						   name="name"
+
+												>
+											</field>
+
+					<field type="text" readonly="false" label="Title" default=""
+						   name="title"
+
+												>
+											</field>
+	<field type="text" readonly="false" label="Title" default=""
+						   name="params"
+
+												>
+											</field>
+
+					<field type="textarea" readonly="false" label="Note" default=""
+						   name="introtext"
+
+												>
+											</field>
+
+					<field type="filelist" readonly="false" label="Source less" default=""
+						   name="source_less"
+
+													 directory="layouts/kendo_grid_layout/less" 												>
+											</field>
+
+					<field type="select2" readonly="false" label="Css class" default=""
+						   name="css_class"
+
+													 maximumSelectionSize="10" 												>
+											</field>
+
+					<field type="accesslevel" readonly="false" label="access" default=""
+						   name="access"
+
+												>
+											</field>
+
+					<field type="list" readonly="false" label="Only Page" default=""
+						   name="only_page"
+
+												>
+																							<option value="1">Yes</option>
+																																<option value="0">No</option>
+																				</field>
+
+					<field type="advancedbindingsourceselect2" readonly="false" label="Advanced" default=""
+						   name="advanced_params"
+
+												>
+											</field>
+
+					<field type="showinpage" readonly="false" label="show in page" default=""
+						   name="menu_item_id"
+
+												>
+											</field>
+
+					<field type="elementtype" readonly="false" label="Convert to element type" default=""
+						   name="convert_type"
+
+													 onchange="element_ui_element.convert_to_element($(this))" 												>
+											</field>
+
+					<field type="text" readonly="true" label="Ui path" default=""
+						   name="ui_path"
+
+												>
+											</field>
+												<fields name="params"><fields name="element">
+					<field type="text" readonly="false" label="Element config" default=""
+						   name="debug"
+
+												>
+											</field>
+
+					<field type="text" readonly="false" label="enable" default=""
+						   name="enable"
+
+												>
+											</field>
+
+					<field type="gradient" readonly="false" label="css3 gradient generator" default=""
+						   name="css3_gradient_generator"
+
+												>
+											</field>
+
+					<field type="stylegenerator" readonly="false" label="css3 style generator" default=""
+						   name="stylegenerator"
+
+												>
+											</field>
+								</fields>				<fields name="style"><fields name="style_element"><fields name="font_setup">
+					<field type="text" readonly="false" label="font family" default=""
+						   name="font_family"
+
+												>
+											</field>
+
+					<field type="text" readonly="false" label="font size" default=""
+						   name="font_size"
+
+												>
+											</field>
+
+					<field type="text" readonly="false" label="font weight" default=""
+						   name="font_weight"
+
+												>
+											</field>
+
+					<field type="text" readonly="false" label="font style" default=""
+						   name="font_style"
+
+												>
+											</field>
+								</fields>
+					<field type="text" readonly="false" label="line height" default=""
+						   name="line_height"
+
+												>
+											</field>
+
+					<field type="list" readonly="false" label="float" default=""
+						   name="float"
+
+												>
+																							<option value="auto">auto</option>
+																																<option value="left">left</option>
+																																<option value="right">right</option>
+																																<option value="none">none</option>
+																				</field>
+
+					<field type="text" readonly="false" label="letter spacing" default=""
+						   name="letter_spacing"
+
+												>
+											</field>
+
+					<field type="text" readonly="false" label="Word spacing" default=""
+						   name="word_spacing"
+
+												>
+											</field>
+
+					<field type="list" readonly="false" label="text align" default=""
+						   name="text_align"
+
+												>
+																							<option value="auto">auto</option>
+																																<option value="inherit">Inherit</option>
+																																<option value="left">Left</option>
+																																<option value="right">Right</option>
+																																<option value="center">Center</option>
+																																<option value="justify">justify</option>
+																																<option value="initial">initial</option>
+																				</field>
+
+					<field type="list" readonly="false" label="text decoration" default=""
+						   name="text_decoration"
+
+												>
+																							<option value="inherit">Inherit</option>
+																																<option value="none">None</option>
+																																<option value="underline">Underline</option>
+																																<option value="overline">Overline</option>
+																																<option value="line-through">Line through</option>
+																																<option value="blink">Blink</option>
+																				</field>
+								</fields>				<fields name="style_controler">
+					<field type="text" readonly="false" label="overflow" default=""
+						   name="overflow"
+
+												>
+											</field>
+
+					<field type="list" readonly="false" label="overflow-x" default=""
+						   name="overflow-x"
+
+												>
+																							<option value="auto">auto</option>
+																																<option value="visible">visible</option>
+																																<option value="hidden">hidden</option>
+																																<option value="scroll">scroll</option>
+																																<option value="initial">initial</option>
+																				</field>
+
+					<field type="list" readonly="false" label="display" default=""
+						   name="display"
+
+												>
+																							<option value="auto">auto</option>
+																																<option value="inline">inline</option>
+																																<option value="block">block</option>
+																																<option value="flex">flex</option>
+																																<option value="inline-block">inline-block</option>
+																																<option value="inline-flex">inline-flex</option>
+																																<option value="inline-table">inline-table</option>
+																																<option value="list-item">list-item</option>
+																																<option value="run-in">run-in</option>
+																																<option value="table">table</option>
+																																<option value="table-caption">table-caption</option>
+																																<option value="table-column-group">table-column-group</option>
+																																<option value="table-header-group">table-header-group</option>
+																																<option value="table-footer-group">table-footer-group</option>
+																																<option value="table-row-group">table-row-group</option>
+																																<option value="table-cell">table-cell</option>
+																																<option value="table-column">table-column</option>
+																																<option value="table-row">table-row</option>
+																																<option value="none">none</option>
+																																<option value="initial">initial</option>
+																																<option value="inherit">inherit</option>
+																				</field>
+
+					<field type="list" readonly="false" label="Float" default=""
+						   name="float"
+
+												>
+																							<option value="auto">auto</option>
+																																<option value="left">left</option>
+																																<option value="right">right</option>
+																																<option value="none">none</option>
+																				</field>
+								</fields>				</fields>				</fields>				</form>

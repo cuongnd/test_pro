@@ -3,8 +3,8 @@
  * @package         JFBConnect
  * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
- * @version         Release v5.2.2
- * @build-date      2014-01-13
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 ?>
 
@@ -38,7 +38,7 @@
                         <td>
                             <a href="<?php echo JRoute::_('index.php?option=com_jfbconnect&task=channel.edit&id=' . $channel->id); ?>"><?php echo $channel->title; ?></a>
                         </td>
-                        <td class="center"><img src="<?php echo JURI::root() . '/media/sourcecoast/images/provider/icon_' . $channel->provider; ?>.png" /></td>
+                        <td class="center"><img src="<?php echo JURI::root() . '/media/sourcecoast/images/provider/' . $channel->provider; ?>/icon.png" /></td>
                         <td class="center"><?php echo ucwords($channel->type) ?></td>
                         <td class="center"><?php echo JHTML::_('jgrid.published', $channel->published, $key, 'channels.') ?></td>
                         <td class="center"><?php echo $channel->modified ?></td>

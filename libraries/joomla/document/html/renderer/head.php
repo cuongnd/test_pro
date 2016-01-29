@@ -106,9 +106,20 @@ class JDocumentRendererHead extends JDocumentRenderer {
             $buffer .= ' />' . $lnEnd;
         }
         $liststyleSheets= $this->gzObject($document->_styleSheets,false);
-        foreach ($liststyleSheets as  $source) {
+        foreach ($liststyleSheets as  $source=>$object) {
+            $list_attribs=$object['attribs'];
+            if(!$list_attribs['rel'])
+            {
+                $list_attribs['rel']='stylesheet';
+            }
+            $attribs=array();
+            foreach($list_attribs as $key_attribute=>$value_attribute)
+            {
+                $attribs[]="$key_attribute=\"$value_attribute\"";
+            }
+            $attribs=implode(' ',$attribs);
             //$buffer.='<link rel="stylesheet" type="text/css" media="screen"  href="'.JUri::root().'index.php?option=com_utility&task=utility.loadFile&file='.$source.'&tmpl=sourcecss&type=css">';
-            $buffer.='<link rel="stylesheet" type="text/css" media="screen"  href="'.JUri::root().$source.'"/>';
+            $buffer.='<link  '.$attribs.' type="'.$object['mime'].'" media="screen"  href="'.JUri::root().'/'.$source.'"/>';
         }
         
         // Generate stylesheet links
@@ -134,10 +145,24 @@ class JDocumentRendererHead extends JDocumentRenderer {
         }
         //$this->cacheJs($document->_scripts);
         //$this->cacheThisJs($document->_scripts);
+
         $listScript= $this->gzObject($document->_scripts,false);
-        foreach ($listScript as $source) {
+
+        $app=JFactory::getApplication();
+        $get_min_js=$app->input->get('get_min_js',0);
+        $make_min_js=$app->input->get('make_min_js',0);
+        if($get_min_js==1&&$make_min_js==0)
+        {
+            $listScript=$this->get_min_js($listScript);
+        }
+        if($make_min_js==1)
+        {
+            $listScript=$this->create_min_js($listScript);
+        }
+
+        foreach ($listScript as $source=>$object) {
             //$buffer.="\n".'<script type="text/javascript"  src="'.JUri::root().'index.php?option=com_utility&task=utility.loadFile&file='.$source.'&tmpl=sourcejs&type=js"></script>';
-            $buffer.="\n".'<script type="text/javascript"  src="'.JUri::root().$source.'"></script>';
+            $buffer.="\n".'<script type="'.$object['mime'].'"  src="'.JUri::root().$source.'"></script>';
         }
         foreach ($document->_scriptDeclaration as $script) {
             $buffer.="\n".'<script type="text/javascript"'.($script->scriptId?' id="'.$script->scriptId.'" ':'').'>'.$script->scriptDeclaration.'</script>';
@@ -177,11 +202,11 @@ class JDocumentRendererHead extends JDocumentRenderer {
         foreach ($document->_custom as $custom) {
             $buffer .= $tab . $custom . $lnEnd;
         }
-
         return $buffer;
     }
     function gzObject($arrrayobject,$base64=true)
     {
+
         $listObject=array();
         foreach($arrrayobject as $source=>$object)
         {
@@ -189,7 +214,7 @@ class JDocumentRendererHead extends JDocumentRenderer {
             {
                 $uri=  JFactory::getURI($source);
                 $path=$uri->getPath();
-               
+
                 if(strpos($path, '?'))
                 {
                     $path=  explode('?', $path);
@@ -202,7 +227,7 @@ class JDocumentRendererHead extends JDocumentRenderer {
                         unset($path[$key]);
                 }
                 $path=  implode('/', $path);
-                $listObject[]=$path;
+                $listObject[$path]=$object;
             }
             else
             {
@@ -218,10 +243,11 @@ class JDocumentRendererHead extends JDocumentRenderer {
                         unset($path[$key]);
                 }
                 $path=  implode('/', $path);
-                $listObject[]=$path;
+                $listObject[$path]=$object;
                 
             }
         }
+
         if($base64)
         {
             $listObject=  json_encode($listObject);
@@ -232,8 +258,56 @@ class JDocumentRendererHead extends JDocumentRenderer {
             return $listObject;
         }
     }
+    function create_min_js($arrrayobject)
+    {
+        require_once JPATH_ROOT.'/libraries/jsmin-php-master/lib/php-closure.php';
+        require_once JPATH_ROOT.'/libraries/jsmin-php-master/lib/JSMin.php';
+
+        foreach($arrrayobject as $source=>$object)
+        {
+           /* [dirname] => H:\project\test_pro/media/jui_front_end/js
+            [basename] => jquery.js
+            [extension] => js
+            [filename] => jquery*/
+
+            $file_info = pathinfo($object);
+            $filename=strtolower($file_info['filename']);
+            if (strpos($filename,'.min') !== false) {
+                continue;
+            }
+
+            $php_closure = new PhpClosure();
+            $php_closure->add(JPATH_ROOT.'/'.$object)
+                ->advancedMode()
+                ->useClosureLibrary()
+                ->cacheDir(JPATH_ROOT."/tmp/js-cache/")
+            ;
+            $js_min_content=  $php_closure->get_content();
+            $file_min_js=$file_info["dirname"].'/'.$file_info["filename"].'.min.js';
+            if(trim($js_min_content)!='') {
+                JFile::write(JPATH_ROOT . '/' . $file_min_js, $js_min_content);
+                $arrrayobject[$source] = $file_min_js;
+            }
+        }
+        return $arrrayobject;
+    }
+    function get_min_js($arrrayobject)
+    {
+
+        foreach($arrrayobject as $source=>$object)
+        {
+           /* [dirname] => H:\project\test_pro/media/jui_front_end/js
+            [basename] => jquery.js
+            [extension] => js
+            [filename] => jquery*/
+
+            $file_info = pathinfo($object);
+            $file_min_js=$file_info["dirname"].'/'.$file_info["filename"].'.min.js';
+            $arrrayobject[$source]=$file_min_js;
+        }
+        return $arrrayobject;
+    }
     function cacheJs(&$documentScripts) {
-        ini_set('max_execution_time', 600);
         $scripts = array();
         foreach ($documentScripts as $strSrc => $strAttr) {
             $host = '';
@@ -307,7 +381,6 @@ class JDocumentRendererHead extends JDocumentRenderer {
     }
 
     function cacheThisJs(&$documentScripts) {
-        ini_set('max_execution_time', 1200);
 
         $scripts = array();
         foreach ($documentScripts as $strSrc => $strAttr) {

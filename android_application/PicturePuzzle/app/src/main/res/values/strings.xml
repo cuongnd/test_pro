@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Picture Puzzle</string>
+    <string name="play">Play</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
+    <string name="ok">OK</string>
+    <string name="new_picture">New Picture</string>
+    <string name="reshuffle">Reshuffle</string>
+    <string name="show_numbers">Show Tile Numbers</string>
+    <string name="show_numbers_summary">Display the correct location of the tiles</string>
+    <string name="hide_numbers">Hide Tile Numbers</string>
+    <string name="picasa_error">Images from Picasa web albums are not supported for this version of Android.</string>
+    <string name="grid_size_title">Grid Size</string>
+    <string name="grid_size_summary">The number of rows and columns</string>
+    <string name="congratulations">Moves:</string>
+    <string name="about_text">\
+This is free software released under the GPLv3.  Visit 
+http://code.google.com/p/photogaffe to download the source code.  Please use the
+ \'Issues\' page on the site for bugs and feature requests.  Enjoy!    
+    </string>
+</resources>

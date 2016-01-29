@@ -1,15 +1,15 @@
 <?php
 	set_time_limit(0);
 	function setup_saveloadlist() {
-		define("SERVER","localhost:81");
-		define("USER","root");
+		define("SERVER","localhost");
+		define("USER","");
 		define("PASSWORD","");
 		define("DB","home");
 		define("TABLE","wwwsqldesigner");
 	}
 	function setup_import() {
-		define("SERVER","localhost:81");
-		define("USER","root");
+		define("SERVER","localhost");
+		define("USER","");
 		define("PASSWORD","");
 		define("DB","information_schema");
 	}

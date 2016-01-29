@@ -645,7 +645,7 @@ abstract class FinderIndexerAdapter extends JPlugin
 		$query = $this->db->getQuery(true)
 			->select($this->db->quoteName('element'))
 			->from($this->db->quoteName('#__extensions'))
-			->where($this->db->quoteName('extension_id') . ' = ' . (int) $id);
+			->where($this->db->quoteName('id') . ' = ' . (int) $id);
 		$this->db->setQuery($query);
 		$type = $this->db->loadResult();
 

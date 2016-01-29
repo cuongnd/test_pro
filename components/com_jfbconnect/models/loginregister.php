@@ -1,8 +1,12 @@
 <?php
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.modelform');
@@ -102,7 +106,7 @@ class JFBConnectModelLoginRegister extends JModelLegacy
 
         //SCSocialUtilities::clearJFBCNewMappingEnabled();
 
-        if (JFBCFactory::usermap()->map($jUser->id, $providerUserId, strtolower($provider->name), $provider->client->getToken()))
+        if (JFBCFactory::usermap()->map($jUser->id, $providerUserId, $provider->systemName, $provider->client->getToken()))
         {
             $app->enqueueMessage(JText::sprintf('COM_JFBCONNECT_MAP_USER_SUCCESS', $provider->name));
             return true;
@@ -223,9 +227,19 @@ class JFBConnectModelLoginRegister extends JModelLegacy
         if (JFBCFactory::config()->getSetting('generate_random_password'))
         {
             $this->_newUserPassword = JUserHelper::genRandomPassword();
-            $salt = JUserHelper::genRandomPassword(32);
-            $crypt = JUserHelper::getCryptedPassword($this->_newUserPassword, $salt);
-            $user['password'] = $crypt . ':' . $salt;
+            $user['password_clear'] = $this->_newUserPassword;
+
+            // Check for Joomla 3.2.1's new hashPassword functions and use those, if exist
+            if (method_exists('JUserHelper', 'hashPassword'))
+            {
+                $user['password'] = JUserHelper::hashPassword($this->_newUserPassword);
+            }
+            else // fallback to Joomla <3.2.0 password hashing
+            {
+                $salt = JUserHelper::genRandomPassword(32);
+                $crypt = JUserHelper::getCryptedPassword($this->_newUserPassword, $salt);
+                $user['password'] = $crypt . ':' . $salt;
+            }
         }
         else
         {
@@ -249,7 +263,7 @@ class JFBConnectModelLoginRegister extends JModelLegacy
             SCSocialUtilities::clearJFBCNewMappingEnabled();
 
             $app = JFactory::getApplication();
-            if (JFBCFactory::usermap()->map($jUser->get('id'), $providerUserId, strtolower($provider->name), $provider->client->getToken()))
+            if (JFBCFactory::usermap()->map($jUser->get('id'), $providerUserId, $provider->systemName, $provider->client->getToken()))
             {
                 $app->enqueueMessage(JText::sprintf('COM_JFBCONNECT_MAP_USER_SUCCESS', $provider->name));
                 return true;
@@ -263,10 +277,10 @@ class JFBConnectModelLoginRegister extends JModelLegacy
     private function onAfterRegister($provider, $jUser)
     {
         $this->activateUser();
-        $this->sendNewUserEmails($jUser, strtolower($provider->name));
+        $this->sendNewUserEmails($jUser, $provider->systemName);
 
         # New user, set their new user status and trigger the OnRegister event
-        $args = array(strtolower($provider->name), $jUser->get('id'), $provider->getProviderUserId());
+        $args = array($provider->systemName, $jUser, $provider->getProviderUserId());
         JFactory::getApplication()->triggerEvent('socialProfilesOnRegister', $args);
     }
 
@@ -286,8 +300,10 @@ class JFBConnectModelLoginRegister extends JModelLegacy
         $instance->set('username', $user['username']);
         if (array_key_exists('password', $user) && $user['password'] != "")
             $instance->set('password', $user['password']);
-        else
+
+        if (array_key_exists('password_clear', $user))
             $instance->set('password_clear', $user['password_clear']);
+
         $instance->set('email', $user['email']); // Result should contain an email (check)
         $instance->setParam('language', $user['language']);
 
@@ -303,17 +319,10 @@ class JFBConnectModelLoginRegister extends JModelLegacy
         if (!$instance->save())
         {
             JFactory::getApplication()->enqueueMessage($instance->getError(), 'error');
-            return null;
+            $instance = null;
         }
 
         return $instance;
-    }
-
-    public function generateRandomPassword()
-    {
-        $newUnencryptedPassword = '';
-        SCSocialUtilities::getRandomPassword($newUnencryptedPassword);
-        return $newUnencryptedPassword;
     }
 
     /** Activation and new user email functions *****/
@@ -381,7 +390,7 @@ class JFBConnectModelLoginRegister extends JModelLegacy
         $data['fromname'] = $config->get('fromname');
         $data['mailfrom'] = $config->get('mailfrom');
         $data['sitename'] = $config->get('sitename');
-        $data['siteurl'] = JUri::root();
+        $data['siteurl'] = JUri::base();
 
         $uri = JURI::getInstance();
         $base = $uri->toString(array('scheme', 'user', 'pass', 'host', 'port'));

@@ -1,61 +1,76 @@
-jQuery(document).ready(function($){
+// jQuery Plugin for SprFlat admin template
+// Control options and basic function of template
+// version 1.0, 28.02.2013
+// by SuggeElson www.suggeelson.com
 
-    element_ui_select={
-        select2_option: {
-            ajax: {
-                url: this_host + "/index.php?option=com_menus&task=item.ajax_get_list_icon",
-                dataType: 'json',
-                delay: 250,
-                data: function (term, page) {
-                    return {
-                        keyword: term
-                    };
-                },
+(function ($) {
 
-                results: function (data) {
-                    return {results: data};
-                },
-                cache: true
+    // here we go!
+    $.ui_select = function (element, options) {
 
-            },
-            initSelection: function (element, callback) {
-                item = {
-                    id: element.val(),
-                    text: element.val()
-                };
-                return callback(item);
-            },
-            formatResult: function (result, container, query, escapeMarkup) {
 
-                return '<span><i class="' + result.text + '"></i>' + result.text + '</span>';
-            },
 
-            formatSelection: function (data, container, escapeMarkup) {
 
-                return '<span><i class="' + data.text + '"></i>' + data.text + '</span>';
-            },
-            escapeMarkup: function (markup) {
-                return markup;
-            }, // let our custom formatter work
-            minimumInputLength: 1
-        },
-        input_ui_select:function(){
-            /*$('select.block-item.block-item-select').each(function(){
-                self=$(this);
-                self.select2(element_ui_select.select2_option);
-            });*/
-            element_ui_button.list_function_run_befor_submit.push(element_ui_select.update_data);
-        },
-        update_data:function(data_submit){
-            $(".block-item.block-item-select").each(function(){
-                select=$(this);
-                name_select=select.attr('name');
-                data_submit[name_select]=select.val();
-            });
-            return data_submit;
+        // plugin's default options
+        var defaults = {
+            enable_select2:1
         }
-    };
-    element_ui_select.input_ui_select();
 
+        // current instance of the object
+        var plugin = this;
 
-});
+        // this will hold the merged default, and user-provided options
+        plugin.settings = {}
+
+        var $element = $(element), // reference to the jQuery version of DOM element
+            element = element;    // reference to the actual DOM element
+        // the "constructor" method that gets called when the object is created
+        var element_id=$element.attr('id');
+        plugin.init = function () {
+
+            plugin.settings = $.extend({}, defaults, options);
+
+            if(plugin.settings.enable_select2)
+            {
+                $element.select2(
+                    {
+                        width:'resolve'
+                    }
+                );
+            }
+            Joomla_post.list_function_run_befor_submit.push(plugin.update_data);
+        }
+        plugin.update_data=function(data_submit){
+            var name_attr=$element.attr('name');
+            if(!$.isArray(data_submit[name_attr]))
+            {
+                data_submit[name_attr]=[];
+            }
+            data_submit[name_attr].push($element.val());
+
+        }
+
+        plugin.example_function = function () {
+
+        }
+        plugin.init();
+
+    }
+
+    // add the plugin to the jQuery.fn object
+    $.fn.ui_select = function (options) {
+
+        // iterate through the DOM elements we are attaching the plugin to
+        return this.each(function () {
+            // if plugin has not already been attached to the element
+            if (undefined == $(this).data('ui_select')) {
+                var plugin = new $.ui_select(this, options);
+                $(this).data('ui_select', plugin);
+
+            }
+
+        });
+
+    }
+
+})(jQuery);

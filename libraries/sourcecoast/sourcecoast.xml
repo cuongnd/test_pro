@@ -2,8 +2,8 @@
 <extension type="library" version="1.6" method="upgrade">
     <name>SourceCoast Extensions Library</name>
     <libraryname>sourcecoast</libraryname>
-    <version>3.0.0</version>
-    <creationDate>2014/02/17</creationDate>
+    <version>3.2.3</version>
+    <creationDate>2014/12/15</creationDate>
     <author>SourceCoast | www.sourcecoast.com</author>
     <authorEmail>support@sourcecoast.com</authorEmail>
     <authorUrl>http://www.sourcecoast.com</authorUrl>

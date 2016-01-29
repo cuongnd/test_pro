@@ -58,9 +58,9 @@ class LoginController extends JControllerLegacy
 		$return = $model->getState('return');
 
 		$result = $app->login($credentials, array('action' => 'core.login.admin'));
-
 		if (!($result instanceof Exception))
 		{
+
             if(!strpos($return,'administrator/'))
             {
                 $return='/administrator/'.$return;

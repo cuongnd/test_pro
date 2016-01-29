@@ -2603,6 +2603,15 @@
                 } else {
                     if (editable.update !== false) {
                         that.wrapper.on(CLICK + NS, "tbody>tr:not(.k-detail-row,.k-grouping-row):visible a.k-grid-edit", function(e) {
+                            mode = that._editMode();
+                            if(mode === "form")
+                            {
+                                link_detail=that.options.link_detail;
+                                window.location.replace(this_host+'/?Itemid='+link_detail);
+                                console.log(that);
+                                return false;
+                            }
+
                             e.preventDefault();
                             that.editRow($(this).closest("tr"));
                         });
@@ -3333,7 +3342,13 @@
                 createAt = that.options.editable.createAt || "",
                 pageSize = dataSource.pageSize(),
                 view = dataSource.view() || [];
-
+            if(mode === "form")
+            {
+                link_detail=that.options.link_detail;
+                window.location.replace(this_host+'/?Itemid='+link_detail);
+                console.log(that);
+                return false;
+            }
             if ((that.editable && that.editable.end()) || !that.editable) {
                 if (mode != "incell") {
                     that.cancelRow();

@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -12,6 +15,7 @@ class JFBConnectProviderFacebookWidgetFacepile extends JFBConnectProviderFaceboo
     var $name = "Facepile";
     var $systemName = "facepile";
     var $className = "jfbcfriends";
+    var $tagName = "jfbcfriends";
     var $examples = array (
         '{JFBCFriends}',
         '{JFBCFriends href=http://www.sourcecoast.com max_rows=5 width=400 height=100 colorscheme=dark size=small show_count=true action=vote,comment}'

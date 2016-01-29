@@ -95,7 +95,7 @@ class InstallerModelDiscover extends InstallerModel
 
 		if (!empty($search) && stripos($search, 'id:') === 0)
 		{
-			$query->where('extension_id = ' . (int) substr($search, 3));
+			$query->where('id = ' . (int) substr($search, 3));
 		}
 
 		return $query;
@@ -121,7 +121,7 @@ class InstallerModelDiscover extends InstallerModel
 		// Get all templates, including discovered ones
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
-			->select('extension_id, element, folder, client_id, type')
+			->select('id, element, folder, client_id, type')
 			->from('#__extensions');
 
 		$db->setQuery($query);

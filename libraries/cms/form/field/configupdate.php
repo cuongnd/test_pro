@@ -301,11 +301,25 @@ class JFormFieldConfigUpdate extends JFormField
         $doc->addScript(JUri::root() . "/libraries/cms/form/field/configupdate.js");
         $doc->addScript(JUri::root() . "/media/system/js/cassandraMAP-cassandra/lib/cassandraMap.js");
         $doc->addScript(JUri::root() . "/media/jui_front_end/js/select2.jquery.js");
+        $doc->addScript(JUri::root() . "/media/system/js/purl-master/purl-master/purl.js");
 
-        $data_source_id = $this->form->getData()->get('params')->data->bindingSource;
-        $mode_select_column = $this->form->getData()->get('params')->config_update_data;
+        $data_source_id = $this->form->getData()->get('params.data.bindingSource');
+
+
+        $object_mode_select_column=$this->value;
+
+        if ( base64_encode(base64_decode($object_mode_select_column, true)) == $object_mode_select_column){
+            $object_mode_select_column=base64_decode($object_mode_select_column, true);
+            $this->value=base64_decode($object_mode_select_column, true);
+
+        }else{
+            $object_mode_select_column='';
+            $this->value='';
+        }
+
+
         require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
-        $object_mode_select_column = up_json_decode($mode_select_column, false, 512, JSON_PARSE_JAVASCRIPT);
+        $object_mode_select_column = up_json_decode($object_mode_select_column, false, 512, JSON_PARSE_JAVASCRIPT);
 
 
 
@@ -398,7 +412,7 @@ class JFormFieldConfigUpdate extends JFormField
 
                 </div>
 
-                <input type="hidden" name="jform[params][config_update_data]" value="<?php echo $mode_select_column ?>" name="" value="" id="config_update1-output"/>
+                <input type="hidden" name="<?php echo $this->name ?>" value="<?php echo $this->value ?>" name=""  id="config_update1-output"/>
 
 
 
@@ -413,63 +427,6 @@ class JFormFieldConfigUpdate extends JFormField
 
         <?php
         $html .= ob_get_clean();
-        return $html;
-    }
-    public function render_li($column, $list_data_type)
-    {
-        ob_start();
-        ?>
-        <li class="dd-item"
-            data-column_width="<?php echo $column->column_width ?>"
-            data-post_name="<?php echo $column->post_name ?>"
-            data-link_key="<?php echo $column->link_key ?>"
-            data-type="<?php echo $column->type ?>"
-            data-editable="<?php echo $column->editable ?>"
-            data-id="<?php echo $column->id ?>"
-            data-editor_type="<?php echo $column->editor_type ?>"
-            data-key_data_source="<?php echo $column->key_data_source ?>"
-            data-text_data_source="<?php echo $column->text_data_source ?>"
-            data-show="<?php echo $column->show ?>"
-            data-link_menu="<?php echo $column->link_menu ?>"
-            data-template="<?php echo $column->template ?>"
-            data-table_name="<?php echo $column->table_name ?>"
-            data-column_name="<?php echo $column->column_name ?>"
-            >
-            <div class="dd-handle">
-                <div class="dd-handle-move pull-left"><i class="fa-move"></i></div>
-                <?php echo $column->id ?>
-                <button onclick="config_update.remove_item_nestable(this)" class="dd-handle-remove pull-right"><i class="fa-remove"></i></button>
-            </div>
-            <div>
-                <button class="add_node">add node</button>
-                <button class="add_sub_node">add sub node</button>
-            </div>
-            <label>table name<input class="table_name" style="width: 200px" type="text"  onchange="config_update.update_data_column(this,'table_name')"
-                                     value="<?php echo $column->table_name ?>"/></label>
-            <label>Column name<input class="column_name"  style="width: 200px" type="text"  onchange="config_update.update_data_column(this,'column_name')"
-                                     value="<?php echo $column->column_name ?>"/></label>
-            <label>Type
-                <select style="width: 200px" name="data_type1" onchange="config_update.update_data_column(this,'type')"
-                        class="data_type">
-                    <?php foreach ($list_data_type as $type) { ?>
-                        <option <?php echo $column->type == $type ? 'selected' : '' ?>
-                            value="<?php echo $type ?>"><?php echo $type ?></option>
-                    <?php } ?>
-                </select>
-            </label>
-            <label>Post name
-                <input class="post_name"  style="width: 200px" type="text"  onchange="config_update.update_data_column(this,'post_name')"
-                       value="<?php echo $column->post_name ?>"/>
-            </label>
-            <label>Editable<input <?php echo $column->editable == 1 ? 'checked' : '' ?>  type="checkbox"
-                                                                                         onchange="config_update.update_data_column(this,'editable','checkbox')"
-                                                                                         value="1"/></label>
-
-
-        </li>
-
-        <?php
-        $html = ob_get_clean();
         return $html;
     }
 

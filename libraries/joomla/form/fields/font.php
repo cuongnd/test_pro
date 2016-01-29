@@ -175,7 +175,7 @@ class JFormFieldFont extends JFormField
 		$maxLength    = !empty($this->maxLength) ? ' maxlength="' . $this->maxLength . '"' : '';
 		$class='form-control';
 		$class        = !empty($this->class) ? $class.' '.$this->class: $class;
-		$class='class="'.$class.'"';
+		$class='class="'.$class.' select2 google_font_demo"';
 		$readonly     = $this->readonly ? ' readonly' : '';
 		$disabled     = $this->disabled ? ' disabled' : '';
 		$required     = $this->required ? ' required aria-required="true"' : '';
@@ -251,7 +251,7 @@ class JFormFieldFont extends JFormField
 		// Including fallback code for HTML5 non supported browsers.
 		JHtml::_('jquery.framework');
 		JHtml::_('script', 'system/html5fallback.js', false, true);
-		$google_font=JUtility::get_google_web_fonts();
+		//$google_font=JUtility::get_google_web_fonts();
 
 		$options=array();
 		$options[]=(object)array('id'=>'none','text'=>'none');
@@ -305,7 +305,7 @@ class JFormFieldFont extends JFormField
 		ob_start();
 		?>
 
-		<select disableChosen="true" style="width: 100%"  type="hidden" name="<?php echo $this->name ?>" class="select2 google_font_demo"   >
+		<select disableChosen="true" style="width: 100%"  type="hidden" name="<?php echo $this->name ?>" <?php echo $class ?>   >
 			<?php foreach($options as $item){ ?>
 				<option <?php echo $item==$this->value?'selected':'' ?>  value="<?php echo $item->id ?>"><?php echo $item->text ?></option>
 			<?php } ?>

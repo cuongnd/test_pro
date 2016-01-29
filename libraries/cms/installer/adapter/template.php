@@ -140,7 +140,7 @@ class JInstallerAdapterTemplate extends JAdapterInstance
 
 		// Check to see if a template by the same name is already installed.
 		$query = $db->getQuery(true)
-			->select($db->quoteName('extension_id'))
+			->select($db->quoteName('id'))
 			->from($db->quoteName('#__extensions'))
 			->where($db->quoteName('type') . ' = ' . $db->quote('template'))
 			->where($db->quoteName('element') . ' = ' . $db->quote($element));
@@ -342,7 +342,7 @@ class JInstallerAdapterTemplate extends JAdapterInstance
 			$db->execute();
 		}
 
-		return $row->get('extension_id');
+		return $row->get('id');
 	}
 
 	/**
@@ -433,7 +433,7 @@ class JInstallerAdapterTemplate extends JAdapterInstance
 		if (!($manifest instanceof SimpleXMLElement))
 		{
 			// Kill the extension entry
-			$row->delete($row->extension_id);
+			$row->delete($row->id);
 			unset($row);
 
 			// Make sure we delete the folders
@@ -475,7 +475,7 @@ class JInstallerAdapterTemplate extends JAdapterInstance
 		$db->setQuery($query);
 		$db->execute();
 
-		$row->delete($row->extension_id);
+		$row->delete($row->id);
 		unset($row);
 
 		return $retval;
@@ -608,7 +608,7 @@ class JInstallerAdapterTemplate extends JAdapterInstance
 			$db->setQuery($query);
 			$db->execute();
 
-			return $this->parent->extension->get('extension_id');
+			return $this->parent->extension->get('id');
 		}
 		else
 		{

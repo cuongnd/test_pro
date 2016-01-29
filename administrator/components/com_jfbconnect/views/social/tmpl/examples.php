@@ -1,20 +1,40 @@
 <?php
 /**
- * @package		JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 defined('_JEXEC') or die('Restricted access');
 
+$filter_provider = $this->filter_provider;
+$providersWithWidgets = JFBCFactory::getAllWidgetProviderNames();
 ?>
 <p><?php echo JText::_('COM_JFBCONNECT_SOCIAL_EXAMPLES_DESC');?></p>
 <p><?php echo JText::_('COM_JFBCONNECT_SOCIAL_EXAMPLES_DESC2');?></p>
 
+<div id="filter-bar" class="btn-toolbar">
+    <div class="btn-group pull-left">
+        <select name="filter_provider" id="filter_provider" class="input-large" onchange="this.form.submit()">
+            <option value="all">- <?php echo JText::_('COM_JFBCONNECT_SOCIAL_EXAMPLES_SELECT_PROVIDER_TYPE');?> -</option>
+            <?php foreach($providersWithWidgets as $providerName):?>
+                <option value="<?php echo strtolower($providerName); ?>" <?php if (strtolower($filter_provider) == strtolower($providerName)) echo 'selected="selected"'; ?>><?php echo ucfirst($providerName); ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>
+<div class="clearfix"> </div>
+
 <?php
-$providersWithWidgets = JFBCFactory::getAllWidgetProviderNames();
+//set filter to empty to show all
+if($filter_provider == 'all') $filter_provider = '';
+
 foreach($providersWithWidgets as $providerName)
 {
+    if($filter_provider && $filter_provider != $providerName) continue;
+
     $widgets = JFBCFactory::getAllWidgets($providerName);
     foreach($widgets as $widget)
     {
@@ -37,6 +57,9 @@ foreach($providersWithWidgets as $providerName)
             $options = array();
             $attributes = $field->attributes();
 
+            if ($attributes['jfbcExamplesHide'] && strval($attributes['jfbcExamplesHide'] == '1'))
+                continue;
+
             echo '<tr><td>'.strval($attributes['name']).'</td>';
 
             $fieldType = strval($attributes['type']);
@@ -58,6 +81,11 @@ foreach($providersWithWidgets as $providerName)
 
                 echo implode($options, ', ');
                 echo '</td>';
+            }
+            else if ($fieldType == 'hidden')
+            {
+                // If this isn't specifically hidden, we're going to call it a text field so it's setable in the Easy-Tag
+                echo '<td>text</td>';
             }
             else
                 echo '<td>'.$fieldType.'</td>';

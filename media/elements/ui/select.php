@@ -22,9 +22,13 @@ class elementSelectHelper extends elementHelper
         $pathInfo = pathinfo($path);
         $filename = $pathInfo['filename'];
         $dirName = $pathInfo['dirname'];
+        JHtml::_('jquery.framework');
         $doc = JFactory::getDocument();
         $doc->addStyleSheet(JUri::root() . "/$dirName/$filename.css");
         $doc->addScript(JUri::root() . "/$dirName/$filename.js");
+        $doc->addStyleSheet(JUri::root() . "/media/jui_front_end/css/select2.css");
+        $doc->addScript(JUri::root() . "/media/jui_front_end/js/select2.jquery.js");
+
         $params = new JRegistry;
         $params->loadString($block->params);
 
@@ -60,10 +64,10 @@ class elementSelectHelper extends elementHelper
         $params = new JRegistry;
         $params->loadString($block->params);
         $size = $params->get('size', '');
-
+        $doc=JFactory::getDocument();
 
         $label = $params->get('label', '');
-        $name = $params->get('name', 'name_' . $block->id);
+        $name = $params->get('element.name', 'name_' . $block->id);
         $id = $params->get('id', '');
         $class = $params->get('class', '');
 
@@ -80,7 +84,8 @@ class elementSelectHelper extends elementHelper
 
 
 
-        $disable_chosen = $params->get('disable_chosen', 1);
+        $enable_select2 = $params->get('element.enable_select2', 1);
+        $enable_select2=JUtility::toStrictBoolean($enable_select2);
         $confirm = $params->get('confirm', 0);
         $enable_submit = $params->get('enable_submit', 1);
         $placeholder = $params->get('placeholder', 'placeholder_' . $block->id);
@@ -134,13 +139,24 @@ class elementSelectHelper extends elementHelper
 
             }
         }
+        $required=$params->get('element_config.element_required.required',false);
 
+        $required=JUtility::toStrictBoolean($required);
+        $required_message=$params->get('element_config.element_required.message','This field is required');
+        $ajax_clone=false;
+        $random_string='';
+        if(parent::check_ajax_clone()==1)
+        {
+            $ajax_clone=true;
+            $random_string=JUserHelper::genRandomPassword();
+        }
 
-        $html = '';
+        $scriptId = "ui_select_".$block->id.$random_string;
         ob_start();
         ?>
         <script type="text/javascript">
-            jQuery(document).ready(function($){
+            jQuery(document).ready(function ($) {
+
                 $(document).on('change','select.block-item.block-item-select[data-block-id="<?php echo $block->id ?>"]',function(){
                     var lastRole = $(this).data('lastValue');
                     var newRole = $(this).val();
@@ -148,37 +164,70 @@ class elementSelectHelper extends elementHelper
                         if($confirm==1){
                         $confirm_msg = $params->get('confirm_msg', "are your sure change ?");
                         ?>
-                        if (!confirm("<?php echo $confirm_msg ?>")) {
-                            console.log(lastRole);
-                            $(this).val(lastRole); //set back
-                            return;                  //abort!
-                        }
-                        <?php
-                        }
-                    ?>
+                    if (!confirm("<?php echo $confirm_msg ?>")) {
+                        console.log(lastRole);
+                        $(this).val(lastRole); //set back
+                        return;                  //abort!
+                    }
+                    <?php
+                    }
+                ?>
                     <?php echo $on_change_by_code_php==1?$on_change:'' ?>
                 });
-                $(document).on('focus','select.block-item.block-item-select[data-block-id="<?php echo $block->id ?>"]',function(){
-                    console.log('hello 121');
-                    $(this).data('lastValue',$(this).val());
+
+                $('select.block-item.block-item-select[data-block-id="<?php echo $block->id ?>"]<?php echo $random_string!=''?'[random-string="'.$random_string.'"]':'' ?>').ui_select({
+                    enable_select2:<?php echo  $enable_select2?true:false ?>
                 });
+
             });
         </script>
+    <?php
+    $script = ob_get_clean();
+    $script = JUtility::remove_string_javascript($script);
+    $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 
-        <select  enable-submit="<?php echo $enable_submit ? 'true' : 'false' ?>"
-                disableChosen="<?php echo $disable_chosen == 1 ? 'true' : 'false' ?>"
-                class="block-item block-item-select" name="<?php echo $name ?>"
-                data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"
-                id="<?php echo $id; ?>" element-type="<?php echo $block->type ?>">
-            <?php if ($bindingSource) { ?>
-                <?php foreach ($items as $item): ?>
-                    <option <?php echo $data_value_selected == $item->$key ? 'selected' : '' ?>
-                        value="<?php echo $item->$key ?>"><?php echo $item->$value ?></option>
-                <?php endforeach ?>
-            <?php } else {
-                echo $text_items;
-            } ?>
-        </select>
+    $group_add_on_left = $params->get('element.group_add_on_left', '');
+    $group_add_on_left = $group_add_on_left == 'none' ? '' : $group_add_on_left;
+
+    $group_add_on_right = $params->get('element.group_add_on_right', '');
+    $group_add_on_right = $group_add_on_right == 'none' ? '' : $group_add_on_right;
+
+
+    $html = '';
+
+        ob_start();
+        ?>
+
+        <div class="wapper_select" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>">
+            <?php if ($group_add_on_left || $group_add_on_right) { ?>
+                <div class="input-group block-item-select">
+                    <?php if ($group_add_on_left) { ?>
+                        <div class="input-group-addon"><i class="<?php echo $group_add_on_left ?>"></i></div>
+                    <?php } ?>
+                    <?php } ?>
+                    <select    enable-submit="<?php echo $enable_submit ? 'true' : 'false' ?>"
+                             disableChosen="true"
+                             class="block-item block-item-select" name="<?php echo $name ?>"
+                             data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"
+                             id="<?php echo $id; ?>" element-type="<?php echo $block->type ?>" <?php echo $random_string!=''?'random-string="'.$random_string.'"':'' ?> >
+                        <?php if ($bindingSource) { ?>
+                            <?php foreach ($items as $item): ?>
+                                <option <?php echo $data_value_selected == $item->$key ? 'selected' : '' ?>
+                                    value="<?php echo $item->$key ?>"><?php echo $item->$value ?></option>
+                            <?php endforeach ?>
+                        <?php } else {
+                            echo $text_items;
+                        } ?>
+                    </select>
+
+                    <?php if ($group_add_on_left || $group_add_on_right) { ?>
+                    <?php if ($group_add_on_right) { ?>
+                        <div class="input-group-addon"><i class="<?php echo $group_add_on_right ?>"></i></div>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+    </div>
+
 
 
 

@@ -60,3 +60,7 @@
 {
     display:none;
 }
+
+#jfbc_loginregister_existinguser .social-login {
+    margin-bottom: 5px;
+}

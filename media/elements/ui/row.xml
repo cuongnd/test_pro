@@ -1,17 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?>
-<form>
-    <config>
-        <fieldset name="option" description="Option" label="Option">
-            <field name="css_class" type="select2" default="" tags="1" label="Css class" onselecting="element_ui_element.add_css_class(e,$(this))" onremoveitem="element_ui_element.remove_class_css(e,$(this))"  maximumSelectionSize="10">
-                <option value="form-group">form-group</option>
-            </field>
-        </fieldset>
-        <fields name="params">
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="cell_height" type="number" label="Cell height" description="Cell height" default="60"/>
-                <field name="vertical_margin" type="number" label="Vertical margin" description="Vertical margin" default="0"/>
-                <field name="amount_of_columns" type="number" label="Amount of columns" description="Amount of columns" default="12"/>
-            </fieldset>
-        </fields>
-    </config>
-</form>
+<config><fields name="params"><fields name="element_config">
+					<field type="menuitem" readonly="false" label="Link to page" default=""
+						   name="link_to_page"
+
+												>
+											</field>
+					<field type="checkbox" label="Link to page" default="0"
+						   name="enable_link_to_page" onchange="">
+
+					</field>
+
+									
+					<field type="textarea" readonly="false" label="Link" default=""
+						   name="link"
+
+												>
+											</field>
+					<field type="checkbox" label="Link" default="0"
+						   name="enable_link" onchange="">
+
+					</field>
+
+									
+					<field type="editor" readonly="false" label="Link template" default=""
+						   name="link_template"
+
+																									>
+											</field>
+					<field type="checkbox" label="Link template" default="0"
+						   name="enable_link_template" onchange="">
+
+					</field>
+
+									
+					<field type="icon" readonly="false" label="Icon left" default=""
+						   name="icon_left"
+
+												>
+											</field>
+					<field type="checkbox" label="Icon left" default="0"
+						   name="enable_icon_left" onchange="">
+
+					</field>
+
+									
+					<field type="icon" readonly="false" label="Icon right" default=""
+						   name="icon_right"
+
+												>
+											</field>
+					<field type="checkbox" label="Icon right" default="0"
+						   name="enable_icon_right" onchange="">
+
+					</field>
+
+									
+					<field type="cssbuttonclass" readonly="false" label="Link style" default=""
+						   name="link_style"
+
+													 multiple="false" 													 size="1" 												>
+											</field>
+					<field type="checkbox" label="Link style" default="0"
+						   name="enable_link_style" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

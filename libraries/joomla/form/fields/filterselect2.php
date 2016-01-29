@@ -46,7 +46,7 @@ class JFormFieldFilterselect2 extends JFormField
 		$maximumSelectionLength=$this->element['maximumSelectionLength'] ? (string) $this->element['maximumSelectionLength'] : 10;
 		$maximumSelectionSize=$this->element['maximumSelectionSize'] ? (string) $this->element['maximumSelectionSize'] : 10;
 		$tags=$this->element['tags'] ? (boolean) $this->element['tags'] : false;
-
+		$doc=JFactory::getDocument();
 		// To avoid user's confusion, readonly="true" should imply disabled="true".
 		if ((string) $this->readonly == '1' || (string) $this->readonly == 'true' || (string) $this->disabled == '1'|| (string) $this->disabled == 'true')
 		{
@@ -69,8 +69,25 @@ class JFormFieldFilterselect2 extends JFormField
 		{
 			$selectOPtion['tags']=$options;
 		}
-		JHtml::_('formbehavior.select2','.select2[name="'.$this->name.'"]',null,$selectOPtion,JUserHelper::genRandomPassword());
-		$html[]='<input value="'.htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8').'" '.$attr.' type="hidden" name="'.$this->name.'" class="select2"   />';
+		$doc->addScript(JUri::root().'/media/jui_front_end/js/select2.jquery.js');
+		ob_start();
+		$scriptId="lib_joomla_form_fields_filterselect2".JUserHelper::genRandomPassword();
+		?>
+		<script type="text/javascript">
+			function <?php echo $scriptId ?>() {
+				$('input[name="<?php echo $this->name ?>"]').select2({
+					tags: "true"
+				});
+			}
+			<?php echo $scriptId ?>();
+		</script>
+		<?php
+		$script=ob_get_clean();
+		$script=JUtility::remove_string_javascript($script);
+		$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
+
+		$html[]='<input style="width:200px" value="'.htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8').'" '.$attr.'  name="'.$this->name.'" class="select2"   />';
 		return implode($html);
 	}
 

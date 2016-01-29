@@ -1,16 +1,16 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.controller');
-jimport('sourcecoast.utilities');
-
-class JFBConnectControllerLogin extends JControllerLegacy
+class JFBConnectControllerLogin extends JFBConnectController
 {
 
     function display($cachable = false, $urlparams = false)
@@ -45,7 +45,7 @@ class JFBConnectControllerLogin extends JControllerLegacy
         $userMapModel = JFBCFactory::usermap();
 
         $jUser = JFactory::getUser();
-        if (!$jUser->guest) # User is already logged into Joomla. Update their facebook mapping
+        if (!$jUser->guest) # User is already logged into Joomla. Update their mapping
         {
             SCSocialUtilities::clearJFBCNewMappingEnabled();
             if ($userMapModel->map($jUser->get('id'), $providerUserId, strtolower($provider->name), $provider->client->getToken()))
@@ -94,7 +94,7 @@ class JFBConnectControllerLogin extends JControllerLegacy
             }
 
             // Check if no mapping, and Automatic Registration is set. If so, auto-create the new user.
-            if (!$jUserId && !JFBCFactory::config()->getSetting('create_new_users'))
+            if (!$jUserId && JFBCFactory::config()->getSetting('automatic_registration'))
             { # User is not in system, should create their account automatically
                 if ($loginRegisterModel->autoCreateUser($providerUserId, $provider))
                     $jUserId = $userMapModel->getJoomlaUserId($providerUserId, strtolower($provider->name));
@@ -135,7 +135,7 @@ class JFBConnectControllerLogin extends JControllerLegacy
         {
             $options = array('silent' => 1, 'provider' => $provider, 'provider_user_id' => $providerUserId); // Disable other authentication messages
             // hack for J3.2.0 bug. Should remove after 3.2.1 is available.
-            $password = '$2y$' . $provider->secretKey;
+            $password = $provider->secretKey;
             $loginSuccess = $app->login(array('username' => $provider->appId, 'password' => $password), $options);
         }
 
@@ -143,7 +143,15 @@ class JFBConnectControllerLogin extends JControllerLegacy
         {
             // lets update the user's access token with whatever we just received
             $jUser = JFactory::getUser();
-            $userMapModel->map($jUser->get('id'), $providerUserId, strtolower($provider->name), $provider->client->getToken());
+            $userMapModel->updateUserToken($jUser->get('id'), $provider->systemName, $provider->client->getToken());
+
+            // Store Profile URL and Avatar URL
+            $userModel = JFBConnectModelUserMap::getUser($jUser->get('id'), $provider->name);
+            $userModel->saveParameter('profile_url', JFBCFactory::provider($provider->name)->profile->getProfileUrl($providerUserId));
+            $avatarSettings = new JRegistry();
+            $avatarSettings->set('width', 50);
+            $avatarSettings->set('height', 50);
+            $userModel->saveParameter('avatar_thumb', JFBCFactory::provider($provider->name)->profile->getAvatarUrl($providerUserId, false, $avatarSettings));
 
             if (!$provider->initialRegistration)
             {

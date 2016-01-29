@@ -35,7 +35,7 @@ class AdmintoolsModelCpanels extends F0FModel
 			$db = $this->getDBO();
 
 			$query = $db->getQuery(true)
-				->select($db->qn('extension_id'))
+				->select($db->qn('id'))
 				->from($db->qn('#__extensions'))
 				->where($db->qn('enabled') . ' >= ' . $db->quote('1'))
 				->where($db->qn('folder') . ' = ' . $db->quote('system'))
@@ -62,7 +62,7 @@ class AdmintoolsModelCpanels extends F0FModel
 
 		$query = $db->getQuery(true)
 			->select(array(
-				$db->qn('extension_id'),
+				$db->qn('id'),
 				$db->qn('ordering'),
 			))
 			->from($db->qn('#__extensions'))
@@ -70,7 +70,7 @@ class AdmintoolsModelCpanels extends F0FModel
 			->where($db->qn('folder') . ' = ' . $db->q('system'))
 			->order($db->qn('ordering') . ' ASC');
 		$db->setQuery($query);
-		$orderingPerId = $db->loadAssocList('extension_id', 'ordering');
+		$orderingPerId = $db->loadAssocList('id', 'ordering');
 
 		$orderings = array_values($orderingPerId);
 		$orderings = array_unique($orderings);
@@ -99,7 +99,7 @@ class AdmintoolsModelCpanels extends F0FModel
 			$query = $db->getQuery(true)
 				->update($db->qn('#__extensions'))
 				->set($db->qn('ordering') . ' = ' . $db->q($minOrdering - 1))
-				->where($db->qn('extension_id') . ' = ' . $db->q($id));
+				->where($db->qn('id') . ' = ' . $db->q($id));
 			$db->setQuery($query);
 			$db->execute();
 		}
@@ -273,13 +273,13 @@ class AdmintoolsModelCpanels extends F0FModel
 
 		// Otherwise, try to enable it and report false (so the user knows what he did wrong)
 		$pluginObject = (object)array(
-			'extension_id' => $plugin->extension_id,
+			'id' => $plugin->id,
 			'enabled'      => 1
 		);
 
 		try
 		{
-			$result = $db->updateObject('#__extensions', $pluginObject, 'extension_id');
+			$result = $db->updateObject('#__extensions', $pluginObject, 'id');
 			// Do not remove this line. We need to tell the user he's doing something wrong.
 			$result = false;
 		}

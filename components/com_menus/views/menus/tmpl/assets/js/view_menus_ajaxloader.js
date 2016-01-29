@@ -109,9 +109,26 @@ jQuery(document).ready(function($){
         option_nestable:{
             group: 1,
             maxDepth: 10,
-            handleClass:'dd-handle-move',
+            handleClass:'dd-handle',
             dragStop:function(e,el,dragEl){
                 menu_ajax_loader.move_element(e,el,dragEl);
+            }
+        },
+        expand_item_nestable:function(self) {
+            var self=$(self);
+            var dd_item=self.closest('.dd-item');
+            var more_options=dd_item.find('> .more_options');
+            if(more_options.is(':visible'))
+            {
+                self.find('i.im-minus').addClass('im-plus').removeClass('im-minus');
+                more_options.css({
+                    display:"none"
+                });
+            }else{
+                self.find('i.im-plus').addClass('im-minus').removeClass('im-plus');
+                more_options.css({
+                    display:"block"
+                });
             }
         },
         move_element:function(e,el,dragEl){
@@ -170,7 +187,13 @@ jQuery(document).ready(function($){
 
                     });
 
-
+                    if(response.e==1)
+                    {
+                        alert(response.m);
+                    }else
+                    {
+                        alert(response.m);
+                    }
 
 
                 }
@@ -201,12 +224,62 @@ jQuery(document).ready(function($){
             $(document).on('click','.add_sub_node',function(){
                 menu_ajax_loader.add_sub_node($(this));
             });
+            $(document).on('click','.rebuild_root_menu',function(){
+                var menu_type_id=$(this).data('menu_type_id');
+                var menu_item_id=$(this).data('menu_item_id');
+
+                ajax_web_design=$.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    cache: false,
+                    url: this_host+'/index.php',
+                    data: (function () {
+
+                        dataPost = {
+                            option: 'com_menus',
+                            task: 'menus.ajax_rebuild_root_menu',
+                            menu_type_id:menu_type_id,
+                            menu_item_id:menu_item_id
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        if(response.e==1)
+                        {
+                            alert(response.m);
+                        }else
+                        {
+                            alert(response.m);
+                            location.reload();
+                        }
+
+
+
+
+                    }
+                });
+
+
+            });
 
             $(document).on('change','.menu_access_level',function(){
                 var self=$(this);
                 var access=self.val();
                 var dd_item = self.closest('.dd-item');
-                var id=dd_item.attr('data-id');
+                var id=dd_item.data('id');
                 dd_item.attr('data-access', access);
                 dd_item.data('access', access);
                 var list_keys_values={};
@@ -234,7 +307,7 @@ jQuery(document).ready(function($){
              }
 
         },
-        save_and_close:function()
+        save_fields:function(close)
         {
             list_menu_type={};
             $('input.menu_input').each(function(){
@@ -269,6 +342,17 @@ jQuery(document).ready(function($){
 
 
                     });
+                    if(response.e==1)
+                    {
+                        alert(response.r);
+                    }else
+                    {
+                        alert(response.r);
+                        if(close==1)
+                        {
+                            $('.panel.menus-config').remove();
+                        }
+                    }
 
 
 
@@ -278,13 +362,18 @@ jQuery(document).ready(function($){
 
 
         },
-        save:function()
+        save_and_close:function(self)
         {
-            console.log('hello save');
+            menu_ajax_loader.save_fields(1);
+
         },
-        cancel:function()
+        save:function(self)
         {
-            console.log('hello cancel');
+            menu_ajax_loader.save_fields(0);
+        },
+        cancel:function(self)
+        {
+            $('.panel.menus-config').remove();
         },
         add_node:function(self){
             li=self.closest('.dd-item');
@@ -332,7 +421,21 @@ jQuery(document).ready(function($){
 
 
                     });
+                    if(response.e==1)
+                    {
+                        alert(response.m);
+                    }else
+                    {
 
+                        alert(response.m);
+                        var menu_clone=response.r;
+                        li_clone.data('id',menu_clone.id);
+                        li_clone.data('parent_id',menu_clone.parent_id);
+                        li_clone.data('title',menu_clone.title);
+                        li_clone.data('alias',menu_clone.alias);
+                        li_clone.find('.key_name:first').html(menu_clone.title + " ( " +menu_clone.id+','+ menu_clone.alias + " ) ");
+                        //do some thing
+                    }
 
 
 
@@ -393,7 +496,15 @@ jQuery(document).ready(function($){
 
 
                     });
+                    if(response.e==1)
+                    {
+                        alert(response.m);
+                    }else
+                    {
 
+                        alert(response.m);
+                        //do some thing
+                    }
 
 
 
@@ -416,9 +527,18 @@ jQuery(document).ready(function($){
 
             dd_item = self.closest('.dd-item');
             dd_item.data(key, self_value);
+
+            if (key == 'title' || key == 'alias') {
+                var alias = dd_item.data('alias');
+                var title = dd_item.data('title');
+                var id = dd_item.data('id');
+                dd_item.find('.key_name:first').html(title + " ( " + id+','+alias + " ) ");
+            }
+
+
             menu_ajax_loader.update_nestable();
             dd_item=self.closest('.dd-item');
-            id=dd_item.attr('data-id');
+            id=dd_item.data('id');
             list_keys_values={};
             list_keys_values[key]=self_value;
             menu_ajax_loader.update_menu_item(id,list_keys_values);
@@ -503,11 +623,67 @@ jQuery(document).ready(function($){
 
         },
         remove_item_nestable:function(self) {
-            self = $(self);
-            dd_item = self.closest('.dd-item');
+            var self = $(self);
+            var dd_item = self.closest('.dd-item');
+            var id=dd_item.attr('data-id');
             if ($('.dd-item').length > 1)
-                dd_item.remove();
-            menu_ajax_loader.update_nestable();
+            {
+                if (confirm('Are you sure you want delete this menu item?')) {
+                    ajax_web_design=$.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        cache: false,
+                        url: this_host+'/index.php',
+                        data: (function () {
+
+                            dataPost = {
+                                option: 'com_menus',
+                                task: 'item.ajax_remove_item_menu',
+                                id:id
+
+                            };
+                            return dataPost;
+                        })(),
+                        beforeSend: function () {
+                            $('.div-loading').css({
+                                display: "block"
+
+
+                            });
+                            // $('.loading').popup();
+                        },
+                        success: function (response) {
+                            $('.div-loading').css({
+                                display: "none"
+
+
+                            });
+                            if(response.e==1)
+                            {
+                                alert(response.m);
+                            }else
+                            {
+
+                                alert(response.m);
+                                dd_item.remove();
+                                menu_ajax_loader.update_nestable();
+                                //do some thing
+                            }
+
+
+
+                        }
+                    });
+
+                } else {
+                    return;
+                }
+
+
+
+
+            }
+
         },
 
 

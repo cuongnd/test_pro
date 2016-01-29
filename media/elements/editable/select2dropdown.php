@@ -79,21 +79,14 @@ class elementSelect2DropdownHelper extends  elementHelper
         $source_key=explode('.',$source_key);
         $source_key=end($source_key);
 
-
         $source_value=$params->get('data.source_value','');
         $source_value=explode('.',$source_value);
         $source_value=end($source_value);
 
         if($textSource)
-            $text=parent::getValueDataSourceByKey($textSource);
-        if(is_object($text)||is_array($text))
-        {
-            $text="object or array";
-        }
-        $data_source= $params->get('data.data_source','');
+            $object_source=parent::getValueDataSourceByKey($textSource);
 
-        $data_type= $params->get('data_type','text');
-        $allow_clear= $params->get('allow_clear',true);
+
 
         $html='';
         ob_start();
@@ -112,12 +105,17 @@ class elementSelect2DropdownHelper extends  elementHelper
             data-type="select2"
             data-allow_clear="<?php echo $allow_clear ?>"
             data-pk="<?php echo $source_key ?>"
-            data-value="<?php echo $text ?>"
+            data-value="<?php echo $object_source->$source_key ?>"
             data-source_key="<?php echo $source_key ?>"
             data-source_value="<?php echo $source_value ?>"
             data-url="<?php echo JUri::root().'/index.php?option=com_phpmyadmin&task=datasource.update_data_by_editable&block_id='.$block->id ?>"
             id="<?php echo $id ?>" data-title="<?php echo $title  ?>" <?php echo $editable?'editable="true"':'' ?> class="block-item select2dropdown <?php echo $css_class ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" >
-            <?php echo $text ?>
+            <?php echo $object_source->$source_value ?>
+            <?php
+            if($enableEditWebsite&&trim($object_source->$source_value)==''){
+                echo "source empty";
+            }
+        ?>
         </a>
 
         <?php

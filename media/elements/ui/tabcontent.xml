@@ -1,44 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fields name="params">
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="bindingSourceUpdate" readonly="readonly" type="bindingSource" description="binding Source Update" label="Binding Source Update"/>
-                    <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
-                    <field name="text"  type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Text" label="Text"/>
-                </fieldset>
-            </fields>
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="text" type="text" default="" label="Text"/>
-                <field name="name" type="text" default="" label="Name"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="editable" onchange="element_ui_quick_edit.change_state_edit_able($(this))" type="list" class="btn-group btn-group-yesno" label="Enable edit" description="Enable edit" default="1">
-                    <option value="1">JYES</option>
-                    <option value="0">JNO</option>
-                </field>
-            </fieldset>
-        </fields>
-    </config>
-</extension>
+<config><fields name="params"><fields name="element_config">
+					<field type="textarea" readonly="false" label="title tab content" default=""
+						   name="title_tab_content"
+
+												>
+											</field>
+					<field type="checkbox" label="title tab content" default="0"
+						   name="enable_title_tab_content" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

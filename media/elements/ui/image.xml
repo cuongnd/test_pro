@@ -1,0 +1,12 @@
+<config><fields name="params">
+					<field type="browserserver" readonly="false" label="Image source" default=""
+						   name="image_source"
+
+													 get_image_type="path" 												>
+											</field>
+					<field type="checkbox" label="Image source" default="0"
+						   name="enable_image_source" onchange="">
+
+					</field>
+
+									</fields>				</config>

@@ -1,18 +1,7 @@
-.control-element.control-element-div {
-	position: relative;
+.input-group.block-item-locationpicker .input-group-addon {
+	border: none;
+	background: none;
 }
-.control-element.control-element-div.ui-resizable > .ui-resizable-handle.ui-resizable-s {
-	display: none !important;
-}
-.control-element .block-item-div {
-	min-height: 100px;
-	width: 100%;
-}
-.control-element .block-item-div:hover {
-	border: 1px solid #ccc;
-}
-.control-element[get-data-from="datasource"] {
-	overflow-y: scroll;
-	display: block;
-	max-height: 300px;
+.input-group.block-item-locationpicker .block-item.block-item-locationpicker {
+	min-width: 150px;
 }

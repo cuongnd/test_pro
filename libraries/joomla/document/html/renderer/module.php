@@ -80,8 +80,7 @@ class JDocumentRendererModule extends JDocumentRenderer
 		// module instead
 		$cachemode = $params->get('cachemode', 'oldstatic');
 
-		if ($params->get('cache', 0) == 1 && $conf->get('caching') >= 1 && $cachemode != 'id' && $cachemode != 'safeuri') {
-
+		if ($params->get('cache', 'off') == 'on' && $conf->get('caching') >= 1 && $cachemode != 'id' && $cachemode != 'safeuri') {
 			// Default to itemid creating method and workarounds on
 			$cacheparams = new stdClass;
 			$cacheparams->cachemode = $cachemode;

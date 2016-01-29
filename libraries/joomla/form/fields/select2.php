@@ -70,10 +70,34 @@ class JFormFieldSelect2 extends JFormField
 		{
 			$selectOPtion['tags']=$options;
 		}
+		$doc=JFactory::getDocument();
+		$doc->addScript(JUri::root().'/media/jui_front_end/js/select2.jquery.js');
+		ob_start();
+		$scriptId="lib_joomla_form_fields_select2".JUserHelper::genRandomPassword();
+		?>
+		<script type="text/javascript">
+			function <?php echo $scriptId ?>() {
+				$('input[name="<?php echo $this->name ?>"]').select2({
+					tags: "true"
+				}).on("select2-removed", function(e) {
+						<?php echo $this->element['onremoveitem'] ?>;
+					}).on("select2-selecting", function(e) {
+						<?php echo $this->element['onselecting'] ?>;
+					});
+
+			}
+			<?php echo $scriptId ?>();
+		</script>
+		<?php
+		$script=ob_get_clean();
+		$script=JUtility::remove_string_javascript($script);
+		$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
+
+
 		$selectOPtion['onremoveitem']=$this->element['onremoveitem'];
 		$selectOPtion['onselecting']=$this->element['onselecting'];
-		JHtml::_('formbehavior.select2','.select2[name="'.$this->name.'"]',null,$selectOPtion,JUserHelper::genRandomPassword());
-		$html[]='<input value="'.htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8').'" '.$attr.' type="hidden" name="'.$this->name.'" class="select2"   />';
+		$html[]='<input style="width:120px" value="'.htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8').'" '.$attr.' type="hidden" name="'.$this->name.'" class="select2"   />';
 		return implode($html);
 	}
 

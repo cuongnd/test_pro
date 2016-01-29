@@ -123,6 +123,9 @@ class Grid extends \Kendo\UI\Widget {
     public function pageable($value) {
         return $this->setProperty('pageable', $value);
     }
+    public function config_transport($value) {
+        return $this->setProperty('config_transport', $value);
+    }
 
     /**
     * Enable/disable grid scrolling.

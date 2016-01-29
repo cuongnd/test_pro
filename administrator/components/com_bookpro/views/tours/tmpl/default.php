@@ -30,30 +30,26 @@ $cssOutput = JPATH_ROOT . '/administrator/components/com_bookpro/assets/css/view
 BookProHelper::compileLess($lessInput, $cssOutput);
 
 //$doc->addScript(JUri::root().'/media/kendotest/kendo.all.js');
-$doc->addScript(JUri::root().'/media/kendotest/kendo.core.js');
-$doc->addScript(JUri::root().'/media/kendotest/kendo.data.js');
-$doc->addScript(JUri::root().'/media/kendotest/kendo.web.js');
-$doc->addScript(JUri::root().'/media/kendotest/kendo.grid.js');
+$doc->addScript(JUri::root() . '/media/kendotest/kendo.core.js');
+$doc->addScript(JUri::root() . '/media/kendotest/kendo.data.js');
+$doc->addScript(JUri::root() . '/media/kendotest/kendo.web.js');
+$doc->addScript(JUri::root() . '/media/kendotest/kendo.grid.js');
 
 $doc->addScript(JUri::root() . 'administrator/components/com_bookpro/assets/js/view-tours-default.js');
 $doc->addStyleSheet(JUri::root() . '/administrator/components/com_bookpro/assets/css/view-tours-default.css');
 
-$doc->addStyleSheet(JUri::root().'/media/telerik.kendoui.2015.1.318.core/src/styles/web/kendo.common.core.css');
-$doc->addStyleSheet(JUri::root().'/media/telerik.kendoui.2015.1.318.core/src/styles/web/kendo.default.css');
-$doc->addStyleSheet(JUri::root().'/media/telerik.kendoui.2015.1.318.core/src/styles/web/kendo.common.core.css');
+$doc->addStyleSheet(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/styles/web/kendo.common.core.css');
+$doc->addStyleSheet(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/styles/web/kendo.default.css');
+$doc->addStyleSheet(JUri::root() . '/media/telerik.kendoui.2015.1.318.core/src/styles/web/kendo.common.core.css');
 
 
+$doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.common.min.css');
+$doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.default.min.css');
+$doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.dataviz.min.css');
+$doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.dataviz.default.min.css');
 
-
-
-
-$doc->addStyleSheet(JUri::root().'/media/kendotest/kendo.common.min.css');
-$doc->addStyleSheet(JUri::root().'/media/kendotest/kendo.default.min.css');
-$doc->addStyleSheet(JUri::root().'/media/kendotest/kendo.dataviz.min.css');
-$doc->addStyleSheet(JUri::root().'/media/kendotest/kendo.dataviz.default.min.css');
-
-$doc->addStyleSheet(JUri::root().'/media/kendotest/kendo.default.mobile.min.css');
-$doc->addStyleSheet(JUri::root().'/media/kendotest/kendo.material.min.css');
+$doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.default.mobile.min.css');
+$doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.material.min.css');
 
 //$doc->addScript(JUri::root().'/media/system/js/jquery.sortingTable/js/jquery.sortingtable.js');
 
@@ -63,12 +59,11 @@ $cssOutput=JPATH_ROOT.'/media/system/js/jquery.sortingTable/css/jquery.sortingta
 BookProHelper::compileLess($lessInput,$cssOutput);
 $doc->addStyleSheet(JUri::root().'/media/system/js/jquery.sortingTable/css/jquery.sortingtable.css');*/
 
-$doc->addStyleSheet(JUri::root().'administrator/components/com_bookpro/assets/css/jquery-ui.css');
-$doc->addScript(JUri::root().'administrator/templates/sprflat/assets/js/libs/jquery-ui-1.10.4.min.js');
+$doc->addStyleSheet(JUri::root() . 'administrator/components/com_bookpro/assets/css/jquery-ui.css');
+$doc->addScript(JUri::root() . 'administrator/templates/sprflat/assets/js/libs/jquery-ui-1.10.4.min.js');
 
 
 ?>
-
 
 
 <div class="row">
@@ -82,7 +77,6 @@ $doc->addScript(JUri::root().'administrator/templates/sprflat/assets/js/libs/jqu
 <div class="view-tours-default" xmlns="http://www.w3.org/1999/html">
 
     <form action="index.php" method="post" name="adminForm" id="adminForm">
-
 
 
         <fieldset id="filter-bar">
@@ -153,107 +147,107 @@ $doc->addScript(JUri::root().'administrator/templates/sprflat/assets/js/libs/jqu
 
 
         <div class="pagination-limitbox">
-                <?php echo $pagination->getListFooter(); ?>
-                <?php echo $this->pagination->getLimitBox(); ?>
-                <span><?php echo JText::_('COM_BOOKPRO_TOUR_LABEL_LIMIT_BOX') ?></span>
-            </div>
+            <?php echo $pagination->getListFooter(); ?>
+            <?php echo $this->pagination->getLimitBox(); ?>
+            <span><?php echo JText::_('COM_BOOKPRO_TOUR_LABEL_LIMIT_BOX') ?></span>
+        </div>
 
-            <div class="table-infomation">
-                <table class="adminlist table-striped table sortingtable">
-                    <thead>
+        <div class="table-infomation">
+            <table class="adminlist table-striped table sortingtable">
+                <thead>
+                <tr>
+
+                    <?php if (!$this->selectable) {
+                        ?>
+                        <th width="1%"><input type="checkbox" class="inputCheckbox"
+                                              name="toggle" value="" onclick="Joomla.checkAll(this);"/>
+                        </th>
+                    <?php } ?>
+
+                    <th width="5%"><?php echo JText::_("ID"); ?></th>
+
+                    <th width="20%">
+                        <?php echo JText::_('TOUR NAME'); ?>
+                    </th>
+                    <th width="10%"><?php echo JText::_('TOUR CODE'); ?>
+                    </th>
+                    <th width="10%"><?php echo JText::_('TOUR TYPE') ?>
+                    </th>
+                    <th width="10%"><?php echo JText::_('TOUR STYLE') ?>
+                    </th>
+                    <th width="12%"><?php echo JText::_('START-END CITY') ?>
+                    </th>
+                    <th width="5%"><?php echo JText::_('PRICE'); ?>
+                    </th>
+
+                    <th width="5%"><?php echo JText::_('HOTEL'); ?>
+                    </th>
+
+                    <th width="8%"><?php echo JText::_('ADD ONS'); ?>
+                    </th>
+                    <th width="5%"><?php echo JText::_('PAYMENT'); ?>
+                    </th>
+                    <th width="5%"><?php echo JText::_('ALLOCATION'); ?>
+                    </th>
+                    <th width="5%"><?php echo JText::_('PROMOTION'); ?>
+                    </th>
+                    <th width="5%"><?php echo JText::_('DICOUNT'); ?>
+                    </th>
+                    <th width="5%"><?php echo JText::_('ASSIGN'); ?>
+                    </th>
+                    <th width="5%"><?php echo JText::_('ACTION'); ?>
+                    </th>
+
+                </tr>
+                </thead>
+
+                <tbody>
+                <?php foreach ($this->items as $item): ?>
                     <tr>
 
-                        <?php if (!$this->selectable) {
-                            ?>
-                            <th width="1%"><input type="checkbox" class="inputCheckbox"
-                                                  name="toggle" value="" onclick="Joomla.checkAll(this);"/>
-                            </th>
-                        <?php } ?>
+                        <td class="checkboxCell"><?php echo JHTML::_('grid.checkedout', $subject, $i); ?>
+                        </td>
+                        <td><?php echo $item->id; ?></td>
 
-                        <th width="5%"><?php echo JText::_("ID"); ?></th>
+                        <td>
+                            <a href="<?php echo JRoute::_('index.php?option=com_bookpro&view=tour&cid=' . $item->id) ?> ">
+                                <?php echo $item->title; ?></a></td>
+                        <td><?php echo $item->code; ?></td>
+                        <td><?php echo $item->stype; ?></td>
 
-                        <th width="20%">
-                            <?php echo JText::_('TOUR NAME'); ?>
-                        </th>
-                        <th width="10%"><?php echo JText::_('TOUR CODE'); ?>
-                        </th>
-                        <th width="10%"><?php echo JText::_('TOUR TYPE') ?>
-                        </th>
-                        <th width="10%"><?php echo JText::_('TOUR STYLE') ?>
-                        </th>
-                        <th width="12%"><?php echo JText::_('START-END CITY') ?>
-                        </th>
-                        <th width="5%"><?php echo JText::_('PRICE'); ?>
-                        </th>
-
-                        <th width="5%"><?php echo JText::_('HOTEL'); ?>
-                        </th>
-
-                        <th width="8%"><?php echo JText::_('ADD ONS'); ?>
-                        </th>
-                        <th width="5%"><?php echo JText::_('PAYMENT'); ?>
-                        </th>
-                        <th width="5%"><?php echo JText::_('ALLOCATION'); ?>
-                        </th>
-                        <th width="5%"><?php echo JText::_('PROMOTION'); ?>
-                        </th>
-                        <th width="5%"><?php echo JText::_('DICOUNT'); ?>
-                        </th>
-                        <th width="5%"><?php echo JText::_('ASSIGN'); ?>
-                        </th>
-                        <th width="5%"><?php echo JText::_('ACTION'); ?>
-                        </th>
-
+                        <td>Classic Cultures</td>
+                        <td>Siem Reap Vientiane</td>
+                        <td><i class="en-eye"></i><i class="im-pencil"></i></td>
+                        <td><i class="en-eye"></i><i class="im-pencil"></i></td>
+                        <td><i class="en-eye"></i><i class="im-pencil"></i></td>
+                        <td><i class="en-eye"></i><i class="im-pencil"></i></td>
+                        <td><i class="en-eye"></i><i class="im-pencil"></i></td>
+                        <td><i class="en-eye"></i><i class="im-pencil"></i></td>
+                        <td><i class="en-eye"></i><i class="im-pencil"></i></td>
+                        <td>Hien</td>
+                        <td><i class="en-eye"></i><i class="im-pencil"></i></td>
                     </tr>
-                    </thead>
+                <?php endforeach; ?>
 
-                    <tbody>
-                    <?php foreach ($this->items as $item): ?>
-                        <tr>
-
-                            <td class="checkboxCell"><?php echo JHTML::_('grid.checkedout', $subject, $i); ?>
-                            </td>
-                            <td><?php echo $item->id; ?></td>
-
-                            <td>
-                                <a href="<?php echo JRoute::_('index.php?option=com_bookpro&view=tour&cid=' . $item->id) ?> ">
-                                    <?php echo $item->title; ?></a></td>
-                            <td><?php echo $item->code; ?></td>
-                            <td><?php echo $item->stype; ?></td>
-
-                            <td>Classic Cultures</td>
-                            <td>Siem Reap Vientiane</td>
-                            <td><i class="en-eye"></i><i class="im-pencil"></i></td>
-                            <td><i class="en-eye"></i><i class="im-pencil"></i></td>
-                            <td><i class="en-eye"></i><i class="im-pencil"></i></td>
-                            <td><i class="en-eye"></i><i class="im-pencil"></i></td>
-                            <td><i class="en-eye"></i><i class="im-pencil"></i></td>
-                            <td><i class="en-eye"></i><i class="im-pencil"></i></td>
-                            <td><i class="en-eye"></i><i class="im-pencil"></i></td>
-                            <td>Hien</td>
-                            <td><i class="en-eye"></i><i class="im-pencil"></i></td>
-                        </tr>
-                    <?php endforeach; ?>
-
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
+        </div>
 
 
-            <input type="hidden" name="option" value="<?php echo OPTION; ?>"/> <input
-                type="hidden" name="task"
-                value="<?php echo JRequest::getCmd('task'); ?>"/> <input
-                type="hidden" name="reset" value="0"/> <input type="hidden"
-                                                              name="cid[]" value=""/> <input type="hidden"
-                                                                                             name="boxchecked"
-                                                                                             value="0"/> <input
-                type="hidden" name="controller"
-                value="<?php echo CONTROLLER_TOUR; ?>"/> <input type="hidden"
-                                                                name="filter_order" value="<?php echo $order; ?>"/>
-            <input
-                type="hidden" name="filter_order_Dir"
-                value="<?php echo $orderDir; ?>"/> <input type="hidden"
-                                                          name="<?php echo SESSION_TESTER; ?>" value="1"/>
-            <?php echo JHTML::_('form.token'); ?>
+        <input type="hidden" name="option" value="<?php echo OPTION; ?>"/> <input
+            type="hidden" name="task"
+            value="<?php echo JRequest::getCmd('task'); ?>"/> <input
+            type="hidden" name="reset" value="0"/> <input type="hidden"
+                                                          name="cid[]" value=""/> <input type="hidden"
+                                                                                         name="boxchecked"
+                                                                                         value="0"/> <input
+            type="hidden" name="controller"
+            value="<?php echo CONTROLLER_TOUR; ?>"/> <input type="hidden"
+                                                            name="filter_order" value="<?php echo $order; ?>"/>
+        <input
+            type="hidden" name="filter_order_Dir"
+            value="<?php echo $orderDir; ?>"/> <input type="hidden"
+                                                      name="<?php echo SESSION_TESTER; ?>" value="1"/>
+        <?php echo JHTML::_('form.token'); ?>
     </form>
 </div>

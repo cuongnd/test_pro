@@ -1,50 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fields name="params">
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
-                </fieldset>
-            </fields>
-        </fields>
-        <fields name="params">
-            <fieldset name="element"  description="Element config" label="Column config">
+<config><fields name="params"><fields name="element_config">
+					<field type="menuitem" readonly="false" label="Link to page" default=""
+						   name="link_to_page"
 
-                <field name="axis" type="list"
-                       class="chzn-color-state"
-                       default="false"
-                       description="axis"
-                       label="axis"
-                       size="1"
-                        >
-                    <option value="x">x</option>
-                    <option value="y">y</option>
-                    <option value="false">false</option>
-                </field>
-            </fieldset>
-        </fields>
+												>
+											</field>
+					<field type="checkbox" label="Link to page" default="0"
+						   name="enable_link_to_page" onchange="">
 
+					</field>
 
-    </config>
-</extension>
+									
+					<field type="textarea" readonly="false" label="Link" default=""
+						   name="link"
+
+												>
+											</field>
+					<field type="checkbox" label="Link" default="0"
+						   name="enable_link" onchange="">
+
+					</field>
+
+									
+					<field type="editor" readonly="false" label="Link template" default=""
+						   name="link_template"
+
+																									>
+											</field>
+					<field type="checkbox" label="Link template" default="0"
+						   name="enable_link_template" onchange="">
+
+					</field>
+
+									
+					<field type="icon" readonly="false" label="Icon left" default=""
+						   name="icon_left"
+
+												>
+											</field>
+					<field type="checkbox" label="Icon left" default="0"
+						   name="enable_icon_left" onchange="">
+
+					</field>
+
+									
+					<field type="icon" readonly="false" label="Icon right" default=""
+						   name="icon_right"
+
+												>
+											</field>
+					<field type="checkbox" label="Icon right" default="0"
+						   name="enable_icon_right" onchange="">
+
+					</field>
+
+									
+					<field type="cssbuttonclass" readonly="false" label="Link style" default=""
+						   name="link_style"
+
+													 multiple="false" 													 size="1" 												>
+											</field>
+					<field type="checkbox" label="Link style" default="0"
+						   name="enable_link_style" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

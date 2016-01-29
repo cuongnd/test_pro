@@ -1,18 +1,18 @@
 <?php
-#Vars - written at 2014-10-01
+#Vars - written at 2016-01-20
 $dbhost="localhost";
-$dbname="webtemppro";
+$dbname="test_pro1";
 $dbuser="root";
-$dbpass="";
+$dbpass="123456";
 $dbport=3306;
 $dbsocket="";
 $compression=1;
-$backup_path="D:/xampp/htdocs/test_pro/msd1.24.4/work/backup/";
-$logdatei="D:/xampp/htdocs/test_pro/msd1.24.4/work/log/mysqldump_perl.log.gz";
-$completelogdatei="D:/xampp/htdocs/test_pro/msd1.24.4/work/log/mysqldump_perl.complete.log.gz";
-$sendmail_call="D:\xampp\mailtodisk\mailtodisk.exe";
+$backup_path="H:/project/test_pro/msd1.24.4/work/backup/";
+$logdatei="H:/project/test_pro/msd1.24.4/work/log/mysqldump_perl.log.gz";
+$completelogdatei="H:/project/test_pro/msd1.24.4/work/log/mysqldump_perl.complete.log.gz";
+$sendmail_call="H:\xampp\mailtodisk\mailtodisk.exe";
 $nl="\n";
-$cron_dbindex=-3;
+$cron_dbindex=14;
 $cron_printout=1;
 $cronmail=0;
 $cronmail_dump=0;
@@ -22,10 +22,10 @@ $cronmailfrom="";
 $cron_use_sendmail=1;
 $cron_smtp="localhost";
 $cron_smtp_port="25";
-@cron_db_array=("asianventure","bus_j3","cdcol","performance_schema","phpmyadmin","test","test_pro","webauth","webtemppro");
-@cron_dbpraefix_array=("","","","","","","","","");
-@cron_command_before_dump=("","","","","","","","","");
-@cron_command_after_dump=("","","","","","","","","");
+@cron_db_array=("asianventure","cdcol","etravelservice","freelancer","joom336","performance_schema","phpmyadmin","sys","test_pro","test_pro1","test_pro2","test_pro3","test_pro_b_2015_10_03","webauth","webtemppro");
+@cron_dbpraefix_array=("","","","","","","","","","","","","","","");
+@cron_command_before_dump=("","","","","","","","","","","","","","","");
+@cron_command_after_dump=("","","","","","","","","","","","","","","");
 @ftp_server=("","","");
 @ftp_port=(21,21,21);
 @ftp_mode=(0,0,0);

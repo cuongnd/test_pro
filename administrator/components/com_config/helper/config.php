@@ -37,7 +37,7 @@ class ConfigHelperConfig extends JHelperContent
 		$db->setQuery($query);
 		$result = $db->loadObjectList();
         require_once JPATH_ROOT.'/administrator/components/com_website/helpers/website.php';
-        $result=websiteHelperFrontEnd::setKeyWebsite($result);
+        $result=websiteHelperBackend::setKeyWebsite($result);
 		return $result;
 	}
 

@@ -256,6 +256,78 @@ abstract class JModelAdmin extends JModelForm
 
 		return true;
 	}
+	function render_to_xml($fields,$maxLevel = 9999, $level = 0)
+	{
+		if($level<=$maxLevel)
+		{
+			foreach ($fields as $item) {
+				$level1=$level+1;
+				if(is_array($item->children)&&count($item->children)>0 ) {
+					if($level==0){
+						if(strtolower($item->name)!='option')
+						{
+							echo '<fields name="'.strtolower($item->name).'">';
+						}
+					}else{
+						echo '<fields name="'.strtolower($item->name).'">';
+					}
+					JModelAdmin::render_to_xml($item->children,  $maxLevel, $level1);
+					if($level==0){
+						if(strtolower($item->name)!='option')
+						{
+							echo '</fields>';
+						}
+					}else{
+						echo '</fields>';
+					}
+				}else{
+					$config_property=$item->config_property;
+					$config_property=base64_decode($config_property);
+					$config_property = (array)up_json_decode($config_property, false, 512, JSON_PARSE_JAVASCRIPT);
+
+					$config_params=$item->config_params;
+					$config_params=base64_decode($config_params);
+					$config_params = (array)up_json_decode($config_params, false, 512, JSON_PARSE_JAVASCRIPT);
+					$name=strtolower($item->name);
+					?>
+
+					<field type="<?php echo $item->type?$item->type:'text' ?>" readonly="<?php echo $item->readonly==1?'true':'false' ?>" label="<?php echo $item->label ?>" default="<?php echo $item->default ?>"
+						   name="<?php echo $name ?>" onchange="<?php echo strtolower($item->onchange) ?>"
+
+
+						<?php
+						foreach($config_property as $a_item){ ?>
+							<?php if($a_item->property_key&&$a_item->property_value){
+								echo " ";
+								echo "{$a_item->property_key}=\"{$a_item->property_value}\"";
+								echo " ";
+							} ?>
+						<?php }
+
+
+						?>
+						>
+						<?php if(count($config_params)){
+
+							foreach($config_params as $a_item){ ?>
+								<?php if($a_item->param_key!=''&&$a_item->param_value!=''){ ?>
+									<option value="<?php echo $a_item->param_key ?>"><?php echo $a_item->param_value ?></option>
+								<?php } ?>
+							<?php }
+						} ?>
+					</field>
+					<field type="checkbox" label="<?php echo $item->label ?>" default="0"
+						   name="enable_<?php echo $name ?>" onchange="<?php echo strtolower($item->onchange) ?>">
+
+					</field>
+					<?php
+				}
+
+			}
+
+		}
+
+	}
 
 	/**
 	 * Batch access level changes for a group of rows.

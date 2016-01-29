@@ -1,0 +1,144 @@
+<config><fields name="params">
+					<field type="datainputtype" readonly="false" label="Input type" default=""
+						   name="input_type"
+
+													 multiple="false" 													 size="1" 												>
+											</field>
+					<field type="checkbox" label="Input type" default="0"
+						   name="enable_input_type" onchange="">
+
+					</field>
+
+									<fields name="data">
+					<field type="bindingSource" readonly="false" label="BinddingSource" default=""
+						   name="binddingSource"
+
+												>
+											</field>
+					<field type="checkbox" label="BinddingSource" default="0"
+						   name="enable_binddingsource" onchange="">
+
+					</field>
+
+									
+					<field type="autocompletetext" readonly="false" label="Key" default=""
+						   name="key"
+
+																									>
+											</field>
+					<field type="checkbox" label="Key" default="0"
+						   name="enable_key" onchange="">
+
+					</field>
+
+									
+					<field type="autocompletetext" readonly="false" label="Value" default=""
+						   name="Value"
+
+																									>
+											</field>
+					<field type="checkbox" label="Value" default="0"
+						   name="enable_value" onchange="">
+
+					</field>
+
+									
+					<field type="bindingSource" readonly="false" label="Selected" default=""
+						   name="seleted"
+
+												>
+											</field>
+					<field type="checkbox" label="Selected" default="0"
+						   name="enable_seleted" onchange="">
+
+					</field>
+
+									</fields>				<fields name="element_config">
+					<field type="fieldnamebindingsourceselect2" readonly="false" label="Name" default=""
+						   name="name"
+
+												>
+											</field>
+					<field type="checkbox" label="Name" default="0"
+						   name="enable_name" onchange="">
+
+					</field>
+
+									
+					<field type="integer" readonly="false" label="Selected" default=""
+						   name="seleted"
+
+																										 last="10" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Selected" default="0"
+						   name="enable_seleted" onchange="">
+
+					</field>
+
+									
+					<field type="integer" readonly="false" label="Min" default=""
+						   name="min"
+
+																										 last="1000" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Min" default="0"
+						   name="enable_min" onchange="">
+
+					</field>
+
+									
+					<field type="integer" readonly="false" label="Max" default=""
+						   name="max"
+
+																										 last="10000" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Max" default="0"
+						   name="enable_max" onchange="">
+
+					</field>
+
+									
+					<field type="integer" readonly="false" label="Step" default=""
+						   name="step"
+
+																										 last="1000" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Step" default="0"
+						   name="enable_step" onchange="">
+
+					</field>
+
+									
+					<field type="createitem" readonly="false" label="Create Items" default=""
+						   name="items"
+
+													 maxDepth="1" 												>
+											</field>
+					<field type="checkbox" label="Create Items" default="0"
+						   name="enable_items" onchange="">
+
+					</field>
+
+									
+					<field type="coding" readonly="false" label="Create Items by code php" default=""
+						   name="create_items_by_code_php"
+
+												>
+											</field>
+					<field type="checkbox" label="Create Items by code php" default="0"
+						   name="enable_create_items_by_code_php" onchange="">
+
+					</field>
+
+									
+					<field type="selectblock" readonly="false" label="trigger block when on change" default=""
+						   name="trigger_block_when_on_change"
+
+												>
+											</field>
+					<field type="checkbox" label="trigger block when on change" default="0"
+						   name="enable_trigger_block_when_on_change" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

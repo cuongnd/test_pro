@@ -67,7 +67,7 @@ class elementSelectDateTimeHelper extends  elementHelper
                     element_ui_select_date_time.init_ui_select_date_time();
                 });
             </script>
-            <input class="block-item-selectdatetime "  value="<?php echo $value ?>" placeholder=""  name="<?php echo $name ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" id="<?php echo $id; ?>" element-type="<?php echo $block->type ?>"/>
+            <input class="block-item-selectdatetime input"  value="<?php echo $value ?>" placeholder=""  name="<?php echo $name ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" id="<?php echo $id; ?>" element-type="<?php echo $block->type ?>"/>
 
         <?php
         }

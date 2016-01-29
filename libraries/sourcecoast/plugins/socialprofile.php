@@ -1,11 +1,14 @@
 <?php
 /**
- * @package        JLinked
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         SourceCoast Extensions
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
-defined('_JEXEC') or die(__FILE__);
+defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.plugin.plugin');
 jimport('joomla.application.component.controller');
@@ -22,6 +25,7 @@ class SocialProfilePlugin extends JPlugin
     var $profileLibrary;
     var $joomlaId;
     var $socialId;
+    var $registrationUser; // Original JUser object used for registration. Mainly necessary so the password_clear can be read by the plugins
 
     var $db;
     var $_importEnabled = false; // Can this plugin import previous FB connections
@@ -54,6 +58,13 @@ class SocialProfilePlugin extends JPlugin
                 return $this->registration_url;
             case 'name' :
                 return $this->profileName;
+            case 'displayName' :
+            {
+                if (isset($this->displayName))
+                    return $this->displayName;
+                else
+                    return ucwords($this->profileName);
+            }
         }
     }
 
@@ -66,9 +77,10 @@ class SocialProfilePlugin extends JPlugin
      * Called after registration occurs
      * Good for importing the profile on first registration
      */
-    public function socialProfilesOnRegister($network, $joomlaId, $socialId)
+    public function socialProfilesOnRegister($network, $jUser, $socialId)
     {
-        $this->loadSettings($network, $joomlaId, $socialId);
+        $this->registrationUser = $jUser;
+        $this->loadSettings($network, $jUser->get('id'), $socialId);
         $this->onRegister();
 
         return true;
@@ -184,6 +196,11 @@ class SocialProfilePlugin extends JPlugin
     protected function onNewUserSave()
     {
         return true;
+    }
+
+    protected function createUser($profileData)
+    {
+
     }
 
     /**
@@ -398,6 +415,22 @@ class SocialProfilePlugin extends JPlugin
         return false;
     }
 
+    public function socialProfilesAwardPoints($name, $data)
+    {
+        $userId = $data->get('userId', null);
+        if (!$userId)
+            $userId = JFactory::getUser()->get('id');
+        if (!$userId)
+            $userId = $this->joomlaId;
+
+        if ($userId)
+            $this->awardPoints($userId, $name, $data);
+    }
+
+    protected function awardPoints($userId, $name, $data)
+    {
+    }
+
     /*     * *
      *
      * ************ END Triggered functions ************
@@ -471,7 +504,8 @@ class SocialProfilePlugin extends JPlugin
         $avatarURL = $this->profileLibrary->getAvatarURL($this->socialId, true);
         if ($avatarURL == null)
         {
-            $this->setDefaultAvatar($this->joomlaId);
+            if ($this->registrationUser) // Only revert to the default avatar if new user registration
+                $this->setDefaultAvatar($this->joomlaId);
             return false;
         }
 
@@ -605,7 +639,17 @@ class SocialProfilePlugin extends JPlugin
 
     public function getFieldMappingHTML()
     {
-        $providers = JFBCFactory::getAllProviders();
+        $allProviders = JFBCFactory::getAllProviders();
+
+        // Remove providers who aren't configured for authentication
+        $providers = $allProviders;
+        for ($i = 0; $i < count($allProviders); $i++)
+        {
+            $p = $allProviders[$i];
+            if (!$p->appId)
+                unset($providers[$i]);
+        }
+
         $profileFields = $this->getProfileFields();
         $html = '<div class="row-fluid"><div class="span12">
             <div class="well">

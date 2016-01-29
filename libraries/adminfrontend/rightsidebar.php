@@ -5,6 +5,21 @@
  * Date: 12/3/2015
  * Time: 3:04
  */
+$website=JFactory::getWebsite();
+$db = JFactory::getDbo();
+$query = $db->getQuery(true);
+$query->from('#__menu As menu');
+$query->select('menu.parent_id, menu.id,menu.title,menu.link,menu.icon');
+$query->leftJoin('#__menu_types AS menuType ON menuType.id=menu.menu_type_id');
+$query->select('menuType.title as menu_type');
+$query->where('menuType.website_id=' . (int)$website->website_id);
+$query->where('menuType.client_id=0');
+$query->order('menuType.id,menu.ordering');
+$listMenu = $db->setQuery($query)->loadObjectList();
+$a_listMenu = array();
+foreach ($listMenu as $menu) {
+    $a_listMenu[$menu->menu_type][] = $menu;
+}
 ?>
 <div id=right-sidebar class=hide-sidebar>
     <!-- Start .sidebar-inner -->

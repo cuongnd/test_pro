@@ -1,0 +1,142 @@
+.sidebarmenu ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+font: bold 13px Verdana;
+width: 180px; /* Main Menu Item widths */
+border-bottom: 1px solid #ccc;
+}
+div.sidebarmenu ul#sidebarmenu1 li.menu_item div.test123 div.root a
+{
+	color:#605D57;
+}
+.sidebarmenu ul li{
+position: relative;
+}
+
+/* Top level menu links style */
+div.sidebarmenu ul#sidebarmenu1 li.menu_item
+{
+	border:none;
+	padding:0px;
+	margin:0px;
+}
+div.sidebarmenu ul#sidebarmenu1 li a.menu_item{
+ background: url("../images/menu_home_bg.gif") no-repeat scroll -1px 0 transparent;
+    color: #3D3D3D;
+    display: block;
+    height: 27px;
+    line-height: 27px;
+    overflow: hidden;
+    white-space: nowrap;
+	padding-left:10px;
+    width:auto;}
+
+
+.sidebarmenu ul li a:visited{
+color: white;
+}
+
+
+/*Sub level menu items */
+.sidebarmenu ul li ul{
+position: absolute;
+width: 170px; /*Sub Menu Items width */
+top: 0;
+}
+
+.sidebarmenu a.subfolderstyle{
+background: url(right.gif) no-repeat 97% 50%;
+}
+div.sidebarmenu ul#sidebarmenu1 li.menu_item div.test123 div.root a:active
+{
+	color:#333;
+}
+ 
+/* Holly Hack for IE \*/
+* html .sidebarmenu ul li { float: left; height: 1%; }
+* html .sidebarmenu ul li a { height: 1%; }
+/* End */
+.sidebarmenu ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+font: bold 13px Verdana;
+width: 100%; /* Main Menu Item widths */
+border-bottom: 1px solid #ccc;
+}
+ 
+.sidebarmenu div.test123 ul li{
+position: relative;
+}
+
+/* Top level menu links style */
+.sidebarmenu div.test123 ul li a{
+display: block;
+overflow: auto; /*force hasLayout in IE7 */
+color: white;
+text-decoration: none;
+padding: 6px;
+border-bottom: 1px solid #778;
+border-right: 1px solid #778;
+}
+
+.sidebarmenu div.test123 ul li a:link, .sidebarmenu div div.test123 li a:visited, .sidebarmenu div.test123 ul li a:active{
+background-color: #012D58; /*background of tabs (default state)*/
+}
+
+.sidebarmenu div.test123 ul li a:visited{
+color: white;
+}
+
+
+/*Sub level menu items */
+.sidebarmenu ul li div.test123{
+position: absolute;
+top: 0;
+display:none;
+background: none repeat scroll 0 0 #FFFFFF;
+border: 2px solid #999999;
+border-radius: 0 0.5em 0.5em 0;
+line-height: 20px;
+padding: 5px 10px;
+width: 600px;
+z-index: 3;
+	}
+.sidebarmenu ul li div.test123 .root{
+	background: url("../images/icon_bullet_1.gif") no-repeat scroll 0 8px transparent;
+    float: left;
+    font-weight: bold;
+    padding-left: 10px;
+    width: 120px;
+}
+div.sidebarmenu ul#sidebarmenu1 li div.test123 div.mod_cat_item{
+    float: right;
+    width: 420px;
+}
+.sidebarmenu ul li div.test123 .break_module_line {
+	background: url("../images/line_grey.gif") repeat-x scroll center center transparent;
+	height: 11px;
+	clear: both;
+    display: block;
+    font-size: 0;
+    line-height: 0;
+}
+div.sidebarmenu ul#sidebarmenu1 li div.test123 div.mod_cat_item a{
+    display: inline;
+	color: #003399;
+    white-space: nowrap;
+}
+div.sidebarmenu ul#sidebarmenu1 li div.test123 div.mod_cat_item span
+{
+	color: #CCCCCC;
+    white-space: nowrap;
+}
+div.sidebarmenu ul#sidebarmenu1 li div.test123 div.mod_cat_item a:hover{
+	color: #003399;
+}
+div.sidebarmenu ul#sidebarmenu1 li div.test123 div.mod_cat_item a:active{
+	color: #003399;
+}
+* html .sidebarmenu div.test123 ul li { float: left; height: 1%; }
+* html .sidebarmenu div.test123 ul li a { height: 1%; }

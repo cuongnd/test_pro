@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -47,14 +50,16 @@ class JFBConnectProviderFacebookCanvas extends JObject
                 if ($this->get('inTab'))
                 {
                     $this->setupPageTab();
-                } else if ($this->get('inCanvas'))
+                }
+                else if ($this->get('inCanvas'))
                 {
                     $this->setupAppCanvas();
                 }
 
                 $this->setupResizing();
             }
-        } else
+        }
+        else
             $this->set('resizeEnabled', false); // Default to disabled
 
     }
@@ -73,21 +78,12 @@ class JFBConnectProviderFacebookCanvas extends JObject
             $jSession->clear('jfbcCanvasEnabled');
             $jSession->clear('jfbcCanvasInTab');
             $jSession->clear('jfbcCanvasInCanvas');
-            $jSession->clear('jfbcCanvasPageInfo');
             $this->set('canvasEnabled', false);
-            // If we were just redirected to (and from) the Reveal Page, go back to the original location
-            $origDestination = $jSession->get('jfbcCanvasOrigDestination', null);
-            if ($origDestination)
-            {
-                $jSession->clear('jfbcCanvasOrigDestination');
-                $app->redirect($origDestination);
-            } else // Get rid of the jfbcCanvasBreakout query string
-            {
-                $uri = JURI::getInstance();
-                $uri->delVar('jfbcCanvasBreakout');
-                $uri->setVar('ref', 'fb');
-                $app->redirect($uri->toString());
-            }
+
+            $uri = JURI::getInstance();
+            $uri->delVar('jfbcCanvasBreakout');
+            $uri->setVar('ref', 'fb');
+            $app->redirect($uri->toString());
         }
     }
 
@@ -108,14 +104,13 @@ class JFBConnectProviderFacebookCanvas extends JObject
                 $jSession->set('jfbcCanvasEnabled', true);
                 if (isset($request['page']))
                 {
-                    $jSession->set('jfbcCanvasPageInfo', $request['page']);
                     $jSession->set('jfbcCanvasInTab', true);
                     $jSession->set('jfbcCanvasInCanvas', false);
-                } else
+                }
+                else
                 {
                     $jSession->set('jfbcCanvasInCanvas', true);
                     $jSession->set('jfbcCanvasInTab', false);
-                    $jSession->clear('jfbcCanvasPageInfo');
                 }
 
                 return true; // We are definitely inside FB
@@ -126,32 +121,12 @@ class JFBConnectProviderFacebookCanvas extends JObject
 
     private function setupPageTab()
     {
-        $app = JFactory::getApplication();
-        $jSession = JFactory::getSession();
-
-        // First, check if reveal page is setup
-        $pageInfo = $jSession->get('jfbcCanvasPageInfo');
-        $revealPage = JFBCFactory::config()->getSetting('canvas_tab_reveal_article_id', '');
-        if ($revealPage && !$pageInfo['liked'] && ((JRequest::getCmd('option') != 'com_content') || (JRequest::getCmd('view') != 'article') ||
-                        (JRequest::getInt('id') != $revealPage))
-        )
-        {
-            $uri = JURI::getInstance();
-            $uri->delVar('jfbcCanvasBreakout');
-            $jSession->set('jfbcCanvasOrigDestination', $uri->toString());
-            $app->redirect('index.php?option=com_content&view=article&tmpl=component&id=' . $revealPage);
-        } else
-        {
-            $tabTemplate = JFBCFactory::config()->getSetting('canvas_tab_template');
-            $this->setTemplate($tabTemplate);
-        }
+        $tabTemplate = JFBCFactory::config()->getSetting('canvas_tab_template');
+        $this->setTemplate($tabTemplate);
     }
 
     private function setupAppCanvas()
     {
-        $jSession = JFactory::getSession();
-        $jSession->clear('jfbcCanvasOrigDestination');
-
         // If staying on this page, set it up with the right template
         $canvasTemplate = JFBCFactory::config()->getSetting('canvas_canvas_template');
         $this->setTemplate($canvasTemplate);
@@ -169,7 +144,8 @@ class JFBConnectProviderFacebookCanvas extends JObject
                 $this->set('resizeEnabled', true);
                 // Removing the forced width as Facebook now has a new "Fluid" width setting that we recommend using.
                 //$doc->addStyleDeclaration("body {width:760px !important; margin:0 !important; padding: 0 !important}");
-            } else if ($this->get('inTab') && JFBCFactory::config()->getSetting('canvas_tab_resize_enabled', 0))
+            }
+            else if ($this->get('inTab') && JFBCFactory::config()->getSetting('canvas_tab_resize_enabled', 0))
             {
                 $this->set('resizeEnabled', true);
                 $doc->addStyleDeclaration("body {width:810px !important; margin:0 !important; padding: 0 !important}");

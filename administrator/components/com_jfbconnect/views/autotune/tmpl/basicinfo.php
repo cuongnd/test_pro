@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 jimport('joomla.html.sliders');
 JHTML::_('behavior.tooltip');
@@ -31,19 +34,20 @@ JHTML::_('behavior.tooltip');
                         $divOpen = true;
                         echo '<div class="span12">';
                     }
-                $pname = strtolower($provider->name);
+                $pkey = strtoupper($provider->systemName);
                 ?>
                     <div class="span6 well" style="font-size:16px">
                         <div class="span12">
-                            <?php echo JText::_('COM_JFBCONNECT_CONFIG_'.strtoupper($pname).'_API_APP_ID_LABEL'); ?>
-                            <span style="font-size:12px">(<?php echo JText::_('COM_JFBCONNECT_CONFIG_'.strtoupper($pname).'_APP_SETUP_LINK'); ?>)</span>
+                            <img src="<?php echo JURI::root() . '/media/sourcecoast/images/provider/' . $provider->systemName . '/icon.png'; ?>" />
+                            <?php echo JText::_('COM_JFBCONNECT_CONFIG_'.$pkey.'_API_APP_ID_LABEL'); ?>
+                            <span style="font-size:12px">(<?php echo JText::_('COM_JFBCONNECT_CONFIG_'.$pkey.'_APP_SETUP_LINK'); ?>)</span>
                         </div>
                         <div class="span12">
-                            <input type="text" name="<?php echo $pname;?>_app_id" size="75" style="font-weight:bold" value="<?php echo $this->config->getSetting($pname.'_app_id'); ?>" />
+                            <input type="text" name="<?php echo $provider->systemName;?>_app_id" size="75" style="font-weight:bold" value="<?php echo $this->config->getSetting($provider->systemName.'_app_id'); ?>" />
                         </div>
-                        <div class="span12"><?php echo JText::_('COM_JFBCONNECT_CONFIG_'.strtoupper($pname).'_API_SECRET_KEY_LABEL'); ?></div>
+                        <div class="span12"><?php echo JText::_('COM_JFBCONNECT_CONFIG_'.$pkey.'_API_SECRET_KEY_LABEL'); ?></div>
                         <div class="span12">
-                            <input type="text" name="<?php echo $pname;?>_secret_key" size="75" style="font-weight:bold" value="<?php echo $this->config->getSetting($pname.'_secret_key'); ?>" />
+                            <input type="text" name="<?php echo $provider->systemName;?>_secret_key" size="75" style="font-weight:bold" value="<?php echo $this->config->getSetting($provider->systemName.'_secret_key'); ?>" />
                         </div>
                     </div>
                 <?php if ($i % 2 == 1)
@@ -70,8 +74,6 @@ JHTML::_('behavior.tooltip');
                 </div>
                 <div class="span12" style="margin-top:10px; text-align:left; font-size:16px">
                     <ul>
-                        <li><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_BASICINFO_FB_KEYS_DESC'); ?>
-                        </li>
                         <li><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_BASICINFO_SC_ID_DESC'); ?>
                             <ul>
                                 <li><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_BASICINFO_SC_ID_DESC2'); ?>

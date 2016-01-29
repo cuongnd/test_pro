@@ -352,9 +352,9 @@ jQuery.extend({
 
 	// args is for internal usage only
 	each: function( obj, callback, args ) {
-		if(typeof obj ==="undefined")
+		if(obj===null ||typeof obj ==="undefined")
 		{
-			console.log('TypeError: obj is undefined');
+			throw new Error("TypeError: obj is undefined or obj is null");
 		}
 		var value,
 			i = 0,

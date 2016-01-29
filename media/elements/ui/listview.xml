@@ -1,0 +1,67 @@
+<config><fields name="params">
+					<field type="datainputtype" readonly="false" label="Input type" default="items"
+						   name="input_type"
+
+													 multiple="false" 													 size="1" 												>
+											</field>
+					<field type="checkbox" label="Input type" default="0"
+						   name="enable_input_type" onchange="">
+
+					</field>
+
+									<fields name="data">
+					<field type="bindingSource" readonly="false" label="binding Source" default=""
+						   name="bindingSource"
+
+												>
+											</field>
+					<field type="checkbox" label="binding Source" default="0"
+						   name="enable_bindingsource" onchange="">
+
+					</field>
+
+									</fields>				<fields name="config_listview">
+					<field type="editor" readonly="false" label="template" default=""
+						   name="template"
+
+													 filter_field="params.data.bindingSource" 												>
+											</field>
+					<field type="checkbox" label="template" default="0"
+						   name="enable_template" onchange="">
+
+					</field>
+
+									
+					<field type="integer" readonly="false" label="column" default=""
+						   name="column"
+
+																										 last="10" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="column" default="0"
+						   name="enable_column" onchange="">
+
+					</field>
+
+									
+					<field type="createitem" readonly="false" label="items" default=""
+						   name="items"
+
+													 maxDepth="1" 												>
+											</field>
+					<field type="checkbox" label="items" default="0"
+						   name="enable_items" onchange="">
+
+					</field>
+
+									
+					<field type="number" readonly="false" label="colums" default=""
+						   name="colums"
+
+												>
+											</field>
+					<field type="checkbox" label="colums" default="0"
+						   name="enable_colums" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

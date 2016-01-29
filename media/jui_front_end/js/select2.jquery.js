@@ -18,7 +18,6 @@ Apache License or the GPL License is distributed on an "AS IS" BASIS, WITHOUT WA
 CONDITIONS OF ANY KIND, either express or implied. See the Apache License and the GPL License for
 the specific language governing permissions and limitations under the Apache License and the GPL License.
 */
-console.log('hello select2');
 (function ($) {
     if(typeof $.fn.each2 == "undefined") {
         $.extend($.fn, {
@@ -2589,6 +2588,15 @@ console.log('hello select2');
                 //killEvent(e);
                 _this.search[0].focus();
                 _this.selectChoice($(this));
+            });
+
+            this.selection.on("dblclick", ".select2-search-choice:not(.select2-locked)", function (e) {
+               /* //alert('sdfgsdgsdfsd');
+                //killEvent(e);
+                _this.search[0].focus();
+                _this.selectChoice($(this));*/
+                //$(this).find(".select2-search-choice-close").trigger( "click" );
+
             });
 
             // rewrite labels from original element to focusser

@@ -1,0 +1,34 @@
+<config><fields name="params"><fields name="element_config">
+					<field type="selectblock" readonly="false" label="Select block template" default=""
+						   name="block_template"
+
+												>
+											</field>
+					<field type="checkbox" label="Select block template" default="0"
+						   name="enable_block_template" onchange="">
+
+					</field>
+
+									
+					<field type="editor" readonly="false" label="template" default=""
+						   name="template"
+
+																									>
+											</field>
+					<field type="checkbox" label="template" default="0"
+						   name="enable_template" onchange="">
+
+					</field>
+
+									
+					<field type="number" readonly="false" label="Number copy" default="2"
+						   name="number_copy"
+
+												>
+											</field>
+					<field type="checkbox" label="Number copy" default="0"
+						   name="enable_number_copy" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

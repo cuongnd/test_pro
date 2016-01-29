@@ -101,7 +101,7 @@ class JTableExtension extends JTable
 			$query->where($col . ' = ' . $this->_db->quote($val));
 		}
 
-		$query->select('id as extension_id')
+		$query->select('id as id')
 			->from($this->_db->quoteName('#__extensions'));
 		$this->_db->setQuery($query);
 

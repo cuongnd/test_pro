@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 jimport('joomla.html.sliders');
 JHTML::_('behavior.tooltip');
@@ -33,22 +36,17 @@ JHTML::_('behavior.tooltip');
 
         <div class="span9 autotune" xmlns="http://www.w3.org/1999/html">
             <form method="post" id="adminForm" name="adminForm">
-                <h3>Welcome to the JFBConnect Auto-Configuration Tool!</h3>
+                <h3><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_LABEL');?></h3>
 
-                <p>This tool will help you initially setup your
-                    Facebook Application and should be used periodically to check your configuration. These steps will:</p>
+                <p><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_DESC');?></p>
                 <ul>
-                    <li>Automatically configure your Facebook Application based on your site information and up-to-date
-                        information and recommendations from SourceCoast.com for JFBConnect.
-                    </li>
-                    <li>Let you easily make additional customizations for your Facebook Application to suit your needs.</li>
-                    <li>Check your site for known configuration or compatibility problems with JFBConnect.</li>
+                    <li><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_DESC_SUB1');?></li>
+                    <li><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_DESC_SUB2');?></li>
+                    <li><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_DESC_SUB3');?></li>
                 </ul>
-                <p>It's recommended that you run AutoTune whenever you run into issues with Facebook or about once a month
-                    to make sure your Facebook Application is optimized for
-                    the latest changes from Facebook.</p>
+                <p><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_RECOMMENDATION_LABEL');?></p>
 
-                <p>When you're ready, click "Start" to begin!</p>
+                <p><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_START_LABEL');?></p>
 
                 <div style="text-align: center">
                     <input type="submit" value="Start" class="btn btn-primary" />
@@ -60,7 +58,7 @@ JHTML::_('behavior.tooltip');
             <div class="row-fluid">
                 <div class="span12">
                     <fieldset>
-                        <legend>Basic Checks</legend>
+                        <legend><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_BASIC_CHECKS_LABEL');?></legend>
                         <table class="table table-striped">
                             <tr>
                                 <td><strong>PHP</strong></td>
@@ -72,25 +70,21 @@ JHTML::_('behavior.tooltip');
                             </tr>
                         </table>
                         <?php if ($this->errorsFound)
-                            echo '<div class="autotuneBad" style="font-size: 15px; text-align: center">Errors Found</div>Please correct the issues above.'; ?>
+                            echo '<div class="autotuneBad" style="font-size: 15px; text-align: center">'.JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_ERROR_LABEL').'</div>'.JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_ERROR_DESC'); ?>
                     </fieldset>
 
                     <fieldset>
-                        <legend>Communications with 3rd Parties</legend>
+                        <legend><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_DISCLAIMER_LABEL');?></legend>
                         <div class="disclaimer">
-                            <p>Autotune sends the following information to SourceCoast.com in order to provide
-                                the best results possible:</p>
+                            <p><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_DISCLAIMER_SC_LABEL');?></p>
 
-                            <p class="fields">Subscriber ID, Joomla version, JFBConnect version, AutoTune version,
-                                site URL.</p>
+                            <p class="fields"><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_DISCLAIMER_SC_FIELDS');?></p>
 
-                            <p>The following information will be sent to Facebook.com</p>
+                            <p><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_DISCLAIMER_FB_LABEL');?></p>
 
-                            <p class="fields">Facebook Application ID, Facebook Secret Key, any settings to be updated for your
-                                application.</p>
+                            <p class="fields"><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_DISCLAIMER_FB_FIELDS');?></p>
 
-                            <p>No other information will be communicated with SourceCoast or Facebook. If you do not wish to use
-                                Autotune or transmit this information, please Exit now.</p>
+                            <p><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_DEFAULT_DISCLAIMER_DESC');?></p>
                         </div>
                     </fieldset>
 

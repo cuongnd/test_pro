@@ -68,6 +68,7 @@ class ModulesControllerModules extends JControllerAdmin
 
 
 	}
+
     public function aJaxUpdateModules()
     {
         $app=JFactory::getApplication();

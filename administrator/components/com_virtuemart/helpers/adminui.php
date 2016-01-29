@@ -65,7 +65,6 @@ class AdminUIHelper {
 		$document->addScript($front.'js/fancybox/jquery.fancybox-1.3.4.pack.js');
 		$document->addScript($admin.'js/jquery.coookie.js');
 		// $document->addScript($front.'js/chosen.jquery.min.js');
-		JHtml::_('formbehavior.chosen', 'select');
 		$document->addScript($admin.'js/vm2admin.js');
 		$document->addScript($admin.'js/fileinput.js');
 		//$document->addScript($admin.'js/jquery.jqtransform.js');

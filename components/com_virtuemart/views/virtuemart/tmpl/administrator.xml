@@ -7,11 +7,6 @@
 		<name>JADMINISTRATOR</name>
 		<description><![CDATA[JADMINISTRATOR]]></description>
 	</state>
-	<fields name="request">
-		<fieldset name="request">
-			<field name="tmpl" type="hidden" default="component" hidden="true"/>
-		</fieldset>
-	</fields>
 </metadata>
 
 

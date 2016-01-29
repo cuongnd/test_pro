@@ -60,7 +60,13 @@ Examples:
 
 ATTENTION: The trailing slash is required.
 */
-$baseUrl = 'http://www.admin.etravelservice.com/images/stories/';
+
+
+
+
+$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+$baseUrl = $root.'images/stories/';
+
 
 /*
 $baseDir : the path to the local directory (in the server) which points to the

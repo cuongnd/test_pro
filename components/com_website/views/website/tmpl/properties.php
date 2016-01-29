@@ -9,6 +9,7 @@ $modelWebsite->setState('website.id',$website_id);
 $form=$modelWebsite->getForm();
 $options=$form->getFieldsets();
 $item=$modelWebsite->getItem($website_id);
+
 ob_start();
 ?>
 <div class="properties website" data-object-id="<?php echo $website_id ?>">

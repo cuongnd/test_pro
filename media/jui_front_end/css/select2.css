@@ -27,7 +27,7 @@ Version: 3.4.6 Timestamp: Sat Mar 22 22:30:15 EDT 2014
 
 .select2-container .select2-choice {
     display: block;
-    height: 26px;
+    height: 32px;
     padding: 0 0 0 8px;
     overflow: hidden;
     position: relative;
@@ -76,7 +76,7 @@ Version: 3.4.6 Timestamp: Sat Mar 22 22:30:15 EDT 2014
     margin-right: 26px;
     display: block;
     overflow: hidden;
-
+    padding-top: 3px;
     white-space: nowrap;
 
     text-overflow: ellipsis;

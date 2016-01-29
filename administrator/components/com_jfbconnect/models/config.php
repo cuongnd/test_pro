@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.model');
@@ -12,25 +15,28 @@ class JFBConnectModelConfig extends JModelLegacy
 {
     protected $settings;
 
-    var $_availableSettings = array();
-    var $componentSettings = array(
-        'facebook_app_id' => '',
-        'facebook_secret_key' => '',
+    private $providerStandardSettings = array(
+        'app_id',
+        'secret_key',
+        'login_button'
+    );
+
+    private $componentSettings = array(
         'facebook_curl_disable_ssl' => '0',
         'facebook_perm_custom' => '',
 
-        'google_app_id' => '',
-        'google_secret_key' => '',
         'google_openid_fallback' => '0',
 
-        'twitter_app_id' => '',
-        'twitter_secret_key' => '',
+        'linkedin_perm_custom'=>'',
+        'instagram_callback_ssl'=>'0',
+        'meetup_widget_api_key' => '',
 
-        'linkedin_app_id' => '',
-        'linkedin_secret_key' => '',
+        //'github_app_name' => '', # Added for user agent customization. Instead, we're hard-coding it to 'SourceCoast - JFBConnect'.
+
+        'cache_duration' => '15',
 
         'login_use_popup' => '1',
-        'create_new_users' => '1',
+        'automatic_registration' => '1',
         'registration_component' => 'jfbconnect',
         'registration_generate_username' => '0',
         'auto_username_format' => '0', //0 = fb_, 1=first.last, 2=firlas, 3=email
@@ -38,6 +44,7 @@ class JFBConnectModelConfig extends JModelLegacy
         'registration_show_username' => '1',
         'registration_show_password' => '1',
         'registration_show_email' => '0',
+        'registration_show_name' => '1',
         'registration_display_mode' => 'horizontal',
         'registration_send_new_user_email' => '1',
         'joomla_skip_newuser_activation' => '1',
@@ -54,6 +61,9 @@ class JFBConnectModelConfig extends JModelLegacy
         'experimental' => "",
         'logout_joomla_only' => '0',
         'show_login_with_joomla_reg' => '1', //0=None, 1=Top, 2=Bottom, 3=Both
+        'social_toolbar_enable' => '1',
+        'social_force_scheme' => '0', // 0 = no, 1 = 'http', 2 = 'https'
+        'social_tags_always_parse' => '0', // 0 = don't always parse, 1 = xfbml:true always
         'social_tag_admin_key' => '',
         'social_comment_article_include_ids' => '',
         'social_comment_article_exclude_ids' => '',
@@ -107,6 +117,7 @@ class JFBConnectModelConfig extends JModelLegacy
         'social_article_like_verb_to_display' => 'like', //like or recommend
         'social_article_like_font' => 'arial', //arial, lucida grande, segoe ui, tahoma, trebuchet ms, verdana
         'social_article_like_color_scheme' => 'light', //light or dark
+        'social_article_like_show_facebook' => '0', //0=No, 1=Yes
         'social_article_like_show_linkedin' => '0', //0=No, 1=Yes
         'social_article_like_show_twitter' => '0', //0=No, 1=Yes
         'social_article_like_show_googleplus' => '0', //0=No, 1=Yes
@@ -118,6 +129,7 @@ class JFBConnectModelConfig extends JModelLegacy
         'social_blog_like_verb_to_display' => 'like', //like or recommend
         'social_blog_like_font' => 'arial', //arial, lucida grande, segoe ui, tahoma, trebuchet ms, verdana
         'social_blog_like_color_scheme' => 'light', //light or dark
+        'social_blog_like_show_facebook' => '0', //0=No, 1=Yes
         'social_blog_like_show_linkedin' => '0', //0=No, 1=Yes
         'social_blog_like_show_twitter' => '0', //0=No, 1=Yes
         'social_blog_like_show_googleplus' => '0', //0=No, 1=Yes
@@ -138,6 +150,7 @@ class JFBConnectModelConfig extends JModelLegacy
         'social_k2_item_like_verb_to_display' => 'like', //like or recommend
         'social_k2_item_like_font' => 'arial', //arial, lucida grande, segoe ui, tahoma, trebuchet ms, verdana
         'social_k2_item_like_color_scheme' => 'light', //light or dark
+        'social_k2_item_like_show_facebook' => '0', //0=No, 1=Yes
         'social_k2_item_like_show_linkedin' => '0', //0=No, 1=Yes
         'social_k2_item_like_show_twitter' => '0', //0=No, 1=Yes
         'social_k2_item_like_show_googleplus' => '0', //0=No, 1=Yes
@@ -149,20 +162,20 @@ class JFBConnectModelConfig extends JModelLegacy
         'social_k2_blog_like_verb_to_display' => 'like', //like or recommend
         'social_k2_blog_like_font' => 'arial', //arial, lucida grande, segoe ui, tahoma, trebuchet ms, verdana
         'social_k2_blog_like_color_scheme' => 'light', //light or dark
+        'social_k2_blog_like_show_facebook' => '0', //0=No, 1=Yes
         'social_k2_blog_like_show_linkedin' => '0', //0=No, 1=Yes
         'social_k2_blog_like_show_twitter' => '0', //0=No, 1=Yes
         'social_k2_blog_like_show_googleplus' => '0', //0=No, 1=Yes
         'social_k2_blog_like_show_pinterest' => '0', //0=No, 1=Yes
         'social_graph_fields' => '',
+        'social_graph_skip_fields' => '',
         'social_notification_comment_enabled' => '0',
         'social_notification_like_enabled' => '0',
         'social_notification_email_address' => '',
         'social_notification_google_analytics' => '0',
-        'social_alphauserpoints_enabled' => '0',
 
         // Canvas Settings
         'canvas_tab_template' => '-1',
-        'canvas_tab_reveal_article_id' => '',
         'canvas_canvas_template' => '-1',
         'canvas_tab_resize_enabled' => '0',
         'canvas_canvas_resize_enabled' => '0',
@@ -173,7 +186,8 @@ class JFBConnectModelConfig extends JModelLegacy
         'autotune_app_config' => '',
 
         // JQuery / Bootstrap
-        'jquery_load' => '1'
+        'jquery_load' => '1',
+        'bootstrap_css' => '1'
     );
 
     function __construct()
@@ -236,6 +250,11 @@ class JFBConnectModelConfig extends JModelLegacy
         {
             $this->setError($this->_db->getErrorMsg());
             return false;
+        }
+
+        if ($setting == 'sc_download_id')
+        {
+            JFBCFactory::model('updates')->refreshUpdateSites($value);
         }
 
         $this->settings = null;
@@ -319,13 +338,24 @@ class JFBConnectModelConfig extends JModelLegacy
 
     /*
      * $configs = Array (POST) of setting->value pairs.
-     * Checked against the availableSettings array for valid settings
      */
 
     function saveSettings($configs)
     {
         $this->getSettings();
-        $settings = array_intersect_key($configs, $this->componentSettings);
+
+        // Create list of provider-specific settings. These to be moved to their own table ~6.2
+        $providerSettings = array();
+        foreach (JFBCFactory::getAllProviders() as $p)
+        {
+            foreach ($this->providerStandardSettings as $setting)
+            {
+                $providerSettings[$p->systemName . '_' . $setting] = '';
+            }
+        }
+
+        $allSettings = array_merge($providerSettings, $this->componentSettings);
+        $settings = array_intersect_key($configs, $allSettings);
         foreach ($settings as $setting => $value)
         {
             if ($setting == 'experimental')

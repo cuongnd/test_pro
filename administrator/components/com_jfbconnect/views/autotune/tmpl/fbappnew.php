@@ -1,11 +1,13 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
-defined('_JEXEC') or die('Restricted access');
 
+defined('_JEXEC') or die('Restricted access');
 
 ?>
 <style>
@@ -24,7 +26,7 @@ defined('_JEXEC') or die('Restricted access');
         <?php include('step_sidebar.php'); ?>
         <div class="span9 autotune">
             <form method="post" id="adminForm" name="adminForm">
-                <h3>New Application Detected</h3>
+                <h3><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FBAPPNEW_LABEL');?></h3>
 
                 <p><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FBAPPNEW_DESC'); ?></p>
 

@@ -1,12 +1,14 @@
 <?php
 /**
- * @package SourceCoast Extensions (JFBConnect, JLinked)
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         SourceCoast Extensions
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 // Check to ensure this file is included in Joomla!
-defined('_JEXEC') or die(__FILE__);
+defined('_JEXEC') or die('Restricted access');
 
 jimport('sourcecoast.openGraph');
 jimport('sourcecoast.utilities');
@@ -108,6 +110,16 @@ class OpenGraphPlugin extends JPlugin
         return $this->findObjectType($queryVars);
     }
 
+    public function onOpenGraphGetBestImage($article)
+    {
+        return $this->getBestImage($article);
+    }
+
+    public function onOpenGraphGetBestText($article)
+    {
+        return $this->getBestText($article);
+    }
+
     /******** End triggers ********/
 
     /******** Object Calls ********/
@@ -147,7 +159,7 @@ class OpenGraphPlugin extends JPlugin
 
     protected function skipOpenGraphTag($name)
     {
-        $this->openGraphLibrary->skipOpenGraphTag($name, $this->pluginName);
+        $this->openGraphLibrary->blockTag($name, $this->pluginName);
     }
 
     protected function getDefaultObject($name)
@@ -178,8 +190,10 @@ class OpenGraphPlugin extends JPlugin
                 if ($action->actionReady($key))
                 {
                     $actionAdded = true;
+                    // The space between { jfbc.opengraph is required. Otherwise, our system plugin will strip it thinking it's a {JFBCxyz} tag.
+                    // Not the perfect solution, but it works..
                     $doc->addScriptDeclaration($jq . "(document).ready(function () {" .
-                        "setTimeout(function(){jfbc.opengraph.triggerAction('" . $action->id . "','" . $this->getCurrentURL() . "');}, " . ($action->params->get('og_auto_timer') * 1000) . ");" .
+                        "setTimeout(function(){ jfbc.opengraph.triggerAction('" . $action->id . "','" . $this->getCurrentURL() . "');}, " . ($action->params->get('og_auto_timer') * 1000) . ");" .
 
                         "});"
                     );
@@ -207,8 +221,7 @@ class OpenGraphPlugin extends JPlugin
         if ($actionAdded)
         {
             // Include our CSS file for styling the popup
-            $doc = JFactory::getDocument();
-            $doc->addStyleSheet(JURI::base() . 'components/com_jfbconnect/assets/jfbconnect.css');
+            JFBCFactory::addStylesheet('jfbconnect.css');
         }
     }
 
@@ -271,5 +284,115 @@ class OpenGraphPlugin extends JPlugin
     {
         $uri = JURI::getInstance();
         return $uri->toString(array('scheme', 'user', 'pass', 'host', 'port', 'path', 'query'));
+    }
+
+    protected function getBestImage($article) { return null; }
+
+    protected function getBestText($article) { return null; }
+
+    /******** Get Images and Descriptions ********/
+
+    protected function getFirstCategoryText($category, $numCharacters = 100, $socialGraphFirstText = '1')
+    {
+        $categoryText = '';
+        if (isset($category->description))
+            $categoryText = $this->getSelectedText($category->description, $socialGraphFirstText, $numCharacters);
+        return $categoryText;
+    }
+
+    protected function getFirstArticleText($article, $numCharacters = 100, $socialGraphFirstText = '1')
+    {
+        $articleText = '';
+        if (isset($article->introtext) && trim(strip_tags($article->introtext)) != "")
+        {
+            $articleText = $article->introtext;
+        } else if (isset($article->text) && trim(strip_tags($article->text)) != "")
+        {
+            $articleText = $article->text;
+        } else if (isset($article->fulltext) && trim(strip_tags($article->fulltext)) != "")
+        {
+            $articleText = $article->fulltext;
+        }
+
+        $articleText = $this->getSelectedText($articleText, $socialGraphFirstText, $numCharacters);
+
+        return $articleText;
+    }
+
+    protected function getSelectedText($contentText, $socialGraphFirstText, $numCharacters)
+    {
+        $articleText = SCStringUtilities::trimNBSP($contentText);
+        $articleText = strip_tags($articleText);
+        $articleText = preg_replace('/\s+/', ' ', $articleText);
+        $articleText = str_replace('{K2Splitter}', '', $articleText);
+        SCSocialUtilities::stripSystemTags($articleText, 'JFBC');
+        SCSocialUtilities::stripSystemTags($articleText, 'JLinked');
+        SCSocialUtilities::stripSystemTags($articleText, 'SC');
+        SCSocialUtilities::stripSystemTags($articleText, 'loadposition');
+        $articleText = trim($articleText);
+
+        $addEllipsis = false;
+        if ($socialGraphFirstText == '1')
+        {
+            $addEllipsis = strlen($articleText) > $numCharacters;
+
+            if (function_exists('mb_substr'))
+                $articleText = mb_substr($articleText, 0, $numCharacters, 'UTF-8');
+            else
+                $articleText = substr($articleText, 0, $numCharacters);
+        } else if ($socialGraphFirstText == '2')
+        {
+            if (function_exists('mb_split'))
+                $parts = mb_split('\s+', $articleText); /* Note: mb_split does not use pattern delimiters of slashes before and after */
+            else
+                $parts = preg_split('/\s+/', $articleText);
+            $selParts = array_slice($parts, 0, $numCharacters);
+            $articleText = implode(" ", $selParts);
+            $addEllipsis = count($parts) > $numCharacters;
+        } else
+            $articleText = '';
+
+        if ($addEllipsis)
+            $articleText .= '...';
+
+        return $articleText;
+    }
+
+    protected function getFirstImage($article)
+    {
+        if (isset($article->text))
+            $articleText = $article->text;
+        else
+            $articleText = $article->introtext . $article->fulltext;
+
+        $fullImagePath = $this->getFirstImageFromText($articleText);
+        return $fullImagePath;
+    }
+
+    protected function getFirstImageFromText($text)
+    {
+        $fullImagePath = '';
+        if (preg_match_all('/<img [^>]*src=["|\']([^"|\']+)/i', $text, $matches))
+        {
+            $fullImagePath = $this->getImageLink($matches[1][0]);
+        }
+        return $fullImagePath;
+    }
+
+    protected function getImageLink($path)
+    {
+        if ($path)
+        {
+            $juri = JURI::getInstance();
+            $basePath = str_replace(array($juri->getScheme() . "://", $juri->getHost()), "", $juri->base());
+
+            if (strpos($path, $basePath) === 0)
+            {
+                $path = substr($path, strlen($basePath));
+                $path = $juri->base() . $path;
+            } else if (strpos($path, "http") !== 0)
+                $path = $juri->base() . $path;
+        }
+        return $path;
     }
 }

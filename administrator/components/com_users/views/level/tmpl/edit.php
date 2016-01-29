@@ -102,14 +102,38 @@ window.addEvent('domready', function(){
 				<?php echo $this->form->getInput('title'); ?>
 			</div>
 		</div>
-        <div class="control-group">
-            <div class="control-label">
-                <?php echo $this->form->getLabel('website_id'); ?>
-            </div>
-            <div class="controls">
-                <?php echo $this->form->getInput('website_id'); ?>
-            </div>
-        </div>
+		<div class="control-group">
+			<div class="control-label">
+				<?php echo $this->form->getLabel('is_publish'); ?>
+			</div>
+			<div class="controls">
+				<?php echo $this->form->getInput('is_publish'); ?>
+			</div>
+		</div>
+		<?php
+		$supperAdmin=JFactory::isSupperAdmin();
+
+		if($supperAdmin) {
+			?>
+			<div class="control-group">
+				<div class="control-label">
+					<?php echo $this->form->getLabel('website_id'); ?>
+				</div>
+				<div class="controls">
+					<?php echo $this->form->getInput('website_id'); ?>
+				</div>
+			</div>
+		<?php
+		}else{
+			$website=JFactory::getWebsite();
+			?>
+			<input id="jform_website_id" type="hidden" name="jform[website_id]" value="<?php echo $website->website_id ?>" />
+		<?php
+		}
+		?>
+
+
+
 
     </fieldset>
 

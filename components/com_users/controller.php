@@ -36,15 +36,28 @@ class UsersController extends JControllerLegacy
 		$vName   = $this->input->getCmd('view', 'login');
 		$vFormat = $document->getType();
 		$lName   = $this->input->getCmd('layout', 'default');
+		$view = $this->getView($vName, $vFormat);
 
-		if ($view = $this->getView($vName, $vFormat))
+		if ($view)
 		{
+
 			// Do any specific processing by view.
 			switch ($vName)
 			{
 				case 'registration':
+                    require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
+                    $enableEditWebsite = UtilityHelper::getEnableEditWebsite();
+
+                    if($enableEditWebsite)
+                    {
+                        $model = $this->getModel('Registration');
+                        break;
+                    }
+
+
 					// If the user is already logged in, redirect to the profile page.
 					$user = JFactory::getUser();
+
 					if ($user->get('guest') != 1)
 					{
 						// Redirect to profile page.

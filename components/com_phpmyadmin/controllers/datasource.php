@@ -74,32 +74,47 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         $tablePosition->load($block_id);
         $params = new JRegistry;
         $params->loadString($tablePosition->params);
-        $bindingSource=$params->get('data.data_source_editable','');
-        $source_key=$params->get('data.source_key','');
-        $source_key=explode('.',$source_key);
-        $source_key=end($source_key);
-
-        $source_value=$params->get('data.source_value','');
-        $source_value=explode('.',$source_value);
-        $source_value=end($source_value);
+        $bindingSource=$params->get('data.binding_source_editable','');
+        $key_data_source_editable=$params->get('data.key_data_source_editable','');
+        $key_data_source_editable=explode('.',$key_data_source_editable);
+        $key_data_source_editable=array_reverse($key_data_source_editable);
+        array_pop($key_data_source_editable);
+        $key_data_source_editable=array_reverse($key_data_source_editable);
+        $value_data_source_editable=$params->get('data.value_data_source_editable','');
+        $value_data_source_editable=explode('.',$value_data_source_editable);
+        $value_data_source_editable=array_reverse($value_data_source_editable);
+        array_pop($value_data_source_editable);
+        $value_data_source_editable=array_reverse($value_data_source_editable);
 
 
 
 
         $modalDataSources=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
         $list_item=$modalDataSources->getListDataSource($bindingSource,$tablePosition);
-
         $list=array();
+/*        $a_item=new stdClass();
+        $a_item->test1->test2->test3->test4=4;
+        $list_key=array(
+            'test1',
+            'test2',
+            'test3',
+            'test4'
+        );
+        echo JUtility::get_value_by_key($a_item,$list_key);
+        die;*/
+
         foreach($list_item as $key=>$item)
         {
             if($key_value!='') {
-                  if($item->$source_key==$key_value)
+                $value_of_object_by_key= JUtility::get_value_by_key($item,$key_data_source_editable);
+                if($value_of_object_by_key==$key_value)
                   {
                       $list[]=$item;
                       break;
                   }
             }elseif($keyword!=''){
-                if (strpos(strtolower($item->$source_value),$keyword) !== false) {
+                $value_of_object_by_key= JUtility::get_value_by_key($item,$value_data_source_editable);
+                if (strpos(strtolower($value_of_object_by_key),$keyword) !== false) {
                     $list[]=$item;
                 }
             }
@@ -374,6 +389,108 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
 
         }
     }
+    public function ajax_get_list_field_by_data_source()
+    {
+        $db=JFactory::getDbo();
+        $app=JFactory::getApplication();
+        JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/models');
+        $dataSourceModal=JModelLegacy::getInstance('DataSource','phpMyAdminModel');
+        $bindingSource=$app->input->get('data_source','','string');
+        $block_id=$app->input->get('block_id',0,'int');
+        $list=$dataSourceModal->list_field_by_data_source($bindingSource,$block_id);
+        echo json_encode($list);
+        die;
+    }
+    public function ajax_save_project_relationship(){
+        $app=JFactory::getApplication();
+        $xml=$app->input->get('xml','','string');
+        require_once JPATH_ROOT . '/components/com_phpmyadmin/tables/updatetable.php';
+        $db = JFactory::getDbo();
+        $table_diagram = new JTableUpdateTable($db, 'diagram');
+        $website = JFactory::getWebsite();
+        $type = $website->website_id;
+        $response=new stdClass();
+        $response->e=0;
+        $response->m="save success";
+
+        $table_diagram->load(
+            array(
+                "type" => $type,
+                "website_id" => $website->website_id
+            )
+        );
+        if (!$table_diagram->id) {
+            $table_diagram->type = $type;
+            $table_diagram->website_id = $website->website_id;
+        }
+        $table_diagram->xml = $xml;
+        if(!$table_diagram->store())
+        {
+            $response->e=1;
+            $response->m=$table_control->getError();
+        }
+        echo json_encode($response);
+        die;
+    }
+    public function ajax_save_datasource_relationship(){
+        $app=JFactory::getApplication();
+        $xml=$app->input->get('xml','','string');
+        $datasource_id=$app->input->get('datasource_id',0,'int');
+        require_once JPATH_ROOT . '/components/com_phpmyadmin/tables/updatetable.php';
+        $db = JFactory::getDbo();
+        $table_datasource = new JTableUpdateTable($db, 'datasource');
+
+        $response=new stdClass();
+        $response->e=0;
+        $response->m="save success";
+        if (!$table_datasource->load($datasource_id)) {
+            $response->e=1;
+            $response->m=$table_datasource->getError();
+            echo json_encode($response);
+            die;
+        }
+        $table_datasource->diagram=$xml;
+        if(!$table_datasource->store())
+        {
+            $response->e=1;
+            $response->m=$table_datasource->getError();
+            echo json_encode($response);
+            die;
+        }
+        echo json_encode($response);
+        die;
+    }
+    public function ajax_save_main_relationship(){
+        $app=JFactory::getApplication();
+        $xml=$app->input->get('xml','','string');
+        require_once JPATH_ROOT . '/components/com_phpmyadmin/tables/updatetable.php';
+        $db = JFactory::getDbo();
+        $table_diagram = new JTableUpdateTable($db, 'diagram');
+        $website = JFactory::getWebsite();
+        $type = 'global';
+        $response=new stdClass();
+        $response->e=0;
+        $response->m="save success";
+
+        $table_diagram->load(
+            array(
+                "type" => $type,
+                "website_id" => 0
+            )
+        );
+        if (!$table_diagram->id) {
+            $table_diagram->type = $type;
+            $table_diagram->website_id = 0;
+        }
+        $table_diagram->xml = $xml;
+        if(!$table_diagram->store())
+        {
+            $response->e=1;
+            $response->m=$table_control->getError();
+        }
+        echo json_encode($response);
+        die;
+    }
     public function ajax_get_data_by_data_source_id()
     {
         $db=JFactory::getDbo();
@@ -415,9 +532,8 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
 
     }
     public function update_data_post(&$data,$config_update_data,$foreign_key='',$value_foreign_key=0,$level=1){
-
         $db=JFactory::getDbo();
-        if(count($config_update_data)) {
+        if(is_array($config_update_data) && count($config_update_data)) {
             $primary_key='';
             $table_name_update='';
             $post_name='';
@@ -528,6 +644,115 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
             }
         }
         return $data;
+    }
+    public function update_data_post2($data,$config_update_data,$item,$level=1,$value_primary_key='',$primary_key=''){
+        $db=JFactory::getDbo();
+        if(is_array($config_update_data) && count($config_update_data)) {
+            $level1=$level+1;
+            if($level==1&&count($config_update_data)>1)
+            {
+                throw new UnexpectedValueException('config update level 1 many item.');
+
+            }
+            if($level==1)
+            {
+                $primary_node='';
+                foreach($config_update_data as $node){
+                    if($node->primary_key==1)
+                    {
+                        $primary_node=$node;
+                        break;
+                    }
+                }
+                $post_name=$primary_node->post_name;
+                $table=$primary_node->table_name;
+                $column_name=$primary_node->column_name;
+                $item=json_encode($item);
+                $item=base64_encode($item);
+                if(!$value_of_post_name)
+                {
+                    $table_update=new JTableUpdateTable($db,$table,$column_name);
+                    $params = new JRegistry;
+                    $params->set('list_var_booking',$item);
+                    $table_update->params=$params->toString();
+                    if(!$table_update->store())
+                    {
+                        throw new UnexpectedValueException('config update error');
+                    }
+                    $primary_node->value_of_post_name=$table_update->$column_name;
+                }
+                if(is_array($primary_node->children)&&count($primary_node->children))
+                {
+                    phpMyAdminControllerDataSource::update_data_post2($data,$primary_node->children,$item,$level1,$primary_node->value_of_post_name,$post_name);
+                }
+
+
+            }else
+            {
+                $max_array=0;
+                foreach($config_update_data as $node){
+                    $post_name=$node->post_name;
+                    $total_post=0;
+                    if($post_name!='') {
+                        $total_post = count($data->{$post_name});
+
+                    }
+                    if($max_array<$total_post)
+                    {
+                        $max_array=$total_post;
+                    }
+                }
+                $list_item=array();
+                for($i=0;$i<$max_array;$i++)
+                {
+                    $item=array();
+                    $item[$primary_key]=$value_primary_key;
+                    foreach($config_update_data as $node){
+
+                        $column=$node->column_name;
+                        if($post_name!='')
+                        {
+                            $item_array=$data->$post_name;
+                            $item[$column]=$item_array[$i];
+                        }
+                    }
+                    $list_item[]=$item;
+                }
+                $primary_node='';
+                foreach($config_update_data as $node){
+                    if($node->primary_key==1)
+                    {
+                        $primary_node=$node;
+                        break;
+                    }
+                }
+                $table_update=new JTableUpdateTable($db,$primary_node->table_name,$primary_node->column_name);
+                foreach($list_item as $item)
+                {
+                    if(!$table_update->bind($item))
+                    {
+                        throw new UnexpectedValueException($table_update->getError());
+                    }
+                    $table_update->{$primary_node->column_name}=0;
+                    if(!$table_update->store())
+                    {
+                        throw new UnexpectedValueException($table_update->getError());
+                    }
+
+                }
+
+                if($max_array==1)
+                {
+                    foreach($config_update_data as $node){
+                        if(is_array($node->children)&&count($node->children)){
+                            phpMyAdminControllerDataSource::update_data_post2($data,$node->children,$level1,$table_update->id,$primary_node->post_name);
+                        }
+                    }
+                }
+            }
+
+        }
+        return true;
     }
     public function get_php()
     {
@@ -648,7 +873,7 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
     {
         $app=JFactory::getApplication();
         $db=JFactory::getDbo();
-        $data= $app->input->get('data',array(),'array');
+
         JTable::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/tables');
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
         $block_id=$app->input->get('block_id',0);
@@ -657,7 +882,19 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         $params = new JRegistry;
 
         $params->loadString($table_block->params);
-
+        $list_var_save_booking=$params->get('list_var_save_booking','');
+        $item='';
+        if($list_var_save_booking!='')
+        {
+            JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/models');
+            $modalDataSources=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
+            $items=$modalDataSources->getListDataSource($list_var_save_booking);
+            $item=$items[0];
+        }
+        $app = JFactory::getApplication();
+        $post = file_get_contents('php://input');
+        $post = json_decode($post);
+        $data= $post;
         $is_booking=$params->get('is_booking',1);
         if($is_booking==1)
         {
@@ -672,6 +909,15 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
 
         $process_type=$params->get('process_type','auto');
         $config_update_data= $params->get('config_update_data','');
+
+        if ( base64_encode(base64_decode($config_update_data, true)) != $config_update_data){
+            $config_update_data='';
+        }else{
+            $config_update_data=base64_decode($config_update_data, true);
+        }
+
+
+
         if($config_update_data!='') {
             require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
             $config_update_data = up_json_decode($config_update_data, false, 512, JSON_PARSE_JAVASCRIPT);
@@ -699,7 +945,8 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
 
             }else
             {
-                $data=phpMyAdminControllerDataSource::update_data_post($data,$config_update_data);
+
+                $data=phpMyAdminControllerDataSource::update_data_post2($data,$config_update_data,$item);
             }
             echo json_encode($data);
             die;
@@ -795,6 +1042,7 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         }
         $db=JFactory::getDbo();
         require_once JPATH_ROOT.'/components/com_phpmyadmin/helpers/datasource.php';
+        $stringQuery1=$stringQuery;
         $stringQuery=DataSourceHelper::OverWriteDataSource($stringQuery);
         $query=$db->getQuery(true);
         $query->setQuery($stringQuery);
@@ -805,6 +1053,7 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         }
         $db->redirectPage(false);
         $list=$db->loadObjectList();
+        $list=DataSourceHelper::tree_node_data($stringQuery1,$list);
         $arrayReturn=array();
         if(!$list)
         {
@@ -834,69 +1083,43 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
     {
         return parent::getTab($name, $prefix, array('ignore_request' => true));
     }
-
+    public function ajax_get_list_fied_of_table()
+    {
+        $app=JFactory::getApplication();
+        $table=$app->input->get('table','','string');
+        $table='#__'.$table;
+        $db=JFactory::getDbo();
+        $list_field=$db->getTableColumns($table);
+        echo json_encode($list_field);
+        die;
+    }
+    public function ajax_get_list_detail_fied_of_table()
+    {
+        $app=JFactory::getApplication();
+        $table=$app->input->get('table','','string');
+        $table='#__'.$table;
+        $db=JFactory::getDbo();
+        $list_detalil_field=$db->setQuery('DESCRIBE '.$table)->loadObjectList();
+        echo strtolower(json_encode($list_detalil_field));
+        die;
+    }
     public function readData()
     {
-        $db=JFactory::getDbo();
-        $config=JFactory::getConfig();
-        require_once JPATH_ROOT.'/media/kendotest/php/lib/DataSourceResult.php';
-        require_once JPATH_ROOT.'/media/kendotest/php/lib/Kendo/Autoload.php';
         $app=JFactory::getApplication();
         $block_id=$app->input->get('block_id',0,'int');
-        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
-        $tablePosition->load($block_id);
-        $params = new JRegistry;
-        $params->loadString($tablePosition->params);
-        $bindingSource=$params->get('data')->bindingSource;
+        require_once JPATH_ROOT.'/components/com_phpmyadmin/helpers/datasource.php';
+        $data=DataSourceHelper::read_data_by_block_id($block_id);
+        header('Content-Type: application/json');
+        echo json_encode($data,JSON_NUMERIC_CHECK);
+        die;
 
-
-
-
-        $modalDataSources=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
-        $list=$modalDataSources->getListDataSource($bindingSource,$tablePosition);
-
-        require_once JPATH_ROOT.'/libraries/upgradephp-19/upgrade.php';
-
-        $mode_select_column_template=$params->get('mode_select_column_template','');
-        $array_column=array();
-        if($mode_select_column_template!='')
-        {
-            $mode_select_column_template=up_json_decode($mode_select_column_template,false, 512, JSON_PARSE_JAVASCRIPT);
-            foreach($mode_select_column_template as $column)
-            {
-                $item=new stdClass();
-                $item->max_character= $column->max_character;
-                $item->type= $column->type;
-                $item->column= $column->column_name;
-                $array_column[$column->column_name]= $item;
-            }
-        }
-        if(count($array_column))
-        {
-            foreach($list as $key=>$item)
-            {
-                 foreach($array_column as $column)
-                 {
-                     $max_character= $column->max_character;
-                     $column_name= $column->column;
-                      if($max_character && $column_name!='')
-                     {
-                         $list[$key]->{$column_name}=strip_tags(JString::truncate($item->{$column_name},$max_character,'...',false,true));
-                     }
-                     $type=$column->type;
-                     if($type=='object' && $column_name!=''&&!is_object($item->{$column_name}))
-                     {
-                         $list[$key]->{$column_name}=new stdClass();
-                     }
-                 }
-            }
-        }
-
-
-        $data=new stdClass();
-        $data->total=count($list);
-        $data->data=$list;
+    }
+    public function ajax_get_data_list_view()
+    {
+        $app=JFactory::getApplication();
+        $block_id=$app->input->get('block_id',0,'int');
+        require_once JPATH_ROOT.'/components/com_phpmyadmin/helpers/datasource.php';
+        $data=DataSourceHelper::read_data_list_view_by_block_id($block_id);
         header('Content-Type: application/json');
         echo json_encode($data,JSON_NUMERIC_CHECK);
         die;
@@ -926,8 +1149,12 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
 
     public function ajaxSavePropertyDataSource()
     {
-        $app=JFactory::getApplication();
-        $form=$app->input->get('jform',array(),'array');
+        $app = JFactory::getApplication();
+        $post = file_get_contents('php://input');
+        $post = json_decode($post);
+
+        $form=$post->jform;
+
         $doc=JFactory::getDocument();
         $add_on_id=$app->input->get('add_on_id',0,'int');
         JTable::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/tables');
@@ -935,19 +1162,17 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         $tableDataSource->load($add_on_id);
         $params = new JRegistry;
         $params->loadString($tableDataSource->params);
+        $post_params=new JRegistry;
+        $post_params->loadObject($form->params);
+        $params->merge($post_params);
+        $form->params=$params->toString();
+        $tableDataSource->bind((array)$form);
 
-        foreach($form['params'] as $keyParam=>$valueParam)
-        {
-            $params->set($keyParam,trim($valueParam));
-        }
-        $form['params']=json_encode($params);
-
-
-        $tableDataSource->bind($form);
         if(!$tableDataSource->store())
         {
             echo $tableDataSource->getError();
         }
+
         $query=$tableDataSource->datasource;
         $db=JFactory::getDbo();
         $db->redirectPage(false);

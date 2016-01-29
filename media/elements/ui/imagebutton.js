@@ -28,10 +28,10 @@ jQuery(document).ready(function($){
 
     $('.block-item.block-item-button[type="submit"]').click(function(){
         data_submit={};
-        console.log(element_ui_button.list_function_run_befor_submit);
-        for(i=0;i<element_ui_button.list_function_run_befor_submit.length;i++)
+        console.log(Joomla.list_function_run_befor_submit);
+        for(i=0;i<Joomla.list_function_run_befor_submit.length;i++)
         {
-            data_submit=element_ui_button.list_function_run_befor_submit[i](data_submit);
+            data_submit=Joomla.list_function_run_befor_submit[i](data_submit);
         }
         block_id=$(this).attr('data-block-id');
 

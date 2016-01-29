@@ -226,6 +226,7 @@ class JMenu
 	 */
 	public function getActive()
 	{
+
 		if ($this->_active)
 		{
 			$item = &$this->_items[$this->_active];
@@ -253,7 +254,6 @@ class JMenu
 		$items = array();
 		$attributes = (array) $attributes;
 		$values = (array) $values;
-
 		foreach ($this->_items as $item)
 		{
 			if (!is_object($item))
@@ -344,10 +344,11 @@ class JMenu
 	{
 		$menu = $this->getItem($id);
 		$user = JFactory::getUser();
+		$authorised_view_levels= $user->getAuthorisedViewLevels();
 
 		if ($menu)
 		{
-			return in_array((int) $menu->access, $user->getAuthorisedViewLevels());
+			return in_array((int) $menu->access,$authorised_view_levels );
 		}
 		else
 		{

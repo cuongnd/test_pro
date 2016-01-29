@@ -74,7 +74,7 @@ class JInstallerAdapterLibrary extends JAdapterInstance
 
 		$db = $this->parent->getDbo();
 		$query = $db->getQuery(true)
-			->select($db->quoteName('extension_id'))
+			->select($db->quoteName('id'))
 			->from($db->quoteName('#__extensions'))
 			->where($db->quoteName('type') . ' = ' . $db->quote('library'))
 			->where($db->quoteName('element') . ' = ' . $db->quote($element));
@@ -214,7 +214,7 @@ class JInstallerAdapterLibrary extends JAdapterInstance
 			return false;
 		}
 
-		return $row->get('extension_id');
+		return $row->get('id');
 	}
 
 	/**
@@ -247,7 +247,7 @@ class JInstallerAdapterLibrary extends JAdapterInstance
 		$installer = new JInstaller;
 		$db = $this->parent->getDbo();
 		$query = $db->getQuery(true)
-			->select($db->quoteName('extension_id'))
+			->select($db->quoteName('id'))
 			->from($db->quoteName('#__extensions'))
 			->where($db->quoteName('type') . ' = ' . $db->quote('library'))
 			->where($db->quoteName('element') . ' = ' . $db->quote($element));
@@ -330,7 +330,7 @@ class JInstallerAdapterLibrary extends JAdapterInstance
 		else
 		{
 			// Remove this row entry since its invalid
-			$row->delete($row->extension_id);
+			$row->delete($row->id);
 			unset($row);
 			JLog::add(JText::_('JLIB_INSTALLER_ERROR_LIB_UNINSTALL_INVALID_NOTFOUND_MANIFEST'), JLog::WARNING, 'jerror');
 
@@ -355,7 +355,7 @@ class JInstallerAdapterLibrary extends JAdapterInstance
 		$this->parent->removeFiles($xml->media);
 		$this->parent->removeFiles($xml->languages);
 
-		$row->delete($row->extension_id);
+		$row->delete($row->id);
 		unset($row);
 
 		return $retval;

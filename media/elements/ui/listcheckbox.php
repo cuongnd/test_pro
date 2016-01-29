@@ -71,10 +71,6 @@ class elementListCheckBoxHelper extends  elementHelper
             ?>
             <div  class="control-element control-element-listcheckbox  " data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" element-type="<?php echo $block->type ?>" data-gs-x="<?php echo $block->gs_x ?>" data-gs-y="<?php echo $block->gs_y ?>" data-gs-width="<?php echo $block->width ?>" data-gs-height="<?php echo $block->height ?>">
 
-            <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                });
-            </script>
             <span data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="drag label label-default  element-move-handle element-move-handle_<?php echo $block->parent_id ?>"><i class="glyphicon glyphicon-move"></i></span>
             <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="menu label config-block label-danger menu-list" href="javascript:void(0)"><i class="im-menu2"></i></a>
             <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"class="remove label label-danger remove-element" href="javascript:void(0)"><i class="glyphicon-remove glyphicon"></i></a>
@@ -89,6 +85,7 @@ class elementListCheckBoxHelper extends  elementHelper
     }
     public function render_element($block)
     {
+        $doc=JFactory::getDocument();
         $params = new JRegistry;
         $params->loadString($block->params);
 
@@ -111,7 +108,7 @@ class elementListCheckBoxHelper extends  elementHelper
         $key=$key?$key:'id';
         $value=$params->get('data')->value;
         $value=$value?$value:'title';
-
+        $app=JFactory::getApplication();
         $data_value_selected=$params->get('data')->value_selected;
 
 
@@ -119,7 +116,6 @@ class elementListCheckBoxHelper extends  elementHelper
             $data_value_selected=(array)parent::getValueDataSourceByKey($data_value_selected);
             $data_value_selected=JArrayHelper::pivot($data_value_selected);
         }
-
         if(!$items&&$bindingSource){
             $items=parent::getValueDataSourceByKey($bindingSource);
         }
@@ -130,16 +126,45 @@ class elementListCheckBoxHelper extends  elementHelper
         if($advanced_params_enable){
             $enable=(bool)parent::getValueDataSourceByKey($advanced_params_enable);
         }
+        $column=$params->get('element_config.column',1);
+        $bootstrap3_column=round(12/$column);
+        $list_array_item=array_chunk($items,$column);
+        $scriptId = "script_ui_listcheckbox_" . $block->id;
+        ob_start();
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $('.block-item.block-item-listcheckbox[data-block-id="<?php echo $block->id ?>"]').ui_listcheckbox(
+                    {
+                        block_id:<?php echo $block->id ?>
+                    }
+                );
+
+
+            });
+        </script>
+        <?php
+        $script = ob_get_clean();
+        $script = JUtility::remove_string_javascript($script);
+        $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
         $html='';
         ob_start();
         ?>
         <div class="block-item block-item-listcheckbox "    data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" id="<?php echo $id; ?>" element-type="<?php echo $block->type ?>">
-            <?php for($i=0;$i<count($items);$i++ ){ ?>
-                <?php $item=$items[$i] ?>
-                <label class="checkbox-inline">
-                    <input class="block-item block-item-listcheckbox-item noStyle" <?php echo $enable?'':'disabled' ?>   enable-submit="<?php echo $enable_submit?'true':'false' ?>" <?php echo array_key_exists($item->$key,$data_value_selected)?'checked':'' ?>  type="checkbox"  id="checkbox_<?php echo $i ?>" name="<?php echo $name ?>" value="<?php echo $item->$key ?>"> <?php echo $item->$value ?>
-                </label>
-            <?php } ?>
+
+                <?php foreach($list_array_item as $key=>$items1){ ?>
+                    <div class="row">
+                    <?php for($i=0;$i<count($items1);$i++ ){ ?>
+                        <div class="col-md-<?php echo $bootstrap3_column ?>">
+                        <?php $item=$items1[$i] ?>
+                        <label class="checkbox-inline">
+                            <input class="block-item block-item-listcheckbox-item noStyle" <?php echo $enable?'':'disabled' ?>   enable-submit="<?php echo $enable_submit?'true':'false' ?>" <?php echo array_key_exists($item->$key,$data_value_selected)?'checked':'' ?>  type="checkbox"  id="checkbox_<?php echo $i ?>" name="<?php echo $name ?>" value="<?php echo $item->$key ?>"> <?php echo $item->$value ?>
+                        </label>
+                        </div>
+                    <?php } ?>
+                    </div>
+                <?php } ?>
+
         </div>
 
         <?php
@@ -147,6 +172,7 @@ class elementListCheckBoxHelper extends  elementHelper
         return $html;
 
         }
+
     function getFooterHtml($block,$enableEditWebsite)
     {
         $html='';
@@ -163,7 +189,10 @@ class elementListCheckBoxHelper extends  elementHelper
         $html.=ob_get_clean();
         return $html;
     }
-
+    public function update_block($block)
+    {
+        return elementListCheckBoxHelper::render_element($block);
+    }
 
 
 }

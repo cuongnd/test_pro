@@ -25,7 +25,7 @@ class JRouterSite extends JRouter
 	 * @since  3.3
 	 */
 	protected $componentRouters = array();
-
+	protected static $total_parse_sef_route = 0;
 	/**
 	 * Function to convert a route to an internal URI
 	 *
@@ -37,6 +37,7 @@ class JRouterSite extends JRouter
 	 */
 	public function parse(&$uri)
 	{
+
 		$vars = array();
 
 		// Get the application
@@ -179,13 +180,15 @@ class JRouterSite extends JRouter
 
 			return $vars;
 		}
-
 		// Get the variables from the uri
 		$this->setVars($uri->getQuery(true));
 
 		// Get the itemid, if it hasn't been set force it to null
-		$this->setVar('Itemid', $app->input->getInt('Itemid', null));
-
+        $Itemid=$app->input->getInt('Itemid', null);
+        if($Itemid)
+        {
+            $this->setVar('Itemid', $Itemid);
+        }
 		// Only an Itemid  OR if filter language plugin set? Get the full information from the itemid
 		if (count($this->getVars()) == 1 || ($app->getLanguageFilter() && count($this->getVars()) == 2 ))
 		{
@@ -196,9 +199,76 @@ class JRouterSite extends JRouter
 				$vars = $vars + $item->query;
 			}
 		}
+        $tmpl=$this->getVar('tmpl','');
+        if(!$Itemid)
+        {
+            $Itemid=$this->getVar('menuItemActiveId');;
+        }
+        if(!$Itemid&&$tmpl=='')
+        {
+            $items=$menu->getItems();
+            foreach($items as $item)
+            {
+                $link=$item->link;
+                $uri_link=JUri::getInstance($link);
+                $list_vars1=$uri_link->getVars();
+                $list_vars2=$this->getVars();
 
-		// Set the active menu item
-		$menu->setActive($this->getVar('Itemid'));
+                if(
+                    $list_vars1['option']==$list_vars2['option']&&
+                    $list_vars1['view']==$list_vars2['view']&&
+                    $list_vars1['layout']==$list_vars2['layout']
+                ){
+                    $this->setVar('Itemid',$item->id);
+                    break;
+                }
+            }
+            if(!$this->getVar('Itemid'))
+            {
+                foreach($items as $item)
+                {
+                    $link=$item->link;
+                    $uri_link=JUri::getInstance($link);
+                    $list_vars1=$uri_link->getVars();
+                    $list_vars2=$this->getVars();
+
+                    if(
+                        $list_vars1['option']==$list_vars2['option']&&
+                        $list_vars1['view']==$list_vars2['view']
+                    ){
+                        $this->setVar('Itemid',$item->id);
+                        break;
+                    }
+                }
+
+            }
+            if(!$this->getVar('Itemid'))
+            {
+                foreach($items as $item)
+                {
+                    $link=$item->link;
+                    $uri_link=JUri::getInstance($link);
+                    $list_vars1=$uri_link->getVars();
+                    $list_vars2=$this->getVars();
+
+                    if(
+                        $list_vars1['option']==$list_vars2['option']
+                    ){
+                        $this->setVar('Itemid',$item->id);
+                        break;
+                    }
+                }
+
+            }
+
+        }
+        if($this->getVar('Itemid')) {
+            $menu->setActive($this->getVar('Itemid'));
+        }
+
+        // Set the active menu item
+
+
 
 		return $vars;
 	}
@@ -214,8 +284,19 @@ class JRouterSite extends JRouter
 	 */
 	protected function parseSefRoute(&$uri)
 	{
+		static::$total_parse_sef_route++;
+		if(static::$total_parse_sef_route>2)
+		{
+			echo "to many parseSefRoute";
+			echo "<pre>";
+			print_r(JUtility::printDebugBacktrace());
+			echo "</pre>";
+			die;
+		}
 		$app   = JApplicationCms::getInstance('site');
+
 		$menu  = $app->getMenu();
+
 		$route = $uri->getPath();
 
 		// Remove the suffix
@@ -236,13 +317,17 @@ class JRouterSite extends JRouter
 		// Handle an empty URL (special case)
 		if (empty($route))
 		{
+
 			// If route is empty AND option is set in the query, assume it's non-sef url, and parse apropriately
 			if (isset($vars['option']) || isset($vars['Itemid']))
 			{
+
 				return $this->parseRawRoute($uri);
+
 			}
 
 			$item = $menu->getDefault(JFactory::getLanguage()->getTag());
+
 			// If user not allowed to see default menu item then avoid notices
 			if (is_object($item))
 			{
@@ -253,16 +338,22 @@ class JRouterSite extends JRouter
 				$vars['Itemid'] = $item->id;
 
 				// Set the active menu item
+
 				$menu->setActive($vars['Itemid']);
+
 			}
 
 			return $vars;
 		}
 
-		// Parse the application route
 		$segments = explode('/', $route);
 
-		if (count($segments) > 1 && $segments[0] == 'component')
+		$items=$menu->getItems(array('route'),array($route) );
+
+		if($items[0]->id)
+		{
+			$vars['Itemid'] = $items[0]->id;
+		}elseif (count($segments) > 1 && $segments[0] == 'component')
 		{
 			$vars['option'] = 'com_' . $segments[1];
 			//comment by cuongnd
@@ -369,7 +460,6 @@ class JRouterSite extends JRouter
 			{
 				$crouter = $this->getComponentRouter($component);
 				$vars = $crouter->parse($segments);
-
 				$this->setVars($vars);
 			}
 		}
@@ -381,7 +471,74 @@ class JRouterSite extends JRouter
 				$vars = $item->query;
 			}
 		}
+        $Itemid=$app->input->getInt('Itemid', null);
+        $items=$menu->getItems(array('route'),array($route) );
+        $tmpl=$this->getVar('tmpl','');
+        if(!$Itemid)
+        {
+            $Itemid=$this->getVar('menuItemActiveId');;
+        }
+        if(!$Itemid&&$tmpl=='')
+        {
+            $items=$menu->getItems();
+            foreach($items as $item)
+            {
+                $link=$item->link;
+                $uri_link=JUri::getInstance($link);
+                $list_vars1=$uri_link->getVars();
+                $list_vars2=$this->getVars();
 
+                if(
+                    $list_vars1['option']==$list_vars2['option']&&
+                    $list_vars1['view']==$list_vars2['view']&&
+                    $list_vars1['layout']==$list_vars2['layout']
+                ){
+                    $this->setVar('Itemid',$item->id);
+                    break;
+                }
+            }
+            if(!$this->getVar('Itemid'))
+            {
+                foreach($items as $item)
+                {
+                    $link=$item->link;
+                    $uri_link=JUri::getInstance($link);
+                    $list_vars1=$uri_link->getVars();
+                    $list_vars2=$this->getVars();
+
+                    if(
+                        $list_vars1['option']==$list_vars2['option']&&
+                        $list_vars1['view']==$list_vars2['view']
+                    ){
+                        $this->setVar('Itemid',$item->id);
+                        break;
+                    }
+                }
+
+            }
+            if(!$this->getVar('Itemid'))
+            {
+                foreach($items as $item)
+                {
+                    $link=$item->link;
+                    $uri_link=JUri::getInstance($link);
+                    $list_vars1=$uri_link->getVars();
+                    $list_vars2=$this->getVars();
+
+                    if(
+                        $list_vars1['option']==$list_vars2['option']
+                    ){
+                        $this->setVar('Itemid',$item->id);
+                        break;
+                    }
+                }
+
+            }
+
+        }
+        if($this->getVar('Itemid')) {
+            $menu->setActive($this->getVar('Itemid'));
+        }
 		return $vars;
 	}
 

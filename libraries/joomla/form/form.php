@@ -122,6 +122,7 @@ class JForm
 		// Convert the input to an array.
 		if (is_object($data))
 		{
+
 			if ($data instanceof JRegistry)
 			{
 				// Handle a JRegistry.
@@ -275,6 +276,7 @@ class JForm
 	 */
 	public function getField($name, $group = null, $value = null)
 	{
+
 		// Make sure there is a valid JForm XML document.
 		if (!($this->xml instanceof SimpleXMLElement))
 		{
@@ -852,7 +854,7 @@ class JForm
 		// Check to see if the path is an absolute path.
 		if (!is_file($file))
 		{
-			// Not an absolute path so let's attempt to find one using JPath.
+				// Not an absolute path so let's attempt to find one using JPath.
 			$file = JPath::find(self::addFormPath(), strtolower($file) . '.xml');
 
 			// If unable to find the file return false.
@@ -1784,7 +1786,7 @@ class JForm
 		}
 
 		// Get the field type.
-		$type = $element['type'] ? (string) $element['type'] : 'text';
+		$type = (string)$element['type'] ? (string) $element['type'] : 'text';
 		// Load the JFormField object for the field.
 		$field = $this->loadFieldType($type);
 
@@ -2075,6 +2077,7 @@ class JForm
 		// Only instantiate the form if it does not already exist.
 		if (!isset($forms[$name]))
 		{
+
 			$data = trim($data);
 
 			if (empty($data))
@@ -2085,21 +2088,21 @@ class JForm
 
 			// Instantiate the form.
 			$forms[$name] = new JForm($name, $options);
+
 			// Load the data.
 			if (substr(trim($data), 0, 1) == '<')
 			{
 
 				if ($forms[$name]->load($data, $replace, $xpath) == false)
 				{
+
 					throw new RuntimeException('JForm::getInstance could not load form');
 				}
 			}
 			else
 			{
-
 				if ($forms[$name]->loadFile($data, $replace, $xpath) == false)
 				{
-
 					throw new RuntimeException('JForm::getInstance could not load file ('.$data.')');
 				}
 			}

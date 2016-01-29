@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -97,6 +100,11 @@ class JFBConnectProfile
         return null;
     }
 
+    function getProfileUrl($providerId)
+    {
+        return null;
+    }
+
     function getCoverPhoto($providerId)
     {
         return null;
@@ -105,7 +113,36 @@ class JFBConnectProfile
 
 // Declare a special JRegistry class with bindData specific to the J! version to prevent a strict standards
 $jVersion = new JVersion();
-if (version_compare($jVersion->getShortVersion(), '3.0.0', '>='))
+if (version_compare($jVersion->getShortVersion(), '3.3.0beta', '>='))
+{
+    class JFBConnectProfileDataProxy extends JRegistry
+    {
+        /* bindData
+         * Overridden function due to Joomla's checking of each variable to see if it's an associative array or not
+         * We don't care, we want all arrays to be translated to a class
+         */
+        protected function bindData($parent, $data, $recursive = true)
+        {
+            // Ensure the input data is an array.
+            if (is_object($data))
+                $data = get_object_vars($data);
+            else
+                $data = (array)$data;
+
+            foreach ($data as $k => $v)
+            {
+                if (is_array($v) || is_object($v))
+                {
+                    $parent->$k = new stdClass;
+                    $this->bindData($parent->$k, $v);
+                }
+                else
+                    $parent->$k = $v;
+            }
+        }
+    }
+}
+else if (version_compare($jVersion->getShortVersion(), '3.0.0', '>='))
 {
     class JFBConnectProfileDataProxy extends JRegistry
     {

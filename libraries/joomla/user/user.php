@@ -337,7 +337,6 @@ class JUser extends JObject
 	 */
 	public function authorise($action, $assetname = null)
 	{
-
 		// Make sure we only check for core.admin once during the run.
 		if ($this->isRoot === null)
 		{
@@ -423,12 +422,10 @@ class JUser extends JObject
 		{
 			$this->_authLevels = array();
 		}
-
 		if (empty($this->_authLevels))
 		{
 			$this->_authLevels = JAccess::getAuthorisedViewLevels($this->id);
 		}
-
 		return $this->_authLevels;
 	}
 
@@ -448,7 +445,10 @@ class JUser extends JObject
 
 		if (empty($this->_authGroups))
 		{
+            jimport('joomla.access.access');
+
 			$this->_authGroups = JAccess::getGroupsByUser($this->id);
+
 		}
 
 		return $this->_authGroups;
@@ -775,6 +775,7 @@ class JUser extends JObject
 		// Reset the user object in the session on a successful save
 		if ($result === true && JFactory::getUser()->id == $this->id)
 		{
+
 			JFactory::getSession()->set('user', $this);
 		}
 

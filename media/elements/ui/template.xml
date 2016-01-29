@@ -1,0 +1,23 @@
+<config><fields name="params"><fields name="data">
+					<field type="bindingSource" readonly="false" label="Bindding source" default=""
+						   name="binddingSource"
+
+												>
+											</field>
+					<field type="checkbox" label="Bindding source" default="0"
+						   name="enable_binddingsource" onchange="">
+
+					</field>
+
+									</fields>				<fields name="element_config">
+					<field type="editor" readonly="false" label="Template" default=""
+						   name="template"
+
+													 filter_field="params.data.binddingSource" 												>
+											</field>
+					<field type="checkbox" label="Template" default="0"
+						   name="enable_template" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

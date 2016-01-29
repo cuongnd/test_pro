@@ -310,7 +310,7 @@
                 <field name="border_bottom_right_radius" type="text" description="border-bottom-right-radius" label="border-bottom-right-radius" />
                 <field name="border_bottom_left_radius" type="text" description="border-bottom-left-radius" label="border-bottom-left-radius" />
                 <field name="border_top_style" type="text" description="border top style" label="Border top style" />
-                <field name="border_top_color" type="text" description="border top color" label="Border top color" />
+                <field name="border_top_color" type="text" description="border top color" label="_ top color" />
                 <field name="border_top_width" type="text" description="border top width" label="Border top width" />
                 <field name="border_right_style" type="text" description="border right style" label="Border right style" />
                 <field name="border_right_color" type="text" description="border right color" label="Border right color" />

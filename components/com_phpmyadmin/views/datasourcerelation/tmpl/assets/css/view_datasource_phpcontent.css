@@ -1,0 +1,54 @@
+.itemField {
+	width: 1200px;
+}
+.itemField {
+	z-index: 99;
+}
+.CodeMirror-hints-contextInfo,
+ul.CodeMirror-hints {
+	z-index: 999 !important;
+	width: 500px !important;
+}
+.CodeMirror-hints-contextInfo li.CodeMirror-hint,
+ul.CodeMirror-hints li.CodeMirror-hint {
+	max-width: none;
+}
+.itemField {
+	top: 70px;
+}
+.itemField .CodeMirror {
+	height: 600px;
+}
+.itemField .CodeMirror {
+	border: 1px solid #ccc;
+}
+.itemField .CodeMirror .CodeMirror-hscrollbar {
+	left: 0 !important;
+}
+.itemField .CodeMirror .CodeMirror-gutters {
+	width: 42px !important;
+}
+.itemField .CodeMirror .CodeMirror-gutter-wrapper {
+	left: -40px !important;
+}
+.itemField .CodeMirror .CodeMirror-scroll,
+.itemField .CodeMirror .CodeMirror-sizer,
+.itemField .CodeMirror .CodeMirror-gutter,
+.itemField .CodeMirror .CodeMirror-gutters,
+.itemField .CodeMirror .CodeMirror-linenumber {
+	margin-left: 0 !important;
+}
+.itemField .CodeMirror .CodeMirror-gutter {
+	width: 15px !important;
+}
+.itemField .CodeMirror .CodeMirror-linenumber.CodeMirror-gutter-elt {
+	width: 15px !important;
+	left: 0px !important;
+	padding: 0 3px 0 0 !important;
+}
+.itemField .CodeMirror .CodeMirror-gutter-elt {
+	left: 27px !important;
+}
+.itemField .CodeMirror .CodeMirror-sizer {
+	padding-left: 42px !important;
+}

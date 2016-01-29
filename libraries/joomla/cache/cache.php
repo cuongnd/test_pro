@@ -40,7 +40,6 @@ class JCache
 	public function __construct($options)
 	{
 		$conf = JFactory::getConfig();
-        $website=JFactory::getWebsite();
 		$this->_options = array(
 			'cachebase' => $conf->get('cache_path', JPATH_CACHE),
 			'lifetime' => (int) $conf->get('cachetime'),
@@ -51,8 +50,9 @@ class JCache
 			'locktime' => 15,
 			'checkTime' => true,
 			'caching' => ($conf->get('caching') >= 1) ? true : false,
-            'website_id'=>$website->website_id
+            'website_id'=>WEBSITE_ID
         );
+
 		// Overwrite default options with given options
 		foreach ($options as $option => $value)
 		{
@@ -185,6 +185,7 @@ class JCache
 
 		// Get the storage
 		$handler = $this->_getStorage();
+
 		if (!($handler instanceof Exception) && $this->_options['caching'])
 		{
 			return $handler->get($id, $group, $this->_options['checkTime']);

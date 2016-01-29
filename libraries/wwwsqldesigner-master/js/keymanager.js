@@ -23,14 +23,14 @@ SQL.KeyManager.prototype.build = function() {
 		var id = ids[i];
 		var elm = OZ.$(id);
 		this.dom[id] = elm;
-		elm.value = _(id);
+		elm.value = getString(id);
 	}
 
 	var ids = ["keyedit","keytypelabel","keynamelabel","keyfieldslabel","keyavaillabel"];
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
-		elm.innerHTML = _(id);
+		elm.innerHTML = getString(id);
 	}
 	
 	var types = ["PRIMARY","INDEX","UNIQUE","FULLTEXT"];
@@ -93,7 +93,7 @@ SQL.KeyManager.prototype.purge = function() { /* remove empty keys */
 
 SQL.KeyManager.prototype.sync = function(table) { /* sync content with given table */
 	this.table = table;
-	this.dom.listlabel.innerHTML = _("keyslistlabel").replace(/%s/,table.getTitle());
+	this.dom.listlabel.innerHTML = getString("keyslistlabel").replace(/%s/,table.getTitle());
 	
 	OZ.DOM.clear(this.dom.list);
 	for (var i=0;i<table.keys.length;i++) {
@@ -198,5 +198,5 @@ SQL.KeyManager.prototype.right = function(e) { /* remove field from index */
 
 SQL.KeyManager.prototype.open = function(table) {
 	this.sync(table);
-	this.owner.window.open(_("tablekeys"),this.dom.container,this.purge);
+	this.owner.window.open(getString("tablekeys"),this.dom.container,this.purge);
 }

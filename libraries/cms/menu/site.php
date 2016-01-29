@@ -28,7 +28,7 @@ class JMenuSite extends JMenu
 		$db    = JFactory::getDbo();
 		$query = $db->getQuery(true);
 
-		$query->select('m.id,m.menu_type_id, m.menutype,m.icon,m.lesscontent, m.title, m.alias, m.note, m.path AS route, m.link, m.type, m.level, m.language');
+		$query->select('m.id,m.menu_type_id,m.hidden, m.menutype,m.binding_source_key,m.binding_source,m.binding_source_value,m.icon,m.lesscontent, m.title, m.alias, m.note, m.path AS route, m.link, m.type, m.level, m.language');
 		$query->select($db->quoteName('m.browserNav') . ', m.access, m.params, m.home, m.img, m.template_style_id, m.component_id, m.parent_id');
 		$query->select('e.element as component');
 		$query->from('#__menu AS m');
@@ -64,19 +64,89 @@ class JMenuSite extends JMenu
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Set the query
         $cache = JFactory::getCache('_system', 'callback');
-        $this->_items=array();
+		$items1=array();
         try
         {
             $db->setQuery($query);
-            $this->_items = $db->loadObjectList();// $cache->get(array($db, 'loadObjectList'), null, md5($query), false);
-            $this->_items=JArrayHelper::pivot($this->_items,'id');
+			$items1 = $db->loadObjectList();// $cache->get(array($db, 'loadObjectList'), null, md5($query), false);
+			$items1=JArrayHelper::pivot($items1,'id');
         }
+
         catch (RuntimeException $e)
         {
             // Fatal error.
             JLog::add(JText::sprintf('JERROR_LOADING_MENUS', md5($query), $e->getMessage()), JLog::WARNING, 'jerror');
             return false;
         }
+
+		JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/models');
+		$modalDataSources=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
+		$items=array();
+		if(count($items1))
+		{
+			foreach ($items1 as $i => $item)
+			{
+				$query=array();
+				$url = str_replace('index.php?', '', $item->link);
+				$url = str_replace('&amp;', '&', $url);
+				parse_str($url, $query);
+				foreach($query as $key_query=>$value_key_query)
+				{
+					if(trim($value_key_query)=='')
+					{
+						unset($query[$key_query]);
+					}
+				}
+				if(empty($query))
+				{
+					$item->link='index.php?option=com_utility&view=blank';
+					$item->type="component";
+					$table_menu=JTable::getInstance('Menu');
+					JTable::addIncludePath(JPATH_ROOT.'/components/com_menus/tables');
+					if(!$table_menu->load($item->id))
+					{
+						throw new Exception($table_menu->getError());
+					}
+					if(!$table_menu->bind((array)$item))
+					{
+						throw new Exception($table_menu->getError());
+					}
+					if(!$table_menu->store())
+					{
+						throw new Exception($table_menu->getError());
+					}
+				}
+
+				$items[$i]=$item;
+				$item1=$item;
+				if(trim($item->binding_source)!='')
+				{
+					$list_item_binding_source=$modalDataSources->getListDataSource($item->binding_source);
+
+
+					if(count($list_item_binding_source))
+					{
+						$children = array();
+
+						// First pass - collect children
+						foreach ($list_item_binding_source as $v)
+						{
+							$pt = $v->parent_id;
+							$list = @$children[$pt] ? $children[$pt] : array();
+							array_push($list, $v);
+							$children[$pt] = $list;
+						}
+
+						$id=key($children);
+						JMenuSite::treerecurse_menu_item($id, $items,$item, $children);
+
+
+					}
+				}
+			}
+		}
+
+		$this->_items=$items;
 		foreach ($this->_items as &$item)
 		{
 			// Get parent information.
@@ -93,11 +163,56 @@ class JMenuSite extends JMenu
 			// Create the query array.
 			$url = str_replace('index.php?', '', $item->link);
 			$url = str_replace('&amp;', '&', $url);
-
+			$http_build_query=http_build_query($item->query);
+			if($http_build_query)
+			{
+				$url.=$http_build_query;
+			}
+			$item->link='index.php?'.$url;
 			parse_str($url, $item->query);
+		}
+
+	}
+	function treerecurse_menu_item($id, &$items,$item, &$children, $maxlevel = 9999, $level = 0)
+	{
+
+		if (@$children[$id] && $level <= $maxlevel) {
+			foreach ($children[$id] as $key=> $v) {
+				$item1= clone $item;
+				$id = $v->id;
+				$level1=$level + 1;
+				$item1->id_of_item=$v->id;
+				$item1->parent_id_of_item=$v->parent_id;
+				$item1->title=$v->title;
+				$item1->alias=$v->alias;
+				$item1->level+=$level1;
+				$item1->type="component";
+				$item1->link='';
+				$item1->json_of_item=json_encode($v);
+				$item1->query['option']='com_utility';
+				$item1->query['view']='blank';
+				$item1->query[$item1->binding_source_key]=$v->{$item1->binding_source_value};
+				$item1->query['Itemid']=$item1->id;
+				$key=$item1->id.'-'.$id;
+				$items[$key]=$item1;
+				//unset($children[$id]);
+				JMenuSite::treerecurse_menu_item($id, $items,$item, $children, $maxlevel,$level1 );
+			}
 		}
 	}
 
+	public function get_menu_default_by_website_id($website_id){
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('menu.*')
+			->from('#__menu AS menu')
+			->where('menu.home=1')
+			->leftJoin('#__menu_types AS menu_type ON menu_type.id=menu.menu_type_id')
+			->where('menu_type.website_id='.(int)$website_id)
+			;
+		$item=$db->setQuery($query)->loadObject();
+		return $item;
+	}
 	/**
 	 * Gets menu items by attribute
 	 *
@@ -109,10 +224,10 @@ class JMenuSite extends JMenu
 	 */
 	public function getItems($attributes, $values, $firstonly = false)
 	{
+
 		$attributes = (array) $attributes;
 		$values 	= (array) $values;
 		$app		= JApplication::getInstance('site');
-
 		if ($app->isSite())
 		{
 			// Filter by language if not set
@@ -133,7 +248,10 @@ class JMenuSite extends JMenu
 			if (($key = array_search('access', $attributes)) === false)
 			{
 				$attributes[] = 'access';
-				$values[] = JFactory::getUser()->getAuthorisedViewLevels();
+				$user=JFactory::getUser();
+				$values[] = $user->getAuthorisedViewLevels();
+
+
 			}
 			elseif ($values[$key] === null)
 			{
@@ -166,6 +284,7 @@ class JMenuSite extends JMenu
 		}
 		else
 		{
+
 			return 0;
 		}
 	}

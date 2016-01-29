@@ -6294,7 +6294,7 @@ var fileCache = {};
 
 function log(str, level) {
     if (less.env == 'development' && typeof(console) !== 'undefined' && less.logLevel >= level) {
-        console.log('less: ' + str);
+        //console.log('less: ' + str);
     }
 }
 
@@ -6658,7 +6658,7 @@ function doXHR(url, type, callback, errback) {
     if (typeof(xhr.overrideMimeType) === 'function') {
         xhr.overrideMimeType('text/css');
     }
-    log("XHR: Getting '" + url + "'", logLevel.info);
+    //log("XHR: Getting '" + url + "'", logLevel.info);
     xhr.open('GET', url, async);
     xhr.setRequestHeader('Accept', type || 'text/x-less, text/css; q=0.9, */*; q=0.5');
     xhr.send(null);
@@ -6857,6 +6857,7 @@ less.sheets = [];
 for (var i = 0; i < links.length; i++) {
     if (links[i].rel === 'stylesheet/less' || (links[i].rel.match(/stylesheet/) &&
        (links[i].type.match(typePattern)))) {
+        jQuery(links[i]).attr('builded',true);
         less.sheets.push(links[i]);
     }
 }

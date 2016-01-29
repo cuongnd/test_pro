@@ -26,9 +26,18 @@ class elementH4Helper extends  elementHelper
         $doc->addScript(JUri::root() ."/$dirName/$filename.js");
         $params = new JRegistry;
         $params->loadString($block->params);
-        $class=$params->get('class','');
-        $checkbox=$params->get('checkbox','');
-        $text=$params->get('text','text_'.$block->id);
+        $text=$params->get('element_config.text','text_'.$block->id);
+        $data_text=$params->get('data.text','');
+        $border_bottom_line =$params->get('element_config.border_bottom_line','');
+        $border_bottom_line=JUtility::toStrictBoolean($border_bottom_line);
+        if($border_bottom_line)
+        {
+            $border_bottom_line=";border-bottom: 1px solid #ccc;padding: 5px;";
+        }
+        if($data_text)
+        {
+            $text=parent::getValueDataSourceByKey($data_text);
+        }
 
 
         $html='';
@@ -36,28 +45,86 @@ class elementH4Helper extends  elementHelper
         if($enableEditWebsite) {
             ?>
             <div class="control-element control-element-h4"  data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" element-type="<?php echo $block->type ?>">
-            <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    element_ui_h4.init_ui_h4();
-                });
-            </script>
             <span data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="drag label label-default  element-move-handle"><i class="glyphicon glyphicon-move"></i></span>
             <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" class="menu label config-block label-danger menu-list" href="javascript:void(0)"><i class="im-menu2"></i></a>
             <a data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"class="remove label label-danger remove-element" href="javascript:void(0)"><i class="glyphicon-remove glyphicon"></i></a>
-            <h4 class="block-item block-item-h4" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"><?php echo $text ?></h4>
-        <?php
+            <?php
+            echo elementH4Helper::render_element($block,$enableEditWebsite);
         }else{
+            echo elementH4Helper::render_element($block,$enableEditWebsite);
             ?>
-            <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    element_ui_h4.init_ui_h4();
-                });
-            </script>
-            <h4 class="block-item block-item-h4" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"><?php echo $text ?></h4>
 
-        <?php
+            <?php
         }
         $html.=ob_get_clean();
+        return $html;
+    }
+    public function render_element($block,$enableEditWebsite)
+    {
+        $doc=JFactory::getDocument();
+        $params = new JRegistry;
+        $params->loadString($block->params);
+        $text=$params->get('element_config.text','text_'.$block->id);
+
+
+        $enable_link=$params->get('element_config.link_config.enable_link','off');
+        $enable_link=JUtility::toStrictBoolean($enable_link);
+        if($enable_link) {
+            $link_to_page = $params->get('element_config.link_config.link_to_page', '');
+            $link = $params->get('element_config.link_config.link', '');
+            $link=$link!=''?$link:JUri::root().'/index.php?Itemid='.$link_to_page;
+        }
+        $data_text=$params->get('data.text','');
+        $border_bottom_line =$params->get('element_config.border_bottom_line','');
+        $border_bottom_line=JUtility::toStrictBoolean($border_bottom_line);
+        if($border_bottom_line)
+        {
+            $border_bottom_line=";border-bottom: 1px solid #ccc;padding: 5px;";
+        }
+
+
+        if(trim($data_text)!='')
+        {
+            $text=parent::getValueDataSourceByKey($data_text);
+        }
+
+        $scriptId = "script_ui_h4_" . $block->id;
+
+        $name=$params->get('element_config.name','');
+        ob_start();
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $('.block-item.block-item-h4[data-block-id="<?php echo $block->id ?>"]').ui_h4(
+                    {
+                        block_id:<?php echo $block->id ?>,
+                        enable_edit_website:<?php echo json_encode($enableEditWebsite) ?>,
+                        element_name:"<?php echo $name ?>"
+                    }
+                );
+
+
+            });
+        </script>
+    <?php
+    $script = ob_get_clean();
+    $script = JUtility::remove_string_javascript($script);
+    $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
+
+    $html='';
+    ob_start();
+    ?>
+        <h4 style="<?php echo $border_bottom_line ?>" class="block-item block-item-h4" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" element-type="<?php echo $block->type ?>">
+            <?php  if($enable_link) { ?>
+                <a href="<?php echo $link ?>"><?php echo $text ?></a>
+            <?php }else{ ?>
+                <?php echo $text ?>
+            <?php } ?>
+        </h4>
+
+        <?php
+        $html=ob_get_clean();
         return $html;
     }
     function getFooterHtml($block,$enableEditWebsite)
@@ -69,10 +136,10 @@ class elementH4Helper extends  elementHelper
             ?>
 
             </div>
-        <?php
+            <?php
         }else{
             ?>
-        <?php
+            <?php
         }
         $html.=ob_get_clean();
         return $html;

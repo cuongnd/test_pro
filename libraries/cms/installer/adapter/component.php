@@ -464,6 +464,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		 */
 
 		// Add an entry to the extension table with a whole heap of defaults
+        $website=JFactory::getWebsite();
 		$row = JTable::getInstance('extension');
 		$row->set('name', $this->get('name'));
 		$row->set('type', 'component');
@@ -473,6 +474,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		$row->set('folder', '');
 		$row->set('enabled', 1);
 		$row->set('protected', 0);
+		$row->set('website_id', $website->website_id);
 		$row->set('access', 0);
 		$row->set('client_id', 1);
 		$row->set('params', $this->parent->getParams());
@@ -486,7 +488,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 			return false;
 		}
 
-		$eid = $row->extension_id;
+		$eid = $row->id;
 
 		// Clobber any possible pending updates
 		$update = JTable::getInstance('update');
@@ -507,7 +509,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		}
 
 		// Time to build the admin menus
-		if (!$this->_buildAdminMenus($row->extension_id))
+		if (!$this->_buildAdminMenus($row->id))
 		{
 			JLog::add(JText::_('JLIB_INSTALLER_ABORT_COMP_BUILDADMINMENUS_FAILED'), JLog::WARNING, 'jerror');
 
@@ -555,7 +557,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 			$this->parent->set('extension_message', $msg);
 		}
 
-		return $row->extension_id;
+		return $row->id;
 	}
 
 	/**
@@ -954,7 +956,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 			$this->parent->set('extension_message', $msg);
 		}
 
-		return $row->extension_id;
+		return $row->id;
 	}
 
 	/**
@@ -1132,7 +1134,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		// Remove the schema version
 		$query = $db->getQuery(true)
 			->delete('#__schemas')
-			->where('extension_id = ' . $id);
+			->where('id = ' . $id);
 		$db->setQuery($query);
 		$db->execute();
 
@@ -1185,7 +1187,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 			}
 
 			// Now we will no longer need the extension object, so let's delete it and free up memory
-			$row->delete($row->extension_id);
+			$row->delete($row->id);
 			unset($row);
 
 			return $retval;
@@ -1214,9 +1216,9 @@ class JInstallerAdapterComponent extends JAdapterInstance
 
 		// If a component exists with this option in the table then we don't need to add menus
 		$query = $db->getQuery(true)
-			->select('m.id, e.extension_id')
+			->select('m.id, e.id')
 			->from('#__menu AS m')
-			->join('LEFT', '#__extensions AS e ON m.component_id = e.extension_id')
+			->join('LEFT', '#__extensions AS e ON m.component_id = e.id')
 			->where('m.parent_id = 1')
 			->where('m.client_id = 1')
 			->where('e.element = ' . $db->quote($option));
@@ -1241,13 +1243,13 @@ class JInstallerAdapterComponent extends JAdapterInstance
 				$this->_removeAdminMenus($componentrow);
 			}
 
-			$component_id = $componentrow->extension_id;
+			$component_id = $componentrow->id;
 		}
 		else
 		{
 			// Lets find the extension id
 			$query->clear()
-				->select('e.extension_id')
+				->select('e.id')
 				->from('#__extensions AS e')
 				->where('e.element = ' . $db->quote($option));
 
@@ -1488,7 +1490,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 	{
 		$db = $this->parent->getDbo();
 		$table = JTable::getInstance('menu');
-		$id = $row->extension_id;
+		$id = $row->id;
 
 		// Get the ids of the menu items
 		$query = $db->getQuery(true)
@@ -1533,7 +1535,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 	 */
 	protected function _rollback_menu($step)
 	{
-		return $this->_removeAdminMenus((object) array('extension_id' => $step['id']));
+		return $this->_removeAdminMenus((object) array('id' => $step['id']));
 	}
 
 	/**
@@ -1773,7 +1775,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		}
 
 		// Time to build the admin menus
-		if (!$this->_buildAdminMenus($this->parent->extension->extension_id))
+		if (!$this->_buildAdminMenus($this->parent->extension->id))
 		{
 			JLog::add(JText::_('JLIB_INSTALLER_ABORT_COMP_BUILDADMINMENUS_FAILED'), JLog::WARNING, 'jerror');
 
@@ -1785,7 +1787,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		// Set the schema version to be the latest update version
 		if ($this->manifest->update)
 		{
-			$this->parent->setSchemaVersion($this->manifest->update->schemas, $this->parent->extension->extension_id);
+			$this->parent->setSchemaVersion($this->manifest->update->schemas, $this->parent->extension->id);
 		}
 
 		/**
@@ -1850,7 +1852,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 			$this->parent->set('extension_message', $msg);
 		}
 
-		return $this->parent->extension->extension_id;
+		return $this->parent->extension->id;
 	}
 
 	/**

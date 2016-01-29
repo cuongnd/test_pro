@@ -34,6 +34,7 @@ $doc->addScript(JUri::root().'/administrator/components/com_bookpro/assets/js/vi
 
 
 ?>
+
 <pre id="tsv" style="display:none;border: #cccccc solid 1px">Browser Version	Total Market Share
                             Microsoft Internet Explorer 8.0	26.61%
                             Microsoft Internet Explorer 9.0	16.96%

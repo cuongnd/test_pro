@@ -5,7 +5,7 @@
 $=jQuery;
 // Only define the Joomla namespace if not defined.
 Joomla = window.Joomla || {};
-
+Joomla.list_function_run_befor_submit=[];
 Joomla.editors = {};
 // An object to hold each editor instance on page
 Joomla.editors.instances = {};
@@ -158,15 +158,53 @@ Joomla.renderMessages = function(messages) {
 Joomla.removeMessages = function() {
     jQuery('#system-message-container').empty();
 }
-Joomla.sethtmlfortag = function (respone_array) {
+Joomla.sethtmlfortag = function (respone_array,set_inner_type) {
     respone_array = jQuery.parseJSON(respone_array);
     jQuery.each(respone_array, function(index, respone) {
+        if(typeof set_inner_type!=="undefined")
+        {
+            switch(set_inner_type) {
+                case 'append':
+                    jQuery(respone.key.toString()).append(respone.contents);
+                    break;
+            }
+        }else
+        {
+            jQuery(respone.key.toString()).html(respone.contents);
+        }
 
-        jQuery(respone.key.toString()).html(respone.contents);
+
     });
 };
-Joomla.sethtmlfortag1 = function (respone_array) {
+Joomla.sethtmlfortag1 = function (respone_array,set_inner_type) {
     $=jQuery;
+
+    html=respone_array.html;
+    if(typeof html!="undefined" )
+    {
+        $.each(html, function( index, value ) {
+            if(typeof value.base64_encode!=="undefined"){
+                if(value.base64_encode==1)
+                {
+                    value.contents=base64.decode(value.contents);
+                }
+            }
+            if(typeof set_inner_type!=="undefined")
+            {
+                switch(set_inner_type) {
+                    case 'append':
+                        $(value.key.toString()).append(value.contents);
+                        break;
+                }
+            }else
+            {
+                $(value.key.toString()).html(value.contents);
+            }
+
+
+
+        });
+    }
     scripts=respone_array.scripts;
     if(typeof scripts!="undefined" )
     {
@@ -183,44 +221,56 @@ Joomla.sethtmlfortag1 = function (respone_array) {
     }
 
     styleSheets=respone_array.styleSheets;
+
     if(typeof styleSheets!="undefined" )
     {
-        $.each(styleSheets, function( index, value ) {
-            index=index.replace(this_host,'');
-            urls = index.match(/\b(http|https)?(:\/\/)?(\S*)\.(\w{2,4})\b/ig);
-            $('head').find('link[href*="'+urls[0]+'"]').remove();
-            curent_styleSheets=$('head').find('link[href="'+this_host+'/'+index+'"]');
-            if(!curent_styleSheets.length)
+        $.each(styleSheets, function( source, value ) {
+
+            var attribs=value.attribs;
+            var string_attribs=[];
+            var string_less=source.slice(-4).toLowerCase();
+
+            if($.isPlainObject(attribs) )
             {
 
-                styleSheet=$('<link href="'+this_host+'/'+index+'" media="screen" type="text/css" rel="stylesheet">');
+                if(typeof attribs.rel=='undefined')
+                {
+                    attribs.rel='stylesheet';
+                }
+                if(string_less=='less')
+                {
+                    attribs.rel='stylesheet/less';
+                }
+
+
+            }else
+            {
+                attribs={};
+                attribs.rel='stylesheet';
+
+            }
+            $.each(attribs, function( index1, value1 ) {
+                string_attribs.push(index1+'="'+value1+'"');
+            });
+            string_attribs=string_attribs.join(' ');
+
+            $('head').find('link[href*="'+source+'"]').remove();
+            curent_styleSheets=$('head').find('link[href="'+source+'"]');
+            if(!curent_styleSheets.length)
+            {
+                styleSheet=$('<link href="'+source+'" media="screen" type="text/css" '+string_attribs+'>');
                 $('head').append(styleSheet);
             }
         });
     }
-    html=respone_array.html;
-    if(typeof html!="undefined" )
-    {
-        $.each(html, function( index, value ) {
-            $(value.key.toString()).html(value.contents);
-        });
-    }
+
 
     scriptDeclaration=respone_array.scriptDeclaration;
     if(typeof scriptDeclaration!="undefined" )
     {
         $.each(scriptDeclaration, function( index, script ) {
-           csriptId=script.scriptId;
-            if(csriptId!='')
-            {
-                if(!$('script#'+csriptId).length)
-                {
-                    htmlScript=$('<script type="text/javascript" id="'+csriptId+'"></script>');
-                    htmlScript.html(script.scriptDeclaration);
-                    $('head').append(htmlScript);
-                }
-            }
-
+            var myFunction = new Function(script.scriptDeclaration);
+            myFunction();
         });
     }
 
@@ -241,7 +291,26 @@ Joomla.sethtmlfortag1 = function (respone_array) {
 
         });
     }
+    Joomla.build_less();
 };
+Joomla.build_less=function() {
+    window.less.sheets = [];
+    var typePattern = /^text\/(x-)?less$/;
+    var links = document.getElementsByTagName('link');
+    for (var i = 0; i < links.length; i++) {
+        if (links[i].rel === 'stylesheet/less' || (links[i].rel.match(/stylesheet/) &&
+            (links[i].type.match(typePattern)))) {
+            var builded=jQuery(links[i]).attr('builded');
+            if(typeof builded=='undefined')
+            {
+                window.less.sheets.push(links[i]);
+            }
+        }
+    }
+
+
+    window.less.refresh(window.less.env === 'development');
+}
 /**
  * USED IN: administrator/components/com_cache/views/cache/tmpl/default.php
  * administrator/components/com_installer/views/discover/tmpl/default_item.php

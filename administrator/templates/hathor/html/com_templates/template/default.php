@@ -311,7 +311,7 @@ if($this->type == 'image')
 				<?php echo JHtml::_('form.token'); ?>
 
 
-				<?php echo $this->form->getInput('extension_id'); ?>
+				<?php echo $this->form->getInput('id'); ?>
 				<?php echo $this->form->getInput('filename'); ?>
 			</fieldset>
 		</form>

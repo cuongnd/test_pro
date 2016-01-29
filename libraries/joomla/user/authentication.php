@@ -256,7 +256,6 @@ class JAuthentication extends JObject
 	{
 		// Get plugins
 		$plugins = JPluginHelper::getPlugin('authentication');
-
 		// Create authentication response
 		$response = new JAuthenticationResponse;
 
@@ -310,7 +309,6 @@ class JAuthentication extends JObject
 		{
 			$response->password = $credentials['password'];
 		}
-
 		return $response;
 	}
 

@@ -27,6 +27,7 @@ class JUtility
      *
      * @since   11.1
      */
+
     public static function parseAttributes($string)
     {
         $attr = array();
@@ -45,150 +46,247 @@ class JUtility
 
         return $retarray;
     }
+
+    public static function check_out_off_memory_size()
+    {
+        $php_value_memory_limit=(int)ini_get('memory_limit');
+        $memory_usage=(int)memory_get_usage(true);
+        $memory_usage=(int)JUtility::byteToOtherUnit($memory_usage,'MB');
+        if($memory_usage>=$php_value_memory_limit)
+        {
+            throw new JException('out off memory', 404);
+            die;
+        }
+    }
+
+    public static function format_url($url='')
+    {
+        $uri = JUri::getInstance($url);
+        $path=$uri->getPath();
+        $path=explode('/',$path);
+        $path1=array();
+        foreach($path as $item)
+        {
+            if(trim($item)!='')
+            {
+                $path1[]=$item;
+            }
+        }
+        $path=implode('/',$path1);
+        $uri->setPath($path);
+        return $uri->toString();
+    }
+
+    public function replate_request($string)
+    {
+        $input = JFactory::getApplication()->input;
+        $requestString = '/(.*?)request(\(|\'|)(.*?)(\)|\'| )/s';
+        preg_match_all($requestString, $string, $requests);
+        $requests = $requests[3];
+        $listRequest = array();
+        foreach ($requests as $request) {
+            $request = explode(',', $request);
+            if (strtolower($request[0]) == 'website_id') {
+
+                $website_id = $input->get('website_id', 0);
+                if (!$website_id) {
+                    $website = JFactory::getWebsite();
+                    $website_id = $website->website_id;
+                }
+                $listRequest[] = $website_id;
+            } else {
+                $listRequest[] = $input->get($request[0], $request[1]);
+            }
+        }
+        $listRequest2 = array();
+        foreach ($requests as $request) {
+            $listRequest2[] = 'request(' . $request . ')';
+        }
+        $string = str_ireplace($listRequest2, $listRequest, $string);
+
+        return $string;
+
+    }
+
+    public function get_value_by_key($item, $list_key = array(), $order_key = 0)
+    {
+
+        if ($order_key != count($list_key) - 1) {
+            $key = $list_key[$order_key];
+            if (trim($key) == '') {
+                echo "<pre>";
+                echo "key is null";
+                echo "<br/>";
+                print_r($item);
+                echo "</pre>";
+                die;
+            }
+            $item1 = $item->{$list_key[$order_key]};
+            $order_key1 = $order_key + 1;
+            return JUtility::get_value_by_key($item1, $list_key, $order_key1);
+        } else {
+            return $item->{$list_key[$order_key]};
+        }
+
+    }
+
+    public static function toStrictBoolean($_val, $_trueValues = array('yes', 'y', 'true', 'on','1'), $_forceLowercase = true)
+    {
+        if (is_string($_val)) {
+            return (in_array(
+                ($_forceLowercase ? strtolower($_val) : $_val)
+                , $_trueValues)
+            );
+        } else {
+            return (boolean)$_val;
+        }
+    }
+
     function isJson($string)
     {
         return ((is_string($string) && (is_object(json_decode($string)) || is_array(json_decode($string))))) ? true : false;
     }
+
     public function get_class_icon_font()
     {
         jimport('joomla.filesystem.file');
-        $iconFiles=array(
+        $iconFiles = array(
             'templates/sprflat/assets/less/icons.less'
         );
-        $content='';
-        foreach($iconFiles as $file)
-        {
-            $content.=JFile::read(JPATH_ROOT.'/'.$file);
+        $content = '';
+        foreach ($iconFiles as $file) {
+            $content .= JFile::read(JPATH_ROOT . '/' . $file);
         }
-        $icon_class=array();
-        $requestString='/(.*?).(\(|\'|)(.*?)(:before(.*?){)/';
+        $icon_class = array();
+        $requestString = '/(.*?).(\(|\'|)(.*?)(:before(.*?){)/';
         preg_match_all($requestString, $content, $icon_class);
-        $icon_class=$icon_class[3];
+        $icon_class = $icon_class[3];
         return $icon_class;
     }
+
     public function get_class_icon_flag_image()
     {
         jimport('joomla.filesystem.file');
         jimport('joomla.filesystem.folder');
-        $folder_flags='images/all_flags';
-        $flags=JFolder::files(JPATH_ROOT.'/'.$folder_flags,'gif');
-        $list_full_path_flag=array();
-        foreach($flags as $flag)
-        {
-            $list_full_path_flag[]=$folder_flags.'/'.$flag;
+        $folder_flags = 'images/all_flags';
+        $flags = JFolder::files(JPATH_ROOT . '/' . $folder_flags, 'gif');
+        $list_full_path_flag = array();
+        foreach ($flags as $flag) {
+            $list_full_path_flag[] = $folder_flags . '/' . $flag;
         }
         return $list_full_path_flag;
     }
-    public function get_content_file(&$object,$file_php,$table,$filed,$primary_key='id')
+
+    public function get_content_file(&$object, $file_php, $table, $filed, $primary_key = 'id')
     {
 
-        $app=JFactory::getApplication();
-        $table=str_replace('#__','',$table);
-        require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
-        $db=JFactory::getDbo();
-        $table=new JTableUpdateTable($db,$table,$primary_key);
+        $app = JFactory::getApplication();
+        $table = str_replace('#__', '', $table);
+        require_once JPATH_ROOT . '/components/com_phpmyadmin/tables/updatetable.php';
+        $db = JFactory::getDbo();
+        $table = new JTableUpdateTable($db, $table, $primary_key);
 
         $table->load($object->$primary_key);
-        $params_filed=explode('.',$filed);
-        if (count($params_filed)>1) {
-            $params_filed=array_reverse($params_filed);
+        $params_filed = explode('.', $filed);
+        if (count($params_filed) > 1) {
+            $params_filed = array_reverse($params_filed);
             $master_key = array_pop($params_filed);
-            $params_filed=array_reverse($params_filed);
-            $filed1=implode('.',$params_filed);
+            $params_filed = array_reverse($params_filed);
+            $filed1 = implode('.', $params_filed);
             $params = new JRegistry;
             $params->loadString($table->{$master_key});
-            $php_content=$params->get($filed1);
+            $php_content = $params->get($filed1);
 
-        }else{
-            $php_content=$table->$filed;
+        } else {
+            $php_content = $table->$filed;
         }
-        $php_content=trim($php_content);
+        $php_content = trim($php_content);
         if (base64_encode(base64_decode($php_content, true)) === $php_content) {
             $php_content = base64_decode($php_content);
         } else {
             $php_content = '';
         }
         jimport('joomla.filesystem.file');
-        if(!JFile::exists($file_php))
-        {
-            JFile::write($file_php,$php_content);
-        }else{
+        if (!JFile::exists($file_php)) {
+            JFile::write($file_php, $php_content);
+        } else {
 
-            $file_name_change=$app->input->get('file_name_change',0);
-            $file_name_change=strtolower($file_name_change);
-            $file_php_info=pathinfo($file_php);
-            $file_name= $file_php_info['filename'];
-            $file_name=strtolower($file_name);
-            if($file_name_change==$file_name)
-            {
+            $file_name_change = $app->input->get('file_name_change', 0);
+            $file_name_change = strtolower($file_name_change);
+            $file_php_info = pathinfo($file_php);
+            $file_name = $file_php_info['filename'];
+            $file_name = strtolower($file_name);
+            if ($file_name_change == $file_name) {
 
-                $php_content=JFile::read($file_php);
-                $params_filed=explode('.',$filed);
-                if (count($params_filed)>1) {
-                    $params_filed=array_reverse($params_filed);
-                    $master_key=array_pop($params_filed);
-                    $params_filed=array_reverse($params_filed);
-                    $filed=implode('.',$params_filed);
+                $php_content = JFile::read($file_php);
+                $params_filed = explode('.', $filed);
+                if (count($params_filed) > 1) {
+                    $params_filed = array_reverse($params_filed);
+                    $master_key = array_pop($params_filed);
+                    $params_filed = array_reverse($params_filed);
+                    $filed = implode('.', $params_filed);
                     $params = new JRegistry;
                     $params->loadString($table->{$master_key});
-                    $params->set($filed,base64_encode($php_content));
-                    $table->{$master_key}=json_encode($params);
+                    $params->set($filed, base64_encode($php_content));
+                    $table->{$master_key} = json_encode($params);
 
-                }else{
-                    $table->{$filed}=base64_encode($php_content);
+                } else {
+                    $table->{$filed} = base64_encode($php_content);
                 }
-                if(!$table->store())
-                {
+                if (!$table->store()) {
                     return $table->getError();
                 }
-            }elseif($file_name_change==0){
-                JFile::write($file_php,$php_content);
+            } elseif ($file_name_change == 0) {
+                JFile::write($file_php, $php_content);
             }
         }
-        $content=include_once($file_php);
+        $content = include_once($file_php);
         return $content;
 
     }
-    public function compileLess($input,$output)
+
+    public static function compileLess($input, $output)
     {
 
-        $cssTemplate=basename($output);
+        $cssTemplate = basename($output);
 
-        if(strtolower($cssTemplate)=='bootstrap.css')
-        {
-            //return;
-        }
-        $app          = JFactory::getApplication();
-        if (!defined('FOF_INCLUDED'))
-        {
+        $app = JFactory::getApplication();
+        if (!defined('FOF_INCLUDED')) {
             require_once JPATH_ROOT . '/libraries/f0f/include.php';
         }
-        require_once JPATH_ROOT.'/libraries/f0f/less/less.php';
+        require_once JPATH_ROOT . '/libraries/f0f/less/less.php';
         $less = new F0FLess;
 
         $less->setFormatter(new F0FLessFormatterJoomla);
-
-        try
-        {
-
-            $less->compileFile($input, $output);
-
-            return true;
+        $result = $less->compileFile($input, $output);
+        if (!$result) {
+            echo $input;
+            echo "<br/>";
+            echo $result;
+            echo "<br/>";
+            die;
         }
-        catch (Exception $e)
-        {
-            $app->enqueueMessage($e->getMessage(), 'error');
-            return $e->getMessage();
-        }
+        return $result;
+
 
     }
+
     public function remove_string_javascript($str)
     {
-        preg_match_all('/<script type=\"text\/javascript">(.*?)<\/script>/s',$str,$estimates);
+        preg_match_all('/<script type=\"text\/javascript">(.*?)<\/script>/s', $str, $estimates);
         return $estimates[1][0];
 
     }
-    function googleCompressJs($jsContent) {
+
+    public function remove_string_css($str)
+    {
+        preg_match_all('/<style type=\"text\/css">(.*?)<\/style>/s', $str, $estimates);
+        return $estimates[1][0];
+
+    }
+
+    function googleCompressJs($jsContent)
+    {
         $data = array(
             'output_file_name' => 'default.js'
         , 'compilation_level' => 'SIMPLE_OPTIMIZATIONS'
@@ -216,12 +314,13 @@ class JUtility
         return $jsContent;
     }
 
-    function get_font_face_google($list_font_face) {
+    function get_font_face_google($list_font_face)
+    {
         $data = array(
-            'family' => implode('|',$list_font_face)
+            'family' => implode('|', $list_font_face)
         );
-        $data=http_build_query($data);
-        $url = 'http://fonts.googleapis.com/css?'.$data;
+        $data = http_build_query($data);
+        $url = 'http://fonts.googleapis.com/css?' . $data;
         //$jsContent=$this->compress($jsContent);
         $headers[] = 'Content-type: application/x-www-form-urlencoded';
         $process = curl_init($url);
@@ -243,7 +342,7 @@ class JUtility
         $i = 1;
         foreach ($folders as $folder) {
             $key = $listKey != '' ? $listKey . '.' . $i : $i;
-            $returnArray['folders:'.$key] = $folder;
+            $returnArray['folders:' . $key] = $folder;
             JUtility::listFolderFiles($path . '/' . $folder, $returnArray, $key);
             $i++;
         }
@@ -251,7 +350,7 @@ class JUtility
         $i = 1;
         foreach ($files as $file) {
             $key = $listKey != '' ? $listKey . '.' . $i : $i;
-            $returnArray['files:'.$key] = $file;
+            $returnArray['files:' . $key] = $file;
             $i++;
         }
 
@@ -330,7 +429,7 @@ class JUtility
         , 'task' => 'Utility.executeQuery'
         , 'query' => base64_encode($query)
         );
-        $url='';
+        $url = '';
         $url .= '?' . http_build_query($data);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -400,6 +499,7 @@ class JUtility
             }
         }
     }
+
     public function get_google_web_fonts()
     {
         require_once JPATH_ROOT . '/libraries/google-api-php-client-master/src/Google/Client.php';
@@ -412,10 +512,11 @@ class JUtility
 // client id, client secret, and to register your redirect uri.
         $client->setDeveloperKey('AIzaSyDZK_pbDD9Nb2lgAGQ46uoHNKzzMpiKOqw');
         $web_fonts = new Google_Service_Webfonts($client);
-        $list_font=$web_fonts->webfonts->listWebfonts()->getItems();
-        return  $list_font;
+        $list_font = $web_fonts->webfonts->listWebfonts()->getItems();
+        return $list_font;
 
     }
+
     function Google_Service_Pagespeedonline()
     {
         require_once JPATH_ROOT . '/libraries/google-api-php-client-master/src/Google/Client.php';
@@ -547,7 +648,7 @@ class JUtility
         file_put_contents($savePath . $fileName, $return);
     }
 
-    function getCurl($link = '', $curlopt_ssl_verifypeer = false, $curlopt_ssl_verifyhost = false, $curlopt_encoding = 'gzip', $curlopt_returntransfer = true)
+    static function  getCurl($link = '', $curlopt_ssl_verifypeer = false, $curlopt_ssl_verifyhost = false, $curlopt_encoding = 'gzip', $curlopt_returntransfer = true)
     {
         if ($link == '')
             return;
@@ -574,7 +675,7 @@ class JUtility
         return $mem;
     }
 
-    function byteFormat($bytes, $unit = "", $decimals = 2, $format = true)
+    static function byteFormat($bytes, $unit = "", $decimals = 2, $format = true)
     {
         $units = array('B' => 0, 'KB' => 1, 'MB' => 2, 'GB' => 3, 'TB' => 4,
             'PB' => 5, 'EB' => 6, 'ZB' => 7, 'YB' => 8);
@@ -620,7 +721,7 @@ class JUtility
         return $arrayResult;
     }
 
-    function byteToOtherUnit($bytes, $unit = "", $decimals = 2)
+    static function byteToOtherUnit($bytes, $unit = "", $decimals = 2)
     {
         $units = array('B' => 0, 'KB' => 1, 'MB' => 2, 'GB' => 3, 'TB' => 4,
             'PB' => 5, 'EB' => 6, 'ZB' => 7, 'YB' => 8);
@@ -648,14 +749,13 @@ class JUtility
         return $value;
     }
 
-    public function getDataSourceNameAvailable($name,$listName,$min=0,$max=1000){
-        for($i=$min;$i<$max;$i++)
-        {
-            $nameAvailable= "$name$i";
-           if(!in_array($nameAvailable,$listName))
-           {
+    public function getDataSourceNameAvailable($name, $listName, $min = 0, $max = 1000)
+    {
+        for ($i = $min; $i < $max; $i++) {
+            $nameAvailable = "$name$i";
+            if (!in_array($nameAvailable, $listName)) {
                 return $nameAvailable;
-           }
+            }
         }
     }
 

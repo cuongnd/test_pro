@@ -202,7 +202,7 @@ class JInstallerAdapterPlugin extends JAdapterInstance
 
 		// Check to see if a plugin by the same name is already installed.
 		$query = $db->getQuery(true)
-			->select($db->quoteName('extension_id'))
+			->select($db->quoteName('id'))
 			->from($db->quoteName('#__extensions'))
 			->where($db->quoteName('folder') . ' = ' . $db->quote($group))
 			->where($db->quoteName('element') . ' = ' . $db->quote($element));
@@ -468,8 +468,8 @@ class JInstallerAdapterPlugin extends JAdapterInstance
 
 			// Since we have created a plugin item, we add it to the installation step stack
 			// so that if we have to rollback the changes we can undo it.
-			$this->parent->pushStep(array('type' => 'extension', 'id' => $row->extension_id));
-			$id = $row->extension_id;
+			$this->parent->pushStep(array('type' => 'extension', 'id' => $row->id));
+			$id = $row->id;
 		}
 
 		// Let's run the queries for the plugin
@@ -491,14 +491,14 @@ class JInstallerAdapterPlugin extends JAdapterInstance
 			// Set the schema version to be the latest update version
 			if ($this->manifest->update)
 			{
-				$this->parent->setSchemaVersion($this->manifest->update->schemas, $row->extension_id);
+				$this->parent->setSchemaVersion($this->manifest->update->schemas, $row->id);
 			}
 		}
 		elseif (strtolower($this->route) == 'update')
 		{
 			if ($this->manifest->update)
 			{
-				$result = $this->parent->parseSchemaUpdates($this->manifest->update->schemas, $row->extension_id);
+				$result = $this->parent->parseSchemaUpdates($this->manifest->update->schemas, $row->id);
 
 				if ($result === false)
 				{
@@ -729,12 +729,12 @@ class JInstallerAdapterPlugin extends JAdapterInstance
 		// Remove the schema version
 		$query = $db->getQuery(true)
 			->delete('#__schemas')
-			->where('extension_id = ' . $row->extension_id);
+			->where('id = ' . $row->id);
 		$db->setQuery($query);
 		$db->execute();
 
 		// Now we will no longer need the plugin object, so let's delete it
-		$row->delete($row->extension_id);
+		$row->delete($row->id);
 		unset($row);
 
 		// Remove the plugin's folder
@@ -871,7 +871,7 @@ class JInstallerAdapterPlugin extends JAdapterInstance
 
 		if ($this->parent->extension->store())
 		{
-			return $this->parent->extension->get('extension_id');
+			return $this->parent->extension->get('id');
 		}
 		else
 		{

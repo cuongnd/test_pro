@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 
 
@@ -102,11 +105,11 @@ class JFBConnectModelAutoTune extends JModelLegacy
         if (defined('JFBCDEV'))
             $url = "http://localhost/autotune/start.php";
         else
-            $url = "http://www.sourcecoast.com/autotune/start.php";
-
+            $url = "https://www.sourcecoast.com/autotune/start.php";
 
         $opts = array();
         $opts[CURLOPT_RETURNTRANSFER] = true;
+        $opts[CURLOPT_SSL_VERIFYPEER] = false; // Not validing the SSL cert, but still sending encrypted
         $opts[CURLOPT_URL] = $url . '?task=jfbconnect.' . $task . '&format=json&' . $this->getVersionURLQuery() . '&subscriptionId=' . $subscriptionId . '&baseUrl=' . $baseUrl;
         curl_setopt_array($ch, $opts);
         $json = curl_exec($ch);
@@ -228,7 +231,7 @@ class JFBConnectModelAutoTune extends JModelLegacy
                         $val = JRequest::getVar($field->name, '___');
 
                     if ($val == '___') // not set, use the recommendation
-                    $val = isset($field->recommend) ? $field->recommend : '';
+                        $val = isset($field->recommend) ? $field->recommend : '';
 
                     if ($field->type == 'array')
                     {
@@ -238,7 +241,7 @@ class JFBConnectModelAutoTune extends JModelLegacy
                         {
                             $domain = trim($domain);
                             if ($domain != "")
-                                $val[] = urlencode($this->replaceAppValues($domain, true));
+                                $val[] = urlencode($this->getSaveValue($domain));
                         }
                         $val = json_encode($val);
                     }
@@ -253,7 +256,7 @@ class JFBConnectModelAutoTune extends JModelLegacy
                     {
 
                         $val = trim($val);
-                        $val = $this->replaceAppValues($val, true);
+                        $val = $this->getSaveValue($val);
                         //if ($val !== false && $val !== true)
                         $val = urlencode($val);
                     }
@@ -286,7 +289,7 @@ class JFBConnectModelAutoTune extends JModelLegacy
                 if (!isset($field->recommend))
                     continue;
                 if (array_key_exists($field->name, $appMigrations))
-                    $migrations[$field->name] = $this->replaceAppValues($field->recommend, true);
+                    $migrations[$field->name] = $this->getSaveValue($field->recommend);
             }
             $field = new stdClass();
             $field->name = 'migrations';
@@ -318,7 +321,7 @@ class JFBConnectModelAutoTune extends JModelLegacy
                     {
                         $field = $group->field[$j];
                         if (isset($appConfig[$field->name])) // Returned value is array
-                        $value = $appConfig[$field->name];
+                            $value = $appConfig[$field->name];
                         else if (isset($appConfig[strtolower($group->name)])) // Returned value is object
                         {
                             if (isset($appConfig[strtolower($group->name)][$field->name]))
@@ -338,14 +341,14 @@ class JFBConnectModelAutoTune extends JModelLegacy
                         }
 
                         if (!is_array($value))
-                            $value = $this->replaceAppValues($value);
+                            $value = $this->getDisplayValue($value, $field->type);
 
                         $recMet = true;
                         if (isset($field->match))
                         {
                             // get the 'pretty' display versions of values (Enabled instead of '1', etc)
                             if (isset($field->recommend))
-                                $recommend = $this->replaceAppValues($field->recommend);
+                                $recommend = $this->getDisplayValue($field->recommend, $field->type);
                             else
                                 $recommend = "";
 
@@ -442,24 +445,25 @@ class JFBConnectModelAutoTune extends JModelLegacy
      * Takes an input value and alters it either for display to the user or to be saved to the FB App
      * $prepareForSave - enable to replace with actual values used to store in FB from the displayReplacements array
      */
-    private function replaceAppValues($value, $prepareForSave = false)
+    private function getSaveValue($value)
     {
-        if ($prepareForSave)
-        {
-            if (array_key_exists($value, self::$displayReplacements))
-                $value = ''; // Remove the _BLANK_, etc type tags
-            else if ($value == "enabled" || $value == "true" || $value == '1')
-                $value = true;
-            else if ($value == "disabled" || $value == "false" || $value == '0' || $value == '')
-                $value = false;
-        }
-        else
-        {
-            if ($value === true || $value === "true" || $value === '1' || $value === 1)
-                $value = "Enabled";
-            else if ($value === false || $value === "false" || $value === '0' || $value === 0)
-                $value = "Disabled";
-        }
+        if (array_key_exists($value, self::$displayReplacements))
+            $value = ''; // Remove the _BLANK_, etc type tags
+        else if ($value == "enabled" || $value == "true" || $value == '1')
+            $value = true;
+        else if ($value == "disabled" || $value == "false" || $value == '0' || $value == '')
+            $value = false;
+        return $value;
+    }
+
+    private function getDisplayValue($value, $type)
+    {
+        if ($type != "bool" && $value == "0")
+            $value = "";
+        else if ($value === true || $value === "true" || $value === '1' || $value === 1)
+            $value = "Enabled";
+        else if ($value === false || $value === "false" || $value === '0' || $value === 0)
+            $value = "Disabled";
 
         return $value;
     }
@@ -471,17 +475,13 @@ class JFBConnectModelAutoTune extends JModelLegacy
         if ($appConfig)
             return true;
         else
-        {
-            $app = JFactory::getApplication();
-            $app->enqueueMessage(JText::_('COM_JFBCONNECT_MSG_CHECK_KEYS'), 'error');
             return false;
-        }
     }
 
     public function getAppConfig($forceUpdate = false)
     {
         $appConfig = $this->configModel->getSetting('autotune_app_config', null);
-        if ($forceUpdate)
+        if (!$appConfig || !$this->isUpToDate() || $forceUpdate)
         {
 
             $fetchFields = $this->getAppFieldsToFetch();
@@ -613,7 +613,7 @@ class JFBConnectModelAutoTune extends JModelLegacy
                 ->from($this->_db->qn('#__extensions'))
                 ->where($this->_db->qn('type') . '=' . $this->_db->q('plugin'))
                 ->where('(' . $this->_db->qn('element') . '=' . $this->_db->q('jfbcsystem') . ' OR ' .
-                $this->_db->qn('element') . '=' . $this->_db->q('cache') . ')')
+                        $this->_db->qn('element') . '=' . $this->_db->q('cache') . ')')
                 ->order($this->_db->qn('element'));
 
         // Order should always come back: cache, jfbcsystem

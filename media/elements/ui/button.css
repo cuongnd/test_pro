@@ -2,3 +2,6 @@
 	float: left;
 	width: auto;
 }
+.block-item.block-item-button.btn {
+	margin: 5px;
+}

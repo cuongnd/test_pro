@@ -625,7 +625,7 @@ body.full-screen #header {
 	position: relative;
 }
 #sidebar_front_end.hide-sidebar {
-	margin-left: -210px;
+
 }
 #sidebar_front_end #sideNav_front_end li a {
 	background: #f3f5f6 none repeat scroll 0 0;

@@ -1,12 +1,14 @@
 <?php
 /**
- * @package SourceCoast Extensions (JFBConnect, JLinked)
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         SourceCoast Extensions
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 // Check to ensure this file is included in Joomla!
-defined('_JEXEC') or die(__FILE__);
+defined('_JEXEC') or die('Restricted access');
 
 jimport('sourcecoast.utilities');
 
@@ -25,11 +27,14 @@ class OpenGraphLibrary
     private $skippedGraphTags; //array of OpenGraphTag objects that we have not added, since an isFinal was encountered
     private $overlappingTags; //array of OpenGraphTag objects that were encountered from other extensions and removed
 
+    private $blockedTags; //array of Tag names to skip, since other extensions may add them, or user wants to skip them
+
     function __construct()
     {
         $this->openGraphTags = array();
         $this->skippedGraphTags = array();
         $this->overlappingTags = array();
+        $this->blockedTags = array();
     }
 
     public function __get($name)
@@ -42,6 +47,8 @@ class OpenGraphLibrary
                 return $this->skippedGraphTags;
             case 'tagsRemoved' :
                 return $this->overlappingTags;
+            case 'tagsBlocked' :
+                return $this->blockedTags;
         }
     }
 
@@ -55,16 +62,45 @@ class OpenGraphLibrary
         return self::$libraryInstance;
     }
 
+    public function blockTag($tagName, $origin)
+    {
+        $tag = OpenGraphUtilities::getTagName($tagName); //Fully qualify the name
+        if(!in_array($tag, $this->blockedTags))
+        {
+            $this->blockedTags[] = $tag;
+            $this->skipOpenGraphTag($tag, $origin);
+        }
+    }
+
+    public function addBlockedTags($blockedFields)
+    {
+        $blockedFields = $this->prepareSkipTags($blockedFields);
+        foreach($blockedFields as $blockedTag)
+            $this->blockTag($blockedTag, 'JFBCSystem');
+    }
+
     public function buildCompleteOpenGraphList()
     {
         $openGraphTags = '';
 
         foreach ($this->openGraphTags as $ogTag)
         {
-            $openGraphTags .= $ogTag->toString();
+            if(!in_array($ogTag->name, $this->blockedTags))
+                $openGraphTags .= $ogTag->toString($this->blockedTags);
         }
 
         return $openGraphTags;
+    }
+
+    public function prepareSkipTags($skipGraphFields)
+    {
+        $tags = array();
+        $skipTags = explode(',', $skipGraphFields);
+        foreach ($skipTags as $tag)
+        {
+            $tags[] = OpenGraphUtilities::getTagName($tag);
+        }
+        return $tags;
     }
 
     public function removeOverlappingTags($contents)
@@ -153,7 +189,7 @@ class OpenGraphLibrary
     public function skipOpenGraphTag($name, $origin)
     {
         $name = OpenGraphUtilities::getTagName($name);
-        $this->openGraphTags[$name] = new SkippedOpenGraphTag($name, "Skipped", true, PRIORITY_HIGH, $origin);
+        $this->openGraphTags[$name] = new SkippedOpenGraphTag($name, "SKIPPED", true, PRIORITY_HIGH, $origin);
         return true;
     }
 
@@ -259,7 +295,7 @@ class OpenGraphTag
 
         // og:image and any custom namespace tags are allowed multiple times
         $this->allowsMultiple = ($name == 'og:image') ||
-                (strpos($name, 'og:') === false && strpos($name, 'fb:') === false);
+            (strpos($name, 'og:') === false && strpos($name, 'fb:') === false);
     }
 
     function addValue($value, $isFinal, $priority)
@@ -286,20 +322,20 @@ class OpenGraphTag
         }
     }
 
-    function toString()
+    function toString($skipGraphFields=array())
     {
         $graphValue = '';
 
         foreach ($this->value as $tagValue)
         {
             // Basic Twitter Card support
-            if($this->name == 'og:title')
+            if($this->name == 'og:title' && !in_array('twitter:title', $skipGraphFields))
                 $graphValue .= '<meta name="twitter:title" content="' . $tagValue . '"/>' . CARRIAGE_RETURN;
-            else if($this->name == 'og:type')
+            else if($this->name == 'og:type' && !in_array('twitter:card', $skipGraphFields))
                 $graphValue .= '<meta name="twitter:card" content="summary"/>' . CARRIAGE_RETURN;
-            else if($this->name == 'og:description')
+            else if($this->name == 'og:description' && !in_array('twitter:description', $skipGraphFields))
                 $graphValue .= '<meta name="twitter:description" content="' . $tagValue . '"/>' . CARRIAGE_RETURN;
-            else if($this->name == 'og:image' && strpos($graphValue, 'og:image')===false)
+            else if($this->name == 'og:image' && strpos($graphValue, 'og:image')===false && !in_array('twitter:image', $skipGraphFields))
                 $graphValue .= '<meta name="twitter:image" content="' . $tagValue . '"/>' . CARRIAGE_RETURN;
 
             //Add twitter first, so only first image is added to twitter
@@ -325,7 +361,7 @@ class SkippedOpenGraphTag extends OpenGraphTag
         $this->allowsMultiple = false;
     }
 
-    function toString()
+    function toString($skipGraphFields=array())
     {
         return '';
     }
@@ -398,7 +434,7 @@ class OpenGraphUtilities
     {
         if (SCSocialUtilities::areJFBConnectTagsEnabled())
         {
-            $appId = SCSocialUtilities::getJFBConnectAppId();
+            $appId = JFBCFactory::provider('facebook')->appId;
             if ($appId != '')
             {
                 return $appId;

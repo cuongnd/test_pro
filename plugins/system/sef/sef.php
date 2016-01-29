@@ -45,6 +45,7 @@ class PlgSystemSef extends JPlugin
 		}
 
 		$parsed = $router->parse($uri);
+
 		$fakelink = 'index.php?' . http_build_query($parsed);
 		$link = $domain . JRoute::_($fakelink, false);
 

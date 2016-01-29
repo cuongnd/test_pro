@@ -15,6 +15,7 @@ $tpl=new MSDtemplate();
 //Informationen zusammenstellen
 if ($tblr == 'Backup')
 {
+
 	$tpl->set_filenames(array(
 							'show' => './tpl/dump_select_tables.tpl'
 	));

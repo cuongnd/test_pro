@@ -26,8 +26,8 @@ class elementH1Helper extends  elementHelper
         $doc->addScript(JUri::root() ."/$dirName/$filename.js");
         $params = new JRegistry;
         $params->loadString($block->params);
-        $text=$params->get('text','text_'.$block->id);
-        $data_text=$params->get('data',new stdClass())->text;
+        $text=$params->get('element_config.text','text_'.$block->id);
+        $data_text=$params->get('data.text','');
         if($data_text)
         {
             $text=parent::getValueDataSourceByKey($data_text);

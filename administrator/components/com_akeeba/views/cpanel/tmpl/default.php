@@ -134,7 +134,7 @@ JFactory::getDocument()->addScriptDeclaration($script,'text/javascript');
 	<p>
 		<?php echo JText::_('AKEEBA_CPANEL_PIM_DESC'); ?>
 	</p>
-	<a href="index.php?option=com_postinstall&eid=<?php echo $this->extension_id?>"
+	<a href="index.php?option=com_postinstall&eid=<?php echo $this->id?>"
 		class="btn btn-primary btn-large">
 		<?php echo JText::_('AKEEBA_CPANEL_PIM_BUTTON'); ?>
 	</a>

@@ -1,55 +1,100 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fieldset name="option" description="Option" label="Option">
-            <field name="css_class" type="select2" default="" tags="1" label="Css class" onselecting="element_ui_element.add_css_class(e,$(this))" onremoveitem="element_ui_element.remove_class_css(e,$(this))"  maximumSelectionSize="10">
-            </field>
-            <field name="config_update_inputmask" readonly="readonly" type="inputmask" description="Config inputmask" label="Config inputmask"/>
+<config><fields name="params"><fields name="data">
+					<field type="bindingSource" readonly="false" label="bindingSource" default=""
+						   name="bindingSource"
 
-        </fieldset>
+												>
+											</field>
+					<field type="checkbox" label="bindingSource" default="0"
+						   name="enable_bindingsource" onchange="">
 
-        <fields name="params">
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
-                    <field name="text"  type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Text" label="Text"/>
-                </fieldset>
-            </fields>
-        </fields>
-        <fields name="params">
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="label" type="text" default="lable here" label="Label"/>
-                <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="text" type="text" default="" label="Text"/>
-                <field name="placeholder" type="text" default="" label="placeholder"/>
-                <field name="inputmask" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="config inputmask" description="config inputmask" />
-                <field name="group_add_on_left" type="icon" default="" label="Icon left"/>
-                <field name="group_add_on_right" type="icon" default="" label="Icon right"/>
+					</field>
 
-            </fieldset>
-        </fields>
+									</fields>				<fields name="element_config">
+					<field type="text" readonly="false" label="Icon left" default=""
+						   name="group_add_on_left"
 
+												>
+											</field>
+					<field type="checkbox" label="Icon left" default="0"
+						   name="enable_group_add_on_left" onchange="">
 
-    </config>
-</extension>
+					</field>
+
+									
+					<field type="text" readonly="false" label="Icon right" default=""
+						   name="group_add_on_right"
+
+												>
+											</field>
+					<field type="checkbox" label="Icon right" default="0"
+						   name="enable_group_add_on_right" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Default value" default=""
+						   name="text"
+
+												>
+											</field>
+					<field type="checkbox" label="Default value" default="0"
+						   name="enable_text" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Place holder" default=""
+						   name="placeholder"
+
+												>
+											</field>
+					<field type="checkbox" label="Place holder" default="0"
+						   name="enable_placeholder" onchange="">
+
+					</field>
+
+									
+					<field type="fieldnamebindingsourceselect2" readonly="false" label="Input name" default=""
+						   name="name"
+
+												>
+											</field>
+					<field type="checkbox" label="Input name" default="0"
+						   name="enable_name" onchange="">
+
+					</field>
+
+									
+					<field type="inputmask" readonly="false" label="Config update inputmask" default=""
+						   name="config_update_inputmask"
+
+												>
+											</field>
+					<field type="checkbox" label="Config update inputmask" default="0"
+						   name="enable_config_update_inputmask" onchange="">
+
+					</field>
+
+									<fields name="element_required">
+					<field type="radioyesno" readonly="false" label="required" default=""
+						   name="required"
+
+												>
+											</field>
+					<field type="checkbox" label="required" default="0"
+						   name="enable_required" onchange="">
+
+					</field>
+
+									
+					<field type="textarea" readonly="false" label="message" default="This field is required"
+						   name="message"
+
+												>
+											</field>
+					<field type="checkbox" label="message" default="0"
+						   name="enable_message" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</fields>				</config>

@@ -31,6 +31,7 @@ $table_control->load(array("element_path"=>$element_path));
 if(!$element_path->id)
 {
     $table_control->element_path=$element_path;
+    $table_control->type='element';
     $table_control->store();
 }
 $fields=$table_control->fields;
@@ -43,10 +44,26 @@ if(!count($fields))
     $fields=array(new stdClass());
 }
 jimport('joomla.filesystem.folder');
-$list_field_type=array();
-$list_field_type1=JFolder::files(JPATH_ROOT.'/libraries/joomla/form/fields','.php');
-$list_field_type2=JFolder::files(JPATH_ROOT.'/libraries/cms/form/field','.php');
-$list_field_type=array_merge($list_field_type1,$list_field_type2);
+
+
+
+$list_field_type = array();
+$list_path = array(
+    'libraries/joomla/form/fields',
+    'libraries/legacy/form/field',
+    'libraries/cms/form/field'
+);
+
+foreach ($list_path as $path) {
+    $_list_field_type = JFolder::files(JPATH_ROOT . '/' . $path, '.php');
+    foreach ($_list_field_type as $fied_type) {
+        $list_field_type[] = (object)array(
+            name => $fied_type,
+            path => $path . '/' . $fied_type
+        );
+    }
+}
+
 
 //get list field table position config
 $list_field_table_position_config=$db->getTableColumns('#__position_config');
@@ -79,7 +96,7 @@ ob_start();
 ob_get_clean();
 $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 
-function create_html_list($nodes,$indent='',$list_field_type,$list_field_table_position_config)
+function create_html_list($nodes,$indent='',$list_field_type,$list_field_table_position_config,$path='')
 {
 
 
@@ -91,6 +108,32 @@ $indent1=$indent!=''?$indent.'_'.$i:$i;
 $groupedlist=new JFormFieldGroupedList();
 $groupedlist->setValue($item->group);
 $childNodes = $item->children;
+$list_attribute_config = array();
+foreach ($list_field_type as $item_type) {
+    if (strtolower($item_type->name) == strtolower($item->type . '.php')) {
+        require_once JPATH_ROOT . '/' . $item_type->path;
+        $class_item_type = 'JFormField' . $item->type;
+        $class_item_type = new $class_item_type;
+        $list_attribute_config = $class_item_type->get_attribute_config();
+        break;
+    }
+}
+$item->config_property = base64_decode($item->config_property);
+$item->config_property = json_decode($item->config_property);
+$item->config_property = JArrayHelper::pivot($item->config_property, 'property_key');
+
+foreach ($list_attribute_config as $key_config_property => $value_config_property) {
+    if (!$item->config_property[$key_config_property]) {
+        $item->config_property[$key_config_property] = (object)array(
+            property_key => $key_config_property,
+            property_value => $value_config_property
+        );
+    }
+}
+$item->config_property = JArrayHelper::key_string_to_interger($item->config_property);
+$item->config_property = json_encode($item->config_property);
+$item->config_property = base64_encode($item->config_property);
+$path1=$path?$path.'.'.$item->name:$item->name;
 ob_start();
 ?>
 
@@ -102,24 +145,30 @@ ob_start();
     >
     <div class="dd-handle">
         <div class="dd-handle-move pull-left"><i class="fa-move"></i></div>
-        <?php echo $item->title ?>
-        <button onclick="view_config.remove_item_nestable(this)" class="dd-handle-remove pull-right"><i
+        <span class="key_name"><?php echo "$item->label ( $item->name ) " ?></span>
+        <button onclick="view_config.remove_item_nestable(this)" class="dd-handle-remove dd-nodrag pull-right"><i
                 class="fa-remove"></i></button>
+        <button onclick="view_config.expand_item_nestable(this)" class="dd-handle-expand dd-nodrag pull-right"><i
+                class="im-plus"></i></button>
+
     </div>
 
-    <div class="more_options">
+    <div class="more_options  dd-nodrag">
         <div>
             <button class="add_node">add node</button>
             <button class="add_sub_node">add sub node</button>
         </div>
 
-
+        <label>Path : <?php echo $path ?>.<span class="path_name"><?php echo $item->name ?></span></label>
+        <br/>
         <label>Name<input class="form-control select_field_name" style="width: 200px"  onchange="view_config.update_data_column(this,'name')"
                           value="<?php echo $item->name ?>" type="text"/></label>
         <label>default<input class="form-control" onchange="view_config.update_data_column(this,'default')"
                           value="<?php echo $item->default ?>" type="text"/></label>
         <label>label<input class="form-control" onchange="view_config.update_data_column(this,'label')"
                            value="<?php echo $item->label ?>" type="text"/></label>
+        <label>On change<input class="form-control" onchange="view_config.update_data_column(this,'onchange')"
+                           value="<?php echo $item->onchange ?>" type="text"/></label>
         <label>Icon<input class="icon_menu_item" style="width: 200px" type="text"
                           onchange="view_config.update_data_column(this,'icon')"
                           value="<?php echo $item->icon ?>"/></label>
@@ -135,12 +184,17 @@ ob_start();
 
         <label>
             type
-            <select disableChosen="true" style="width: 200px" onchange="view_config.update_data_column(this,'type')" type="hidden"  class="select2 field_type"   >
+            <select disableChosen="true" style="width: 200px"
+                    onchange="view_config.update_data_column(this,'type');view_config.update_atrribute_param_config(this)"
+                    type="hidden" class="select2 field_type">
                 <?php
-                    foreach($list_field_type as $a_item){
-                        $a_item=str_replace('.php','',$a_item);
+                foreach ($list_field_type as $a_item) {
+
+                    $a_item_name = str_replace('.php', '', $a_item->name);
                     ?>
-                    <option <?php echo $a_item===$item->type?'selected':'' ?>  value="<?php echo $a_item ?>"><?php echo $a_item ?></option>
+                    <option <?php echo $a_item_name == $item->type ? 'selected' : '' ?>
+                        data-path="<?php echo $a_item->path ?>"
+                        value="<?php echo $a_item_name ?>"><?php echo $a_item_name ?></option>
                 <?php } ?>
             </select>
 
@@ -148,16 +202,22 @@ ob_start();
         <label>Read only<input <?php echo $item->readonly == 1 ? 'checked' : '' ?>  type="checkbox"
                                                                                      onchange="view_config.update_data_column(this,'readonly','checkbox')"
                                                                                      value="1"/></label>
+        <div class="row">
 
-        <div class="config_params">
-            <table class="tbl_append_grid" data-config_params="<?php echo $item->config_params  ?>" id="tblAppendGrid_<?php echo $indent1 ?>"></table>
+            <div class="config_property col-md-6">
+                <table class="tbl_append_grid_config_property" data-config_property="<?php echo $item->config_property  ?>" id="tblAppendGrid_config_property_<?php echo $indent1 ?>"></table>
+            </div>
+            <div class="config_params col-md-6">
+                <table class="tbl_append_grid" data-config_params="<?php echo $item->config_params  ?>" id="tblAppendGrid_<?php echo $indent1 ?>"></table>
+            </div>
         </div>
+
     </div>
 
     <?php
     echo ob_get_clean();
-    if (count($childNodes) > 0) {
-        create_html_list($childNodes,$indent1,$list_field_type,$list_field_table_position_config);
+    if (is_array($childNodes) && count($childNodes) > 0) {
+        create_html_list($childNodes,$indent1,$list_field_type,$list_field_table_position_config,$path1);
     }
     echo "</li>";
     $i++;
@@ -174,6 +234,94 @@ ob_start();
                                           class="show_more_options"></label>
         </div>
     </div>
+    <?php
+    jimport('joomla.filesystem.folder');
+    $listFolder=JFolder::folders(JPATH_ROOT.'/media/elements');
+    $attr=array();
+    $option=array();
+    $options[] = JHTML::_('select.option', "","Select element");
+    foreach($listFolder as $folder)
+    {
+        $options[] = JHTML::_('select.option', '<OPTGROUP>',$folder);
+        $listElement=JFolder::files(JPATH_ROOT.'/media/elements/'.$folder,'.php');
+        foreach($listElement as $element)
+        {
+            $current_ui_path='media/elements/'.$folder.'/'.$element;
+            $element=str_replace('.php','',$element);
+            $options[] = JHTML::_('select.option', $current_ui_path,$element);
+        }
+
+
+    }
+    ?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="btn btn-primary" role="button" data-toggle="collapse" href="#you_should" aria-expanded="false" >you should split into different configurations for different devices</div>
+            <div class="collapse" id="you_should">
+                <div class="well">
+                    config_layout
+                    <ul>
+                        <li>
+                            <a>on_browser</a>
+                            <ul>
+                                <li><a>data_source</a></li>
+                                <li><a>layout(list layout in folder)</a></li>
+                                <li><a>style(list option style)</a></li>
+                                <li><a>.......</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a><a>on_android</a>
+                                <ul>
+                                    <li><a>data_source</a></li>
+                                    <li><a>layout(list option layout)</a></li>
+                                    <li><a>style(list option style)</a></li>
+                                    <li><a>......</a></li>
+                                </ul>
+                        </li>
+                        <li>
+                            <a>on_ios</a>
+                            <ul>
+                                <li><a>data_source</a></li>
+                                <li><a>layout(list option layout)</a></li>
+                                <li><a>style(list option style)</a></li>
+                                <li><a>.......</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a><a>on_windows_phone</a>
+                                <ul>
+                                    <li><a>data_source</a></li>
+                                    <li><a>layout(list option layout)</a></li>
+                                    <li><a>style(list option style)</a></li>
+                                    <li><a>.......</li>
+                                </ul>
+                        </li>
+                        <li>
+                            <a>on_blackberry</a>
+                            <ul>
+                                <li><a>data_source</a></li>
+                                <li><a>layout(list option layout)</a></li>
+                                <li><a>style(list option style)</a></li>
+                                <li><a>.......</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <label>Copy property element
+                <?php echo JHtml::_('select.genericlist', $options, 'ui_element',  trim($attr),'value','text') ?>
+            </label>
+            <button class="copy-property-this-element btn bnt-primary">copy property this element</button>
+        </div>
+    </div>
     <div class="row">
 
 
@@ -182,7 +330,7 @@ ob_start();
             <div class="cf nestable-lists">
                 <div class="row">
                     <div class="menu_type_item col-md-12" data-menu-type-id="<?php echo $menu_type_id ?>">
-                        <div id="field_block">
+                        <div id="field_block" class="dd">
                             <?php echo create_html_list($fields,'',$list_field_type,$list_field_table_position_config); ?>
                         </div>
                     </div>

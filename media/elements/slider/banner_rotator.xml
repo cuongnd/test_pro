@@ -1,0 +1,70 @@
+<config><fields name="params"><fields name="data">
+					<field type="bindingSource" readonly="false" label="bingding source" default=""
+						   name="bingdingSource"
+
+												>
+											</field>
+					<field type="checkbox" label="bingding source" default="0"
+						   name="enable_bingdingsource" onchange="">
+
+					</field>
+
+									</fields>				
+					<field type="createitem" readonly="false" label="items" default=""
+						   name="items"
+
+													 maxDepth="1" 												>
+											</field>
+					<field type="checkbox" label="items" default="0"
+						   name="enable_items" onchange="">
+
+					</field>
+
+									
+					<field type="folderlist" readonly="false" label="Folder" default=""
+						   name="folder"
+
+													 directory="images/stories/images/slideshows" 																																																			>
+											</field>
+					<field type="checkbox" label="Folder" default="0"
+						   name="enable_folder" onchange="">
+
+					</field>
+
+									
+					<field type="list" readonly="false" label="Path type" default="items"
+						   name="path_type"
+
+												>
+																							<option value="folder">folder</option>
+																																<option value="datasource">datasource</option>
+																																<option value="items">items</option>
+																				</field>
+					<field type="checkbox" label="Path type" default="0"
+						   name="enable_path_type" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Slide width" default="400"
+						   name="slide_width"
+
+												>
+											</field>
+					<field type="checkbox" label="Slide width" default="0"
+						   name="enable_slide_width" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Slide height" default="400"
+						   name="slide_height"
+
+												>
+											</field>
+					<field type="checkbox" label="Slide height" default="0"
+						   name="enable_slide_height" onchange="">
+
+					</field>
+
+									</fields>				</config>

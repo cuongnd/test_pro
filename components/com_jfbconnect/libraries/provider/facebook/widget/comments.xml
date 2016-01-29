@@ -15,7 +15,7 @@
                 <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_HREF_LABEL"
                        description="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_HREF_DESCRIPTION" default=""/>
                 <field name="mobile" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_MOBILE_LABEL"
-                       description="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_MOBILE_DESCRIPTION" default="1">
+                       description="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_MOBILE_DESCRIPTION" default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>

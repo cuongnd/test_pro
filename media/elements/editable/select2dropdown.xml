@@ -1,16 +1,78 @@
 <config><fields name="params"><fields name="data">
-					<field type="bindingSource" label="binding Source" default="" name="bindingSource" >
-																										</field>
-								
-					<field type="filterselect2" label="Filter by" default="" name="filter_by" >
-																										</field>
-								
-					<field type="advancedbindingsourceselect2" label="Data source" default="" name="data_source" >
-																										</field>
-								
-					<field type="bindingSource" label="Key" default="" name="source_key" >
-																										</field>
-								
-					<field type="bindingSource" label="Value" default="" name="source_value" >
-																										</field>
-								</fields>				</fields>				</config>
+					<field type="bindingSource" readonly="false" label="binding Source" default=""
+						   name="bindingSource"
+
+												>
+											</field>
+					<field type="checkbox" label="binding Source" default="0"
+						   name="enable_bindingsource" onchange="">
+
+					</field>
+
+									
+					<field type="filterselect2" readonly="false" label="Filter by" default=""
+						   name="filter_by"
+
+												>
+											</field>
+					<field type="checkbox" label="Filter by" default="0"
+						   name="enable_filter_by" onchange="">
+
+					</field>
+
+									
+					<field type="bindingSource" readonly="false" label="Data source editable" default=""
+						   name="binding_source_editable"
+
+												>
+											</field>
+					<field type="checkbox" label="Data source editable" default="0"
+						   name="enable_binding_source_editable" onchange="">
+
+					</field>
+
+									
+					<field type="bindingSource" readonly="false" label="Key data source editable" default=""
+						   name="key_data_source_editable"
+
+												>
+											</field>
+					<field type="checkbox" label="Key data source editable" default="0"
+						   name="enable_key_data_source_editable" onchange="">
+
+					</field>
+
+									
+					<field type="bindingSource" readonly="false" label="Value data source editable" default=""
+						   name="value_data_source_editable"
+
+												>
+											</field>
+					<field type="checkbox" label="Value data source editable" default="0"
+						   name="enable_value_data_source_editable" onchange="">
+
+					</field>
+
+									
+					<field type="bindingSource" readonly="false" label="Key" default=""
+						   name="source_key"
+
+												>
+											</field>
+					<field type="checkbox" label="Key" default="0"
+						   name="enable_source_key" onchange="">
+
+					</field>
+
+									
+					<field type="bindingSource" readonly="false" label="Value" default=""
+						   name="source_value"
+
+												>
+											</field>
+					<field type="checkbox" label="Value" default="0"
+						   name="enable_source_value" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

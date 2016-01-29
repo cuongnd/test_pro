@@ -1,0 +1,34 @@
+<config>
+					<field type="text" readonly="false" label="Title" default=""
+						   name="title" onchange=""
+
+
+												>
+											</field>
+					<field type="checkbox" label="Title" default="0"
+						   name="enable_title" onchange="">
+
+					</field>
+					
+					<field type="browserserver" readonly="false" label="Source" default=""
+						   name="source" onchange=""
+
+
+												>
+											</field>
+					<field type="checkbox" label="Source" default="0"
+						   name="enable_source" onchange="">
+
+					</field>
+					
+					<field type="textarea" readonly="false" label="Description" default=""
+						   name="description" onchange=""
+
+
+												>
+											</field>
+					<field type="checkbox" label="Description" default="0"
+						   name="enable_description" onchange="">
+
+					</field>
+					</config>

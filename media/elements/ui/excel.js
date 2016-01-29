@@ -35,7 +35,7 @@ jQuery(document).ready(function ($) {
                 });
                 excel_block[data_block_id].loadData(data);
             });
-            element_ui_button.list_function_run_befor_submit.push(element_ui_excel.update_data);
+            Joomla_post.list_function_run_befor_submit.push(element_ui_excel.update_data);
 
         },
         update_data: function (data_submit) {

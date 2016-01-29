@@ -69,15 +69,17 @@ class JMenuAdministrator extends JMenu
         try
         {
             $db->setQuery($query);
-            $this->_items = $cache->get(array($db, 'loadObjectList'), null, md5($query), false);
+            $this->_items=$db->loadObjectList();
             $this->_items=JArrayHelper::pivot($this->_items,'id');
         }
+
         catch (RuntimeException $e)
         {
             // Fatal error.
             JLog::add(JText::sprintf('JERROR_LOADING_MENUS', md5($query), $e->getMessage()), JLog::WARNING, 'jerror');
             return false;
         }
+
         foreach ($this->_items as &$item)
         {
             // Get parent information.

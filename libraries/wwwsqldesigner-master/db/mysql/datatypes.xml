@@ -15,7 +15,10 @@
 	<group label="Character" color="rgb(255,200,200)">
 		<type label="Char" length="1" sql="CHAR" quote="'"/>
 		<type label="Varchar" length="1" sql="VARCHAR"  quote="'"/>
-		<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+		<type label="Tinytext" length="0" sql="TINYTEXT" re="TINYTEXT" quote="'"/>
+		<type label="text" length="0" sql="TEXT" re="TEXT" quote="'"/>
+		<type label="mediumtext" length="0" sql="MEDIUMTEXT" re="MEDIUMTEXT" quote="'"/>
+		<type label="Longtext" length="0" sql="LONGTEXT" re="LONGTEXT" quote="'"/>
 		<type label="Binary" length="1" sql="BINARY" quote="'"/>
 		<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
 		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>

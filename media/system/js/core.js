@@ -20,11 +20,20 @@ Joomla.submitbutton = function (a) {
     Joomla.submitform(a)
 };
 
-Joomla.sethtmlfortag = function (respone_array) {
+Joomla.sethtmlfortag = function (respone_array,set_inner_type) {
     respone_array = jQuery.parseJSON(respone_array);
     jQuery.each(respone_array, function(index, respone) {
-
-        jQuery(respone.key.toString()).html(respone.contents);
+        if(typeof set_inner_type!=="undefined")
+        {
+            switch(set_inner_type) {
+                case 'append':
+                    jQuery(respone.key.toString()).append(respone.contents);
+                    break;
+            }
+        }else
+        {
+            jQuery(respone.key.toString()).html(respone.contents);
+        }
     });
 };
 Joomla.JText = {strings: {}, _: function (a, b) {

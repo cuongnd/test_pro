@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -12,6 +15,10 @@ class JFBConnectProviderPinterestWidgetShare extends JFBConnectProviderPinterest
     var $name = "Share";
     var $systemName = "share";
     var $className = "pinterest sc_pinterest";
+    var $tagName = "scpinterestshare";
+    var $examples = array (
+        '{SCPinterestShare href=http://www.sourcecoast.com image=http://www.sourcecoast.com/templates/sourcecoast/images/logo.png pin_count=above desc=Learn more about JFBConnect}'
+    );
 
     public function getTagHtml()
     {
@@ -40,7 +47,15 @@ class JFBConnectProviderPinterestWidgetShare extends JFBConnectProviderPinterest
             {
                 $tagButtonText .= $this->getField('data-pin-config', 'pin_count', null, 'none', 'data-pin-config');
             }
-            $tagButtonText .= ' data-pin-do="buttonPin" ><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" alt="Share on Pinterest"/></a>';
+            if(strpos($tagButtonText, 'above')!== false)
+            {
+                $pinItButton = 'pinit_fg_en_rect_gray_28.png';
+                $tagButtonText .= $this->getField('data-pin-height', '', null, '28', 'data-pin-height');
+            }
+            else
+                $pinItButton = 'pin_it_button.png';
+
+            $tagButtonText .= ' data-pin-do="buttonPin" ><img src="//assets.pinterest.com/images/pidgets/'.$pinItButton.'" alt="Share on Pinterest"/></a>';
         } else
             $tagButtonText = '';
         return $tagButtonText;

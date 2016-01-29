@@ -81,8 +81,8 @@ abstract class WFExtensionHelper {
                 }
 
                 $plugin->load($id);
-                // map extension_id to id
-                $plugin->id = $plugin->extension_id;
+                // map id to id
+                $plugin->id = $plugin->id;
                 
                 // store result
                 self::$plugin[$signature] = $plugin;

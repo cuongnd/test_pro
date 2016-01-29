@@ -2,16 +2,16 @@
 // MySQL Dumper Configuration
 
 // Host-Adress, default 'localhost'
-$config['dbhost'] = 'cuongnd123.ipagemysql.com';
+$config['dbhost'] = 'localhost';
 // port - if empty, mysql uses default
 $config['dbport'] = '';
 // socket - if empty, mysql uses default
 $config['dbsocket'] = '';
 
 // Username
-$config['dbuser'] = 'webtemppro';
+$config['dbuser'] = 'root';
 //User-Pass. For no Password leave empty
-$config['dbpass'] = 'dfg2325@';
+$config['dbpass'] = '123456';
 
 //Speed Values between 50 and 1000000
 //use low values if you have bad connection or slow machines

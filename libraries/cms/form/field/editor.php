@@ -240,36 +240,121 @@ class JFormFieldEditor extends JFormFieldTextarea
 	 *
 	 * @since   1.6
 	 */
+	public function get_attribute_config()
+	{
+		return array(
+			filter_field=>''
+		);
+	}
+
 	protected function getInput()
 	{
 		// Get an editor object.
-		$editor = $this->getEditor();
+
 		$doc=JFactory::getDocument();
-		$doc->addScript(JUri::root().'/ckfinder/ckfinder.js');
-		$doc->addScript(JUri::root().'/media/editors/ckeditor/ckeditor.js');
+		JHtml::_('jquery.framework');
+		JHtml::_('bootstrap.framework');
+		$doc->addScript(JUri::root().'/media/system/js/jquery.base64.js');
+		$doc->addScriptNotCompile(JUri::root().'/ckfinder/ckfinder.js');
+		$doc->addScriptNotCompile(JUri::root().'/media/editors/ckeditor/ckeditor.js');
 		$doc->addScript(JUri::root().'/media/editors/ckeditor/adapters/jquery.js');
-		$scriptId='lib_cms_form_fields_editor_'.JUserHelper::genRandomPassword();
+		$doc->addScript(JUri::root() . "/media/system/js/CodeMirror-master/lib/codemirror.js");
+		$doc->addScript(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/show-hint.js");
+		$doc->addScript(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/html-hint.js");
+		$doc->addScript(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/xml-hint.js");
+		$doc->addStyleSheet(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/show-hint.css");
+		//$doc->addScript(JUri::root().'/media/editors/ckeditor/config.js');
+
+		$doc->addScript(JUri::root().'/libraries/cms/form/field/editor.js');
+		$doc->addLessStyleSheet(JUri::root() . '/libraries/cms/form/field/editor.less');
+		if ( base64_encode(base64_decode($this->value)) === $this->value){
+
+		} else {
+			$this->value='';
+		}
+		$content=$this->value;
+		$content=base64_decode($content);
+		$data=$this->form->getData();
+		$filter_field=$this->element['filter_field'];
+		$binding_source=$data->get($filter_field,'');
+		JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/models');
+		$dataSourceModal=JModelLegacy::getInstance('DataSource','phpMyAdminModel');
+		$block_id=$data->get('id',0);
+		$list_var=$dataSourceModal->list_field_by_data_source($binding_source,$block_id);
+
+		//get menu select
+		$db=JFactory::getDbo();
+		$website=JFactory::getWebsite();
+		$query=$db->getQuery(true);
+		$query->from('#__menu As menu');
+		$query->select('CONCAT("{",menu.alias,"}")');
+		$query->leftJoin('#__menu_types AS menuType ON menuType.id=menu.menu_type_id');
+		$query->where('menuType.website_id=' . (int)$website->website_id);
+		$query->where('menuType.client_id=0');
+		$query->where('menu.alias!="root"');
+		$query->order('menu.title');
+
+		$db->setQuery($query);
+		$list_menu=$db->loadColumn();
+		$list_menu[]='{:this_host:}';
+		//end get menu
+
+		//get list style
+		$list_style='';
+		require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+		$db=JFactory::getDbo();
+		$table_control=new JTableUpdateTable($db,'control');
+		$table_control->load(array(
+			"element_path"=>'libraries/cms/form/field/stylegenerator.php',
+			'type'=>'field'
+		));
+
+
+		$fields=$table_control->fields;
+		$fields=base64_decode($fields);
+		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		$list_style=array();
+		$fields=JFormFieldEditor::get_list_style($fields,$list_style);
+
+
+		//end get list style
+		$scriptId = "script_field_editor_" . $data->get('id',0);
 		ob_start();
 		?>
-		<script type="text/javascript" id="<?php echo $scriptId ?>">
-			<?php
-				ob_get_clean();
-				ob_start();
-			?>
-			$('textarea[name="<?php echo $this->name ?>"]:not([readonly=""]').ckeditor();
-			<?php
-			 $script=ob_get_clean();
-			 ob_start();
-			  ?>
+		<script type="text/javascript">
+			jQuery(document).ready(function ($) {
+				$('#field_editor_<?php echo $data->get('id',0) ?>').field_editor({
+					input_name:"<?php echo $this->name ?>",
+					list_var:<?php echo json_encode($list_var) ?>,
+					list_menu:<?php echo json_encode($list_menu) ?>,
+					list_style:<?php echo json_encode($list_style) ?>
+				});
+
+
+			});
 		</script>
 		<?php
-		ob_get_clean();
-		$doc->addScriptDeclaration($script,"text/javascript",$scriptId);
-		return $editor->display(
-			$this->name, htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8'), $this->width, $this->height, $this->cols, $this->rows,
-			$this->buttons ? (is_array($this->buttons) ? array_merge($this->buttons, $this->hide) : $this->hide) : false, $this->id, $this->asset,
-			$this->form->getValue($this->authorField), array('syntax' => (string) $this->element['syntax'])
-		);
+		$script = ob_get_clean();
+		$script = JUtility::remove_string_javascript($script);
+		$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+		ob_start();
+		$html='';
+		?>
+		<div>
+			"Ctrl-Space": "autocomplete",
+			"Ctrl-M": "list_menu",
+			"Ctrl-E": "list_style",
+			"Ctrl-B": "autocomplete1",
+		</div>
+		<div id="field_editor_<?php echo $data->get('id',0) ?>" >
+			<textarea  class="editor"  cols="<?php echo  $this->cols ?>" rows="<?php echo $this->rows ?>"><?php echo $content ?></textarea>
+			<input type="hidden" id="<?php echo $this->id ?>" name="<?php echo $this->name ?>" value="<?php echo $this->value ?>"/>
+
+		</div>
+		<?php
+		$html=ob_get_clean();
+		return $html;
 	}
 
 	/**
@@ -279,6 +364,22 @@ class JFormFieldEditor extends JFormFieldTextarea
 	 *
 	 * @since   1.6
 	 */
+	function get_list_style($fields,&$list_style=array(),$maxLevel = 9999, $level = 0)
+	{
+		if($level<=$maxLevel) {
+			foreach ($fields as $item) {
+
+				if (is_array($item->children) && count($item->children) > 0) {
+					JFormFieldEditor::get_list_style($item->children,$list_style,$maxLevel,$level++);
+				} else {
+					$list_style[] =str_replace('_','-',$item->name);
+				}
+			}
+		}
+
+	}
+
+
 	protected function getEditor()
 	{
 		// Only create the editor if it is not already created.

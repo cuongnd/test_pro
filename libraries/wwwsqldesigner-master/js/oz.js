@@ -206,6 +206,7 @@ var OZ = {
 			if (xhr.readyState != 4) { return; }
 			if (!callback) { return; }
 			var data = (o.xml ? xhr.responseXML : xhr.responseText);
+
 			var headers = {};
 			var h = xhr.getAllResponseHeaders();
 			if (h) {

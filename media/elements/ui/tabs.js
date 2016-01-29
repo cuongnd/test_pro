@@ -1,3 +1,220 @@
+// jQuery Plugin for SprFlat admin template
+// Control options and basic function of template
+// version 1.0, 28.02.2013
+// by SuggeElson www.suggeelson.com
+
+(function ($) {
+
+    // here we go!
+    $.ui_tabs = function (element, options) {
+
+
+
+
+        // plugin's default options
+        var defaults = {
+            enableEditWebsite:false,
+            block_id:0,
+            tabs_option:{
+
+            }
+        }
+
+        // current instance of the object
+        var plugin = this;
+
+        // this will hold the merged default, and user-provided options
+        plugin.settings = {}
+
+        var $element = $(element), // reference to the jQuery version of DOM element
+            element = element;    // reference to the actual DOM element
+        // the "constructor" method that gets called when the object is created
+        var element_id=$element.attr('id');
+        plugin.init = function () {
+
+            plugin.settings = $.extend({}, defaults, options);
+            enableEditWebsite=plugin.settings.enableEditWebsite;
+            $div_wapper=$('<div class="tabs_wapper"></div>');
+            $element.children().each(function(){
+                $(this).appendTo($div_wapper);
+            });
+            $div_wapper.appendTo($element);
+
+
+
+            $ui=$('<ul></ul>');
+
+            $div_wapper.children().each(function(){
+                var tab_title=$(this).attr('data-tab-title');
+                $li=$('<li><a>'+tab_title+'</a></li>');
+                $li.appendTo($ui);
+            });
+            $ui.prependTo($element);
+
+
+
+
+            tabs_option=plugin.settings.tabs_option;
+            plugin.tabbedNav = $element.zozoTabs({
+                    position: "top-left",
+                    theme: "silver",
+                    size: "large",
+                    defaultTab: "tab2"
+                }),
+                getItem = function () {
+                    //uncomment if you want to delete current/active tab
+                    //return $(".z-tabs > ul > li.z-active").index()+1;
+                    return $("#tabIndex").val();
+                },
+                select = function (e) {
+                    tabbedNav.data("zozoTabs").select(getItem());
+                },
+                add = function (e) {
+                    tabbedNav.data("zozoTabs").add($("#addText").val(), "New Tab Content ...<br>", "test");
+                },
+                remove = function (e) {
+                    tabbedNav.data("zozoTabs").remove(getItem());
+                },
+                disable = function (e) {
+                    /*disable tab via geven index*/
+                    tabbedNav.data("zozoTabs").disable(getItem());
+                },
+                enable = function (e) {
+                    /*enable tab via geven index*/
+                    tabbedNav.data("zozoTabs").enable(getItem());
+                },
+                next = function (e) {
+                    tabbedNav.data("zozoTabs").next();
+                },
+                prev = function (e) {
+                    tabbedNav.data("zozoTabs").prev();
+                },
+                first = function (e) {
+                    tabbedNav.data("zozoTabs").first();
+                },
+                last = function (e) {
+                    tabbedNav.data("zozoTabs").last();
+                },
+                play = function (e) {
+                    tabbedNav.data("zozoTabs").play();
+                },
+                stop = function (e) {
+                    tabbedNav.data("zozoTabs").stop();
+                };
+
+
+
+
+
+        }
+        plugin.add_tab=function(){
+            block_id=plugin.settings.block_id;
+            //tab.html("<div style='background:red'>sadasdasdasdasdasdasdasd</div>")
+            ajaxInsertElement=$.ajax({
+                type: "GET",
+                url: this_host+'/index.php',
+
+                data: (function () {
+
+                    dataPost = {
+                        option: 'com_utility',
+                        task: 'utility.aJaxInsertElement',
+                        parentColumnId:block_id,
+                        menuItemActiveId:menuItemActiveId,
+                        ajaxgetcontent:1,
+                        pathElement:'media/elements/ui/tabcontent.php'
+
+                    };
+                    return dataPost;
+                })(),
+                beforeSend: function () {
+
+
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+
+                    response= $.parseJSON(response);
+                    html=$(response.html);
+                    html=$(html);
+                    block_id=response.blockId;
+                    block_parent_id=html.attr('data-block-parent-id');
+                    href='tab_content'+block_id;
+                    html.attr('id',href);
+                    li=$('<li role="presentation">' +
+                        '<a aria-controls="'+href+'" href="#'+href+'" role="tab" data-toggle="tab" >tab-content-'+block_id+'</a>' +
+                        '</li>');
+
+                    $element.find('.nav-tabs').append(li);
+                    $element.find('.tab-content').append(html);
+                    html.find('.row-content[data-block-parent-id="'+block_id+'"]').css({
+                        display:"block"
+                    });
+                    html.find('.grid-stack[data-block-parent-id="'+block_id+'"]').gridstackDivRow(optionsGridIndex);
+
+                }
+            });
+        }
+
+        plugin.remove_tab=function(self){
+            block_id=self.attr('data-block-id');
+            block_parent_id=self.attr('data-block-parent-id');
+            tab=$('.tabs[data-block-id="'+block_parent_id+'"]');
+            ajaxInsertElement=$.ajax({
+                type: "GET",
+                url: this_host+'/index.php',
+                data: (function () {
+
+                    dataPost = {
+                        option: 'com_utility',
+                        task: 'utility.aJaxRemoveElement',
+                        block_id:block_id
+
+                    };
+                    return dataPost;
+                })(),
+                beforeSend: function () {
+
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+                    tab.find('.nav-tabs li[data-block-id="'+block_id+'"]').remove();
+                    tab.find('.tab-content div.tab-pane[data-block-id="'+block_id+'"]').remove();
+
+
+
+                }
+            });
+        }
+
+        plugin.example_function = function () {
+
+        }
+        plugin.init();
+
+    }
+
+    // add the plugin to the jQuery.fn object
+    $.fn.ui_tabs = function (options) {
+
+        // iterate through the DOM elements we are attaching the plugin to
+        return this.each(function () {
+            // if plugin has not already been attached to the element
+            if (undefined == $(this).data('ui_tabs')) {
+                var plugin = new $.ui_tabs(this, options);
+                $(this).data('ui_tabs', plugin);
+
+            }
+
+        });
+
+    }
+
+})(jQuery);
+
+
+
+
 jQuery(document).ready(function($){
 
     elementuitab={
@@ -72,86 +289,7 @@ jQuery(document).ready(function($){
 
 
         },
-        add_tab:function(self){
-            object_id=self.closest('.properties.block').attr('data-object-id');
-            tab=$('.tabs[data-block-id="'+object_id+'"]');
-            //tab.html("<div style='background:red'>sadasdasdasdasdasdasdasd</div>")
-            ajaxInsertElement=$.ajax({
-                type: "GET",
-                url: this_host+'/index.php',
-
-                data: (function () {
-
-                    dataPost = {
-                        option: 'com_utility',
-                        task: 'utility.aJaxInsertElement',
-                        parentColumnId:object_id,
-                        menuItemActiveId:menuItemActiveId,
-                        ajaxgetcontent:1,
-                        pathElement:'media/elements/ui/tabcontent.php'
-
-                    };
-                    return dataPost;
-                })(),
-                beforeSend: function () {
-
-
-                    // $('.loading').popup();
-                },
-                success: function (response) {
-
-                    response= $.parseJSON(response);
-                    html=$(response.html);
-                    html=$(html);
-                    block_id=response.blockId;
-                    block_parent_id=html.attr('data-block-parent-id');
-                    href='tab_content'+block_id;
-                    html.attr('id',href);
-                    li=$('<li role="presentation">' +
-                    '<a aria-controls="'+href+'" href="#'+href+'" role="tab" data-toggle="tab" >tab-content-'+block_id+'</a>' +
-                    '</li>');
-
-                    tab.find('.nav-tabs').append(li);
-                    tab.find('.tab-content').append(html);
-                    html.find('.row-content[data-block-parent-id="'+block_id+'"]').css({
-                        display:"block"
-                    });
-                    html.find('.grid-stack[data-block-parent-id="'+block_id+'"]').gridstackDivRow(optionsGridIndex);
-
-                }
-            });
-        },
         //self button delete
-        remove_tab:function(self){
-            block_id=self.attr('data-block-id');
-            block_parent_id=self.attr('data-block-parent-id');
-            tab=$('.tabs[data-block-id="'+block_parent_id+'"]');
-            ajaxInsertElement=$.ajax({
-                type: "GET",
-                url: this_host+'/index.php',
-                data: (function () {
-
-                    dataPost = {
-                        option: 'com_utility',
-                        task: 'utility.aJaxRemoveElement',
-                        block_id:block_id
-
-                    };
-                    return dataPost;
-                })(),
-                beforeSend: function () {
-
-                    // $('.loading').popup();
-                },
-                success: function (response) {
-                    tab.find('.nav-tabs li[data-block-id="'+block_id+'"]').remove();
-                    tab.find('.tab-content div.tab-pane[data-block-id="'+block_id+'"]').remove();
-
-
-
-                }
-            });
-        }
     };
     //$('.tab_ui .remove-tab-content').click(function(){
     $(document).delegate(".tab_ui .remove-tab-content","click",function(e){

@@ -207,6 +207,16 @@ abstract class JFormField
      */
     protected $disabled = false;
 
+
+    /**
+     * The disabled state for the form field.  If true then the field will be disabled and user can't
+     * interact with the field.
+     *
+     * @var    boolean
+     * @since  3.2
+     */
+    protected $show_title = true;
+
     /**
      * The readonly state for the form field.  If true then the field will be readonly.
      *
@@ -397,8 +407,11 @@ abstract class JFormField
 
         return null;
     }
-
-    /**
+    public function get_attribute_config()
+    {
+        return array();
+    }
+        /**
      * Method to set certain otherwise inaccessible properties of the form field object.
      *
      * @param   string $name The property name for which to the the value.
@@ -580,6 +593,16 @@ abstract class JFormField
     public function setValue($value)
     {
         $this->value = $value;
+    }
+
+    public function setTitle($value)
+    {
+        $this->element['label'] = $value;
+    }
+
+    public function show_title($value)
+    {
+        $this->show_title = $value;
     }
 
     /**
@@ -850,6 +873,7 @@ abstract class JFormField
      */
     public function renderField($options = array(), $getByAjax = false, $change_to_select_data_source = false,$data_source='')
     {
+
         $app = JFactory::getApplication();
         $client = $app->getClientId();
 
@@ -881,22 +905,33 @@ abstract class JFormField
         if ($getByAjax) {
             $listFieldType = array(
                 'Text',
+                'autocompletetext',
                 'Radio',
                 'List',
+                'cssbuttonclass',
+                'datainputtype',
                 'Calendar',
                 'ModuleLayout',
                 'ChromeStyle',
                 'ContentLanguage',
                 'button',
                 'FileList',
+                'buttonstate',
                 'Textarea',
                 'Number',
                 'menu',
                 'bindingSource',
                 'color',
+                'radioyesno',
+                'folderlist',
                 'integer',
+                'rangeofintegers',
                 'BrowserServer',
                 'number',
+                'cssborderstyle',
+                'cssdisplay',
+                'csstextalign',
+                'csstextshadow',
                 'menu',
                 'menuitem',
                 'listformwizard',
@@ -910,6 +945,7 @@ abstract class JFormField
                 'table',
                 'font',
                 'fieldnamebindingsourceselect2',
+                'vmcategories',
                 '',
             );
             $db = JFactory::getDbo();
@@ -964,6 +1000,9 @@ abstract class JFormField
                     'advancedbindingsourceselect2',
                     'gridselected',
                     'stylegenerator',
+                    'createitem',
+                    'gridformartheader',
+                    'inputmask',
                     ''
                 );
                 if (in_array(strtolower($this->type), $list_type_textarea)) {
@@ -982,7 +1021,8 @@ abstract class JFormField
 							</div>';
                 }
             }
-            $html = '
+            if($this->show_title) {
+                $html = '
 				<div class="form-group">
 					<div class="col-xs-5 control-label">
 						' . JText::_($this->element['label']) . '
@@ -992,9 +1032,16 @@ abstract class JFormField
 					</div>
 				</div>
 				';
+            }else{
+                $html = '
+				<div class="form-group">
+					' . $valueHtml . '
+				</div>
+				';
+            }
             return $html;
         }
-
+        $options['show_title']=$this->show_title;
         return JLayoutHelper::render($this->renderLayout, array('input' => $this->getInput(), 'label' => $this->getLabel(), 'options' => $options));
     }
 }

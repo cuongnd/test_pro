@@ -3,11 +3,13 @@
     <fields name="attribs">
         <fieldset name="attribs">
             <field name="user_id"
-                   type="user"
+                   type="channeluserlist"
                    label="COM_JFBCONNECT_CHANNEL_USER_ID_LABEL"
                    description="COM_JFBCONNECT_CHANNEL_USER_ID_DESCRIPTION"
+                   onchange="jfbcAdmin.channels.outbound.onuserchange(this.value)"
                    default=""
                    labelclass="config_setting"
+                   class="twitter"
                     />
         </fieldset>
     </fields>

@@ -1,13 +1,14 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
-
-JLoader::register('JFBConnectProfileLinkedin', JPATH_SITE . '/components/com_jfbconnect/libraries/profiles/linkedin.php');
 
 class JFBConnectProviderLinkedin extends JFBConnectProvider
 {
@@ -64,25 +65,6 @@ class JFBConnectProviderLinkedin extends JFBConnectProvider
         }
     }
 
-    function loginButton($params = null)
-    {
-        $googleLogin = "";
-        if ($this->appId != "") // Basic check to make sure something is set and the Google Login has a chance of working
-        {
-            if (isset($params['buttonType']) && $params['buttonType'] == 'javascript')
-            {
-                $buttonSize = $params['buttonSize'];
-                $renderKey = $this->getSocialTagRenderKey();
-                $renderKeyStr = $renderKey != "" ? " key=" . $renderKey : "";
-                return '{SCLinkedinLogin size=' . $buttonSize . $renderKeyStr . '}';
-            }
-            else
-                $googleLogin = $this->getLoginButtonWithImage($params, 'scLinkedinLogin', 'sc_lilogin');
-        }
-
-        return $googleLogin;
-    }
-
     /* getProviderUserId
     * Gets the provider User IdFacebook. This is regardless of whether they are mapped to an
     *  existing Joomla account.
@@ -111,17 +93,27 @@ class JFBConnectProviderLinkedin extends JFBConnectProvider
         $head = '';
         if ($this->needsJavascript)
         {
-            $uri = JURI::getInstance();
-            $scheme = $uri->getScheme();
+            $initJS = array_flip(array_flip($this->addJavascriptInit())); //flip to avoid the same value
+
+            $extraJS = '';
+            if($count = count($initJS))
+            {
+                $extraJS = ",\n";
+                $i = 0;
+                foreach($initJS as $xtrajs)
+                {
+                    $extraJS .=  $xtrajs;
+                    $extraJS .= $i == $count ? ",\n" : "\n";
+                    $i++;
+                }
+            }
 
             $inJS = '<script type="text/javascript" src="//platform.linkedin.com/in.js?async=true"></script>' . "\n";
             $initJs = "IN.init({\n" .
                 "api_key: '" . $this->appId . "',\n" .
-                'authorize: false' . "\n" .
+                'authorize: false' .
+                $extraJS .
                 '});';
-
-            if ($scheme == 'https')
-                $initJs .= "IN.Event.on(IN,'frameworkLoaded',function(){if(/^https:\/\//i.test(location.href)){IN.ENV.images.sprite='https://www.linkedin.com/scds/common/u/img/sprite/'+IN.ENV.images.sprite.split('/').pop()}});";
 
             $javascript = $inJS .
                 '<script type="text/javascript">' .

@@ -23,7 +23,7 @@ JHtml::_('behavior.formvalidation');
 	}
 </script>
 
-<form action="<?php echo JRoute::_('index.php?option=com_plugins&layout=edit&extension_id='.(int) $this->item->extension_id); ?>" method="post" name="adminForm" id="style-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_plugins&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="style-form" class="form-validate">
 	<div class="col main-section">
 		<fieldset class="adminform">
 			<legend><?php echo JText::_('JDETAILS') ?></legend>
@@ -48,9 +48,9 @@ JHtml::_('behavior.formvalidation');
 			<li><?php echo $this->form->getLabel('element'); ?>
 			<?php echo $this->form->getInput('element'); ?></li>
 
-			<?php if ($this->item->extension_id) : ?>
-				<li><?php echo $this->form->getLabel('extension_id'); ?>
-				<?php echo $this->form->getInput('extension_id'); ?></li>
+			<?php if ($this->item->id) : ?>
+				<li><?php echo $this->form->getLabel('id'); ?>
+				<?php echo $this->form->getInput('id'); ?></li>
 			<?php endif; ?>
 			</ul>
 			<!-- Plugin metadata -->
@@ -74,7 +74,7 @@ JHtml::_('behavior.formvalidation');
 	</div>
 
 	<div class="col options-section">
-	<?php echo JHtml::_('sliders.start', 'plugin-sliders-'.$this->item->extension_id); ?>
+	<?php echo JHtml::_('sliders.start', 'plugin-sliders-'.$this->item->id); ?>
 
 		<?php echo $this->loadTemplate('options'); ?>
 

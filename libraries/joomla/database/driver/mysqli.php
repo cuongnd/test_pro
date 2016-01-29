@@ -561,7 +561,16 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 		{
 			// Add the query to the object queue.
 			$this->log[] = $query;
+			if(count($this->log)>90)
+			{
+				echo "too many query";
+				echo "<pre>";
+				print_r($this->log);
+				print_r(JUtility::printDebugBacktrace());
+				echo "</pre>";
+				die;
 
+			}
 			JLog::add($query, JLog::DEBUG, 'databasequery');
 
 			$this->timings[] = microtime(true);
@@ -577,7 +586,7 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 
 		// Execute the query. Error suppression is used here to prevent warnings/notices that the connection has been lost.
 		$this->cursor = @mysqli_query($this->connection, $query);
-
+		//cuongnd
 		if ($this->debug)
 		{
 			$this->timings[] = microtime(true);
@@ -593,7 +602,7 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 
 			$this->callStacks[count($this->callStacks) - 1][0]['memory'] = array($memoryBefore, memory_get_usage(), is_object($this->cursor) ? $this->getNumRows() : null);
 		}
-
+		//cuongnd
 		// If an error occurred handle it.
 		if (!$this->cursor)
 		{

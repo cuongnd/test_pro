@@ -155,6 +155,7 @@
     var _defaultHideButtons = { append: false, removeLast: false, insert: false, remove: false, moveUp: false, moveDown: false };
     var _methods = {
         init: function (options) {
+
             var target = this;
             if (target.length > 0) {
                 // Check mandatory paramters included

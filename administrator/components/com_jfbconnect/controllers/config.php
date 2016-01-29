@@ -1,9 +1,10 @@
 <?php
-
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 // Check to ensure this file is included in Joomla!
@@ -15,17 +16,8 @@ class JFBConnectControllerConfig extends JFBConnectController
     {
         $app = JFactory::getApplication();
         $configs = JRequest::get('POST', 4);
-        $model = JFBCFactory::config();
+        JFBCFactory::config()->saveSettings($configs);
 
-        //$configs = JRequest::getVar('config', array(), 'post', 'array');
-        $providers = JFBCFactory::getAllProviders();
-        foreach ($providers as $p)
-        {
-            $pConfig = JRequest::getVar('jfbconnect_provider_' . $p->name, array(), 'post', 'array');
-            $configs = array_merge($configs, $pConfig);
-        }
-
-        $model->saveSettings($configs);
         $app->enqueueMessage(JText::_('COM_JFBCONNECT_MSG_SETTINGS_UPDATED'));
         $this->display();
     }

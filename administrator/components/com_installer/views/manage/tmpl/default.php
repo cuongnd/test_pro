@@ -100,7 +100,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 						<?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_FOLDER', 'folder', $listDirn, $listOrder); ?>
 					</th>
 					<th width="10">
-						<?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_ID', 'extension_id', $listDirn, $listOrder); ?>
+						<?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_ID', 'id', $listDirn, $listOrder); ?>
 					</th>
 				</tr>
 			</thead>

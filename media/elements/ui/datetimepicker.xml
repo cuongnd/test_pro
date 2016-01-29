@@ -1,55 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fieldset name="option" description="Option" label="Option">
-            <field name="css_class" type="select2" default="" tags="1" label="Css class" onselecting="element_ui_element.add_css_class(e,$(this))" onremoveitem="element_ui_element.remove_class_css(e,$(this))"  maximumSelectionSize="10">
-            </field>
-            <field name="config_update_inputmask" readonly="readonly" type="inputmask" description="Config inputmask" label="Config inputmask"/>
+<config><fields name="params">
+					<field type="text" readonly="false" label="Element config" default=""
+						   name="element_config"
 
-        </fieldset>
+												>
+											</field>
+					<field type="checkbox" label="Element config" default="0"
+						   name="enable_element_config" onchange="">
 
-        <fields name="params">
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
-                    <field name="text"  type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Text" label="Text"/>
-                </fieldset>
-            </fields>
-        </fields>
-        <fields name="params">
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="label" type="text" default="lable here" label="Label"/>
-                <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="text" type="text" default="" label="Text"/>
-                <field name="placeholder" type="text" default="" label="placeholder"/>
-                <field name="inputmask" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="config inputmask" description="config inputmask" />
-                <field name="group_add_on_left" type="icon" default="" label="Icon left"/>
-                <field name="group_add_on_right" type="icon" default="" label="Icon right"/>
+					</field>
 
-            </fieldset>
-        </fields>
-
-
-    </config>
-</extension>
+									</fields>				</config>

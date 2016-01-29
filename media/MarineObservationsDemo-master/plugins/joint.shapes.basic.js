@@ -259,7 +259,7 @@ joint.shapes.basic.TextBlock = joint.shapes.basic.Generic.extend({
              // if foreignObject supported
 
              '<foreignObject requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" class="fobj">',
-             '<body xmlns="http://www.w3.org/1999/xhtml"><div/><input/></body>',
+             '<body xmlns="http://www.w3.org/1999/xhtml"><div/></body>',
              '</foreignObject>',
 
              // else foreignObject is not supported (fallback for IE)

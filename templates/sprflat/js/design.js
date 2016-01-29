@@ -1,9 +1,6 @@
 jQuery(document).ready(function ($) {
     $(document).bind('keypress', function(event) {
-
-        if( event.which === 81 && event.shiftKey ) {
-            Joomla.design_website.auto_build_less_again();
-        }
+        //shift+q
         if( event.which === 81 && event.shiftKey ) {
             Joomla.design_website.auto_build_less_again();
         }
@@ -117,7 +114,8 @@ jQuery(document).ready(function ($) {
         },
         init_design_website:function(){
 
-            Joomla.design_website.build_grid_database_manager(Joomla.design_website.seting.list_data_source);
+
+            //Joomla.design_website.build_grid_database_manager(Joomla.design_website.seting.list_data_source);
         },
         auto_build_less_again: function () {
             $.ajax({
@@ -154,65 +152,6 @@ jQuery(document).ready(function ($) {
             $('link[rel="stylesheet"][href="'+this_host+href+'"]').remove();
             $('link[rel="stylesheet"][data-source="'+this_host+href+'"]').remove();
             $('head').append('<link href="'+this_host+href.replace(/\?.*|$/, queryString)+'" data-source="'+this_host+href+'" type="text/css" rel="stylesheet">');
-        },
-        menu_manager:function(){
-            ajax_web_design=$.ajax({
-                type: "GET",
-                dataType: "json",
-                cache: false,
-                url: this_host+'/index.php',
-                data: (function () {
-
-                    dataPost = {
-                        option: 'com_menus',
-                        view: 'menus',
-                        tmpl:'ajax_json',
-                        layout:'ajaxloader'
-
-                    };
-                    return dataPost;
-                })(),
-                beforeSend: function () {
-                    $('.div-loading').css({
-                        display: "block"
-
-
-                    });
-                    // $('.loading').popup();
-                },
-                success: function (response) {
-                    $('.div-loading').css({
-                        display: "none"
-
-
-                    });
-                    if(!$('.menus-config').length) {
-                        html = $('<div class="panel menu panel-primary menus-config  panelMove toggle panelRefresh panelClose"  >' +
-                            '<div class="panel-heading menu-handle">' +
-                            '<h4 class="panel-title">Menu manager</h4>' +
-
-                            '</div>' +
-                            '<div class="panel-body menu"></div>' +
-                            '<div class="panel-footer menu-handle-footer">' +
-                            '<button class="btn btn-danger save-block-property pull-right" onclick="menu_ajax_loader.save_and_close(self)" ><i class="fa-save"></i>Save&close</button>&nbsp;&nbsp;' +
-                            '<button class="btn btn-danger apply-block-property pull-right" onclick="menu_ajax_loader.save(self)" ><i class="fa-save"></i>Save</button>&nbsp;&nbsp;' +
-                            '<button class="btn btn-danger cancel-block-property pull-right" onclick="menu_ajax_loader.cancel(self)"><i class="fa-save"></i>Cancel</button>' +
-                            '</div>'+
-                            '</div>'
-                        );
-                        $('body').prepend(html);
-
-                        html.draggable({
-                            handle: '.menu-handle,.menu-handle-footer'
-                        });
-                    }
-                    Joomla.sethtmlfortag1(response);
-
-
-
-                }
-            });
-
         },
         element_config:function(e_taget){
             var element_config=e_taget.attr('element-config');
@@ -267,6 +206,73 @@ jQuery(document).ready(function ($) {
 
                         html.draggable({
                             handle: '.element-handle,.element-handle-footer'
+                        });
+                    }
+                    Joomla.sethtmlfortag1(response);
+
+
+
+                }
+            });
+
+        },
+        module_config:function(e_taget){
+            var type=e_taget.data('type');
+            var element_path=e_taget.data('element_path');
+            if(type=='config_field_module'){
+                var element_path='root_module';
+            }
+            var id=e_taget.data('id');
+            ajax_web_design=$.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: this_host+'/index.php',
+                data: (function () {
+
+                    dataPost = {
+                        option: 'com_modules',
+                        view: 'module',
+                        tmpl:'ajax_json',
+                        layout:'config',
+                        id:id,
+                        element_path:element_path
+
+                    };
+
+                    return dataPost;
+                })(),
+                beforeSend: function () {
+                    $('.div-loading').css({
+                        display: "block"
+                    });
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+                    $('.div-loading').css({
+                        display: "none"
+
+
+                    });
+                    var html='';
+                    if(!$('.extension-module-config').length) {
+                        html = $('<div class="panel module panel-primary extension-module-config  panelMove toggle panelRefresh panelClose"  >' +
+                            '<div class="panel-heading module-handle">' +
+                            '<h4 class="panel-title">module manager</h4>' +
+
+                            '</div>' +
+                            '<div class="panel-body module"></div>' +
+                            '<div class="panel-footer module-handle-footer">' +
+                            '<button class="btn btn-danger save-block-property pull-right" onclick="view_module_config.save_and_close(self)" ><i class="fa-save"></i>Save&close</button>&nbsp;&nbsp;' +
+                            '<button class="btn btn-danger apply-block-property pull-right" onclick="view_module_config.save(self)" ><i class="fa-save"></i>Save</button>&nbsp;&nbsp;' +
+                            '<button class="btn btn-danger cancel-block-property pull-right" onclick="view_module_config.cancel(self)"><i class="fa-save"></i>Cancel</button>' +
+                            '</div>'+
+                            '</div>'
+                        );
+                        $('body').prepend(html);
+
+                        html.draggable({
+                            handle: '.module-handle,.module-handle-footer'
                         });
                     }
                     Joomla.sethtmlfortag1(response);
@@ -429,6 +435,13 @@ jQuery(document).ready(function ($) {
                 }
             });
         },
+        rebuild_sprFlat:function(){
+            sprFlat=$('body').data('sprFlat');
+            sprFlat.sideBarNav();
+            sprFlat.setCurrentNav();
+            console.log(sprFlat);
+        },
+
         save_content_php_menu_item:function(self,menu_item_id,close_edit){
             var php_content=$('#php_content').val();
             php_content= base64.encode(php_content);
@@ -484,15 +497,6 @@ jQuery(document).ready(function ($) {
                     pageSize: 20
                 },
                 height: 550,
-                groupable: true,
-                sortable: true,
-                pageable: {
-                    refresh: true,
-                    buttonCount: 5
-                },
-                columnMenu:true,
-                filterable:true,
-                editable:false,
                 columns: [
                     { field: "datasource.id", title: "Id", width: "50px" },
                     {
@@ -507,6 +511,314 @@ jQuery(document).ready(function ($) {
                 ]
             });
         },
+        ajax_load_menu_page:function(self,_this,e)
+        {
+            add_html_completed=self.data('add_html_completed');
+            if(typeof add_html_completed==="undefined")
+            {
+                web_design = $.ajax({
+                    type: "GET",
+                    url: this_host + '/index.php',
+                    data: (function () {
+
+                        dataPost = {
+                            option: 'com_menus',
+                            task: 'items.ajax_load_menu_page'
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        self.data('add_html_completed',true);
+                        Joomla.sethtmlfortag(response,'append');
+                        sprFlat=$('body').data('sprFlat');
+                        sprFlat.sideBarNav();
+                        //set current class on nav
+                        sprFlat.setCurrentNav();
+                        //toggle sidebar
+                        sprFlat.toggleSidebar();
+                        sprFlat.side_nav_click(_this,e);
+
+
+                    }
+                });
+            }else{
+                sprFlat.side_nav_click(_this,e);
+            }
+
+        },
+        ajax_load_element:function(self,_this,e)
+        {
+            add_html_completed=self.data('add_html_completed');
+            if(typeof add_html_completed==="undefined")
+            {
+                web_design = $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: this_host + '/index.php',
+                    data: (function () {
+
+                        dataPost = {
+                            option: 'com_utility',
+                            view: 'blocks',
+                            layout:'default',
+                            tpl:'loadelement',
+                            tmpl:'ajax_json'
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        self.data('add_html_completed',true);
+                        Joomla.sethtmlfortag1(response,'append');
+                        sprFlat=$('body').data('sprFlat');
+                        sprFlat.sideBarNav();
+                        //set current class on nav
+                        sprFlat.setCurrentNav();
+                        //toggle sidebar
+                        sprFlat.toggleSidebar();
+                        sprFlat.side_nav_click(_this,e);
+
+
+                    }
+                });
+            }else{
+                sprFlat.side_nav_click(_this,e);
+            }
+
+        },
+        ajax_load_component:function(self,_this,e)
+        {
+            add_html_completed=self.data('add_html_completed');
+            if(typeof add_html_completed==="undefined")
+            {
+                web_design = $.ajax({
+                    type: "GET",
+                    url: this_host + '/index.php',
+                    data: (function () {
+
+                        dataPost = {
+                            option: 'com_components',
+                            task: 'components.ajax_load_component'
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        self.data('add_html_completed',true);
+                        Joomla.sethtmlfortag(response,'append');
+                        sprFlat=$('body').data('sprFlat');
+                        sprFlat.sideBarNav();
+                        //set current class on nav
+                        sprFlat.setCurrentNav();
+                        //toggle sidebar
+                        sprFlat.toggleSidebar();
+                        sprFlat.side_nav_click(_this,e);
+
+                        $(".load_component .item-element").draggable({
+                            appendTo: 'body',
+                            helper: "clone"
+                            /* revert:true,
+                             proxy:'clone'*/
+                        });
+
+                    }
+                });
+            }else{
+                sprFlat.side_nav_click(_this,e);
+            }
+
+        },
+        ajax_load_modules:function(self,_this,e)
+        {
+            add_html_completed=self.data('add_html_completed');
+            if(typeof add_html_completed==="undefined")
+            {
+                web_design = $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: this_host + '/index.php',
+                    data: (function () {
+
+                        dataPost = {
+                            option: 'com_modules',
+                            view: 'modules',
+                            layout:'default',
+                            tpl:'loadmodules',
+                            tmpl:'ajax_json'
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        self.data('add_html_completed',true);
+                        Joomla.sethtmlfortag1(response,'append');
+                        sprFlat=$('body').data('sprFlat');
+                        sprFlat.sideBarNav();
+                        //set current class on nav
+                        sprFlat.setCurrentNav();
+                        //toggle sidebar
+                        sprFlat.toggleSidebar();
+                        sprFlat.side_nav_click(_this,e);
+
+
+                    }
+                });
+            }else{
+                sprFlat.side_nav_click(_this,e);
+            }
+
+        },
+        ajax_load_plugins:function(self,_this,e)
+        {
+            add_html_completed=self.data('add_html_completed');
+            if(typeof add_html_completed==="undefined")
+            {
+                web_design = $.ajax({
+                    type: "GET",
+                    url: this_host + '/index.php',
+                    data: (function () {
+
+                        dataPost = {
+                            option: 'com_plugins',
+                            task: 'plugins.ajax_load_plugins'
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        self.data('add_html_completed',true);
+                        Joomla.sethtmlfortag(response,'append');
+                        sprFlat=$('body').data('sprFlat');
+                        sprFlat.sideBarNav();
+                        //set current class on nav
+                        sprFlat.setCurrentNav();
+                        //toggle sidebar
+                        sprFlat.toggleSidebar();
+                        sprFlat.side_nav_click(_this,e);
+
+
+                    }
+                });
+            }else{
+                sprFlat.side_nav_click(_this,e);
+            }
+
+        },
+        ajax_load_datasources:function(self,_this,e)
+        {
+            add_html_completed=self.data('add_html_completed');
+            if(typeof add_html_completed==="undefined")
+            {
+                web_design = $.ajax({
+                    type: "GET",
+                    url: this_host + '/index.php',
+                    data: (function () {
+
+                        dataPost = {
+                            option: 'com_phpmyadmin',
+                            task: 'datasources.ajax_load_datasources'
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        self.data('add_html_completed',true);
+                        Joomla.sethtmlfortag(response,'append');
+                        sprFlat=$('body').data('sprFlat');
+                        sprFlat.sideBarNav();
+                        //set current class on nav
+                        sprFlat.setCurrentNav();
+                        //toggle sidebar
+                        sprFlat.toggleSidebar();
+                        sprFlat.side_nav_click(_this,e);
+
+                    }
+                });
+            }else{
+                sprFlat.side_nav_click(_this,e);
+            }
+
+        },
+
         save_content_php_datasource:function(self,binding_source_id,close_edit){
             var php_content=$('#php_content').val();
             php_content= base64.encode(php_content);
@@ -1657,6 +1969,7 @@ jQuery(document).ready(function ($) {
                     uiDraggable.addClass('module-draggable');
 
                     //uiDraggable.appendTo(droppable);
+                    console.log('sdfsdfsdfd');
                     renderModule(uiDraggable, position, droppable);
                 } else if (uiDraggable.hasClass('view_item')) {
                     if ($('.panel-component').length && $(this).find('.panel-component').length == 0) {
@@ -1753,6 +2066,7 @@ jQuery(document).ready(function ($) {
                 // $('.loading').popup();
             },
             success: function (response) {
+                alert('insert datasource successful');
                 respons = $.parseJSON(response);
                 addOn = $(respons.addOnContent);
                 $('.list-add-one').append(addOn);
@@ -1771,9 +2085,13 @@ jQuery(document).ready(function ($) {
     }
 
     function renderComponent(uiDraggable, block_id, droppable) {
-        item_view = uiDraggable.attr('data-view');
-
-        item_component = uiDraggable.attr('data-component');
+        var item_view = uiDraggable.attr('data-view');
+        var item_layout = uiDraggable.attr('data-layout');
+        if(typeof item_layout==undefined)
+        {
+            item_layout='default';
+        }
+        var item_component = uiDraggable.attr('data-component');
         $.ajax({
             type: "GET",
             url: this_host + '/index.php',
@@ -1782,6 +2100,7 @@ jQuery(document).ready(function ($) {
                 dataPost = {
                     option: 'com_menus',
                     task: 'item.aJaxInsertComponent',
+                    item_layout: item_layout,
                     item_view: item_view,
                     item_component: item_component,
                     screenSize: screenSize,
@@ -1897,7 +2216,10 @@ jQuery(document).ready(function ($) {
                     createSortableElement($('.position-content[data-block-id="' + parentBlockId + '"]'));
                 }
                 createDroppable($('.enable-create-drop-element'));
-                element_ui_div_row.init_div_row();
+                if(element_type_droppable=="divrow")
+                {
+                    element_ui_div_row.init_div_row();
+                }
 
 
             }
@@ -2274,17 +2596,55 @@ jQuery(document).ready(function ($) {
         screenSize = screenSize.toLowerCase();
         screenSize = screenSize.split('x');
         heightScreenSize = screenSize[1];
-        if (state) {
-            $('.screen-layout').css({
-                "height": "auto",
-                "overflow-y": "hidden"
-            });
-        } else {
-            $('.screen-layout').css({
-                "height": heightScreenSize,
-                "overflow-y": "scroll"
-            });
-        }
+
+        web_design = $.ajax({
+            type: "GET",
+            url: this_host + '/index.php',
+            data: (function () {
+
+                dataPost = {
+                    option: 'com_users',
+
+                    task: 'user.ajax_set_key_of_params',
+                    key_params:'option.webdesign.full_height_state',
+                    value_key_params:state
+
+                };
+                return dataPost;
+            })(),
+            beforeSend: function () {
+                $('.div-loading').css({
+                    display: "block"
+
+
+                });
+                // $('.loading').popup();
+            },
+            success: function (response) {
+                $('.div-loading').css({
+                    display: "none"
+
+
+                });
+                if (state) {
+                    $('.screen-layout').css({
+                        "height": "auto",
+                        "overflow-y": "hidden"
+                    });
+                } else {
+                    $('.screen-layout').css({
+                        "height": heightScreenSize,
+                        "overflow-y": "scroll"
+                    });
+                }
+
+
+            }
+        });
+
+
+
+
     });
     //disableEditWidget=$('.disable_widget').is(':checked');
 
@@ -2448,7 +2808,6 @@ jQuery(document).ready(function ($) {
         });
     }
 
-
     changeBackground(currentScreenSizeEditing);
     function changeBackground(selected) {
         screenSize = selected;
@@ -2456,13 +2815,16 @@ jQuery(document).ready(function ($) {
         selected = selected.toLowerCase();
         selected = selected.split('x');
 
+        if(!$('#full_height').bootstrapSwitch('state'))
+        {
+            $('.screen-layout').css({
+                "width": selected[0].toString() + 'px',
+                "height": selected[1].toString() + 'px',
+                "overflow-y": "scroll",
+                "overflow-x": "hidden"
+            });
 
-        $('.screen-layout').css({
-            "width": selected[0].toString() + 'px',
-            "height": selected[1].toString() + 'px',
-            "overflow-y": "scroll",
-            "overflow-x": "hidden"
-        });
+        }
         /*$(".screen-layout").mCustomScrollbar({
          theme:"light",
          set_width:false,
@@ -2487,6 +2849,65 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    $(document).on('click', '.website_properties', function () {
+        ajax_web_design=$.ajax({
+            type: "GET",
+            dataType: "json",
+            cache: false,
+            url: this_host+'/index.php',
+            data: (function () {
+
+                dataPost = {
+                    option: 'com_menus',
+                    view: 'item',
+                    tmpl:'ajax_json',
+                    layout:'default',
+                    tpl:'config'
+
+                };
+                return dataPost;
+            })(),
+            beforeSend: function () {
+                $('.div-loading').css({
+                    display: "block"
+                });
+                // $('.loading').popup();
+            },
+            success: function (response) {
+                $('.div-loading').css({
+                    display: "none"
+
+
+                });
+                var html='';
+                if(!$('.menu-item-config').length) {
+                    html = $('<div class="panel element panel-primary menu-item-config  panelMove toggle panelRefresh panelClose"  >' +
+                        '<div class="panel-heading menu-item-handle">' +
+                        '<h4 class="panel-title">menu-item manager</h4>' +
+
+                        '</div>' +
+                        '<div class="panel-body menu-item"></div>' +
+                        '<div class="panel-footer menu-item-handle-footer">' +
+                        '<button class="btn btn-danger save-block-property pull-right" onclick="view_config_menu_item.save_and_close(self)" ><i class="fa-save"></i>Save&close</button>&nbsp;&nbsp;' +
+                        '<button class="btn btn-danger apply-block-property pull-right" onclick="view_config_menu_item.save(self)" ><i class="fa-save"></i>Save</button>&nbsp;&nbsp;' +
+                        '<button class="btn btn-danger cancel-block-property pull-right" onclick="view_config_menu_item.cancel(self)"><i class="fa-save"></i>Cancel</button>' +
+                        '</div>'+
+                        '</div>'
+                    );
+                    $('body').prepend(html);
+
+                    html.draggable({
+                        handle: '.menu-item-handle,.menu-item-handle-footer'
+                    });
+                }
+                Joomla.sethtmlfortag1(response);
+
+
+
+            }
+        });
+
+    });
     $(document).on('click', '.calculator', function () {
 
         max_data_gs_x = 0;

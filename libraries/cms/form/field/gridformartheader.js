@@ -1,186 +1,267 @@
-jQuery(document).ready(function ($) {
-    gridformartheader = {
-        data_column: {},
-        data_command: {},
-        list_icon: {},
-        option_draggable: {
-            appendTo: 'body',
-            /*helper: function(){
-             dd_list= $('.dd-list:first').clone(true);
-             dd_list.empty();
-             dd_list.addClass('dd-dragel');
-             dd_item= $('.dd-item:last').clone(true);
-             dd_list.append(dd_item);
-             return dd_list;
-             },*/
-            helper: 'clone',
+(function ($) {
 
-            start: function (event, ui) {
-            },
-            drag: function (event, ui) {
+    // here we go!
+    $.field_gridformartheader = function (element, options) {
 
+        // plugin's default options
+        var defaults = {
 
-            }
-        },
-        table_name_option: {
-            ajax: {
-                url: this_host + "/index.php?option=com_phpmyadmin&task=tables.ajax_get_list_table",
-                dataType: 'json',
-                delay: 250,
-                data: function (term, page) {
-                    return {
-                        keyword: term
-                    };
+            data_column: {},
+            data_command: {},
+            list_icon: {},
+            field_name: '',
+            field_id: '',
+            option_draggable: {
+                appendTo: 'body',
+                /*helper: function(){
+                 dd_list= $('.dd-list:first').clone(true);
+                 dd_list.empty();
+                 dd_list.addClass('dd-dragel');
+                 dd_item= $('.dd-item:last').clone(true);
+                 dd_list.append(dd_item);
+                 return dd_list;
+                 },*/
+                helper: 'clone',
+
+                start: function (event, ui) {
                 },
-
-                results: function (data) {
-                    return {results: data};
-                },
-                cache: true
-
-            },
-            initSelection: function (element, callback) {
-                item = {
-                    id: element.val(),
-                    text: element.val()
-                };
-                return callback(item);
-            },
-            escapeMarkup: function (markup) {
-                return markup;
-            }, // let our custom formatter work
-            minimumInputLength: 1
-        },
-        column_name_option: {
-            data: function () {
-                data_post = gridformartheader.data_column;
-
-                return {results: data_post};
-            },
-            initSelection: function (element, callback) {
-                item = {
-                    id: element.val(),
-                    text: element.val()
-                };
-                return callback(item);
-            }
-        },
-        link_key_option: {
-            data: function () {
-                data_post = gridformartheader.data_column;
-
-                return {results: data_post};
-            },
-            initSelection: function (element, callback) {
-                item = {
-                    id: element.val(),
-                    text: element.val()
-                };
-                return callback(item);
-            }
-        },
-        show_command_option: {
-            tags: "true",
-            data: function () {
-                data_post = gridformartheader.data_command;
-
-                return {results: data_post};
-            },
-            tokenSeparators	: [",", " "]
-        },
-        post_name_option: {
-            data: function () {
-                data_post = new Array();
-                i = 0;
-                $(':input[enable-submit="true"],:selected[enable-submit="true"]').each(function () {
-                    name = $(this).attr('name');
-                    item = {
-                        id: name,
-                        text: name
-                    };
-                    data_post[i] = item;
-                    i++;
-
-                });
-                parser_url = $.url(currentLink).param();
-                $.each(parser_url, function (index, value) {
-
-                    item = {
-                        id: index,
-                        text: index
-                    };
-                    data_post[i] = item;
-                    i++;
+                drag: function (event, ui) {
 
 
-                });
-                return {results: data_post};
-            },
-            initSelection: function (element, callback) {
-                item = {
-                    id: element.val(),
-                    text: element.val()
-                };
-                return callback(item);
-            }
-        },
-        option_droppable: {
-            accept: ".configupdate-item-table,.configupdate-item-field",
-            greedy: true,
-            drop: function (ev, ui) {
-                uiDraggable = $(ui.draggable);
-                droppable = $(this);
-                if (uiDraggable.hasClass('configupdate-item-table')) {
-                    gridformartheader.render_table_fields(uiDraggable, droppable);
-                } else if (uiDraggable.hasClass('configupdate-item-field')) {
-                    gridformartheader.render_table_field(uiDraggable, droppable);
                 }
+            },
+            table_name_option: {
+                ajax: {
+                    url: this_host + "/index.php?option=com_phpmyadmin&task=tables.ajax_get_list_table",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (term, page) {
+                        return {
+                            keyword: term
+                        };
+                    },
+
+                    results: function (data) {
+                        return {results: data};
+                    },
+                    cache: true
+
+                },
+                initSelection: function (element, callback) {
+                    item = {
+                        id: element.val(),
+                        text: element.val()
+                    };
+                    return callback(item);
+                },
+                escapeMarkup: function (markup) {
+                    return markup;
+                }, // let our custom formatter work
+                minimumInputLength: 1
+            },
+            column_name_option: {
+                data: function () {
+                    data_post = plugin.settings.data_column;
+
+                    return {results: data_post};
+                },
+                initSelection: function (element, callback) {
+                    item = {
+                        id: element.val(),
+                        text: element.val()
+                    };
+                    return callback(item);
+                }
+            },
+            link_key_option: {
+                data: function () {
+                    data_post = plugin.settings.data_column;
+
+                    return {results: data_post};
+                },
+                initSelection: function (element, callback) {
+                    item = {
+                        id: element.val(),
+                        text: element.val()
+                    };
+                    return callback(item);
+                }
+            },
+
+            post_name_option: {
+                data: function () {
+                    data_post = new Array();
+                    i = 0;
+                    $(':input[enable-submit="true"],:selected[enable-submit="true"]').each(function () {
+                        name = $(this).attr('name');
+                        item = {
+                            id: name,
+                            text: name
+                        };
+                        data_post[i] = item;
+                        i++;
+
+                    });
+                    parser_url = $.url(currentLink).param();
+                    $.each(parser_url, function (index, value) {
+
+                        item = {
+                            id: index,
+                            text: index
+                        };
+                        data_post[i] = item;
+                        i++;
+
+
+                    });
+                    return {results: data_post};
+                },
+                initSelection: function (element, callback) {
+                    item = {
+                        id: element.val(),
+                        text: element.val()
+                    };
+                    return callback(item);
+                }
+            },
+            option_droppable: {
+                accept: ".configupdate-item-table,.configupdate-item-field",
+                greedy: true,
+                drop: function (ev, ui) {
+                    uiDraggable = $(ui.draggable);
+                    droppable = $(this);
+                    if (uiDraggable.hasClass('configupdate-item-table')) {
+                        plugin.render_table_fields(uiDraggable, droppable);
+                    } else if (uiDraggable.hasClass('configupdate-item-field')) {
+                        plugin.render_table_field(uiDraggable, droppable);
+                    }
+                }
+            },
+            option_nestable1: {
+                group: 1,
+                maxDepth: 1,
+                handleClass: 'dd-handle'
+            },
+            option_nestable2: {
+                group: 2,
+                maxDepth: 4,
+                handleClass: 'dd-handle'
             }
-        },
-        option_nestable1: {
-            group: 1,
-            maxDepth: 1,
-            handleClass: 'dd-handle-move'
-        },
-        option_nestable2: {
-            group: 2,
-            maxDepth: 4,
-            handleClass: 'dd-handle-move'
-        },
-        init_config_nestable: function () {
-            $('#gridformartheader1').nestable(gridformartheader.option_nestable1)
-                .on('change', gridformartheader.updateOutput);
-            $('#gridformartheader2').nestable(gridformartheader.option_nestable2)
-                .on('change', gridformartheader.updateOutput);
 
+        }
 
-        },
-        init_gridformartheader: function () {
+        // current instance of the object
+        var plugin = this;
 
+        // this will hold the merged default, and user-provided options
+        plugin.settings = {}
 
-            gridformartheader.set_auto_complete();
+        var $element = $(element), // reference to the jQuery version of DOM element
+            element = element;    // reference to the actual DOM element
+        // the "constructor" method that gets called when the object is created
+        plugin.init = function () {
+
+            plugin.settings = $.extend({}, defaults, options);
+            plugin.set_auto_complete();
             // activate Nestable for list 1
-            gridformartheader.init_config_nestable();
-            $(".configupdate-item-table").draggable(gridformartheader.option_draggable);
-            gridformartheader.update_nestable();
-            $('.dd-list-droppable').droppable(gridformartheader.option_droppable);
-            $('.configupdate-item-table a.plus').click(function () {
-                gridformartheader.get_list_field_table($(this));
-            });
+            plugin.init_config_nestable();
+            plugin.update_nestable();
             list_editor = {};
             $('.column_template_texarea').each(function (index) {
 
                 self = $(this);
                 key=self.attr('data-key');
-                gridformartheader.set_code_mirror(self,key);
+                plugin.set_code_mirror(self,key);
+            });
+            $element.find('.add_node').click(function(){
+                plugin.add_node($(this));
+            });
+
+            $element.find('.add_sub_node').click(function add_sub_node(){
+                plugin.add_sub_node($(this));
+            });
+
+            $element.find('.remove_item_nestable').click( function remove_item_nestable(){
+                plugin.remove_item_nestable($(this));
+            });
+            $element.find('.expand_item_nestable').click( function expand_item_nestable(){
+                plugin.expand_item_nestable($(this));
+            });
+
+            $element.find('.show_more_options').click(function show_more_options() {
+                plugin.show_more_options($(this));
+            });
+            $element.find('.update_data_column').change(function update_data_column() {
+                var primary_key=$(this).hasClass('primary-key');
+                if(primary_key)
+                {
+                    plugin.primary_key_update_value($(this));
+                }
+                var property=$(this).data('property');
+                plugin.update_data_column($(this), property);
             });
 
 
-        },
-        change_data_source:function(self){
+            $('.panel-body.property.block_property').data('update_field',plugin.update_gridformartheader);
 
-        },
-        set_code_mirror: function (self,key) {
+
+        }
+        plugin.update_gridformartheader=function(){
+            var mode_select_column=$element.find('input[name="mode_select_column"]').val();
+            var mode_select_column_template=$element.find('input[name="mode_select_column_template"]').val();
+            var gridformartheader={
+                mode_select_column:mode_select_column,
+                mode_select_column_template:mode_select_column_template
+            }
+            console.log(gridformartheader);
+            gridformartheader=JSON.stringify(gridformartheader);
+            gridformartheader= base64.encode(gridformartheader);
+            $element.find('input[name="'+ plugin.settings.field_name+'"]').val(gridformartheader);
+        }
+        plugin.expand_item_nestable = function (self) {
+            var self = $(self);
+            var dd_item = self.closest('.dd-item');
+            var more_options = dd_item.find('> .more_options');
+            if (more_options.is(':visible')) {
+                self.find('i.im-minus').addClass('im-plus').removeClass('im-minus');
+                more_options.css({
+                    display: "none"
+                });
+            } else {
+                self.find('i.im-plus').addClass('im-minus').removeClass('im-plus');
+                more_options.css({
+                    display: "block"
+                });
+            }
+        }
+
+
+        plugin.init_config_nestable=function () {
+            $element.find('#gridformartheader1').nestable(plugin.settings.option_nestable1)
+                .on('change', plugin.settings.updateOutput);
+            $element.find('#gridformartheader2').nestable(plugin.settings.option_nestable2)
+                .on('change', plugin.settings.updateOutput);
+
+
+        }
+        plugin.show_more_options=function (self) {
+            self = $(self);
+            var field_block_nestable = $element.find('#field_block').data("nestable");
+            console.log(field_block_nestable);
+            if (self.is(":checked")) {
+                $element.find('.dd-item .more_options').show();
+
+            }
+            else {
+                $element.find('.dd-item .more_options').hide();
+            }
+
+        }
+
+        plugin.change_data_source=function(self){
+
+        }
+        plugin.set_code_mirror=function (self,key) {
             attr_id = self.attr('id');
             var mixedMode = {
                 name: "htmlmixed",
@@ -212,7 +293,7 @@ jQuery(document).ready(function ($) {
                     },
                     hintOptions: {tables: {
                         table__users: {name: null, score: null, birthDate: null},
-                         countries: {name: null, population: null, size: null}
+                        countries: {name: null, population: null, size: null}
                     }},
                     ajax_loader:{
                         ajax:false,
@@ -246,12 +327,13 @@ jQuery(document).ready(function ($) {
             list_field=new Array();
             list_field.push('{active_menu}');
             list_field.push('{this_host}');
-            $.each(gridformartheader.list_menu, function( index, value ) {
+
+            $.each(plugin.settings.list_menu, function( index, value ) {
                 list_field.push(value);
             });
 
 
-            $.each(gridformartheader.data_column, function( index, value ) {
+            $.each(plugin.settings.data_column, function( index, value ) {
                 list_field.push('#:'+value.text+'#');
             });
 
@@ -308,7 +390,7 @@ jQuery(document).ready(function ($) {
 
 
 
-                    $.each(gridformartheader.list_icon, function( index, value ) {
+                    $.each(plugin.settings.list_icon, function( index, value ) {
                         if(value.indexOf(text) != -1){
                             list.push(value);
                         }
@@ -337,7 +419,7 @@ jQuery(document).ready(function ($) {
                     var text = editor.getLine(line),m;
                     var text = curWord;
                     console.log(text);
-                    $.each(gridformartheader.list_menu, function( index, value ) {
+                    $.each(plugin.settings.list_menu, function( index, value ) {
                         if(value.indexOf(text) != -1){
                             list.push(value);
                         }
@@ -368,7 +450,7 @@ jQuery(document).ready(function ($) {
 
             editor.on("changes", function(cm, change) {
                 self=$(cm.display.cursorDiv);
-                gridformartheader.update_data_column_template(cm,self,cm.getValue());
+                plugin.update_data_column_template(cm,self,cm.getValue());
             });
 
             $(document).on('change','.column_access_level',function(){
@@ -378,20 +460,20 @@ jQuery(document).ready(function ($) {
                 var id=dd_item.attr('data-id');
                 dd_item.attr('data-access', access);
                 dd_item.data('access', access);
-                gridformartheader.update_nestable();
+                plugin.update_nestable();
 
             });
 
 
-        },
-        update_data_column_template: function (cm,self, value) {
+        }
+        plugin.update_data_column_template= function (cm,self, value) {
             key_column=cm.options.key_column;
             value= base64.encode(value);
             dd_item = self.closest('.dd-item');
             dd_item.data(key_column, value);
-            gridformartheader.update_nestable();
-        },
-        makeid:function makeid()
+            plugin.update_nestable();
+        }
+        plugin.makeid=function makeid()
         {
             var text = "";
             var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -400,11 +482,10 @@ jQuery(document).ready(function ($) {
                 text += possible.charAt(Math.floor(Math.random() * possible.length));
 
             return text;
-        },
-        add_node: function (self, type) {
-            self = $(self);
+        }
+        plugin.add_node=function (self) {
             li = self.closest('.dd-item');
-            li_clone = li.clone(false);
+            li_clone = li.clone(true);
 
             li_clone.insertAfter(li);
             li_clone.find('.select2-container.show_command').remove();
@@ -422,23 +503,27 @@ jQuery(document).ready(function ($) {
             li_clone.find(".show_command").val('');
             li_clone.find(".column_name").val('');
             li_clone.find(".post_name").val('');
-            li_clone.find("input.show_command").select2(gridformartheader.show_command_option);
-            li_clone.find("input.column_name").select2(gridformartheader.column_name_option);
-            li_clone.find("input.post_name").select2(gridformartheader.post_name_option).select2("data", gridformartheader.data_post, true);
+            li_clone.find("input.show_command").select2({
+                tags: plugin.settings.data_command
+            });
+            li_clone.find("input.column_name").select2(plugin.settings.column_name_option);
+            li_clone.find("input.post_name").select2(plugin.settings.post_name_option).select2("data", plugin.settings.data_post, true);
             li_clone.find('input[type="checkbox"]').prop('checked', false);
+/*
             if (type == 'template') {
                 column_template_texarea = li_clone.find('.column_template_texarea');
                 column_template_texarea.empty();
                 li_clone.find('.CodeMirror').remove();
 
 
-                var random_number = gridformartheader.makeid();
+                var random_number = plugin.makeid();
                 column_template_texarea.attr('id', random_number);
-                gridformartheader.set_code_mirror(column_template_texarea);
+                plugin.set_code_mirror(column_template_texarea);
             }
-            gridformartheader.update_nestable();
-        },
-        add_sub_node: function (self) {
+*/
+            plugin.update_nestable();
+        }
+        plugin.add_sub_node=function (self) {
             li = self.closest('.dd-item');
             li_clone = li.clone(false);
             ol = self.find(' > ol');
@@ -468,15 +553,15 @@ jQuery(document).ready(function ($) {
             li_clone.attr('data-level', level);
             primary_key = li_clone.find('input[type="radio"].primary-key');
             primary_key.attr('name', 'primary_key_' + level);
-            li_clone.find("input.table_name").select2(gridformartheader.table_name_option);
-            li_clone.find("input.column_name").select2(gridformartheader.column_name_option);
+            li_clone.find("input.table_name").select2(plugin.settings.table_name_option);
+            li_clone.find("input.column_name").select2(plugin.settings.column_name_option);
 
             //set select 2 post name
-            li_clone.find("input.post_name").select2(gridformartheader.post_name_option);
-            gridformartheader.update_nestable();
+            li_clone.find("input.post_name").select2(plugin.settings.post_name_option);
+            plugin.update_nestable();
 
-        },
-        update_data_column: function (self, key, type_input) {
+        }
+        plugin.update_data_column=function (self, key, type_input) {
             self = $(self);
             self_value = self.val();
             if (typeof type_input !== 'undefined' && type_input == 'checkbox') {
@@ -487,43 +572,54 @@ jQuery(document).ready(function ($) {
             }
 
             dd_item = self.closest('.dd-item');
+            console.log(key);
             dd_item.data(key, self_value);
-            gridformartheader.update_nestable();
-        },
-        primary_key_update_value: function (self) {
+
+            if (key == 'column_name' || key == 'column_title') {
+                var column_name = dd_item.data('column_name');
+                var column_title = dd_item.data('column_title');
+                dd_item.find('.key_name:first').html(column_title + " ( " + column_name + " ) ");
+            }
+
+
+            plugin.update_nestable();
+        }
+        plugin.primary_key_update_value=function (self) {
             self = $(self);
             name = self.attr('name');
             $('input[type="radio"][name="' + name + '"]').val(0);
             self.val(1);
-        },
-        call_on_change: function (self) {
+        }
+        plugin.call_on_change=function (self) {
             self = $(self);
             name = self.attr('name');
             $('input[type="radio"][name="' + name + '"]').each(function () {
-                gridformartheader.update_data_column(this, 'primary_key', 'radio');
+                plugin.update_data_column(this, 'primary_key', 'radio');
             });
-        },
-        set_auto_complete: function () {
-            $(".show_command").select2(gridformartheader.show_command_option);
-            $(".column_name").select2(gridformartheader.column_name_option);
-            $(".link_key").select2(gridformartheader.link_key_option);
+        }
+        plugin.set_auto_complete=function () {
+            $(".show_command").select2({
+                tags: plugin.settings.data_command
+            });
+            $(".column_name").select2(plugin.settings.column_name_option);
+            $(".link_key").select2(plugin.settings.link_key_option);
 
 
-            //$(".post_name").select2(gridformartheader.post_name_option);
+            //$(".post_name").select2(plugin.settings.post_name_option);
 
-        },
-        update_nestable: function () {
-            gridformartheader.updateOutput($('#gridformartheader1').data('output', $('#gridformartheader1-output')));
-            gridformartheader.updateOutput($('#gridformartheader2').data('output', $('#gridformartheader2-output')));
-        },
-        remove_item_nestable: function (self) {
+        }
+        plugin.update_nestable=function () {
+            plugin.updateOutput($element.find('#gridformartheader1').data('output', $element.find('#gridformartheader1-output')));
+            plugin.updateOutput($element.find('#gridformartheader2').data('output', $element.find('#gridformartheader2-output')));
+        }
+        plugin.remove_item_nestable=function (self) {
             self = $(self);
             dd_item = self.closest('.dd-item');
             if ($('.dd-item').length > 1)
                 dd_item.remove();
-            gridformartheader.update_nestable();
-        },
-        get_list_field_table: function (self) {
+            plugin.update_nestable();
+        }
+        plugin.get_list_field_table=function (self) {
             table = self.data('table');
             li_table = self.closest('li.table');
             if (typeof ajax_render_field_table !== 'undefined') {
@@ -561,7 +657,7 @@ jQuery(document).ready(function ($) {
                         group: 1,
                         maxDepth: 5,
                         helper: "clone",
-                        handleClass: 'dd-handle-move',
+                        handleClass: 'dd-handle',
                         setup_depth: false,
                         dragStop: function (e, el, dragRootEl) {
                             if (!dragRootEl.hasClass('list-field')) {
@@ -575,8 +671,8 @@ jQuery(document).ready(function ($) {
 
                 }
             });
-        },
-        render_table_fields: function (uiDraggable, droppable) {
+        }
+        plugin.render_table_fields=function (uiDraggable, droppable) {
             table = uiDraggable.data('table');
             if (typeof ajaxRederTable !== 'undefined') {
                 ajaxRederTable.abort();
@@ -603,8 +699,8 @@ jQuery(document).ready(function ($) {
 
                 }
             });
-        },
-        render_table_field: function (uiDraggable, droppable) {
+        }
+        plugin.render_table_field=function (uiDraggable, droppable) {
             field = uiDraggable.attr('data-field');
             field = field.split(".");
             table_name = field[0];
@@ -622,10 +718,10 @@ jQuery(document).ready(function ($) {
                 droppable.append(dd_list);
                 droppable.find('.dd-empty').remove();
             }
-            //gridformartheader.update_nestable();
-            dd_item.droppable(gridformartheader.option_droppable);
-        },
-        updateOutput: function (e) {
+            //plugin.update_nestable();
+            dd_item.droppable(plugin.settings.option_droppable);
+        }
+        plugin.updateOutput=function (e) {
             var list = e.length ? e : $(e.target),
                 output = list.data('output');
             if (typeof output == "undefined")
@@ -636,21 +732,21 @@ jQuery(document).ready(function ($) {
             } else {
                 output.val('JSON browser support required for this demo.');
             }
-        },
-        update_data_type: function () {
+        }
+        plugin.update_data_type=function () {
             self = $(self);
             data_type = self.val();
             dd_item = self.closest('.dd-item');
             dd_item.data('type', data_type);
-            gridformartheader.updateOutput($('#gridformartheader1').data('output', $('#gridformartheader1-output')));
-            gridformartheader.updateOutput($('#gridformartheader2').data('output', $('#gridformartheader2-output')));
-        },
-        update_data_editable: function () {
+            plugin.updateOutput($element.find('#gridformartheader1').data('output', $element.find('#gridformartheader1-output')));
+            plugin.updateOutput($element.find('#gridformartheader2').data('output', $element.find('#gridformartheader2-output')));
+        }
+        plugin.update_data_editable=function () {
 
-        },
-        filter_table: function (self) {
+        }
+        plugin.filter_table=function (self) {
             text = $(self).val();
-            $('.config-upate-table li').each(function () {
+            $element.find('.config-upate-table li').each(function () {
                 title = $(this).text();
                 title = title.toLowerCase();
                 if (title.indexOf(text) != -1) {
@@ -661,7 +757,26 @@ jQuery(document).ready(function ($) {
                 }
             });
         }
-    };
 
+        plugin.init();
 
-});
+    }
+
+    // add the plugin to the jQuery.fn object
+    $.fn.field_gridformartheader = function (options) {
+
+        // iterate through the DOM elements we are attaching the plugin to
+        return this.each(function () {
+            // if plugin has not already been attached to the element
+            if (undefined == $(this).data('field_gridformartheader')) {
+                var plugin = new $.field_gridformartheader(this, options);
+                $(this).data('field_gridformartheader', plugin);
+
+            }
+
+        });
+
+    }
+
+})(jQuery);
+

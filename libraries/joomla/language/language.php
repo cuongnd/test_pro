@@ -229,7 +229,6 @@ class JLanguage
 
 		ksort($paths);
 		$path = reset($paths);
-
 		while (!class_exists($class) && $path)
 		{
 			if (file_exists($path))

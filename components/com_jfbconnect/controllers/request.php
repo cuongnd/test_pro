@@ -1,15 +1,16 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.controller');
-
-class JFBConnectControllerRequest extends JControllerLegacy
+class JFBConnectControllerRequest extends JFBConnectController
 {
 
     function display($cachable = false, $urlparams = false)
@@ -38,17 +39,6 @@ class JFBConnectControllerRequest extends JControllerLegacy
         $data['modified'] = null;
         //        $data['destination_url'] = JRequest::getString('destinationUrl');
 
-        $aupInstalled = false;
-        if (JFBCFactory::config()->getSetting('social_alphauserpoints_enabled'))
-        {
-            $api_AUP = JPATH_SITE  . '/components/com_alphauserpoints/helper.php';
-            if (file_exists($api_AUP))
-            {
-                require_once ($api_AUP);
-                $aupInstalled = true;
-            }
-        }
-
         foreach ($inToList as $fbTo)
         {
             $row = & JTable::getInstance('JFBConnectNotification', 'Table');
@@ -56,12 +46,13 @@ class JFBConnectControllerRequest extends JControllerLegacy
             $data['fb_user_to'] = $to;
             $row->save($data);
 
-            if ($aupInstalled)
-                AlphaUserPointsHelper::newpoints('plgjfbconnect_request_sent', '', $fbTo);
+            $point = new JFBConnectPoint();
+            $point->set('name', 'facebook.request.create');
+            $point->set('key', $to);
+            $point->award();
         }
 
         $app = JFactory::getApplication();
         $app->close();
     }
-
 }

@@ -93,6 +93,13 @@ class JFormFieldList extends JFormField
 
 		return implode($html);
 	}
+	public function get_attribute_config()
+	{
+		return array(
+			multiple=>'false',
+			size=>'1'
+		);
+	}
 
 	/**
 	 * Method to get the field options.

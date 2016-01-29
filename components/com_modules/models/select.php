@@ -78,7 +78,7 @@ class ModulesModelSelect extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.id as extension_id, a.name, a.element AS module'
+				'a.id as id, a.name, a.element AS module'
 			)
 		);
 		$query->from($db->quoteName('#__extensions') . ' AS a');

@@ -54,7 +54,7 @@ class ModulesModelModule extends JModelAdmin
 
 		if (!$pk)
 		{
-			if ($extensionId = (int) $app->getUserState('com_modules.add.module.extension_id'))
+			if ($extensionId = (int) $app->getUserState('com_modules.add.module.id'))
 			{
 				$this->setState('extension.id', $extensionId);
 			}
@@ -701,12 +701,75 @@ class ModulesModelModule extends JModelAdmin
 			$id			= JArrayHelper::getValue($data, 'id');
 		}
 
+		$website=JFactory::getWebsite();
+		$ui_path= 'modules/website/website_'.$website->website_id.'/'.$item->module;
+		$website=JFactory::getWebsite();
+		$db=JFactory::getDbo();
+		require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+		$query=$db->getQuery(true);
+		$query->select('*')
+			->from('#__control')
+			->where('element_path LIKE '.$query->q('%'.$ui_path.'%'))
+			->where('type='.$query->q('module'))
+			->where('website_id='.(int)$website->website_id)
+		;
+		$control=$db->setQuery($query)->loadObject();
+		$fields=$control->fields;
+		$fields=base64_decode($fields);
+		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		ob_start();
+		parent::render_to_xml($fields);
+		$string_xml=ob_get_clean();
+		$string_xml='<config>'.$string_xml.'</config>';
+		jimport('joomla.filesystem.file');
+
+		$pathInfo=pathinfo($ui_path);
+		$filename=$pathInfo['filename'];
+		$dirName=$pathInfo['dirname'];
+		$website=JFactory::getWebsite();
+		$xml_file="modules/website/website_$website->website_id/$item->module/$item->module.xml";
+
+		JFile::write(JPATH_ROOT.'/'.$xml_file,$string_xml);
+
+
+
+
+
+		$query=$db->getQuery(true);
+		$query->select('*')
+			->from('#__control')
+			->where('element_path LIKE '.$query->q('%root_module%'))
+			->where('type='.$query->q('module'))
+			->where('website_id='.(int)$website->website_id)
+		;
+		$control=$db->setQuery($query)->loadObject();
+		$fields=$control->fields;
+		$fields=base64_decode($fields);
+
+
+
+
+		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		ob_start();
+		parent::render_to_xml($fields);
+		$string_xml=ob_get_clean();
+		$string_xml='<form>'.$string_xml.'</form>';
+		jimport('joomla.filesystem.file');
+		JFile::write(JPATH_ROOT.'/components/com_modules/models/forms/module.xml',$string_xml);
+
+
+
+
+
+
 		// These variables are used to add data from the plugin XML files.
 		$this->setState('item.client_id', $clientId);
 		$this->setState('item.module', $module);
 
 		// Get the form.
 		$form = $this->loadForm('com_modules.module', 'module', array('control' => 'jform', 'load_data' => $loadData));
+
 		if (empty($form))
 		{
 			return false;
@@ -783,6 +846,7 @@ class ModulesModelModule extends JModelAdmin
 	{
 
 		$pk = (!empty($pk)) ? (int) $pk : (int) $this->getState('module.id');
+
 		$db = $this->getDbo();
 
 		if (!isset($this->_cache[$pk]))
@@ -802,7 +866,6 @@ class ModulesModelModule extends JModelAdmin
 
 				return $false;
 			}
-			$pk=551;
 			// Check if we are creating a new extension.
 			if (empty($pk))
 			{
@@ -852,8 +915,9 @@ class ModulesModelModule extends JModelAdmin
 
 			// Convert the params field to an array.
 			$registry = new JRegistry;
+
 			$registry->loadString($table->params);
-			$this->_cache[$pk]->params = $registry->toArray();
+			$this->_cache[$pk]->params = $registry->toObject();
 
 			// Determine the page assignment mode.
 			$query	= $db->getQuery(true)
@@ -891,10 +955,10 @@ class ModulesModelModule extends JModelAdmin
 
 			$this->_cache[$pk]->assigned   = $assigned;
 			$this->_cache[$pk]->assignment = $assignment;
-
+			$website=JFactory::getWebsite();
 			// Get the module XML.
 			$client = JApplicationHelper::getClientInfo($table->client_id);
-			$path   = JPath::clean($client->path . '/modules/' . $table->module . '/' . $table->module . '.xml');
+			$path   = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/' . $table->module . '/' . $table->module . '.xml');
 
 			if (file_exists($path))
 			{
@@ -973,11 +1037,12 @@ class ModulesModelModule extends JModelAdmin
 		$module   = $this->getState('item.module');
 
 		$client   = JApplicationHelper::getClientInfo($clientId);
-		$formFile = JPath::clean($client->path . '/modules/' . $module . '/' . $module . '.xml');
+		$website=JFactory::getWebsite();
+		$formFile = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/' . $module . '/' . $module . '.xml');
 
 		// Load the core and/or local language file(s).
 		$lang->load($module, $client->path, null, false, true)
-			||	$lang->load($module, $client->path . '/modules/' . $module, null, false, true);
+			||	$lang->load($module, $client->path . '/modules/website/website_'.$website->website_id.'/' . $module, null, false, true);
 
 		if (file_exists($formFile))
 		{
@@ -1204,7 +1269,7 @@ class ModulesModelModule extends JModelAdmin
 
 		// Compute the extension id of this module in case the controller wants it.
 		$query	= $db->getQuery(true)
-			->select('e.id as extension_id')
+			->select('e.id as id')
 			->from('#__extensions AS e')
 			->join('LEFT', '#__modules AS m ON e.element = m.module')
 			->where('m.id = ' . (int) $table->id);
@@ -1221,7 +1286,7 @@ class ModulesModelModule extends JModelAdmin
 			return false;
 		}
 
-		$this->setState('module.extension_id', $extensionId);
+		$this->setState('module.id', $extensionId);
 		$this->setState('module.id', $table->id);
 
 		// Clear modules cache

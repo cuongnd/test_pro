@@ -73,7 +73,6 @@ joint.shapes.uml.Class = joint.shapes.basic.Generic.extend({
     initialize: function() {
 
         this.on('change:name change:attributes change:methods', function() {
-            console.log('hello123');
             this.updateRectangles();
 	    this.trigger('uml-update');
         }, this);

@@ -86,6 +86,15 @@ abstract class JArrayHelper
 			}
 		}
 	}
+	public static function key_string_to_interger($array, $default = null)
+	{
+		$list_result=array();
+		foreach($array as $item)
+		{
+			$list_result[]=$item;
+		}
+		return $list_result;
+	}
 
 	/**
 	 * Utility function to map an array to a stdClass object.

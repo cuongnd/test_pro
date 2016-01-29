@@ -1,42 +1,58 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fields name="params">
+<config><fields name="params"><fields name="data">
+					<field type="bindingSource" readonly="false" label="Text" default=""
+						   name="text"
 
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
-                    <field name="text"  type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Text" label="Text"/>
-                </fieldset>
-            </fields>
+												>
+											</field>
+					<field type="checkbox" label="Text" default="0"
+						   name="enable_text" onchange="">
 
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="text" type="text" default="" onchange="element_ui_label.update_text($(this))" label="Text"/>
-                <field name="name" type="text" default="" label="Name"/>
-                <field name="id" type="text" default="" label="Id"/>
+					</field>
 
+									</fields>				<fields name="element_config">
+					<field type="text" readonly="false" label="Text" default=""
+						   name="text"
 
-            </fieldset>
-        </fields>
-    </config>
-</extension>
+												>
+											</field>
+					<field type="checkbox" label="Text" default="0"
+						   name="enable_text" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Name" default=""
+						   name="name"
+
+												>
+											</field>
+					<field type="checkbox" label="Name" default="0"
+						   name="enable_name" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Id" default=""
+						   name="id"
+
+												>
+											</field>
+					<field type="checkbox" label="Id" default="0"
+						   name="enable_id" onchange="">
+
+					</field>
+
+									
+					<field type="list" readonly="false" label="Float" default=""
+						   name="float"
+
+													 multiple="false" 													 size="1" 												>
+																							<option value="left">left</option>
+																																<option value="right">Right</option>
+																				</field>
+					<field type="checkbox" label="Float" default="0"
+						   name="enable_float" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

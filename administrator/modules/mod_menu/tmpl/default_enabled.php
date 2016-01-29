@@ -100,9 +100,9 @@ $supperAdmin=JFactory::isSupperAdmin();
                 foreach (ModMenuHelper::getMenus() as $menuType) {
 
                     ?>
-                    <li class="dropdown-submenu"><a
+                    <li ><a
                             href="index.php?option=com_menus&amp;view=items&amp;menu_type_id=<?php echo $menuType->id ?>"
-                            data-toggle="dropdown" class="dropdown-toggle menu-menu"><?php echo $menuType->title ?> <i
+                             class=" menu-menu"><?php echo $menuType->title ?> <i
                                 class="<?php echo $menuType->home ? 'icon-home' : '' ?>"></i></a>
 
 
@@ -133,8 +133,8 @@ $supperAdmin=JFactory::isSupperAdmin();
         <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Content <span
                     class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li class="dropdown-submenu"><a href="index.php?option=com_content" data-toggle="dropdown"
-                                                class="dropdown-toggle menu-article">Article Manager</a>
+                <li class="dropdown-submenu"><a href="index.php?option=com_content"
+                                                class=" menu-article">Article Manager</a>
                     <ul class="dropdown-menu menu-component" id="menu-com-content">
                         <li><a href="index.php?option=com_content&amp;task=article.add" class="menu-newarticle">Add New
                                 Article</a></li>

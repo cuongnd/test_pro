@@ -412,7 +412,7 @@ $mysql5 = $this->isMySQL && (strpos($db->getVersion(), '5') === 0);
 <?php endif; ?>
 
 <?php if ($isPro): ?>
-	<?php $url = 'index.php?option=com_plugins&task=plugin.edit&extension_id=' . $this->pluginid; ?>
+	<?php $url = 'index.php?option=com_plugins&task=plugin.edit&id=' . $this->pluginid; ?>
 	<div style="float:<?php echo ($lang->isRTL()) ? 'right' : 'left'; ?>;">
 		<div class="icon">
 			<a href="<?php echo $url ?>" target="_blank">

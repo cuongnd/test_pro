@@ -1,138 +1,279 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fieldset name="option" description="Option" label="Option">
-            <field name="css_class" type="select2" default="" tags="1" label="Css class" onselecting="element_ui_element.add_css_class(e,$(this))" onremoveitem="element_ui_element.remove_class_css(e,$(this))"  maximumSelectionSize="10">
-            </field>
-            <field name="formart_header" readonly="readonly" type="gridformartheader" description="grid formart header" label="grid formart header"/>
-            <field name="config_update" readonly="readonly" type="configupdate" description="Config update" label="Config update"/>
-            <field name="get_items" readonly="readonly" type="coding" description="Get items" label="Get items"/>
+<config><fields name="params"><fields name="data">
+					<field type="bindingSource" readonly="false" label="bindingSource" default=""
+						   name="bindingSource"
 
-        </fieldset>
+												>
+											</field>
+					<field type="checkbox" label="bindingSource" default="0"
+						   name="enable_bindingsource" onchange="">
 
-        <fields name="params">
-            <fields name="data"  description="Data config" label="Data config">
-                <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
-                <field name="update_binding_source" readonly="readonly" type="bindingSource" description="Update binding source" label="Update binding source"/>
-                <field name="filter_by"  type="filterselect2" description="Filter by" label="Filter by" tags="false"  maximumSelectionSize="10"/>
-            </fields>
-        </fields>
-        <fields name="params">
-            <field name="link_detail" type="menuitem" label="Link detail" description="Link detail" required="true" size="1"/>
-            <field name="page_size" type="number" label="Page size" description="Page size" required="true" size="1"/>
+					</field>
 
-            <field name="enable_ajax_load_data" type="list" default="1" label="Enable ajax load data" description="Enable ajax load data">
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-            </field>
-            <field name="use_file_template_row" type="list" default="0" label="use file template row" description="use file template row">
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-            </field>
+									
+					<field type="bindingSource" readonly="false" label="Filter by" default=""
+						   name="filter_by"
 
-            <field name="file_template_row" type="filelist" directory="layouts/kendo_grid_layout" label="file template row" description="file template row" />
+												>
+											</field>
+					<field type="checkbox" label="Filter by" default="0"
+						   name="enable_filter_by" onchange="">
 
+					</field>
 
-            <field name="use_template_edit_row" type="list" default="0" label="use template edit row" description="use template edit row">
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-            </field>
-            <field name="template_edit_row_file" type="filelist" directory="layouts/kendo_grid_layout" label="template edit row" description="template edit row" />
+									</fields>				<fields name="config_view_grid">
+					<field type="list" readonly="false" label="Data input type" default="createitems"
+						   name="data_input_type"
 
+													 multiple="false" 													 size="1" 												>
+																							<option value="datasource">datasource</option>
+																																<option value="codephp">codephp</option>
+																																<option value="createitems">createitems</option>
+																				</field>
+					<field type="checkbox" label="Data input type" default="0"
+						   name="enable_data_input_type" onchange="">
 
-            <field name="edit_row_type" type="list" default="inline" label="use template mode row" description="use template mode row">
-                <option value="inline">Inline</option>
-                <option value="popup">Popup</option>
-                <option value="form">Form</option>
-            </field>
-            <field name="template_by_element"  type="selectblock" tags="1" maximumSelectionSize="4" description="Template by element" label="Template by element"/>
+					</field>
 
-            <field name="columnMenu" type="list" default="true" label="show column menu" description="show column menu">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </field>
-            <field name="sortable" type="list" default="true" label="show sortable" description="show sortable">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </field>
+									
+					<field type="gridformartheader" readonly="false" label="header format" default=""
+						   name="formart_header"
 
-            <field name="filterable" type="list" default="true" label="show filterable" description="show filterable">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </field>
-            <field name="scrollable" type="list" default="1" label="scrollable" description="scrollable">
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-            </field>
+												>
+											</field>
+					<field type="checkbox" label="header format" default="0"
+						   name="enable_formart_header" onchange="">
 
-            <field name="pageable" type="list" default="true" label="enable pageable" description="enable pageable">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </field>
-            <field name="gridtoolbar" readonly="readonly" type="gridtoolbar" description="grid formart toolbar" label="grid formart toolbar"/>
+					</field>
 
-            <field name="mode_select_column" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="mode select column" description="mode select column" />
-            <field name="mode_select_column_template" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="mode select column_template" description="mode select column template" />
+									
+					<field type="coding" readonly="false" label="get items by code php" default="id"
+						   name="get_items"
 
-            <field name="config_update_data" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="config update data" description="config update data" />
-            <field name="get_items" readonly="true" type="textarea" filter="safehtml" cols="30" rows="5" label="Modal get items" description="Modal get items" />
+												>
+											</field>
+					<field type="checkbox" label="get items by code php" default="0"
+						   name="enable_get_items" onchange="">
 
+					</field>
 
-            <field name="toolbar_commands" type="list" multiple="true" size="4" default="" label="commands toolbar" description="commands toolbar">
-                <option value="">none</option>
-                <option value="add">Add</option>
-                <option value="pdf">Pdf</option>
-                <option value="csv">csv</option>
-            </field>
-            <field name="row_commands" type="list" multiple="true" size="4" default="" label="commands row" description="commands row">
-                <option value="">none</option>
-                <option value="delete">Delete</option>
-                <option value="edit">Edit</option>
-            </field>
+									
+					<field type="createitem" readonly="false" label="create items by config" default="id"
+						   name="create_items"
 
+													 maxDepth="1" 												>
+											</field>
+					<field type="checkbox" label="create items by config" default="0"
+						   name="enable_create_items" onchange="">
 
+					</field>
 
-            <field name="grid_height" type="text" default="700" label="Grid height" description="Grid height" />
-            <field name="keyPrimary" type="text" default="id" label="Key primary" description="Key primary" />
+									
+					<field type="configupdate" readonly="false" label="Config update data" default="id"
+						   name="config_update"
 
-            <field name="table_update" readonly="readonly"  type="table" default="" label="Table update" description="Table update" />
+												>
+											</field>
+					<field type="checkbox" label="Config update data" default="0"
+						   name="enable_config_update" onchange="">
 
+					</field>
 
+									
+					<field type="menuitem" readonly="false" label="Link go to detail" default=""
+						   name="link_detail"
 
-            <field name="table_key" type="text" default="id" label="Table key" description="Table key" />
+												>
+											</field>
+					<field type="checkbox" label="Link go to detail" default="0"
+						   name="enable_link_detail" onchange="">
 
-            <field name="width_column_action" type="text" default="" label="Width column action" description="Width column action" />
-            <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+					</field>
 
-            <field name="cachemode" type="hidden" default="static">
-                <option value="static" />
-            </field>
-            <fields name="element"  description="Element config" label="Element config">
+									
+					<field type="number" readonly="false" label="total row in grid" default=""
+						   name="pager_size"
 
-            </fields>
+												>
+											</field>
+					<field type="checkbox" label="total row in grid" default="0"
+						   name="enable_pager_size" onchange="">
 
-        </fields>
+					</field>
 
+									
+					<field type="radioyesno" readonly="false" label="Enable jax load data" default=""
+						   name="enable_ajax_load_data"
 
-    </config>
-</extension>
+												>
+											</field>
+					<field type="checkbox" label="Enable jax load data" default="0"
+						   name="enable_enable_ajax_load_data" onchange="">
+
+					</field>
+
+									
+					<field type="list" readonly="false" label="Edit row type" default="inline"
+						   name="edit_row_type"
+
+													 multiple="false" 													 size="1" 												>
+																							<option value="inline">inline</option>
+																																<option value="popup">popup</option>
+																																<option value="form">form</option>
+																				</field>
+					<field type="checkbox" label="Edit row type" default="0"
+						   name="enable_edit_row_type" onchange="">
+
+					</field>
+
+									
+					<field type="radioyesno" readonly="false" label="Show menu column" default=""
+						   name="columnMenu"
+
+												>
+											</field>
+					<field type="checkbox" label="Show menu column" default="0"
+						   name="enable_columnmenu" onchange="">
+
+					</field>
+
+									
+					<field type="radioyesno" readonly="false" label="Enable sortable grid" default=""
+						   name="sortable"
+
+												>
+											</field>
+					<field type="checkbox" label="Enable sortable grid" default="0"
+						   name="enable_sortable" onchange="">
+
+					</field>
+
+									
+					<field type="radioyesno" readonly="false" label="Enable filterable grid" default=""
+						   name="filterable"
+
+												>
+											</field>
+					<field type="checkbox" label="Enable filterable grid" default="0"
+						   name="enable_filterable" onchange="">
+
+					</field>
+
+									
+					<field type="radioyesno" readonly="false" label="Enable scroll" default=""
+						   name="scrollable"
+
+												>
+											</field>
+					<field type="checkbox" label="Enable scroll" default="0"
+						   name="enable_scrollable" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Show page grid" default=""
+						   name="pageable"
+
+												>
+											</field>
+					<field type="checkbox" label="Show page grid" default="0"
+						   name="enable_pageable" onchange="">
+
+					</field>
+
+									
+					<field type="gridtoolbar" readonly="false" label="config toolbar grid" default=""
+						   name="gridtoolbar"
+
+												>
+											</field>
+					<field type="checkbox" label="config toolbar grid" default="0"
+						   name="enable_gridtoolbar" onchange="">
+
+					</field>
+
+									
+					<field type="list" readonly="false" label="Config grif buttom" default=""
+						   name="config_grid_buttom"
+
+													 multiple="true" 													 size="1" 												>
+																							<option value="export_csv">Export CSV</option>
+																																<option value="import_csv">Import CSV</option>
+																																<option value="add_new">Add new</option>
+																																<option value="publish_all">Public all</option>
+																																<option value="publish_selected">Public selected</option>
+																																<option value="un_publish_all">Un publish all</option>
+																																<option value="delete_all">Delete all</option>
+																																<option value="delete_seleteted">Delete seleted</option>
+																				</field>
+					<field type="checkbox" label="Config grif buttom" default="0"
+						   name="enable_config_grid_buttom" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="height" default=""
+						   name="grid_height"
+
+												>
+											</field>
+					<field type="checkbox" label="height" default="0"
+						   name="enable_grid_height" onchange="">
+
+					</field>
+
+									
+					<field type="autocompletetext" readonly="false" label="Key of grif" default="id"
+						   name="keyPrimary"
+
+																									>
+											</field>
+					<field type="checkbox" label="Key of grif" default="0"
+						   name="enable_keyprimary" onchange="">
+
+					</field>
+
+									
+					<field type="table" readonly="false" label="Table of grid when update table" default=""
+						   name="table_update"
+
+												>
+											</field>
+					<field type="checkbox" label="Table of grid when update table" default="0"
+						   name="enable_table_update" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Key of table when update" default="id"
+						   name="table_key"
+
+												>
+											</field>
+					<field type="checkbox" label="Key of table when update" default="0"
+						   name="enable_table_key" onchange="">
+
+					</field>
+
+									
+					<field type="radioyesno" readonly="false" label="Hiden footer" default=""
+						   name="hide_footer"
+
+												>
+											</field>
+					<field type="checkbox" label="Hiden footer" default="0"
+						   name="enable_hide_footer" onchange="">
+
+					</field>
+
+									
+					<field type="radioyesno" readonly="false" label="Test" default=""
+						   name="test1"
+
+												>
+											</field>
+					<field type="checkbox" label="Test" default="0"
+						   name="enable_test1" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

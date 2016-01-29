@@ -12,10 +12,12 @@
 
                     dataPost = {
                         option: 'com_modules',
-                        view: 'module',
+                        view: 'field',
+                        name: 'get field module',
                         //layout: 'module.ajaxLoadFieldTypeOfModule',
-                        layout: 'field',
+                        layout: 'properties',
                         tmpl: 'ajax_json',
+                        element_type: 'module',
                         id:module_id,
                         field:field
 
@@ -30,6 +32,7 @@
                     });
                     // $('.loading').popup();
                 },
+                error:function(){ alert("some error occurred, please try agian") },
                 success: function (response) {
                     $('.div-loading').css({
                         display: "none"
@@ -53,7 +56,7 @@
                         $('body').prepend(html);
 
                         html.draggable({
-                            handle: '.field-config-heading'
+                            handle: '.field-config-heading,.panel-footer'
                         }).resizable({
                             aspectRatio: false,
                             handles: 'e'
@@ -112,7 +115,7 @@
                                 '<h4 class="panel-title">' + field + '</h4>' +
 
                             '</div>' +
-                            '<div class="panel-body property"  data-block-id="'+block_id+'"></div>' +
+                            '<div class="panel-body property block_property"  data-block-id="'+block_id+'"></div>' +
                             '<div class="panel-footer">' +
                                 '<button class="btn btn-danger save-block-property pull-right" data-block-id="'+block_id+'" type="button"><i class="fa-save"></i>Save&close</button>&nbsp;&nbsp;' +
                                 '<button class="btn btn-danger apply-block-property pull-right" data-block-id="'+block_id+'" type="button"><i class="fa-save"></i>Save</button>&nbsp;&nbsp;' +
@@ -128,7 +131,7 @@
                     }
                     $('.itemField .panel-title').html(field);
                     Joomla.sethtmlfortag1(response);
-
+                    $('.itemField').attr('data-block-id',block_id);
 
 
                 }
@@ -139,7 +142,7 @@
             field=self.attr('data-field');
             add_on_id=$('input[name="jform[id]"]').val();
             ajaxLoadFieldTypeOfBlock=$.ajax({
-                type: "POST",
+                type: "GET",
                 cache:false,
                 dataType: "json",
                 url: this_host+'/index.php',
@@ -151,6 +154,7 @@
                         tmpl: 'ajax_json',
                         add_on_id:add_on_id,
                         field:field,
+                        ajaxgetcontent: 1,
                         currenrt_url:base64.encode(currentLink)
                     };
                     return dataPost;
@@ -285,7 +289,7 @@
                         view: 'module',
                         layout: 'properties',
                         tmpl: 'ajax_json',
-                        module_id: module_id
+                        id: module_id
 
                     };
                     return dataPost;
@@ -394,6 +398,7 @@
 
                     Joomla.sethtmlfortag1(response);
                     $('.block-properties').attr('data-properties-type','block');
+                    $('.block-properties').closest('.panel.itemField').attr('data-block-id',block_id);
                 }
             });
 
@@ -479,15 +484,16 @@
         },
         savePropertiesModule:function(properties)
         {
-            console.log('hello');
             if(typeof ajaxSavePropertyModule !== 'undefined'){
                 ajaxSavePropertyModule.abort();
             }
-            post=properties.find('select,textarea, input:not([readonly])').serialize();
+            dataPost=properties.find(':input').serializeObject();
             ajaxSavePropertyModule=$.ajax({
                 type: "POST",
+                contentType: 'application/json',
+                dataType: "json",
                 url: this_host+'/index.php?option=com_modules&task=module.ajaxSavePropertiesModule',
-                data: post,
+                data: JSON.stringify(dataPost),
                 beforeSend: function () {
                     $('.div-loading').css({
                         display: "block"
@@ -502,6 +508,7 @@
 
 
                     });
+                    alert(response.r);
                     //Joomla.sethtmlfortag(response);
                 }
             });
@@ -512,12 +519,15 @@
             if(typeof ajaxSavePropertyModule !== 'undefined'){
                 ajaxSavePropertyModule.abort();
             }
-            post=properties.find('select,textarea, input:not([readonly])').serialize();
+
+            dataPost=properties.find(':input').serializeObject();
+            //post=properties.find('select,textarea, input').serialize();
             ajaxSavePropertyModule=$.ajax({
+                contentType: 'application/json',
                 type: "POST",
                 dataType: "json",
                 url: this_host+'/index.php?option=com_utility&task=utility.ajaxSavePropertiesBlock&Itemid='+menuItemActiveId+'&tmpl=ajax_json',
-                data: post,
+                data: JSON.stringify(dataPost),
                 beforeSend: function () {
                     $('.div-loading').css({
                         display: "block"
@@ -532,13 +542,14 @@
 
 
                     });
-
+                    alert('save succesfull');
                     Joomla.sethtmlfortag1(response);
                 }
             });
         },
         savePropertiesComponent:function(properties)
         {
+
             if(typeof ajaxSavePropertiesComponent !== 'undefined'){
                 ajaxSavePropertiesComponent.abort();
             }
@@ -562,12 +573,19 @@
 
 
                     });
-                    window.location.href = this_host+'?Itemid='+menuItemActiveId;
+                    if(response.e==1)
+                    {
+                        alert(response.m);
+                    }else {
+                        alert(response.m);
+                        window.location.href = this_host + '?Itemid=' + menuItemActiveId;
+                    }
                 }
             });
         },
         savePropertiesDataSource:function(properties)
         {
+
             if(typeof ajaxSavePropertyDataSource !== 'undefined'){
                 ajaxSavePropertyDataSource.abort();
             }
@@ -590,6 +608,7 @@
 
 
                     });
+                    alert('save successful');
                     //Joomla.sethtmlfortag(response);
                 }
             });
@@ -600,9 +619,12 @@
             if(typeof ajaxSavePropertyModule !== 'undefined'){
                 ajaxSavePropertyModule.abort();
             }
-            post=property.find('select,textarea, input:not([readonly])').serialize();
+            post=property.find('select:not(.disable_post),textarea:not(.disable_post), input:not([readonly],.disable_post)').serializeObject();
+
+
             ajaxSavePropertyModule=$.ajax({
                 type: "POST",
+                dataType: "json",
                 url: this_host+'/index.php?option=com_modules&task=module.ajaxSavePropertyModule&module_id='+module_id,
                 data: post,
                 beforeSend: function () {
@@ -619,9 +641,25 @@
 
 
                     });
-                    panelItemField=property.closest('.itemField');
-                    if(close)
-                        panelItemField.remove();
+                    if(response.e==1)
+                    {
+                        alert(response.m);
+                    }else
+                    {
+                        panelItemField=property.closest('.itemField');
+                        panelItemField.find(':input[name*="jform"]:not(.disable_post)').each(function(){
+                            self=$(this);
+                            name=self.attr('name');
+                            $('.properties.module').find(':input[name="'+name+'"]').val(self.val());
+                        });
+
+
+                        if(close)
+                            panelItemField.remove();
+                    }
+
+
+
                 }
             });
         },
@@ -631,11 +669,18 @@
             if(typeof ajaxSavePropertyBlock !== 'undefined'){
                 ajaxSavePropertyBlock.abort();
             }
-            post=property.find('select,textarea, input:not([readonly])').serialize();
+            var update_field=property.data('update_field');
+            if(typeof update_field==='function')
+            {
+                update_field();
+            }
+            dataPost=property.find(':input').serializeObject();
             ajaxSavePropertyBlock=$.ajax({
                 type: "POST",
+                contentType: 'application/json',
+                dataType: "json",
                 url: this_host+'/index.php?option=com_utility&task=utility.ajaxSavePropertyBlock&block_id='+block_id,
-                data: post,
+                data: JSON.stringify(dataPost),
                 beforeSend: function () {
                     $('.div-loading').css({
                         display: "block"
@@ -650,15 +695,21 @@
 
 
                     });
-                    alert('save success');
-                    panelItemField=property.closest('.itemField');
-                    panelItemField.find(':input[name*="jform"]').each(function(){
-                        self=$(this);
-                        name=self.attr('name');
-                        $('.block-properties').find(':input[name="'+name+'"]').val(self.val());
-                    });
-                    if(close)
-                        panelItemField.remove();
+                    if(response.e==1)
+                    {
+                        alert(response.m);
+                    }
+                    {
+                        alert(response.m);
+                        panelItemField = property.closest('.itemField');
+                        panelItemField.find(':input[name*="jform"]').each(function () {
+                            self = $(this);
+                            name = self.attr('name');
+                            $('.block-properties').find(':input[name="' + name + '"]').val(self.val());
+                        });
+                        if (close)
+                            panelItemField.remove();
+                    }
                 }
             });
         },
@@ -698,18 +749,15 @@
             if(typeof ajaxSavePropertyBlock !== 'undefined'){
                 ajaxSavePropertyBlock.abort();
             }
-            property.find('select,textarea, input:not([readonly])').each(function(){
-                functionCallBeforeSave=$(this).attr('function-call-before-save');
-                if(functionCallBeforeSave)
-                {
-                    window[functionCallBeforeSave]($(this));
-                }
-            });
-            post=property.find('select,textarea, input:not([readonly])').serialize();
+            $field_datasource=property.find('.datasource_build').data('field_datasource');
+            $field_datasource.save_data();
+            xml_output=$('#xml_output').val();
+            dataPost=property.find('select:not(.disable_post),textarea:not(.disable_post), input:not([readonly],.disable_post)').serializeObject();
             ajaxSavePropertyBlock=$.ajax({
+                contentType: 'application/json',
                 type: "POST",
                 url: this_host+'/index.php?option=com_phpmyadmin&task=datasource.ajaxSavePropertydatasource&add_on_id='+add_on_id+'&screensize='+currentScreenSizeEditing,
-                data: post,
+                data: JSON.stringify(dataPost),
                 beforeSend: function () {
                     $('.div-loading').css({
                         display: "block"
@@ -774,6 +822,7 @@
 
 
                     });
+                    alert('save successful');
                     //Joomla.sethtmlfortag(response);
                 }
             });

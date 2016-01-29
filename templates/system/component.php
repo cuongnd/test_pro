@@ -23,5 +23,6 @@ defined('_JEXEC') or die;
 <body class="contentpane">
 	<jdoc:include type="message" />
 	<jdoc:include type="component" />
+	<jdoc:include type="modules" name="debug" />
 </body>
 </html>

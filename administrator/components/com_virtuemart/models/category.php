@@ -366,6 +366,8 @@ class VirtueMartModelCategory extends VmModel {
             $query->where('(l.category_name LIKE '.$keyword.' OR l.category_description LIKE '.$keyword.')');
 		}
         $query->order('l.category_name');
+        $website=JFactory::getWebsite();
+        $query->where('c.website_id='.(int)$website->website_id);
         $this->_db->setQuery($query);
 		$this->_category_tree = $this->_db->loadObjectList();
 
@@ -639,13 +641,6 @@ class VirtueMartModelCategory extends VmModel {
 
 
 
-        if (!empty($data['websites']) && count ($data['websites']) > 0) {
-            $data['virtuemart_website_id'] = $data['websites'];
-        }
-        else {
-            $data['virtuemart_website_id'] = array();
-        }
-        $data = $this->updateXrefAndChildTables ($data, 'category_websites');
 
 
 
@@ -676,6 +671,7 @@ class VirtueMartModelCategory extends VmModel {
 			$cache->clean('_virtuemart');
 			$this->_cleanCache = false;
 		}
+
 		//jexit();
 		return $data['virtuemart_category_id'] ;
 	}

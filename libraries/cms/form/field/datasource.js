@@ -1,113 +1,348 @@
-jQuery(document).ready(function($){
-    utilityDataSource={
-        init_utility_dataSource:function(){
-           /* $('#window').draggable({
-                handle: '#windowtitle'
-            });*/
-            //var d = new SQL.Designer();
+(function ($) {
 
+    // here we go!
+    $.field_datasource = function (element, options) {
 
-
-
-        },
-        getListTable:function(){
-            var listTable={};
-            $('.panel-database-table').each(function(index){
-                //listTable[index]=$(this).attr('data-table-name');
-                table_name=$(this).attr('data-table-name');
-                listTable[table_name]={};
-                $(this).find('.list-field .item-field').each(function(index2){
-                    listTable[table_name][index2]=$(this).attr('data-table-field');
-                });
-            });
-            return listTable;
-        },
-        updateTableInSelectTableAndFunction:function()
-        {
-            listTable=utilityDataSource.getListTable();
-            $('.select-tables').find('option[value!="0"]').remove();
-            $('.table-and-function .list-field').empty();
-
-            $.each(listTable, function( index, $fields ) {
-                $('.select-tables').append('<option value="'+index+'">'+index+'</option>');
-                $.each($fields, function( index, field ) {
-                    $('.table-and-function .list-field').append('<li data-table-field="'+field+'"><a href="javascript:void(0)">'+field+'</a></li>');
-                });
-            });
-
-
-
+        // plugin's default options
+        var defaults = {
+            source_id: 0,
+            ajaxgetcontent: 0,
+            field_name: '',
+            list_table: []
         }
-    };
-    $( ".item-table" ).draggable({
-        appendTo: 'body',
-        helper: "clone"
-    }).css({
-        'z-index':'auto'
-    });
-    $('.diagrams').droppable({
-        accept: ".item-table",
-        greedy: true,
-        drop: function(ev,ui){
-            uiDraggable=$(ui.draggable);
-            droppable=$(this);
-            renderTable(uiDraggable,droppable);
-        }
-    });
 
+        // current instance of the object
+        var plugin = this;
 
-    $('.show-select-table-and-function').focus(function(){
-        $('.table-and-function').removeClass( "table-and-function-hide" );
-    });
-    $('.show-table-and-function').click(function(){
-        $('.table-and-function').toggleClass( "table-and-function-hide", 1000 );
-    });
+        // this will hold the merged default, and user-provided options
+        plugin.settings = {}
 
+        var $element = $(element), // reference to the jQuery version of DOM element
+            element = element;    // reference to the actual DOM element
+        // the "constructor" method that gets called when the object is created
+        plugin.init = function () {
 
-/*
-    html.draggable({
-        handle: '.field-config-heading'
-    });
-*/
+            plugin.settings = $.extend({}, defaults, options);
+            var ajaxgetcontent= plugin.settings.ajaxgetcontent;
 
-    $(document).on('.panel-database-table .panel-controls .panel-close','click',function(e){
-        sprFlat=$('body').data('sprFlat');
-        console.log('hello panel');
-    });
-
-    var ajaxRederTable;
-    function renderTable(uiDraggable,droppable)
-    {
-        table=uiDraggable.attr('data-table');
-        if(typeof ajaxRederTable !== 'undefined'){
-            ajaxRederTable.abort();
-        }
-        ajaxRederTable=$.ajax({
-            type: "GET",
-            url: this_host+'/index.php',
-            data: (function () {
-                dataPost = {
-                    option: 'com_phpmyadmin',
-                    task: 'table.aJaxInsertTable',
-                    table:table
-
-                };
-                return dataPost;
-            })(),
-            beforeSend: function () {
-                // $('.loading').popup();
+            plugin.kendo_grid_option= {
+                height: 300,
+                width: 1000,
+                groupable: true,
+                scrollable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5
+                }
             },
-            success: function (response) {
-                response=$(response);
-                droppable.append(response);
-               /* $('.panel-database-table').draggable({
-                    containment:"parent",
-                    handle: '.panel-heading-database-table'
-                });*/
-                response.find('.list-field .item-field').each(function(){
-                });
-                utilityDataSource.updateTableInSelectTableAndFunction();
+            $element.find('.umldrawer').popupWindow({
+                scrollbars:1,
+                windowName:'umldrawer',
+                centerBrowser:1,
+                width:'1200',
+                scrollbars:1,
+                height:'900'
+            });
+            $element.find('.main_ralationship').popupWindow({
+                scrollbars:1,
+                windowName:'main_ralationship',
+                centerBrowser:1,
+                width:'1200',
+                scrollbars:1,
+                height:'800'
+            });
+            $element.find('.project_ralationship').popupWindow({
+                scrollbars:1,
+                windowName:'project_ralationship',
+                centerBrowser:1,
+                width:'1200',
+                height:'800'
+            });
+            $element.find('.datasourcerelation').popupWindow({
+                scrollbars:1,
+                windowName:'datasourcerelation',
+                centerBrowser:1,
+                width:'1200',
+                height:'800'
+            });
+
+            $element.find('#grid_result').kendoGrid(plugin.kendo_grid_option);
+            $element.find('#table-result a:first').tab('show');
+
+
+            $element.find('#table-result a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                var target = $(e.target).attr("href");
+                switch (target) {
+                    case '#stander_query':
+                        //code block here
+                        query = window.editor.getValue();
+                        ajaxGetStanderQuery = $.ajax({
+                            type: "GET",
+                            url: this_host + '/index.php',
+
+                            data: (function () {
+
+                                dataPost = {
+                                    option: 'com_phpmyadmin',
+                                    task: 'datasource.ajaxGetStanderQuery',
+                                    query: query
+
+                                };
+                                return dataPost;
+                            })(),
+                            beforeSend: function () {
+
+
+                                // $('.loading').popup();
+                            },
+                            success: function (response) {
+
+                                $('.stander_query').html(response);
+                            }
+                        });
+
+
+                        break;
+                    case '#result':
+                        //code block
+                        plugin.getDataByQuery();
+
+                        break;
+                    default:
+                    //default code block
+                }
+            });
+            var field_name = plugin.settings.field_name;
+
+            plugin.textarea = $element.find('textarea[name="' + field_name + '"]');
+            query = plugin.textarea.val();
+
+            query =query!=''?query.replace("/^\s*|\s*$/g", ''):'';
+            $element.find('textarea[name="' + field_name + '"]').val(query.trim());
+            var mime = 'text/x-mysql';
+            if (window.location.href.indexOf('mime=') > -1) {
+                mime = window.location.href.substr(window.location.href.indexOf('mime=') + 5);
             }
-        });
+            ;
+            var list_table = plugin.settings.list_table;
+            window.editor = plugin.textarea.codemirror({
+                mode: mime,
+                indentWithTabs: true,
+                smartIndent: true,
+                lineNumbers: true,
+                matchBrackets: true,
+                fullScreen: false,
+                autofocus: true,
+                extraKeys: {
+                    "'?'": "autocomplete1",
+                    "Ctrl-Space": "autocomplete",
+                    "Ctrl-F": "list_function"
+                },
+                hintOptions: {
+                    tables: {
+                        /*table__users: {name: null, score: null, birthDate: null},
+                         countries: {name: null, population: null, size: null}*/
+                    }
+                },
+                ajax_loader: {
+                    ajax: true,
+                    component: 'com_phpmyadmin',
+                    task: 'tables.ajax_get_list_table_and_field',
+                    func_success: function (response, cm) {
+                        jQuery.each(response, function (index, table) {
+                            cm.options.hintOptions.tables[index] = {};
+                            jQuery.each(table, function (field, type) {
+                                cm.options.hintOptions.tables[index][field] = null;
+                            });
+
+                        });
+                    }
+                },
+                list_table: list_table
+            });
+
+
+            list_function = [
+                'get_json_group_concat(id:id,title:title)',
+                'LEFT JOIN t__t1 AS t1 ON t1.id=t2.t_id',
+                'request(id,0)',
+                'get_tree_node(field,id,parent_id,ordering,asign_name)'
+            ];
+
+            CodeMirror.commands.autocomplete1 = function (cm) {
+                cm.showHint({hint: CodeMirror.hint.anyword});
+            };
+            CodeMirror.commands.list_function = function (cm) {
+                cm.showHint({hint: CodeMirror.hint.list_function});
+            };
+
+            CodeMirror.registerHelper("hint", "list_function", function (editor, options) {
+                var WORD = /[\w$]+/, RANGE = 500;
+                var word = options && options.word || WORD;
+                var range = options && options.range || RANGE;
+                var cur = editor.getCursor(), curLine = editor.getLine(cur.line);
+                var end = cur.ch, start = end;
+                while (start && word.test(curLine.charAt(start - 1))) --start;
+                var curWord = start != end && curLine.slice(start, end);
+
+                var list = list_function, seen = {};
+                var re = new RegExp(word.source, "g");
+                for (var dir = -1; dir <= 1; dir += 2) {
+                    var line = cur.line, endLine = Math.min(Math.max(line + dir * range, editor.firstLine()), editor.lastLine()) + dir;
+                    for (; line != endLine; line += dir) {
+                        var text = editor.getLine(line), m;
+                        while (m = re.exec(text)) {
+                            if (line == cur.line && m[0] === curWord) continue;
+                            if ((!curWord || m[0].lastIndexOf(curWord, 0) == 0) && !Object.prototype.hasOwnProperty.call(seen, m[0])) {
+                                seen[m[0]] = true;
+                                list.push(m[0]);
+                            }
+                        }
+                    }
+                }
+                return {list: list, from: CodeMirror.Pos(cur.line, start), to: CodeMirror.Pos(cur.line, end)};
+            });
+
+
+            window.getValueFromTextMirror = function (self) {
+                self.val(window.editor.getValue());
+                console.log(window.editor.getValue());
+            };
+            $element.find('.datasource-result').fseditor({
+                overlay: true,
+                disable_escape: true,
+                expandOnFocus: false,
+                transition: '', // 'fade', 'slide-in',
+                placeholder: '',
+                maxWidth: '', // maximum width of the editor on fullscreen mode
+                maxHeight: '', // maximum height of the editor on fullscreen mode,
+                onExpand: function () {
+                }, // on switch to fullscreen mode callback
+                onMinimize: function () {
+                } // on switch to inline mode callback
+            });
+
+            $element.find('.list_table').typeahead({
+                    hint: true,
+                    highlight: true,
+                    minLength: 1,
+                    limit:10
+                },
+                {
+                    name: 'datasource',
+                    source: plugin.substringMatcher(plugin.settings.list_table),
+                    limit:10
+                });
+
+
+
+        }
+        plugin.save_data = function() {
+            plugin.textarea.val(window.editor.getValue());
+        };
+        plugin.substringMatcher = function(strs) {
+            return function findMatches(q, cb) {
+                var matches, substringRegex;
+
+                // an array that will be populated with substring matches
+                matches = [];
+
+                // regex used to determine if a string contains the substring `q`
+                substrRegex = new RegExp(q, 'i');
+
+                // iterate through the pool of strings and for any string that
+                // contains the substring `q`, add it to the `matches` array
+                $.each(strs, function(i, str) {
+                    if (substrRegex.test(str)) {
+                        matches.push(str);
+                    }
+                });
+
+                cb(matches);
+            };
+        };
+
+        plugin.getDataByQuery = function () {
+            var source_id = plugin.settings.source_id;
+            query = window.editor.getValue();
+            ajaxGetStanderQuery = $.ajax({
+                type: "GET",
+                url: this_host + '/index.php',
+
+                data: (function () {
+
+                    dataPost = {
+                        option: 'com_phpmyadmin',
+                        task: 'datasource.ajaxGetDataByQuery',
+                        query: query,
+                        type: 'data_source',
+                        source_id: source_id
+
+                    };
+                    return dataPost;
+                })(),
+                beforeSend: function () {
+                    $('.div-loading').css({
+                        display: "block"
+
+
+                    });
+
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+                    $('.div-loading').css({
+                        display: "none"
+
+
+                    });
+                    response = $.parseJSON(response);
+
+                    if (response.e == 1) {
+                        $element.find('#grid_result_error').html(response.m).show();
+                        $element.find('#grid_result').hide();
+                    }
+                    else {
+                        $element.find('#grid_result').show();
+                        var grid_result = $element.find('#grid_result').data("kendoGrid");
+                        var columns = [];
+                        $.each(response.r[0], function (key, value) {
+                            var column = {};
+                            column.field = key;
+                            column.width = 150;
+                            columns.push(column);
+                        });
+
+                        grid_result.setOptions({
+                            columns: columns
+                        });
+                        grid_result.dataSource.data(response.r);
+                    }
+                }
+            });
+
+        }
+
+
+        plugin.init();
+
     }
-});
+
+    // add the plugin to the jQuery.fn object
+    $.fn.field_datasource = function (options) {
+
+        // iterate through the DOM elements we are attaching the plugin to
+        return this.each(function () {
+            // if plugin has not already been attached to the element
+            if (undefined == $(this).data('field_datasource')) {
+                var plugin = new $.field_datasource(this, options);
+                $(this).data('field_datasource', plugin);
+
+            }
+
+        });
+
+    }
+
+})(jQuery);

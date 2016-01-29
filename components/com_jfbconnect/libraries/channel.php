@@ -1,11 +1,13 @@
 <?php
 /**
  * @package         JFBConnect
- * @copyright (c)   2009-@CURRENT_YEAR@ by SourceCoast - All Rights Reserved
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
- * @version         Release v@VERSION@
- * @build-date      @DATE@
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
+include_once(JPATH_SITE . '/components/com_jfbconnect/libraries/stream.php');
 
 abstract class JFBConnectChannel
 {
@@ -16,6 +18,9 @@ abstract class JFBConnectChannel
     var $outbound = false;
     var $requiredScope = array();
 
+    var $postCharacterMax = 0;
+    var $urlLength = 0;
+
     public function __construct(JFBConnectProvider $provider, JRegistry $options)
     {
         $this->provider = $provider;
@@ -23,7 +28,7 @@ abstract class JFBConnectChannel
         $this->setup();
     }
 
-    public function getStream()
+    public function getStream($stream)
     {
         return null;
     }
@@ -33,9 +38,20 @@ abstract class JFBConnectChannel
         return false;
     }
 
+    public function canPublish($data)
+    {
+        return true;
+    }
+
     // manipulate the input data in some way (retrieve an access token, etc)
     public function onBeforeSave($data)
     {
+        if(!$this->canPublish($data))
+        {
+            $data['published'] = "0";
+            JFactory::getApplication()->enqueueMessage(JText::_('COM_JFBCONNECT_CHANNEL_CANNOT_PUBLISH_LABEL'), 'warning');
+        }
+
         return $data;
     }
 

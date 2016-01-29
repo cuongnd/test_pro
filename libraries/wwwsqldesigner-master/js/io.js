@@ -14,7 +14,7 @@ SQL.IO = function(owner) {
 		var id = ids[i];
 		var elm = OZ.$(id);
 		this.dom[id] = elm;
-		elm.value = _(id);
+		elm.value = getString(id);
 	}
 	
 	this.dom.quicksave.value += " (F2)";
@@ -23,7 +23,7 @@ SQL.IO = function(owner) {
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
-		elm.innerHTML = _(id);
+		elm.innerHTML = getString(id);
 	}
 	
 	this.dom.ta = OZ.$("textarea");
@@ -83,8 +83,9 @@ SQL.IO.prototype.build = function() {
 SQL.IO.prototype.click = function() { /* open io dialog */
 	this.build();
 	this.dom.ta.value = "";
-	this.dom.clientsql.value = _("clientsql") + " (" + window.DATATYPES.getAttribute("db") + ")";
-	this.owner.window.open(_("saveload"),this.dom.container);
+	this.dom.clientsql.value = getString("clientsql") + " (" + window.DATATYPES.getAttribute("db") + ")";
+
+	this.owner.window.open(getString("saveload"),this.dom.container);
 }
 
 SQL.IO.prototype.fromXMLText = function(xml) {
@@ -99,7 +100,7 @@ SQL.IO.prototype.fromXMLText = function(xml) {
 			throw new Error("No XML parser available.");
 		}
 	} catch(e) { 
-		alert(_("xmlerror")+': '+e.message);
+		alert(getString("xmlerror")+': '+e.message);
 		return;
 	}
 	this.fromXML(xmlDoc);
@@ -107,7 +108,7 @@ SQL.IO.prototype.fromXMLText = function(xml) {
 
 SQL.IO.prototype.fromXML = function(xmlDoc) {
 	if (!xmlDoc || !xmlDoc.documentElement) {
-		alert(_("xmlerror")+': Null document');
+		alert(getString("xmlerror")+': Null document');
 		return false; 
 	}
 	this.owner.fromXML(xmlDoc.documentElement);
@@ -117,13 +118,17 @@ SQL.IO.prototype.fromXML = function(xmlDoc) {
 
 SQL.IO.prototype.clientsave = function() {
 	var xml = this.owner.toXML();
+
 	this.dom.ta.value = xml;
 }
-
+SQL.IO.prototype.getXML = function() {
+	var xml = this.owner.toXML();
+	return xml;
+}
 SQL.IO.prototype.clientload = function() {
 	var xml = this.dom.ta.value;
 	if (!xml) {
-		alert(_("empty"));
+		alert(getString("empty"));
 		return;
 	}
 
@@ -132,7 +137,7 @@ SQL.IO.prototype.clientload = function() {
 
 SQL.IO.prototype.promptName = function(title, suffix) {
 	var lastUsedName = this.owner.getOption("lastUsedName") || this.lastUsedName;
-	var name = prompt(_(title), lastUsedName);
+	var name = prompt(getString(title), lastUsedName);
 	if (!name) { return null; }
 	if (suffix && name.endsWith(suffix)) {
 		// remove suffix from name
@@ -242,7 +247,7 @@ SQL.IO.prototype.dropBoxInit = function() {
 }
 
 SQL.IO.prototype.showDropboxError = function(error) {
-	var prefix = _("Dropbox error")+": ";
+	var prefix = getString("Dropbox error")+": ";
 	var msg = error.status;
 
 	switch (error.status) {
@@ -250,20 +255,20 @@ SQL.IO.prototype.showDropboxError = function(error) {
 		// If you're using dropbox.js, the only cause behind this error is that
 		// the user token expired.
 		// Get the user through the authentication flow again.
-		msg = _("Token expired - retry the operation, authenticating again with Dropbox");
+		msg = getString("Token expired - retry the operation, authenticating again with Dropbox");
 		this.dropboxClient.reset();
 		break;
 
 	  case Dropbox.ApiError.NOT_FOUND:
 		// The file or folder you tried to access is not in the user's Dropbox.
 		// Handling this error is specific to your application.
-		msg = _("File not found");
+		msg = getString("File not found");
 		break;
 
 	  case Dropbox.ApiError.OVER_QUOTA:
 		// The user is over their Dropbox quota.
 		// Tell them their Dropbox is full. Refreshing the page won't help.
-		msg = _("Dropbox is full");
+		msg = getString("Dropbox is full");
 		break;
 
 	  case Dropbox.ApiError.RATE_LIMITED:
@@ -275,7 +280,7 @@ SQL.IO.prototype.showDropboxError = function(error) {
 		// An error occurred at the XMLHttpRequest layer.
 		// Most likely, the user's network connection is down.
 		// API calls will not succeed until the user gets back online.
-		msg = _("Network error");
+		msg = getString("Network error");
 		break;
 
 	  case Dropbox.ApiError.INVALID_PARAM:
@@ -327,7 +332,7 @@ SQL.IO.prototype.dropboxsave = function() {
 				sql_io.listresponse("", 200);
 				return sql_io.showDropboxError(error);
 			}
-			sql_io.listresponse(filename+" "+_("was saved to Dropbox"), 200);
+			sql_io.listresponse(filename+" "+getString("was saved to Dropbox"), 200);
 		});
 	});
 }
@@ -371,7 +376,7 @@ SQL.IO.prototype.dropboxlist = function() {
 
 SQL.IO.prototype.clientsql = function() {
 	var bp = this.owner.getOption("staticpath");
-	var path = bp + "libraries/wwwsqldesigner-master/db/"+window.DATATYPES.getAttribute("db")+"/output.xsl";
+	var path = bp + "db/"+window.DATATYPES.getAttribute("db")+"/output.xsl";
 	this.owner.window.showThrobber();
 	OZ.Request(path, this.finish.bind(this), {xml:true});
 }
@@ -396,19 +401,19 @@ SQL.IO.prototype.finish = function(xslDoc) {
 			throw new Error("No XSLT processor available");
 		}
 	} catch(e) {
-		alert(_("xmlerror")+': '+e.message);
+		alert(getString("xmlerror")+': '+e.message);
 		return;
 	}
 	this.dom.ta.value = sql.trim();
 }
 
 SQL.IO.prototype.serversave = function(e, keyword) {
-	var name = keyword || prompt(_("serversaveprompt"), this._name);
+	var name = keyword || prompt(getString("serversaveprompt"), this._name);
 	if (!name) { return; }
 	this._name = name;
 	var xml = this.owner.toXML();
 	var bp = this.owner.getOption("xhrpath");
-	var url = bp + "libraries/wwwsqldesigner-master/backend/"+this.dom.backend.value+"/?action=save&keyword="+encodeURIComponent(name);
+	var url = bp + "backend/"+this.dom.backend.value+"/?action=save&keyword="+encodeURIComponent(name);
 	var h = {"Content-type":"application/xml"};
 	this.owner.window.showThrobber();
 	this.owner.setTitle(name);
@@ -420,11 +425,11 @@ SQL.IO.prototype.quicksave = function(e) {
 }
 
 SQL.IO.prototype.serverload = function(e, keyword) {
-	var name = keyword || prompt(_("serverloadprompt"), this._name);
+	var name = keyword || prompt(getString("serverloadprompt"), this._name);
 	if (!name) { return; }
 	this._name = name;
 	var bp = this.owner.getOption("xhrpath");
-	var url = bp + "index.php?option=com_phpmyadmin&task=datasource.ajax_load_database&keyword="+encodeURIComponent(name);
+	var url = bp + "backend/"+this.dom.backend.value+"/?action=load&keyword="+encodeURIComponent(name);
 	this.owner.window.showThrobber();
 	this.name = name;
 	OZ.Request(url, this.loadresponse, {xml:true});
@@ -432,16 +437,16 @@ SQL.IO.prototype.serverload = function(e, keyword) {
 
 SQL.IO.prototype.serverlist = function(e) {
 	var bp = this.owner.getOption("xhrpath");
-	var url = bp + "libraries/wwwsqldesigner-master/backend/"+this.dom.backend.value+"/?action=list";
+	var url = bp + "backend/"+this.dom.backend.value+"/?action=list";
 	this.owner.window.showThrobber();
 	OZ.Request(url, this.listresponse);
 }
 
 SQL.IO.prototype.serverimport = function(e) {
-	var name = prompt(_("serverimportprompt"), "");
+	var name = prompt(getString("serverimportprompt"), "");
 	if (!name) { return; }
 	var bp = this.owner.getOption("xhrpath");
-	var url = bp + "libraries/wwwsqldesigner-master/backend/"+this.dom.backend.value+"/?action=import&database="+name;
+	var url = bp + "backend/"+this.dom.backend.value+"/?action=import&database="+name;
 	this.owner.window.showThrobber();
 	OZ.Request(url, this.importresponse, {xml:true});
 }
@@ -454,7 +459,7 @@ SQL.IO.prototype.check = function(code) {
 		case 501:
 		case 503:
 			var lang = "http"+code;
-			this.dom.ta.value = _("httpresponse")+": "+_(lang);
+			this.dom.ta.value = getString("httpresponse")+": "+getString(lang);
 			return false;
 		break;
 		default: return true;

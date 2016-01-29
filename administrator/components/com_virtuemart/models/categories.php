@@ -366,6 +366,8 @@ class VirtueMartModelCategory extends JModelList {
             $query->where('(l.category_name LIKE '.$keyword.' OR l.category_description LIKE '.$keyword.')');
 		}
         $query->order('l.category_name');
+        $website=JFactory::getWebsite();
+        $query->where('c.website_id='.(int)$website->website_id);
         $this->_db->setQuery($query);
 		$this->_category_tree = $this->_db->loadObjectList();
 

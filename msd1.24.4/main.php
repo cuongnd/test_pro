@@ -1,9 +1,13 @@
 <?php
+
 if (!@ob_start("ob_gzhandler")) @ob_start();
+
+
 include_once ('./inc/header.php');
 include_once ('./inc/runtime.php');
 include_once ('./language/'.$config['language'].'/lang_main.php');
 include ('./inc/template.php');
+
 
 $action=(isset($_GET['action'])) ? $_GET['action'] : 'status';
 

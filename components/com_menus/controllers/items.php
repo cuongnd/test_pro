@@ -32,6 +32,24 @@ class MenusControllerItems extends JControllerAdmin
 	{
 		return parent::getModel($name, $prefix, array('ignore_request' => true));
 	}
+	 public function ajax_load_menu_page(){
+		 $view = &$this->getView('items', 'html', 'MenusView');
+		 $app = JFactory::getApplication();
+		 $input = $app->input;
+		 $respone_array = array();
+		 ob_start();
+		 JRequest::setVar('layout', 'default');
+		 JRequest::setVar('tpl', 'loadmenupage');
+
+		 $view->display();
+		 $contents = ob_get_clean();
+		 $respone_array[] = array(
+			 'key' => '.menu_page'
+		 , 'contents' => $contents
+		 );
+		 echo json_encode($respone_array);
+		 exit();
+	 }
 
 	/**
 	 * Rebuild the nested set tree.

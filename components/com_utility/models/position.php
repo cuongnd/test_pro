@@ -54,7 +54,7 @@ class UtilityModelPosition extends JModelAdmin
 
 		if (!$pk)
 		{
-			if ($extensionId = (int) $app->getUserState('com_utility.add.position.extension_id'))
+			if ($extensionId = (int) $app->getUserState('com_utility.add.position.id'))
 			{
 				$this->setState('extension.id', $extensionId);
 			}
@@ -147,12 +147,20 @@ class UtilityModelPosition extends JModelAdmin
 
         return true;
     }
-	public function duplicateBlock($block_id,&$a_listId=array(),$block_parent_id=0)
+	public function duplicateBlock($block_id,&$a_listId=array(),$block_parent_id=0,$website_id=0,$menu_item_id=0)
 	{
 		$db=$this->_db;
 		$tableBlock=$this->getTable();
 		$tableBlock->load($block_id);
 		$tableBlock->id=0;
+		if($website_id)
+		{
+			$tableBlock->website_id=$website_id;
+		}
+		if($menu_item_id)
+		{
+			$tableBlock->menu_item_id=$menu_item_id;
+		}
 		$tableBlock->store();
 		$new_id=$tableBlock->id;
 		$a_listId[]=$new_id;
@@ -170,7 +178,7 @@ class UtilityModelPosition extends JModelAdmin
 		if(count($listId))
 		{
 			foreach($listId as $block_id) {
-				$this->duplicateBlock($block_id,$a_listId,$new_id);
+				$this->duplicateBlock($block_id,$a_listId,$new_id,$website_id,$menu_item_id);
 			}
 		}
 	}
@@ -734,11 +742,17 @@ class UtilityModelPosition extends JModelAdmin
 		{
 			$ui_path = substr($ui_path, 1);
 		}
+
 		$db=JFactory::getDbo();
 		require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
-		$table_control=new JTableUpdateTable($db,'control');
-		$table_control->load(array("element_path"=>$ui_path));
-		$fields=$table_control->fields;
+		$query=$db->getQuery(true);
+		$query->select('*')
+			->from('#__control')
+			->where('element_path LIKE '.$query->q('%'.$ui_path.'%'))
+			->where('type='.$query->q('element'))
+		;
+		$control=$db->setQuery($query)->loadObject();
+		$fields=$control->fields;
 		$fields=base64_decode($fields);
 
 		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
@@ -748,14 +762,29 @@ class UtilityModelPosition extends JModelAdmin
 		$string_xml=ob_get_clean();
 		$string_xml='<config>'.$string_xml.'</config>';
 		jimport('joomla.filesystem.file');
-		JFile::write($formFile,$string_xml);
+
+		$pathInfo=pathinfo($ui_path);
+		$filename=$pathInfo['filename'];
+		$dirName=$pathInfo['dirname'];
+
+		JFile::write(JPATH_ROOT."/$dirName/$filename.xml",$string_xml);
 
 
 
 
-		$table_control->load(array("element_path"=>'root_element'));
-		$fields=$table_control->fields;
+
+		$query=$db->getQuery(true);
+		$query->select('*')
+			->from('#__control')
+			->where('element_path LIKE '.$query->q('%root_element%'))
+			->where('type='.$query->q('element'))
+		;
+		$control=$db->setQuery($query)->loadObject();
+		$fields=$control->fields;
 		$fields=base64_decode($fields);
+
+
+
 
 		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
 		ob_start();
@@ -959,7 +988,8 @@ class UtilityModelPosition extends JModelAdmin
 
 			// Get the module XML.
 			$client = JApplicationHelper::getClientInfo($table->client_id);
-			$path   = JPath::clean($client->path . '/modules/' . $table->module . '/' . $table->module . '.xml');
+			$website=JFactory::getWebsite();
+			$path   = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/' . $table->module . '/' . $table->module . '.xml');
 			if (file_exists($path))
 			{
 				$this->_cache[$pk]->xml = simplexml_load_file($path);
@@ -1054,22 +1084,46 @@ class UtilityModelPosition extends JModelAdmin
 						echo '</fields>';
 					}
 				}else{
+					$config_property=$item->config_property;
+					$config_property=base64_decode($config_property);
+					$config_property = (array)up_json_decode($config_property, false, 512, JSON_PARSE_JAVASCRIPT);
+
 					$config_params=$item->config_params;
 					$config_params=base64_decode($config_params);
 					$config_params = (array)up_json_decode($config_params, false, 512, JSON_PARSE_JAVASCRIPT);
+					$name=strtolower($item->name);
 					?>
 
-					<field type="<?php echo $item->type?$item->type:'text' ?>" readonly="<?php echo $item->readonly==1?'true':'false' ?>" label="<?php echo $item->label ?>" default="<?php echo $item->default ?>" name="<?php echo $item->name ?>" >
+					<field type="<?php echo $item->type?$item->type:'text' ?>" readonly="<?php echo $item->readonly==1?'true':'false' ?>" label="<?php echo $item->label ?>" default="<?php echo $item->default ?>"
+						   name="<?php echo $item->name ?>"
+
+						<?php
+						foreach($config_property as $a_item){ ?>
+							<?php if($a_item->property_key&&$a_item->property_value){
+								echo " ";
+								echo "{$a_item->property_key}=\"{$a_item->property_value}\"";
+								echo " ";
+							 } ?>
+						<?php }
+
+
+					?>
+						>
 						<?php if(count($config_params)){
 
 							foreach($config_params as $a_item){ ?>
-								<?php if($a_item->param_key&&$a_item->param_value){ ?>
+								<?php if($a_item->param_key!=''&&$a_item->param_value!=''){ ?>
 									<option value="<?php echo $a_item->param_key ?>"><?php echo $a_item->param_value ?></option>
 								<?php } ?>
 							<?php }
 						} ?>
 					</field>
-				<?php
+					<field type="checkbox" label="<?php echo $item->label ?>" default="0"
+						   name="enable_<?php echo $name ?>" onchange="<?php echo strtolower($item->onchange) ?>">
+
+					</field>
+
+					<?php
 				}
 				?>
 				<?php
@@ -1328,7 +1382,7 @@ class UtilityModelPosition extends JModelAdmin
 
 		// Compute the extension id of this module in case the controller wants it.
 		$query	= $db->getQuery(true)
-			->select('e.id as extension_id')
+			->select('e.id as id')
 			->from('#__extensions AS e')
 			->join('LEFT', '#__modules AS m ON e.element = m.module')
 			->where('m.id = ' . (int) $table->id);
@@ -1345,7 +1399,7 @@ class UtilityModelPosition extends JModelAdmin
 			return false;
 		}
 
-		$this->setState('position.extension_id', $extensionId);
+		$this->setState('position.id', $extensionId);
 		$this->setState('position.id', $table->id);
 
 		// Clear modules cache

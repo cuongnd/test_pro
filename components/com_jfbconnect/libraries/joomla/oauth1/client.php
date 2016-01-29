@@ -17,7 +17,7 @@ defined('JPATH_PLATFORM') or die();
  *
  * @since       13.1
  */
-abstract class JOAuth1Client
+abstract class JFBCOAuth1Client
 {
 	/**
 	 * @var    JRegistry  Options for the JOAuth1Client object.

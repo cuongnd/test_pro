@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -12,6 +15,7 @@ class JFBConnectProviderFacebookWidgetAction extends JFBConnectProviderFacebookW
     var $name = "Action";
     var $systemName = "action";
     var $className = "jfbcaction";
+    var $tagName = "jfbcaction";
     var $examples = array(
         "{JFBCAction text=I'm cooking this! inactive=I cooked this!}",
         "{JFBCAction text=I'm cooking this inactive=I cooked this active_image=http://www.sourcecoast.com/images/jfbconnect/logo-jfbconnect.png inactive_image=http://www.sourcecoast.com/images/jlinked/logo-jlinked.png}",
@@ -23,6 +27,7 @@ class JFBConnectProviderFacebookWidgetAction extends JFBConnectProviderFacebookW
 
         if ($actionID)
         {
+            JFBCFactory::addStylesheet('jquery-ui/jquery-ui-autocomplete.css');
             $actionText = $this->getParamValue('text');
             $triggeredText = $this->getParamValue('inactive');
             $actionImage = $this->getParamValue('active_image');

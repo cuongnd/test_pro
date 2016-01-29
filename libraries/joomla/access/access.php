@@ -28,6 +28,8 @@ class JAccess
 	 */
 	protected static $viewLevels = array();
 
+	protected static $authorised = array();
+
 	/**
 	 * Array of rules for the asset
 	 *
@@ -101,6 +103,7 @@ class JAccess
 			$db = JFactory::getDbo();
 			$assets = JTable::getInstance('Asset', 'JTable', array('dbo' => $db));
 			$rootId = $assets->getRootId();
+
 			$asset = $rootId;
 		}
 
@@ -145,6 +148,7 @@ class JAccess
 			$db = JFactory::getDbo();
 			$assets = JTable::getInstance('Asset', 'JTable', array('dbo' => $db));
 			$rootId = $assets->getRootId();
+
 		}
 
 		// Get the rules for the asset recursively to root if not already retrieved.
@@ -219,14 +223,14 @@ class JAccess
 	{
 		// Get the database connection object.
 		$db = JFactory::getDbo();
-
+		$website=JFactory::getWebsite();
 		// Build the database query to get the rules for the asset.
 		$query = $db->getQuery(true)
-			->select($recursive ? 'b.rules' : 'a.rules')
+			->select('a.rules')
 			->from('#__assets AS a');
 
 		// SQLsrv change
-		$query->group($recursive ? 'b.id, b.rules, b.lft' : 'a.id, a.rules, a.lft');
+		$query->group('a.id, a.rules, a.lft');
 
 		// If the asset identifier is numeric assume it is a primary key, else lookup by name.
 		if (is_numeric($asset))
@@ -241,10 +245,10 @@ class JAccess
 		// If we want the rules cascading up to the global asset node we need a self-join.
 		if ($recursive)
 		{
-			$query->join('LEFT', '#__assets AS b ON b.lft <= a.lft AND b.rgt >= a.rgt')
-				->order('b.lft');
+			$query->join('LEFT', '#__assets AS b ON b.id=a.parent_id')
+				->order('a.lft');
 		}
-
+		$query->where('a.website_id='.(int)$website->website_id);
 		// Execute the query and load the rules from the result.
 		$db->setQuery($query);
 		$result = $db->loadColumn();
@@ -255,15 +259,18 @@ class JAccess
 			$db = JFactory::getDbo();
 			$assets = JTable::getInstance('Asset', 'JTable', array('dbo' => $db));
 			$rootId = $assets->getRootId();
+
 			$query->clear()
 				->select('rules')
 				->from('#__assets')
-				->where('id = ' . $db->quote($rootId));
+				->where('id = ' . $db->quote($rootId))
+                ->where('website_id='.(int)$website->website_id)
+            ;
 			$db->setQuery($query);
-			$result = $db->loadResult();
+            $result = $db->loadResult();
+
 			$result = array($result);
 		}
-
 		// Instantiate and return the JAccessRules object for the asset rules.
 		$rules = new JAccessRules;
 		$rules->mergeCollection($result);
@@ -287,7 +294,7 @@ class JAccess
 	{
 		// Creates a simple unique string for each parameter combination:
 		$storeId = $userId . ':' . (int) $recursive;
-
+		$website=JFactory::getWebsite();
 		if (!isset(self::$groupsByUser[$storeId]))
 		{
 			// TODO: Uncouple this from JComponentHelper and allow for a configuration setting or value injection.
@@ -332,7 +339,9 @@ class JAccess
 				}
 
 				// Execute the query and load the rules from the result.
-
+				$query->where('a.website_id='.(int)$website->website_id);
+				$query->where('b.website_id='.(int)$website->website_id);
+				$query->where('b.parent_id!=b.id');
 				$db->setQuery($query);
 				$result = $db->loadColumn();
 
@@ -346,6 +355,7 @@ class JAccess
 				else
 				{
 					$result = array_unique($result);
+
 				}
 			}
 
@@ -403,8 +413,26 @@ class JAccess
 	public static function getAuthorisedViewLevels($userId)
 	{
 		// Get all groups that the user is mapped to recursively.
+		$website=JFactory::getWebsite();
 		$groups = self::getGroupsByUser($userId);
 		// Only load the view levels once.
+		self::$authorised = array();
+		if (empty(self::$authorised))
+		{
+			$db = JFactory::getDbo();
+			$query = $db->getQuery(true)
+				->select('id')
+				->from($db->quoteName('#__viewlevels'))
+				->where('website_id='.(int)$website->website_id)
+				->where('is_publish=1')
+			;
+
+			// Set the query for execution.
+			$db->setQuery($query);
+			$id =$db->loadResult();
+			self::$authorised[]=$id;
+		}
+
 		if (empty(self::$viewLevels))
 		{
 			// Get a database object.
@@ -413,20 +441,22 @@ class JAccess
 			// Build the base query.
 			$query = $db->getQuery(true)
 				->select('id, rules')
-				->from($db->quoteName('#__viewlevels'));
+				->from($db->quoteName('#__viewlevels'))
+				->where('website_id='.(int)$website->website_id)
+				->where('is_publish!=1')
+			;
 
 			// Set the query for execution.
 			$db->setQuery($query);
-
+			$list_level =$db->loadAssocList();
 			// Build the view levels array.
-			foreach ($db->loadAssocList() as $level)
+			foreach ($list_level as $level)
 			{
 				self::$viewLevels[$level['id']] = (array) json_decode($level['rules']);
 			}
 		}
 
 		// Initialise the authorised array.
-		$authorised = array(1);
 
 		// Find the authorised levels.
 		foreach (self::$viewLevels as $level => $rule)
@@ -435,19 +465,18 @@ class JAccess
 			{
 				if (($id < 0) && (($id * -1) == $userId))
 				{
-					$authorised[] = $level;
+					self::$authorised[] = $level;
 					break;
 				}
 				// Check to see if the group is mapped to the level.
 				elseif (($id >= 0) && in_array($id, $groups))
 				{
-					$authorised[] = $level;
+					self::$authorised[] = $level;
 					break;
 				}
 			}
 		}
-
-		return $authorised;
+		return self::$authorised;
 	}
 
 	/**

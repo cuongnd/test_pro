@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scKeyValue"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/background"
+        android:layout_weight = "80" >
+
+	<TableLayout android:id="@+id/parentLayout"   
+	    android:background="@drawable/background"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    >
+	</TableLayout>
+</LinearLayout>

@@ -232,7 +232,7 @@ class JInstallerAdapterModule extends JAdapterInstance
 		 * If it isn't, add an entry to extensions
 		 */
 		$query = $db->getQuery(true)
-			->select($db->quoteName('extension_id'))
+			->select($db->quoteName('id'))
 			->from($db->quoteName('#__extensions'))
 			->where($db->quoteName('element') . ' = ' . $db->quote($element))
 			->where($db->quoteName('client_id') . ' = ' . (int) $clientId);
@@ -446,11 +446,13 @@ class JInstallerAdapterModule extends JAdapterInstance
 		}
 		else
 		{
+            $website=JFactory::getWebsite();
 			$row->set('name', $this->get('name'));
 			$row->set('type', 'module');
 			$row->set('element', $this->get('element'));
 
 			// There is no folder for modules
+			$row->set('website_id', $website->website_id);
 			$row->set('folder', '');
 			$row->set('enabled', 1);
 			$row->set('protected', 0);
@@ -470,24 +472,12 @@ class JInstallerAdapterModule extends JAdapterInstance
 
 				return false;
 			}
-
 			// Since we have created a module item, we add it to the installation step stack
 			// so that if we have to rollback the changes we can undo it.
-			$this->parent->pushStep(array('type' => 'extension', 'id' => $row->extension_id));
+			$this->parent->pushStep(array('type' => 'extension', 'id' => $row->id));
 
 			// Create unpublished module in jos_modules
 			$name = preg_replace('#[\*?]#', '', JText::_($this->get('name')));
-			$module = JTable::getInstance('module');
-			$module->set('title', $name);
-			$module->set('content', '');
-			$module->set('module', $this->get('element'));
-			$module->set('access', '1');
-			$module->set('showtitle', '1');
-			$module->set('params', '');
-			$module->set('client_id', $clientId);
-			$module->set('language', '*');
-
-			$module->store();
 		}
 
 		// Let's run the queries for the module
@@ -509,14 +499,14 @@ class JInstallerAdapterModule extends JAdapterInstance
 			// Set the schema version to be the latest update version
 			if ($this->manifest->update)
 			{
-				$this->parent->setSchemaVersion($this->manifest->update->schemas, $row->extension_id);
+				$this->parent->setSchemaVersion($this->manifest->update->schemas, $row->id);
 			}
 		}
 		elseif (strtolower($this->route) == 'update')
 		{
 			if ($this->manifest->update)
 			{
-				$result = $this->parent->parseSchemaUpdates($this->manifest->update->schemas, $row->extension_id);
+				$result = $this->parent->parseSchemaUpdates($this->manifest->update->schemas, $row->id);
 
 				if ($result === false)
 				{
@@ -580,7 +570,7 @@ class JInstallerAdapterModule extends JAdapterInstance
 			$this->parent->set('extension_message', $msg);
 		}
 
-		return $row->get('extension_id');
+		return $row->get('id');
 	}
 
 	/**
@@ -690,7 +680,7 @@ class JInstallerAdapterModule extends JAdapterInstance
 
 		if ($this->parent->extension->store())
 		{
-			return $this->parent->extension->get('extension_id');
+			return $this->parent->extension->get('id');
 		}
 		else
 		{
@@ -853,7 +843,7 @@ class JInstallerAdapterModule extends JAdapterInstance
 		// Remove the schema version
 		$query = $db->getQuery(true)
 			->delete('#__schemas')
-			->where('extension_id = ' . $row->extension_id);
+			->where('id = ' . $row->id);
 		$db->setQuery($query);
 		$db->execute();
 
@@ -919,7 +909,7 @@ class JInstallerAdapterModule extends JAdapterInstance
 		}
 
 		// Now we will no longer need the module object, so let's delete it and free up memory
-		$row->delete($row->extension_id);
+		$row->delete($row->id);
 		$query = $db->getQuery(true)
 			->delete($db->quoteName('#__modules'))
 			->where($db->quoteName('module') . ' = ' . $db->quote($row->element))

@@ -1,0 +1,45 @@
+<config><fields name="params"><fields name="element_config"><fields name="data">
+					<field type="bindingSource" readonly="false" label="Binding source" default=""
+						   name="BindingSource"
+
+												>
+											</field>
+					<field type="checkbox" label="Binding source" default="0"
+						   name="enable_bindingsource" onchange="">
+
+					</field>
+
+									</fields>				
+					<field type="fieldnamebindingsourceselect2" readonly="false" label="Name" default=""
+						   name="name"
+
+												>
+											</field>
+					<field type="checkbox" label="Name" default="0"
+						   name="enable_name" onchange="">
+
+					</field>
+
+									
+					<field type="integer" readonly="false" label="Min birthday" default=""
+						   name="min_birthday"
+
+																										 last="10" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Min birthday" default="0"
+						   name="enable_min_birthday" onchange="">
+
+					</field>
+
+									
+					<field type="integer" readonly="false" label="Max birthday" default=""
+						   name="max_birthday"
+
+																										 last="10" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Max birthday" default="0"
+						   name="enable_max_birthday" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

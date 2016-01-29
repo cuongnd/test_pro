@@ -37,7 +37,7 @@ class InstallerModel extends JModelList
 				'enabled',
 				'type',
 				'folder',
-				'extension_id',
+				'id',
 			);
 		}
 

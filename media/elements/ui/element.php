@@ -1,14 +1,34 @@
 <?php
 class elementHelper
 {
+    var $ajax_clone=0;
     static $table_position_name='#__position_config';
-    public function __construct()
+    public function __construct($block, $enableEditWebsite)
     {
+        $params = new JRegistry;
+        $params->loadString($block->params);
+
         $doc=JFactory::getDocument();
-        $doc->addScript(JUri::root() . "/media/system/js/ydn-db-master/jsc/ydn.db-dev.jss");
         $doc->addScript(JUri::root().'/media/elements/ui/dataelement.js');
         $doc->addScript(JUri::root() . "/media/elements/ui/element.js");
         $doc->addScript(JUri::root() . "/media/elements/ui/button.js");
+        $doc->addScript(JUri::root().'/media/system/js/sticky-master/jquery.sticky.js');
+
+        $turn_on_clone_config=$params->get('advanced.clone_config.turn_on_clone_config',false);
+
+    }
+    public function check_ajax_clone()
+    {
+        $app=JFactory::getApplication();
+        $ajax_clone=$app->input->get('ajax_clone',0,'int');
+        if($ajax_clone==1)
+        {
+            return true;
+
+        }else{
+            return false;
+        }
+
     }
     function initElement($TablePosition)
     {
@@ -17,9 +37,7 @@ class elementHelper
         $filename=$pathInfo['filename'];
         $dirName=$pathInfo['dirname'];
         $doc=JFactory::getDocument();
-        $lessInput = JPATH_ROOT . "/$dirName/$filename.less";
-        $cssOutput =  JPATH_ROOT . "/$dirName/$filename.css";
-        JUtility::compileLess($lessInput, $cssOutput);
+
 
     }
     public function getValueDataSourceByKey($bindingSource)
@@ -78,7 +96,7 @@ class elementHelper
             ?>
             <script type="text/javascript">
                 jQuery(document).ready(function ($) {
-                    element_ui_div.init_ui_div();
+                    //element_ui_div.init_ui_div();
                 });
             </script>
             <div class="block-item block-item-undefined" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" id="<?php echo $id; ?>" element-type="<?php echo $block->type ?>"><?php echo $text ?>
@@ -104,6 +122,34 @@ class elementHelper
         }
         $html.=ob_get_clean();
         return $html;
+    }
+    public function merge_param($list_param=array(),$block_id=0)
+    {
+        /*
+         * params=array(
+         * 'old_param1,new_pram1,default1',
+         * 'old_param2,new_pram2,default2',
+         * )
+         */
+        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
+        $block=JTable::getInstance('Position','JTable');
+        $block->load($block_id);
+        $params = new JRegistry;
+        $params->loadString($block->params);
+        foreach($list_param as $param)
+        {
+            $param=explode(',',$param);
+            $old_param=$param[0];
+            $new_param=$param[1];
+            $default_value_param=$param[2];
+            $value_old_param=$params->get($old_pram,$default_value_param);
+            if($value_old_param!='') {
+                $params->set($old_param, null);
+                $params->set($new_param, $value_old_param);
+            }
+        }
+        $block->params=$params->toString();
+        $block->store();
     }
     function getDevHtml($TablePosition)
     {

@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 JHTML::_('behavior.tooltip');
 
@@ -47,9 +50,9 @@ $boolOptions = array(
                 <?php
                 if (!isset($appConfig->group))
                 {
-                    echo '<br/><p style="font-size:14px">Field data not found. You will need to make a successful connection to SourceCoast.com to load the most recent Facebook Application data.<br/>';
-                    echo '<p style="font-size:14px">Please check that your Subscriber ID is correct: <br/><strong>' . $this->subscriberId . '</strong> (<a href="index.php?option=com_jfbconnect&view=autotune&task=basicinfo">Change</a>)</p>';
-                    echo '<p>If the problem persists, please let us know in our <a href="http://www.sourcecoast.com/forums">support area</a></p>';
+                    echo '<br/><p style="font-size:14px">'.JText::_('COM_JFBCONNECT_AUTOTUNE_FBAPP_ERROR_INFO_DESC').'<br/>';
+                    echo '<p style="font-size:14px">'.JText::_('COM_JFBCONNECT_AUTOTUNE_FBAPP_CHECK_SUBSCRIBER_DESC').'<br/><strong>' . $this->subscriberId . '</strong> (<a href="index.php?option=com_jfbconnect&view=autotune&task=basicinfo">'.JText::_('COM_JFBCONNECT_AUTOTUNE_FBAPP_CHANGE_SUBSCRIBER_LABEL').'</a>)</p>';
+                    echo '<p>'.JText::_('COM_JFBCONNECT_AUTOTUNE_FBAPP_SUBSCRIBER_SUPPORT_DESC').'</p>';
                 }
                 else
                 {
@@ -155,9 +158,9 @@ $boolOptions = array(
                     <br />
 
                     <div style="text-align: center">
-                        <input type="button" value="Save All Recommendations" class="btn btn-primary"
+                        <input type="button" value="<?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FBAPP_SAVE_ALL_RECOMMENDATIONS_LABEL');?>" class="btn btn-primary"
                                onclick="Joomla.submitbutton('saveAppRecommendations');" />
-                        <input type="submit" value="Save Custom Settings" class="btn btn-primary" />
+                        <input type="submit" value="<?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FBAPP_SAVE_CUSTOM_SETTINGS_LABEL');?>" class="btn btn-primary" />
                     </div>
                     <br />
 

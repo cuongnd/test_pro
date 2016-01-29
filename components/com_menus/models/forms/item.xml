@@ -134,6 +134,18 @@
 				<option value="1">COM_MENUS_FIELD_VALUE_NEW_WITH_NAV</option>
 				<option value="2">COM_MENUS_FIELD_VALUE_NEW_WITHOUT_NAV</option>
 			</field>
+		<field
+			name="page_type"
+			type="list"
+			label="page type"
+			description="page_type"
+			default=""
+			>
+				<option value="none">none</option>
+				<option value="login">login</option>
+				<option value="lockscreen">lockscreen</option>
+				<option value="offline">offline</option>
+			</field>
 
 		<field
 			name="access"
@@ -216,6 +228,21 @@
 					description="Use main frame"
 					required="true"
 					size="1" />
-		    </fieldset>
+			<field
+					name="is_main_frame"
+					type="radioyesno"
+					label="is main frame"
+					description="is main frame"
+					required="true"
+					size="1" />
+			<field
+					name="position_componet"
+					type="selectblock"
+					label="select position component"
+					description="select position component"
+					required="true"
+					size="1" />
+
+		</fieldset>
 	</fields>
 </form>

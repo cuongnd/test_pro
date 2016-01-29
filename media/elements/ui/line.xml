@@ -1,0 +1,34 @@
+<config><fields name="params">
+					<field type="color" readonly="false" label="Color" default=""
+						   name="color"
+
+												>
+											</field>
+					<field type="checkbox" label="Color" default="0"
+						   name="enable_color" onchange="">
+
+					</field>
+
+									
+					<field type="number" readonly="false" label="Stroke" default=""
+						   name="stroke"
+
+												>
+											</field>
+					<field type="checkbox" label="Stroke" default="0"
+						   name="enable_stroke" onchange="">
+
+					</field>
+
+									
+					<field type="number" readonly="false" label="Z-index" default="1001"
+						   name="zindex"
+
+												>
+											</field>
+					<field type="checkbox" label="Z-index" default="0"
+						   name="enable_zindex" onchange="">
+
+					</field>
+
+									</fields>				</config>

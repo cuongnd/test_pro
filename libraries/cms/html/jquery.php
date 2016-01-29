@@ -55,12 +55,12 @@ abstract class JHtmlJquery
 			$debug  = (boolean) $config->get('debug');
 		}
 
-		JHtml::_('script', $jui.'/jquery.js', false, true, false, false, $debug);
+		JHtml::_('script', $jui.'/jquery.min.js', false, true, false, false, $debug);
 
 		// Check if we are loading in noConflict
 		if ($noConflict)
 		{
-			JHtml::_('script', $jui.'/jquery-noconflict.js', false, true, false, false, false);
+			JHtml::_('script', $jui.'/jquery-noconflict.min.js', false, true, false, false, false);
 		}
 
 		// Check if we are loading Migrate

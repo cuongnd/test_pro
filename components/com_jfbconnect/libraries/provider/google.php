@@ -1,13 +1,14 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
-
-JLoader::register('JFBConnectProfileGoogle', JPATH_SITE . '/components/com_jfbconnect/libraries/profiles/google.php');
 
 class JFBConnectProviderGoogle extends JFBConnectProvider
 {
@@ -25,7 +26,7 @@ class JFBConnectProviderGoogle extends JFBConnectProvider
         $options->set('authurl', 'https://accounts.google.com/o/oauth2/auth');
         $options->set('tokenurl', 'https://accounts.google.com/o/oauth2/token');
 
-        $scope = 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.me';
+        $scope = 'https://www.googleapis.com/auth/plus.me  https://www.googleapis.com/auth/plus.profile.emails.read';
         if (JFBCFactory::config()->getSetting('google_openid_fallback'))
             $scope .= " email profile";
         $options->set('scope', $scope);
@@ -39,25 +40,6 @@ class JFBConnectProviderGoogle extends JFBConnectProvider
             $this->client->setToken($token);
         }
         $this->client->initialize($this);
-    }
-
-    function loginButton($params = null)
-    {
-        $googleLogin = "";
-        if ($this->appId != "") // Basic check to make sure something is set and the Google Login has a chance of working
-        {
-            if (isset($params['buttonType']) && $params['buttonType'] == 'javascript')
-            {
-                $buttonSize = $params['buttonSize'];
-                $renderKey = $this->getSocialTagRenderKey();
-                $renderKeyStr = $renderKey != "" ? " key=" . $renderKey : "";
-                return '{SCGoogleLogin size=' . $buttonSize . $renderKeyStr . '}';
-            }
-            else
-                $googleLogin = $this->getLoginButtonWithImage($params, 'scGoogleLogin', 'sc_gologin');
-        }
-
-        return $googleLogin;
     }
 
     /* getProviderUserId
@@ -78,26 +60,26 @@ class JFBConnectProviderGoogle extends JFBConnectProvider
         return $this->get('providerUserId');
     }
 
-    public function getHeadData()
+    public function onAfterRender()
     {
-        $head = '';
-        if ($this->needsJavascript)
-        {
-            $uri = JURI::getInstance();
-            $scheme = $uri->getScheme();
+        if (!$this->needsJavascript)
+            return;
 
-            $javascript = "<script type=\"text/javascript\">
-                  (function() {
-                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                    po.src = '" . $scheme . "://apis.google.com/js/plusone.js';
-                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-                  })();
-                </script>";
+        $body = JResponse::getBody();
+        $javascript = "<script type=\"text/javascript\">
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            function plusone_callback(response) {
+              jfbc.social.google.plusone(response);
+            };
+            </script>";
 
-            $head .= $javascript;
-        }
-
-        return $head;
+        $newBody = str_ireplace("</body>", $javascript . "</body>", $body, $count);
+        if ($count == 1)
+            JResponse::setBody($newBody);
     }
 
 }

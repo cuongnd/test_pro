@@ -1,13 +1,15 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
-JLoader::register('JFBConnectProviderFacebookCanvas', JPATH_SITE . '/components/com_jfbconnect/libraries/provider/facebook/canvas.php');
 include_once(JPATH_ADMINISTRATOR . '/components/com_jfbconnect/assets/facebook-api/facebook.php');
 
 class JFBConnectProviderFacebook extends JFBConnectProvider
@@ -94,109 +96,12 @@ class JFBConnectProviderFacebook extends JFBConnectProvider
         return $return;
     }
 
-    function rest($params, $callAsUser = true)
-    {
-        if (!$callAsUser)
-            $params['access_token'] = $this->appId . "|" . $this->secretKey;
-
-        try
-        {
-            $result = $this->client->api($params);
-        }
-        catch (JFBCFacebookApiException $e)
-        {
-            // Only display errors on the front-end if the config is set to do so
-            $app = JFactory::getApplication();
-            if ($app->isAdmin() || $this->configModel->get('facebook_display_errors'))
-            {
-                $app->enqueueMessage(JText::_('COM_JFBCONNECT_FB_API_ERROR') . $e->getMessage(), 'error');
-            }
-            $result = null;
-        }
-
-        // This should be decoded by the Facebook api, but for some reason, it returns not perfect
-        // JSON encoding (difference between admin.getAppProperties and a FQL query
-        // So, check if we're just getting a string and try a 2nd JSON decode, which seems to work.
-        // .. ugh.
-        if (is_string($result))
-            $result = json_decode($result, true);
-
-        return $result;
-    }
-
-    private function getLoginButtonJavascript($buttonSize = "medium", $showFaces = "false", $maxRows = '')
-    {
-        $perms = $this->profile->getRequiredScope();
-        if ($perms != "")
-            $perms = 'data-scope="' . $perms . '"'; // OAuth2 calls them 'scope'
-
-        if ($showFaces == "1" || $showFaces == "true")
-            $showFaces = 'data-show-faces="true" ';
-        else
-            $showFaces = 'data-show-faces="false" ';
-
-        if ($maxRows != "")
-            $maxRows = 'data-max-rows="' . $maxRows . '" ';
-
-        SCStringUtilities::loadLanguage('com_jfbconnect');
-        return '<div class="fb-login-button" '
-        . 'data-size="' . $buttonSize . '" '
-        . $showFaces
-        . $maxRows
-        . $perms
-        . ' onlogin="javascript:jfbc.login.facebook_onlogin();">'
-        . JText::_('COM_JFBCONNECT_LOGIN_USING_FACEBOOK')
-        . '</div>';
-    }
-
     function getLogoutButton()
     {
         SCStringUtilities::loadLanguage('com_jfbconnect');
         $logoutStr = JText::_('COM_JFBCONNECT_LOGOUT');
 
         return '<input type="submit" name="Submit" id="jfbcLogoutButton" class="button btn btn-primary" value="' . $logoutStr . '" onclick="javascript:jfbc.login.logout_button_click()" />';
-    }
-
-    function loginButton($params = null)
-    {
-        $jfbcLogin = "";
-        if ($this->appId != "") // Basic check to make sure something is set and the Google Login has a chance of working
-        {
-            if (isset($params['buttonType']) && $params['buttonType'] == 'javascript')
-            {
-                $buttonSize = $params['buttonSize'];
-                $loginButton = $this->getLoginButtonJavascript($buttonSize);
-                $jfbcLogin = '<div class="jfbcLogin">' . $loginButton . '</div>';
-            }
-            else
-                $jfbcLogin = $this->getLoginButtonWithImage($params, 'jfbcLogin', 'sc_fblogin');
-        }
-        return $jfbcLogin;
-    }
-
-    function connectButton($params)
-    {
-        $jfbcLogin = '';
-        $userData = JFBCFactory::usermap()->getUser(JFactory::getUser()->id, strtolower($this->name))->_data;
-        if ($this->appId != "" && empty($userData->provider_user_id))
-        {
-            if ($params['buttonType'] == 'javascript')
-            {
-                $connectText = $params['buttonText'];
-
-                $perms = $this->profile->getRequiredScope();
-                if ($perms != "")
-                    $perms = 'data-scope="' . $perms . '"'; // OAuth2 calls them 'scope'
-
-                $jfbcLogin = '<div class="fb-connect-user">';
-                $jfbcLogin .= '<div class="fb-login-button" onlogin="javascript:jfbc.login.provider(\'facebook\');" ' . $perms . '>' . $connectText . '</div>';
-                $jfbcLogin .= '</div>';
-            }
-            else
-                $jfbcLogin = $this->getLoginButtonWithImage($params, 'jfbcConnect', 'sc_facebookconnect');
-        }
-
-        return $jfbcLogin;
     }
 
     /* getFbUserId
@@ -284,7 +189,7 @@ class JFBConnectProviderFacebook extends JFBConnectProvider
     {
             $params = array();
             $params['scope'] = implode(',', $newScope);
-            $params['redirect_uri'] = JUri::root() . 'index.php?option=com_jfbconnect&task=authenticate.callback&provider=facebook';
+            $params['redirect_uri'] = JUri::base() . 'index.php?option=com_jfbconnect&task=authenticate.callback&provider=facebook';
             $redirect = $this->client->getLoginUrl($params);
             JFactory::getApplication()->redirect($redirect);
     }
@@ -298,11 +203,22 @@ class JFBConnectProviderFacebook extends JFBConnectProvider
         $currentScope = $this->api('/' . $uid . '/permissions', $params, true, 'GET');
         if (isset($currentScope['data']) && isset($currentScope['data'][0]))
         {
-            $currentScope = $currentScope['data'][0];
-            foreach ($currentScope as $scope => $val)
+            foreach ($currentScope['data'] as $scope)
             {
-                if ($val == 1)
-                    $return[] = $scope;
+                // Check for v2.0 of Graph API
+                if (array_key_exists('permission', $scope))
+                {
+                    if ($scope['status'] == 'granted')
+                        $return[] = $scope['permission'];
+                }
+                else
+                {
+                    foreach ($scope as $permission => $val)
+                    {
+                        if ($val == 1)
+                            $return[] = $permission;
+                    }
+                }
             }
         }
         return $return;
@@ -350,8 +266,6 @@ class JFBConnectProviderFacebook extends JFBConnectProvider
         $doc = JFactory::getDocument();
         if ($doc->getType() != 'html')
             return; // Only insert javascript on HTML pages, not AJAX, RSS, etc
-
-        $doc->addStyleSheet(JURI::base(true) . '/media/sourcecoast/css/sc_bootstrap.css');
 
         $app = JFactory::getApplication();
         $state = $app->getUserState('users.login.form.data', null);
@@ -434,8 +348,10 @@ class JFBConnectProviderFacebook extends JFBConnectProvider
 
         $locale = $this->getLocale();
         // get Event Notification subscriptions
-        $subs = "\nFB.Event.subscribe('comment.create', jfbc.social.comment.create);";
-        $subs .= "\nFB.Event.subscribe('edge.create', jfbc.social.like.create);";
+        $subs  = "\nFB.Event.subscribe('comment.create', jfbc.social.facebook.comment.create);";
+        $subs .= "\nFB.Event.subscribe('comment.remove', jfbc.social.facebook.comment.remove);";
+        $subs .= "\nFB.Event.subscribe('edge.create', jfbc.social.facebook.like.create);";
+        $subs .= "\nFB.Event.subscribe('edge.remove', jfbc.social.facebook.like.remove);";
         if (JFBCFactory::config()->get('social_notification_google_analytics'))
             $subs .= "\njfbc.social.googleAnalytics.trackFacebook();";
 
@@ -467,31 +383,33 @@ class JFBConnectProviderFacebook extends JFBConnectProvider
             $status = 'status: false,';
 
         $debugEnabled = $this->configModel->get('facebook_display_errors');
-        $script = $debugEnabled ? "all/debug.js" : "all.js";
+        $script = $debugEnabled ? "sdk/debug.js" : "sdk.js";
 
         if ($this->appId)
             $appIdCode = "appId: '" . $this->appId . "', ";
         else
             $appIdCode = "";
 
-        $xfbml = ($this->widgetRendered ? 'true' : 'false');
+        $forceParse = JFBCFactory::config()->get('social_tags_always_parse');
+        $xfbml = ($forceParse || $this->widgetRendered) ? 'true' : 'false';
 
+        $version = "version: 'v1.0',";
         $javascript =
-                <<<EOT
+<<<EOT
 <div id="fb-root"></div>
 <script type="text/javascript">
-    {$canvasCode}\n
-    window.fbAsyncInit = function() {
-    FB.init({{$appIdCode}{$status} cookie: true, xfbml: {$xfbml}});{$subs}{$resizeCode}
-    };
-     (function(d, s, id){
+  {$canvasCode}
+  window.fbAsyncInit = function() {
+    FB.init({{$version}{$appIdCode}{$status} cookie: true, xfbml: {$xfbml}});{$subs}{$resizeCode}
+  };
+  (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
      js = d.createElement(s); js.id = id;
      js.src = "//connect.facebook.net/{$locale}/{$script}";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-    </script>
+</script>
 EOT;
         if (preg_match('/\<body[\s\S]*?\>/i', $body, $matches))
         {
@@ -526,7 +444,7 @@ class JFBConnectProviderFacebookClient extends JFBCFacebook
             $perms = JFBCFactory::provider('facebook')->profile->getRequiredScope();
             $params = array();
             $params['scope'] = $perms;
-            $params['redirect_uri'] = JUri::root() . 'index.php?option=com_jfbconnect&task=authenticate.callback&provider=facebook';
+            $params['redirect_uri'] = JUri::base() . 'index.php?option=com_jfbconnect&task=authenticate.callback&provider=facebook';
             $redirect = $this->getLoginUrl($params);
             JFactory::getApplication()->redirect($redirect);
         }

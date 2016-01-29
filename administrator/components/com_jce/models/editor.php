@@ -108,7 +108,7 @@ class WFModelEditor extends WFModelBase {
 
         // set default component id
         $component_id = 0;
-        $component_id = isset($component->extension_id) ? $component->extension_id : ($component->id ? $component->id : 0);
+        $component_id = isset($component->id) ? $component->id : ($component->id ? $component->id : 0);
 
         $version = self::getVersion();
 

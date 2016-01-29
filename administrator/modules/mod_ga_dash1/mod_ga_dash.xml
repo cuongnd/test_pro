@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension	type="module" version="3.0"	client="administrator" method="upgrade">
+    <name>Google Analytics Dashboard</name>
+    <author>Deconf.com</author>
+	<creationDate>June 2012</creationDate>
+	<copyright>Copyright (C) 2010 deconf.com. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorUrl>http://deconf.com/</authorUrl>
+    <version>2.6.1</version>	
+	<description>	<![CDATA[
+		<u>Google Analytics Dashboard</u><br /><br /> This module integrates Google Analytics Dashboard on your website backend.<br /> After install, go to Extensions -> Modules -> Administrator and publish it on 'cpanel' position.<br />   For more help and FAQ, go to <a href='http://deconf.com' target='_blank'>Google Analytics Dashboard for Joomla!</a>.<br />
+	]]></description>
+	<languages>
+		<language tag="en-GB">languages/en-GB/en-GB.mod_ga_dash.ini</language>
+	</languages>	
+    <files>
+		<folder>src</folder>
+        <filename>mod_ga_dash.xml</filename>
+        <filename module="mod_ga_dash">mod_ga_dash.php</filename>
+        <filename>index.html</filename>
+        <filename>functions.php</filename>			
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+			  <field name="spacer1" type="spacer" default="" label="GAD_GOOGLE_ANALYTICS_API" description="" />
+			  <field name="ga_api_key" type="text" size="70" default="" label="GAD_API_KEY" description="GAD_API_KEY"/>
+			  <field name="ga_client_id" type="text" size="70" default="" label="GAD_CLIENT_ID" description="GAD_CLIENT_ID"/>
+			  <field name="ga_client_secret" type="text" size="70" default="" label="GAD_CLIENT_SECRET" description="GAD_CLIENT_SECRET"/>
+			  <field name="ga_domain" type="text"  size="15" default="" label="GAD_DOMAIN" description="GAD_DOMAIN"/>
+			  <field name="spacer4" type="spacer" default="" label="GAD_ACTIONS" description="" />
+			  <field name="spacer6" type="spacer" default="" label="" description="" />
+			  <field name="spacer2" type="spacer" default="" label="GAD_CHART_SETTINGS" description="" />
+			  <field name="ga_chart_width" type="text" size="4" default="550" label="GAD_WIDTH" description="GAD_WIDTH"/>
+			  <field name="ga_chart_height" type="text" size="4" default="200" label="GAD_HEIGHT" description="GAD_HEIGHT"/>
+			  <field name="ga_chart_theme" type="list" default="3" label="GAD_THEME" description="GAD_CHOOSE">
+					<option value="1">GAD_BLUE_DESKTOP</option>
+					<option value="2">GAD_LIGHT_MOBILE</option>
+					<option value="3">GAD_AUTO_SWITCH</option>
+			  </field>
+			  <field name="spacer7" type="spacer" default="" label="" description="" />
+			  <field name="ga_enable_map" type="list" default="0" label="GAD_MAP" description="">
+					<option value="1">GAD_YES</option>
+					<option value="0">GAD_NO</option>
+			  </field>
+			  <field name="ga_enable_traffic" type="list" default="0" label="GAD_TRAFFIC" description="">
+					<option value="1">GAD_YES</option>
+					<option value="0">GAD_NO</option>
+			  </field>
+			  <field name="ga_enable_pgd" type="list" default="0" label="GAD_PGD" description="">
+					<option value="1">GAD_YES</option>
+					<option value="0">GAD_NO</option>
+			  </field>
+			  <field name="ga_enable_rd" type="list" default="0" label="GAD_RD" description="">
+					<option value="1">GAD_YES</option>
+					<option value="0">GAD_NO</option>
+			  </field>
+			  <field name="ga_enable_sd" type="list" default="0" label="GAD_SD" description="">
+					<option value="1">GAD_YES</option>
+					<option value="0">GAD_NO</option>
+			  </field>
+			  <field name="spacer8" type="spacer" default="" label="" description="" />
+			  <field name="ga_dash_cache" type="list" default="1800" label="GAD_CACHE" description="">
+					<option value="900">GAD_15</option>
+					<option value="1800">GAD_30</option>
+					<option value="3600">GAD_60</option>
+			  </field>				  
+			  <field name="spacer5" type="spacer" default="" label="GAD_CACHE_ACTION" description="" />
+			  <field name="spacer9" type="spacer" default="" label="" description="" />				  
+			  <field name="spacer3" type="spacer" default="" label="&lt;span style='font-size:1em; color:green;font-weight:bold;'&gt;Try &lt;a href='http://clicky.com/66508224' target='_blank'&gt;Clicky Analytics&lt;/a&gt; - Free, Real Time, IP Based Analytics&lt;/font&gt;" description="" />	  			  
+			</fieldset>
+		</fields>	
+	</config>	
+</extension>

@@ -3,11 +3,13 @@
     <fields name="attribs">
         <fieldset name="attribs">
             <field name="user_id"
-                   type="user"
+                   type="channeluserlist"
                    label="COM_JFBCONNECT_CHANNEL_USER_ID_LABEL"
                    description="COM_JFBCONNECT_CHANNEL_USER_ID_DESCRIPTION"
                    default=""
+                   onchange="jfbcAdmin.channels.outbound.onuserchange(this.value)"
                    labelclass="config_setting"
+                   class="linkedin"
                     />
             <field name="company_id"
                    type="linkedincompanylist"
@@ -15,6 +17,7 @@
                    description="COM_JFBCONNECT_CHANNEL_LINKEDIN_COMPANY_ID_DESCRIPTION"
                    default=""
                    labelclass="config_setting"
+                   class="linkedin"
                     />
         </fieldset>
     </fields>

@@ -689,47 +689,6 @@ class JTableCategoriesNested extends VmTable
 	 * @throws  RuntimeException on database error.
 	 * @throws  UnexpectedValueException
 	 */
-	public function check()
-	{
-		$this->parent_id = (int) $this->parent_id;
-
-		// Set up a mini exception handler.
-		try
-		{
-			// Check that the parent_id field is valid.
-			if ($this->parent_id == $this->menu_type_id)
-			{
-				throw new UnexpectedValueException(sprintf('Invalid `parent_id` [%d] in %s', $this->parent_id, get_class($this)));
-			}
-
-			$query = $this->_db->getQuery(true)
-				->select('COUNT(' . $this->_tbl_key . ')')
-                ->where('menu_type_id='.(int)$this->menu_type_id)
-				->from($this->_tbl)
-				->where($this->_tbl_key . ' = ' . $this->parent_id);
-
-			if (!$this->_db->setQuery($query)->loadResult())
-			{
-				throw new UnexpectedValueException(sprintf('Invalid `parent_id` [%d] in %s', $this->parent_id, get_class($this)));
-			}
-		}
-		catch (UnexpectedValueException $e)
-		{
-			// Validation error - record it and return false.
-			$this->setError($e);
-
-			return false;
-		}
-		// @codeCoverageIgnoreStart
-		catch (Exception $e)
-		{
-			// Database error - rethrow.
-			throw $e;
-		}
-		// @codeCoverageIgnoreEnd
-
-		return true;
-	}
 
 	/**
 	 * Method to store a node in the database table.

@@ -313,17 +313,19 @@ abstract class JPluginHelper
         $website_id=$website->website_id;
         $domain=$website->domain;
         $levels = implode(',', $user->getAuthorisedViewLevels());
-        $db = JFactory::getDbo();
+
+		$db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query->select('folder AS type, element AS name, params,website_id');
         $query->from('#__plugins');
         $query->where('enabled >= 1');
         $query->where('state >= 0');
         $query->where('website_id = '.$website_id);
-        $query->where('access IN (' . $levels . ')');
+        //$query->where('access IN (' . $levels . ')');
         $query->order('ordering');
         $db->setQuery($query);
         $plugins=$db->loadObjectList();
+		static::$plugins=$plugins;
 		return $plugins;
 	}
 }

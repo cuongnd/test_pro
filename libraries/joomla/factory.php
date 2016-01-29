@@ -218,7 +218,20 @@ abstract class JFactory
 
 		return self::$language;
 	}
-
+	public function get_page_login()
+	{
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$website=JFactory::getWebsite();
+		$query->select('menu.id')
+			->from('#__menu AS menu')
+			->leftJoin('#__menu_types AS menu_type ON menu_type.id=menu.menu_type_id')
+			->where('menu_type.website_id='.(int)$website->website_id)
+			->where('menu.page_type='.$query->q('login'))
+			;
+		$itemId=$db->setQuery($query)->loadResult();
+		return '?Itemid='.$itemId;
+	}
 	/**
 	 * Get a document object.
 	 *
@@ -265,7 +278,6 @@ abstract class JFactory
 		{
 			$instance = JUser::getInstance($id);
 		}
-
 		return $instance;
 	}
 	public  static function isAjax()
@@ -304,7 +316,6 @@ abstract class JFactory
 		{
 			$options['storage'] = $storage;
 		}
-
 		$cache = JCache::getInstance($handler, $options);
 
 		self::$cache[$hash] = $cache;
@@ -505,17 +516,46 @@ abstract class JFactory
 	}
 	public static function getWebsite($uri = 'SERVER')
 	{
+		$website=new stdClass();
+		$website->website_id=WEBSITE_ID;
+		return $website;
+		/*$website->
+		static $clean;
+
+		if (isset($clean))
+		{
+
+			return $clean;
+		}
+
 		$uri= JUri::getInstance($uri);
+
         $domain=$uri->getHost();
+
         $domain=str_replace('www.','',$domain);
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
-        $query->select('*');
-        $query->from('#__domain_website');
-        $query->where('domain='.$db->q($domain));
-        $db->setQuery($query);
-        $website=$db->loadObject();
-        return$website;
+        $query->select('domain_website.*,website.title AS website_title')
+        	->from('#__domain_website as domain_website')
+			->leftJoin('#__website AS website ON website.id=domain_website.website_id')
+        	->where('domain_website.domain='.$db->q($domain))
+		;
+
+		$str_query=$query->dump();
+		$cacheid = md5($str_query);
+
+		$cache = JFactory::getCache();
+
+		$website=new stdClass();
+		$clean = $cache->get($cacheid);
+		if (!$clean)
+		{
+			$db->setQuery($query);
+			$website=$db->loadObject();
+			$cache->store($website, $cacheid);
+		}*/
+
+        return $website;
 	}
 
 	/**

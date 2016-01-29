@@ -769,7 +769,7 @@ var Rappid = Backbone.Router.extend({
 
         var roomUrl = location.href.replace(location.hash, '') + '#' + room;
         $('.statusbar-container .rt-colab').html('Send this link to a friend to <b>collaborate in real-time</b>: <a href="' + roomUrl + '" target="_blank">' + roomUrl + '</a>');
-    }
+    },
    
     
   

@@ -54,7 +54,7 @@ jQuery(document).ready(function ($) {
             });
 
 
-            element_ui_button.list_function_run_befor_submit.push(element_ui_scheduler.update_date);
+            Joomla_post.list_function_run_befor_submit.push(element_ui_scheduler.update_date);
         },
         update_date:function(data_submit){
             $('.block-item.block-item-scheduler.dhx_cal_container').each(function(index){

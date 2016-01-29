@@ -963,6 +963,7 @@ class JTableUserGroupNested extends JTable
 				$query->clear()
 					->select('COUNT(' . $k . ')')
 					->from($this->_tbl)
+					->where('website_id='.(int)$this->website_id)
 					->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt)
 					->where('(checked_out <> 0 AND checked_out <> ' . (int) $userId . ')');
 				$this->_db->setQuery($query);
@@ -988,6 +989,7 @@ class JTableUserGroupNested extends JTable
 					->from($this->_db->quoteName($this->_tbl) . ' AS n')
 					->where('n.lft < ' . (int) $node->lft)
 					->where('n.rgt > ' . (int) $node->rgt)
+					->where('website_id='.(int)$this->website_id)
 					->where('n.parent_id > 0')
 					->where('n.published < ' . (int) $compareState);
 
@@ -1011,6 +1013,7 @@ class JTableUserGroupNested extends JTable
 			$query->clear()
 				->update($this->_db->quoteName($this->_tbl))
 				->set('published = ' . (int) $state)
+				->where('website_id='.(int)$this->website_id)
 				->where('(lft > ' . (int) $node->lft . ' AND rgt < ' . (int) $node->rgt . ') OR ' . $k . ' = ' . (int) $pk);
 			$this->_db->setQuery($query)->execute();
 
@@ -1082,6 +1085,7 @@ class JTableUserGroupNested extends JTable
 			$query = $this->_db->getQuery(true)
 				->select($this->_tbl_key)
 				->from($this->_tbl)
+				->where('website_id='.(int)$this->website_id)
 				->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
 
 			$children = $this->_db->setQuery($query)->loadColumn();
@@ -1091,6 +1095,7 @@ class JTableUserGroupNested extends JTable
 				->update($this->_tbl)
 				->set('lft = lft - ' . (int) $sibling->width)
 				->set('rgt = rgt - ' . (int) $sibling->width)
+				->where('website_id='.(int)$this->website_id)
 				->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
 			$this->_db->setQuery($query)->execute();
 
@@ -1098,6 +1103,7 @@ class JTableUserGroupNested extends JTable
 			$query->clear()
 				->update($this->_tbl)
 				->set('lft = lft + ' . (int) $node->width)
+				->where('website_id='.(int)$this->website_id)
 				->set('rgt = rgt + ' . (int) $node->width)
 				->where('lft BETWEEN ' . (int) $sibling->lft . ' AND ' . (int) $sibling->rgt)
 				->where($this->_tbl_key . ' NOT IN (' . implode(',', $children) . ')');
@@ -1168,6 +1174,7 @@ class JTableUserGroupNested extends JTable
 			$query->clear()
 				->select($this->_tbl_key)
 				->from($this->_tbl)
+				->where('website_id='.(int)$this->website_id)
 				->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
 			$this->_db->setQuery($query);
 			$children = $this->_db->loadColumn();
@@ -1177,6 +1184,7 @@ class JTableUserGroupNested extends JTable
 				->update($this->_tbl)
 				->set('lft = lft + ' . (int) $sibling->width)
 				->set('rgt = rgt + ' . (int) $sibling->width)
+				->where('website_id='.(int)$this->website_id)
 				->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
 			$this->_db->setQuery($query)->execute();
 
@@ -1185,6 +1193,7 @@ class JTableUserGroupNested extends JTable
 				->update($this->_tbl)
 				->set('lft = lft - ' . (int) $node->width)
 				->set('rgt = rgt - ' . (int) $node->width)
+				->where('website_id='.(int)$this->website_id)
 				->where('lft BETWEEN ' . (int) $sibling->lft . ' AND ' . (int) $sibling->rgt)
 				->where($this->_tbl_key . ' NOT IN (' . implode(',', $children) . ')');
 			$this->_db->setQuery($query)->execute();
@@ -1217,15 +1226,21 @@ class JTableUserGroupNested extends JTable
 
 		// Get the root item.
 		$k = $this->_tbl_key;
-
+		if(!$this->website_id)
+		{
+			$website=JFactory::getWebsite();
+			$this->website_id=$website->website_id;
+		}
 		// Test for a unique record with parent_id = 0
-		$query = $this->_db->getQuery(true)
-			->select($k)
+		$query = $this->_db->getQuery(true) ;
+		$query->select($k)
 			->from($this->_tbl)
-			->where('parent_id = 0');
+			->where('parent_id = id')
+			->where('website_id='.(int)$this->website_id)
+			->where('title='.$query->quote('root'))
+		;
 
 		$result = $this->_db->setQuery($query)->loadColumn();
-
 		if (count($result) == 1)
 		{
 			self::$root_id = $result[0];
@@ -1308,10 +1323,18 @@ class JTableUserGroupNested extends JTable
 		// Build the structure of the recursive query.
 		if (!isset($this->_cache['rebuild.sql']))
 		{
+			if(!$this->website_id)
+			{
+				$website=JFactory::getWebsite();
+				$this->website_id=$website->website_id;
+			}
 			$query->clear()
 				->select($this->_tbl_key . ', alias')
 				->from($this->_tbl)
-				->where('parent_id = %d');
+				->where('parent_id = %d')
+				->where('parent_id != id')
+				->where('website_id ='.(int)$this->website_id)
+			;
 
 			// If the table has an ordering field, use that for ordering.
 			if (property_exists($this, 'ordering'))
@@ -1328,13 +1351,12 @@ class JTableUserGroupNested extends JTable
 		// Make a shortcut to database object.
 
 		// Assemble the query to find all children of this node.
-		$this->_db->setQuery(sprintf($this->_cache['rebuild.sql'], (int) $parentId));
+		$query1=sprintf($this->_cache['rebuild.sql'], (int) $parentId);
+		$this->_db->setQuery($query1);
 
 		$children = $this->_db->loadObjectList();
-
 		// The right value of this node is the left value + 1
 		$rightId = $leftId + 1;
-
 		// Execute this function recursively over all children
 		foreach ($children as $node)
 		{
@@ -1351,7 +1373,6 @@ class JTableUserGroupNested extends JTable
 				return false;
 			}
 		}
-
 		// We've got the left value, and now that we've processed
 		// the children of this node we also know the right value.
 		$query->clear()
@@ -1359,6 +1380,7 @@ class JTableUserGroupNested extends JTable
 			->set('lft = ' . (int) $leftId)
 			->set('rgt = ' . (int) $rightId)
 			->set('level = ' . (int) $level)
+			->where('website_id='.(int)$this->website_id)
 			->set('path = ' . $this->_db->quote($path))
 			->where($this->_tbl_key . ' = ' . (int) $parentId);
 		$this->_db->setQuery($query)->execute();
@@ -1397,6 +1419,7 @@ class JTableUserGroupNested extends JTable
 			->from($this->_tbl . ' AS n, ' . $this->_tbl . ' AS p')
 			->where('n.lft BETWEEN p.lft AND p.rgt')
 			->where('n.' . $this->_tbl_key . ' = ' . (int) $pk)
+			->where('website_id='.(int)$this->website_id)
 			->order('p.lft');
 		$this->_db->setQuery($query);
 
@@ -1415,6 +1438,7 @@ class JTableUserGroupNested extends JTable
 		$query->clear()
 			->update($this->_tbl)
 			->set('path = ' . $this->_db->quote($path))
+			->where('website_id='.(int)$this->website_id)
 			->where($this->_tbl_key . ' = ' . (int) $pk);
 
 		$this->_db->setQuery($query)->execute();
@@ -1468,6 +1492,7 @@ class JTableUserGroupNested extends JTable
 					$query->clear()
 						->update($this->_tbl)
 						->where($this->_tbl_key . ' = ' . (int) $idArray[$i])
+						->where('website_id='.(int)$this->website_id)
 						->set('lft = ' . (int) $lft_array[$i]);
 
 					$this->_db->setQuery($query)->execute();
@@ -1532,6 +1557,7 @@ class JTableUserGroupNested extends JTable
 		$query = $this->_db->getQuery(true)
 			->select($this->_tbl_key . ', parent_id, level, lft, rgt')
 			->from($this->_tbl)
+			->where('website_id='.(int)$this->website_id)
 			->where($k . ' = ' . (int) $id);
 		$row = $this->_db->setQuery($query, 0, 1)->loadObject();
 
@@ -1667,6 +1693,7 @@ class JTableUserGroupNested extends JTable
 			$query = $this->_db->getQuery(true)
 				->select($this->_tbl_key . ', parent_id, lft, rgt, level')
 				->from($this->_tbl)
+				->where('website_id='.(int)$this->website_id)
 				->order($this->_tbl_key);
 			$this->_db->setQuery($query);
 

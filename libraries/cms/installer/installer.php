@@ -353,7 +353,7 @@ class JInstaller extends JAdapter
 
 					// Remove the entry from the #__extensions table
 					$query->delete($db->quoteName('#__extensions'))
-						->where($db->quoteName('extension_id') . ' = ' . (int) $step['id']);
+						->where($db->quoteName('id') . ' = ' . (int) $step['id']);
 					$db->setQuery($query);
 					$stepval = $db->execute();
 
@@ -531,7 +531,7 @@ class JInstaller extends JAdapter
 							'method' => 'discover_install',
 							'type' => $this->extension->get('type'),
 							'manifest' => null,
-							'extension' => $this->extension->get('extension_id')
+							'extension' => $this->extension->get('id')
 						)
 					);
 
@@ -1020,7 +1020,7 @@ class JInstaller extends JAdapter
 					{
 						$query->clear()
 							->insert($db->quoteName('#__schemas'))
-							->columns(array($db->quoteName('extension_id'), $db->quoteName('version_id')))
+							->columns(array($db->quoteName('id'), $db->quoteName('version_id')))
 							->values($eid . ', ' . $db->quote(end($files)));
 						$db->setQuery($query);
 						$db->execute();
@@ -1162,7 +1162,7 @@ class JInstaller extends JAdapter
 					{
 						$query->clear()
 							->insert($db->quoteName('#__schemas'))
-							->columns(array($db->quoteName('extension_id'), $db->quoteName('version_id')))
+							->columns(array($db->quoteName('id'), $db->quoteName('version_id')))
 							->values($eid . ', ' . $db->quote(end($files)));
 						$db->setQuery($query);
 						$db->execute();

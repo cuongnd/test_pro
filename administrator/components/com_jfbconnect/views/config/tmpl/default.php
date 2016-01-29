@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 JHtml::_('behavior.tooltip');
 
@@ -22,9 +25,10 @@ $providers = JFBCFactory::getAllProviders();
         foreach ($providers as $p)
         {
             $this->tabStart('myTab', 'config_' . $p->systemName, JText::_('COM_JFBCONNECT_CONFIG_MENU_' . strtoupper($p->name) . '_API'));
-            $this->formDisplay($p->name);
+            $this->formDisplay($p->systemName);
             $this->tabEnd();
         }
+
         $this->tabsEnd();
         ?>
 
@@ -36,45 +40,3 @@ $providers = JFBCFactory::getAllProviders();
 
     </form>
 </div>
-
-<script type="text/javascript">
-    function setupFields()
-    {
-        if (jfbcJQuery("input[name='create_new_users']:checked").val() == '1')
-        {
-            jfbcJQuery(".fullJoomla").each(function (i)
-            {
-                this.style.display = "block";
-            });
-
-            if (jfbcJQuery("input[name='registration_generate_username']:checked").val() == '1')
-                jfbcJQuery(".autoUsername").css("display", "block");
-            else
-                jfbcJQuery(".autoUsername").css("display", "none");
-        }
-        else
-        {
-            jfbcJQuery(".autoUsername").css("display", "block");
-
-            jfbcJQuery(".fullJoomla").each(function (i)
-            {
-                this.style.display = "none";
-            });
-
-        }
-    }
-
-    jfbcJQuery(document).ready(function ()
-    {
-        setupFields();
-        jfbcJQuery("input[name='create_new_users']").click(function ()
-        {
-            setupFields();
-        });
-        jfbcJQuery("input[name='registration_generate_username']").click(function ()
-        {
-            setupFields();
-        });
-    });
-
-</script>

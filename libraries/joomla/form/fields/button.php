@@ -173,35 +173,33 @@ class JFormFieldButton extends JFormField
 		$id=$this->form->getValue('id');
 		$callAgain=JUserHelper::genRandomPassword();
 		$doc=JFactory::getDocument();
-		$scriptId='lib_cms_joomla_form_field_button'.$callAgain;
-		$ajaxCallFunction='callFunction'.$callAgain;
+		$doc->addScript(JUri::root().'/libraries/joomla/form/fields/button.js');
+		$scriptId = "script_field_button_" . $id;
 		ob_start();
 		?>
-		<script type="text/javascript" id="<?php echo $scriptId ?>">
-			<?php
-				ob_get_clean();
-				ob_start();
-			?>
-			function callFunction<?php echo $callAgain ?>()
-			{
-				$('input[name="<?php echo $this->name ?>"][data-id="<?php echo  $id ?>"]').unbind('click');
-				$('input[name="<?php echo $this->name ?>"][data-id="<?php echo  $id ?>"]').click(function(){
-					<?php echo  "$functionOnClick" ?>($(this));
+
+		<script type="text/javascript">
+			jQuery(document).ready(function ($) {
+				$('.field-button[name="<?php echo $this->name ?>"]').field_button({
+					functionOnClick:"<?php echo $functionOnClick ?>"
 				});
-			}
-			<?php
-			 $scriptContent=ob_get_clean();
-			 ob_start();
-			  ?>
+
+
+			});
 		</script>
 		<?php
-		ob_get_clean();
-		$doc->addAjaxCallFunction($ajaxCallFunction,$scriptContent,$scriptId);
+		$script = ob_get_clean();
+		$script = JUtility::remove_string_javascript($script);
+		$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
+
+
+
 
 		ob_start();
 		$html='';
 		?>
-		<input type="button" class="button" element-type="<?php echo $elementType ?>" data-id="<?php echo $id ?>" value="<?php echo $this->value ?>" <?php echo $class ?> name="<?php echo $this->name ?>">
+		<input type="button"  class="field-button button" element-type="<?php echo $elementType ?>" data-id="<?php echo $id ?>" value="<?php echo $this->value ?>" <?php echo $class ?> name="<?php echo $this->name ?>">
 		<?php
 		$html.=ob_get_clean();
 		return $html;

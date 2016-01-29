@@ -52,11 +52,8 @@ class JTableUsergroup extends JTableUserGroupNested
         {
             $app=JFactory::getApplication();
             $option=$app->input->getString('option','');
-            if($app->getClientId()==0&&$option!='com_website') {
-                $website = JFactory::getWebsite();
-                $this->website_id = $website->website_id;
-            }
-
+			$website = JFactory::getWebsite();
+			$this->website_id = $website->website_id;
         }
 		// Validate the title.
 		if ((trim($this->title)) == '')
@@ -77,7 +74,6 @@ class JTableUsergroup extends JTableUserGroupNested
 			->where('id <> ' . (int) $this->id);
         $query->where('website_id='.$this->website_id);
 		$db->setQuery($query);
-
 		if ($db->loadResult() > 0)
 		{
 			$this->setError(JText::_('JLIB_DATABASE_ERROR_USERGROUP_TITLE_EXISTS'));
@@ -88,54 +84,6 @@ class JTableUsergroup extends JTableUserGroupNested
 		return true;
 	}
 
-	/**
-	 * Method to recursively rebuild the nested set tree.
-	 *
-	 * @param   integer  $parent_id  The root of the tree to rebuild.
-	 * @param   integer  $left       The left id to start with in building the tree.
-	 *
-	 * @return  boolean  True on success
-	 *
-	 * @since   11.1
-	 */
-	public function rebuild($parent_id = 0, $left = 0)
-	{
-		// Get the database object
-		$db = $this->_db;
-
-		// Get all children of this node
-		$db->setQuery('SELECT id FROM ' . $this->_tbl . ' WHERE parent_id=' . (int) $parent_id . ' ORDER BY parent_id, title');
-		$children = $db->loadColumn();
-
-		// The right value of this node is the left value + 1
-		$right = $left + 1;
-
-		// Execute this function recursively over all children
-		for ($i = 0, $n = count($children); $i < $n; $i++)
-		{
-			// $right is the current right value, which is incremented on recursion return
-			$right = $this->rebuild($children[$i], $right);
-
-			// If there is an update failure, return false to break out of the recursion
-			if ($right === false)
-			{
-				return false;
-			}
-		}
-
-		// We've got the left value, and now that we've processed
-		// the children of this node we also know the right value
-		$db->setQuery('UPDATE ' . $this->_tbl . ' SET lft=' . (int) $left . ', rgt=' . (int) $right . ' WHERE id=' . (int) $parent_id);
-
-		// If there is an update failure, return false to break out of the recursion
-		if (!$db->execute())
-		{
-			return false;
-		}
-
-		// Return the right value of this node + 1
-		return $right + 1;
-	}
 
 	/**
 	 * Inserts a new row if id is zero or updates an existing row in the database table

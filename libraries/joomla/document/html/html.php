@@ -499,7 +499,12 @@ class JDocumentHTML extends JDocument
 		}
 
 		JLog::add('Using an expression in JDocumentHtml::countModules() is deprecated.', JLog::WARNING, 'deprecated');
-
+		echo "sdfsdfsd";
+		die;
+		echo "<pre>";
+		print_r($words);
+		echo "</pre>";
+		die;
 		for ($i = 0, $n = count($words); $i < $n; $i += 2)
 		{
 			// Odd parts (modules)
@@ -628,7 +633,6 @@ class JDocumentHTML extends JDocument
 		$this->template = $template;
 		$this->baseurl = JUri::base(true);
 		$this->params = isset($params['params']) ? $params['params'] : new JRegistry;
-
 		// Load
 		$this->_template = $this->_loadTemplate($directory . '/' . $template, $file);
 
@@ -693,7 +697,6 @@ class JDocumentHTML extends JDocument
 			$replace[] = $jdoc;
 			$with[] = $this->getBuffer($args['type'], $args['name'], $args['attribs']);
 		}
-
 		return str_replace($replace, $with, $this->_template);
 	}
 }

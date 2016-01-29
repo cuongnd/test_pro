@@ -143,11 +143,12 @@ SQL.Row.prototype.buildEdit = function() {
 	elms.push(["null",this.dom.nll]);
 	
 	this.dom.comment = OZ.DOM.elm("span",{className:"comment"});
-	this.dom.comment.innerHTML = this.data.comment;
+	this.dom.comment.innerHTML = "";
+	this.dom.comment.appendChild(document.createTextNode(this.data.comment));
 
 	this.dom.commentbtn = OZ.DOM.elm("input");
 	this.dom.commentbtn.type = "button";
-	this.dom.commentbtn.value = _("comment");
+	this.dom.commentbtn.value = getString("comment");
 	
 	OZ.Event.add(this.dom.commentbtn, "click", this.changeComment);
 
@@ -156,7 +157,7 @@ SQL.Row.prototype.buildEdit = function() {
 		var tr = OZ.DOM.elm("tr");
 		var td1 = OZ.DOM.elm("td");
 		var td2 = OZ.DOM.elm("td");
-		var l = OZ.DOM.text(_(row[0])+": ");
+		var l = OZ.DOM.text(getString(row[0])+": ");
 		OZ.DOM.append(
 			[tr, td1, td2],
 			[td1, l],
@@ -177,10 +178,11 @@ SQL.Row.prototype.buildEdit = function() {
 }
 
 SQL.Row.prototype.changeComment = function(e) {
-	var c = prompt(_("commenttext"),this.data.comment);
+	var c = prompt(getString("commenttext"),this.data.comment);
 	if (c === null) { return; }
 	this.data.comment = c;
-	this.dom.comment.innerHTML = this.data.comment;
+	this.dom.comment.innerHTML = "";
+	this.dom.comment.appendChild(document.createTextNode(this.data.comment));
 }
 
 SQL.Row.prototype.expand = function() {
@@ -204,7 +206,6 @@ SQL.Row.prototype.collapse = function() {
 		nll: this.dom.nll.checked,
 		ai: this.dom.ai.checked
 	}
-	
 	OZ.DOM.clear(this.dom.container);
 	this.dom.container.appendChild(this.dom.content);
 
@@ -336,7 +337,7 @@ SQL.Row.prototype.toXML = function() {
 		} else if (d != "CURRENT_TIMESTAMP") { 
 			d = q+d+q; 
 		}
-		xml += "<default>"+d+"</default>";
+		xml += "<default>"+SQL.escape(d)+"</default>";
 	}
 
 	for (var i=0;i<this.relations.length;i++) {
@@ -346,8 +347,7 @@ SQL.Row.prototype.toXML = function() {
 	}
 	
 	if (this.data.comment) { 
-		var escaped = this.data.comment.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;");
-		xml += "<comment>"+escaped+"</comment>\n"; 
+		xml += "<comment>"+SQL.escape(this.data.comment)+"</comment>\n"; 
 	}
 	
 	xml += "</row>\n";

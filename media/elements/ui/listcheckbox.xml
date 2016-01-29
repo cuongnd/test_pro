@@ -1,45 +1,100 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fields name="params">
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="bindingSource" readonly="readonly" type="bindingSource" description="bindingSource" label="bindingSource"/>
-                    <field name="key"  type="text" description="Key" label="Key"/>
-                    <field name="value"  type="text" description="Value" label="Value"/>
-                    <field name="value_selected"  type="bindingsourceselect2" tags="0" maximumSelectionSize="1" description="Value selected" label="Value selected"/>
+<config><fields name="params">
+					<field type="datainputtype" readonly="false" label="Input type" default="datasource"
+						   name="input_type"
 
-                </fieldset>
-            </fields>
-        </fields>
-        <fields name="params">
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="name" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="items" readonly="readonly" type="inputitem" description="List item" label="list item"/>
-            </fieldset>
-        </fields>
+													 multiple="false" 													 size="1" 												>
+											</field>
+					<field type="checkbox" label="Input type" default="0"
+						   name="enable_input_type" onchange="">
 
+					</field>
 
-    </config>
-</extension>
+									<fields name="data">
+					<field type="bindingSource" readonly="false" label="bindingSource" default=""
+						   name="bindingSource"
+
+												>
+											</field>
+					<field type="checkbox" label="bindingSource" default="0"
+						   name="enable_bindingsource" onchange="">
+
+					</field>
+
+									
+					<field type="autocompletetext" readonly="false" label="Key" default=""
+						   name="key"
+
+													 filter_field="params.data.bindingSource" 												>
+											</field>
+					<field type="checkbox" label="Key" default="0"
+						   name="enable_key" onchange="">
+
+					</field>
+
+									
+					<field type="autocompletetext" readonly="false" label="Value" default=""
+						   name="value"
+
+													 filter_field="params.data.bindingSource" 												>
+											</field>
+					<field type="checkbox" label="Value" default="0"
+						   name="enable_value" onchange="">
+
+					</field>
+
+									
+					<field type="bindingSource" readonly="false" label="Value seleted" default=""
+						   name="value_selected"
+
+												>
+											</field>
+					<field type="checkbox" label="Value seleted" default="0"
+						   name="enable_value_selected" onchange="">
+
+					</field>
+
+									</fields>				<fields name="element_config">
+					<field type="fieldnamebindingsourceselect2" readonly="false" label="Name" default=""
+						   name="name"
+
+												>
+											</field>
+					<field type="checkbox" label="Name" default="0"
+						   name="enable_name" onchange="">
+
+					</field>
+
+									
+					<field type="createitem" readonly="false" label="Items" default=""
+						   name="items"
+
+													 maxDepth="1" 												>
+											</field>
+					<field type="checkbox" label="Items" default="0"
+						   name="enable_items" onchange="">
+
+					</field>
+
+									
+					<field type="coding" readonly="false" label="Create items by code php" default=""
+						   name="create_item_by_code_php"
+
+												>
+											</field>
+					<field type="checkbox" label="Create items by code php" default="0"
+						   name="enable_create_item_by_code_php" onchange="">
+
+					</field>
+
+									
+					<field type="integer" readonly="false" label="Column" default="1"
+						   name="column"
+
+													 first="1" 													 last="12" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Column" default="0"
+						   name="enable_column" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

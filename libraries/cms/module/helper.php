@@ -100,7 +100,7 @@ abstract class JModuleHelper
 	 */
 	public static function &getModules($position,$creensize='')
 	{
-        JModuleHelper::modifyModuleShowInMenuItem();
+        //JModuleHelper::modifyModuleShowInMenuItem();
 		$position = strtolower($position);
 		$result = array();
 		$input  = JFactory::getApplication()->input;
@@ -207,10 +207,10 @@ abstract class JModuleHelper
 
 		// Get the template
 		$template = $app->getTemplate();
-
+		$website=JFactory::getWebsite();
 		// Get module path
 		$module->module = preg_replace('/[^A-Z0-9_\.-]/i', '', $module->module);
-		$path = JPATH_BASE . '/modules/' . $module->module . '/' . $module->module . '.php';
+		$path = JPATH_BASE . '/modules/website/website_'.$website->website_id.'/' . $module->module . '/' . $module->module . '.php';
 
 		// Load the module
 		if (file_exists($path))
@@ -317,11 +317,11 @@ abstract class JModuleHelper
 			$layout = $temp[1];
 			$defaultLayout = ($temp[1]) ? $temp[1] : 'default';
 		}
-
+		$website=JFactory::getWebsite();
 		// Build the template and base path for the layout
-		$tPath = JPATH_THEMES . '/' . $template . '/html/' . $module . '/' . $layout . '.php';
-		$bPath = JPATH_BASE . '/modules/' . $module . '/tmpl/' . $defaultLayout . '.php';
-		$dPath = JPATH_BASE . '/modules/' . $module . '/tmpl/default.php';
+		$tPath = JPATH_THEMES . '/' . $template . '/html/website/website_'.$website->website_id.'/' . $module . '/' . $layout . '.php';
+		$bPath = JPATH_BASE . '/modules/website/website_'.$website->website_id.'/' . $module . '/tmpl/' . $defaultLayout . '.php';
+		$dPath = JPATH_BASE . '/modules/website/website_'.$website->website_id.'/' . $module . '/tmpl/default.php';
 
 		// If the template has a layout override use it
 		if (file_exists($tPath))
@@ -357,7 +357,7 @@ abstract class JModuleHelper
 	 *
 	 * @since   3.2
 	 */
-	protected static function &load()
+	public static function &load()
 	{
 
 		static $clean;
@@ -391,7 +391,7 @@ abstract class JModuleHelper
 		$query->where('(m.publish_up = ' . $db->quote($nullDate) . ' OR m.publish_up <= ' . $db->quote($now) . ')')
 			->where('(m.publish_down = ' . $db->quote($nullDate) . ' OR m.publish_down >= ' . $db->quote($now) . ')')
 
-			->where('m.access IN (' . $groups . ')')
+			//->where('m.access IN (' . $groups . ')')
 			->where('m.client_id = ' . $clientId)
 			->where('(mm.menuid = ' . (int) $Itemid . ' OR mm.menuid <= 0)');
 
@@ -427,6 +427,7 @@ abstract class JModuleHelper
 		// Set the query
 		$db->setQuery($query);
         $modules=$db->loadObjectList();
+
 		$clean = array();
 		// Apply negative selections and eliminate duplicates
 		$negId = $Itemid ? -(int) $Itemid : false;
@@ -462,12 +463,9 @@ abstract class JModuleHelper
 				$clean[$module->id] = $module;
 			}
 		}
-
 		unset($dupes);
-
 		// Return to simple indexing that matches the query order.
 		$clean = array_values($clean);
-
 		return $clean;
 	}
     public function modifyModuleShowInMenuItem()
@@ -563,11 +561,12 @@ abstract class JModuleHelper
         {
             return false;
         }
+		$website=JFactory::getWebsite();
         foreach($listModule as $module)
         {
             $params = new JRegistry;
             $params->loadString($module->params);
-            $helperFile=JPATH_BASE . '/modules/' . $module->module . '/helper.php';
+            $helperFile=JPATH_BASE . '/modules/website/website_'.$website->website_id.'/' . $module->module . '/helper.php';
             if(!$module->updated&&file_exists($helperFile))
                 require_once $helperFile;
             $moduleName=$module->module;

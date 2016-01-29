@@ -21,7 +21,6 @@ class elementPassengersHelper extends  elementHelper
         $filename=$pathInfo['filename'];
         $dirName=$pathInfo['dirname'];
         $doc=JFactory::getDocument();
-        $doc->addScript(JUri::root().'/media/system/js/ydn-db-master/jsc/ydn.db-dev.js');
         $doc->addStyleSheet(JUri::root() . "/$dirName/$filename.css");
         $doc->addScript(JUri::root() ."/$dirName/$filename.js");
         $doc->addStyleSheet(JUri::root() . "/media/jui_front_end/jquery-ui-1.11.1/themes/base/all.css");

@@ -191,7 +191,6 @@ class JFormFieldBindingSource extends JFormField
 		// Including fallback code for HTML5 non supported browsers.
 		JHtml::_('jquery.framework');
 		JHtml::_('script', 'system/html5fallback.js', false, true);
-
 		ob_start();
 		$scriptId="lib_joomla_form_fields_bindingSource".JUserHelper::genRandomPassword();
 		?>
@@ -207,10 +206,11 @@ class JFormFieldBindingSource extends JFormField
 		JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/models');
 		$dataSourceModal=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
 		$currentDataSource=$dataSourceModal->getCurrentDataSources();
+
 		$html='';
 		ob_start();
 		?>
-		<select name="<?php echo $this->name ?>" id="<?php echo $this->id ?>" <?php echo $class ?> >
+		<select name="<?php echo $this->name ?>" id="<?php echo $this->id ?>" <?php echo $class ?> <?php echo $onchange ?> >
 			<optgroup label="None or php">
 				<option <?php echo $this->value==""?'selected':'' ?> value="">none</option>
 				<option <?php echo $this->value=="code_php"?'selected':'' ?>  value="code_php">code php</option>
@@ -220,7 +220,34 @@ class JFormFieldBindingSource extends JFormField
 				<optgroup label="<?php echo $item->datasource->title ?>">
 					<option <?php echo $this->value==$item->datasource->id?'selected':'' ?>  value="<?php echo $item->datasource->id ?>"><?php echo $item->datasource->title ?></option>
 					<?php foreach($item->listField as $key=> $field){ ?>
-						<option <?php echo $this->value=="{$item->datasource->id}.{$key}"?'selected':'' ?> value="<?php echo "{$item->datasource->id}.{$key}" ?>"><?php echo $key ?></option>
+
+						<?php
+						if (JUtility::isJson($field)) {
+
+							?>
+							<optgroup label="object <?php echo "{$item->datasource->title}.{$key}" ?>">
+								<option <?php echo $this->value=="{$item->datasource->id}.{$key}"?'selected':'' ?> value="<?php echo "{$item->datasource->id}.{$key}" ?>"><?php echo "{$item->datasource->title} . {$key}" ?></option>
+								<?php
+
+									$params_field = new JRegistry;
+									$params_field->loadString($field);
+									$object_field=$params_field->toObject();
+									$path="{$item->datasource->title}.{$key}";
+									$key="{$item->datasource->id}.{$key}";
+									echo  JFormFieldBindingSource::create_html_option($object_field, $key, $this->value, $path, 0);
+
+
+								?>
+							</optgroup>
+
+							<?php
+
+						}else{
+							?>
+							<option <?php echo $this->value=="{$item->datasource->id}.{$key}"?'selected':'' ?> value="<?php echo "{$item->datasource->id}.{$key}" ?>"><?php echo "{$item->datasource->title} . {$key}" ?></option>
+						<?php
+						}
+						?>
 					<?php } ?>
 				</optgroup>
 			<?php } ?>
@@ -232,6 +259,27 @@ class JFormFieldBindingSource extends JFormField
 		$html=ob_get_clean();
 		return $html;
 	}
+	function create_html_option($nodes,$key='',$selected='',$path='',$level=0)
+	{
+		$html='';
+		$html.='<option value="'.$key.'">'.str_repeat('-', $level).$path .'</option>';
+		$html.='<optgroup label="'.str_repeat('-', $level).$path.'" >';
+		foreach ($nodes as $key_node=> $node) {
+			$path1=$path.' . '.$key_node;
+			$key1=$key.'.'.$key_node;
+			$level1=$level+1;
+			if(is_object($node))
+			{
+				$html.=JFormFieldBindingSource::create_html_option($node,$key1,$selected,$path1,$level1);
+			}else {
+				$html.='<option value="'.$key1.'">'.str_repeat('-', $level1).$path1.'</option>';
+			}
+		}
+		$html.='</optgroup>';
+		return $html;
+	}
+
+
 
 	/**
 	 * Method to get the field options.

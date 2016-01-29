@@ -10,6 +10,7 @@ defined('_JEXEC') or die;
 
 // Joomla system checks.
 @ini_set('magic_quotes_runtime', 0);
+@ini_set('magic_quotes_gpc', 0);
 // Joomla system checks.
 $host=$_SERVER['HTTP_HOST'];
 $host=strtolower($host);
@@ -38,6 +39,7 @@ else
     $contentIni= fread($myfile,filesize($pathFileWebStore));
     fclose($myfile);
     $contentIni=trim($contentIni);
+    define('WEBSITE_ID',          $contentIni);
     if(!is_numeric($contentIni))
     {
         exit("File $fileWebStore format incorrect");

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Project - detail Project">
+		<message>
+			<![CDATA[detail project.]]>
+		</message>
+	</layout>
+	<state>
+		<name>detail Project</name>
+		<description>detail project.</description>
+	</state>
+</metadata>

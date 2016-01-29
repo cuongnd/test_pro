@@ -1,0 +1,111 @@
+<config><fields name="params">
+					<field type="datainputtype" readonly="false" label="Input_type" default=""
+						   name="input_type"
+
+													 multiple="false" 													 size="1" 												>
+											</field>
+					<field type="checkbox" label="Input_type" default="0"
+						   name="enable_input_type" onchange="">
+
+					</field>
+
+									<fields name="data">
+					<field type="bindingSource" readonly="false" label="bindingSource" default=""
+						   name="bindingSource"
+
+												>
+											</field>
+					<field type="checkbox" label="bindingSource" default="0"
+						   name="enable_bindingsource" onchange="">
+
+					</field>
+
+									
+					<field type="autocompletetext" readonly="false" label="key" default=""
+						   name="key"
+
+													 filter_field="params.data.bindingSource" 												>
+											</field>
+					<field type="checkbox" label="key" default="0"
+						   name="enable_key" onchange="">
+
+					</field>
+
+									
+					<field type="autocompletetext" readonly="false" label="value" default=""
+						   name="value"
+
+													 filter_field="params.data.bindingSource" 												>
+											</field>
+					<field type="checkbox" label="value" default="0"
+						   name="enable_value" onchange="">
+
+					</field>
+
+									
+					<field type="editor" readonly="false" label="Template result" default=""
+						   name="template"
+
+													 filter_field="params.data.bindingSource" 												>
+											</field>
+					<field type="checkbox" label="Template result" default="0"
+						   name="enable_template" onchange="">
+
+					</field>
+
+									
+					<field type="editor" readonly="false" label="Template selected" default=""
+						   name="template_selected"
+
+													 filter_field="params.data.bindingSource" 												>
+											</field>
+					<field type="checkbox" label="Template selected" default="0"
+						   name="enable_template_selected" onchange="">
+
+					</field>
+
+									
+					<field type="bindingSource" readonly="false" label="selected" default=""
+						   name="selected"
+
+												>
+											</field>
+					<field type="checkbox" label="selected" default="0"
+						   name="enable_selected" onchange="">
+
+					</field>
+
+									</fields>				</fields>				<fields name="element_config">
+					<field type="fieldnamebindingsourceselect2" readonly="false" label="Name" default=""
+						   name="name"
+
+												>
+											</field>
+					<field type="checkbox" label="Name" default="0"
+						   name="enable_name" onchange="">
+
+					</field>
+
+									
+					<field type="createitem" readonly="false" label="Create items" default=""
+						   name="items"
+
+													 maxDepth="1" 												>
+											</field>
+					<field type="checkbox" label="Create items" default="0"
+						   name="enable_items" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Min width" default=""
+						   name="min_width"
+
+												>
+											</field>
+					<field type="checkbox" label="Min width" default="0"
+						   name="enable_min_width" onchange="">
+
+					</field>
+
+									</fields>				</config>

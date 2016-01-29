@@ -8,27 +8,58 @@
 JModelLegacy::addIncludePath(JPATH_ROOT . '/components/com_phpmyadmin/models');
 $dataSourceModal = JModelLegacy::getInstance('DataSources', 'phpMyAdminModel');
 $currentDataSource = $dataSourceModal->getCurrentDataSources();
-$doc=JFactory::getDocument();
-ob_start();
-require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
 
+$doc=JFactory::getDocument();
+
+$scriptId = "tab_footer";
+ob_start();
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function($){
-        Joomla.design_website.seting.list_data_source=<?php echo json_encode($currentDataSource) ?>;
-    });
 
+
+        $('#footer_tab a[data-toggle="tab"]').on('shown.bs.tab', function (event) {
+
+            var  aria_controls= $(event.target).attr('aria-controls');
+            console.log(aria_controls);
+            switch(aria_controls) {
+                case 'detail':
+                    var ajax_add_detail= $(event.target).data('ajax_add_detail');
+                    if(typeof ajax_add_detail==="undefined")
+                    {
+                        $(event.target).data('ajax_add_detail',true)
+                        ajax_load_detail_database();
+                    }
+                    break;
+            }
+
+        });
+        function ajax_load_detail_database()
+        {
+            Joomla.design_website.seting.list_data_source=<?php echo json_encode($currentDataSource) ?>;
+            Joomla.design_website.build_grid_database_manager(Joomla.design_website.seting.list_data_source);
+
+        }
+
+    });
 </script>
 <?php
+$script=ob_get_clean();
+$script=JUtility::remove_string_javascript($script);
+$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 
-$jscontent = ob_get_clean();
-$jscontent = JUtility::remove_string_javascript($jscontent);
-$doc->addScriptDeclaration($jscontent);
+
+
+
+
+
+require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+
 ?>
 <div>
 
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
+    <ul id="footer_tab" class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#database" aria-controls="database" role="tab" data-toggle="tab">database</a></li>
         <li role="presentation"><a href="#detail" aria-controls="detail" role="tab" data-toggle="tab">detail</a></li>
         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>

@@ -29,7 +29,7 @@ if(!class_exists('JTableCategoriesNested'))require(JPATH_VM_ADMINISTRATOR.'/tabl
  * @subpackage Category
  * @author jseros
  */
-class TableCategories extends JTableCategoriesNested {
+class TableCategories extends VmTable {
 
 	/** @var int Primary key */
 	var $virtuemart_category_id	= null;
@@ -73,7 +73,6 @@ class TableCategories extends JTableCategoriesNested {
         /** @var integer Category publish or not */
 	var $published			= 0;
 	var $link			= '';
-	var $max_page			= 0;
 
 	/**
 	 * Class contructor
@@ -88,7 +87,7 @@ class TableCategories extends JTableCategoriesNested {
 // 		$this->setPrimaryKey('virtuemart_category_id');
 		$this->setObligatoryKeys('category_name');
 		$this->setLoggable();
-		$this->setTranslatable(array('category_name','max_page','slug','category_description','metadesc','metakey','customtitle','link'));
+		$this->setTranslatable(array('category_name','slug','category_description','metadesc','metakey','customtitle','link'));
 		$this->setSlug('category_name');
 		$this->setTableShortCut('c');
 	}

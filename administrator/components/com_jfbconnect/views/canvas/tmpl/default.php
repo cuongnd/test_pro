@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 JHTML::_('behavior.tooltip');
 
@@ -110,20 +113,6 @@ $websiteUrl = $this->canvasProperties->get('website_url', '');
         </div>
         <div class="config_option">
             <?php echo JHTML::_('select.genericlist', $this->templates, 'canvas_tab_template', null, 'directory', 'name', $this->canvasTabTemplate, 'canvas_tab_template'); ?>
-        </div>
-        <div style="clear:both"></div>
-    </div>
-    <div class="config_row">
-        <div class="config_setting hasTip"
-             title="<?php echo JText::_('COM_JFBCONNECT_CANVAS_FIELD_PAGE_REVEAL_PAGE_DESC'); ?>"><?php echo JText::_('COM_JFBCONNECT_CANVAS_FIELD_PAGE_REVEAL_PAGE_LABEL'); ?>
-            :
-        </div>
-        <div class="config_option">
-            <input type="text" name="canvas_tab_reveal_article_id"
-                   value="<?php echo $model->getSetting('canvas_tab_reveal_article_id') ?>" size="20">
-        </div>
-        <div class="config_description">
-            <?php echo JText::_('COM_JFBCONNECT_CANVAS_FIELD_PAGE_REVEAL_PAGE_DESC2'); ?>
         </div>
         <div style="clear:both"></div>
     </div>

@@ -37,6 +37,14 @@ class JFormFieldRange extends JFormFieldNumber
 	 *
 	 * @since   3.2
 	 */
+	public function get_attribute_config()
+	{
+		return array(
+			first=>0,
+			last=>10,
+			step=>1
+		);
+	}
 	protected function getInput()
 	{
 		// Initialize some field attributes.

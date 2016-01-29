@@ -174,29 +174,36 @@ function get_content($db,$table)
 			$table_ready=1;
 		}
 		$ax=0;
+		$maximal_length_of_created_query=50000;
+		$insert=array();
 		for($x=0;$x<$ergebnisse;$x++)
 		{
+			$a_insert='';
 			$row=mysql_fetch_row($result);
-			$ax++;
 			
-			$insert='INSERT INTO `'.$table.'` '.$complete.'VALUES (';
+			$ax++;
+
+			$a_insert.='(';
 			
 			for($j=0;$j<$num_felder;$j++)
 			{
-				if (!isset($row[$j])) $insert.='NULL,';
+				if (!isset($row[$j])) $a_insert.='NULL,';
 				else 
-					if ($row[$j]!='') $insert.='\''.mysql_escape_string($row[$j]).'\',';
+					if ($row[$j]!='') $a_insert.='\''.mysql_escape_string($row[$j]).'\',';
 					else
-						$insert.='\'\',';
+						$a_insert.='\'\',';
 			}
-			$insert=substr($insert,0,-1).');'.$nl;
-			$dump['data'].=$insert;
-			$dump['countdata']++;
-			if (strlen($dump['data'])>$config['memory_limit']||($config['multi_part']==1&&strlen($dump['data'])+$buffer>$config['multipart_groesse']))
-			{
-				WriteToDumpFile();
-			}
+
+			$a_insert=substr($a_insert,0,-1).')';
+			$insert[]=$a_insert;
 		}
+		$dump['data'].=count($insert)>0?'INSERT INTO `'.$table.'` '.$complete.'VALUES '.implode(',',$insert).';'.$nl:'' ;
+		$dump['countdata']++;
+		if (strlen($dump['data'])>$config['memory_limit']||($config['multi_part']==1&&strlen($dump['data'])+$buffer>$config['multipart_groesse']))
+		{
+			WriteToDumpFile();
+		}
+
 		if ($table_ready==1&&$dump['table_types'][getDBIndex($db,$table)]!='VIEW') $dump['data'].="/*!40000 ALTER TABLE `$table` ENABLE KEYS */;\n";
 	}
 	else

@@ -1,9 +1,10 @@
 <?php
-
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 // Check to ensure this file is included in Joomla!
@@ -25,7 +26,16 @@ class JFBConnectControllerAutoTune extends JFBConnectController
         $task = JRequest::getCmd('task', 'default');
 
         if ($task != 'default' && $task != 'basicinfo')
-            $this->checkBasicInfo();
+        {
+            $downloadId = JFBCFactory::config()->getSetting('sc_download_id');
+            if (!$downloadId)
+            {
+                JFactory::getApplication()->enqueueMessage(JText::_('COM_JFBCONNECT_MSG_ERROR_BASIC_INFO'), 'error');
+
+                $this->setRedirect('index.php?option=com_jfbconnect&view=autotune&task=basicinfo');
+                $this->redirect();
+            }
+        }
 
         $viewLayout = $task;
         $autotuneModel = $this->getModel('autotune');
@@ -53,7 +63,25 @@ class JFBConnectControllerAutoTune extends JFBConnectController
             case 'fbappRefresh':
             case 'fbapp':
                 $viewLayout = 'fbapp';
-                // Check if we should redirect to the new app page
+                // First, check that a FB App ID and Key are set. If not, skip this step.
+                $appId = JFBCFactory::config()->getSetting('facebook_app_id');
+                $secretKey = JFBCFactory::config()->getSetting('facebook_secret_key');
+                if (!$appId || !$secretKey)
+                {
+                    JFactory::getApplication()->enqueueMessage('Facebook keys not configured. Skipping the Application Setup step', 'error');
+                    $this->setRedirect('index.php?option=com_jfbconnect&view=autotune&task=siteconfig');
+                    $this->redirect();
+                }
+
+                // Next, check that the app is valid
+                if (!$autotuneModel->validateApp(JFBCFactory::config()->getSetting('facebook_app_id'), JFBCFactory::config()->getSetting('facebook_secret_key')))
+                {
+                    JFactory::getApplication()->enqueueMessage(JText::_('COM_JFBCONNECT_MSG_CHECK_KEYS'), 'error');
+                    $this->setRedirect('index.php?option=com_jfbconnect&view=autotune&task=basicinfo');
+                    $this->redirect();
+                }
+
+                // Finally, check if we should redirect to the new app page
                 if ($autotuneModel->isNewApp())
                 {
                     $this->setRedirect('index.php?option=com_jfbconnect&view=autotune&task=fbappnew');
@@ -162,22 +190,6 @@ class JFBConnectControllerAutoTune extends JFBConnectController
         $this->view->assignRef('errorsFound', $errorsFound);
     }
 
-    private function checkBasicInfo()
-    {
-        $configModel = $this->getModel('config');
-        $downloadId = $configModel->getSetting('sc_download_id');
-        $appId = $configModel->getSetting('facebook_app_id');
-        $secretKey = $configModel->getSetting('facebook_secret_key');
-        if (!$downloadId || !$appId || !$secretKey)
-        {
-            $app = JFactory::getApplication();
-            $app->enqueueMessage(JText::_('COM_JFBCONNECT_MSG_ERROR_BASIC_INFO'), 'error');
-
-            $this->setRedirect('index.php?option=com_jfbconnect&view=autotune&task=basicinfo');
-            $this->redirect();
-        }
-    }
-
     public function getBasicInfo()
     {
         $configModel = $this->getModel('config');
@@ -191,7 +203,7 @@ class JFBConnectControllerAutoTune extends JFBConnectController
         $subscriberId = JRequest::getString('subscriberId');
         foreach (JFBCFactory::getAllProviders() as $provider)
         {
-            $name = strtolower($provider->name);
+            $name = $provider->systemName;
             $appId = JRequest::getString($name . '_app_id');
             $secretKey = JRequest::getString($name . '_secret_key');
             JFBCFactory::config()->update($name . '_app_id', $appId);
@@ -199,13 +211,6 @@ class JFBConnectControllerAutoTune extends JFBConnectController
         }
 
         JFBCFactory::config()->update('sc_download_id', $subscriberId);
-
-        $autotuneModel = $this->getModel('autotune');
-        if (!$autotuneModel->validateApp(JFBCFactory::config()->getSetting('facebook_app_id'), JFBCFactory::config()->getSetting('facebook_secret_key')))
-        {
-            $this->setRedirect('index.php?option=com_jfbconnect&view=autotune&task=basicinfo');
-            $this->redirect();
-        }
 
         $this->setRedirect('index.php?option=com_jfbconnect&view=autotune&task=fbapp');
     }
@@ -219,7 +224,7 @@ class JFBConnectControllerAutoTune extends JFBConnectController
         }
         else
         {
-            $domain = 'http://www.sourcecoast.com/autotune/start.php';
+            $domain = 'https://www.sourcecoast.com/autotune/start.php';
             $baseUrl = JURI::root();
         }
         $baseUrl = base64_encode(urlencode($baseUrl));

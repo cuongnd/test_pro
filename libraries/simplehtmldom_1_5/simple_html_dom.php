@@ -62,7 +62,7 @@ define('HDOM_INFO_ENDSPACE',7);
 define('DEFAULT_TARGET_CHARSET', 'UTF-8');
 define('DEFAULT_BR_TEXT', "\r\n");
 define('DEFAULT_SPAN_TEXT', " ");
-define('MAX_FILE_SIZE', 600000);
+define('MAX_FILE_SIZE', 700000);
 // helper functions
 // -----------------------------------------------------------------------------
 // get html dom from file
@@ -1255,6 +1255,10 @@ class simple_html_dom
     }
 
     // read tag info
+    /**
+     * @return bool
+     * @throws Exception
+     */
     protected function read_tag()
     {
         if ($this->char!=='<')
@@ -1330,6 +1334,7 @@ class simple_html_dom
         }
 
         $node = new simple_html_dom_node($this);
+        //JUtility::check_out_off_memory_size();
         $node->_[HDOM_INFO_BEGIN] = $this->cursor;
         ++$this->cursor;
         $tag = $this->copy_until($this->token_slash);

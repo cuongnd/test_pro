@@ -324,10 +324,10 @@ class JComponentHelper
 
 		$path = JPATH_COMPONENT . '/' . $file . '.php';
 		// If component is disabled throw error
-		if (!static::isEnabled($option) || !file_exists($path))
+		if (!file_exists($path))
 		{
 
-			throw new Exception(JText::_('JLIB_APPLICATION_ERROR_COMPONENT_NOT_FOUND'), 404);
+			throw new Exception($option.':'.JText::_('JLIB_APPLICATION_ERROR_COMPONENT_NOT_FOUND'), 404);
 		}
 
 		// Load common and local language files.
@@ -400,6 +400,7 @@ class JComponentHelper
 	 */
 	protected static function load($option)
 	{
+
         $website=JFactory::getWebsite();
 
         $db = JFactory::getDbo();

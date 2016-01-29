@@ -30,6 +30,29 @@ class MenusControllerMenus extends JControllerAdmin
 	public function display($cachable = false, $urlparams = false)
 	{
 	}
+	function ajax_rebuild_root_menu()
+	{
+		$app=JFactory::getApplication();
+		$input=JFactory::getApplication()->input;
+		$menu_type_id=$input->get('menu_type_id',0,'int');
+		$menu_item_id=$input->get('menu_item_id',0,'int');
+		require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
+		MenusHelperFrontEnd::fix_menu_items_by_menu_type_id($menu_type_id);
+		$table_menu_item = JTable::getInstance('Menu');
+		$table_menu_item->load($menu_item_id);
+		$result = new stdClass();
+        $result->e = 0;
+        if (!$table_menu_item->rebuild($menu_type_id)) {
+			$result->e = 1;
+			$result->m = $table_menu_item->getError();
+		} else {
+			$result->m = "rebuild successfully";
+		}
+        echo json_encode($result);
+        die;
+
+	}
+
     function quick_assign_website()
     {
         $app=JFactory::getApplication();
@@ -70,7 +93,13 @@ class MenusControllerMenus extends JControllerAdmin
             $this->setRedirect(JRoute::_('index.php?option=com_menu&view=menus'));
         }
     }
-
+    public function ajax_save_menu(){
+		$response=new stdClass();
+		$response->e=0;
+		$response->r="save success";
+		echo json_encode($response);
+		die;
+	}
 
 
 
@@ -182,12 +211,12 @@ class MenusControllerMenus extends JControllerAdmin
 
 		try
 		{
-			$query->select('e.element, e.id AS extension_id')
+			$query->select('e.element, e.id AS id')
 				->from('#__extensions AS e')
 				->where('e.type = ' . $db->quote('component'));
 			$db->setQuery($query);
 
-			$components = $db->loadAssocList('element', 'extension_id');
+			$components = $db->loadAssocList('element', 'id');
 		}
 		catch (RuntimeException $e)
 		{

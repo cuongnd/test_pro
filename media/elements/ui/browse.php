@@ -23,7 +23,7 @@ class elementBrowseHelper extends  elementHelper
         $doc=JFactory::getDocument();
         $doc->addStyleSheet(JUri::root() . "/$dirName/$filename.css");
         $doc->addScript(JUri::root() ."/$dirName/$filename.js");
-        $doc->addScript(JUri::root().'/ckfinder/ckfinder.js');
+        $doc->addScriptNotCompile(JUri::root().'/ckfinder/ckfinder.js');
         $params = new JRegistry;
         $params->loadString($block->params);
         $css_class=$block->css_class;

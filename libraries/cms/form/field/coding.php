@@ -258,7 +258,6 @@ class JFormFieldCoding extends JFormField
         $doc->addScript(JUri::root() . "/media/system/js/Nestable-master/jquery.nestable.js");
         $doc->addScript(JUri::root() . "/media/jui_front_end/js/select2.jquery.js");
         $doc->addScript(JUri::root() . "/media/system/js/cassandraMAP-cassandra/lib/cassandraMap.js");
-
         $doc->addScript(JUri::root() . "/media/system/js/base64.js");
 
         //load for kendo
@@ -300,22 +299,6 @@ class JFormFieldCoding extends JFormField
             "/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz.default"
             // "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.bootstrap"
         );
-        foreach($list_file_less_css as $less_css_file)
-        {
-            $lessInput = JPATH_ROOT . $less_css_file.".less";
-            $cssOutput = JPATH_ROOT . $less_css_file.".css";
-            $error=JUtility::compileLess($lessInput, $cssOutput);
-            if($error!=true)
-            {
-                echo   $lessInput;
-                echo "<br/>";
-                echo $error;
-                echo "<br/>";
-                echo   $cssOutput;
-                die;
-            }
-            $doc->addStyleSheet(JUri::root() . $less_css_file.'.css');
-        }
         $doc->addStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/styles/kendo.rtl.min.css');
 
 

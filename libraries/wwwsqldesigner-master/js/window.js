@@ -1,4 +1,3 @@
-
 /* --------------------- window ------------ */
 
 SQL.Window = function(owner) {
@@ -12,9 +11,9 @@ SQL.Window = function(owner) {
 		content:OZ.$("windowcontent"),
 		throbber:OZ.$("throbber")
 	}
-	this.dom.ok.value = _("windowok");
-	this.dom.cancel.value = _("windowcancel");
-	this.dom.throbber.alt = this.dom.throbber.title = _("throbber");
+	this.dom.ok.value = getString("windowok");
+	this.dom.cancel.value = getString("windowcancel");
+	this.dom.throbber.alt = this.dom.throbber.title = getString("throbber");
 	OZ.Event.add(this.dom.ok, "click", this.ok.bind(this));
 	OZ.Event.add(this.dom.cancel, "click", this.close.bind(this));
 	OZ.Event.add(document, "keydown", this.key.bind(this));
@@ -73,6 +72,7 @@ SQL.Window.prototype.key = function(e) {
 }
 
 SQL.Window.prototype.ok = function(e) {
+
 	if (this.callback) { this.callback(); }
 	this.close();
 }

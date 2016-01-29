@@ -64,7 +64,7 @@ class PhpClosure {
   var $_use_closure_library = false;
   var $_pretty_print = false;
   var $_local_compile = false;
-  var $_debug = true;
+  var $_debug = false;
   var $_cache_dir = "";
   var $_code_url_prefix = "";
   var $_output_wrapper = false;
@@ -306,7 +306,27 @@ class PhpClosure {
       }
     }
   }
+  function get_content()
+  {
+    // No cache directory so just dump the output.
+    if ($this->_cache_dir == "") {
+      return $this->_compile();
 
+    } else {
+      $cache_file = $this->_getCacheFileName();
+      if ($this->_isRecompileNeeded($cache_file)) {
+        $result = $this->_compile();
+        if ($result !== false)
+          file_put_contents($cache_file, $result);
+        return $result;
+      } else {
+        // No recompile needed, but see if we can send a 304 to the browser.
+        $cache_mtime = filemtime($cache_file);
+        $etag = md5_file($cache_file);
+        return file_get_contents($cache_file);
+      }
+    }
+  }
   // ----- Privates -----
 
   function _isRecompileNeeded($cache_file) {
@@ -526,6 +546,7 @@ class PhpClosure {
 
   function _makeRequest() {
     $data = $this->_getParams();
+
     $referer = @$_SERVER["HTTP_REFERER"] or "";
 
     $fp = fsockopen("closure-compiler.appspot.com", 80) or die("Unable to open socket");;

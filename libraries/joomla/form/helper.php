@@ -102,7 +102,6 @@ class JFormHelper
 	{
 		// Reference to an array with current entity's type instances
 		$types = &self::$entities[$entity];
-
 		$key = md5($type);
 
 		// Return an entity object if it already exists and we don't need a new one.
@@ -178,7 +177,6 @@ class JFormHelper
 		}
 
 		$class = JString::ucfirst($prefix, '_') . 'Form' . JString::ucfirst($entity, '_') . JString::ucfirst($type, '_');
-
 		if (class_exists($class))
 		{
 			return $class;
@@ -186,7 +184,6 @@ class JFormHelper
 
 		// Get the field search path array.
 		$paths = self::addPath($entity);
-
 		// If the type is complex, add the base type to the paths.
 		if ($pos = strpos($type, '_'))
 		{
@@ -213,6 +210,7 @@ class JFormHelper
 		{
 			if ($file = JPath::find($path, $type))
 			{
+
 				require_once $file;
 				if (class_exists($class))
 				{
@@ -220,6 +218,7 @@ class JFormHelper
 				}
 			}
 		}
+
 
 		// Check for all if the class exists.
 		return class_exists($class) ? $class : false;

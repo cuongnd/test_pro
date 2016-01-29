@@ -3,13 +3,13 @@
  * @package         JFBConnect
  * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
- * @version         Release v5.2.2
- * @build-date      2014-01-13
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 $attribsShown = false;
 ?>
-<div class="sourcecoast">
+<div class="sourcecoast channel">
     <form action="index.php" method="post" name="adminForm" id="adminForm">
         <div class="row-fluid">
             <?php
@@ -18,14 +18,21 @@ $attribsShown = false;
                 if ($fieldset->name == 'attribs')
                 {
                     $attribsShown = true;
+
                     echo '</div>';
                     echo '<div class="row-fluid">';
                     echo '<div class="span12">' . "\n";
                     echo '<legend>' . JText::_('COM_JFBCONNECT_CHANNEL_EDIT_ATTRIBUTES') . "</legend>\n";
                     echo '<div id="channel-attribs" class="well">' . "\n";
-                    foreach ($this->form->getFieldset($fieldset->name) as $field)
-                        $this->formShowField($field);
+                    echo $this->displayAttributes();
                     echo "</div>\n";
+
+                    echo '</div>';
+                    echo '<div class="row-fluid">';
+                    echo '<div class="span12">' . "\n";
+                    echo '<legend>' . JText::_('COM_JFBCONNECT_CHANNEL_EDIT_STREAM') . "</legend>\n";
+                    echo '<div id="channel-test" class="well">' . "\n";
+                    echo $this->displayTest();
                     echo "</div>\n";
                 }
                 else
@@ -43,6 +50,7 @@ $attribsShown = false;
             {
             ?>
         </div>
+
         <div class="row-fluid">
             <div class="span12">
                 <legend><?php echo JText::_('COM_JFBCONNECT_CHANNEL_EDIT_ATTRIBUTES'); ?></legend>

@@ -734,7 +734,7 @@ abstract class JHtmlBehavior
 		$js = "jQuery(function () {if (top == self) {document.documentElement.style.display = 'block'; }" .
 			" else {top.location = self.location; }});";
 		$document = JFactory::getDocument();
-		$document->addStyleDeclaration('html { display:none }');
+
 		$document->addScriptDeclaration($js);
 
 		JFactory::getApplication()->setHeader('X-Frame-Options', 'SAMEORIGIN');

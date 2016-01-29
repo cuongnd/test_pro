@@ -9,7 +9,7 @@
 
 defined('JPATH_PLATFORM') or die;
 
-JLoader::register('JOAuth1Client', JPATH_SITE . '/components/com_jfbconnect/libraries/joomla/oauth1/client.php');
+JLoader::register('JFBCOAuth1Client', JPATH_SITE . '/components/com_jfbconnect/libraries/joomla/oauth1/client.php');
 
 /**
  * Google OAuth authentication class
@@ -18,7 +18,7 @@ JLoader::register('JOAuth1Client', JPATH_SITE . '/components/com_jfbconnect/libr
  * @subpackage  Google
  * @since       12.3
  */
-class JFBConnectProviderTwitterOauth1 extends JOAuth1Client
+class JFBConnectProviderTwitterOauth1 extends JFBCOAuth1Client
 {
     /**
      * Constructor.
@@ -50,40 +50,6 @@ class JFBConnectProviderTwitterOauth1 extends JOAuth1Client
             $options->set('sendheaders', true);
 
         parent::__construct($options, $http, $input, $application);
-    }
-
-    public function initialize(JFBConnectProvider $p)
-    {
-        $this->options = isset($options) ? $options : new JRegistry;
-
-        $this->setOption('redirecturi', JURI::base() . 'index.php?option=com_jfbconnect&task=authenticate.callback&provider=' . strtolower($p->name));
-        $this->setOption('clientid', $p->appId);
-        $this->setOption('clientsecret', $p->secretKey);
-
-        $this->setOption('authurl', $this->options->get('authurl'));
-        $this->setOption('tokenurl', $this->options->get('tokenurl'));
-
-        if (!$this->getOption('requestparams'))
-        {
-            $this->setOption('requestparams', Array());
-        }
-
-        $params = $this->getOption('requestparams');
-
-        if (!array_key_exists('access_type', $params))
-        {
-            $params['access_type'] = 'offline';
-        }
-        if ($params['access_type'] == 'offline' && $this->getOption('userefresh') === null)
-        {
-            $this->setOption('userefresh', true);
-        }
-        if (!array_key_exists('approval_prompt', $params))
-        {
-            $params['approval_prompt'] = 'auto';
-        }
-
-        $this->setOption('requestparams', $params);
     }
 
     /**

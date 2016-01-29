@@ -56,6 +56,9 @@ class JCacheStorageFile extends JCacheStorage
 	{
 		$data = false;
 		$path = $this->_getFilePath($id, $group);
+
+
+
 		if ($checkTime == false || ($checkTime == true && $this->_checkExpire($id, $group) === true))
 		{
 			if (file_exists($path))
@@ -376,26 +379,9 @@ class JCacheStorageFile extends JCacheStorage
         $app=JFactory::getApplication();
 		$name = $this->_getCacheId($id, $group);
 		$dir = $this->_root . '/' . $group;
-        $suppAdmin=JFactory::isSupperAdmin();
 
-        if($suppAdmin)
-        {
-            $website_id=$app->input->getInt('website_id',0);
-            if(!$website_id||$website_id==-1)
-            {
-                require_once JPATH_ROOT.'/administrator/components/com_website/helpers/website.php';
-                $websites=websiteHelperFrontEnd::getWebsites();
-                $firstWebsite=reset($websites);
-                $website_id=$firstWebsite->id;
-            }
-        }
-        else
-        {
-            $website=JFactory::getWebsite();
-            $website_id=$website->website_id;
-        }
-        $dir.='/stories_'.(string)$website_id;
 
+        $dir.='/stories_'.(string)WEBSITE_ID;
 		// If the folder doesn't exist try to create it
 		if (!is_dir($dir))
 		{

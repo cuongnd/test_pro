@@ -78,7 +78,7 @@ jQuery(document).ready(function($){
             minimumInputLength: 0
         },
         post_name_option:{
-            data: function() {
+/*            data: function() {
                 data_post={};
                 $( ':input[enable-submit="true"],:selected[enable-submit="true"]').each(function(){
                     name=$(this).attr('name');
@@ -106,7 +106,9 @@ jQuery(document).ready(function($){
                     i++;
                 });
                 return {results: return_data_post};
-            },
+            },*/
+            tags: ['sdfsd','sdfsd'],
+/*
             initSelection: function(element, callback) {
                 item={
                     id:element.val(),
@@ -114,6 +116,7 @@ jQuery(document).ready(function($){
                 };
                 return callback(item);
             }
+*/
         },
         option_droppable:{
             accept: ".configupdate-item-table,.configupdate-item-field",
@@ -151,6 +154,9 @@ jQuery(document).ready(function($){
             $(document).on('click','.add_sub_node',function(){
                 config_update.add_sub_node($(this));
             });
+
+
+
             config_update.set_auto_complete();
             // activate Nestable for list 1
             config_update.init_config_nestable();
@@ -185,7 +191,27 @@ jQuery(document).ready(function($){
             li_clone.find(".post_name").val('');
             li_clone.find("input.table_name").select2(config_update.table_name_option);
             li_clone.find("input.column_name").select2(config_update.column_name_option);
-            li_clone.find("input.post_name").select2(config_update.post_name_option).select2("data",config_update.data_post,true);
+
+            data_post=[];
+            $('#content .content-wrapper').find(':input').each(function(){
+
+                name=$(this).attr('name');
+                if(typeof name!="undefined")
+                {
+                    data_post.push(name);
+                }
+
+
+            });
+            parser_url= $.url(currentLink).param();
+            $.each(parser_url, function( index, value ) {
+                data_post.push(index);
+            });
+
+            li_clone.find("input.post_name").select2({
+                tags:data_post
+            });
+
             config_update.update_nestable();
         },
         add_sub_node:function(self){
@@ -259,8 +285,25 @@ jQuery(document).ready(function($){
             $(".column_name").select2(config_update.column_name_option);
 
 
+            data_post=[];
+            $('#content .content-wrapper').find(':input').each(function(){
 
-            $(".post_name").select2(config_update.post_name_option);
+                name=$(this).attr('name');
+                if(typeof name!="undefined")
+                {
+                    data_post.push(name);
+                }
+
+
+            });
+            parser_url= $.url(currentLink).param();
+            $.each(parser_url, function( index, value ) {
+                data_post.push(index);
+            });
+
+            $(".post_name").select2({
+                tags:data_post
+            });
 
         },
         update_nestable:function(){
@@ -383,7 +426,7 @@ jQuery(document).ready(function($){
                 return;
             if (window.JSON) {
                 value=list.nestable('serialize');
-                output.val(cassandraMAP.stringify(value));//, null, 2));
+                output.val(base64.encode(cassandraMAP.stringify(value)));//, null, 2));
             } else {
                 output.val('JSON browser support required for this demo.');
             }

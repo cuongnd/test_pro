@@ -82,7 +82,7 @@ class JUpdater extends JAdapter
 		{
 			$query = 'SELECT DISTINCT update_site_id, type, location, last_check_timestamp, extra_query FROM #__update_sites' .
 				' WHERE update_site_id IN' .
-				'  (SELECT update_site_id FROM #__update_sites_extensions WHERE extension_id IN (' . implode(',', $eid) . '))';
+				'  (SELECT update_site_id FROM #__update_sites_extensions WHERE id IN (' . implode(',', $eid) . '))';
 		}
 		$db->setQuery($query);
 		$results = $db->loadAssocList();
@@ -152,7 +152,7 @@ class JUpdater extends JAdapter
 								$data = json_decode($extension->manifest_cache, true);
 								if (version_compare($current_update->version, $data['version'], '>') == 1)
 								{
-									$current_update->extension_id = $eid;
+									$current_update->id = $eid;
 									$current_update->store();
 								}
 							}

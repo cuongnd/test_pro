@@ -230,7 +230,7 @@ abstract class JHtmlBootstrap
 		{
 			return;
 		}
-
+		$doc=JFactory::getDocument();
 		// Load jQuery
 		JHtml::_('jquery.framework');
 
@@ -242,7 +242,30 @@ abstract class JHtmlBootstrap
 		}
         $app=JFactory::getApplication();
         $template=$app->getTemplate();
-		JHtml::_('script', JUri::root().'/media/'.$jui.'/bootstrap-3.3.0/dist/js/bootstrap.js', false, true, false, false, $debug);
+		if($client_id==1&&$template=='isis')
+		{
+			/*$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-transition.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-affix.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-alert.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-button.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-carousel.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-collapse.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-dropdown.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-modal.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-tooltip.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-popover.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-scrollspy.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-tab.js');
+
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-typeahead.js');
+			$doc->addScript(JUri::root().'/media/jui/bootstrap-2.3.2/js/bootstrap-transition.js');*/
+
+
+
+			JHtml::_('script', JUri::root().'/administrator/templates/isis/js/bootstrap.min.js', false, true, false, false, $debug);
+		}else{
+			JHtml::_('script', JUri::root().'/media/'.$jui.'/bootstrap-3.3.0/dist/js/bootstrap.js', false, true, false, false, $debug);
+		}
 		static::$loaded[__METHOD__] = true;
 
 		return;

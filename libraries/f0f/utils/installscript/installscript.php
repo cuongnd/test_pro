@@ -617,7 +617,7 @@ abstract class F0FUtilsInstallscript
 
 		// Fix broken #__extensions records
 		$query = $db->getQuery(true);
-		$query->select('extension_id')
+		$query->select('id')
 			->from('#__extensions')
 			->where($db->qn('element') . ' = ' . $db->q($this->componentName));
 		$db->setQuery($query);
@@ -629,7 +629,7 @@ abstract class F0FUtilsInstallscript
 			{
 				$query = $db->getQuery(true);
 				$query->delete('#__extensions')
-					->where($db->qn('extension_id') . ' = ' . $db->q($id));
+					->where($db->qn('id') . ' = ' . $db->q($id));
 				$db->setQuery($query);
 
 				try
@@ -683,7 +683,7 @@ abstract class F0FUtilsInstallscript
 
 		// If there are multiple #__extensions record, keep one of them
 		$query = $db->getQuery(true);
-		$query->select('extension_id')
+		$query->select('id')
 			->from('#__extensions')
 			->where($db->qn('element') . ' = ' . $db->q($this->componentName));
 		$db->setQuery($query);
@@ -701,13 +701,13 @@ abstract class F0FUtilsInstallscript
 		if (count($ids) > 1)
 		{
 			asort($ids);
-			$extension_id = array_shift($ids); // Keep the oldest id
+			$id = array_shift($ids); // Keep the oldest id
 
 			foreach ($ids as $id)
 			{
 				$query = $db->getQuery(true);
 				$query->delete('#__extensions')
-					->where($db->qn('extension_id') . ' = ' . $db->q($id));
+					->where($db->qn('id') . ' = ' . $db->q($id));
 				$db->setQuery($query);
 
 				try
@@ -1098,7 +1098,7 @@ abstract class F0FUtilsInstallscript
 					{
 						// Find the module ID
 						$sql = $db->getQuery(true)
-							->select($db->qn('extension_id'))
+							->select($db->qn('id'))
 							->from($db->qn('#__extensions'))
 							->where($db->qn('element') . ' = ' . $db->q('mod_' . $module))
 							->where($db->qn('type') . ' = ' . $db->q('module'));
@@ -1139,7 +1139,7 @@ abstract class F0FUtilsInstallscript
 					foreach ($plugins as $plugin => $published)
 					{
 						$sql = $db->getQuery(true)
-							->select($db->qn('extension_id'))
+							->select($db->qn('id'))
 							->from($db->qn('#__extensions'))
 							->where($db->qn('type') . ' = ' . $db->q('plugin'))
 							->where($db->qn('element') . ' = ' . $db->q($plugin))
@@ -1502,7 +1502,7 @@ abstract class F0FUtilsInstallscript
 					{
 						// Find the module ID
 						$sql = $db->getQuery(true)
-							->select($db->qn('extension_id'))
+							->select($db->qn('id'))
 							->from($db->qn('#__extensions'))
 							->where($db->qn('element') . ' = ' . $db->q('mod_' . $module))
 							->where($db->qn('type') . ' = ' . $db->q('module'));
@@ -1534,7 +1534,7 @@ abstract class F0FUtilsInstallscript
 					foreach ($plugins as $plugin)
 					{
 						$sql = $db->getQuery(true)
-							->select($db->qn('extension_id'))
+							->select($db->qn('id'))
 							->from($db->qn('#__extensions'))
 							->where($db->qn('type') . ' = ' . $db->q('plugin'))
 							->where($db->qn('element') . ' = ' . $db->q($plugin))

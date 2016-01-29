@@ -22,4 +22,17 @@
                 label="COM_JFBCONNECT_CONFIG_LINKEDIN_MIGRATOR"
                 />
     </fieldset>
+    <fieldset name="permissions">
+        <field name="linkedin_perm_custom"
+               type="textarea"
+               label="COM_JFBCONNECT_CONFIG_LINKEDIN_ADD_PERMISSION_REQ_LABEL"
+               description="COM_JFBCONNECT_CONFIG_LINKEDIN_ADD_PERMISSION_REQ_DESC"
+               rows="3"
+               cols="35"
+               labelclass="config_setting"
+                />
+        <field type="spacer"
+               label="COM_JFBCONNECT_CONFIG_LINKEDIN_ADD_PERMISSION_REQ_DESC2"
+                />
+    </fieldset>
 </form>

@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 ?>
 <div class="sourcecoast">
@@ -19,21 +22,18 @@ defined('_JEXEC') or die('Restricted access');
 
                 <p><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FINISH_NEXT_DESC'); ?>
                 <ul>
-                    <li><strong>Further customization:</strong> Look through the <a href="index.php?option=com_jfbconnect&view=config">configuration options</a>
-                        available in JFBConnect. Everything should be set to good default values, but you may want to tweak them further.
+                    <li><strong><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FINISH_CUSTOMIZE_LABEL');?></strong>
+                        <?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FINISH_CUSTOMIZE_DESC');?>
                     </li>
-                    <li><strong>Add a Login With Facebook button:</strong> Let users register or login to your site with Facebook & JFBConnect:
+                    <li><strong><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FINISH_ADD_BUTTON_LABEL');?></strong>
+                        <?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FINISH_ADD_BUTTON_DESC');?>
                         <ul>
-                            <li>Configure and enable the SCLogin module in the <a href="index.php?option=com_modules">Module Manager</a>. This is a new login
-                                module that has the "Login With Facebook" button built in.
-                            </li>
-                            <li>Alternatively, add {JFBCLogin} to your articles, template, or anywhere else on your site to add the Login With Facebook button
-                                in custom locations.
-                            </li>
+                            <li><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FINISH_ADD_BUTTON_STEP1_DESC');?></li>
+                            <li><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FINISH_ADD_BUTTON_STEP2_DESC');?></li>
                         </ul>
                     </li>
-                    <li><strong>Social Integration:</strong> Configure the <a href="index.php?option=com_jfbconnect&view=social">Social buttons</a> of
-                        JFBConnect for automatically adding social sharing buttons or comment boxes to your content.
+                    <li><strong><?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FINISH_SOCIAL_INTEGRATION_LABEL');?></strong>
+                        <?php echo JText::_('COM_JFBCONNECT_AUTOTUNE_FINISH_SOCIAL_INTEGRATION_DESC');?>
                     </li>
                 </ul>
                 </p>

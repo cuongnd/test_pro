@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -14,53 +17,44 @@ class JFBConnectProfileFacebook extends JFBConnectProfile
     protected function setProviderFields()
     {
         $this->providerFields = array(
-            '0' => 'None',
-            'name' => 'User - Full Name',
-            'first_name' => 'User - First Name',
-            'middle_name' => 'User - Middle Name',
-            'last_name' => 'User - Last Name',
-            'profile_url' => 'User - Profile Link',
-            'friend_count' => 'User - Friend Count',
-            'hometown_location.city' => 'Basic Info - Hometown City',
-            'hometown_location.state' => 'Basic Info - Hometown State',
-            'hometown_location.country' => 'Basic Info - Hometown Country',
-            'hometown_location.name' => 'Basic Info - Hometown City/State', // user_hometown
-            'current_location.city' => 'Basic Info - Current City',
-            'current_location.state' => 'Basic Info - Current State',
-            'current_location.country' => 'Basic Info - Current Country',
-            'current_location.name' => 'Basic Info - Current City/State', // user_location
-            'timezone' => 'Basic Info - Timezone',
-            'sex' => 'Basic Info - Sex (Male / Female)',
-            'birthday' => 'Basic Info - Birthday', // user_birthday
-            'political' => 'Basic Info - Political View', // user_religion_politics
-            'religion' => 'Basic Info - Religious Views', // user_religion_politics
-            'about_me' => 'Basic Info - Bio', // user_about_me
-            'profile_blurb' => 'Basic Info - Profile Blurb', // user_about_me
-            'quotes' => 'Basic Info - Favorite Quotes', // user_about_me
-            'music' => 'Likes & Interests - Music', // user_likes
-            'books' => 'Likes & Interests - Books', // user_likes
-            'movies' => 'Likes & Interests - Movies', // user_likes
-            'tv' => 'Likes & Interests - TV', // user_likes
-            'games' => 'Likes & Interests - Games', //user_likes
-            'activities' => 'Likes & Interests - Activities', // user_activities
-            'interests' => 'Likes & Interests - Interests', // user_interests
-            'relationship_status' => 'Relationship - Relationship Status', // user_relationships
-            //'significant_other_id' => 'Relationship - Significant Other',
-            //'meeting_sex' => 'Relationship - Type of Relationship Looking For', // 3.0.2
-            //'meeting_for' => 'Relationship - Reasons For Looking', // 3.0.2
-            //'affiliations' => 'Network Affiliations', // 3.0.2
-            'work.0.employer.name' => 'Education and Work - Employer', // user_work_history
-            'work.0.location.name' => 'Education and Work - Location', // user_work_history
-            'work.0.position.name' => 'Education and Work - Position', // user_work_history
-            'work.0.start_date' => 'Education and Work - Start Date', // user_work_history
-            'work.0.end_date' => 'Education and Work - End Date', // user_work_history
-            'education.College.school.name' => 'Education and Work - College Name',
-            'education.College.concentration.0.name' => 'Education and Work - College Degree',
-            'education.College.year.name' => 'Education and Work - College Year',
-            'education.High School.school.name' => 'Education and Work - High School', // user_education_history
-            'education.High School.year.name' => 'Education and Work - High School Year', // user_education_history
-            'email' => 'Contact - Email', // email
-            'website' => 'Contact - Website' // user_website
+                '0' => 'None',
+                'name' => 'User - Full Name',
+                'first_name' => 'User - First Name',
+                'middle_name' => 'User - Middle Name',
+                'last_name' => 'User - Last Name',
+                'link' => 'User - Profile Link',
+                'friends.summary.total_count' => 'User - Friend Count',
+                'locale' => 'Basic Info - Locale',
+                'hometown.name' => 'Basic Info - Hometown City, State', // user_hometown    /* New - hometown, now a page? */
+                'location.name' => 'Basic Info - Current City, State', // user_location      /* New - location, now a page? */
+                'timezone' => 'Basic Info - Timezone',
+                'gender' => 'Basic Info - Sex (Male / Female)',
+                'birthday' => 'Basic Info - Birthday', // user_birthday
+                'political' => 'Basic Info - Political View', // user_religion_politics
+                'religion' => 'Basic Info - Religious Views', // user_religion_politics
+                'bio' => 'Basic Info - About Me', // user_about_me
+//                'profile_blurb' => 'Basic Info - Profile Blurb', // user_about_me
+                'quotes' => 'Basic Info - Favorite Quotes', // user_about_me
+                'music' => 'Likes & Interests - Music', // user_likes                               /* EDGE */
+                'books' => 'Likes & Interests - Books', // user_likes                               /* EDGE */
+                'movies' => 'Likes & Interests - Movies', // user_likes                             /* EDGE */
+                'television' => 'Likes & Interests - TV', // user_likes
+                'games' => 'Likes & Interests - Games', //user_likes                                /* EDGE */
+                'activities' => 'Likes & Interests - Activities', // user_activities                /* EDGE */
+                'interests' => 'Likes & Interests - Interests', // user_interests                   /* EDGE */
+                'relationship_status' => 'Relationship - Relationship Status', // user_relationships
+                'work.0.employer.name' => 'Education and Work - Employer', // user_work_history
+                'work.0.location.name' => 'Education and Work - Location', // user_work_history
+                'work.0.position.name' => 'Education and Work - Position', // user_work_history
+                'work.0.start_date' => 'Education and Work - Start Date', // user_work_history
+                'work.0.end_date' => 'Education and Work - End Date', // user_work_history
+                'education.College.school.name' => 'Education and Work - College Name',
+                'education.College.concentration.0.name' => 'Education and Work - College Degree',
+                'education.College.year.name' => 'Education and Work - College Year',
+                'education.High School.school.name' => 'Education and Work - High School', // user_education_history
+                'education.High School.year.name' => 'Education and Work - High School Year', // user_education_history
+                'email' => 'Contact - Email', // email
+                'website' => 'Contact - Website' // user_website
         );
     }
 
@@ -72,13 +66,15 @@ class JFBConnectProfileFacebook extends JFBConnectProfile
 
         foreach ($fields as $field)
         {
-            if (strpos($field, "current_location") !== false)
+            if (strpos($field, "friends") !== false)
+                $perms[] = "user_friends";
+            if (strpos($field, "location") !== false)
                 $perms[] = "user_location";
-            else if (strpos($field, "hometown_location") !== false)
+            else if (strpos($field, "hometown") !== false)
                 $perms[] = "user_hometown";
             else if ($field == "activities" || $field == "birthday" || $field == "interests" || $field == "website")
                 $perms[] = "user_" . $field;
-            else if ($field == "about_me" || $field == "quotes" || $field == "profile_blurb")
+            else if ($field == "bio" || $field == "quotes")
                 $perms[] = "user_about_me";
             else if ($field == "religion" || $field == "political")
                 $perms[] = "user_religion_politics";
@@ -191,14 +187,8 @@ class JFBConnectProfileFacebook extends JFBConnectProfile
         if (!empty($fields))
         {
             $colFields = implode(",", $fields);
-            $fql = "SELECT " . $colFields . " FROM user WHERE uid=" . $fbUserId;
-            $params = array(
-                'method' => 'fql.query',
-                'query' => $fql,
-            );
-            $data = JFBCFactory::provider('facebook')->rest($params, TRUE);
-
-            $profile->loadObject($data[0]);
+            $data = JFBCFactory::provider('facebook')->api('/v2.1/' . $fbUserId . '?fields=' . $colFields);
+            $profile->loadObject($data);
         }
         return $profile;
     }
@@ -218,50 +208,26 @@ class JFBConnectProfileFacebook extends JFBConnectProfile
     // Prevents the default avatars from being imported
     function getAvatarUrl($providerUserId, $nullForDefault = false, $params = null)
     {
-        $savedAvatar = JFactory::getApplication()->getUserState('com_jfbconnect.facebook.avatar.' . $providerUserId, null);
-        if ($savedAvatar)
-        {
-            if ($savedAvatar == "blank")
-                return null;
-            else
-                return $savedAvatar;
-        }
-
         if (!$params)
             $params = new JRegistry();
 
-        $secure = $params->get('secure', false);
         $width = $params->get('width', 300);
         $height = $params->get('height', 300);
 
-        $avatarUrl = 'graph.facebook.com/' . $providerUserId . '/picture?width=' . $width . "&height=" . $height;
-        if ($secure)
-            $avatarUrl = 'https://' . $avatarUrl . '&return_ssl_resources=1';
-        else
-            $avatarUrl = 'http://' . $avatarUrl;
-
-        // To check for blank avatar, we actually have to make a call to Facebook.
-        if ($nullForDefault)
+        $nullString = $nullForDefault ? 'null' : 'notnull';
+        $avatarUrl = JFBCFactory::cache()->get('facebook.avatar.' . $nullString . '.' . $providerUserId . '.' . $width . 'x' . $height);
+        if ($avatarUrl === false)
         {
-            $type = 'pic_big'; // Can also do 'pic_big_with_logo'. Need a setting for that one day (Trac #407)
-            $fql = "SELECT " . $type . " FROM user WHERE uid = " . $providerUserId;
-            $params = array(
-                'method' => 'fql.query',
-                'query' => $fql,
-            );
-            $profileUrl = JFBCFactory::provider('facebook')->rest($params, FALSE);
-            $avatarUrl = $profileUrl[0][$type];
-
-            //No avatar ends with .gif
-            if ($nullForDefault && SCStringUtilities::endswith($avatarUrl, '.gif'))
-                $avatarUrl = null;
+            $avatarData = JFBCFactory::provider('facebook')->api('/' . $providerUserId . '/picture/?width=' . $width . "&height=" . $height . '&return_ssl_resources=1&redirect=false');
+            if (is_array($avatarData) && array_key_exists('data', $avatarData))
+            {
+                if ($avatarData['data']['is_silhouette'] && $nullForDefault)
+                    $avatarUrl = null;
+                else
+                    $avatarUrl = $avatarData['data']['url'];
+            }
+            JFBCFactory::cache()->store($avatarUrl, 'facebook.avatar.' . $nullString . '.' . $providerUserId . '.' . $width . 'x' . $height);
         }
-
-        if (empty($avatarUrl))
-            JFactory::getApplication()->setUserState('com_jfbconnect.facebook.avatar.' . $providerUserId, 'blank');
-        else
-            JFactory::getApplication()->setUserState('com_jfbconnect.facebook.avatar.' . $providerUserId, $avatarUrl);
-
 
         return $avatarUrl;
     }
@@ -285,7 +251,17 @@ class JFBConnectProfileFacebook extends JFBConnectProfile
 
     function getProfileUrl($fbUserId)
     {
-        return 'https://www.facebook.com/profile.php?id=' . $fbUserId;
+        $profileUrl = JFBCFactory::cache()->get('facebook.profile.' . '.' . $fbUserId);
+        if ($profileUrl === false)
+        {
+            $profileData = JFBCFactory::provider('facebook')->api('/' . $fbUserId);
+            if (is_array($profileData) && array_key_exists('link', $profileData))
+            {
+                $profileUrl = $profileData['link'];
+            }
+            JFBCFactory::cache()->store($profileUrl, 'facebook.profile.' . '.' . $fbUserId);
+        }
+        return $profileUrl;
     }
 
 }
@@ -296,10 +272,14 @@ class JFBConnectProfileDataFacebook extends JFBConnectProfileData
 
     function get($path, $default = null)
     {
-        if ($this->exists($path))
+        $data = $default;
+        $pageListTypes = array("music", "books", "movies", "television", "games", "activities", "interests");
+        if (in_array($path, $pageListTypes))
+            $data = $this->formatPageList(parent::get($path, $default));
+        else if ($this->exists($path))
             $data = parent::get($path, $default);
         else if ($path == "full_name") // standardized provider value for full name
-        $data = parent::get('name', $default);
+            $data = parent::get('name', $default);
         else
         {
             // Alternative fields that require extra parsing
@@ -307,15 +287,18 @@ class JFBConnectProfileDataFacebook extends JFBConnectProfileData
             if ($parts[0] == 'education')
             {
                 $edu = $this->data->education;
-                foreach ($edu as $k => $node)
+                if($edu)
                 {
-                    if ($node->type == $parts[1])
+                    foreach ($edu as $k => $node)
                     {
-                        unset($parts[0]);
-                        unset($parts[1]);
-                        $newPath = 'education.' . $k . '.' . implode('.', $parts);
-                        $data = parent::get($newPath, $default);
-                        break;
+                        if ($node->type == $parts[1])
+                        {
+                            unset($parts[0]);
+                            unset($parts[1]);
+                            $newPath = 'education.' . $k . '.' . implode('.', $parts);
+                            $data = parent::get($newPath, $default);
+                            break;
+                        }
                     }
                 }
             }
@@ -345,4 +328,16 @@ class JFBConnectProfileDataFacebook extends JFBConnectProfileData
         return $data;
     }
 
+    private function formatPageList($pageList)
+    {
+        $vals = array();
+        if (isset($pageList->data))
+        {
+            foreach ($pageList->data as $page)
+            {
+                $vals[] = $page->name;
+            }
+        }
+        return implode(', ', $vals);
+    }
 }

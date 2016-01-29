@@ -118,7 +118,6 @@ class JViewCategory extends JViewLegacy
 
 			return false;
 		}
-
 		if ($category == false)
 		{
 			return JError::raiseError(404, JText::_('JGLOBAL_CATEGORY_NOT_FOUND'));

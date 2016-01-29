@@ -109,7 +109,7 @@ abstract class JHtmlAccess
         }
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
-			->select('a.id AS value, a.title AS text, COUNT(DISTINCT b.id) AS level')
+			->select('a.id AS value, a.title AS text, a.level')
 			->from($db->quoteName('#__usergroups') . ' AS a')
 			->join('LEFT', $db->quoteName('#__usergroups') . ' AS b ON a.lft > b.lft AND a.rgt < b.rgt')
 			->group('a.id, a.title, a.lft, a.rgt')
@@ -152,19 +152,21 @@ abstract class JHtmlAccess
 		$count++;
 
 		$isSuperAdmin = JFactory::getUser()->authorise('core.admin');
-
-
+		if(!$website_id)
+		{
+			$website=JFactory::getWebsite();
+			$website_id=$website->website_id;
+		}
 		$query = $db->getQuery(true)
-			->select('a.*, COUNT(DISTINCT b.id) AS level')
+			->select('a.*, a.level')
 			->from($db->quoteName('#__usergroups') . ' AS a')
 			->join('LEFT', $db->quoteName('#__usergroups') . ' AS b ON a.lft > b.lft AND a.rgt < b.rgt')
 			->group('a.id, a.title, a.lft, a.rgt, a.parent_id')
 			->where('a.website_id='.(int)$website_id)
-            ->where('a.title!='.$db->q('Public'))
+			->where('a.id!=a.parent_id')
 			->order('a.lft ASC');
 		$db->setQuery($query);
 		$groups = $db->loadObjectList();
-
 		$html = array();
 
 		for ($i = 0, $n = count($groups); $i < $n; $i++)
@@ -193,7 +195,7 @@ abstract class JHtmlAccess
 				$html[] = '			<label class="checkbox" for="' . $eid . '">';
 				$html[] = '			<input type="checkbox" name="' . $name . '[]" value="' . $item->id . '" id="' . $eid . '"';
 				$html[] = '					' . $checked . $rel . ' />';
-				$html[] = '			' . str_repeat('<span class="gi">|&mdash;</span>', $item->level) . $item->title;
+				$html[] = '			' . str_repeat('<span class="gi">|&mdash;</span>', $item->level-1) . $item->title;
 				$html[] = '			</label>';
 				$html[] = '		</div>';
 				$html[] = '	</div>';

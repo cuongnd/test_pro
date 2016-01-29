@@ -15,10 +15,6 @@
     background-image:url('../images/icon-32-opengraph.png');
 }
 
-div.pagetitle.icon-48-jfbconnect h2 {
-    margin-left:20px;
-}
-
 div.header.icon-48-jfbconnect {
     padding-left:85px;
 }
@@ -28,8 +24,61 @@ div.header.icon-48-jfbconnect {
     width:235px;
 }
 
+.sourcecoast #adminForm #social_notifications .config_setting {
+    width: 300px;
+}
+
+.sourcecoast.channel .config_setting {
+    width: 150px;
+}
+
 .sourcecoast #adminForm select {
     width:150px;
+}
+
+.sourcecoast #adminForm select.input-large {
+    width: 210px;
+}
+
+.sourcecoast.channel #adminForm select {
+    width:200px;
+}
+
+.sourcecoast #adminForm #social_content_comment,
+.sourcecoast #adminForm #social_content_like,
+.sourcecoast #adminForm #social_content_k2_comment,
+.sourcecoast #adminForm #social_content_k2_like,
+.sourcecoast #adminForm #social_notifications,
+.sourcecoast #adminForm #social_misc,
+.sourcecoast #adminForm #social_examples {
+    background-color: #FFF;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    padding: 19px;
+    margin-bottom: 20px;
+}
+
+.sourcecoast #adminForm #social_content_comment .config_setting,
+.sourcecoast #adminForm #social_content_like .config_setting,
+.sourcecoast #adminForm #social_content_k2_comment .config_setting,
+.sourcecoast #adminForm #social_content_k2_like .config_setting,
+.sourcecoast #adminForm #social_notifications .config_setting,
+.sourcecoast #adminForm #social_misc .config_setting,
+.sourcecoast #adminForm #social_examples .config_setting {
+    font-size: 14px;
+}
+
+.sourcecoast #adminForm #social_content_comment .header,
+.sourcecoast #adminForm #social_content_like .header,
+.sourcecoast #adminForm #social_content_k2_comment .header,
+.sourcecoast #adminForm #social_content_k2_like .header,
+.sourcecoast #adminForm #social_notifications .header,
+.sourcecoast #adminForm #social_misc .header,
+.sourcecoast #adminForm #social_examples .header {
+    font-size:21px;
+    line-height:40px;
+    border-bottom: 1px solid #E5E5E5;
+    font-weight: bold;
 }
 
 div.config_option {
@@ -125,9 +174,13 @@ div.autotune .config_row div.header {
     color:#00AA00;
 }
 
-.autotuneBad {
+.autotuneBad, .jfbc-error {
     color:#BB0000;
     font-weight:bold;
+}
+
+.autotune ul.nav-stacked {
+  padding:0;
 }
 
 /*
@@ -232,4 +285,16 @@ JFBConnect 5.1
 
 .sourcecoast .pane-slider {
     padding:10px;
+}
+
+.sourcecoast .form-horizontal .controls.login-button {
+    margin-left: 0px;
+}
+
+.sourcecoast .controls.login-button input[type="radio"] {
+    margin: 10px 5px 0px 5px;
+}
+
+.sourcecoast .login-button .providername {
+    display:none;
 }

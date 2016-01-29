@@ -162,6 +162,12 @@ class JFormFieldBrowserServer extends JFormField
 	 *
 	 * @since   11.1
 	 */
+	public function get_attribute_config()
+	{
+		return array(
+			get_image_type=>''
+		);
+	}
 	protected function getInput()
 	{
 		// Translate placeholder text
@@ -184,28 +190,32 @@ class JFormFieldBrowserServer extends JFormField
 		$pattern      = !empty($this->pattern) ? ' pattern="' . $this->pattern . '"' : '';
 		$inputmode    = !empty($this->inputmode) ? ' inputmode="' . $this->inputmode . '"' : '';
 		$dirname      = !empty($this->dirname) ? ' dirname="' . $this->dirname . '"' : '';
-
+		$get_image_type= $this->element['get_image_type']?$this->element['get_image_type']:'url';
 		// Initialize JavaScript field attributes.
 		$onchange = !empty($this->onchange) ? ' onchange="' . $this->onchange . '"' : '';
 
 		// Including fallback code for HTML5 non supported browsers.
 		JHtml::_('jquery.framework');
 		$doc=JFactory::getDocument();
-		$doc->addScript(JUri::root().'/ckfinder/ckfinder.js');
+		$doc->addScriptNotCompile(JUri::root().'/ckfinder/ckfinder.js');
 		$datalist = '';
 		$list     = '';
 		ob_start();
+		$uri=JFactory::getURI();
 		?>
 		<script type="text/javascript" id="script-browser-server">
 			jQuery(document).ready(function ($) {
 				$(document).on('click','.browser-server',function(){
 					data_object_id=$(this).closest('.properties').attr('data-object-id');
 					var finder = new CKFinder();
-					finder.basePath = '<?php echo JUri::root().'/images/stories/' ?>';
+
+					finder.basePath = '<?php echo $uri->toString().'/images/stories/' ?>';
 					inputName=$(this).attr('data-input-name');
 
 					finder.selectActionFunction = function(fileUrl){
+						<?php if($get_image_type=='url'){ ?>
 						fileUrl='url('+fileUrl+')';
+						<?php } ?>
 						$('input[name="'+inputName+'"]').val(fileUrl);
 					};
 					finder.popup();
@@ -220,42 +230,22 @@ class JFormFieldBrowserServer extends JFormField
 		$script= $htmlScript->find('script',0)->innertext;
 		$doc->addScriptDeclaration($script,'text/javascript','script-browser-server');
 
-
+		$html='';
+		ob_start();
 
 		/* Get the field options for the datalist.
 		Note: getSuggestions() is deprecated and will be changed to getOptions() with 4.0. */
-		$options  = (array) $this->getSuggestions();
+		?>
 
-		if ($options)
-		{
-			$datalist = '<datalist id="' . $this->id . '_datalist">';
-
-			foreach ($options as $option)
-			{
-				if (!$option->value)
-				{
-					continue;
-				}
-
-				$datalist .= '<option value="' . $option->value . '">' . $option->text . '</option>';
-			}
-
-			$datalist .= '</datalist>';
-			$list     = ' list="' . $this->id . '_datalist"';
-		}
-
-		$html[] = '<div class="input-group">
-			<input type="text" name="' . $this->name . '" id="' . $this->id . '"' . $dirname . ' value="'
-			. htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"' . $class . $size . $disabled . $readonly . $list
-			. $hint . $onchange . $maxLength . $required . $autocomplete . $autofocus . $spellcheck . $inputmode . $pattern . ' />
+		<div class="input-group">
+			<input type="text" name="<?php echo $this->name ?>" id="<?php echo $this->id ?>" <?php echo $class ?> value="<?php echo htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8')  ?>"  />
 			<span class="input-group-btn">
-			<button data-type="'.$this->type.'" data-input-name="' . $this->name . '" data-field="'.$this->fieldname.'" class="btn btn-primary browser-server" type="button">Browser server</button>
-								  </span>
-
-			';
-		$html[] = $datalist;
-
-		return implode($html);
+				<button data-type="<?php echo $this->type ?>" data-input-name="<?php echo $this->name ?>" data-field="<?php echo $this->fieldname ?>" class="btn btn-primary browser-server" type="button">Browser server</button>
+			</span>
+		</div>
+			<?php
+		$html=ob_get_clean();
+		return $html;
 	}
 
 	/**

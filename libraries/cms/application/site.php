@@ -77,14 +77,13 @@ final class JApplicationSite extends JApplicationCms
     {
         $menus = $this->getMenu();
         $user = JFactory::getUser();
-
         if (!$menus->authorise($itemid)) {
             if ($user->get('id') == 0) {
                 // Set the data
                 $this->setUserState('users.login.form.data', array('return' => JUri::getInstance()->toString()));
 
-                $url = JRoute::_('index.php?option=com_users&view=login', false);
-
+                //$url = JRoute::_('index.php?option=com_users&view=login', false);
+                $url = JFactory::get_page_login();
                 $this->enqueueMessage(JText::_('JGLOBAL_YOU_MUST_LOGIN_FIRST'));
                 $this->redirect($url);
             } else {
@@ -110,6 +109,7 @@ final class JApplicationSite extends JApplicationCms
             $component = $this->input->getCmd('option', null);
 
         }
+
         // Load the document to the API
         $this->loadDocument();
 
@@ -117,7 +117,6 @@ final class JApplicationSite extends JApplicationCms
         $document = $this->getDocument();
         $router = static::getRouter();
         $params = $this->getParams();
-
         // Register the document object with JFactory
         JFactory::$document = $document;
 
@@ -154,6 +153,7 @@ final class JApplicationSite extends JApplicationCms
                 break;
         }
 
+
         $document->setTitle($params->get('page_title'));
         $document->setDescription($params->get('page_description'));
 
@@ -165,23 +165,40 @@ final class JApplicationSite extends JApplicationCms
         }
 
         $contents = JComponentHelper::renderComponent($component);
+        require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
         $enableEditWebsite = UtilityHelper::getEnableEditWebsite();
         $tmpl=$this->input->get('tmpl','');
-        if ($enableEditWebsite&&$tmpl!='ajax_json') {
-            ob_start();
-            ?>
-            <div class="panel panel-primary toggle panelRefresh panelClose panel-component">
-                <div class="panel-heading">
-                    <h4 class="panel-title">Component</h4>
+        $hide_panel_component=$this->input->get('hide_panel_component',0,'int');
+        ob_start();
+        if($tmpl=='sourcejs')
+        {
+            echo $contents;
+        }else if($tmpl=='sourcecss'){
+            echo $contents;
+        } elseif ($enableEditWebsite&&$tmpl!='ajax_json') {
+
+            if($hide_panel_component){
+                echo $contents;
+            }else {
+                ?>
+                <div class="panel panel-primary toggle panelRefresh panelClose panel-component">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Component</h4>
+                    </div>
+                    <div class="panel-body">
+                        <?php echo $contents ?>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <?php echo $contents ?>
-                </div>
-            </div>
-            <?php
-            $contents = ob_get_clean();
+                <?php
+            }
+
+        }else{
+            echo $contents;
         }
+        $contents = ob_get_clean();
+
         $document->setBuffer($contents, 'component');
+
 
         // Trigger the onAfterDispatch event.
         JPluginHelper::importPlugin('system');
@@ -197,8 +214,10 @@ final class JApplicationSite extends JApplicationCms
      */
     protected function doExecute()
     {
+
         // Initialise the application
         $this->initialiseApp();
+
 
         // Check if the user is required to reset their password
         $user = JFactory::getUser();
@@ -218,7 +237,6 @@ final class JApplicationSite extends JApplicationCms
 
         // Route the application
         $this->route();
-
 
 
         // Mark afterRoute in the profiler.
@@ -403,6 +421,7 @@ final class JApplicationSite extends JApplicationCms
      */
     public function getTemplate($params = false)
     {
+
         if (is_object($this->template)) {
             if (!file_exists(JPATH_THEMES . '/' . $this->template->template . '/index.php')) {
                 throw new InvalidArgumentException(JText::sprintf('JERROR_COULD_NOT_FIND_TEMPLATE', $this->template->template));
@@ -422,14 +441,12 @@ final class JApplicationSite extends JApplicationCms
         if (!$item) {
             $item = $menu->getItem($this->input->getInt('Itemid', null));
         }
-
         $id = 0;
 
         if (is_object($item)) {
             // Valid item retrieved
             $id = $item->template_style_id;
         }
-
         $tid = $this->input->getUint('templateStyle', 0);
 
         if (is_numeric($tid) && (int)$tid > 0) {
@@ -526,10 +543,10 @@ final class JApplicationSite extends JApplicationCms
     protected function initialiseApp($options = array())
     {
         $user = JFactory::getUser();
-
         // If the user is a guest we populate it with the guest user group.
         if ($user->guest) {
-            $guestUsergroup = JComponentHelper::getParams('com_users')->get('guest_usergroup', 1);
+
+           $guestUsergroup = JComponentHelper::getParams('com_users')->get('guest_usergroup', 1);
             $user->groups = array($guestUsergroup);
         }
 

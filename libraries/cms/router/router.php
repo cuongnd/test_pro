@@ -189,6 +189,7 @@ class JRouter
 		// Parse SEF URL
 		if ($this->_mode == JROUTER_MODE_SEF)
 		{
+
 			$vars += $this->_parseSefRoute($uri);
 		}
 

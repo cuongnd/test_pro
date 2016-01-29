@@ -1,15 +1,16 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.controller');
-
-class JFBConnectControllerSocial extends JControllerLegacy
+class JFBConnectControllerSocial extends JFBConnectController
 {
 
     function display($cachable = false, $urlparams = false)
@@ -17,25 +18,25 @@ class JFBConnectControllerSocial extends JControllerLegacy
         exit;
     }
 
-    public function commentCreate()
+    public function comment()
     {
         JSession::checkToken('get') or die();
 
-        $href = JRequest::getVar('href');
+        $input = JFactory::getApplication()->input;
+        $href = $input->get('href', '', 'string');
         $href = urldecode($href);
 
-        $title = JRequest::getVar('title');
+        $type = $input->get('type');
+        $title = $input->get('title');
 
-        // Assign alpha user points, if enabled
-        $this->rewardAlphaUserPoints(JFBCFactory::config()->getSetting('social_alphauserpoints_enabled'), $href, 'comment');
-
-        // Check if admin email should be sent
-        if (!JFBCFactory::config()->getSetting('social_notification_comment_enabled'))
+        if (!$href || $href == "undefined" || !$type)
             exit;
 
-        //$commentId = JRequest::getVar('commentID');
-        // Comment is too unreliable to get immediately (almost never there), so not including it in email for now
-        //$comment = $jfbcLibrary->api('/comments/?ids='.urlencode($href));
+        $this->awardPoints('facebook.comment.' . $type, $href);
+
+        // Check if admin email should be sent
+        if ($type != "create" || !JFBCFactory::config()->getSetting('social_notification_comment_enabled'))
+            exit;
 
         $subject = JText::_('COM_JFBCONNECT_NEW_COMMENT_SUBJECT');
         $body = JText::sprintf('COM_JFBCONNECT_NEW_COMMENT_BODY', $this->getPoster(), $title, $href);
@@ -44,25 +45,28 @@ class JFBConnectControllerSocial extends JControllerLegacy
         exit;
     }
 
-    public function likeCreate()
+    public function share()
     {
         JSession::checkToken('get') or die();
 
-        $href = JRequest::getVar('href');
+        $input = JFactory::getApplication()->input;
+        $href = $input->get('href', '', 'string');
+        $id = $input->get('id', '', 'string');
         $href = urldecode($href);
 
-        $title = JRequest::getVar('title');
+        $provider = $input->get('provider', '', 'string');
+        $share = $input->get('share', '', 'string');
+        $type = $input->get('type');
+        $title = $input->get('title');
 
-        // Assign alpha user points, if enabled
-        $this->rewardAlphaUserPoints(JFBCFactory::config()->getSetting('social_alphauserpoints_enabled'), $href, 'like');
-
-        // Check if admin email should be sent
-        if (!JFBCFactory::config()->getSetting('social_notification_like_enabled'))
+        if ((!$id && (!$href || $href == "undefined")) || !$provider || !$share || !$type)
             exit;
 
-        //$commentId = JRequest::getVar('commentID');
-        // Comment is too unreliable to get immediately (almost never there), so not including it in email for now
-        //$comment = $jfbcLibrary->api('/comments/?ids='.urlencode($href));
+        $this->awardPoints($provider . '.' . $share . '.' . $type, $href);
+
+        // Check if admin email should be sent
+        if ($provider != 'facebook' || $type != "create" || !JFBCFactory::config()->getSetting('social_notification_like_enabled'))
+            exit;
 
         $subject = JText::_('COM_JFBCONNECT_NEW_LIKE_SUBJECT');
         $body = JText::sprintf('COM_JFBCONNECT_NEW_LIKE_BODY', $this->getPoster(), $title, $href);
@@ -71,17 +75,12 @@ class JFBConnectControllerSocial extends JControllerLegacy
         exit;
     }
 
-    private function rewardAlphaUserPoints($enabled, $href, $type)
+    private function awardPoints($name, $href)
     {
-        if ($enabled)
-        {
-            $api_AUP = JPATH_SITE . '/components/com_alphauserpoints/helper.php';
-            if (file_exists($api_AUP))
-            {
-                require_once ($api_AUP);
-                AlphaUserPointsHelper::newpoints('plgjfbconnect_'.$type.'_new', '', $href);
-            }
-        }
+        $point = new JFBConnectPoint();
+        $point->set('name', $name);
+        $point->set('key', $href);
+        $point->award();
     }
 
     private function getPoster()

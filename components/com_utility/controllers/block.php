@@ -39,6 +39,9 @@ class UtilityControllerBlock extends JControllerForm
         die;
 
     }
+
+
+
     function loadFile()
     {
     }
@@ -55,6 +58,35 @@ class UtilityControllerBlock extends JControllerForm
     public function smart_auto_complete()
     {
 
+    }
+    public function ajax_update_block()
+    {
+
+        $app = JFactory::getApplication();
+        $post = file_get_contents('php://input');
+        $post = json_decode($post);
+        foreach($post as $key=> $value)
+        {
+            $app->input->set($key,$value);
+        }
+        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
+        $tablePosition=JTable::getInstance('Position','JTable');
+        $block_id=$app->input->get('block_id',0,'int');
+        $tablePosition->load($block_id);
+        $type=$tablePosition->type;
+        $ui_path=$tablePosition->ui_path;
+        require_once JPATH_ROOT.'/media/elements/ui/element.php';
+        require_once JPATH_ROOT.'/'.$ui_path;
+        $element="element{$type}Helper";
+        $element=new $element;
+        $return=new stdClass();
+        $return->e=0;
+        if(method_exists($element,'update_block'))
+        {
+            $return->r=$element::update_block($tablePosition);
+        }
+        echo json_encode($return);
+        die;
     }
     public function ajax_save_field_params()
     {
@@ -76,6 +108,36 @@ class UtilityControllerBlock extends JControllerForm
                 $response->r=$table_control->getError();
             }else{
                 $response->r="save success";
+            }
+        }else{
+            $response->e=1;
+            $response->r="control id is null";
+        }
+        echo json_encode($response);
+        die;
+    }
+    public function ajax_copy_params_property_element()
+    {
+        $app=JFactory::getApplication();
+        $ui_element=$app->input->get('ui_element','','string');
+        $control_id=$app->input->get('control_id',0,'int');
+        $db=JFactory::getDbo();
+        require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+        $table_control=new JTableUpdateTable($db,'control');
+        $table_control->load(array('element_path'=>$ui_element));
+        $fields=$table_control->fields;
+        $table_control->load($control_id);
+        $table_control->fields=$fields;
+        $response=new stdClass();
+        $response->e=0;
+        if($control_id)
+        {
+            if(!$table_control->store())
+            {
+                $response->e=1;
+                $response->r=$table_control->getError();
+            }else{
+                $response->r="copy success";
             }
         }else{
             $response->e=1;
@@ -116,6 +178,53 @@ class UtilityControllerBlock extends JControllerForm
         UtilityControllerUtility::update_menu_item_from_root_menu($list_position,$menu_item_active_id);
         echo 1;
         die;
+
+    }
+    public function ajax_update_field_block()
+    {
+        $app=JFactory::getApplication();
+        $block_id=$app->input->get('block_id',0,'int');
+        $field=$app->input->get('field','','string');
+        $field=trim($field);
+        $field=strtolower($field);
+        $value=$app->input->get('value','','string');
+        $response=new stdClass();
+        $response->e=0;
+        $response->m="save success";
+        if($field=='')
+        {
+            $response->e=1;
+            $response->m='field is null';
+            echo json_encode($response);
+            die;
+        }
+
+        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
+        $block=JTable::getInstance('Position','JTable');
+        if(!$block->load($block_id))
+        {
+            $response->e=1;
+            $response->m=$block->getError();
+            echo json_encode($response);
+            die;
+        }
+        if (strpos($field,'params.') !== false) {
+            $key=str_replace('params.','',$field);
+            $params = new JRegistry;
+            $params->loadString($block->params);
+            $params->set($key,$value);
+            $block->params=$params->toString();
+        }
+        if(!$block->store())
+        {
+            $response->e=1;
+            $response->m=$block->getError();
+            echo json_encode($response);
+            die;
+        }
+        echo json_encode($response);
+        die;
+
 
     }
     public function update_menu_item_from_root_menu($list_position,$menu_item_active_id=0)
@@ -428,14 +537,20 @@ class UtilityControllerBlock extends JControllerForm
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
         $tablePosition=JTable::getInstance('Position','JTable');
         $tablePosition->load($block_id);
+
+
+
         $params = new JRegistry;
         $params->loadString($tablePosition->params);
 
-        foreach($form['params'] as $keyParam=>$valueParam)
-        {
-            $params->set($keyParam,trim($valueParam));
-        }
-        $form['params']=json_encode($params);
+
+        $post_params=new JRegistry;
+        $post_params->loadObject($form->params);
+        $post_params->merge($params);
+        $form->params=$post_params->toString();
+
+
+
 
 
         $tablePosition->bind($form);

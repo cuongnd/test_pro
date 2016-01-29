@@ -47,7 +47,7 @@ jQuery(document).ready(function()
 			// An error occured
 			jQuery('#plg_quickicon_joomlaupdate').find('span').html(plg_quickicon_joomlaupdate_text.ERROR);
 		},
-		url: plg_quickicon_joomlaupdate_ajax_url + '&eid=700&cache_timeout=3600'
+		//url: plg_quickicon_joomlaupdate_ajax_url + '&eid=700&cache_timeout=3600'
 	};
-	setTimeout("ajax_object = new jQuery.ajax(plg_quickicon_jupdatecheck_ajax_structure);", 2000);
+	//setTimeout("ajax_object = new jQuery.ajax(plg_quickicon_jupdatecheck_ajax_structure);", 2000);
 });

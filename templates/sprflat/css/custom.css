@@ -1,10 +1,3 @@
-.container {
-	-moz-box-shadow: 0px 0px 10px #adadad;
-	-webkit-box-shadow: 0px 0px 10px #adadad;
-	box-shadow: 0px 0px 10px #adadad;
-	margin: 0px auto !important;
-	overflow: hidden;
-}
 .panel {
 	position: relative;
 	margin-bottom: 25px;

@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -25,7 +28,7 @@ class JFBConnectControllerAjax extends JFBConnectController
 
         echo JHTML::_('select.genericlist', $options, 'jform[params][widget_type]', 'onchange="jfbcAdmin.scsocialwidget.fetchSettings(this.value);"', 'value', 'text', $registry->get('widget_type'));
         if ($registry->get('widget_type') != "widget")
-            echo "<script type=\"text/javascript\">jfbcAdmin.scsocialwidget.fetchSettings('" . $registry->get('widget_type') . "');</script>";
+            echo "<script>jfbcAdmin.scsocialwidget.fetchSettings('" . $registry->get('widget_type') . "');</script>";
 
         exit;
     }
@@ -125,5 +128,43 @@ class JFBConnectControllerAjax extends JFBConnectController
         $html = ob_get_clean();
         echo $html;
         exit;
+    }
+
+    public function channelShowAttributes()
+    {
+        $input = JFactory::getApplication()->input;
+        $app = JFactory::getApplication();
+        $providerData = new stdClass();
+        $providerData->provider = $input->getString('provider');
+        $providerData->type = $input->getString('type');
+        $app->setUserState('com_jfbconnect.edit.channel.data', $providerData);
+
+        $this->displayAttributes();
+        exit;
+    }
+
+    public function channelUpdateUser()
+    {
+        $input = JFactory::getApplication()->input;
+
+        $app = JFactory::getApplication();
+        $providerData = new stdClass();
+        $providerData->provider = $input->getString('provider');
+        $providerData->type = $input->getString('type');
+        $providerData->attribs = new stdClass();
+        $providerData->attribs->user_id = $input->getString('userid');
+        $app->setUserState('com_jfbconnect.edit.channel.data', $providerData);
+
+        $this->displayAttributes();
+        exit;
+    }
+
+    private function displayAttributes()
+    {
+        require_once(JPATH_ADMINISTRATOR .'/components/com_jfbconnect/views/channel/view.html.php');
+        $model = JModelLegacy::getInstance('Channel', 'JFBConnectModel');
+        $view = new JFBConnectViewChannel();
+        $view->setModel($model);
+        echo $view->displayAttributes();
     }
 }

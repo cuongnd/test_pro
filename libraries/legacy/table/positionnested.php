@@ -1247,6 +1247,7 @@ class JTablePositionNested extends JTable
 	 */
 	public function getRootId()
 	{
+
 		if ((int) self::$root_id > 0)
 		{
 			return self::$root_id;
@@ -1255,7 +1256,10 @@ class JTablePositionNested extends JTable
 		// Get the root item.
 		$k = $this->_tbl_key;
 		if(!$this->website_id)
+		{
 			$this->website_id=JFactory::getWebsite()->website_id;
+		}
+
 		$query = $this->_db->getQuery(true)
 			->select($k)
 			->from($this->_tbl)
@@ -1263,6 +1267,7 @@ class JTablePositionNested extends JTable
 			->where('website_id = '.(int)$this->website_id)
 		;
 		$result = $this->_db->setQuery($query)->loadResult();
+
 		if ($result)
 		{
 			self::$root_id = $result;
@@ -1280,11 +1285,16 @@ class JTablePositionNested extends JTable
 	}
 	public function createRoot($screenSize)
 	{
-		$website=JFactory::getWebsite();
+		if(!$this->website_id)
+		{
+			$website=JFactory::getWebsite();
+			$this->website_id=$website->website_id;
+		}
+
 
 		$query = $this->_db->getQuery(true)
 			->insert($this->_tbl)
-			->set('website_id = '.(int)$website->website_id)
+			->set('website_id = '.(int)$this->website_id)
 			->set('position = '.$this->_db->q('ROOT'))
 			->set('alias = '.$this->_db->q('ROOT'))
 			->set('screenSize = '.strtolower($this->_db->q($screenSize)))
@@ -1417,7 +1427,7 @@ class JTablePositionNested extends JTable
 		{
 			$query->set('menu_item_id='.(int)$menu_item_id);
 		}
-		if($level==2)
+		if($level==2&&$only_page==1)
 		{
 			$query->set('only_page='.(int)$only_page);
 		}

@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -14,25 +17,22 @@ class JFBConnectProfileGoogle extends JFBConnectProfile
     protected function setProviderFields()
     {
         $this->providerFields = array(
-            '0' => 'None',
-            'displayName' => 'Full Name',
-            'name.givenName' => 'First Name',
-            'name.familyName' => 'Last Name',
-            'gender' => 'Gender',
-            'aboutMe' => 'About Me',
-            'birthday' => 'Birthday',
-            'braggingRights' => 'Bragging Rights',
-            'url' => 'Profile URL',
-            'relationshipStatus' => 'Relationship Status',
-            'tagline' => 'Tagline'
+                '0' => 'None',
+                'displayName' => 'Full Name',
+                'name.givenName' => 'First Name',
+                'name.familyName' => 'Last Name',
+                'name.middleName' => 'Middle Name',
+                'nickname' => 'Nickname',
+                'gender' => 'Gender',
+                'aboutMe' => 'About Me',
+                'birthday' => 'Birthday',
+                'occupation' => 'Occupation',
+                'skills' => 'Skills',
+                'braggingRights' => 'Bragging Rights',
+                'url' => 'Profile URL',
+                'relationshipStatus' => 'Relationship Status',
+                'tagline' => 'Tagline'
         );
-    }
-
-    public function getPermissionsForFields($fields)
-    {
-        $perms = array();
-
-        return $perms;
     }
 
     /**
@@ -85,23 +85,6 @@ class JFBConnectProfileGoogle extends JFBConnectProfile
         $profile = new JFBConnectProfileDataGoogle();
         if (!empty($fields))
         {
-            // Email has it's own custom endpoint we need to service separately
-            if (in_array('email', $fields))
-            {
-                if ($this->provider->client->isAuthenticated())
-                {
-                    $url = 'https://www.googleapis.com/userinfo/email?alt=json';
-                    $data = $this->provider->client->query($url);
-                    $email = json_decode($data->body);
-                    if (is_object($email) && property_exists($email, 'data') && property_exists($email->data, 'email'))
-                    {
-                        $email = $email->data->email;
-                        $profile->set('email', $email);
-                    }
-                }
-                unset($fields[array_search('email', $fields)]);
-            }
-
             // We must always implement calls for: id, first_name, last_name, full_name and email if the provider uses different terminology
             if (in_array('first_name', $fields))
             {
@@ -123,19 +106,27 @@ class JFBConnectProfileGoogle extends JFBConnectProfile
                 unset($fields[array_search('full_name', $fields)]);
                 $fields[] = 'displayName';
             }
+            if (in_array('email', $fields))
+            {
+                unset($fields[array_search('email', $fields)]);
+                $fields[] = 'emails';
+            }
 
             if (!empty($fields))
             {
                 $fields = array_unique($fields);
                 try
                 {
-                    $url = 'https://www.googleapis.com/plus/v1/people/' . $socialId;
-                    $url .= '?fields=' . implode(',', $fields);
+                	if ($this->provider->client->isAuthenticated())
+                	{
+                    		$url = 'https://www.googleapis.com/plus/v1/people/' . $socialId;
+                    		$url .= '?fields=' . implode(',', $fields);
 
-                    $jdata = $this->provider->client->query($url);
-                    $data = json_decode($jdata->body, true);
+                    		$jdata = $this->provider->client->query($url);
+                    		$data = json_decode($jdata->body, true);
 
-                    $profile->loadArray($data);
+                    		$profile->loadArray($data);
+			        }
                 }
                 catch (Exception $e)
                 {
@@ -151,7 +142,7 @@ class JFBConnectProfileGoogle extends JFBConnectProfile
                             if (isset($data->email))
                                 $profile->set('email', $data->email);
                             else // If no email is available, we're done.. bail now.
-                            return $profile;
+                                return $profile;
                             if (isset($data->sub))
                                 $profile->set('id', $data->sub);
                             if (isset($data->name))
@@ -173,8 +164,8 @@ class JFBConnectProfileGoogle extends JFBConnectProfile
                     }
                     else
                     {
-                        SCStringUtilities::loadLanguage('com_jfbconnect');
-                        JFactory::getApplication()->enqueueMessage(JText::_("COM_JFBCONNECT_GOOGLE_NO_PLUS_PROFILE"), 'error');
+//                        SCStringUtilities::loadLanguage('com_jfbconnect');
+//                        JFactory::getApplication()->enqueueMessage(JText::_("COM_JFBCONNECT_GOOGLE_NO_PLUS_PROFILE"), 'error');
                     }
                 }
             }
@@ -192,27 +183,28 @@ class JFBConnectProfileGoogle extends JFBConnectProfile
             $params = new JRegistry();
 
         $width = $params->get('width', 300);
-
-        if (!$nullForDefault)
-            return 'https://plus.google.com/s2/photos/profile/' . $providerUserId . "?sz=" . $width;
-
-        $savedAvatar = JFactory::getApplication()->getUserState('com_jfbconnect.google.avatar.' . $providerUserId, null);
-        if ($savedAvatar)
+        $nullString = $nullForDefault ? 'null' : 'notnull';
+        $avatarUrl = JFBCFactory::cache()->get('google.avatar.' . $nullString . '.' . $providerUserId . '.' . $width);
+        if ($avatarUrl === false)
         {
-            if ($savedAvatar == "blank")
-                return null;
-            else
-                return $savedAvatar;
+            $profile = $this->fetchProfile($providerUserId, 'image');
+            $avatarUrl = $profile->get('image.url', null);
+            // Check for default image
+            if ($avatarUrl)
+            {
+                if ($nullForDefault)
+                {
+                    $http = new JHttp();
+                    $avatar = $http->get($avatarUrl);
+                    if ($avatar->code == 200 && $avatar->headers['Content-Length'] == 946)
+                        $avatarUrl = null;
+                }
+                if ($avatarUrl)
+                    $avatarUrl = str_replace("?sz=50", "?sz=" . $width, $avatarUrl); // get a suitably large image to be resized
+
+                JFBCFactory::cache()->store($avatarUrl, 'google.avatar.' . $nullString . '.' . $providerUserId . '.' . $width);
+            }
         }
-
-        $profile = $this->fetchProfile($providerUserId, 'image');
-        $avatarUrl = $profile->get('image.url', null);
-        $avatarUrl = str_replace("?sz=50", "?sz=" . $width, $avatarUrl); // get a suitably large image to be resized
-
-        if (empty($avatarUrl))
-            JFactory::getApplication()->setUserState('com_jfbconnect.google.avatar.' . $providerUserId, 'blank');
-        else
-            JFactory::getApplication()->setUserState('com_jfbconnect.google.avatar.' . $providerUserId, $avatarUrl);
 
         return $avatarUrl;
     }
@@ -258,6 +250,17 @@ class JFBConnectProfileDataGoogle extends JFBConnectProfileData
                 $data = parent::get('name.middleName');
             else if ($path == 'last_name')
                 $data = parent::get('name.familyName');
+            else if ($path == 'email') {
+                $emails = parent::get('emails');
+                foreach($emails as $email)
+                {
+                    if($email->type == 'account')
+                    {
+                        $data = $email->value;
+                        break;
+                    }
+                }
+            }
         }
 
         if (!empty($data))

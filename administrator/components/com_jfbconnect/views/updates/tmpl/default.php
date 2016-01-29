@@ -1,103 +1,75 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.version');
-jimport('sourcecoast.utilities');
+$changelogLink = '<a href="https://www.sourcecoast.com/jfbconnect/docs/general/changelog" target="_BLANK" class="btn btn-info">'.JText::_('COM_JFBCONNECT_UPDATES_VIEW_CHANGELOG').'</a>';
 
-$versionChecker = $this->versionChecker;
 ?>
-<div class="row-fluid">
-    <div class="span12">
-        <h2><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_EXTENSION_CHECK');?></h2>
-        <?php
-        $app = JFactory::getApplication();
-        $version = new JVersion();
-        $versionStr = $version->getShortVersion();
-        $found15Version = SCStringUtilities::startsWith($versionStr, "1.5.");
-        if ($found15Version)
-            $app->enqueueMessage("<?php echo JText::_('COM_JFBCONNECT_OVERVIEW_INCORRECT_VERSION_WARN');?>", "error");
-        ?>
+<div class="sourcecoast">
+    <div class="row-fluid">
         <div class="span12">
-            <table class="table table-striped">
-                <tr>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_REQ_EXTENSIONS');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_INSTALLED');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_AVAILABLE');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_STATUS');?></th>
-                </tr>
+            <h2><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_EXTENSION_CHECK'); ?></h2>
+
+            <div class="well" style="background-color: #efe0b5; font-size: 14px">
+                <p><strong><?php echo JText::_('COM_JFBCONNECT_UPDATES_JFBCONNECT_VERSION_INSTALLED');?></strong> v<?php echo $this->jfbcVersion; ?></p>
+
                 <?php
-                echo $versionChecker->_showVersionInfoRow('com_jfbconnect', 'component');
-                //echo $versionChecker->_showVersionInfoRow('sourcecoast', 'library');
-                echo $versionChecker->_showVersionInfoRow('mod_sclogin', 'module');
-                echo $versionChecker->_showVersionInfoRow('authentication.jfbconnectauth', 'plugin');
-                echo $versionChecker->_showVersionInfoRow('system.jfbcsystem', 'plugin');
-                echo $versionChecker->_showVersionInfoRow('user.jfbconnectuser', 'plugin');
-                ?>
-                <tr>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_SOCIAL_EXTENSIONS');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_INSTALLED');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_AVAILABLE');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_STATUS');?></th>
-                </tr>
-                <?php
-                echo $versionChecker->_showVersionInfoRow('content.jfbccontent', 'plugin');
-                echo $versionChecker->_showVersionInfoRow('mod_scsocialwidget', 'module');
-                echo $versionChecker->_showVersionInfoRow('mod_jfbcsocialshare', 'module');
-                ?>
-                <tr>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_PROFILE_INTEGRATION');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_INSTALLED');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_AVAILABLE');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_STATUS');?></th>
-                </tr>
-                <?php
-                echo $versionChecker->_showVersionInfoRow('socialprofiles.agorapro', 'plugin');
-                echo $versionChecker->_showVersionInfoRow('socialprofiles.communitybuilder', 'plugin');
-                echo $versionChecker->_showVersionInfoRow('socialprofiles.customdb', 'plugin');
-                echo $versionChecker->_showVersionInfoRow('socialprofiles.easysocial', 'plugin');
-                echo $versionChecker->_showVersionInfoRow('socialprofiles.jomsocial', 'plugin');
-                echo $versionChecker->_showVersionInfoRow('socialprofiles.joomla', 'plugin');
-                echo $versionChecker->_showVersionInfoRow('socialprofiles.kunena', 'plugin');
-                echo $versionChecker->_showVersionInfoRow('socialprofiles.k2', 'plugin');
-                echo $versionChecker->_showVersionInfoRow('socialprofiles.virtuemart2', 'plugin');
-                ?>
-                <tr>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_OPENGRAPH_PLUGINS');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_INSTALLED');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_AVAILABLE');?></th>
-                    <th><?php echo JText::_('COM_JFBCONNECT_OVERVIEW_STATUS');?></th>
-                </tr>
-                <?php
-                // This is stupid, should update the sourcecoast.php library to not echo this out:
-                ob_start();
-                $versionChecker->_showVersionInfoRow('opengraph.content', 'plugin');
-                $versionChecker->_showVersionInfoRow('opengraph.custom', 'plugin');
-                $versionChecker->_showVersionInfoRow('opengraph.easyblog', 'plugin');
-                $versionChecker->_showVersionInfoRow('opengraph.easysocial', 'plugin');
-                $versionChecker->_showVersionInfoRow('opengraph.jomsocial', 'plugin');
-                $versionChecker->_showVersionInfoRow('opengraph.jreviews', 'plugin');
-                $versionChecker->_showVersionInfoRow('opengraph.k2', 'plugin');
-                $plugins = ob_get_clean();
-                echo str_replace("OpenGraph - ", '', $plugins);
-                ?>
-            </table>
+                if ($this->jfbcUpdateSiteEnabled)
+                {
+                    if (is_object($this->jfbcUpdate) && ($this->jfbcUpdate->version != $this->jfbcVersion) &&
+                            version_compare($this->jfbcUpdate->version, $this->jfbcVersion, '>')
+                    )
+                    {
+                        ?>
+                        <p><strong><?php echo JText::_('COM_JFBCONNECT_UPDATES_JFBCONNECT_VERSION_LATEST');?> v<?php echo $this->jfbcUpdate->version; ?></strong></p>
+
+                        <div class="row-fluid">
+                            <div class="span3">
+                                <form action="index.php" method="post">
+                                    <button type="submit" href="blah.html" class="btn btn-primary">
+                                        <?php echo JText::_('COM_JFBCONNECT_UPDATES_JFBCONNECT_VERSION_RECOMMENDED'); echo $this->jfbcUpdate->version; ?>
+                                    </button>
+                                    <input type="hidden" name="option" value="com_installer" />
+                                    <input type="hidden" name="view" value="update" />
+                                    <input type="hidden" name="task" value="update.update" />
+                                    <input type="hidden" name="cid[]" value="<?php echo $this->jfbcUpdate->update_id; ?>" />
+                                    <?php echo JHTML::_('form.token'); ?>
+                                </form>
+                            </div>
+                            <div class="span5">
+                                <?php echo $changelogLink; ?>
+                            </div>
+                        </div>
+                        <p><?php echo JText::_('COM_JFBCONNECT_UPDATES_REVIEW_SETTINGS');?></p>
+                    <?php }
+                    else
+                    { ?>
+                        <p><?php echo JText::_('COM_JFBCONNECT_UPDATES_JFBCONNECT_LATEST_IS_INSTALLED');?></p>
+                        <?php echo $changelogLink; ?>
+                    <?php
+                    }
+                }
+                else
+                {
+                    ?>
+                    <p class="warning"><?php echo JText::_('COM_JFBCONNECT_UPDATES_SITE_CONNECTION_ERROR');?><br />
+                        <?php echo JText::_('COM_JFBCONNECT_UPDATES_VIEW_CHANGELOG_FOR_UPDATE');?></p>
+                    <?php echo $changelogLink; ?>
+                <?php } ?>
+            </div>
         </div>
-        <div style="clear:both"></div>
-        <img alt="<?php echo JText::_('COM_JFBCONNECT_OVERVIEW_INSTALLED_PUBLISHED_DESC');?>" src="components/com_jfbconnect/assets/images/icon-16-allow.png" width="10"
-             height="10"/> - <?php echo JText::_('COM_JFBCONNECT_OVERVIEW_INSTALLED_PUBLISHED');?> |
-        <img alt="<?php echo JText::_('COM_JFBCONNECT_OVERVIEW_INSTALLED_UNPUBLISHED_DESC');?>" src="components/com_jfbconnect/assets/images/icon-16-notice-note.png" width="10"
-             height="10"/> - <?php echo JText::_('COM_JFBCONNECT_OVERVIEW_NOT_PUBLISHED');?> |
-        <img alt="<?php echo JText::_('COM_JFBCONNECT_OVERVIEW_NOT_INSTALLED');?>" src="components/com_jfbconnect/assets/images/icon-16-deny.png" width="10" height="10"/> - <?php echo JText::_('COM_JFBCONNECT_OVERVIEW_NOT_INSTALLED');?>
     </div>
 </div>
 <div style="clear: both"></div>
 
 <form method="post" id="adminForm" name="adminForm">
-    <input type="hidden" name="option" value="com_jfbconnect"/>
-    <input type="hidden" name="task" value=""/>
+    <input type="hidden" name="option" value="com_jfbconnect" />
+    <input type="hidden" name="task" value="" />
 </form>

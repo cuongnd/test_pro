@@ -12,8 +12,8 @@
   // Cached vars
   var _iCheck = 'iCheck',
     _iCheckHelper = _iCheck + '-helper',
-    _checkbox = 'checkbox',
-    _radio = 'radio',
+    _checkbox = 'checkbox.icheck',
+    _radio = 'radio.icheck',
     _checked = 'checked',
     _unchecked = 'un' + _checked,
     _disabled = 'disabled',a

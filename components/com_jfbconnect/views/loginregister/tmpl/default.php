@@ -1,9 +1,10 @@
 <?php
-
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 defined('_JEXEC') or die('Restricted access');
@@ -23,7 +24,12 @@ $profileFields = $this->profileFields;
 
     <h1><?php echo JText::_('COM_JFBCONNECT_WELCOME') . ' ' . $this->profile->get('first_name') ?>!</h1>
 
-    <p><?php echo JText::sprintf('COM_JFBCONNECT_THANKS_FOR_SIGNING_IN', ucfirst($this->providerName)); ?></p>
+    <?php
+    if ($this->displayType == 'register-only')
+        echo '<p>'.JText::sprintf('COM_JFBCONNECT_THANKS_FOR_SIGNING_IN_REGISTER_ONLY', ucfirst($this->providerName)).'</p>';
+    else
+        echo '<p>'.JText::sprintf('COM_JFBCONNECT_THANKS_FOR_SIGNING_IN', ucfirst($this->providerName)).'</p>';
+    ?>
 
     <div id="jfbc_loginregister_userinfo" class="<?php echo $this->displayType; ?>">
         <div id="jfbc_loginregister_existinguser">
@@ -45,11 +51,8 @@ $profileFields = $this->profileFields;
                 <input type="hidden" name="option" value="com_jfbconnect" />
                 <input type="hidden" name="task" value="loginregister.loginMap" />
                 <input type="hidden" name="provider" value="<?php echo $this->providerName; ?>" />
-                <?php echo JHTML::_('form.token'); ?>
-                <?php foreach ($this->altProviders as $p)
-                {
-                    echo $p->loginButton(array('buttonType' => 'icon_text_button', 'orientation' => 'side', 'alignment' => 'left'));
-                }
+                <?php echo JHTML::_('form.token');
+                echo JFBCFactory::getLoginButtons($this->altParams);
                 ?>
             </form>
             <div style="clear:both"></div>

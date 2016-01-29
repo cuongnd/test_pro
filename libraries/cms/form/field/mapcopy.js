@@ -450,6 +450,7 @@ jQuery(document).ready(function($){
                 return;
             if (window.JSON) {
                 value=list.nestable('serialize');
+
                 output.val(cassandraMAP.stringify(value));//, null, 2));
             } else {
                 output.val('JSON browser support required for this demo.');

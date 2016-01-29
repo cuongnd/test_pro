@@ -212,7 +212,7 @@ class JFBConnectAuthenticationOauth2Base
     {
         $token = $this->getToken();
 
-        if (array_key_exists('expires_in', $token) && $token['created'] + $token['expires_in'] < time() + 20)
+        if ($token && (array_key_exists('expires_in', $token) && $token['created'] + $token['expires_in'] < time() + 20))
         {
             if (!$this->getOption('userefresh'))
             {
@@ -221,11 +221,11 @@ class JFBConnectAuthenticationOauth2Base
             $token = $this->refreshToken($token['refresh_token']);
         }
 
-        if (!$this->getOption('authmethod') || $this->getOption('authmethod') == 'bearer')
+        if ($token && (!$this->getOption('authmethod') || $this->getOption('authmethod') == 'bearer'))
         {
             $headers['Authorization'] = 'Bearer ' . $token['access_token'];
         }
-        elseif ($this->getOption('authmethod') == 'get')
+        elseif ($token && $this->getOption('authmethod') == 'get')
         {
             if (strpos($url, '?'))
             {

@@ -71,6 +71,24 @@ class componentsControllercomponents extends JControllerAdmin
         die(json_encode($return));
 
     }
+    public function ajax_load_component(){
+        $view = &$this->getView('components', 'html', 'componentsView');
+        $app = JFactory::getApplication();
+        $input = $app->input;
+        $respone_array = array();
+        ob_start();
+        JRequest::setVar('layout', 'default');
+        JRequest::setVar('tpl', 'loadcomponent');
+
+        $view->display();
+        $contents = ob_get_clean();
+        $respone_array[] = array(
+            'key' => '.load_component'
+        , 'contents' => $contents
+        );
+        echo json_encode($respone_array);
+        exit();
+    }
 
     /**
      * Method to clone an existing module.

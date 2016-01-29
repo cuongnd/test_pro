@@ -11,7 +11,7 @@ SQL.RowManager = function(owner) {
 		var id = ids[i];
 		var elm = OZ.$(id);
 		this.dom[id] = elm;
-		elm.value = _(id);
+		elm.value = getString(id);
 	}
 
 	this.select(false);
@@ -72,7 +72,7 @@ SQL.RowManager.prototype.foreigncreate = function(e) { /* start creating fk */
 		this.endCreate();
 	} else {
 		this.creating = true;
-		this.dom.foreigncreate.value = "["+_("foreignpending")+"]";
+		this.dom.foreigncreate.value = "["+getString("foreignpending")+"]";
 	}
 }
 
@@ -82,7 +82,7 @@ SQL.RowManager.prototype.foreignconnect = function(e) { /* start drawing fk */
 		this.endConnect();
 	} else {
 		this.connecting = true;
-		this.dom.foreignconnect.value = "["+_("foreignconnectpending")+"]";
+		this.dom.foreignconnect.value = "["+getString("foreignconnectpending")+"]";
 	}
 }
 
@@ -97,12 +97,12 @@ SQL.RowManager.prototype.foreigndisconnect = function(e) { /* remove connector *
 
 SQL.RowManager.prototype.endCreate = function() {
 	this.creating = false;
-	this.dom.foreigncreate.value = _("foreigncreate");
+	this.dom.foreigncreate.value = getString("foreigncreate");
 }
 
 SQL.RowManager.prototype.endConnect = function() {
 	this.connecting = false;
-	this.dom.foreignconnect.value = _("foreignconnect");
+	this.dom.foreignconnect.value = getString("foreignconnect");
 }
 
 SQL.RowManager.prototype.up = function(e) {
@@ -116,7 +116,7 @@ SQL.RowManager.prototype.down = function(e) {
 }
 
 SQL.RowManager.prototype.remove = function(e) {
-	var result = confirm(_("confirmrow")+" '"+this.selected.getTitle()+"' ?");
+	var result = confirm(getString("confirmrow")+" '"+this.selected.getTitle()+"' ?");
 	if (!result) { return; }
 	var t = this.selected.owner;
 	this.selected.owner.removeRow(this.selected);

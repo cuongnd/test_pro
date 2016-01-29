@@ -110,7 +110,7 @@ class InstallerModelDatabase extends InstallerModel
 		$query = $db->getQuery(true)
 			->select('version_id')
 			->from($db->quoteName('#__schemas'))
-			->where('extension_id = 700');
+			->where('id = 700');
 		$db->setQuery($query);
 		$result = $db->loadResult();
 
@@ -142,14 +142,14 @@ class InstallerModelDatabase extends InstallerModel
 			// Delete old row
 			$query = $db->getQuery(true)
 				->delete($db->quoteName('#__schemas'))
-				->where($db->quoteName('extension_id') . ' = 700');
+				->where($db->quoteName('id') . ' = 700');
 			$db->setQuery($query);
 			$db->execute();
 
 			// Add new row
 			$query->clear()
 				->insert($db->quoteName('#__schemas'))
-				->set($db->quoteName('extension_id') . '= 700')
+				->set($db->quoteName('id') . '= 700')
 				->set($db->quoteName('version_id') . '= ' . $db->quote($schema));
 			$db->setQuery($query);
 			if ($db->execute())

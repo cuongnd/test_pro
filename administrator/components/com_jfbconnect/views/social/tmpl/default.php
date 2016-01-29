@@ -1,15 +1,22 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 jimport('joomla.filesystem.folder');
 jimport('sourcecoast.utilities');
 JHTML::_('behavior.tooltip');
 $model = $this->model;
 $k2IsInstalled = SCSocialUtilities::isJoomlaComponentEnabled('com_k2');
+
+$provider = $this->filter_provider;
+$task = JRequest::getVar('task', '', 'post');
+if(!empty($task)) { $provider = '';}
 ?>
 <script type="text/javascript">
     function toggleHide(rowId, styleType)
@@ -25,7 +32,7 @@ if (defined('SC30')):
 ?>
 <div class="row-fluid">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#social_content_comment" data-toggle="tab"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_MENU_CONTENT_COMMENTS'); ?></a></li>
+        <li <?php echo $provider ? '' : 'class="active"';?>><a href="#social_content_comment" data-toggle="tab"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_MENU_CONTENT_COMMENTS'); ?></a></li>
         <li><a href="#social_content_like" data-toggle="tab"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_MENU_CONTENT_LIKE'); ?></a></li>
 
         <?php
@@ -37,7 +44,7 @@ if (defined('SC30')):
         ?>
         <li><a href="#social_notifications" data-toggle="tab"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_MENU_NOTIFICATIONS'); ?></a></li>
         <li><a href="#social_misc" data-toggle="tab"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_MENU_MISC'); ?></a></li>
-        <li><a href="#social_examples" data-toggle="tab"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_MENU_EXAMPLES'); ?></a></li>
+        <li <?php echo $provider ? 'class="active"' : '';?>><a href="#social_examples" data-toggle="tab"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_MENU_EXAMPLES'); ?></a></li>
     </ul>
 </div>
 <div class="tab-content">
@@ -50,7 +57,7 @@ if (defined('SC16')):
     echo $pane->startPanel(JText::_('COM_JFBCONNECT_SOCIAL_MENU_CONTENT_COMMENTS'), 'social_content_comment_pane');
 endif; //SC16
 ?>
-<div class="tab-pane active" id="social_content_comment">
+<div class="tab-pane <?php echo $provider ? '' : 'active';?>" id="social_content_comment">
 <div class="config_row">
     <div class="config_setting header"><?php echo JText::_("COM_JFBCONNECT_SOCIAL_ARTICLE_SETTING_LABEL"); ?></div>
     <div class="config_option header"><?php echo JText::_("COM_JFBCONNECT_SOCIAL_OPTIONS"); ?></div>
@@ -324,6 +331,22 @@ endif;
     </div>
     <div class="config_row">
         <div class="config_setting hasTip"
+             title="<?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_FACEBOOK_DESC"); ?>"><?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_FACEBOOK_LABEL"); ?>:
+        </div>
+        <div class="config_option">
+            <fieldset id="social_article_like_show_facebook" class="radio btn-group">
+                <input type="radio" id="social_article_like_show_facebook1" name="social_article_like_show_facebook"
+                       value="1" <?php echo $model->getSetting('social_article_like_show_facebook') ? 'checked="checked"' : ""; ?> />
+                <label for="social_article_like_show_facebook1"><?php echo JText::_("JYES"); ?></label>
+                <input type="radio" id="social_article_like_show_facebook0" name="social_article_like_show_facebook"
+                       value="0" <?php echo $model->getSetting('social_article_like_show_facebook') ? '""' : 'checked="checked"'; ?> />
+                <label for="social_article_like_show_facebook0"><?php echo JText::_("JNO"); ?></label>
+            </fieldset>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div class="config_row">
+        <div class="config_setting hasTip"
              title="<?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_FACES_DESC"); ?>"><?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_FACES_LABEL"); ?>:
         </div>
         <div class="config_option">
@@ -340,7 +363,7 @@ endif;
     </div>
     <div class="config_row">
         <div class="config_setting hasTip"
-             title="<?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_SEND_DESC"); ?>"><?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_SEND_LABEL"); ?>:
+             title="<?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_SHARE_DESC"); ?>"><?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_SEND_LABEL"); ?>:
         </div>
         <div class="config_option">
             <fieldset id="social_article_like_show_send_button" class="radio btn-group">
@@ -528,6 +551,22 @@ endif;
     </div>
     <div class="config_row">
         <div class="config_setting hasTip"
+             title="<?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_FACEBOOK_DESC2"); ?>"><?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_FACEBOOK_LABEL"); ?>:
+        </div>
+        <div class="config_option">
+            <fieldset id="social_blog_like_show_facebook" class="radio btn-group">
+                <input type="radio" id="social_blog_like_show_facebook1" name="social_blog_like_show_facebook"
+                       value="1" <?php echo $model->getSetting('social_blog_like_show_facebook') ? 'checked="checked"' : ""; ?> />
+                <label for="social_blog_like_show_facebook1"><?php echo JText::_("JYES"); ?></label>
+                <input type="radio" id="social_blog_like_show_facebook0" name="social_blog_like_show_facebook"
+                       value="0" <?php echo $model->getSetting('social_blog_like_show_facebook') ? '""' : 'checked="checked"'; ?> />
+                <label for="social_blog_like_show_facebook0"><?php echo JText::_("JNO"); ?></label>
+            </fieldset>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div class="config_row">
+        <div class="config_setting hasTip"
              title="<?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_FACES_DESC2"); ?>"><?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_FACES_LABEL"); ?>:
         </div>
         <div class="config_option">
@@ -544,7 +583,7 @@ endif;
     </div>
     <div class="config_row">
         <div class="config_setting hasTip"
-             title="<?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_SEND_DESC2"); ?>"><?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_SEND_LABEL"); ?>:
+             title="<?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_SHARE_DESC2"); ?>"><?php echo JText::_("COM_JFBCONNECT_SOCIAL_SHOW_SEND_LABEL"); ?>:
         </div>
         <div class="config_option">
             <fieldset id="social_blog_like_show_send_button" class="radio btn-group">
@@ -1067,6 +1106,23 @@ if ($k2IsInstalled)
         </div>
         <div class="config_row">
             <div class="config_setting hasTip"
+                 title="<?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_FACEBOOK_DESC3'); ?>"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_FACEBOOK_LABEL'); ?>
+                :
+            </div>
+            <div class="config_option">
+                <fieldset id="social_k2_item_like_show_facebook" class="radio btn-group">
+                    <input type="radio" id="social_k2_item_like_show_facebook1" name="social_k2_item_like_show_facebook"
+                           value="1" <?php echo $model->getSetting('social_k2_item_like_show_facebook') ? 'checked="checked"' : ""; ?> />
+                    <label for="social_k2_item_like_show_facebook1"><?php echo JText::_("JYES"); ?></label>
+                    <input type="radio" id="social_k2_item_like_show_facebook0" name="social_k2_item_like_show_facebook"
+                           value="0" <?php echo $model->getSetting('social_k2_item_like_show_facebook') ? '""' : 'checked="checked"'; ?> />
+                    <label for="social_k2_item_like_show_facebook0"><?php echo JText::_("JNO"); ?></label>
+                </fieldset>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="config_row">
+            <div class="config_setting hasTip"
                  title="<?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_FACES_DESC3'); ?>"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_FACES_LABEL'); ?>:
             </div>
             <div class="config_option">
@@ -1083,7 +1139,7 @@ if ($k2IsInstalled)
         </div>
         <div class="config_row">
             <div class="config_setting hasTip"
-                 title="<?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_SEND_DESC3'); ?>"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_SEND_LABEL'); ?>:
+                 title="<?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_SHARE_DESC3'); ?>"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_SEND_LABEL'); ?>:
             </div>
             <div class="config_option">
                 <fieldset id="social_k2_item_like_show_send_button" class="radio btn-group">
@@ -1311,6 +1367,23 @@ if ($k2IsInstalled)
         </div>
         <div class="config_row">
             <div class="config_setting hasTip"
+                 title="<?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_FACEBOOK_DESC2'); ?>"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_FACEBOOK_LABEL'); ?>
+                :
+            </div>
+            <div class="config_option">
+                <fieldset id="social_k2_blog_like_show_facebook" class="radio btn-group">
+                    <input type="radio" id="social_k2_blog_like_show_facebook1" name="social_k2_blog_like_show_facebook"
+                           value="1" <?php echo $model->getSetting('social_k2_blog_like_show_facebook') ? 'checked="checked"' : ""; ?> />
+                    <label for="social_k2_blog_like_show_facebook1"><?php echo JText::_("JYES"); ?></label>
+                    <input type="radio" id="social_k2_blog_like_show_facebook0" name="social_k2_blog_like_show_facebook"
+                           value="0" <?php echo $model->getSetting('social_k2_blog_like_show_facebook') ? '""' : 'checked="checked"'; ?> />
+                    <label for="social_k2_blog_like_show_facebook0"><?php echo JText::_("JNO"); ?></label>
+                </fieldset>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="config_row">
+            <div class="config_setting hasTip"
                  title="<?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_FACES_DESC2'); ?>"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_FACES_LABEL'); ?>:
             </div>
             <div class="config_option">
@@ -1327,7 +1400,7 @@ if ($k2IsInstalled)
         </div>
         <div class="config_row">
             <div class="config_setting hasTip"
-                 title="<?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_SEND_DESC2'); ?>"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_SEND_LABEL'); ?>:
+                 title="<?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_SHARE_DESC2'); ?>"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_SHOW_SEND_LABEL'); ?>:
             </div>
             <div class="config_option">
                 <fieldset id="social_k2_blog_like_show_send_button" class="radio btn-group">
@@ -1625,21 +1698,6 @@ endif;
         </div>
         <div style="clear:both"></div>
     </div>
-    <div class="config_row">
-        <div class="config_setting hasTip"
-             title="<?php echo JText::_('COM_JFBCONNECT_SOCIAL_POINTS_INTEGRATION_DESC'); ?>"><?php echo JText::_('COM_JFBCONNECT_SOCIAL_POINTS_INTEGRATION_LABEL'); ?></div>
-        <div class="config_option">
-            <fieldset id="social_alphauserpoints_enabled" class="radio btn-group">
-                <input type="radio" id="social_alphauserpoints_enabled1" name="social_alphauserpoints_enabled"
-                       value="1" <?php echo $model->getSetting('social_alphauserpoints_enabled') ? 'checked="checked"' : ""; ?> />
-                <label for="social_alphauserpoints_enabled1"><?php echo JText::_('JENABLED'); ?></label>
-                <input type="radio" id="social_alphauserpoints_enabled0" name="social_alphauserpoints_enabled"
-                       value="0" <?php echo $model->getSetting('social_alphauserpoints_enabled') ? '""' : 'checked="checked"'; ?> />
-                <label for="social_alphauserpoints_enabled0"><?php echo JText::_('JDISABLED'); ?></label>
-            </fieldset>
-        </div>
-        <div style="clear:both"></div>
-    </div>
 </div>
 <?php
 if (defined('SC16')):
@@ -1647,7 +1705,7 @@ if (defined('SC16')):
     echo $pane->startPanel(JText::_('COM_JFBCONNECT_SOCIAL_MENU_EXAMPLES'), 'social_examples_pane');
 endif;
 ?>
-<div class="tab-pane" id="social_examples">
+<div class="tab-pane <?php echo $provider ? 'active' : '';?>" id="social_examples">
     <?php require(JPATH_ROOT . '/administrator/components/com_jfbconnect/views/social/tmpl/examples.php'); ?>
 </div>
 <?php

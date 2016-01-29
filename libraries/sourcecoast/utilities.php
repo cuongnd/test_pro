@@ -1,19 +1,20 @@
 <?php
 /**
- * @package SourceCoast Extensions (JFBConnect, JLinked)
- * @copyright (C) 2011-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         SourceCoast Extensions
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
-defined('_JEXEC') or die(__FILE__);
+defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.filesystem.file');
 jimport('joomla.user.helper');
 jimport('sourcecoast.easyTags');
 
-define('CHECK_NEW_MAPPING_JLINKED', 'jLinkedCheckNewMapping');
 define('CHECK_NEW_MAPPING_JFBCONNECT', 'jfbcCheckNewMapping');
-define('LOGIN_TASK_JLINKED', 'loginLinkedInUser');
 define('LOGIN_TASK_JFBCONNECT', 'loginFacebookUser');
 
 define('AUTONAME_EXT', '0');
@@ -23,18 +24,12 @@ define('AUTONAME_EMAIL', '3');
 
 define('EXT_SOURCECOAST', 'sourcecoast');
 define('EXT_JFBCONNECT', 'jfbconnect');
-define('EXT_JLINKED', 'jlinked');
 
 class SCSocialUtilities
 {
     static function isJFBConnectInstalled()
     {
         return SCSocialUtilities::isComponentEnabled('com_jfbconnect', JPATH_ROOT . '/components/com_jfbconnect/libraries/facebook.php');
-    }
-
-    static function isJLinkedInstalled()
-    {
-        return SCSocialUtilities::isComponentEnabled('com_jlinked', JPATH_ROOT . '/components/com_jlinked/libraries/linkedin.php');
     }
 
     static function isComponentEnabled($option, $libraryFile)
@@ -51,7 +46,7 @@ class SCSocialUtilities
     {
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('id AS id, element AS "option", params, enabled');
+        $query->select('extension_id AS id, element AS "option", params, enabled');
         $query->from('#__extensions');
         $query->where($query->qn('type') . ' = ' . $db->quote('component'));
         $query->where($query->qn('element') . ' = ' . $db->quote($option));
@@ -65,67 +60,6 @@ class SCSocialUtilities
     static function areJFBConnectTagsEnabled()
     {
         return JPluginHelper::isEnabled('system', 'jfbcsystem');
-    }
-
-    static function areJLinkedTagsEnabled()
-    {
-        return JPluginHelper::isEnabled('system', 'jlinkedsystem');
-    }
-
-    static function getJFBConnectAppId()
-    {
-        $libFile = JPATH_ROOT . '/components/com_jfbconnect/libraries/facebook.php';
-        if (!JFile::exists($libFile))
-            return '';
-
-        require_once($libFile);
-        $appId = JFBCFactory::provider('facebook')->appId;
-        return $appId;
-    }
-
-    static function getJFBConnectRenderKeySetting()
-    {
-        $libFile = JPATH_ROOT . '/components/com_jfbconnect/libraries/facebook.php';
-        if (!JFile::exists($libFile))
-            return '';
-
-        require_once($libFile);
-        $renderKey = JFBCFactory::provider('facebook')->getSocialTagRenderKey();
-        return $renderKey;
-    }
-
-    static function getJLinkedRenderKeySetting()
-    {
-        $libFile = JPATH_ROOT . '/components/com_jlinked/libraries/linkedin.php';
-        if (!JFile::exists($libFile))
-            return '';
-
-        require_once($libFile);
-        $jLinkedLibrary = JLinkedApiLibrary::getInstance();
-        $renderKey = $jLinkedLibrary->getSocialTagRenderKey();
-        return $renderKey;
-    }
-
-    static function getJFBConnectRenderKey()
-    {
-        $renderKey = SCSocialUtilities::getJFBConnectRenderKeySetting();
-        if ($renderKey != '')
-            $renderKeyString = " key=" . $renderKey;
-        else
-            $renderKeyString = '';
-
-        return $renderKeyString;
-    }
-
-    static function getJLinkedRenderKey()
-    {
-        $renderKey = SCSocialUtilities::getJLinkedRenderKeySetting();
-        if ($renderKey != '')
-            $renderKeyString = " key=" . $renderKey;
-        else
-            $renderKeyString = '';
-
-        return $renderKeyString;
     }
 
     static function getExtraShareButtons($url, $dataCount, $showFacebookLikeButton, $showFacebookShareButton, $showTwitterButton, $showGooglePlusButton, $renderKeyString, $showLinkedInButton = false, $fbWidth = 50, $showPinterestButton = false, $pinnedImage = "", $pinnedText = "")
@@ -145,50 +79,42 @@ class SCSocialUtilities
 
         if ($showLinkedInButton)
         {
-            $linkedInLayout = SCEasyTags::getShareButtonLayout('linkedin', $dataCount);
-            if (SCSocialUtilities::isJLinkedInstalled() && SCSocialUtilities::areJLinkedTagsEnabled())
-            {
-                $renderString = SCSocialUtilities::getJLinkedRenderKey();
-                $extraButtonText .= '{JLinkedShare href=' . $url . $linkedInLayout . $renderString . '}';
-            }
-            else
-                $extraButtonText .= '{JLinkedShare href=' . $url . $linkedInLayout . $renderKeyString . '}';
+            $extraButtonText .= '{JLinkedShare href=' . $url . " layout=" . $dataCount . $renderKeyString . '}';
         }
         if ($showTwitterButton)
         {
-            $twitterLayout = SCEasyTags::getShareButtonLayout('twitter', $dataCount);
-            $extraButtonText .= '{SCTwitterShare href=' . $url . $twitterLayout . $renderKeyString . '}';
+            $extraButtonText .= '{SCTwitterShare href=' . $url . " layout=" . $dataCount . $renderKeyString . '}';
         }
         if ($showGooglePlusButton)
         {
-            $googleLayout = SCEasyTags::getShareButtonLayout('google', $dataCount);
-            $extraButtonText .= '{SCGooglePlusOne href=' . $url . $googleLayout . $renderKeyString . '}';
+            $extraButtonText .= '{SCGooglePlusOne href=' . $url . " layout=" . $dataCount . $renderKeyString . '}';
         }
         if ($showPinterestButton)
         {
-            $pinterestLayout = SCEasyTags::getShareButtonLayout('pinterest', $dataCount);
-            $extraButtonText .= '{SCPinterest href=' . $url . $pinterestLayout . ' image=' . $pinnedImage . ' desc=' . $pinnedText . $renderKeyString . '}';
+            $extraButtonText .= '{SCPinterestShare href=' . $url . " layout=" . $dataCount . ' image=' . $pinnedImage . ' desc=' . $pinnedText . $renderKeyString . '}';
         }
         if ($showFacebookLikeButton)
         {
             $shareString = $showFacebookShareButton ? "true" : "false";
-            $facebookLayout = SCEasyTags::getShareButtonLayout('facebook', $dataCount);
-
-            if (SCSocialUtilities::isJFBConnectInstalled() && SCSocialUtilities::areJFBConnectTagsEnabled())
-            {
-                $renderString = SCSocialUtilities::getJFBConnectRenderKey();
-                $extraButtonText .= '{JFBCLike href=' . $url . $facebookLayout . ' share=' . $shareString . $renderString . '}';
-            }
-            else
-                $extraButtonText .= '{JFBCLike href=' . $url . $facebookLayout . ' share=' . $shareString . $renderKeyString . '}';
+            $extraButtonText .= '{JFBCLike href=' . $url . " layout=" . $dataCount . ' share=' . $shareString . $renderKeyString . '}';
         }
 
         return $extraButtonText;
     }
 
+    static function forceScheme($href)
+    {
+        $forceScheme = JFBCFactory::config()->get('social_force_scheme', 0);
+        if ($forceScheme == '1')
+            $href = str_replace('https://', 'http://', $href);
+        else if ($forceScheme == '2')
+            $href = str_replace('http://', 'https://', $href);
+        return $href;
+    }
+
     static function getStrippedUrl()
     {
-        $href = JURI::current();
+        $href = SCSocialUtilities::forceScheme(JURI::current());
 
         $juri = JURI::getInstance();
         // Delete some common, unwanted query params to at least try to get at the canonical URL
@@ -242,85 +168,20 @@ class SCSocialUtilities
     static function setJFBCNewMappingEnabled()
     {
         $jfbcLibrary = JFBCFactory::provider('facebook');
-        SCSocialUtilities::setNewMappingEnabled($jfbcLibrary, CHECK_NEW_MAPPING_JFBCONNECT);
-    }
-
-    static function setJLinkedNewMappingEnabled()
-    {
-        $jLinkedLibrary = JLinkedApiLibrary::getInstance();
-        SCSocialUtilities::setNewMappingEnabled($jLinkedLibrary, CHECK_NEW_MAPPING_JLINKED);
-    }
-
-    static function setNewMappingEnabled($socialLibrary = null, $checkNewMappingSetting = CHECK_NEW_MAPPING_JLINKED)
-    {
         $session = JFactory::getSession();
-        $session->set($checkNewMappingSetting, true);
+        $session->set(CHECK_NEW_MAPPING_JFBCONNECT, true);
 
-        if ($socialLibrary == null) //Backwards compatibility with JLinked 1.1
-        $socialLibrary = JLinkedApiLibrary::getInstance();
-
-        $socialLibrary->checkNewMapping = true;
+        $jfbcLibrary->checkNewMapping = true;
     }
 
     static function clearJFBCNewMappingEnabled()
     {
         $jfbcLibrary = JFBCFactory::provider('facebook');
-        SCSocialUtilities::clearNewMappingEnabled($jfbcLibrary, CHECK_NEW_MAPPING_JFBCONNECT);
-    }
 
-    static function clearJLinkedNewMappingEnabled()
-    {
-        $jLinkedLibrary = JLinkedApiLibrary::getInstance();
-        SCSocialUtilities::clearNewMappingEnabled($jLinkedLibrary, CHECK_NEW_MAPPING_JLINKED);
-    }
-
-    static function clearNewMappingEnabled($socialLibrary = null, $checkNewMappingSetting = CHECK_NEW_MAPPING_JLINKED)
-    {
         $session = JFactory::getSession();
-        $session->clear($checkNewMappingSetting);
+        $session->clear(CHECK_NEW_MAPPING_JFBCONNECT);
 
-        if ($socialLibrary == null) //Backwards compatibility with JLinked 1.1
-        $socialLibrary = JLinkedApiLibrary::getInstance();
-
-        $socialLibrary->checkNewMapping = false;
-    }
-
-    static function getCurrentReturnParameter(&$return, &$menuItemId, $loginTaskSetting = LOGIN_TASK_JLINKED)
-    {
-        // setup return url in case they should be redirected back to this page
-        $uri = JURI::getInstance();
-
-        // Save the current page to the session, allowing us to redirect to it on login or logout if configured that way
-        $isLoginRegister = JRequest::getCmd('view') == "loginregister";
-        $isLoginReturning = JRequest::getCmd('task') == $loginTaskSetting;
-        $isLogout = JRequest::getCmd('task') == "logout";
-
-        //NOTE: Not checking option=com_blah because of system cache plugin
-        if (!$isLoginRegister && !$isLoginReturning && !$isLogout)
-        {
-            $return = $uri->toString(array('path', 'query'));
-            if ($return == "")
-                $return = 'index.php';
-        }
-
-        //Save the current return parameter
-        $returnParam = JRequest::getVar('return', '');
-        if ($returnParam != "")
-        {
-            $return = urlencode($returnParam); // Required for certain SEF extensions
-            $return = rawurldecode($return);
-            $return = base64_decode($return);
-
-            $returnURI = JURI::getInstance($return);
-            $menuItemId = $returnURI->getVar('Itemid', '');
-
-            $filterInput = JFilterInput::getInstance();
-            $menuItemId = $filterInput->clean($menuItemId, 'INT');
-            //$menuItemId = JFilterInput::clean($menuItemId, 'INT');
-
-        }
-        else
-            $menuItemId = JRequest::getInt('Itemid', 0);
+        $jfbcLibrary->checkNewMapping = false;
     }
 
     static function getLinkFromMenuItem($itemId, $isLogout)
@@ -387,14 +248,6 @@ class SCSocialUtilities
         return ($menuItem && $menuItem->access != "1");
     }
 
-    static function getRandomPassword(&$newPassword)
-    {
-        $newPassword = JUserHelper::genRandomPassword();
-        $salt = JUserHelper::genRandomPassword(32);
-        $crypt = JUserHelper::getCryptedPassword($newPassword, $salt);
-        return $crypt . ':' . $salt;
-    }
-
     static function getRemoteContent($url)
     {
         // Parts of this function inspired by JomSocial's implementation (c) Slashes 'n Dots azrul.com
@@ -451,11 +304,6 @@ class SCSocialUtilities
             $defaultLink = 'http://www.sourcecoast.com/joomla-facebook/';
             $textLinkId = '495360';
         }
-        else if ($extension == EXT_JLINKED)
-        {
-            $defaultLink = 'http://www.sourcecoast.com/jlinked/';
-            $textLinkId = '495361';
-        }
         else //SourceCoast
         {
             $defaultLink = 'http://www.sourcecoast.com/';
@@ -489,16 +337,20 @@ class SCStringUtilities
     static function trimNBSP($htmlText)
     {
         // turn some HTML with non-breaking spaces into a "normal" string
-        $converted = htmlentities(strip_tags($htmlText), ENT_QUOTES, 'UTF-8');
-        $converted = trim(str_replace('&nbsp;', ' ', $converted));
-        return $converted;
+        //$converted = htmlentities(strip_tags($htmlText), ENT_QUOTES, 'UTF-8');
+        //$converted = trim(str_replace('&nbsp;', ' ', $converted));
+
+        //Delete HTML for br's and nbsp's. Joomla inserts funky characters in the editor - chr(0xC2).chr(0xA0)
+        $spaces = array('<br/>', '<br />', '&nbsp;', chr(0xC2).chr(0xA0));
+        $htmlText = trim(str_replace($spaces, ' ', $htmlText));
+        return $htmlText;
     }
 
     static function replaceNBSPWithSpace($htmlText)
     {
         $htmlText = strip_tags($htmlText);
         $htmlText = htmlentities(html_entity_decode($htmlText), ENT_QUOTES, 'UTF-8');
-        $htmlText = str_replace('&nbsp;', ' ', $htmlText);
+        $htmlText = trim(str_replace('&nbsp;', ' ', $htmlText));
         return $htmlText;
     }
 
@@ -639,19 +491,6 @@ class SCUserUtilities
         if (array_key_exists('jform', $postData))
             $postDataValue = $postData['jform'][$setting];
         return $postDataValue;
-    }
-
-    static function getDisplayPassword($configModel, $loginRegisterModel, $generatePasswordSetting = 'generate_random_password')
-    {
-        if ($configModel->getSetting($generatePasswordSetting))
-        {
-            $newPassword = $loginRegisterModel->generateRandomPassword();
-        }
-        else
-        {
-            $newPassword = '';
-        }
-        return $newPassword;
     }
 
     static function getDisplayUsername($postData, $firstName, $lastName, $email, $liMemberId, $configModel, $loginRegisterModel,

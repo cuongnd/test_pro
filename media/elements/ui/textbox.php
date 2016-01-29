@@ -8,9 +8,7 @@ class elementTextBoxHelper extends  elementHelper
         $filename=$pathInfo['filename'];
         $dirName=$pathInfo['dirname'];
         $doc=JFactory::getDocument();
-        $lessInput = JPATH_ROOT . "/$dirName/$filename.less";
-        $cssOutput =  JPATH_ROOT . "/$dirName/$filename.css";
-        JUtility::compileLess($lessInput, $cssOutput);
+
 
     }
     function getHeaderHtml($block,$enableEditWebsite)

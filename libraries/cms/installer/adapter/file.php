@@ -231,7 +231,7 @@ class JInstallerAdapterFile extends JAdapterInstance
 		 * If it isn't, add an entry to extensions
 		 */
 		$query = $db->getQuery(true)
-			->select($db->quoteName('extension_id'))
+			->select($db->quoteName('id'))
 			->from($db->quoteName('#__extensions'))
 			->where($db->quoteName('type') . ' = ' . $db->quote('file'))
 			->where($db->quoteName('element') . ' = ' . $db->quote($element));
@@ -301,7 +301,7 @@ class JInstallerAdapterFile extends JAdapterInstance
 
 			// Since we have created a module item, we add it to the installation step stack
 			// so that if we have to rollback the changes we can undo it.
-			$this->parent->pushStep(array('type' => 'extension', 'extension_id' => $row->extension_id));
+			$this->parent->pushStep(array('type' => 'extension', 'id' => $row->id));
 		}
 
 		// Let's run the queries for the file
@@ -322,14 +322,14 @@ class JInstallerAdapterFile extends JAdapterInstance
 			// Set the schema version to be the latest update version
 			if ($this->manifest->update)
 			{
-				$this->parent->setSchemaVersion($this->manifest->update->schemas, $row->extension_id);
+				$this->parent->setSchemaVersion($this->manifest->update->schemas, $row->id);
 			}
 		}
 		elseif (strtolower($this->route) == 'update')
 		{
 			if ($this->manifest->update)
 			{
-				$result = $this->parent->parseSchemaUpdates($this->manifest->update->schemas, $row->extension_id);
+				$result = $this->parent->parseSchemaUpdates($this->manifest->update->schemas, $row->id);
 
 				if ($result === false)
 				{
@@ -425,7 +425,7 @@ class JInstallerAdapterFile extends JAdapterInstance
 			$this->parent->set('extension_message', $msg);
 		}
 
-		return $row->get('extension_id');
+		return $row->get('id');
 	}
 
 	/**
@@ -561,7 +561,7 @@ class JInstallerAdapterFile extends JAdapterInstance
 			// Remove the schema version
 			$query = $db->getQuery(true)
 				->delete('#__schemas')
-				->where('extension_id = ' . $row->extension_id);
+				->where('id = ' . $row->id);
 			$db->setQuery($query);
 			$db->execute();
 
@@ -654,7 +654,7 @@ class JInstallerAdapterFile extends JAdapterInstance
 		$db = $this->parent->getDBO();
 
 		$query = $db->getQuery(true)
-			->select($db->quoteName('extension_id'))
+			->select($db->quoteName('id'))
 			->from($db->quoteName('#__extensions'))
 			->where($db->quoteName('type') . ' = ' . $db->quote('file'))
 			->where($db->quoteName('element') . ' = ' . $db->quote($extension));

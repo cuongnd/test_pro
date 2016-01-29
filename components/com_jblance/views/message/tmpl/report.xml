@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Message - Write New">
+		<message>
+			<![CDATA[Report.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Report</name>
+		<description>Report</description>
+	</state>
+</metadata>

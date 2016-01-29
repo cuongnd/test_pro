@@ -36,6 +36,14 @@ class JFormFieldInteger extends JFormFieldList
 	 *
 	 * @since   11.1
 	 */
+	public function get_attribute_config()
+	{
+		return array(
+			first=>0,
+			last=>10,
+			step=>1
+		);
+	}
 	protected function getOptions()
 	{
 		$options = array();

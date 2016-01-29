@@ -53,7 +53,85 @@ class MenusHelperFrontEnd
         return $db->loadObjectList();
 
     }
-    public function getMenuItemDefault($website_id)
+	public function fix_menu_items_by_menu_type_id($menu_type_id=0)
+	{
+		$website=JFactory::getWebsite();
+		$db=JFactory::getDbo();
+
+
+		//fix doule root
+		$query=$db->getQuery(true);
+		$query->select('menu_item.id,menu_item.parent_id,menu_item.menu_type_id')
+			->from('#__menu AS menu_item')
+			->leftJoin('#__menu_types AS menu_type ON menu_type.id=menu_item.menu_type_id')
+			->where('menu_item.menu_type_id='.(int)$menu_type_id)
+			->where('menu_item.id=menu_item.parent_id')
+			->where('menu_type.website_id='.(int)$website->website_id)
+		;
+		$list=$db->setQuery($query)->loadObjectList();
+		if(count($list)>1)
+		{
+			$fist_menu_item=array_pop($list);
+			foreach($list as $menu_item)
+			{
+				$query=$db->getQuery(true);
+				$query->update('#__menu')
+					->set('parent_id='.(int)$fist_menu_item->id)
+					->where('id='.(int)$menu_item->id)
+				;
+				$db->setQuery($query)->execute();
+			}
+		}
+		//end fix doule root
+
+
+		//fix menu item
+		$query = $db->getQuery(true);
+		$query->from('#__menu As menu ')
+			->select('menu.parent_id, menu.id,menu.binding_source,menu.binding_source_key,menu.binding_source_value,menu.access,menu.level,menu.icon,menu.title,menu.link,menu.alias')
+			->leftJoin('#__menu_types AS menuType ON menu.menu_type_id=menuType.id')
+			->where('menuType.id='.(int)$menu_type_id)
+			->select('menuType.id as menu_type_id,menuType.title as menu_type_title');
+
+		$query->order('menu.ordering');
+
+		$db->setQuery($query);
+		$list_menu_item1 = $db->loadObjectList();
+
+		//end get list menu type
+
+
+		$list_menu_item = array();
+		$root_menu_item = new stdClass();
+		foreach ($list_menu_item1 as $menu_item) {
+			if ($menu_item->id != $menu_item->parent_id) {
+				$list_menu_item[] = $menu_item;
+			}
+			if ($menu_item->id == $menu_item->parent_id) {
+				$root_menu_item = $menu_item;
+			}
+		}
+		$list_menu_item_not_root=$list_menu_item;
+
+		MenusHelperFrontEnd::get_list_menu_item_not_root($root_menu_item->id,$list_menu_item_not_root);
+
+
+		if(count($list_menu_item_not_root))
+		{
+			foreach($list_menu_item_not_root as $menu_item)
+			{
+				$query->clear()
+					->update('#__menu')
+					->set('parent_id='.(int)$root_menu_item->id)
+					->where('id='.(int)$menu_item->id)
+					;
+				$db->setQuery($query);
+				$db->execute();
+			}
+		}
+	}
+
+	public function getMenuItemDefault($website_id)
     {
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
@@ -316,5 +394,27 @@ class MenusHelperFrontEnd
 			}
 		}
 		return $associations;
+	}
+
+	public function get_list_menu_item_not_root($parent_id, &$list_menu_item_not_root)
+	{
+		$nodes=array();
+		foreach($list_menu_item_not_root as $key=> $menu_item)
+		{
+			if($menu_item->parent_id==$parent_id)
+			{
+				$nodes[]=$menu_item;
+				unset($list_menu_item_not_root[$key]);
+			}
+
+
+		}
+		if(count($nodes))
+		{
+			foreach($nodes as $node)
+			{
+				MenusHelperFrontEnd::get_list_menu_item_not_root($node->id,$list_menu_item_not_root);
+			}
+		}
 	}
 }

@@ -158,7 +158,7 @@ class ContentModelArticle extends JModelItem
 				$data = $db->loadObject();
 				if (empty($data))
 				{
-					return JError::raiseError(404, JText::_('COM_CONTENT_ERROR_ARTICLE_NOT_FOUND'));
+					//return JError::raiseError(404, JText::_('COM_CONTENT_ERROR_ARTICLE_NOT_FOUND'));
 				}
 
 				/*// Check for published state if filter set.

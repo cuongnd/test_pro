@@ -6635,3 +6635,10 @@
 2015-02-13T17:36:28+00:00	INFO	ldapfailure	Unable to connect to LDAP server
 2015-02-13T17:36:49+00:00	INFO	ldapfailure	Unable to connect to LDAP server
 2015-02-13T17:37:02+00:00	INFO	ldapfailure	Unable to connect to LDAP server
+2015-11-24T17:12:51+00:00	INFO	joomlafailure	Username and password do not match or you do not have an account yet.
+2015-11-24T17:13:01+00:00	INFO	joomlafailure	Username and password do not match or you do not have an account yet.
+2015-11-24T17:13:11+00:00	INFO	joomlafailure	Username and password do not match or you do not have an account yet.
+2015-11-24T17:14:30+00:00	INFO	joomlafailure	Username and password do not match or you do not have an account yet.
+2015-11-24T17:15:16+00:00	INFO	joomlafailure	Username and password do not match or you do not have an account yet.
+2015-11-24T17:15:29+00:00	INFO	joomlafailure	Username and password do not match or you do not have an account yet.
+2015-11-24T17:29:48+00:00	INFO	joomlafailure	Username and password do not match or you do not have an account yet.

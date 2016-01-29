@@ -281,8 +281,16 @@ class JUri
 		if (empty(self::$root))
 		{
 			$uri = self::getInstance(self::base());
+
 			self::$root['prefix'] = $uri->toString(array('scheme', 'host', 'port'));
 			self::$root['path'] = rtrim($uri->toString(array('path')), '/\\');
+
+		}
+		$uri = self::getInstance(self::base());
+		$msd='/msd1.24.4/';
+		if($uri->getPath()==$msd)
+		{
+			return $uri->toString(array('scheme', 'host', 'port'));
 		}
         // Get the scheme
 		if (isset($path))
@@ -454,6 +462,10 @@ class JUri
 		}
 
 		return $default;
+	}
+	public function getVars()
+	{
+		return $this->vars;
 	}
 
 	/**

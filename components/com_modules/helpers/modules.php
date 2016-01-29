@@ -217,7 +217,7 @@ abstract class ModulesHelper
 		$website=JFactory::getWebsite();
 		$db		= JFactory::getDbo();
 		$query	= $db->getQuery(true)
-			->select('e.id AS extension_id,e.element AS value, e.name AS text')
+			->select('e.id AS id,e.element AS value, e.name AS text')
 			->from('#__extensions as e')
 			->where('e.client_id = ' . (int) $clientId)
 			->where('e.type = ' . $db->quote('module'))
@@ -231,7 +231,7 @@ abstract class ModulesHelper
 		{
 			$extension = $module->value;
 			$path = $clientId ? JPATH_ADMINISTRATOR : JPATH_SITE;
-			$source = $path . "/modules/$extension";
+			$source = $path . "/modules/website/website_$website->website_id/$extension";
 				$lang->load("$extension.sys", $path, null, false, true)
 			||	$lang->load("$extension.sys", $source, null, false, true);
 			$modules[$i]->text = JText::_($module->text);

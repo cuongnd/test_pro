@@ -192,7 +192,9 @@ class JFormFieldFieldNamebindingsourceselect2 extends JFormField
 			maximumSelectionLength=>$maximumSelectionLength,
 			maximumSelectionSize=>$maximumSelectionSize
 		);
-
+		$doc->addStyleSheet(JUri::root().'/media/jui_front_end/css/select2.css');
+		$doc->addScript(JUri::root().'/media/jui_front_end/js/select2.jquery.js');
+		$doc->addScript(JUri::root().'/libraries/joomla/form/fields/fieldnamebindingsourceselect2.js');
 		// Initialize JavaScript field attributes.
 		$onchange = !empty($this->onchange) ? ' onchange="' . $this->onchange . '"' : '';
 
@@ -207,6 +209,7 @@ class JFormFieldFieldNamebindingsourceselect2 extends JFormField
 		$a_item->id='';
 		$a_item->text="None";
 		$options[]=$a_item;
+		$data=$this->form->getData();
 		foreach($currentDataSource as $item){
 			foreach($item->listField as $key=> $field){
 				if($template_list[$key]!=1) {
@@ -214,23 +217,68 @@ class JFormFieldFieldNamebindingsourceselect2 extends JFormField
 					$a_item->id = "{$key}";
 					$a_item->text = "{$key}";
 					$options[] = $a_item;
+
+
 					$template_list[$key]=1;
 				}
 			}
 		}
 
-		if($tags)
+
+
+		//get list button
+		$app=JFactory::getApplication();
+		$menu=$app->getMenu();
+		$menu_active=$menu->getActive();
+		$website=JFactory::getWebsite();
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('position.*')
+			->from('#__position_config AS position')
+			->where('position.website_id='.(int)$website->website_id)
+			->where('position.type='.$query->q('button'))
+			->where('position.menu_item_id='.(int)$menu_active->id);
+		$lits_button=$db->setQuery($query)->loadObjectList();
+		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+		foreach($lits_button as $button)
 		{
-			$selectOPtion['tags']=$options;
-		}else
-		{
-			$selectOPtion['data']=$options;
+			$params = new JRegistry;
+			$params->loadString($button->params);
+			$config_update=$params->get('config_update_data');
+			$config_update = up_json_decode($config_update, false, 512, JSON_PARSE_JAVASCRIPT);
+			JFormFieldFieldNamebindingsourceselect2::tree_node_config_update($config_update,$options);
 		}
-		$html='';
-		JHtml::_('formbehavior.select2','.select2[name="'.$this->name.'"]',null,$selectOPtion,JUserHelper::genRandomPassword());
+
+		$selectOPtion['tags']=$options;
+		$selectOPtion['width']= 'resolve';
+		//end get list style
+		$scriptId = "script_field_fieldnamebindingsourceselect2_" . JUserHelper::genRandomPassword();
 		ob_start();
 		?>
-		<input value="<?php echo htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') ?>" type="hidden" name="<?php echo $this->name ?>" class="select2"   />
+		<script type="text/javascript">
+			jQuery(document).ready(function ($) {
+				$('#field_fieldnamebindingsourceselect2_<?php echo $data->get('id',0) ?>').field_fieldnamebindingsourceselect2({
+					select2_option:<?php echo json_encode($selectOPtion) ?>,
+					field_name:"<?php echo $this->name ?>"
+				});
+
+
+			});
+		</script>
+		<?php
+		$script = ob_get_clean();
+		$script = JUtility::remove_string_javascript($script);
+		$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
+
+
+
+		$html='';
+		ob_start();
+		?>
+		<div id="field_fieldnamebindingsourceselect2_<?php echo $data->get('id',0) ?>">
+			<input style="width:250px" value="<?php echo htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') ?>"  name="<?php echo $this->name ?>" class=""   />
+		</div>
 
 		 <?php
 		$html=ob_get_clean();
@@ -244,6 +292,22 @@ class JFormFieldFieldNamebindingsourceselect2 extends JFormField
 	 *
 	 * @since   3.4
 	 */
+	public function tree_node_config_update($nodes,&$list_post=array())
+	{
+		foreach ($nodes as $node) {
+			$post_name=$node->post_name;
+			if($post_name!='') {
+				$a_item = new stdClass();
+				$a_item->id = $post_name;
+				$a_item->text = $post_name;
+				$list_post[] = $a_item;
+			}
+			if(is_array($node->children)&&count($node->children))
+			{
+				JFormFieldFieldNamebindingsourceselect2::tree_node_config_update($node->children,$list_post);
+			}
+		}
+	}
 	protected function getOptions()
 	{
 		$options = array();

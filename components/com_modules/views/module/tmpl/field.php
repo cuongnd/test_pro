@@ -2,7 +2,8 @@
 $app=JFactory::getApplication();
 $field=$app->input->get('field','','string');
 $modelModule= $this->getModel();
-$form=$modelModule->getForm();
+$form=$this->form;
+
 ob_start();
 $respone_array=array();
 $contents = $form->getInput($field);

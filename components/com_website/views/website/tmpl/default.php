@@ -20,7 +20,7 @@ $doc->addScriptDeclaration($js);
 
 
 ?>
-<div class="div-loading"></div>
+
 <div class="error"><i class="icon-error"></i><span class="content-error"></span></div>
 <div class="create-website">
     <form id="create-website" name="create_website" class="form-horizontal" role="form">

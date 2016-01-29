@@ -1,6 +1,224 @@
+(function ($) {
+
+    // here we go!
+    $.javascriptdisableedit = function (element, options) {
+
+        // plugin's default options
+        var defaults = {
+            maxDepth: 1,
+            element_ouput: '',
+            list_menu: [],
+            list_style: [],
+            current_screen_size:'',
+            menuItemActiveId:0,
+            currentScreenSize:"",
+            currentLink:""
+        }
+
+        // current instance of the object
+        var plugin = this;
+
+        // this will hold the merged default, and user-provided options
+        plugin.settings = {}
+
+        var $element = $(element), // reference to the jQuery version of DOM element
+            element = element;    // reference to the actual DOM element
+        // the "constructor" method that gets called when the object is created
+        plugin.init = function () {
+            plugin.settings = $.extend({}, defaults, options);
+            var currentScreenSize=plugin.settings.currentScreenSize;
+            plugin.reload_page_when_screen_size_null(currentScreenSize);
+            plugin.set_current_screen_size();
+            this.check_is_loaded_position();
+            var uri_current_link = $.url(currentLink);
+            var Itemid=uri_current_link.data.param.query.Itemid;
+            if(typeof Itemid!='undefined')
+            {
+                uri_current_link.data.param.query.Itemid=menuItemActiveId;
+            }
+            console.log(uri_current_link);
+
+            $(document).bind('keypress', function(event) {
+                //shift+q
+                if( event.which === 81 && event.shiftKey ) {
+                    plugin.auto_build_less_again();
+                    var find = '.css';
+                    var reg_find = new RegExp(find, 'g');
+                    var file_source_css = source_less.replace(reg_find, '');
+                    var $style=$('style[id*="'+file_source_css+'"][type="text/css"]');
+                    $style.remove();
+
+                }
+            });
+
+
+
+        }
+        plugin.reload_page_when_screen_size_null=function(currentScreenSize){
+            if(currentScreenSize=="")
+            {
+                var currentLink=plugin.settings.currentLink;
+                var uri_current_link =  new URI(currentLink);
+
+                var w = window,
+                    d = document,
+                    e = d.documentElement,
+                    g = d.getElementsByTagName('body')[0],
+                    x = w.innerWidth || e.clientWidth || g.clientWidth,
+                    y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+                currentScreenSize= x + 'X' + y;
+                uri_current_link.addQuery("screenSize", currentScreenSize);
+                //uri_current_link.data.param.query.screenSize=currentScreenSize;
+                //window.location.href=uri_current_link.toString();
+                console.log(uri_current_link.toString());
+
+
+            }
+
+        }
+        plugin.set_current_screen_size=function(){
+            var current_screen_size=plugin.settings.current_screen_size;
+            if (current_screen_size == '') {
+
+                var w = window,
+                    d = document,
+                    e = d.documentElement,
+                    g = d.getElementsByTagName('body')[0],
+                    x = w.innerWidth || e.clientWidth || g.clientWidth,
+                    y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+                plugin.settings.current_screen_size= x + 'X' + y;
+            }
+
+        }
+
+
+        plugin.check_is_loaded_position=function(){
+            var menuItemActiveId=plugin.settings.menuItemActiveId;
+
+            var current_screen_size= plugin.settings.current_screen_size;
+
+            if($('.main-container .block-item').length==0)
+            {
+                web_design = $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: this_host + '/index.php',
+                    data: (function () {
+
+                        dataPost = {
+                            option: 'com_utility',
+                            task: 'blocks.ajax_get_list_block',
+                            ajaxgetcontent: 1,
+                            Itemid:menuItemActiveId,
+                            screenSize:current_screen_size
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        if(response.e==1)
+                        {
+                            alert(response.m);
+                        }else
+                        {
+
+
+                        }
+
+                    }
+                });
+
+            }
+        }
+
+
+        plugin.auto_build_less_again= function () {
+            $.ajax({
+                type: "GET",
+                url: this_host + '/index.php',
+                data: (function () {
+
+                    dataPost = {
+                        option: 'com_utility',
+                        task: 'utility.ajaxBuildLess'
+                    };
+                    return dataPost;
+                })(),
+                beforeSend: function () {
+
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+
+                    plugin.reloadStylesheets('/layouts/website/css/'+source_less);
+
+                }
+            });
+
+        }
+
+        plugin.reloadStylesheets=function (href) {
+            var queryString = '?reload=' + new Date().getTime();
+            //href=href.replace(/\?.*|$/, queryString);
+            //console.log(href);
+            $('link[rel="stylesheet"][href="'+this_host+href+'"]').remove();
+            $('link[rel="stylesheet"][data-source="'+this_host+href+'"]').remove();
+            $('head').append('<link href="'+this_host+href.replace(/\?.*|$/, queryString)+'" data-source="'+this_host+href+'" type="text/css" rel="stylesheet">');
+        }
+        plugin.init();
+
+    }
+
+    // add the plugin to the jQuery.fn object
+    $.fn.javascriptdisableedit = function (options) {
+
+        // iterate through the DOM elements we are attaching the plugin to
+        return this.each(function () {
+            // if plugin has not already been attached to the element
+            if (undefined == $(this).data('javascriptdisableedit')) {
+                var plugin = new $.javascriptdisableedit(this, options);
+                $(this).data('javascriptdisableedit', plugin);
+
+            }
+
+        });
+
+    }
+
+})(jQuery);
+
+
+
+
+
 jQuery(document).ready(function ($) {
+
+    javascriptdisableedit={
+        /**
+         * Forces a reload of all stylesheets by appending a unique query string
+         * to each stylesheet URL.
+         */
+
+    };
     var screenX = 0;
     var sprFlat=$('body').sprFlatFrontEnd();
+
+
     function getScreenSize() {
         var w = window,
             d = document,
@@ -36,7 +254,7 @@ jQuery(document).ready(function ($) {
                 dataPost = {
                     ajaxgetcontent: 1,
                     screenSize: screenSize,
-                    editingWebsiteState: 1
+                    editingWebsiteState: 0
 
                 };
                 return dataPost;
@@ -56,20 +274,7 @@ jQuery(document).ready(function ($) {
 
                 });
 
-                var grid = $('.grid-stack').data('gridstack');
-                grid.remove_all();
 
-                response = $.parseJSON(response);
-                for (i = 0; i < response.length; i++) {
-                    item = $(response[i]);
-                    id = item.attr('data-position-id');
-                    gs_x = item.attr('data-gs-x');
-                    gs_y = item.attr('data-gs-y');
-                    width = item.attr('data-gs-width');
-                    height = item.attr('data-gs-height');
-                    grid.add_widget(response[i], gs_x, gs_y, width, height, false);
-
-                }
                 disableResizableAndMovable();
                 changeSizeComponent();
 

@@ -244,106 +244,143 @@ class JFormFieldGridformartheader extends JFormField
             >
             <div class="dd-handle">
                 <div class="dd-handle-move pull-left"><i class="fa-move"></i></div>
+                <span class="key_name"><?php echo "$column->column_title ( $column->column_name ) " ?></span>
                 <?php echo $column->id ?>
-                <button onclick="gridformartheader.remove_item_nestable(this)" class="dd-handle-remove pull-right"><i class="fa-remove"></i></button>
+                <button  class="dd-handle-remove remove_item_nestable dd-nodrag pull-right"><i class="fa-remove"></i></button>
+                <button  class="dd-handle-expand dd-nodrag pull-right expand_item_nestable"><i class="im-plus"></i></button>
+
             </div>
-            <div>
-                <button class="add_node" onclick="gridformartheader.add_node(this,'template')">add node</button>
-                <button style="display: none" class="add_sub_node">add sub node</button>
+            <div class="more_options dd-nodrag">
+                <div>
+                    <button class="add_node">add node</button>
+                    <button  class="add_sub_node">add sub node</button>
+                </div>
+
+                <table class="table">
+                    <tr>
+                        <td><label for="column_title"> Column title</label></td>
+                        <td><input class="form-control update_data_column" style="" type="text" data-property="column_title" name="column_title"    value="<?php echo $column->column_title ?>"/></td>
+                        <td><label for="column_name">Column name</label></td>
+                        <td><input class="column_name form-control update_data_column" name="column_name"  style="" type="text" data-property="column_name"    value="<?php echo $column->column_name ?>"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Type</label></td>
+                        <td>
+                            <select data-property="type"  name="data_type1"  class="data_type update_data_column">
+                                <?php foreach ($list_data_type as $type) { ?>
+                                    <option <?php echo $column->type == $type ? 'selected' : '' ?>
+                                        value="<?php echo $type ?>"><?php echo $type ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                        <td><label for="show_command">show command</label></td>
+                        <td><input data-tags="true" data-property="show_command"  class="show_command form-control update_data_column" name="show_command"  type="text"   value="<?php echo $column->show_command ?>"/></td>
+
+                    </tr>
+                    <tr>
+                        <td><label for="max_character">Max character</label></td>
+                        <td><input class="form-control update_data_column" data-property="max_character"  style="" name="max_character" type="text"   value="<?php echo $column->max_character ?>"/></td>
+                        <td><label for="column_width">Column width</label></td>
+                        <td><input type="text" class="form-control update_data_column" data-property="column_width"  name="column_width"  value="<?php echo $column->column_width ?>"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="link_key">Link key</label></td>
+                        <td><input type="text" class="link_key form-control update_data_column" name="link_key" data-property="link_key"   value="<?php echo $column->link_key ?>"/></td>
+                        <td><label for="editor">editor</label></td>
+                        <td><select data-property="editor" name="editor"   class="update_data_column">
+                                <?php foreach ($list_editor as $key => $editor) { ?>
+                                    <option <?php echo $column->editor_type == $key ? 'selected' : '' ?>
+                                        value="<?php echo $key ?>"><?php echo $editor ?></option>
+                                <?php } ?>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">datasource</label></td>
+                        <td>
+                            <select data-property="data_source_id"  class="update_data_column" style="width: 200px" >
+                                <?php foreach ($list_data_source as $key => $source) { ?>
+                                    <option <?php echo $column->data_source_id == $source->id ? 'selected' : '' ?>
+                                        value="<?php echo $source->id ?>"><?php echo $source->text ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                        <td><label for="key_data_source">key datasource</label></td>
+                        <td><input data-property="key_data_source" name="key_data_source"  type="text" class="form-control update_data_column"  value="<?php echo $column->key_data_source ?>"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Access</label></td>
+                        <td colspan="3">
+                            <?php echo JHtml::_('access.level', 'access_level',$column->access,array(
+                                "class"=>'column_access_level update_data_column',
+                                'style'=>'width:100px',
+                                "data-property"=>'access_level'
+                            )); ?>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><label for="text_data_source">text datasource</label></td>
+                        <td ><input type="text" data-property="text_data_source" name="text_data_source" class="form-control update_data_column"  value="<?php echo $column->text_data_source ?>"/></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><label for="filterable">filterable</label></td>
+                        <td ><input class="update_data_column noStyle not-bootstrap-toggle" data-property="filterable" name="filterable" <?php echo $column->filterable == 1 ? 'checked' : '' ?>  type="checkbox"  value="1"/></td>
+                        <td><label for="menu">menu</label></td>
+                        <td><input class="update_data_column noStyle not-bootstrap-toggle" data-property="menu" name="menu" <?php echo $column->menu == 1 ? 'checked' : '' ?>  type="checkbox"  value="1"/></td>
+
+                    </tr>
+                    <tr>
+                        <td><label for="sortable">sortable</label></td>
+                        <td ><input class="update_data_column noStyle not-bootstrap-toggle" data-property="sortable" name="sortable" <?php echo $column->sortable == 1 ? 'checked' : '' ?>  type="checkbox"  value="1"/></td>
+                        <td><label for="checked">button checked</label></td>
+                        <td ><input class="update_data_column noStyle not-bootstrap-toggle" data-property="checked" name="checked" <?php echo $column->button_checked == 1 ? 'checked' : '' ?>  type="checkbox"  value="1"/></td>
+
+
+                    </tr>
+                    <tr>
+                        <td><label for="locked">locked</label></td>
+                        <td ><input class="update_data_column noStyle not-bootstrap-toggle" data-property="locked" id="locked" name="locked" <?php echo $column->locked == 1 ? 'checked' : '' ?>  type="checkbox"  value="1"/></td>
+
+                        <td><label for="checked">Show</label></td>
+                        <td ><input class="update_data_column noStyle not-bootstrap-toggle" name="checked" data-property="show" id="" <?php echo $column->show == 1 ? 'checked' : '' ?>  type="checkbox"  value="1"/></td>
+
+
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <label for="">template data source item select</label>
+                            <textarea style="width: 400px; height: 150px;border: 1px solid #ccc" data-key="data_source_template_item_select" data-property="" id="data_source_template_item_select_texarea_<?php  echo $level.'_'.$i ?>" class="column_template_texarea update_data_column" >
+                                <?php echo $column->template?base64_decode($column->data_source_template_item_select):'' ?>
+                            </textarea>
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <td colspan="4"><label for="">Column template</label>
+                             <textarea style="width: 400px; height: 150px;border: 1px solid #ccc"  data-property="template"  data-key="template" id="column_template_texarea_<?php  echo $level.'_'.$i ?>" class="column_template_texarea  update_data_column" >
+                                <?php echo $column->template?base64_decode($column->template):'' ?>
+                            </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td colspan="4">
+                            <label for="">template data source item</label>
+                            <textarea style="width: 400px; height: 150px;border: 1px solid #ccc" data-property="" data-key="data_source_template_item" id="data_source_template_item_texarea_<?php  echo $level.'_'.$i ?>" class="column_template_texarea update_data_column" >
+                                <?php echo $column->template?base64_decode($column->data_source_template_item):'' ?>
+                            </textarea>
+                        </td>
+                    </tr>
+
+                </table>
             </div>
-            <label>Column title<input class="form-control" style="width: 200px" type="text"  onchange="gridformartheader.update_data_column(this,'column_title')"
-                                    value="<?php echo $column->column_title ?>"/></label>
-            <label>Column name <input class="column_name form-control"  style="width: 200px" type="text"  onchange="gridformartheader.update_data_column(this,'column_name')"
-                                     value="<?php echo $column->column_name ?>"/></label>
-
-            <label>show command <input data-tags="true" class="show_command form-control"  style="width: 200px" type="text"  onchange="gridformartheader.update_data_column(this,'show_command')"
-                                     value="<?php echo $column->show_command ?>"/></label>
-            <label>Type
-                <select style="width: 200px" name="data_type1" onchange="gridformartheader.update_data_column(this,'type')"
-                        class="data_type">
-                    <?php foreach ($list_data_type as $type) { ?>
-                        <option <?php echo $column->type == $type ? 'selected' : '' ?>
-                            value="<?php echo $type ?>"><?php echo $type ?></option>
-                    <?php } ?>
-                </select>
-            </label>
-            <label>
-                Access
-                <?php
-                echo JHtml::_('access.level', 'access_level',$column->access,array("class"=>'column_access_level'));
-                ?>
-            </label>
-
-            <label>Column template
-                <textarea style="width: 400px; height: 150px;border: 1px solid #ccc" data-key="template" id="column_template_texarea_<?php  echo $level.'_'.$i ?>" class="column_template_texarea " >
-                    <?php echo $column->template?base64_decode($column->template):'' ?>
-                </textarea>
-            </label>
-            <br/>
-            <label>Max character<input class="form-control" style="width: 100px" type="text"  onchange="gridformartheader.update_data_column(this,'max_character')"
-                                      value="<?php echo $column->max_character ?>"/></label>
-
-
-            <label>Column width<input type="text" class="form-control" onchange="gridformartheader.update_data_column(this,'column_width')"
-                                      value="<?php echo $column->column_width ?>"/></label>
-            <label>Link key<input type="text" class="link_key form-control" onchange="gridformartheader.update_data_column(this,'link_key')"
-                                  value="<?php echo $column->link_key ?>"/></label>
-            <label>editor
-                <select onchange="gridformartheader.update_data_column(this,'editor_type');">
-                    <?php foreach ($list_editor as $key => $editor) { ?>
-                        <option <?php echo $column->editor_type == $key ? 'selected' : '' ?>
-                            value="<?php echo $key ?>"><?php echo $editor ?></option>
-                    <?php } ?>
-                </select>
-            </label>
-
-            <label>datasource
-                <select style="width: 200px" onchange="gridformartheader.update_data_column(this,'data_source_id');gridformartheader.change_data_source(this)">
-                    <?php foreach ($list_data_source as $key => $source) { ?>
-                        <option <?php echo $column->data_source_id == $source->id ? 'selected' : '' ?>
-                            value="<?php echo $source->id ?>"><?php echo $source->text ?></option>
-                    <?php } ?>
-                </select>
-            </label>
-            <label>key datasource<input type="text" class="form-control" onchange="gridformartheader.update_data_column(this,'key_data_source')"
-                                        value="<?php echo $column->key_data_source ?>"/></label>
-            <label>text datasource<input type="text" class="form-control" onchange="gridformartheader.update_data_column(this,'text_data_source')"
-                                             value="<?php echo $column->text_data_source ?>"/></label>
-            <label> template data source item
-                <textarea style="width: 400px; height: 150px;border: 1px solid #ccc" data-key="data_source_template_item" id="data_source_template_item_texarea_<?php  echo $level.'_'.$i ?>" class="column_template_texarea " >
-                    <?php echo $column->template?base64_decode($column->data_source_template_item):'' ?>
-                </textarea>
-            </label>
-            <label> template data source item select
-                <textarea style="width: 400px; height: 150px;border: 1px solid #ccc" data-key="data_source_template_item_select" id="data_source_template_item_select_texarea_<?php  echo $level.'_'.$i ?>" class="column_template_texarea " >
-                    <?php echo $column->template?base64_decode($column->data_source_template_item_select):'' ?>
-                </textarea>
-            </label>
-
-
-            <label>Show<input <?php echo $column->show == 1 ? 'checked' : '' ?>  type="checkbox"
-                                                                                 onchange="gridformartheader.update_data_column(this,'show','checkbox')"
-                                                                                 value="1"/></label>
-            <label>filterable<input <?php echo $column->filterable == 1 ? 'checked' : '' ?>  type="checkbox"
-                                                                                 onchange="gridformartheader.update_data_column(this,'filterable','checkbox')"
-                                                                                 value="1"/></label>
-            <label>sortable<input <?php echo $column->sortable == 1 ? 'checked' : '' ?>  type="checkbox"
-                                                                                 onchange="gridformartheader.update_data_column(this,'sortable','checkbox')"
-                                                                                 value="1"/></label>
-            <label>menu<input <?php echo $column->menu == 1 ? 'checked' : '' ?>  type="checkbox"
-                                                                                 onchange="gridformartheader.update_data_column(this,'menu','checkbox')"
-                                                                                 value="1"/></label>
-            <label>button checked<input <?php echo $column->button_checked == 1 ? 'checked' : '' ?>  type="checkbox"
-                                                                                 onchange="gridformartheader.update_data_column(this,'button_checked','checkbox')"
-                                                                                 value="1"/></label>
-            <label>locked<input <?php echo $column->locked == 1 ? 'checked' : '' ?>  type="checkbox"
-                                                                                 onchange="gridformartheader.update_data_column(this,'locked','checkbox')"
-                                                                                 value="1"/></label>
-
 
             <?php
             echo ob_get_clean();
-            if (count($childNodes) > 0) {
+            if (is_array($childNodes) && count($childNodes) > 0) {
                 $level=$level+1;
                 JFormFieldGridformartheader::create_html_list_template($childNodes,$list_data_type,$list_data_source,$list_editor,$level);
             }
@@ -370,40 +407,47 @@ class JFormFieldGridformartheader extends JFormField
             >
             <div class="dd-handle">
                 <div class="dd-handle-move pull-left"><i class="fa-move"></i></div>
+                <span class="key_name"><?php echo "$column->column_name" ?></span>
                 <?php echo $column->id ?>
-                <button onclick="gridformartheader.remove_item_nestable(this)" class="dd-handle-remove pull-right"><i class="fa-remove"></i></button>
+                <button  class="dd-handle-remove remove_item_nestable dd-nodrag pull-right"><i class="fa-remove"></i></button>
+                <button  class="dd-handle-expand dd-nodrag pull-right expand_item_nestable"><i class="im-plus"></i></button>
             </div>
-            <div>
-                <button class="add_node" onclick="gridformartheader.add_node(this,'data_column')">add node</button>
-                <button style="display: none" class="add_sub_node">add sub node</button>
+            <div class="more_options dd-nodrag">
+                <div class="dd-nodrag">
+                    <button class="add_node" >add node</button>
+                    <button class="add_sub_node">add sub node</button>
+                </div>
+
+                <table class="table">
+                    <tr>
+                        <td>Column name</td>
+                        <td><input class="column_name form-control update_data_column" data-property="column_name"  style="width: 200px" type="text"
+                                   value="<?php echo $column->column_name ?>"/></td>
+                        <td>Type</td>
+                        <td>
+                            <select style="width: 200px"  name="data_type1" data-property="type"
+                                    class="data_type update_data_column">
+                                <?php foreach ($list_data_type as $type) { ?>
+                                    <option <?php echo $column->type == $type ? 'selected' : '' ?>
+                                        value="<?php echo $type ?>"><?php echo $type ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Access</td>
+                        <td><?php echo JHtml::_('access.level', 'access_level',$column->access,array("class"=>'column_access_level update_data_column'));?></td>
+                        <td>Editable</td>
+                        <td><input class="update_data_column noStyle not-bootstrap-toggle" data-property="editable" <?php echo $column->editable == 1 ? 'checked' : '' ?>  type="checkbox"  value="1"/></td>
+                    </tr>
+                    <tr>
+                        <td>Primary key</td>
+                        <td><input  <?php echo $column->primary_key == 1 ? 'checked' : '' ?>    class="primary-key update_data_column noStyle not-bootstrap-toggle" data-property="primary_key" data-level="<?php echo $level ?>" name="primary_key_<?php echo $level ?>"  type="radio"  value="<?php echo $column->primary_key == 1 ? 1 : 0 ?>"/></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
             </div>
-            <label>Column name<input class="column_name form-control"  style="width: 200px" type="text"  onchange="gridformartheader.update_data_column(this,'column_name')"
-                                     value="<?php echo $column->column_name ?>"/></label>
-            <label>Type
-                <select style="width: 200px" name="data_type1" onchange="gridformartheader.update_data_column(this,'type')"
-                        class="data_type">
-                    <?php foreach ($list_data_type as $type) { ?>
-                        <option <?php echo $column->type == $type ? 'selected' : '' ?>
-                            value="<?php echo $type ?>"><?php echo $type ?></option>
-                    <?php } ?>
-                </select>
-            </label>
-
-
-            <label>
-                Access
-                <?php
-                echo JHtml::_('access.level', 'access_level',$column->access,array("class"=>'column_access_level'));
-                ?>
-            </label>
-
-
-            <label>Editable<input <?php echo $column->editable == 1 ? 'checked' : '' ?>  type="checkbox"
-                                                                                         onchange="gridformartheader.update_data_column(this,'editable','checkbox')"
-                                                                                         value="1"/></label>
-            <label>Primary key<input <?php echo $column->primary_key == 1 ? 'checked' : '' ?> class="primary-key" data-level="<?php echo $level ?>" name="primary_key_<?php echo $level ?>"  type="radio"
-                                                                                              onchange="gridformartheader.primary_key_update_value(this);gridformartheader.call_on_change(this)"
-                                                                                              value="<?php echo $column->primary_key == 1 ? 1 : 0 ?>"/></label>
             <?php
             echo ob_get_clean();
             if (count($childNodes) > 0) {
@@ -465,17 +509,41 @@ class JFormFieldGridformartheader extends JFormField
         $doc->addScript(JUri::root() . "/libraries/cms/form/field/gridformartheader.js");
         $doc->addScript(JUri::root() . "/media/system/js/cassandraMAP-cassandra/lib/cassandraMap.js");
         $doc->addScript(JUri::root() . "/media/jui_front_end/js/select2.jquery.js");
+        //get data
         $data=$this->form->getData();
-        $data_source_id = $data->get('params.data.bindingSource',0);
-        JTable::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/tables');
-        $tableDataSource=JTable::getInstance('DataSource','JTable');
-        $tableDataSource->load($data_source_id);
+        //end get data
 
-        $datasource= $tableDataSource->datasource;
-        require_once JPATH_ROOT.'/components/com_phpmyadmin/helpers/datasource.php';
-        $datasource=DataSourceHelper::OverWriteDataSource($datasource);
-        $query=$db->getQuery(true);
+        //get bindingsource
+        $bindingSource = $data->get('params.data.bindingSource',0);
+        //end get bindingsource
 
+        //get list field by datasource
+        JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/models');
+        $modalDataSource=JModelLegacy::getInstance('DataSource','phpMyAdminModel');
+
+        $list_field=$modalDataSource->list_field_by_data_source($bindingSource,$data->get('id',0));
+        //end get list field
+
+        //format list field to girdfomartheader
+        $list_key=array();
+        foreach($list_field as $key=>$value) {
+
+            if (JUtility::isJson($value)) {
+                $item1=json_decode($value);
+                foreach($item1 as $key1=>$value1) {
+                    $list_key[]=array(
+                        'id'=>$key.'.'.$key1,
+                        'text'=>$key.'.'.$key1
+                    );
+                }
+            }else{
+                $list_key[]=array(
+                    'id'=>$value,
+                    'text'=>$value
+                );
+            }
+        }
+        //end format list field to girdfomartheader
 
         //get menu select
         $website=JFactory::getWebsite();
@@ -490,41 +558,13 @@ class JFormFieldGridformartheader extends JFormField
 
         $db->setQuery($query);
         $list_menu=$db->loadColumn();
+
         //end get menu
+        $gridformartheader=$this->value;
+        $gridformartheader=base64_decode($gridformartheader);
 
-
-
-
-        $query->setQuery(trim($datasource));
-        $db->setQuery($query);
-        //echo $query->dump();
-        if(trim($query)=='')
-        {
-            return array();
-        }
-        $item=$db->loadObject();
-        $list_key=array();
-        foreach($item as $key=>$value) {
-
-            if (JUtility::isJson($value)) {
-                $item1=json_decode($value);
-                foreach($item1 as $key1=>$value1) {
-                    $list_key[]=array(
-                        'id'=>$key.'.'.$key1,
-                        'text'=>$key.'.'.$key1
-                    );
-                }
-            }else{
-                $list_key[]=array(
-                    'id'=>$key,
-                    'text'=>$key
-                );
-            }
-        }
-
-
-
-        $mode_select_column = $this->form->getData()->get('params')->mode_select_column;
+        $gridformartheader=json_decode($gridformartheader);
+        $mode_select_column = $gridformartheader->mode_select_column;
         require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
         $object_mode_select_column = (array)up_json_decode($mode_select_column, false, 512, JSON_PARSE_JAVASCRIPT);
 
@@ -537,7 +577,7 @@ class JFormFieldGridformartheader extends JFormField
             $object_mode_select_column[]=$column;
         }
 
-        $mode_select_column_template = $this->form->getData()->get('params')->mode_select_column_template;
+        $mode_select_column_template = $gridformartheader->mode_select_column_template;
         $object_mode_select_column_template = (array)up_json_decode($mode_select_column_template, false, 512, JSON_PARSE_JAVASCRIPT);
 
 
@@ -580,24 +620,32 @@ class JFormFieldGridformartheader extends JFormField
             $list_icon[$key]='<i class="'.$value.'"></i>'.$value;
         }*/
         $tables=$db->getTableList();
-
-        $scriptId = "lib_cms_form_fields_grid_formart_header" . '_' . JUserHelper::genRandomPassword();
+        $scriptId = "script_field_gridformartheader_" . $data->get('id',0);
+        ob_start();
         ?>
         <script type="text/javascript">
-            function <?php echo $scriptId ?>() {
-                gridformartheader.data_command =<?php echo json_encode($list_command) ?>;
-                gridformartheader.data_column =<?php echo json_encode($list_key) ?>;
-                gridformartheader.list_icon =<?php echo json_encode($list_icon) ?>;
-                gridformartheader.list_menu =<?php echo json_encode($list_menu) ?>;
+            jQuery(document).ready(function ($) {
+                $('#field__gridformartheader_<?php echo $data->get('id',0) ?>').field_gridformartheader({
+                    data_command :<?php echo json_encode($list_command) ?>,
+                    data_column :<?php echo json_encode($list_key) ?>,
+                    list_icon :<?php echo json_encode($list_icon) ?>,
+                    list_menu:<?php echo json_encode($list_menu) ?>,
+                    field_name:"<?php echo $this->name ?>",
+                    field_id:"<?php echo $this->id ?>"
+                });
 
-                gridformartheader.init_gridformartheader();
-            }
-            <?php echo $scriptId ?>();
+
+            });
         </script>
         <?php
-        $script_content=ob_get_clean();
-        $script_content=JUtility::remove_string_javascript($script_content);
-        $doc->addScriptDeclaration($script_content, "text/javascript", $scriptId);
+        $script = ob_get_clean();
+        $script = JUtility::remove_string_javascript($script);
+        $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
+
+
+
+
 
 
 
@@ -637,39 +685,62 @@ class JFormFieldGridformartheader extends JFormField
         $html = '';
         ob_start();
         ?>
+        <div id="field__gridformartheader_<?php echo $data->get('id',0) ?>">
+            <div class="cf nestable-lists">
+                <div class="row">
+                    <div class="col-md-6">
 
-        <div class="cf nestable-lists">
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>config column template</h3>
-                    <div class="dd " id="gridformartheader2">
-                        <?php if(count((array)$object_mode_select_column_template)){
-                            $level=1;
-                            JFormFieldGridformartheader::create_html_list_template($object_mode_select_column_template,$list_data_type,$list_data_source,$list_editor,$level);
-                        }else{ ?>
-                            <div class="dd-empty"></div>
-                        <?php } ?>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>config column template</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <label>show more option<input  type="checkbox" checked class="show_more_options"></label>
+                            </div>
+                        </div>
 
-                </div>
-                <div class="col-md-6">
-                    <h3>config column data</h3>
-                    <div class="dd " id="gridformartheader1">
-                        <?php if(count((array)$object_mode_select_column)){
-                            $level=1;
-                            JFormFieldGridformartheader::create_html_list_date_column($object_mode_select_column,$list_data_type,$list_data_source,$list_editor,$level);
-                        }else{ ?>
-                            <div class="dd-empty"></div>
-                        <?php } ?>
+
+
+                        <div class="dd " id="gridformartheader2">
+                            <?php if(count((array)$object_mode_select_column_template)){
+                                $level=1;
+                                JFormFieldGridformartheader::create_html_list_template($object_mode_select_column_template,$list_data_type,$list_data_source,$list_editor,$level);
+                            }else{ ?>
+                                <div class="dd-empty"></div>
+                            <?php } ?>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>config column data</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <label>show more option<input  type="checkbox" checked class="show_more_options"></label>
+                            </div>
+                        </div>
+
+
+
+                        <div class="dd " id="gridformartheader1">
+                            <?php if(count((array)$object_mode_select_column)){
+                                $level=1;
+                                JFormFieldGridformartheader::create_html_list_date_column($object_mode_select_column,$list_data_type,$list_data_source,$list_editor,$level);
+                            }else{ ?>
+                                <div class="dd-empty"></div>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
+            <input type="hidden" name="mode_select_column" value="<?php echo $mode_select_column ?>"  id="gridformartheader1-output"/>
+            <input type="hidden" name="<?php echo $this->name ?>" value="<?php echo $this->value ?>"  id="<?php echo $this->id ?>"/>
+            <input type="hidden" name="mode_select_column_template" value="<?php echo $mode_select_column_template ?>" id="gridformartheader2-output"/>
         </div>
-
-        <input type="hidden" name="jform[params][mode_select_column]" value="<?php echo $mode_select_column ?>"  id="gridformartheader1-output"/>
-        <input type="hidden" name="jform[params][mode_select_column_template]" value="<?php echo $mode_select_column_template ?>" id="gridformartheader2-output"/>
-
 
 
 

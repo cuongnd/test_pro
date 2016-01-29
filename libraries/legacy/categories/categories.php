@@ -233,7 +233,12 @@ class JCategories
 
 		if ($this->_options['access'])
 		{
-			$query->where('c.access IN (' . implode(',', $user->getAuthorisedViewLevels()) . ')');
+			$groups = implode(',', $user->getAuthorisedViewLevels());
+			if($groups!='')
+			{
+				$query->where('c.access IN (' . $groups . ')');
+			}
+
 		}
 
 		if ($this->_options['published'] == 1)
@@ -960,9 +965,12 @@ class JCategoryNode extends JObject
 	public function setAllLoaded()
 	{
 		$this->_allChildrenloaded = true;
-		foreach ($this->_children as $child)
+		if(count($this->_children))
 		{
-			$child->setAllLoaded();
+			foreach ($this->_children as $child)
+			{
+				$child->setAllLoaded();
+			}
 		}
 	}
 

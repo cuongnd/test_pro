@@ -18,7 +18,7 @@ defined('_JEXEC') or die(__FILE__);
  * @link        http://www.w3.org/TR/html-markup/command.radio.html#command.radio
  * @since       11.1
  */
-class JFormFieldRadio extends JFormField
+class JFormFieldRadio  extends JFormField
 {
 	/**
 	 * The form field type.
@@ -71,7 +71,7 @@ class JFormFieldRadio extends JFormField
 				. htmlspecialchars($option->value, ENT_COMPAT, 'UTF-8') . '"' . $checked . $class . $required . $onclick
 				. $onchange . $disabled . ' />';
 
-			$html[] = '<label for="' . $this->id . $i . '"' . $class . ' >'
+			$html[] = '<label for="' . $this->id . $i . '"' . $class . '  >'
 				. JText::alt($option->text, preg_replace('/[^a-zA-Z0-9_\-]/', '_', $this->fieldname)) . '</label>';
 
 			$required = '';

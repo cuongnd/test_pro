@@ -1,69 +1,91 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<extension type="element" version="3.1" client="site">
-    <name>tabs</name>
-    <author>Joomla! Project</author>
-    <creationDate>July 2004</creationDate>
-    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>3.0.0</version>
-    <description>MOD_CUSTOM_XML_DESCRIPTION</description>
-    <customContent />
-    <files>
-        <filename module="mod_custom">mod_custom.php</filename>
-        <filename>index.html</filename>
-        <folder>tmpl</folder>
-    </files>
-    <languages>
-        <language tag="en-GB">en-GB.mod_custom.ini</language>
-        <language tag="en-GB">en-GB.mod_custom.sys.ini</language>
-    </languages>
-    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
-    <config>
-        <fields name="params">
-            <fields name="data">
-                <fieldset name="data"  description="Data config" label="Data config">
-                    <field name="text_from"  type="bindingSource" tags="0" maximumSelectionSize="1" description="Text from" label="Text from"/>
-                    <field name="text_to"  type="bindingSource" tags="0" maximumSelectionSize="1" description="Text to" label="Text to"/>
-                </fieldset>
-            </fields>
-        </fields>
-        <fields name="params">
-            <fieldset name="element"  description="Element config" label="Element config">
-                <field name="label" type="text" default="lable here" label="Label"/>
-                <field name="size" type="list" label="Size">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </field>
-                <field name="name_from" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name from"/>
-                <field name="name_from" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name from"/>
-                <field name="name_to" type="fieldnamebindingsourceselect2" tags="1" maximumSelectionSize="1" default="" label="Name to"/>
-                <field name="id" type="text" default="" label="Id"/>
-                <field name="text_from" type="number" default="0" label="Text from"/>
-                <field name="text_to" type="number" default="100" label="Text to"/>
-                <field name="type" type="list"  label="type" onchange="" description="Type" default="double">
-                    <option value="double">double</option>
-                    <option value="single">single</option>
-                </field>
-                <field name="enable_resizable_for_control" type="list"  label="Enable resizable for control" onchange="element_ui_div.on_off_resizable_for_control($(this))" description="Enable resizable for control" default="0">
-                    <option value="1">JYES</option>
-                    <option value="0">JNO</option>
-                </field>
+<config><fields name="params"><fields name="data">
+					<field type="bindingSource" readonly="false" label="From" default=""
+						   name="text_from"
 
-            </fieldset>
-        </fields>
+												>
+											</field>
+					<field type="checkbox" label="From" default="0"
+						   name="enable_text_from" onchange="">
 
+					</field>
 
-    </config>
-</extension>
+									
+					<field type="bindingSource" readonly="false" label="To" default=""
+						   name="text_to"
+
+												>
+											</field>
+					<field type="checkbox" label="To" default="0"
+						   name="enable_text_to" onchange="">
+
+					</field>
+
+									</fields>				<fields name="element_config">
+					<field type="fieldnamebindingsourceselect2" readonly="false" label="Name from" default=""
+						   name="name_from"
+
+												>
+											</field>
+					<field type="checkbox" label="Name from" default="0"
+						   name="enable_name_from" onchange="">
+
+					</field>
+
+									
+					<field type="fieldnamebindingsourceselect2" readonly="false" label="Name to" default=""
+						   name="name_to"
+
+												>
+											</field>
+					<field type="checkbox" label="Name to" default="0"
+						   name="enable_name_to" onchange="">
+
+					</field>
+
+									
+					<field type="list" readonly="false" label="Type" default=""
+						   name="type"
+
+													 multiple="false" 													 size="1" 												>
+																							<option value="double">double</option>
+																																<option value="single">single</option>
+																				</field>
+					<field type="checkbox" label="Type" default="0"
+						   name="enable_type" onchange="">
+
+					</field>
+
+									
+					<field type="integer" readonly="false" label="step" default=""
+						   name="step"
+
+																										 last="10" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="step" default="0"
+						   name="enable_step" onchange="">
+
+					</field>
+
+									
+					<field type="number" readonly="false" label="Min" default="0"
+						   name="min"
+
+												>
+											</field>
+					<field type="checkbox" label="Min" default="0"
+						   name="enable_min" onchange="">
+
+					</field>
+
+									
+					<field type="number" readonly="false" label="Max" default=""
+						   name="max"
+
+												>
+											</field>
+					<field type="checkbox" label="Max" default="0"
+						   name="enable_max" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

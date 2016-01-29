@@ -7,7 +7,7 @@ jQuery(document).ready(function($){
                 self=$(this);
                 self.bootstrapSwitch();
             });
-            element_ui_button.list_function_run_befor_submit.push(element_ui_yesno.update_data);
+            Joomla_post.list_function_run_befor_submit.push(element_ui_yesno.update_data);
         },
         update_data:function(data_submit)
         {

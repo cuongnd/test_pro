@@ -148,6 +148,17 @@
 		</field>
 
 		<field
+			name="hidden"
+			type="radio"
+			label="hidden"
+			description="hidden"
+			default="0"
+			class="btn-group btn-group-yesno"
+			filter="integer">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
 			name="home"
 			type="radio"
 			label="COM_MENUS_ITEM_FIELD_HOME_LABEL"

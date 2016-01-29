@@ -85,6 +85,7 @@ class JFormFieldElementType extends JFormFieldList
 		$listFolder=JFolder::folders(JPATH_ROOT.'/media/elements');
 
 		$option=array();
+		$options[] = JHTML::_('select.option', "","Select element");
 		foreach($listFolder as $folder)
 		{
 			$options[] = JHTML::_('select.option', '<OPTGROUP>',$folder);
@@ -99,7 +100,7 @@ class JFormFieldElementType extends JFormFieldList
 
 		}
 		// Merge any additional options in the XML definition.
-		return JHtml::_('select.genericlist', $options, $name,  trim($attr),'value','text', $ui_path);
+		return JHtml::_('select.genericlist', $options, $this->name,  trim($attr),'value','text', $ui_path);
 	}
 
 	/**

@@ -1,0 +1,34 @@
+<config><fields name="params">
+					<field type="browserserver" readonly="false" label="Image source" default=""
+						   name="image_source"
+
+													 get_image_type="path" 												>
+											</field>
+					<field type="checkbox" label="Image source" default="0"
+						   name="enable_image_source" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Link name" default=""
+						   name="text"
+
+												>
+											</field>
+					<field type="checkbox" label="Link name" default="0"
+						   name="enable_text" onchange="">
+
+					</field>
+
+									
+					<field type="menuitem" readonly="false" label="Link to" default=""
+						   name="link_to_page"
+
+												>
+											</field>
+					<field type="checkbox" label="Link to" default="0"
+						   name="enable_link_to_page" onchange="">
+
+					</field>
+
+									</fields>				</config>

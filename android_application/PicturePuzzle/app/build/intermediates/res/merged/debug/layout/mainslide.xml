@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>           
+    <ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"	    
+		    android:id="@+id/vfMainFliper1">
+		    
+			<include 
+		        android:id="@+id/tablayout0"
+		        layout="@layout/main" />
+		        
+		    <include
+		        android:id="@+id/tablayout1"
+		        layout="@layout/listpicture" />
+		    
+			<include
+		        android:id="@+id/tablayout2"
+		        layout="@layout/board" />
+			
+			 
+			<include
+		        android:id="@+id/tablayout3"
+		        layout="@layout/viewpicture" />
+		   
+		     
+		             		     
+		</ViewFlipper>

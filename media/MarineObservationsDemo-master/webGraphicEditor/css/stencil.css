@@ -3,12 +3,6 @@
    border-right: 1px solid lightgray;
    background-color: hsla(220,11%,97%,.95);
    color: #bcbcbc;
-   overflow-y: scroll;
-   height: 700px;
-}
-.stencil-container.stencil-subhead-fixed
-{
-
 }
 .stencil-container > label {
    display: block;
@@ -21,6 +15,7 @@
 }
 .stencil-container > .btn-expand,
 .stencil-container > .btn-collapse {
+   position: absolute;
    top: 2px;
    left: 2px;
    background: none;
@@ -34,7 +29,6 @@
    margin: 0;
    padding: 0;
    border: 1px solid #4f4f4f;
-
 }
 .stencil-container > .btn-collapse {
    left: 25px;
@@ -68,7 +62,6 @@
 .stencil .group .elements {
    margin-left: -10px;
    background: transparent;
-   overflow-y: scroll;
 }
 
 /* Hide some nodes of elements in stencil. */

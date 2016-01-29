@@ -470,13 +470,13 @@ class AkeebaModelCpanels extends F0FModel
 
 		// Otherwise, try to enable it and report false (so the user knows what he did wrong)
 		$pluginObject = (object)array(
-			'extension_id'	=> $plugin->extension_id,
+			'id'	=> $plugin->id,
 			'enabled'		=> 1
 		);
 
 		try
 		{
-			$result = $db->updateObject('#__extensions', $pluginObject, 'extension_id');
+			$result = $db->updateObject('#__extensions', $pluginObject, 'id');
 			// Do not remove this line. We need to tell the user he's doing something wrong.
 			$result = false;
 		}
@@ -526,7 +526,7 @@ class AkeebaModelCpanels extends F0FModel
 		// Get the extension ID for our component
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
-		$query->select('extension_id')
+		$query->select('id')
 			->from('#__extensions')
 			->where($db->qn('element') . ' = ' . $db->q('com_akeeba'));
 		$db->setQuery($query);
@@ -545,9 +545,9 @@ class AkeebaModelCpanels extends F0FModel
 			return false;
 		}
 
-		$extension_id = array_shift($ids);
+		$id = array_shift($ids);
 
-		$this->setState('extension_id', $extension_id);
+		$this->setState('id', $id);
 
 		if (!defined('FOF_INCLUDED'))
 		{
@@ -562,7 +562,7 @@ class AkeebaModelCpanels extends F0FModel
 		// Do I have messages?
 		$pimModel = FOFModel::getTmpInstance('Messages', 'PostinstallModel');
 		$pimModel->savestate(false);
-		$pimModel->setState('eid', $extension_id);
+		$pimModel->setState('eid', $id);
 
 		return (count($pimModel->getList()) >= 1);
 	}

@@ -155,6 +155,7 @@ abstract class JModelForm extends JModelLegacy
 	 */
 	protected function loadForm($name, $source = null, $options = array(), $clear = false, $xpath = false)
 	{
+
 		// Handle the optional arguments.
 		$options['control'] = JArrayHelper::getValue($options, 'control', false);
 
@@ -164,6 +165,7 @@ abstract class JModelForm extends JModelLegacy
 		// Check if we can use a previously loaded form.
 		if (isset($this->_forms[$hash]) && !$clear)
 		{
+
 			return $this->_forms[$hash];
 		}
 
@@ -175,6 +177,8 @@ abstract class JModelForm extends JModelLegacy
 
 		try
 		{
+
+
 			$form = JForm::getInstance($name, $source, $options, false, $xpath);
 
 			if (isset($options['load_data']) && $options['load_data'])
@@ -189,7 +193,6 @@ abstract class JModelForm extends JModelLegacy
 
 			// Allow for additional modification of the form, and events to be triggered.
 			// We pass the data because plugins may require it.
-
 			$this->preprocessForm($form, $data);
 
 			// Load the data into the form after the plugins have operated.

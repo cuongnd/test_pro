@@ -1,8 +1,10 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 // no direct access
@@ -125,7 +127,7 @@ defined('_JEXEC') or die('Restricted access');
         </table>
 
         <input type="hidden" name="option" value="com_jfbconnect"/>
-        <input type="hidden" name="view" value="<?php echo JRequest::getVar('view'); ?>"/>
+        <input type="hidden" name="view" value="notification"/>
         <input type="hidden" name="task" value="<?php echo JRequest::getVar('task'); ?>"/>
         <input type="hidden" name="requestid" value="<?php echo JRequest::getVar('requestid');?>"/>
         <input type="hidden" name="fbuserto" value="<?php echo JRequest::getVar('fbuserto');?>"/>

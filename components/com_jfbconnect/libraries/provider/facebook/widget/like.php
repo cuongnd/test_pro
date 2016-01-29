@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -12,6 +15,7 @@ class JFBConnectProviderFacebookWidgetLike extends JFBConnectProviderFacebookWid
     var $name = "Like Button";
     var $systemName = "like";
     var $className = "jfbclike";
+    var $tagName = "jfbclike";
     var $examples = array (
         '{JFBCLike}',
         '{JFBCLike href=http://www.sourcecoast.com layout=standard show_faces=true share=true width=300 action=like colorscheme=light ref=homepage kid_directed_site=true}'
@@ -19,7 +23,7 @@ class JFBConnectProviderFacebookWidgetLike extends JFBConnectProviderFacebookWid
 
     protected function getTagHtml()
     {
-        $this->provider->needsCss = true;
+        JFBCFactory::addStylesheet('jfbconnect.css');
         $tag = '<div class="fb-like"';
         $tag .= $this->getField('href', 'url', null, SCSocialUtilities::getStrippedUrl(), 'data-href');
         $tag .= $this->getField('show_faces', null, 'boolean', 'true', 'data-show-faces');

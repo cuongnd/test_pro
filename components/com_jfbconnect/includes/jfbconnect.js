@@ -1,6 +1,6 @@
 /**
  * @package JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
+ * @copyright (C) 2009-2014 by Source Coast - All rights reserved
  * @website http://www.sourcecoast.com/
  * @website http://www.sourcecoast.com/joomla-facebook/
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
@@ -77,21 +77,21 @@ var jfbc = {
                         jfbcJQuery(document).one("jfbc-permissions-fetched", function ()
                         {
                             jfbc.debug.log("Login checks");
-                            if (jfbc.permissions.check('email'))
+//                            if (jfbc.permissions.check('email'))
+//                            {
+                            jfbc.debug.log("Logging in");
+                            if (jfbc.login.show_modal == '1')
                             {
-                                jfbc.debug.log("Logging in");
-                                if (jfbc.login.show_modal == '1')
+                                // First, hide the SCLogin modal if it's there
+                                jfbcJQuery('#login-modal').modal('hide');
+                                jfbcJQuery("#jfbcLoginModal").css({"margin-left": function ()
                                 {
-                                    // First, hide the SCLogin modal if it's there
-                                    jfbcJQuery('#login-modal').modal('hide');
-                                    jfbcJQuery("#jfbcLoginModal").css({"margin-left": function ()
-                                    {
-                                        return -(jfbcJQuery("#jfbcLoginModal").width() / 2)
-                                    }});
-                                    jfbcJQuery("#jfbcLoginModal").modal();
-                                }
-                                self.location = jfbc.base + 'index.php?option=com_jfbconnect&task=authenticate.login&provider=facebook&return=' + jfbc.return_url + '&' + jfbc.token + '=1';
+                                    return -(jfbcJQuery("#jfbcLoginModal").width() / 2)
+                                }});
+                                jfbcJQuery("#jfbcLoginModal").modal();
                             }
+                            self.location = jfbc.base + 'index.php?option=com_jfbconnect&task=authenticate.login&provider=facebook&return=' + jfbc.return_url + '&' + jfbc.token + '=1';
+//                            }
                             jfbc.debug.log("Done with checks");
                         });
                         // Start the check_permissions asynchronous check. This will fire the code above.
@@ -167,9 +167,21 @@ var jfbc = {
                 var permissions = "";
                 if (response.data !== undefined && jfbcJQuery.isArray(response.data))
                 {
-                    jfbcJQuery.each(response.data[0], function (k, v)
+                    jfbcJQuery.each(response.data, function (k, v)
                     {
-                        permissions = permissions + '","' + k;
+                        // Check for v2.0 of Graph API
+                        if ('permission' in v)
+                        {
+                            if (v.status == "granted")
+                                permissions = permissions + '","' + v.permission;
+                        }
+                        else
+                        {
+                            jfbcJQuery.each(v, function (perm, value)
+                            {
+                                permissions = permissions + '","' + perm;
+                            });
+                        }
                     });
                     // Can't use JSON.stringify as it's incompatible with IE7 :(
                     permissions = permissions + '"';
@@ -196,17 +208,63 @@ var jfbc = {
     },
 
     social: {
-        comment: {
-            create: function (response)
+        facebook: {
+            comment: {
+                create: function (response)
+                {
+                    var url = 'option=com_jfbconnect&task=social.comment&type=create&href=' + encodeURIComponent(escape(response.href)) + '&commentID=' + response.commentID + '&title=' + document.title;
+                    jfbc.util.ajax(url, null);
+                },
+                remove: function (response)
+                {
+                    var url = 'option=com_jfbconnect&task=social.comment&type=remove&href=' + encodeURIComponent(escape(response.href)) + '&commentID=' + response.commentID + '&title=' + document.title;
+                    jfbc.util.ajax(url, null);
+                }
+            },
+            like: {
+                create: function (response)
+                {
+                    var url = 'option=com_jfbconnect&task=social.share&provider=facebook&share=like&type=create&href=' + encodeURIComponent(escape(response)) + '&title=' + document.title;
+                    jfbc.util.ajax(url, null);
+                },
+                remove: function (response)
+                {
+                    var url = 'option=com_jfbconnect&task=social.share&provider=facebook&share=like&type=remove&href=' + encodeURIComponent(escape(response)) + '&title=' + document.title;
+                    jfbc.util.ajax(url, null);
+                }
+            }
+        },
+        google: {
+            plusone: function (response)
             {
-                var url = 'option=com_jfbconnect&task=social.commentCreate&href=' + encodeURIComponent(escape(response.href)) + '&commentID=' + response.commentID + '&title=' + document.title;
+                var type;
+                if (response.state == "on")
+                    type = "create";
+                else if (response.state == "off")
+                    type = "remove";
+                else
+                    return;
+
+                var url = 'option=com_jfbconnect&task=social.share&provider=google&share=plusone&type=' + type + '&href=' + encodeURIComponent(escape(response.href)) + '&title=' + document.title;
                 jfbc.util.ajax(url, null);
             }
         },
-        like: {
-            create: function (response)
+        linkedin: {
+            share: function ()
             {
-                var url = 'option=com_jfbconnect&task=social.likeCreate&href=' + encodeURIComponent(escape(response)) + '&title=' + document.title;
+                var href = document.location.href;
+                var url = 'option=com_jfbconnect&task=social.share&provider=linkedin&share=share&type=create&href=' + encodeURIComponent(escape(href)) + '&title=' + document.title;
+                jfbc.util.ajax(url, null);
+            }
+        },
+        twitter: {
+            tweet: function (intentEvent)
+            {
+                if (!intentEvent) return;
+//            var id = intentEvent.tweet_id;
+//            var username = intentEvent.screen_name;
+                var href = document.location.href;
+                var url = 'option=com_jfbconnect&task=social.share&provider=twitter&share=tweet&type=create&href=' + encodeURIComponent(escape(href)) + '&title=' + document.title;
                 jfbc.util.ajax(url, null);
             }
         },
@@ -658,9 +716,9 @@ var jfbc = {
                             {
                                 response(results)
                             }).fail(function ()
-                                {
-                                    response([])
-                                });
+                            {
+                                response([])
+                            });
                         }
                     });
                     jfbc.share.place.autocomplete.search_field.data("ui-autocomplete")._renderItem = jfbc.share.place.autocomplete.renderItem;
@@ -680,9 +738,9 @@ var jfbc = {
                     {
                         jfbcJQuery(this).addClass("ui-state-focus")
                     }).mouseleave(function ()
-                        {
-                            jfbcJQuery(this).removeClass("ui-state-focus")
-                        });
+                    {
+                        jfbcJQuery(this).removeClass("ui-state-focus")
+                    });
                     if (place.picture !== undefined)
                     {
                         li.append(jfbcJQuery("<img />").attr({src: place.picture, alt: place.label, width: 25, height: 25}));
@@ -823,10 +881,10 @@ var jfbc = {
                                 jfbc.debug.log(response);
                                 response(results);
                             }).fail(function ()
-                                {
-                                    jfbc.debug.log(response);
-                                    response([])
-                                });
+                            {
+                                jfbc.debug.log(response);
+                                response([])
+                            });
                         }
                     });
                     jfbc.share.friends.autocomplete.search_field.data("ui-autocomplete")._renderItem = jfbc.share.friends.autocomplete.renderItem;
@@ -851,9 +909,9 @@ var jfbc = {
                     {
                         jfbcJQuery(this).addClass("ui-state-focus")
                     }).mouseleave(function ()
-                        {
-                            jfbcJQuery(this).removeClass("ui-state-focus")
-                        }).append(
+                    {
+                        jfbcJQuery(this).removeClass("ui-state-focus")
+                    }).append(
                             jfbcJQuery("<img />").attr({src: (friend.picture === undefined) ? "https:\/\/graph.facebook.com\/" + friend.value + "\/picture" : friend.picture, alt: friend.label, width: 25, height: 25})).append(
                             jfbcJQuery("<a />").addClass("text").text(friend.label)
                         ).appendTo(ul);
@@ -861,60 +919,10 @@ var jfbc = {
             }
         }
     },
-
-    toolbar: {
-        close: {
-            display: function ()
-            {
-                jfbcJQuery("#social-toolbar").hide();
-            }
-        },
-        meta: {
-            display: function ()
-            {
-                if (jfbcJQuery('#social-meta').css('display') == 'none')
-                {
-                    jfbcJQuery('#social-meta').accordion();
-                    jfbcJQuery('#social-meta').css('display', 'block');
-                    jfbcJQuery('#social-meta').accordion('refresh');
-                }
-                else
-                    jfbcJQuery('#social-meta').css('display', 'none');
-            }
-        },
-        post: {
-            display: function ()
-            {
-                jfbcJQuery('#social-post-container').html("")
-                    .append(jfbcJQuery("<div />").attr("id", "progressbar").progressbar({value: false}))
-                    .css('display', 'block')
-                    .dialog({title: "Loading..."});
-
-                var query = 'option=com_jfbconnect&task=ajax.fetch&library=toolbar.post&subtask=getHtml';
-                jfbc.util.ajax(query, jfbc.popup.display);
-            },
-            submit: function ()
-            {
-                jfbcJQuery("#social-post-container").dialog({buttons: null });
-                var form = jfbcJQuery('#social-post-form');
-                var url = form.attr("action") + '&' + jfbc.token + '=1';
-                var data = form.serializeArray();
-                data.push({name: 'link', value: window.location.href});
-                jfbcJQuery.post(url, data).done(function (ret)
-                {
-                    jfbcJQuery("#social-post-popup").html(ret);
-                    jfbcJQuery("#social-post-container").dialog({buttons: {Close: function ()
-                    {
-                        jfbcJQuery(this).dialog("close");
-                    } } });
-                });
-            }
-        }
-    },
-
     popup: {
         display: function (ret)
         {
+            var deferred = jfbcJQuery.Deferred();
             var data = jfbcJQuery.parseJSON(ret);
             jfbcJQuery(data.target).html(data.html);
 
@@ -951,6 +959,9 @@ var jfbc = {
                 }
             });
             jfbcJQuery(data.target).css('display', 'block');
+            // Return our promise. This is always resolved (no fail), but need the promise so it can be done after AJAX calls
+            deferred.resolve();
+            return deferred;
         }
     },
 
@@ -981,7 +992,7 @@ var jfbc = {
         ajax: function (url, callback)
         {
             url = url + '&' + jfbc.token + '=1';
-            jfbcJQuery.ajax({url: 'index.php', data: url}).done(callback);
+            return jfbcJQuery.ajax({url: jfbc.base + 'index.php', data: url}).done(callback);
         },
 
         jqueryUiLoaded: false,

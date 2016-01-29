@@ -14,7 +14,7 @@ JHtml::_('bootstrap.framework');
 $doc->addStyleSheet(JUri::root().'components/com_website/assets/css/view-website-main.css');
 $doc->addScript(JUri::root().'components/com_website/assets/js/view-website-main.js');
 ?>
-<div class="div-loading"></div>
+
 <div class="create-website">
     <div class="row">
         <div class="col-lg-4">

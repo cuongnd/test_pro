@@ -146,10 +146,10 @@ class ConfigModelApplication extends ConfigModelForm
 
 			$extension = JTable::getInstance('extension');
 
-			// Get extension_id
-			$extension_id = $extension->find(array('name' => 'com_config'));
+			// Get id
+			$id = $extension->find(array('name' => 'com_config'));
 
-			if ($extension->load((int) $extension_id))
+			if ($extension->load((int) $id))
 			{
 				$extension->params = (string) $registry;
 

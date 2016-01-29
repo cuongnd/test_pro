@@ -142,12 +142,7 @@ class plgSystemJChat extends JPlugin
 
         // Output JS APP nel Document
         $doc->addStyleSheet(JURI::root(true) . '/components/com_jchat/css/mainstyle.css');
-        if ($cParams->get('includejquery')) {
-            JHtml::_('jquery.framework');
-        }
-        if ($cParams->get('noconflict')) {
-            $doc->addScript(JURI::root(true) . '/components/com_jchat/js/jquery.noconflict.js');
-        }
+        JHtml::_('jquery.framework');
         $doc->addScriptDeclaration("var jchat_livesite='$base';");
         $doc->addScript(JURI::root(true) . '/components/com_jchat/js/utility.js');
         $doc->addScript(JURI::root(true) . '/components/com_jchat/js/jstorage.min.js');

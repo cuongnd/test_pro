@@ -209,6 +209,7 @@ class JViewLegacy extends JObject
 	public function display($tpl = null)
 	{
 		$result = $this->loadTemplate($tpl);
+
 		if ($result instanceof Exception)
 		{
 			return $result;
@@ -659,6 +660,7 @@ class JViewLegacy extends JObject
 			$this->_template = JPath::find($this->_path['template'], $filetofind);
 		}
 
+
 		if ($this->_template != false)
 		{
 			// Unset so as not to introduce into template scope
@@ -670,6 +672,7 @@ class JViewLegacy extends JObject
 			{
 				unset($this->this);
 			}
+
 
 			// Start capturing output into a buffer
 			ob_start();

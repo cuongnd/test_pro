@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 jimport('joomla.html.sliders');
 JHTML::_('behavior.tooltip');
@@ -51,32 +54,30 @@ JHTML::_('behavior.tooltip');
                     </ul>
                 </fieldset>
                 <fieldset class="adminform">
-                    <legend>Capabilities</legend>
-                    <p>The below settings must be enabled in your apps Open Graph configuration as well. These settings change the features of the share popup
-                        when
-                        used.</p>
+                    <legend><?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_ACTION_CAPABILITIES_LABEL');?></legend>
+                    <p><?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_ACTION_CAPABILITIES_DESC');?></p>
                     <ul class="adminformlist">
                         <li><label class="hasTip"
-                                   title="Allows Friend Tags"
-                                   for="allows_tags">Friend Tags</label>
+                                   title="<?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_ACTION_FRIEND_TAGS_TITLE');?>"
+                                   for="allows_tags"><?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_ACTION_FRIEND_TAGS_LABEL');?></label>
                             <input id="allows_tags" type="checkbox" name="params[og_capabilities][tags]"
                                    value="1" <?php echo $this->action->params->get('og_capabilities.tags', 0) == "1" ? "checked" : ""; ?> >
                         </li>
                         <li><label class="hasTip"
-                                   title="Allow user to enter their own message to go along with this action"
-                                   for="allows_messages">User Messages</label>
+                                   title="<?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_ACTION_USER_MESSAGES_TITLE');?>"
+                                   for="allows_messages"><?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_ACTION_USER_MESSAGES_LABEL');?></label>
                             <input id="allows_messages" type="checkbox" name="params[og_capabilities][messages]"
                                    value="1" <?php echo $this->action->params->get('og_capabilities.messages', 0) == "1" ? "checked" : ""; ?>>
                         </li>
                         <li><label class="hasTip"
-                                   title="Let the user search for and add the location of the action"
-                                   for="allows_places">Place</label>
+                                   title="<?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_ACTION_PLACE_TITLE');?>"
+                                   for="allows_places"><?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_ACTION_PLACE_LABEL');?></label>
                             <input id="allows_places" type="checkbox" name="params[og_capabilities][places]"
                                    value="1" <?php echo $this->action->params->get('og_capabilities.places', 0) == "1" ? "checked" : ""; ?>>
                         </li>
                         <li><label class="hasTip"
-                                   title="This will be marked as an explicitly shared action when the popup is used"
-                                   for="explicitly_shared">Explicitly Shared</label>
+                                   title="<?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_ACTION_EXPLICITLY_SHARED_TITLE');?>"
+                                   for="explicitly_shared"><?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_ACTION_EXPLICITLY_SHARED_LABEL');?></label>
                             <input id="explicitly_shared" type="checkbox" name="params[og_capabilities][explicitly_shared]"
                                    value="1" <?php echo $this->action->params->get('og_capabilities.explicitly_shared', 0) == "1" ? "checked" : ""; ?>>
                         </li>

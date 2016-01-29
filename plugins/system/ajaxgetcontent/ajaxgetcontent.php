@@ -38,7 +38,6 @@ class plgSystemAjaxGetContent extends JPlugin
     function onAfterInitialise()
     {
         $app=JFactory::getApplication('site');
-
         $ajaxGetContent=$app->input->get('ajaxgetcontent',0,'int');
         if($ajaxGetContent)
         {

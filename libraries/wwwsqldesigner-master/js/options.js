@@ -6,7 +6,7 @@ SQL.Options = function(owner) {
 		container:OZ.$("opts"),
 		btn:OZ.$("options")
 	}
-	this.dom.btn.value = _("options");
+	this.dom.btn.value = getString("options");
 	this.save = this.save.bind(this);
 	this.build();
 }
@@ -25,7 +25,7 @@ SQL.Options.prototype.build = function() {
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
-		elm.innerHTML = _(id);
+		elm.innerHTML = getString(id);
 	}
 	
 	var ls = CONFIG.AVAILABLE_LOCALES;
@@ -66,7 +66,7 @@ SQL.Options.prototype.save = function() {
 }
 
 SQL.Options.prototype.click = function() {
-	this.owner.window.open(_("options"),this.dom.container,this.save);
+	this.owner.window.open(getString("options"),this.dom.container,this.save);
 	this.dom.optionsnap.value = this.owner.getOption("snap");
 	this.dom.optionpattern.value = this.owner.getOption("pattern");
 	this.dom.optionhide.checked = this.owner.getOption("hide");

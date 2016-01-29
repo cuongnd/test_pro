@@ -37,6 +37,7 @@ class JFormFieldModulelayout extends JFormField
 	 */
 	protected function getInput()
 	{
+
 		// Get the client id.
 		$clientId = $this->element['client_id'];
 
@@ -55,7 +56,6 @@ class JFormFieldModulelayout extends JFormField
 		{
 			$module = $this->form->getValue('module');
 		}
-
 		$module = preg_replace('#\W#', '', $module);
 
 		// Get the template.
@@ -73,11 +73,12 @@ class JFormFieldModulelayout extends JFormField
 		// If an extension and view are present build the options.
 		if ($module && $client)
 		{
-
+            $website=JFactory::getWebsite();
 			// Load language file
 			$lang = JFactory::getLanguage();
+
 			$lang->load($module . '.sys', $client->path, null, false, true)
-				|| $lang->load($module . '.sys', $client->path . '/modules/' . $module, null, false, true);
+				|| $lang->load($module . '.sys', $client->path . '/modules/website/website_'.$website->website_id.'/' . $module, null, false, true);
 
 			// Get the database object and a new query object.
 			$db = JFactory::getDbo();
@@ -106,7 +107,7 @@ class JFormFieldModulelayout extends JFormField
 			$templates = $db->loadObjectList('element');
 
 			// Build the search paths for module layouts.
-			$module_path = JPath::clean($client->path . '/modules/' . $module );
+			$module_path = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/' . $module );
 
 			// Prepare array of component layouts
 			$module_layouts = array();
@@ -141,7 +142,7 @@ class JFormFieldModulelayout extends JFormField
 					$lang->load('tpl_' . $template->element . '.sys', $client->path, null, false, true)
 						|| $lang->load('tpl_' . $template->element . '.sys', $client->path . '/templates/' . $template->element, null, false, true);
 
-					$template_path = JPath::clean($client->path . '/templates/' . $template->element . '/html/' . $module);
+					$template_path = JPath::clean($client->path . '/templates/' . $template->element . '/html/website/website_'.$website->website_id.'/' . $module);
 
 					// Add the layout options from the template path.
 					if (is_dir($template_path) && ($files = JFolder::files($template_path, '^[^_]*\.php$')))
@@ -162,7 +163,8 @@ class JFormFieldModulelayout extends JFormField
 							$groups[$template->element]['id'] = $this->id . '_' . $template->element;
 							$groups[$template->element]['text'] = JText::sprintf('JOPTION_FROM_TEMPLATE', $template->name);
 							$groups[$template->element]['items'] = array();
-
+							$option=JHtml::_('select.option','', 'none');
+							$groups[$template->element]['items'][]=$option;
 							foreach ($files as $file)
 							{
 								// Add an option to the template group

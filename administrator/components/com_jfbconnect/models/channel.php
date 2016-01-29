@@ -1,10 +1,10 @@
 <?php
 /**
  * @package         JFBConnect
- * @copyright (c)   2009-@CURRENT_YEAR@ by SourceCoast - All Rights Reserved
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
- * @version         Release v@VERSION@
- * @build-date      @DATE@
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 jimport('joomla.application.component.modeladmin');
@@ -22,11 +22,12 @@ class JFBConnectModelChannel extends JModelAdmin
 
     function save($data)
     {
+        $oldData = array();
+
         if ($data['id'] > 0)
         {
             $table = $this->getTable();
             $table->load($data['id']);
-            $oldData = array();
             $oldData['id'] = $table->id;
             $oldData['provider'] = $table->provider;
             $oldData['type'] = $table->type;
@@ -48,7 +49,10 @@ class JFBConnectModelChannel extends JModelAdmin
 
         // Used to removed permissions from users that aren't associated with this channel (or anything else needed for cleanup)
         if ($return && $data['provider'] != '--' && $data['type'] != '--')
+        {
+            $data['id'] = $this->getState('channel.id');
             $channel->onAfterSave($data, $oldData);
+        }
 
         return $return;
     }
@@ -168,5 +172,41 @@ class JFBConnectModelChannel extends JModelAdmin
         }
 
         return $data;
+    }
+
+    function getUserList($provider)
+    {
+        $users = array();
+
+        if(!empty($provider))
+        {
+            $search = '';
+            $db = JFactory::getDbo();
+            $query = $db->getQuery(true);
+
+            //$filter_search = trim($this->getState('filter.search'));
+            $input = JFactory::getApplication()->input;
+            $filter_search = $input->get('filter_search');
+            if($filter_search)
+            {
+                $search = $db->quote('%' . str_replace(' ', '%', $db->escape($filter_search, true) . '%'));
+
+                // Compile the different search clauses.
+                $searches   = array();
+                $searches[] = 'u.name LIKE ' . $search;
+                $searches[] = 'u.username LIKE ' . $search;
+                $searches[] = 'u.email LIKE ' . $search;
+            }
+
+            $query->select('u.id,u.name,u.username')
+                ->from('#__users u')
+                ->join('inner','#__jfbconnect_user_map AS m ON u.id=m.j_user_id')
+                ->where('m.provider='.$db->q(strtolower($provider)));
+            if(!empty($search))
+                $query->where('(' . implode(' OR ', $searches) . ')'); // Add the clauses to the query.
+            $db->setQuery($query);
+            $users = $db->loadObjectList();
+        }
+        return $users;
     }
 }

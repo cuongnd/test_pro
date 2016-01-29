@@ -211,10 +211,10 @@ class JApplicationAdministrator extends JApplicationCms
 		if ($admin_style)
 		{
 			$query->where('s.id =  ' . (int) $admin_style);
-			//$query->where('s.client_id = 1');
+			$query->where('s.client_id = 1');
 		}else
 		{
-			$query->where('s.client_id = 1 AND home = ' . $db->quote('1'), 'OR');
+			$query->where('s.client_id = 1 AND home = ' . $db->quote('1'));
 		}
         $website=JFactory::getWebsite();
         $query->where('s.website_id='.(int)$website->website_id);

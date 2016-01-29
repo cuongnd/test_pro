@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -12,15 +15,17 @@ class JFBConnectProviderTwitterWidgetShare extends JFBConnectWidget
     var $name = "Share";
     var $systemName = "share";
     var $className = "sc_twittershare";
+    var $tagName = "sctwittershare";
     var $examples = array (
         '{SCTwitterShare}',
-        '{SCTwitterShare href=http://www.sourcecoast.com text=SourceCoast makes great Joomla extensions data_count=horizontal via=sourcecoast related=mandreae hashtags=Joomla,Facebook size=medium dnt=false}'
+        '{SCTwitterShare href=http://www.sourcecoast.com text=SourceCoast makes great Joomla extensions data-count=horizontal via=sourcecoast related=mandreae hashtags=Joomla,Facebook size=medium dnt=false}'
     );
 
     protected function getTagHtml()
     {
-        $tagButtonText = '<a href="http://twitter.com/share" class="twitter-share-button" ';
+        JFBCFactory::addStylesheet('jfbconnect.css');
 
+        $tagButtonText = '<a href="http://twitter.com/share" class="twitter-share-button" ';
         $tagButtonText .= $this->getField('href', 'url', null, SCSocialUtilities::getStrippedUrl(), 'data-url');
 
         if($this->fields->exists('layout'))

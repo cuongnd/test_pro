@@ -560,10 +560,12 @@
         container_props.id = this.form_field.id.replace(/[^\w]/g, '_') + "_chzn";
       }
       this.container = $("<div />", container_props);
+      $classes_chzn_single=$(this.form_field).data('class_chzn_single');
+      $classes_chzn_single=(typeof $classes_chzn_single=='undefined')?'':$classes_chzn_single;
       if (this.is_multiple) {
         this.container.html('<ul class="chzn-choices"><li class="search-field"><input type="text" value="' + this.default_text + '" class="default" autocomplete="off" style="width:25px;" /></li></ul><div class="chzn-drop"><ul class="chzn-results"></ul></div>');
       } else {
-        this.container.html('<a class="chzn-single chzn-default" tabindex="-1"><span>' + this.default_text + '</span><div><b></b></div></a><div class="chzn-drop"><div class="chzn-search"><input type="text" autocomplete="off" /></div><ul class="chzn-results"></ul></div>');
+        this.container.html('<a class="chzn-single '+$classes_chzn_single+' chzn-default" tabindex="-1"><span>' + this.default_text + '</span><div><b></b></div></a><div class="chzn-drop"><div class="chzn-search"><input type="text" autocomplete="off" /></div><ul class="chzn-results"></ul></div>');
       }
       this.form_field_jq.hide().after(this.container);
       this.dropdown = this.container.find('div.chzn-drop').first();

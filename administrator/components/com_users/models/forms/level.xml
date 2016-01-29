@@ -19,6 +19,17 @@
                required="false"
                default="1"
                 />
+		<field
+				name="is_publish"
+				type="radio"
+				class="btn-group btn-group-yesno"
+				default="0"
+				label="is publich"
+				description="is publich">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
 		<field name="ordering" type="text"
 			default="0"
 			description="JFIELD_ORDERING_DESC"
