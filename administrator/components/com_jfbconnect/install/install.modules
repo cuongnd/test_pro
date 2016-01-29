@@ -1,0 +1,7 @@
+[Core]
+mod_sclogin|SCLogin
+[Modules]
+mod_scsocialfindus|SourceCoast Social Find Us
+mod_scsocialstream|SourceCoast Social Stream
+mod_scsocialwidget|SourceCoast Social Widget
+mod_jfbcsocialshare|JFBConnect Share Buttons

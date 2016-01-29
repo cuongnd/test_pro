@@ -29,7 +29,6 @@ if(!class_exists('VmView'))require(JPATH_VM_SITE.DS.'helpers'.DS.'vmview.php');
 class VirtueMartViewVirtueMart extends VmView {
 
 	public function display($tpl = null) {
-
 		$vendorId = JRequest::getInt('vendorid', 1);
 
 		$vendorModel = VmModel::getModel('vendor');

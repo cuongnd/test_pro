@@ -11,11 +11,6 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.tabstate');
 require_once JPATH_ROOT.'/administrator/components/com_website/helpers/website.php';
 
-if (!JFactory::getUser()->authorise('core.manage', 'com_menus'))
-{
-	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
-}
-
 $controller	= JControllerLegacy::getInstance('Menus');
 $controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();

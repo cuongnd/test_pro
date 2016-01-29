@@ -66,7 +66,6 @@ class JFormFieldMenuParent extends JFormFieldList
 			->group('a.id, a.title, a.level, a.lft, a.rgt, a.menutype, a.parent_id, a.published')
 			->order('a.lft ASC')
         ;
-
 		// Get the options.
 		$db->setQuery($query);
 

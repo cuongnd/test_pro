@@ -168,7 +168,7 @@ abstract class vmPlugin extends JPlugin {
 
 			$q = 'SELECT vm.* FROM `' . $this->_configTable . '` AS vm,
 				#__extensions AS j WHERE vm.`' . $this->_idName . '` = "' . $id . '"
-				AND vm.' . $this->_psType . '_jplugin_id = j.extension_id
+				AND vm.' . $this->_psType . '_jplugin_id = j.id
 				AND j.element = "' . $this->_name . '"';
 
 			$db->setQuery ($q);

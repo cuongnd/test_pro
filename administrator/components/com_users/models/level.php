@@ -149,9 +149,6 @@ class UsersModelLevel extends JModelAdmin
                 throw new Exception($table->getError());
             }
         }
-
-
-
         return true;
     }
     public function quick_assign_website(&$pks,$website_id)

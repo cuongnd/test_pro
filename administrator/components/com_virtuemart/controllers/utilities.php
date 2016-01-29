@@ -58,6 +58,147 @@ class VirtuemartControllerUtilities extends VmController {
         die;
 
     }
+    public function importproductvatgia()
+    {
+        $website=JFactory::getWebsite();
+        $model_product=VmModel::getModel('product');
+        jimport('joomla.filesystem.file');
+        $file_config_path=JPATH_ROOT.'/administrator/components/com_virtuemart/views/utilities/tmpl/importcategoryvatgia.txt';
+        $file_config=JFile::read($file_config_path);
+        $app=JFactory::getApplication();
+        $input=$app->input;
+        $params = new JRegistry;
+
+        if($file_config!='')
+        {
+            $params->loadString($file_config);
+        }
+        $cat_id=$params->get('vatgia.cat_id',1);
+        $cat_id++;
+        //$cat_id=433;
+        $params->set('vatgia.cat_id',$cat_id);
+        $vatgia_category_id=$input->get('vatgia_category_id',0,'int');
+        JFile::write($file_config_path,$params->toString());
+        $link_get_product='http://vatgia.com/ajax_v4/load_type_product_up.php?ajax=1&iCat='.$vatgia_category_id.'&page=1';
+        $data=JUtility::getCurl($link_get_product);
+        if(strlen($data)>100)
+        {
+            //parse products
+            require_once JPATH_ROOT.'/libraries/simplehtmldom_1_5/simple_html_dom.php';
+            $html = str_get_html($data);
+            $html_product=array();
+            foreach($html->find('div.wrapper') as $wrapper) {
+
+                $html_product[]=$wrapper->outertext;
+                $name=$wrapper->find('div.name a',0)->plaintext;
+                $image=$wrapper->find('div.picture_main img.picture',0)->src;
+                $data=new stdClass();
+                $data->virtuemart_product_id=0;
+                $data->product_name=$name;
+                $data->image_url=$image;
+                $params->set('vatgia.html',$wrapper->outertext);
+                $data->params=$params->toString();
+                $data=(array)$data;
+                $model_product->store($data,false);
+            }
+            ob_start();
+            ?>
+            <div><b>Link product:</b><?php echo $link_get_product ?></div>
+            <?php echo implode('',$html_product) ?>
+            <?php
+            $html=ob_get_clean();
+            echo $html;
+            die;
+        }else{
+            ob_start();
+            ?>
+            <div><b>Link product:</b><?php echo $link_get_product ?></div>
+            <div><?php echo $data ?></div>
+            <?php
+            $html=ob_get_clean();
+            echo $html;
+            die;
+        }
+
+    }
+    public function importcategoryvatgia()
+    {
+
+
+        jimport('joomla.filesystem.file');
+        $website=JFactory::getWebsite();
+        $categories_file_path=JPATH_ROOT.'/administrator/components/com_virtuemart/views/utilities/tmpl/categories_vatgia.txt';
+        $content=JFile::read($categories_file_path);
+        $categories=explode("\r",$content);
+        $list_category=array();
+        $model_category=VmModel::getModel('category');
+        for($i=1;$i<=count($categories);$i++)
+        {
+            $last_item_list_category=end($list_category);
+            if(!$last_item_list_category)
+            {
+                $last_item_list_category=new stdClass();
+            }
+            $category=$categories[$i-1];
+            $item_category=new stdClass();
+            $item_category->virtuemart_category_id=0;
+            $item_category->category_name=trim($category);
+            $item_category->virtuemart_vendor_id=1;
+            $item_category->slug=trim($category);
+            $item_category->website_id=$website->website_id;
+
+            $category1=explode("\t",$category);
+            $total_tab=0;
+            foreach($category1 as $key=>$value)
+            {
+                if(trim($value)=="")
+                {
+                    $total_tab++;
+                }
+            }
+            $item_category->total_tab=$total_tab;
+            if($total_tab>$last_item_list_category->total_tab)
+            {
+                $item_category->category_parent_id=$last_item_list_category->virtuemart_category_id;
+                $item_category->list_parent_id=$last_item_list_category->list_parent_id;
+                if(!is_array($item_category->list_parent_id))
+                {
+                    $item_category->list_parent_id=array();
+                }
+                $item_category->list_parent_id[]=$item_category->category_parent_id;
+            }elseif($total_tab==$last_item_list_category->total_tab){
+                $item_category->category_parent_id=$last_item_list_category->category_parent_id;
+                $item_category->list_parent_id=$last_item_list_category->list_parent_id;
+                if(!is_array($item_category->list_parent_id))
+                {
+                    $item_category->list_parent_id=$item_category->list_parent_id!=0?array($item_category->list_parent_id):array();
+                }
+            }elseif($total_tab<$last_item_list_category->total_tab){
+                $list_parent_id=$last_item_list_category->list_parent_id;
+                //for($j=$last_item_list_category->total_tab-;$j>$total_tab;$j--)
+                for($j=$total_tab;$j<$last_item_list_category->total_tab;$j++)
+                {
+                    array_pop($list_parent_id);
+                }
+
+                $item_category->list_parent_id=$list_parent_id;
+                $item_category->category_parent_id=end($item_category->list_parent_id);
+            }
+
+            $array_item_category=(array)$item_category;
+            $model_category->store($array_item_category);
+            $item_category=(object)$array_item_category;
+            $list_category[$i]=$item_category;
+        }
+
+        foreach($list_category as $category)
+        {
+            echo str_repeat("|----",$category->total_tab)."$category->category_name(id:$category->id,parent_id:$category->parent_id)".'('.implode(',',$category->list_parent_id).')';
+            echo "<br/>";
+        }
+
+        die;
+    }
 
 
     function wrirechildcategory()

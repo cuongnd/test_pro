@@ -78,7 +78,7 @@ class ModulesModelSelect extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.id as extension_id, a.name, a.element AS module'
+				'a.id as id, a.name, a.element AS module'
 			)
 		);
 		$query->from($db->quoteName('#__extensions') . ' AS a');
@@ -112,12 +112,12 @@ class ModulesModelSelect extends JModelList
 
 		$client = JApplicationHelper::getClientInfo($this->getState('filter.client_id', 0));
 		$lang = JFactory::getLanguage();
-
+		$website=JFactory::getWebsite();
 		// Loop through the results to add the XML metadata,
 		// and load language support.
 		foreach ($items as &$item)
 		{
-			$path = JPath::clean($client->path . '/modules/' . $item->module . '/' . $item->module . '.xml');
+			$path = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/' . $item->module . '/' . $item->module . '.xml');
 			if (file_exists($path))
 			{
 				$item->xml = simplexml_load_file($path);
@@ -126,11 +126,11 @@ class ModulesModelSelect extends JModelList
 			{
 				$item->xml = null;
 			}
-
+			$website=JFactory::getWebsite();
 			// 1.5 Format; Core files or language packs then
 			// 1.6 3PD Extension Support
 			$lang->load($item->module . '.sys', $client->path, null, false, true)
-				|| $lang->load($item->module . '.sys', $client->path . '/modules/' . $item->module, null, false, true);
+				|| $lang->load($item->module . '.sys', $client->path . '/modules/website/website_'.$website->website_id.'/' . $item->module, null, false, true);
 			$item->name = JText::_($item->name);
 
 			if (isset($item->xml) && $text = trim($item->xml->description))

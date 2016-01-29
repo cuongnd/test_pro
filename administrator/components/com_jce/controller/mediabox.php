@@ -28,7 +28,7 @@ class WFControllerMediabox extends WFController {
         $task   = $this->getTask();
         
         // remove id for Joomla! 2.5+
-        if ($row->extension_id) {
+        if ($row->id) {
             unset($row->id);
         }
 

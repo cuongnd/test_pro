@@ -35,6 +35,17 @@ class MenusViewItems extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+		$layout = JRequest::getVar('layout');
+		$tpl = JRequest::getVar('tpl');
+		$this->setLayout($layout);
+		switch ($tpl) {
+			case "loadmenupage":
+				parent::display($tpl);
+				return;
+				break;
+
+		}
+
 		$lang 		= JFactory::getLanguage();
 		$this->items		= $this->get('Items');
         //echo $this->get('ListQuery')->dump();

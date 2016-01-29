@@ -36,9 +36,9 @@ class JConfig {
 	//public $host = 'asianventure.ddns.net';
 	//public $host = 'asian-pc';
 	//public $host = '14.162.87.113';
-	//public $host = '192.168.1.253';
-	public $host = '169.254.128.224';
-	//public $host = 'localhost';
+	//public $host = '192.168.1.68';
+	//public $host = '169.254.128.224';
+	public $host = 'localhost';
 	public $lifetime = '150';
 	public $list_limit = '20';
 	public $live_site = '';
@@ -54,7 +54,9 @@ class JConfig {
 	public $offline_message = 'This site is down for maintenance.<br /> Please check back again soon.';
 	public $offset = 'Asia/Bangkok';
 	public $offset_user = 'UTC';
+	//in localhost pass is null
 	//public $password = '';
+
 	public $password = '123456';
 	public $robots = '';
 	public $secret = 'rjDJD5tKY1iUXy3q2cyfhHunM3m7mDy9';

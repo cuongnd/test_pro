@@ -27,6 +27,21 @@ class UtilityViewblocks extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+		$layout = JRequest::getVar('layout');
+		$tpl = JRequest::getVar('tpl');
+		$this->setLayout($layout);
+		switch ($tpl) {
+			case "loadelement":
+				parent::display($tpl);
+				return;
+				break;
+			case "ajaxloadblocks":
+				parent::display($tpl);
+				return;
+				break;
+
+		}
+
 		$this->htmlAllBlock=$this->get('HtmlAllBlock');
 		parent::display($tpl);
 	}

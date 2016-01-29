@@ -31,6 +31,16 @@ class MenusViewItem extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+		$layout = JRequest::getVar('layout');
+		$tpl = JRequest::getVar('tpl');
+		$this->setLayout($layout);
+		switch ($tpl) {
+			case "config":
+				parent::display($tpl);
+				return;
+				break;
+
+		}
 		$this->form		= $this->get('Form');
 		$this->item		= $this->get('Item');
 

@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\board.xml",
+        "source": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\src\\main\\res\\layout\\board.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\viewpicture.xml",
+        "source": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\src\\main\\res\\layout\\viewpicture.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test.xml",
+        "source": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\src\\main\\res\\layout\\test.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\listtab2.xml",
+        "source": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\src\\main\\res\\layout\\listtab2.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\listpicture.xml",
+        "source": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\src\\main\\res\\layout\\listpicture.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mainslide.xml",
+        "source": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\src\\main\\res\\layout\\mainslide.xml"
+    }
+]

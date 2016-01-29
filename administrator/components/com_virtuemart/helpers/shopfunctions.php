@@ -832,7 +832,7 @@ class ShopFunctions {
 
 		static $categoryTree = '';
 		static $isSite = null;
-		if  ($isSite ===null) $isSite = JFactory::getApplication()->isSite () && (jRequest::getWord('tmpl') !== 'component');
+		if  ($isSite ===null) $isSite = JFactory::getApplication()->isSite () && (JRequest::getWord('tmpl') !== 'component');
 		// $virtuemart_vendor_id = 1;
 
 // 		vmSetStartTime('getCategories');
@@ -843,44 +843,57 @@ class ShopFunctions {
 		// $app = JFactory::getApplication ();
 
 		$records = $categoryModel->getCategories (false , $cid);
-
-// 		vmTime('getCategories','getCategories');
-		$selected = "";
-		if (!empty($records)) {
-			foreach ($records as $key => $category) {
-
-				$childId = $category->category_child_id;
-
-				if ($childId != $cid) {
-					if (in_array ($childId, $selectedCategories)) {
-						$selected = 'selected="selected"';
-					} else {
-						$selected = '';
-					}
-
-					$disabled = '';
-					if (in_array ($childId, $disabledFields)) {
-						$disabled = 'disabled="disabled"';
-					}
-
-					if ($disabled != '' && stristr ($_SERVER['HTTP_USER_AGENT'], 'msie')) {
-						//IE7 suffers from a bug, which makes disabled option fields selectable
-					} else {
-						$categoryTree .= '<option ' . $selected . ' ' . $disabled . ' value="' . $childId . '">';
-						$categoryTree .= str_repeat (' - ', ($level - 1));
-
-						$categoryTree .= $category->category_name . '</option>';
-					}
-				}
-
-				if ($categoryModel->hasChildren ($childId)) {
-					self::categoryListTreeLoop ($selectedCategories, $childId, $level, $disabledFields);
-				}
-
+		$list_parent_category=array();
+		$assign='tree_category';
+		$space='---';
+		foreach($records as $key=> $item)
+		{
+			if(!$item->category_parent_id)
+			{
+				$item->$assign=$item->category_name;
+				$list_parent_category[]=$item;
+				unset($records[$key]);
 			}
 		}
+		usort($list_parent_category, function ($item1, $item2) {
+			if ($item1->ordering == $item2->ordering) return 0;
+			return $item1->ordering < $item2->ordering ? -1 : 1;
+		});
+		$return_list_category=array();
 
+		foreach($list_parent_category as $node_parent)
+		{
+			$return_list_category[]=$node_parent;
+			ShopFunctions::create_node_list($return_list_category,$assign,$space,$node_parent->virtuemart_category_id,$records,0);
+		}
+		$categoryTree=array();
+		foreach($return_list_category as $category)
+		{
+			$categoryTree[]=JHTML::_('select.option', $category->virtuemart_category_id, $category->tree_category);
+		}
 		return $categoryTree;
+	}
+
+	function create_node_list(&$return_list = array(),$assign, $space,$parent_id, $list_item, $level = 0)
+	{
+		$list_item1 = array();
+		foreach ($list_item as $key => $item) {
+			if ((int)$item->category_parent_id == (int)$parent_id) {
+				$list_item1[] = $item;
+				unset($list_item[$key]);
+			}
+		}
+		usort($list_item1, function ($item1, $item2) {
+			if ($item1->ordering == $item2->ordering) return 0;
+			return $item1->ordering < $item2->ordering ? -1 : 1;
+		});
+
+		$level1 = $level + 1;
+		foreach ($list_item1 as $item) {
+			$item->$assign=str_repeat($space,$level1).$item->category_name;
+			$return_list[]=$item;
+			ShopFunctions::create_node_list($return_list,$assign,$space,$item->virtuemart_category_id,$list_item,$level1);
+		}
 	}
 
 	/**

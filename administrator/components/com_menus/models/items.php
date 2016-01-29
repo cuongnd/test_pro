@@ -223,8 +223,8 @@ class MenusModelItems extends JModelList
 			->join('LEFT', $db->quoteName('#__extensions') . ' AS c ON c.id = a.component_id');
 
 		// Join over the asset groups.
-		$query->select('ag.title AS access_level')
-			->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access');
+		$query->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access')
+		;
 
 		// Join over the associations.
 		$assoc = JLanguageAssociations::isEnabled();
@@ -337,9 +337,11 @@ class MenusModelItems extends JModelList
             $website_id=$website->website_id;
             $domain=$website->domain;
             $query->where('mt.website_id = '.$website_id );
+			$query->select('IF(ag.website_id='.$website_id.',ag.title,"") AS access_level');
         }
 
         $query->where('a.alias !='.$query->q('root'));
+		//echo $query->dump();
 
 		return $query;
 	}

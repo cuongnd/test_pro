@@ -45,7 +45,7 @@ class ModulesControllerModule extends JControllerForm
 			return JError::raiseWarning(500, JText::_('COM_MODULES_ERROR_INVALID_EXTENSION'));
 		}
 
-		$app->setUserState('com_modules.add.module.extension_id', $extensionId);
+		$app->setUserState('com_modules.add.module.id', $extensionId);
 		$app->setUserState('com_modules.add.module.params', null);
 
 		// Parameters could be coming in for a new item, so let's set them.
@@ -68,7 +68,7 @@ class ModulesControllerModule extends JControllerForm
 
 		$result = parent::cancel();
 
-		$app->setUserState('com_modules.add.module.extension_id', null);
+		$app->setUserState('com_modules.add.module.id', null);
 		$app->setUserState('com_modules.add.module.params', null);
 
 		return $result;
@@ -167,11 +167,11 @@ class ModulesControllerModule extends JControllerForm
 		switch ($task)
 		{
 			case 'save2new':
-				$app->setUserState('com_modules.add.module.extension_id', $model->getState('module.extension_id'));
+				$app->setUserState('com_modules.add.module.id', $model->getState('module.id'));
 				break;
 
 			default:
-				$app->setUserState('com_modules.add.module.extension_id', null);
+				$app->setUserState('com_modules.add.module.id', null);
 				break;
 		}
 

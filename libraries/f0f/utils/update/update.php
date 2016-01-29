@@ -17,8 +17,8 @@ class F0FUtilsUpdate extends F0FModel
 	/** @var JUpdater The Joomla! updater object */
 	protected $updater = null;
 
-	/** @var int The extension_id of this component */
-	protected $extension_id = 0;
+	/** @var int The id of this component */
+	protected $id = 0;
 
 	/** @var string The currently installed version, as reported by the #__extensions table */
 	protected $version = 'dev';
@@ -98,7 +98,7 @@ class F0FUtilsUpdate extends F0FModel
 
 		if (is_object($extension))
 		{
-			$this->extension_id = $extension->extension_id;
+			$this->id = $extension->id;
 			$data = json_decode($extension->manifest_cache, true);
 
 			if (isset($data['version']))
@@ -130,7 +130,7 @@ class F0FUtilsUpdate extends F0FModel
 			'infoURL'   => ''
 		);
 
-		if (empty($this->extension_id))
+		if (empty($this->id))
 		{
 			return $updateResponse;
 		}
@@ -168,13 +168,13 @@ class F0FUtilsUpdate extends F0FModel
 		$timeout = 3600 * $comInstallerParams->get('cachetimeout', '6');
 
 		// Load any updates from the network into the #__updates table
-		$this->updater->findUpdates($this->extension_id, $timeout);
+		$this->updater->findUpdates($this->id, $timeout);
 
 		// Get the update record from the database
 		$query = $db->getQuery(true)
 			->select('*')
 			->from($db->qn('#__updates'))
-			->where($db->qn('extension_id') . ' = ' . $db->q($this->extension_id));
+			->where($db->qn('id') . ' = ' . $db->q($this->id));
 		$db->setQuery($query);
 		$updateRecord = $db->loadObject();
 
@@ -202,7 +202,7 @@ class F0FUtilsUpdate extends F0FModel
 		$query = $db->getQuery(true)
 			->select($db->qn('update_site_id'))
 			->from($db->qn('#__update_sites_extensions'))
-			->where($db->qn('extension_id') . ' = ' . $db->q($this->extension_id));
+			->where($db->qn('id') . ' = ' . $db->q($this->id));
 		$db->setQuery($query);
 		$updateSiteIds = $db->loadColumn(0);
 
@@ -236,7 +236,7 @@ class F0FUtilsUpdate extends F0FModel
 	 */
 	public function refreshUpdateSite()
 	{
-		if (empty($this->extension_id))
+		if (empty($this->id))
 		{
 			return;
 		}
@@ -275,7 +275,7 @@ class F0FUtilsUpdate extends F0FModel
 
 			$updateSiteExtension = (object)array(
 				'update_site_id'	=> $id,
-				'extension_id'		=> $this->extension_id,
+				'id'		=> $this->id,
 			);
 			$db->insertObject('#__update_sites_extensions', $updateSiteExtension);
 		}

@@ -1417,7 +1417,7 @@ class VirtueMartModelShortedProduct extends VirtueMartModelProduct {
         $query = $db->getQuery(true);
 
         $query->from('#__virtuemart_products_'.VMLANG.' AS pl');
-        $query->select('pl.virtuemart_product_id AS virtuemart_product_id,pl.product_name,pl.slug,pl.cmstype,pl.link_download,pl.param');
+        $query->select('pl.virtuemart_product_id AS virtuemart_product_id,pl.product_name,pl.slug,pl.cmstype,pl.link_download,pl.params,pl.image_url');
 
 
         $query->leftJoin('#__virtuemart_product_categories AS pc USING(virtuemart_product_id)');
@@ -1435,6 +1435,10 @@ class VirtueMartModelShortedProduct extends VirtueMartModelProduct {
         $query->where('pc.virtuemart_category_id='.(int)$categoryId);
         $query->order('pl.virtuemart_product_id');
 
+		$query->leftJoin('#__virtuemart_product_medias AS product_medias USING(virtuemart_product_id)')
+			->leftJoin('#__virtuemart_medias AS medias ON medias.virtuemart_media_id=product_medias.virtuemart_media_id')
+			->select('medias.file_url AS file_url')
+			;
         $limits = $this->setPaginationLimits();
         $limitStart = $limits[0];
         $limit = $limits[1];
@@ -1474,6 +1478,10 @@ class VirtueMartModelShortedProduct extends VirtueMartModelProduct {
             if(!$productId)
                 unset($productIds[$key]);
         }
+		if(!count($productIds))
+		{
+			return false;
+		}
         $strProductIds=implode(',',$productIds);
 
         $db=JFactory::getDbo();

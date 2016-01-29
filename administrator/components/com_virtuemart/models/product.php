@@ -530,7 +530,7 @@ class VirtueMartModelProduct extends VmModel {
 		//$selectFindRows = 'SELECT COUNT(*) FROM `#__virtuemart_products` ';
 		if ($joinLang) {
 			$select = ' l.`virtuemart_product_id` FROM `#__virtuemart_products_' . VMLANG . '` as l';
-			//$joinedTables = ' JOIN `#__virtuemart_products` AS p using (`virtuemart_product_id`)';
+			$joinedTables = ' JOIN `#__virtuemart_products` AS p using (`virtuemart_product_id`)';
 		}
 		else {
 			$select = ' p.`virtuemart_product_id` FROM `#__virtuemart_products` as p';

@@ -116,7 +116,7 @@ class VirtueMartModelShortedCategory extends VirtueMartModelCategory {
 
         $query->leftJoin('#__virtuemart_category_medias as cm USING(virtuemart_category_id)');
         $query->leftJoin('#__virtuemart_medias as m ON m.virtuemart_media_id =cm.virtuemart_media_id');
-        $query->select('m.virtuemart_media_id,m.file_url_thumb,m.root_image');
+        $query->select('m.virtuemart_media_id,m.file_url_thumb,m.file_url');
 
         $query->leftJoin('#__virtuemart_categories as c  ON c.virtuemart_category_id=cc.category_child_id');
         $query->where('c.published=1');

@@ -1,10 +1,10 @@
 <?php
 /**
  * @package         JFBConnect
- * @copyright (c)   2009-@CURRENT_YEAR@ by SourceCoast - All Rights Reserved
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
- * @version         Release v@VERSION@
- * @build-date      @DATE@
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 defined('_JEXEC') or die('Restricted access');
@@ -24,10 +24,24 @@ class JFBConnectViewConfig extends JFBConnectAdminView
 
         foreach (JFBCFactory::getAllProviders() as $p)
         {
-            $configPath = JPATH_SITE . '/components/com_jfbconnect/libraries/provider/' . strtolower($p->name) . '/config/';
+            $configPath = JPATH_SITE . '/components/com_jfbconnect/libraries/provider/' . strtolower($p->systemName) . '/config/';
             JForm::addFieldPath($configPath . 'fields');
-            $this->formLoad($p->name, $configPath . 'config.xml');
-            $this->formBind($p->name, JFBCFactory::config()->getSettings());
+            $this->formLoad($p->systemName, $configPath . 'config.xml');
+            $loginField = '<form>' .
+                    '<fieldset name="login_button" label="' . JText::_('COM_JFBCONNECT_PROVIDER_MENU_LOGIN_BUTTON') . '">' .
+                    '<field type="providerloginbutton"
+                    label="' . JText::_('COM_JFBCONNECT_CONFIG_LOGIN_BUTTON_DEFAULT_LABEL') . '"
+                    description="' . JText::_('COM_JFBCONNECT_CONFIG_LOGIN_BUTTON_DEFAULT_DESC') . '"
+                    provider="' . $p->systemName . '"
+                    name="' . $p->systemName . '_login_button"
+                    required="true"
+                    default="icon_label.png"
+                    />' .
+                    '</fieldset>' .
+                    '</form>';
+            $this->forms[$p->systemName]->load($loginField);
+
+            $this->formBind($p->systemName, JFBCFactory::config()->getSettings());
         }
         parent::display($tpl);
     }

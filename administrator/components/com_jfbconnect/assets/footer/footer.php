@@ -1,8 +1,10 @@
 <?php
 /**
- * @package		SourceCoast Extension Version Tool
- * @copyright (C) 2010-2013 by SourceCoast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 defined('_JEXEC') or die('Restricted access');
@@ -23,18 +25,18 @@ if($xmlElement)
 			</td>
 			<td style="text-align: center; width: 49%;">
 				<?php echo $title;?>
-				<br/>Copyright: 2010-2013 &copy; <a href="http://www.sourcecoast.com" target="_blank">SourceCoast Web Development</a>
+				<br/>Copyright: 2010-2014 &copy; <a href="http://www.sourcecoast.com" target="_blank">SourceCoast Web Development</a>
 				<br/>
 				Version: <?php echo $version;?>
 			</td>
 			<td style="text-align: right; width: 25%;">
-				<a href="http://extensions.joomla.org/extensions/owner/sourcecoast" target="_blank">Leave Feedback on the JED</a>
+				<a href="http://extensions.joomla.org/extensions/owner/sourcecoast" target="_blank"><?php echo JText::_('COM_JFBCONNECT_FOOTER_LEAVE_FEEDBACK');?></a>
 				<br/>
-				<a href="http://twitter.com/sourcecoast" target="_blank">Follow Us on Twitter</a>
+				<a href="http://twitter.com/sourcecoast" target="_blank"><?php echo JText::_('COM_JFBCONNECT_FOOTER_FOLLOW_TWITTER');?></a>
 				<br/>
-				<a href="http://www.sourcecoast.com/forums" target="_blank">Support Forums on SourceCoast.com</a>
+				<a href="http://www.sourcecoast.com/forums" target="_blank"><?php echo JText::_('COM_JFBCONNECT_FOOTER_SUPPORT_FORUMS');?></a>
 				<br/>
-				<a href="http://www.sourcecoast.com/affiliates" target="_blank">Become an Affiliate and Earn</a>
+				<a href="http://www.sourcecoast.com/affiliates" target="_blank"><?php echo JText::_('COM_JFBCONNECT_FOOTER_BE_AFFILIATE');?></a>
 			</td>
 		</tr>
 	</tbody>

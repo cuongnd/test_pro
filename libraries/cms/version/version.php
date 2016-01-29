@@ -191,7 +191,16 @@ final class JVersion
 
 		return $mediaVersion;
 	}
-
+	public function get_os_version()
+	{
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true)
+			->select('id')
+			->from('#__version')
+			->order('id DESC')
+			;
+		return $db->setQuery($query)->loadResult();
+	}
 	/**
 	 * Function to refresh the media version
 	 *

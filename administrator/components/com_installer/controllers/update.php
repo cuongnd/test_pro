@@ -132,7 +132,7 @@ class InstallerControllerUpdate extends JControllerLegacy
 		$model->setState('list.limit', 0);
 		if ($eid != 0)
 		{
-			$model->setState('filter.extension_id', $eid);
+			$model->setState('filter.id', $eid);
 		}
 		$updates = $model->getItems();
 
@@ -142,7 +142,7 @@ class InstallerControllerUpdate extends JControllerLegacy
 			$updates = array();
 			foreach ($unfiltered_updates as $update)
 			{
-				if (!in_array($update->extension_id, $skip))
+				if (!in_array($update->id, $skip))
 				{
 					$updates[] = $update;
 				}

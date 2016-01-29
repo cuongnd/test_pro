@@ -1,14 +1,17 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Unauthorized Access');
 
 class JFBConnectAdminView extends JViewLegacy
 {
-    private $forms = array();
+    protected $forms = array();
 
     public function display($tpl = null)
     {
@@ -83,17 +86,24 @@ class JFBConnectAdminView extends JViewLegacy
 
     public function formShowField($field)
     {
+        echo $this->formGetField($field);
+    }
+
+    public function formGetField($field)
+    {
         if ($field->hidden)
-            echo $field->input;
+            $fieldValue = $field->input;
         else
         {
-            echo "  <div class=\"control-group\">\n";
-            echo "   " . $field->label . "\n";
-            echo "     <div class=\"controls\">\n";
-            echo "       " . $field->input . "\n";
-            echo "     </div>\n";
-            echo "  </div>\n";
+            $labelClass = $field->type == 'Providerloginbutton' ? 'login-button' : '';
+            $fieldValue =  "  <div class=\"control-group\">\n";
+            $fieldValue .= "   " . $field->label . "\n";
+            $fieldValue .= "     <div class=\"controls " . $labelClass . "\">\n";
+            $fieldValue .= "       " . $field->input . "\n";
+            $fieldValue .= "     </div>\n";
+            $fieldValue .= "  </div>\n";
         }
+        return $fieldValue;
     }
 
     public function formDisplay($name, $columns = null)
@@ -112,7 +122,11 @@ class JFBConnectAdminView extends JViewLegacy
             if ($column == 0 || $column == $split)
                 echo '<div class="span' . $span . '">' . "\n";
             echo "<div class=\"well\">\n";
-            echo '<legend>' . JText::_(strtoupper($form->getName()) . '_MENU_' . strtoupper($fieldset->name)) . "</legend>\n";
+            if ($fieldset->label)
+                $label = $fieldset->label;
+            else
+                $label = JText::_(strtoupper($form->getName()) . '_MENU_' . strtoupper($fieldset->name));
+            echo '<legend>' . $label . "</legend>\n";
             foreach ($form->getFieldset($fieldset->name) as $field)
                 $this->formShowField($field);
             echo "</div>\n";

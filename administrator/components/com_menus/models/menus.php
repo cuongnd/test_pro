@@ -215,7 +215,7 @@ class MenusModelMenus extends JModelList
 	{
 		$db = $this->getDbo();
 		$query = $db->getQuery(true)
-			->select('e.id as extension_id')
+			->select('e.id as id')
 			->from('#__extensions AS e')
 			->where('e.type = ' . $db->quote('module'))
 			->where('e.element = ' . $db->quote('mod_menu'))

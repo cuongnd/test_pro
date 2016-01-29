@@ -64,7 +64,7 @@ a.page-properties
       color: #9da0a4;
       font-size: 12px;
       font-weight: bold;
-      left: -1px;
+      left: 0px;
       line-height: 2;
       margin-bottom: 5px;
       margin-top: 20px;
@@ -95,6 +95,10 @@ a.page-properties
 
       }
     }
+    .row-content.show-grid-stack-item:nth-of-type(2n+1) {
+      border: 1px solid #0055aa;
+    }
+
     >a.add-row,>.config-block
     {
       visibility: visible !important;
@@ -343,7 +347,20 @@ a.page-properties
 
   }
 }
+.row-content.block-item.main_frame
+{
 
+  background: -webkit-linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), -webkit-linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), rgb(255, 255, 255) !important;
+  background: -moz-linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), -moz-linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), rgb(255, 255, 255) !important;;
+  background: linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), rgb(255, 255, 255)!important;;
+  background-position: 0 0, 40px 40px !important;;
+  -webkit-background-origin: padding-box !important;;
+  background-origin: padding-box !important;;
+  -webkit-background-clip: border-box !important;;
+  background-clip: border-box !important;;
+  -webkit-background-size: 80px 80px !important;;
+  background-size: 80px 80px !important;;
+}
 .tool-edit-style
 {
   top: 200px;
@@ -417,23 +434,26 @@ a.page-properties
   left: 200px;
   z-index: 9999;
   width: 250px;
-  position: absolute !important;
+  position: fixed !important;
+
   &.fixed
   {
     position: fixed !important;
   }
-  .panel-body
+  > .panel-body
   {
     padding: 5px;
+    height: 500px;
+    overflow-y: scroll;
   }
   .properties
   {
-    height: 300px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+
+
     .control-label
     {
       font-size: 9px;
+      text-align: right;
     }
   }
   li.font-paragraph
@@ -569,6 +589,7 @@ td[role="gridcell"] .add-on-item-content
     position: absolute;
     right: 0px;
     border-radius: 4px;
+    z-index: auto;
     padding: 0;
     top: 0px;
     .glyphicon-remove
@@ -630,7 +651,34 @@ td[role="gridcell"] .add-on-item-content
   top: 20px;
   left: 0px;
 }
+.panel.menu-item-config
+{
+  position: absolute;
+  width: 80%;
+  z-index: 10;
+  top: 20px;
+  left: 0px;
+}
+
+.panel.extension-module-config
+{
+  position: absolute;
+  width: 80%;
+  z-index: 10;
+  top: 20px;
+  left: 0px;
+}
+
 .CodeMirror-wrap.CodeMirror-fullscreen
 {
   margin-top: 50px;
+}
+.position-content.block-item.control-element
+{
+  border: none;
+  width: 99.9%;
+}
+.grid-stack.control-element
+{
+  border: none;
 }

@@ -43,8 +43,13 @@ class UsersControllerGroups extends JControllerAdmin
 		$model = $this->getModel();
 		$app=JFactory::getApplication();
 		$post=$app->input->getArray($_POST);
-		$menu_type_id=$post['filter']['menu_type_id'];
-		if ($model->rebuild(array($menu_type_id)))
+		$group_id=$post['filter']['group_id'];
+		if(!$group_id)
+		{
+			$group_table=$model->getTable();
+			$group_id=$group_table->getRootId();
+		}
+		if ($model->rebuild(array($group_id)))
 		{
 			// Reorder succeeded.
 			$this->setMessage(JText::_('COM_USER_GROUP_REBUILD_SUCCESS'));

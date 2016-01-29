@@ -73,4 +73,31 @@ class JTableViewlevel extends JTable
 
 		return true;
 	}
+	public function store($updateNulls = false)
+	{
+		if (parent::store($updateNulls)) {
+
+			if($this->is_publish==1)
+			{
+				$db=JFactory::getDbo();
+				$query=$db->getQuery(true)
+					->update('#__viewlevels')
+					->set('is_publish=0')
+					->where('website_id='.(int)$this->website_id)
+					->where('id!='.(int)$this->id)
+					;
+				if($db->setQuery($query)->execute())
+				{
+					return true;
+				}else{
+					$this->setError($db->getErrorMsg());
+					return false;
+				}
+			}
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 }

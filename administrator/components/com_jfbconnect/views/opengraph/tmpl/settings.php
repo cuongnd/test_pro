@@ -1,9 +1,12 @@
 <?php
 /**
- * @package		JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 jimport('joomla.html.sliders');
 JHTML::_('behavior.tooltip');
@@ -45,6 +48,17 @@ echo '<form method="post" id="adminForm" name="adminForm">';
             </div>
             <div class="config_description" style="min-width:400px; margin-left:10px">
                 <?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_SETTINGS_DEFAULTS_DESC2');?>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="config_row">
+            <div class="config_setting hasTip" style="width:100px"
+                 title="<?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_SETTINGS_SKIP_DESC');?>"><?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_SETTINGS_SKIP_LABEL');?></div>
+            <div class="config_option" style="width:375px">
+                <textarea rows="15" cols="43" name="social_graph_skip_fields"><?php echo $model->getSetting('social_graph_skip_fields') ?></textarea>
+            </div>
+            <div class="config_description" style="min-width:400px; margin-left:10px">
+                <?php echo JText::_('COM_JFBCONNECT_OPENGRAPH_SETTINGS_SKIP_DESC2');?>
             </div>
             <div style="clear:both"></div>
         </div>

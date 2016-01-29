@@ -1,0 +1,26 @@
+[Core]
+authorization.jfbconnectauth|JFBConnect Authentication Plugin|1
+user.jfbconnectuser|JFBConnect User Plugin|1
+system.jfbcsystem|JFBConnect System Plugin|1
+content.jfbccontent|JFBConnect Content Plugin|1
+installer.jfbconnect|JFBConnect Update Manager Plugin|1
+[Open Graph]
+opengraph.content|Content|1
+opengraph.custom|Custom|1
+opengraph.easyblog|EasyBlog|com_easyblog
+opengraph.easysocial|EasySocial|com_easysocial
+opengraph.jomsocial|JomSocial|com_community
+opengraph.jreviews|JReviews|com_jreviews
+opengraph.k2|K2|com_k2
+[Social Profiles]
+socialprofiles.joomla|Joomla|1
+socialprofiles.alphauserpoints|Alpha User Points|com_alphauserpoints
+socialprofiles.customdb|Custom Database|1
+socialprofiles.agorapro|AgoraPro|com_agorapro
+socialprofiles.communitybuilder|Community Builder|com_comprofiler
+socialprofiles.easysocial|EasySocial|com_easysocial
+socialprofiles.jomsocial|JomSocial|com_community
+socialprofiles.hikashop|HikaShop|com_hikashop
+socialprofiles.k2|K2|com_k2
+socialprofiles.kunena|Kunena|com_kunena
+socialprofiles.virtuemart2|Virtuemart 2|com_virtuemart

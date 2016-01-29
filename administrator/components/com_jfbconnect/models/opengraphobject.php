@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.model');
@@ -73,21 +76,32 @@ class JFBConnectAdminModelOpenGraphObject extends JFBConnectModelOpenGraphObject
 
     public function delete($id)
     {
-        $this->_db->setQuery("DELETE FROM #__opengraph_object WHERE id = " . $id);
+        $query = $this->_db->getQuery(true);
+        $query->delete($this->_db->qn("#__opengraph_object"))
+            ->where($this->_db->qn("id") . '=' . $id);
+        $this->_db->setQuery($query);
         $this->_db->execute();
 
-        $this->_db->setQuery("DELETE FROM #__opengraph_action_object WHERE object_id = " . $id);
+        $query = $this->_db->getQuery(true);
+        $query->delete($this->_db->qn("#__opengraph_action_object"))
+            ->where($this->_db->qn("object_id") . '=' . $id);
+        $this->_db->setQuery($query);
         $this->_db->execute();
 
-        $this->_db->setQuery("DELETE FROM #__opengraph_activity WHERE object_id = " . $id);
+        $query = $this->_db->getQuery(true);
+        $query->delete($this->_db->qn("#__opengraph_activity"))
+            ->where($this->_db->qn("object_id") . '=' . $id);
+        $this->_db->setQuery($query);
         $this->_db->execute();
     }
 
     public function getObjects($publishedOnly = false)
     {
-        $query = "SELECT * FROM #__opengraph_object";
+        $query = $this->_db->getQuery(true);
+        $query->select('*')
+            ->from($this->_db->qn('#__opengraph_object'));
         if ($publishedOnly)
-            $query .= " WHERE published=1";
+            $query->where($this->_db->qn('published') . '=1');
         $this->_db->setQuery($query);
         return $this->_db->loadObjectList();
     }

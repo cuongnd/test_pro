@@ -37,7 +37,7 @@ class InstallerModelUpdate extends JModelList
 				'client_id',
 				'type',
 				'folder',
-				'extension_id',
+				'id',
 				'update_id',
 				'update_site_id',
 			);
@@ -99,7 +99,7 @@ class InstallerModelUpdate extends JModelList
 		// Grab updates ignoring new installs
 		$query->select('*')
 			->from('#__updates')
-			->where('extension_id != 0')
+			->where('id != 0')
 			->order($this->getState('list.ordering') . ' ' . $this->getState('list.direction'));
 
 		if ($type)
@@ -115,15 +115,15 @@ class InstallerModelUpdate extends JModelList
 			$query->where('folder=' . $db->quote($group == '*' ? '' : $group));
 		}
 
-		// Filter by extension_id
-		if ($eid = $this->getState('filter.extension_id'))
+		// Filter by id
+		if ($eid = $this->getState('filter.id'))
 		{
-			$query->where($db->quoteName('extension_id') . ' = ' . $db->quote((int) $eid));
+			$query->where($db->quoteName('id') . ' = ' . $db->quote((int) $eid));
 		}
 		else
 		{
-			$query->where($db->quoteName('extension_id') . ' != ' . $db->quote(0))
-				->where($db->quoteName('extension_id') . ' != ' . $db->quote(700));
+			$query->where($db->quoteName('id') . ' != ' . $db->quote(0))
+				->where($db->quoteName('id') . ' != ' . $db->quote(700));
 		}
 
 		// Filter by search

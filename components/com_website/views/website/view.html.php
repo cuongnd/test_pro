@@ -31,6 +31,17 @@ class WebsiteViewWebsite extends JViewLegacy
 	{
         $input=JFactory::getApplication()->input;
 
+		$layout = JRequest::getVar('layout');
+		$tpl = JRequest::getVar('tpl');
+		$this->setLayout($layout);
+		switch ($tpl) {
+			case "config":
+				parent::display($tpl);
+				return;
+				break;
+
+		}
+
 
         $model_Website=$this->getModel();
         $layout=$this->getLayout();

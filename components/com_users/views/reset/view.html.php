@@ -80,7 +80,7 @@ class UsersViewReset extends JViewLegacy
 		$app   = JFactory::getApplication();
 		$menus = $app->getMenu();
 		$title = null;
-
+        $this->document=JFactory::getDocument();
 		// Because the application sets a default page title,
 		// we need to get it from the menu item itself
 		$menu = $menus->getActive();

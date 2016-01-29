@@ -1,9 +1,10 @@
 <?php
-
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
 
 defined('_JEXEC') or die('Restricted access');
@@ -16,9 +17,6 @@ function showColumn($element)
 $items = $this->_models[strtolower('UserMap')]->getList();
 $row = JTable::getInstance('UserMap', 'Table');
 $columns = array_filter(array_keys(get_object_vars($row)), "showColumn");
-$avatarSettings = new JRegistry();
-$avatarSettings->set('width', 50);
-$avatarSettings->set('height', 50);
 
 include_once(JPATH_ADMINISTRATOR . '/components/com_jfbconnect/models/usermap.php');
 ?>
@@ -86,7 +84,14 @@ include_once(JPATH_ADMINISTRATOR . '/components/com_jfbconnect/models/usermap.ph
             <tr>
                 <th width="5"><?php echo JHTML::_('grid.sort', JText::_('COM_JFBCONNECT_USERMAP_TITLE_ID'), 'id', @$this->lists['order_Dir'], @$this->lists['order']); ?></th>
                 <th width="20">
-                    <input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($items); ?>);" />
+                    <?php
+                    if (defined('SC30')):
+                    echo JHtml::_('grid.checkall');
+                    endif; //SC30
+                    if (defined('SC16')):
+                    echo '<input type="checkbox" name="toggle" value="" onclick="checkAll('.count($items).');" />';
+                    endif; //SC16
+                    ?>
                 </th>
                 <th><?php echo JHTML::_('grid.sort', JText::_('COM_JFBCONNECT_USERMAP_TITLE_JOOMLA_USER'), 'j_user_id', @$this->lists['order_Dir'], @$this->lists['order']); ?></th>
                 <th><?php echo JHTML::_('grid.sort', JText::_('COM_JFBCONNECT_USERMAP_TITLE_PROVIDER'), 'provider', @$this->lists['order_Dir'], @$this->lists['order']); ?></th>
@@ -114,6 +119,8 @@ include_once(JPATH_ADMINISTRATOR . '/components/com_jfbconnect/models/usermap.ph
                 $checked = JHTML::_('grid.id', $i, $row->id);
 
                 $user = JFactory::getUser($row->j_user_id);
+                $params = new JRegistry();
+                $params->loadString($row->params);
                 ?>
                 <tr class="<?php echo "row$k"; ?>">
                     <td>
@@ -129,15 +136,17 @@ include_once(JPATH_ADMINISTRATOR . '/components/com_jfbconnect/models/usermap.ph
                     </td>
                     <td>
                         <?php
-                        echo '<a target="_blank" href="' . JFBCFactory::provider($row->provider)->profile->getProfileUrl($row->provider_user_id) . '">';
-                        echo '<img src="' . JURI::root() . '/media/sourcecoast/images/provider/icon_' . $row->provider . '.png" />';
-                        echo '</a>';
+                        if($params->get('profile_url') != '')
+                            echo '<a target="_blank" href="' . $params->get('profile_url') . '">';
+                        echo '<img src="' . JURI::root() . '/media/sourcecoast/images/provider/' . $row->provider . '/icon.png" />';
+                        if($params->get('profile_url') != '')
+                            echo '</a>';
                         ?>
                     </td>
                     <td align="center">
                         <?php
-                        if ($row->provider != 'linkedin')
-                            echo '<img src="' . JFBCFactory::provider($row->provider)->profile->getAvatarUrl($row->provider_user_id, false, $avatarSettings) . '" />';
+                            if($params->get('avatar_thumb') != '')
+                                echo '<img width="50" height="50" src="' . $params->get('avatar_thumb') . '" />';
                         ?>
                     </td>
                     <td align="center"><?php if ($row->provider == 'facebook') : ?>

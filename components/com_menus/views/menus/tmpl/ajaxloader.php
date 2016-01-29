@@ -20,7 +20,7 @@ require_once JPATH_ROOT . '/libraries/joomla/form/fields/icon.php';
 $db = JFactory::getDbo();
 $query = $db->getQuery(true);
 $query->from('#__menu As menu ')
-    ->select('menu.parent_id, menu.id,menu.binding_source,menu.binding_source_key,menu.binding_source_value,menu.access,menu.level,menu.icon,menu.title,menu.link,menu.alias,menu.published')
+    ->select('menu.parent_id, menu.id,menu.binding_source,menu.binding_source_key,menu.binding_source_value,menu.access,menu.level,menu.icon,menu.title,menu.link,menu.alias,menu.published,menu.hidden')
     ->leftJoin('#__menu_types AS menuType ON menu.menu_type_id=menuType.id')
     ->where('menuType.website_id='.(int)$website->website_id)
     ->select('menuType.id as menu_type_id,menuType.title as menu_type_title');
@@ -41,7 +41,7 @@ $query->clear()
 $list_menu_type = $db->setQuery($query)->loadObjectList('id');
 
 //end get list menu type
-//
+
 
 $list_menu_item = array();
 foreach ($list_menu_type as $menu_type) {
@@ -60,107 +60,11 @@ foreach ($list_menu_type as $menu_type) {
     $list_menu_item[$menu_type->id] = $item;
 }
 require_once JPATH_ROOT . '/libraries/joomla/form/fields/groupedlist.php';
-$scriptId = "com_menus_view_menus_jaxloader" . '_' . JUserHelper::genRandomPassword();
-ob_start();
-?>
-<script type="text/javascript" id="<?php echo $scriptId ?>">
-
-    <?php
-        ob_get_clean();
-        ob_start();
-    ?>
-    jQuery(document).ready(function ($) {
 
 
-        menu_ajax_loader.init_menu_ajax_loader();
-    });
-    <?php
-     $script=ob_get_clean();
-     ob_start();
-      ?>
-</script>
-<?php
-ob_get_clean();
-$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
-require_once JPATH_ROOT . '/libraries/joomla/form/fields/bindingSource.php';
-$binding_source = new JFormFieldBindingSource();
-$xml_binding_source = <<<XML
-
-<field
-		name="binding_source"
-		type="bindingSource"
-		onchange="menu_ajax_loader.update_data_column(this,'binding_source')"
-		>
-
-</field>
-
-XML;
-
-$xml_binding_source = simplexml_load_string($xml_binding_source);
-$binding_source->setup($xml_binding_source, 0, 'binding_source');
-ob_start();
-?>
-<div style="background: #fff">
-    <div class="row">
-        <div class="col-md-12">
-            <label>show more option<input onchange="menu_ajax_loader.show_more_options(this);" type="checkbox" checked
-                                          class="show_more_options"></label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-
-            <div class="cf nestable-lists">
-                <div class="row">
-                    <?php
-                    foreach ($list_menu_item as $menu_type_id => $item) {
-                        $menu_type = $item->menu_type;
-                        $root_menu_item = $item->root_menu_item;
-                        $list_menu_item1 = $item->list_menu_item1;
-
-                        ?>
-                        <div class="menu_type_item col-md-6" data-menu-type-id="<?php echo $menu_type_id ?>">
-                            <h3><?php echo $menu_type->title ?>(<?php echo $menu_type_id ?>
-                                )<i
-                                    class="fa-copy"></i></h3><a title="rebuid menu" href="javascript:void(0)"
-                                                                data-menu_item_id="<?php echo $root_menu_item->id ?>"
-                                                                data-menu_type_id="<?php echo $menu_type_id ?>"
-                                                                class="rebuild_root_menu"><i
-                                    class="im-spinner5"></i></a>
-                            <input class="menu_input" value="<?php echo $json_list_item ?>"
-                                   data-menu-type-id="<?php echo $menu_type_id ?>" type="hidden"
-                                   name="menu_type_<?php echo $menu_type_id ?>_output"
-                                   id="menu_type_<?php echo $menu_type_id ?>_output">
-
-                            <div data-menu_root_id="<?php echo $root_menu_item->id ?>"
-                                 data-menu_type_id="<?php echo $menu_type_id ?>" class="dd a_menu_type"
-                                 id="menu_type_<?php echo $menu_type_id ?>">
-                                <?php if (count($list_menu_item1)) { ?>
-
-                                    <?php
-
-
-                                    echo create_html_list($root_menu_item->id, $list_menu_item1, $website, $binding_source);
-
-                                    ?>
-                                <?php } else { ?>
-                                    <div class="dd-empty"></div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    <?php } ?>
-                </div>
-
-            </div>
-
-
-        </div>
-    </div>
-</div>
-
-<?php
-function create_html_list($root_id, $list_nodes, $website, $binding_source)
+function create_html_list($root_id, $list_nodes, $website, $binding_source,$level=0)
 {
+
 
 
     $nodes = array();
@@ -175,10 +79,10 @@ function create_html_list($root_id, $list_nodes, $website, $binding_source)
         <ol class="dd-list">
 
             <?php
+            $level1=$level+1;
             foreach ($nodes as $item) {
                 $groupedlist = new JFormFieldGroupedList();
                 $groupedlist->setValue($item->group);
-                ob_start();
                 ?>
                 <li class="dd-item"
                     <?php foreach ($item as $key => $value) { ?>
@@ -222,10 +126,14 @@ function create_html_list($root_id, $list_nodes, $website, $binding_source)
                         <label>Home<input <?php echo $item->home == 1 ? 'checked' : '' ?> name="home" type="radio"
                                                                                           onchange="menu_ajax_loader.home_update_value(this);menu_ajax_loader.call_on_change(this)"
                                                                                           value="<?php echo $item->home == 1 ? 1 : 0 ?>"/></label>
-                        <label>show<input <?php echo $item->published == 1 ? 'checked' : '' ?> name="show"
-                                                                                               type="checkbox"
-                                                                                               onchange="menu_ajax_loader.update_data_column(this,'published','checkbox')"
-                                                                                               value="1"/></label>
+                        <label>published<input <?php echo $item->published == 1 ? 'checked' : '' ?> name="published"
+                                                                                                    type="checkbox"
+                                                                                                    onchange="menu_ajax_loader.update_data_column(this,'published','checkbox')"
+                                                                                                    value="1"/></label>
+                        <label>hidden<input <?php echo $item->hidden == 1 ? 'checked' : '' ?> name="hidden"
+                                                                                              type="checkbox"
+                                                                                              onchange="menu_ajax_loader.update_data_column(this,'hidden','checkbox')"
+                                                                                              value="1"/></label>
                         <?php
                         if ($item->binding_source) {
                             $binding_source->setValue($item->binding_source);
@@ -236,7 +144,9 @@ function create_html_list($root_id, $list_nodes, $website, $binding_source)
                         ?>
                         <label>
                             sub menu by datasource
-                            <?php echo $binding_source->renderField(); ?>
+                            <?php
+                            echo $binding_source->renderField();
+                            ?>
                         </label>
                         <label>Binding source Key<input class="form-control"
                                                         onchange="menu_ajax_loader.update_data_column(this,'binding_source_key')"
@@ -251,8 +161,7 @@ function create_html_list($root_id, $list_nodes, $website, $binding_source)
                     </div>
 
                     <?php
-                    echo ob_get_clean();
-                    create_html_list($item->id, $list_nodes, $website, $binding_source);
+                    echo create_html_list($item->id, $list_nodes, $website, $binding_source,$level1);
                     ?>
                 </li>
                 <?php
@@ -265,21 +174,104 @@ function create_html_list($root_id, $list_nodes, $website, $binding_source)
     }
 }
 
+require_once JPATH_ROOT .'/libraries/joomla/user/helper.php';
+$scriptId = "com_menus_view_menus_jaxloader" . JUserHelper::genRandomPassword();
+ob_start();
+?>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        menu_ajax_loader.init_menu_ajax_loader();
 
-function treerecurse($id, $list, &$children, $maxlevel = 9999, $level = 0)
-{
-    if (@$children[$id] && $level <= $maxlevel) {
+    });
+</script>
+<?php
+$script = ob_get_clean();
+$script = JUtility::remove_string_javascript($script);
+$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+//end setup script grid
 
-        foreach ($children[$id] as $v) {
-            $id = $v->id;
-            $list[$id] = $v;
-            $list[$id]->children = @$children[$id];
-            unset($children[$id]);
-            $list = treerecurse($id, $list, $children, $maxlevel, $level + 1);
-        }
-    }
-    return $list;
-}
+
+require_once JPATH_ROOT . '/libraries/joomla/form/fields/bindingsource.php';
+$binding_source = new JFormFieldBindingSource();
+$xml_binding_source = <<<XML
+
+<field
+		name="binding_source"
+		type="bindingSource"
+		onchange="menu_ajax_loader.update_data_column(this,'binding_source')"
+		>
+
+</field>
+
+XML;
+
+$xml_binding_source = simplexml_load_string($xml_binding_source);
+$binding_source->setup($xml_binding_source, 0, 'binding_source');
+ob_start();
+?>
+<div style="background: #fff">
+    <div class="row">
+        <div class="col-md-12">
+            <label>show more option<input onchange="menu_ajax_loader.show_more_options(this);" type="checkbox" checked
+                                          class="show_more_options"></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="cf nestable-lists">
+                <div class="row">
+                    <?php
+                    foreach ($list_menu_item as $menu_type_id => $list_item) {
+
+                        $fist_item = new stdClass();
+
+                        foreach ($list_item as $key => $item) {
+                            if ($item->parent_id == $item->id) {
+                                $fist_item = $item;
+                                unset($list_item[$key]);
+
+                                break;
+                            }
+                        }
+                        ?>
+                        <div class="menu_type_item col-md-6" data-menu-type-id="<?php echo $menu_type_id ?>">
+                            <h3><?php echo $fist_item->menu_type_title ?>(<?php echo $fist_item->menu_type_id ?>)<i
+                                    class="fa-copy"></i></h3><a title="rebuid menu" href="javascript:void(0)" data-menu_item_id="<?php echo $fist_item->id ?>" data-menu_type_id="<?php echo $menu_type_id ?>" class="rebuild_root_menu"><i class="im-spinner5"></i></a>
+                            <input class="menu_input" value="<?php echo $json_list_item ?>"
+                                   data-menu-type-id="<?php echo $menu_type_id ?>" type="hidden"
+                                   name="menu_type_<?php echo $menu_type_id ?>_output"
+                                   id="menu_type_<?php echo $menu_type_id ?>_output">
+
+                            <div data-menu_root_id="<?php echo $fist_item->id ?>"
+                                 data-menu_type_id="<?php echo $menu_type_id ?>" class="dd a_menu_type"
+                                 id="menu_type_<?php echo $menu_type_id ?>">
+                                <?php if (count((array)$list_item)) { ?>
+
+                                    <?php
+
+
+                                    echo create_html_list($fist_item->id, $list_item, $website, $binding_source);
+
+                                    ?>
+                                <?php } else { ?>
+                                    <div class="dd-empty"></div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<?php
+
+
 
 $contents = ob_get_clean();
 $tmpl = $app->input->get('tmpl', '', 'string');

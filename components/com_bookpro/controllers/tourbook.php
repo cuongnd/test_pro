@@ -130,7 +130,17 @@ class BookProControllerTourbook extends JControllerLegacy {
 
         exit();
     }
-
+    public function ajax_booking_tour()
+    {
+        $app = JFactory::getApplication();
+        $post = file_get_contents('php://input');
+        $post = json_decode($post);
+        echo "<pre>";
+        print_r($post);
+        echo "</pre>";
+        die;
+        die;
+    }
     function ajax_show_children_acommodation() {
         $cart = JModelLegacy::getInstance('TourCart', 'bookpro');
         $cart->load();

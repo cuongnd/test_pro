@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -14,19 +17,19 @@ class JFBConnectProfileTwitter extends JFBConnectProfile
     protected function setProviderFields()
     {
         $this->providerFields = array(
-            '0' => 'None',
-            'name' => 'Full Name',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'location' => 'Location',
-            'entities.url.urls.0.expanded_url' => 'Website',
-            'description' => 'Description',
-            'friends_count' => 'Friend Count',
-            'followers_count' => 'Followers Count',
-            'listed_count' => 'Listed Count',
-            'statuses_count' => 'Status Update Count',
-            'screen_name' => 'Twitter Username',
-            'created_at' => 'Registration Date'
+                '0' => 'None',
+                'name' => 'Full Name',
+                'first_name' => 'First Name',
+                'last_name' => 'Last Name',
+                'location' => 'Location',
+                'entities.url.urls.0.expanded_url' => 'Website',
+                'description' => 'Description',
+                'friends_count' => 'Friend Count',
+                'followers_count' => 'Followers Count',
+                'listed_count' => 'Listed Count',
+                'statuses_count' => 'Status Update Count',
+                'screen_name' => 'Twitter Username',
+                'created_at' => 'Registration Date'
         );
     }
 
@@ -92,28 +95,17 @@ class JFBConnectProfileTwitter extends JFBConnectProfile
     // Prevents the default avatars from being imported
     function getAvatarUrl($providerUserId, $nullForDefault = false, $params = null)
     {
-        if (!$params)
-            $params = new JRegistry();
-
-        $savedAvatar = JFactory::getApplication()->getUserState('com_jfbconnect.twitter.avatar.' . $providerUserId, null);
-        if ($savedAvatar)
+        $avatarUrl = JFBCFactory::cache()->get('twitter.avatar.' . $providerUserId);
+        if ($avatarUrl === false)
         {
-            if ($savedAvatar == "blank")
-                return null;
+            $profile = $this->fetchProfile($providerUserId, array('profile_image_url', 'default_profile_image'));
+            if (!$profile->get('default_profile_image', true))
+                $avatarUrl = $profile->get('profile_image_url', null);
             else
-                return $savedAvatar;
+                $avatarUrl = null;
+
+            JFBCFactory::cache()->store($avatarUrl, 'twitter.avatar.' . $providerUserId);
         }
-
-        $profile = $this->fetchProfile($providerUserId, array('profile_image_url', 'default_profile_image'));
-        if (!$profile->get('default_profile_image', true))
-            $avatarUrl = $profile->get('profile_image_url', null);
-        else
-            $avatarUrl = null;
-
-        if (empty($avatarUrl))
-            JFactory::getApplication()->setUserState('com_jfbconnect.twitter.avatar.' . $providerUserId, 'blank');
-        else
-            JFactory::getApplication()->setUserState('com_jfbconnect.twitter.avatar.' . $providerUserId, $avatarUrl);
 
         return $avatarUrl;
     }

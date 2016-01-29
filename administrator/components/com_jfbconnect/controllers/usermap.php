@@ -1,12 +1,12 @@
 <?php
-
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
-
-// Check to ensure this file is included in Joomla!
+ // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
 class JFBConnectControllerUserMap extends JFBConnectController
@@ -48,7 +48,7 @@ class JFBConnectControllerUserMap extends JFBConnectController
         if (count($pluginNames) != 0)
         {
             $doc = JFactory::getDocument();
-            $doc->addCustomTag('<script type="text/javascript">var jfbcImportMsg = "' . JText::_('COM_JFBCONNECT_MSG_IMPORT_DESC') . '\n' . implode('\n', $pluginNames) . '\n\n' . JText::_('COM_JFBCONNECT_MSG_IMPORT_CONFIRMATION') . '";</script>');
+            $doc->addCustomTag('<script>var jfbcImportMsg = "' . JText::_('COM_JFBCONNECT_MSG_IMPORT_DESC') . '\n' . implode('\n', $pluginNames) . '\n\n' . JText::_('COM_JFBCONNECT_MSG_IMPORT_CONFIRMATION') . '";</script>');
             $html = "onclick=\"javascript:if(confirm(jfbcImportMsg)){submitbutton('importConnections');}\" class=\"toolbar\">\n";
             $html .= "<span class=\"icon-32-upload\" title=\"" . JText::_('COM_JFBCONNECT_MSG_IMPORT_TITLE') . "\">\n";
             $html .= "</span>\n";

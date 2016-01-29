@@ -375,3 +375,5 @@
 2015-02-02T18:53:39+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_filemanager&view=files
 2015-06-03T09:16:01+00:00	DEBUG	-	class:JApplicationCms
 2015-06-03T09:16:01+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-03T03:15:32+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:15:32+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit

@@ -306,7 +306,7 @@ class WFModelInstaller extends WFModel {
 
         // Joomla! 2.5
         if (is_object($query)) {
-            $query->select(array('extension_id', 'name', 'element', 'folder'))->from('#__extensions')->where(array('type = ' . $db->Quote('plugin'), 'element IN (' . $related . ')'))->order('name');
+            $query->select(array('id', 'name', 'element', 'folder'))->from('#__extensions')->where(array('type = ' . $db->Quote('plugin'), 'element IN (' . $related . ')'))->order('name');
             // Joomla! 1.5    
         } else {
             $query = 'SELECT id, name, element, folder FROM #__plugins WHERE element IN (' . $related . ') ORDER BY name';
@@ -328,8 +328,8 @@ class WFModelInstaller extends WFModel {
                 $file = JPATH_PLUGINS . '/' . $row->folder . '/' . $row->element . ".xml";
             }
             
-            if (isset($row->extension_id)) {
-                $row->id = $row->extension_id; 
+            if (isset($row->id)) {
+                $row->id = $row->id;
             }
 
             if (is_file($file)) {

@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -16,6 +19,7 @@ abstract class JFBConnectWidget extends JObject
     var $name;
     var $systemName;
     var $className;
+    var $tagName;
     var $examples;
 
     function __construct($provider, $fields)
@@ -23,27 +27,8 @@ abstract class JFBConnectWidget extends JObject
         $this->provider = $provider;
 
         $this->fields = new JRegistry();
-        if(!is_object($fields))
-        {
-            $newFields = array();
-            $params = $this->splitIntoTagParameters($fields);
-            foreach($params as $param)
-            {
-                if($param != null)
-                {
-                    $paramValues = explode('=', $param, 2);
-                    if (count($paramValues) == 2) //[0] name [1] value
-                    {
-                        $fieldName = strtolower(trim($paramValues[0]));
-                        $fieldValue = trim($paramValues[1]);
 
-                        $newFields[$fieldName] = $fieldValue;
-                    }
-                }
-            }
-            $this->fields->loadArray($newFields);
-        }
-        else
+        if(is_object($fields) || is_array($fields))
         {
             $this->fields->loadObject($fields);
         }
@@ -57,37 +42,6 @@ abstract class JFBConnectWidget extends JObject
     public function getName()
     {
         return $this->name;
-    }
-
-    private function splitIntoTagParameters($paramList)
-    {
-        $paramList = SCStringUtilities::replaceNBSPWithSpace($paramList);
-        $params = explode(' ', $paramList);
-
-        $count = count($params);
-        for ($i = 0; $i < $count; $i++)
-        {
-            $params[$i] = str_replace('"', '', $params[$i]);
-            if (strpos($params[$i], '=') === false && $i > 0)
-            {
-                $previousIndex = $this->findPreviousParameter($params, $i - 1);
-                //Combine this with previous entry and space
-                $combinedParamValue = $params[$previousIndex] . ' ' . $params[$i];
-                $params[$previousIndex] = $combinedParamValue;
-                unset($params[$i]);
-            }
-        }
-        return $params;
-    }
-
-    private function findPreviousParameter($params, $i)
-    {
-        for ($index = $i; $index >= 0; $index--)
-        {
-            if (isset($params[$index]))
-                return $index;
-        }
-        return 0;
     }
 
     public function getField($fieldName, $deprecatedName, $type, $defaultValue, $htmlName)
@@ -139,11 +93,8 @@ abstract class JFBConnectWidget extends JObject
 
         if($this->provider)
         {
-            $class[] = $this->provider->name;
+            $class[] = $this->provider->systemName;
             $this->provider->needsJavascript = true;
-
-            if($this->provider->needsCss)
-                $tag = $this->provider->getStylesheet() . $tag;
 
             if($tag)
                 $this->provider->widgetRendered = true;

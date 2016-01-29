@@ -52,6 +52,7 @@ class PluginsModelPlugins extends JModelList
     function getItems()
     {
         $items=parent::getItems();
+		require_once JPATH_ROOT.'/components/com_website/helpers/website.php';
         $items=websiteHelperFrontEnd::setKeyWebsite($items);
         return $items;
     }

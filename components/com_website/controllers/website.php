@@ -578,6 +578,7 @@ class WebsiteControllerWebsite extends JControllerForm
         $form=$app->input->get('jform',array(),'array');
         $params=$form['params'];
         $form['params']=json_encode($params);
+
         $form['id']=$website->website_id;
         $websiteTable->load( $form['id']);
         $websiteTable->bind($form);

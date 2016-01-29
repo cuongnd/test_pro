@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
@@ -16,27 +19,27 @@ class JFBConnectViewUpdates extends JViewLegacy
 
     function display($tpl = null)
     {
-        require_once(JPATH_COMPONENT_ADMINISTRATOR . '/assets/sourcecoast.php');
+        $model = JFBCFactory::model('updates');
+        $downloadId = JFBCFactory::config()->get('sc_download_id');
 
-        $jfbcLibrary = JFBCFactory::provider('facebook');
-        $autotuneModel = JModelLegacy::getInstance('AutoTune', 'JFBConnectModel');
+        $xmlElement = simplexml_load_file(JPATH_ADMINISTRATOR.'/components/com_jfbconnect/jfbconnect.xml');
+        if($xmlElement)
+            $jfbcVersion = (string) $xmlElement->version;
+        else
+            $jfbcVersion = "Unknown. XML Manifest could not be read.";
 
-        if ($jfbcLibrary->appId)
-        {
-            $appConfig = $autotuneModel->getAppConfig();
-            if (count($appConfig) == 0 || $appConfig == "")
-            {
-                $app = JFactory::getApplication();
-                $app->enqueueMessage(JText::sprintf('COM_JFBCONNECT_MSG_RUN_AUTOTUNE', '<a href="index.php?option=com_jfbconnect&view=autotune">AutoTune</a>'), 'error');
-            }
-        }
 
-        if (defined('SC16')):
-            $this->versionChecker = new sourceCoastConnect('jfbconnect_j16', 'components/com_jfbconnect/assets/images/');
-        endif; //SC16
-        if (defined('SC30')):
-            $this->versionChecker = new sourceCoastConnect('jfbconnect_j30', 'components/com_jfbconnect/assets/images/');
-        endif; //SC30
+        $jfbcUpdateSite = $model->getUpdateSite();
+        if (is_object($jfbcUpdateSite) && $jfbcUpdateSite->enabled)
+            $jfbcUpdateSiteEnabled = true;
+        else
+            $jfbcUpdateSiteEnabled = false;
+
+        $jfbcUpdate = $model->getJfbconnectUpdateId();
+
+        $this->jfbcUpdateSiteEnabled = $jfbcUpdateSiteEnabled;
+        $this->jfbcVersion = $jfbcVersion;
+        $this->jfbcUpdate = $jfbcUpdate;
 
         $this->addToolbar();
 

@@ -29,20 +29,21 @@ class ModulesViewModule extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+		$layout=$this->getLayout();
+		if($layout=='config')
+		{
+			parent::display('default');
+			return;
+		}
+
 		$this->form		= $this->get('Form');
 		$this->item		= $this->get('Item');
 
 		$this->state	= $this->get('State');
 		$this->canDo	= JHelperContent::getActions('com_modules', 'module', $this->item->id);
 
-		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
-			JError::raiseError(500, implode("\n", $errors));
-			return false;
-		}
 
-		$this->addToolbar();
+
 		parent::display($tpl);
 	}
 

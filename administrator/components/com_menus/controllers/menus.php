@@ -182,12 +182,12 @@ class MenusControllerMenus extends JControllerAdmin
 
 		try
 		{
-			$query->select('e.element, e.id AS extension_id')
+			$query->select('e.element, e.id AS id')
 				->from('#__extensions AS e')
 				->where('e.type = ' . $db->quote('component'));
 			$db->setQuery($query);
 
-			$components = $db->loadAssocList('element', 'extension_id');
+			$components = $db->loadAssocList('element', 'id');
 		}
 		catch (RuntimeException $e)
 		{

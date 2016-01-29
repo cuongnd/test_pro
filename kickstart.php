@@ -3388,11 +3388,17 @@ class AKUnarchiverZIP extends AKUnarchiverJPA
 {
 	var $expectDataDescriptor = false;
 
+	/**
+	 * @return bool
+     */
 	protected function readArchiveHeader()
 	{
 		debugMsg('Preparing to read archive header');
 		// Initialize header data array
-		$this->archiveHeaderData = new stdClass();
+		/** @var TYPE_NAME $this */
+		if (isset($this->archiveHeaderData)) {
+			$this->archiveHeaderData = new stdClass();
+		}
 
 		// Open the first part
 		debugMsg('Opening the first part');

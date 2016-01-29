@@ -36,7 +36,6 @@
       <excludeFolder url="file://$MODULE_DIR$/components/com_mailto" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_maqmahelpdesk" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_media" />
-      <excludeFolder url="file://$MODULE_DIR$/components/com_menus" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_modules" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_newsfeeds" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_phpmyadmin" />
@@ -45,6 +44,12 @@
       <excludeFolder url="file://$MODULE_DIR$/components/com_search" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_tags" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_templates" />
+      <excludeFolder url="file://$MODULE_DIR$/components/com_users" />
+      <excludeFolder url="file://$MODULE_DIR$/components/com_utility" />
+      <excludeFolder url="file://$MODULE_DIR$/components/com_virtuemart" />
+      <excludeFolder url="file://$MODULE_DIR$/components/com_weblinks" />
+      <excludeFolder url="file://$MODULE_DIR$/components/com_wrapper" />
+      <excludeFolder url="file://$MODULE_DIR$/components/com_xmap" />
       <excludeFolder url="file://$MODULE_DIR$/configuration" />
       <excludeFolder url="file://$MODULE_DIR$/documents" />
       <excludeFolder url="file://$MODULE_DIR$/global_css_images_js" />

@@ -1,0 +1,127 @@
+body
+{
+  background: #f5f6f7 !important;
+}
+.item-230
+{
+
+
+}
+.container {
+
+}
+.setStyleContainer(@width){
+  .container{
+    &.container_157,&.container_5,&.container_207
+    {
+      width: @width;
+      box-shadow:none;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .setStyleContainer(100%);
+}
+
+@media (min-width: 1300px) {
+  .setStyleContainer(1300px);
+}
+.container{
+  background: #fff;
+}
+/*
+Main menu
+*/
+
+
+.nav.nav-pills.menu_front_end_main_menu {
+  margin-bottom: 0;
+  padding-left: 0; // Override default ul/ol
+  list-style: none;
+  > li {
+    position: relative;
+    display: block;
+    > a {
+      position: relative;
+      display: block;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 0;
+      &:hover,
+      &:focus {
+        border-radius: 0;
+        background-color: #428bca;
+      }
+    }
+
+    // Disabled state sets text to gray and nukes hover/tab effects
+    &.disabled > a {
+
+      &:hover,
+      &:focus {
+
+      }
+    }
+  }
+
+  // Open dropdowns
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+
+    }
+  }
+
+  // Nav dividers (deprecated with v3.0.1)
+  //
+  // This should have been removed in v3 with the dropping of `.nav-list`, but
+  // we missed it. We don't currently support this anywhere, but in the interest
+  // of maintaining backward compatibility in case you use it, it's deprecated.
+  .nav-divider {
+  }
+
+  // Prevent IE8 from misplacing imgs
+  //
+  // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+  > li > a > img {
+    max-width: none;
+  }
+}
+
+
+// Pills
+// -------------------------
+.nav-pills.menu_front_end_main_menu {
+  > li {
+    float: left;
+
+    // Links rendered as pills
+    > a {
+
+    }
+    + li {
+      margin-left: 2px;
+    }
+
+    // Active state
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+
+      }
+    }
+  }
+}
+

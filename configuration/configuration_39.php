@@ -13,10 +13,10 @@ class JConfig {
 	public $captcha = 'recaptcha';
 	public $cookie_domain = '';
 	public $cookie_path = '';
-	public $db = 'test_pro';
+	public $db = 'webtemppro';
 	public $dbprefix = 'ueb3c_';
 	public $dbtype = 'mysqli';
-	public $debug = '0';
+	public $debug = '1';
 	public $debug_lang = '0';
 	public $display_offline_message = '1';
 	public $editor = 'jce';
@@ -31,8 +31,13 @@ class JConfig {
 	public $ftp_port = '21';
 	public $ftp_root = '';
 	public $ftp_user = '';
-	public $gzip = '0';
+	public $gzip = '1';
 	public $helpurl = 'http://help.joomla.org/proxy/index.php?option=com_help&keyref=Help{major}{minor}:{keyref}';
+	//public $host = 'asianventure.ddns.net';
+	//public $host = 'asian-pc';
+	//public $host = '14.162.87.113';
+	//public $host = '192.168.1.68';
+	//public $host = '169.254.128.224';
 	public $host = 'localhost';
 	public $lifetime = '150';
 	public $list_limit = '20';
@@ -49,7 +54,10 @@ class JConfig {
 	public $offline_message = 'This site is down for maintenance.<br /> Please check back again soon.';
 	public $offset = 'Asia/Bangkok';
 	public $offset_user = 'UTC';
-	public $password = '';
+	//in localhost pass is null
+	//public $password = '';
+
+	public $password = '123456';
 	public $robots = '';
 	public $secret = 'rjDJD5tKY1iUXy3q2cyfhHunM3m7mDy9';
 	public $sef = '1';
@@ -57,7 +65,7 @@ class JConfig {
 	public $sef_suffix = '1';
 	public $sendmail = '/usr/sbin/sendmail';
 	public $session_handler = 'database';
-	public $sitename = 'hoteclick.com';
+	public $sitename = 'websitetemplatepro.com';
 	public $sitename_pagetitles = '0';
 	public $smtpauth = '1';
 	public $smtphost = 'smtp.gmail.com';
@@ -68,6 +76,7 @@ class JConfig {
 	public $tmp_path = 'tmp';
 	public $unicodeslugs = '1';
 	public $user = 'root';
+	//public $user = 'cuongnd';
 	public $mailonline = '1';
 	public $frontediting = '0';
 	public $asset_id = '1';

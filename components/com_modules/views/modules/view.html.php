@@ -29,6 +29,17 @@ class ModulesViewModules extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+		$layout = JRequest::getVar('layout');
+		$tpl = JRequest::getVar('tpl');
+		$this->setLayout($layout);
+		switch ($tpl) {
+			case "loadmodules":
+				parent::display($tpl);
+				return;
+				break;
+
+		}
+
 		$this->items		= $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
 		$this->state		= $this->get('State');

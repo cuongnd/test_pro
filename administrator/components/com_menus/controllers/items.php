@@ -49,6 +49,7 @@ class MenusControllerItems extends JControllerAdmin
         $app=JFactory::getApplication();
         $post=$app->input->getArray($_POST);
         $menu_type_id=$post['filter']['menu_type_id'];
+
 		if ($model->rebuild(array($menu_type_id)))
 		{
 			// Reorder succeeded.

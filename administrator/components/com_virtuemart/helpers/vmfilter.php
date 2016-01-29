@@ -535,7 +535,7 @@ class vmFilter{
 		}
 		unset($php_errormsg);
 		if(($d = ini_get('display_errors'))){
-			ini_set('display_errors', 0);
+			ini_set('display_errors', 1);
 		}
 		preg_match($p, '');
 		if($d){

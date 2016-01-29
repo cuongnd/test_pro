@@ -28,6 +28,7 @@ class MenusTableMenu extends JTableMenu
 	 * @since   2.5
 	 * @see     http://docs.joomla.org/JTableNested/delete
 	 */
+	var $link='index.php?option=com_utility&view=blank';
 	public function delete($pk = null, $children = false)
 	{
 		return parent::delete($pk, $children);

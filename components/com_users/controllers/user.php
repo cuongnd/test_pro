@@ -41,7 +41,8 @@ class UsersControllerUser extends UsersController
 		$data['password']  = $input->$method->get('password', '', 'RAW');
 		$data['secretkey'] = $input->$method->get('secretkey', '', 'RAW');
 
-		// Set the return URL if empty.
+
+        // Set the return URL if empty.
 		if (empty($data['return']))
 		{
 			$data['return'] = 'index.php?option=com_users&view=profile';
@@ -60,7 +61,6 @@ class UsersControllerUser extends UsersController
 		$credentials['username']  = $data['username'];
 		$credentials['password']  = $data['password'];
 		$credentials['secretkey'] = $data['secretkey'];
-
 		// Perform the log in.
 		if (true === $app->login($credentials, $options))
 		{
@@ -82,6 +82,25 @@ class UsersControllerUser extends UsersController
 			$app->setUserState('users.login.form.data', $data);
 			$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
 		}
+	}
+	public function ajax_set_key_of_params()
+	{
+		$app=JFactory::getApplication();
+		$key_params=$app->input->get('key_params','','string');
+		$value_key_params=$app->input->get('value_key_params','','string');
+		$user=JFactory::getUser();
+		$user->setParam($key_params,$value_key_params);
+		$response=new stdClass();
+		$response->e=0;
+		if(!$user->save())
+		{
+			$response->e=1;
+			$response->r=$user->getError();
+		}else{
+			$response->r="change screen size success";
+		}
+		echo json_encode($response);
+		die;
 	}
 	public function ajax_get_list_group_user()
 	{

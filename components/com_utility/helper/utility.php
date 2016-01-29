@@ -20,6 +20,7 @@ defined('_JEXEC') or die;
 class UtilityHelper
 {
 
+    protected  static  $list_position=null;
     public function getScreenSize()
     {
         $session=JFactory::getSession();
@@ -70,6 +71,333 @@ class UtilityHelper
         $session->set('editingState',$editingState);
         return $editingState;
     }
+
+    public function validate_by_on($list_style){
+        $return_style= new stdClass();
+        foreach($list_style as $key=>$value)
+        {
+            $string_enable=substr($key,0, 6);
+            if($string_enable=='enable'){
+                $push_key=substr($key,7);
+
+                $return_style->$push_key=$list_style->$push_key;
+            }
+        }
+        return $return_style;
+    }
+
+    public function get_build_css($main_menu_style_item)
+    {
+        $main_menu_style_item = base64_decode($main_menu_style_item);
+        $registry_item_form = new JRegistry;
+
+        $registry_item_form->loadString($main_menu_style_item);
+        jimport('joomla.utilities.objecthelper');
+        $list_style = new stdClass();
+        JObjectHelper::toObject($registry_item_form->toObject(), $list_style);
+        require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
+        $list_style = UtilityHelper::validate_by_on($list_style);
+        $list_style_main_menu_style_item =UtilityHelper::build_css($list_style);
+        return $list_style_main_menu_style_item;
+
+    }
+    public function build_css($item_style)
+    {
+        $pixel = array(
+            'font_size',
+            'font_weight',
+            'min_width',
+            'max_width',
+            'width',
+            'min_height',
+            'max_height',
+            'height',
+            'left',
+            'right',
+            'top',
+            'bottom',
+            'border_top',
+            'border-left',
+            'border-right',
+            'border_bottom',
+            'border_radius',
+            'padding',
+            'padding_top',
+            'padding_right',
+            'padding_bottom',
+            'padding_left',
+            'margin',
+            'margin_top',
+            'margin_right',
+            'margin_bottom',
+            'margin_left',
+            'font_weight',
+            'font_variant',
+            'line_height',
+            'letter_spacing',
+            'word_spacing',
+            'border_all_radius_width',
+            'border_radius_top_left',
+            'border_radius_top_right',
+            'border_radius_buttom_left',
+            'border_radius_buttom_right',
+            'border_all_width',
+            'border_top_width',
+            'border_right_width',
+            'border_buttom_width',
+            'border_left_width',
+            'blur_radius',
+            'spread_radius',
+            'horizontal_length',
+            'vertical_length'
+        );
+        $none_hover = new stdClass();
+        $hover = new stdClass();
+        $item_style1 = new stdClass();
+        foreach ($item_style as $key => $value) {
+            $item_hover = substr($key, -5);
+            if ($item_hover == 'hover') {
+                $key1 = substr($key, 0, -6);
+            } else {
+                $key1 = $key;
+            }
+            if (in_array($key1, $pixel)) {
+                if (is_numeric($value)) {
+
+                    $value = $value . 'px';
+                    $item_style1->$key = $value;
+                } else {
+                    $value = '0px';
+                    $item_style1->$key = $value;
+                }
+            } else {
+                $item_style1->$key = $value;
+            }
+        }
+        foreach ($item_style1 as $key => $value) {
+            $item_hover = substr($key, -5);
+            if ($item_hover == 'hover') {
+                $key1 = substr($key, 0, -6);
+                $hover->$key1 = $value;
+            } else {
+                $none_hover->$key = $value;
+            }
+        }
+        //setup style
+        //border
+        $border_all_width = $none_hover->border_all_width;
+        $border_all_style = $none_hover->border_all_style;
+        $border_all_color = $none_hover->border_all_color;
+        $none_hover->border = "$border_all_width $border_all_style $border_all_color";
+        unset($none_hover->border_all_width);
+        unset($none_hover->border_all_style);
+        unset($none_hover->border_all_color);
+
+
+        $border_top_width = $none_hover->border_top_width;
+        $border_top_style = $none_hover->border_top_style;
+        $border_top_color = $none_hover->border_top_color;
+        $none_hover->border_top = "$border_top_width $border_top_style $border_top_color";
+        unset($none_hover->border_top_width);
+        unset($none_hover->border_top_style);
+        unset($none_hover->border_top_color);
+
+
+        $border_right_width = $none_hover->border_right_width;
+        $border_right_style = $none_hover->border_right_style;
+        $border_right_color = $none_hover->border_right_color;
+        $none_hover->border_right = "$border_right_width $border_right_style $border_right_color";
+        unset($none_hover->border_right_width);
+        unset($none_hover->border_right_style);
+        unset($none_hover->border_right_color);
+
+        $border_bottom_width = $none_hover->border_bottom_width;
+        $border_bottom_style = $none_hover->border_bottom_style;
+        $border_bottom_color = $none_hover->border_bottom_color;
+        $none_hover->border_bottom = "$border_bottom_width $border_bottom_style $border_bottom_color";
+        unset($none_hover->border_bottom_width);
+        unset($none_hover->border_bottom_style);
+        unset($none_hover->border_bottom_color);
+
+        $border_left_width = $none_hover->border_left_width;
+        $border_left_style = $none_hover->border_left_style;
+        $border_left_color = $none_hover->border_left_color;
+        $none_hover->border_left = "$border_left_width $border_left_style $border_left_color";
+        unset($none_hover->border_left_width);
+        unset($none_hover->border_left_style);
+        unset($none_hover->border_left_color);
+
+
+        $border_all_width = $hover->border_all_width;
+        $border_all_style = $hover->border_all_style;
+        $border_all_color = $hover->border_all_color;
+        $hover->border = "$border_all_width $border_all_style $border_all_color";
+        unset($hover->border_all_width);
+        unset($hover->border_all_style);
+        unset($hover->border_all_color);
+
+
+        //end border
+
+
+        //boder radius
+        $border_all_radius_width = $none_hover->border_all_radius_width;
+        $none_hover->border_radius = "$border_all_radius_width";
+        unset($none_hover->border_all_radius_width);
+
+        if (!$none_hover->border_radius_top_left) {
+            $none_hover->border_radius_top_left = $border_all_radius_width;
+        }
+        if (!$none_hover->border_radius_top_right) {
+            $none_hover->border_radius_top_right = $border_all_radius_width;
+        }
+        if (!$none_hover->border_radius_buttom_right) {
+            $none_hover->border_radius_buttom_right = $border_all_radius_width;
+        }
+        if (!$none_hover->border_radius_buttom_left) {
+            $none_hover->border_radius_buttom_left = $border_all_radius_width;
+        }
+
+        $border_radius_top_left = $none_hover->border_radius_top_left;
+        unset($none_hover->border_radius_top_left);
+        $border_radius_top_right = $none_hover->border_radius_top_right;
+        unset($none_hover->border_radius_top_right);
+        $border_radius_buttom_left = $none_hover->border_radius_buttom_left;
+        unset($none_hover->border_radius_buttom_left);
+        $border_radius_buttom_right = $none_hover->border_radius_buttom_right;
+        unset($none_hover->border_radius_buttom_right);
+
+
+        $none_hover->border_radius = "$border_radius_top_left $border_radius_top_right  $border_radius_buttom_right $border_radius_buttom_left";
+
+
+        $border_all_radius_width = $hover->border_all_radius_width;
+        $hover->border_radius = "$border_all_radius_width";
+        unset($hover->border_all_radius_width);
+        if (!$hover->border_radius_top_left) {
+            $hover->border_radius_top_left = $border_all_radius_width;
+        }
+        if (!$hover->border_radius_top_right) {
+            $hover->border_radius_top_right = $border_all_radius_width;
+        }
+        if (!$hover->border_radius_buttom_right) {
+            $hover->border_radius_buttom_right = $border_all_radius_width;
+        }
+        if (!$hover->border_radius_buttom_left) {
+            $hover->border_radius_buttom_left = $border_all_radius_width;
+        }
+
+
+        $border_radius_top_left = $hover->border_radius_top_left;
+        unset($hover->border_radius_top_left);
+        $border_radius_top_right = $hover->border_radius_top_right;
+        unset($hover->border_radius_top_right);
+        $border_radius_buttom_left = $hover->border_radius_buttom_left;
+        unset($hover->border_radius_buttom_left);
+        $border_radius_buttom_right = $hover->border_radius_buttom_right;
+        unset($hover->border_radius_buttom_right);
+
+
+        $hover->border_radius = "$border_radius_top_left $border_radius_top_right  $border_radius_buttom_right $border_radius_buttom_left";
+
+
+        //end border ridius
+
+
+        //change _ to -
+        foreach ($none_hover as $key => $value) {
+            $key1 = str_replace('_', '-', $key);
+            $none_hover->$key1 = $value;
+        }
+        foreach ($none_hover as $key => $value) {
+            if (strpos($key, '_') !== false) {
+                unset($none_hover->$key);
+            }
+        }
+        foreach ($hover as $key => $value) {
+            $key1 = str_replace('_', '-', $key);
+            $hover->$key1 = $value;
+        }
+        foreach ($hover as $key => $value) {
+            if (strpos($key, '_') !== false) {
+                unset($hover->$key);
+            }
+        }
+
+
+        $return_list_style = array(
+            'none_hover' => $none_hover,
+            'hover' => $hover,
+        );
+        return $return_list_style;
+    }
+    public function get_field($field,$node_value,$onchange)
+    {
+        $path=JPATH_ROOT.'/'.$field->path;
+        if(file_exists($path))
+        {
+            require_once $path;
+        }else
+        {
+            return false;
+        }
+        $class_name='JFormField'.$field->type;
+        $form_field = new $class_name;
+        $config_params=$field->config_params;
+        $config_params=base64_decode($config_params);
+        $config_params=json_decode($config_params);
+        $options=array();
+        if(count($config_params))
+        {
+            foreach($config_params as $property)
+            {
+                $options[]='<option value="'.$property->value.'">'.$property->key.'</option>';
+            }
+        }
+        $options=implode('',$options);
+        if($onchange)
+        {
+            $field->onchange=$onchange;
+        }
+
+        $config_property=$field->config_property;
+
+        $config_property=base64_decode($config_property);
+        $config_property = (array)up_json_decode($config_property, false, 512, JSON_PARSE_JAVASCRIPT);
+
+        $config_property_params=array();
+        if(count($config_property))
+        {
+            foreach($config_property as $property)
+            {
+                $config_property_params[]=' '.$property->property_key.'="'.$property->property_value.'" ';
+            }
+        }
+        $config_property_params=implode(' ',$config_property_params);
+
+
+
+
+
+        $xml_form_field = <<<XML
+
+<field
+		name="$field->name"
+		type="$field->type"
+
+		onchange="$field->onchange"
+		default="$field->default"
+		label="$field->label"
+		description="$field->description" $config_property_params >
+
+	$options
+</field>
+
+XML;
+        $xml_form_field = simplexml_load_string($xml_form_field);
+        $form_field->setup($xml_form_field,$node_value);
+        return $form_field;
+    }
     public function getStatePreview()
     {
         $session=JFactory::getSession();
@@ -104,6 +432,7 @@ class UtilityHelper
     public function getEnableEditWebsite()
     {
         $app=JFactory::getApplication();
+
         $isAdminSite=UtilityHelper::isAdminSite();
         if(!$isAdminSite)
             return 0;
@@ -191,7 +520,7 @@ class UtilityHelper
         {
             echo $tablePosition->getError();
         }
-
+        $tablePosition->rebuild();
         return $tablePosition;
     }
     public function removeColumnInScreen($columnId)
@@ -364,6 +693,7 @@ class UtilityHelper
     }
     public function updateRowsInScreen($listRow)
     {
+        $app=JFactory::getApplication();
         $website=JFactory::getWebsite();
         $db=JFactory::getDbo();
         foreach($listRow as $id=> $row) {
@@ -372,6 +702,25 @@ class UtilityHelper
                 ->set('ordering = ' . (int)$row['ordering'])
                 ->set('website_id = ' . (int)$website->website_id)
                 ->where('id = ' . (int)$id);
+            $db->setQuery($query);
+            $db->execute();
+        }
+        $menuItemActiveId=$app->input->get('menuItemActiveId',0);
+        foreach($listRow as $id=> $row) {
+            $query = $db->getQuery(true);
+            $query->delete('#__menu_item_id_position_id_ordering')
+                ->where('menu_item_id = ' . (int)$menuItemActiveId)
+                ->where('position_id = ' . (int)$id)
+            ;
+            $db->setQuery($query);
+            $db->execute();
+            $query->clear()
+                ->insert('#__menu_item_id_position_id_ordering')
+                ->set('menu_item_id = ' . (int)$menuItemActiveId)
+                ->set('position_id = ' . (int)$id)
+                ->set('website_id = ' . (int)$website->website_id)
+                ->set('ordering='.(int)$row['ordering'])
+            ;
             $db->setQuery($query);
             $db->execute();
         }
@@ -486,58 +835,91 @@ class UtilityHelper
         return $db->loadObjectList();
 
     }
-    public function removePositionOnlyPage(&$listPositionsSetting,$positionId=0,$level,$maxLevel)
+    public function removePositionOnlyPage(&$listPositionsSetting,$position_parent_id=0)
     {
-        if($level<$maxLevel)
-        {
-            if(!$positionId)
-            {
+        if ($position_parent_id == 0) {
+            $list_position_deleted = array();
+            foreach ($listPositionsSetting as $key => $position) {
+                if ($position->only_page==1) {
+                    unset($listPositionsSetting[$key]);
+                    $list_position_deleted[] = $position->id;
 
-                foreach($listPositionsSetting as $position)
-                {
-
-
-                    if($position->only_page)
-                    {
-
-                        UtilityHelper::removePositionOnlyPage($listPositionsSetting,$position->id,$level,$maxLevel);
-                    }
-                }
-            }else
-            {
-                foreach($listPositionsSetting as $key=> $position)
-                {
-
-                    if($position->id==$positionId){
-                        unset($listPositionsSetting[$key]);
-                    }
-                    if($position->parent_id==$positionId)
-                    {
-                        UtilityHelper::removePositionOnlyPage($listPositionsSetting,$position->id,$level+1,$maxLevel);
-                    }
                 }
             }
-        }else
-        {
-            echo $level;
-            die;
+            foreach ($list_position_deleted as $position_parent_id) {
+                UtilityHelper::removePositionOnlyPage($listPositionsSetting, $position_parent_id);
+            }
+        } else {
+            $list_position_children_deleted = array();
+            foreach ($listPositionsSetting as $key => $position) {
+                if ($position->only_page && $position->parent_id == $position_parent_id) {
+                    unset($listPositionsSetting[$key]);
+                    $list_position_children_deleted[] = $position->id;
+                }
+            }
+            foreach ($list_position_children_deleted as $position_parent_id) {
+                UtilityHelper::removePositionOnlyPage($listPositionsSetting, $position_parent_id);
+            }
+        }
+    }
+    public function remove_position_is_template(&$listPositionsSetting,$position_parent_id=0)
+    {
+        if ($position_parent_id == 0) {
+            $list_position_deleted = array();
+            foreach ($listPositionsSetting as $key => $position) {
+                if ($position->is_template==1) {
+                    unset($listPositionsSetting[$key]);
+                    $list_position_deleted[] = $position->id;
+
+                }
+            }
+            foreach ($list_position_deleted as $position_parent_id) {
+                UtilityHelper::remove_position_is_template($listPositionsSetting, $position_parent_id);
+            }
+        } else {
+            $list_position_children_deleted = array();
+            foreach ($listPositionsSetting as $key => $position) {
+                if ($position->is_template==1 && $position->parent_id == $position_parent_id) {
+                    unset($listPositionsSetting[$key]);
+                    $list_position_children_deleted[] = $position->id;
+                }
+            }
+            foreach ($list_position_children_deleted as $position_parent_id) {
+                UtilityHelper::remove_position_is_template($listPositionsSetting, $position_parent_id);
+            }
         }
     }
     public function getPositionByPage($enableEditWebsite=1)
     {
+
         $app=JFactory::getApplication();
-        $session = JFactory::getSession();
         if ($enableEditWebsite) {
             $currentScreenSize = UtilityHelper::getCurrentScreenSizeEditing();
         } else {
             $currentScreenSize = UtilityHelper::getScreenSize();
         }
+        $os = $app->input->get('os', '', 'String');
+        if($os!='')
+        {
+            $currentScreenSize=$app->input->get('screenSize','');
+        }
+        if(!$currentScreenSize)
+        {
+            $currentScreenSize= $app->input->get('screenSize','','string');
+            UtilityHelper::setScreenSize($currentScreenSize);
+        }
         $currentScreenSize = UtilityHelper::getSelectScreenSize($currentScreenSize);
         //$listPositionsSetting=UtilityHelper::getListPositionsSetting($currentScreenSize);
         $menu=$app->getMenu();
         $menuItemActive=$menu->getActive()?$menu->getActive():$menu->getDefault();
+
         $website=JFactory::getWebsite();
         $params=$menuItemActive->params;
+        if(!$params)
+        {
+            throw new Exception(JText::_('the are no active menu'), 404);
+
+        }
         $use_main_frame=$params->get('use_main_frame',0);
         $listPositionsSetting=array();
         $rebuid=$app->input->get('rebuid',0,'int');
@@ -546,17 +928,41 @@ class UtilityHelper
         $tablePosition->webisite_id=$website->website_id;
         $parentId = $tablePosition->getRootId();
         $tablePosition->load($parentId);
-        if($rebuid)
+        $db=JFactory::getDbo();
+        if(!$enableEditWebsite) {
+            //set position config exists
+            $query = $db->getQuery(true);
+            $query->select('poscon.screensize')
+                ->from('#__position_config AS poscon')
+                ->where('lft>' . (int)$tablePosition->lft . ' AND  rgt<' . (int)$tablePosition->rgt)
+                ->group('poscon.screensize');
+            if ($use_main_frame) {
+                $query->where('poscon.menu_item_id=' . (int)$menuItemActive->id . ' OR poscon.menu_item_id=' . $use_main_frame);
+            } else {
+                $query->where('poscon.menu_item_id=' . (int)$menuItemActive->id);
+            }
+
+
+            $a_list_position_config = $db->setQuery($query)->loadColumn();
+            $currentScreenSize = UtilityHelper::getSelectScreenSize($currentScreenSize, $a_list_position_config);
+            //end set position config exists
+        }
+
+
+        if($rebuid||$tablePosition->rgt==0)
         {
             $tablePosition->rebuild();
         }
-        $db=JFactory::getDbo();
+
         $query=$db->getQuery(true);
         $query->select('poscon.*')
+            ->select('(CASE WHEN menu_item_id_position_id_ordering.ordering!=0 THEN menu_item_id_position_id_ordering.ordering ELSE poscon.ordering END) AS ordering ')
             ->from('#__position_config AS poscon')
             ->where('lft>'.(int)$tablePosition->lft.' AND  rgt<'.(int)$tablePosition->rgt)
+            ->leftJoin('#__menu_item_id_position_id_ordering AS menu_item_id_position_id_ordering ON menu_item_id_position_id_ordering.position_id=poscon.id AND menu_item_id_position_id_ordering.menu_item_id='.(int)$menuItemActive->id)
+            ->where('LOWER(poscon.screensize)='.$query->q(strtolower($currentScreenSize)))
+            ->order('ordering')
 
-            ->order('poscon.ordering')
 
         ;
         if($use_main_frame)
@@ -565,14 +971,20 @@ class UtilityHelper
         }else{
             $query->where('poscon.menu_item_id='.(int)$menuItemActive->id);
         }
+
         $listPositionsSetting=$db->setQuery($query)->loadObjectList();
         //UtilityHelper::getListPositionsSetting2('',$use_main_frame,$menuItemActive->id,$listPositionsSetting,0,1,9999);
         if($use_main_frame)
         {
-            UtilityHelper::removePositionOnlyPage($listPositionsSetting,0,1,9999);
+            UtilityHelper::removePositionOnlyPage($listPositionsSetting,0);
             UtilityHelper::removePositionOtherPage($use_main_frame,$menuItemActive->id,$listPositionsSetting,0,1,9999);
 
         }
+        if(!$enableEditWebsite)
+        {
+            UtilityHelper::remove_position_is_template($listPositionsSetting,0);
+        }
+
         return  $listPositionsSetting;
     }
     public function removePositionOtherPage($use_main_frame,$menuActiveId,&$listPositionsSetting,$positionId=0,$level,$maxLevel)

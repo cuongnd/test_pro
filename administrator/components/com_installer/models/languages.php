@@ -57,7 +57,7 @@ class InstallerModelLanguages extends JModelList
 			->from('#__updates');
 
 		// This Where clause will avoid to list languages already installed.
-		$query->where('extension_id = 0');
+		$query->where('id = 0');
 
 		// Filter by search in title
 		$search = $this->getState('filter.search');
@@ -130,7 +130,7 @@ class InstallerModelLanguages extends JModelList
 		$updater = JUpdater::getInstance();
 
 		/*
-		 * The following function uses extension_id 600, that is the english language extension id.
+		 * The following function uses id 600, that is the english language extension id.
 		 * In #__update_sites_extensions you should have 600 linked to the Accredited Translations Repo
 		 */
 		$updater->findUpdates(array(600), $cache_timeout);

@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.model');
@@ -14,8 +17,6 @@ class JFBConnectModelUserMap extends JModelLegacy
     static $instances;
     var $_id = null;
     var $_data = null;
-    static $_cache = null;
-    static $_query_cache = null;
 
     function __construct()
     {
@@ -82,7 +83,7 @@ class JFBConnectModelUserMap extends JModelLegacy
         }
         if ($this->_data) // Setup the params variable with the data loaded above
         {
-            if (!is_object($this->_data->params) || get_class($this->_data->params) != 'JRegistry')
+            if (!is_object($this->_data->params) || get_class($this->_data->params) != 'JRegistry' || get_class($this->_data->params) == 'Joomla\\Registry\\Registry')
             {
                 $this->_data->params = new JRegistry($this->_data->params);
             }
@@ -350,20 +351,8 @@ class JFBConnectModelUserMap extends JModelLegacy
                 ->where($this->_db->qn('provider') . '=' . $this->_db->q($provider))
                 ->where($this->_db->qn('provider_user_id') . '=' . $this->_db->q($uid));
 
-        if (!isset(self::$_cache[md5($query)]))
-        {
-
-            $this->_db->setQuery($query);
-
-            $joomlaId = $this->_db->loadResult( );
-            self::$_cache[md5($query)] = $joomlaId;
-
-            $error = $this->_db->getErrorMsg();
-        }
-        else
-        {
-            $joomlaId = self::$_cache[md5($query)];
-        }
+        $this->_db->setQuery($query);
+        $joomlaId = $this->_db->loadResult();
         return $joomlaId;
     }
 
@@ -390,6 +379,13 @@ class JFBConnectModelUserMap extends JModelLegacy
     {
         if ($jUserId && $providerUserId)
         {
+            // Check for a previous mapping first. This could be a previous account the user had connected to their Joomla account.
+            // Also, LinkedIn returns a different member ID for each API key. If the admin switches API keys, 'old' member IDs may
+            // be mapped and need to be deleted here. This is a really bad scenario though as admins shouldn't be changing their API key.
+            $oldProviderId = $this->getProviderUserId($jUserId, $provider);
+            if ($oldProviderId && ($oldProviderId != $providerUserId))
+                $this->deleteMapping($oldProviderId, $provider);
+
             JTable::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_jfbconnect/tables/');
             $row = $this->getTable();
             $row->load(array('provider_user_id' => $providerUserId, 'provider' => $provider));
@@ -407,6 +403,14 @@ class JFBConnectModelUserMap extends JModelLegacy
                 $this->setError($this->_db->getErrorMsg());
                 return false;
             }
+
+            // Now, trigger the point rewards
+            $point = new JFBConnectPoint();
+            $point->set('name', 'account.map');
+            $point->set('key', $provider);
+            $point->set('userid', $jUserId);
+            $point->award();
+
             return true;
 
         }
@@ -477,8 +481,10 @@ class JFBConnectModelUserMap extends JModelLegacy
         return $this->_db->loadColumn();
     }
 
-    function updateUserToken($jUserId, $token, $provider)
+    function updateUserToken($jUserId, $provider, $token)
     {
+        $token = json_encode($token);
+
         $query = $this->_db->getQuery(true);
         $query->update($this->_db->qn('#__jfbconnect_user_map'))
                 ->set($this->_db->qn("authorized") . "=1")

@@ -181,7 +181,7 @@ class UsersModelGroups extends JModelList
 		$query->from($db->quoteName('#__usergroups') . ' AS a');
 
 		// Add the level in the tree.
-		$query->select('COUNT(DISTINCT c2.id) AS level')
+		$query->select('COUNT(DISTINCT c2.id) AS level1')
 			->join('LEFT OUTER', $db->quoteName('#__usergroups') . ' AS c2 ON a.lft > c2.lft AND a.rgt < c2.rgt')
 			->group('a.id, a.lft, a.rgt, a.parent_id, a.title');
 
@@ -228,7 +228,7 @@ class UsersModelGroups extends JModelList
 		{
             $query->where('a.website_id = ' .(int) $parent_group_id);
 		}
-        $query->where('a.title!= ' .$query->q('Public'));
+        $query->where('a.title!= ' .$query->q('root'));
 		// Add the list ordering clause.
 		$query->order($db->escape($this->getState('list.ordering', 'a.lft')) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));
 

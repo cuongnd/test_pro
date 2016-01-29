@@ -182,6 +182,7 @@ class MenusControllerItem extends JControllerForm
 		// Populate the row id from the session.
 		$data['id'] = $recordId;
 
+
 		// The save2copy task needs to be handled slightly differently.
 		if ($task == 'save2copy')
 		{
@@ -202,7 +203,6 @@ class MenusControllerItem extends JControllerForm
 		// Validate the posted data.
 		// This post is made up of two forms, one for the item and one for params.
 		$form = $model->getForm($data);
-
 		if (!$form)
 		{
 			JError::raiseError(500, $model->getError());
@@ -293,7 +293,7 @@ class MenusControllerItem extends JControllerForm
 			}
 
 			// Save the data in the session.
-			$app->setUserState('com_menus.edit.item.data', $data);
+			//$app->setUserState('com_menus.edit.item.data', $data);
 
 			// Redirect back to the edit screen.
 			$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_item . $this->getRedirectToItemAppend($recordId), false));
@@ -305,7 +305,7 @@ class MenusControllerItem extends JControllerForm
 		if (!$model->save($data))
 		{
 			// Save the data in the session.
-			$app->setUserState('com_menus.edit.item.data', $data);
+			//$app->setUserState('com_menus.edit.item.data', $data);
 
 			// Redirect back to the edit screen.
 			$this->setMessage(JText::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $model->getError()), 'warning');
@@ -356,9 +356,9 @@ class MenusControllerItem extends JControllerForm
 			default:
 				// Clear the row id and data in the session.
 				$this->releaseEditId($context, $recordId);
-				$app->setUserState('com_menus.edit.item.data', null);
+/*				$app->setUserState('com_menus.edit.item.data', null);
 				$app->setUserState('com_menus.edit.item.type', null);
-				$app->setUserState('com_menus.edit.item.link', null);
+				$app->setUserState('com_menus.edit.item.link', null);*/
 
 				// Redirect to the list screen.
 				$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_list . $this->getRedirectToListAppend(), false));
@@ -395,7 +395,7 @@ class MenusControllerItem extends JControllerForm
 			$title = 'component';
 		}
 
-		$app->setUserState('com_menus.edit.item.type', $title);
+		//$app->setUserState('com_menus.edit.item.type', $title);
 		if ($title == 'component')
 		{
 			if (isset($type->request))
@@ -420,10 +420,10 @@ class MenusControllerItem extends JControllerForm
 		}
 
 		//Save the data in the session.
-		$app->setUserState('com_menus.edit.item.data', $data);
+		//$app->setUserState('com_menus.edit.item.data', $data);
 
 		$this->type = $type;
-		$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_item . $this->getRedirectToItemAppend($recordId), false));
+		$this->setRedirect('index.php?option=' . $this->option . '&view=' . $this->view_item . $this->getRedirectToItemAppend($recordId));
 	}
     function aJaxSetType()
     {

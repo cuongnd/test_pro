@@ -39,6 +39,7 @@ class UsersViewRegistration extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+
 		// Get the view data.
 		$this->data		= $this->get('Data');
 		$this->form		= $this->get('Form');
@@ -107,7 +108,7 @@ class UsersViewRegistration extends JViewLegacy
 		{
 			$title = JText::sprintf('JPAGETITLE', $title, $app->get('sitename'));
 		}
-
+        $this->document=JFactory::getDocument();
 		$this->document->setTitle($title);
 
 		if ($this->params->get('menu-meta_description'))

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\menu\\setting.xml",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\menu\\setting.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\menu\\about.xml",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\menu\\about.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\menu\\game.xml",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\menu\\game.xml"
+    }
+]

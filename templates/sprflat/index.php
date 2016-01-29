@@ -57,421 +57,281 @@ if ($enableEditWebsite) {
     }
     $this->listPositions = UtilityHelper::getListPositions();
     $host = $uri->toString(array('scheme', 'host', 'port'));
-    $js = '
-		var url_root="' . JUri::root() . '";
-		var preview=' . $preview . ';
-		var this_host="' . $host . '";
-		var currentLink="' . $uri->toString() . '";
-		jQuery.noConflict();
-		var listPositions=' . json_encode($this->listPositions) . ';
-		var menuItemActiveId=' . $menuItemActiveId . ';
-		var currentScreenSizeEditing="' . $currentScreenSize . '";
-		var listScreenSizeX=' . json_encode($listScreenSizeX) . ';
-		var listScreenSize=' . json_encode($listScreenSize) . ';
-		var currentLink="' . $uri->toString() . '";
-		var enableEditWebsite="' . ($enableEditWebsite ? $enableEditWebsite : 0) . '";
-		var optionsGridIndex = {
-				cell_height: 80,
-				vertical_margin: 0,
-				placeholder_class:"holder-and-move"
+    $scriptId = "index_" . JUserHelper::genRandomPassword();
+    ob_start();
+    ?>
+    <script type="text/javascript">
+        Joomla_post = {};
+        Joomla_post.list_function_run_befor_submit = [];
+        Joomla_post.list_function_run_validate_befor_submit = [];
+        var url_root = "<?php echo JUri::root() ?>";
+        var preview =<?php echo $preview ?>;
+        var this_host = "<?php echo $host ?>";
+        var currentLink = "<?php echo $uri->toString()?>";
+        jQuery.noConflict();
+        var listPositions =<?php echo json_encode($this->listPositions) ?>;
+        var menuItemActiveId =<?php echo $menuItemActiveId?>;
+        var currentScreenSizeEditing = "<?php echo $currentScreenSize ?>";
+        var listScreenSizeX =<?php echo json_encode($listScreenSizeX) ?>;
+        var listScreenSize =<?php echo json_encode($listScreenSize) ?>;
+        var currentLink = "<?php echo $uri->toString() ?>";
+        var enableEditWebsite = "<?php echo ($enableEditWebsite ? $enableEditWebsite : 0) ?>";
+        var optionsGridIndex = {
+            cell_height: 80,
+            vertical_margin: 0,
+            placeholder_class: "holder-and-move"
 
 
-			};
-		var source_less="'.str_replace('.less','.css',$websiteTable->source_less).'";
-		';
-    $doc->addScriptDeclaration($js);
-
-    JHTML::_('behavior.core');
-    require_once JPATH_ROOT . '/components/com_website/helpers/website.php';
-    require_once JPATH_ROOT . '/templates/sprflat/helper/template.php';
-    JHtml::_('jquery.framework');
+        };
+        var source_less = "<?php echo str_replace('.less','.css',$websiteTable->source_less) ?>";
+    </script>
+<?php
+$script = ob_get_clean();
+$script = JUtility::remove_string_javascript($script);
+$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 
 
-    //JHtml::_('jquery.ui', array('core','widget', 'sortable'));
-    if (!$ajaxGetContent) {
-        //$doc->addScript(JUri::root() . '/media/system/js/firebug-lite/build/firebug-lite-debug.js');
-        $doc->addScript(JUri::root() . '/media/system/js/contextmenueditwebsite.js');
-        $doc->addScript(JUri::root() . '/media/system/js/jquery-cookie-master/src/jquery.cookie.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/core.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/widget.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/mouse.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/position.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/button.js');
-        $doc->addScript(JUri::root() . '/media/system/js/base64.js');
-        $doc->addScript(JUri::root() . '/media/system/js/popline-master/scripts/jquery.popline.js');
-
-        $doc->addStyleSheet(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/themes/base/all.css');
-
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/draggable.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/sortable.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/resizable.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/dialog.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/droppable.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/js/jquery.ui.touch-punch.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/libs/excanvas.min.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/libs/html5.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/libs/respond.min.js');
-       // $doc->addScript(JUri::root() . '/templates/sprflat/js/jquery.windowscroll.js');
+JHTML::_('behavior.core');
+require_once JPATH_ROOT . '/components/com_website/helpers/website.php';
+require_once JPATH_ROOT . '/templates/sprflat/helper/template.php';
+JHtml::_('jquery.framework');
 
 
+//JHtml::_('jquery.ui', array('core','widget', 'sortable'));
+if (!$ajaxGetContent) {
+    //$doc->addScript(JUri::root() . '/media/system/js/firebug-lite/build/firebug-lite-debug.js');
+    $doc->addScript(JUri::root() . '/media/system/js/contextmenueditwebsite.js');
+    $doc->addScript(JUri::root() . '/media/system/js/jquery-cookie-master/src/jquery.cookie.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/core.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/widget.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/mouse.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/position.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/button.js');
+    $doc->addScript(JUri::root() . '/media/system/js/base64.js');
+    $doc->addScript(JUri::root() . '/media/system/js/popline-master/scripts/jquery.popline.js');
 
-/*        $doc->addScript(JUri::root().'/ckfinder/ckfinder.js');
-        $doc->addScript(JUri::root().'/media/editors/ckeditor/ckeditor.js');
-        $doc->addScript(JUri::root().'/media/editors/ckeditor/adapters/jquery.js');*/
-        /*
-        //kendo editor
-        $doc->addScript(JUri::root().'/media/kendotest/kendo.all.js');
-        $doc->addScript(JUri::root().'/media/kendotest/kendo.core.js');
-        $doc->addScript(JUri::root().'/media/kendotest/kendo.web.js');
-        $doc->addScript(JUri::root().'/media/kendotest/kendo.editor.js');*/
+    $doc->addStyleSheet(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/themes/base/all.css');
 
-       /* $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.common.min.css');
-        $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.default.min.css');
-
-        $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.material.min.css');
-        $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.material.mobile.min.css');
-        $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.dataviz.min.css');
-        $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.dataviz.default.min.css');*/
-
-
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.core.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.data.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.virtuallist.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.list.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.dropdownlist.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.pager.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.userevents.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.draganddrop.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.sortable.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.menu.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.columnmenu.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.popup.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.binder.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.filtermenu.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editable.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.validator.js');
-
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.combobox.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.selectable.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.groupable.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.columnsorter.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.resizable.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.window.js');
-        //$doc->addScript(JUri::root().'/media/kendotest/php/data/products.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.grid.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.multiselect.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.numerictextbox.js');
-        $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editor.js');
-
-        $list_file_less_css=array(
-            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.common",
-            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.rtl",
-            "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.default",
-            "/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz",
-            "/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz.default"
-            // "/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.bootstrap"
-        );
-        foreach($list_file_less_css as $less_css_file)
-        {
-            $lessInput = JPATH_ROOT . $less_css_file.".less";
-            $cssOutput = JPATH_ROOT . $less_css_file.".css";
-            $error=JUtility::compileLess($lessInput, $cssOutput);
-            if($error!=true)
-            {
-                echo   $lessInput;
-                echo "<br/>";
-                echo $error;
-                echo "<br/>";
-                echo   $cssOutput;
-                die;
-            }
-            $doc->addStyleSheet(JUri::root() . $less_css_file.'.css');
-        }
-        $doc->addStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/styles/kendo.rtl.min.css');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/draggable.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/sortable.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/resizable.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/dialog.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/droppable.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/js/jquery.ui.touch-punch.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/libs/excanvas.min.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/libs/html5.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/libs/respond.min.js');
+    $doc->addScript(JUri::root() . '/media/system/js/jQuery.serializeObject-master/jquery.serializeObject.js');
 
 
-        JHtml::_('formbehavior.chosen', 'select');
-        //$doc->addScript(JUri::root().'/media/system/js/jquery.ba-bbq.js');
-        $doc->addScript(JUri::root() . '/media/system/js/core-uncompressed.js');
-        $doc->addScript(JUri::root() . '/media/system/js/lodash.min.js');
-        $doc->addScript(JUri::root() . '/media/system/js/gridstack/src/gridstack.js');
-        //$doc->addScript(JUri::root().'/media/system/js/Nestable-master/jquery.nestable.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/js/jquery.editstyle.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jRespond.min.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/quicksearch/jquery.quicksearch.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/misc/countTo/jquery.countTo.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/forms/icheck/jquery.icheck.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.min.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/charts/sparklines/jquery.sparkline.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jquery.sprFlat.js');
+    /*        $doc->addScript(JUri::root().'/ckfinder/ckfinder.js');
+            $doc->addScript(JUri::root().'/media/editors/ckeditor/ckeditor.js');
+            $doc->addScript(JUri::root().'/media/editors/ckeditor/adapters/jquery.js');*/
+    /*
+    //kendo editor
+    $doc->addScript(JUri::root().'/media/kendotest/kendo.all.js');
+    $doc->addScript(JUri::root().'/media/kendotest/kendo.core.js');
+    $doc->addScript(JUri::root().'/media/kendotest/kendo.web.js');
+    $doc->addScript(JUri::root().'/media/kendotest/kendo.editor.js');*/
 
-        //$doc->addScript(JUri::root().'/media/system/js/ion.rangeSlider-1.9.1/js/ion-rangeSlider/ion.rangeSlider.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/js/design.js');
-        $doc->addScript(JUri::root() . '/media/system/js/joyride-master/jquery.joyride-2.1.js');
-        $doc->addStyleSheet(JUri::root() . '/media/system/js/joyride-master/joyride-2.1.css');
+    /* $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.common.min.css');
+     $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.default.min.css');
 
-        $lessInput = JPATH_ROOT . '/templates/sprflat/less/csswheneditsite.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/css/csswheneditsite.css';
-        templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . '/templates/sprflat/css/csswheneditsite.css');
+     $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.material.min.css');
+     $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.material.mobile.min.css');
+     $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.dataviz.min.css');
+     $doc->addStyleSheet(JUri::root() . '/media/kendotest/kendo.dataviz.default.min.css');*/
 
 
-        $lessInput = JPATH_ROOT . "/layouts/website/less/$websiteTable->source_less";
-        $lessInputInfo = pathinfo($lessInput);
-        $cssOutput = JPATH_ROOT . '/layouts/website/css/' . $lessInputInfo['filename'] . '.css';
-        JUtility::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . '/layouts/website/css/' . $lessInputInfo['filename'] . '.css');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.core.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.data.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.virtuallist.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.list.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.dropdownlist.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.pager.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.userevents.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.draganddrop.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.sortable.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.menu.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.columnmenu.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.popup.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.binder.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.filtermenu.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editable.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.validator.js');
+
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.combobox.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.selectable.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.groupable.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.columnsorter.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.resizable.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.window.js');
+    //$doc->addScript(JUri::root().'/media/kendotest/php/data/products.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.grid.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.multiselect.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.numerictextbox.js');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editor.js');
 
 
-        $doc->addScript(JUri::root() . '/media/system/js/jquery-neon-border/js/jquery.neon_border.js');
-        $lessInput = JPATH_ROOT . '/media/system/js/jquery-neon-border/less/jquery.neon_border.less';
-        $cssOutput = JPATH_ROOT . '/media/system/js/jquery-neon-border/css/jquery.neon_border.css';
-        templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . '/media/system/js/jquery-neon-border/css/jquery.neon_border.css');
+    $doc->addLessStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.default.less');
+    $doc->addLessStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.common.less');
+    $doc->addLessStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz.less');
+    $doc->addLessStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/styles/dataviz/kendo.dataviz.default.less');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/build/less-js/dist/less-1.5.0.js');
 
 
-        $lessInput = JPATH_ROOT . '/templates/sprflat/less/template.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/css/template.css';
-        templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . "/templates/sprflat/css/template.css");
-
-        //css for gridstack
-        $lessInput = JPATH_ROOT . '/media/system/js/gridstack/less/gridstack.less';
-        $cssOutput = JPATH_ROOT . '/media/system/js/gridstack/src/gridstack.css';
-        templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . "/media/system/js/gridstack/src/gridstack.css");
-        //end css for gridstack
-
-        $lessInput = JPATH_ROOT . '/templates/sprflat/assets/less/main.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/assets/css/main.css';
-        //templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . '/templates/sprflat/assets/css/main.css');
+    $doc->addStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/styles/kendo.rtl.min.css');
 
 
-        $lessInput = JPATH_ROOT . '/templates/sprflat/assets/less/icons.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/assets/css/icons.css';
-        //templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . '/templates/sprflat/assets/css/icons.css');
+    JHtml::_('formbehavior.chosen', 'select');
+    //$doc->addScript(JUri::root().'/media/system/js/jquery.ba-bbq.js');
+    $doc->addScript(JUri::root() . '/media/system/js/core-uncompressed.js');
+    $doc->addScript(JUri::root() . '/media/system/js/lodash.min.js');
+    $doc->addScript(JUri::root() . '/media/system/js/gridstack/src/gridstack.js');
+    //$doc->addScript(JUri::root().'/media/system/js/Nestable-master/jquery.nestable.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/js/jquery.editstyle.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jRespond.min.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/quicksearch/jquery.quicksearch.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/misc/countTo/jquery.countTo.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/forms/icheck/jquery.icheck.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.min.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/charts/sparklines/jquery.sparkline.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jquery.sprFlat.js');
+    $doc->addScript(JUri::root() . '/media/system/js/purl-master/purl-master/purl.js');
+    //$doc->addScript(JUri::root().'/media/system/js/ion.rangeSlider-1.9.1/js/ion-rangeSlider/ion.rangeSlider.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/js/design.js');
+    $doc->addScript(JUri::root() . '/media/system/js/joyride-master/jquery.joyride-2.1.js');
+    $doc->addStyleSheet(JUri::root() . '/media/system/js/joyride-master/joyride-2.1.css');
+    $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/build/less-js/dist/less-1.5.0.js');
+    $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/less/csswheneditsite.less');
+
+    $doc->addLessStyleSheet(JUri::root() . "/layouts/website/less/" . $websiteTable->source_less);
 
 
-        $lessInput = JPATH_ROOT . '/templates/sprflat/assets/less/plugins.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/assets/css/plugins.css';
-        //templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . '/templates/sprflat/assets/css/plugins.css');
-        require_once JPATH_ROOT . '/libraries/less.php-master/lessc.inc.php';
-        $options = array('cache_dir' => JPATH_ROOT . '/media/jui_front_end/bootstrap-3.3.0/cache');
-
-        try {
-            $parser = new Less_Parser($options);
-            $parser->parseFile(JPATH_ROOT . '/media/jui_front_end/bootstrap-3.3.0/less/bootstrap.less');
-//$parser->ModifyVars( array('font-size-base'=>'16px') );
-            /*$parser->ModifyVars(array(
-                'grid-gutter-width' => '30px',
-                'container-large-desktop' => '1024px',
-
-            ));*/
-//		    $css = $parser->getCss();
-//		    JFile::write(JPATH_ROOT.'/media/jui_front_end/bootstrap-3.3.0/dist/css/bootstrap3.css',$css);
-        } catch (Exception $e) {
-            $error_message = $e->getMessage();
-        }
-        echo $error_message;
-
-        $doc->addStyleSheet(JUri::root() . '/media/jui_front_end/bootstrap-3.3.0/dist/css/bootstrap3.css');
-
-//bootrap2
-        $options = array('cache_dir' => JPATH_ROOT . '/media/jui_front_end/bootstrap-3.3.0/cache');
-
-        try {
-            $parser = new Less_Parser($options);
-            //$parser->parseFile(JPATH_ROOT . '/media/jui_front_end/bootstrap-2.3.2/less/bootstrap.less');
-//$parser->ModifyVars( array('font-size-base'=>'16px') );
-            /*$parser->ModifyVars(array(
-                'grid-gutter-width' => '30px',
-                'container-large-desktop' => '1024px',
-
-            ));*/
-//			$css = $parser->getCss();
-//			JFile::write(JPATH_ROOT.'/media/jui_front_end/bootstrap-2.3.2/css/bootstrap2.css',$css);
-        } catch (Exception $e) {
-            $error_message = $e->getMessage();
-        }
-        echo $error_message;
-        //$doc->addStyleSheet(JUri::root().'/media/jui_front_end/bootstrap-2.3.2/css/bootstrap2.css');
+    $doc->addLessStyleSheet(JUri::root() . '/media/system/js/jquery-neon-border/less/jquery.neon_border.less');
 
 
-        $lessInput = JPATH_ROOT . '/templates/sprflat/less/custom.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/css/custom.css';
-        templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet("$this->baseurl/templates/$this->template/css/custom.css");
+    $doc->addLessStyleSheet(JUri::root() . "/media/system/js/gridstack/less/gridstack.less");
+    //end css for gridstack
 
-    }
+    $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/assets/less/main.less');
+
+    $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/assets/less/icons.less');
+
+
+    $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/assets/less/plugins.less');
+    $doc->addLessStyleSheet(JUri::root() . '/media/jui_front_end/bootstrap-3.3.0/less/bootstrap.less');
+    require_once JPATH_ROOT . '/libraries/less.php-master/lessc.inc.php';
+
+
+    $doc->addLessStyleSheet("$this->baseurl/templates/$this->template/less/custom.less");
+
+}
 
 
 } else {
 
-    $this->listPositions = UtilityHelper::getListPositions();
-    $listScreenSize1 = UtilityHelper::getListScreenSize();
+$this->listPositions = UtilityHelper::getListPositions();
+$listScreenSize1 = UtilityHelper::getListScreenSize();
 
-    $listScreenSizeX = array();
-    foreach ($listScreenSize1 as $screenSize) {
-        $screenSize1 = explode('x', strtolower($screenSize));
+$listScreenSizeX = array();
+foreach ($listScreenSize1 as $screenSize) {
+    $screenSize1 = explode('x', strtolower($screenSize));
 
-        $listScreenSizeX[] = $screenSize1[0];
-    }
+    $listScreenSizeX[] = $screenSize1[0];
+}
 
-    $uri = JFactory::getURI();
-    $currentScreenSize = UtilityHelper::getScreenSize();
-    $this->currentScreenSize = $currentScreenSize;
-    $host = $uri->toString(array('scheme', 'host', 'port'));
-    $enableEditWebsite=false;
-    $js = '
-		jQuery.noConflict();
-		var url_root="' . JUri::root() . '";
-		var this_host="' . $host . '";
-		var currentScreenSize="' . $currentScreenSize . '";
-		var listPositions=' . json_encode($this->listPositions) . ';
-		var listScreenSizeX=' . json_encode($listScreenSizeX) . ';
-		var currentLink="' . $uri->toString() . '";
-		var enableEditWebsite="' . ($enableEditWebsite ? true : false) . '";
-		 var optionsGridIndex = {
-				cell_height: 80,
-				destroy_resizable: 1,
-				vertical_margin: 0,
-				placeholder_class:"holder-and-move",
-				handle:"holder-and-move"
-
-			};
-		';
-    $doc->addScriptDeclaration($js);
-    if (!$ajaxGetContent) {
-
-        JHtml::_('jquery.framework');
-        JHtml::_('bootstrap.framework');
-        JHtml::_('formbehavior.chosen', 'select');
-        //$doc->addScript(JUri::root() . '/media/system/js/firebug-lite/build/firebug-lite-debug.js');
-        $doc->addScript(JUri::root() . '/media/system/js/jquery-cookie-master/src/jquery.cookie.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/core.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/widget.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/mouse.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/position.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/button.js');
-
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/draggable.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/resizable.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/dialog.js');
-        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/droppable.js');
-
-        require_once JPATH_ROOT . '/components/com_website/helpers/website.php';
-
-        JHtml::_('jquery.framework');
-        JHtml::_('jquery.ui', array('core', 'sortable'));
-        $lessInput = JPATH_ROOT . '/templates/sprflat/less/custom.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/css/custom.css';
-        templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet("$this->baseurl/templates/$this->template/css/custom.css");
-
-        $doc->addStyleSheet("$this->baseurl/templates/$this->template/css/custom.css");
-        $doc->addScript(JUri::root() . '/media/system/js/lodash.min.js');
-        $doc->addScript(JUri::root() . '/media/system/js/gridstack/src/gridstack.js');
-
-        $lessInput = JPATH_ROOT . '/media/system/js/gridstack/less/gridstack.less';
-        $cssOutput = JPATH_ROOT . '/media/system/js/gridstack/src/gridstack.css';
-        templateSprflatHelper::compileLess($lessInput, $cssOutput);
+$uri = JFactory::getURI();
+$currentScreenSize = UtilityHelper::getScreenSize();
+$this->currentScreenSize = $currentScreenSize;
 
 
-        $doc->addStyleSheet(JUri::root() . '/media/system/js/gridstack/src/gridstack.css');
+$scriptId = "index_" . JUserHelper::genRandomPassword();
+ob_start();
+?>
+    <script type="text/javascript">
+        Joomla_post = {};
+        Joomla_post.list_function_run_befor_submit = [];
+        Joomla_post.list_function_run_validate_befor_submit = [];
+        var url_root = "<?php echo JUri::root() ?>";
+        var this_host = "<?php echo $host ?>";
+        var currentLink = "<?php echo $uri->toString()?>";
+        jQuery.noConflict();
+        var listPositions =<?php echo json_encode($this->listPositions) ?>;
+        var menuItemActiveId =<?php echo $menuItemActiveId?>;
 
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jRespond.min.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/quicksearch/jquery.quicksearch.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/misc/countTo/jquery.countTo.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/forms/icheck/jquery.icheck.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.min.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js');
-        $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jquery.sprFlatFrontEnd.js');
-
-        $doc->addScript(JUri::root() . '/templates/sprflat/js/javascriptdisableedit.js');
-
-        $lessInput = JPATH_ROOT . '/templates/sprflat/less/disableedit.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/css/disableedit.css';
-        templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . '/templates/sprflat/css/disableedit.css');
-
-
-        $lessInput = JPATH_ROOT . '/templates/sprflat/assets/less/mainFrontEnd.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/assets/css/mainFrontEnd.css';
-        JUtility::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . '/templates/sprflat/assets/css/mainFrontEnd.css');
-
-
-        $lessInput = JPATH_ROOT . "/layouts/website/less/$websiteTable->source_less";
-        $lessInputInfo = pathinfo($lessInput);
-        $cssOutput = JPATH_ROOT . '/layouts/website/css/' . $lessInputInfo['filename'] . '.css';
-        JUtility::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . '/layouts/website/css/' . $lessInputInfo['filename'] . '.css');
+        var currentScreenSize = "<?php echo $currentScreenSize ?>";
+        var listScreenSizeX =<?php echo json_encode($listScreenSizeX) ?>;
+        var listScreenSize =<?php echo json_encode($listScreenSize) ?>;
+        var currentLink = "<?php echo $uri->toString() ?>";
+        var enableEditWebsite = "<?php echo ($enableEditWebsite ? $enableEditWebsite : 0) ?>";
+        var optionsGridIndex = {
+            cell_height: 80,
+            vertical_margin: 0,
+            placeholder_class: "holder-and-move"
 
 
-        $lessInput = JPATH_ROOT . '/templates/sprflat/less/template.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/css/template.css';
-        templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . "/templates/sprflat/css/template.css");
+        };
+        var source_less = "<?php echo str_replace('.less','.css',$websiteTable->source_less) ?>";
+    </script>
+    <?php
+    $script = ob_get_clean();
+    $script = JUtility::remove_string_javascript($script);
+    $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 
 
-        require_once JPATH_ROOT . '/libraries/less.php-master/lessc.inc.php';
-        $options = array('cache_dir' => JPATH_ROOT . '/media/jui_front_end/bootstrap-3.3.0/cache');
-
-        try {
-            $parser = new Less_Parser($options);
-            $parser->parseFile(JPATH_ROOT . '/media/jui_front_end/bootstrap-3.3.0/less/bootstrap.less');
-//$parser->ModifyVars( array('font-size-base'=>'16px') );
-            /*$parser->ModifyVars(array(
-                'grid-gutter-width' => '30px',
-                'container-large-desktop' => '1024px',
-
-            ));*/
-//			$css = $parser->getCss();
-//			JFile::write(JPATH_ROOT.'/media/jui_front_end/bootstrap-3.3.0/dist/css/bootstrap3.css',$css);
-        } catch (Exception $e) {
-            $error_message = $e->getMessage();
-        }
-        echo $error_message;
-
-        $doc->addStyleSheet(JUri::root() . '/media/jui_front_end/bootstrap-3.3.0/dist/css/bootstrap3.css');
-
-//bootrap2
-        $options = array('cache_dir' => JPATH_ROOT . '/media/jui_front_end/bootstrap-3.3.0/cache');
-
-        try {
-            $parser = new Less_Parser($options);
-            //$parser->parseFile(JPATH_ROOT . '/media/jui_front_end/bootstrap-2.3.2/less/bootstrap.less');
-//$parser->ModifyVars( array('font-size-base'=>'16px') );
-            /*$parser->ModifyVars(array(
-                'grid-gutter-width' => '30px',
-                'container-large-desktop' => '1024px',
-
-            ));*/
-//			$css = $parser->getCss();
-//			JFile::write(JPATH_ROOT.'/media/jui_front_end/bootstrap-2.3.2/css/bootstrap2.css',$css);
-        } catch (Exception $e) {
-            $error_message = $e->getMessage();
-        }
-        echo $error_message;
-        //$doc->addStyleSheet(JUri::root() . '/media/jui_front_end/bootstrap-2.3.2/css/bootstrap2.css');
-
-        $lessInput = JPATH_ROOT . '/templates/sprflat/assets/less/icons.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/assets/css/icons.css';
-        //templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . '/templates/sprflat/assets/css/icons.css');
 
 
-        $lessInput = JPATH_ROOT . '/templates/sprflat/assets/less/plugins.less';
-        $cssOutput = JPATH_ROOT . '/templates/sprflat/assets/css/plugins.css';
-        //templateSprflatHelper::compileLess($lessInput, $cssOutput);
-        $doc->addStyleSheet(JUri::root() . '/templates/sprflat/assets/css/plugins.css');
 
 
-    }
+    JHtml::_('jquery.framework');
+    JHtml::_('bootstrap.framework');
+    JHtml::_('formbehavior.chosen', 'select');
+    //$doc->addScript(JUri::root() . '/media/system/js/firebug-lite/build/firebug-lite-debug.js');
+    $doc->addScript(JUri::root() . '/media/system/js/jquery-cookie-master/src/jquery.cookie.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/core.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/widget.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/mouse.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/position.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/button.js');
+
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/draggable.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/resizable.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/dialog.js');
+    $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/droppable.js');
+    $doc->addScript(JUri::root() . '/media/system/js/purl-master/purl-master/purl.js');
+
+    require_once JPATH_ROOT . '/components/com_website/helpers/website.php';
+
+    JHtml::_('jquery.framework');
+    JHtml::_('jquery.ui', array('core', 'sortable'));
+    $doc->addLessStyleSheet(JUri::root()."/templates/$this->template/less/custom.less");
+
+
+
+
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jRespond.min.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/quicksearch/jquery.quicksearch.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/misc/countTo/jquery.countTo.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/forms/icheck/jquery.icheck.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.min.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jquery.sprFlatFrontEnd.js');
+    $doc->addScript(JUri::root() . '/media/system/js/purl-master/purl-master/purl.js');
+    $doc->addScript(JUri::root() . '/media/system/js/URI.js-gh-pages/src/URI.js');
+    $doc->addScriptNotCompile(JUri::root() . '/templates/sprflat/js/javascriptdisableedit.js');
+
+    $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/less/disableedit.less');
+
+    $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/assets/less/mainFrontEnd.less');
+    $doc->addLessStyleSheet(JUri::root() . "/layouts/website/less/" . $websiteTable->source_less);
+
+
+    $doc->addLessStyleSheet(JUri::root() . "/media/jui_front_end/bootstrap-3.3.0/less/bootstrap.less");
+
+    $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/assets/less/icons.less');
+    $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/assets/less/plugins.less');
 }
 ?>
 <?php
@@ -493,7 +353,7 @@ if ($ajaxGetContent) {
     ?>
 
     <?php
-    include JPATH_ROOT.'/templates/sprflat/html/layouts/joomla/system/contextmenu.php';
+    include JPATH_ROOT . '/templates/sprflat/html/layouts/joomla/system/contextmenu.php';
     ?>
 
     <!-- Start #header -->
@@ -544,8 +404,9 @@ if ($ajaxGetContent) {
                         </li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
-                        <li><a class="rebuild_root_block" href="javascript:void(0)" title="rebuid block" ><i class="im-spinner5"></i></a></li>
-                        <li><a class="reload-website" href="javascript:void(0)" ><i class=im-spinner6></i></a></li>
+                        <li><a class="rebuild_root_block" href="javascript:void(0)" title="rebuid block"><i
+                                    class="im-spinner5"></i></a></li>
+                        <li><a class="reload-website" href="javascript:void(0)"><i class=im-spinner6></i></a></li>
                         <li><a href=# id=toggle-header-area><i class=ec-download></i></a></li>
                         <li><a href=# id="preview"><i class="im-eye turn_off_preview"></i></a></li>
                         <li class=dropdown><a href=# data-toggle=dropdown><i class=br-alarm></i> <span
@@ -569,7 +430,8 @@ if ($ajaxGetContent) {
                                             class=im-exit></i> Logout</a></li>
                             </ul>
                         </li>
-                        <li id=toggle-right-sidebar-li><a href=# id=toggle-right-sidebar><i class="fa-list-alt"></i> <span
+                        <li id=toggle-right-sidebar-li><a href=# id=toggle-right-sidebar><i
+                                    class="fa-list-alt"></i> <span
                                     class=notification>3</span></a></li>
 
                     </ul>
@@ -623,7 +485,13 @@ if ($ajaxGetContent) {
                     <div class="panel panel-primary panel-teal toggle  panelRefresh panel-screen-size">
                         <!-- Start .panel -->
                         <div class=panel-heading>
-                            <h4 class=panel-title><i class="en-screen" title="pointer"></i> <a class="page-properties" href="javascript:void(0)"><?php echo $menuItemActive->title ?></a>(<a class="page-properties" target="_blank" href="<?php echo str_replace('admin.','', JUri::root()) ?>?Itemid=<?php echo $menuItemActive->id ?>"><?php echo $menuItemActive->title ?></a>)</h4>
+                            <h4 class=panel-title><i class="en-screen" title="pointer"></i><a class="website_properties"
+                                                                                              href="javascript:void(0)"><i
+                                        class="im-globe" title="properties"></i></a> <a class="page-properties"
+                                                                                        href="javascript:void(0)"><?php echo $menuItemActive->title ?></a>(<a
+                                    class="page-properties" target="_blank"
+                                    href="<?php echo str_replace('admin.', '', JUri::root()) ?>?Itemid=<?php echo $menuItemActive->id ?>"><?php echo $menuItemActive->title ?></a>)
+                            </h4>
                         </div>
                         <div class="scroll-div-screen-size">
                             <div class="scroll-div1">
@@ -636,7 +504,7 @@ if ($ajaxGetContent) {
                                 <div class="screen-layout">
                                     <?php
 
-                                   echo websiteHelperFrontEnd::displayLayout($this, $enableEditWebsite);
+                                    echo websiteHelperFrontEnd::displayLayout($this, $enableEditWebsite);
                                     ?>
                                     <?php
                                     include JPATH_ROOT . '/components/com_utility/views/module/tmpl/default_item.php';
@@ -656,7 +524,7 @@ if ($ajaxGetContent) {
                         <!-- Start .panel -->
                         <div class="panel-body" style="overflow: auto">
                             <?php
-                                include_once JPATH_ROOT.'/templates/sprflat/html/layouts/joomla/system/data_source.php';
+                            include_once JPATH_ROOT . '/templates/sprflat/html/layouts/joomla/system/data_source.php';
                             ?>
                         </div>
 
@@ -688,26 +556,19 @@ if ($ajaxGetContent) {
     <!-- End #content -->
 <?php } else { ?>
 
-    <?php echo websiteHelperFrontEnd::displayLayout($this, 0) ?>
-    <div class="edit_website"><a href="javascript:void(0)"><i class="im-cog"></i></a> </div>
-    <div class="div-loading"></div>
-    <style type="text/css">
-        .div-loading {
-            display: none;
-            background: url("<?php echo JUri::root() ?>/global_css_images_js/images/loading.gif") center center no-repeat;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%
-        }
-    </style>
+    <?php
+
+
+    echo websiteHelperFrontEnd::displayLayout($this, 0);
+
+    ?>
+    <div class="edit_website"><a href="javascript:void(0)"><i class="im-cog"></i></a></div>
+
 <?php } ?>
 <!-- Javascripts -->
 <!-- Load pace first -->
 <?php
-if($enableEditWebsite) {
+if ($enableEditWebsite) {
     ob_start();
     ?>
     <script type="text/javascript">
@@ -717,11 +578,44 @@ if($enableEditWebsite) {
         });
 
     </script>
+<?php
+$script_content = ob_get_clean();
+$script_content = JUtility::remove_string_javascript($script_content);
+$doc->addScriptDeclaration($script_content);
+}else
+{
+ob_start();
+?>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('body').javascriptdisableedit({
+                menuItemActiveId:<?php echo $menuItemActiveId?>,
+                currentScreenSize:"<?php echo $currentScreenSize ?>",
+                currentLink: "<?php echo $uri->toString() ?>"
+            });
+        });
+
+    </script>
     <?php
     $script_content = ob_get_clean();
     $script_content = JUtility::remove_string_javascript($script_content);
     $doc->addScriptDeclaration($script_content);
+
 }
 ?>
+<div class="div-loading"></div>
+<style type="text/css">
+    .div-loading {
+        display: none;
+        background: url("<?php echo JUri::root() ?>/global_css_images_js/images/loading.gif") center center no-repeat;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999;
+    }
+</style>
 </body>
 </html>

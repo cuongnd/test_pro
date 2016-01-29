@@ -156,7 +156,7 @@ class com_jchatInstallerScript {
 		$lang->load('com_jchat');
 		 
 		// Check if plugin exists
-		$query = "SELECT extension_id" .
+		$query = "SELECT id" .
 				 "\n FROM #__extensions" .
 				 "\n WHERE type = 'plugin' AND element = " . $database->quote('jchat') .
 				 "\n AND folder = " . $database->quote('system');

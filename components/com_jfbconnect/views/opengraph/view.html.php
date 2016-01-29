@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // No direct access
 defined('_JEXEC') or die('Restricted access');
 
@@ -24,19 +27,19 @@ class JFBConnectViewOpengraph extends JViewLegacy
         {
             $activityModel->setUserId($user->get('id'));
             $rows = $activityModel->getActivityForUser();
-            $this->assignRef('rows', $rows);
-            $this->assignRef('actionModel', $actionModel);
-            $this->assignRef('objectModel', $objectModel);
+            $this->rows = $rows;
+            $this->actionModel = $actionModel;
+            $this->objectModel = $objectModel;
 
             $pagination = $activityModel->getPagination();
-            $this->assignRef('pagination', $pagination);
+            $this->pagination = $pagination;
         } else if ($this->getLayout() == 'settings')
         {
             $user = JFactory::getUser();
             $userModel = JFBConnectModelUserMap::getUser($user->get('id'), 'facebook');
             $userData = $userModel->getData();
             $actionsDisabled = $userData->params->get('og_actions_disabled');
-            $this->assignRef('actionsDisabled', $actionsDisabled);
+            $this->actionsDisabled = $actionsDisabled;
 
             $actionModel = $this->getModel('OpenGraphAction', 'JFBConnectModel');
             $actions = $actionModel->getActions(true);
@@ -46,10 +49,9 @@ class JFBConnectViewOpengraph extends JViewLegacy
                 if ($action->can_disable)
                     $editableActions[] = $action;
             }
-            $this->assignRef('actions', $editableActions);
+            $this->actions = $editableActions;
         }
-        $doc = JFactory::getDocument();
-        $doc->addStyleSheet(JURI::base(true) . '/components/com_jfbconnect/assets/jfbconnect.css');
+        JFBCFactory::addStylesheet('jfbconnect.css');
 
         parent::display($tpl);
     }

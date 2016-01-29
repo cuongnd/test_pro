@@ -51,19 +51,16 @@ class JFormFieldVMcategories extends JFormField
     protected function getInput()
     {
 
-
         $key = ($this->element['key_field'] ? $this->element['key_field'] : 'value');
         $val     = !empty($this->value) ? $this->value : '0';
         $lang = JFactory::getLanguage();
         $lang->load('com_virtuemart',JPATH_ADMINISTRATOR);
         ShopFunctions::$categoryTree=0;
         $categorylist = ShopFunctions::categoryListTree(array($this->value));
-
-        $html = '<select class="inputbox"   name="' . $this->name . '" >';
-        $html .= '<option value="0">' . JText::_('COM_VIRTUEMART_CATEGORY_FORM_TOP_LEVEL') . '</option>';
-        $html .= $categorylist;
-        $html .="</select>";
-        return $val.$html;
+        $option=JHTML::_('select.option', 0, JText::_('COM_VIRTUEMART_CATEGORY_FORM_TOP_LEVEL'));
+        array_unshift($categorylist, $option);
+        $dropdown = JHTML::_('select.genericlist', $categorylist, $this->name, 'class="inputbox"', 'value', 'text', $this->value);
+        return $dropdown;
     }
 
     function fetchElement($name, $value, &$node, $control_name) {
@@ -80,17 +77,3 @@ class JFormFieldVMcategories extends JFormField
 
 }
 
-
-if (JVM_VERSION === 2 ) {
-
-    class JFormFieldVmCategories extends JFormFieldVMcategories {
-
-    }
-
-} else {
-
-    class JElementVmCategories extends JFormFieldVMcategories {
-
-    }
-
-}

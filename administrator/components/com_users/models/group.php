@@ -50,6 +50,7 @@ class UsersModelGroup extends JModelAdmin
 		$db = $this->getDbo();
 		$query = $db->getQuery(true);
 		$table = $this->getTable();
+
 		foreach ($pks as $pk)
 		{
 			if (!$table->rebuild($pk))
@@ -364,6 +365,7 @@ class UsersModelGroup extends JModelAdmin
 				{
 					$otherSuperAdmin = ($otherSuperAdmin) ? $otherSuperAdmin : JAccess::checkGroup($otherGroup, 'core.admin');
 				}
+
 				// If we would not otherwise have super admin permissions
 				// and the current group does not have super admin permissions, throw an exception
 				if ((!$otherSuperAdmin) && (!$groupSuperAdmin))

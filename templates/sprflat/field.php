@@ -56,29 +56,35 @@ if ($enableEditWebsite) {
 	}
 	$this->listPositions = UtilityHelper::getListPositions();
 	$host = $uri->toString(array('scheme', 'host', 'port'));
-	$js = '
-		var url_root="' . JUri::root() . '";
-		var preview=' . $preview . ';
-		var this_host="' . $host . '";
-		var currentLink="' . $uri->toString() . '";
+	$scriptId="index_".JUserHelper::genRandomPassword();
+	ob_start();
+	?>
+	<script type="text/javascript">
+		var url_root="<?php echo JUri::root() ?>";
+		var preview=<?php echo $preview ?>;
+		var this_host="<?php echo $host ?>";
+		var currentLink="<?php echo $uri->toString()?>";
 		jQuery.noConflict();
-		var listPositions=' . json_encode($this->listPositions) . ';
-		var menuItemActiveId=' . $menuItemActiveId . ';
-		var currentScreenSizeEditing="' . $currentScreenSize . '";
-		var listScreenSizeX=' . json_encode($listScreenSizeX) . ';
-		var listScreenSize=' . json_encode($listScreenSize) . ';
-		var currentLink="' . $uri->toString() . '";
-		var enableEditWebsite="' . ($enableEditWebsite ? $enableEditWebsite : 0) . '";
+		var listPositions=<?php echo json_encode($this->listPositions) ?>;
+		var menuItemActiveId=<?php echo $menuItemActiveId?>;
+		var currentScreenSizeEditing="<?php echo $currentScreenSize ?>";
+		var listScreenSizeX=<?php echo json_encode($listScreenSizeX) ?>;
+		var listScreenSize=<?php echo json_encode($listScreenSize) ?>;
+		var currentLink="<?php echo $uri->toString() ?>";
+		var enableEditWebsite="<?php echo ($enableEditWebsite ? $enableEditWebsite : 0) ?>";
 		var optionsGridIndex = {
-				cell_height: 80,
-				vertical_margin: 0,
-				placeholder_class:"holder-and-move"
+			cell_height: 80,
+			vertical_margin: 0,
+			placeholder_class:"holder-and-move"
 
 
-			};
-		var source_less="'.str_replace('.less','.css',$websiteTable->source_less).'";
-		';
-	$doc->addScriptDeclaration($js);
+		};
+		var source_less="<?php echo str_replace('.less','.css',$websiteTable->source_less) ?>";
+	</script>
+	<?php
+	$script=ob_get_clean();
+	$script=JUtility::remove_string_javascript($script);
+	$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 
 	JHTML::_('behavior.core');
 	require_once JPATH_ROOT . '/components/com_website/helpers/website.php';
@@ -151,10 +157,7 @@ if ($enableEditWebsite) {
 		$doc->addScript(JUri::root() . '/media/system/js/joyride-master/jquery.joyride-2.1.js');
 		$doc->addStyleSheet(JUri::root() . '/media/system/js/joyride-master/joyride-2.1.css');
 
-		$lessInput = JPATH_ROOT . '/templates/sprflat/less/csswheneditsite.less';
-		$cssOutput = JPATH_ROOT . '/templates/sprflat/css/csswheneditsite.css';
-		templateSprflatHelper::compileLess($lessInput, $cssOutput);
-		$doc->addStyleSheet(JUri::root() . '/templates/sprflat/css/csswheneditsite.css');
+		$doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/less/csswheneditsite.less');
 
 
 		$lessInput = JPATH_ROOT . "/layouts/website/less/$websiteTable->source_less";
@@ -241,10 +244,7 @@ if ($enableEditWebsite) {
 		//$doc->addStyleSheet(JUri::root().'/media/jui_front_end/bootstrap-2.3.2/css/bootstrap2.css');
 
 
-		$lessInput = JPATH_ROOT . '/templates/sprflat/less/custom.less';
-		$cssOutput = JPATH_ROOT . '/templates/sprflat/css/custom.css';
-		templateSprflatHelper::compileLess($lessInput, $cssOutput);
-		$doc->addStyleSheet("$this->baseurl/templates/$this->template/css/custom.css");
+		$doc->addLessStyleSheet("$this->baseurl/templates/$this->template/less/custom.less");
 
 	}
 
@@ -307,12 +307,7 @@ if ($enableEditWebsite) {
 		require_once JPATH_ROOT . '/templates/sprflat/helper/template.php';
 		JHtml::_('jquery.framework');
 		JHtml::_('jquery.ui', array('core', 'sortable'));
-		$lessInput = JPATH_ROOT . '/templates/sprflat/less/custom.less';
-		$cssOutput = JPATH_ROOT . '/templates/sprflat/css/custom.css';
-		templateSprflatHelper::compileLess($lessInput, $cssOutput);
-		$doc->addStyleSheet("$this->baseurl/templates/$this->template/css/custom.css");
-
-		$doc->addStyleSheet("$this->baseurl/templates/$this->template/css/custom.css");
+		$doc->addLessStyleSheet(JUri::root()."templates/$this->template/less/custom.less");
 		$doc->addScript(JUri::root() . '/media/system/js/lodash.min.js');
 		$doc->addScript(JUri::root() . '/media/system/js/gridstack/src/gridstack.js');
 
@@ -444,19 +439,6 @@ if ($ajaxGetContent) {
 <?php } else { ?>
 
 	<?php echo websiteHelperFrontEnd::displayLayout($this, 0) ?>
-	<div class="div-loading"></div>
-	<style type="text/css">
-		.div-loading {
-			display: none;
-			background: url("<?php echo JUri::root() ?>/global_css_images_js/images/loading.gif") center center no-repeat;
-			position: fixed;
-			z-index: 1000;
-			top: 0;
-			left: 0;
-			height: 100%;
-			width: 100%
-		}
-	</style>
 <?php } ?>
 <!-- Javascripts -->
 <!-- Load pace first -->

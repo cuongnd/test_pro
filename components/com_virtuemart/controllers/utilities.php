@@ -69,7 +69,7 @@ class VirtuemartControllerUtilities extends JControllerLegacy {
 
         $query=$db->getQuery(true);
         $query->from('#__virtuemart_products_'.VMLANG .' as pl');
-        $query->select('pl.virtuemart_product_id,pl.product_name,pl.slug,pl.param');
+        $query->select('pl.virtuemart_product_id,pl.product_name,pl.slug,pl.params');
 
 
         $query->leftJoin('#__virtuemart_product_prices as pp using(virtuemart_product_id)');

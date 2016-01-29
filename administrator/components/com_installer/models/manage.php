@@ -32,7 +32,7 @@ class InstallerModelManage extends InstallerModel
 	{
 		if (empty($config['filter_fields']))
 		{
-			$config['filter_fields'] = array('name', 'client_id', 'status', 'type', 'folder', 'extension_id',);
+			$config['filter_fields'] = array('name', 'client_id', 'status', 'type', 'folder', 'id',);
 		}
 
 		parent::__construct($config);

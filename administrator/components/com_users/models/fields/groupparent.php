@@ -40,8 +40,9 @@ class JFormFieldGroupParent extends JFormFieldList
 
 		$db = JFactory::getDbo();
 		$user = JFactory::getUser();
+		$website=JFactory::getWebsite();
 		$query = $db->getQuery(true)
-			->select('a.id AS value, a.title AS text, COUNT(DISTINCT b.id) AS level')
+			->select('a.id AS value, a.title AS text, a.level,COUNT(DISTINCT b.id) AS level1')
 			->from('#__usergroups AS a')
 			->join('LEFT', $db->quoteName('#__usergroups') . ' AS b ON a.lft > b.lft AND a.rgt < b.rgt');
 
@@ -54,7 +55,7 @@ class JFormFieldGroupParent extends JFormFieldList
 
 		$query->group('a.id, a.title, a.lft, a.rgt')
 			->order('a.lft ASC');
-
+	   $query->where('a.website_id='.(int)$website->website_id);
 		// Get the options.
 		$db->setQuery($query);
 

@@ -269,7 +269,7 @@ class JoomlaInstallerScript
 
 		foreach ($extensions as $extension)
 		{
-			if (!$installer->refreshManifestCache($extension->extension_id))
+			if (!$installer->refreshManifestCache($extension->id))
 			{
 				echo JText::sprintf('FILES_JOOMLA_ERROR_MANIFEST', $extension->type, $extension->element, $extension->name, $extension->client_id) . '<br />';
 			}

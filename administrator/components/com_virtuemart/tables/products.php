@@ -115,13 +115,12 @@ class TableProducts extends VmTable
     var $type = '';
     var $developer = '';
     var $website = '';
-    var $download_free = '';
     var $link_download = '';
     var $link_demo = '';
     var $link_document = '';
     var $link_support = '';
-    var $param= '';
     var $price_monter= '';
+    var $params= '';
 
 
     /**
@@ -157,13 +156,12 @@ class TableProducts extends VmTable
             'type',
             'developer',
             'website',
-            'download_free',
             'link_download',
             'link_demo',
             'link_support',
             'link_document',
             'da_kt',
-            'param'
+            'params'
 
 
         ));

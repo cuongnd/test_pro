@@ -60,7 +60,7 @@ class UsersViewGroups extends JViewLegacy
 			JError::raiseError(500, implode("\n", $errors));
 			return false;
 		}
-        require_once JPATH_ROOT.'/administrator/components/com_website/helpers/website.php';
+        require_once JPATH_ROOT.'/components/com_website/helpers/website.php';
         $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('groups.quick_assign_website');
 		$this->addToolbar();
 		$this->sidebar = JHtmlSidebar::render();

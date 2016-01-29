@@ -431,7 +431,7 @@ class TemplatesModelTemplate extends JModelForm
 
 			if (file_exists($filePath))
 			{
-				$item->extension_id = $this->getState('extension.id');
+				$item->id = $this->getState('extension.id');
 				$item->filename = $fileName;
 				$item->source = file_get_contents($filePath);
 			}
@@ -546,11 +546,12 @@ class TemplatesModelTemplate extends JModelForm
 	 */
 	public function getOverridesList()
 	{
+		$website=JFactory::getWebsite();
 		if ($template = $this->getTemplate())
 		{
 			$client 	        = JApplicationHelper::getClientInfo($template->client_id);
 			$componentPath		= JPath::clean($client->path . '/components/');
-			$modulePath		    = JPath::clean($client->path . '/modules/');
+			$modulePath		    = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/');
 			$layoutPath		    = JPath::clean(JPATH_ROOT . '/layouts/joomla/');
 			$components         = JFolder::folders($componentPath);
 

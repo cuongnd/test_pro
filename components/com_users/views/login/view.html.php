@@ -35,6 +35,7 @@ class UsersViewLogin extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+
 		// Get the view data.
 		$this->user		= JFactory::getUser();
 		$this->form		= $this->get('Form');
@@ -55,13 +56,14 @@ class UsersViewLogin extends JViewLegacy
 		}
 
 		require_once JPATH_ADMINISTRATOR . '/components/com_users/helpers/users.php';
+
 		$tfa = UsersHelper::getTwoFactorMethods();
+
 		$this->tfa = is_array($tfa) && count($tfa) > 1;
 		//Escape strings for HTML output
 		$this->pageclass_sfx = htmlspecialchars($this->params->get('pageclass_sfx'));
 
-		$this->prepareDocument();
-
+		//$this->prepareDocument();
 		parent::display($tpl);
 	}
 

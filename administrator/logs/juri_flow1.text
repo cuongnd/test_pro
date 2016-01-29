@@ -2191,3 +2191,539 @@
 2015-08-12T03:03:08+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit
 2015-08-12T03:03:56+00:00	DEBUG	-	class:JApplicationCms
 2015-08-12T03:03:56+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=users
+2015-09-29T07:52:31+00:00	DEBUG	-	class:JApplicationCms
+2015-09-29T07:52:31+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-09-29T07:56:12+00:00	DEBUG	-	class:JApplicationCms
+2015-09-29T07:56:12+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_templates&amp;view=styles
+2015-09-29T07:56:21+00:00	DEBUG	-	class:JApplicationCms
+2015-09-29T07:56:21+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_templates&view=style&layout=edit&id=278
+2015-09-29T07:57:27+00:00	DEBUG	-	class:JApplicationCms
+2015-09-29T07:57:27+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_templates&amp;view=styles
+2015-09-29T08:24:14+00:00	DEBUG	-	class:JApplicationCms
+2015-09-29T08:24:14+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-09-29T08:32:18+00:00	DEBUG	-	class:JApplicationCms
+2015-09-29T08:32:18+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_modules
+2015-09-29T08:34:13+00:00	DEBUG	-	class:JApplicationCms
+2015-09-29T08:34:13+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_modules&amp;view=modules
+2015-09-29T08:57:31+00:00	DEBUG	-	class:JApplicationCms
+2015-09-29T08:57:31+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_installer&amp;view=manage
+2015-09-30T02:10:14+00:00	DEBUG	-	class:JApplicationCms
+2015-09-30T02:10:14+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_components
+2015-09-30T02:12:13+00:00	DEBUG	-	class:JApplicationCms
+2015-09-30T02:12:13+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_components
+2015-09-30T09:49:28+00:00	DEBUG	-	class:JApplicationCms
+2015-09-30T09:49:28+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-09-30T10:23:23+00:00	DEBUG	-	class:JApplicationCms
+2015-09-30T10:23:23+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_modules&view=module&layout=edit&id=909
+2015-09-30T10:44:43+00:00	DEBUG	-	class:JApplicationCms
+2015-09-30T10:44:43+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_installer
+2015-09-30T10:46:13+00:00	DEBUG	-	class:JApplicationCms
+2015-09-30T10:46:13+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_modules&view=module&layout=edit&id=909
+2015-09-30T10:46:44+00:00	DEBUG	-	class:JApplicationCms
+2015-09-30T10:46:44+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_modules&view=modules
+2015-09-30T10:47:08+00:00	DEBUG	-	class:JApplicationCms
+2015-09-30T10:47:08+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_modules&view=module&layout=edit&id=920
+2015-09-30T10:49:22+00:00	DEBUG	-	class:JApplicationCms
+2015-09-30T10:49:22+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=menu&layout=edit
+2015-09-30T10:49:56+00:00	DEBUG	-	class:JApplicationCms
+2015-09-30T10:49:56+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=menus
+2015-10-02T01:24:51+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T01:24:51+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus
+2015-10-02T01:25:32+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T01:25:32+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=252
+2015-10-02T01:50:57+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T01:50:57+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-02T01:52:06+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T01:52:06+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=252
+2015-10-02T02:13:51+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T02:13:51+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=252
+2015-10-02T02:14:48+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T02:14:48+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T03:49:47+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T03:49:47+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-02T03:50:26+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T03:50:27+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=283
+2015-10-02T03:50:46+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T03:50:46+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=179
+2015-10-02T03:50:59+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T03:51:00+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=176
+2015-10-02T03:51:15+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T03:51:15+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-02T03:55:25+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T03:55:25+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-02T03:55:32+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T03:55:33+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-02T03:55:43+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T03:55:43+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-02T03:56:47+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T03:56:47+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-02T03:57:22+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T03:57:22+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-02T03:59:52+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T03:59:52+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-02T04:02:08+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:02:08+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=184
+2015-10-02T04:02:22+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:02:22+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-02T04:06:34+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:06:34+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=158
+2015-10-02T04:07:36+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:07:36+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T04:08:16+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:08:16+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=252
+2015-10-02T04:09:54+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:09:54+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=252
+2015-10-02T04:11:22+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:11:22+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T04:12:59+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:12:59+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=250
+2015-10-02T04:13:18+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:13:18+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=250
+2015-10-02T04:14:05+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:14:06+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T04:41:29+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:41:29+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_menus&view=items
+2015-10-02T04:42:08+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:42:08+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=157
+2015-10-02T04:42:45+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:42:45+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T04:43:07+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:43:07+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=159
+2015-10-02T04:43:50+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:43:50+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T04:45:04+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:45:05+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=258
+2015-10-02T04:45:43+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:45:43+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T04:46:40+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:46:40+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_menus&view=items
+2015-10-02T04:52:01+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:52:01+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_menus&view=items
+2015-10-02T04:54:55+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:54:55+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_menus&view=items
+2015-10-02T04:56:51+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:56:51+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_menus&view=items
+2015-10-02T04:57:18+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:57:18+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_menus&view=items
+2015-10-02T04:58:44+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:58:44+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=169
+2015-10-02T04:59:21+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T04:59:21+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T05:00:00+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T05:00:00+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_menus&view=items
+2015-10-02T05:00:33+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T05:00:33+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_menus&view=items
+2015-10-02T05:02:50+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T05:02:50+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=256
+2015-10-02T05:07:03+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T05:07:03+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T05:07:12+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T05:07:12+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=253
+2015-10-02T07:25:53+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T07:25:53+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T07:26:09+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T07:26:09+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=256
+2015-10-02T07:29:00+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T07:29:00+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T07:34:26+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T07:34:26+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=253
+2015-10-02T07:48:22+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T07:48:22+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T07:48:43+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T07:48:43+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=menu&layout=edit
+2015-10-02T07:49:08+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T07:49:08+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=menus
+2015-10-02T07:49:27+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T07:49:27+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&menutype=mainmenu&layout=edit
+2015-10-02T07:51:57+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T07:51:57+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit
+2015-10-02T07:52:39+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T07:52:39+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T07:55:19+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T07:55:19+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&menutype=mainmenu&layout=edit
+2015-10-02T08:03:26+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T08:03:26+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=267
+2015-10-02T08:06:50+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T08:06:50+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T08:07:05+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T08:07:05+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&menutype=mainmenu&layout=edit
+2015-10-02T08:07:59+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T08:07:59+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T08:08:45+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T08:08:45+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=269
+2015-10-02T08:09:29+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T08:09:30+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T09:10:00+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T09:10:00+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=158
+2015-10-02T09:10:45+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T09:10:45+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-02T09:47:19+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T09:47:19+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=253
+2015-10-02T09:50:23+00:00	DEBUG	-	class:JApplicationCms
+2015-10-02T09:50:23+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-03T02:08:11+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:08:11+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-03T02:08:33+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:08:33+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=176
+2015-10-03T02:08:48+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:08:48+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-03T02:08:54+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:08:54+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=176
+2015-10-03T02:09:00+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:09:00+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-03T02:09:32+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:09:32+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=176
+2015-10-03T02:12:05+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:12:05+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-03T02:12:11+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:12:11+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=176
+2015-10-03T02:12:17+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:12:17+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-03T02:12:22+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:12:22+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=178
+2015-10-03T02:12:27+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:12:27+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-03T02:17:15+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:17:15+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=176
+2015-10-03T02:24:24+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:24:24+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-03T02:24:34+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:24:34+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=177
+2015-10-03T02:25:09+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:25:09+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-03T02:49:11+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:49:11+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3086
+2015-10-03T02:49:49+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:49:49+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=users
+2015-10-03T02:52:25+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:52:25+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3086
+2015-10-03T02:52:39+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:52:39+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=users
+2015-10-03T02:54:44+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:54:44+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=176
+2015-10-03T02:57:06+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:57:06+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-03T02:57:22+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:57:22+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3086
+2015-10-03T02:57:57+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:57:57+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3086
+2015-10-03T02:58:36+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T02:58:36+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3086
+2015-10-03T03:01:46+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:01:46+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=users
+2015-10-03T03:02:07+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:02:07+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit
+2015-10-03T03:06:17+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:06:17+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit
+2015-10-03T03:10:21+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:10:21+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit
+2015-10-03T03:15:32+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:15:32+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit
+2015-10-03T03:16:09+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:16:09+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit
+2015-10-03T03:20:13+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:20:13+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit
+2015-10-03T03:20:25+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:20:25+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=groups
+2015-10-03T03:20:33+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:20:33+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit
+2015-10-03T03:20:46+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:20:46+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit
+2015-10-03T03:21:43+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:21:43+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit
+2015-10-03T03:26:24+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:26:24+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=282
+2015-10-03T03:26:39+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:26:39+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=282
+2015-10-03T03:32:18+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:32:18+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=groups
+2015-10-03T03:32:46+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:32:46+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-03T03:42:45+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:42:45+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=groups
+2015-10-03T03:43:09+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:43:09+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-03T03:47:06+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:47:06+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-03T03:49:34+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:49:34+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-03T03:53:32+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T03:53:32+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-03T04:08:23+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T04:08:23+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-03T04:09:37+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T04:09:37+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-03T04:14:00+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T04:14:00+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-03T04:22:21+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T04:22:21+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-03T04:24:04+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T04:24:04+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=288
+2015-10-03T04:25:33+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T04:25:33+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=groups
+2015-10-03T04:26:59+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T04:26:59+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=286
+2015-10-03T04:27:47+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T04:27:47+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=286
+2015-10-03T09:04:00+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T09:04:00+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&layout=edit&id=286
+2015-10-03T09:04:38+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T09:04:38+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=286
+2015-10-03T09:04:57+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T09:04:57+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=286
+2015-10-03T09:06:54+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T09:06:54+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=286
+2015-10-03T09:15:35+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T09:15:35+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=286
+2015-10-03T09:16:06+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T09:16:06+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=groups
+2015-10-03T09:24:23+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T09:24:23+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-03T09:58:51+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T09:58:51+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_users&view=groups
+2015-10-03T10:16:31+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:16:31+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=288
+2015-10-03T10:17:49+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:17:49+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=groups
+2015-10-03T10:24:30+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:24:30+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=176
+2015-10-03T10:29:53+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:29:53+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-03T10:31:48+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:31:48+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=176
+2015-10-03T10:32:23+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:32:23+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-03T10:32:53+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:32:54+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-03T10:50:46+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:50:46+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-03T10:53:14+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:53:14+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3086
+2015-10-03T10:55:55+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:55:55+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3086
+2015-10-03T10:56:30+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:56:30+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3086
+2015-10-03T10:56:50+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:56:50+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=users
+2015-10-03T10:57:11+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:57:11+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit
+2015-10-03T10:58:02+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:58:02+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3094
+2015-10-03T10:58:47+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:58:47+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3094
+2015-10-03T10:59:09+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:59:09+00:00	DEBUG	-	legacy $url:index.php
+2015-10-03T10:59:40+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T10:59:40+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-03T11:00:29+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T11:00:29+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3086
+2015-10-03T11:01:00+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T11:01:00+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3086
+2015-10-03T11:01:36+00:00	DEBUG	-	class:JApplicationCms
+2015-10-03T11:01:36+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=users
+2015-10-04T02:35:00+00:00	DEBUG	-	class:JApplicationCms
+2015-10-04T02:35:00+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit
+2015-10-04T02:36:05+00:00	DEBUG	-	class:JApplicationCms
+2015-10-04T02:36:05+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit
+2015-10-04T02:37:46+00:00	DEBUG	-	class:JApplicationCms
+2015-10-04T02:37:46+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit
+2015-10-04T02:40:59+00:00	DEBUG	-	class:JApplicationCms
+2015-10-04T02:40:59+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit
+2015-10-04T02:48:22+00:00	DEBUG	-	class:JApplicationCms
+2015-10-04T02:48:22+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit
+2015-10-04T02:48:45+00:00	DEBUG	-	class:JApplicationCms
+2015-10-04T02:48:45+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit
+2015-10-04T02:53:15+00:00	DEBUG	-	class:JApplicationCms
+2015-10-04T02:53:15+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=193
+2015-10-04T02:53:46+00:00	DEBUG	-	class:JApplicationCms
+2015-10-04T02:53:46+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=193
+2015-10-04T02:59:20+00:00	DEBUG	-	class:JApplicationCms
+2015-10-04T02:59:20+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=193
+2015-10-04T02:59:38+00:00	DEBUG	-	class:JApplicationCms
+2015-10-04T02:59:38+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-05T01:42:30+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T01:42:30+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&task=group.edit&id=282
+2015-10-05T01:42:30+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T01:42:30+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=group&layout=edit&id=282
+2015-10-05T01:42:37+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T01:42:37+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=groups
+2015-10-05T01:42:43+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T01:42:43+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=177
+2015-10-05T01:43:24+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T01:43:24+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-05T01:43:47+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T01:43:47+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=193
+2015-10-05T01:43:56+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T01:43:56+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=176
+2015-10-05T01:44:01+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T01:44:01+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-05T01:44:07+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T01:44:07+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=177
+2015-10-05T01:44:16+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T01:44:16+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-05T07:30:10+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T07:30:10+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-05T07:30:23+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T07:30:23+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=menu&layout=edit
+2015-10-05T07:30:48+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T07:30:48+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=menus
+2015-10-05T07:31:05+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T07:31:05+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&menutype=mainmenu&layout=edit
+2015-10-05T07:31:45+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T07:31:45+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-05T07:31:49+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T07:31:49+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&menutype=mainmenu&layout=edit
+2015-10-05T07:32:18+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T07:32:18+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-05T07:32:25+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T07:32:25+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&menutype=mainmenu&layout=edit
+2015-10-05T07:32:39+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T07:32:39+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-05T08:31:14+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T08:31:14+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=menu&layout=edit
+2015-10-05T08:31:25+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T08:31:25+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=menus
+2015-10-05T08:31:40+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T08:31:40+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&menutype=mainmenu&layout=edit
+2015-10-05T08:31:56+00:00	DEBUG	-	class:JApplicationCms
+2015-10-05T08:31:56+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-08T07:35:54+00:00	DEBUG	-	class:JApplicationCms
+2015-10-08T07:35:54+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-08T07:37:17+00:00	DEBUG	-	class:JApplicationCms
+2015-10-08T07:37:17+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-09T01:03:57+00:00	DEBUG	-	class:JApplicationCms
+2015-10-09T01:03:57+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-09T01:05:14+00:00	DEBUG	-	class:JApplicationCms
+2015-10-09T01:05:14+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=250
+2015-10-09T01:06:33+00:00	DEBUG	-	class:JApplicationCms
+2015-10-09T01:06:33+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-09T09:22:34+00:00	DEBUG	-	class:JApplicationCms
+2015-10-09T09:22:34+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&task=item.edit&id=157
+2015-10-09T09:22:34+00:00	DEBUG	-	class:JApplicationCms
+2015-10-09T09:22:34+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=157
+2015-10-14T01:22:16+00:00	DEBUG	-	class:JApplicationCms
+2015-10-14T01:22:16+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-14T01:32:07+00:00	DEBUG	-	class:JApplicationCms
+2015-10-14T01:32:07+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=level&layout=edit&id=176
+2015-10-14T02:06:16+00:00	DEBUG	-	class:JApplicationCms
+2015-10-14T02:06:16+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=levels
+2015-10-14T02:07:17+00:00	DEBUG	-	class:JApplicationCms
+2015-10-14T02:07:17+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&menutype=mainmenu&layout=edit
+2015-10-14T02:07:31+00:00	DEBUG	-	class:JApplicationCms
+2015-10-14T02:07:31+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=276
+2015-10-14T02:09:30+00:00	DEBUG	-	class:JApplicationCms
+2015-10-14T02:09:30+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-14T10:54:53+00:00	DEBUG	-	class:JApplicationCms
+2015-10-14T10:54:53+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-14T10:55:09+00:00	DEBUG	-	class:JApplicationCms
+2015-10-14T10:55:09+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=user&layout=edit&id=3086
+2015-10-14T10:55:16+00:00	DEBUG	-	class:JApplicationCms
+2015-10-14T10:55:16+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_users&view=users
+2015-10-14T10:55:25+00:00	DEBUG	-	class:JApplicationCms
+2015-10-14T10:55:25+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_content&view=article&layout=edit&id=54
+2015-10-15T01:04:13+00:00	DEBUG	-	class:JApplicationCms
+2015-10-15T01:04:13+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_content&view=article&layout=edit&id=54
+2015-10-15T01:04:13+00:00	DEBUG	-	class:JApplicationCms
+2015-10-15T01:04:13+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_content&view=articles
+2015-10-19T03:16:11+00:00	DEBUG	-	class:JApplicationCms
+2015-10-19T03:16:11+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-21T04:34:08+00:00	DEBUG	-	class:JApplicationCms
+2015-10-21T04:34:08+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-10-21T07:03:21+00:00	DEBUG	-	class:JApplicationCms
+2015-10-21T07:03:21+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_content&view=article&layout=edit
+2015-10-21T07:03:31+00:00	DEBUG	-	class:JApplicationCms
+2015-10-21T07:03:31+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_content&view=articles
+2015-10-21T07:21:36+00:00	DEBUG	-	class:JApplicationCms
+2015-10-21T07:21:36+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=279
+2015-10-21T07:22:58+00:00	DEBUG	-	class:JApplicationCms
+2015-10-21T07:22:58+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=279
+2015-10-21T07:23:52+00:00	DEBUG	-	class:JApplicationCms
+2015-10-21T07:23:52+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-10-21T07:24:11+00:00	DEBUG	-	class:JApplicationCms
+2015-10-21T07:24:11+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=289
+2015-10-21T07:24:59+00:00	DEBUG	-	class:JApplicationCms
+2015-10-21T07:24:59+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-11-06T00:52:54+00:00	DEBUG	-	class:JApplicationCms
+2015-11-06T00:52:54+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-06T01:03:44+00:00	DEBUG	-	class:JApplicationCms
+2015-11-06T01:03:44+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=159
+2015-11-06T01:03:55+00:00	DEBUG	-	class:JApplicationCms
+2015-11-06T01:03:55+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2015-11-06T01:04:02+00:00	DEBUG	-	class:JApplicationCms
+2015-11-06T01:04:02+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_content&view=article&layout=edit&id=54
+2015-11-06T01:04:11+00:00	DEBUG	-	class:JApplicationCms
+2015-11-06T01:04:11+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_content&view=articles
+2015-11-06T01:05:36+00:00	DEBUG	-	class:JApplicationCms
+2015-11-06T01:05:36+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_content
+2015-11-06T01:05:42+00:00	DEBUG	-	class:JApplicationCms
+2015-11-06T01:05:42+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_content&view=article&layout=edit&id=54
+2015-11-06T01:05:47+00:00	DEBUG	-	class:JApplicationCms
+2015-11-06T01:05:47+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_content&view=articles
+2015-11-24T17:12:51+00:00	DEBUG	-	class:JApplicationCms
+2015-11-24T17:12:51+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-24T17:13:01+00:00	DEBUG	-	class:JApplicationCms
+2015-11-24T17:13:01+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-24T17:13:11+00:00	DEBUG	-	class:JApplicationCms
+2015-11-24T17:13:11+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-24T17:14:30+00:00	DEBUG	-	class:JApplicationCms
+2015-11-24T17:14:30+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-24T17:15:16+00:00	DEBUG	-	class:JApplicationCms
+2015-11-24T17:15:16+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-24T17:15:29+00:00	DEBUG	-	class:JApplicationCms
+2015-11-24T17:15:29+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-24T17:29:48+00:00	DEBUG	-	class:JApplicationCms
+2015-11-24T17:29:48+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-25T01:45:54+00:00	DEBUG	-	class:JApplicationCms
+2015-11-25T01:45:54+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-25T01:46:52+00:00	DEBUG	-	class:JApplicationCms
+2015-11-25T01:46:52+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-25T15:43:31+00:00	DEBUG	-	class:JApplicationCms
+2015-11-25T15:43:31+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-25T15:43:43+00:00	DEBUG	-	class:JApplicationCms
+2015-11-25T15:43:43+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-25T15:45:17+00:00	DEBUG	-	class:JApplicationCms
+2015-11-25T15:45:17+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-11-25T15:47:22+00:00	DEBUG	-	class:JApplicationCms
+2015-11-25T15:47:22+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-12-30T09:08:54+00:00	DEBUG	-	class:JApplicationCms
+2015-12-30T09:08:54+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2015-12-30T09:09:07+00:00	DEBUG	-	class:JApplicationCms
+2015-12-30T09:09:07+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=menu&layout=edit
+2015-12-30T09:09:30+00:00	DEBUG	-	class:JApplicationCms
+2015-12-30T09:09:30+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=menu&layout=edit&layout=edit&id=129
+2015-12-30T09:09:33+00:00	DEBUG	-	class:JApplicationCms
+2015-12-30T09:09:33+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=menus
+2016-01-18T07:42:52+00:00	DEBUG	-	class:JApplicationCms
+2016-01-18T07:42:52+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_virtuemart&view=utilities&layout=importproductvatgia&Itemid=442
+2016-01-18T09:13:44+00:00	DEBUG	-	class:JApplicationCms
+2016-01-18T09:13:44+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_virtuemart&controller=utilities&task=importproductvatgia
+2016-01-18T09:48:48+00:00	DEBUG	-	class:JApplicationCms
+2016-01-18T09:48:48+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&menutype=mainmenu&layout=edit
+2016-01-18T09:49:05+00:00	DEBUG	-	class:JApplicationCms
+2016-01-18T09:49:05+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_menus&view=item&layout=edit
+2016-01-18T09:49:28+00:00	DEBUG	-	class:JApplicationCms
+2016-01-18T09:49:28+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2016-01-18T09:50:06+00:00	DEBUG	-	class:JApplicationCms
+2016-01-18T09:50:06+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=448
+2016-01-18T09:50:23+00:00	DEBUG	-	class:JApplicationCms
+2016-01-18T09:50:23+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_menus&view=item&layout=edit&id=448
+2016-01-18T09:50:31+00:00	DEBUG	-	class:JApplicationCms
+2016-01-18T09:50:31+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items
+2016-01-18T14:56:25+00:00	DEBUG	-	class:JApplicationCms
+2016-01-18T14:56:25+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_virtuemart&controller=utilitiesvatgia&task=setcategoryproduct
+2016-01-19T01:26:50+00:00	DEBUG	-	class:JApplicationCms
+2016-01-19T01:26:50+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_virtuemart&controller=utilitiesvatgia&task=setcategoryproduct
+2016-01-19T04:09:35+00:00	DEBUG	-	class:JApplicationCms
+2016-01-19T04:09:35+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2016-01-19T08:53:35+00:00	DEBUG	-	class:JApplicationCms
+2016-01-19T08:53:35+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=448
+2016-01-20T04:36:22+00:00	DEBUG	-	class:JApplicationCms
+2016-01-20T04:36:22+00:00	DEBUG	-	legacy $url:/administrator/index.php
+2016-01-20T05:57:44+00:00	DEBUG	-	class:JApplicationCms
+2016-01-20T05:57:44+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&menutype=mainmenu&layout=edit
+2016-01-20T05:57:55+00:00	DEBUG	-	class:JApplicationCms
+2016-01-20T05:57:55+00:00	DEBUG	-	legacy $url:administrator/index.php?option=com_menus&view=item&layout=edit
+2016-01-20T05:58:17+00:00	DEBUG	-	class:JApplicationCms
+2016-01-20T05:58:17+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=item&layout=edit&id=448
+2016-01-20T05:58:26+00:00	DEBUG	-	class:JApplicationCms
+2016-01-20T05:58:26+00:00	DEBUG	-	legacy $url:/administrator/index.php?option=com_menus&view=items

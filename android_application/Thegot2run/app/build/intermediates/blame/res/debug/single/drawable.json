@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\note2.png",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\note2.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\note1.png",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\note1.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\run2.gif",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\run2.gif"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coin.png",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\coin.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\exit.png",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\exit.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\power.png",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\power.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\back.png",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\back.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\run1.gif",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\run1.gif"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\off.png",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\off.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\kinfe.png",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\kinfe.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\pause.png",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\pause.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\on.png",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\on.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\run3.gif",
+        "source": "H:\\project\\test_pro\\android_application\\Thegot2run\\app\\src\\main\\res\\drawable\\run3.gif"
+    }
+]

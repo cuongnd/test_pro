@@ -1,13 +1,17 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // No direct access
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.view');
+jimport('joomla.user.helper');
 jimport('sourcecoast.utilities');
 
 define('USERNAME_LEAVE_BLANK', 0);
@@ -17,6 +21,8 @@ define('USERNAME_GENERATE_DISABLE', 3);
 define('EMAIL_HIDE', 0);
 define('EMAIL_SHOW', 1);
 define('EMAIL_SHOW_DISABLE', 2);
+define('NAME_HIDE', 0);
+define('NAME_SHOW', 1);
 
 class JFBConnectViewLoginregister extends JViewLegacy
 {
@@ -31,7 +37,6 @@ class JFBConnectViewLoginregister extends JViewLegacy
         $provider = JFBCFactory::provider($provider);
         $providerUserId = $provider->getProviderUserId();
         $profile = $provider->profile->fetchProfile($providerUserId, array('first_name', 'last_name', 'email', 'full_name'));
-        $registerModel = $this->getModel('loginregister');
 
         if ($providerUserId == null)
             $app->redirect('index.php');
@@ -72,6 +77,10 @@ class JFBConnectViewLoginregister extends JViewLegacy
         // Setup the fields we can pre-populate
         // To do: Give option to show/hide the name on the form
         $this->form->setValue('name', null, $providerMemberName);
+        if($config->get('registration_show_name') == NAME_HIDE && $providerMemberName != '')
+        {
+            $this->form->setFieldAttribute('name', 'type', 'hidden');
+        }
 
         $this->form->setValue('username', null, $providerUsername);
         if ($providerUsername != '')
@@ -100,7 +109,7 @@ class JFBConnectViewLoginregister extends JViewLegacy
 
         if ($config->get('registration_show_password') == 1)
         {
-            $password = $registerModel->generateRandomPassword();
+            $password = JUserHelper::genRandomPassword();
             $this->form->setValue('password1', null, $password);
             $this->form->setValue('password2', null, $password);
             $this->form->setFieldAttribute('password1', 'type', 'hidden');
@@ -131,21 +140,25 @@ class JFBConnectViewLoginregister extends JViewLegacy
         // TODO: Make the addStyleSheet into a Utilities function to be used elsewhere.
         $displayType = $config->get('registration_display_mode');;
         $css = JPath::find($this->_path['template'], 'loginregister.css');
-        $css = str_replace(JPATH_ROOT . '/', JURI::base(), $css);
+        $css = str_replace(JPATH_SITE, '', $css);
+        $css = str_replace('\\', "/", $css); //Windows support for file separators
         $doc = JFactory::getDocument();
         $doc->addStyleSheet($css);
 
         // get the other providers, for showing their login buttons
+        $altParams = array();
         $allProviders = JFBCFactory::getAllProviders();
         $altProviders = array();
         foreach ($allProviders as $p)
         {
             if ($p->name != $provider->name)
-                $altProviders[] = $p;
+                $altParams['providers'][] = $p->systemName;
         }
+        $altParams['image'] = 'icon.png';
         // Set the session bit to check for a new login on next page load
         SCSocialUtilities::setJFBCNewMappingEnabled();
 
+        $this->altParams = $altParams;
         $this->assignRef('providerUserId', $providerUserId);
         $this->assignRef('profile', $profile);
         $this->assignRef('configModel', $config);

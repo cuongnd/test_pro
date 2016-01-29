@@ -1,9 +1,12 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.model');
@@ -23,15 +26,17 @@ class JFBConnectAdminModelOpenGraphActivity extends JFBConnectModelOpenGraphActi
         $filter_order = $app->getUserStateFromRequest($option . $view . 'filter_order', 'filter_order', 'id', 'cmd');
         $filter_order_Dir = $app->getUserStateFromRequest($option . $view . 'filter_order_Dir', 'filter_order_Dir', 'DESC', 'word');
 
-        $query = "SELECT * FROM #__opengraph_activity";
-        $query .= $this->getFilters();
-        $query .= " ORDER BY " . $filter_order . " " . $filter_order_Dir . " ";
+        $query = $this->_db->getQuery(true);
+        $query->select('*')
+            ->from($this->_db->qn('#__opengraph_activity'))
+            ->order($this->_db->qn($filter_order). ' ' . $filter_order_Dir);
+        $this->setFilters($query);
         $this->_db->setQuery($query, $limitstart, $limit);
         $rows = $this->_db->loadObjectList();
         return $rows;
     }
 
-    function getFilters()
+    function setFilters($query)
     {
         $app =JFactory::getApplication();
         $option = JRequest::getCmd('option');
@@ -44,39 +49,27 @@ class JFBConnectAdminModelOpenGraphActivity extends JFBConnectModelOpenGraphActi
         $filter_object = $app->getUserStateFromRequest($option . $view . 'filter_object', 'filter_object', -1, 'int');
         $filter_action = $app->getUserStateFromRequest($option . $view . 'filter_action', 'filter_action', -1, 'int');
 
-        $query = '';
         if ($search != '')
-        {
-            $query =  " WHERE url LIKE '%" . $search . "%'";
-        }
+            $query->where($this->_db->qn('url') . "LIKE '%" . $search . "%'");
 
         if ($filter_state > -1)
-            $query .= $this->getFilterSelect($query, 'status', $filter_state);
+            $query->where($this->_db->qn('status') . '=' . $filter_state);
 
         if ($filter_object > -1)
-            $query .= $this->getFilterSelect($query, 'object_id', $filter_object);
+            $query->where($this->_db->qn('object_id') . '=' . $filter_object);
 
         if($filter_action > -1)
-            $query .= $this->getFilterSelect($query, 'action_id', $filter_action);
+            $query->where($this->_db->qn('action_id') . '=' . $filter_action);
 
         return $query;
     }
 
-    function getFilterSelect($query, $selectName, $selectValue)
-    {
-        if($query != '')
-            $newValue = ' AND';
-        else
-            $newValue = ' WHERE';
-
-        $newValue .= ' ' . $selectName . '=' . $selectValue;
-        return $newValue;
-    }
-
     function getTotal()
     {
-        $query = "SELECT COUNT(*) FROM #__opengraph_activity";
-        $query .= $this->getFilters();
+        $query = $this->_db->getQuery(true);
+        $query->select('COUNT(*)')
+            ->from($this->_db->qn('#__opengraph_activity'));
+        $this->setFilters($query);
         $this->_db->setQuery($query);
         $total = $this->_db->loadResult();
         return $total;
@@ -84,19 +77,29 @@ class JFBConnectAdminModelOpenGraphActivity extends JFBConnectModelOpenGraphActi
 
     function delete($id)
     {
-        $this->_db->setQuery("DELETE FROM #__opengraph_activity WHERE status <> " . OG_ACTIVITY_PUBLISHED . " AND id = ".$this->_db->quote($id));
-        return $this->_db->execute();
+        $query = $this->_db->getQuery(true);
+        $query->delete($this->_db->qn("#__opengraph_activity"))
+            ->where($this->_db->qn("status") . '<>' . OG_ACTIVITY_PUBLISHED)
+            ->where($this->_db->qn("id") . '=' . $this->_db->q($id));
+        $this->_db->setQuery($query);
+        $this->_db->execute();
     }
 
     function getObjectList()
     {
-        $this->_db->setQuery("SELECT id, display_name FROM #__opengraph_object");
+        $query = $this->_db->getQuery(true);
+        $query->select($this->_db->qn('id') .','. $this->_db->qn('display_name'))
+            ->from($this->_db->qn('#__opengraph_object'));
+        $this->_db->setQuery($query);
         return $this->_db->loadObjectList();
     }
 
     function getActionList()
     {
-        $this->_db->setQuery("SELECT id, display_name FROM #__opengraph_action");
+        $query = $this->_db->getQuery(true);
+        $query->select($this->_db->qn('id') .','. $this->_db->qn('display_name'))
+            ->from($this->_db->qn('#__opengraph_action'));
+        $this->_db->setQuery($query);
         return $this->_db->loadObjectList();
     }
 }

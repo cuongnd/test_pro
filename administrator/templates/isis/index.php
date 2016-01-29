@@ -17,6 +17,7 @@ $this->direction = $doc->direction;
 $input = $app->input;
 $user = JFactory::getUser();
 $Itemid = $app->input->get('Itemid', 0, 'int');
+
 if ($Itemid) {
     $menu = $app->getMenu();
     $activeMenu = $menu->getItem($Itemid);

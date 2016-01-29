@@ -63,23 +63,3 @@
 </div>
 </body>
 </html>
-<script type="text/javascript">
-    jQuery(document).ready(function(){
-        $('table.bdr tbody tr').shiftcheckbox({
-
-            // Options accept selectors, jQuery objects, or DOM
-            // elements.
-
-            checkboxSelector : ':checkbox',
-            ignoreClick      : 'a',
-
-            // The onChange function will be called whenever the
-            // plugin changes the state of a checkbox.
-
-            onChange : function(checked) {
-            }
-
-        });
-
-    });
-</script>

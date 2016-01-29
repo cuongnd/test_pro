@@ -1,15 +1,14 @@
 <?php
 /**
- * @package        JFBConnect
- * @copyright (C) 2009-2013 by Source Coast - All rights reserved
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @package         JFBConnect
+ * @copyright (c)   2009-2014 by SourceCoast - All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @version         Release v6.2.4
+ * @build-date      2014/12/15
  */
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
-
-JLoader::register('JFBConnectProviderTwitterOauth1', JPATH_SITE . '/components/com_jfbconnect/libraries/provider/twitter/oauth1.php');
-
-JLoader::register('JFBConnectProfileTwitter', JPATH_SITE . '/components/com_jfbconnect/libraries/profiles/twitter.php');
 
 class JFBConnectProviderTwitter extends JFBConnectProvider
 {
@@ -24,7 +23,7 @@ class JFBConnectProviderTwitter extends JFBConnectProvider
     {
         $this->options = new JRegistry();
         $this->options->def('accessTokenURL', 'https://api.twitter.com/oauth/access_token');
-        $this->options->def('authenticateURL', 'https://api.twitter.com/oauth/authorize');
+        $this->options->def('authenticateURL', 'https://api.twitter.com/oauth/authenticate');
         $this->options->def('authoriseURL', 'https://api.twitter.com/oauth/authorize');
         $this->options->def('requestTokenURL', 'https://api.twitter.com/oauth/request_token');
         $this->options->def('api.url', 'https://api.twitter.com/1.1/');
@@ -41,25 +40,6 @@ class JFBConnectProviderTwitter extends JFBConnectProvider
             $token = (array)json_decode($token);
             $this->client->setToken($token);
         }
-    }
-
-    function loginButton($params = null)
-    {
-        $twitterLogin = "";
-        if ($this->appId != "") // Basic check to make sure something is set and the Google Login has a chance of working
-        {
-            if (isset($params['buttonType']) && $params['buttonType'] == 'javascript')
-            {
-                $buttonSize = $params['buttonSize'];
-                $renderKey = $this->getSocialTagRenderKey();
-                $renderKeyStr = $renderKey != "" ? " key=" . $renderKey : "";
-                return '{SCTwitterLogin size=' . $buttonSize . $renderKeyStr . '}';
-            }
-            else
-                $twitterLogin = $this->getLoginButtonWithImage($params, 'scTwitterLogin', 'sc_twlogin');
-        }
-
-        return $twitterLogin;
     }
 
     /* getProviderUserId
@@ -89,22 +69,6 @@ class JFBConnectProviderTwitter extends JFBConnectProvider
         return $app->getUserState('com_jfbconnect.twitter.provider_id');
     }
 
-    public function getHeadData()
-    {
-        $head = '';
-        if ($this->needsJavascript)
-        {
-            $uri = JURI::getInstance();
-            $scheme = $uri->getScheme();
-
-            $javascript = '<script src="' . $scheme . '://platform.twitter.com/widgets.js"></script>';
-
-            $head .= $javascript;
-        }
-
-        return $head;
-    }
-
     public function getUserScope($uid)
     {
         $scope = array();
@@ -129,6 +93,9 @@ class JFBConnectProviderTwitter extends JFBConnectProvider
         {
             // Start the authentication process over and get the newly requested scope
             $this->client->resetConnection();
+            // Use authorize which will re-prompt the user
+            $this->client->setOption('authenticateURL', 'https://api.twitter.com/oauth/authorize');
+
             JFactory::getApplication()->setUserState('com_jfbconnect.' . strtolower($this->name) . '.token', null);
 
             $this->options->set('x_auth_access_type', $scope[0]); // Really, this can only be 'write' since we already request read
@@ -136,4 +103,34 @@ class JFBConnectProviderTwitter extends JFBConnectProvider
             $this->client->authenticate();
         }
     }
+
+    public function onAfterRender()
+    {
+        if (!$this->needsJavascript)
+            return;
+
+        $body = JResponse::getBody();
+        $javascript =
+                <<<EOT
+        <script>
+        window.twttr = (function (d,s,id) {
+          var t, js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+          js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+          return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+        }(document, "script", "twitter-wjs"));
+        twttr.ready(function (twttr) {
+            // Now bind our custom intent events
+            twttr.events.bind('tweet', jfbc.social.twitter.tweet);
+        });
+        </script>
+EOT;
+        if (preg_match('/\<body[\s\S]*?\>/i', $body, $matches))
+        {
+            $newBody = str_replace($matches[0], $matches[0] . $javascript, $body);
+            JResponse::setBody($newBody);
+        }
+    }
+    /** End System trigger calls */
+
 }

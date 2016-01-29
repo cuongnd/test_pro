@@ -195,11 +195,11 @@ class ModulesModelModules extends JModelList
 	{
 		$lang = JFactory::getLanguage();
 		$client = $this->getState('filter.client_id') ? 'administrator' : 'site';
-
+		$website=JFactory::getWebsite();
 		foreach ($items as $item)
 		{
 			$extension = $item->module;
-			$source = constant('JPATH_' . strtoupper($client)) . "/modules/$extension";
+			$source = constant('JPATH_' . strtoupper($client)) . "/modules/website/website_$website->website_id/$extension";
 			$lang->load("$extension.sys", constant('JPATH_' . strtoupper($client)), null, false, true)
 				|| $lang->load("$extension.sys", $source, null, false, true);
 			$item->name = JText::_($item->name);
