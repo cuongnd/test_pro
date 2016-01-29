@@ -3,7 +3,17 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
-      <excludeFolder url="file://$MODULE_DIR$/administrator" />
+      <excludeFolder url="file://$MODULE_DIR$/administrator/backups" />
+      <excludeFolder url="file://$MODULE_DIR$/administrator/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/administrator/components" />
+      <excludeFolder url="file://$MODULE_DIR$/administrator/help" />
+      <excludeFolder url="file://$MODULE_DIR$/administrator/language" />
+      <excludeFolder url="file://$MODULE_DIR$/administrator/log" />
+      <excludeFolder url="file://$MODULE_DIR$/administrator/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/administrator/manifests" />
+      <excludeFolder url="file://$MODULE_DIR$/administrator/modules" />
+      <excludeFolder url="file://$MODULE_DIR$/administrator/templates" />
+      <excludeFolder url="file://$MODULE_DIR$/administrator/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/android" />
       <excludeFolder url="file://$MODULE_DIR$/android_application" />
       <excludeFolder url="file://$MODULE_DIR$/bin" />
@@ -45,7 +55,6 @@
       <excludeFolder url="file://$MODULE_DIR$/components/com_tags" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_templates" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_users" />
-      <excludeFolder url="file://$MODULE_DIR$/components/com_utility" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_virtuemart" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_weblinks" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_wrapper" />
@@ -54,7 +63,6 @@
       <excludeFolder url="file://$MODULE_DIR$/documents" />
       <excludeFolder url="file://$MODULE_DIR$/global_css_images_js" />
       <excludeFolder url="file://$MODULE_DIR$/images" />
-      <excludeFolder url="file://$MODULE_DIR$/includes" />
       <excludeFolder url="file://$MODULE_DIR$/jaextmanager_data" />
       <excludeFolder url="file://$MODULE_DIR$/language" />
       <excludeFolder url="file://$MODULE_DIR$/layouts" />
@@ -65,12 +73,10 @@
       <excludeFolder url="file://$MODULE_DIR$/libraries/adminbackend" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/adminfrontend" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/array2xml-master" />
-      <excludeFolder url="file://$MODULE_DIR$/libraries/cms" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/compat" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/cssmin" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/exporter-master" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/f0f" />
-      <excludeFolder url="file://$MODULE_DIR$/libraries/framework" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/google-api-php-client-master" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/idna_convert" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/jsmin-php-master" />

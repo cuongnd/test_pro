@@ -78,7 +78,6 @@ class JMenuSite extends JMenu
             JLog::add(JText::sprintf('JERROR_LOADING_MENUS', md5($query), $e->getMessage()), JLog::WARNING, 'jerror');
             return false;
         }
-
 		JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/models');
 		$modalDataSources=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
 		$items=array();

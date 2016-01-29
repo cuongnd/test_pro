@@ -32,7 +32,7 @@ if (in_array($host, $domainSupper)) {
     if (!is_numeric($contentIni)) {
         exit("File $fileWebStore format incorrect");
     }
-    define('WEBSITE_ID',          $contentIni);
+    define('WEBSITE_ID',          (int)$contentIni);
     $fileConfig = JPATH_ROOT . '/configuration/configuration_' . $contentIni . '.php';
 
 }

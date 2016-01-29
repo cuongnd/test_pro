@@ -231,15 +231,12 @@ class JCategories
 			->from('#__categories as c')
 			->where('(c.extension=' . $db->quote($extension) . ' OR c.extension=' . $db->quote('system') . ')');
 
-		if ($this->_options['access'])
+/*		if ($this->_options['access'])
 		{
 			$groups = implode(',', $user->getAuthorisedViewLevels());
-			if($groups!='')
-			{
-				$query->where('c.access IN (' . $groups . ')');
-			}
+			$query->where('c.access IN (' . $groups . ')');
 
-		}
+		}*/
 
 		if ($this->_options['published'] == 1)
 		{

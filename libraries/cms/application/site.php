@@ -163,7 +163,6 @@ final class JApplicationSite extends JApplicationCms
         } else {
             $document->setGenerator('Joomla! - Open Source Content Management');
         }
-
         $contents = JComponentHelper::renderComponent($component);
         require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
         $enableEditWebsite = UtilityHelper::getEnableEditWebsite();

@@ -68,26 +68,18 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 # internally rewrite the request to the index.php script
 RewriteRule .* index.php [L]
-#
-## End - Joomla! core SEF Section.
-#RewriteRule ^(.*).css$ ^(.+)$/index.php?option=com_utility&view=utility&task=loadFile&template=system&tmpl=sourcecss&type=css&file=$1.css [L]
-#RewriteRule ^(.*).js$ ^(.+)$/index.php?option=com_utility&view=utility&task=loadFile&template=system&tmpl=sourcecss&type=js&layout=js&file=$1.js [L]
-#RewriteRule ^(.*).png$ ^(.+)$/index.php?option=com_utility&view=utility&task=loadFile&template=system&tmpl=sourcecss&type=png&layout=png&file=$1.png [L]
-#RewriteRule ^(.*).jpg$ ^(.+)$/index.php?option=com_utility&view=utility&task=loadFile&template=system&tmpl=sourcecss&type=jpg&layout=png&file=$1.jpg [L]
-#RewriteRule ^(.*).ttf$ ^(.+)$/index.php?option=com_utility&view=utility&task=loadFile&template=system&tmpl=sourcecss&type=ttf&layout=ttf&file=$1.ttf [L]
-# 480 weeks
 <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
-Header set Cache-Control "max-age=290304000, public"
+#Header set Cache-Control "max-age=290304000, public"
 </FilesMatch>
 
 # 2 DAYS
 <FilesMatch "\.(xml|txt)$">
-Header set Cache-Control "max-age=172800, public, must-revalidate"
+#Header set Cache-Control "max-age=172800, public, must-revalidate"
 </FilesMatch>
 
 # 2 HOURS
 <FilesMatch "\.(html|htm)$">
-Header set Cache-Control "max-age=7200, must-revalidate"
+#Header set Cache-Control "max-age=7200, must-revalidate"
 </FilesMatch>
 
 <ifModule mod_gzip.c>
@@ -100,3 +92,12 @@ Header set Cache-Control "max-age=7200, must-revalidate"
   mod_gzip_item_exclude mime ^image/.*
   mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
 </ifModule>
+
+#
+## End - Joomla! core SEF Section.
+RewriteRule ^(.*).css$ ^(.+)$/index.php?option=com_utility&view=utility&layout=css&tmpl=sourcecss&type=css&file=$1.css [L]
+RewriteRule ^(.*).js$ ^(.+)$/index.php?option=com_utility&view=utility&layout=js&tmpl=sourcecss&type=js&file=$1.js [L]
+#RewriteRule ^(.*).png$ ^(.+)$/index.php?option=com_utility&view=utility&layout=png&tmpl=sourcecss&type=png&file=$1.png [L]
+#RewriteRule ^(.*).jpg$ ^(.+)$/index.php?option=com_utility&view=utility&task=loadFile&template=system&tmpl=sourcecss&type=jpg&layout=png&file=$1.jpg [L]
+#RewriteRule ^(.*).ttf$ ^(.+)$/index.php?option=com_utility&view=utility&task=loadFile&template=system&tmpl=sourcecss&type=ttf&layout=ttf&file=$1.ttf [L]
+# 480 weeks

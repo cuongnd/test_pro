@@ -20,7 +20,7 @@ require_once JPATH_ROOT . '/libraries/joomla/form/fields/icon.php';
 $db = JFactory::getDbo();
 $query = $db->getQuery(true);
 $query->from('#__menu As menu ')
-    ->select('menu.parent_id, menu.id,menu.binding_source,menu.binding_source_key,menu.binding_source_value,menu.access,menu.level,menu.icon,menu.title,menu.link,menu.alias,menu.published')
+    ->select('menu.parent_id,menu.home, menu.id,menu.binding_source,menu.binding_source_key,menu.binding_source_value,menu.access,menu.level,menu.icon,menu.title,menu.link,menu.alias,menu.published,menu.hidden')
     ->leftJoin('#__menu_types AS menuType ON menu.menu_type_id=menuType.id')
     ->where('menuType.website_id='.(int)$website->website_id)
     ->select('menuType.id as menu_type_id,menuType.title as menu_type_title');
@@ -222,9 +222,13 @@ function create_html_list($root_id, $list_nodes, $website, $binding_source)
                         <label>Home<input <?php echo $item->home == 1 ? 'checked' : '' ?> name="home" type="radio"
                                                                                           onchange="menu_ajax_loader.home_update_value(this);menu_ajax_loader.call_on_change(this)"
                                                                                           value="<?php echo $item->home == 1 ? 1 : 0 ?>"/></label>
-                        <label>show<input <?php echo $item->published == 1 ? 'checked' : '' ?> name="show"
+                        <label>published<input <?php echo $item->published == 1 ? 'checked' : '' ?> name="published"
                                                                                                type="checkbox"
                                                                                                onchange="menu_ajax_loader.update_data_column(this,'published','checkbox')"
+                                                                                               value="1"/></label>
+                        <label>show<input <?php echo $item->hidden == 1 ? 'checked' : '' ?> name="hidden"
+                                                                                               type="checkbox"
+                                                                                               onchange="menu_ajax_loader.update_data_column(this,'hidden','checkbox')"
                                                                                                value="1"/></label>
                         <?php
                         if ($item->binding_source) {
