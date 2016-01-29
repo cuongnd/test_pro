@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_1.png",
+        "source": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\src\\main\\res\\drawable-hdpi\\icon_1.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\intro_background.png",
+        "source": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\src\\main\\res\\drawable-hdpi\\intro_background.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "H:\\project\\test_pro\\android_application\\PicturePuzzle\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    }
+]

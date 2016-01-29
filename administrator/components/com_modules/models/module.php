@@ -54,7 +54,7 @@ class ModulesModelModule extends JModelAdmin
 
 		if (!$pk)
 		{
-			if ($extensionId = (int) $app->getUserState('com_modules.add.module.extension_id'))
+			if ($extensionId = (int) $app->getUserState('com_modules.add.module.id'))
 			{
 				$this->setState('extension.id', $extensionId);
 			}
@@ -893,8 +893,8 @@ class ModulesModelModule extends JModelAdmin
 
 			// Get the module XML.
 			$client = JApplicationHelper::getClientInfo($table->client_id);
-			$path   = JPath::clean($client->path . '/modules/' . $table->module . '/' . $table->module . '.xml');
-
+			$website=JFactory::getWebsite();
+			$path   = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/' . $table->module . '/' . $table->module . '.xml');
 			if (file_exists($path))
 			{
 				$this->_cache[$pk]->xml = simplexml_load_file($path);
@@ -970,13 +970,13 @@ class ModulesModelModule extends JModelAdmin
 		$lang     = JFactory::getLanguage();
 		$clientId = $this->getState('item.client_id');
 		$module   = $this->getState('item.module');
-
+		$website=JFactory::getWebsite();
 		$client   = JApplicationHelper::getClientInfo($clientId);
-		$formFile = JPath::clean($client->path . '/modules/' . $module . '/' . $module . '.xml');
+		$formFile = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/' . $module . '/' . $module . '.xml');
 
 		// Load the core and/or local language file(s).
 		$lang->load($module, $client->path, null, false, true)
-			||	$lang->load($module, $client->path . '/modules/' . $module, null, false, true);
+			||	$lang->load($module, $client->path . '/modules/website/website_'.$website->website_id.'/' . $module, null, false, true);
 
 		if (file_exists($formFile))
 		{
@@ -1203,7 +1203,7 @@ class ModulesModelModule extends JModelAdmin
 
 		// Compute the extension id of this module in case the controller wants it.
 		$query	= $db->getQuery(true)
-			->select('e.id AS extension_id')
+			->select('e.id AS id')
 			->from('#__extensions AS e')
 			->join('LEFT', '#__modules AS m ON e.element = m.module')
 			->where('m.id = ' . (int) $table->id);
@@ -1220,7 +1220,7 @@ class ModulesModelModule extends JModelAdmin
 			return false;
 		}
 
-		$this->setState('module.extension_id', $extensionId);
+		$this->setState('module.id', $extensionId);
 		$this->setState('module.id', $table->id);
 
 		// Clear modules cache

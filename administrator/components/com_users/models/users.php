@@ -278,11 +278,11 @@ class UsersModelUsers extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.*'
+				'a.*,u_g.website_id'
 			)
 		);
 
-		$query->from($db->quoteName('#__users') . ' AS a');
+		$query->from('#__user_usergroup_map AS map2');
         
 		// If the model is set to check item state, add to the query.
 		$state = $this->getState('filter.state');
@@ -310,7 +310,7 @@ class UsersModelUsers extends JModelList
 		// Filter the items over the group id if set.
 		$groupId = $this->getState('filter.group_id');
 		$groups  = $this->getState('filter.groups');
-        $query->join('LEFT', '#__user_usergroup_map AS map2 ON map2.user_id = a.id');
+        $query->innerJoin('#__users AS a ON map2.user_id = a.id');
 		if ($groupId || isset($groups))
 		{
             $query->group($db->quoteName(array('a.id', 'a.name', 'a.username', 'a.password', 'a.block', 'a.sendEmail', 'a.registerDate', 'a.lastvisitDate', 'a.activation', 'a.params', 'a.email')));
@@ -325,24 +325,12 @@ class UsersModelUsers extends JModelList
 				$query->where('map2.group_id IN (' . implode(',', $groups) . ')');
 			}
 		}
-        $query->leftJoin('#__usergroups u_g ON u_g.id=map2.group_id');
+        $query->innerJoin('#__usergroups u_g ON u_g.id=map2.group_id');
         $superAdmin=JFactory::isSupperAdmin();
-        if($superAdmin)
-        {
+        $website=JFactory::getWebsite();
+        $website_id=$website->website_id;
+        $query->where('u_g.website_id='.(int)$website_id);
 
-            //filter by website
-            $website_id = $this->getState('filter.website_id');
-            if ($website_id)
-            {
-                $query->where('u_g.website_id = ' . $website_id);
-            }
-
-        }else
-        {
-            $website=JFactory::getWebsite();
-            $website_id=$website->website_id;
-            $query->where('u_g.website_id='.(int)$website_id);
-        }
 		// Filter the items over the search string if set.
 		if ($this->getState('filter.search') !== '' && $this->getState('filter.search') !== null)
 		{
