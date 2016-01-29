@@ -41,7 +41,7 @@ $query->clear()
 $list_menu_type = $db->setQuery($query)->loadObjectList('id');
 
 //end get list menu type
-
+//
 
 $list_menu_item = array();
 foreach ($list_menu_type as $menu_type) {
