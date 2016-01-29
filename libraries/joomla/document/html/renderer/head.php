@@ -106,6 +106,7 @@ class JDocumentRendererHead extends JDocumentRenderer {
             $buffer .= ' />' . $lnEnd;
         }
         $liststyleSheets= $this->gzObject($document->_styleSheets,false);
+
         foreach ($liststyleSheets as  $source=>$object) {
             $list_attribs=$object['attribs'];
             if(!$list_attribs['rel'])
@@ -118,8 +119,9 @@ class JDocumentRendererHead extends JDocumentRenderer {
                 $attribs[]="$key_attribute=\"$value_attribute\"";
             }
             $attribs=implode(' ',$attribs);
+            $source=JUtility::format_url($source);
             //$buffer.='<link rel="stylesheet" type="text/css" media="screen"  href="'.JUri::root().'index.php?option=com_utility&task=utility.loadFile&file='.$source.'&tmpl=sourcecss&type=css">';
-            $buffer.='<link  '.$attribs.' type="'.$object['mime'].'" media="screen"  href="'.JUri::root().'/'.$source.'"/>';
+            $buffer.='<link  '.$attribs.' type="'.$object['mime'].'" media="screen"  href="'.JUri::root().$source.'"/>';
         }
         
         // Generate stylesheet links

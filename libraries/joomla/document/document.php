@@ -450,7 +450,7 @@ class JDocument
         $path=JUtility::format_url($path);
         $path = (object)pathinfo($path);
         $host = $uri->getHost();
-/*        if (strpos($current_url, $host) >=0   && strpos($path->basename, '.min') >=0 && $path->dirname != '') {
+        if (strpos($current_url, $host) >=0   && strpos($path->basename, '.min') >=0 && $path->dirname != '') {
             $folder_compile_js = $path->dirname . '/compile_js';
             jimport('joomla.filesystem.folder');
             jimport('joomla.filesystem.file');
@@ -470,7 +470,7 @@ class JDocument
             }
             $out_put_file_js_compile=JUtility::format_url($out_put_file_js_compile);
             $uri = JUri::getInstance($current_url.$out_put_file_js_compile);
-        }*/
+        }
 
         $url = $uri->toString();
         $bt = $callStask ? $callStask : debug_backtrace();
@@ -598,6 +598,18 @@ class JDocument
      */
     public function addStyleSheet($url, $type = 'text/css', $media = null, $attribs = array())
     {
+        $current_url=JUri::root();
+        $uri = JUri::getInstance($url);
+        $host = $uri->getHost();
+        if (trim($host) == '') {
+            $path=$uri->getPath();
+            $path=JUtility::format_url($path);
+
+            $uri = JUri::getInstance($current_url.$path);
+        }
+        $url = $uri->toString();
+
+
         $this->_styleSheets[$url]['mime'] = $type;
         $this->_styleSheets[$url]['media'] = $media;
         $this->_styleSheets[$url]['attribs'] = $attribs;
@@ -629,7 +641,7 @@ class JDocument
             JFile::write(JPATH_ROOT . '/' . $out_put_file_less_compile, $content);
 
         }
-        $url = JUri::root() . '/' . $out_put_file_less_compile;
+        $url = JUri::root()  . $out_put_file_less_compile;
         $this->addStyleSheet($url, 'text/css', $media, $attribs);
         return $this;
     }
