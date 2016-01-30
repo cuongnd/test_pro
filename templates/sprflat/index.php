@@ -4,6 +4,7 @@
 
 
 <?php
+
 require_once JPATH_ROOT . '/components/com_phpmyadmin/helpers/datasource.php';
 require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
 
@@ -603,6 +604,7 @@ ob_start();
 
 }
 ?>
+<jdoc:include type="modules" name="debug" />
 <div class="div-loading"></div>
 <style type="text/css">
     .div-loading {

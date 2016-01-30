@@ -413,7 +413,7 @@ XML;
         $session->set('preview',$preview);
         return $preview;
     }
-    public function isAdminSite()
+    public static function isAdminSite()
     {
         $uri=JFactory::getURI();
         $host=$uri->getHost();
@@ -429,7 +429,7 @@ XML;
             return 0;
         }
     }
-    public function getEnableEditWebsite()
+    public static function  getEnableEditWebsite()
     {
         $app=JFactory::getApplication();
 

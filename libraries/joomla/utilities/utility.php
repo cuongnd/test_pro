@@ -582,7 +582,7 @@ class JUtility
         return $array_result;
     }
 
-    function changeLanguageBody($contents)
+    static function changeLanguageBody($contents)
     {
         $config = JFactory::getConfig();
         $allwayTranslateOnlineByGoogle = $config->get('allwayTranslateOnlineByGoogle', 0, 'int');

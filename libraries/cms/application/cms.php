@@ -242,11 +242,12 @@ class JApplicationCms extends JApplicationWeb
 
 		// Perform application routines.
 		$this->doExecute();
+
 		// If we have an application document object, render it.
 		if ($this->document instanceof JDocument)
 		{
 			// Render the application output.
-			$this->render();
+			//$this->render();
 		}
 		// If gzip compression is enabled in configuration and the server is compliant, compress the output.
 		if ($this->get('gzip') && ini_get('zlib.output_compression') && (ini_get('output_handler') != 'ob_gzhandler'))

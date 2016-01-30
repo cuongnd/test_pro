@@ -4,6 +4,7 @@ $app=JFactory::getApplication();
 $doc=JFactory::getDocument();
 JFactory::getDocument()->setMimeEncoding('text/css');
 $file=$app->input->get('file','','string');
+ob_clean();
 header("Content-Type: text/css");
 if(JFile::exists(JPATH_ROOT.'/'.$file))
 {

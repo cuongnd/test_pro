@@ -1316,13 +1316,11 @@ class WebsiteModelWebsite extends JModelAdmin
             $item		= $this->getItem();
 
             $clientId	= $item->client_id;
-            $module		= $item->module;
             $id			= $item->id;
         }
         else
         {
             $clientId	= JArrayHelper::getValue($data, 'client_id');
-            $module		= JArrayHelper::getValue($data, 'module');
             $id			= JArrayHelper::getValue($data, 'id');
         }
 
