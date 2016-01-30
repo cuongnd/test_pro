@@ -11,7 +11,7 @@ class block_helper
 
     public static function get_html_by_block_id($block_id,$enableEditWebsite=false)
     {
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);

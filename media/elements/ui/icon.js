@@ -12,7 +12,8 @@
             enable_edit_website:false,
             block_id:0,
             block_parent_id:0,
-            icon_size:0
+            icon_size:0,
+            icon_color:'#000'
         }
 
         // current instance of the object
@@ -31,9 +32,11 @@
             var block_id=plugin.settings.block_id;
             var block_parent_id=plugin.settings.block_parent_id;
             var icon_size=plugin.settings.icon_size;
+            var icon_color=plugin.settings.icon_color;
             var enable_edit_website=plugin.settings.enable_edit_website;
             $element.css({
-                'font-size':icon_size
+                'font-size':icon_size,
+                'color':icon_color
             });
             if(enable_edit_website)
             {

@@ -33,6 +33,7 @@ class elementIconHelper extends  elementHelper
         $css_class=implode(' ',$css_class);
         $size=$params->get('element_config.size',15);
 
+
         $icon=$params->get('element_config.icon','br-refresh');
         $id=$params->get('id','id_'.$block->id);
         $text=$params->get('text','');
@@ -67,7 +68,7 @@ class elementIconHelper extends  elementHelper
         $css_class=explode(',',$css_class);
         $css_class=implode(' ',$css_class);
         $icon_size=$params->get('element_config.size',15);
-
+        $icon_color=$params->get('element_config.color','#000');
         $icon=$params->get('element_config.icon','br-refresh');
         $id=$params->get('id','id_'.$block->id);
         $text=$params->get('text','');
@@ -86,7 +87,8 @@ class elementIconHelper extends  elementHelper
                     enable_edit_website:<?php echo json_encode($enableEditWebsite) ?>,
                     block_id:<?php echo $block->id ?>,
                     parent_block_id:<?php echo $block->parent_id ?>,
-                    icon_size:<?php echo $icon_size ?>
+                    icon_size:<?php echo $icon_size ?>,
+                    icon_color:"<?php echo $icon_color ?>"
                 });
 
 

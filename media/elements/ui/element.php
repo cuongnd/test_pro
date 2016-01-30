@@ -132,7 +132,7 @@ class elementHelper
          * )
          */
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $block=JTable::getInstance('Position','JTable');
+        $block=JTable::getInstance('positionnested');
         $block->load($block_id);
         $params = new JRegistry;
         $params->loadString($block->params);

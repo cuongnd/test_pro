@@ -37,7 +37,7 @@ class UtilityControllerBlocks extends JControllerForm
 
         }
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
 
         $db=JFactory::getDbo();
 

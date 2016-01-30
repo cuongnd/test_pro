@@ -28,7 +28,7 @@ class elementH5Helper extends  elementHelper
         $params->loadString($block->params);
         $class=$params->get('class','');
         $checkbox=$params->get('checkbox','');
-        $text=$params->get('text','text_'.$block->id);
+        $text=$params->get('element_config.text','text_'.$block->id);
 
 
         $html='';

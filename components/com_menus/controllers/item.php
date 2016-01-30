@@ -658,7 +658,7 @@ class MenusControllerItem extends JControllerForm
             die;
         }
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
-        $tablePosition = JTable::getInstance('Position', 'JTable');
+        $tablePosition = JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
         $tablePosition->position = 'position-component';
         $tablePosition->store();

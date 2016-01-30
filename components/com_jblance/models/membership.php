@@ -15,7 +15,8 @@
  jimport('joomla.application.component.model');
  
  class JblanceModelMembership extends JModelLegacy {
- 	
+
+	 public static  $plan_history=null;
  	//17.Subscribe to a Plan
 	function getPlanAdd(){
 		$app =& JFactory::getApplication();
@@ -70,15 +71,38 @@
 				 "WHERE s.user_id = $user->id AND p.published = 1 ".
 				 "ORDER BY s.id DESC";
 		$db->setQuery($query);
-		$rows = $db->loadObjectList();
-	
+
+
+		$cache = JFactory::getCache('_jblance', 'callback');
+		try
+		{
+			$rows  = $cache->get(array($db, 'loadObjectList'), array(), null, false);
+
+			/**
+			 * Verify $components is an array, some cache handlers return an object even though
+			 * the original was a single object array.
+			 */
+			if (!is_array($rows))
+			{
+				static::$plan_history = $rows;
+			}
+		}
+		catch (RuntimeException $e)
+		{
+			// Fatal error.
+			JLog::add(JText::sprintf('JLIB_APPLICATION_ERROR_PROJECT_NOT_LOADING', '', $e->getMessage()), JLog::WARNING, 'jerror');
+
+			return false;
+		}
+
+
 		$finish = '';
 		if($subid > 0){
 		$query = "SELECT finish_msg FROM #__jblance_plan WHERE id = ".$subid;
 		$db->setQuery($query);
 		$finish = $db->loadResult();
 	}
-		$return[0] = $rows;
+		$return[0] = static::$plan_history;
 		$return[1] = $finish;
 	
 		return $return;

@@ -554,15 +554,22 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 		$this->errorMsg = '';
 		$memoryBefore   = null;
 		$this->log[] = $query;
-/*		if(count($this->log)==5)
+		//for test
+		if(1==0&&count($this->log)==100&&WEBSITE_ID==38)
 		{
 			echo "<pre>";
 			print_r($this->log);
 			print_r(JUtility::printDebugBacktrace());
 			echo "</pre>";
 			die;
-		}*/
-		if(count($this->log)>90)
+		}
+		//end for test
+		$max_qurery=100;
+		if($this->rebuild_action)
+		{
+			$max_qurery=1000;
+		}
+		if(count($this->log)>$max_qurery)
 		{
 			echo "too many query";
 			echo "<pre>";

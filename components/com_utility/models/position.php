@@ -1026,9 +1026,8 @@ class UtilityModelPosition extends JModelAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getTable($type = 'Position', $prefix = 'JTable', $config = array())
+	public function getTable($type = 'positionnested', $prefix = 'JTable', $config = array())
 	{
-		JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
 		return JTable::getInstance($type, $prefix, $config);
 	}
 

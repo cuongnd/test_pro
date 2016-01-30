@@ -87,7 +87,7 @@ class UtilityControllerUtility extends UtilityController
         $app = JFactory::getApplication();
         $menu_item_active_id = $app->input->get('menu_item_active_id', 0, 'int');
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
-        $tablePosition = JTable::getInstance('Position', 'JTable');
+        $tablePosition = JTable::getInstance('positionnested');
         $website = JFactory::getWebsite();
         $tablePosition->webisite_id = $website->website_id;
         $parentId = $tablePosition->getRootId();
@@ -99,7 +99,7 @@ class UtilityControllerUtility extends UtilityController
             ->where('position_config.menu_item_id=' . (int)$menu_item_active_id);
         $db->setQuery($query);
         $list_position = $db->loadObjectList();
-
+        $db->rebuild_action=1;
         UtilityControllerUtility::update_menu_item_from_root_menu($list_position, $menu_item_active_id);
         $tablePosition->rebuild();
         echo 1;
@@ -230,7 +230,7 @@ class UtilityControllerUtility extends UtilityController
         $element_dirname = array_reverse($element_dirname);
         $element_type = implode('_', $element_dirname) . '_' . $element_info['filename'];
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
-        $tablePosition = JTable::getInstance('Position', 'JTable');
+        $tablePosition = JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
         $tablePosition->type = $element_type;
         $tablePosition->ui_path = $element_path;
@@ -328,7 +328,7 @@ class UtilityControllerUtility extends UtilityController
         $response->m="save success";
         $block_id = $app->input->get('block_id', 0, 'int');
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
-        $tablePosition = JTable::getInstance('Position', 'JTable');
+        $tablePosition = JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
         $content = $app->input->get('content', '', 'string');
         $params = new JRegistry;
@@ -402,7 +402,7 @@ class UtilityControllerUtility extends UtilityController
                 print_var_name(${$field});
                 die;*/
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
-        $tablePosition = JTable::getInstance('Position', 'JTable');
+        $tablePosition = JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
 
         echo 1;
@@ -448,7 +448,7 @@ class UtilityControllerUtility extends UtilityController
         $app = JFactory::getApplication();
         $block_id = $app->input->get('block_id', 0, 'int');
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
-        $tablePosition = JTable::getInstance('Position', 'JTable');
+        $tablePosition = JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
         $dataSource = $tablePosition->datasource;
         $db = JFactory::getDbo();
@@ -487,7 +487,7 @@ class UtilityControllerUtility extends UtilityController
 
         $block_id = $app->input->get('block_id', 0, 'int');
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
-        $tablePosition = JTable::getInstance('Position', 'JTable');
+        $tablePosition = JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
 
         $params = new JRegistry;
@@ -614,7 +614,7 @@ class UtilityControllerUtility extends UtilityController
         $post->jform->is_template=$post->jform->is_template?1:0;
         $form=(array)$post->jform;
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
-        $tablePosition = JTable::getInstance('Position', 'JTable');
+        $tablePosition = JTable::getInstance('positionnested');
 
         $tablePosition->load($form['id']);
         $tablePosition->bind($form);

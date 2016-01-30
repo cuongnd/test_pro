@@ -10,7 +10,7 @@ $append_to=$data_post->append_to;
 $clone_number=$data_post->clone_number;
 $app->input->set('ajax_clone',1);
 JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-$tablePosition=JTable::getInstance('Position','JTable');
+$tablePosition=JTable::getInstance('positionnested');
 $tablePosition->load($block_id);
 $db=JFactory::getDbo();
 $query=$db->getQuery(true);

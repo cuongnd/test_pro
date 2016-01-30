@@ -394,7 +394,7 @@ class websiteHelperFrontEnd
 
         $website = JFactory::getWebsite();
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables/');
-        $tablePosition = JTable::getInstance('Position', 'JTable');
+        $tablePosition = JTable::getInstance('positionnested');
         $tablePosition->screenSize = $currentScreenSize;
         $tablePosition->website_id = $website->website_id;
         $menu = JMenu::getInstance('site');

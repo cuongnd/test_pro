@@ -480,7 +480,7 @@ XML;
             $screenSize = UtilityHelper::getScreenSize();
         }
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables/');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
 
         $website=JFactory::getWebsite();
 
@@ -504,9 +504,8 @@ XML;
         if (!$screenSize) {
             $screenSize = UtilityHelper::getScreenSize();
         }
-        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables/');
-        $tablePosition=JTable::getInstance('Position','JTable');
 
+        $tablePosition=JTable::getInstance('positionnested');
         $website=JFactory::getWebsite();
 
         $tablePosition->website_id=$website->website_id;
@@ -520,13 +519,12 @@ XML;
         {
             echo $tablePosition->getError();
         }
-        $tablePosition->rebuild();
         return $tablePosition;
     }
     public function removeColumnInScreen($columnId)
     {
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables/');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $tablePosition->load($columnId);
         if(!$tablePosition->delete())
         {
@@ -550,7 +548,7 @@ XML;
     public function moveBlock( $move_object_id,$past_object_id)
     {
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables/');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $tablePosition->load($move_object_id);
         $tablePosition->parent_id=$past_object_id;
         if(!$tablePosition->store())
@@ -562,7 +560,7 @@ XML;
     public function removeBlockInScreen($blockId)
     {
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables/');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $tablePosition->load($blockId);
         if(!$tablePosition->delete())
         {
@@ -575,7 +573,7 @@ XML;
     {
         $db=JFactory::getDbo();
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables/');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $website=JFactory::getWebsite();
         $tablePosition->load($rowId);
 
@@ -594,7 +592,7 @@ XML;
 
         foreach($listBlock as $blockId=>$block)
         {
-            $tablePosition=JTable::getInstance('Position','JTable');
+            $tablePosition=JTable::getInstance('positionnested');
             $tablePosition->load((int)$blockId);
             $tablePosition->gs_x=(int)$block['x'];
             $tablePosition->gs_y=(int)$block['y'];
@@ -639,7 +637,7 @@ XML;
             $bootstrapColumnType='col-lg-';
         }
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables/');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $website=JFactory::getWebsite();
         $tablePosition->website_id=$website->website_id;
         $tablePosition->parent_id=(int)$parentRowId;
@@ -924,7 +922,7 @@ XML;
         $listPositionsSetting=array();
         $rebuid=$app->input->get('rebuid',0,'int');
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $tablePosition->webisite_id=$website->website_id;
         $parentId = $tablePosition->getRootId();
         $tablePosition->load($parentId);

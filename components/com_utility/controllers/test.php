@@ -77,7 +77,7 @@ class UtilityControllerTest extends JControllerForm
             $app->input->set($key,$value);
         }
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $block_id=$app->input->get('block_id',0,'int');
         $tablePosition->load($block_id);
         $type=$tablePosition->type;
@@ -139,7 +139,7 @@ class UtilityControllerTest extends JControllerForm
         $app=JFactory::getApplication();
         $menu_item_active_id=$app->input->get('menu_item_active_id',0,'int');
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $website=JFactory::getWebsite();
         $tablePosition->webisite_id=$website->website_id;
         $parentId = $tablePosition->getRootId();
@@ -177,7 +177,7 @@ class UtilityControllerTest extends JControllerForm
         }
 
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $block=JTable::getInstance('Position','JTable');
+        $block=JTable::getInstance('positionnested');
         if(!$block->load($block_id))
         {
             $response->e=1;
@@ -315,7 +315,7 @@ class UtilityControllerTest extends JControllerForm
         $block_id=$app->input->get('block_id',0,'int');
         $element_type=$app->input->get('element_type','');
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
         $tablePosition->type=$element_type;
         $tablePosition->ui_path='/media/elements/ui/'.$element_type.'.php';
@@ -404,7 +404,7 @@ class UtilityControllerTest extends JControllerForm
         $app=JFactory::getApplication();
         $block_id=$app->input->get('block_id',0,'int');
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
         $content=$app->input->get('content','','string');
         $content=base64_decode($content);
@@ -435,7 +435,7 @@ class UtilityControllerTest extends JControllerForm
         print_var_name(${$field});
         die;*/
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
 
         echo 1;
@@ -479,7 +479,7 @@ class UtilityControllerTest extends JControllerForm
         $app=JFactory::getApplication();
         $block_id=$app->input->get('block_id',0,'int');
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
         $dataSource=$tablePosition->datasource;
         $db=JFactory::getDbo();
@@ -512,7 +512,7 @@ class UtilityControllerTest extends JControllerForm
 
         $block_id=$app->input->get('block_id',0,'int');
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
         $tablePosition->load($block_id);
 
 
@@ -625,7 +625,7 @@ class UtilityControllerTest extends JControllerForm
         $app=JFactory::getApplication();
         $form=$app->input->get('jform',array(),'array');
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('positionnested');
 
         $tablePosition->load($form['id']);
         $tablePosition->bind($form);

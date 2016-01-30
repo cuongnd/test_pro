@@ -105,6 +105,11 @@ class JTablePositionNested extends JTable
 	 * @since  3.3
 	 */
 	protected static $root_id = 0;
+	public function __construct(JDatabaseDriver $db)
+	{
+		parent::__construct('#__position_config', 'id', $db);
+
+	}
 
 	/**
 	 * Sets the debug level on or off
@@ -822,7 +827,6 @@ class JTablePositionNested extends JTable
 					->update($this->_tbl)
 					->set('lft = lft + 2')
                     ->where('website_id='.(int)$this->website_id)
-                    ->where('LOWER(screensize)='.$this->_db->q($this->screensize))
 					->where($repositionData->left_where);
 				$this->_runQuery($query, 'JLIB_DATABASE_ERROR_STORE_FAILED');
 
@@ -831,7 +835,6 @@ class JTablePositionNested extends JTable
 					->update($this->_tbl)
 					->set('rgt = rgt + 2')
 					->where('website_id='.(int)$this->website_id)
-					->where('LOWER(screensize)='.$this->_db->q($this->screensize))
 					->where($repositionData->right_where);
 				$this->_runQuery($query, 'JLIB_DATABASE_ERROR_STORE_FAILED');
 				// Set the object values.
