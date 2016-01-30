@@ -29,7 +29,6 @@ class JTablePosition extends JTablePositionNested
     public function __construct(JDatabaseDriver $db)
     {
         parent::__construct('#__position_config', 'id', $db);
-        $this->access = (int) JFactory::getConfig()->get('access');
 
     }
     /**

@@ -595,6 +595,12 @@ final class JApplicationSite extends JApplicationCms
         if (empty($options['language'])) {
             // Detect default language
             $params = JComponentHelper::getParams('com_languages');
+            if(is_string($params))
+            {
+                $temp = new JRegistry;
+                $temp->loadString($params);
+                $params=$temp;
+            }
             $options['language'] = $params->get('site', $this->get('language', 'en-GB'));
         }
 

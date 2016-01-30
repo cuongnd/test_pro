@@ -1369,7 +1369,7 @@ class PlgSystemDebug extends JPlugin
 					$db->setQuery('SHOW PROFILES');
 					$this->sqlShowProfiles = $db->loadAssocList();
 
-					if ($this->sqlShowProfiles)
+/*					if ($this->sqlShowProfiles)
 					{
 						foreach ($this->sqlShowProfiles as $qn)
 						{
@@ -1377,7 +1377,7 @@ class PlgSystemDebug extends JPlugin
 							$db->setQuery('SHOW PROFILE FOR QUERY ' . (int) ($qn['Query_ID']));
 							$this->sqlShowProfileEach[(int) ($qn['Query_ID'] - 1)] = $db->loadAssocList();
 						}
-					}
+					}*/
 				}
 				else
 				{

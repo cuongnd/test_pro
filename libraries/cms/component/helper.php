@@ -92,6 +92,12 @@ class JComponentHelper
 	public static function getParams($option, $strict = false)
 	{
 		$component = static::getComponent($option, $strict);
+		if(is_string($component->params))
+		{
+			$temp = new JRegistry;
+			$temp->loadString($component->params);
+			$component->params=$temp;
+		}
 
 		return $component->params;
 	}
@@ -409,27 +415,46 @@ class JComponentHelper
             ->from('#__components')
             ->where('website_id='.(int)$website->website_id)
         ;
-        $db->setQuery($query);
-        $listCompnent=$db->loadObjectList('option');
-        static::$components[$option]=$listCompnent[$option];
-        if (empty(static::$components[$option]))
-        {
+		$db->setQuery($query);
+		$cache = JFactory::getCache('_system', 'callback');
+		try
+		{
+			$components = $cache->get(array($db, 'loadObjectList'), array('option'), $option, false);
 
-            // Fatal error.
-            $error = JText::_('JLIB_APPLICATION_ERROR_COMPONENT_NOT_FOUND');
-            JLog::add(JText::sprintf('JLIB_APPLICATION_ERROR_COMPONENT_NOT_LOADING', $option, $error), JLog::WARNING, 'jerror');
+			/**
+			 * Verify $components is an array, some cache handlers return an object even though
+			 * the original was a single object array.
+			 */
+			if (!is_array($components))
+			{
+				static::$components[$option] = $components;
+			}
+			else
+			{
+				static::$components = $components;
+			}
+		}
+		catch (RuntimeException $e)
+		{
+			// Fatal error.
+			JLog::add(JText::sprintf('JLIB_APPLICATION_ERROR_COMPONENT_NOT_LOADING', $option, $e->getMessage()), JLog::WARNING, 'jerror');
 
-            return false;
-        }
+			return false;
+		}
 
-        // Convert the params to an object.
-        if (is_string(static::$components[$option]->params))
-        {
-            $temp = new JRegistry;
-            $temp->loadString(static::$components[$option]->params);
-            static::$components[$option]->params = $temp;
-        }
+		if (empty(static::$components[$option]))
+		{
+			// Fatal error.
+			$error = JText::_('JLIB_APPLICATION_ERROR_COMPONENT_NOT_FOUND');
+			JLog::add(JText::sprintf('JLIB_APPLICATION_ERROR_COMPONENT_NOT_LOADING', $option, $error), JLog::WARNING, 'jerror');
 
+			return false;
+		}
+
+
+		$temp = new JRegistry;
+		$temp->loadString(static::$components[$option]->params);
+		static::$components[$option]->params = $temp;
         return true;
 	}
 }

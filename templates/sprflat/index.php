@@ -307,7 +307,7 @@ ob_start();
 
     JHtml::_('jquery.framework');
     JHtml::_('jquery.ui', array('core', 'sortable'));
-    $doc->addLessStyleSheet(JUri::root()."/templates/$this->template/less/custom.less");
+    $doc->addLessStyleSheet(JUri::root() . "/templates/$this->template/less/custom.less");
 
 
 
@@ -591,7 +591,7 @@ ob_start();
         jQuery(document).ready(function ($) {
             $('body').javascriptdisableedit({
                 menuItemActiveId:<?php echo $menuItemActiveId?>,
-                currentScreenSize:"<?php echo $currentScreenSize ?>",
+                currentScreenSize: "<?php echo $currentScreenSize ?>",
                 currentLink: "<?php echo $uri->toString() ?>"
             });
         });
@@ -604,7 +604,31 @@ ob_start();
 
 }
 ?>
-<jdoc:include type="modules" name="debug" />
+<jdoc:include type="modules" name="debug"/>
+
+
+<?php
+if (JDEBUG) {
+    $doc = JFactory::getDocument();
+    $doc->addScript(JUri::root() . '/media/system/js/jumper-master/js/jumper.js');
+    $scriptId = "plugin_debug";
+    ob_start();
+    ?>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".j-link").jumper({});
+
+        });
+    </script>
+    <?php
+    $script = ob_get_clean();
+    $script = JUtility::remove_string_javascript($script);
+    $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
+}
+
+?>
+
 <div class="div-loading"></div>
 <style type="text/css">
     .div-loading {

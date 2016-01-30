@@ -117,6 +117,7 @@ require_once JPATH_ROOT . '/libraries/joomla/utilities/utility.php';
 if (!function_exists('writeLog')) {
     function writeLog($stacks)
     {
+        return;
         //$stacks=end($stacks);
         // $filePath=end($stacks['args']);
         //$filePath=str_replace(JPATH_ROOT,'',$filePath);
@@ -141,6 +142,7 @@ if (!function_exists('writeLog')) {
 
 function shutdown()
 {
+    return;
     $a=error_get_last();
     if($a==null)
         echo "No errors";

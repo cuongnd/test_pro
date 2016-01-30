@@ -168,9 +168,7 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 		// Attempt to connect to the server.
 		if (!$this->connection)
 		{
-			echo "<pre>";
-			print_r($this->options);
-			die;
+
 			throw new RuntimeException('Could not connect to MySQL.');
 		}
 
@@ -555,22 +553,30 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 		$this->errorNum = 0;
 		$this->errorMsg = '';
 		$memoryBefore   = null;
+		$this->log[] = $query;
+/*		if(count($this->log)==5)
+		{
+			echo "<pre>";
+			print_r($this->log);
+			print_r(JUtility::printDebugBacktrace());
+			echo "</pre>";
+			die;
+		}*/
+		if(count($this->log)>90)
+		{
+			echo "too many query";
+			echo "<pre>";
+			print_r($this->log);
+			print_r(JUtility::printDebugBacktrace());
+			echo "</pre>";
+			die;
 
+		}
 		// If debugging is enabled then let's log the query.
 		if ($this->debug)
 		{
 			// Add the query to the object queue.
-			$this->log[] = $query;
-			if(count($this->log)>90)
-			{
-				echo "too many query";
-				echo "<pre>";
-				print_r($this->log);
-				print_r(JUtility::printDebugBacktrace());
-				echo "</pre>";
-				die;
 
-			}
 			JLog::add($query, JLog::DEBUG, 'databasequery');
 
 			$this->timings[] = microtime(true);

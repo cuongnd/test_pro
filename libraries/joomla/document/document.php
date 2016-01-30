@@ -450,7 +450,7 @@ class JDocument
         $path=JUtility::format_url($path);
         $path = (object)pathinfo($path);
         $host = $uri->getHost();
-        if (strpos($current_url, $host) >=0   && strpos($path->basename, '.min') >=0 && $path->dirname != '') {
+/*        if (strpos($current_url, $host) >=0   && strpos($path->basename, '.min') >=0 && $path->dirname != '') {
             $folder_compile_js = $path->dirname . '/compile_js';
             jimport('joomla.filesystem.folder');
             jimport('joomla.filesystem.file');
@@ -470,7 +470,7 @@ class JDocument
             }
             $out_put_file_js_compile=JUtility::format_url($out_put_file_js_compile);
             $uri = JUri::getInstance($current_url.$out_put_file_js_compile);
-        }
+        }*/
 
         $url = $uri->toString();
         $bt = $callStask ? $callStask : debug_backtrace();

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>PLUGIN | Jumper</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/jumper.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="nav">
+        <ul>
+          <li class="j-item">
+            <a href="#" class="j-link" data-link="target-1">JUMP LINK 1</a>
+          </li>
+          <li class="j-item">
+            <a href="#" class="j-link" data-link="target-2">JUMP LINK 2</a>
+          </li>
+          <li class="j-item">
+            <a href="#" class="j-link" data-link="target-3">JUMP LINK 3</a>
+          </li>
+          <li class="j-item">
+            <a href="#" class="j-link" data-link="target-4">JUMP LINK 4</a>
+          </li>
+          <li class="j-item">
+            <a href="#" class="j-link" data-link="target-5">JUMP LINK 5</a>
+          </li>
+        </ul>
+      </div>
+      <div class="main">
+        <div class="j-target" data-target="target-1">
+          <h3>Jump Target 1</h3>
+        </div>
+        <div class="j-target" data-target="target-2">
+          <h3>Jump Target 2</h3>
+        </div>
+        <div class="j-target" data-target="target-3">
+          <h3>Jump Target 3</h3>
+        </div>
+        <div class="j-target" data-target="target-4">
+          <h3>Jump Target 4</h3>
+        </div>
+        <div class="j-target" data-target="target-5">
+          <h3>Jump Target 5</h3>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!--  UNHOOKING JS  -->
+    <script type="text/javascript" src="js/jumper.js"></script>
+    <script type="text/javascript">
+      // IMPLEMENTATION 
+      $(".j-link").jumper({});
+    </script>
+  </body>
+</html>
+
+
