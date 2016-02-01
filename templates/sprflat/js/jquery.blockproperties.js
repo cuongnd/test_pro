@@ -1,4 +1,4 @@
-(function( $ ) {
+jQuery(document).ready(function($){
 
     blockPropertiesUtil={
         getFieldTypeOfModule:function(self){
@@ -872,14 +872,63 @@
 
 
         });
+        blockPropertiesUtil.remove_component = function (self) {
+            var $position_content = $(self).closest('.position-content');
+            var block_id=$position_content.data('blockId');
+            web_design=$.ajax({
+                type: "POST",
+                dataType: "json",
+                url: this_host+'/index.php',
+                data: (function () {
+
+                    var dataPost = {
+                        option: 'com_components',
+                        task: 'component.ajax_remove_component',
+                        action_menu_item_id: menuItemActiveId,
+                        current_screen_size_editing:currentScreenSizeEditing,
+                        block_id:block_id
+
+                    };
+                    return dataPost;
+                })(),
+                beforeSend: function () {
+                    $('.div-loading').css({
+                        display: "block"
+
+
+                    });
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+                    $('.div-loading').css({
+                        display: "none"
+
+
+                    });
+                    if(response.e==0)
+                    {
+                        var notify = $.notify(response.r, { allow_dismiss: false });
+                        $position_content.empty();
+                    }else{
+                        var notify = $.notify(response.r, { allow_dismiss: false });
+                    }
+
+
+                }
+            });
+
+        };
         $(document).on('click','.panel-component .panel-heading',function(e){
             var $target=$(e.target);
-            if($.)
+            if($target.hasClass('im-close'))
             {
-
+                console.log($target);
+                blockPropertiesUtil.remove_component(this);
+            }else{
+                blockPropertiesUtil.loadPropertiesComponent($(this));
             }
 
-            blockPropertiesUtil.loadPropertiesComponent($(this));
+
         });
         $(document).on('click','a.page-properties',function(){
             blockPropertiesUtil.loadPropertiesComponent($(this));
@@ -1078,9 +1127,9 @@
             }
         });
     };
-}( jQuery ));
+});
 jQuery(document).ready(function($){
     //end show edit tool
-    $('.block-properties').blockproperties();
+     $('.block-properties').blockproperties();
 
 });

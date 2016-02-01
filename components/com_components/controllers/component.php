@@ -43,5 +43,29 @@ class componentsControllercomponent extends JControllerForm
         // Since there is no asset tracking, revert to the component permissions.
         return parent::allowEdit($data, $key);
     }
+    public function ajax_remove_component()
+    {
+        $app=JFactory::getApplication();
+        $action_menu_item_id=$app->input->get('action_menu_item_id',0,'int');
+        $current_screen_size_editing=$app->input->get('current_screen_size_editing','','string');
+        $block_id=$app->input->get('block_id',0,'int');
+        JTable::addIncludePath(JPATH_ROOT.'/libraries/legacy/table');
+        $table_position=JTable::getInstance('PositionNested','JTable');
+        $table_position->load($block_id);
+        $data=array(
+            'position'=>''
+        );
+        $table_position->bind($data);
+        $response=new stdClass();
+        $response->e=0;
+        if(!$table_position->store())
+        {
+            $response->e=1;
+            $response->r=$table_position->getError();
+        }
+        $response->r=JText::_('remove component complated');
+        echo json_encode($response);
+        die;
+    }
 
 }

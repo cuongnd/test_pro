@@ -200,6 +200,7 @@ if (!$ajaxGetContent) {
     $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/charts/sparklines/jquery.sparkline.js');
     $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jquery.sprFlat.js');
     $doc->addScript(JUri::root() . '/media/system/js/purl-master/purl-master/purl.js');
+    $doc->addScript(JUri::root() . '/media/system/js/bootstrap-notify-master/bootstrap-notify.js');
     //$doc->addScript(JUri::root().'/media/system/js/ion.rangeSlider-1.9.1/js/ion-rangeSlider/ion.rangeSlider.js');
     $doc->addScript(JUri::root() . '/templates/sprflat/js/design.js');
     $doc->addScript(JUri::root() . '/media/system/js/joyride-master/jquery.joyride-2.1.js');

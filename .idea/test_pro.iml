@@ -51,7 +51,6 @@
       <excludeFolder url="file://$MODULE_DIR$/components/com_mailto" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_maqmahelpdesk" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_media" />
-      <excludeFolder url="file://$MODULE_DIR$/components/com_modules" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_newsfeeds" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_phpmyadmin" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_plugins" />
@@ -168,7 +167,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jQuery UI-1.10.2" level="application" />
-    <orderEntry type="library" name="jQuery-2.0.0" level="application" />
+    <orderEntry type="library" name="jquery.js" level="project" />
+    <orderEntry type="library" name="jQuery UI" level="project" />
   </component>
 </module>
