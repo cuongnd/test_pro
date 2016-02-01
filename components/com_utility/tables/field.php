@@ -8,7 +8,6 @@
  */
 
 defined('_JEXEC') or die(__FILE__);
-require_once JPATH_ROOT.'/libraries/legacy/table/positionnested.php';
 /**
  * product table
  *
@@ -17,7 +16,7 @@ require_once JPATH_ROOT.'/libraries/legacy/table/positionnested.php';
  * @since       11.1
  * @deprecated  Class will be removed upon completion of transition to UCM
  */
-class JTableField extends JTablePositionNested
+class JTableField extends JTable
 {
     /**
      * Constructor
@@ -29,7 +28,6 @@ class JTableField extends JTablePositionNested
     public function __construct(JDatabaseDriver $db)
     {
         parent::__construct('#__control', 'id', $db);
-        $this->access = (int) JFactory::getConfig()->get('access');
 
     }
     /**

@@ -136,6 +136,7 @@
             $(plugin.settings.input).val(input_var);
 
             var list_string_syle = {};
+            console.log(list_style);
             plugin.convert_object_style_to_style(list_string_syle, list_style.jform.params, 0, 999);
 
 

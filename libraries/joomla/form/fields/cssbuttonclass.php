@@ -61,6 +61,9 @@ class JFormFieldCssButtonClass extends JFormFieldList
             'magenta',
             'link'
         );
+        $attr='';
+        // Initialize JavaScript field attributes.
+        $attr .= $this->onchange ? ' onchange="' . $this->onchange . '"' : '';
         foreach($cssdisplay as $item)
         {
             $options[] = JHtml::_('select.option', $item, $item);

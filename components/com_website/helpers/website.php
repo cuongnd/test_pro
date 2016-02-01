@@ -100,7 +100,7 @@ class websiteHelperFrontEnd
                                 <a class="remove label label-danger remove-column" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '" href="javascript:void(0)"><i class="glyphicon-remove glyphicon"></i></a>
                                 <a class="add label label-danger add-row" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '" href="javascript:void(0)"><i class="glyphicon glyphicon-plus"></i></a>
                                 <a href="javascript:void(0)" class="menu label label-danger menu-list config-block" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '"><i class="im-menu2"></i></a>
-                                <div id="position_content_' . $v->id . '" data-block-parent-id="' . $v->parent_id . '" data-axis="' . $axis . '" data-block-id="' . $v->id . '" class="position-content' . $setClass . ' block-item block-item-column' . ($v->position == 'position-component' ? 'position-component' : '') . ' ' . ($enableEditWebsite ? ' control-element ' : '') . ' "  element-type="' . $v->type . '">';
+                                <div id="position_content_' . $v->id . '" data-block-parent-id="' . $v->parent_id . '" data-axis="' . $axis . '" data-block-id="' . $v->id . '" class="position-content' . $setClass . ' block-item block-item-column' . ($v->position == ' position-component ' ? ' position-component ' : '') . ' ' . ($enableEditWebsite ? ' control-element ' : '') . ' "  element-type="' . $v->type . '">';
                         if ($v->position == 'position-component') {
                             $html .= '<jdoc:include type="component"/>';
                         } else {

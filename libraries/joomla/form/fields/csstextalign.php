@@ -54,6 +54,10 @@ class JFormFieldCssTextAlign extends JFormFieldList
             'inherit',
         );
         $class=' class="'.$this->class.'" ';
+        $attr='';
+        // Initialize JavaScript field attributes.
+        $attr .= $this->onchange ? ' onchange="' . $this->onchange . '"' : '';
+
         foreach($csstextalign as $item)
         {
             $options[] = JHtml::_('select.option', $item, $item);

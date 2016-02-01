@@ -4,7 +4,6 @@ $block_id=$app->input->get('block_id',0,'int');
 $field=$app->input->get('field','','string');
 $db=JFactory::getDbo();
 JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_utility/models') ;
-
 $modelPosition=JModelLegacy::getInstance('Position','UtilityModel');
 $modelPosition->setState('position.id',$block_id);
 $app->input->set('id',$block_id);

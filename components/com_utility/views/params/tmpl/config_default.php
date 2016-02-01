@@ -169,12 +169,6 @@ ob_start();
         <label>onchange<input class="form-control select_field_onchange" style="width: 200px"
                           onchange="params_view_config.update_data_column(this,'onchange')"
                           value="<?php echo $item->onchange ?>" type="text"/></label>
-        <label>
-            Access
-            <?php
-            echo JHtml::_('access.level', 'access_level', $item->access, array("class" => 'menu_access_level'));
-            ?>
-        </label>
 
         <label>
             type

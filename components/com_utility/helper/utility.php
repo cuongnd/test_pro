@@ -149,7 +149,8 @@ class UtilityHelper
             'blur_radius',
             'spread_radius',
             'horizontal_length',
-            'vertical_length'
+            'vertical_length',
+            'text_align'
         );
         $none_hover = new stdClass();
         $hover = new stdClass();
@@ -895,12 +896,14 @@ XML;
             $currentScreenSize = UtilityHelper::getCurrentScreenSizeEditing();
         } else {
             $currentScreenSize = UtilityHelper::getScreenSize();
+            $currentScreenSize="1280X768";
         }
         $os = $app->input->get('os', '', 'String');
         if($os!='')
         {
             $currentScreenSize=$app->input->get('screenSize','');
         }
+
         if(!$currentScreenSize)
         {
             $currentScreenSize= $app->input->get('screenSize','','string');

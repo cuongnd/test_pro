@@ -872,7 +872,16 @@
 
 
         });
-        $(document).on('click','.panel-component .panel-heading,a.page-properties',function(){
+        $(document).on('click','.panel-component .panel-heading',function(e){
+            var $target=$(e.target);
+            if($.)
+            {
+
+            }
+
+            blockPropertiesUtil.loadPropertiesComponent($(this));
+        });
+        $(document).on('click','a.page-properties',function(){
             blockPropertiesUtil.loadPropertiesComponent($(this));
         });
         $(document).on('click','.iframelive',function(e){

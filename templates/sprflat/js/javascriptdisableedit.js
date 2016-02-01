@@ -70,7 +70,7 @@
                 currentScreenSize= x + 'X' + y;
                 uri_current_link.addQuery("screenSize", currentScreenSize);
                 //uri_current_link.data.param.query.screenSize=currentScreenSize;
-                window.location.href=uri_current_link.toString();
+                //window.location.href=uri_current_link.toString();
                 console.log(uri_current_link.toString());
 
 
