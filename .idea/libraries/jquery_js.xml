@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="jquery.js" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/media/jui_front_end/js/jquery.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/media/jui_front_end/js/jquery.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
