@@ -1,46 +1,38 @@
 <?php
-/**
- * @package    Joomla.Site
- *
- * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
- * @license    GNU General Public License version 2 or later; see LICENSE.txt
- */
-if (version_compare(PHP_VERSION, '5.3.10', '<'))
-{
-    die('Your host needs to use PHP 5.3.10 or higher to run this version of Joomla!');
+//check that zlib compression is enabled
+if(!ini_get('zlib.output_compression')){ die(); }
+
+$allowed = array('css','js'); //set array of allowed file types to prevent abuse
+
+//check for request variable existence and that file type is allowed
+if(isset($_GET['file']) && isset($_GET['type']) && in_array(substr($_GET['file'],strrpos($_GET['file'],'.')+1), $allowed)){
+    $data = file_get_contents(dirname(__FILE__).'/'.$_GET['file']); // grab the file contents
+
+    $etag = '"'.md5($data).'"'; // generate a file Etag
+    header('Etag: '.$etag); // output the Etag in the header
+
+    // output the content-type header for each file type
+    switch ($_GET['type']) {
+        case 'css':
+            header ("Content-Type: text/css; charset: UTF-8");
+            break;
+
+        case 'js':
+            header ("Content-Type: text/javascript; charset: UTF-8");
+            break;
+    }
+
+    header('Cache-Control: max-age=300, must-revalidate'); //output the cache-control header
+    $offset = 60 * 60;
+    $expires = 'Expires: ' . gmdate('D, d M Y H:i:s',time() + $offset) . ' GMT'; // set the expires header to be 1 hour in the future
+    header($expires); // output the expires header
+
+    // check the Etag the browser already has for the file and only serve the file if it is different
+    if ($etag == $_SERVER['HTTP_IF_NONE_MATCH']) {
+        header('HTTP/1.1 304 Not Modified');
+        header('Content-Length: 0');
+    } else {
+        echo $data;
+    }
 }
-
-/**
- * Constant that is checked in included files to prevent direct access.
- * define() is used in the installation folder rather than "const" to not error for PHP 5.2 and lower
- */
-define('_JEXEC', 1);
-
-if (file_exists(__DIR__ . '/defines.php'))
-{
-    include_once __DIR__ . '/defines.php';
-}
-
-if (!defined('_JDEFINES'))
-{
-    define('JPATH_BASE', __DIR__);
-    require_once JPATH_BASE . '/includes/defines.php';
-}
-require_once JPATH_BASE . '/includes/framework.php';
-
-// Mark afterLoad in the profiler.
-JDEBUG ? $_PROFILER->mark('afterLoad') : null;
-
-// Instantiate the application.
-$app = JFactory::getApplication('site');
-jimport('joomla.filesystem.file');
-$doc=JFactory::getDocument();
-JFactory::getDocument()->setMimeEncoding('text/javascript');
-$file=$app->input->get('file','','string');
-ob_clean();
-header('Content-Type: application/javascript');
-if(JFile::exists(JPATH_ROOT.'/'.$file))
-{
-    $content= JFILE::read(JPATH_ROOT.'/'.$file);
-    echo  $content;
-}
+?>

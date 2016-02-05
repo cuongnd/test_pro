@@ -92,11 +92,12 @@ RewriteRule .* index.php [L]
   mod_gzip_item_exclude mime ^image/.*
   mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
 </ifModule>
-
+RewriteRule ^(.*.(js))$ js.php?type=js&file=$1
+RewriteRule ^(.*.(css))$ gz.php?file=$1
 #
 ## End - Joomla! core SEF Section.
-RewriteRule ^(.*).css$ ^(.+)$/index.php?option=com_utility&view=utility&layout=css&tmpl=sourcecss&type=css&file=$1.css [L]
-RewriteRule ^(.*).js$ ^(.+)$/index.php?option=com_utility&view=utility&layout=js&tmpl=sourcecss&type=js&file=$1.js [L]
+#RewriteRule ^(.*).css$ ^(.+)$/index.php?option=com_utility&view=utility&layout=css&tmpl=sourcecss&enable_load_component=1&type=css&file=$1.css [L]
+#RewriteRule ^(.*).js$ ^(.+)$/index.php?option=com_utility&view=utility&layout=js&tmpl=sourcecss&enable_load_component=1&type=js&file=$1.js [L]
 #RewriteRule ^(.*).png$ ^(.+)$/index.php?option=com_utility&view=utility&layout=png&tmpl=sourcecss&type=png&file=$1.png [L]
 #RewriteRule ^(.*).jpg$ ^(.+)$/index.php?option=com_utility&view=utility&task=loadFile&template=system&tmpl=sourcecss&type=jpg&layout=png&file=$1.jpg [L]
 #RewriteRule ^(.*).ttf$ ^(.+)$/index.php?option=com_utility&view=utility&task=loadFile&template=system&tmpl=sourcecss&type=ttf&layout=ttf&file=$1.ttf [L]

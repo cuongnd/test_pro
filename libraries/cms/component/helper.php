@@ -381,7 +381,7 @@ class JComponentHelper
 		die;*/
 		if($tmpl=='sourcecss')
 		{
-			$admin_load_component=0;
+			$admin_load_component=1;
 		}elseif($tmpl=='tmpl'){
 			$admin_load_component=1;
 		}elseif($option=='com_users'&&$task=='user.logout'){

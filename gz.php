@@ -60,7 +60,7 @@ function get_content_type($file)
         'jpg' => 'image/jpeg',
         'jpeg' => 'image/jpeg',
         'png' => 'image/png',
-        'js' => 'text/javascript',
+        'js' => 'application/x-javascript',
         'json' => 'application/json',
         'png' => 'image/png',
         'txt' => 'text/plain',
@@ -82,7 +82,7 @@ function _compress($data, $content_type)
     $offset = 60 * 60;
     $expire = "expires: " . gmdate("D, d M Y H:i:s", time() + $offset) . " GMT";
     header('Content-Encoding: gzip');
-    header("content-type: $content_type");
+    header("Content-Type: $content_type");
     header("cache-control: must-revalidate");
     header($expire);
     header('Content-Length: ' . strlen($content));
