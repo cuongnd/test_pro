@@ -396,6 +396,12 @@ class JComponentHelper
 		{
 			$admin_load_component=1;
 		}
+		require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
+		$isAdminSite = UtilityHelper::isAdminSite();
+		if(!$isAdminSite)
+		{
+			$admin_load_component=1;
+		}
 		if($admin_load_component)
 		{
 			require_once $path;

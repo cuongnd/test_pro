@@ -224,7 +224,14 @@ abstract class JModuleHelper
 				$lang->load($module->module, dirname($path), null, false, true);
 
 			$content = '';
+			require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
 			ob_start();
+			$isAdminSite = UtilityHelper::isAdminSite();
+			if(!$isAdminSite)
+			{
+				$admin_load_module=1;
+			}
+
 			if($admin_load_module)
 			{
 				include $path;
