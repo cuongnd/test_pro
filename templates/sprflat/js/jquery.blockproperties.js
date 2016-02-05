@@ -11,6 +11,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_modules',
                         view: 'field',
                         name: 'get field module',
@@ -84,6 +85,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_utility',
                         //task: 'utility.ajaxLoadFieldTypeOfBlock',
                         view: 'field',
@@ -149,6 +151,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_phpmyadmin',
                         view: 'datasource',
                         tmpl: 'ajax_json',
@@ -214,6 +217,7 @@ jQuery(document).ready(function($){
                 url: this_host+'/index.php',
                 data: (function () {
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_menus',
                         view: 'item',
                         layout: 'field',
@@ -285,6 +289,7 @@ jQuery(document).ready(function($){
                 url: this_host+'/index.php',
                 data: (function () {
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_modules',
                         view: 'module',
                         layout: 'properties',
@@ -327,6 +332,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_menus',
                         view: 'item',
                         layout: 'properties',
@@ -369,6 +375,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_utility',
                         view: 'block',
                         layout: 'properties',
@@ -416,6 +423,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_phpmyadmin',
                         task: 'datasource.ajaxLoadPropertiesAddOn',
                         add_on_id:add_on_id
@@ -454,6 +462,7 @@ jQuery(document).ready(function($){
                 url: this_host+'/index.php',
                 data: (function () {
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_website',
                         view: 'website',
                         layout: 'properties',
@@ -492,7 +501,7 @@ jQuery(document).ready(function($){
                 type: "POST",
                 contentType: 'application/json',
                 dataType: "json",
-                url: this_host+'/index.php?option=com_modules&task=module.ajaxSavePropertiesModule',
+                url: this_host+'/index.php?enable_load_component=1&option=com_modules&task=module.ajaxSavePropertiesModule',
                 data: JSON.stringify(dataPost),
                 beforeSend: function () {
                     $('.div-loading').css({
@@ -526,7 +535,7 @@ jQuery(document).ready(function($){
                 contentType: 'application/json',
                 type: "POST",
                 dataType: "json",
-                url: this_host+'/index.php?option=com_utility&task=utility.ajaxSavePropertiesBlock&Itemid='+menuItemActiveId+'&tmpl=ajax_json',
+                url: this_host+'/index.php? enable_load_component=1&option=com_utility&task=utility.ajaxSavePropertiesBlock&Itemid='+menuItemActiveId+'&tmpl=ajax_json',
                 data: JSON.stringify(dataPost),
                 beforeSend: function () {
                     $('.div-loading').css({
@@ -557,7 +566,7 @@ jQuery(document).ready(function($){
             ajaxSavePropertiesComponent=$.ajax({
                 type: "POST",
                 dataType: "json",
-                url: this_host+'/index.php?option=com_menus&task=item.ajaxSavePropertiesComponent&Itemid='+menuItemActiveId+'&tmpl=ajax_json',
+                url: this_host+'/index.php?enable_load_component=1&option=com_menus&task=item.ajaxSavePropertiesComponent&Itemid='+menuItemActiveId+'&tmpl=ajax_json',
                 data: post,
                 beforeSend: function () {
                     $('.div-loading').css({
@@ -592,7 +601,7 @@ jQuery(document).ready(function($){
             post=properties.find('select,textarea, input:not([readonly])').serialize();
             ajaxSavePropertyDataSource=$.ajax({
                 type: "POST",
-                url: this_host+'/index.php?option=com_phpmyadmin&task=datasource.ajaxSavePropertiesDataSource&screensize='+currentScreenSizeEditing,
+                url: this_host+'/index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajaxSavePropertiesDataSource&screensize='+currentScreenSizeEditing,
                 data: post,
                 beforeSend: function () {
                     $('.div-loading').css({
@@ -625,7 +634,7 @@ jQuery(document).ready(function($){
             ajaxSavePropertyModule=$.ajax({
                 type: "POST",
                 dataType: "json",
-                url: this_host+'/index.php?option=com_modules&task=module.ajaxSavePropertyModule&module_id='+module_id,
+                url: this_host+'/index.php?enable_load_component=1&option=com_modules&task=module.ajaxSavePropertyModule&module_id='+module_id,
                 data: post,
                 beforeSend: function () {
                     $('.div-loading').css({
@@ -679,7 +688,7 @@ jQuery(document).ready(function($){
                 type: "POST",
                 contentType: 'application/json',
                 dataType: "json",
-                url: this_host+'/index.php?option=com_utility&task=utility.ajaxSavePropertyBlock&block_id='+block_id,
+                url: this_host+'/index.php?enable_load_component=1&option=com_utility&task=utility.ajaxSavePropertyBlock&block_id='+block_id,
                 data: JSON.stringify(dataPost),
                 beforeSend: function () {
                     $('.div-loading').css({
@@ -722,7 +731,7 @@ jQuery(document).ready(function($){
             post=property.find('select,textarea, input:not([readonly])').serialize();
             ajaxSavePropertyBlock=$.ajax({
                 type: "POST",
-                url: this_host+'/index.php?option=com_menus&task=item.ajaxSavePropertyComponent&menu_id='+menu_id,
+                url: this_host+'/index.php?enable_load_component=1&option=com_menus&task=item.ajaxSavePropertyComponent&menu_id='+menu_id,
                 data: post,
                 beforeSend: function () {
                     $('.div-loading').css({
@@ -756,7 +765,7 @@ jQuery(document).ready(function($){
             ajaxSavePropertyBlock=$.ajax({
                 contentType: 'application/json',
                 type: "POST",
-                url: this_host+'/index.php?option=com_phpmyadmin&task=datasource.ajaxSavePropertydatasource&add_on_id='+add_on_id+'&screensize='+currentScreenSizeEditing,
+                url: this_host+'/index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajaxSavePropertydatasource&add_on_id='+add_on_id+'&screensize='+currentScreenSizeEditing,
                 data: JSON.stringify(dataPost),
                 beforeSend: function () {
                     $('.div-loading').css({
@@ -806,7 +815,7 @@ jQuery(document).ready(function($){
             post=properties.find('select,textarea, input:not([readonly])').serialize();
             ajaxSavePropertiesWebsite=$.ajax({
                 type: "POST",
-                url: this_host+'/index.php?option=com_website&task=website.ajaxSavePropertiesWebsite',
+                url: this_host+'/index.php?enable_load_component=1&option=com_website&task=website.ajaxSavePropertiesWebsite',
                 data: post,
                 beforeSend: function () {
                     $('.div-loading').css({
@@ -882,6 +891,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     var dataPost = {
+                        enable_load_component:1,
                         option: 'com_components',
                         task: 'component.ajax_remove_component',
                         action_menu_item_id: menuItemActiveId,
@@ -1057,6 +1067,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_modules',
                         task: 'module.ajaxSavePropertyBlock',
                         module_id:module_id

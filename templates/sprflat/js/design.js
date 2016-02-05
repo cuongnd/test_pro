@@ -16,6 +16,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     tmpl: 'contentwebsite',
                     screenSize: screenSize,
                     menuItemActiveId: menuItemActiveId,
@@ -60,6 +61,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_utility',
                             task: 'utility.ajaxSavePropertyBlockByEnter',
                             block_id:block_id,
@@ -124,6 +126,7 @@ jQuery(document).ready(function ($) {
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_utility',
                         task: 'utility.ajaxBuildLess'
                     };
@@ -291,6 +294,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_utility',
                             task: 'utility.ajax_rebuild_block',
                             screenSize: screenSize,
@@ -323,6 +327,7 @@ jQuery(document).ready(function ($) {
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_menus',
                         view: 'item',
                         layout: 'phpcontent',
@@ -383,6 +388,7 @@ jQuery(document).ready(function ($) {
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_phpmyadmin',
                         view: 'datasource',
                         layout: 'phpcontent',
@@ -452,6 +458,7 @@ jQuery(document).ready(function ($) {
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_menus',
                         task: 'item.ajax_save_content_php_code',
                         menu_item_id: menu_item_id,
@@ -522,6 +529,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_menus',
                             task: 'items.ajax_load_menu_page'
 
@@ -572,6 +580,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_utility',
                             view: 'blocks',
                             layout:'default',
@@ -624,6 +633,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_components',
                             task: 'components.ajax_load_component'
 
@@ -733,6 +743,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_plugins',
                             task: 'plugins.ajax_load_plugins'
 
@@ -782,6 +793,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_phpmyadmin',
                             task: 'datasources.ajax_load_datasources'
 
@@ -830,6 +842,7 @@ jQuery(document).ready(function ($) {
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_phpmyadmin',
                         task: 'datasource.ajax_save_content_php_code',
                         binding_source_id: binding_source_id,
@@ -955,6 +968,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_utility',
                     task: 'utility.aJaxUpdateColumnInScreen',
                     columnId: columnId,
@@ -990,6 +1004,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_utility',
                     task: 'utility.aJaxUpdateColumnsInScreen',
                     listColumn: listBlockWhenResize,
@@ -1213,6 +1228,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_utility',
                     task: 'utility.aJaxInsertColumn',
                     type: 'column',
@@ -1262,6 +1278,7 @@ jQuery(document).ready(function ($) {
             url: this_host + '/index.php',
             data: (function () {
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_modules',
                     task: 'module.aJaxSaveContent',
                     module_id: module_id,
@@ -1360,6 +1377,7 @@ jQuery(document).ready(function ($) {
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_utility',
                         task: 'utility.aJaxUpdateRowsInScreen',
                         listRow: listRow,
@@ -1412,6 +1430,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_utility',
                             task: 'utility.aJaxUpdateRowsInScreen',
                             listRow: listRow,
@@ -1467,6 +1486,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_modules',
                             task: 'modules.aJaxUpdateModules',
                             listModule: listModule,
@@ -1519,6 +1539,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_phpmyadmin',
                     task: 'datasource.aJaxRemoveAddOn',
                     addOnId: addOnId,
@@ -1573,6 +1594,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_utility',
                             task: 'utility.aJaxUpdateElements',
                             listElement: listElement,
@@ -1745,6 +1767,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_utility',
                     task: 'utility.aJaxInsertRow',
                     parentColumnId: parentColumnId,
@@ -1789,6 +1812,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_utility',
                     task: 'utility.aJaxRemoveRow',
                     rowId: rowId
@@ -2007,6 +2031,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
                 screenSize = $('select[name="smart_phone"] option:selected').val();
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_modules',
                     task: 'module.aJaxInsertModule',
                     module_id: module_id,
@@ -2054,6 +2079,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
                 screenSize = $('select[name="smart_phone"] option:selected').val();
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_phpmyadmin',
                     task: 'datasource.aJaxInsertDataSource',
                     addOnType: addOnType,
@@ -2099,6 +2125,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
                 screenSize = $('select[name="smart_phone"] option:selected').val();
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_menus',
                     task: 'item.aJaxInsertComponent',
                     item_layout: item_layout,
@@ -2156,6 +2183,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_utility',
                     task: 'utility.aJaxInsertElement',
                     parentColumnId: parentColumnId,
@@ -2240,6 +2268,7 @@ jQuery(document).ready(function ($) {
             url: this_host + '/index.php',
             data: (function () {
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_utility',
                     task: 'utility.aJaxGetXmlElement',
                     id: 1630
@@ -2355,6 +2384,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_utility',
                     task: 'utility.aJaxRemoveElement',
                     block_id: block_id
@@ -2396,6 +2426,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_utility',
                     task: 'utility.aJaxRemoveColumn',
                     columnId: columnId
@@ -2486,6 +2517,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_modules',
                     task: 'module.AjaxRemoveModule',
                     module_id: module_id
@@ -2525,6 +2557,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_website',
                     task: 'modulestyle.AjaxGetModuleStyle',
                     isLoadedModuleStyle: isLoadedModuleStyle
@@ -2605,7 +2638,7 @@ jQuery(document).ready(function ($) {
 
                 dataPost = {
                     option: 'com_users',
-
+                    enable_load_component:1,
                     task: 'user.ajax_set_key_of_params',
                     key_params:'option.webdesign.full_height_state',
                     value_key_params:state
@@ -2782,6 +2815,7 @@ jQuery(document).ready(function ($) {
 
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_utility',
                     task: 'utility.aJaxChangeScreenSize',
                     screenSize: screenSize
@@ -2999,6 +3033,7 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
                 dataPost = {
+                    enable_load_component:1,
                     option: 'com_website',
                     task: 'background.ChangeBackground'
 
@@ -3083,6 +3118,7 @@ jQuery(document).ready(function ($) {
                             y = w.innerHeight || e.clientHeight || g.clientHeight;
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_utility',
                             task: 'utility.aJaxChangeScreenSize',
                             screenSize: x.toString() + "X" + y.toString()
@@ -3125,6 +3161,7 @@ jQuery(document).ready(function ($) {
                         url: 'index.php',
                         data: (function () {
                             dataPost = {
+                                enable_load_component:1,
                                 option: 'com_modules',
                                 task: 'module.aJaxGetOptionModule',
                                 id: 10

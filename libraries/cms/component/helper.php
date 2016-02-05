@@ -379,7 +379,7 @@ class JComponentHelper
 		print_r($app->input->getArray());
 		echo "</pre>";
 		die;*/
-		if($tmpl=='sourcecss')
+		if($tmpl=='sourcecss'||$tmpl=='ajax_json')
 		{
 			$admin_load_component=1;
 		}elseif($tmpl=='tmpl'){
