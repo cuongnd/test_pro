@@ -4,13 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/components/com_utility/views/block/tmpl/assets/js/view_config.js" line="225" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gz.php" afterPath="$PROJECT_DIR$/gz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/component/helper.php" afterPath="$PROJECT_DIR$/libraries/cms/component/helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/jui_front_end/js/jquery.js" afterPath="$PROJECT_DIR$/media/jui_front_end/js/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js.php" afterPath="$PROJECT_DIR$/js.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/test_pro.iml" afterPath="$PROJECT_DIR$/.idea/test_pro.iml" />
+    <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="Rejected commit: Default">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="test_pro.iws" />
@@ -498,7 +492,13 @@
       <option name="project" value="LOCAL" />
       <updated>1454297208686</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Rejected commit: Default">
+      <created>1454712821443</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1454712821443</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
