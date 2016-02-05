@@ -266,7 +266,7 @@ class DataSourceHelper
         return  $data;
 
     }
-    public function OverWriteDataSource($datasource)
+    public static function OverWriteDataSource($datasource)
     {
         $datasource = str_replace('t__', '#__', $datasource);
         $input = JFactory::getApplication()->input;

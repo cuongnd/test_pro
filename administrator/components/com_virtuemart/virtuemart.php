@@ -25,7 +25,7 @@ if ($admin = JFactory::getUser()->authorise('core.admin') ) {
 		return;
 	}
 }
-
+JHtml::_('jquery.framework');
 if (!class_exists( 'VmConfig' )) require(JPATH_COMPONENT_ADMINISTRATOR.DS.'helpers'.DS.'config.php');
 VmConfig::loadConfig();
 if(VmConfig::get('enableEnglish', 1)){

@@ -1,8 +1,14 @@
 <?php
 jimport('joomla.filesystem.file');
 $app=JFactory::getApplication();
-JFactory::getDocument()->setMimeEncoding('text/javascript');
+$doc=JFactory::getDocument();
+JFactory::getDocument()->setMimeEncoding('image/jpeg');
 $file=$app->input->get('file','','string');
-$content= JFILE::read(JPATH_ROOT.'/'.$file);
-echo $content;
+header('Content-Type: image/jpeg');
+ob_clean();
+if(JFile::exists(JPATH_ROOT.'/'.$file))
+{
+    $content= JFILE::read(JPATH_ROOT.'/'.$file);
+    echo  $content;
+}
 ?>

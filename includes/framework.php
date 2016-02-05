@@ -86,7 +86,7 @@ switch ($config->error_reporting) {
 
     case 'development':
         error_reporting ( E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_STRICT & ~ E_WARNING );
-        //error_reporting(E_ALL);
+        error_reporting(1);
         ini_set('display_errors', 1);
 
         break;
@@ -104,74 +104,61 @@ if (JDEBUG) {
     $_PROFILER = JProfiler::getInstance('Application');
 }
 
-function tick_handler()
-{
-    global $backtrace;
-    $backtrace = debug_backtrace();
-    //$GLOBALS['dbg_stack'][] = debug_backtrace();
-    //writeLog($backtrace);
-
-}
+declare(ticks=10);
 
 require_once JPATH_ROOT . '/libraries/joomla/utilities/utility.php';
 if (!function_exists('writeLog')) {
     function writeLog($stacks)
     {
-        return;
-        //$stacks=end($stacks);
-        // $filePath=end($stacks['args']);
-        //$filePath=str_replace(JPATH_ROOT,'',$filePath);
-        $ouput = JUtility::printDebugBacktrace2($stacks);
-        $flieLog = JPATH_ROOT . "/logs/hello.html";
-        $fileSize = 0;
-        if (file_exists($flieLog)) {
-            $fileSize = filesize($flieLog);
-            $fileSize = JUtility::byteToOtherUnit($fileSize, 'KB', false);
-        }
-
-        if ($fileSize > 5000) {
-            echo "file log less then 500KB";
-            die;
-        }
-        $fileHandler = fopen($flieLog, "a") or die("Unable to open file!");
-        fwrite($fileHandler, $ouput . "\n");
-        fclose($fileHandler);
+        JLog::addLogger(
+            array(
+                // Sets file name
+                'text_file' => 'com_helloworld.all_but_debug.php'
+            ),
+            // Sets all but DEBUG log level messages to be sent to the file
+            JLog::ALL & ~JLog::DEBUG,
+            // The log category which should be recorded in this file
+            array('com_helloworld')
+        );
     }
 }
 
-
 function shutdown()
 {
-    return;
     $a=error_get_last();
     if($a==null)
         echo "No errors";
     else
-        print_r($a);
-
-    global $backtrace;
-    $output = "";
-    $output .= "<hr /><div> Error" . '<br /><table border="1" cellpadding="2" cellspacing="2">';
-
-    $stacks = $backtrace;
-
-    $output .= "<thead><tr><th><strong>File</strong></th><th><strong>Line</strong></th><th><strong>Function</strong></th>" .
-        "</tr></thead>";
-    foreach ($stacks as $_stack) {
-        if (!isset($_stack['file'])) $_stack['file'] = '[PHP Kernel]';
-        if (!isset($_stack['line'])) $_stack['line'] = '';
-
-        $output .= "<tr><td>{$_stack["file"]}</td><td>{$_stack["line"]}</td>" .
-            "<td>{$_stack["function"]}</td></tr>";
+    {
+        print_r(JUtility::printDebugBacktrace());
     }
-    $output .= "</table></div><hr /></p>";
-    echo $output;
 
 
 }
-
+function process_error_backtrace($errno, $errstr, $errfile, $errline, $errcontext) {
+    switch($errno) {
+        case E_WARNING      :
+        case E_USER_WARNING :
+        case E_STRICT       :
+        case E_NOTICE       :
+        case E_USER_NOTICE  :
+            $type = 'warning';
+            $fatal = false;
+            break;
+        default             :
+            $type = 'fatal error';
+            $fatal = true;
+            break;
+    }
+    if($fatal||$errno==null){
+        echo 'Backtrace from ' . $type . ' \'' . $errstr . '\' at ' . $errfile . ' ' . $errline . ':' . "\n";
+        print_r(JUtility::printDebugBacktrace());
+        die;
+    }
+}
 
 if (JDEBUG) {
-    register_tick_function('tick_handler');
+    register_tick_function('writeLog');
+    set_error_handler('process_error_backtrace');
     register_shutdown_function('shutdown');
 }

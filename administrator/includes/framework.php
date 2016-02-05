@@ -180,6 +180,7 @@ function shutdown() {
 
 
 }
+//register_tick_function('tick_handler');
 if(JDEBUG)
 {
     register_tick_function('tick_handler');

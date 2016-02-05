@@ -295,7 +295,7 @@ class JDocumentRendererHead extends JDocumentRenderer {
     }
     function get_min_js($arrrayobject)
     {
-
+        $list_js=array();
         foreach($arrrayobject as $source=>$object)
         {
            /* [dirname] => H:\project\test_pro/media/jui_front_end/js
@@ -303,11 +303,17 @@ class JDocumentRendererHead extends JDocumentRenderer {
             [extension] => js
             [filename] => jquery*/
 
-            $file_info = pathinfo($object);
+            $file_info = pathinfo($source);
             $file_min_js=$file_info["dirname"].'/'.$file_info["filename"].'.min.js';
             $arrrayobject[$source]=$file_min_js;
+            if(JFile::exists(JPATH_ROOT.'/'.$file_min_js)&&trim(JFile::read(JPATH_ROOT.'/'.$file_min_js))!='')
+            {
+                $list_js[$file_min_js]=$object;
+            }else{
+                $list_js[$source]=$object;
+            }
         }
-        return $arrrayobject;
+        return $list_js;
     }
     function cacheJs(&$documentScripts) {
         $scripts = array();

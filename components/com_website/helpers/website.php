@@ -307,7 +307,7 @@ class websiteHelperFrontEnd
         return $cssModules;
     }
 
-    function displayLayout($this_layout, $enableEditWebsite = 0)
+    static function displayLayout($this_layout, $enableEditWebsite = 0)
     {
 
 

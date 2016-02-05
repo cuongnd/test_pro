@@ -15,19 +15,19 @@ defined('_JEXEC') or die(__FILE__);
 // Check if mbstring extension is loaded and attempt to load it if not present except for windows
 if (extension_loaded('mbstring'))
 {
-	// Make sure to suppress the output in case ini_set is disabled
+/*	// Make sure to suppress the output in case ini_set is disabled
 	@ini_set('mbstring.internal_encoding', 'UTF-8');
 	@ini_set('mbstring.http_input', 'UTF-8');
-	@ini_set('mbstring.http_output', 'UTF-8');
+	@ini_set('mbstring.http_output', 'UTF-8');*/
 }
 
 // Same for iconv
 if (function_exists('iconv'))
 {
-	// These are settings that can be set inside code
+/*	// These are settings that can be set inside code
 	iconv_set_encoding("internal_encoding", "UTF-8");
 	iconv_set_encoding("input_encoding", "UTF-8");
-	iconv_set_encoding("output_encoding", "UTF-8");
+	iconv_set_encoding("output_encoding", "UTF-8");*/
 }
 
 /**
@@ -1086,6 +1086,7 @@ abstract class JString
 
 		// Create encoded URL with special URL characters decoded so it can be parsed
 		// All other characters will be encoded
+
 		$encodedURL = str_replace($entities, $replacements, urlencode($url));
 
 		// Parse the encoded URL

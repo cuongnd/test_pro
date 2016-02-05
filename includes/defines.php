@@ -1,5 +1,6 @@
 <?php
-session_start('ob_gzhandler');
+session_start();
+
 /**
  * @package    Joomla.Site
  *

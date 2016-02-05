@@ -152,7 +152,7 @@ class VirtuemartViewCategory extends VmView
             $products = $productModel->getProductsInCategory($categoryId, $vendorId);
         }
         require_once JPATH_ROOT.'/modules/mod_virtuemart_product/helper.php';
-        mod_virtuemart_product::addImageFromEnvato($products);
+        //mod_virtuemart_product::addImageFromEnvato($products);
 
 //        $list_products=array();
         if (!class_exists('Img2Thumb'))  require_once JPATH_BASE.'/administrator/components/com_virtuemart/helpers/img2thumb.php';

@@ -47,10 +47,9 @@ if($offline && !$isAdmin){
 	/* Front-end helpers */
 	if(!class_exists('VmImage')) require(JPATH_VM_ADMINISTRATOR.'/helpers/image.php'); //dont remove that file it is actually in every view except the state view
 	if(!class_exists('shopFunctionsF'))require(JPATH_VM_SITE.'/helpers/shopfunctionsf.php'); //dont remove that file it is actually in every view
-
+	JHtml::_('jquery.framework');
 	/* Loading jQuery and VM scripts. */
 	//vmJsApi::jPrice();    //in create button
-	vmJsApi::jQuery();
 	vmJsApi::jSite();
 	vmJsApi::cssSite();
 	$_controller = $input->get( 'controller' , '' , 'word');

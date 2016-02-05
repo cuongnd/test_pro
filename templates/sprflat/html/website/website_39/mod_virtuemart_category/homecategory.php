@@ -1,13 +1,14 @@
 <?php
 $doc = JFactory::getDocument();
-$doc->addLessStyleSheetTest(JUri::root() . '/templates/sprflat/html/website/website_39/mod_virtuemart_category/assets/less/homcategory.less');
+$doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/html/website/website_39/mod_virtuemart_category/assets/less/homcategory.less');
 $category_name = $params->get('config_layout.on_browser.home_page_category_config.category_name', '');
 $parent_category_id = $params->get('config_layout.on_browser.home_page_category_config.parent_category_id', 0);
 $parent_category_of_products = $params->get('config_layout.on_browser.home_page_category_config.parent_category_of_products', 0);
 $shortCategoryModel = VmModel::getModel('shortedcategory');
 $shortProductModel = VmModel::getModel('shortedproduct');
 $categories = $shortCategoryModel->getCategory($parent_category_id, false);
-$html = mod_virtuemartCategoryHelper::render_vertical_mega_menu(' ', array(), $parent_category_id);
+$html='';
+mod_virtuemartCategoryHelper::render_vertical_mega_menu($html,' ', array(), $parent_category_id);
 $products = $shortProductModel->getProductsInCategory($parent_category_of_products);
 $column = 4;
 $row = 3;

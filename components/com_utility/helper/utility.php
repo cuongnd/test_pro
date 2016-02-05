@@ -21,7 +21,7 @@ class UtilityHelper
 {
 
     protected  static  $list_position=null;
-    public function getScreenSize()
+    public static function  getScreenSize()
     {
         $session=JFactory::getSession();
         $screenSize=$session->get('screenSize');
@@ -35,7 +35,7 @@ class UtilityHelper
         return $screenSize;
     }
 
-    function getCurrentScreenSizeEditing()
+      static function  getCurrentScreenSizeEditing()
     {
         $session=JFactory::getSession();
         $screenSizeEditing=$session->get('screenSizeEditing');
@@ -399,7 +399,7 @@ XML;
         $form_field->setup($xml_form_field,$node_value);
         return $form_field;
     }
-    public function getStatePreview()
+    public static function getStatePreview()
     {
         $session=JFactory::getSession();
         $preview=$session->get('preview');
@@ -738,7 +738,7 @@ XML;
             $db->execute();
         }
     }
-    public function getListPositions()
+    public static function getListPositions()
     {
         $listPositions = array(
             'header1'
@@ -1070,7 +1070,7 @@ XML;
         }
 
     }
-        public function getListScreenSize()
+        public static function getListScreenSize()
     {
         $listScreenSize=array(
             '480X320'

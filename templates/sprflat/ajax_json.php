@@ -44,8 +44,36 @@ if($response->html[0]->key=='')
 {
     $response->html[0]->key='not';
 }
+$current_url=JUri::getInstance();
+$current_host= $current_url->getHost();
+$list_script=array();
+foreach($doc->_scripts as $key=>$item)
+{
+    $uri = JUri::getInstance($key);
+    $host = $uri->getHost();
+    if ($current_host==$host||$host=='') {
+        $path=$uri->getPath();
+        $path=explode('/',$path);
+
+        $path1=array();
+        foreach($path as $item1)
+        {
+            if(trim($item1)!='')
+            {
+                $path1[]=$item1;
+            }
+        }
+        $path1=implode('/',$path1);
+        $path1=$current_url->toString(array('scheme','host','port')).'/'.$path1;
+        $list_script[$path1]=$item;
+    }else{
+        $list_script[$key]=$item;
+    }
+
+}
+
 $response->html[0]->contents.=$htmlScript.$htmlStyle;
-$response->scripts= $doc->_scripts;
+$response->scripts= $list_script;
 
 $response->styleSheets= $doc->_styleSheets;
 $response->style= $doc->_style;

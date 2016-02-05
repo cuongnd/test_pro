@@ -90,7 +90,6 @@ function virtuemartBuildRoute(&$query) {
             $cache = JFactory::getCache('_virtuemart','');
             $config=JFactory::getConfig();
 
-
 			$start = null;
 			$limitstart = null;
 			$limit = null;
@@ -110,12 +109,18 @@ function virtuemartBuildRoute(&$query) {
 			}
 			if ( isset($query['virtuemart_category_id']) ) {
 				if (isset($jmenu['virtuemart_category_id'][ $query['virtuemart_category_id'] ] ) )
-					$query['Itemid'] = $jmenu['virtuemart_category_id'][$query['virtuemart_category_id']];
+				{
+					//$query['Itemid'] = $jmenu['virtuemart_category_id'][$query['virtuemart_category_id']];
+				}
 				else {
 					$categoryRoute = $helper->getCategoryRoute($query['virtuemart_category_id']);
 
-					if ($categoryRoute->route) $segments[] = $categoryRoute->route;
-					if ($categoryRoute->itemId) $query['Itemid'] = $categoryRoute->itemId;
+					if ($categoryRoute->route){
+						$segments[] = $categoryRoute->route;
+					}
+					if ($categoryRoute->itemId){
+						//$query['Itemid'] = $categoryRoute->itemId;
+					}
 				}
 				unset($query['virtuemart_category_id']);
 			}

@@ -64,8 +64,9 @@ class mod_virtuemartCategoryHelper
         return $html;
     }
 
-    static function render_vertical_mega_menu($attributes_level0 = '', $list_category=array(), $virtuemart_category_id=0, $level = 0,$menu_item_id=0)
+    static function render_vertical_mega_menu(&$html, $attributes_level_0 = '', $list_category = array(), $virtuemart_category_id = 0, $level = 0, $menu_item_id = 0)
     {
+
         if ($level == 0) {
             $categoryModel = VmModel::getModel('category');
 
@@ -96,24 +97,62 @@ class mod_virtuemartCategoryHelper
             return $item1->ordering < $item2->ordering ? -1 : 1;
         });
         if (count($list_item1)) {
-            ob_start();
-            ?>
-            <ul <?php echo $level == 0 ? $attributes_level0 : '' ?> >
-                <?php foreach ($list_item1 as $category) { ?>
-                    <li id="menu-item-<?php echo $category->virtuemart_category_id ?>">
-                        <a href="index.php?option=com_virtuemart&view=category&virtuemart_category_id=<?php echo $category->virtuemart_category_id ?>&Itemid=<?php echo $menu_item_id ?>"><?php echo $category->category_name ?></a>
-                        <?php
-                        $level1 = $level + 1;
-                        ?>
-                        <?php echo mod_virtuemartCategoryHelper::render_vertical_mega_menu($attributes_level0, $list_category, $category->virtuemart_category_id, $level1,$menu_item_id) ?>
-                    </li>
-
-                <?php } ?>
-            </ul>
-            <?php
-            $html = ob_get_clean();
-            return $html;
+            $html .= '<ul ' . ($level == 0 ? $attributes_level_0 : '') . ' >';
+            foreach ($list_item1 as $category) {
+                $html .= '<li id="menu-item-' . $category->virtuemart_category_id . '">';
+                $html .= '<a href="index.php?option=com_virtuemart&view=category&virtuemart_category_id=' . $category->virtuemart_category_id . '&Itemid=' . $menu_item_id . '">' . $category->category_name . '</a>';
+                $level_1 = $level + 1;
+                mod_virtuemartCategoryHelper::render_vertical_mega_menu($html, '', $list_category, $category->virtuemart_category_id, $level_1, $menu_item_id);
+                $html .= '</li>';
+            }
+            $html .= '</ul>';
         }
+    }
+    static function render_horizontal_mega_menu(&$html, $attributes_level_0 = '', $list_category = array(), $virtuemart_category_id = 0, $level = 0, $menu_item_id = 0)
+    {
+
+        if ($level == 0) {
+            $categoryModel = VmModel::getModel('category');
+
+
+            $categoryModel->_noLimit = TRUE;
+            // $app = JFactory::getApplication ();
+
+            $list_category = $categoryModel->getCategories(false, 0);
+        }
+        $list_item1 = array();
+        if ($virtuemart_category_id == 0) {
+            foreach ($list_category as $key => $item) {
+                if (!$item->category_parent_id) {
+                    $list_item1[] = $item;
+                    unset($list_category[$key]);
+                }
+            }
+        } else {
+            foreach ($list_category as $key => $item) {
+                if ((int)$item->category_parent_id == (int)$virtuemart_category_id) {
+                    $list_item1[] = $item;
+                    unset($list_category[$key]);
+                }
+            }
+        }
+
+        usort($list_item1, function ($item1, $item2) {
+            if ($item1->ordering == $item2->ordering) return 0;
+            return $item1->ordering < $item2->ordering ? -1 : 1;
+        });
+        function render_ul(&$html, $attributes_level_0 = '', $list_category = array(), $list_item1 = array(), $level = 0, $menu_item_id = 0){
+            $html .= '<ul ' . ($level == 0 ? $attributes_level_0 : 'ul-level-'.$level) . ' >';
+            foreach ($list_item1 as $category) {
+                $html .= '<li id="menu-item-' . $category->virtuemart_category_id . '">';
+                $html .= '<a href="index.php?option=com_virtuemart&view=category&virtuemart_category_id=' . $category->virtuemart_category_id . '&Itemid=' . $menu_item_id . '">' . $category->category_name . '</a>';
+                $level_1 = $level + 1;
+                mod_virtuemartCategoryHelper::render_vertical_mega_menu($html, '', $list_category, $category->virtuemart_category_id, $level_1, $menu_item_id);
+                $html .= '</li>';
+            }
+            $html .= '</ul>';
+        }
+        render_ul($html, $attributes_level_0, $list_category, $list_item1, $level, $menu_item_id);
     }
 }
 

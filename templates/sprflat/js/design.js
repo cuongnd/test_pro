@@ -680,6 +680,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component: 1,
                             option: 'com_modules',
                             view: 'modules',
                             layout:'default',

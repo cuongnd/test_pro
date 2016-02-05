@@ -22,6 +22,7 @@ class elementH5Helper extends  elementHelper
         $filename=$pathInfo['filename'];
         $dirName=$pathInfo['dirname'];
         $doc=JFactory::getDocument();
+        JHtml::_('jquery.framework');
         $doc->addStyleSheet(JUri::root() . "/$dirName/$filename.css");
         $doc->addScript(JUri::root() ."/$dirName/$filename.js");
         $params = new JRegistry;

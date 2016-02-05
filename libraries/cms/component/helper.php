@@ -297,6 +297,8 @@ class JComponentHelper
 	{
 		$app = JFactory::getApplication();
         $input=$app->input;
+		$config=JFactory::getConfig();
+		$admin_load_component=$config->get('admin_load_component',0);
         $disable_component=$input->get('disable_component',0,'int');
         if($disable_component)
             return;
@@ -341,7 +343,6 @@ class JComponentHelper
 
 		// Handle template preview outlining.
 		$contents = null;
-
 		// Execute the component.
 		$contents = static::executeComponent($path);
 
@@ -362,8 +363,45 @@ class JComponentHelper
 	 */
 	public static function executeComponent($path)
 	{
+		$config=JFactory::getConfig();
+		$app=JFactory::getApplication();
+
+		$admin_load_component=$config->get('admin_load_component',0);
 		ob_start();
-		require_once $path;
+		JHtml::_('jquery.framework');
+		$tmpl=$app->input->get('tmpl','','string');
+		$option=$app->input->get('option','','string');
+		$controller=$app->input->get('controller','','string');
+		$view=$app->input->get('view','','string');
+		$task=$app->input->get('task','','string');
+		$enable_load_component=$app->input->get('enable_load_component',0,'int');
+/*		echo "<pre>";
+		print_r($app->input->getArray());
+		echo "</pre>";
+		die;*/
+		if($tmpl=='sourcecss')
+		{
+			$admin_load_component=0;
+		}elseif($tmpl=='tmpl'){
+			$admin_load_component=1;
+		}elseif($option=='com_users'&&$task=='user.logout'){
+			$admin_load_component=1;
+		}elseif($option=='com_users'&&$view=='login'){
+			$admin_load_component=1;
+		}elseif($option=='com_users'&&$task=='user.login'){
+			$admin_load_component=1;
+		}elseif($option=='com_utility'&&$task=='utility.aJaxChangeScreenSize'){
+			$admin_load_component=1;
+		}elseif($enable_load_component==1)
+		{
+			$admin_load_component=1;
+		}
+		if($admin_load_component)
+		{
+			require_once $path;
+		}else{
+			echo "show component here";
+		}
 		$contents = ob_get_clean();
         jimport('joomla.utilities.utility');
         $contents=JUtility::changeLanguageBody($contents);

@@ -30,7 +30,7 @@ class templateSprflatHelper
         }
 
     }
-    public function init_website()
+    public static function init_website()
     {
         $website = JFactory::getWebsite();
         $websiteTable = JTable::getInstance('Website', 'JTable');

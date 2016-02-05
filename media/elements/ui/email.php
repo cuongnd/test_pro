@@ -94,15 +94,8 @@ class elementEmailHelper extends  elementHelper
 
 
 
-        $ajax_clone=false;
-        $random_string='';
-        if($this->ajax_clone)
-        {
-            $ajax_clone=true;
-            $random_string=JUserHelper::genRandomPassword();
-        }
 
-
+        $random_string=JUserHelper::genRandomPassword();
 
         $scriptId = "script_ui_email_" . $block->id.$random_string;
         ob_start();

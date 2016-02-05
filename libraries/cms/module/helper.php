@@ -162,6 +162,8 @@ abstract class JModuleHelper
 	public static function renderModule($module, $attribs = array())
 	{
 		static $chrome;
+		$config=JFactory::getConfig();
+		$admin_load_module=$config->get('admin_load_module',0);
         $input=JFactory::getApplication()->input;
         $only_module=$input->get('only_module','','string');
         if($only_module!='')
@@ -223,7 +225,12 @@ abstract class JModuleHelper
 
 			$content = '';
 			ob_start();
-			include $path;
+			if($admin_load_module)
+			{
+				include $path;
+			}else{
+				echo $module->title;
+			}
 			$module->content = ob_get_contents() . $content;
 			ob_end_clean();
 		}

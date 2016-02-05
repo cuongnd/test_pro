@@ -52,9 +52,9 @@ class JUtility
         $php_value_memory_limit=(int)ini_get('memory_limit');
         $memory_usage=(int)memory_get_usage(true);
         $memory_usage=(int)JUtility::byteToOtherUnit($memory_usage,'MB');
-        if($memory_usage>=$php_value_memory_limit)
+        if($memory_usage>=$php_value_memory_limit-3)
         {
-            throw new JException('out off memory', 404);
+           echo JUtility::printDebugBacktrace();
             die;
         }
     }
@@ -75,6 +75,16 @@ class JUtility
         $path=implode('/',$path1);
         $uri->setPath($path);
         return $uri->toString();
+    }
+
+    public static function get_cache_var_by_cache_id($cache_id,$group='_system',$handler='callback')
+    {
+        $cache = JFactory::getCache($group, $handler);
+        $caching=$cache->cache->getCaching();
+        $cache->setCaching(1);
+        $var=$cache->cache->get($cache_id);
+        $cache->setCaching($caching);
+        return $var;
     }
 
     public function replate_request($string)
@@ -271,7 +281,7 @@ class JUtility
 
     }
 
-    public function remove_string_javascript($str)
+    public static function remove_string_javascript($str)
     {
         preg_match_all('/<script type=\"text\/javascript">(.*?)<\/script>/s', $str, $estimates);
         return $estimates[1][0];
@@ -663,7 +673,7 @@ class JUtility
 
     }
 
-    function getMemoryUseByVar($var, $unit = "", $decimals = 2, $format = true)
+     static function getMemoryUseByVar($var, $unit = "", $decimals = 2, $format = true)
     {
         $new_object = new stdClass();
         $new_object->temp = $var;

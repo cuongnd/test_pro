@@ -50,7 +50,11 @@ class ModulesControllerModule extends JControllerForm
 		$params = $app->input->get('params', array(), 'array');
 		$app->setUserState('com_modules.add.module.params', $params);
 	}
-
+	public function ajax_get_render_module(){
+		$app=JFactory::getApplication();
+		echo "sdfsdfsd";
+		die;
+	}
 	public function ajax_save_field_params()
 	{
 		$app=JFactory::getApplication();

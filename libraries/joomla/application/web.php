@@ -225,7 +225,6 @@ class JApplicationWeb extends JApplicationBase
      */
     public function execute()
     {
-
         // Trigger the onBeforeExecute event.
         $this->triggerEvent('onBeforeExecute');
 
@@ -249,7 +248,6 @@ class JApplicationWeb extends JApplicationBase
 
         // If gzip compression is enabled in configuration and the server is compliant, compress the output.
         if ($this->get('gzip') && !ini_get('zlib.output_compression') && (ini_get('output_handler') != 'ob_gzhandler')) {
-
             $this->compress();
         }
 
