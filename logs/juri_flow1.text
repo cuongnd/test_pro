@@ -3807,3 +3807,5 @@
 2016-01-26T01:51:06+00:00	DEBUG	-	legacy $url:?Itemid=
 2016-01-26T01:51:10+00:00	DEBUG	-	class:JApplicationCms
 2016-01-26T01:51:10+00:00	DEBUG	-	legacy $url:?Itemid=
+2016-02-06T01:07:53+00:00	DEBUG	-	class:JApplicationCms
+2016-02-06T01:07:53+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
