@@ -375,6 +375,7 @@ class JComponentHelper
 		$view=$app->input->get('view','','string');
 		$task=$app->input->get('task','','string');
 		$enable_load_component=$app->input->get('enable_load_component',0,'int');
+		$ajaxgetcontent=$app->input->get('ajaxgetcontent',0,'int');
 /*		echo "<pre>";
 		print_r($app->input->getArray());
 		echo "</pre>";
@@ -399,6 +400,10 @@ class JComponentHelper
 		require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
 		$isAdminSite = UtilityHelper::isAdminSite();
 		if(!$isAdminSite)
+		{
+			$admin_load_component=1;
+		}
+		if($ajaxgetcontent)
 		{
 			$admin_load_component=1;
 		}

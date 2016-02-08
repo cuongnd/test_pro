@@ -72,21 +72,10 @@ class elementTabsHelper extends  elementHelper
         $script = ob_get_clean();
         $script = JUtility::remove_string_javascript($script);
         $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
-
-
-
-
         $html='';
         ob_start();
         ?>
         <div class="block-item block-item-tabs" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" element-type="<?php echo $block->type ?>">
-
-
-
-
-
-
-
 
     <?php
         $html=ob_get_clean();

@@ -117,6 +117,7 @@
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_utility',
                         task: 'utility.aJaxInsertElement',
                         parentColumnId:block_id,
