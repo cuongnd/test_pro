@@ -159,6 +159,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_menus',
                         task: 'item.ajax_update_item',
                         data:{
@@ -236,6 +237,7 @@ jQuery(document).ready(function($){
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_menus',
                             task: 'menus.ajax_rebuild_root_menu',
                             menu_type_id:menu_type_id,
@@ -322,6 +324,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_menus',
                         task: 'menus.ajax_save_menu',
                         list_menu_type:list_menu_type
@@ -400,6 +403,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_menus',
                         task: 'item.ajax_clone_item_menu',
                         id:id
@@ -475,6 +479,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_menus',
                         task: 'item.ajax_add_sub_item_menu',
                         id:id
@@ -555,6 +560,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_menus',
                         task: 'item.ajax_update_item',
                         data:{
@@ -637,6 +643,7 @@ jQuery(document).ready(function($){
                         data: (function () {
 
                             dataPost = {
+                                enable_load_component:1,
                                 option: 'com_menus',
                                 task: 'item.ajax_remove_item_menu',
                                 id:id

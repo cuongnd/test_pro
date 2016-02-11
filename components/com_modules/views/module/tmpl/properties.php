@@ -7,7 +7,6 @@ $modelPosition = JModelLegacy::getInstance('Module', 'ModulesModel');
 $item = $modelPosition->getItem();
 $module_id = $item->id;
 $form = $this->form;
-
 $doc=JFactory::getDocument();
 $db = JFactory::getDbo();
 $doc->addScript(JUri::root().'/media/system/js/clipboard.js-master/dist/clipboard.js');

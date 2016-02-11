@@ -85,6 +85,8 @@ class UtilityControllerUtility extends UtilityController
     public function ajax_rebuild_block()
     {
         $app = JFactory::getApplication();
+
+
         $menu_item_active_id = $app->input->get('menu_item_active_id', 0, 'int');
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
         $tablePosition = JTable::getInstance('positionnested');
@@ -96,12 +98,15 @@ class UtilityControllerUtility extends UtilityController
         $query->select('position_config.id,position_config.menu_item_id')
             ->from('#__position_config AS position_config')
             ->where('position_config.parent_id=' . (int)$parentId)
-            ->where('position_config.menu_item_id=' . (int)$menu_item_active_id);
+            ->where('position_config.menu_item_id=' . (int)$menu_item_active_id)
+        ;
         $db->setQuery($query);
         $list_position = $db->loadObjectList();
         $db->rebuild_action=1;
         UtilityControllerUtility::update_menu_item_from_root_menu($list_position, $menu_item_active_id);
         $tablePosition->rebuild();
+        require_once JPATH_ROOT.'/components/com_utility/controllers/block.php';
+        UtilityControllerBlock::fix_screen_size();
         echo 1;
         die;
 

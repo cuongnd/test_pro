@@ -782,7 +782,6 @@ class JTablePositionNested extends JTable
 				// We are inserting a node relative to the last root node.
 				if ($this->_location_id == 0)
 				{
-
 					// Get the last root node as the reference node.
 					$query = $this->_db->getQuery(true)
 						->select($this->_tbl_key . ', parent_id, level, lft, rgt')
@@ -1263,11 +1262,13 @@ class JTablePositionNested extends JTable
 			$this->website_id=JFactory::getWebsite()->website_id;
 		}
 
-		$query = $this->_db->getQuery(true)
-			->select($k)
+		$query = $this->_db->getQuery(true);
+
+		$query->select($k)
 			->from($this->_tbl)
 			->where('parent_id =id ')
 			->where('website_id = '.(int)$this->website_id)
+			->where('screensize = '.$query->q($this->screensize))
 		;
 		$result = $this->_db->setQuery($query)->loadResult();
 
@@ -1278,7 +1279,6 @@ class JTablePositionNested extends JTable
 		}
         else
         {
-
 			self::$root_id = $this->createRoot($this->screensize);
 			return self::$root_id;
 
@@ -1436,7 +1436,7 @@ class JTablePositionNested extends JTable
 		}
 		if($screeensize!='')
 		{
-			$query->set('screeensize='.$this->_db->quote($screeensize));
+			$query->set('screensize='.$this->_db->quote($screeensize));
 		}
 		$this->_db->setQuery($query)->execute();
 

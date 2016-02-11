@@ -249,6 +249,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_modules',
                         task: 'module.ajax_save_field_params',
                         fields: fields,
@@ -496,6 +497,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_utility',
                         task: 'params.ajax_get_attribute_config',
                         path: path,

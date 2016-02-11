@@ -472,13 +472,13 @@ XML;
         $session->set('enableEditingState',$enableEditingState);
         return $enableEditingState;
     }
-    public function InsertRowInScreen($screenSize,$parentColumnId,$menu_item_id)
+    public function InsertRowInScreen($screen_size,$parentColumnId,$menu_item_id)
     {
 
         $db=JFactory::getDbo();
         $website=JFactory::getWebsite();
-        if (!$screenSize) {
-            $screenSize = UtilityHelper::getScreenSize();
+        if (!$screen_size) {
+            $screen_size = UtilityHelper::getScreenSize();
         }
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables/');
         $tablePosition=JTable::getInstance('positionnested');
@@ -489,13 +489,11 @@ XML;
         $tablePosition->parent_id=(int)$parentColumnId;
         $tablePosition->menu_item_id=(int)$menu_item_id;
         $tablePosition->type='row';
-        $tablePosition->screenSize=$screenSize;
-
+        $tablePosition->screensize=$screen_size;
         if(!$tablePosition->store())
         {
             echo $tablePosition->getError();
         }
-
         return $tablePosition->id;
     }
     public function InsertElementInScreen($screenSize,$parentColumnId,$menu_item_id,$type,$pathElement)
@@ -972,7 +970,6 @@ XML;
         }else{
             $query->where('poscon.menu_item_id='.(int)$menuItemActive->id);
         }
-
         $listPositionsSetting=$db->setQuery($query)->loadObjectList();
         //UtilityHelper::getListPositionsSetting2('',$use_main_frame,$menuItemActive->id,$listPositionsSetting,0,1,9999);
         if($use_main_frame)

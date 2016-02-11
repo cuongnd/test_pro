@@ -198,12 +198,16 @@ class JFormFieldBrowserServer extends JFormField
 		JHtml::_('jquery.framework');
 		$doc=JFactory::getDocument();
 		$doc->addScriptNotCompile(JUri::root().'/ckfinder/ckfinder.js');
+		$doc->addScriptNotCompile(JUri::root().'/ckfinder/config.js');
+
 		$datalist = '';
 		$list     = '';
-		ob_start();
 		$uri=JFactory::getURI();
+		require_once JPATH_ROOT.'/libraries/joomla/user/helper.php';
+		$scriptId = "libraries_joomla_form_fields_browserserver_".JUserHelper::genRandomPassword();
+		ob_start();
 		?>
-		<script type="text/javascript" id="script-browser-server">
+		<script type="text/javascript">
 			jQuery(document).ready(function ($) {
 				$(document).on('click','.browser-server',function(){
 					data_object_id=$(this).closest('.properties').attr('data-object-id');
@@ -221,15 +225,14 @@ class JFormFieldBrowserServer extends JFormField
 					finder.popup();
 				});
 
+
+
 			});
 		</script>
 		<?php
-		$htmlScript=ob_get_clean();
-		require_once JPATH_ROOT.'/libraries/simplehtmldom_1_5/simple_html_dom.php';
-		$htmlScript = str_get_html($htmlScript);
-		$script= $htmlScript->find('script',0)->innertext;
-		$doc->addScriptDeclaration($script,'text/javascript','script-browser-server');
-
+		$script = ob_get_clean();
+		$script = JUtility::remove_string_javascript($script);
+		$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 		$html='';
 		ob_start();
 

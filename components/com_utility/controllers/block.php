@@ -22,6 +22,46 @@ require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
 class UtilityControllerBlock extends JControllerForm
 {
 
+    public static function fix_screen_size()
+    {
+        $app = JFactory::getApplication();
+        $db=JFactory::getDbo();
+        $enableEditWebsite = UtilityHelper::getEnableEditWebsite();
+        require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
+        if ($enableEditWebsite) {
+            $currentScreenSize = UtilityHelper::getCurrentScreenSizeEditing();
+        } else {
+            $currentScreenSize = UtilityHelper::getScreenSize();
+        }
+        $menu_item_active_id = $app->input->get('menu_item_active_id', 0, 'int');
+        JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
+        $tablePosition = JTable::getInstance('positionnested');
+        $website = JFactory::getWebsite();
+        $tablePosition->webisite_id = $website->website_id;
+        $parentId = $tablePosition->getRootId();
+
+        $query = $db->getQuery(true);
+        $query->select('position_config.id,position_config.menu_item_id,position_config.screensize,position_config.lft,position_config.rgt')
+            ->from('#__position_config AS position_config')
+            ->where('position_config.parent_id=' . (int)$parentId)
+            ->where('position_config.menu_item_id=' . (int)$menu_item_active_id)
+            ->where('position_config.screensize=' . $query->q($currentScreenSize))
+        ;
+        $db->setQuery($query);
+        $list_position = $db->loadObjectList();
+        foreach($list_position as $position)
+        {
+            $query=$db->getQuery(true)
+                ->update('#__position_config')
+                ->set('screensize='.$query->q($position->screensize))
+                ->where('lft>'.(int)$position->lft)
+                ->where('rgt>='.(int)$position->rgt)
+                ->where('menu_item_id='.(int)$menu_item_active_id)
+                ;
+            $db->setQuery($query)->execute();
+        }
+    }
+
     function executeQuery()
     {
         $db=JFactory::getDbo();
@@ -157,28 +197,6 @@ class UtilityControllerBlock extends JControllerForm
         $getDuplicateBlockId=reset($a_listId);
         $app->input->set('id',$getDuplicateBlockId);
         $this->display();
-    }
-    public function ajax_rebuild_block(){
-        $app=JFactory::getApplication();
-        $menu_item_active_id=$app->input->get('menu_item_active_id',0,'int');
-        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('positionnested');
-        $website=JFactory::getWebsite();
-        $tablePosition->webisite_id=$website->website_id;
-        $parentId = $tablePosition->getRootId();
-        $db=JFactory::getDbo();
-        $query=$db->getQuery(true);
-        $query->select('position_config.id,position_config.menu_item_id')
-            ->from('#__position_config AS position_config')
-            ->where('position_config.parent_id='.(int)$parentId)
-            ->where('position_config.menu_item_id='.(int)$menu_item_active_id)
-            ;
-        $db->setQuery($query);
-        $list_position=$db->loadObjectList();
-        UtilityControllerUtility::update_menu_item_from_root_menu($list_position,$menu_item_active_id);
-        echo 1;
-        die;
-
     }
     public function ajax_update_field_block()
     {
