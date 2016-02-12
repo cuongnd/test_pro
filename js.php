@@ -7,7 +7,6 @@ $allowed = array('css','js'); //set array of allowed file types to prevent abuse
 //check for request variable existence and that file type is allowed
 if(isset($_GET['file']) && isset($_GET['type']) && in_array(substr($_GET['file'],strrpos($_GET['file'],'.')+1), $allowed)){
     $data = file_get_contents(dirname(__FILE__).'/'.$_GET['file']); // grab the file contents
-
     $etag = '"'.md5($data).'"'; // generate a file Etag
     header('Etag: '.$etag); // output the Etag in the header
 

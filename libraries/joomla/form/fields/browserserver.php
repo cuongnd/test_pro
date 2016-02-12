@@ -197,8 +197,7 @@ class JFormFieldBrowserServer extends JFormField
 		// Including fallback code for HTML5 non supported browsers.
 		JHtml::_('jquery.framework');
 		$doc=JFactory::getDocument();
-		$doc->addScriptNotCompile(JUri::root().'/ckfinder/ckfinder.js');
-		$doc->addScriptNotCompile(JUri::root().'/ckfinder/config.js');
+		$doc->addScriptNotCompile(JUri::root().'ckfinder/ckfinder.js');
 
 		$datalist = '';
 		$list     = '';
@@ -209,10 +208,9 @@ class JFormFieldBrowserServer extends JFormField
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function ($) {
-				$(document).on('click','.browser-server',function(){
+				$(document).on('click','.browser-server-<?php echo $this->id ?>',function(){
 					data_object_id=$(this).closest('.properties').attr('data-object-id');
 					var finder = new CKFinder();
-
 					finder.basePath = '<?php echo $uri->toString().'/images/stories/' ?>';
 					inputName=$(this).attr('data-input-name');
 
@@ -243,7 +241,7 @@ class JFormFieldBrowserServer extends JFormField
 		<div class="input-group">
 			<input type="text" name="<?php echo $this->name ?>" id="<?php echo $this->id ?>" <?php echo $class ?> value="<?php echo htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8')  ?>"  />
 			<span class="input-group-btn">
-				<button data-type="<?php echo $this->type ?>" data-input-name="<?php echo $this->name ?>" data-field="<?php echo $this->fieldname ?>" class="btn btn-primary browser-server" type="button">Browser server</button>
+				<button data-type="<?php echo $this->type ?>" data-input-name="<?php echo $this->name ?>" data-field="<?php echo $this->fieldname ?>" class="btn btn-primary browser-server-<?php echo $this->id ?>" type="button">Browser server</button>
 			</span>
 		</div>
 			<?php

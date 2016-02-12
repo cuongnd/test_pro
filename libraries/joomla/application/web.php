@@ -696,7 +696,7 @@ class JApplicationWeb extends JApplicationBase
                     $file_size = filesize($item_image->src);
                 }
                 $file_size = JUtility::byteFormat($file_size, 'KB');
-                if ($file_size > 100) {
+                if ($file_size > 150) {
                     throw new Exception("Image size too big ($item_image->src)");
                 }
 
