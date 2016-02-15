@@ -46,6 +46,7 @@
         url: this_host + '/index.php',
         data: (function () {
           var dataPost = {
+			enable_load_component:1,
             option: cm.options.ajax_loader.component,
             task: cm.options.ajax_loader.task,
             keyword: keyword,

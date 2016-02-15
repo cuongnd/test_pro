@@ -68,7 +68,7 @@ class elementLabelHelper extends  elementHelper
         }
         $ajax_clone=false;
         $random_string='';
-        if($this->ajax_clone)
+        if(parent::check_ajax_clone()==1)
         {
             $ajax_clone=true;
             $random_string=JUserHelper::genRandomPassword();

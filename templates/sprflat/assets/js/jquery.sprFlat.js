@@ -269,7 +269,7 @@
         }
         plugin.popup_window_js=function(){
             $element.find('i[data-type="menu_params"][menu="menu"]').popupWindow({
-                windowURL:this_host+'/index.php?option=com_menus&view=menus&tmpl=field&layout=ajaxloader&hide_panel_component=1',
+                windowURL:this_host+'/index.php?enable_load_component=1&option=com_menus&view=menus&tmpl=field&layout=ajaxloader&hide_panel_component=1',
                 scrollbars:1,
                 windowName:'menu Manager',
                 centerBrowser:1,

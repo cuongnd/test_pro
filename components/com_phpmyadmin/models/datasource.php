@@ -68,8 +68,8 @@ class phpMyAdminModelDataSource extends JModelAdmin
 
     public function list_field_by_data_source($data_source,$block_id)
     {
-        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        JTable::addIncludePath(JPATH_ROOT.'/libraries/legacy/table');
+        $tablePosition=JTable::getInstance('PositionNested','JTable');
         $tablePosition->load($block_id);
         $modalDataSources=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
         $list_item=$modalDataSources->getListDataSource($data_source,$tablePosition);

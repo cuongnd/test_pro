@@ -84,6 +84,7 @@
                             data: (function () {
 
                                 dataPost = {
+                                    enable_load_component:1,
                                     option: 'com_phpmyadmin',
                                     task: 'datasource.ajaxGetStanderQuery',
                                     query: query
@@ -146,6 +147,7 @@
                     }
                 },
                 ajax_loader: {
+                    enable_load_component:1,
                     ajax: true,
                     component: 'com_phpmyadmin',
                     task: 'tables.ajax_get_list_table_and_field',
@@ -273,6 +275,7 @@
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_phpmyadmin',
                         task: 'datasource.ajaxGetDataByQuery',
                         query: query,

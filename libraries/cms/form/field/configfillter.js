@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-    config_update={
+    config_fillter={
         option_draggable:{
             appendTo: 'body',
             /*helper: function(){
@@ -126,9 +126,9 @@ jQuery(document).ready(function($){
                 droppable=$(this);
                 if(uiDraggable.hasClass('configupdate-item-table'))
                 {
-                    config_update.render_table_fields(uiDraggable,droppable);
+                    config_fillter.render_table_fields(uiDraggable,droppable);
                 }else if(uiDraggable.hasClass('configupdate-item-field')){
-                    config_update.render_table_field(uiDraggable,droppable);
+                    config_fillter.render_table_field(uiDraggable,droppable);
                 }
             }
         },
@@ -138,33 +138,33 @@ jQuery(document).ready(function($){
             handleClass:'dd-handle-move'
         },
         init_config_nestable:function(){
-            $('#config_update1').nestable(config_update.option_nestable)
-                .on('change', config_update.updateOutput);
+            $('#config_fillter1').nestable(config_fillter.option_nestable)
+                .on('change', config_fillter.updateOutput);
 
 
 
 
         },
-        init_config_update:function(){
+        init_config_fillter:function(){
 
 
             $(document).on('click','.add_node',function(){
-                config_update.add_node($(this));
+                config_fillter.add_node($(this));
             });
             $(document).on('click','.add_sub_node',function(){
-                config_update.add_sub_node($(this));
+                config_fillter.add_sub_node($(this));
             });
 
 
 
-            config_update.set_auto_complete();
+            config_fillter.set_auto_complete();
             // activate Nestable for list 1
-            config_update.init_config_nestable();
-            $( ".configupdate-item-table" ).draggable(config_update.option_draggable);
-            config_update.update_nestable();
-            $('.dd-list-droppable').droppable(config_update.option_droppable);
+            config_fillter.init_config_nestable();
+            $( ".configupdate-item-table" ).draggable(config_fillter.option_draggable);
+            config_fillter.update_nestable();
+            $('.dd-list-droppable').droppable(config_fillter.option_droppable);
             $('.configupdate-item-table a.plus').click(function(){
-                config_update.get_list_field_table($(this));
+                config_fillter.get_list_field_table($(this));
             });
 
 
@@ -189,8 +189,8 @@ jQuery(document).ready(function($){
             li_clone.find(".table_name").val('');
             li_clone.find(".column_name").val('');
             li_clone.find(".post_name").val('');
-            li_clone.find("input.table_name").select2(config_update.table_name_option);
-            li_clone.find("input.column_name").select2(config_update.column_name_option);
+            li_clone.find("input.table_name").select2(config_fillter.table_name_option);
+            li_clone.find("input.column_name").select2(config_fillter.column_name_option);
 
             data_post=[];
             $('#content .content-wrapper').find(':input').each(function(){
@@ -212,7 +212,7 @@ jQuery(document).ready(function($){
                 tags:data_post
             });
 
-            config_update.update_nestable();
+            config_fillter.update_nestable();
         },
         add_sub_node:function(self){
             li=self.closest('.dd-item');
@@ -245,12 +245,12 @@ jQuery(document).ready(function($){
             li_clone.attr('data-level',level);
             primary_key=li_clone.find('input[type="radio"].primary-key');
             primary_key.attr('name','primary_key_'+level);
-            li_clone.find("input.table_name").select2(config_update.table_name_option);
-            li_clone.find("input.column_name").select2(config_update.column_name_option);
+            li_clone.find("input.table_name").select2(config_fillter.table_name_option);
+            li_clone.find("input.column_name").select2(config_fillter.column_name_option);
 
             //set select 2 post name
-            li_clone.find("input.post_name").select2(config_update.post_name_option);
-            config_update.update_nestable();
+            li_clone.find("input.post_name").select2(config_fillter.post_name_option);
+            config_fillter.update_nestable();
 
         },
         update_data_column:function(self,key,type_input) {
@@ -265,7 +265,7 @@ jQuery(document).ready(function($){
             }
             dd_item = self.closest('.dd-item');
             dd_item.data(key, self_value);
-            config_update.update_nestable();
+            config_fillter.update_nestable();
         },
         primary_key_update_value:function(self){
             self = $(self);
@@ -277,12 +277,12 @@ jQuery(document).ready(function($){
             self = $(self);
             name=self.attr('name');
             $('input[type="radio"][name="'+name+'"]').each(function(){
-                config_update.update_data_column(this,'primary_key','radio');
+                config_fillter.update_data_column(this,'primary_key','radio');
             });
         },
         set_auto_complete:function(){
-            $(".table_name").select2(config_update.table_name_option);
-            $(".column_name").select2(config_update.column_name_option);
+            $(".table_name").select2(config_fillter.table_name_option);
+            $(".column_name").select2(config_fillter.column_name_option);
 
 
             data_post=[];
@@ -307,14 +307,14 @@ jQuery(document).ready(function($){
 
         },
         update_nestable:function(){
-            config_update.updateOutput($('#config_update1').data('output', $('#config_update1-output')));
+            config_fillter.updateOutput($('#config_fillter1').data('output', $('#config_fillter1-output')));
         },
         remove_item_nestable:function(self){
             self=$(self);
             dd_item=self.closest('.dd-item');
             if($('.dd-item').length>1)
                 dd_item.remove();
-            config_update.update_nestable();
+            config_fillter.update_nestable();
         },
         get_list_field_table:function(self){
             table=self.data('table');
@@ -418,8 +418,8 @@ jQuery(document).ready(function($){
                 droppable.append(dd_list);
                 droppable.find('.dd-empty').remove();
             }
-            //config_update.update_nestable();
-            dd_item.droppable(config_update.option_droppable);
+            //config_fillter.update_nestable();
+            dd_item.droppable(config_fillter.option_droppable);
         },
         updateOutput:function(e){
             var list = e.length ? e : $(e.target),
@@ -438,8 +438,8 @@ jQuery(document).ready(function($){
             data_type = self.val();
             dd_item = self.closest('.dd-item');
             dd_item.data('type', data_type);
-            config_update.updateOutput($('#config_update1').data('output', $('#config_update1-output')));
-            config_update.updateOutput($('#config_update2').data('output', $('#config_update2-output')));
+            config_fillter.updateOutput($('#config_fillter1').data('output', $('#config_fillter1-output')));
+            config_fillter.updateOutput($('#config_fillter2').data('output', $('#config_fillter2-output')));
         },
         update_data_editable:function(){
 

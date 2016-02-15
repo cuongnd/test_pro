@@ -104,8 +104,8 @@ class DataSourceHelper
         require_once JPATH_ROOT.'/media/kendotest/php/lib/DataSourceResult.php';
         require_once JPATH_ROOT.'/media/kendotest/php/lib/Kendo/Autoload.php';
         $app=JFactory::getApplication();
-        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        JTable::addIncludePath(JPATH_ROOT.'/libraries/legacy/table');
+        $tablePosition=JTable::getInstance('PositionNested','JTable');
         $tablePosition->load($block_id);
         $params = new JRegistry;
         $params->loadString($tablePosition->params);
@@ -169,7 +169,7 @@ class DataSourceHelper
         require_once JPATH_ROOT.'/media/kendotest/php/lib/Kendo/Autoload.php';
         $app=JFactory::getApplication();
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        $tablePosition=JTable::getInstance('PositionNested','JTable');
         $tablePosition->load($block_id);
         $params = new JRegistry;
         $params->loadString($tablePosition->params);

@@ -1,0 +1,176 @@
+<config><fields name="params">
+					<field type="list" readonly="false" label="Is booking" default=""
+						   name="is_booking"
+
+													 multiple="false" 													 size="1" 												>
+																							<option value="1">Yes</option>
+																																<option value="0">No</option>
+																				</field>
+					<field type="checkbox" label="Is booking" default="0"
+						   name="enable_is_booking" onchange="">
+
+					</field>
+
+									
+					<field type="mapcopy" readonly="false" label="Map copy" default=""
+						   name="mapcopy"
+
+												>
+																							<option value="1">Yes</option>
+																																<option value="0">No</option>
+																				</field>
+					<field type="checkbox" label="Map copy" default="0"
+						   name="enable_mapcopy" onchange="">
+
+					</field>
+
+									
+					<field type="bindingSource" readonly="false" label="list var save booking" default=""
+						   name="list_var_save_booking"
+
+												>
+											</field>
+					<field type="checkbox" label="list var save booking" default="0"
+						   name="enable_list_var_save_booking" onchange="">
+
+					</field>
+
+									
+					<field type="configupdate" readonly="false" label="Config update" default=""
+						   name="config_update_data"
+
+												>
+											</field>
+					<field type="checkbox" label="Config update" default="0"
+						   name="enable_config_update_data" onchange="">
+
+					</field>
+
+									
+					<field type="buttonstate" readonly="false" label="Button state" default=""
+						   name="buttonstate"
+
+													 multiple="false" 													 size="1" 												>
+											</field>
+					<field type="checkbox" label="Button state" default="0"
+						   name="enable_buttonstate" onchange="">
+
+					</field>
+
+									<fields name="data">
+					<field type="bindingSource" readonly="false" label="Binding source" default=""
+						   name="bindingSource"
+
+												>
+											</field>
+					<field type="checkbox" label="Binding source" default="0"
+						   name="enable_bindingsource" onchange="">
+
+					</field>
+
+									</fields>				<fields name="element_config">
+					<field type="list" readonly="false" label="Buttom position" default=""
+						   name="buttom_position"
+
+													 multiple="false" 													 size="1" 												>
+																							<option value="left">Left</option>
+																																<option value="right">Right</option>
+																				</field>
+					<field type="checkbox" label="Buttom position" default="0"
+						   name="enable_buttom_position" onchange="">
+
+					</field>
+
+									
+					<field type="text" readonly="false" label="Text" default=""
+						   name="text"
+
+												>
+											</field>
+					<field type="checkbox" label="Text" default="0"
+						   name="enable_text" onchange="">
+
+					</field>
+
+									
+					<field type="menuitem" readonly="false" label="Link to page" default=""
+						   name="link_to_page"
+
+												>
+											</field>
+					<field type="checkbox" label="Link to page" default="0"
+						   name="enable_link_to_page" onchange="">
+
+					</field>
+
+									
+					<field type="list" readonly="false" label="Button type" default=""
+						   name="button_type"
+
+													 multiple="false" 													 size="1" 												>
+																							<option value="submit">Submit</option>
+																																<option value="reset">Reset</option>
+																				</field>
+					<field type="checkbox" label="Button type" default="0"
+						   name="enable_button_type" onchange="">
+
+					</field>
+
+									
+					<field type="list" readonly="false" label="Method submit" default=""
+						   name="method_submit"
+
+													 multiple="false" 													 size="1" 												>
+																							<option value="get">GET</option>
+																																<option value="post">POST</option>
+																				</field>
+					<field type="checkbox" label="Method submit" default="0"
+						   name="enable_method_submit" onchange="">
+
+					</field>
+
+									
+					<field type="icon" readonly="false" label="Icon left" default=""
+						   name="icon_left"
+
+												>
+											</field>
+					<field type="checkbox" label="Icon left" default="0"
+						   name="enable_icon_left" onchange="">
+
+					</field>
+
+									
+					<field type="icon" readonly="false" label="Icon right" default=""
+						   name="icon_right"
+
+												>
+											</field>
+					<field type="checkbox" label="Icon right" default="0"
+						   name="enable_icon_right" onchange="">
+
+					</field>
+
+									
+					<field type="cssbuttonclass" readonly="false" label="Class Button" default=""
+						   name="class_button"
+
+													 multiple="false" 													 size="1" 												>
+											</field>
+					<field type="checkbox" label="Class Button" default="0"
+						   name="enable_class_button" onchange="">
+
+					</field>
+
+									
+					<field type="textarea" readonly="false" label="Option" default=""
+						   name="option"
+
+												>
+											</field>
+					<field type="checkbox" label="Option" default="0"
+						   name="enable_option" onchange="">
+
+					</field>
+
+									</fields>				</fields>				</config>

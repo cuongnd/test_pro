@@ -69,8 +69,8 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         $key_value=$app->input->get('key_value','','string');
         $keyword=$app->input->get('keyword','','string');
         $keyword=strtolower($keyword);
-        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('Position','JTable');
+        JTable::addIncludePath(JPATH_ROOT.'/libraries/legacy/table');
+        $tablePosition=JTable::getInstance('PositionNested');
         $tablePosition->load($block_id);
         $params = new JRegistry;
         $params->loadString($tablePosition->params);
@@ -315,7 +315,7 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
         $block_id=$app->input->get('block_id',0);
         $type=$app->input->get('type','');
-        $table_block=JTable::getInstance('Position','JTable');
+        $table_block=JTable::getInstance('PositionNested','JTable');
         $table_block->load($block_id);
         $params = new JRegistry;
         $params->loadString($table_block->params);
@@ -877,7 +877,7 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         JTable::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/tables');
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
         $block_id=$app->input->get('block_id',0);
-        $table_block=JTable::getInstance('Position','JTable');
+        $table_block=JTable::getInstance('PositionNested','JTable');
         $table_block->load($block_id);
         $params = new JRegistry;
 
@@ -963,7 +963,7 @@ class phpMyAdminControllerDataSource extends PhpmyadminController
         JTable::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/tables');
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
         $block_id=$app->input->get('block_id',0);
-        $table_block=JTable::getInstance('Position','JTable');
+        $table_block=JTable::getInstance('PositionNested','JTable');
         $table_block->load($block_id);
         $params = new JRegistry;
 

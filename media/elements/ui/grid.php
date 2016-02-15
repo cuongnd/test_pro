@@ -110,25 +110,25 @@ class elementGridHelper extends elementHelper
         $transport = new \Kendo\Data\DataSourceTransport();
 
         $create = new \Kendo\Data\DataSourceTransportCreate();
-        $create->url(JUri::root() . 'index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&type=create&block_id=' . $block->id . $url)
+        $create->url(JUri::root() . 'index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajax_update_Data&type=create&block_id=' . $block->id . $url)
             ->contentType('application/json')
             ->type('POST');
 
         $read = new \Kendo\Data\DataSourceTransportRead();
 
-        $read->url(JUri::root() . 'index.php?option=com_phpmyadmin&task=datasource.readData&block_id=' . $block->id . $url)
+        $read->url(JUri::root() . 'index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.readData&block_id=' . $block->id . $url)
             ->contentType('application/json')
             ->type('POST');
 
         $update = new \Kendo\Data\DataSourceTransportUpdate();
 
-        $update->url(JUri::root() . 'index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&type=update&block_id=' . $block->id . $url)
+        $update->url(JUri::root() . 'index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajax_update_Data&type=update&block_id=' . $block->id . $url)
             ->contentType('application/json')
             ->type('POST');
 
         $destroy = new \Kendo\Data\DataSourceTransportDestroy();
 
-        $destroy->url(JUri::root() . 'index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&type=destroy&block_id=' . $block->id . $url)
+        $destroy->url(JUri::root() . 'index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajax_update_Data&type=destroy&block_id=' . $block->id . $url)
             ->contentType('application/json')
             ->type('POST');
 
@@ -357,22 +357,22 @@ class elementGridHelper extends elementHelper
                         dataSource: {
                             transport: {
                                 create: {
-                                    url: "<?php echo  JUri::root() ?>index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&type=create&block_id=<?php echo $block->id ?>",
+                                    url: "<?php echo  JUri::root() ?>index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajax_update_Data&type=create&block_id=<?php echo $block->id ?>",
                                     contentType: "application\/json",
                                     type: "POST"
                                 },
                                 read: {
-                                    url: "<?php echo  JUri::root() ?>index.php?option=com_phpmyadmin&task=datasource.readData&block_id=<?php echo $block->id ?>",
+                                    url: "<?php echo  JUri::root() ?>index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.readData&block_id=<?php echo $block->id ?>",
                                     contentType: "application\/json",
                                     type: "POST"
                                 },
                                 update: {
-                                    url: "<?php echo  JUri::root() ?>index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&block_id=<?php echo $block->id ?>",
+                                    url: "<?php echo  JUri::root() ?>index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajax_update_Data&block_id=<?php echo $block->id ?>",
                                     contentType: "application\/json",
                                     type: "POST"
                                 },
                                 destroy: {
-                                    url: "<?php echo  JUri::root() ?>index.php?option=com_phpmyadmin&task=datasource.ajax_update_Data&block_id=<?php echo $block->id ?>",
+                                    url: "<?php echo  JUri::root() ?>index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajax_update_Data&block_id=<?php echo $block->id ?>",
                                     contentType: "application\/json",
                                     type: "POST"
                                 },

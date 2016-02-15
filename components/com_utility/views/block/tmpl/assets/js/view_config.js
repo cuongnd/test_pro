@@ -23,7 +23,7 @@ jQuery(document).ready(function($){
         },
         icon_option:{
             ajax: {
-                url: this_host+"/index.php?option=com_menus&task=item.ajax_get_list_icon",
+                url: this_host+"/index.php?enable_load_component=1&option=com_menus&task=item.ajax_get_list_icon",
                 dataType: 'json',
                 delay: 250,
                 data: function (term, page) {
@@ -63,7 +63,7 @@ jQuery(document).ready(function($){
         },
         access_option:{
             ajax: {
-                url: this_host+"/index.php?option=com_users&task=user.ajax_get_list_group_user",
+                url: this_host+"/index.php?enable_load_component=1&option=com_users&task=user.ajax_get_list_group_user",
                 dataType: 'json',
                 delay: 250,
                 data: function (term, page) {
@@ -148,6 +148,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_menus',
                         task: 'item.ajax_update_item',
                         data:{
@@ -236,6 +237,7 @@ jQuery(document).ready(function($){
                        data: (function () {
 
                            var dataPost = {
+                               enable_load_component:1,
                                option: 'com_utility',
                                task: 'block.ajax_copy_params_property_element',
                                ui_element: ui_element,
@@ -353,6 +355,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_utility',
                         task: 'block.ajax_save_field_params',
                         fields: fields,
@@ -565,6 +568,7 @@ jQuery(document).ready(function($){
                 data: (function () {
 
                     dataPost = {
+                        enable_load_component:1,
                         option: 'com_utility',
                         task: 'params.ajax_get_attribute_config',
                         path: path,
