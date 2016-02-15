@@ -108,16 +108,129 @@ class phpMyAdminModelDataSources extends JModelList
 		$listObject=array();
 		$db->redirectPage(false);
 		require_once JPATH_ROOT.'/components/com_phpmyadmin/helpers/datasource.php';
-		foreach($listDataSource as $dataSource)
+		foreach($listDataSource as $item_data_source)
 		{
-			$query=$dataSource->datasource;
-			$query=DataSourceHelper::OverWriteDataSource($query);
-			$db->setQuery($query);
-			$object=new stdClass();
-			$object->datasource=$dataSource;
-			$object->listField= $db->loadObject();
-			$listObject[]=$object;
+			$use_type=$item_data_source->use_type;
+			//if use code php
+			if($use_type=='code_php')
+			{
+				$file_php = JPATH_ROOT . '/cache/get_data_by_data_source_' . $item_data_source->id . '.php';
+				$list = JUtility::get_content_file($item_data_source, $file_php, '#__datasource', 'php_content');
+				for($i=0;$i<count($list);$i++)
+				{
+					$item=$list[$i];
+					foreach($item as $key=>$value) {
+						$value='['.$value.']';
+						if (JUtility::isJson($value)) {
+							$value=json_decode($value);
+							if(is_object($value[0])||(is_array($value)&&count($value)>1))
+							{
+								if(count($value)==1)
+								{
+									$item->$key = $value[0];
+								}else{
+									$item->$key = $value;
+								}
+							}
+						}
+					}
+					$list[$i]=(object)$item;
+				}
+				$object=new stdClass();
+				$object->datasource=$item_data_source;
+				$object->listField= $list;
+
+				$listObject[]=$object;
+			}else {
+				$string_data_source = $item_data_source->datasource;
+				$stringQuery1 = $string_data_source;
+				require_once JPATH_ROOT . '/components/com_phpmyadmin/helpers/datasource.php';
+				$string_data_source = DataSourceHelper::OverWriteDataSource($string_data_source);
+				$query = $this->_db->getQuery(true);
+
+				$query->setQuery(trim($string_data_source));
+				$this->_db->setQuery($query,0,1);
+				//echo $query->dump();
+				if (trim($query->dump()) == '') {
+					return array();
+				}
+				$this->_db->redirectPage(false);
+
+				$list = $this->_db->loadObjectList();
+				$list = DataSourceHelper::tree_node_data($stringQuery1, $list);
+				if (!count($list)) {
+					require_once JPATH_ROOT . '/libraries/PHP-SQL-Parser/src/PHPSQLParser.php';
+					$parser_query = new PHPSQLParser((string)$query, true);
+					$list_field_select = $parser_query->parsed['SELECT'];
+					$from = $parser_query->parsed['FROM'];
+					$item = new stdClass();
+					foreach ($list_field_select as $field) {
+						if (is_array($field['alias'])) {
+							$name = $field['alias']['name'];
+							$item->$name = '';
+						} else {
+							$base_expr = $field['base_expr'];
+							$base_expr = explode('.', $base_expr);
+							$table_name = $base_expr[0];
+							$table_start = $base_expr[1];
+							$table_select = '';
+
+							if ($table_start == '*') {
+								$list_field = array();
+								foreach ($from as $item_from) {
+									$expr_type = $item_from['expr_type'];
+									if ($expr_type == 'table') {
+										$alias = $item_from['alias'];
+										if (is_array($alias)) {
+											if (trim($alias['name']) == trim($table_name)) {
+												$table_select = $item_from['table'];
+												break;
+											}
+										}
+									}
+								}
+							}
+							if ($table_select !== '') {
+								$list_field = $db->getTableColumns($table_select);
+							}
+							foreach ($list_field as $field_name => $type) {
+								$item->$field_name = '';
+							}
+						}
+					}
+					$list[] = $item;
+				}
+
+				for ($i = 0; $i < count($list); $i++) {
+					$item = $list[$i];
+
+					foreach ($item as $key => $value) {
+						$value = '[' . $value . ']';
+						if (JUtility::isJson($value)) {
+							$value = json_decode($value);
+							if (is_object($value[0]) || (is_array($value) && count($value) > 1)) {
+								if (count($value) == 1) {
+									$item->$key = $value[0];
+								} else {
+									$item->$key = $value;
+								}
+							}
+						}
+					}
+					$list[$i] = $item;
+				}
+				$object=new stdClass();
+				$object->datasource=$item_data_source;
+				$object->listField= $list;
+
+				$listObject[]=$object;
+			}
+
 		}
+		echo "<pre>";
+		print_r($listObject);
+		echo "</pre>";
+		die;
 		$app=JFactory::getApplication();
 		static::$current_data_source=$listObject;
 		return  $listObject;

@@ -132,8 +132,10 @@ class elementfillterbuttonHelper extends  elementHelper
             $option='';
         }
 
-        $task=$params->get('element_config.task','');
+        $config_fillter=$params->get('element_config.config_fillter','');
+        $config_fillter=JUtility::get_up_json_decode($config_fillter);
         $enable_task=$params->get('element_config.enable_task',false);
+        $form_filter=$params->get('element_config.form_filter',0);
         $enable_task=JUtility::toStrictBoolean($enable_task);
         if(!$enable_task)
         {
@@ -149,9 +151,10 @@ class elementfillterbuttonHelper extends  elementHelper
                     input:<?php echo json_encode($app->input->getArray()) ?>,
                     fillterbutton_state:"<?php echo $fillterbutton_state ?>",
                     link_to_page:<?php echo $link_to_page ?>,
-                    option:"<?php echo $option ?>",
-                    task:"<?php echo $task ?>",
+                    config_fillter:<?php echo json_encode($config_fillter) ?>,
                     block_id:<?php echo $block->id ?>,
+                    form_filter:<?php echo $form_filter?>,
+
                 });
 
 
@@ -165,7 +168,7 @@ class elementfillterbuttonHelper extends  elementHelper
         $html='';
         ob_start();
         ?>
-        <fillterbutton id="ui_fillterbutton_<?php echo $block->id; ?>"  type="fillterbutton" link-to-page="<?php echo $link_to_page ?>" class="block-item block-item-fillterbutton btn btn-default <?php echo $class_fillterbutton ?> <?php echo $pull_right ?>" name="<?php echo $name ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"  element-type="<?php echo $block->type ?>">
+        <button id="ui_fillterbutton_<?php echo $block->id; ?>"  type="fillterbutton" link-to-page="<?php echo $link_to_page ?>" class="block-item block-item-fillterbutton btn btn-default <?php echo $class_fillterbutton ?> <?php echo $pull_right ?>" name="<?php echo $name ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"  element-type="<?php echo $block->type ?>">
             <?php if($icon_left){ ?>
             <i class="<?php echo $icon_left ?>"></i>
             <?php } ?>
@@ -175,7 +178,7 @@ class elementfillterbuttonHelper extends  elementHelper
             <?php if($icon_right){ ?>
                 <i class="<?php echo $icon_right ?>"></i>
             <?php } ?>
-        </fillterbutton>
+        </button>
 
         <?php
         $html=ob_get_clean();

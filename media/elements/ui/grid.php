@@ -344,6 +344,11 @@ class elementGridHelper extends elementHelper
             $template_by_element = array();
 
         $hide_footer =$params->get('config_view_grid.hide_footer',false);
+        $input=JFactory::getApplication()->input;
+        $post_data=$input->getArray();
+        unset($post_data['option']);
+        unset($post_data['view']);
+        $string_post_data=http_build_query($post_data);
         //setup script grid
         $scriptId = "script_ui_grid_" . $block->id;
         ob_start();
@@ -362,7 +367,7 @@ class elementGridHelper extends elementHelper
                                     type: "POST"
                                 },
                                 read: {
-                                    url: "<?php echo  JUri::root() ?>index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.readData&block_id=<?php echo $block->id ?>",
+                                    url: "<?php echo  JUri::root() ?>index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.readData&block_id=<?php echo $block->id ?>&<?php echo $string_post_data ?>",
                                     contentType: "application\/json",
                                     type: "POST"
                                 },

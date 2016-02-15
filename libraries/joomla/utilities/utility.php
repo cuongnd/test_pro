@@ -87,6 +87,22 @@ class JUtility
         return $var;
     }
 
+    public static function get_up_json_decode($string_base_64='')
+    {
+
+        if (base64_encode(base64_decode($string_base_64, true)) == $string_base_64) {
+            $object_base_64 = base64_decode($string_base_64, true);
+
+        } else {
+            $object_base_64 = '';
+        }
+        require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+        $object_base_64 = up_json_decode($object_base_64, false, 512, JSON_PARSE_JAVASCRIPT);
+        return $object_base_64;
+
+
+    }
+
     public function replate_request($string)
     {
         $input = JFactory::getApplication()->input;

@@ -8,7 +8,6 @@
             enable_edit_website:0,
             list_function_run_befor_submit:[],
             fillterbutton_state:'',
-            option:'',
             task:'',
             block_id:0,
             input:[]
@@ -25,32 +24,18 @@
         // the "constructor" method that gets called when the object is created
         plugin.init = function () {
             plugin.settings = $.extend({}, defaults, options);
-            var fillterbutton_state= plugin.settings.fillterbutton_state;
-            var input=plugin.settings.input;
-            var option=plugin.settings.option;
-            var option=plugin.settings.option;
-            var block_id=plugin.settings.block_id;
-            var task=plugin.settings.task;
-            option_click= {
-                option: 'com_phpmyadmin',
-                task: 'datasource.ajax_save_data',
-                block_id:block_id
 
-            };
-            if(option!='')
-            {
-                option_click.option=option;
-            }
-            if(task!='')
-            {
-                option_click.task=task;
-            }
-            delete input.option;
-            delete input.view;
-            delete input.task;
-            option_click = $.extend({}, input,option_click);
-            option_click= $.param(option_click);
+
+            var input=plugin.settings.input;
+            var option=input.option;
+            var view=input.view;
+            var Itemid=input.Itemid;
+            var block_id=plugin.settings.block_id;
+            var form_filter=plugin.settings.form_filter;
+            $( '.block-item[data-block-id="'+form_filter+'"]' ).wrap( '<form method="POST"  id="form_'+form_filter+'" action="'+url_root+'index.php?option='+option+'&view='+view+'&Itemid='+Itemid+' " ></form>' );
             $element.click(function(e){
+                var config_fillter= plugin.settings.config_fillter;
+
 
                 if(plugin.settings.fillterbutton_state=='close')
                 {
@@ -64,17 +49,24 @@
                         return false;
                     }
                 }
-                data_submit={};
-                $.each(Joomla_post.list_function_run_befor_submit,function(index,instant_function){
-                    instant_function(data_submit)
+                data_submit=[];
+                $.each(config_fillter,function(index,item){
+                    var post_name=item.post_name;
+                    var value_of_item=$('*[name="'+item.post_name+'"]').val();
+                    var item_post={};
+                    item_post[post_name]=value_of_item;
+                    data_submit.push(item_post);
                 });
 
+                console.log(data_submit);
+                $('#form_'+form_filter).submit();
                 if (typeof ajax_web_design !== 'undefined') {
                     ajax_web_design.abort();
                 }
 
                 //option=  $.extend({}, input, option);
 
+/*
                 ajax_web_design=$.ajax({
                     contentType: 'application/json',
                     type: "POST",
@@ -113,6 +105,7 @@
 
                     }
                 });
+*/
 
 
 
