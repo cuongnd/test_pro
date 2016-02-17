@@ -97,7 +97,6 @@ switch ($config->error_reporting) {
 
         break;
 }
-
 define('JDEBUG', $config->debug);
 // System profiler
 if (JDEBUG) {

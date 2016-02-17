@@ -124,7 +124,9 @@
       <excludeFolder url="file://$MODULE_DIR$/layouts" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/Fancy product designer 1.0.1 - CodeCanyon" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/GWTUMLDrawer_1.0_Beta_3" />
-      <excludeFolder url="file://$MODULE_DIR$/libraries/PHP-SQL-Parser" />
+      <excludeFolder url="file://$MODULE_DIR$/libraries/PHP-SQL-Parser/examples" />
+      <excludeFolder url="file://$MODULE_DIR$/libraries/PHP-SQL-Parser/libs" />
+      <excludeFolder url="file://$MODULE_DIR$/libraries/PHP-SQL-Parser/tests" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/PHPExcel-1.8" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/adminbackend" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/adminfrontend" />

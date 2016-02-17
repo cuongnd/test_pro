@@ -169,7 +169,8 @@
                 'get_json_group_concat(id:id,title:title)',
                 'LEFT JOIN t__t1 AS t1 ON t1.id=t2.t_id',
                 'request(id,0)',
-                'get_tree_node(field,id,parent_id,ordering,asign_name)'
+                'get_tree_node(field,id,parent_id,ordering,asign_name)',
+                'in_tree_root(operator,field,table_parent_children,field_parent,field_children,request_val)'
             ];
 
             CodeMirror.commands.autocomplete1 = function (cm) {

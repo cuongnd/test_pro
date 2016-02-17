@@ -886,7 +886,7 @@ XML;
             }
         }
     }
-    public function getPositionByPage($enableEditWebsite=1)
+    public static function getPositionByPage($enableEditWebsite=1)
     {
 
         $app=JFactory::getApplication();

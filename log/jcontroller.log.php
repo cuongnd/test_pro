@@ -10,3 +10,7 @@
 2016-02-09T20:53:18+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
 2016-02-09T20:53:22+00:00	DEBUG	-	class:JApplicationCms
 2016-02-09T20:53:22+00:00	DEBUG	-	legacy $url:/component/users/profile.html
+2016-02-16T03:31:57+00:00	DEBUG	-	class:JApplicationCms
+2016-02-16T03:31:57+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2016-02-16T09:13:18+00:00	DEBUG	-	class:JApplicationCms
+2016-02-16T09:13:18+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system

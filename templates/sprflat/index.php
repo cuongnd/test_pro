@@ -474,7 +474,7 @@ if ($ajaxGetContent) {
     <!-- Start #right-sidebar -->
     <?php
     // layer same photoshop
-    //include JPATH_ROOT.'/libraries/adminfrontend/rightsidebar.php';
+    include JPATH_ROOT.'/libraries/adminfrontend/rightsidebar.php';
     ?>
 
     <!-- End #right-sidebar -->

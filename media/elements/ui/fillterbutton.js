@@ -50,13 +50,16 @@
                     }
                 }
                 data_submit=[];
-                $.each(config_fillter,function(index,item){
-                    var post_name=item.post_name;
-                    var value_of_item=$('*[name="'+item.post_name+'"]').val();
-                    var item_post={};
-                    item_post[post_name]=value_of_item;
-                    data_submit.push(item_post);
-                });
+                if(config_fillter.length>=1)
+                {
+                    $.each(config_fillter,function(index,item){
+                        var post_name=item.post_name;
+                        var value_of_item=$('*[name="'+item.post_name+'"]').val();
+                        var item_post={};
+                        item_post[post_name]=value_of_item;
+                        data_submit.push(item_post);
+                    });
+                }
 
                 console.log(data_submit);
                 $('#form_'+form_filter).submit();

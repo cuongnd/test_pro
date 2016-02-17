@@ -65,7 +65,7 @@ foreach ($listMenu as $menu) {
                                             $children[$pt] = $list;
                                         }
 
-                                        $menus= treerecurse($menu_root->id,array(),$children,99,0);
+                                        //$menus= treerecurse($menu_root->id,array(),$children,99,0);
                                         create_html_list_right_side_bar($menus,$menuItemIdActive);
 
                                         ?>

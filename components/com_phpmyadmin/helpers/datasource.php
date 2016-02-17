@@ -83,10 +83,6 @@ class DataSourceHelper
         if ($query_string == '')
             return $query_string;
         $app = JFactory::getApplication();
-        //replate get_json_group_concat
-        //id:tour.id,tour_name:tour.title
-        //get_tree_node(field,id,parent_id,ordering,asign_name,---)
-        //to field,id,parent_id,ordering
         $requestString = '/(.*?)in_tree_root(\(|\'|)(.*?)(\)|\'| )/s';
         preg_match_all($requestString, $query_string, $requests);
         $requests = $requests[3][0];
@@ -121,7 +117,7 @@ class DataSourceHelper
         $list_id = array();
         $id = $app->input->get($request, 0);
         $list_id[]=$id;
-        static::treeReCurseCategories($id, $children_id, $list_id, $children);
+        //static::treeReCurseCategories($id, $children_id, $list_id, $children);
 
         $requests = '';
         if (count($list_id)) {

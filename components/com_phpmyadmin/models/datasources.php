@@ -147,7 +147,6 @@ class phpMyAdminModelDataSources extends JModelList
 				require_once JPATH_ROOT . '/components/com_phpmyadmin/helpers/datasource.php';
 				$string_data_source = DataSourceHelper::OverWriteDataSource($string_data_source);
 				$query = $this->_db->getQuery(true);
-
 				$query->setQuery(trim($string_data_source));
 				$this->_db->setQuery($query,0,1);
 				//echo $query->dump();
@@ -155,14 +154,19 @@ class phpMyAdminModelDataSources extends JModelList
 					return array();
 				}
 				$this->_db->redirectPage(false);
+				$list=array();
+				$a_object=$this->_db->loadObject();
+				if($a_object)
+				{
+					$list = array($a_object);
+				}
 
-				$list = $this->_db->loadObjectList();
-				$list = DataSourceHelper::tree_node_data($stringQuery1, $list);
 				if (!count($list)) {
 					require_once JPATH_ROOT . '/libraries/PHP-SQL-Parser/src/PHPSQLParser.php';
 					$parser_query = new PHPSQLParser((string)$query, true);
 					$list_field_select = $parser_query->parsed['SELECT'];
 					$from = $parser_query->parsed['FROM'];
+
 					$item = new stdClass();
 					foreach ($list_field_select as $field) {
 						if (is_array($field['alias'])) {
@@ -170,9 +174,15 @@ class phpMyAdminModelDataSources extends JModelList
 							$item->$name = '';
 						} else {
 							$base_expr = $field['base_expr'];
-							$base_expr = explode('.', $base_expr);
-							$table_name = $base_expr[0];
-							$table_start = $base_expr[1];
+							if($base_expr=='*')
+							{
+								$table_start='*';
+								$table_name='';
+							}else {
+								$base_expr = explode('.', $base_expr);
+								$table_name = $base_expr[0];
+								$table_start = $base_expr[1];
+							}
 							$table_select = '';
 
 							if ($table_start == '*') {
@@ -185,6 +195,10 @@ class phpMyAdminModelDataSources extends JModelList
 											if (trim($alias['name']) == trim($table_name)) {
 												$table_select = $item_from['table'];
 												break;
+											}else if($table_name=='')
+											{
+												$table_select = $item_from['table'];
+												break;
 											}
 										}
 									}
@@ -192,6 +206,7 @@ class phpMyAdminModelDataSources extends JModelList
 							}
 							if ($table_select !== '') {
 								$list_field = $db->getTableColumns($table_select);
+
 							}
 							foreach ($list_field as $field_name => $type) {
 								$item->$field_name = '';
@@ -221,16 +236,11 @@ class phpMyAdminModelDataSources extends JModelList
 				}
 				$object=new stdClass();
 				$object->datasource=$item_data_source;
-				$object->listField= $list;
-
+				$object->listField= $list[0];
 				$listObject[]=$object;
 			}
 
 		}
-		echo "<pre>";
-		print_r($listObject);
-		echo "</pre>";
-		die;
 		$app=JFactory::getApplication();
 		static::$current_data_source=$listObject;
 		return  $listObject;

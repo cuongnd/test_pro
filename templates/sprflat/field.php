@@ -168,10 +168,7 @@ if ($enableEditWebsite) {
 
 
 		$doc->addScript(JUri::root() . '/media/system/js/jquery-neon-border/js/jquery.neon_border.js');
-		$lessInput = JPATH_ROOT . '/media/system/js/jquery-neon-border/less/jquery.neon_border.less';
-		$cssOutput = JPATH_ROOT . '/media/system/js/jquery-neon-border/css/jquery.neon_border.css';
-		templateSprflatHelper::compileLess($lessInput, $cssOutput);
-		$doc->addStyleSheet(JUri::root() . '/media/system/js/jquery-neon-border/css/jquery.neon_border.css');
+		$doc->addLessStyleSheet(JUri::root() . '/media/system/js/jquery-neon-border/less/jquery.neon_border.less');
 
 
 		$lessInput = JPATH_ROOT . '/templates/sprflat/less/template.less';

@@ -5,10 +5,16 @@
  * Date: 10/9/2015
  * Time: 19:02
  */
-JModelLegacy::addIncludePath(JPATH_ROOT . '/components/com_phpmyadmin/models');
-$dataSourceModal = JModelLegacy::getInstance('DataSources', 'phpMyAdminModel');
-$currentDataSource = $dataSourceModal->getCurrentDataSources();
-
+$website=JFactory::getWebsite();
+$db=JFactory::getDbo();
+$query=$db->getQuery(true);
+$query->from('#__datasource AS datasource')
+    ->select('*')
+    ->where('datasource.parent_id!=id')
+    ->where('datasource.website_id='.(int)$website->website_id)
+;
+$db->setQuery($query);
+$currentDataSource=$db->loadObjectList();
 $doc=JFactory::getDocument();
 
 $scriptId = "tab_footer";
@@ -73,12 +79,12 @@ require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
 
                 foreach ($currentDataSource as $item) {
                     ?>
-                    <div data-add-on-id="<?php echo $item->datasource->id ?>" class="add-on-item-content pull-left">
-                        <a class="remove label label-danger remove-add-on" data-add-on-id="<?php echo $item->datasource->id ?>" href="javascript:void(0)">
+                    <div data-add-on-id="<?php echo $item->id ?>" class="add-on-item-content pull-left">
+                        <a class="remove label label-danger remove-add-on" data-add-on-id="<?php echo $item->id ?>" href="javascript:void(0)">
                             <i class="glyphicon-remove glyphicon"></i>
                         </a>
-                        <a data-add-on-id="<?php echo $item->datasource->id ?>" href="javascript:void(0)">
-                            <i class="br-database"></i><?php echo $item->datasource->title ?>
+                        <a data-add-on-id="<?php echo $item->id ?>" href="javascript:void(0)">
+                            <i class="br-database"></i><?php echo $item->title ?>
                         </a>
                     </div>
                 <?php

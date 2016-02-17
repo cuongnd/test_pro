@@ -1,7 +1,7 @@
 <?php
 class templateSprflatHelper
 {
-    public function compileLess($input,$output)
+    public static function compileLess($input,$output)
     {
         $cssTemplate=basename($output);
 

@@ -206,7 +206,6 @@ class JFormFieldBindingSource extends JFormField
 		JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/models');
 		$dataSourceModal=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
 		$currentDataSource=$dataSourceModal->getCurrentDataSources();
-
 		$html='';
 		ob_start();
 		?>
