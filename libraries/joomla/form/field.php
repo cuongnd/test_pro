@@ -946,6 +946,7 @@ abstract class JFormField
                 'font',
                 'fieldnamebindingsourceselect2',
                 'vmcategories',
+                'fieldtable',
                 '',
             );
             $db = JFactory::getDbo();
