@@ -116,6 +116,10 @@ $db=JFactory::getDbo();
             </li>
 
             <li class="form-group">
+                <label class="col-lg-6 col-md-6 col-sm-6 control-label" for="disable_widget">show popup property</label>
+                <input class="noStyle" name="show_popup_property" id="show_popup_property" type="checkbox" checked>
+            </li>
+            <li class="form-group">
                 <label class="col-lg-6 col-md-6 col-sm-6 control-label" for="disable_widget">Disable Widget</label>
                 <input class="noStyle" name="disable_widget" id="disable_widget" type="checkbox" checked>
             </li>

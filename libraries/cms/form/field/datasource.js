@@ -66,6 +66,13 @@
                 width:'1200',
                 height:'800'
             });
+            $element.find('.field_data_source').popupWindow({
+                scrollbars:1,
+                windowName:'field_data_source',
+                centerBrowser:1,
+                width:'1200',
+                height:'800'
+            });
 
             $element.find('#grid_result').kendoGrid(plugin.kendo_grid_option);
             $element.find('#table-result a:first').tab('show');

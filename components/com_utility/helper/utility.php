@@ -21,6 +21,7 @@ class UtilityHelper
 {
 
     protected  static  $list_position=null;
+    public  static $key_screen_size_editing='option.webdesign.screen_size_editing';
     public static function  getScreenSize()
     {
         $session=JFactory::getSession();
@@ -37,8 +38,12 @@ class UtilityHelper
 
       static function  getCurrentScreenSizeEditing()
     {
-        $session=JFactory::getSession();
-        $screenSizeEditing=$session->get('screenSizeEditing');
+        $user=JFactory::getUser();
+        $screenSizeEditing=$user->getParam(self::$key_screen_size_editing);
+        if(!$screenSizeEditing) {
+            $session = JFactory::getSession();
+            $screenSizeEditing = $session->get('screenSizeEditing');
+        }
         if(!$screenSizeEditing)
         {
             $listScreenSize=UtilityHelper::getListScreenSize();
@@ -53,6 +58,13 @@ class UtilityHelper
             return;
         $session=JFactory::getSession();
         $session->set('screenSizeEditing',$screenSizeEditing);
+        $user=JFactory::getUser();
+        $user->setParam(self::$key_screen_size_editing,$screenSizeEditing);
+        if(!$user->save())
+        {
+            throw new Exception('cannot save params');
+        }
+
         return $screenSizeEditing;
     }
 

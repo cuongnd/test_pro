@@ -2479,6 +2479,12 @@ jQuery(document).ready(function ($) {
         disable_widget(!state);
 
     });
+
+    $('#show_popup_property').on('switchChange.bootstrapSwitch', function (event, state) {
+
+        //show_popup_property(!state);
+
+    });
     var hiden_position_setting = true;
     $('#hide_setting').on('switchChange.bootstrapSwitch', function (event, state) {
 

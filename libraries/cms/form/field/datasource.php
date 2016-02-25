@@ -373,10 +373,11 @@ class JFormFieldDatasource extends JFormField
         <div id="datasource_<?php echo $this->fieldname ?>" class="datasource_build">
             <div class="row">
                 <div class="col-md-12">
-                    <a class="btn umldrawer" href="/index.php?option=com_phpmyadmin&view=umldrawer&tmpl=field&hide_panel_component=1">UML</a>
-                    <a class="btn main_ralationship" href="/index.php?option=com_phpmyadmin&view=relation&tmpl=field&hide_panel_component=1">Main relationship</a>
-                    <a class="btn project_ralationship" href="/index.php?option=com_phpmyadmin&view=projectrelation&tmpl=field&hide_panel_component=1">project relationship</a>
-                    <a class="btn datasourcerelation" href="/index.php?option=com_phpmyadmin&view=datasourcerelation&tmpl=field&datasource_id=<?php echo $source_id ?>&hide_panel_component=1">curent relationship</a>
+                    <a class="btn umldrawer" href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=umldrawer&tmpl=field&hide_panel_component=1">UML</a>
+                    <a class="btn main_ralationship" href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=relation&tmpl=field&hide_panel_component=1">Main relationship</a>
+                    <a class="btn project_ralationship" href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=projectrelation&tmpl=field&hide_panel_component=1">project relationship</a>
+                    <a class="btn datasourcerelation" href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=datasourcerelation&tmpl=field&datasource_id=<?php echo $source_id ?>&hide_panel_component=1">curent relationship</a>
+                    <a class="btn field_data_source" href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=field_data_source&tmpl=field&datasource_id=<?php echo $source_id ?>&hide_panel_component=1">field data source</a>
                 </div>
             </div>
             <div class="row">

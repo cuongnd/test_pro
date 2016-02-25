@@ -14,3 +14,7 @@
 2016-02-16T03:31:57+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
 2016-02-16T09:13:18+00:00	DEBUG	-	class:JApplicationCms
 2016-02-16T09:13:18+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2016-02-20T15:01:02+00:00	DEBUG	-	class:JApplicationCms
+2016-02-20T15:01:02+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2016-02-25T06:47:34+00:00	DEBUG	-	class:JApplicationCms
+2016-02-25T06:47:34+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system

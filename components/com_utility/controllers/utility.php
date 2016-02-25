@@ -144,7 +144,9 @@ class UtilityControllerUtility extends UtilityController
         require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
         $isAdminSite = UtilityHelper::isAdminSite();
         if ($isAdminSite)
+        {
             UtilityHelper::setCurrentScreenSizeEditing($screenSize);
+        }
         else {
             UtilityHelper::setScreenSize($screenSize);
         }

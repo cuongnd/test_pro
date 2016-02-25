@@ -279,6 +279,19 @@ jQuery(document).ready(function($){
         },
         loadPropertiesModule:function(self){
             module_id=self.attr('data-module-id');
+            $.open_popup_window({
+                scrollbars:1,
+                windowName:'main_ralationship',
+                windowURL:'index.php?enable_load_component=1&option=com_modules&view=module&layout=properties&id='+module_id+'&tmpl=field&hide_panel_component=1',
+                centerBrowser:1,
+                width:'400',
+                menubar:0,
+                scrollbars:1,
+                height:'600',
+
+            });
+            return;
+
             if(typeof ajaxLoadPropertiesModule !== 'undefined'){
                 ajaxLoadPropertiesModule.abort();
             }
@@ -363,6 +376,19 @@ jQuery(document).ready(function($){
         },
         loadPropertiesBlock:function(self){
             block_id=self.attr('data-block-id');
+            $.open_popup_window({
+                scrollbars:1,
+                windowName:'main_ralationship',
+                windowURL:'index.php?enable_load_component=1&option=com_utility&view=block&layout=properties&block_id='+block_id+'&tmpl=field&hide_panel_component=1',
+                centerBrowser:1,
+                width:'400',
+                menubar:0,
+                scrollbars:1,
+                height:'600',
+
+            });
+            return;
+
             if(typeof ajaxLoadPropertiesBlock !== 'undefined'){
                 ajaxLoadPropertiesBlock.abort();
             }
@@ -412,6 +438,20 @@ jQuery(document).ready(function($){
         },
         loadPropertiesAddOn:function(self){
             add_on_id=self.attr('data-add-on-id');
+            $.open_popup_window({
+                scrollbars:1,
+                windowName:'main_ralationship',
+                windowURL:'index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajaxLoadPropertiesAddOn&add_on_id='+add_on_id+'&tmpl=field&hide_panel_component=1',
+                centerBrowser:1,
+                width:'400',
+                menubar:0,
+                scrollbars:1,
+                height:'600',
+
+            });
+
+            return;
+
             if(typeof ajaxLoadPropertiesAddOn !== 'undefined'){
                 ajaxLoadPropertiesAddOn.abort();
             }
@@ -493,6 +533,7 @@ jQuery(document).ready(function($){
         },
         savePropertiesModule:function(properties)
         {
+
             if(typeof ajaxSavePropertyModule !== 'undefined'){
                 ajaxSavePropertyModule.abort();
             }
