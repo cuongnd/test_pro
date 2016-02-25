@@ -23,9 +23,9 @@ $doc->addScript(JUri::root().'/media/system/js/bootstrap-switch-master/docs/js/h
 $doc->addScript(JUri::root() . "/media/system/js/jquery.popupWindow.js");
 JHtml::_('formbehavior.chosen', 'select');
 
-
-
-
+$user=JFactory::getUser();
+$show_popup_control=$user->getParam('option.webdesign.show_popup_control',false);
+$show_popup_control=JUtility::toStrictBoolean($show_popup_control);
 //get list view of component
 
 JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_menus/models');
@@ -116,8 +116,8 @@ $db=JFactory::getDbo();
             </li>
 
             <li class="form-group">
-                <label class="col-lg-6 col-md-6 col-sm-6 control-label" for="disable_widget">show popup property</label>
-                <input class="noStyle" name="show_popup_property" id="show_popup_property" type="checkbox" checked>
+                <label class="col-lg-6 col-md-6 col-sm-6 control-label" for="show_popup_property">show popup property</label>
+                <input class="noStyle" name="show_popup_property" <?php echo $show_popup_control?' checked ':'' ?>  id="show_popup_property" type="checkbox" >
             </li>
             <li class="form-group">
                 <label class="col-lg-6 col-md-6 col-sm-6 control-label" for="disable_widget">Disable Widget</label>

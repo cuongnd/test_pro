@@ -38,6 +38,9 @@ if ($isAdminSite && !$enableEditWebsite) {
 }
 
 $doc = JFactory::getDocument();
+$user=JFactory::getUser();
+$show_popup_control=$user->getParam('option.webdesign.show_popup_control',false);
+$show_popup_control=JUtility::toStrictBoolean($show_popup_control);
 
 if ($enableEditWebsite) {
     $preview = UtilityHelper::getStatePreview();
@@ -85,6 +88,11 @@ if ($enableEditWebsite) {
 
         };
         var source_less = "<?php echo str_replace('.less','.css',$websiteTable->source_less) ?>";
+        jQuery(document).ready(function ($) {
+            $('body').sprFlat({
+                show_popup_control:<?php echo json_encode($show_popup_control) ?>
+            });
+        });
     </script>
 <?php
 $script = ob_get_clean();

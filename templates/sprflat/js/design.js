@@ -884,7 +884,7 @@ jQuery(document).ready(function ($) {
 
     };
 
-    var sprFlat = $('body').sprFlat();
+
 
 
     function showevent(tag) {
@@ -2480,11 +2480,6 @@ jQuery(document).ready(function ($) {
 
     });
 
-    $('#show_popup_property').on('switchChange.bootstrapSwitch', function (event, state) {
-
-        //show_popup_property(!state);
-
-    });
     var hiden_position_setting = true;
     $('#hide_setting').on('switchChange.bootstrapSwitch', function (event, state) {
 
@@ -2623,11 +2618,6 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    $('#disable_widget').on('switchChange.bootstrapSwitch', function (event, state) {
-
-        disable_widget(!state);
-
-    });
 
     var heightScreenSize = 0;
     $('#full_height').on('switchChange.bootstrapSwitch', function (event, state) {

@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
         });
     });
 
-    $("#disable_widget,#editing,#hide_setting,#hide_module_item_setting,#full_height,#disable_border_module").bootstrapSwitch();
+    $("#disable_widget,#show_popup_property,#editing,#hide_setting,#hide_module_item_setting,#full_height,#disable_border_module").bootstrapSwitch();
     $('input.plugin_item').bootstrapSwitch();
     $('input.plugin_item').on('switchChange.bootstrapSwitch', function(event, state) {
         plugin_item=$(this).closest('li.plugin_item');

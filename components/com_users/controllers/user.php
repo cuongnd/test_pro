@@ -97,7 +97,7 @@ class UsersControllerUser extends UsersController
 			$response->e=1;
 			$response->r=$user->getError();
 		}else{
-			$response->r="change screen size success";
+			$response->r="change params success";
 		}
 		echo json_encode($response);
 		die;

@@ -278,58 +278,64 @@ jQuery(document).ready(function($){
 
         },
         loadPropertiesModule:function(self){
+            var sprFlat=$('body').data('sprFlat');
+            var show_popup_control=sprFlat.settings.show_popup_control;
+
             module_id=self.attr('data-module-id');
-            $.open_popup_window({
-                scrollbars:1,
-                windowName:'main_ralationship',
-                windowURL:'index.php?enable_load_component=1&option=com_modules&view=module&layout=properties&id='+module_id+'&tmpl=field&hide_panel_component=1',
-                centerBrowser:1,
-                width:'400',
-                menubar:0,
-                scrollbars:1,
-                height:'600',
+            if(show_popup_control)
+            {
+                $.open_popup_window({
+                    scrollbars:1,
+                    windowName:'main_ralationship',
+                    windowURL:'index.php?enable_load_component=1&option=com_modules&view=module&layout=properties&id='+module_id+'&tmpl=field&hide_panel_component=1',
+                    centerBrowser:1,
+                    width:'400',
+                    menubar:0,
+                    scrollbars:1,
+                    height:'600',
 
-            });
-            return;
+                });
+            }else {
 
-            if(typeof ajaxLoadPropertiesModule !== 'undefined'){
-                ajaxLoadPropertiesModule.abort();
-            }
-
-            ajaxLoadPropertiesModule=$.ajax({
-                type: "GET",
-                dataType: "json",
-                url: this_host+'/index.php',
-                data: (function () {
-                    dataPost = {
-                        enable_load_component:1,
-                        option: 'com_modules',
-                        view: 'module',
-                        layout: 'properties',
-                        tmpl: 'ajax_json',
-                        id: module_id
-
-                    };
-                    return dataPost;
-                })(),
-                beforeSend: function () {
-                    $('.div-loading').css({
-                        display: "block"
-
-
-                    });
-                    // $('.loading').popup();ajaxLoadPropertiesBlock
-                },
-                success: function (response) {
-                    $('.div-loading').css({
-                        display: "none"
-
-
-                    });
-                    Joomla.sethtmlfortag1(response);
-                    $('.block-properties').attr('data-properties-type','module');
+                if (typeof ajaxLoadPropertiesModule !== 'undefined') {
+                    ajaxLoadPropertiesModule.abort();
                 }
-            });
+
+                ajaxLoadPropertiesModule = $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: this_host + '/index.php',
+                    data: (function () {
+                        dataPost = {
+                            enable_load_component: 1,
+                            option: 'com_modules',
+                            view: 'module',
+                            layout: 'properties',
+                            tmpl: 'ajax_json',
+                            id: module_id
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();ajaxLoadPropertiesBlock
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        Joomla.sethtmlfortag1(response);
+                        $('.block-properties').attr('data-properties-type', 'module');
+                    }
+                });
+            }
 
         },
         loadPropertiesComponent:function(self){
@@ -375,121 +381,127 @@ jQuery(document).ready(function($){
 
         },
         loadPropertiesBlock:function(self){
-            block_id=self.attr('data-block-id');
-            $.open_popup_window({
-                scrollbars:1,
-                windowName:'main_ralationship',
-                windowURL:'index.php?enable_load_component=1&option=com_utility&view=block&layout=properties&block_id='+block_id+'&tmpl=field&hide_panel_component=1',
-                centerBrowser:1,
-                width:'400',
-                menubar:0,
-                scrollbars:1,
-                height:'600',
+            var block_id=self.attr('data-block-id');
+            var sprFlat=$('body').data('sprFlat');
+            var show_popup_control=sprFlat.settings.show_popup_control;
+            if(show_popup_control) {
+                $.open_popup_window({
+                    scrollbars: 1,
+                    windowName: 'main_ralationship',
+                    windowURL: 'index.php?enable_load_component=1&option=com_utility&view=block&layout=properties&block_id=' + block_id + '&tmpl=field&hide_panel_component=1',
+                    centerBrowser: 1,
+                    width: '400',
+                    menubar: 0,
+                    scrollbars: 1,
+                    height: '600',
 
-            });
-            return;
+                });
+            }else {
 
-            if(typeof ajaxLoadPropertiesBlock !== 'undefined'){
-                ajaxLoadPropertiesBlock.abort();
-            }
-            parser_url= $.url(currentLink).param();
-
-            ajaxLoadPropertiesBlock=$.ajax({
-                type: "GET",
-                dataType: "json",
-                url: this_host+'/index.php',
-                data: (function () {
-
-                    dataPost = {
-                        enable_load_component:1,
-                        option: 'com_utility',
-                        view: 'block',
-                        layout: 'properties',
-                        tmpl: 'ajax_json',
-                        Itemid: menuItemActiveId,
-                        ajaxgetcontent: 1,
-                        block_id:block_id
-
-                    };
-                    dataPost=$.extend(parser_url,dataPost);
-                    return dataPost;
-                })(),
-                beforeSend: function () {
-                    $('.div-loading').css({
-                        display: "block"
-
-
-                    });
-                    // $('.loading').popup();
-                },
-                success: function (response) {
-                    $('.div-loading').css({
-                        display: "none"
-
-
-                    });
-
-                    Joomla.sethtmlfortag1(response);
-                    $('.block-properties').attr('data-properties-type','block');
-                    $('.block-properties').closest('.panel.itemField').attr('data-block-id',block_id);
+                if (typeof ajaxLoadPropertiesBlock !== 'undefined') {
+                    ajaxLoadPropertiesBlock.abort();
                 }
-            });
+                parser_url = $.url(currentLink).param();
 
+                ajaxLoadPropertiesBlock = $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: this_host + '/index.php',
+                    data: (function () {
+
+                        dataPost = {
+                            enable_load_component: 1,
+                            option: 'com_utility',
+                            view: 'block',
+                            layout: 'properties',
+                            tmpl: 'ajax_json',
+                            Itemid: menuItemActiveId,
+                            ajaxgetcontent: 1,
+                            block_id: block_id
+
+                        };
+                        dataPost = $.extend(parser_url, dataPost);
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+
+                        Joomla.sethtmlfortag1(response);
+                        $('.block-properties').attr('data-properties-type', 'block');
+                        $('.block-properties').closest('.panel.itemField').attr('data-block-id', block_id);
+                    }
+                });
+            }
         },
         loadPropertiesAddOn:function(self){
-            add_on_id=self.attr('data-add-on-id');
-            $.open_popup_window({
-                scrollbars:1,
-                windowName:'main_ralationship',
-                windowURL:'index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajaxLoadPropertiesAddOn&add_on_id='+add_on_id+'&tmpl=field&hide_panel_component=1',
-                centerBrowser:1,
-                width:'400',
-                menubar:0,
-                scrollbars:1,
-                height:'600',
+            var add_on_id=self.attr('data-add-on-id');
+            var sprFlat=$('body').data('sprFlat');
+            var show_popup_control=sprFlat.settings.show_popup_control;
+            if(show_popup_control) {
+                $.open_popup_window({
+                    scrollbars: 1,
+                    windowName: 'main_addon',
+                    windowURL: 'index.php?enable_load_component=1&option=com_phpmyadmin&view=datasource&layout=properties&add_on_id=' + add_on_id + '&tmpl=field&hide_panel_component=1',
+                    centerBrowser: 1,
+                    width: '400',
+                    menubar: 0,
+                    scrollbars: 1,
+                    height: '600',
 
-            });
+                });
 
-            return;
+            }else {
 
-            if(typeof ajaxLoadPropertiesAddOn !== 'undefined'){
-                ajaxLoadPropertiesAddOn.abort();
-            }
-
-            ajaxLoadPropertiesAddOn=$.ajax({
-                type: "GET",
-                cache:false,
-                url: this_host+'/index.php',
-                data: (function () {
-
-                    dataPost = {
-                        enable_load_component:1,
-                        option: 'com_phpmyadmin',
-                        task: 'datasource.ajaxLoadPropertiesAddOn',
-                        add_on_id:add_on_id
-
-                    };
-                    return dataPost;
-                })(),
-                beforeSend: function () {
-                    $('.div-loading').css({
-                        display: "block"
-
-
-                    });
-                    // $('.loading').popup();
-                },
-                success: function (response) {
-                    $('.div-loading').css({
-                        display: "none"
-
-
-                    });
-                    Joomla.sethtmlfortag(response);
-                    $('.block-properties').attr('data-properties-type','datasource');
+                if (typeof ajaxLoadPropertiesAddOn !== 'undefined') {
+                    ajaxLoadPropertiesAddOn.abort();
                 }
-            });
 
+                ajaxLoadPropertiesAddOn = $.ajax({
+                    type: "GET",
+                    cache: false,
+                    url: this_host + '/index.php',
+                    data: (function () {
+
+                        dataPost = {
+                            enable_load_component: 1,
+                            option: 'com_phpmyadmin',
+                            task: 'datasource.ajaxLoadPropertiesAddOn',
+                            add_on_id: add_on_id
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        Joomla.sethtmlfortag(response);
+                        $('.block-properties').attr('data-properties-type', 'datasource');
+                    }
+                });
+            }
         },
         loadPropertiesWebsite:function(self){
             if(typeof ajaxLoadPropertiesWebsite !== 'undefined'){

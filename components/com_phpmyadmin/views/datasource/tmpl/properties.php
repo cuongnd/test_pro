@@ -5,9 +5,9 @@ JHtml::_('bootstrap.framework');
 $doc=JFactory::getDocument();
 $doc->addScript(JUri::root().'/media/system/js/clipboard.js-master/dist/clipboard.js');
 $app=JFactory::getApplication();
-$block_id=$app->input->get('block_id',0,'int');
-$app->input->set('id',$block_id);
-$modelPosition=JModelLegacy::getInstance('Position','UtilityModel');
+$data_source_id=$app->input->get('add_on_id',0,'int');
+$app->input->set('id',$data_source_id);
+$modelPosition=JModelLegacy::getInstance('DataSource','phpMyAdminModel');
 $item=$modelPosition->getItem();
 $form=$modelPosition->getForm();
 
@@ -42,7 +42,7 @@ $main_fields=base64_decode($main_fields);
 require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
 $main_fields = (array)up_json_decode($main_fields, false, 512, JSON_PARSE_JAVASCRIPT);
 
-$scriptId = "view_block_property";
+$scriptId = "view_data_source_property";
 ob_start();
 ?>
 <script type="text/javascript">

@@ -103,7 +103,8 @@
             dropdownMenu: {
                 animation: true, //animation effect for dropdown
                 openEffect: 'flipInY'//open effect for menu see http://daneden.github.io/animate.css/
-            }
+            },
+            show_popup_control:false
 
         }
 
@@ -117,6 +118,49 @@
             element = element;    // reference to the actual DOM element
 
         // the "constructor" method that gets called when the object is created
+        plugin.config_show_popup_control = function () {
+
+            $('#show_popup_property').on('switchChange.bootstrapSwitch', function (event, state) {
+                plugin.settings.show_popup_control=state;
+                web_design = $.ajax({
+                    type: "GET",
+                    url: this_host + '/index.php',
+                    data: (function () {
+
+                        dataPost = {
+                            option: 'com_users',
+                            enable_load_component:1,
+                            task: 'user.ajax_set_key_of_params',
+                            key_params:'option.webdesign.show_popup_control',
+                            value_key_params:state
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+
+
+                    }
+                });
+
+                //show_popup_property(!state);
+
+            });
+
+        };
         plugin.init = function() {
 
             // the plugin's final properties are the merged default and
@@ -132,6 +176,7 @@
                 $.fn.transition = $.fn.animate;
             }
             this.popup_window_js();
+            this.config_show_popup_control();
             //respondjs handle responsive view
             this.respondjs();
             //activate storejs plugin
