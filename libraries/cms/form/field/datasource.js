@@ -8,6 +8,7 @@
             source_id: 0,
             ajaxgetcontent: 0,
             field_name: '',
+            show_popup_control:false,
             list_table: []
         }
 
@@ -21,8 +22,11 @@
             element = element;    // reference to the actual DOM element
         // the "constructor" method that gets called when the object is created
         plugin.init = function () {
-
             plugin.settings = $.extend({}, defaults, options);
+            var show_popup_control=plugin.settings.show_popup_control;
+            if(show_popup_control) {
+                document.title = 'edit mysql data source';
+            }
             var ajaxgetcontent= plugin.settings.ajaxgetcontent;
 
             plugin.kendo_grid_option= {
@@ -74,6 +78,35 @@
                 height:'800'
             });
 
+            if(show_popup_control)
+            {
+                var source_id=plugin.settings.source_id;
+                var close=$(this).hasClass('save-block-property');
+                $element.find('.save-block-property,.apply-block-property').click(function(){
+                    plugin.savePropertyDataSource($element,source_id,close);
+                });
+
+                $(window).bind('keydown', function(event) {
+                    if (event.ctrlKey || event.metaKey) {
+                        switch (String.fromCharCode(event.which).toLowerCase()) {
+                            case 's':
+                                event.preventDefault();
+                                $element.find('.apply-block-property').click();
+                                break;
+                            case 'f':
+                                event.preventDefault();
+
+                                break;
+                            case 'g':
+                                event.preventDefault();
+
+                                break;
+                        }
+                    }
+                });
+
+
+            }
             $element.find('#grid_result').kendoGrid(plugin.kendo_grid_option);
             $element.find('#table-result a:first').tab('show');
 
@@ -248,6 +281,63 @@
 
 
         }
+        plugin.savePropertyDataSource=function(property,add_on_id,close)
+        {
+            if(typeof ajaxSavePropertyBlock !== 'undefined'){
+                ajaxSavePropertyBlock.abort();
+            }
+            plugin.save_data();
+            var xml_output=$('#xml_output').val();
+            var dataPost=property.find('select:not(.disable_post),textarea:not(.disable_post), input:not([readonly],.disable_post)').serializeObject();
+            ajaxSavePropertyBlock=$.ajax({
+                contentType: 'application/json',
+                type: "POST",
+                url: this_host+'/index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajaxSavePropertydatasource&add_on_id='+add_on_id+'&screensize='+currentScreenSizeEditing,
+                data: JSON.stringify(dataPost),
+                beforeSend: function () {
+                    $('.div-loading').css({
+                        display: "block"
+
+
+                    });
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+                    $('.div-loading').css({
+                        display: "none"
+
+
+                    });
+                    response= $.parseJSON(response);
+                    console.log(window['main_window']);
+                    var html_dataset=response.html_dataset;
+                    var data_source_id=response.data_source_id;
+                    var data_source_title=response.title;
+                    var curent_html_dataset=$('.data-set').find('.item-element[data-add-on-id="'+data_source_id+'"]');
+                    if(curent_html_dataset.length)
+                    {
+                        curent_html_dataset.html(html_dataset);
+                    }else
+                    {
+
+                        var new_data_set=$('<ul class="nav sub" id="dataset_'+data_source_id+'"></ul>');
+                        new_data_set.append(html_dataset);
+                        $('.data-set').append(new_data_set);
+                    }
+
+                    alert('save success');
+                    var panelItemField=property.closest('.itemField');
+                    panelItemField.find(':input[name*="jform"]').each(function(){
+                        self=$(this);
+                        name=self.attr('name');
+                        $('.block-properties').find(':input[name="'+name+'"]').val(self.val());
+                    });
+                    if(close)
+                        window.close();
+                }
+            });
+        }
+
         plugin.save_data = function() {
             plugin.textarea.val(window.editor.getValue());
         };

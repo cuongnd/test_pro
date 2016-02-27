@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+    window.name = 'main_window';
     $(document).bind('keypress', function(event) {
         //shift+q
         if( event.which === 81 && event.shiftKey ) {

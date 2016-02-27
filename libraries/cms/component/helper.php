@@ -412,6 +412,8 @@ class JComponentHelper
 			require_once $path;
 		}else{
 			echo "show component here";
+			echo "<br/>";
+			echo $path;
 		}
 		$contents = ob_get_clean();
         jimport('joomla.utilities.utility');

@@ -96,7 +96,7 @@ class VirtueMartViewProductdetails extends VmView {
         $this->downloadContentFromEnvatoForThisProduct($product);
         $products=array($product);
         require_once JPATH_ROOT.'/modules/mod_virtuemart_product/helper.php';
-        mod_virtuemart_product::addImageFromEnvato($products);
+        mod_virtuemart_product->addImageFromEnvato($products);
         $product=$products[0];
         if(trim($product->product_desc)!='')
         {

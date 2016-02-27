@@ -23,6 +23,7 @@
         plugin.init = function () {
 
             plugin.settings = $.extend({}, defaults, options);
+            document.title = 'edit main relation ship';
             $element.find('.list_table').typeahead({
                     hint: true,
                     highlight: true,

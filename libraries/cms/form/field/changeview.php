@@ -234,7 +234,7 @@ class JFormFieldChangeView extends JFormField
         JHtml::_('bootstrap.framework');
 
 
-        $doc->addLessStyleSheet(JUri::root() . "/libraries/cms/form/field/ChangeView.less");
+        $doc->addLessStyleSheet(JUri::root() . "/libraries/cms/form/field/changeview.less");
         $doc->addScript(JUri::root().'/media/system/js/base64.js');
         $doc->addScript(JUri::root().'/libraries/cms/form/field/changeview.js');
         $db = JFactory::getDbo();
@@ -307,34 +307,28 @@ class JFormFieldChangeView extends JFormField
         ksort($sortedTypes);
 
         $types = $sortedTypes;
-
-
-        $idTextArea = str_replace(array('[', ']'), '_', $this->name);
-        $scriptId = "lib_cms_form_fields_datasource" . $idTextArea . '_' . JUserHelper::genRandomPassword();
+        $user=JFactory::getUser();
+        $show_popup_control=$user->getParam('option.webdesign.show_popup_control',false);
+        $show_popup_control=JUtility::toStrictBoolean($show_popup_control);
+        $app=JFactory::getApplication();
+        $menuItemActiveId=$app->input->get('menuItemActiveId',0,'int');
+        $scriptId = "script_field_change_view_" . $menuItemActiveId;
         ob_start();
         ?>
-        <script type="text/javascript" id="<?php echo $scriptId ?>">
-
-            <?php
-                ob_get_clean();
-                ob_start();
-            ?>
+        <script type="text/javascript">
             jQuery(document).ready(function ($) {
-                $('#collapseTypes').on('shown', function (event) {
-
-                })
+                $('.field-change-view-config-item-<?php echo $menuItemActiveId ?>').field_change_view({
+                    show_popup_control:<?php echo json_encode($show_popup_control) ?>
+                });
 
 
             });
-
-            <?php
-             $script=ob_get_clean();
-             ob_start();
-              ?>
         </script>
         <?php
-        ob_get_clean();
+        $script = ob_get_clean();
+        $script = JUtility::remove_string_javascript($script);
         $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
 
 
         $listFunction = JFormFieldDatasource::getListAllFunction();
@@ -342,90 +336,92 @@ class JFormFieldChangeView extends JFormField
         $html = '';
         ob_start();
         ?>
-        <div class="row">
-        	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="row-fluid">
+        <div class="field-change-view-config-item-<?php echo $menuItemActiveId ?>">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row-fluid">
 
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <?php $i=0 ?>
-                        <?php
-                        foreach ($types as $key => $type) {
-                            if($key=='backend')
-                            {
-                                continue;
-                            }
-                            ?>
-                            <li class="<?php echo $i==0?'active':'' ?>">
-                                <a href="#<?php echo $key ?>" role="tab" data-toggle="tab">
-                                    <icon class="fa fa-home"></icon> <?php echo $key ?>
-                                </a>
-                            </li>
-                            <?php $i++ ?>
-                        <?php } ?>
-
-
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <?php $i = 0; ?>
-                        <?php $j = 0; ?>
-                        <?php
-                        foreach ($types as $key => $type) {
-                            if($key=='backend')
-                            {
-                                continue;
-                            }
-                            ?>
-
-                            <div class="tab-pane fade <?php echo $i==0?'active':'' ?>  in" id="<?php echo $key ?>">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <?php $i=0 ?>
+                            <?php
+                            foreach ($types as $key => $type) {
+                                if($key=='backend')
+                                {
+                                    continue;
+                                }
+                                ?>
+                                <li class="<?php echo $i==0?'active':'' ?>">
+                                    <a href="#<?php echo $key ?>" role="tab" data-toggle="tab">
+                                        <icon class="fa fa-home"></icon> <?php echo $key ?>
+                                    </a>
+                                </li>
+                                <?php $i++ ?>
+                            <?php } ?>
 
 
-                                <?php echo JHtml::_('bootstrap.startAccordion', 'collapseTypes-'.$key, array('active' => 'slide1')); ?>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <?php $i = 0; ?>
+                            <?php $j = 0; ?>
+                            <?php
+                            foreach ($types as $key => $type) {
+                                if($key=='backend')
+                                {
+                                    continue;
+                                }
+                                ?>
 
-                                <?php foreach ($type as $name => $list) : ?>
-                                    <?php echo JHtml::_('bootstrap.addSlide', 'collapseTypes', $name, 'collapse' . $j); ?>
-                                    <ul class="nav nav-tabs nav-stacked">
-                                        <?php
-                                        foreach ($list as $title => $item) :
-
-                                            ?>
-
-                                            <li>
-                                                <a class="choose_type" href="javascript:void(0)" title="<?php echo JText::_($item->description); ?>"
-                                                   onclick="change_view.update_value('<?php echo base64_encode(json_encode(array('title' => (isset($item->type) ? $item->type : $item->title), 'request' => $item->request))); ?>')">
-                                                    <?php echo $title; ?>
-                                                    <small class="muted"><?php echo JText::_($item->description); ?></small>
-                                                </a>
-                                                <?php if(!$item->request){ ?>
-                                                <ul>
-                                                    <?php if($item->type=='url'){ ?>
-                                                        <li><label>link<input type="text" value="<?php echo $item->link ?>"> </label></li>
-                                                    <?php } ?>
-                                                </ul>
-                                            <?php } ?>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                    <?php echo JHtml::_('bootstrap.endSlide'); ?>
-
-                                    <?php $j++; ?>
-                                <?php endforeach; ?>
-                                <?php echo JHtml::_('bootstrap.endAccordion'); ?>
+                                <div class="tab-pane fade <?php echo $i==0?'active':'' ?>  in" id="<?php echo $key ?>">
 
 
-                            </div>
-                            <?php $i++; ?>
-                        <?php } ?>
+                                    <?php echo JHtml::_('bootstrap.startAccordion', 'collapseTypes-'.$key, array('active' => 'slide1')); ?>
 
+                                    <?php foreach ($type as $name => $list) : ?>
+                                        <?php echo JHtml::_('bootstrap.addSlide', 'collapseTypes', $name, 'collapse' . $j); ?>
+                                        <ul class="nav nav-tabs nav-stacked">
+                                            <?php
+                                            foreach ($list as $title => $item) :
+
+                                                ?>
+
+                                                <li>
+                                                    <a class="choose_type" href="javascript:void(0)" title="<?php echo JText::_($item->description); ?>"
+                                                       onclick="change_view.update_value('<?php echo base64_encode(json_encode(array('title' => (isset($item->type) ? $item->type : $item->title), 'request' => $item->request))); ?>')">
+                                                        <?php echo $title; ?>
+                                                        <small class="muted"><?php echo JText::_($item->description); ?></small>
+                                                    </a>
+                                                    <?php if(!$item->request){ ?>
+                                                    <ul>
+                                                        <?php if($item->type=='url'){ ?>
+                                                            <li><label>link<input type="text" value="<?php echo $item->link ?>"> </label></li>
+                                                        <?php } ?>
+                                                    </ul>
+                                                <?php } ?>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                        <?php echo JHtml::_('bootstrap.endSlide'); ?>
+
+                                        <?php $j++; ?>
+                                    <?php endforeach; ?>
+                                    <?php echo JHtml::_('bootstrap.endAccordion'); ?>
+
+
+                                </div>
+                                <?php $i++; ?>
+                            <?php } ?>
+
+
+                        </div>
 
                     </div>
 
                 </div>
-
-        	</div>
+            </div>
+            <input type="hidden" class="input_link" value="<?php echo trim($this->value) ?>" name="<?php echo $this->name ?>" />
         </div>
-        <input type="hidden" class="input_link" value="<?php echo trim($this->value) ?>" name="<?php echo $this->name ?>" />
         <?php
         $html .= ob_get_clean();
         return $html;

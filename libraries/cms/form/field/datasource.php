@@ -264,7 +264,7 @@ class JFormFieldDatasource extends JFormField
         $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.numerictextbox.js');
         $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/js/kendo.editor.js');
 
-        $doc->addScript(JUri::root().'/media/system/js/twitter-typeahead.js/dist/typeahead.jquery.js');
+        $doc->addScript(JUri::root() . '/media/system/js/twitter-typeahead.js/dist/typeahead.jquery.js');
 
         $doc->addLessStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.default.less');
         $doc->addLessStyleSheet(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/styles/web/kendo.common.less');
@@ -280,6 +280,7 @@ class JFormFieldDatasource extends JFormField
         $doc->addStyleSheet(JUri::root() . "/media/system/js/CodeMirror-master/lib/codemirror.css");
         $doc->addScript(JUri::root() . "/media/system/js/CodeMirror-master/lib/codemirror.js");
         $doc->addScript(JUri::root() . "/media/system/js/CodeMirror-master/addon/display/fullscreen.js");
+        $doc->addScript(JUri::root() . "/media/system/js/jQuery.serializeObject-master/jquery.serializeObject.js");
 
         $doc->addStyleSheet(JUri::root() . "/media/system/js/fseditor-master/fseditor.css");
         $doc->addStyleSheet(JUri::root() . "/media/system/js/CodeMirror-master/addon/hint/show-hint.css");
@@ -306,8 +307,8 @@ class JFormFieldDatasource extends JFormField
         $doc->addScript(JUri::root() . "/media/system/js/fseditor-master/jquery.fseditor.js");
 
         $doc->addScript(JUri::root() . "/media/system/js/jquery.popupWindow.js");
-        $app=JFactory::getApplication();
-        $ajaxgetcontent=$app->input->get('ajaxgetcontent',0,'int');
+        $app = JFactory::getApplication();
+        $ajaxgetcontent = $app->input->get('ajaxgetcontent', 0, 'int');
         $data = $this->form->getData();
 
 
@@ -324,31 +325,31 @@ class JFormFieldDatasource extends JFormField
         $data = $this->form->getData();
         $source_id = $data->get('id', 0);
         $field_name = $this->name;
-        $uri=JFactory::getURI();
+        $uri = JFactory::getURI();
         $host = $uri->toString(array('scheme', 'host', 'port'));
-        $list_table1=array();
-        foreach($list_table as $table)
-        {
-            $list_table1[]=str_replace('#__','',$table);
+        $list_table1 = array();
+        foreach ($list_table as $table) {
+            $list_table1[] = str_replace('#__', '', $table);
         }
 
 
-        require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
-        $table_diagram=new JTableUpdateTable($db,'diagram');
+        require_once JPATH_ROOT . '/components/com_phpmyadmin/tables/updatetable.php';
+        $table_diagram = new JTableUpdateTable($db, 'diagram');
         $table_diagram->load(
             array(
-                "type"=>'global',
-                "website_id"=>0
+                "type" => 'global',
+                "website_id" => 0
             )
         );
-        if(!$table_diagram->id)
-        {
-            $table_diagram->type='global';
-            $table_diagram->website_id=0;
+        if (!$table_diagram->id) {
+            $table_diagram->type = 'global';
+            $table_diagram->website_id = 0;
             $table_diagram->store();
         }
-        $xml_input=$table_diagram->xml;
-
+        $xml_input = $table_diagram->xml;
+        $user = JFactory::getUser();
+        $show_popup_control = $user->getParam('option.webdesign.show_popup_control', false);
+        $show_popup_control = JUtility::toStrictBoolean($show_popup_control);
         ob_start();
         ?>
         <script type="text/javascript">
@@ -357,7 +358,8 @@ class JFormFieldDatasource extends JFormField
                     source_id:<?php echo $source_id ?>,
                     field_name: "<?php echo $field_name ?>",
                     list_table:<?php echo json_encode($list_table1) ?>,
-                    ajaxgetcontent:<?php echo $ajaxgetcontent ?>
+                    ajaxgetcontent:<?php echo $ajaxgetcontent ?>,
+                    show_popup_control:<?php echo json_encode($show_popup_control) ?>
                 });
             });
         </script>
@@ -373,11 +375,16 @@ class JFormFieldDatasource extends JFormField
         <div id="datasource_<?php echo $this->fieldname ?>" class="datasource_build">
             <div class="row">
                 <div class="col-md-12">
-                    <a class="btn umldrawer" href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=umldrawer&tmpl=field&hide_panel_component=1">UML</a>
-                    <a class="btn main_ralationship" href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=relation&tmpl=field&hide_panel_component=1">Main relationship</a>
-                    <a class="btn project_ralationship" href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=projectrelation&tmpl=field&hide_panel_component=1">project relationship</a>
-                    <a class="btn datasourcerelation" href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=datasourcerelation&tmpl=field&datasource_id=<?php echo $source_id ?>&hide_panel_component=1">curent relationship</a>
-                    <a class="btn field_data_source" href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=field_data_source&tmpl=field&datasource_id=<?php echo $source_id ?>&hide_panel_component=1">field data source</a>
+                    <a class="btn umldrawer"
+                       href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=umldrawer&tmpl=field&hide_panel_component=1">UML</a>
+                    <a class="btn main_ralationship"
+                       href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=relation&tmpl=field&hide_panel_component=1">Main relationship</a>
+                    <a class="btn project_ralationship"
+                       href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=projectrelation&tmpl=field&hide_panel_component=1">project relationship</a>
+                    <a class="btn datasourcerelation"
+                       href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=datasourcerelation&tmpl=field&datasource_id=<?php echo $source_id ?>&hide_panel_component=1">curent relationship</a>
+                    <a class="btn field_data_source"
+                       href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=field_data_source&tmpl=field&datasource_id=<?php echo $source_id ?>&hide_panel_component=1">field data source</a>
                 </div>
             </div>
             <div class="row">
@@ -533,7 +540,26 @@ class JFormFieldDatasource extends JFormField
 
                 </div>
             </div>
+            <?php if ($show_popup_control) { ?>
+                <div class="panel-footer">
+                    <button type="button" data-block-id="<?php echo $source_id ?>"
+                            class="btn btn-danger save-block-property pull-right"><i
+                            class="fa-save"></i>Save&amp;close
+                    </button>
+                    &nbsp;&nbsp;
+                    <button type="button" data-block-id="<?php echo $source_id ?>"
+                            class="btn btn-danger apply-block-property pull-right"><i
+                            class="fa-save"></i>Save
+                    </button>
+                    &nbsp;&nbsp;
+                    <button type="button" data-block-id="<?php echo $source_id ?>"
+                            class="btn btn-danger cancel-block-property pull-right"><i
+                            class="fa-save"></i>Cancel
+                    </button>
+                </div>
+            <?php } ?>
         </div>
+
         <style>
 
             .item {
