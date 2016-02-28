@@ -34,6 +34,7 @@
 
         // the "constructor" method that gets called when the object is created
         plugin.init = function() {
+            plugin.settings = $.extend({}, defaults, options);
         }
 
         plugin.example_function = function() {

@@ -227,64 +227,83 @@ jQuery(document).ready(function ($) {
                 var element_path='root_module';
             }
             var id=e_taget.data('id');
-            ajax_web_design=$.ajax({
-                type: "GET",
-                dataType: "json",
-                cache: false,
-                url: this_host+'/index.php',
-                data: (function () {
 
-                    dataPost = {
-                        option: 'com_modules',
-                        view: 'module',
-                        tmpl:'ajax_json',
-                        layout:'config',
-                        id:id,
-                        element_path:element_path
+            var sprFlat=$('body').data('sprFlat');
+            var show_popup_control=sprFlat.settings.show_popup_control;
+            if(show_popup_control)
+            {
+                $.open_popup_window({
+                    scrollbars:1,
+                    windowName:'main_ralationship',
+                    windowURL:'index.php?enable_load_component=1&option=com_modules&view=module&layout=config&id='+id+'&element_path='+element_path+'&tmpl=field&hide_panel_component=1',
+                    centerBrowser:1,
+                    width:'400',
+                    menubar:0,
+                    scrollbars:1,
+                    height:'600',
 
-                    };
+                });
+            }else {
+                ajax_web_design=$.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    cache: false,
+                    url: this_host+'/index.php',
+                    data: (function () {
 
-                    return dataPost;
-                })(),
-                beforeSend: function () {
-                    $('.div-loading').css({
-                        display: "block"
-                    });
-                    // $('.loading').popup();
-                },
-                success: function (response) {
-                    $('.div-loading').css({
-                        display: "none"
+                        dataPost = {
+                            option: 'com_modules',
+                            view: 'module',
+                            tmpl:'ajax_json',
+                            layout:'config',
+                            id:id,
+                            element_path:element_path
 
+                        };
 
-                    });
-                    var html='';
-                    if(!$('.extension-module-config').length) {
-                        html = $('<div class="panel module panel-primary extension-module-config  panelMove toggle panelRefresh panelClose"  >' +
-                            '<div class="panel-heading module-handle">' +
-                            '<h4 class="panel-title">module manager</h4>' +
-
-                            '</div>' +
-                            '<div class="panel-body module"></div>' +
-                            '<div class="panel-footer module-handle-footer">' +
-                            '<button class="btn btn-danger save-block-property pull-right" onclick="view_module_config.save_and_close(self)" ><i class="fa-save"></i>Save&close</button>&nbsp;&nbsp;' +
-                            '<button class="btn btn-danger apply-block-property pull-right" onclick="view_module_config.save(self)" ><i class="fa-save"></i>Save</button>&nbsp;&nbsp;' +
-                            '<button class="btn btn-danger cancel-block-property pull-right" onclick="view_module_config.cancel(self)"><i class="fa-save"></i>Cancel</button>' +
-                            '</div>'+
-                            '</div>'
-                        );
-                        $('body').prepend(html);
-
-                        html.draggable({
-                            handle: '.module-handle,.module-handle-footer'
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
                         });
+                        // $('.loading').popup();
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        var html='';
+                        if(!$('.extension-module-config').length) {
+                            html = $('<div class="panel module panel-primary extension-module-config  panelMove toggle panelRefresh panelClose"  >' +
+                                '<div class="panel-heading module-handle">' +
+                                '<h4 class="panel-title">module manager</h4>' +
+
+                                '</div>' +
+                                '<div class="panel-body module"></div>' +
+                                '<div class="panel-footer module-handle-footer">' +
+                                '<button class="btn btn-danger save-block-property pull-right" onclick="view_module_config.save_and_close(self)" ><i class="fa-save"></i>Save&close</button>&nbsp;&nbsp;' +
+                                '<button class="btn btn-danger apply-block-property pull-right" onclick="view_module_config.save(self)" ><i class="fa-save"></i>Save</button>&nbsp;&nbsp;' +
+                                '<button class="btn btn-danger cancel-block-property pull-right" onclick="view_module_config.cancel(self)"><i class="fa-save"></i>Cancel</button>' +
+                                '</div>'+
+                                '</div>'
+                            );
+                            $('body').prepend(html);
+
+                            html.draggable({
+                                handle: '.module-handle,.module-handle-footer'
+                            });
+                        }
+                        Joomla.sethtmlfortag1(response);
+
+
+
                     }
-                    Joomla.sethtmlfortag1(response);
+                });
 
-
-
-                }
-            });
+            }
 
         },
         rebuild_root_block:function(){

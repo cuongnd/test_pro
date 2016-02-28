@@ -1,5 +1,7 @@
 
 <?php
+$doc=JFactory::getDocument();
+$doc->addScript(JUri::root().'/components/com_components/views/components/tmpl/assets/js/loadcomponents.js');
 jimport('joomla.filesystem.folder');
 $website=JFactory::getWebsite();
 $db=JFactory::getDbo();
@@ -20,10 +22,30 @@ foreach ($listComponent as $com) {
     }
 
 }
+$user=JFactory::getUser();
+$show_popup_control=$user->getParam('option.webdesign.show_popup_control',false);
+$show_popup_control=JUtility::toStrictBoolean($show_popup_control);
+$scriptId = "script_component_load_component";
+ob_start();
+?>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('ul.list-component').load_components({
+            show_popup_control:<?php echo json_encode($show_popup_control) ?>
+        });
+
+
+    });
+</script>
+<?php
+$script = ob_get_clean();
+$script = JUtility::remove_string_javascript($script);
+$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
 
 
 ?>
-<ul class="nav sub list-plugin">
+<ul class="nav sub list-plugin list-component">
     <?php foreach ($listLayOut as $com => $views) { ?>
         <li><a href="javascript:void(0)" class="notExpand link_javascript"><?php echo $com ?> <i class=im-paragraph-justify></i></a>
             <ul class="nav sub">
@@ -37,7 +59,7 @@ foreach ($listComponent as $com) {
                                     data-layout="<?php echo $layout ?>" title="<?php echo JText::_($layout) ?>"
                                     class="item-element view_item">
                                     <a href="javascript:void(0)"><i
-                                            class=ec-pencil2></i><?php echo JString::sub_string(JText::_($layout), 7) ?>
+                                            class="ec-pencil2 layout-config"></i><?php echo JString::sub_string(JText::_($layout), 7) ?>
                                     </a>
                                 </li>
                             <?php } ?>
