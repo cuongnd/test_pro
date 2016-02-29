@@ -18,7 +18,8 @@
 
         // plugin's default options
         var defaults = {
-            show_popup_control:false
+            show_popup_control:false,
+            menu_item_id:0
             //main color scheme for field_change_view
             //be sure to be same as colors on main.css or custom-variables.less
 
@@ -42,7 +43,62 @@
             }
             $element.find('#collapseTypes').on('shown', function (event) {
 
-            })
+            });
+            $element.find('.save-view-config').click(function(){
+                var choose_type=plugin.settings.choose_type;
+
+                if(typeof choose_type!=="undefined")
+                {
+                    var config=choose_type.attr('data-seleted');
+                    ajax_web_design = $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        cache: false,
+                        url: this_host + '/index.php',
+                        data: (function () {
+                            dataPost = {
+                                enable_load_component:1,
+                                option: 'com_menus',
+                                task: 'item.save_config_link',
+                                config: config,
+                                menu_item_id: plugin.settings.menu_item_id,
+
+                            };
+                            return dataPost;
+                        })(),
+                        beforeSend: function () {
+                            $('.div-loading').css({
+                                display: "block"
+
+
+                            });
+                            // $('.loading').popup();
+                        },
+                        success: function (response) {
+                            $('.div-loading').css({
+                                display: "none"
+
+
+                            });
+                            if(response.e==1)
+                            {
+                                alert(response.m);
+                            }else
+                            {
+                                alert(response.m);
+                            }
+                        }
+                    });
+
+                }else{
+                    alert('please select choose type');
+                }
+
+
+            });
+            $element.find('.choose_type').click(function(){
+                plugin.settings.choose_type = $(':focus');
+            });
         }
 
         plugin.example_function = function() {

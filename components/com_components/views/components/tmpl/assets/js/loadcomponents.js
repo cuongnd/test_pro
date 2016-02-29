@@ -36,8 +36,8 @@
         plugin.layout_component_config=function(e_taget){
             var type=e_taget.data('type');
             var element_path=e_taget.data('element_path');
-            if(type=='config_field_module'){
-                var element_path='root_module';
+            if(type=='config_field_component'){
+                var element_path='root_component';
             }
             var id=e_taget.data('id');
 
@@ -47,10 +47,10 @@
             {
                 $.open_popup_window({
                     scrollbars:1,
-                    windowName:'main_ralationship',
-                    windowURL:'index.php?enable_load_component=1&option=com_modules&view=module&layout=config&id='+id+'&element_path='+element_path+'&tmpl=field&hide_panel_component=1',
+                    windowName:'view layout config',
+                    windowURL:'index.php?enable_load_component=1&option=com_components&view=component&layout=config&id='+id+'&element_path='+element_path+'&tmpl=field&hide_panel_component=1',
                     centerBrowser:1,
-                    width:'400',
+                    width:'800',
                     menubar:0,
                     scrollbars:1,
                     height:'600',
@@ -65,8 +65,8 @@
                     data: (function () {
 
                         dataPost = {
-                            option: 'com_modules',
-                            view: 'module',
+                            option: 'com_components',
+                            view: 'component',
                             tmpl:'ajax_json',
                             layout:'config',
                             id:id,
@@ -122,6 +122,7 @@
 
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
+            document.title = 'config view';
             $element.find(".list-module .item-element").draggable({
                 appendTo: 'body',
                 helper: "clone"
@@ -129,7 +130,7 @@
                  proxy:'clone'*/
             });
             $element.find('.layout-config').click(function(){
-                plugin.layout_component_config();
+                plugin.layout_component_config($(this));
             });
         }
 

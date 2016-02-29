@@ -96,6 +96,7 @@ class JMenuSite extends JMenu
 						unset($query[$key_query]);
 					}
 				}
+
 				if(empty($query))
 				{
 					$item->link='index.php?option=com_utility&view=blank';

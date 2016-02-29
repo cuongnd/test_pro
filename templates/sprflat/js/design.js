@@ -649,13 +649,19 @@ jQuery(document).ready(function ($) {
             {
                 web_design = $.ajax({
                     type: "GET",
+                    dataType: "json",
                     url: this_host + '/index.php',
                     data: (function () {
 
                         dataPost = {
                             enable_load_component:1,
                             option: 'com_components',
-                            task: 'components.ajax_load_component'
+                            view:'components',
+                            layout:'default',
+                            tpl:'loadcomponent',
+                            tmpl:'ajax_json'
+
+                            //task: 'components.ajax_load_component'
 
                         };
                         return dataPost;
@@ -675,7 +681,7 @@ jQuery(document).ready(function ($) {
 
                         });
                         self.data('add_html_completed',true);
-                        Joomla.sethtmlfortag(response,'append');
+                        Joomla.sethtmlfortag1(response,'append');
                         sprFlat=$('body').data('sprFlat');
                         sprFlat.sideBarNav();
                         //set current class on nav
@@ -684,12 +690,14 @@ jQuery(document).ready(function ($) {
                         sprFlat.toggleSidebar();
                         sprFlat.side_nav_click(_this,e);
 
+/*
                         $(".load_component .item-element").draggable({
                             appendTo: 'body',
                             helper: "clone"
-                            /* revert:true,
-                             proxy:'clone'*/
+                            /!* revert:true,
+                             proxy:'clone'*!/
                         });
+*/
 
                     }
                 });

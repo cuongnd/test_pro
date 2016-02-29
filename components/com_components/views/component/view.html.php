@@ -29,6 +29,13 @@ class componentsViewcomponent extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+		$layout=$this->getLayout();
+		if($layout=='config')
+		{
+			parent::display('default');
+			return;
+		}
+
 		$this->state	= $this->get('State');
 
 		$this->item		= $this->get('Item');

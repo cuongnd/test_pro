@@ -345,7 +345,7 @@ jQuery(document).ready(function($){
                 $.open_popup_window({
                     scrollbars: 1,
                     windowName: 'menu-item-properties',
-                    windowURL: 'index.php?enable_load_component=1&option=com_menus&view=item&layout=properties&menuItemActiveId=' + menuItemActiveId + '&tmpl=field&hide_panel_component=1',
+                    windowURL: 'index.php?enable_load_component=1&option=com_menus&view=item&layout=properties&id='+menuItemActiveId+'&menuItemActiveId=' + menuItemActiveId + '&tmpl=field&hide_panel_component=1',
                     centerBrowser: 1,
                     width: '400',
                     menubar: 0,
@@ -373,6 +373,7 @@ jQuery(document).ready(function($){
                             view: 'item',
                             layout: 'properties',
                             tmpl: 'ajax_json',
+                            id: menuItemActiveId,
                             menuItemActiveId: menuItemActiveId
                         };
                         return dataPost;
@@ -1003,8 +1004,9 @@ jQuery(document).ready(function($){
             var $target=$(e.target);
             if($target.hasClass('im-close'))
             {
-                console.log($target);
                 blockPropertiesUtil.remove_component(this);
+            }else if($target.hasClass('im-screen')){
+
             }else{
                 blockPropertiesUtil.loadPropertiesComponent($(this));
             }

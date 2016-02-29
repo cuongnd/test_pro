@@ -675,6 +675,55 @@ class MenusControllerItem extends JControllerForm
         echo json_encode($htmlReturn);
         die;
     }
+    public function ajax_save_property_menu_item_of_component()
+    {
+
+        $app=JFactory::getApplication();
+        $form=$app->input->get('jform',array(),'array');
+
+        $menu_item_id=$app->input->get('menu_item_id',0,'int');
+
+        $tablemenu=JTable::getInstance('menu','JTable');
+        $tablemenu->load($menu_item_id);
+        $tablemenu->configviewlayout=base64_encode(json_encode($form));
+        $result = new stdClass();
+        $result->e=0;
+        $result->m=JText::_('save success');
+        if(!$tablemenu->store())
+        {
+            $result->e=1;
+            $result->m=$tablemenu->getError();
+        }
+        echo json_encode($result);
+        die;
+    }
+    public function save_config_link()
+    {
+
+        $app=JFactory::getApplication();
+        $config=$app->input->get('config','','string');
+        $menu_item_id=$app->input->get('menu_item_id',0,'int');
+        $config=base64_decode($config);
+        $param_config_value_setup = new JRegistry;
+        $param_config_value_setup->loadString($config);
+        $link='';
+        $link.=($option=$param_config_value_setup->get('request.option',''))?"option=$option":'';
+        $link.=($view=$param_config_value_setup->get('request.view',''))?"&view=$view":'';
+        $link.=($layout=$param_config_value_setup->get('request.layout',''))?"&layout=$layout":'';
+        $tablemenu=JTable::getInstance('menu','JTable');
+        $tablemenu->load($menu_item_id);
+        $tablemenu->link=$link;
+        $result = new stdClass();
+        $result->e=0;
+        $result->m=JText::_('save success');
+        if(!$tablemenu->store())
+        {
+            $result->e=1;
+            $result->m=$tablemenu->getError();
+        }
+        echo json_encode($result);
+        die;
+    }
 
     /**
      * Sets the type of the menu item currently being edited.

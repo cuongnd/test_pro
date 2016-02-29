@@ -47,6 +47,13 @@
 			description="COM_MENUS_ITEM_FIELD_LINK_DESC"
 			readonly="true"
 			size="50"/>
+		<field
+			name="configviewlayout"
+			type="configviewlayout"
+			label="config view layout"
+			description="config view layout"
+			readonly="true"
+			size="50"/>
 
 		<field
 			name="menu_type_id"

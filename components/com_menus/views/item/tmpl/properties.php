@@ -8,7 +8,9 @@ $menuItemActiveId=$app->input->get('menuItemActiveId',0,'int');
 $app->input->set('id',$menuItemActiveId);
 $modelItem= $this->getModel();
 $modelItem->setState('item.id', $menuItemActiveId);
+
 $form=$modelItem->getForm();
+
 $options=$form->getFieldsets();
 $user=JFactory::getUser();
 $show_popup_control=$user->getParam('option.webdesign.show_popup_control',false);

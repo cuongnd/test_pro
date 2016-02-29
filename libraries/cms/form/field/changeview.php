@@ -311,14 +311,15 @@ class JFormFieldChangeView extends JFormField
         $show_popup_control=$user->getParam('option.webdesign.show_popup_control',false);
         $show_popup_control=JUtility::toStrictBoolean($show_popup_control);
         $app=JFactory::getApplication();
-        $menuItemActiveId=$app->input->get('menuItemActiveId',0,'int');
-        $scriptId = "script_field_change_view_" . $menuItemActiveId;
+        $menu_item_id=$app->input->get('id',0,'int');
+        $scriptId = "script_field_change_view_" . $menu_item_id;
         ob_start();
         ?>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
-                $('.field-change-view-config-item-<?php echo $menuItemActiveId ?>').field_change_view({
-                    show_popup_control:<?php echo json_encode($show_popup_control) ?>
+                $('.field-change-view-config-item-<?php echo $menu_item_id ?>').field_change_view({
+                    show_popup_control:<?php echo json_encode($show_popup_control) ?>,
+                    menu_item_id:<?php echo $menu_item_id ?>
                 });
 
 
@@ -336,7 +337,7 @@ class JFormFieldChangeView extends JFormField
         $html = '';
         ob_start();
         ?>
-        <div class="field-change-view-config-item-<?php echo $menuItemActiveId ?>">
+        <div class="field-change-view-config-item-<?php echo $menu_item_id ?>">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="row-fluid">
@@ -388,7 +389,7 @@ class JFormFieldChangeView extends JFormField
 
                                                 <li>
                                                     <a class="choose_type" href="javascript:void(0)" title="<?php echo JText::_($item->description); ?>"
-                                                       onclick="change_view.update_value('<?php echo base64_encode(json_encode(array('title' => (isset($item->type) ? $item->type : $item->title), 'request' => $item->request))); ?>')">
+                                                       data-seleted="<?php echo base64_encode(json_encode(array('title' => (isset($item->type) ? $item->type : $item->title), 'request' => $item->request))); ?>">
                                                         <?php echo $title; ?>
                                                         <small class="muted"><?php echo JText::_($item->description); ?></small>
                                                     </a>
@@ -421,6 +422,17 @@ class JFormFieldChangeView extends JFormField
                 </div>
             </div>
             <input type="hidden" class="input_link" value="<?php echo trim($this->value) ?>" name="<?php echo $this->name ?>" />
+            <button class="btn btn-danger save-view-config pull-right" >
+                <i class="fa-save"></i>Save&close                </button>
+            &nbsp;&nbsp;
+            <button class="btn btn-danger apply-view-config pull-right"><i
+                    class="fa-save"></i>Save
+            </button>
+            &nbsp;&nbsp;
+            <button class="btn btn-danger cancel-view-config pull-right" ><i
+                    class="fa-save"></i>Cancel
+            </button>
+
         </div>
         <?php
         $html .= ob_get_clean();

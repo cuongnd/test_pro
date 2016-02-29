@@ -161,6 +161,35 @@
             });
 
         };
+        plugin.other_setup = function () {
+          $('.panel-component .view-config .im-screen').click(function(e){
+              plugin.loadPropertiesComponent($(this));
+          });
+        };
+        plugin.loadPropertiesComponent=function(self){
+            var show_popup_control=plugin.settings.show_popup_control;
+            var element_path=self.data('element_path');
+            if(show_popup_control) {
+                $.open_popup_window({
+                    scrollbars:1,
+                    windowName:'view layout config',
+                    windowURL:'index.php?enable_load_component=1&option=com_components&view=component&layout=config&element_path='+element_path+'&tmpl=field&hide_panel_component=1',
+                    centerBrowser:1,
+                    width:'800',
+                    menubar:0,
+                    scrollbars:1,
+                    height:'600',
+
+                });
+
+            }
+            else {
+
+
+            }
+
+        }
+
         plugin.init = function() {
 
             // the plugin's final properties are the merged default and
@@ -208,6 +237,7 @@
             this.toggleHeaderArea();
             //chat window basic functions
             this.chatWindow();
+            this.other_setup();
 
             //fixed header
             if(plugin.settings.header.fixed) {

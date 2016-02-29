@@ -168,6 +168,16 @@ final class JApplicationSite extends JApplicationCms
         $enableEditWebsite = UtilityHelper::getEnableEditWebsite();
         $tmpl=$this->input->get('tmpl','');
         $hide_panel_component=$this->input->get('hide_panel_component',0,'int');
+        $website=JFactory::getWebsite();
+
+        $view=$this->input->get('view',substr($component,4));
+        $layout=$this->input->get('layout','default');
+
+        $element_path="components/website/website_$website->website_id/$component/views/$view/tmpl/$layout.xml";
+        if(!JFile::exists(JPATH_ROOT.'/'.$element_path))
+        {
+            $element_path="components/$component/$view/tmpl/$layout.xml";
+        }
         ob_start();
         if($tmpl=='sourcejs')
         {
@@ -182,7 +192,7 @@ final class JApplicationSite extends JApplicationCms
                 ?>
                 <div class="panel panel-primary toggle panelRefresh panelClose panel-component">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Component</h4>
+                        <h4 class="panel-title"><span class="view-config"><i class="im-screen"  data-element-type="extension_component" data-element_path="<?php echo $element_path ?>" ></i></span>Component</h4>
                     </div>
                     <div class="panel-body">
                         <?php echo $contents ?>

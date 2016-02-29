@@ -67,5 +67,36 @@ class componentsControllercomponent extends JControllerForm
         echo json_encode($response);
         die;
     }
+    public function ajax_save_field_params()
+    {
+        $app=JFactory::getApplication();
+        $website=JFactory::getWebsite();
+        $fields=$app->input->get('fields','','string');
+        $element_path=$app->input->get('element_path','','string');
+        $db=JFactory::getDbo();
+        require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+        $table_control=new JTableUpdateTable($db,'control');
+        $table_control->load(array(
+            'element_path'=>$element_path,
+            'type'=>'component',
+            'website_id'=>$website->website_id
+        ));
+        $table_control->website_id=$website->website_id;
+        $table_control->element_path=$element_path;
+        $table_control->type='component';
+        $table_control->fields=$fields;
+        $response=new stdClass();
+        $response->e=0;
+        if(!$table_control->store())
+        {
+            $response->e=1;
+            $response->r=$table_control->getError();
+        }else{
+            $response->r="save success";
+        }
+        echo json_encode($response);
+        die;
+    }
+
 
 }

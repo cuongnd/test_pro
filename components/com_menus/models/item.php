@@ -552,7 +552,6 @@ class MenusModelItem extends JModelAdmin
 			$this->setState('item.link', JArrayHelper::getValue($data, 'link'));
 			$this->setState('item.type', JArrayHelper::getValue($data, 'type'));
 		}
-
 		// Get the form.
 		$form = $this->loadForm('com_menus.item', 'item', array('control' => 'jform', 'load_data' => $loadData), true);
 
@@ -573,6 +572,7 @@ class MenusModelItem extends JModelAdmin
 			$form->setFieldAttribute('menuordering', 'filter', 'unset');
 			$form->setFieldAttribute('published', 'filter', 'unset');
 		}
+
 
 		return $form;
 	}
@@ -751,7 +751,6 @@ class MenusModelItem extends JModelAdmin
 			}
 		}
 		$result->menuordering = $pk;
-
 		return $result;
 	}
 
@@ -900,13 +899,19 @@ class MenusModelItem extends JModelAdmin
 			// Confirm that the option is defined.
 			$option = '';
 			$base = '';
+			$website=JFactory::getWebsite();
 			if (isset($args['option']))
 			{
 				// The option determines the base path to work with.
 				$option = $args['option'];
-				$base = JPATH_SITE . '/components/' . $option;
-			}
 
+				$base = JPATH_SITE . '/components/website/website_'.$website->website_id.'/' . $option;
+				jimport('joomla.filesystem.folder');
+				if(!JFolder::exists($base))
+				{
+					$base = JPATH_SITE . '/components/' . $option;
+				}
+			}
 			// Confirm a view is defined.
 			$formFile = false;
 			if (isset($args['view']))
