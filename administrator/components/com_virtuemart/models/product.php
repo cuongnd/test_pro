@@ -1409,6 +1409,12 @@ class VirtueMartModelProduct extends VmModel {
         $this->listProductId=$ids;
 		//quickndirty hack for the BE list, we can do that, because in vm2.1 this is anyway fixed correctly
 		$this->listing = TRUE;
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('*')
+			->from('#_')
+			;
+
 		$products = $this->getProducts ($ids, $front, $withCalc, $onlyPublished, $single);
 		$this->listing = FALSE;
 		return $products;
@@ -1453,7 +1459,6 @@ class VirtueMartModelProduct extends VmModel {
 
 		$maxNumber = VmConfig::get ('absMaxProducts', 700);
 		$products = array();
-
 		if ($single) {
 
 			foreach ($productIds as $id) {

@@ -44,7 +44,7 @@ class VirtuemartViewProduct extends VmView
         $this->loadHelper('html');
         $this->loadHelper('image');
 
-        $model = VmModel::getModel();
+        $model = VmModel::getModel('shortedproduct');
         // Handle any publish/unpublish
         switch ($task) {
             case 'add':

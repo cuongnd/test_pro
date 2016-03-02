@@ -1549,7 +1549,6 @@ class VirtueMartModelShortedProduct extends VirtueMartModelProduct {
 			$this->virtuemart_category_id = FALSE;
 		}
 		$ids = $this->sortSearchListQuery ($onlyPublished, $this->virtuemart_category_id, $group, $nbrReturnProducts,$vendor);
-
 		//quickndirty hack for the BE list, we can do that, because in vm2.1 this is anyway fixed correctly
 		$this->listing = TRUE;
 		$products = $this->getProducts ($ids, $front, $withCalc, $onlyPublished, $single);
@@ -1593,6 +1592,11 @@ class VirtueMartModelShortedProduct extends VirtueMartModelProduct {
 			// 			vmTrace('getProducts has no $productIds');
 			return array();
 		}
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('*')
+			->from('#__')
+			;
 
 		$maxNumber = VmConfig::get ('absMaxProducts', 700);
 		$products = array();

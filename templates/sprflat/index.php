@@ -215,8 +215,11 @@ if (!$ajaxGetContent) {
     $doc->addStyleSheet(JUri::root() . '/media/system/js/joyride-master/joyride-2.1.css');
     $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/build/less-js/dist/less-1.5.0.js');
     $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/less/csswheneditsite.less');
+    if(JFile::exists(JPATH_ROOT. "/layouts/website/less/" . $websiteTable->source_less))
+    {
+        $doc->addLessStyleSheet(JUri::root() . "/layouts/website/less/" . $websiteTable->source_less);
+    }
 
-    $doc->addLessStyleSheet(JUri::root() . "/layouts/website/less/" . $websiteTable->source_less);
 
 
     $doc->addLessStyleSheet(JUri::root() . '/media/system/js/jquery-neon-border/less/jquery.neon_border.less');
@@ -335,7 +338,11 @@ ob_start();
     $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/less/disableedit.less');
 
     $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/assets/less/mainFrontEnd.less');
-    $doc->addLessStyleSheet(JUri::root() . "/layouts/website/less/" . $websiteTable->source_less);
+    if(JFile::exists(JPATH_ROOT. "/layouts/website/less/" . $websiteTable->source_less))
+    {
+        $doc->addLessStyleSheet(JUri::root() ."/layouts/website/less/" . $websiteTable->source_less);
+    }
+
 
 
     $doc->addLessStyleSheet(JUri::root() . "/media/jui_front_end/bootstrap-3.3.0/less/bootstrap.less");

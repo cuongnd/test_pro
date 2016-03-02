@@ -58,7 +58,8 @@
                         dataPost = {
                             option: 'com_phpmyadmin',
                             task: 'datasource.ajax_save_project_relationship',
-                            xml: xml
+                            xml: xml,
+                            enable_load_component:1
 
                         };
                         return dataPost;

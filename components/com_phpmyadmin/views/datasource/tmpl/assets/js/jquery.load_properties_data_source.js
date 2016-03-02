@@ -34,6 +34,35 @@
             element = element;    // reference to the actual DOM element
 
         // the "constructor" method that gets called when the object is created
+        plugin.save_data_property_data_source = function (self) {
+
+            if(typeof ajaxSavePropertyDataSource !== 'undefined'){
+                ajaxSavePropertyDataSource.abort();
+            }
+            post=$element.find('select,textarea, input:not([readonly])').serialize();
+            ajaxSavePropertyDataSource=$.ajax({
+                type: "POST",
+                url: this_host+'/index.php?enable_load_component=1&option=com_phpmyadmin&task=datasource.ajaxSavePropertiesDataSource&screensize='+currentScreenSizeEditing,
+                data: post,
+                beforeSend: function () {
+                    $('.div-loading').css({
+                        display: "block"
+
+
+                    });
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+                    $('.div-loading').css({
+                        display: "none"
+
+
+                    });
+                    alert('save successful');
+                    //Joomla.sethtmlfortag(response);
+                }
+            });
+        };
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
             var show_popup_control=plugin.settings.show_popup_control;
@@ -42,6 +71,10 @@
             }
             $element.find('.getFieldType').click(function(){
                 plugin.getFieldTypeOfDataSource($(this));
+            });
+
+            $element.find('.save-data-source-properties').click(function(){
+                plugin.save_data_property_data_source($(this));
             });
         }
         plugin.getFieldTypeOfDataSource=function(self){

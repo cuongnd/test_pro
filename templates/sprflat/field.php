@@ -161,10 +161,10 @@ if ($enableEditWebsite) {
 
 
 		$lessInput = JPATH_ROOT . "/layouts/website/less/$websiteTable->source_less";
-		$lessInputInfo = pathinfo($lessInput);
-		$cssOutput = JPATH_ROOT . '/layouts/website/css/' . $lessInputInfo['filename'] . '.css';
-		JUtility::compileLess($lessInput, $cssOutput);
-		$doc->addStyleSheet(JUri::root() . '/layouts/website/css/' . $lessInputInfo['filename'] . '.css');
+		if(JFile::exists($lessInput))
+		{
+			$doc->addLessStyleSheet(JUri::root(). "/layouts/website/less/$websiteTable->source_less");
+		}
 
 
 		$doc->addScript(JUri::root() . '/media/system/js/jquery-neon-border/js/jquery.neon_border.js');

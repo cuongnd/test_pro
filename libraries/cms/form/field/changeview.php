@@ -235,23 +235,22 @@ class JFormFieldChangeView extends JFormField
 
 
         $doc->addLessStyleSheet(JUri::root() . "/libraries/cms/form/field/changeview.less");
-        $doc->addScript(JUri::root().'/media/system/js/base64.js');
-        $doc->addScript(JUri::root().'/libraries/cms/form/field/changeview.js');
+        $doc->addScript(JUri::root() . '/media/system/js/base64.js');
+        $doc->addScript(JUri::root() . '/libraries/cms/form/field/changeview.js');
         $db = JFactory::getDbo();
 
         $tables = $db->getTableList();
         $list_table = array();
-        for ($i=0;$i<count($tables);$i++) {
-            $table=$tables[$i];
+        for ($i = 0; $i < count($tables); $i++) {
+            $table = $tables[$i];
             $list_table[] = str_replace($db->getPrefix(), '#__', $table);
-            if($i==10)
-            {
+            if ($i == 10) {
                 break;
             }
         }
-        $website=JFactory::getWebsite();
-        JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_menus/models');
-        $modal_menu_type= JModelLegacy::getInstance('Menutypes','MenusModel');
+        $website = JFactory::getWebsite();
+        JModelLegacy::addIncludePath(JPATH_ROOT . '/components/com_menus/models');
+        $modal_menu_type = JModelLegacy::getInstance('Menutypes', 'MenusModel');
         $types = $modal_menu_type->getTypeOptionsByWebsiteId($website->website_id);
 
         $list = array();
@@ -307,11 +306,11 @@ class JFormFieldChangeView extends JFormField
         ksort($sortedTypes);
 
         $types = $sortedTypes;
-        $user=JFactory::getUser();
-        $show_popup_control=$user->getParam('option.webdesign.show_popup_control',false);
-        $show_popup_control=JUtility::toStrictBoolean($show_popup_control);
-        $app=JFactory::getApplication();
-        $menu_item_id=$app->input->get('id',0,'int');
+        $user = JFactory::getUser();
+        $show_popup_control = $user->getParam('option.webdesign.show_popup_control', false);
+        $show_popup_control = JUtility::toStrictBoolean($show_popup_control);
+        $app = JFactory::getApplication();
+        $menu_item_id = $app->input->get('id', 0, 'int');
         $scriptId = "script_field_change_view_" . $menu_item_id;
         ob_start();
         ?>
@@ -331,28 +330,26 @@ class JFormFieldChangeView extends JFormField
         $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 
 
-
         $listFunction = JFormFieldDatasource::getListAllFunction();
 
         $html = '';
         ob_start();
         ?>
-        <div class="field-change-view-config-item-<?php echo $menu_item_id ?>">
+        <div class="field-change-view-config-item field-change-view-config-item-<?php echo $menu_item_id ?>">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="row-fluid">
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <?php $i=0 ?>
+                            <?php $i = 0 ?>
                             <?php
                             foreach ($types as $key => $type) {
-                                if($key=='backend')
-                                {
+                                if ($key == 'backend') {
                                     continue;
                                 }
                                 ?>
-                                <li class="<?php echo $i==0?'active':'' ?>">
+                                <li class="<?php echo $i == 0 ? 'active' : '' ?>">
                                     <a href="#<?php echo $key ?>" role="tab" data-toggle="tab">
                                         <icon class="fa fa-home"></icon> <?php echo $key ?>
                                     </a>
@@ -368,40 +365,72 @@ class JFormFieldChangeView extends JFormField
                             <?php $j = 0; ?>
                             <?php
                             foreach ($types as $key => $type) {
-                                if($key=='backend')
-                                {
+                                if ($key == 'backend') {
                                     continue;
                                 }
                                 ?>
 
-                                <div class="tab-pane fade <?php echo $i==0?'active':'' ?>  in" id="<?php echo $key ?>">
+                                <div class="tab-pane fade <?php echo $i == 0 ? 'active' : '' ?>  in"
+                                     id="<?php echo $key ?>">
 
 
-                                    <?php echo JHtml::_('bootstrap.startAccordion', 'collapseTypes-'.$key, array('active' => 'slide1')); ?>
+                                    <?php echo JHtml::_('bootstrap.startAccordion', 'collapseTypes-' . $key, array('active' => 'slide1')); ?>
 
                                     <?php foreach ($type as $name => $list) : ?>
                                         <?php echo JHtml::_('bootstrap.addSlide', 'collapseTypes', $name, 'collapse' . $j); ?>
                                         <ul class="nav nav-tabs nav-stacked">
                                             <?php
+                                            $list_view = array();
                                             foreach ($list as $title => $item) :
+                                                $request = $item->request;
+                                                $view = $request['view'];
+                                                $layout = $request['layout'];
+                                                $layout = $layout != '' ? $layout : 'default';
+                                                $item_layout = new stdClass();
+                                                $item_layout->layout = $layout;
+                                                $item_layout->title = $item->title;
+                                                $item_layout->description = $item->description;
+                                                $item_layout->type = $item->type;
+                                                $item_layout->request = $request;
+                                                $list_view[$view][] = $item_layout;
+                                            endforeach;
+                                            foreach ($list_view as $view => $list_layout) {
+                                                ?>
+                                                <li>
+                                                    <a><?php echo $view ?></a>
+                                                    <ul class="list-view">
+                                                        <?php
+                                                        foreach ($list_layout as $layout) {
+                                                            ?>
+                                                            <li class="layout-item">
+                                                                <a class="choose_type" href="javascript:void(0)"
+                                                                   title="<?php echo JText::_($layout->description); ?>"
+                                                                   data-seleted="<?php echo base64_encode(json_encode(array('title' => (isset($layout->type) ? $layout->type : $layout->title), 'request' => $layout->request))); ?>">
+                                                                    <?php echo $title; ?>
+                                                                    <small
+                                                                        class="muted"><?php echo JText::_($layout->description); ?></small>
+                                                                </a>
+                                                                <?php if (!$layout->request) { ?>
+                                                                    <ul>
+                                                                        <?php if ($layout->type == 'url') { ?>
+                                                                            <li><label>link<input type="text"
+                                                                                                  value="<?php echo $layout->link ?>">
+                                                                                </label></li>
+                                                                        <?php } ?>
+                                                                    </ul>
+                                                                <?php } ?>
+                                                            </li>
 
+                                                            <?php
+                                                        }
+                                                        ?>
+
+                                                    </ul>
+                                                </li>
+                                                <?php
+                                            }
                                                 ?>
 
-                                                <li>
-                                                    <a class="choose_type" href="javascript:void(0)" title="<?php echo JText::_($item->description); ?>"
-                                                       data-seleted="<?php echo base64_encode(json_encode(array('title' => (isset($item->type) ? $item->type : $item->title), 'request' => $item->request))); ?>">
-                                                        <?php echo $title; ?>
-                                                        <small class="muted"><?php echo JText::_($item->description); ?></small>
-                                                    </a>
-                                                    <?php if(!$item->request){ ?>
-                                                    <ul>
-                                                        <?php if($item->type=='url'){ ?>
-                                                            <li><label>link<input type="text" value="<?php echo $item->link ?>"> </label></li>
-                                                        <?php } ?>
-                                                    </ul>
-                                                <?php } ?>
-                                                </li>
-                                            <?php endforeach; ?>
                                         </ul>
                                         <?php echo JHtml::_('bootstrap.endSlide'); ?>
 
@@ -421,15 +450,17 @@ class JFormFieldChangeView extends JFormField
 
                 </div>
             </div>
-            <input type="hidden" class="input_link" value="<?php echo trim($this->value) ?>" name="<?php echo $this->name ?>" />
-            <button class="btn btn-danger save-view-config pull-right" >
-                <i class="fa-save"></i>Save&close                </button>
+            <input type="hidden" class="input_link" value="<?php echo trim($this->value) ?>"
+                   name="<?php echo $this->name ?>"/>
+            <button class="btn btn-danger save-view-config pull-right">
+                <i class="fa-save"></i>Save&close
+            </button>
             &nbsp;&nbsp;
             <button class="btn btn-danger apply-view-config pull-right"><i
                     class="fa-save"></i>Save
             </button>
             &nbsp;&nbsp;
-            <button class="btn btn-danger cancel-view-config pull-right" ><i
+            <button class="btn btn-danger cancel-view-config pull-right"><i
                     class="fa-save"></i>Cancel
             </button>
 

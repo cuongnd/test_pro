@@ -61,6 +61,7 @@
                             option: 'com_phpmyadmin',
                             task: 'datasource.ajax_save_datasource_relationship',
                             xml: xml,
+                            enable_load_component:1,
                             datasource_id:datasource_id
 
                         };

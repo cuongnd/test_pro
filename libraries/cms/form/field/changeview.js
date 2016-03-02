@@ -97,7 +97,10 @@
 
             });
             $element.find('.choose_type').click(function(){
-                plugin.settings.choose_type = $(':focus');
+                $element.find('.choose_type').removeClass('selected');
+                var choose_type=$(':focus');
+                choose_type.addClass('selected');
+                plugin.settings.choose_type = choose_type;
             });
         }
 

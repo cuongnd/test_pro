@@ -69,7 +69,7 @@ ob_start();
     </div>
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-danger save-block-properties pull-right" type="button"><i class="fa-save"></i>Save</button>&nbsp;&nbsp;
+            <button class="btn btn-danger save-data-source-properties pull-right" type="button"><i class="fa-save"></i>Save</button>&nbsp;&nbsp;
             <button class="btn btn-danger cancel-block-properties pull-right" type="button"><i class="br-refresh"></i>Reset</button>
         </div>
     </div>

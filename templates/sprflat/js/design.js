@@ -525,18 +525,39 @@ jQuery(document).ready(function ($) {
                 },
                 height: 550,
                 columns: [
-                    { field: "datasource.id", title: "Id", width: "50px" },
+                    { field: "id", title: "Id", width: "50px" },
                     {
-                        field: "datasource.title", title: "Title", width: "200px",
-                        template:'<div class="add-on-item-content pull-left ui-sortable-handle" data-add-on-id="#:datasource.id#">' +
-                                    '<a href="javascript:void(0)" data-add-on-id="#:datasource.id#">' +
-                                        '<i class="br-database"></i>#:datasource.title#' +
+                        field: "title", title: "Title", width: "100px",
+                        template:'<div class="add-on-item-content pull-left ui-sortable-handle" data-add-on-id="#:id#">' +
+                                    '<a href="javascript:void(0)" data-add-on-id="#:id#">' +
+                                        '<i class="br-database"></i>#:title#' +
                                     '</a></div>'
                     },
-                    { field: "datasource.name",title: "Name", width: "400px" },
-                    { field: "datasource.introtext",title: "Description", width: "400px" }
+                    { field: "name",title: "Name", width: "100px" },
+                    { field: "introtext",title: "Description", width: "100px" },
+                    {
+                        field: "title", title: "Action", width: "200px",
+                        template:'<a class="popup-project-relationship" href="index.php?enable_load_component=1&option=com_phpmyadmin&view=projectrelation&tmpl=field&hide_panel_component=1"><i class="en-popup">project relationship</i></a>&nbsp;&nbsp;&nbsp;&nbsp;' +
+                        '<a class="popup-current-relationship" href="/index.php?enable_load_component=1&option=com_phpmyadmin&view=datasourcerelation&tmpl=field&datasource_id=#:id#&hide_panel_component=1"><i class="en-publish"></i>curent relationship</a>'
+                    }
                 ]
             });
+            $('.popup-project-relationship').popupWindow({
+                scrollbars:1,
+                windowName:'popup_project_relationship',
+                centerBrowser:1,
+                width:'1200',
+                height:'800'
+            });
+            $('.popup-current-relationship').popupWindow({
+                scrollbars:1,
+                windowName:'popup_current_relationship',
+                centerBrowser:1,
+                width:'1200',
+                height:'800'
+            });
+
+
         },
         ajax_load_menu_page:function(self,_this,e)
         {
