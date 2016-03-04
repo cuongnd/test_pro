@@ -69,6 +69,7 @@
 	
 	<!-- io -->
 	<string name="saveload">Save / Load</string>
+	<string name="btn_savejson">Save / json</string>
 	<string name="empty">Please paste XML data into the text area below and try again.</string>
 	<string name="client">Client</string>
 	<string name="server">Server</string>
@@ -81,6 +82,7 @@
 	<string name="dropboxsave">Save to Dropbox</string>
 	<string name="dropboxload">Load from Dropbox</string>
 	<string name="dropboxlist">List from Dropbox</string>
+	<string name="export_json">Export to json</string>
 	<string name="clientsql">Generate SQL</string>
 	<string name="backendlabel">Server backend:</string>
 	<string name="serversave">Save</string>

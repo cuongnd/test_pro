@@ -493,17 +493,17 @@ class VmTable extends JTable{
 	 * @author Max Milbers
 	 */
 	function store($updateNulls = false){
+
 		$this->setLoggableFieldsForStore();
 		// fix for joomla 3.2
 		// if (class_exists('JObserverUpdater') ) $this->_observers = new JObserverUpdater($this);
 		$this->storeParams();
-		
+
 		// If a primary key exists update the object, otherwise insert it.
 		// if (empty($this->_tbl_key)); unset 
 		if ($this->hasPrimaryKey())
 		{
 			$result = $this->_db->updateObject($this->_tbl, $this, $this->_tbl_keys, $updateNulls);
-
 		}
 		else
 		{

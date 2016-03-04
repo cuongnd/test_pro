@@ -252,9 +252,14 @@ SQL.TableManager.prototype.save = function () {
             if(response!==null)
             {
                 var selection = this.selection[0];
-                $.each(selection.rows,function(index,row){
-                    selection.rows[index].destroy();
+                /*$.each(selection.keys,function(index,row){
+                    var row_index=selection.rows[index];
+                    row_index.destroy();
                 });
+                $.each(selection.rows,function(index,row){
+                    var row_index=selection.rows[index];
+                    row_index.destroy();
+                });*/
                 full_table=$('#full_table').is(':checked');
                 var gs = DATATYPES.getElementsByTagName("group");
                 $.each(response, function (index, obj_field) {
@@ -287,8 +292,8 @@ SQL.TableManager.prototype.save = function () {
                     {
                         var row = selection.addRow(field, data);
                         if (key == 'pri') {
-                            var k = selection.addKey("PRIMARY", "");
-                            k.addRow(row);
+                            //var k = selection.addKey("PRIMARY", "");
+                            //k.addRow(row);
                         }
                     }else {
                         var list_content = [
@@ -302,8 +307,8 @@ SQL.TableManager.prototype.save = function () {
                             var row = selection.addRow(field, data);
 
                             if (typeof key !== 'undefined' && key == 'pri') {
-                                var k = selection.addKey("PRIMARY", "");
-                                k.addRow(row);
+                                //var k = selection.addKey("PRIMARY", "");
+                                //k.addRow(row);
                             }
                         }
                     }

@@ -67,6 +67,7 @@ for ($i = 0; $i < count($tables); $i++) {
                 <div id="bar">
                     <div id="toggle"></div>
                     <input type="button" id="saveload"/>
+                    <input type="button" id="btn_savejson"/>
                     <hr/>
                     <button class="btn btn-danger save-project-ralationship  save-close-project-ralationship "  type="button"><i class="fa-save"></i>Save&amp;close</button>
                     <hr/>
@@ -219,6 +220,7 @@ for ($i = 0; $i < count($tables); $i++) {
                                 </div>
                                 <hr/>
                                 <input type="button" id="clientsql"/>
+                                <input type="button" id="export_json" />
                             </fieldset>
                         </td>
                         <td style="width:40%">

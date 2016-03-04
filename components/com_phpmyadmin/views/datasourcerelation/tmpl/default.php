@@ -216,6 +216,7 @@ for ($i = 0; $i < count($tables); $i++) {
                                 </div>
                                 <hr/>
                                 <input type="button" id="clientsql"/>
+                                <input type="button" value="export to json"  id="export_json"/>
                             </fieldset>
                         </td>
                         <td style="width:40%">

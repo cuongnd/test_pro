@@ -6,24 +6,30 @@ SQL.IO = function(owner) {
 		container:OZ.$("io")
 	};
 
-	var ids = ["saveload","clientlocalsave", "clientsave", "clientlocalload", "clientlocallist","clientload", "clientsql", 
-				"dropboxsave", "dropboxload", "dropboxlist",
+	var ids = ["export_json","btn_savejson","saveload","clientlocalsave", "clientsave", "clientlocalload", "clientlocallist","clientload", "clientsql","dropboxsave", "dropboxload", "dropboxlist",
 				"quicksave", "serversave", "serverload",
 				"serverlist", "serverimport"];
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
 		this.dom[id] = elm;
-		elm.value = getString(id);
+		if(typeof elm!=="undefined" && elm!==null)
+		{
+			elm.value = getString(id);
+		}
+
 	}
 	
 	this.dom.quicksave.value += " (F2)";
 
-	var ids = ["client","server","output","backendlabel"];
+	var ids = ["export_json","client","server","output","backendlabel"];
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
-		elm.innerHTML = getString(id);
+		if(typeof elm!=="undefined" && elm!==null)
+		{
+			elm.innerHTML = getString(id);
+		}
 	}
 	
 	this.dom.ta = OZ.$("textarea");
@@ -41,6 +47,7 @@ SQL.IO = function(owner) {
 	this.importresponse = this.importresponse.bind(this);
 	
 	OZ.Event.add(this.dom.saveload, "click", this.click.bind(this));
+	OZ.Event.add(this.dom.btn_savejson, "click", this.show_popup_get_json.bind(this));
 	OZ.Event.add(this.dom.clientlocalsave, "click", this.clientlocalsave.bind(this));
 	OZ.Event.add(this.dom.clientsave, "click", this.clientsave.bind(this));
 	OZ.Event.add(this.dom.clientlocalload, "click", this.clientlocalload.bind(this));
@@ -50,6 +57,7 @@ SQL.IO = function(owner) {
 	OZ.Event.add(this.dom.dropboxsave, "click", this.dropboxsave.bind(this));
 	OZ.Event.add(this.dom.dropboxlist, "click", this.dropboxlist.bind(this));
 	OZ.Event.add(this.dom.clientsql, "click", this.clientsql.bind(this));
+	OZ.Event.add(this.dom.export_json, "click", this.get_export_json.bind(this));
 	OZ.Event.add(this.dom.quicksave, "click", this.quicksave.bind(this));
 	OZ.Event.add(this.dom.serversave, "click", this.serversave.bind(this));
 	OZ.Event.add(this.dom.serverload, "click", this.serverload.bind(this));
@@ -81,6 +89,13 @@ SQL.IO.prototype.build = function() {
 }
 
 SQL.IO.prototype.click = function() { /* open io dialog */
+	this.build();
+	this.dom.ta.value = "";
+	this.dom.clientsql.value = getString("clientsql") + " (" + window.DATATYPES.getAttribute("db") + ")";
+
+	this.owner.window.open(getString("saveload"),this.dom.container);
+}
+SQL.IO.prototype.show_popup_get_json = function() { /* open io dialog */
 	this.build();
 	this.dom.ta.value = "";
 	this.dom.clientsql.value = getString("clientsql") + " (" + window.DATATYPES.getAttribute("db") + ")";
@@ -380,10 +395,53 @@ SQL.IO.prototype.clientsql = function() {
 	this.owner.window.showThrobber();
 	OZ.Request(path, this.finish.bind(this), {xml:true});
 }
+SQL.IO.prototype.get_export_json = function() {
+	var tables=this.owner.tables;
+	var $=jQuery;
+/*
+	var type=tables[0].rows[0].getDataType();
+	console.log(type);
+
+	var $type=$(type);
+	var sql= $type.attr('sql');
+	console.log(sql);
+*/
+	var list_table={};
+	jQuery.each(tables,function(index,table){
+		var table_name=table.getTitle();
+		list_table[table_name]=[];
+		var rows=table.rows;
+		jQuery.each(rows,function(index,row){
+			var row_name=row.getTitle();
+			var item={};
+			item.row_name=row_name;
+			var size=row.data.size;
+			item.size=size;
+			var row_type=row.getDataType();
+			row_type=$(row_type);
+			var row_sql=row_type.attr('sql');
+			item.sql=row_sql;
+			var is_primary=row.isPrimary();
+			item.is_primary=is_primary;
+			var relations=row.relations;
+			item.relations=[];
+			jQuery.each(relations,function(index,relation){
+				var item_row1=relation.row1.getTitle();
+				var item_row2=relation.row2.getTitle();
+				item.relations.push(item_row1);
+				item.relations.push(item_row2);
+			});
+			list_table[table_name].push(item);
+		});
+	});
+	console.log(list_table);
+	this.dom.ta.value ='sdfsdfsdfsd';
+};
 
 SQL.IO.prototype.finish = function(xslDoc) {
 	this.owner.window.hideThrobber();
 	var xml = this.owner.toXML();
+
 	var sql = "";
 	try {
 		if (window.XSLTProcessor && window.DOMParser) {

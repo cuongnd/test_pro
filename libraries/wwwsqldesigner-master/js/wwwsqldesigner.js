@@ -78,12 +78,14 @@ SQL.Designer.prototype.requestDB = function() { /* get datatypes file */
 	var db = this.getOption("db");
 	var bp = this.getOption("staticpath");
 	var url = bp + "db/"+db+"/datatypes.xml";
+
 	OZ.Request(url, this.dbResponse.bind(this), {method:"get", xml:true});
 }
 
 SQL.Designer.prototype.dbResponse = function(xmlDoc) {
 	if (xmlDoc) {
 		window.DATATYPES = xmlDoc.documentElement;
+		console.log(window.DATATYPES);
 	}
 	this.flag--;
 	if (!this.flag) { this.init2(); }

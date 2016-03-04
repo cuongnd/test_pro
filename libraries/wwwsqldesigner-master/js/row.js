@@ -355,6 +355,7 @@ SQL.Row.prototype.toXML = function() {
 }
 
 SQL.Row.prototype.fromXML = function(node) {
+
 	var name = node.getAttribute("name");
 	
 	var obj = { type:0, size:"" };

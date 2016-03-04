@@ -151,7 +151,6 @@
       <excludeFolder url="file://$MODULE_DIR$/libraries/sourcecoast" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/tcpdf" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/upgradephp-19" />
-      <excludeFolder url="file://$MODULE_DIR$/libraries/wwwsqldesigner-master" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/xml-merge-master" />
       <excludeFolder url="file://$MODULE_DIR$/logs" />
       <excludeFolder url="file://$MODULE_DIR$/media/Highcharts-4.1.1" />

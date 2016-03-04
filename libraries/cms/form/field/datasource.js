@@ -60,8 +60,8 @@
                 scrollbars:1,
                 windowName:'project_ralationship',
                 centerBrowser:1,
-                width:'1200',
-                height:'800'
+                width:'1800',
+                height:'1200'
             });
             $element.find('.datasourcerelation').popupWindow({
                 scrollbars:1,

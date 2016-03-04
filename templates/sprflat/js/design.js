@@ -546,8 +546,8 @@ jQuery(document).ready(function ($) {
                 scrollbars:1,
                 windowName:'popup_project_relationship',
                 centerBrowser:1,
-                width:'1200',
-                height:'800'
+                width:'1800',
+                height:'1000'
             });
             $('.popup-current-relationship').popupWindow({
                 scrollbars:1,
