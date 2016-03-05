@@ -426,16 +426,21 @@ SQL.IO.prototype.get_export_json = function() {
 			var relations=row.relations;
 			item.relations=[];
 			jQuery.each(relations,function(index,relation){
-				var item_row1=relation.row1.getTitle();
-				var item_row2=relation.row2.getTitle();
-				item.relations.push(item_row1);
-				item.relations.push(item_row2);
+				var item_relation=[];
+				var item_row1={};
+				item_row1.table_name=relation.row1.owner.getTitle();
+				item_row1.table_row=relation.row1.getTitle();
+				item_relation.push(item_row1);
+				var item_row2={};
+				item_row2.table_name=relation.row2.owner.getTitle();
+				item_row2.table_row=relation.row2.getTitle();
+				item_relation.push(item_row2);
+				item.relations.push(item_relation);
 			});
 			list_table[table_name].push(item);
 		});
 	});
-	console.log(list_table);
-	this.dom.ta.value ='sdfsdfsdfsd';
+	this.dom.ta.value =JSON.stringify(list_table);
 };
 
 SQL.IO.prototype.finish = function(xslDoc) {
