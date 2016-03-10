@@ -148,7 +148,196 @@ class JUtility
         }
 
     }
+    public function ajax_check_database()
+    {
+        $db=JFactory::getDbo();
+        $prefix='me1u8_virtuemart';
 
+        $app=JFactory::getApplication();
+        $input=$app->input;
+        $json_database_path_file='administrator/components/com_virtuemart/views/utility/tmpl/json_database/json_database.txt';
+        $json_database=JFile::read(JPATH_ROOT.'/'.$json_database_path_file);
+        $json_database=json_decode($json_database);
+        $list_table=array();
+        foreach($json_database as $table=>$rows)
+        {
+            $list_table[]=$table;
+        }
+        //$list_table= self::synchronous_table($list_table,$prefix);
+        $list_table_exists=$db->setQuery("SHOW TABLES")->loadColumn();
+        foreach($json_database as $table=>$rows)
+        {
+            foreach($rows as $key=> $row)
+            {
+                $size=$row->size;
+                $sql=$row->sql;
+                switch($sql){
+                    case 'INTEGER':
+                        $sql='int';
+                        $size=$size?$size:11;
+                        $rows[$key]->size=$size;
+                        $rows[$key]->sql=$sql;
+                        break;
+                    case 'MEDIUMTEXT':
+                        $rows[$key]->size=$size;
+                        break;
+                }
+
+            }
+            $list_row=JArrayHelper::pivot($rows,'row_name');
+            if(in_array($table,$list_table_exists))
+            {
+                $sql="SHOW INDEX FROM `$table` WHERE Key_name='PRIMARY'";
+                $result=$db->setQuery($sql)->loadObject();
+                if($result) {
+
+                    $sql = "SET FOREIGN_KEY_CHECKS=0; ALTER TABLE `$table` DROP PRIMARY KEY";
+                    $result = $db->setQuery($sql)->execute();
+                    if (!$result) {
+                        throw new Exception($db->getErrorMsg(), 505);
+                    }
+                }
+                $fields=$db->getTableColumns($table);
+                foreach($list_row as $field=>$item)
+                {
+                    if($fields[$field]) {
+
+                        $item_row=$item;
+                        $ai=$item_row->ai;
+                        $ai=$ai?' AUTO_INCREMENT ':'';
+                        $nll=$item_row->nll;
+                        $nll=$nll?' NULL ':' NOT NULL ';
+                        $size=$item_row->size;
+                        $sql=$item_row->sql;
+                        $size=$size?"($size)":'';
+                        $is_primary=$item_row->is_primary;
+                        $primary='';
+                        $sql='';
+                        if($is_primary)
+                        {
+                            $sql.="ALTER TABLE `$table` DROP PRIMARY KEY , ADD PRIMARY KEY (  `$field` );";
+                            $primary=' PRIMARY KEY ';
+                        }else{
+
+                        }
+                        $sql.="ALTER TABLE `$table` CHANGE  `$field` `$field` $sql$size $nll $primary $ai ";
+                        $result=$db->setQuery($sql)->execute();
+                        if(!$result)
+                        {
+                            throw new Exception($db->getErrorMsg(), 505);
+                        }
+                    }else{
+                        $item_row = $item;
+                        $ai = $item_row->ai;
+                        $ai = $ai ? ' AUTO_INCREMENT ' : '';
+                        $nll = $item_row->nll;
+                        $nll = $nll ? ' NULL ' : ' NOT NULL ';
+                        $size = $item_row->size;
+                        $sql = $item_row->sql;
+                        $size = $size ? "($size)" : '';
+                        $sql = "SET FOREIGN_KEY_CHECKS=0; ALTER TABLE `$table` ADD  `$field` $sql$size $nll $ai ";
+                        $result = $db->setQuery($sql)->execute();
+                        if (!$result) {
+                            throw new Exception($db->getErrorMsg(), 505);
+                        }
+                    }
+                }
+
+                foreach($fields as $field=>$type)
+                {
+                    if(!$list_row[$field])
+                    {
+                        $sql=" ALTER TABLE `$table` DROP `$field`";
+                        $result=$db->setQuery($sql)->execute();
+                        if(!$result)
+                        {
+                            throw new Exception($db->getErrorMsg(), 505);
+                        }
+                    }
+                }
+                $i=0;
+                $prev_item=null;
+                foreach($list_row as $field=>$item)
+                {
+                    $size = $item->size;
+                    $sql = $item_row->sql;
+                    $size = $size ? "($size)" : '';
+
+                    if($i==0)
+                    {
+                        $sql="ALTER TABLE $table CHANGE  `$field` `$field` $sql$size  FIRST";
+                    }else {
+                        $prev_row=$prev_item->row_name;
+                        $sql = "ALTER TABLE $table CHANGE  `$field` `$field` $sql$size AFTER `$prev_row`";
+                    }
+                    $prev_item=$item;
+                    $result=$db->setQuery($sql)->execute();
+                    if(!$result)
+                    {
+                        throw new Exception($db->getErrorMsg(), 505);
+                    }
+                    $i++;
+                }
+
+            }else{
+                $sql=array();
+                $sql[]="CREATE TABLE $table(";
+                $sql1=array();
+                foreach($rows as $key=> $row)
+                {
+
+                    $ai=$row->ai;
+                    $ai=$ai?' AUTO_INCREMENT ':'';
+                    $nll=$row->nll;
+                    $nll=$nll?' NULL ':' NOT NULL ';
+                    $size=$row->size;
+                    $sql=$row->sql;
+                    $size=$size?"($size)":'';
+                    $sql1[]="`$$row->row_name` $sql $size $ai";
+                }
+                $sql1=implode(',',$sql1);
+                $sql[]=$sql1;
+                $sql[]=")";
+
+                $sql=implode(" ",$sql);
+                $result=$db->setQuery($sql)->execute();
+                if(!$result)
+                {
+                    throw new Exception($db->getErrorMsg(), 505);
+                }
+            }
+        }
+        echo 1;
+        die;
+
+    }
+    public function synchronous_table($list_table_synchronous,$prefix)
+    {
+        $db=JFactory::getDbo();
+        $tables=$db->setQuery("SHOW TABLES")->loadColumn();
+        foreach($tables as $key=> $table)
+        {
+            if (strpos($table, $prefix) !== false) {
+            }else{
+                unset($tables[$key]);
+            }
+
+        }
+        $list_need_table_deleted=array();
+        foreach($tables as $key=> $table)
+        {
+            if (!in_array($table,$list_table_synchronous)) {
+                $list_need_table_deleted[]=$table;
+            }
+        }
+        $query='SET FOREIGN_KEY_CHECKS=0; DROP TABLE '.'`'.implode('`,`',$list_need_table_deleted).'`';
+        $result=$db->setQuery($query)->execute();
+        if(!$result)
+        {
+            throw new Exception($db->getErrorMsg(), 505);
+        }
+        return true;
+    }
     public static function get_cache_var_by_cache_id($cache_id,$group='_system',$handler='callback')
     {
         $cache = JFactory::getCache($group, $handler);
