@@ -16,7 +16,7 @@ class JConfig {
 	public $db = 'webtemppro';
 	public $dbprefix = 'ueb3c_';
 	public $dbtype = 'mysqli';
-	public $debug = '1';
+	public $debug = '0';
 	public $debug_lang = '0';
 	public $display_offline_message = '1';
 	public $editor = 'jce';

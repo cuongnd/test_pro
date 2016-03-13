@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/vmtext.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/vobject.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/vrequest.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/libraries/facebook-php-sdk-v4-master" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

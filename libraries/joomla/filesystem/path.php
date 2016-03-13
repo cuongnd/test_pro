@@ -319,4 +319,29 @@ class JPath
 		// Could not find the file in the set of paths
 		return false;
 	}
+
+	public static function get_component_path($component,$root=true)
+	{
+		jimport('joomla.filesystem.folder');
+		$website=JFactory::getWebsite();
+		$path=($root?JPATH_ROOT.DS:'').'components/website/website_'.$website->website_id.'/'.$component;
+		if(!JFolder::exists($path))
+		{
+			$path=($root?JPATH_ROOT.DS:'').'components/'.$component;
+		}
+		return $path;
+	}
+
+	public static function get_component_url($component)
+	{
+		jimport('joomla.filesystem.folder');
+		$website=JFactory::getWebsite();
+		$path=JPATH_ROOT.'/components/website/website_'.$website->website_id.'/'.$component;
+		$component_url=JUri::root().'components/website/website_'.$website->website_id.'/'.$component;
+		if(!JFolder::exists($path))
+		{
+			$component_url=JUri::root().'components/'.$component;
+		}
+		return $component_url;
+	}
 }

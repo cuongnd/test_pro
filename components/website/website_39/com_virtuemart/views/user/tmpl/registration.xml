@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="registration">
+		<message><![CDATA[registration]]></message>
+	</layout>
+	<state>
+		<name>registration</name>
+		<description><![CDATA[registration]]></description>
+	</state>
+</metadata>

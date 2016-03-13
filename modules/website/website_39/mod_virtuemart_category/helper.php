@@ -13,18 +13,18 @@ defined('_JEXEC') or die('Direct Access to ' . basename(__FILE__) . ' is not all
 *
 * www.virtuemart.net
 */
-
-if (!class_exists('VmConfig')) require(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_virtuemart' . DS . 'helpers' . DS . 'config.php');
+$com_virtuemart_path=JPath::get_component_path('com_virtuemart');
+if (!class_exists('VmConfig')) require($com_virtuemart_path. DS . 'helpers' . DS . 'config.php');
 $config = VmConfig::loadConfig();
-if (!class_exists('VirtueMartModelVendor')) require(JPATH_VM_ADMINISTRATOR . DS . 'models' . DS . 'vendor.php');
+if (!class_exists('VirtueMartModelVendor')) require($com_virtuemart_path . DS . 'models' . DS . 'vendor.php');
 
 //if (!class_exists( 'VmImage' )) require(JPATH_VM_ADMINISTRATOR.DS.'helpers'.DS.'image.php');
 //if (!class_exists( 'shopFunctionsF' )) require(JPATH_SITE.DS.'components'.DS.'com_virtuemart'.DS.'helpers'.DS.'shopfunctionsf.php');
-if (!class_exists('TableMedias')) require(JPATH_VM_ADMINISTRATOR . DS . 'tables' . DS . 'medias.php');
+if (!class_exists('TableMedias')) require($com_virtuemart_path . DS . 'tables' . DS . 'medias.php');
 
-if (!class_exists('TableCategories')) require(JPATH_VM_ADMINISTRATOR . DS . 'tables' . DS . 'categories.php');
+if (!class_exists('TableCategories')) require($com_virtuemart_path . DS . 'tables' . DS . 'categories.php');
 
-if (!class_exists('VirtueMartModelCategory')) require(JPATH_VM_ADMINISTRATOR . DS . 'models' . DS . 'category.php');
+if (!class_exists('VirtueMartModelCategory')) require($com_virtuemart_path . DS . 'models' . DS . 'category.php');
 
 class mod_virtuemartCategoryHelper
 {

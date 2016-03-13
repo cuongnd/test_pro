@@ -348,6 +348,18 @@ abstract class JFormField
         }
     }
 
+    public static function get_list_field_path()
+    {
+        $com_vituemart=JPath::get_component_path('com_virtuemart',false);
+        $list_path = array(
+            'libraries/joomla/form/fields',
+            'libraries/legacy/form/field',
+            'libraries/cms/form/field',
+            $com_vituemart.DS.'elements'
+        );
+        return $list_path;
+    }
+
     /**
      * Method to get certain otherwise inaccessible properties from the form field object.
      *

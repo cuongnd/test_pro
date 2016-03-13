@@ -9,7 +9,6 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-  width: 100% !important;
 }
 .chzn-container .chzn-drop {
   position: absolute;

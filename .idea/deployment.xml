@@ -6,11 +6,19 @@
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping local="" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/configuration" />
             <excludedPath local="true" path="$PROJECT_DIR$/configuration.php" />
           </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="viethandtravel.com">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
         </serverdata>
       </paths>
     </serverData>

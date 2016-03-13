@@ -23,7 +23,7 @@ define('USE_SQL_CALC_FOUND_ROWS' , true);
 
 // j3 FIX if(!class_exists('JModelLegacy ')) require JPATH_VM_LIBRARIES.DS.'joomla'.DS.'application'.DS.'component'.DS.'model.php';
 
-class VmModel extends JModelLegacy  {
+class VmModel extends JModelList  {
 
 	var $_id 			= 0;
 	var $_data			= null;

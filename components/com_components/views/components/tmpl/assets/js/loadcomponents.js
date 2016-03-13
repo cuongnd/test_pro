@@ -132,6 +132,13 @@
             $element.find('.layout-config').click(function(){
                 plugin.layout_component_config($(this));
             });
+
+            $(".list-component .item-element").draggable({
+                appendTo: 'body',
+                helper: "clone"
+                /* revert:true,
+                 proxy:'clone'*/
+            });
         }
 
         plugin.example_function = function() {

@@ -326,8 +326,18 @@ class JComponentHelper
 		$option = preg_replace('/[^A-Z0-9_\.-]/i', '', $option);
 		$file = substr($option, 4);
 		// Define component path.
-		define('JPATH_COMPONENT', JPATH_BASE . '/components/' . $option);
-		define('JPATH_COMPONENT_SITE', JPATH_SITE . '/components/' . $option);
+		$website=JFactory::getWebsite();
+		$folder_component_path=JPATH_BASE . '/components/website/website_'.$website->website_id.'/' . $option;
+		jimport('joomla.filesystem.folder');
+		if(JFolder::exists($folder_component_path))
+		{
+			define('JPATH_COMPONENT', $folder_component_path);
+			define('JPATH_COMPONENT_SITE', JPATH_SITE .'/components/website/website_'.$website->website_id.'/'. $option);
+		}else {
+			define('JPATH_COMPONENT', JPATH_BASE . '/components/' . $option);
+			define('JPATH_COMPONENT_SITE', JPATH_SITE . '/components/' . $option);
+		}
+
 		define('JPATH_COMPONENT_ADMINISTRATOR', JPATH_ADMINISTRATOR . '/components/' . $option);
 
 		$path = JPATH_COMPONENT . '/' . $file . '.php';

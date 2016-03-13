@@ -825,7 +825,14 @@ class JRouterSite extends JRouter
 			if (!class_exists($compname . 'Router'))
 			{
 				// Use the component routing handler if it exists
-				$path = JPATH_SITE . '/components/' . $component . '/router.php';
+				$website=JFactory::getWebsite();
+				$path = JPATH_SITE . '/components/website/website_'.$website->website_id.'/' . $component . '/router.php';
+				jimport('joomla.filesystem.file');
+				if(!JFile::exists($path))
+				{
+					$path = JPATH_SITE . '/components/' . $component . '/router.php';
+				}
+
 
 				// Use the custom routing handler if it exists
 				if (file_exists($path))

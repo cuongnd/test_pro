@@ -86,9 +86,7 @@ switch ($config->error_reporting) {
 
     case 'development':
         error_reporting ( E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_STRICT & ~ E_WARNING );
-        error_reporting(1);
         ini_set('display_errors', 1);
-
         break;
 
     default:

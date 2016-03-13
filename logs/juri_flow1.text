@@ -3821,3 +3821,13 @@
 2016-02-20T15:01:02+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
 2016-02-25T06:47:34+00:00	DEBUG	-	class:JApplicationCms
 2016-02-25T06:47:34+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2016-03-09T09:11:13+00:00	DEBUG	-	class:JApplicationCms
+2016-03-09T09:11:13+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2016-03-10T01:30:26+00:00	DEBUG	-	class:JApplicationCms
+2016-03-10T01:30:26+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2016-03-10T01:30:30+00:00	DEBUG	-	class:JApplicationCms
+2016-03-10T01:30:30+00:00	DEBUG	-	legacy $url:/component/users/profile.html
+2016-03-10T15:40:02+00:00	DEBUG	-	class:JApplicationCms
+2016-03-10T15:40:02+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2016-03-10T15:40:07+00:00	DEBUG	-	class:JApplicationCms
+2016-03-10T15:40:07+00:00	DEBUG	-	legacy $url:/component/users/profile.html
