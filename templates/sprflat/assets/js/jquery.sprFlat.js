@@ -205,6 +205,7 @@
                 $.fn.transition = $.fn.animate;
             }
             this.popup_window_js();
+
             this.config_show_popup_control();
             //respondjs handle responsive view
             this.respondjs();

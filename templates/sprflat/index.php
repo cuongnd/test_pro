@@ -7,10 +7,29 @@
 
 require_once JPATH_ROOT . '/components/com_phpmyadmin/helpers/datasource.php';
 require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
-
-$this->debugScreen = 0;
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
+$scriptId = "website_core";
+ob_start();
+?>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('body').website_core({
+            option:"<?php echo  $app->input->getString('option','') ?>",
+            view:"<?php echo $app->input->getString('view','') ?>"
+        });
+    });
+</script>
+<?php
+$script = ob_get_clean();
+$script = JUtility::remove_string_javascript($script);
+$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
+
+
+$this->debugScreen = 0;
+
+
 $isAdminSite = UtilityHelper::isAdminSite();
 $enableEditWebsite = UtilityHelper::getEnableEditWebsite();
 $ajaxGetContent = $app->input->get('ajaxgetcontent', 0, 'int');
@@ -39,6 +58,7 @@ if ($isAdminSite && !$enableEditWebsite) {
 
 $doc = JFactory::getDocument();
 $user=JFactory::getUser();
+$doc->addScript(JUri::root() . '/media/system/js/jquery.website_core.js');
 $show_popup_control=$user->getParam('option.webdesign.show_popup_control',false);
 $show_popup_control=JUtility::toStrictBoolean($show_popup_control);
 
@@ -330,6 +350,7 @@ ob_start();
     $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/forms/icheck/jquery.icheck.js');
     $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.min.js');
     $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js');
+
     $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jquery.sprFlatFrontEnd.js');
     $doc->addScript(JUri::root() . '/media/system/js/purl-master/purl-master/purl.js');
     $doc->addScript(JUri::root() . '/media/system/js/URI.js-gh-pages/src/URI.js');

@@ -2,6 +2,9 @@
  * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
+
+
+
 $=jQuery;
 // Only define the Joomla namespace if not defined.
 Joomla = window.Joomla || {};
@@ -586,3 +589,4 @@ function checkAll_button(n, task) {
     }
     submitform(task);
 }
+

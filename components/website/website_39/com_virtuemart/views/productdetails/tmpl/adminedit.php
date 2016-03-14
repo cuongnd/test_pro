@@ -28,10 +28,10 @@ $product = $this->item;
                     <button class="btn btn-primary" type="button"><i class="im-back"></i><?php echo JText::_('Back') ?></button>
                 </div>
                 <div class="pull-right">
-                    <button class="btn btn-primary" type="button"><i class="im-plus"></i><?php echo JText::_('Save') ?></button>
-                    <button class="btn btn-primary" type="button"><i class="im-copy"></i><?php echo JText::_('Save & clone') ?></button>
-                    <button class="btn btn-primary" type="button"><i class="im-delete"></i><?php echo JText::_('Delete') ?></button>
-                    <button class="btn btn-primary" type="button"><i class="en-cancel"></i><?php echo JText::_('cancel') ?></button>
+                    <button class="btn btn-primary" data-jtask="product.save" type="button"><i class="im-plus"></i><?php echo JText::_('Save') ?></button>
+                    <button class="btn btn-primary" data-jtask="product.save_close type="button"><i class="im-copy"></i><?php echo JText::_('Save & clone') ?></button>
+                    <button class="btn btn-primary" data-jtask="product.delete" type="button"><i class="im-delete"></i><?php echo JText::_('Delete') ?></button>
+                    <button class="btn btn-primary" data-jtask="product.cancel" type="button"><i class="en-cancel"></i><?php echo JText::_('cancel') ?></button>
 
                 </div>
             </div>
@@ -41,16 +41,12 @@ $product = $this->item;
         $class_right='col-md-10';
         ?>
         <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Product  price', 'input.price', 'Price', $this->item->price, array('class' => 'required')); ?>
         <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
         <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
         <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
         <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
         <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
-        <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
-        <input type="hidden" value="com_virtuemart" name="option">
-        <input type="hidden" value="produtdetails" name="controller">
-        <input type="hidden" value="produtdetails" name="view">
-        <input type="hidden" value="save" name="task">
         <?php echo JHtml::_('form.token'); ?>
     </form>
 </div>
