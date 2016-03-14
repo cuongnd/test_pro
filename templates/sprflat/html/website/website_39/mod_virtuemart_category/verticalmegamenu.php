@@ -29,6 +29,7 @@ $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 $categoryModel = VmModel::getModel('shortedCategory');
 $category_id = $params->get('config_layout.on_browser.vertical_mega_menu_config.category_id', 0);
 $menu_item_link_products = $params->get('config_layout.on_browser.vertical_mega_menu_config.menu_item_link_products', 0);
+
 $html='';
 mod_virtuemartCategoryHelper::render_vertical_mega_menu($html,' id="mega-1" class="menu" ', array(), $category_id,0,$menu_item_link_products);
 ?>

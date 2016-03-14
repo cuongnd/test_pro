@@ -28,7 +28,7 @@ class JMenuSite extends JMenu
 		$db    = JFactory::getDbo();
 		$query = $db->getQuery(true);
 
-		$query->select('m.id,m.menu_type_id,m.hidden, m.menutype,m.binding_source_key,m.binding_source,m.binding_source_value,m.icon,m.lesscontent, m.title, m.alias, m.note, m.path AS route, m.link, m.type, m.level, m.language');
+		$query->select('m.id,m.menu_type_id,m.hidden, m.menutype,m.binding_source_key,m.binding_source,m.binding_source_value,m.icon,m.lesscontent, m.title, m.alias, m.note, m.path AS route, m.link, m.type, m.level, m.language,m.configviewlayout');
 		$query->select($db->quoteName('m.browserNav') . ', m.access, m.params, m.home, m.img, m.template_style_id, m.component_id, m.parent_id');
 		$query->select('e.element as component');
 		$query->from('#__menu AS m');
@@ -170,6 +170,11 @@ class JMenuSite extends JMenu
 			}
 			$item->link='index.php?'.$url;
 			parse_str($url, $item->query);
+			//parse configviewlayout
+			$temp = new JRegistry;
+			$temp->loadString(base64_decode($item->configviewlayout));
+			$item->configviewlayout=$temp;
+			//end parse configviewlayout
 		}
 
 	}

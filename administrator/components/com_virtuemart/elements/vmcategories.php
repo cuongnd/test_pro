@@ -23,6 +23,7 @@ if (!class_exists('ShopFunctions'))
 if (!class_exists('TableCategories'))
     require(JPATH_VM_ADMINISTRATOR . DS . 'tables' . DS . 'categories.php');
 
+
 if (!class_exists('VmElements'))
     require(JPATH_VM_ADMINISTRATOR . DS . 'elements' . DS . 'vmelements.php');
 /*

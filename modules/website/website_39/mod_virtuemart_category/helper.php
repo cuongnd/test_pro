@@ -100,7 +100,7 @@ class mod_virtuemartCategoryHelper
             $html .= '<ul ' . ($level == 0 ? $attributes_level_0 : '') . ' >';
             foreach ($list_item1 as $category) {
                 $html .= '<li id="menu-item-' . $category->virtuemart_category_id . '">';
-                $html .= '<a href="index.php?option=com_virtuemart&view=category&virtuemart_category_id=' . $category->virtuemart_category_id . '&Itemid=' . $menu_item_id . '">' . $category->category_name . '</a>';
+                $html .= '<a href="index.php?option=com_virtuemart&view=category&layout=products&virtuemart_category_id=' . $category->virtuemart_category_id . '&Itemid=' . $menu_item_id . '">' . $category->category_name . '</a>';
                 $level_1 = $level + 1;
                 mod_virtuemartCategoryHelper::render_vertical_mega_menu($html, '', $list_category, $category->virtuemart_category_id, $level_1, $menu_item_id);
                 $html .= '</li>';
@@ -145,7 +145,7 @@ class mod_virtuemartCategoryHelper
             $html .= '<ul ' . ($level == 0 ? $attributes_level_0 : 'ul-level-'.$level) . ' >';
             foreach ($list_item1 as $category) {
                 $html .= '<li id="menu-item-' . $category->virtuemart_category_id . '">';
-                $html .= '<a href="index.php?option=com_virtuemart&view=category&virtuemart_category_id=' . $category->virtuemart_category_id . '&Itemid=' . $menu_item_id . '">' . $category->category_name . '</a>';
+                $html .= '<a href="index.php?option=com_virtuemart&view=category&layout=products&virtuemart_category_id=' . $category->virtuemart_category_id . '&Itemid=' . $menu_item_id . '">' . $category->category_name . '</a>';
                 $level_1 = $level + 1;
                 mod_virtuemartCategoryHelper::render_vertical_mega_menu($html, '', $list_category, $category->virtuemart_category_id, $level_1, $menu_item_id);
                 $html .= '</li>';

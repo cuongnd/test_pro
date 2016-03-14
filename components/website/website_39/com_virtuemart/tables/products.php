@@ -161,7 +161,8 @@ class TableProducts extends VmTable
             'link_support',
             'link_document',
             'da_kt',
-            'params'
+            'price',
+            'image'
 
 
         ));

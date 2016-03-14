@@ -417,9 +417,10 @@ XML;
         $layout=$uri_link->getVar('layout','default');
         $website=JFactory::getWebsite();
         $element_path="components/website/website_$website->website_id/$option/views/$view/tmpl/$layout.xml";
+		
         if(!JFile::exists(JPATH_ROOT.'/'.$element_path))
         {
-            $element_path="components/$option/$view/tmpl/$layout.xml";
+            $element_path="components/$option/views/$view/tmpl/$layout.xml";
         }
 
 
@@ -452,15 +453,16 @@ XML;
             $table_extensions->store();
 
         }
+
         $fields = $table_extensions->fields;
         $fields = base64_decode($fields);
+		
         $field_block_output = $fields;
         require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
         $fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
         if (!count($fields)) {
             $fields = array(new stdClass());
         }
-
 
         ob_start();
         JUtility::render_to_xml($fields);
@@ -471,7 +473,7 @@ XML;
 
         JFile::write(JPATH_ROOT.'/'.$element_path,$string_xml);
 
-
+		
         $config_value_setup=base64_decode($this->value);
         $param_config_value_setup = new JRegistry;
         $param_config_value_setup->loadString($config_value_setup);

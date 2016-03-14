@@ -21,7 +21,10 @@ defined('_JEXEC') or die('Restricted access');
 
 // Load the controller framework
 jimport('joomla.application.component.controller');
-
+echo "<pre>";
+print_r(JUtility::printDebugBacktrace());
+echo "</pre>";
+die;
 if(!class_exists('VmController'))require(JPATH_VM_ADMINISTRATOR.DS.'helpers'.DS.'vmcontroller.php');
 
 /**

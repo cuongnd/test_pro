@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="ebab288d-42d3-466b-91db-96e920f3e6b9" name="ipage.com" url="http://66.96.147.96">
-        <fileTransfer host="66.96.147.96" port="21" password="dfe9df98df98df8bdfc9dfdfdfc5dfc4dfcddfc4dfce" username="cuongnd123">
+      <webServer id="ebab288d-42d3-466b-91db-96e920f3e6b9" name="ipage.com" url="http://ftp.banhangonline88.com">
+        <fileTransfer host="ftp.banhangonline88.com" port="21" password="dfe9df98df98df8bdfc9dfdfdfc5dfc4dfcddfc4dfce" username="cuongnd123">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
           </advancedOptions>

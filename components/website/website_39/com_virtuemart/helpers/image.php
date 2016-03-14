@@ -108,11 +108,11 @@ class VmImage extends VmMediaHandler {
 	 */
 	public function createThumb($width=0,$height=0) {
 
-        if(!$this->downloadok)
+        /*if(!$this->downloadok)
         {
             require_once JPATH_SITE.'/administrator/components/com_virtuemart/controllers/downloadimagetemplatemonter.php';
            // VirtuemartControllerDownloadImageTemplateMonter::getImageFromTemplateMonter($this->virtuemart_media_id,0);
-        }
+        }*/
 		if(empty($this->file_url_folder)){
 			vmError('Couldnt create thumb, no directory given. Activate vmdebug to understand which database entry is creating thies error');
 			vmdebug('createThumb, no directory given',$this);

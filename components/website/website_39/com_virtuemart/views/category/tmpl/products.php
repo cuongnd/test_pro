@@ -1,6 +1,4 @@
 <?php
-echo "dfsdfsdfds";
-die;
 $doc = JFactory::getDocument();
 $doc->addStyleSheet(JUri::root() . '/components/com_virtuemart/assets/css/view-category.css');
 $doc->addStyleSheet(JUri::root() . '/components/com_virtuemart/assets/css/vmcustom.css');
@@ -25,90 +23,73 @@ jQuery(document).ready(function () {
 
 $document = JFactory::getDocument();
 $document->addScriptDeclaration($js);
-$urlRoot=JUri::root();
-$js=<<<javascript
+$urlRoot = JUri::root();
+$js = <<<javascript
 var urlRoot='{$urlRoot}';
 javascript;
 $document->addScriptDeclaration($js);
-$document->addScript(JUri::root().'/media/system/js/jquery.lazy.js');
+$document->addScript(JUri::root() . '/media/system/js/jquery.lazy.js');
 if (!$input->get('from_search', 0, 'int') and !empty($this->category)) {
     ?>
     <div class="category_description row">
         <?php echo $this->category->category_description; ?>
     </div>
-<?php
+    <?php
 }
 if ($category->virtuemart_media_id)
-$file_url_thumb = $category->root_image?$category->root_image:JUri::root() . $category->file_url_thumb;
+    $file_url_thumb = $category->root_image ? $category->root_image : JUri::root() . $category->file_url_thumb;
 else
-$file_url_thumb = JUri::root() . 'images/loading.gif';
+    $file_url_thumb = JUri::root() . 'images/loading.gif';
 $virtuemart_category_id = $category->virtuemart_category_id;
+$number_column = 4;
+$list_list_product = array_chunk($this->products, $number_column);
 // Category Link
 $caturl = JRoute::_("index.php?option=com_virtuemart&view=category&virtuemart_category_id=" . $virtuemart_category_id, FALSE);
 ?>
 
-<div class="row">
-<?php // Start the Output
-
-foreach ($this->category->children as $category) {
-    if ($category->virtuemart_media_id)
-        $file_url_thumb = $category->root_image?$category->root_image:JUri::base() . $category->file_url_thumb;
-    else
-        $file_url_thumb = JUri::base() . 'images/loading.gif';
-    $virtuemart_category_id = $category->virtuemart_category_id;
-    // Category Link
-    $caturl = JRoute::_("index.php?option=com_virtuemart&view=category&virtuemart_category_id=" . $virtuemart_category_id, FALSE);
-    ?>
-    <div  class="col-lg-3 col-md-4 col-sm-6">
-        <div class="thumbnail">
-
-
-
-            <img class="img-responsive img-circle" alt="" src="<?php echo $file_url_thumb ?>">
-            <div class="caption">
-                <h4><a href="<?php echo $caturl ?>"><?php echo $category->category_name ?></a></h4>
-            </div>
-
-        </div>
-
-    </div>
-    <?php
-}
-?>
-</div>
 <?php // Show child categories
 if (!empty($this->products)) {
     ?>
-    <div class="row"><h1><?php echo $from_search != 0 ? JText::_('Search Result:') . $input->get('keyword', '', 'string') : $this->category->category_name; ?></h1></div>
+    <div class="row">
+        <h1><?php echo $from_search != 0 ? JText::_('Search Result:') . $input->get('keyword', '', 'string') : $this->category->category_name; ?></h1>
+    </div>
     <div class="row vm-pagination">
         <?php echo $this->vmPagination->getPagesLinks(); ?>
     </div>
-    <div class="row">
     <?php
     // Category and Columns Counter
 
 
     // Start the Output
-    $currency=$this->currency;
-    foreach ($this->products as $product) {
-
-        $product->link = JRoute::_('index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $product->virtuemart_product_id . '&virtuemart_category_id=' . $product->virtuemart_category_id . '&slug=' . $product->slug);
+    $currency = $this->currency;
+    $com_virtuemart_path = Jpath::get_component_path('com_virtuemart');
+    foreach ($list_list_product as $list_product) {
         ?>
-        <div class="product <?php echo $product->layout ?> col-lg-3 col-md-4 col-sm-6">
-            <?php include(JPATH_ROOT.'/modules/mod_virtuemart_product/tmpl/default_'.$product->layout.'.php') ?>
-        </div> <!-- end of product -->
-    <?php } ?>
-    </div>
+        <div class="row">
+            <?php
+            foreach ($list_product as $this->product) {
+                $this->product->link = JRoute::_('index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $this->product->virtuemart_product_id . '&virtuemart_category_id=' . $this->product->virtuemart_category_id . '&slug=' . $this->product->slug);
+                $layout = ($layout = $this->product->layout) ? "default_$layout" : 'default';
+                ?>
+                <div
+                    class="product <?php echo $this->product->layout ?> col-lg-<?php echo round(12 / $number_column) ?> col-md-<?php echo round(12 / $number_column) ?> col-sm-<?php echo round(12 / $number_column) ?>">
+                    <?php echo $this->loadTemplate($layout) ?>
+                </div> <!-- end of product -->
+            <?php }
+            ?>
+        </div>
+        <?php
+    } ?>
     <div class="row vm-pagination">
         <?php echo $this->vmPagination->getPagesLinks(); ?>
     </div>
-<?php
+    <?php
 } elseif ($from_search) {
     ?>
     <div style="text-align: center" class="row-fluid">
         <h3><?php echo JText::_('COM_VIRTUEMART_NO_RESULT') . ($keyword ? ' : (' . $keyword . ')' : ''); ?>
             <b><?php echo JText::_('Please search again') ?></b></h3></div>
-<?php
+    <?php
 }
 ?>
 

@@ -12,6 +12,7 @@ $modelItem->setState('item.id', $menuItemActiveId);
 $form=$modelItem->getForm();
 
 $options=$form->getFieldsets();
+
 $user=JFactory::getUser();
 $show_popup_control=$user->getParam('option.webdesign.show_popup_control',false);
 $show_popup_control=JUtility::toStrictBoolean($show_popup_control);

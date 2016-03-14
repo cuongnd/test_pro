@@ -81,6 +81,7 @@ class componentsControllercomponent extends JControllerForm
             'type'=>'component',
             'website_id'=>$website->website_id
         ));
+		
         $table_control->website_id=$website->website_id;
         $table_control->element_path=$element_path;
         $table_control->type='component';

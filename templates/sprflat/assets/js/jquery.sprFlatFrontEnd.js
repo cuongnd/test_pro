@@ -913,7 +913,7 @@
             var chat_box = $('.chat-box');
             var close_chat = chat_box.find('a#close-user-chat');
             var chat_msgbox = chat_box.find('#sendMsg');
-            var rsinner = $('#right-sidebar>.sidebar-inner-front-end');
+            /*var rsinner = $('#right-sidebar>.sidebar-inner-front-end');
 
             //activate scroll
             rsinner.slimScroll({
@@ -925,7 +925,7 @@
                 color: plugin.settings.customScroll.color,
                 railOpacity: plugin.settings.customScroll.opacity,
                 railColor: plugin.settings.customScroll.railColor
-            });
+            });*/
 
             chat_user.on("click", function(e){
                 e.preventDefault();

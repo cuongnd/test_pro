@@ -190,7 +190,9 @@ class JViewLegacy extends JObject
 		}
 		else
 		{
-			$this->setLayout('default');
+			$app=JFactory::getApplication();
+			$layput=$app->input->get('layout','default','string');
+			$this->setLayout($layput);
 		}
 
 		$this->baseurl = JUri::base(true);
@@ -511,6 +513,7 @@ class JViewLegacy extends JObject
 	 */
 	public function setLayout($layout)
 	{
+		
 		$previous = $this->_layout;
 		if (strpos($layout, ':') === false)
 		{
@@ -520,6 +523,7 @@ class JViewLegacy extends JObject
 		{
 			// Convert parameter to array based on :
 			$temp = explode(':', $layout);
+			
 			$this->_layout = $temp[1];
 
 			// Set layout template
