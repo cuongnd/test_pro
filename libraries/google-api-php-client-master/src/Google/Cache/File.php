@@ -17,6 +17,7 @@
 
 require_once JPATH_ROOT."/libraries/google-api-php-client-master/src/Google/Cache/Abstract.php";
 require_once JPATH_ROOT."/libraries/google-api-php-client-master/src/Google/Cache/Exception.php";
+require_once JPATH_ROOT."/libraries/google-api-php-client-master/src/Google/Cache/Abstract.php";
 
 /*
  * This class implements a basic on disk storage. While that does

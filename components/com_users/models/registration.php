@@ -218,7 +218,12 @@ class UsersModelRegistration extends JModelForm
 			$this->data->groups = array();
 
 			// Get the default new user group, Registered if not specified.
-			$system = $params->get('new_usertype', 2);
+			$system = $params->get('new_usertype', 0);
+
+			if(!$system||!JUserHelper::check_user_group_by_user_group_id($system))
+			{
+				$system = JUserHelper::get_user_type_default();
+			}
 
 			$this->data->groups[] = $system;
 
@@ -339,21 +344,23 @@ class UsersModelRegistration extends JModelForm
 	public function register($temp)
 	{
 		$params = JComponentHelper::getParams('com_users');
-
 		// Initialise the table with JUser.
 		$user = new JUser;
 		$data = (array) $this->getData();
-
 		// Merge in the registration data.
 		foreach ($temp as $k => $v)
 		{
 			$data[$k] = $v;
 		}
-
 		// Prepare the data for the user object.
 		$data['email'] = JStringPunycode::emailToPunycode($data['email1']);
 		$data['password'] = $data['password1'];
-		$useractivation = $params->get('useractivation');
+		if($data['useractivation']==0)
+		{
+			$useractivation=0;
+		}else{
+			$useractivation = $params->get('useractivation');
+		}
 		$sendpassword = $params->get('sendpassword', 1);
 
 		// Check if the user needs to activate their account.
@@ -372,6 +379,7 @@ class UsersModelRegistration extends JModelForm
 
 		// Load the users plugin group.
 		JPluginHelper::importPlugin('user');
+
 
 		// Store the data.
 		if (!$user->save())

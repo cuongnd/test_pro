@@ -76,7 +76,7 @@ class FacebookUrlManipulator
      */
     public static function appendParamsToUrl($url, array $newParams = [])
     {
-        if (empty($newParams)) {
+        if (!$newParams) {
             return $url;
         }
 

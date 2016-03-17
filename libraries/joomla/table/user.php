@@ -56,6 +56,7 @@ class JTableUser extends JTable
 	 */
 	public function load($userId = null, $reset = true)
 	{
+		$website=JFactory::getWebsite();
 		// Get the id to load.
 		if ($userId !== null)
 		{
@@ -77,12 +78,14 @@ class JTableUser extends JTable
 
 		// Load the user data.
 		$query = $this->_db->getQuery(true)
-			->select('*')
-			->from($this->_db->quoteName('#__users'))
-			->where($this->_db->quoteName('id') . ' = ' . (int) $userId);
+			->select('users.*')
+			->from($this->_db->quoteName('#__users').' AS users')
+			->leftJoin('#__user_usergroup_map AS user_usergroup_map ON user_usergroup_map.user_id=users.id')
+			->leftJoin('#__usergroups AS usergroups ON usergroups.id=user_usergroup_map.group_id')
+			->where('usergroups.website_id='.(int)$website->website_id)
+			->where($this->_db->quoteName('users.id') . ' = ' . (int) $userId);
 		$this->_db->setQuery($query);
 		$data = (array) $this->_db->loadAssoc();
-
 		if (!count($data))
 		{
 			return false;
@@ -101,12 +104,14 @@ class JTableUser extends JTable
                 ->select('g.id,g.title,g.website_id')
 				->from($this->_db->quoteName('#__usergroups') . ' AS g')
 				->join('INNER', $this->_db->quoteName('#__user_usergroup_map') . ' AS m ON m.group_id = g.id')
+				->where('g.website_id='.(int)$website->website_id)
 				->where($this->_db->quoteName('m.user_id') . ' = ' . (int) $userId);
 			$this->_db->setQuery($query);
             $listGroup=$this->_db->loadObjectList();
 			// Add the groups to the user data.
 			$this->groups = $this->_db->loadAssocList('id', 'id');
             $this->website_id=$listGroup[0]->website_id;
+
 		}
 
 		return $return;
@@ -151,6 +156,9 @@ class JTableUser extends JTable
 			// Set the titles for the user groups.
 			$this->groups = $this->_db->loadAssocList('id', 'id');
 
+
+
+
 		}
 
 		return $return;
@@ -165,6 +173,7 @@ class JTableUser extends JTable
 	 */
 	public function check()
 	{
+		$website=JFactory::getWebsite();
 		// Set user id to null istead of 0, if needed
 		if ($this->id === 0)
 		{
@@ -223,7 +232,9 @@ class JTableUser extends JTable
 			->from('#__users AS u')
 			->where('u.username = ' . $this->_db->quote($this->username))
             ->leftJoin('#__user_usergroup_map AS ugm ON ugm.user_id=u.id')
+            ->leftJoin('#__usergroups AS usergroups ON usergroups.id=ugm.group_id')
             ->where('ugm.group_id='.(int)$firstGroup)
+            ->where('usergroups.website_id='.(int)$website->website_id)
 			->where('u.id != ' . (int) $this->id);
 		$this->_db->setQuery($query);
 
@@ -238,10 +249,13 @@ class JTableUser extends JTable
 
 		// Check for existing email
 		$query->clear()
-			->select($this->_db->quoteName('id'))
-			->from($this->_db->quoteName('#__users'))
+			->select($this->_db->quoteName('u.id'))
+			->from($this->_db->quoteName('#__users').' AS u ')
+			->leftJoin('#__user_usergroup_map AS ugm ON ugm.user_id=u.id')
+			->leftJoin('#__usergroups AS usergroups ON usergroups.id=ugm.group_id')
+			->where('usergroups.website_id='.(int)$website->website_id)
 			->where($this->_db->quoteName('email') . ' = ' . $this->_db->quote($this->email))
-			->where($this->_db->quoteName('id') . ' != ' . (int) $this->id);
+			->where($this->_db->quoteName('u.id') . ' != ' . (int) $this->id);
 		$this->_db->setQuery($query);
 		$xid = (int) $this->_db->loadResult();
 
@@ -300,6 +314,7 @@ class JTableUser extends JTable
 		// TODO: This is a dumb way to handle the groups.
 		// Store groups locally so as to not update directly.
 		$groups = $this->groups;
+
 		unset($this->groups);
 
 		// Insert or update the object based on presence of a key value.
@@ -333,7 +348,6 @@ class JTableUser extends JTable
 			$query->clear()
 				->insert($this->_db->quoteName('#__user_usergroup_map'))
 				->columns(array($this->_db->quoteName('user_id'), $this->_db->quoteName('group_id')));
-
 			// Have to break this up into individual queries for cross-database support.
 			foreach ($this->groups as $group)
 			{

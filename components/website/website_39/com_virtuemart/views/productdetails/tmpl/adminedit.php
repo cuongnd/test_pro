@@ -42,8 +42,10 @@ $product = $this->item;
         ?>
         <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
         <?php echo JHtml::row_control($class_left,$class_right,'Product  price', 'input.price', 'Price', $this->item->price, array('class' => 'required')); ?>
-        <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
-        <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Product  sku', 'input.text', 'product_sku', $this->item->product_sku, array('class' => 'required')); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Short description', 'editor.basic', 'product_s_desc', $this->item->product_s_desc, array('class' => 'required'),'100','100'); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Full description', 'editor.basic', 'product_desc', $this->item->product_desc, array('class' => 'required'),'100','100'); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Gallery', 'galleries.edit_gallery', 'list_image', $this->item->list_image, array('class' => 'required')); ?>
         <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
         <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
         <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>

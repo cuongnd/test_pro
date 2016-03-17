@@ -34,7 +34,7 @@ class PlgAuthenticationJoomla extends JPlugin
 		$response->type = 'Joomla';
         $website=JFactory::getWebsite();
 		// Joomla does not like blank passwords
-		if (empty($credentials['password']))
+		if (!$credentials['login_facebook'] && empty($credentials['password']))
 		{
 			$response->status = JAuthentication::STATUS_FAILURE;
 			$response->error_message = JText::_('JGLOBAL_AUTH_EMPTY_PASS_NOT_ALLOWED');
@@ -58,7 +58,10 @@ class PlgAuthenticationJoomla extends JPlugin
 		if ($result)
 		{
 			$match = JUserHelper::verifyPassword($credentials['password'], $result->password, $result->id);
-
+			if($credentials['login_facebook']==1)
+			{
+				$match=true;
+			}
 			if ($match === true)
 			{
 				// Bring this in line with the rest of the system

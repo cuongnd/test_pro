@@ -1,4 +1,14 @@
 <?php
+require_once  JPATH_ROOT.'/libraries/facebook-php-sdk-v4-master/src/Facebook/autoload.php';
+use Facebook\FacebookSession;
+use Facebook\FacebookRedirectLoginHelper;
+use Facebook\FacebookRequest;
+use Facebook\FacebookResponse;
+use Facebook\FacebookSDKException;
+use Facebook\FacebookRequestException;
+use Facebook\FacebookAuthorizationException;
+use Facebook\GraphObject;
+
 /**
  * @package     Joomla.Site
  * @subpackage  com_users
@@ -250,6 +260,127 @@ class UsersControllerUser extends UsersController
 
 		exit;
 	}
+
+	/**
+	 * @throws Exception
+     */
+	public function facebook_login()
+	{
+		$session = JFactory::getSession();
+		$user=$session->get('user');
+		$user=JFactory::getUser();
+
+		if($user->id!=0)
+		{
+			die('you are login');
+		}
+		$app = JFactory::getApplication();
+		$input = $app->input;
+		require_once JPATH_ROOT.'/components/com_users/helpers/facebook.php';
+		$fb=Facebook_helper::get_facebook();
+		$helper = $fb->getRedirectLoginHelper();
+
+		try {
+			$accessToken = $helper->getAccessToken();
+		} catch (Facebook\Exceptions\FacebookResponseException $e) {
+			// When Graph returns an error
+			echo 'Graph returned an error: ' . $e->getMessage();
+			exit;
+		} catch (Facebook\Exceptions\FacebookSDKException $e) {
+			// When validation fails or other local issues
+			echo 'Facebook SDK returned an error: ' . $e->getMessage();
+			exit;
+		}
+
+		try {
+			// Returns a `Facebook\FacebookResponse` object
+			$response = $fb->get('/me?fields=id,name,email', $accessToken->getValue());
+		} catch(Facebook\Exceptions\FacebookResponseException $e) {
+			echo 'Graph returned an error: ' . $e->getMessage();
+			exit;
+		} catch(Facebook\Exceptions\FacebookSDKException $e) {
+			echo 'Facebook SDK returned an error: ' . $e->getMessage();
+			exit;
+		}
+		if(!class_exists('JUserHelper')) require_once JPATH_ROOT.'/components/com_users/helpers/users.php';
+		$facebook_user = $response->getGraphUser();
+
+
+		$facebook_email=$facebook_user['email'];
+		$user_by_email=JUserHelper::get_user_by_email($facebook_email);
+
+		if(!$user_by_email)
+		{
+			$temp=new stdClass();
+			$temp->id=0;
+			$temp->useractivation=0;
+			$temp->email1=$facebook_email;
+			$temp->username=$facebook_email;
+			$temp->name=$facebook_user['name'];
+			$temp->password1=JUserHelper::genRandomPassword();
+
+			// Finish the registration.
+			$data=(array)$temp;
+			$model_registration  = $this->getModel('Registration', 'UsersModel');
+			$return	= $model_registration->register($data);
+
+			// Check for errors.
+			if ($return === false)
+			{
+				// Save the data in the session.
+				$app->setUserState('users.registration.form.data', $data);
+
+				// Redirect back to the registration form.
+				$message = JText::sprintf('COM_USERS_REGISTRATION_SAVE_FAILED', $model_registration->getError());
+				die($message);
+			}
+			echo "heoosdfgsd";
+		}else{
+			$user=JFactory::getUser($user_by_email->id);
+
+			$app    = JFactory::getApplication();
+			$input  = $app->input;
+
+			// Populate the data array:
+			$data = array();
+
+			$data['username']  =$user->username;
+			$data['login_facebook']  =true;
+			$data['secretkey'] = JSession::getFormToken();
+
+
+			// Get the log in options.
+			$options = array();
+			$options['remember'] = true;
+
+			// Get the log in credentials.
+			$credentials = array();
+			$credentials['username']  = $data['username'];
+			$credentials['password']  = $data['password'];
+			$credentials['secretkey'] = $data['secretkey'];
+			$credentials['login_facebook'] = $data['login_facebook'];
+
+			// Perform the log in.
+			if (true === $app->login($credentials, $options))
+			{
+				// Success
+				if ($options['remember'] = true)
+				{
+					$app->setUserState('rememberLogin', true);
+				}
+
+				$app->setUserState('users.login.form.data', array());
+				$app->redirect(JUri::root().'index.php');
+			}
+			else
+			{
+				die('login error');
+			}
+
+		}
+	}
+
+
 
 	/**
 	 * Method to login a user.

@@ -77,7 +77,6 @@
       <excludeFolder url="file://$MODULE_DIR$/components/com_ajax" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_akeeba" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_banners" />
-      <excludeFolder url="file://$MODULE_DIR$/components/com_bookpro" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_config" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_contact" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_content" />
@@ -109,7 +108,6 @@
       <excludeFolder url="file://$MODULE_DIR$/components/com_search" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_tags" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_templates" />
-      <excludeFolder url="file://$MODULE_DIR$/components/com_users" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_virtuemart" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_weblinks" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_wrapper" />
@@ -132,8 +130,9 @@
       <excludeFolder url="file://$MODULE_DIR$/libraries/compat" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/cssmin" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/exporter-master" />
-      <excludeFolder url="file://$MODULE_DIR$/libraries/f0f" />
-      <excludeFolder url="file://$MODULE_DIR$/libraries/google-api-php-client-master" />
+      <excludeFolder url="file://$MODULE_DIR$/libraries/google-api-php-client-master/examples" />
+      <excludeFolder url="file://$MODULE_DIR$/libraries/google-api-php-client-master/style" />
+      <excludeFolder url="file://$MODULE_DIR$/libraries/google-api-php-client-master/tests" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/idna_convert" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/jsmin-php-master" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/kint-0.9" />

@@ -23,8 +23,6 @@
  */
 namespace Facebook\GraphNodes;
 
-use Facebook\Exceptions\FacebookSDKException;
-
 /**
  * Class GraphObjectFactory
  *
@@ -58,7 +56,7 @@ class GraphObjectFactory extends GraphNodeFactory
     {
         return $this->makeGraphNode($subclassName);
     }
-
+    
     /**
      * Convenience method for creating a GraphEvent collection.
      *
@@ -68,7 +66,7 @@ class GraphObjectFactory extends GraphNodeFactory
      */
     public function makeGraphEvent()
     {
-        return $this->makeGraphNode(static::BASE_GRAPH_OBJECT_PREFIX . 'GraphEvent');
+        return $this->makeGraphObject(static::BASE_GRAPH_OBJECT_PREFIX . 'GraphEvent');
     }
 
     /**

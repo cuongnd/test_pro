@@ -285,7 +285,7 @@ class JRouterSite extends JRouter
 	protected function parseSefRoute(&$uri)
 	{
 		static::$total_parse_sef_route++;
-		if(static::$total_parse_sef_route>2)
+		if(static::$total_parse_sef_route>20)
 		{
 			echo "to many parseSefRoute";
 			echo "<pre>";

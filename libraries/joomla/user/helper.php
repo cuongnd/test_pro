@@ -807,4 +807,67 @@ abstract class JUserHelper
 
 		return md5(JUri::root() . $uaShort);
 	}
+
+	public static function get_user_by_email($email)
+	{
+		$website=JFactory::getWebsite();
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('user.*')
+			->from('#__users AS user')
+			->leftJoin('#__user_usergroup_map AS  user_usergroup_map ON user_usergroup_map.user_id=user.id')
+			->leftJoin('#__usergroups AS  usergroups ON usergroups.id=user_usergroup_map.group_id')
+			->where('usergroups.website_id='.(int)$website->website_id)
+			->where('user.email='.$query->q($email))
+			;
+		$user=$db->setQuery($query)->loadObject();
+
+		return $user;
+	}
+
+	public static function get_user_type_default()
+	{
+		$website=JFactory::getWebsite();
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('usergroups.*')
+			->from('#__usergroups AS  usergroups')
+			->where('usergroups.website_id='.(int)$website->website_id)
+		;
+		$user_groups=$db->setQuery($query)->loadObjectList();
+		$user_group_id=0;
+		if(count($user_groups))
+		{
+			foreach($user_groups as $user_group)
+			{
+				if($user_group->title=='Registered')
+				{
+					$user_group_id= $user_group->id;
+					break;
+				}
+			}
+			if(!$user_group_id)
+			{
+				$user_group_id=reset($user_groups)->id;
+			}
+		}else{
+			throw new Exception('there are no group user in website');
+		}
+		return $user_group_id;
+	}
+
+	public static function check_user_group_by_user_group_id($user_group_id)
+	{
+		$website=JFactory::getWebsite();
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('usergroups.id')
+			->from('#__usergroups AS  usergroups')
+			->where('usergroups.id='.(int)$user_group_id)
+			->where('usergroups.website_id='.(int)$website->website_id)
+		;
+		return $db->setQuery($query)->loadResult();
+
+	}
+
 }

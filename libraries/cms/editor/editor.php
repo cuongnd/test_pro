@@ -486,7 +486,6 @@ class JEditor extends JObject
 		// Build the path to the needed editor plugin
 		$name = JFilterInput::getInstance()->clean($this->_name, 'cmd');
 		$path = JPATH_PLUGINS . '/editors/' . $name . '.php';
-
 		if (!is_file($path))
 		{
 			$path = JPATH_PLUGINS . '/editors/' . $name . '/' . $name . '.php';
@@ -502,9 +501,9 @@ class JEditor extends JObject
 		// Require plugin file
 
 		require_once $path;
-
 		// Get the plugin
 		$plugin = JPluginHelper::getPlugin('editors', $this->_name);
+
 		$params = new JRegistry;
 		$params->loadString($plugin->params);
 		$params->loadArray($config);
@@ -512,7 +511,6 @@ class JEditor extends JObject
 
 		// Build editor plugin classname
 		$name = 'plgEditor' . $this->_name;
-
 		if ($this->_editor = new $name($this, (array) $plugin))
 		{
 			// Load plugin parameters

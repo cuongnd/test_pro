@@ -91,16 +91,6 @@ class GraphUser extends GraphNode
     }
 
     /**
-     * Returns the email for the user as a string if present.
-     *
-     * @return string|null
-     */
-    public function getEmail()
-    {
-        return $this->getField('email');
-    }
-
-    /**
      * Returns the gender for the user as a string if present.
      *
      * @return string|null

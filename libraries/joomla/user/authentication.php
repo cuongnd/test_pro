@@ -299,6 +299,10 @@ class JAuthentication extends JObject
 		{
 			$response->username = $credentials['username'];
 		}
+		if (empty($response->login_facebook))
+		{
+			$response->login_facebook = $credentials['login_facebook'];
+		}
 
 		if (empty($response->fullname))
 		{

@@ -1052,7 +1052,6 @@ class JApplicationWeb extends JApplicationBase
 
         if ($session->isNew()) {
             $session->set('registry', new JRegistry('session'));
-
             $session->set('user', new JUser);
         }
     }

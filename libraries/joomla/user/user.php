@@ -359,6 +359,8 @@ class JUser extends JObject
 			{
 				// Get all groups against which the user is mapped.
 				$identities = $this->getAuthorisedGroups();
+
+
 				array_unshift($identities, $this->id * -1);
 
 				if (JAccess::getAssetRules(1)->allow('core.admin', $identities))
@@ -646,7 +648,6 @@ class JUser extends JObject
 
 		// Make sure its an integer
 		$this->id = (int) $this->id;
-
 		return true;
 	}
 
@@ -775,7 +776,6 @@ class JUser extends JObject
 		// Reset the user object in the session on a successful save
 		if ($result === true && JFactory::getUser()->id == $this->id)
 		{
-
 			JFactory::getSession()->set('user', $this);
 		}
 
@@ -835,7 +835,6 @@ class JUser extends JObject
 
 			return false;
 		}
-
 		/*
 		 * Set the user parameters using the default XML file.  We might want to
 		 * extend this in the future to allow for the ability to have custom
