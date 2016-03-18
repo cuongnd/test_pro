@@ -5,137 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/assets/current-32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/assets/fail-24.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/assets/liveupdate-48.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/assets/nosupport-32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/assets/ok-24.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/assets/update-32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/assets/warn-24.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/assets/js/view_raovat_default.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/assets/less/view_raovat_default.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/controllers/raovat.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/vmtemplate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/vmviewadmin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/assets/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/assets/liveupdate.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/abstractconfig.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/controller.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/download.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/inihelper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/model.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/storage/component.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/storage/file.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/storage/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/storage/storage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/tmpl/install.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/tmpl/overview.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/tmpl/startupdate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/updatefetch.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/view.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/xmlslurp.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/da-DK/da-DK.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/da-DK/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/de-DE/de-DE.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/de-DE/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/el-GR/el-GR.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/el-GR/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/en-GB/en-GB.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/en-GB/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/fr-FR/fr-FR.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/fr-FR/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/it-IT/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/it-IT/it-IT.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/nb-NO/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/nb-NO/nb-NO.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/nl-NL/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/nl-NL/nl-NL.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/no-NO/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/no-NO/nb-NO.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/pl-PL/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/pl-PL/pl-PL.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/ru-RU/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/ru-RU/ru-RU.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/sv-SE/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/sv-SE/sv-SE.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/th-TH/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/th-TH/th-TH.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/tr-TR/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/tr-TR/tr-TR.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/uk-UA/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/language/uk-UA/uk-UA.liveupdate.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/liveupdate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/models/raovat.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/tables/raovat.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/edit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/virtuemart/tmpl/userpanel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/virtuemart/tmpl/userpanel.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_product/default.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_product/default_3d.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_product/default_active.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_product/default_audio.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_product/default_code.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_product/default_graphic.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_product/default_photo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_product/default_theme.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_product/default_video.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/sprflat/less/custom.min.css" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" afterPath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_modules/controllers/module.php" afterPath="$PROJECT_DIR$/components/com_modules/controllers/module.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_users/controllers/user.php" afterPath="$PROJECT_DIR$/components/com_users/controllers/user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_users/helpers/google.php" afterPath="$PROJECT_DIR$/components/com_users/helpers/google.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/config.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/html.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/html.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/vmtable.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/vmtable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/tmpl/login.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/tmpl/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/virtuemart/view.html.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/virtuemart/view.html.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/virtuemart.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/virtuemart.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/html/access.php" afterPath="$PROJECT_DIR$/libraries/cms/html/access.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/html/input.php" afterPath="$PROJECT_DIR$/libraries/cms/html/input.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/html/jgrid.php" afterPath="$PROJECT_DIR$/libraries/cms/html/jgrid.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/router/site.php" afterPath="$PROJECT_DIR$/libraries/cms/router/site.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/database/driver/mysqli.php" afterPath="$PROJECT_DIR$/libraries/joomla/database/driver/mysqli.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/user/user.php" afterPath="$PROJECT_DIR$/libraries/joomla/user/user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/legacy/table/menu.php" afterPath="$PROJECT_DIR$/libraries/legacy/table/menu.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_39/mod_login/tmpl/default_logout.php" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_login/tmpl/default_logout.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/arrow.png" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/arrow.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bg_black.png" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_black.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bg_convert.jpg" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_convert.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bg_coupe.jpg" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_coupe.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bg_hdr.png" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_hdr.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bg_pickup.jpg" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_pickup.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bg_sedan.jpg" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_sedan.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bg_sports.jpg" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_sports.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bg_sub.png" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_sub.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bg_sub_left.png" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_sub_left.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bg_suv.jpg" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_suv.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bullet.png" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bullet.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/images/bullet_on.png" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bullet_on.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.0.js" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.0.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.1.js" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.1.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.2.js" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.2.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.3.js" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.3.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/js/jquery.hoverIntent.minified.js" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.hoverIntent.minified.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/js/jquery.js" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/megamenu.less" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/megamenu.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/menu.html" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/menu.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/assets/js/custom_mega_menu_styles/menu.less" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/menu.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_category/assets/js/dcmegamenu.js" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/dcmegamenu.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_category/assets/js/homcategory.js" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/homcategory.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_category/assets/js/verticalmegamenu.js" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/js/verticalmegamenu.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_category/assets/less/homcategory.less" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/asset/less/homcategory.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_category/homecategory.php" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/tmpl/homecategory.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_category/megamenu.php" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/tmpl/megamenu.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_virtuemart_category/verticalmegamenu.php" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/tmpl/verticalmegamenu.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/less/custom.less" afterPath="$PROJECT_DIR$/templates/sprflat/less/custom.less" />
     </list>
     <ignored path="test_pro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -162,7 +36,38 @@
     <favorites_list name="test_pro" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="view.html.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/view.html.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.153846">
+              <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8495935">
+              <caret line="72" column="85" selection-start-line="72" selection-start-column="85" selection-end-line="72" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom.less" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/sprflat/less/custom.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.6037736">
+              <caret line="383" column="0" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -183,8 +88,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/assets/less/view_user_login.less" />
-        <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/controllers/user.php" />
         <option value="$PROJECT_DIR$/libraries/joomla/user/helper.php" />
         <option value="$PROJECT_DIR$/components/com_users/models/registration.php" />
         <option value="$PROJECT_DIR$/libraries/joomla/table/user.php" />
@@ -230,10 +133,12 @@
         <option value="$PROJECT_DIR$/libraries/cms/html/jgrid.php" />
         <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/html.php" />
         <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/config.php" />
-        <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php" />
         <option value="$PROJECT_DIR$/libraries/cms/html/input.php" />
         <option value="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" />
         <option value="$PROJECT_DIR$/components/com_modules/controllers/module.php" />
+        <option value="$PROJECT_DIR$/templates/sprflat/less/custom.less" />
+        <option value="$PROJECT_DIR$/templates/sprflat/less/custom.min.css" />
+        <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php" />
       </list>
     </option>
   </component>
@@ -340,6 +245,60 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="less" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1635,7 +1594,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458203900729</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="update new">
+      <created>1458322768006</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1458322768006</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1662,7 +1627,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33358547" sideWeight="0.86860067" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7337884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19667171" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19667171" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27760968" sideWeight="0.13139932" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1688,7 +1653,7 @@
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23007712" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19730078" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19667171" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1699,11 +1664,11 @@
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32823366" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21309192" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48885792" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4880546" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33358547" sideWeight="0.86860067" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26791808" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7337884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27760968" sideWeight="0.13139932" order="1" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1742,22 +1707,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/virtuemart/view.html.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.115385">
@@ -1862,14 +1811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/view.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.2452831">
-          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -2106,14 +2047,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.653846">
-          <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/html/editor.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.1153846">
@@ -2143,7 +2076,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2201,6 +2134,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.696">
           <caret line="154" column="43" selection-start-line="154" selection-start-column="43" selection-end-line="154" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/view.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846">
+          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/less/custom.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.6037736">
+          <caret line="383" column="0" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8495935">
+          <caret line="72" column="85" selection-start-line="72" selection-start-column="85" selection-end-line="72" selection-end-column="85" />
           <folding />
         </state>
       </provider>

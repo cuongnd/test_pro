@@ -64,6 +64,22 @@ if ($saveOrder) {
 
 ?>
 <div class="view-tourclass-default">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default"><?php echo JText::_('Go') ?></button>
+            </form>
+            <form class="navbar-form navbar-right" role="task">
+                <button type="button" data-jtask="add" class="btn btn-primary"><i class="im-plus"></i><?php echo JText::_('Add new') ?></button>
+                <button type="button" data-jtask="remove" class="btn btn-warning"><i class="im-remove"></i><?php echo JText::_('remove') ?></button>
+                <button type="button" data-jtask="publish" class="btn btn-info"><i class="en-publish"></i><?php echo JText::_('publish') ?></button>
+                <button type="button" data-jtask="un_publish" class="btn btn-info"><i class="br-blocked"></i><?php echo JText::_('un publish') ?></button>
+            </form>
+        </div><!-- /.container-fluid -->
+    </nav>
     <form action="index.php" method="post" name="adminForm" id="adminForm">
         <!--<table>
 		<tr>
