@@ -478,6 +478,7 @@ class JRouterSite extends JRouter
         {
             $Itemid=$this->getVar('menuItemActiveId');;
         }
+
         if(!$Itemid&&$tmpl=='')
         {
             $items=$menu->getItems();
@@ -488,6 +489,7 @@ class JRouterSite extends JRouter
                 $list_vars1=$uri_link->getVars();
                 $list_vars2=$this->getVars();
 
+
                 if(
                     $list_vars1['option']==$list_vars2['option']&&
                     $list_vars1['view']==$list_vars2['view']&&
@@ -497,6 +499,7 @@ class JRouterSite extends JRouter
                     break;
                 }
             }
+
             if(!$this->getVar('Itemid'))
             {
                 foreach($items as $item)

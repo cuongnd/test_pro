@@ -30,7 +30,7 @@ class VirtueMartViewVirtueMart extends VmView {
 
 	public function display($tpl = null) {
 		$vendorId = JRequest::getInt('vendorid', 1);
-
+		return;
 		$vendorModel = VmModel::getModel('vendor');
 
 		$vendorModel->setId(1);

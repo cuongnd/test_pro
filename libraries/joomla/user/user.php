@@ -830,8 +830,7 @@ class JUser extends JObject
 		{
 			// Reset to guest user
 			$this->guest = 1;
-
-			JLog::add(JText::sprintf('JLIB_USER_ERROR_UNABLE_TO_LOAD_USER', $id), JLog::WARNING, 'jerror');
+			//JLog::add(JText::sprintf('JLIB_USER_ERROR_UNABLE_TO_LOAD_USER', $id), JLog::WARNING, 'jerror');
 
 			return false;
 		}

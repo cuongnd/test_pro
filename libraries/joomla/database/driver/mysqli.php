@@ -555,7 +555,7 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 		$memoryBefore   = null;
 		$this->log[] = $query;
 		//for test
-		if(1==0&&count($this->log)==100&&WEBSITE_ID==38)
+		if(1==0&&count($this->log)==33&&WEBSITE_ID==39)
 		{
 			echo "<pre>";
 			print_r($this->log);

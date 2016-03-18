@@ -197,7 +197,7 @@ function create_html_list($root_id, $list_nodes, $website, $binding_source)
                                 class="im-plus"></i></button>
 
                     </div>
-
+                    <h6><?php echo $item->link  ?></h6>
                     <div class="more_options">
                         <div>
                             <button class="add_node">add node</button>
@@ -226,10 +226,7 @@ function create_html_list($root_id, $list_nodes, $website, $binding_source)
                                                                                                type="checkbox"
                                                                                                onchange="menu_ajax_loader.update_data_column(this,'published','checkbox')"
                                                                                                value="1"/></label>
-                        <label>show<input <?php echo $item->hidden == 1 ? 'checked' : '' ?> name="hidden"
-                                                                                               type="checkbox"
-                                                                                               onchange="menu_ajax_loader.update_data_column(this,'hidden','checkbox')"
-                                                                                               value="1"/></label>
+                        <?php echo JHtml::row_control('','','hide','input.radioyesno',$item->id.'-hide', $item->hidden,array("data-onchange"=>"menu_ajax_loader.update_data_column(this,'hidden','checkbox')")) ?>
                         <?php
                         if ($item->binding_source) {
                             $binding_source->setValue($item->binding_source);

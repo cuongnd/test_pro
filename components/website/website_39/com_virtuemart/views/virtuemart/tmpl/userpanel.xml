@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="userpanel">
+	<message><![CDATA[userpanel]]></message>
+	</layout>
+	<state>
+		<name>userpanel</name>
+		<description><![CDATA[userpanel]]></description>
+	</state>
+</metadata>
+
+

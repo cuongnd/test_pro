@@ -874,7 +874,7 @@ class vmRequest{
  */
 class vmJsApi{
 
-
+	private static $_jsAdd = array();
 	private function __construct() {
 
 	}
@@ -886,6 +886,87 @@ class vmJsApi{
 	 * @param   boolean  load minified version
 	 * @return  nothing
 	 */
+	public static function addJScript($name, $script = false, $defer = true, $async = false, $inline = false, $ver = VM_REV){
+		self::$_jsAdd[$name]['script'] = trim($script);
+		self::$_jsAdd[$name]['defer'] = $defer;
+		self::$_jsAdd[$name]['async'] = $async;
+		if(!isset(self::$_jsAdd[$name]['written']))self::$_jsAdd[$name]['written'] = false;
+		self::$_jsAdd[$name]['inline'] = $inline;
+		self::$_jsAdd[$name]['ver'] = $ver;
+	}
+	static function keepAlive($minlps = 2, $maxlps=5){
+
+		static $done = false;
+		if($done) return;
+		$done = true;
+
+		$config = JFactory::getConfig();
+		$refTime = ($config->get('lifetime') );
+
+		// the longest refresh period is 30 min to prevent integer overflow.
+		if ($refTime > 30 || $refTime <= 0) {
+			$refTime = 30;
+		}
+
+		$url = 'index.php?option=com_virtuemart&view=virtuemart&task=keepalive';
+		vmJsApi::addJScript('keepAliveTime','var sessMin = '.$refTime.';var vmAliveUrl = "'.$url.'";var maxlps = "'.$maxlps.'";var minlps = "'.$minlps.'";',false,true);
+		vmJsApi::addJScript('vmkeepalive',false, true, true);
+	}
+	public static function writeJS(){
+
+		$html = '';
+		foreach(self::$_jsAdd as $name => &$jsToAdd){
+
+			if($jsToAdd['written']) continue;
+			if(!$jsToAdd['script'] or strpos($jsToAdd['script'],'/')===0 and strpos($jsToAdd['script'],'//<![CDATA[')!==0){ //strpos($script,'/')===0){
+
+				if(!$jsToAdd['script']){
+					$file = $name;
+				} else {
+					$file = $jsToAdd['script'];
+				}
+
+				if(strpos($file,'/')!==0){
+					$file = vmJsApi::setPath($file,false,'');
+				} else if(strpos($file,'//')!==0){
+					$file = JURI::root(true).$file;
+				}
+
+				if(empty($file)){
+					vmdebug('writeJS javascript with empty file',$name,$jsToAdd);
+					continue;
+				}
+				$ver = '';
+				if(!empty($jsToAdd['ver'])) $ver = '?vmver='.$jsToAdd['ver'];
+
+				if($jsToAdd['inline']){
+					$html .= '<script type="text/javascript" src="'.$file .$ver.'"></script>';
+					/*$content = file_get_contents(VMPATH_ROOT.$file);
+					$html .= '<script type="text/javascript" >'.$content.'</script>';*/
+				} else {
+					$document = JFactory::getDocument();
+					$document->addScript( $file .$ver,"text/javascript",$jsToAdd['defer'],$jsToAdd['async'] );
+				}
+
+			} else {
+
+				$script = trim($jsToAdd['script']);
+				if(!empty($script)) {
+					$script = trim($script,chr(13));
+					$script = trim($script,chr(10));
+					if(strpos($script,'//<![CDATA[')===false){
+						$html .= '<script id="'.$name.'_js" type="text/javascript">//<![CDATA[ '.chr(10).$script.' //]]>'.chr(10).'</script>';
+					} else {
+						$html .= '<script id="'.$name.'_js" type="text/javascript"> '.$script.' </script>';
+					}
+				}
+
+			}
+			$html .= chr(13);
+			$jsToAdd['written'] = true;
+		}
+		return $html;
+	}
 
 	public static function js($namespace,$path=FALSE,$version='', $minified = NULL)
 	{

@@ -25,6 +25,7 @@ abstract class JHtmlAccess
 	 * @since  1.6
 	 */
 	protected static $asset_groups = null;
+	protected static $asset_level = null;
 
 	/**
 	 * Displays a list of the available access view levels
@@ -42,25 +43,25 @@ abstract class JHtmlAccess
 	 */
 	public static function level($name, $selected, $attribs = '', $params = true, $id = false)
 	{
-		$website=JFactory::getWebsite();
-		$db = JFactory::getDbo();
-		$query = $db->getQuery(true)
-			->select('a.id AS value, a.title AS text')
-			->from('#__viewlevels AS a')
-			->where('a.website_id='.(int)$website->website_id)
-			->group('a.id, a.title, a.ordering')
-			->order('a.ordering ASC')
-			->order($db->quoteName('title') . ' ASC')
-		;
+		if(!static::$asset_level) {
+			$website = JFactory::getWebsite();
+			$db = JFactory::getDbo();
+			$query = $db->getQuery(true)
+				->select('a.id AS value, a.title AS text')
+				->from('#__viewlevels AS a')
+				->where('a.website_id=' . (int)$website->website_id)
+				->group('a.id, a.title, a.ordering')
+				->order('a.ordering ASC')
+				->order($db->quoteName('title') . ' ASC');
 
-		// Get the options.
-		$db->setQuery($query);
-		$options = $db->loadObjectList();
-
+			// Get the options.
+			$db->setQuery($query);
+			static::$asset_level = $db->loadObjectList();
+		}
 		// If params is an array, push these options to the array
 		if (is_array($params))
 		{
-			$options = array_merge($params, $options);
+			$options = array_merge($params, static::$asset_level);
 		}
 
 		// If all levels is allowed, push it into the array.

@@ -83,6 +83,51 @@ abstract class JHtmlInput
 		$html=ob_get_clean();
 		return $html;
 	}
+	public static function radioyesno($class_right,$name,$value,$attr=array(),$more='')
+	{
+		$doc=JFactory::getDocument();
+		$class=$attr['class'].' form-control';
+		unset($attr['class']);
+		$attr = implode(', ', array_map(
+			function ($v, $k) { return "$k=\"$v\""; },
+			$attr,
+			array_keys($attr)
+		));
+		$scriptId = $name;
+		ob_start();
+		?>
+		<script type="text/javascript">
+			jQuery(document).ready(function ($) {
+				$('input[name="<?php echo $name ?>"]').change(function(){
+					var self=$(this);
+					if(self.is(':checked'))
+					{
+						self.val(1);
+					}else{
+						self.val(0);
+					}
+					var onchange=self.data('onchange');
+					if(onchange!='')
+					{
+						eval(onchange);
+					}
+				});
+			});
+		</script>
+		<?php
+		$script = ob_get_clean();
+		$script = JUtility::remove_string_javascript($script);
+		$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+		ob_start();
+		?>
+		<div class="<?php echo $class_right ?>">
+			<input <?php echo $attr ?>   <?php echo $value?'checked':'' ?> type="checkbox"  name="<?php echo $name ?>">
+		</div>
+		<?php
+		$html=ob_get_clean();
+		return $html;
+	}
+
 
 
 }

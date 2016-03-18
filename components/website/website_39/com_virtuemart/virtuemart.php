@@ -31,6 +31,7 @@ $offline = VmConfig::get('shop_is_offline',0);
 vmRam('Start');
 vmSetStartTime('Start');
 $app=JFactory::getApplication();
+
 VmConfig::loadJLang('com_virtuemart', true);
 $input = JFactory::getApplication()->input;
 
@@ -115,6 +116,7 @@ if (class_exists($_class)) {
 } else {
 
     vmDebug('VirtueMart controller not found: '. $_class);
+	throw  new Exception('VirtueMart controller not found: '. $_class);
     $app = Jfactory::getApplication();
     $app->redirect(JRoute::_ ('index.php?option=com_virtuemart&view=virtuemart', FALSE));
 }

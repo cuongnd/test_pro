@@ -42,6 +42,10 @@ class VmHTML{
 		return $string;
 	}
 
+	public static function show_image($value, $class = 'class="inputbox"', $width = 40, $height = 40)
+	{
+		return '<img ' . $class . ' src="' . ($value) . '" width="' . $width . '" height="' . $height . '" />';
+	}
 
 	/**
 	 * Returns the charset string from the global _ISO constant

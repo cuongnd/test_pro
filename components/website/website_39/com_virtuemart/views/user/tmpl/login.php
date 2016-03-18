@@ -15,7 +15,7 @@ require_once JPATH_ROOT.'/components/com_users/helpers/facebook.php';
 $loginUrl = facebook_helper::get_login_url();
 require_once JPATH_ROOT.'/components/com_users/helpers/google.php';
 $authUrl = google_helper::get_login_url();
-
+//$authUrl='';
 
 ?>
 

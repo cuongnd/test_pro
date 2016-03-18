@@ -1163,7 +1163,7 @@ class JTableMenu extends JTableNested
             //->set('access = 184')
             ->set('path = ' . $this->_db->quote($path))
             ->where($this->_tbl_key . ' = ' . (int)$parentId);
-
+        $this->_db->rebuild_action=1;
         $this->_db->setQuery($query)->execute();
 
         // Return the right value of this node + 1.

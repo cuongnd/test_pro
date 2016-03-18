@@ -94,7 +94,24 @@ abstract class JHtmlJGrid
 
 		return implode($html);
 	}
-
+	public static function save_in_line($value, $i, $prefix = '', $enabled = true, $checkbox = 'cb')
+	{
+		return static::action(
+			$i, 'save', $prefix, JText::_('save'),'','', true, 'save', '', $enabled, false, $checkbox
+		);
+	}
+	public static function delete_in_line($value, $i, $prefix = '', $enabled = true, $checkbox = 'cb')
+	{
+		return static::action(
+			$i, 'remove', $prefix, JText::_('Delete'),'','', true, 'remove', '', $enabled, false, $checkbox
+		);
+	}
+	public static function cancel_in_line($value, $i, $prefix = '', $enabled = true, $checkbox = 'cb')
+	{
+		return static::action(
+			$i, 'Cancel', $prefix, JText::_('Cancel'),'','', true, 'cancel', '', $enabled, false, $checkbox
+		);
+	}
 	/**
 	 * Returns a state on a grid
 	 *

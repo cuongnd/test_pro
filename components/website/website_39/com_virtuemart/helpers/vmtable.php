@@ -149,7 +149,7 @@ class VmTable extends JTable{
                 if (!class_exists($tableClass))
                 {
                     JLog::add(JText::sprintf('JLIB_DATABASE_ERROR_CLASS_NOT_FOUND_IN_FILE', $tableClass), JLog::WARNING, 'jerror');
-
+					throw new Exception(JText::sprintf('JLIB_DATABASE_ERROR_CLASS_NOT_FOUND_IN_FILE', $tableClass));
                     return false;
                 }
             }
@@ -157,7 +157,7 @@ class VmTable extends JTable{
             {
                 // If we were unable to find the class file in the JTable include paths, raise a warning and return false.
                 JLog::add(JText::sprintf('JLIB_DATABASE_ERROR_NOT_SUPPORTED_FILE_NOT_FOUND', $type), JLog::WARNING, 'jerror');
-
+				throw new Exception(JText::sprintf('JLIB_DATABASE_ERROR_NOT_SUPPORTED_FILE_NOT_FOUND', $type));
                 return false;
             }
         }

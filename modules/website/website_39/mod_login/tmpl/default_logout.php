@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 
 JHtml::_('behavior.keepalive');
 ?>
-<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo htmlspecialchars($user->get('name'));  ?></a>
 <div class="dropdown-menu">
 	<div class="profile row-fluid" >
 		<div class="col-md-12">
@@ -25,6 +25,7 @@ JHtml::_('behavior.keepalive');
 						} endif; ?>
 					</div>
 				<?php endif; ?>
+				<a href="index.php?option=com_virtuemart&view=raovat" class="btn btn-primary"  ><?php echo JText::_('Quản lý đăng tin rao vặt') ?></a>
 				<div class="logout-button">
 					<input type="submit" name="Submit" class="btn btn-primary" value="<?php echo JText::_('JLOGOUT'); ?>" />
 					<input type="hidden" name="option" value="com_users" />
