@@ -68,11 +68,9 @@ class VirtueMartModelRaovat extends VmModel {
 		$db = JFactory::getDbo();
 		$query=$db->getQuery(true);
 
-		$query->select('raovat.*,cityarea.city_area_name,states.virtuemart_state_id,states.state_name,countries.virtuemart_country_id,countries.flag AS country_flag,countries.country_name,countries.flag')
+		$query->select('raovat.*')
 			->from('#__virtuemart_raovat AS raovat')
-			->leftJoin('#__virtuemart_cityarea AS cityarea using (virtuemart_cityarea_id)')
-			->leftJoin('#__virtuemart_states AS states ON states.virtuemart_state_id=cityarea.virtuemart_state_id')
-			->leftJoin('#__virtuemart_countries AS countries ON countries.virtuemart_country_id=states.virtuemart_country_id')
+			->leftJoin('#__virtuemart_raovat_en_gb AS raovat_en_gb USING(virtuemart_raovat_id)')
 		;
 		$user = JFactory::getUser();
 		$shared = '';

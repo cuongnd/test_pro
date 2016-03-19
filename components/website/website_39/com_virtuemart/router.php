@@ -27,9 +27,9 @@ function virtuemartBuildRoute(&$query) {
 			// get logged vendors and return unSEF link for front admin
 			if ($usr_id = JFactory::getUser()->get('id')) {
 				if (!class_exists( 'VmConfig' )) {
-					require(JPATH_ADMINISTRATOR .'/components/com_virtuemart/helpers/config.php');
+					require(JPATH_VM_SITE .'/components/com_virtuemart/helpers/config.php');
 				}
-				if(!class_exists('Permissions')) require(JPATH_ADMINISTRATOR.'/components/com_virtuemart/helpers/permissions.php');
+				if(!class_exists('Permissions')) require(JPATH_VM_SITE.'/components/com_virtuemart/helpers/permissions.php');
 				$vendor = Permissions::getInstance()->isSuperVendor();
 			} else $vendor = false;
 	}
@@ -328,7 +328,7 @@ function virtuemartBuildRoute(&$query) {
 
 	}
 
-	//	if (!class_exists( 'VmConfig' )) require(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_virtuemart'.DS.'helpers'.DS.'config.php');
+	//	if (!class_exists( 'VmConfig' )) require(JPATH_VM_SITE . DS . 'components' . DS . 'com_virtuemart'.DS.'helpers'.DS.'config.php');
 	//	vmdebug("case 'productdetails'",$query);
 
 	if (isset($query['task'])) {
@@ -763,9 +763,10 @@ class vmrouterHelper {
 	}
 
 	public static function getInstance(&$query = null) {
-
+		$com_virtuemart_path=JPath::get_component_path('com_virtuemart');
+		$com_virtuemart_url=JPath::get_component_url('com_virtuemart');
 		if (!class_exists( 'VmConfig' )) {
-			require(JPATH_ADMINISTRATOR .'/components/com_virtuemart/helpers/config.php');
+			require($com_virtuemart_path .'/helpers/config.php');
 		}
 		VmConfig::loadConfig();
 

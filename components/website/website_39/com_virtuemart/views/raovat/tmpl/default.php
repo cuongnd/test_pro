@@ -44,7 +44,7 @@ ob_start();
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-        $('.view-tourclass-default').view_tourclass_default({});
+        $('.view-raovat-default').view_raovat_default({});
     });
 </script>
 <?php
@@ -57,37 +57,14 @@ $listDirn = $this->escape($this->lists['filter_order_Dir']);
 $saveOrder = $listOrder == 'ordering';
 if ($saveOrder) {
 
-    $saveOrderingUrl = 'index.php?option=com_virtuemart&controller=tourclass&task=saveOrderAjax&tmpl=component';
+    $saveOrderingUrl = 'index.php?option=com_virtuemart&controller=raovat&task=saveOrderAjax&tmpl=component';
     JHtml::_('sortablelist.sortable', 'tour_class_list', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 
-
 ?>
-<div class="view-tourclass-default">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default"><?php echo JText::_('Go') ?></button>
-            </form>
-            <form class="navbar-form navbar-right" role="task">
-                <button type="button" data-jtask="add" class="btn btn-primary"><i class="im-plus"></i><?php echo JText::_('Add new') ?></button>
-                <button type="button" data-jtask="remove" class="btn btn-warning"><i class="im-remove"></i><?php echo JText::_('remove') ?></button>
-                <button type="button" data-jtask="publish" class="btn btn-info"><i class="en-publish"></i><?php echo JText::_('publish') ?></button>
-                <button type="button" data-jtask="un_publish" class="btn btn-info"><i class="br-blocked"></i><?php echo JText::_('un publish') ?></button>
-            </form>
-        </div><!-- /.container-fluid -->
-    </nav>
+<div class="view-raovat-default">
     <form action="index.php" method="post" name="adminForm" id="adminForm">
-        <!--<table>
-		<tr>
-			<td width="100%">
-				<?php /*echo $this->displayDefaultViewSearch ('COM_VIRTUEMART_CURRENCY','search') ; */ ?>
-			</td>
-		</tr>
-		</table>-->
+        <?php echo $this->render_toolbar_default() ?>
         <div id="editcell">
             <div class="vm-page-nav">
 
@@ -138,7 +115,7 @@ if ($saveOrder) {
 
                     $checked = JHtml::_('grid.id', $i, $row->virtuemart_service_class_id);
                     $published = $this->gridPublished($row, $i);
-                    $editlink = JROUTE::_('index.php?option=com_virtuemart&view=tourclass&task=show_parent_popup&cid[]=' . $row->virtuemart_service_class_id);
+                    $editlink = JROUTE::_('index.php?option=com_virtuemart&view=raovat&task=show_parent_popup&cid[]=' . $row->virtuemart_service_class_id);
                     $edit = $this->gridEdit($row, $i, 'virtuemart_service_class_id', $editlink);
                     $delete = $this->grid_delete_in_line($row, $i, 'virtuemart_service_class_id');
                     ?>

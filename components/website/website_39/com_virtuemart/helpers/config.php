@@ -25,6 +25,7 @@ $com_virtuemart_path=JPath::get_component_path('com_virtuemart');
 $com_virtuemart_url=JPath::get_component_url('com_virtuemart');
 $website=JFactory::getWebsite();
 define( 'JPATH_VM_SITE', $com_virtuemart_path );
+
 define( 'JPATH_VM_URL', $com_virtuemart_url);
 require_once JPATH_VM_SITE."/helpers/vrequest.php";
 require_once JPATH_VM_SITE."/helpers/vmtext.php";
