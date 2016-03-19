@@ -2,16 +2,15 @@
 /**
  * abstract controller class containing get,store,delete,publish and pagination
  *
- *
+ * This class provides the functions for the Views
  * This class provides the functions for the calculations
  *
- * @package	VirtueMart
+ * @package    VirtueMart
  * @subpackage Helpers
  * @author Max Milbers
- * @copyright Copyright (c) 2011 VirtueMart Team. All rights reserved.
+ * @copyright Copyright (C) 2014-2015 Virtuemart Team. All rights reserved.
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
  * VirtueMart is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
  * to the GNU General Public License, and as distributed it includes or
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
@@ -20,82 +19,118 @@
  * http://virtuemart.net
  */
 // Load the view framework
-jimport( 'joomla.application.component.viewlegacy');
-
-
+jimport('joomla.application.component.view');
 // Load default helpers
-if (!class_exists('ShopFunctions')) require(JPATH_VM_SITE.DS.'helpers'.DS.'shopfunctions.php');
-if (!class_exists('AdminUIHelper')) require(JPATH_VM_SITE.DS.'helpers'.DS.'adminui.php');
+if (!class_exists('ShopFunctions')) require(JPATH_VM_SITE . DS . 'helpers' . DS . 'shopfunctions.php');
+if (!class_exists('AdminUIHelper')) require(JPATH_VM_SITE . DS . 'helpers' . DS . 'adminui.php');
+if (!class_exists('JToolbar')) require(JPATH_VM_SITE . DS . 'helpers/front' . DS . 'toolbar.php');
+if (!class_exists('JToolbarHelper')) require(JPATH_VM_SITE . DS . 'helpers/front' . DS . 'toolbarhelper.php');
 
-class VmView extends JViewLegacy{
 
-	var $_cidName	= null;
-	var $tmpl ='';
+class VmView extends JViewLegacy
+{
 	/**
 	 * Sets automatically the shortcut for the language and the redirect path
-	 *
 	 * @author Max Milbers
 	 */
-	// public function __construct() {
-		// parent::construct();
-	// }
+
 	var $lists = array();
-	function __construct() {
+	var $showVendors = null;
+	var $toolbar = null;
+	protected $canDo;
+	var $writeJs = true;
 
-		parent::__construct();
-		// always use same method for cidName
-		$vName = $this->getName();
-		$this->_cidName = 'virtuemart_'.$vName.'_id';
-	// var_dump($this);
-		//Template path and helper fix for Front-end editing
-		$this->addTemplatePath(JPATH_VM_SITE.DS.'views'.DS.$this->_name.DS.'tmpl');
-		$this->addHelperPath(JPATH_VM_SITE.DS.'helpers');
-		$this->frontEdit = jRequest::getvar('tmpl') ==='component' ? true : false ;
-		if ($this->frontEdit) {
-			if (!class_exists('JToolBarHelper')) {
-				jimport( 'joomla.html.toolbar');
-				require(JPATH_VM_SITE.'/helpers/front/button.php');
-				require(JPATH_VM_SITE.'/helpers/front/toolbar.php');
-				require(JPATH_VM_SITE.'/helpers/front/toolbarhelper.php');
-			}
-			$this->tmpl = '&tmpl=component';
-			$this->tmpl = '&tmpl=component';
-		}
-	}
-	function gridPublished($name, $i)
+	function __construct($config = array())
 	{
-		if (JVM_VERSION < 3) {
-			$published = JHtml::_('grid.published', $name, $i);
+		parent::__construct($config);
+	}
+
+	/*
+    * Override the display function to include ACL
+    * Redirect to the control panel when user does not have access
+    */
+	public function display($tpl = null)
+	{
+		$view = vRequest::getCmd('view', vRequest::getCmd('controller', 'virtuemart'));
+
+		$doc = JFactory::getDocument();
+		$input = JFactory::getApplication()->input;
+		$this->add_new_popup = $input->get('add_new_popup', 0, 'string');
+		$this->close_window_children = $input->get('close_window_children', 0, 'int');
+		$this->show_in_parent_window = $input->get('show_in_parent_window', 0, 'int');
+		$dialog_element_id = $input->get('dialog_element_id', '', 'string');
+		$close_ui_dialog_id = $input->get('ui_dialog_id', '', 'string');
+		$parent_ui_dialog_id = $input->get('ui_dialog_id', '', 'string');
+		$link_reload = $input->get('link_redirect', base64_encode('index.php?option=com_virtuemart&view='.$view), 'string');
+		$parent_iframe_id = $input->get('iframe_id', '', 'string');
+		$reload_iframe_id = $input->get('reload_iframe_id', '', 'string');
+		$remove_ui_dialog = $input->get('remove_ui_dialog', false, 'boolean');
+		$small_form = $input->get('small_form', 0, 'int');
+		if ($this->show_in_parent_window == 1) {
+			$doc->addScript(JUri::root() . '/administrator/components/com_virtuemart/assets/js/asianventure_edit_from.js');
+			$doc->addScript(JUri::root() . '/media/system/js/base64.js');
+			$doc->addLessStyleSheet(JUri::root() . '/administrator/components/com_virtuemart/assets/less/view_component.less');
+
+			$js_content = '';
+			ob_start();
+			?>
+			<script type="text/javascript">
+				jQuery(document).ready(function ($) {
+					$('.admin.com_virtuemart.view-<?php echo $view ?>').asianventure_edit_from({
+						show_in_parent_window:<?php echo $this->show_in_parent_window==1?1:0  ?>,
+						view_height:<?php echo $this->view_height?$this->view_height:0  ?>,
+						close_window_children:<?php echo $this->close_window_children  ?>,
+						dialog_element_id:'<?php echo $dialog_element_id ?>',
+						link_reload:'<?php echo $link_reload ?>',
+						parent_iframe_id:'<?php echo $parent_iframe_id ?>',
+						parent_ui_dialog_id:'<?php echo $parent_ui_dialog_id ?>',
+						close_ui_dialog_id:'<?php echo $close_ui_dialog_id ?>',
+						reload_iframe_id:'<?php echo $reload_iframe_id ?>',
+						remove_ui_dialog:'<?php echo json_encode($remove_ui_dialog) ?>',
+						small_form:<?php echo $small_form ?>
+					});
+				});
+			</script>
+			<?php
+			$js_content = ob_get_clean();
+			$js_content = JUtility::remove_string_javascript($js_content);
+			$doc->addScriptDeclaration($js_content);
+
+
+		}
+		if ($view == 'virtuemart' //Virtuemart view is always allowed since this is the page we redirect to in case the user does not have the rights
+			or $view == 'about' //About view always displayed
+			or $this->manager($view)
+		) {
+			//or $this->canDo->get('core.admin')
+			//or $this->canDo->get('vm.'.$view) ) { //Super administrators always have access
+
+			if (JFactory::getApplication()->isSite()) {
+				$unoverridable = array('category', 'manufacturer', 'user');    //This views have the same name and must not be overridable
+				if (!in_array($view, $unoverridable)) {
+					if (!class_exists('VmTemplate')) require(JPATH_VM_SITE . DS . 'helpers' . DS . 'vmtemplate.php');
+					$template = VmTemplate::getDefaultTemplate();
+					$this->addTemplatePath(JPATH_VM_SITE . DS . 'templates' . DS . $template['template'] . DS . 'html' . DS . 'com_virtuemart' . DS . $this->_name);
+				}
+			}
+
+			$result = $this->loadTemplate($tpl);
+			if ($result instanceof Exception) {
+				return $result;
+			}
+
+			echo $result;
+
+			if ($this->writeJs) {
+				vmJsApi::keepAlive();
+				echo vmJsApi::writeJS();
+			}
+			return true;
 		} else {
-			$published = JHtml::_('jgrid.published', $name->published, $i);
+			JFactory::getApplication()->redirect('index.php?option=com_virtuemart', vmText::_('JERROR_ALERTNOAUTHOR'), 'error');
 		}
-		return $published;
+
 	}
-
-	/*
-	 * set all commands and options for BE default.php views
-	* return $list filter_order and
-	*/
-	function addStandardDefaultViewCommands($showNew=true, $showDelete=true, $showHelp=true) {
-
-
-		JToolBarHelper::publishList();
-		JToolBarHelper::unpublishList();
-		JToolBarHelper::divider();
-		JToolBarHelper::editList();
-		if ($showNew) {
-			JToolBarHelper::addNew();
-		}
-		if ($showDelete) {
-			JToolBarHelper::deleteList();
-		}
-		self::showHelp ( $showHelp);
-	}
-
-	/*
-	 * set pagination and filters
-	* return Array() $list( filter_order and dir )
-	*/
 	function linkIcon($link,$altText ='',$boutonName,$verifyConfigValue=false, $modal = true, $use_icon=true,$use_text=false,$class = ''){
 		if ($verifyConfigValue) {
 			if ( !VmConfig::get($verifyConfigValue, 0) ) return '';
@@ -109,26 +144,65 @@ class VmView extends JViewLegacy{
 		else 		return '<a '.$class.' title="'. vmText::_($altText).'" href="'.JRoute::_($link, FALSE).'">'.$text.'</a>';
 	}
 
-	function addStandardDefaultViewLists($model, $default_order = 0, $default_dir = 'DESC',$name = 'search') {
+	public function render_toolbar_default($controller='default'){
+		ob_start();
+		?>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" name="keyword" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default"><?php echo JText::_('Go') ?></button>
+				</div>
+				<div class="navbar-form navbar-right" role="task">
+					<?php echo JHtml::_('button.add',$controller.'.add'); ?>
+					<?php echo JHtml::_('button.remove',$controller.'.remove'); ?>
+					<?php echo JHtml::_('button.publish',$controller.'.publish'); ?>
+					<?php echo JHtml::_('button.un_publish',$controller.'.un_publish'); ?>
+				</div>
+			</div><!-- /.container-fluid -->
+		</nav>
 
-		//This function must be used after the listing
-// 		$pagination = $model->getPagination();
-// 		$this->assignRef('pagination', $pagination);
-
-		/* set list filters */
-		$option = JRequest::getCmd('option');
-		$view = JRequest::getCmd('view', JRequest::getCmd('controller','virtuemart'));
-
-		$app = JFactory::getApplication();
-		$this->lists[$name] = $app->getUserStateFromRequest($option . '.' . $view . '.'.$name, $name, '', 'string');
-		$this->lists['filter_order'] = $this->getValidFilterOrder($app,$model,$view,$default_order);
-
-// 		if($default_dir===0){
-			$toTest = $app->getUserStateFromRequest( 'com_virtuemart.'.$view.'.filter_order_Dir', 'filter_order_Dir', $default_dir, 'cmd' );
-
-		$this->lists['filter_order_Dir'] = $model->checkFilterDir($toTest);
-
+		<?php
+		$html=ob_get_clean();
+		return $html;
 	}
+	public function render_toolbar_edit($controller='default'){
+		ob_start();
+		?>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" name="keyword" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default"><?php echo JText::_('Go') ?></button>
+				</div>
+				<div class="navbar-form navbar-right" role="task">
+					<?php echo JHtml::_('button.save',$controller.'.save'); ?>
+					<?php echo JHtml::_('button.apply',$controller.'.apply'); ?>
+					<?php echo JHtml::_('button.cancel',$controller.'.cancel'); ?>
+				</div>
+			</div><!-- /.container-fluid -->
+		</nav>
+
+		<?php
+		$html=ob_get_clean();
+		return $html;
+	}
+	function gridEdit($value, $i, $key, $link)
+	{
+		return '<a href="' . $link . '" class="edit" data-id="' . $value->$key . '"  title="edit">'
+		. JHtml::_('image', 'admin/edit.png', 'edit', null, true) . '</a>';
+	}
+
+	function grid_save_in_line($name, $i, $key)
+	{
+		$save_in_line = JHtml::_('jgrid.save_in_line', $name->$key, $i);
+		return $save_in_line;
+	}
+
 	function grid_delete_in_line($name, $i, $key)
 	{
 		$save_in_line = JHtml::_('jgrid.delete_in_line', $name->$key, $i);
@@ -140,330 +214,759 @@ class VmView extends JViewLegacy{
 		$save_in_line = JHtml::_('jgrid.cancel_in_line', $name->$key, $i);
 		return $save_in_line;
 	}
+	/*
+     * set all commands and options for BE default.php views
+    * return $list filter_order and
+    */
+	function addStandardDefaultViewCommands($showNew = true, $showDelete = true, $showHelp = true)
+	{
 
 
-	function getValidFilterOrder($app,$model,$view,$default_order){
+		$view = vRequest::getCmd('view', vRequest::getCmd('controller', 'virtuemart'));
 
-		if($default_order===0){
-			$default_order = $model->getDefaultOrdering();
+		JToolBarHelper::divider();
+		if (vmAccess::manager($view . '.edit.state')) {
+			JToolBarHelper::publishList();
+			JToolBarHelper::unpublishList();
+		}
+		if (vmAccess::manager($view . '.edit')) {
+			JToolBarHelper::editList();
+		}
+		if (vmAccess::manager($view . '.create')) {
+			JToolBarHelper::addNew('show_parent_popup');
+		}
+		if (vmAccess::manager($view . '.delete')) {
+			JToolBarHelper::spacer('10');
+			JToolBarHelper::deleteList();
+		}
+		JToolBarHelper::divider();
+		JToolBarHelper::spacer('2');
+		//self::showACLPref($view);
+		//self::showHelp ( $showHelp);
+		if (JFactory::getApplication()->isSite()) {
+			$bar = JToolBar::getInstance('toolbar');
+			$bar->appendButton('Link', 'back', 'COM_VIRTUEMART_LEAVE', 'index.php?option=com_virtuemart&manage=0');
 		}
 
-		$toTest = $app->getUserStateFromRequest( 'com_virtuemart.'.$view.'.filter_order', 'filter_order', $default_order, 'cmd' );
+		// javascript for cookies setting in case of press "APPLY"
+	}
 
-// 		vmdebug('getValidFilterOrder '.$toTest.' '.$default_order, $model->_validOrderingFieldName);
+	//only view price
+	function addStandardDefaultViewCommandsPrice($showNew = true, $showDelete = true, $showHelp = true)
+	{
+
+
+		$view = vRequest::getCmd('view', vRequest::getCmd('controller', 'virtuemart'));
+
+		JToolBarHelper::divider();
+		if (vmAccess::manager($view . '.edit.state')) {
+			JToolBarHelper::publishList();
+			JToolBarHelper::unpublishList();
+		}
+		if (vmAccess::manager($view . '.edit')) {
+			JToolBarHelper::editList();
+		}
+		if (vmAccess::manager($view . '.create')) {
+			JToolBarHelper::addNew();
+		}
+		if (vmAccess::manager($view . '.delete')) {
+			JToolBarHelper::spacer('10');
+			JToolBarHelper::deleteList();
+		}
+		JToolBarHelper::divider();
+		JToolBarHelper::spacer('2');
+		//self::showACLPref($view);
+		//self::showHelp ( $showHelp);
+		if (JFactory::getApplication()->isSite()) {
+			$bar = JToolBar::getInstance('toolbar');
+			$bar->appendButton('Link', 'back', 'COM_VIRTUEMART_LEAVE', 'index.php?option=com_virtuemart&manage=0');
+		}
+
+		$this->addJsJoomlaSubmitButton();
+		// javascript for cookies setting in case of press "APPLY"
+	}
+
+	//only view promotion
+	function addStandardDefaultViewCommandsPromotion($showNew = true, $showDelete = true, $showHelp = true)
+	{
+
+
+		$view = vRequest::getCmd('view', vRequest::getCmd('controller', 'virtuemart'));
+
+		JToolBarHelper::divider();
+		if (vmAccess::manager($view . '.edit.state')) {
+			JToolBarHelper::publishList();
+			JToolBarHelper::unpublishList();
+		}
+		if (vmAccess::manager($view . '.edit')) {
+			JToolBarHelper::editList();
+		}
+		if (vmAccess::manager($view . '.create')) {
+			JToolBarHelper::addNew();
+		}
+		if (vmAccess::manager($view . '.delete')) {
+			JToolBarHelper::spacer('10');
+			JToolBarHelper::deleteList();
+		}
+		JToolBarHelper::divider();
+		JToolBarHelper::spacer('2');
+		//self::showACLPref($view);
+		//self::showHelp ( $showHelp);
+		if (JFactory::getApplication()->isSite()) {
+			$bar = JToolBar::getInstance('toolbar');
+			$bar->appendButton('Link', 'back', 'COM_VIRTUEMART_LEAVE', 'index.php?option=com_virtuemart&manage=0');
+		}
+
+		$this->addJsJoomlaSubmitButton();
+		// javascript for cookies setting in case of press "APPLY"
+	}
+
+
+
+
+
+
+
+
+	/**
+	 * set pagination and filters
+	 * return Array() $list( filter_order and dir )
+	 */
+
+	function addStandardDefaultViewLists($model, $default_order = 0, $default_dir = 'DESC', $name = 'search')
+	{
+
+		// set list filters
+		$option = vRequest::getCmd('option');
+		$view = vRequest::getCmd('view', vRequest::getCmd('controller', 'virtuemart'));
+
+		$app = JFactory::getApplication();
+		$this->lists[$name] = $app->getUserStateFromRequest($option . '.' . $view . '.' . $name, $name, '', 'string');
+
+		$this->lists['filter_order'] = $this->getValidFilterOrder($app, $model, $view, $default_order);
+
+		$toTest = $app->getUserStateFromRequest('com_virtuemart.' . $view . '.filter_order_Dir', 'filter_order_Dir', $default_dir, 'cmd');
+
+		$this->lists['filter_order_Dir'] = $model->checkFilterDir($toTest);
+
+	}
+
+	function getValidFilterOrder($app, $model, $view, $default_order)
+	{
+
+		if ($default_order === 0) {
+			$default_order = $model->getDefaultOrdering();
+		}
+		$toTest = $app->getUserStateFromRequest('com_virtuemart.' . $view . '.filter_order', 'filter_order', $default_order, 'cmd');
+
 		return $model->checkFilterOrder($toTest);
 	}
 
 
-	/*
+	/**
 	 * Add simple search to form
-	* @param $searchLabel text to display before searchbox
-	* @param $name 	lists and id name
-	* @param $id 	alternative HTML Id
-	* ??JText::_('COM_VIRTUEMART_NAME')
-	*/
+	 * @param $searchLabel text to display before searchbox
+	 * @param $name         lists and id name
+	 * ??vmText::_('COM_VIRTUEMART_NAME')
+	 */
 
-	function displayDefaultViewSearch($searchLabel='COM_VIRTUEMART_NAME',$name ='search',$id='search') {
-		return '<div class="filter-search btn-group pull-left">
-				<!--<label for="filter_search" class="element-invisible">'.JText::_($searchLabel).'</label>-->
-				<input type="text" name="' . $name . '" id="' . $id . '" placeholder="'.JText::_('COM_VIRTUEMART_FILTER') . ' ' . JText::_($searchLabel).'" value="'. $this->escape( $this->lists[$name] ).'" title="'.JText::_('COM_VIRTUEMART_FILTER') . ' '.JText::_($searchLabel).'" />
-			</div>
-			<div class="btn-group pull-left">
-				<button type="submit" id="searchsubmit" class="btn hasTooltip" title="'.JText::_('JSEARCH_FILTER_SUBMIT').'"><i class="icon-search"></i></button>
-				<button type="button" id="searchreset" class="btn hasTooltip hidden-phone" title="'.JText::_('JSEARCH_FILTER_CLEAR').'" onclick=\'document.id("' . $id . '").value="";this.form.submit();\'><i class="icon-remove"></i></button>
-			</div>';
+	function displayDefaultViewSearch($searchLabel = 'COM_VIRTUEMART_NAME', $name = 'search')
+	{
+		return vmText::_('COM_VIRTUEMART_FILTER') . ' ' . vmText::_($searchLabel) . ':
+		<input type="text" name="' . $name . '" id="' . $name . '" value="' . $this->lists[$name] . '" class="text_area" />
+		<button class="btn btn-small" onclick="this.form.submit();">' . vmText::_('COM_VIRTUEMART_GO') . '</button>
+		<button class="btn btn-small" onclick="document.getElementById(\'' . $name . '\').value=\'\';this.form.submit();">' . vmText::_('COM_VIRTUEMART_RESET') . '</button>';
 	}
 
-	function addStandardEditViewCommands($id = 0,$save2new = true ) {
-		// if (JRequest::getCmd('tmpl') =='component' ) {
-			// if (!class_exists('JToolBarHelper')) require(JPATH_ADMINISTRATOR.DS.'includes'.DS.'toolbarhelper.php');
-		// } else {
-// 		JRequest::setVar('hidemainmenu', true);
+	function addStandardEditViewCommands($id = 0, $object = null)
+	{
+
+		$view = vRequest::getCmd('view', vRequest::getCmd('controller', 'virtuemart'));
+
+		if (!class_exists('JToolBarHelper')) require(JPATH_ADMINISTRATOR . DS . 'includes' . DS . 'toolbar.php');
+
 		JToolBarHelper::divider();
-		if ($id) JToolBarHelper::save2copy('save2copy', 'JTOOLBAR_SAVE_AS_COPY');
-		if ($save2new) JToolbarHelper::save2new('save2new', 'JTOOLBAR_SAVE_AND_NEW');
-		JToolBarHelper::save();
-		JToolBarHelper::apply();
+		if (vmAccess::manager($view . '.edit')) {
+			JToolBarHelper::save();
+			JToolBarHelper::apply();
+		}
 		JToolBarHelper::cancel();
-		// todo add filter by view
-		if ($id) JToolBarHelper::custom('preview','eye',null,'COM_VIRTUEMART_PREVIEW',false);
-		// }
-		// javascript for cookies setting in case of press "APPLY"
-		$document = JFactory::getDocument();
-		$name = $this->_name;
-		if ($name == 'product') $name='productdetails';
+		//self::showHelp();
+		//self::showACLPref($view);
 
+		if ($view != 'shipmentmethod' and $view != 'paymentmethod' and $view != 'media') $validate = true; else $validate = false;
+		$this->addJsJoomlaSubmitButton($validate);
 
-		// LANGUAGE setting
-
-		$editView = JRequest::getWord('view',JRequest::getWord('controller','' ) );
-
+		$editView = vRequest::getCmd('view', vRequest::getCmd('controller', ''));
 		$params = JComponentHelper::getParams('com_languages');
-		//$config =JFactory::getConfig();$config->get('language');
+
 		$selectedLangue = $params->get('site', 'en-GB');
+		$this->lang = strtolower(strtr($selectedLangue, '-', '_'));
 
-            $lang = JFactory::getLanguage();
-        if($this->frontEdit)    $selectedLangue = $lang->getTag();
+		// Get all the published languages defined in Language manager > Content
+		$allLanguages = JLanguageHelper::getLanguages();
+		foreach ($allLanguages as $jlang) {
+			$languagesByCode[$jlang->lang_code] = $jlang;
+		}
 
-		$lang = strtolower(strtr($selectedLangue,'-','_'));
 		// only add if ID and view not null
-		if ($editView and $id and (count(vmconfig::get('active_languages'))>1) ) {
+		if ($editView and $id and (count(vmconfig::get('active_languages')) > 1)) {
 
-			if ($editView =='user') $editView ='vendor';
-			//$params = JComponentHelper::getParams('com_languages');
+			if ($editView == 'user') $editView = 'vendor';
+
 			jimport('joomla.language.helper');
-			$lang = JRequest::getVar('vmlang', $lang);
-			$languages = JLanguageHelper::createLanguageList($selectedLangue, constant('JPATH_SITE'), true);
-			$activeVmLangs = (vmconfig::get('active_languages') );
-
+			$this->lang = vRequest::getVar('vmlang', $this->lang);
+			// list of languages installed in #__extensions (may be more than the ones in the Language manager > Content if the user did not added them)
+			$languages = JLanguageHelper::createLanguageList($selectedLangue, constant('VMPATH_ROOT'), true);
+			$activeVmLangs = (vmconfig::get('active_languages'));
+			$flagCss = "";
 			foreach ($languages as $k => &$joomlaLang) {
-				if (!in_array($joomlaLang['value'], $activeVmLangs) )  unset($languages[$k] );
+				if (!in_array($joomlaLang['value'], $activeVmLangs)) {
+					unset($languages[$k]);
+				} else {
+
+					$key = $joomlaLang['value'];
+					if (!isset($languagesByCode[$key])) {
+						$img = substr($key, 0, 2);//We try a fallback
+						vmdebug('COM_VIRTUEMART_MISSING_FLAG', $img, $joomlaLang['text']);
+					} else {
+						$img = $languagesByCode[$key]->image;
+					}
+					$image_flag = VMPATH_ROOT . "/media/mod_languages/images/" . $img . ".gif";
+					$image_flag_url = JURI::root() . "media/mod_languages/images/" . $img . ".gif";
+
+					if (!file_exists($image_flag)) {
+						vmerror(vmText::sprintf('COM_VIRTUEMART_MISSING_FLAG', $image_flag, $joomlaLang['text']));
+					} else {
+						$flagCss .= "td.flag-" . $key . ",.flag-" . $key . "{background: url( " . $image_flag_url . ") no-repeat 0 0; padding-left:20px !important;}\n";
+					}
+				}
 			}
-			$langList = JHTML::_('select.genericlist',  $languages, 'vmlang', 'class="inputbox"', 'value', 'text', $selectedLangue , 'vmlang');
-			$this->assignRef('langList',$langList);
-			$this->assignRef('lang',$lang);
+			JFactory::getDocument()->addStyleDeclaration($flagCss);
+
+			$this->langList = JHtml::_('select.genericlist', $languages, 'vmlang', 'class="inputbox" style="width:176px;"', 'value', 'text', $selectedLangue, 'vmlang');
 
 
+			if ($editView == 'product') {
+				$productModel = VmModel::getModel('product');
+				$childproducts = $productModel->getProductChilds($id) ? $productModel->getProductChilds($id) : '';
+			}
 
-			$token = JSession::getFormToken();
-
+			$token = vRequest::getFormToken();
 			$j = '
 			jQuery(function($) {
 				var oldflag = "";
 				$("select#vmlang").chosen().change(function() {
 					langCode = $(this).find("option:selected").val();
-					flagClass = "flag-"+langCode.substr(0,2) ;
-					$.getJSON( "index.php?option=com_virtuemart&view=translate&task=paste&format=json&lg="+langCode+"&id='.$id.'&editView='.$editView.'&'.$token.'=1'.$this->tmpl.'" ,
+					flagClass = "flag-"+langCode;
+					jQuery.ajax({
+						type: "GET",
+						cache: false,
+        				dataType: "json",
+        				url: "index.php?option=com_virtuemart&view=translate&task=paste&format=json&lg="+langCode+"&id=' . $id . '&editView=' . $editView . '&' . $token . '=1",
+    				}).done(
 						function(data) {
 							var items = [];
 
+							var theForm = document.forms["adminForm"];
+							if(typeof theForm.vmlang==="undefined"){
+							 	var input = document.createElement("input");
+								input.type = "hidden";
+								input.name = "vmlang";
+								input.value = langCode;
+								theForm.appendChild(input);
+							} else {
+								theForm.vmlang.value = langCode;
+							}
 							if (data.fields !== "error" ) {
 								if (data.structure == "empty") alert(data.msg);
 								$.each(data.fields , function(key, val) {
 									cible = jQuery("#"+key);
 									if (oldflag !== "") cible.parent().removeClass(oldflag)
-									if (cible.parent().addClass(flagClass).children().hasClass("mce_editable") && data.structure !== "empty" ) {
-										if (tinyMCE.execInstanceCommand) tinyMCE.execInstanceCommand(key,"mceSetContent",false,val);
-										else tinymce.editors[key].setContent(val);
+									var tmce_ver = 0;
+									if(typeof window.tinyMCE!=="undefined"){
+										var tmce_ver=window.tinyMCE.majorVersion;
 									}
-									else if (data.structure !== "empty") cible.val(val);
+									if (tmce_ver>="4") {
+										if (cible.parent().addClass(flagClass).children().hasClass("mce_editable") && data.structure !== "empty" ) {
+											tinyMCE.get(key).execCommand("mceSetContent", false,val);
+											cible.val(val);
+										} else if (data.structure !== "empty") cible.val(val);
+									} else {
+										if (cible.parent().addClass(flagClass).children().hasClass("mce_editable") && data.structure !== "empty" ) {
+											tinyMCE.execInstanceCommand(key,"mceSetContent",false,val);
+											cible.val(val);
+										} else if (data.structure !== "empty") cible.val(val);
+									}
 									});
-								oldflag = flagClass ;
-							} else alert(data.msg);
+
+							} else alert(data.msg);';
+
+			if ($editView == 'product' && !empty($childproducts)) {
+				foreach ($childproducts as $child) {
+					$j .= 'jQuery.ajax({
+        						type: "GET",
+								cache: false,
+        						dataType: "json",
+        						url: "index.php?option=com_virtuemart&view=translate&task=paste&format=json&lg="+langCode+"&id=' . $child->virtuemart_product_id . '&editView=' . $editView . '&' . $token . '=1",
+    					}).done(
+								//	$.getJSON( "index.php?option=com_virtuemart&view=translate&task=paste&format=json&lg="+langCode+"&id=' . $child->virtuemart_product_id . '&editView=' . $editView . '&' . $token . '=1" ,
+										function(data) {
+											cible = jQuery("#child' . $child->virtuemart_product_id . 'product_name");
+											if (oldflag !== "") cible.parent().removeClass(oldflag)
+											cible.parent().addClass(flagClass);
+											cible.val(data.fields.product_name);
+											jQuery("#child' . $child->virtuemart_product_id . 'slug").val(data.fields["slug"]);
+										}
+									)
+								';
+				}
+			}
+
+			$j .= 'oldflag = flagClass ;
 						}
 					)
 				});
 			})';
-			$document->addScriptDeclaration ( $j);
+			vmJsApi::addJScript('vmlang', $j);
 		} else {
-			// $params = JComponentHelper::getParams('com_languages');
-			// $lang = $params->get('site', 'en-GB');
 			$jlang = JFactory::getLanguage();
 			$langs = $jlang->getKnownLanguages();
-			$defautName = $langs[$selectedLangue]['name'];
-			$flagImg =JURI::root( true ).'/administrator/components/com_virtuemart/assets/images/flag/'.substr($lang,0,2).'.png';
-			$langList = '<input name ="vmlang" type="hidden" value="'.$selectedLangue.'" ><img style="vertical-align: middle;" alt="'.$defautName.'" src="'.$flagImg.'"> <b> '.$defautName.'</b>';
-			$this->assignRef('langList',$langList);
-			$this->assignRef('lang',$lang);
+			$defautName = $selectedLangue;
+			$flagImg = $selectedLangue;
+			if (isset($languagesByCode[$selectedLangue])) {
+				$defautName = $langs[$selectedLangue]['name'];
+				$flagImg = JHtml::_('image', 'mod_languages/' . $languagesByCode[$selectedLangue]->image . '.gif', $languagesByCode[$selectedLangue]->title_native, array('title' => $languagesByCode[$selectedLangue]->title_native), true);
+			} else {
+				vmWarn(vmText::sprintf('COM_VIRTUEMART_MISSING_FLAG', $selectedLangue, $selectedLangue));
+			}
+			$this->langList = '<input name ="vmlang" type="hidden" value="' . $selectedLangue . '" >' . $flagImg . ' <b> ' . $defautName . '</b>';
 		}
 
-		//I absolutly do not understand for that should be for, note by Max
-/*		if ($object) {
-		   if(Vmconfig::get('multix','none')!=='none'){
-				$this->loadHelper('permissions');
-				if(!Permissions::getInstance()->check('admin')) {
-					if (!$object->virtuemart_vendor_id) {
-						if(!class_exists('VirtueMartModelVendor')) require(JPATH_VM_SITE.DS.'models'.DS.'vendor.php');
-						$object->virtuemart_vendor_id = VirtueMartModelVendor::getLoggedVendor();
-					}
-					$vendorList = '<input type="hidden" name="virtuemart_vendor_id" value="'.$object->virtuemart_vendor_id.'" />';
-				} else 	$vendorList= ShopFunctions::renderVendorList($object->virtuemart_vendor_id,false);
-		   } else {
-				$vendorList = '<input type="hidden" name="virtuemart_vendor_id" value="1" />';
-		   }
-		   $this->assignRef('vendorList', $vendorList);
-		}*/
-
+		if (JFactory::getApplication()->isSite()) {
+			$bar = JToolBar::getInstance('toolbar');
+			$bar->appendButton('Link', 'back', 'COM_VIRTUEMART_LEAVE', 'index.php?option=com_virtuemart&manage=0');
+		}
 	}
 
 
-	function SetViewTitle($name ='', $msg ='') {
-		$view = JRequest::getWord('view', JRequest::getWord('controller'));
+	function addStandardEditViewCommandsNoValidate($id = 0, $object = null)
+	{
+
+		$view = vRequest::getCmd('view', vRequest::getCmd('controller', 'virtuemart'));
+
+		if (!class_exists('JToolBarHelper')) require(JPATH_ADMINISTRATOR . DS . 'includes' . DS . 'toolbar.php');
+
+		JToolBarHelper::divider();
+		if (vmAccess::manager($view . '.edit')) {
+			JToolBarHelper::save();
+			JToolBarHelper::apply();
+		}
+		JToolBarHelper::cancel();
+		//self::showHelp();
+		//self::showACLPref($view);
+
+		if ($view != 'shipmentmethod' and $view != 'paymentmethod' and $view != 'media') $validate = true; else $validate = false;
+		$this->addJsJoomlaSubmitButtonNoValidate($validate);
+
+		$editView = vRequest::getCmd('view', vRequest::getCmd('controller', ''));
+		$params = JComponentHelper::getParams('com_languages');
+
+		$selectedLangue = $params->get('site', 'en-GB');
+		$this->lang = strtolower(strtr($selectedLangue, '-', '_'));
+
+		// Get all the published languages defined in Language manager > Content
+		$allLanguages = JLanguageHelper::getLanguages();
+		foreach ($allLanguages as $jlang) {
+			$languagesByCode[$jlang->lang_code] = $jlang;
+		}
+
+		// only add if ID and view not null
+		if ($editView and $id and (count(vmconfig::get('active_languages')) > 1)) {
+
+			if ($editView == 'user') $editView = 'vendor';
+
+			jimport('joomla.language.helper');
+			$this->lang = vRequest::getVar('vmlang', $this->lang);
+			// list of languages installed in #__extensions (may be more than the ones in the Language manager > Content if the user did not added them)
+			$languages = JLanguageHelper::createLanguageList($selectedLangue, constant('VMPATH_ROOT'), true);
+			$activeVmLangs = (vmconfig::get('active_languages'));
+			$flagCss = "";
+			foreach ($languages as $k => &$joomlaLang) {
+				if (!in_array($joomlaLang['value'], $activeVmLangs)) {
+					unset($languages[$k]);
+				} else {
+
+					$key = $joomlaLang['value'];
+					if (!isset($languagesByCode[$key])) {
+						$img = substr($key, 0, 2);//We try a fallback
+						vmdebug('COM_VIRTUEMART_MISSING_FLAG', $img, $joomlaLang['text']);
+					} else {
+						$img = $languagesByCode[$key]->image;
+					}
+					$image_flag = VMPATH_ROOT . "/media/mod_languages/images/" . $img . ".gif";
+					$image_flag_url = JURI::root() . "media/mod_languages/images/" . $img . ".gif";
+
+					if (!file_exists($image_flag)) {
+						vmerror(vmText::sprintf('COM_VIRTUEMART_MISSING_FLAG', $image_flag, $joomlaLang['text']));
+					} else {
+						$flagCss .= "td.flag-" . $key . ",.flag-" . $key . "{background: url( " . $image_flag_url . ") no-repeat 0 0; padding-left:20px !important;}\n";
+					}
+				}
+			}
+			JFactory::getDocument()->addStyleDeclaration($flagCss);
+
+			$this->langList = JHtml::_('select.genericlist', $languages, 'vmlang', 'class="inputbox" style="width:176px;"', 'value', 'text', $selectedLangue, 'vmlang');
+
+
+			if ($editView == 'product') {
+				$productModel = VmModel::getModel('product');
+				$childproducts = $productModel->getProductChilds($id) ? $productModel->getProductChilds($id) : '';
+			}
+
+			$token = vRequest::getFormToken();
+			$j = '
+			jQuery(function($) {
+				var oldflag = "";
+				$("select#vmlang").chosen().change(function() {
+					langCode = $(this).find("option:selected").val();
+					flagClass = "flag-"+langCode;
+					jQuery.ajax({
+						type: "GET",
+						cache: false,
+        				dataType: "json",
+        				url: "index.php?option=com_virtuemart&view=translate&task=paste&format=json&lg="+langCode+"&id=' . $id . '&editView=' . $editView . '&' . $token . '=1",
+    				}).done(
+						function(data) {
+							var items = [];
+
+							var theForm = document.forms["adminForm"];
+							if(typeof theForm.vmlang==="undefined"){
+							 	var input = document.createElement("input");
+								input.type = "hidden";
+								input.name = "vmlang";
+								input.value = langCode;
+								theForm.appendChild(input);
+							} else {
+								theForm.vmlang.value = langCode;
+							}
+							if (data.fields !== "error" ) {
+								if (data.structure == "empty") alert(data.msg);
+								$.each(data.fields , function(key, val) {
+									cible = jQuery("#"+key);
+									if (oldflag !== "") cible.parent().removeClass(oldflag)
+									var tmce_ver = 0;
+									if(typeof window.tinyMCE!=="undefined"){
+										var tmce_ver=window.tinyMCE.majorVersion;
+									}
+									if (tmce_ver>="4") {
+										if (cible.parent().addClass(flagClass).children().hasClass("mce_editable") && data.structure !== "empty" ) {
+											tinyMCE.get(key).execCommand("mceSetContent", false,val);
+											cible.val(val);
+										} else if (data.structure !== "empty") cible.val(val);
+									} else {
+										if (cible.parent().addClass(flagClass).children().hasClass("mce_editable") && data.structure !== "empty" ) {
+											tinyMCE.execInstanceCommand(key,"mceSetContent",false,val);
+											cible.val(val);
+										} else if (data.structure !== "empty") cible.val(val);
+									}
+									});
+
+							} else alert(data.msg);';
+
+			if ($editView == 'product' && !empty($childproducts)) {
+				foreach ($childproducts as $child) {
+					$j .= 'jQuery.ajax({
+        						type: "GET",
+								cache: false,
+        						dataType: "json",
+        						url: "index.php?option=com_virtuemart&view=translate&task=paste&format=json&lg="+langCode+"&id=' . $child->virtuemart_product_id . '&editView=' . $editView . '&' . $token . '=1",
+    					}).done(
+								//	$.getJSON( "index.php?option=com_virtuemart&view=translate&task=paste&format=json&lg="+langCode+"&id=' . $child->virtuemart_product_id . '&editView=' . $editView . '&' . $token . '=1" ,
+										function(data) {
+											cible = jQuery("#child' . $child->virtuemart_product_id . 'product_name");
+											if (oldflag !== "") cible.parent().removeClass(oldflag)
+											cible.parent().addClass(flagClass);
+											cible.val(data.fields.product_name);
+											jQuery("#child' . $child->virtuemart_product_id . 'slug").val(data.fields["slug"]);
+										}
+									)
+								';
+				}
+			}
+
+			$j .= 'oldflag = flagClass ;
+						}
+					)
+				});
+			})';
+			vmJsApi::addJScript('vmlang', $j);
+		} else {
+			$jlang = JFactory::getLanguage();
+			$langs = $jlang->getKnownLanguages();
+			$defautName = $selectedLangue;
+			$flagImg = $selectedLangue;
+			if (isset($languagesByCode[$selectedLangue])) {
+				$defautName = $langs[$selectedLangue]['name'];
+				$flagImg = JHtml::_('image', 'mod_languages/' . $languagesByCode[$selectedLangue]->image . '.gif', $languagesByCode[$selectedLangue]->title_native, array('title' => $languagesByCode[$selectedLangue]->title_native), true);
+			} else {
+				vmWarn(vmText::sprintf('COM_VIRTUEMART_MISSING_FLAG', $selectedLangue, $selectedLangue));
+			}
+			$this->langList = '<input name ="vmlang" type="hidden" value="' . $selectedLangue . '" >' . $flagImg . ' <b> ' . $defautName . '</b>';
+		}
+
+		if (JFactory::getApplication()->isSite()) {
+			$bar = JToolBar::getInstance('toolbar');
+			$bar->appendButton('Link', 'back', 'COM_VIRTUEMART_LEAVE', 'index.php?option=com_virtuemart&manage=0');
+		}
+	}
+
+	function SetViewTitle($name = '', $msg = '', $icon = '')
+	{
+
+		$view = vRequest::getCmd('view', vRequest::getCmd('controller'));
 		if ($name == '')
-		$name = $view;
-		if ($msg) {
+			$name = strtoupper($view);
+		if ($icon == '')
+			$icon = strtolower($view);
+		if (!$task = vRequest::getCmd('task'))
+			$task = 'list';
+
+		if (!empty($msg)) {
 			$msg = ' <span style="color: #666666; font-size: large;">' . $msg . '</span>';
 		}
-		//$text = strtoupper('COM_VIRTUEMART_'.$name );
-		$viewText = JText::_('COM_VIRTUEMART').' '.ShopFunctions::altText($name);
-		if (!$task = JRequest::getWord('task')) $task = 'list';
-		$taskName = ShopFunctions::altText($task);
-		$taskName = ' <small><small>[ ' . $taskName . ' ]</small></small>';
-		JToolBarHelper::title($viewText . ' ' . $taskName . $msg, 'head vm_' . $view . '_48');
-		$document = JFactory::getDocument();
-		$title = $document->getTitle();
-		$document->setTitle( trim(strip_tags($title)) );
-		$this->assignRef('viewName',$viewText); //was $viewName?
+
+		$viewText = vmText::_('COM_VIRTUEMART_' . strtoupper($name));
+
+		$taskName = ' <small><small>[ ' . vmText::_('COM_VIRTUEMART_' . $task) . ' ]</small></small>';
+
+		JToolBarHelper::title($viewText . ' ' . $taskName . $msg, 'head vm_' . $icon . '_48');
+		$this->assignRef('viewName', $viewText); //was $viewName?
+		$app = JFactory::getApplication();
+		$doc = JFactory::getDocument();
+		$doc->setTitle($app->getCfg('sitename') . ' - ' . vmText::_('JADMINISTRATION') . ' - ' . strip_tags($msg));
 	}
 
-	function sort($orderby ,$name=null ){
-		if (!$name) $name= 'COM_VIRTUEMART_'.strtoupper ($orderby);
-		return JHTML::_('grid.sort' , JText::_($name) , $orderby , $this->lists['filter_order_Dir'] , $this->lists['filter_order']);
+	function sort($orderby, $name = null)
+	{
+		if (!$name) $name = 'COM_VIRTUEMART_' . strtoupper($orderby);
+		return JHtml::_('grid.sort', vmText::_($name), $orderby, $this->lists['filter_order_Dir'], $this->lists['filter_order']);
 	}
 
-	public function addStandardHiddenToForm($controller=null, $task=''){
-		if (!$controller)	$controller = $this->_name;
-		$option = JRequest::getCmd('option','com_virtuemart' );
-		$hidden ='';
-		if (array_key_exists('filter_order',$this->lists)) $hidden ='
-			<input type="hidden" name="filter_order" value="'.$this->lists['filter_order'].'" />
-			<input type="hidden" name="filter_order_Dir" value="'.$this->lists['filter_order_Dir'].'" />';
-		// fix for front-end editing.
-		if (JRequest::getCmd('tmpl') =='component' )
-			 $hidden.='<input type="hidden" name="tmpl" value="component" />';
-		return  $hidden.'
-		<input type="hidden" name="task" value="'.$task.'" />
-		<input type="hidden" name="option" value="'.$option.'" />
+	public function addStandardHiddenToForm($controller = null, $task = '')
+	{
+		$app=JFactory::getApplication();
+		$input=$app->input;
+		$ui_dialog_id=$input->get('ui_dialog_id','','string');
+		$iframe_id=$input->get('iframe_id','','string');
+		$link_reload=$input->get('link_reload','','string');
+		$reload_ui_dialog_id=$input->get('reload_ui_dialog_id','','string');
+		$reload_iframe_id=$input->get('reload_iframe_id','','string');
+		$remove_ui_dialog=$input->get('remove_ui_dialog','','string');
+		$small_form=$input->get('small_form',0,'int');
+		if (!$controller) $controller = vRequest::getCmd('view');
+		$option = vRequest::getCmd('option', 'com_virtuemart');
+		$show_in_parent_window = vRequest::getInt('show_in_parent_window', 0);
+		$hidden = '';
+		if (array_key_exists('filter_order', $this->lists)) {
+			$hidden = '
+			<input type="hidden" name="filter_order" value="' . $this->lists['filter_order'] . '" />
+			<input type="hidden" name="filter_order_Dir" value="' . $this->lists['filter_order_Dir'] . '" />';
+		}
+
+		if (vRequest::get('manage', false) or JFactory::getApplication()->isSite()) {
+			$hidden .= '<input type="hidden" name="manage" value="1" />';
+		}
+
+		return $hidden . '
+		<input type="hidden" name="task" value="' . $task . '" />
+		<input type="hidden" name="show_in_parent_window" value="' . $show_in_parent_window . '" />
+		<input type="hidden" name="key[ui_dialog_id]" value="' . $ui_dialog_id . '" />
+		<input type="hidden" name="key[iframe_id]" value="' . $iframe_id . '" />
+		<input type="hidden" name="key[link_reload]" value="' . $link_reload . '" />
+		<input type="hidden" name="key[reload_ui_dialog_id]" value="' . $reload_ui_dialog_id . '" />
+		<input type="hidden" name="key[reload_iframe_id]" value="' . $reload_iframe_id . '" />
+		<input type="hidden" name="key[remove_ui_dialog]" value="' . $remove_ui_dialog . '" />
+		<input type="hidden" name="key[small_form]" value="' . $small_form . '" />
+		<input type="hidden" name="option" value="' . $option . '" />
 		<input type="hidden" name="boxchecked" value="0" />
-		<input type="hidden" name="controller" value="'.$controller.'" />
-		<input type="hidden" name="view" value="'.$controller.'" />
-		'. JHTML::_( 'form.token' );
+		<input type="hidden" name="controller" value="' . $controller . '" />
+		<input type="hidden" name="view" value="' . $controller . '" />
+
+		' . JHtml::_('form.token');
 	}
 
-	function getToolbar() {
+	public function addStandardHiddenToForm1($controller = null, $task = '')
+	{
+		if (!$controller) $controller = vRequest::getCmd('view');
+		$option = vRequest::getCmd('option', 'com_virtuemart');
+		$hidden = '';
+		if (array_key_exists('filter_order', $this->lists)) {
+			$hidden = '
+			<input type="hidden" name="filter_order" value="' . $this->lists['filter_order'] . '" />
+			<input type="hidden" name="filter_order_Dir" value="' . $this->lists['filter_order_Dir'] . '" />';
+		}
 
-		// add required stylesheets from admin template
-		$document    = JFactory::getDocument();
-		$document->addStyleSheet('administrator/templates/system/css/system.css');
-		//now we add the necessary stylesheets from the administrator template
-		//in this case i make reference to the bluestork default administrator template in joomla 1.6
-		// $document->addCustomTag(
-			// '<link href="administrator/templates/bluestork/css/template.css" rel="stylesheet" type="text/css" />'."\n\n".
-			// '<!--[if IE 7]>'."\n".
-			// '<link href="administrator/templates/bluestork/css/ie7.css" rel="stylesheet" type="text/css" />'."\n".
-			// '<![endif]-->'."\n".
-			// '<!--[if gte IE 8]>'."\n\n".
-			// '<link href="administrator/templates/bluestork/css/ie8.css" rel="stylesheet" type="text/css" />'."\n".
-			// '<![endif]-->'."\n".
-			// '<link rel="stylesheet" href="administrator/templates/bluestork/css/rounded.css" type="text/css" />'."\n"
-			// );
-		//load the JToolBar library and create a toolbar
-		jimport('joomla.html.toolbar');
-		JToolBarHelper::divider();
-		JToolBarHelper::save();
-		JToolBarHelper::apply();
-		JToolBarHelper::cancel();
-		$bar = new JToolBar( 'toolbar' );
-		//and make whatever calls you require
-		$bar->appendButton( 'Standard', 'save', 'Save', 'save', false );
-		$bar->appendButton( 'Separator' );
-		$bar->appendButton( 'Standard', 'cancel', 'Cancel', 'cancel', false );
-		//generate the html and return
-		return $bar->render();
+		if (vRequest::get('manage', false) or JFactory::getApplication()->isSite()) {
+			$hidden .= '<input type="hidden" name="manage" value="1" />';
+		}
+		return $hidden . '
+		<input type="hidden" name="task" value="' . $task . '" />
+		<input type="hidden" name="option" value="' . $option . '" />
+		<input type="hidden" name="boxchecked" value="0" />
+		<input type="hidden" name="controller" value="' . $controller . '" />
+		<input type="hidden" name="view" value="' . $controller . '" />
+		' . JHtml::_('form.token');
 	}
+
 
 	/**
 	 * Additional grid function for custom toggles
 	 *
 	 * @return string HTML code to write the toggle button
 	 */
-	function toggle( $field, $i, $toggle, $cando= true, $imgY = 'tick.png', $imgX = 'publish_x.png', $prefix='' )
+	function toggle($field, $i, $toggle, $imgY = 'tick.png', $imgX = 'publish_x.png', $untoggleable = false)
 	{
-		// $cando= true;
-		$img 	= $field ? $imgY : $imgX;
+
+		$img = $field ? $imgY : $imgX;
 		if ($toggle == 'published') {
 			// Stay compatible with grid.published
-			$task 	= $field ? 'unpublish' : 'publish';
-			$ico = $field ? 'publish' : 'unpublish';
-			$alt 	= $field ? JText::_('COM_VIRTUEMART_PUBLISHED') : JText::_('COM_VIRTUEMART_UNPUBLISHED');
-			$action = $field ? JText::_('COM_VIRTUEMART_UNPUBLISH_ITEM') : JText::_('COM_VIRTUEMART_PUBLISH_ITEM');
+			$task = $field ? 'unpublish' : 'publish';
+			$alt = $field ? vmText::_('COM_VIRTUEMART_PUBLISHED') : vmText::_('COM_VIRTUEMART_UNPUBLISHED');
+			$action = $field ? vmText::_('COM_VIRTUEMART_UNPUBLISH_ITEM') : vmText::_('COM_VIRTUEMART_PUBLISH_ITEM');
 		} else {
-			$task 	= $field ? $toggle.'.0' : $toggle.'.1';
-			$ico = $field ? 'ok' : 'remove';
-			$alt 	= $field ? JText::_('COM_VIRTUEMART_PUBLISHED') : JText::_('COM_VIRTUEMART_DISABLED');
-			$action = $field ? JText::_('COM_VIRTUEMART_DISABLE_ITEM') : JText::_('COM_VIRTUEMART_ENABLE_ITEM');
+			$task = $field ? $toggle . '.0' : $toggle . '.1';
+			$alt = $field ? vmText::_('COM_VIRTUEMART_PUBLISHED') : vmText::_('COM_VIRTUEMART_DISABLED');
+			$action = $field ? vmText::_('COM_VIRTUEMART_DISABLE_ITEM') : vmText::_('COM_VIRTUEMART_ENABLE_ITEM');
 		}
-		if ($cando) {
-			return ('<a class="hasTooltip btn btn-mini" data-task="'. $task .'" href="#" onclick="return Joomla.taskJson(this, \'cb'. $i .'\')" title="'. $action .'">'
-				.'<i class="icon-'.$ico.'"></i></a>');
-				// .JHTML::_('image', 'admin/' .$img, $alt, null, true) .'</a>');
-		} else return '<i class="icon-'.$ico.' hasTooltip" title="'.$alt.'"></i>' ;
+
+		$img = 'admin/' . $img;
+
+		if ($untoggleable) {
+			$attribs = 'style="opacity: 0.6;"';
+		} else {
+			$attribs = '';
+		}
+		$image = JHtml::_('image', $img, $alt, $attribs, true);
+
+		if ($untoggleable) return $image;
+
+		if (JVM_VERSION < 3) {
+			return ('<a href="javascript:void(0);" onclick="return listItemTask(\'cb' . $i . '\',\'' . $task . '\')" title="' . $action . '">'
+				. $image . '</a>');
+		} else {
+			$icon = $field ? 'publish' : 'unpublish';
+			return ('<a href="javascript:void(0);" onclick="return listItemTask(\'cb' . $i . '\',\'' . $task . '\')" title="' . $action . '">'
+				. '<span class="icon-' . $icon . '"><span>' . '</a>');
+		}
+
 
 	}
 
-	function showhelp(){
+	function gridPublished($name, $i)
+	{
+		if (JVM_VERSION < 3) {
+			$published = JHtml::_('grid.published', $name, $i);
+		} else {
+			$published = JHtml::_('jgrid.published', $name->published, $i);
+		}
+		return $published;
+	}
+
+
+	function showhelp()
+	{
 		/* http://docs.joomla.org/Help_system/Adding_a_help_button_to_the_toolbar */
-
-			$task=JRequest::getWord('task', '');
-			$view=JRequest::getWord('view', '');
-			if ($task) {
-				if ($task=="add") {
-					$task="edit";
-				}
-				$task ="_".$task;
+		$task = vRequest::getCmd('task', '');
+		$view = vRequest::getCmd('view', '');
+		if ($task) {
+			if ($task == "add") {
+				$task = "edit";
 			}
-			if (!class_exists( 'VmConfig' )) require(JPATH_COMPONENT_ADMINISTRATOR.DS.'helpers'.DS.'config.php');
-			VmConfig::loadConfig();
-			VmConfig::loadJLang('com_virtuemart_help');
- 		    $lang = JFactory::getLanguage();
- 	        $key=  'COM_VIRTUEMART_HELP_'.$view.$task;
-	         if ($lang->hasKey($key)) {
-					$help_url  = JTEXT::_($key)."?tmpl=component";
- 		            $bar = JToolBar::getInstance('toolbar');
-					// echo $help_url;
-					$bar->appendButton( 'Popup', 'help', 'JTOOLBAR_HELP', $help_url, 960, 400 );
-	        }
+			$task = "_" . $task;
+		}
+		if (!class_exists('VmConfig')) require(VMPATH_ADMIN . '/helpers/config.php');
+		VmConfig::loadConfig();
+		VmConfig::loadJLang('com_virtuemart_help');
+		$lang = JFactory::getLanguage();
+		$key = 'COM_VIRTUEMART_HELP_' . $view . $task;
+		if ($lang->hasKey($key)) {
+			$help_url = vmText::_($key) . "?tmpl=component";
+			$bar = JToolBar::getInstance('toolbar');
+			$bar->appendButton('Popup', 'help', 'JTOOLBAR_HELP', $help_url, 960, 500);
+		}
 
 	}
 
+	function showACLPref()
+	{
 
-	/*
-	 * render a Link to edit an item, auto add the Front-end Editing parameters
-	 * @param $id the Id of the item
-	 * @param $name 	alternative id name
-	 * @param $view 	alternative view
-	 * @param $attrib 	jhtml link attributes
+		if (vmAccess::manager('core')) {
+			JToolBarHelper::divider();
+			$bar = JToolBar::getInstance('toolbar');
+			if (JVM_VERSION < 3) {
+				$bar->appendButton('Popup', 'lock', 'JCONFIG_PERMISSIONS_LABEL', 'index.php?option=com_config&amp;view=component&amp;component=com_virtuemart&amp;tmpl=component', 875, 550, 0, 0, '');
+			} else {
+				$bar->appendButton('Link', 'lock', 'JCONFIG_PERMISSIONS_LABEL', 'index.php?option=com_config&amp;view=component&amp;component=com_virtuemart');
+			}
+
+		}
+
+	}
+
+	/**
+	 * Checks if we show multivendor related stuff for admins
+	 * @return bool|null
 	 */
+	public function showVendors()
+	{
 
-	function editLink($id, $text, $name= null,$attrib='',$view = null,$task ='edit') {
-
-		if ($view === null) $view = $this->_name;
-		if ($name === null) $name = $this->_cidName;
-
-		$editlink = $name. '=' . $id;
-		$editlink .= $this->tmpl;
-
-		$link = JROUTE::_('index.php?option=com_virtuemart&view='.$view.'&task='.$task.'&'.$editlink) ;
-		// echo 'index.php?option=com_virtuemart&view='.$view.'&task=edit&'.$editlink ;
-		return JHTML::_('link', $link, $text, $attrib);
+		if ($this->showVendors === null) {
+			if (VmConfig::get('multix', 'none') != 'none' and vmAccess::manager('managevendors')) {
+				$this->showVendors = true;
+			} else {
+				$this->showVendors = false;
+			}
+		}
+		return $this->showVendors;
 	}
-	// readd missing javascripts in new results
-	// this must laways be after the RAW container
-	// PLZ only add this in "RAW" list views result
-	// @string  scripts  javascript to add after the results
-	function AjaxScripts($scripts='') {
-		// add ajax results script file
-		include('ajax/results.raw.php');
+
+	public function manager($view = 0)
+	{
+		if (empty($view)) $view = $this->_name;
+		return vmAccess::manager($view);
 	}
-	/*
-	 * compare creator with current logged vendor
-	 * usefull for shared items
+
+	/**
+	 * Get the filter form
+	 *
+	 * @param   array $data data
+	 * @param   boolean $loadData load current data
+	 *
+	 * @return  JForm/false  the JForm object or false
+	 *
+	 * @since   3.2
 	 */
-	public function canChange($created_by){
-		static $user_id = null;
-		static $vendor = null;
-		if ($vendor === null) $vendor = Permissions::getInstance()->isSuperVendor();
-		if ($vendor == 1) return true; // can change all
-		if ($user_id === null) $user_id = JFactory::getUser()->get('id');
-		return ($created_by === $user_id);
+	public function getFilterForm($data = array(), $loadData = true)
+	{
+		$form = null;
 
-	}
-	function DisplayFilterPublish() {
-		$options = array( '' => JText::_('JOPTION_SELECT_PUBLISHED'),
-						  '1' => JText::_('JPUBLISHED'),
-						  '0' => JText::_('JUNPUBLISHED'));
-		return VmHTML::selectList('filter_published', JRequest::getVar('filter_published'),$options,1,'','onchange="Joomla.ajaxSearch(this); return false;"');
-		// return JHTML::_('select.genericlist', $options, 'filter.published', 'onChange="Joomla.ajaxSearch(this); return false;"', 'value', 'text', JRequest::getVar('filter.published'));
+		// Try to locate the filter form automatically. Example: ContentModelArticles => "filter_articles"
+		if (empty($this->filterFormName)) {
+			$classNameParts = explode('Model', get_called_class());
 
+			if (count($classNameParts) == 2) {
+				$this->filterFormName = 'filter_' . strtolower($classNameParts[1]);
+			}
+		}
+
+		if (!empty($this->filterFormName)) {
+			// Get the form.
+			$form = $this->loadForm($this->context . '.filter', $this->filterFormName, array('control' => '', 'load_data' => $loadData));
+		}
+
+		return $form;
 	}
+
+
 }

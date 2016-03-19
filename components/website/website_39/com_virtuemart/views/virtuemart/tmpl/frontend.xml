@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="frontend">
+	<message><![CDATA[frontend]]></message>
+	</layout>
+	<state>
+		<name>frontend</name>
+		<description><![CDATA[frontend]]></description>
+	</state>
+</metadata>
+
+

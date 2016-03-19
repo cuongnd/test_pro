@@ -205,6 +205,7 @@ class JRouterSite extends JRouter
             $Itemid=$this->getVar('menuItemActiveId');;
         }
 
+
         if(!$Itemid&&$tmpl=='')
         {
             $items=$menu->getItems();
@@ -489,7 +490,6 @@ class JRouterSite extends JRouter
         {
             $Itemid=$this->getVar('menuItemActiveId');;
         }
-
         if(!$Itemid&&$tmpl=='')
         {
             $items=$menu->getItems();

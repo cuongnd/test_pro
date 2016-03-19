@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="edit">
+		<message><![CDATA[edit]]></message>
+	</layout>
+	<state>
+		<name>raovat</name>
+		<description><![CDATA[edit]]></description>
+	</state>
+</metadata>
+

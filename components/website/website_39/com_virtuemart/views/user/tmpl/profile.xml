@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="profile">
+		<message><![CDATA[profile]]></message>
+	</layout>
+	<state>
+		<name>profile</name>
+		<description><![CDATA[profile]]></description>
+	</state>
+</metadata>

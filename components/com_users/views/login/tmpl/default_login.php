@@ -1,103 +1,154 @@
 <?php
-/**
- * @package     Joomla.Site
- * @subpackage  com_users
- *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
+$app=JFactory::getApplication();
+$menu=$app->getMenu();
+$menu_active_item=$menu->getActive();
+$configviewlayout=$menu_active_item->configviewlayout;
+JHTML::_('behavior.modal');
+$return=$app->input->get('return','');
+$menu_item_return=$configviewlayout->get('menu_item_return',0);
 
-defined('_JEXEC') or die;
+$user=JFactory::getUser();
+if($user->id!=0)
+{
+	$app->redirect(JUri::root().'index.php?Itemid='.$menu_item_return);
+}
+require_once JPATH_ROOT.'/components/com_users/helpers/facebook.php';
 
-JHtml::_('behavior.keepalive');
+$loginUrl = facebook_helper::get_login_url();
+require_once JPATH_ROOT.'/components/com_users/helpers/google.php';
+$authUrl = google_helper::get_login_url();
+//$authUrl='';
+
 ?>
-<div class="login <?php echo $this->pageclass_sfx?>">
-	<?php if ($this->params->get('show_page_heading')) : ?>
-	<div class="page-header">
-		<h1>
-			<?php echo $this->escape($this->params->get('page_heading')); ?>
-		</h1>
-	</div>
-	<?php endif; ?>
 
-	<?php if (($this->params->get('logindescription_show') == 1 && str_replace(' ', '', $this->params->get('login_description')) != '') || $this->params->get('login_image') != '') : ?>
-	<div class="login-description">
-	<?php endif; ?>
+<?php
+$doc = JFactory::getDocument();
+$doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/core.js');
+$doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/widget.js');
+$doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/mouse.js');
+$doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/position.js');
 
-		<?php if ($this->params->get('logindescription_show') == 1) : ?>
-			<?php echo $this->params->get('login_description'); ?>
-		<?php endif; ?>
+$doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/draggable.js');
+$doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/sortable.js');
+$doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/resizable.js');
+$doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/dialog.js');
 
-		<?php if (($this->params->get('login_image') != '')) :?>
-			<img src="<?php echo $this->escape($this->params->get('login_image')); ?>" class="login-image" alt="<?php echo JTEXT::_('COM_USER_LOGIN_IMAGE_ALT')?>"/>
-		<?php endif; ?>
 
-	<?php if (($this->params->get('logindescription_show') == 1 && str_replace(' ', '', $this->params->get('login_description')) != '') || $this->params->get('login_image') != '') : ?>
-	</div>
-	<?php endif; ?>
+$doc->addScript(JPATH_VM_URL.'/assets/js/view_user_login.js');
+$doc->addLessStyleSheetTest(JPATH_VM_URL.'/assets/less/view_user_login.less');
+$doc->addStyleSheet(JUri::root().'/media/jui_front_end/jquery-ui-1.11.1/themes/base/all.css');
+$doc->addStyleSheet(JUri::root().'/media/jui_front_end/jquery-ui-1.11.1/themes/base/dialog.css');
+$scriptId='view_user_login';
+ob_start();
+?>
 
-	<form action="<?php echo JUri::root().'index.php?option=com_users&task=user.login'; ?>" method="post" class="form-horizontal">
+<script type="text/javascript">
+	jQuery(document).ready(function ($) {
+		$('.view-user-login').view_user_login({
 
-		<fieldset class="well">
-			<?php foreach ($this->form->getFieldset('credentials') as $field) : ?>
-				<?php if (!$field->hidden) : ?>
-					<div class="control-group">
-						<div class="control-label">
-							<?php echo $field->label; ?>
+
+		});
+	});
+</script>
+<?php
+$script = ob_get_clean();
+$script = JUtility::remove_string_javascript($script);
+$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
+
+?>
+<div class="view-user-login">
+	<div id=login class="animated bounceIn">
+		<!-- Start .login-wrapper -->
+		<div class=login-wrapper>
+			<ul id=myTab class="nav nav-tabs nav-justified bn">
+				<li><a href=#log-in data-toggle=tab>Login</a></li>
+				<li><a href=#register data-toggle=tab>Register</a></li>
+			</ul>
+			<div id=myTabContent class="tab-content bn">
+				<div class="tab-pane fade active in" id=log-in>
+					<div class="social-buttons text-center mt10"><a href="<?php echo $loginUrl ?>" target="_self"
+																	class="btn btn-primary btn-alt btn-round btn-lg mr10"><i
+								class="fa-facebook s24"></i></a> <a href=#
+																	class="btn btn-primary btn-alt btn-round btn-lg mr10"><i
+								class="fa-twitter s24"></i></a> <a href="<?php echo $authUrl ?>"
+																   class="btn btn-danger btn-alt btn-round btn-lg mr10"><i
+								class="fa-google-plus s24"></i></a> <a href=#
+																	   class="btn btn-info btn-alt btn-round btn-lg"><i
+								class="fa-linkedin s24"></i></a></div>
+					<div class=seperator><strong>or</strong>
+						<hr>
+					</div>
+					<form class="form-horizontal mt10" action=index.html id=login-form role=form>
+						<div class=form-group>
+							<div class=col-lg-12>
+								<input name=email id=email class="form-control left-icon" value=admin@sprflat.com
+									   placeholder="Your email ...">
+								<i class="ec-user s16 left-input-icon"></i></div>
 						</div>
-						<div class="controls">
-							<?php echo $field->input; ?>
+						<div class=form-group>
+							<div class=col-lg-12>
+								<input type=password name=password id=password class="form-control left-icon"
+									   value=somepass
+									   placeholder="Your password">
+								<i class="ec-locked s16 left-input-icon"></i> <span class=help-block><a href=#>
+										<small>Forgout password ?</small>
+									</a></span></div>
 						</div>
-					</div>
-				<?php endif; ?>
-			<?php endforeach; ?>
-
-			<?php if ($this->tfa): ?>
-				<div class="control-group">
-					<div class="control-label">
-						<?php echo $this->form->getField('secretkey')->label; ?>
-					</div>
-					<div class="controls">
-						<?php echo $this->form->getField('secretkey')->input; ?>
-					</div>
+						<div class=form-group>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+								<!-- col-lg-12 start here -->
+								<label class=checkbox>
+									<input type=checkbox name=remember id=remember value=option>
+									Remember me ?</label>
+							</div>
+							<!-- col-lg-12 end here -->
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
+								<!-- col-lg-12 start here -->
+								<button class="btn btn-success pull-right" data-jtask="user.login" type=button>Login
+								</button>
+							</div>
+							<!-- col-lg-12 end here -->
+						</div>
+					</form>
 				</div>
-			<?php endif; ?>
-
-			<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
-			<div  class="control-group">
-				<div class="control-label"><label><?php echo JText::_('COM_USERS_LOGIN_REMEMBER_ME') ?></label></div>
-				<div class="controls"><input id="remember" type="checkbox" name="remember" class="inputbox" value="yes"/></div>
+				<div class="tab-pane fade" id=register>
+					<form class="form-horizontal mt20" action=# id=register-form role=form>
+						<div class=form-group>
+							<div class=col-lg-12>
+								<!-- col-lg-12 start here -->
+								<input id=email1 name=email type=email class="form-control left-icon"
+									   placeholder="Type your email">
+								<i class="ec-mail s16 left-input-icon"></i></div>
+							<!-- col-lg-12 end here -->
+						</div>
+						<div class=form-group>
+							<div class=col-lg-12>
+								<!-- col-lg-12 start here -->
+								<input type=password class="form-control left-icon" id=password1 name=password
+									   placeholder="Enter your password">
+								<i class="ec-locked s16 left-input-icon"></i></div>
+							<!-- col-lg-12 end here -->
+							<div class="col-lg-12 mt15">
+								<!-- col-lg-12 start here -->
+								<input type=password class="form-control left-icon" id=confirm_password
+									   name=confirm_passowrd placeholder="Repeat password">
+								<i class="ec-locked s16 left-input-icon"></i></div>
+							<!-- col-lg-12 end here -->
+						</div>
+						<div class=form-group>
+							<div class=col-lg-12>
+								<!-- col-lg-12 start here -->
+								<button class="btn btn-success btn-block" type="button" data-jtask="user.register">
+									Register
+								</button>
+							</div>
+							<!-- col-lg-12 end here -->
+						</div>
+					</form>
+				</div>
 			</div>
-			<?php endif; ?>
-
-			<div class="controls">
-				<button type="submit" class="btn btn-primary">
-					<?php echo JText::_('JLOGIN'); ?>
-				</button>
-			</div>
-
-			<input type="hidden" name="return" value="<?php echo base64_encode($this->params->get('login_redirect_url', $this->form->getValue('return'))); ?>" />
-			<?php echo JHtml::_('form.token'); ?>
-		</fieldset>
-	</form>
-</div>
-<div>
-	<ul class="nav nav-tabs nav-stacked">
-		<li>
-			<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
-			<?php echo JText::_('COM_USERS_LOGIN_RESET'); ?></a>
-		</li>
-		<li>
-			<a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">
-			<?php echo JText::_('COM_USERS_LOGIN_REMIND'); ?></a>
-		</li>
-		<?php
-		$usersConfig = JComponentHelper::getParams('com_users');
-		if ($usersConfig->get('allowUserRegistration')) : ?>
-		<li>
-			<a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">
-				<?php echo JText::_('COM_USERS_LOGIN_REGISTER'); ?></a>
-		</li>
-		<?php endif; ?>
-	</ul>
+		</div>
+		<!-- End #.login-wrapper -->
+	</div>
 </div>
