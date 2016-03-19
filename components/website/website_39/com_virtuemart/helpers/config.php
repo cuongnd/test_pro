@@ -909,9 +909,6 @@ class vmJsApi{
 			$refTime = 30;
 		}
 
-		$url = 'index.php?option=com_virtuemart&view=virtuemart&task=keepalive';
-		vmJsApi::addJScript('keepAliveTime','var sessMin = '.$refTime.';var vmAliveUrl = "'.$url.'";var maxlps = "'.$maxlps.'";var minlps = "'.$minlps.'";',false,true);
-		vmJsApi::addJScript('vmkeepalive',false, true, true);
 	}
 	public static function writeJS(){
 

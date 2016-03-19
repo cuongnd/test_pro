@@ -20,8 +20,10 @@
 defined('_JEXEC') or die('Restricted access');
 $doc = JFactory::getDocument();
 $doc->addScript(JUri::root() . '/administrator/components/com_virtuemart/assets/js/view_raovat_edit.js');
-
-
+$user=JFactory::getUser();
+if (!class_exists ('VmHTML')) {
+	require(JPATH_VM_SITE . DS . 'helpers' . DS . 'html.php');
+}
 $js_content = '';
 ob_start();
 ?>
@@ -41,19 +43,30 @@ $doc->addScriptDeclaration($js_content);
 <div class="view-raovat-edit">
 	<form action="index.php" method="post" class="form-horizontal" name="adminForm" id="adminForm">
 		<?php echo $this->render_toolbar_edit('raovat') ?>
+
 		<div class="panel panel-primary profile-widget">
 			<!-- Start .panel -->
 			<div class=panel-heading>
-				<h4 class=panel-title><?php echo JText::_('Profile') ?></h4>
+				<h4 class=panel-title><?php echo  JText::_('Profile') ?>:<?php echo $user->name ?></h4>
 			</div>
 			<div class="panel-body ">
-				<ul class="profile-info">
-					<li><i class="ec-mobile"></i> +234 345 887</li>
-					<li><i class="ec-location"></i> Spain, Barcelona</li>
-					<li><i class="ec-mail"></i> suggeelson@suggelson.com</li>
-					<li><i class="im-office"></i> Web developer</li>
-					<li><i class="fa-bitbucket"></i> code@suggelab.com</li>
-				</ul>
+				<div class="row-fluid">
+					<div class="col-md-6">
+						<ul class="profile-info">
+							<li><i class="im-user"></i> <?php echo $user->name ?></li>
+							<li><i class="ec-mobile"></i> <?php echo $user->phone ?></li>
+							<li><i class="ec-location"></i> <?php echo $user->address ?></li>
+							<li><i class="ec-mail"></i> <?php echo $user->email ?></li>
+							<li><i class="im-office"></i> <?php echo $user->office ?></li>
+							<li><i class="fa-bitbucket"></i> <?php echo $user->email ?></li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<?php echo VmHTML::show_image(JUri::root() . '/' . $user->image, 'class="required"', 200, 200); ?>
+					</div>
+				</div>
+
+
 
 			</div>
 		</div>

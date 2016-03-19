@@ -22,16 +22,6 @@ $doc = JFactory::getDocument();
 JHtml::_('jquery.framework');
 JHTML::_('behavior.core');
 JHtml::_('jquery.ui');
-$doc->addScript(JUri::root() . '/media/jquery-ui-1.11.1/ui/datepicker.js');
-$doc->addScript(JUri::root() . '/media/jquery-ui-1.11.1/ui/effect.js');
-$doc->addScript(JUri::root() . '/media/jquery-ui-1.11.1/ui/draggable.js');
-
-$doc->addScript(JUri::root() . '/media/jquery-ui-1.11.1/ui/dialog.js');
-$doc->addStyleSheet(JUri::root() . '/media/jquery-ui-1.11.1/themes/base/core.css');
-$doc->addStyleSheet(JUri::root() . '/media/jquery-ui-1.11.1/themes/base/theme.css');
-$doc->addStyleSheet(JUri::root() . '/media/jquery-ui-1.11.1/themes/base/dialog.css');
-$doc->addStyleSheet(JUri::root() . '/media/jquery-ui-1.11.1/themes/base/datepicker.css');
-$doc->addStyleSheet(JUri::root() . '/media/jquery-ui-1.11.1/themes/base/datepicker.css');
 $doc->addScript(JPATH_VM_URL. '/assets/js/view_raovat_default.js');
 $doc->addLessStyleSheet(JPATH_VM_URL . '/assets/less/view_raovat_default.less');
 
@@ -60,6 +50,7 @@ if ($saveOrder) {
 }
 
 ?>
+
 <div class="view-raovat-default">
     <form action="index.php" method="post" name="adminForm" id="adminForm">
         <?php echo $this->render_toolbar_default('raovat') ?>
@@ -113,7 +104,7 @@ if ($saveOrder) {
 
                     $checked = JHtml::_('grid.id', $i, $row->virtuemart_service_class_id);
                     $published = $this->gridPublished($row, $i);
-                    $editlink = JROUTE::_('index.php?option=com_virtuemart&view=raovat&task=raovat.edit&cid[]=' . $row->virtuemart_raovat_id);
+                    $editlink = JROUTE::_('index.php?option=com_virtuemart&view=raovat&task=raovat.edit&cid[]=' . $row->virtuemart_service_class_id);
                     $edit = $this->gridEdit($row, $i, 'virtuemart_service_class_id', $editlink);
                     $delete = $this->grid_delete_in_line($row, $i, 'virtuemart_service_class_id');
                     ?>

@@ -24,6 +24,7 @@ if( !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not 
 //Console::logSpeed('virtuemart start');
 if (!class_exists( 'VmConfig' )) require(JPATH_COMPONENT_SITE .'/helpers/config.php');
 VmConfig::loadConfig();
+$user=JFactory::getUser();
 
 if(!class_exists('Permissions')) require(JPATH_VM_SITE.'/helpers/permissions.php');
 $isVendor = Permissions::getInstance()->isSuperVendor();//check("admin,storeadmin");
@@ -35,6 +36,7 @@ $app=JFactory::getApplication();
 
 VmConfig::loadJLang('com_virtuemart', true);
 $input = JFactory::getApplication()->input;
+
 if($offline && !$isAdmin){
 	$_controller = 'virtuemart';
 	require (JPATH_VM_SITE.'/controllers/virtuemart.php');
@@ -82,6 +84,7 @@ else {
 	$dispatcher = JDispatcher::getInstance();
 	$dispatcher->trigger($trigger, array($_controller));
 }
+
 
 
 

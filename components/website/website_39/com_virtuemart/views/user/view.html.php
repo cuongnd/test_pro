@@ -61,6 +61,7 @@ class VirtuemartViewUser extends VmView
      */
     function display($tpl = null)
     {
+
         $app=JFactory::getApplication();
         $user = JFactory::getUser();
         if ($user->id == 0) {

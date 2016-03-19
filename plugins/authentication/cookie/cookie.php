@@ -122,7 +122,6 @@ class PlgAuthenticationCookie extends JPlugin
 
 				// Destroy the cookie in the browser.
 				$this->app->input->cookie->set($cookieName, false, time() - 42000, $this->app->get('cookie_path', '/'), $this->app->get('cookie_domain'));
-
 				// Issue warning by email to user and/or admin?
 				JLog::add(JText::sprintf('PLG_AUTH_COOKIE_ERROR_LOG_LOGIN_FAILED', $results[0]->user_id), JLog::WARNING, 'security');
 				$response->status = JAuthentication::STATUS_FAILURE;

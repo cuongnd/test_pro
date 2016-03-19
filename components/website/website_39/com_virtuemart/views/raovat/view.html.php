@@ -36,7 +36,6 @@ class virtuemartViewRaovat extends VmView {
 
 		if (!class_exists('VmHTML'))
 			require(JPATH_VM_SITE . DS . 'helpers' . DS . 'html.php');
-
 		$model = VmModel::getModel();
 
 		$config = JFactory::getConfig();
