@@ -34,14 +34,13 @@ class VmController extends JControllerLegacy{
 	 * @author Max Milbers
 	 */
 	public function __construct($cidName=null, $config=array()) {
-
+		$app=JFactory::getApplication();
 		$this->_cname = strtolower(substr(get_class( $this ), 20));
 		if ( !$cidName) {
 			$cidName = 'virtuemart_'.$this->_cname.'_id';
 		}
 		$this->_cidName = $cidName;
 		parent::__construct($config);
-
 		$this->registerTask( 'add',  'edit' );
 		$this->registerTask('apply','save');
 		// task is filtered then save2copy is savecopy in registerTask
@@ -57,14 +56,6 @@ class VmController extends JControllerLegacy{
             $this->redirectPath .= '&tmpl=component' ;
         }
 
-		if ( $this->checkVendor() ) {
-
-			$task = explode ('.',JRequest::getCmd( 'task'));
-			if ($task[0] == 'toggle') {
-				$val = (isset($task[2])) ? $task[2] : NULL;
-				$this->toggle($task[1],$val);
-			}
-		}
 	}
 	/*
 	 * control the vendor access

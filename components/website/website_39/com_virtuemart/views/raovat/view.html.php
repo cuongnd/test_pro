@@ -32,7 +32,6 @@ if(!class_exists('VmViewAdmin'))require(JPATH_VM_SITE.DS.'helpers'.DS.'vmviewadm
 class virtuemartViewRaovat extends VmViewAdmin {
 
 	function display($tpl = null) {
-
 		// Load the helper(s)
 
 		if (!class_exists('VmHTML'))
@@ -42,7 +41,10 @@ class virtuemartViewRaovat extends VmViewAdmin {
 
 		$config = JFactory::getConfig();
 		$layoutName = vRequest::getCmd('layout', 'default');
+		$app=JFactory::getApplication();
 		if ($layoutName == 'edit') {
+
+
 			$cid	= vRequest::getInt( 'cid' );
 			$this->view_height=1200;
 			$task = vRequest::getCmd('task', 'add');
@@ -56,14 +58,12 @@ class virtuemartViewRaovat extends VmViewAdmin {
 			$model->setId($cid);
 			$this->item = $model->getItem();
 			$this->SetViewTitle('',$this->item->service_class_name);
-			$this->addStandardEditViewCommandsPopup();
 
 		} else {
 
 
-
 			$this->SetViewTitle();
-			$this->addStandardDefaultViewCommandsPopup();
+			$this->addStandardDefaultViewCommands();
 			$this->addStandardDefaultViewLists($model,0,'ASC');
 
 			$this->items = $model->getItemList(vRequest::getCmd('search', false));

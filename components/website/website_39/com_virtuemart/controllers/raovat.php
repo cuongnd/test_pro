@@ -29,6 +29,10 @@ if(!class_exists('VmController'))require(JPATH_VM_SITE.DS.'helpers'.DS.'vmcontro
  * @subpackage Country
  */
 class VirtuemartControllerRaovat extends VmController {
+    public function add(){
+        echo "sdfsdf";
+        die;
+    }
 
 }
 

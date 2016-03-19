@@ -54,6 +54,87 @@ abstract class JHtmlButton
 		$html=ob_get_clean();
 		return $html;
 	}
+	public static function save($task='save',$alt='Save',$attr=array('class'=>'btn btn-primary'),$icon_class="fa-save",$more='')
+	{
+		$doc=JFactory::getDocument();
+		if($attr=='')
+		{
+			$attr=array('class'=>'btn btn-primary');
+		}
+		if(is_array($attr)&&empty($attr))
+		{
+			$attr=array('class'=>'btn btn-primary');
+		}
+		if(is_array($attr)&&!$attr['class'])
+		{
+			$attr['class']='btn btn-primary';
+		}
+		$attr = implode(', ', array_map(
+			function ($v, $k) { return "$k=\"$v\""; },
+			$attr,
+			array_keys($attr)
+		));
+		ob_start();
+		?>
+		<button type="button" data-jtask="<?php echo $task ?>" <?php echo $attr ?>  ><i class="<?php echo $icon_class ?>"></i><?php echo JText::_($alt) ?></button>
+		<?php
+		$html=ob_get_clean();
+		return $html;
+	}
+	public static function cancel($task='cancel',$alt='Cancel',$attr=array('class'=>'btn btn-default'),$icon_class="en-back",$more='')
+	{
+		$doc=JFactory::getDocument();
+		if($attr=='')
+		{
+			$attr=array('class'=>'btn btn-default');
+		}
+		if(is_array($attr)&&empty($attr))
+		{
+			$attr=array('class'=>'btn btn-primary');
+		}
+		if(is_array($attr)&&!$attr['class'])
+		{
+			$attr['class']='btn btn-primary';
+		}
+		$attr = implode(', ', array_map(
+			function ($v, $k) { return "$k=\"$v\""; },
+			$attr,
+			array_keys($attr)
+		));
+		ob_start();
+		?>
+		<button type="button" data-jtask="<?php echo $task ?>" <?php echo $attr ?>  ><i class="<?php echo $icon_class ?>"></i><?php echo JText::_($alt) ?></button>
+		<?php
+		$html=ob_get_clean();
+		return $html;
+	}
+	public static function apply($task='apply',$alt='Apply',$attr=array('class'=>'btn btn-primary'),$icon_class="fa-save",$more='')
+	{
+		$doc=JFactory::getDocument();
+		if($attr=='')
+		{
+			$attr=array('class'=>'btn btn-primary');
+		}
+		if(is_array($attr)&&empty($attr))
+		{
+			$attr=array('class'=>'btn btn-primary');
+		}
+		if(is_array($attr)&&!$attr['class'])
+		{
+			$attr['class']='btn btn-primary';
+		}
+		$attr = implode(', ', array_map(
+			function ($v, $k) { return "$k=\"$v\""; },
+			$attr,
+			array_keys($attr)
+		));
+		ob_start();
+		?>
+		<button type="button" data-jtask="<?php echo $task ?>" <?php echo $attr ?>  ><i class="<?php echo $icon_class ?>"></i><?php echo JText::_($alt) ?></button>
+		<?php
+		$html=ob_get_clean();
+		return $html;
+	}
 	public static function remove($task='remove',$alt='Remove',$attr=array('class'=>'btn btn-warning'),$icon_class="im-remove",$more='')
 	{
 		$doc=JFactory::getDocument();

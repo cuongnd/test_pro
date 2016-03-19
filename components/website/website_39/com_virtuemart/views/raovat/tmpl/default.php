@@ -32,8 +32,6 @@ $doc->addStyleSheet(JUri::root() . '/media/jquery-ui-1.11.1/themes/base/theme.cs
 $doc->addStyleSheet(JUri::root() . '/media/jquery-ui-1.11.1/themes/base/dialog.css');
 $doc->addStyleSheet(JUri::root() . '/media/jquery-ui-1.11.1/themes/base/datepicker.css');
 $doc->addStyleSheet(JUri::root() . '/media/jquery-ui-1.11.1/themes/base/datepicker.css');
-
-
 $doc->addScript(JPATH_VM_URL. '/assets/js/view_raovat_default.js');
 $doc->addLessStyleSheet(JPATH_VM_URL . '/assets/less/view_raovat_default.less');
 
@@ -64,7 +62,7 @@ if ($saveOrder) {
 ?>
 <div class="view-raovat-default">
     <form action="index.php" method="post" name="adminForm" id="adminForm">
-        <?php echo $this->render_toolbar_default() ?>
+        <?php echo $this->render_toolbar_default('raovat') ?>
         <div id="editcell">
             <div class="vm-page-nav">
 
@@ -172,7 +170,7 @@ if ($saveOrder) {
             </table>
         </div>
 
-        <?php echo $this->addStandardHiddenToForm(); ?>
+        <?php //echo $this->addStandardHiddenToForm(); ?>
         <?php echo JHtml::_('form.token'); ?>
     </form>
 

@@ -204,6 +204,7 @@ class JRouterSite extends JRouter
         {
             $Itemid=$this->getVar('menuItemActiveId');;
         }
+
         if(!$Itemid&&$tmpl=='')
         {
             $items=$menu->getItems();
@@ -223,6 +224,7 @@ class JRouterSite extends JRouter
                     break;
                 }
             }
+
             if(!$this->getVar('Itemid'))
             {
                 foreach($items as $item)
@@ -284,6 +286,8 @@ class JRouterSite extends JRouter
 	 */
 	protected function parseSefRoute(&$uri)
 	{
+
+
 		static::$total_parse_sef_route++;
 		if(static::$total_parse_sef_route>20)
 		{
@@ -294,7 +298,6 @@ class JRouterSite extends JRouter
 			die;
 		}
 		$app   = JApplicationCms::getInstance('site');
-
 		$menu  = $app->getMenu();
 
 		$route = $uri->getPath();
@@ -317,7 +320,6 @@ class JRouterSite extends JRouter
 		// Handle an empty URL (special case)
 		if (empty($route))
 		{
-
 			// If route is empty AND option is set in the query, assume it's non-sef url, and parse apropriately
 			if (isset($vars['option']) || isset($vars['Itemid']))
 			{
@@ -350,11 +352,14 @@ class JRouterSite extends JRouter
 
 		$items=$menu->getItems(array('route'),array($route) );
 
+
+
 		if($items[0]->id)
 		{
 			$vars['Itemid'] = $items[0]->id;
 		}elseif (count($segments) > 1 && $segments[0] == 'component')
 		{
+
 			$vars['option'] = 'com_' . $segments[1];
 			//comment by cuongnd
 			//$vars['Itemid'] = null;
@@ -442,10 +447,11 @@ class JRouterSite extends JRouter
 
 		// Set the variables
 		$this->setVars($vars);
-
 		// Parse the component route
 		if (!empty($route) && isset($this->_vars['option']))
 		{
+
+
 			$segments = explode('/', $route);
 
 			if (empty($segments[0]))
@@ -460,6 +466,11 @@ class JRouterSite extends JRouter
 			{
 				$crouter = $this->getComponentRouter($component);
 				$vars = $crouter->parse($segments);
+				$view=$app->input->getString('view','');
+				if($view&&$vars['view']=='index')
+				{
+					$vars['view']=$view;
+				}
 				$this->setVars($vars);
 			}
 		}
@@ -508,7 +519,6 @@ class JRouterSite extends JRouter
                     $uri_link=JUri::getInstance($link);
                     $list_vars1=$uri_link->getVars();
                     $list_vars2=$this->getVars();
-
                     if(
                         $list_vars1['option']==$list_vars2['option']&&
                         $list_vars1['view']==$list_vars2['view']
@@ -519,6 +529,7 @@ class JRouterSite extends JRouter
                 }
 
             }
+
             if(!$this->getVar('Itemid'))
             {
                 foreach($items as $item)

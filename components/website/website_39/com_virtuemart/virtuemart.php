@@ -20,6 +20,7 @@ if( !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not 
 
 /* Require the config */
 
+
 //Console::logSpeed('virtuemart start');
 if (!class_exists( 'VmConfig' )) require(JPATH_COMPONENT_SITE .'/helpers/config.php');
 VmConfig::loadConfig();
@@ -34,7 +35,6 @@ $app=JFactory::getApplication();
 
 VmConfig::loadJLang('com_virtuemart', true);
 $input = JFactory::getApplication()->input;
-
 if($offline && !$isAdmin){
 	$_controller = 'virtuemart';
 	require (JPATH_VM_SITE.'/controllers/virtuemart.php');
@@ -42,7 +42,6 @@ if($offline && !$isAdmin){
 	$task='';
 	$basePath = JPATH_VM_SITE;
 } else {
-
 	/* Front-end helpers */
 	if(!class_exists('VmImage')) require(JPATH_VM_SITE.'/helpers/image.php'); //dont remove that file it is actually in every view except the state view
 	if(!class_exists('shopFunctionsF'))require(JPATH_VM_SITE.'/helpers/shopfunctionsf.php'); //dont remove that file it is actually in every view
@@ -83,6 +82,7 @@ else {
 	$dispatcher = JDispatcher::getInstance();
 	$dispatcher->trigger($trigger, array($_controller));
 }
+
 
 
 if (class_exists($_class)) {

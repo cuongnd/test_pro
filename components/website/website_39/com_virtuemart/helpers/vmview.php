@@ -192,27 +192,7 @@ class VmView extends JViewLegacy{
 		$document = JFactory::getDocument();
 		$name = $this->_name;
 		if ($name == 'product') $name='productdetails';
-		$j = "
-			Joomla.submitbutton=function(a){
-				var options = { path: '/', expires: 2},
-					link = '';
-				if (a == 'preview') {
-					link='".juri::root()."index.php?option=com_virtuemart&view=".$name."&".$this->_cidName."=".$id."';
-					window.location = link;
-					// console.log(link);
-					return false;
-				}
-				if (a == 'apply') {
-					var idx = jQuery('#tabs li.current').index();
-					jQuery.cookie('vmapply', idx, options);
-				} else {
-					jQuery.cookie('vmapply', '0', options);
-				}
-				jQuery( '#media-dialog' ).remove();
-				Joomla.submitform(a);
-			};
-		" ;
-		$document->addScriptDeclaration ( $j);
+
 
 		// LANGUAGE setting
 

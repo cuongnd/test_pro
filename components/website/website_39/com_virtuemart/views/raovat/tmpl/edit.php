@@ -19,53 +19,47 @@
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 $doc = JFactory::getDocument();
-$doc->addScript(JUri::root() . '/administrator/components/com_virtuemart/assets/js/view_tourclass_edit.js');
-AdminUIHelper::startAdminArea($this);
-AdminUIHelper::imitateTabs('start', 'Tour class');
+$doc->addScript(JUri::root() . '/administrator/components/com_virtuemart/assets/js/view_raovat_edit.js');
+
 
 $js_content = '';
 ob_start();
 ?>
-    <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $('.view-tourclass-edit').view_tourclass_edit({
-                add_new_popup:<?php echo $this->add_new_popup ?>
-            });
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('.view-raovat-edit').view_raovat_edit({
+            add_new_popup:<?php echo $this->add_new_popup ?>
         });
-    </script>
+    });
+</script>
 <?php
 $js_content = ob_get_clean();
 $js_content = JUtility::remove_string_javascript($js_content);
 $doc->addScriptDeclaration($js_content);
 
 ?>
-    <div class="view-tourclass-edit">
-        <form action="index.php" method="post" class="form-horizontal" name="adminForm" id="adminForm">
+<div class="view-raovat-edit">
+    <form action="index.php" method="post" class="form-horizontal" name="adminForm" id="adminForm">
+        <?php echo $this->render_toolbar_edit('raovat') ?>
+        <?php
+        $class_left='col-md-2';
+        $class_right='col-md-10';
+        ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'raovat_name', $this->item->product_name, array('class' => 'required')); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Product  price', 'input.price', 'Price', $this->item->price, array('class' => 'required')); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Product  sku', 'input.text', 'product_sku', $this->item->product_sku, array('class' => 'required')); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Short description', 'editor.basic', 'product_s_desc', $this->item->product_s_desc, array('class' => 'required'),'100','100'); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Full description', 'editor.basic', 'product_desc', $this->item->product_desc, array('class' => 'required'),'100','100'); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Gallery', 'galleries.edit_gallery', 'list_image', $this->item->list_image, array('class' => 'required')); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
+        <?php echo JHtml::row_control($class_left,$class_right,'Product  name', 'input.text', 'product_name', $this->item->product_name, array('class' => 'required')); ?>
+        <?php echo JHtml::_('form.token'); ?>
 
 
-            <div class="col50">
-                <fieldset>
-                    <legend><?php echo vmText::_('Current tour class'); ?></legend>
-                    <div class="admintable row-fluid">
-                        <?php echo VmHTML::row_control('input', 'Tour class name', 'service_class_name', $this->item->service_class_name, 'class="required"'); ?>
-                        <?php echo VmHTML::image('Icon', 'icon', $this->item->icon, 'class="required"'); ?>
-                        <?php echo VmHTML::row_control('textarea', 'Meta title', 'meta_title', $this->item->meta_title); ?>
-                        <?php echo VmHTML::row_control('textarea', 'Key Word', 'key_word', $this->item->key_word); ?>
-                        <?php echo VmHTML::row_control('editor', 'Description', 'description', $this->item->description, '100%', 100); ?>
+        <input type="hidden" name="virtuemart_vendor_id" value="<?php echo $this->item->virtuemart_vendor_id; ?>"/>
+        <input type="hidden" name="virtuemart_service_class_id"
+               value="<?php echo $this->item->virtuemart_service_class_id; ?>"/>
+    </form>
+</div>
 
-                        <?php echo VmHTML::row_control('booleanlist', 'COM_VIRTUEMART_PUBLISHED', 'published', $this->item->published); ?>
-
-                    </div>
-                </fieldset>
-
-            </div>
-            <input type="hidden" name="virtuemart_vendor_id" value="<?php echo $this->item->virtuemart_vendor_id; ?>"/>
-            <input type="hidden" name="virtuemart_service_class_id"
-                   value="<?php echo $this->item->virtuemart_service_class_id; ?>"/>
-            <?php echo $this->addStandardHiddenToForm(); ?>
-        </form>
-    </div>
-
-<?php
-AdminUIHelper::imitateTabs('end');
-AdminUIHelper::endAdminArea(); ?>
