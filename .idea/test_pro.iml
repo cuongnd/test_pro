@@ -54,7 +54,6 @@
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_tags" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_templates" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_tour" />
-      <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_users" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_utility" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_weblinks" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_website" />
@@ -396,7 +395,6 @@
       <excludeFolder url="file://$MODULE_DIR$/plugins/system/updatedata" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/system/wfmediaelement" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/twofactorauth" />
-      <excludeFolder url="file://$MODULE_DIR$/plugins/user" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/vmcalculation" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/vmcustom" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/vmpayment" />

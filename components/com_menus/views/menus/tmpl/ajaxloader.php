@@ -18,47 +18,36 @@ require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
 $website = JFactory::getWebsite();
 require_once JPATH_ROOT . '/libraries/joomla/form/fields/icon.php';
 $db = JFactory::getDbo();
+$website=JFactory::getWebsite();
 $query = $db->getQuery(true);
-$query->from('#__menu As menu ')
-    ->select('menu.parent_id,menu.home, menu.id,menu.binding_source,menu.binding_source_key,menu.binding_source_value,menu.access,menu.level,menu.icon,menu.title,menu.link,menu.alias,menu.published,menu.hidden')
-    ->leftJoin('#__menu_types AS menuType ON menu.menu_type_id=menuType.id')
-    ->where('menuType.website_id='.(int)$website->website_id)
-    ->select('menuType.id as menu_type_id,menuType.title as menu_type_title');
+$query->select('menu_types.id as menu_type_id,menu_types.title as title,menu_type_id_menu_id.menu_id AS menu_id')
+    ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
+    ->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+    ->where('menu_types.website_id='.(int)$website->website_id)
+    ;
+$list_menu_type=$db->setQuery($query)->loadObjectList('menu_id');
 
-$query->order('menu.ordering');
-
+$query = $db->getQuery(true);
+$query->select('menu.*')
+    ->from('#__menu As menu ')
+    ->order('menu.ordering')
+    ;
 $db->setQuery($query);
-$list_menu_item1 = $db->loadObjectList();
+$list_menu_item1 = $db->loadObjectList('id');
+$children = array();
 
-//get list menu type
-$query->clear()
-    ->from('#__menu_types AS menuType')
-    ->select('menuType.*')
-    ->where('menuType.website_id='.(int)$website->website_id)
-    ->leftJoin('#__website AS website ON website.id=menuType.website_id')
-    ->select('website.title AS website_title')
-    ->order('menuType.id');
-$list_menu_type = $db->setQuery($query)->loadObjectList('id');
-
-//end get list menu type
-//
-
-$list_menu_item = array();
-foreach ($list_menu_type as $menu_type) {
-    $item = new stdClass();
-    $item->menu_type = $menu_type;
-    $item->list_menu_item1 = array();
-    $item->root_menu_item = new stdClass();
-    foreach ($list_menu_item1 as $menu_item) {
-        if ($menu_item->menu_type_id == $menu_type->id && $menu_item->id != $menu_item->parent_id) {
-            $item->list_menu_item1[] = $menu_item;
-        }
-        if ($menu_item->menu_type_id == $menu_type->id && $menu_item->id == $menu_item->parent_id) {
-            $item->root_menu_item = $menu_item;
-        }
+// First pass - collect children
+foreach ($list_menu_item1 as $v)
+{
+    $pt = $v->parent_id;
+    $list = @$children[$pt] ? $children[$pt] : array();
+    if($v->id!=$v->parent_id)
+    {
+        array_push($list, $v);
     }
-    $list_menu_item[$menu_type->id] = $item;
+    $children[$pt] = $list;
 }
+
 require_once JPATH_ROOT . '/libraries/joomla/form/fields/groupedlist.php';
 $scriptId = "com_menus_view_menus_jaxloader" . '_' . JUserHelper::genRandomPassword();
 ob_start();
@@ -113,34 +102,28 @@ ob_start();
             <div class="cf nestable-lists">
                 <div class="row">
                     <?php
-                    foreach ($list_menu_item as $menu_type_id => $item) {
-                        $menu_type = $item->menu_type;
-                        $root_menu_item = $item->root_menu_item;
-                        $list_menu_item1 = $item->list_menu_item1;
-
+                    foreach ($list_menu_type as $root_menu) {
+                        $list_menu_item1=$children[$root_menu->menu_id];
                         ?>
-                        <div class="menu_type_item col-md-6" data-menu-type-id="<?php echo $menu_type_id ?>">
-                            <h3><?php echo $menu_type->title ?>(<?php echo $menu_type_id ?>
+                        <div class="menu_type_item col-md-6" data-menu-type-id="<?php echo $root_menu->menu_type_id ?>">
+                            <h3><?php echo $root_menu->title ?>(<?php echo $root_menu->menu_type_id ?>
                                 )<i
                                     class="fa-copy"></i></h3><a title="rebuid menu" href="javascript:void(0)"
-                                                                data-menu_item_id="<?php echo $root_menu_item->id ?>"
-                                                                data-menu_type_id="<?php echo $menu_type_id ?>"
+                                                                data-menu_item_id="<?php echo $root_menu->menu_id ?>"
+                                                                data-menu_type_id="<?php echo $root_menu->menu_type_id ?>"
                                                                 class="rebuild_root_menu"><i
                                     class="im-spinner5"></i></a>
                             <input class="menu_input" value="<?php echo $json_list_item ?>"
-                                   data-menu-type-id="<?php echo $menu_type_id ?>" type="hidden"
-                                   name="menu_type_<?php echo $menu_type_id ?>_output"
-                                   id="menu_type_<?php echo $menu_type_id ?>_output">
-
-                            <div data-menu_root_id="<?php echo $root_menu_item->id ?>"
-                                 data-menu_type_id="<?php echo $menu_type_id ?>" class="dd a_menu_type"
-                                 id="menu_type_<?php echo $menu_type_id ?>">
+                                   data-menu-type-id="<?php echo $root_menu->menu_type_id ?>" type="hidden"
+                                   name="menu_type_<?php echo $root_menu->menu_type_id ?>_output"
+                                   id="menu_type_<?php echo $root_menu->menu_type_id ?>_output">
+                            <div data-menu_root_id="<?php echo $root_menu->menu_id ?>"
+                                 data-menu_type_id="<?php echo $root_menu->menu_type_id ?>" class="dd a_menu_type"
+                                 id="menu_type_<?php echo $root_menu->menu_type_id ?>">
                                 <?php if (count($list_menu_item1)) { ?>
 
                                     <?php
-
-
-                                    echo create_html_list($root_menu_item->id, $list_menu_item1, $website, $binding_source);
+                                    echo create_html_list($root_menu->menu_id, $children, $binding_source);
 
                                     ?>
                                 <?php } else { ?>
@@ -159,17 +142,9 @@ ob_start();
 </div>
 
 <?php
-function create_html_list($root_id, $list_nodes, $website, $binding_source)
+function create_html_list($root_id, $children, $binding_source)
 {
-
-
-    $nodes = array();
-    foreach ($list_nodes as $key => $item) {
-        if ($item->parent_id == $root_id) {
-            $nodes[] = $item;
-            unset($list_nodes[$key]);
-        }
-    }
+    $nodes = $children[$root_id];
     if (count($nodes)) {
         ?>
         <ol class="dd-list">
@@ -253,7 +228,7 @@ function create_html_list($root_id, $list_nodes, $website, $binding_source)
 
                     <?php
                     echo ob_get_clean();
-                    create_html_list($item->id, $list_nodes, $website, $binding_source);
+                    create_html_list($item->id, $children, $binding_source);
                     ?>
                 </li>
                 <?php
@@ -267,20 +242,6 @@ function create_html_list($root_id, $list_nodes, $website, $binding_source)
 }
 
 
-function treerecurse($id, $list, &$children, $maxlevel = 9999, $level = 0)
-{
-    if (@$children[$id] && $level <= $maxlevel) {
-
-        foreach ($children[$id] as $v) {
-            $id = $v->id;
-            $list[$id] = $v;
-            $list[$id]->children = @$children[$id];
-            unset($children[$id]);
-            $list = treerecurse($id, $list, $children, $maxlevel, $level + 1);
-        }
-    }
-    return $list;
-}
 
 $contents = ob_get_clean();
 $tmpl = $app->input->get('tmpl', '', 'string');

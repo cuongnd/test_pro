@@ -265,7 +265,11 @@ class JMenu
 
 			for ($i = 0, $count = count($attributes); $i < $count; $i++)
 			{
-				if (is_array($values[$i]))
+				if($item->id==$item->parent_id)
+				{
+					$test = false;
+					break;
+				}elseif (is_array($values[$i]))
 				{
 					if (!in_array($item->$attributes[$i], $values[$i]))
 					{

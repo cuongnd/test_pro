@@ -757,6 +757,7 @@ class JTableNested extends JTable
 				if (!$this->_lock())
 				{
 					// Error message set in lock method.
+					$this->setError('Error message set in lock method');
 					return false;
 				}
 
@@ -787,7 +788,7 @@ class JTableNested extends JTable
 					{
 						// Error message set in getNode method.
 						$this->_unlock();
-
+						$this->setError('Error message set in getNode method');
 						return false;
 					}
 				}
@@ -798,6 +799,7 @@ class JTableNested extends JTable
 					// Error message set in getNode method.
 					$this->_unlock();
 
+					$this->setError('Error message set unlock method');
 					return false;
 				}
 
@@ -825,6 +827,7 @@ class JTableNested extends JTable
 			{
 				// Negative parent ids are invalid
 				$e = new UnexpectedValueException(sprintf('%s::store() used a negative _location_id', get_class($this)));
+
 				$this->setError($e);
 
 				return false;
@@ -1574,12 +1577,15 @@ class JTableNested extends JTable
 		// Make sure the reference an object with a left and right id.
 		if (!is_object($referenceNode) || !(isset($referenceNode->lft) && isset($referenceNode->rgt)))
 		{
+			$this->setError('Make sure the reference an object with a left and right id');
+
 			return false;
 		}
 
 		// A valid node cannot have a width less than 2.
 		if ($nodeWidth < 2)
 		{
+			$this->setError('A valid node cannot have a width less than 2');
 			return false;
 		}
 

@@ -107,7 +107,13 @@ class JFormFieldModulelayout extends JFormField
 			$templates = $db->loadObjectList('element');
 
 			// Build the search paths for module layouts.
-			$module_path = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/' . $module );
+			$module_path=$client->path . '/modules/website/website_'.$website->website_id.'/' . $module.'/tmpl';
+			jimport('joomla.filesystem.folder');
+			if(!JFolder::exists($module_path))
+			{
+				$module_path=$client->path . '/modules/' . $module.'/tmpl';
+			}
+			$module_path = JPath::clean($module_path );
 
 			// Prepare array of component layouts
 			$module_layouts = array();
@@ -142,7 +148,17 @@ class JFormFieldModulelayout extends JFormField
 					$lang->load('tpl_' . $template->element . '.sys', $client->path, null, false, true)
 						|| $lang->load('tpl_' . $template->element . '.sys', $client->path . '/templates/' . $template->element, null, false, true);
 
-					$template_path = JPath::clean($client->path . '/templates/' . $template->element . '/html/website/website_'.$website->website_id.'/' . $module);
+					$template_path = $client->path . '/templates/' . $template->element . '/html/website/website_'.$website->website_id.'/' . $module.'/tmpl';
+					if(!JFolder::exists($template_path))
+					{
+						$template_path=$client->path . '/modules/website/website_'.$website->website_id.'/' . $module.'/tmpl';
+					}
+					if(!JFolder::exists($template_path))
+					{
+						$template_path=$client->path . '/modules/' . $module.'/tmpl';
+					}
+
+					$template_path = JPath::clean($template_path);
 
 					// Add the layout options from the template path.
 					if (is_dir($template_path) && ($files = JFolder::files($template_path, '^[^_]*\.php$')))

@@ -20,7 +20,6 @@ $path		= $base->tree;
 
 
 
-
 $doc=JFactory::getDocument();
 $doc->addScript(JUri::root().'/media/system/js/sticky-master/jquery.sticky.js');
 
@@ -123,4 +122,5 @@ ob_start();
 $css=ob_get_clean();
 $css=JUtility::remove_string_css($css);
 $doc->addStyleDeclaration($css);
+
 ?>

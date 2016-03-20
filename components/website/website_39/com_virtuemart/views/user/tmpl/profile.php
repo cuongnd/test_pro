@@ -21,6 +21,7 @@ defined('_JEXEC') or die('Restricted access');
 $doc = JFactory::getDocument();
 $doc->addScript(JUri::root() . '/administrator/components/com_virtuemart/assets/js/view_raovat_edit.js');
 $user=JFactory::getUser();
+$profile=JUserHelper::getProfile($user->id);
 if (!class_exists ('VmHTML')) {
 	require(JPATH_VM_SITE . DS . 'helpers' . DS . 'html.php');
 }

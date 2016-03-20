@@ -5,16 +5,124 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/images/vmenu/off.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/images/vmenu/on.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/images/vmenu/zakladka.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/liveupdate/classes/xmlslurp.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/legacy/table/menu1.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/legacy/table/menuitemmenutype.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/LICENSE-MIT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/addons/keyboard/jquery.smartmenus.keyboard.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/addons/keyboard/jquery.smartmenus.keyboard.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/_sm-blue.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/mixins/_round-corners-last-item.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/mixins/_sub-items-indentation.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/sm-blue.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/sm-blue.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/_sm-clean.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/mixins/_round-corners-last-item.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/mixins/_sub-items-indentation.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/sm-clean.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/sm-clean.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-core-css.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-mint/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-mint/_sm-mint.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-mint/mixins/_sub-items-indentation.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-mint/sm-mint.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-mint/sm-mint.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-simple/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-simple/_sm-simple.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-simple/mixins/_sub-items-indentation.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-simple/sm-simple.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-simple/sm-simple.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/jquery.smartmenus.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/jquery.smartmenus.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/smartmenus.jquery.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/addons/bootstrap/jquery.smartmenus.bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/addons/bootstrap/jquery.smartmenus.bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/addons/keyboard/jquery.smartmenus.keyboard.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/_sm-blue.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/mixins/_round-corners-last-item.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/mixins/_sub-items-indentation.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/sm-blue.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/sm-blue.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/_sm-clean.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/mixins/_round-corners-last-item.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/mixins/_sub-items-indentation.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/sm-clean.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/sm-clean.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-core-css.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-mint/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-mint/_sm-mint.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-mint/mixins/_sub-items-indentation.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-mint/sm-mint.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-mint/sm-mint.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-simple/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-simple/_sm-simple.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-simple/mixins/_sub-items-indentation.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-simple/sm-simple.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-simple/sm-simple.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/bootstrap-navbar-fixed-bottom.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/bootstrap-navbar-fixed-top.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/bootstrap-navbar-static-top.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/bootstrap-navbar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/keyboard-navigation.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/jquery.smartmenus.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/demo-assets/demo.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/demo-assets/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/demo-assets/shjs/shjs.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/demo-assets/shjs/shjs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/demo-assets/themes-switcher.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/jquery/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/js/jquery-1.10.2.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/js/vmenuModule.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/less/vmenuModule.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/navigation_menu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/verticalmegamenu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/navigation.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/navigation_component.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/navigation_heading.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/navigation_separator.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/navigation_url.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/test_pro.iml" afterPath="$PROJECT_DIR$/.idea/test_pro.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/config.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/html.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/html.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/view.html.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/view.html.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" afterPath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/tmpl/profile.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/tmpl/profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/view.html.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/view.html.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/virtuemart.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/virtuemart.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/authentication/cookie/cookie.php" afterPath="$PROJECT_DIR$/plugins/authentication/cookie/cookie.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/menu/menu.php" afterPath="$PROJECT_DIR$/libraries/cms/menu/menu.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/table/nested.php" afterPath="$PROJECT_DIR$/libraries/joomla/table/nested.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/legacy/form/field/modulelayout.php" afterPath="$PROJECT_DIR$/libraries/legacy/form/field/modulelayout.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/legacy/table/menu.php" afterPath="$PROJECT_DIR$/libraries/legacy/table/menu.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_39/mod_menu/mod_menu.php" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/mod_menu.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/default.php" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/default.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/assets/css/tourmanagermenu.css" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/assets/css/tourmanagermenu.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/assets/js/tourmanagermenu.js" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/assets/js/tourmanagermenu.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/assets/less/tourmanagermenu.less" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/assets/less/tourmanagermenu.less" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/default.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/default.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/default_component.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/default_component.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/default_url.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/default_url.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/leftmenutour.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/leftmenutour.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/mainnav.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/mainnav.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/mainnav_component.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/mainnav_component.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/mainnav_separator.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/mainnav_separator.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/tourmanagermenu.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/tourmanagermenu.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/usermenu.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/usermenu.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/usermenu_component.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/usermenu_component.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/usermenu_separator.php" afterPath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/usermenu_separator.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu/verticalmegamenu.php" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/verticalmegamenu.php" />
     </list>
     <ignored path="test_pro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,150 +150,104 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="virtuemart.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/virtuemart.php">
+      <file leaf-file-name="navigation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/navigation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.264151">
-              <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="16" column="175" selection-start-line="16" selection-start-column="175" selection-end-line="16" selection-end-column="175" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view.html.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/view.html.php">
+      <file leaf-file-name="navigation_menu.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/navigation_menu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.1320753">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view.html.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/view.html.php">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693">
-              <caret line="119" column="37" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="37" />
+            <state vertical-scroll-proportion="-8.333333">
+              <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php">
+      <file leaf-file-name="bootstrap-navbar.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/bootstrap-navbar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.7307692">
-              <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-              <folding>
-                <element signature="e#6#623#0#PHP" expanded="true" />
-                <element signature="e#3650#3736#0#PHP" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#td#6;n#tr#0;n#table#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="permissions.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/permissions.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.8461539">
-              <caret line="151" column="29" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
-              <folding>
-                <marker date="1422838149432" expanded="true" signature="1696:1820" placeholder="SELECT `virt... #__virtuemart_permgroups" />
-                <marker date="1422838149432" expanded="true" signature="3816:4079" placeholder="SELECT COUNT... #__virtuemart_userinfos" />
-                <marker date="1422838149432" expanded="true" signature="4105:4322" placeholder="SELECT COUNT... #__virtuemart_userinfos" />
-                <marker date="1422838149432" expanded="true" signature="5085:5194" placeholder="SELECT `perm... #__virtuemart_vmusers" />
-                <marker date="1422838149432" expanded="true" signature="11290:11357" placeholder="SELECT `lft`... ${$table}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shopfunctionsf.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/shopfunctionsf.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="9.923077">
-              <caret line="73" column="29" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
-              <folding>
-                <marker date="1422838383542" expanded="true" signature="6831:6911" placeholder="SELECT `temp... #__template_styles" />
-                <marker date="1422838383542" expanded="true" signature="6936:7017" placeholder="SELECT `temp... #__templates_menu" />
-                <marker date="1422838383542" expanded="true" signature="11976:12086" placeholder="SELECT `cate... #__virtuemart_categories" />
-                <marker date="1422838383542" expanded="true" signature="12331:12438" placeholder="SELECT `prod... #__virtuemart_products" />
-                <marker date="1422838383542" expanded="true" signature="13140:13242" placeholder="SELECT `layo... #__virtuemart_categories" />
-                <marker date="1422838383542" expanded="true" signature="13501:13601" placeholder="SELECT `layo... #__virtuemart_products" />
-                <marker date="1422838383542" expanded="true" signature="18316:18481" placeholder="..." />
-                <marker date="1422838383542" expanded="true" signature="18449:18474" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.5384614">
-              <caret line="911" column="0" selection-start-line="911" selection-start-column="0" selection-end-line="911" selection-end-column="0" />
-              <folding>
-                <marker date="1458409274065" expanded="true" signature="14530:14609" placeholder="SELECT `conf... #__virtuemart_configs" />
-                <marker date="1458409274065" expanded="true" signature="20726:21336" placeholder="CREATE TABLE... IF" />
-                <marker date="1458409274065" expanded="true" signature="21956:22054" placeholder="SELECT `virt... #__virtuemart_configs" />
-                <marker date="1458409274065" expanded="true" signature="22120:22186" placeholder="DELETE FROM " />
-                <marker date="1458409274065" expanded="true" signature="22286:22397" placeholder="INSERT INTO `#__virtuemart_configs`... " />
-                <marker date="1458409274065" expanded="true" signature="40295:40446" placeholder="SELECT `virt... #__virtuemart_vmusers" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="html.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/html.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.1320753">
-              <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
-              <folding>
-                <marker date="1458409701902" expanded="true" signature="2911:3023" placeholder="..." />
-                <marker date="1458409701902" expanded="true" signature="2931:2955" placeholder="..." />
-                <marker date="1458409701902" expanded="true" signature="2963:3015" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/tmpl/profile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.8681319">
-              <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+            <state vertical-scroll-proportion="220.73077">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shopfunctions.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/shopfunctions.php">
+      <file leaf-file-name="keyboard-navigation.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/keyboard-navigation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8076925">
-              <caret line="671" column="9" selection-start-line="669" selection-start-column="8" selection-end-line="671" selection-end-column="9" />
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/cms/menu/menu.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.1923075">
+              <caret line="276" column="30" selection-start-line="276" selection-start-column="30" selection-end-line="276" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menu.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.1726619">
+              <caret line="1345" column="50" selection-start-line="1345" selection-start-column="50" selection-end-line="1345" selection-end-column="50" />
               <folding>
-                <marker date="1457668428730" expanded="true" signature="6779:6882" placeholder="SELECT `vend... #__virtuemart_vendors" />
-                <marker date="1457668428730" expanded="true" signature="7543:7646" placeholder="SELECT `vend... #__virtuemart_vendors" />
-                <marker date="1457668428730" expanded="true" signature="7958:8028" placeholder="SELECT `virt... #__virtuemart_vendors" />
-                <marker date="1457668428730" expanded="true" signature="22202:22772" placeholder="..." />
-                <marker date="1457668428730" expanded="true" signature="22223:22389" placeholder="..." />
-                <marker date="1457668428730" expanded="true" signature="22311:22379" placeholder="..." />
-                <marker date="1457668428730" expanded="true" signature="22414:22479" placeholder="..." />
-                <marker date="1457668428730" expanded="true" signature="22503:22589" placeholder="..." />
-                <marker date="1457668428730" expanded="true" signature="22613:22763" placeholder="..." />
-                <marker date="1457668428730" expanded="true" signature="30902:31038" placeholder="SELECT `virt... #__virtuemart_countries" />
-                <marker date="1457668428730" expanded="true" signature="32213:32344" placeholder="SELECT `virt... #__virtuemart_states" />
-                <marker date="1457668428730" expanded="true" signature="32737:32803" placeholder="SELECT * FRO... #__virtuemart_calcs" />
-                <marker date="1457668428730" expanded="true" signature="34067:34177" placeholder="SELECT `virt... #__virtuemart_currencies" />
-                <marker date="1457668428730" expanded="true" signature="35487:35575" placeholder="SELECT `orde... #__virtuemart_orderstates" />
-                <marker date="1457668428730" expanded="true" signature="51173:51275" placeholder="..." />
-                <marker date="1457668428730" expanded="true" signature="51195:51265" placeholder="..." />
-                <marker date="1457668428730" expanded="true" signature="51770:52365" placeholder="..." />
+                <marker date="1458493643815" expanded="true" signature="24864:25017" placeholder="select @pare... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menus.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_menus/controllers/menus.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.5384617">
+              <caret line="44" column="38" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sm-blue.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/sm-blue.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.5384617">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nested.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/joomla/table/nested.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.730769">
+              <caret line="1308" column="9" selection-start-line="1308" selection-start-column="9" selection-end-line="1308" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -211,24 +273,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/components/com_users/helpers/facebook.php" />
-        <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/assets/js/view_user_login.js" />
-        <option value="$PROJECT_DIR$/libraries/google-api-php-client-master/src/Google/autoload.php" />
-        <option value="$PROJECT_DIR$/libraries/google-api-php-client-master/src/Google/Client.php" />
-        <option value="$PROJECT_DIR$/libraries/google-api-php-client-master/src/Google/Cache/File.php" />
-        <option value="$PROJECT_DIR$/components/com_users/helpers/google.php" />
-        <option value="$PROJECT_DIR$/components/com_users/controllers/user.php" />
-        <option value="$PROJECT_DIR$/libraries/joomla/user/user.php" />
-        <option value="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/tmpl/homecategory.php" />
-        <option value="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/tmpl/megamenu.php" />
-        <option value="$PROJECT_DIR$/modules/website/website_39/mod_virtuemart_category/tmpl/verticalmegamenu.php" />
-        <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/tmpl/login.php" />
-        <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.xml" />
-        <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/virtuemart/view.html.php" />
-        <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/virtuemart/tmpl/userpanel.xml" />
         <option value="$PROJECT_DIR$/libraries/cms/html/access.php" />
         <option value="$PROJECT_DIR$/libraries/joomla/database/driver/mysqli.php" />
-        <option value="$PROJECT_DIR$/libraries/legacy/table/menu.php" />
         <option value="$PROJECT_DIR$/modules/website/website_39/mod_login/tmpl/default_logout.php" />
         <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/vmtable.php" />
         <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/tables/raovat.php" />
@@ -236,7 +282,6 @@
         <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/assets/js/view_raovat_default.js" />
         <option value="$PROJECT_DIR$/libraries/cms/html/jgrid.php" />
         <option value="$PROJECT_DIR$/libraries/cms/html/input.php" />
-        <option value="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" />
         <option value="$PROJECT_DIR$/components/com_modules/controllers/module.php" />
         <option value="$PROJECT_DIR$/templates/sprflat/less/custom.less" />
         <option value="$PROJECT_DIR$/templates/sprflat/less/custom.min.css" />
@@ -262,6 +307,23 @@
         <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/view.html.php" />
         <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/html.php" />
         <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/tmpl/profile.php" />
+        <option value="$PROJECT_DIR$/libraries/joomla/table/nested.php" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/verticalmegamenu.php" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/mod_menu.php" />
+        <option value="$PROJECT_DIR$/libraries/cms/menu/menu.php" />
+        <option value="$PROJECT_DIR$/libraries/legacy/table/menuitemmenutype.php" />
+        <option value="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/default.php" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/less/vmenuModule.less" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/verticalmegamenu.js" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/js/vmenuModule.js" />
+        <option value="$PROJECT_DIR$/libraries/joomla/filesystem/folder.php" />
+        <option value="$PROJECT_DIR$/libraries/legacy/form/field/modulelayout.php" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/README.md" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/navigation_menu.js" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/navigation.php" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/sm-blue.css" />
+        <option value="$PROJECT_DIR$/libraries/legacy/table/menu.php" />
       </list>
     </option>
   </component>
@@ -321,7 +383,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>PhpUndefinedFieldInspection</id>
+            <id>PhpUndefinedFunctionInspection</id>
           </State>
         </selected-state>
       </profile-state>
@@ -352,6 +414,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -421,7 +484,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="less" />
+              <option name="myItemId" value="html" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -443,7 +506,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="demo" />
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_39" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -457,7 +528,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -471,11 +554,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="authentication" />
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -489,37 +568,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="authentication" />
+              <option name="myItemId" value="website" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="joomla" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="authentication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cookie" />
+              <option name="myItemId" value="website_39" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -533,21 +590,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -559,7 +602,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="com_virtuemart" />
+              <option name="myItemId" value="mod_menu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -573,7 +616,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -585,79 +628,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="com_virtuemart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website_39" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com_virtuemart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website_39" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com_virtuemart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
+              <option name="myItemId" value="mod_menu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -675,6 +646,464 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_39" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mod_menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_39" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mod_menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_39" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mod_menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_39" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mod_menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_39" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mod_menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_39" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mod_menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sm-simple" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_39" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mod_menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sm-blue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="legacy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="legacy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="table" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="joomla" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="joomla" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filesystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -688,10 +1117,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="com_virtuemart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="helpers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -721,7 +1146,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -739,35 +1164,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
+              <option name="myItemId" value="com_menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="website_39" />
+              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="com_virtuemart" />
+              <option name="myItemId" value="com_menus" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="less" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="jsite&#9;null&#9;null&#10;radioyesno&#9;null&#9;null&#10;vmjs&#9;null&#9;null&#10;vmht&#9;null&#9;null&#10;jhtml&#9;null&#9;null&#10;jgri&#9;null&#9;null&#10;jro&#9;null&#9;null&#10;jmodule&#9;null&#9;null&#10;jtableus&#9;null&#9;null&#10;jtableuser&#9;null&#9;null&#10;juser&#9;null&#9;null&#10;jcompone&#9;null&#9;null&#10;jfieldd&#9;null&#9;null&#10;jcompon&#9;null&#9;null&#10;jfieldcon&#9;null&#9;null&#10;driv&#9;null&#9;null&#10;dataso&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.js&#10;ajax_save_datasource_relationship&#9;null&#9;null&#10;jfieldatas&#9;null&#9;null&#10;jcomponent&#9;null&#9;null&#10;jut&#9;null&#9;null&#10;jfield&#9;null&#9;null&#10;jfieldcre&#9;null&#9;null&#10;jfieldbro&#9;null&#9;null&#10;jfielddata&#9;null&#9;null&#10;ajaxLoadPropertiesAddOn&#9;null&#9;null&#10;datasource&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.js&#10;autocom&#9;null&#9;null&#10;jfieldda&#9;null&#9;null&#10;datasou&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.js&#10;getCurrentDataSources&#9;null&#9;null&#10;binding&#9;null&#9;null&#10;juti&#9;null&#9;null&#10;configupdate&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/configupdate.php&#10;aJaxConvertToElementType&#9;null&#9;null&#10;bl&#9;FILE&#9;file://H:/project/test_pro/templates/sprflat/js/jquery.blockproperties.js&#10;jtablepo&#9;null&#9;null&#10;jbrow&#9;null&#9;null&#10;website&#9;FILE&#9;file://H:/project/test_pro/components/com_website/helpers/website.php&#10;jtableposi&#9;null&#9;null&#10;website.php&#9;FILE&#9;file://H:/project/test_pro/components/com_website/helpers/website.php&#10;jdoc&#9;null&#9;null&#10;addscr&#9;null&#9;null&#10;mysq&#9;FILE&#9;file://H:/project/test_pro/libraries/joomla/database/driver/mysqli.php&#10;mysqli&#9;null&#9;null&#10;cms&#9;null&#9;null&#10;jbe&#9;null&#9;null&#10;jfieldselect&#9;null&#9;null&#10;csstex&#9;null&#9;null&#10;mys&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="modulelay&#9;null&#9;null&#10;ajaxloader&#9;FILE&#9;file://H:/project/test_pro/components/com_menus/views/menus/tmpl/ajaxloader.php&#10;jtableme&#9;null&#9;null&#10;getProfile&#9;null&#9;null&#10;jsite&#9;null&#9;null&#10;radioyesno&#9;null&#9;null&#10;vmjs&#9;null&#9;null&#10;vmht&#9;null&#9;null&#10;jhtml&#9;null&#9;null&#10;jgri&#9;null&#9;null&#10;jro&#9;null&#9;null&#10;jmodule&#9;null&#9;null&#10;jtableus&#9;null&#9;null&#10;jtableuser&#9;null&#9;null&#10;juser&#9;null&#9;null&#10;jcompone&#9;null&#9;null&#10;jfieldd&#9;null&#9;null&#10;jcompon&#9;null&#9;null&#10;jfieldcon&#9;null&#9;null&#10;driv&#9;null&#9;null&#10;dataso&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.js&#10;ajax_save_datasource_relationship&#9;null&#9;null&#10;jfieldatas&#9;null&#9;null&#10;jcomponent&#9;null&#9;null&#10;jut&#9;null&#9;null&#10;jfield&#9;null&#9;null&#10;jfieldcre&#9;null&#9;null&#10;jfieldbro&#9;null&#9;null&#10;jfielddata&#9;null&#9;null&#10;ajaxLoadPropertiesAddOn&#9;null&#9;null&#10;datasource&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.js&#10;autocom&#9;null&#9;null&#10;jfieldda&#9;null&#9;null&#10;datasou&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.js&#10;getCurrentDataSources&#9;null&#9;null&#10;binding&#9;null&#9;null&#10;juti&#9;null&#9;null&#10;configupdate&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/configupdate.php&#10;aJaxConvertToElementType&#9;null&#9;null&#10;bl&#9;FILE&#9;file://H:/project/test_pro/templates/sprflat/js/jquery.blockproperties.js&#10;jtablepo&#9;null&#9;null&#10;jbrow&#9;null&#9;null&#10;website&#9;FILE&#9;file://H:/project/test_pro/components/com_website/helpers/website.php&#10;jtableposi&#9;null&#9;null&#10;website.php&#9;FILE&#9;file://H:/project/test_pro/components/com_website/helpers/website.php&#10;jdoc&#9;null&#9;null&#10;addscr&#9;null&#9;null&#10;mysq&#9;FILE&#9;file://H:/project/test_pro/libraries/joomla/database/driver/mysqli.php&#10;mysqli&#9;null&#9;null&#10;cms&#9;null&#9;null" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/vmviewadmin.php" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
     <property name="LayoutCode.rearrangeEntriesXML" value="false" />
@@ -802,19 +1232,19 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files (x86)\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\project\test_pro\components\website\website_39\com_virtuemart\views" />
-      <recent name="H:\project\test_pro\components\website\website_39\com_virtuemart\views\virtuemart\tmpl" />
-      <recent name="H:\project\test_pro\components\website\website_39\com_virtuemart\views\gianhang\tmpl" />
-      <recent name="H:\project\test_pro\components\website\website_39\com_virtuemart\views\user\tmpl" />
-      <recent name="H:\project\test_pro\libraries\cms\html" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\project\test_pro\modules\website\website_39\mod_menu\tmpl" />
       <recent name="H:\project\test_pro\modules\website\website_39\mod_virtuemart_category\asset\js" />
       <recent name="H:\project\test_pro\modules\website\website_39\mod_virtuemart_category\asset" />
       <recent name="H:\project\test_pro\modules\website\website_39\mod_virtuemart_category\tmpl" />
       <recent name="H:\project\test_pro\components\website\website_39\com_virtuemart\assets\less" />
-      <recent name="H:\project\test_pro\components\website\website_39\com_virtuemart\assets\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\project\test_pro\modules\website\website_39\mod_menu\assets" />
+      <recent name="H:\project\test_pro\modules\website\website_39\mod_menu\tmpl" />
+      <recent name="H:\project\test_pro\libraries\legacy\table" />
+      <recent name="H:\project\test_pro\components\website\website_39\com_virtuemart\views" />
+      <recent name="H:\project\test_pro\components\website\website_39\com_virtuemart\views\virtuemart\tmpl" />
     </key>
   </component>
   <component name="RunManager">
@@ -1075,7 +1505,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458403094755</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="update new">
+      <created>1458411034664</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1458411034664</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1091,21 +1527,17 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26279864" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21160409" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.7064846" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23007712" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33358547" sideWeight="0.86860067" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33888048" sideWeight="0.86860067" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59897614" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19667171" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.61839867" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21160409" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.67064846" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19667171" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27760968" sideWeight="0.13139932" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1113,10 +1545,14 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26279864" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32823366" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1128,7 +1564,7 @@
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23007712" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19667171" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19667171" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1139,11 +1575,11 @@
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32823366" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21160409" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.040955633" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.67064846" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33358547" sideWeight="0.86860067" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32423207" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33888048" sideWeight="0.86860067" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.61839867" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27760968" sideWeight="0.13139932" order="1" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1182,444 +1618,17 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.692307">
-          <caret line="228" column="210" selection-start-line="228" selection-start-column="210" selection-end-line="228" selection-end-column="210" />
-          <folding>
-            <marker date="1458319920165" expanded="true" signature="3569:3701" placeholder="..." />
-            <marker date="1458319920165" expanded="true" signature="11056:11214" placeholder="..." />
-            <marker date="1458319920165" expanded="true" signature="11246:11399" placeholder="..." />
-            <marker date="1458319920165" expanded="true" signature="11292:11399" placeholder="..." />
-            <marker date="1458319920165" expanded="true" signature="11635:11788" placeholder="..." />
-            <marker date="1458319920165" expanded="true" signature="11681:11788" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_modules/controllers/module.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.696">
-          <caret line="154" column="43" selection-start-line="154" selection-start-column="43" selection-end-line="154" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sprflat/less/custom.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6037736">
-          <caret line="383" column="0" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/html/html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1538463">
-          <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/html/input.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.923077">
-          <caret line="117" column="33" selection-start-line="117" selection-start-column="33" selection-end-line="117" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/front/toolbar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="169.15384">
-          <caret line="18" column="14" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/front/toolbarhelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="338.69232">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/adminui.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="94.61539">
-          <caret line="154" column="9" selection-start-line="154" selection-start-column="9" selection-end-line="154" selection-end-column="9" />
-          <folding>
-            <marker date="1457668428630" expanded="true" signature="9300:9666" placeholder="SELECT `jmmo... #__virtuemart_modules" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/components/com_virtuemart/views/country/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/components/com_virtuemart/views/country/tmpl/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="21" column="22" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/adminbootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="12.807693">
-          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-          <folding>
-            <marker date="1457668428558" expanded="true" signature="1905:1937" placeholder="..." />
-            <marker date="1457668428558" expanded="true" signature="4447:4506" placeholder="..." />
-            <marker date="1457668428558" expanded="true" signature="5050:5416" placeholder="SELECT `jmmo... #__virtuemart_modules" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/includes/toolbar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="54.923077">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/modules/mod_toolbar/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/modules/mod_toolbar/mod_toolbar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308">
-          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/category/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="19.615385">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/components/com_virtuemart/views/category/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="14.846154">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/models/raovat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.8490567">
-          <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5384614">
-          <caret line="768" column="40" selection-start-line="768" selection-start-column="40" selection-end-line="768" selection-end-column="40" />
-          <folding>
-            <marker date="1458357490219" expanded="true" signature="32363:32472" placeholder="SELECT `virt... #__virtuemart_categories_${$this-&gt;vmlang}" />
-            <marker date="1458357490219" expanded="true" signature="32949:33048" placeholder="SELECT `prod... #__virtuemart_products" />
-            <marker date="1458357490219" expanded="true" signature="33196:33311" placeholder="SELECT `virt... #__virtuemart_product_categories" />
-            <marker date="1458357490219" expanded="true" signature="34114:34354" placeholder="SELECT `p`.`... #__virtuemart_products_${$this-&gt;vmlang}" />
-            <marker date="1458357490219" expanded="true" signature="34803:34903" placeholder="SELECT `slug... #__virtuemart_manufacturers_${$this-&gt;vmlang}" />
-            <marker date="1458357490219" expanded="true" signature="35109:35216" placeholder="SELECT `virt... #__virtuemart_manufacturers_${$this-&gt;vmlang}" />
-            <marker date="1458357490219" expanded="true" signature="35429:35517" placeholder="SELECT `slug... #__virtuemart_vendors_${$this-&gt;vmlang}" />
-            <marker date="1458357490219" expanded="true" signature="35710:35828" placeholder="SELECT `virt... #__virtuemart_vendors_${$this-&gt;vmlang}" />
-            <marker date="1458357490219" expanded="true" signature="36538:36699" placeholder="SELECT * FRO... #__menu" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/assets/js/view_raovat_default.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/system/js/jquery.website_core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="12" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/controllers/raovat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693">
-          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/vmcontroller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5">
-          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/router/router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.769231">
-          <caret line="338" column="0" selection-start-line="337" selection-start-column="5" selection-end-line="338" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/productdetails/tmpl/adminedit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.846153">
-          <caret line="46" column="53" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/html/button.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.423077">
-          <caret line="83" column="123" selection-start-line="83" selection-start-column="123" selection-end-line="83" selection-end-column="123" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/tmpl/profile.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.769231">
-          <caret line="36" column="34" selection-start-line="0" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/vmview.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1320753">
-          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
-          <folding>
-            <marker date="1458396259148" expanded="true" signature="28627:28660" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sprflat/demo/panels.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
-          <caret line="429" column="59" selection-start-line="424" selection-start-column="10" selection-end-line="430" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/help/tmpl/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846">
-          <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/router/site.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.09434">
-          <caret line="227" column="0" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/gianhang/tmpl/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/gianhang/tmpl/edit.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/virtuemart/tmpl/frontend.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/virtuemart/tmpl/frontend.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923">
-          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/hoidap/tmpl/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/tmpl/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.307693">
-          <caret line="81" column="47" selection-start-line="0" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_users/views/login/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_users/views/login/tmpl/default_login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.528302">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/authentication/cookie/cookie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.4363637">
-          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/authentication/joomla/joomla.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="29.423077">
-          <caret line="102" column="55" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/permissions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8461539">
-          <caret line="151" column="29" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
-          <folding>
-            <marker date="1422838149432" expanded="true" signature="1696:1820" placeholder="SELECT `virt... #__virtuemart_permgroups" />
-            <marker date="1422838149432" expanded="true" signature="3816:4079" placeholder="SELECT COUNT... #__virtuemart_userinfos" />
-            <marker date="1422838149432" expanded="true" signature="4105:4322" placeholder="SELECT COUNT... #__virtuemart_userinfos" />
-            <marker date="1422838149432" expanded="true" signature="5085:5194" placeholder="SELECT `perm... #__virtuemart_vmusers" />
-            <marker date="1422838149432" expanded="true" signature="11290:11357" placeholder="SELECT `lft`... ${$table}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/shopfunctionsf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="9.923077">
-          <caret line="73" column="29" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
-          <folding>
-            <marker date="1422838383542" expanded="true" signature="6831:6911" placeholder="SELECT `temp... #__template_styles" />
-            <marker date="1422838383542" expanded="true" signature="6936:7017" placeholder="SELECT `temp... #__templates_menu" />
-            <marker date="1422838383542" expanded="true" signature="11976:12086" placeholder="SELECT `cate... #__virtuemart_categories" />
-            <marker date="1422838383542" expanded="true" signature="12331:12438" placeholder="SELECT `prod... #__virtuemart_products" />
-            <marker date="1422838383542" expanded="true" signature="13140:13242" placeholder="SELECT `layo... #__virtuemart_categories" />
-            <marker date="1422838383542" expanded="true" signature="13501:13601" placeholder="SELECT `layo... #__virtuemart_products" />
-            <marker date="1422838383542" expanded="true" signature="18316:18481" placeholder="..." />
-            <marker date="1422838383542" expanded="true" signature="18449:18474" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/virtuemart.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.264151">
-          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/view.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1320753">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5384614">
-          <caret line="911" column="0" selection-start-line="911" selection-start-column="0" selection-end-line="911" selection-end-column="0" />
-          <folding>
-            <marker date="1458409274065" expanded="true" signature="14530:14609" placeholder="SELECT `conf... #__virtuemart_configs" />
-            <marker date="1458409274065" expanded="true" signature="20726:21336" placeholder="CREATE TABLE... IF" />
-            <marker date="1458409274065" expanded="true" signature="21956:22054" placeholder="SELECT `virt... #__virtuemart_configs" />
-            <marker date="1458409274065" expanded="true" signature="22120:22186" placeholder="DELETE FROM " />
-            <marker date="1458409274065" expanded="true" signature="22286:22397" placeholder="INSERT INTO `#__virtuemart_configs`... " />
-            <marker date="1458409274065" expanded="true" signature="40295:40446" placeholder="SELECT `virt... #__virtuemart_vmusers" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/view.html.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693">
+        <state vertical-scroll-proportion="0.0">
           <caret line="119" column="37" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.7307692">
-          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-          <folding>
-            <element signature="e#6#623#0#PHP" expanded="true" />
-            <element signature="e#3650#3736#0#PHP" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#td#6;n#tr#0;n#table#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/html.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.1320753">
+        <state vertical-scroll-proportion="0.0">
           <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
           <folding>
             <marker date="1458409701902" expanded="true" signature="2911:3023" placeholder="..." />
@@ -1631,7 +1640,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/shopfunctions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8076925">
+        <state vertical-scroll-proportion="0.0">
           <caret line="671" column="9" selection-start-line="669" selection-start-column="8" selection-end-line="671" selection-end-column="9" />
           <folding>
             <marker date="1457668428730" expanded="true" signature="6779:6882" placeholder="SELECT `vend... #__virtuemart_vendors" />
@@ -1655,11 +1664,470 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/joomla/user/helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="221" column="50" selection-start-line="221" selection-start-column="30" selection-end-line="221" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/user/profile/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="209" column="0" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
+          <folding>
+            <marker date="1422838565184" expanded="true" signature="1668:1834" placeholder="SELECT profi... #__user_profiles" />
+            <marker date="1422838565184" expanded="true" signature="10530:10566" placeholder="INSERT INTO #__user_profiles... " />
+            <marker date="1422838565184" expanded="true" signature="11350:11449" placeholder="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/user/tmpl/profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8681319">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+        <state vertical-scroll-proportion="-16.538462">
+          <caret line="65" column="53" selection-start-line="65" selection-start-column="53" selection-end-line="65" selection-end-column="53" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/controllers/item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.384615">
+          <caret line="176" column="47" selection-start-line="176" selection-start-column="47" selection-end-line="176" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.9230769">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menuitemnested.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/content.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-70.61539">
+          <caret line="120" column="5" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/components/com_virtuemart/models/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="177" column="13" selection-start-line="177" selection-start-column="13" selection-end-line="177" selection-end-column="13" />
+          <folding>
+            <marker date="1454561367682" expanded="true" signature="3880:4014" placeholder="SELECT L.* F... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1454561367682" expanded="true" signature="5597:5755" placeholder="SELECT L.*,C... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1454561367682" expanded="true" signature="15804:16273" placeholder="SELECT count... #__virtuemart_products" />
+            <marker date="1454561367682" expanded="true" signature="16728:16825" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1454561367682" expanded="true" signature="17341:17565" placeholder="SELECT `cate... #__virtuemart_categories" />
+            <marker date="1454561367682" expanded="true" signature="19027:19154" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1454561367682" expanded="true" signature="23041:23139" placeholder="DELETE FROM " />
+            <marker date="1454561367682" expanded="true" signature="23294:23395" placeholder="DELETE FROM " />
+            <marker date="1454561367682" expanded="true" signature="23551:23648" placeholder="DELETE FROM " />
+            <marker date="1454561367682" expanded="true" signature="23818:23940" placeholder="UPDATE `#__v... " />
+            <marker date="1454561367682" expanded="true" signature="24557:24660" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1454561367682" expanded="true" signature="25765:25897" placeholder="SELECT `cate... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1454561367682" expanded="true" signature="26182:26346" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1454561367682" expanded="true" signature="26995:27269" placeholder="SELECT `cate... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1454561367682" expanded="true" signature="28636:28996" placeholder="SELECT `virt... #__virtuemart_category_categories" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/html/website/website_39/mod_menu1/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/mod_menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.6585366">
+          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.307693">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/admin_left.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/assets/js/jquery.sprFlat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="220" column="27" selection-start-line="220" selection-start-column="17" selection-end-line="220" selection-end-column="27" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/system/js/jquery.template.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_users/views/login/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/views/raovat/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9230769">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="22" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menuitemmenutype.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385">
+          <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/joomla/database/query.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8461537">
+          <caret line="1100" column="32" selection-start-line="1100" selection-start-column="32" selection-end-line="1100" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menu1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.038462">
+          <caret line="25" column="5" selection-start-line="21" selection-start-column="3" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/joomla/table/table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.423077">
+          <caret line="47" column="7" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/models/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.8076925">
+          <caret line="502" column="20" selection-start-line="502" selection-start-column="20" selection-end-line="502" selection-end-column="20" />
+          <folding>
+            <marker date="1457762468136" expanded="true" signature="3871:4005" placeholder="SELECT L.* F... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1457762468136" expanded="true" signature="5579:5737" placeholder="SELECT L.*,C... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1457762468136" expanded="true" signature="15777:16246" placeholder="SELECT count... #__virtuemart_products" />
+            <marker date="1457762468136" expanded="true" signature="16701:16798" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1457762468136" expanded="true" signature="17314:17538" placeholder="SELECT `cate... #__virtuemart_categories" />
+            <marker date="1457762468136" expanded="true" signature="19000:19127" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1457762468136" expanded="true" signature="23014:23112" placeholder="DELETE FROM " />
+            <marker date="1457762468136" expanded="true" signature="23267:23368" placeholder="DELETE FROM " />
+            <marker date="1457762468136" expanded="true" signature="23524:23621" placeholder="DELETE FROM " />
+            <marker date="1457762468136" expanded="true" signature="23791:23913" placeholder="UPDATE `#__v... " />
+            <marker date="1457762468136" expanded="true" signature="24530:24633" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1457762468136" expanded="true" signature="25738:25870" placeholder="SELECT `cate... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1457762468136" expanded="true" signature="26155:26319" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1457762468136" expanded="true" signature="26968:27242" placeholder="SELECT `cate... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1457762468136" expanded="true" signature="28609:28969" placeholder="SELECT `virt... #__virtuemart_category_categories" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/models/categories.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="30.461538">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+          <folding>
+            <marker date="1457762467714" expanded="true" signature="8294:8428" placeholder="SELECT L.* F... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1457762467714" expanded="true" signature="10002:10160" placeholder="SELECT L.*,C... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1457762467714" expanded="true" signature="20199:20668" placeholder="SELECT count... #__virtuemart_products" />
+            <marker date="1457762467714" expanded="true" signature="21123:21220" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1457762467714" expanded="true" signature="21736:21960" placeholder="SELECT `cate... #__virtuemart_categories" />
+            <marker date="1457762467714" expanded="true" signature="23422:23549" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1457762467714" expanded="true" signature="27740:27838" placeholder="DELETE FROM " />
+            <marker date="1457762467714" expanded="true" signature="27993:28094" placeholder="DELETE FROM " />
+            <marker date="1457762467714" expanded="true" signature="28250:28347" placeholder="DELETE FROM " />
+            <marker date="1457762467714" expanded="true" signature="28517:28639" placeholder="UPDATE `#__v... " />
+            <marker date="1457762467714" expanded="true" signature="29256:29359" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1457762467714" expanded="true" signature="30464:30596" placeholder="SELECT `cate... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1457762467714" expanded="true" signature="30881:31045" placeholder="SELECT `cate... #__virtuemart_category_categories" />
+            <marker date="1457762467714" expanded="true" signature="31694:31968" placeholder="SELECT `cate... #__virtuemart_categories_${VMLANG}" />
+            <marker date="1457762467714" expanded="true" signature="33335:33695" placeholder="SELECT `virt... #__virtuemart_category_categories" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/models/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.923077">
+          <caret line="1416" column="9" selection-start-line="1407" selection-start-column="8" selection-end-line="1416" selection-end-column="9" />
+          <folding>
+            <marker date="1457948913001" expanded="true" signature="33338:33435" placeholder="SELECT * FRO... #__virtuemart_product_prices" />
+            <marker date="1457948913001" expanded="true" signature="36756:36844" placeholder="SELECT `prod... #__virtuemart_products" />
+            <marker date="1457948913001" expanded="true" signature="51783:51889" placeholder="SELECT pc.vi... #__virtuemart_product_categories" />
+            <marker date="1457948913001" expanded="true" signature="53012:53165" placeholder="SELECT `virt... #__virtuemart_product_shoppergroups" />
+            <marker date="1457948913001" expanded="true" signature="61743:62021" placeholder="SELECT `l`.`... #__virtuemart_products" />
+            <marker date="1457948913001" expanded="true" signature="63917:64075" placeholder="SELECT `id`,... #__virtuemart_product_categories" />
+            <marker date="1457948913001" expanded="true" signature="64552:64645" placeholder="UPDATE `#__v... " />
+            <marker date="1457948913001" expanded="true" signature="72000:72125" placeholder="DELETE FROM " />
+            <marker date="1457948913001" expanded="true" signature="78180:78351" placeholder="SELECT `prod... #__virtuemart_products" />
+            <marker date="1457948913001" expanded="true" signature="78895:79038" placeholder="SELECT `prod... #__virtuemart_products_${$lang}" />
+            <marker date="1457948913001" expanded="true" signature="79132:79289" placeholder="INSERT INTO `#__virtuemart_products_${$lang}`... " />
+            <marker date="1457948913001" expanded="true" signature="80704:80748" placeholder="SELECT * FRO... #__virtuemart_product_prices" />
+            <marker date="1457948913001" expanded="true" signature="81663:81719" placeholder="SELECT * FRO... #__virtuemart_product_customfields" />
+            <marker date="1457948913001" expanded="true" signature="89169:89282" placeholder="SELECT DISTI... #__virtuemart_manufacturers_${VMLANG}" />
+            <marker date="1457948913001" expanded="true" signature="96155:96254" placeholder="UPDATE `#__v... " />
+            <marker date="1457948913001" expanded="true" signature="97185:97396" placeholder="SELECT l.pro... #__virtuemart_products_${VMLANG}" />
+            <marker date="1457948913001" expanded="true" signature="98690:98920" placeholder="SELECT * FRO... #__virtuemart_products" />
+            <marker date="1457948913001" expanded="true" signature="100495:100644" placeholder="SELECT IF(CO... #__virtuemart_products" />
+            <marker date="1457948913001" expanded="true" signature="100848:101036" placeholder="SELECT virtu... #__virtuemart_products_${VMLANG}" />
+            <marker date="1457948913001" expanded="true" signature="101269:101402" placeholder="SELECT virtu... #__virtuemart_products" />
+            <marker date="1457948913001" expanded="true" signature="101636:101721" placeholder="SELECT * FRO... #__virtuemart_products_${VMLANG}" />
+            <marker date="1457948913001" expanded="true" signature="104090:104492" placeholder="SELECT ou.* #__virtuemart_order_userinfos" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846">
+          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+          <folding>
+            <marker date="1458487394372" expanded="true" signature="2871:3003" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="40" column="31" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/less/vmenuModule.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.25">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/verticalmegamenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/js/vmenuModule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.814815">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/mixins/_sub-items-indentation.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/joomla/filesystem/folder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.115385">
+          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/form/field/modulelayout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6603774">
+          <caret line="160" column="64" selection-start-line="160" selection-start-column="64" selection-end-line="160" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.038462">
+          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/verticalmegamenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/default_component.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/default_heading.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/navigation_separator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/navigation_url.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.333333">
+          <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/bootstrap-navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="220.73077">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/navigation_menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/keyboard-navigation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/menu/menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="276" column="30" selection-start-line="276" selection-start-column="30" selection-end-line="276" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/navigation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="16" column="175" selection-start-line="16" selection-start-column="175" selection-end-line="16" selection-end-column="175" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/sm-blue.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5384617">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/controllers/menus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5384617">
+          <caret line="44" column="38" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/joomla/table/nested.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.730769">
+          <caret line="1308" column="9" selection-start-line="1308" selection-start-column="9" selection-end-line="1308" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1726619">
+          <caret line="1345" column="50" selection-start-line="1345" selection-start-column="50" selection-end-line="1345" selection-end-column="50" />
+          <folding>
+            <marker date="1458493643815" expanded="true" signature="24864:25017" placeholder="select @pare... " />
+          </folding>
         </state>
       </provider>
     </entry>
