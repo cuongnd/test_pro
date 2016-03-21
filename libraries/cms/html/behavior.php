@@ -126,7 +126,6 @@ abstract class JHtmlBehavior
 		// Set static array
 		static::$loaded[__METHOD__][$selector] = true;
 	}
-
 	/**
 	 * Add unobtrusive JavaScript support for form validation.
 	 *
@@ -138,9 +137,13 @@ abstract class JHtmlBehavior
 	 * @return  void
 	 *
 	 * @since   1.5
+	 *
+	 * @Deprecated 3.4 Use formvalidator instead
 	 */
 	public static function formvalidation()
 	{
+		JLog::add('The use of formvalidation is deprecated use formvalidator instead.', JLog::WARNING, 'deprecated');
+
 		// Only load once
 		if (isset(static::$loaded[__METHOD__]))
 		{
@@ -150,7 +153,22 @@ abstract class JHtmlBehavior
 		// Include MooTools framework
 		static::framework();
 
-		// Include jQuery Framework
+		// Load the new jQuery code
+		static::formvalidator();
+	}
+
+	public static function formvalidator()
+	{
+		// Only load once
+		if (isset(static::$loaded[__METHOD__]))
+		{
+			return;
+		}
+
+		// Include core
+		static::core();
+
+		// Include jQuery
 		JHtml::_('jquery.framework');
 
 		// Add validate.js language strings

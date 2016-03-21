@@ -62,6 +62,7 @@
                     dataPost = {
                         option: 'com_utility',
                         task: 'utility.ajaxSaveBlockHtml',
+                        enable_load_component:1,
                         block_id:block_id,
                         content:content
 

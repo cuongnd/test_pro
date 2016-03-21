@@ -160,6 +160,40 @@ abstract class JHtmlFormbehavior
 	}
 
 	/**
+	 * Add unobtrusive JavaScript support for form validation.
+	 *
+	 * To enable form validation the form tag must have class="form-validate".
+	 * Each field that needs to be validated needs to have class="validate".
+	 * Additional handlers can be added to the handler for username, password,
+	 * numeric and email. To use these add class="validate-email" and so on.
+	 *
+	 * @return  void
+	 *
+	 * @since   3.4
+	 */
+	public static function formvalidator()
+	{
+		// Only load once
+		if (isset(static::$loaded[__METHOD__]))
+		{
+			return;
+		}
+
+		// Include core
+		static::core();
+
+		// Include jQuery
+		JHtml::_('jquery.framework');
+
+		// Add validate.js language strings
+		JText::script('JLIB_FORM_FIELD_INVALID');
+
+		JHtml::_('script', 'system/punycode.js', false, true);
+		JHtml::_('script', 'system/validate.js', false, true);
+		static::$loaded[__METHOD__] = true;
+	}
+
+	/**
 	 * Method to load the AJAX Chosen library
 	 *
 	 * If debugging mode is on an uncompressed version of AJAX Chosen is included for easier debugging.

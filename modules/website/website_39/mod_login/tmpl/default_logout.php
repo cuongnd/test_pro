@@ -26,6 +26,7 @@ JHtml::_('behavior.keepalive');
 					</div>
 				<?php endif; ?>
 				<a href="index.php?option=com_virtuemart&view=raovat" class="btn btn-primary"  ><?php echo JText::_('Quản lý đăng tin rao vặt') ?></a>
+				<a href="index.php?option=com_virtuemart&view=gianhang&layout=edit" class="btn btn-primary"  ><?php echo JText::_('Tạo gian hàng') ?></a>
 				<div class="logout-button">
 					<input type="submit" name="Submit" class="btn btn-primary" value="<?php echo JText::_('JLOGOUT'); ?>" />
 					<input type="hidden" name="option" value="com_users" />

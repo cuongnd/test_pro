@@ -43,7 +43,7 @@ $doc->addScriptDeclaration($js_content);
 ?>
 <div class="view-raovat-edit">
 	<form action="index.php" method="post" class="form-horizontal" name="adminForm" id="adminForm">
-		<?php echo $this->render_toolbar_edit('raovat') ?>
+
 
 		<div class="panel panel-primary profile-widget">
 			<!-- Start .panel -->

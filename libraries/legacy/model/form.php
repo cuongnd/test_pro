@@ -168,7 +168,6 @@ abstract class JModelForm extends JModelLegacy
 
 			return $this->_forms[$hash];
 		}
-
 		// Get the form.
 		JForm::addFormPath(JPATH_COMPONENT . '/models/forms');
 		JForm::addFieldPath(JPATH_COMPONENT . '/models/fields');
@@ -302,6 +301,7 @@ abstract class JModelForm extends JModelLegacy
 	public function validate($form, $data, $group = null)
 	{
 		// Filter and validate the form data.
+
 		$data = $form->filter($data);
 		$return = $form->validate($data, $group);
 

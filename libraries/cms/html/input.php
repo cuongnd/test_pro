@@ -45,6 +45,20 @@ abstract class JHtmlInput
 		$html=ob_get_clean();
 		return $html;
 	}
+	public static function hide($name,$value,$attr=array())
+	{
+		$str_attr = implode(', ', array_map(
+			function ($v, $k) { return "$k=\"$v\""; },
+			$attr,
+			array_keys($attr)
+		));
+		ob_start();
+		?>
+		<input type="hidden" name="<?php echo $name ?>" value="<?php echo $value ?>"  <?php echo $str_attr ?> >
+		<?php
+		$html=ob_get_clean();
+		return $html;
+	}
 	public static function price($class_right,$name,$value,$attr=array(),$min=0,$max=1000,$sign="$",$more='')
 	{
 		$doc=JFactory::getDocument();

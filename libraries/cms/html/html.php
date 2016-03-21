@@ -106,7 +106,6 @@ abstract class JHtml
         }
 
         $className = $prefix . ucfirst($file);
-
         if (!class_exists($className)) {
             $path = JPath::find(static::$includePaths, strtolower($file) . '.php');
 

@@ -45,7 +45,6 @@ class UsersControllerUser extends UsersController
 
 		// Populate the data array:
 		$data = array();
-
 		$data['return']    = base64_decode($app->input->post->get('return', '', 'BASE64'));
 		$data['username']  = $input->$method->get('username', '', 'USERNAME');
 		$data['password']  = $input->$method->get('password', '', 'RAW');
@@ -205,13 +204,22 @@ class UsersControllerUser extends UsersController
 
 		// Get the application
 		$app = JFactory::getApplication();
-
 		// Get the form data.
 		$data = $this->input->post->get('user', array(), 'array');
-
 		// Get the model and validate the data.
 		$model  = $this->getModel('Registration', 'UsersModel');
-		$return	= $model->validate($data);
+
+		$form = $model->getForm();
+
+		if (!$form)
+		{
+			JError::raiseError(500, $model->getError());
+
+			return false;
+		}
+
+
+		$return	= $model->validate($form, $data);
 
 		// Check for errors.
 		if ($return === false)

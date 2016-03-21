@@ -191,6 +191,33 @@ class VmView extends JViewLegacy
 		$html=ob_get_clean();
 		return $html;
 	}
+	public function render_toolbar_custom($controller='default'){
+		$args = func_get_args();
+
+		ob_start();
+		?>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" name="keyword" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default"><?php echo JText::_('Go') ?></button>
+				</div>
+				<div class="navbar-form navbar-right" role="task">
+					<?php foreach($args as $task){ ?>
+					<?php echo JHtml::_('button.save',$controller.'.save'); ?>
+					<?php } ?>
+					<?php echo JHtml::_('button.apply',$controller.'.apply'); ?>
+					<?php echo JHtml::_('button.cancel',$controller.'.cancel'); ?>
+				</div>
+			</div><!-- /.container-fluid -->
+		</nav>
+
+		<?php
+		$html=ob_get_clean();
+		return $html;
+	}
 	function gridEdit($value, $i, $key, $link)
 	{
 		return '<a href="' . $link . '" class="edit" data-id="' . $value->$key . '"  title="edit">'

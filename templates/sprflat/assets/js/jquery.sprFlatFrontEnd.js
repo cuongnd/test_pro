@@ -159,7 +159,7 @@
             //handle checkbox and radios theme
             this.checkAndRadios(plugin.settings.forms.checkAndRadioTheme);
             //toggle header area function
-            this.toggleHeaderArea();
+            //this.toggleHeaderArea();
             //chat window basic functions
             this.chatWindow();
 

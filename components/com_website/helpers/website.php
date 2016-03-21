@@ -102,7 +102,7 @@ class websiteHelperFrontEnd
                                 <a href="javascript:void(0)" class="menu label label-danger menu-list config-block" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '"><i class="im-menu2"></i></a>
                                 <div id="position_content_' . $v->id . '" data-block-parent-id="' . $v->parent_id . '" data-axis="' . $axis . '" data-block-id="' . $v->id . '" class="position-content' . $setClass . ' block-item block-item-column' . ($v->position == ' position-component ' ? ' position-component ' : '') . ' ' . ($enableEditWebsite ? ' control-element ' : '') . ' "  element-type="' . $v->type . '">';
                         if ($v->position == 'position-component') {
-                            $html .= '<jdoc:include type="component"/>';
+                            $html .= '<div class="error"><jdoc:include type="message" /></div><jdoc:include type="component"/>';
                         } else {
                             $html .= '<jdoc:include type="modules" name="position-' . $v->id . '"/>';
 
@@ -168,7 +168,7 @@ class websiteHelperFrontEnd
                         //$html .= websiteHelperFrontEnd::getHeaderHtml($v, $enableEditWebsite, $prevV);
                         $html .= '<div data-screensize="' . $v->screensize . '" class=" block-item block-item-' . $v->type . ' ' . ($v->type == 'row' ? $classRow : $classColumn) . $setClass . ' ' . $css_class . '" data-block-id="' . $v->id . '" data-block-parent-id="' . $v->parent_id . '" data-column-type="' . $bootstrapColumnType . '" data-block-type="' . ($v->position == 'position-component' ? 'block-component' : '') . '" >';
                         if ($v->position == 'position-component') {
-                            $html .= $v->type == 'column' ? '<jdoc:include type="component"/>' : '';
+                            $html .= $v->type == 'column' ? '<div class="error"><jdoc:include type="message" /></div><jdoc:include type="component"/>' : '';
                         } else {
                             $html .= $v->type == 'column' ? '<jdoc:include type="modules" name="position-' . $v->id . '"/>' : '';
                         }
@@ -454,14 +454,12 @@ class websiteHelperFrontEnd
                     <div class="main-container" data-block-id="' . $rootId . '">
                         <a href="javascript:void(0)"  class="add label label-danger add-row"><i class="glyphicon glyphicon-plus"></i></a>
                         <a href="javascript:void(0)" class="menu label label-danger menu-list config-block"><i class="im-menu2"></i></a>
-                        <div class="error"><jdoc:include type="message" /></div>
                         ' . $html . '
                     </div>
                 </div>';
         } else {
             $html = '<div class="container container_' . ($use_main_frame ? $use_main_frame : $menuItemActiveId) . '">
                         <div class="main-container">
-                        <div class="error"><jdoc:include type="message" /></div>
                         ' . $html . '
                         </div>
                     </div>';

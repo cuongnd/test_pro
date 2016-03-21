@@ -29,7 +29,7 @@ if(!class_exists('vmview'))require(JPATH_VM_SITE.DS.'helpers'.DS.'vmview.php');
  * @subpackage Currency
  * @author RickG, Max Milbers
  */
-class virtuemartViewRaovat extends VmView {
+class virtuemartViewgianhang extends VmView {
 
 	function display($tpl = null) {
 		// Load the helper(s)
