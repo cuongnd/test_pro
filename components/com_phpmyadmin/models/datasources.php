@@ -91,8 +91,8 @@ class phpMyAdminModelDataSources extends JModelList
 			return static::$current_data_source;
 		}
 		$website = JFactory::getWebsite();
-		require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
-		$screenSize = UtilityHelper::getCurrentScreenSizeEditing();
+/*		require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
+		$screenSize = UtilityHelper::getCurrentScreenSizeEditing();*/
 		$db=JFactory::getDbo();
 		JTable::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/tables');
 		$tableDataSource=JTable::getInstance('DataSource','JTable');

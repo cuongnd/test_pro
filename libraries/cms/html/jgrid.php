@@ -325,6 +325,16 @@ abstract class JHtmlJGrid
 
 		return static::state($states, $value, $i, $prefix, $enabled, true, $checkbox);
 	}
+	public static function boolean($value, $i)
+	{
+
+		ob_start();
+		?>
+		<a class="boolean" href=""><i class="<?php echo $value?'fa-ok-sign':'fa-remove-sign' ?>"></i></a>
+		<?php
+		$html=ob_get_clean();
+		return $html;
+	}
 
 	/**
 	 * Returns a isDefault state on a grid

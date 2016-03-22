@@ -571,12 +571,7 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 		}
 		if(count($this->log)>$max_qurery)
 		{
-			echo "too many query";
-			echo "<pre>";
-			print_r($this->log);
-			print_r(JUtility::printDebugBacktrace());
-			echo "</pre>";
-			die;
+			throw new Exception("too many query");
 
 		}
 		// If debugging is enabled then let's log the query.

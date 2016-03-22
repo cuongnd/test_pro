@@ -35,8 +35,8 @@ class UsersModelProfile extends JModelForm
 		}
 
 		// Load the helper and model used for two factor authentication
-		require_once JPATH_ADMINISTRATOR . '/components/com_users/models/user.php';
-		require_once JPATH_ADMINISTRATOR . '/components/com_users/helpers/users.php';
+		require_once JPATH_ROOT . '/components/com_users/models/user.php';
+		require_once JPATH_ROOT . '/components/com_users/helpers/users.php';
 	}
 
 	/**

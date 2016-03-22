@@ -44,6 +44,96 @@ class websiteHelperFrontEnd
 
         return $select;
     }
+    public static function get_category(){
+        $website=JFactory::getWebsite();
+        $db = JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('categories.virtuemart_category_id,categories_en_gb.category_name,category_categories.category_parent_id,categories_en_gb2.category_name AS parent_category_name')
+            ->from('#__virtuemart_categories AS categories')
+            ->leftJoin('#__virtuemart_categories_en_gb AS categories_en_gb  USING(virtuemart_category_id)')
+            ->leftJoin('#__virtuemart_category_categories AS category_categories ON category_categories.category_child_id=categories.virtuemart_category_id')
+            ->leftJoin('#__virtuemart_categories_en_gb AS categories_en_gb2 ON categories_en_gb2.virtuemart_category_id=category_categories.category_parent_id')
+            ->where('categories.website_id='.(int)$website->website_id)
+        ;
+
+        $data=$db->setQuery($query)->loadObjectList();
+        $list_category_parent = array();
+        foreach ($data as $key => $category) {
+            if (!$category->category_parent_id) {
+                $category->tree_category = $category->category_name;
+                $list_category_parent[] = $category;
+                unset($data[$key]);
+            }
+        }
+        usort($list_category_parent, function ($category1, $cagory2) {
+            if ($category1->ordering == $cagory2->ordering) return 0;
+            return $category1->ordering < $cagory2->ordering ? -1 : 1;
+        });
+        $a_list_category=array();
+        foreach ($list_category_parent as $category) {
+            $return_list = array();
+            $return_list[] = $category;
+            self::create_tree_category_list($return_list,  $category->virtuemart_category_id, $data, 0);
+            $a_list_category=array_merge($a_list_category,$return_list);
+        }
+        return $a_list_category;
+
+    }
+    function create_tree_category_list(&$return_list_category = array(), $category_parent_id, $list_category, $level = 0)
+    {
+        $list_category1 = array();
+        foreach ($list_category as $key => $category) {
+            if ($category->category_parent_id==$category_parent_id) {
+                $list_category1[] = $category;
+                unset($list_category[$key]);
+            }
+        }
+        usort($list_category1, function ($category1, $category2) {
+            if ($category1->ordering == $category2->ordering) return 0;
+            return $category1->ordering < $category2->ordering ? -1 : 1;
+        });
+
+        $level1 = $level + 1;
+        foreach ($list_category1 as $category) {
+            $category->tree_category = str_repeat('--', $level1) . $category->category_name;
+            $return_list_category[] = $category;
+            self::create_tree_category_list($return_list_category, $category->virtuemart_category_id, $list_category, $level1);
+        }
+    }
+    public  function  get_list_websie_enable_create_sub_domain()
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('*')
+            ->from('#__domain_website')
+            ->where('enable_create_subdomain=1')
+        ;
+        return $db->setQuery($query)->loadObjectList();
+    }
+    public static function copy_rows_table($website_id,JTable $table_instance, $root_id, $id_name, $parent_id_name)
+    {
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('t_table.*')
+            ->from($table_instance->getTableName() . ' As t_table ')
+            ->order('t_table.ordering');
+        $db->setQuery($query);
+        $list_rows = $db->loadObjectList($id_name);
+        $children = array();
+
+// First pass - collect children
+        foreach ($list_rows as $v) {
+            $pt = $v->$parent_id_name;
+            $list = @$children[$pt] ? $children[$pt] : array();
+            if ($v->$id_name != $v->$parent_id_name) {
+                array_push($list, $v);
+            }
+            $children[$pt] = $list;
+        }
+        $list_parent_id=array();
+        self::execute_copy_rows_table($website_id,$table_instance,$id_name,$parent_id_name,$root_id,$children,$list_parent_id);
+
+    }
 
     function treeRecurse($id, &$html, &$children, $maxLevel = 9999, $level = 0, $enableEditWebsite = true, $active_menu_item_id = 0, $is_main_frame = false)
     {

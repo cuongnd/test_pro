@@ -203,6 +203,7 @@ class WebsiteControllerWebsite extends JControllerForm
         $modelWebsite->createGroupUser($website_id);
         $view = &$this->getView('website', 'html', 'WebsiteView');
         $view->errors=$modelWebsite->getErrors();
+
         $layout='creategroupuser';
         if(count($view->errors))
             $layout=$modelWebsite->getPrevLayoutByLayout($layout);
@@ -459,6 +460,16 @@ class WebsiteControllerWebsite extends JControllerForm
         $modelWebsie=$this->getModel();
         $view = &$this->getView('website', 'html', 'WebsiteView');
         $domain=$input->getString('sub_domain','');
+        $domain_id=$input->getInt('domain_id',0);
+        if($domain_id==0)
+        {
+            $respone_array['html'][] = array(
+                'key' => '.suggestionsubdomain',
+                'contents' => 'please select domain website'
+            );
+            echo json_encode($respone_array);
+            die;
+        }
         $exists=$modelWebsie->checkExistsDomain($domain);
         $view->websiteExists=$exists;
         if($exists)

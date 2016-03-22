@@ -42,6 +42,7 @@ class MenusControllerMenus extends JControllerAdmin
 		$table_menu_item->load($menu_item_id);
 		$result = new stdClass();
         $result->e = 0;
+		$table_menu_item->getDBO()->rebuild_action=1;
         if (!$table_menu_item->rebuild($menu_type_id)) {
 			$result->e = 1;
 			$result->m = $table_menu_item->getError();

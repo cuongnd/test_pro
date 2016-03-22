@@ -666,13 +666,13 @@ abstract class JHtml
      */
     public static function script($file, $framework = false, $relative = false, $path_only = false, $detect_browser = true, $detect_debug = true)
     {
+
         // Include MooTools framework
         if ($framework) {
             static::_('behavior.framework');
         }
 
         $includes = static::includeRelativeFiles('js', $file, $relative, $detect_browser, $detect_debug);
-
         // If only path is required
         if ($path_only) {
             if (count($includes) == 0) {

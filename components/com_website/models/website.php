@@ -213,7 +213,7 @@ class WebsiteModelWebsite extends JModelAdmin
         {
             $this->setError($tableUser->getError());
         }
-        require_once JPATH_ROOT.'/administrator/components/com_users/helpers/groups.php';
+        require_once JPATH_ROOT.'/components/com_users/helpers/groups.php';
         $listGroup=GroupsHelper::getAllGroupByWebsiteId($website_id);
         $groups=array();
         foreach($listGroup as $group) {
@@ -237,22 +237,77 @@ class WebsiteModelWebsite extends JModelAdmin
             //copy from website template
             $website_template_id=websiteHelperFrontEnd::getOneTemplateWebsite();
         }
-        require_once JPATH_ROOT.'/administrator/components/com_users/helpers/levels.php';
-        $listLevelUser=LevelsHelper::getListUserLevelByWebsiteId($website_template_id);
-        JModelLegacy::addIncludePath(JPATH_ROOT.'/administrator/components/com_users/models');
-        $modelUserLevel=JModelLegacy::getInstance('level','UsersModel');
-        $listUserLevelId=array();
-        foreach($listLevelUser as $level)
-        {
-            $listUserLevelId[]=$level->id;
+
+        $db=$this->_db;
+        $query=$db->getQuery(true)
+            ->select('user_group_id_website_id.user_group_id')
+            ->from('#__user_group_id_website_id AS user_group_id_website_id')
+            ->where('website_id='.(int)$website_id)
+        ;
+        $root_id=$db->setQuery($query)->loadResult();
+
+        $query = $db->getQuery(true);
+        $query->select('usergroups.*')
+            ->from('#__usergroups As usergroups ')
+            ->order('usergroups.ordering');
+        $db->setQuery($query);
+        $list_rows = $db->loadObjectList('id');
+        $children = array();
+        $list_id=array();
+
+// First pass - collect children
+        foreach ($list_rows as $v) {
+            $pt = $v->parent_id;
+            $list = @$children[$pt] ? $children[$pt] : array();
+            if ($v->id != $v->parent_id) {
+                array_push($list, $v);
+            }elseif ($root_id==$v->id&&$v->id == $v->parent_id) {
+                $list_id[$v->copy_from]=$v->id;
+            }
+            $children[$pt] = $list;
         }
-        $stateClone=$modelUserLevel->duplicateAndAssign($listUserLevelId,$website_id);
-        if(!$stateClone)
+
+        function get_array_older_id($children,$root_id,&$list_id=array())
         {
-            $this->setError($modelUserLevel->getError());
-            return false;
+
+            if (@$children[$root_id]) {
+                foreach ($children[$root_id] as $v) {
+                    $root_id = $v->id;
+                    $list_id[$v->copy_from]= $v->id;
+                    get_array_older_id($children,$root_id,$list_id);
+                }
+            }
+        }
+        $query->clear()
+            ->select('*')
+            ->from('#__viewlevels')
+            ->where('website_id='.(int)$website_template_id)
+        ;
+        $list_viewlevels=$db->setQuery($query)->loadObjectList();
+        $table_viewlevels=JTable::getInstance('viewlevel');
+        foreach($list_viewlevels AS $viewlevels)
+        {
+            $table_viewlevels->bind((array)$viewlevels);
+            $table_viewlevels->id=0;
+            $table_viewlevels->copy_from=$viewlevels->id;
+            $rules=$viewlevels->rules;
+            $rules=json_decode($rules);
+            foreach($rules AS $key=>$rule)
+            {
+                if($list_id[$rule])
+                {
+                    $rules[$key]=$list_id[$rule];
+                }
+            }
+            $table_viewlevels->rules=json_encode($rules);
+            $table_viewlevels->website_id=$website_id;
+            $ok=$table_viewlevels->store();
+            if(!$ok){
+                throw new Exception($table_viewlevels->getError());
+            }
         }
         return true;
+
     }
     public function CheckInsertDomainToWebsite(&$layout)
     {
@@ -326,7 +381,14 @@ class WebsiteModelWebsite extends JModelAdmin
         }
         return true;
     }
-    public function createGroupUser($website_id=0,$website_template_id=0)
+
+    /**
+     * @param int $website_id
+     * @param int $website_template_id
+     * @return bool
+     * @throws Exception
+     */
+    public function createGroupUser($website_id=0, $website_template_id=0)
     {
 
         if(!$website_template_id)
@@ -334,27 +396,83 @@ class WebsiteModelWebsite extends JModelAdmin
             //copy from website template
             $website_template_id=websiteHelperFrontEnd::getOneTemplateWebsite();
         }
-        require_once JPATH_ROOT.'/administrator/components/com_users/helpers/groups.php';
-        $rootId= GroupsHelper::createRootGroup($website_id);
-        if(!$rootId)
+        $db=$this->_db;
+        $query=$db->getQuery(true)
+            ->select('user_group_id_website_id.user_group_id')
+            ->from('#__user_group_id_website_id AS user_group_id_website_id')
+            ->where('website_id='.(int)$website_template_id)
+            ;
+        $old_parent_id=$db->setQuery($query)->loadResult();
+        if(!$old_parent_id)
         {
-            return false;
+            throw new Exception('there are no exists user group in website template');
         }
-        $listRootUserGroup=GroupsHelper::getRootUserGroupByWebsiteId($website_template_id);
+        $table_user_group=JTable::getInstance('usergroup','Jtable');
+        $table_user_group->load($old_parent_id);
+        $table_user_group->id=0;
+        $table_user_group->website_id=$website_id;
+        $table_user_group->copy_from=$old_parent_id;
+        $ok=$table_user_group->parent_store();
+        if(!$ok)
+        {
+            throw new Exception($table_user_group->getError());
+        }
+        $new_parent_id=$table_user_group->id;
+        $table_user_group->parent_id=$new_parent_id;
+        $ok=$table_user_group->parent_store();
+        if(!$ok)
+        {
+            throw new Exception($table_user_group->getError());
+        }
+        $user_group_website=JTable::getInstance('usergroupwebsite');
+        $user_group_website->user_group_id=$new_parent_id;
+        $user_group_website->website_id=$website_id;
+        $ok=$user_group_website->store();
+        if(!$ok)
+        {
+            throw new Exception($user_group_website->getError());
+        }
 
-        JModelLegacy::addIncludePath(JPATH_ROOT.'/administrator/components/com_users/models');
-        $modelUserGroup=JModelLegacy::getInstance('Group','UsersModel');
-        $listUserGroupId=array();
-        foreach($listRootUserGroup as $group)
-        {
-            $listUserGroupId[]=$group->id;
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('usergroups.*')
+            ->from('#__usergroups As usergroups ')
+            ->order('usergroups.ordering');
+        $db->setQuery($query);
+        $list_rows = $db->loadObjectList('id');
+        $children = array();
+
+// First pass - collect children
+        foreach ($list_rows as $v) {
+            $pt = $v->parent_id;
+            $list = @$children[$pt] ? $children[$pt] : array();
+            if ($v->id != $v->parent_id) {
+                array_push($list, $v);
+            }
+            $children[$pt] = $list;
         }
-        $stateClone=$modelUserGroup->duplicateAndAssign($listUserGroupId,$website_id);
-        if(!$stateClone)
+
+        function execute_copy_rows_table($website_id, JTable $table_user_group, $old_parent_id = 0, $new_parent_id, $children)
         {
-            $this->setError($modelUserGroup->getError());
-            return false;
+            if ($children[$old_parent_id]) {
+                foreach ($children[$old_parent_id] as $v) {
+                    $table_user_group->bind((array)$v);
+                    $table_user_group->id = 0;
+                    $table_user_group->copy_from = $v->id;
+                    $table_user_group->parent_id = $new_parent_id;
+                    $table_user_group->website_id = $website_id;
+                    $ok = $table_user_group->parent_store();
+                    if (!$ok) {
+                        throw new Exception($table_user_group->getError());
+                    }
+                    $new_parent_id = $table_user_group->id;
+                    $old_parent_id = $v->id;
+                    execute_copy_rows_table($website_id, $table_user_group,  $old_parent_id,$new_parent_id, $children);
+                }
+            }
         }
+
+        execute_copy_rows_table($website_id,$table_user_group,$old_parent_id,$new_parent_id,$children);
         return true;
     }
     public  function getListDomainByWebsiteId($website_id){
@@ -432,6 +550,50 @@ class WebsiteModelWebsite extends JModelAdmin
             //copy from website template
             $website_template_id=websiteHelperFrontEnd::getOneTemplateWebsite();
         }
+
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('*')
+            ->from('#__extensions')
+            ->where('website_id='.(int)$website_template_id)
+        ;
+        $list_extensions=$db->setQuery($query)->loadObjectList();
+        $table_extension=JTable::getInstance('extension');
+        $list_older_extension=array();
+        foreach($list_extensions AS $extensions)
+        {
+            $table_extension->bind((array)$extensions);
+            $table_extension->id=0;
+            $table_extension->copy_from=$extensions->id;
+            $table_extension->website_id=$website_id;
+            $ok=$table_extension->store();
+            if(!$ok){
+                throw new Exception($table_extension->getError());
+            }
+            $list_older_extension[$extensions->id]=$table_extension->id;
+        }
+        $query->clear()
+            ->select('*')
+            ->from('#__components AS components')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=components.extension_id')
+            ->where('extensions.website_id='.(int)$website_template_id)
+        ;
+        $list_components=$db->setQuery($query)->loadObjectList();
+        $table_component=JTable::getInstance('extension');
+        foreach($list_components AS $component)
+        {
+            $table_component->bind((array)$component);
+            $table_component->id=0;
+            $table_component->copy_from=$component->id;
+            $table_component->extension_id=$website_id;
+            $ok=$table_extension->store();
+            if(!$ok){
+                throw new Exception($table_extension->getError());
+            }
+        }
+
+
         require_once JPATH_ROOT.'/administrator/components/com_components/helpers/components.php';
         $listComponent=componentsHelper::getComponentByWebsiteId($website_template_id);
         $listComponentId=array();

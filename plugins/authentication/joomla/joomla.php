@@ -98,7 +98,7 @@ class PlgAuthenticationJoomla extends JPlugin
 		// Check the two factor authentication
 		if ($response->status == JAuthentication::STATUS_SUCCESS)
 		{
-			require_once JPATH_ADMINISTRATOR . '/components/com_users/helpers/users.php';
+			require_once JPATH_ROOT . '/components/com_users/helpers/users.php';
 
 			$methods = UsersHelper::getTwoFactorMethods();
 
@@ -109,7 +109,7 @@ class PlgAuthenticationJoomla extends JPlugin
 				//return;
 			}
 
-			require_once JPATH_ADMINISTRATOR . '/components/com_users/models/user.php';
+			require_once JPATH_ROOT . '/components/com_users/models/user.php';
 
 			$model = new UsersModelUser;
 

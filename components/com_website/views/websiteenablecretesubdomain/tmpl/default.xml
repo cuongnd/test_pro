@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="websiteenablecretesubdomain" option="websiteenablecretesubdomain">
+		<help
+			key = "websiteenablecretesubdomain"
+		/>
+		<message>
+			<![CDATA[main]]>
+		</message>
+	</layout>
+
+
+</metadata>
