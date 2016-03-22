@@ -381,7 +381,9 @@ class JHelperTags extends JHelper
 			);
 
 		$user = JFactory::getUser();
-		$groups = implode(',', $user->getAuthorisedViewLevels());
+		$Authorised_view_levels=$user->getAuthorisedViewLevels();
+		$authorised_view_levels[]=0;
+		$groups = implode(',', $authorised_view_levels);
 
 		$query->where('t.access IN (' . $groups . ')');
 

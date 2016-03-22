@@ -482,7 +482,6 @@ final class JApplicationSite extends JApplicationCms
             $website = JFactory::getWebsite();
             $query->where('s.website_id=' . (int)$website->website_id);
             $db->setQuery($query);
-
             $templates = $db->loadObjectList('id');
             foreach ($templates as &$template) {
                 $registry = new JRegistry;

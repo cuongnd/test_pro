@@ -37,7 +37,6 @@ class JFormFieldModulelayout extends JFormField
 	 */
 	protected function getInput()
 	{
-
 		// Get the client id.
 		$clientId = $this->element['client_id'];
 
@@ -69,14 +68,13 @@ class JFormFieldModulelayout extends JFormField
 		}
 
 		$template_style_id = preg_replace('#\W#', '', $template_style_id);
-
 		// If an extension and view are present build the options.
 		if ($module && $client)
 		{
             $website=JFactory::getWebsite();
 			// Load language file
 			$lang = JFactory::getLanguage();
-
+			$module_path=JPath::get_module_path($module);
 			$lang->load($module . '.sys', $client->path, null, false, true)
 				|| $lang->load($module . '.sys', $client->path . '/modules/website/website_'.$website->website_id.'/' . $module, null, false, true);
 
@@ -107,6 +105,7 @@ class JFormFieldModulelayout extends JFormField
 			$templates = $db->loadObjectList('element');
 
 			// Build the search paths for module layouts.
+
 			$module_path=$client->path . '/modules/website/website_'.$website->website_id.'/' . $module.'/tmpl';
 			jimport('joomla.filesystem.folder');
 			if(!JFolder::exists($module_path))
@@ -201,7 +200,6 @@ class JFormFieldModulelayout extends JFormField
 
 			// Compute the current selected values
 			$selected = array($this->value);
-
 			// Add a grouped list
 			$html[] = JHtml::_(
 				'select.groupedlist', $groups, $this->name,

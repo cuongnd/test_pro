@@ -18,36 +18,40 @@ $doc->addScript(JUri::root() . "/media/system/js/jquery.appendGrid-master/jquery
 $id = $app->input->get('id', 0, 'int');
 $element_path = $app->input->get('element_path', '', 'string');
 require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+require_once JPATH_ROOT . '/components/com_modules/helpers/module.php';
 $website = JFactory::getWebsite();
 require_once JPATH_ROOT . '/libraries/joomla/form/fields/icon.php';
 $db = JFactory::getDbo();
-
 require_once JPATH_ROOT . '/components/com_phpmyadmin/tables/updatetable.php';
 $table_extensions = new JTableUpdateTable($db, 'control');
 $filter = array(
-    'type' => 'module',
-    'website_id'=>$website->website_id
+    'type' => module_helper::ELEMENT_TYPE
 );
 if ($id != 0) {
     $filter['id'] = $id;
 }
-if ($element_path == 'root_module') {
-    $filter['element_path'] = 'root_module';
+if ($element_path == module_helper::MODULE_ROOT_NAME) {
+    $filter['element_path'] = module_helper::MODULE_ROOT_NAME;
 } else {
-    $filter['element_path'] = 'modules/website/website_'.$website->website_id.'/' . $element_path;
+    $filter['element_path'] = 'modules/website/website_' . $website->website_id . '/' . $element_path;
+    $filter['website_id'] = $website->website_id;
 }
 $table_extensions->load($filter);
 if (!$table_extensions->id) {
     $table_extensions->id = 0;
     $table_extensions->id = $id;
-    if ($path == 'root_module') {
-        $table_extensions->element_path = 'root_module';
+    if ($element_path == module_helper::MODULE_ROOT_NAME) {
+        $table_extensions->element_path = module_helper::MODULE_ROOT_NAME;
     } else {
-        $table_extensions->element_path = 'modules/website/website_'.$website->website_id.'/' . $element_path;
+        $table_extensions->website_id = $website->websie_id;
+        $table_extensions->element_path = 'modules/website/website_' . $website->website_id . '/' . $element_path;
     }
-    $table_extensions->type = 'module';
-    $table_extensions->website_id = $website->websie_id;
-    $table_extensions->store();
+    $table_extensions->type = module_helper::ELEMENT_TYPE;
+
+    $ok = $table_extensions->store();
+    if (!$ok) {
+        throw new Exception($table_extensions->getError());
+    }
 
 }
 $fields = $table_extensions->fields;
@@ -60,10 +64,8 @@ if (!count($fields)) {
 }
 jimport('joomla.filesystem.folder');
 
-
-
 $list_field_type = array();
-$list_path=JFormField::get_list_field_path();
+$list_path = JFormField::get_list_field_path();
 
 
 foreach ($list_path as $path) {
@@ -75,8 +77,6 @@ foreach ($list_path as $path) {
         );
     }
 }
-
-
 
 
 //get list field table position config
@@ -93,8 +93,8 @@ ob_start();
 <script type="text/javascript" id="<?php echo $scriptId ?>">
 
     <?php
-        ob_get_clean();
-        ob_start();
+    ob_get_clean();
+    ob_start();
     ?>
     jQuery(document).ready(function ($) {
 
@@ -102,9 +102,9 @@ ob_start();
         view_module_config.init_view_module_config();
     });
     <?php
-     $script=ob_get_clean();
-     ob_start();
-      ?>
+    $script = ob_get_clean();
+    ob_start();
+    ?>
 </script>
 <?php
 ob_get_clean();
@@ -130,8 +130,8 @@ foreach ($list_field_type as $item_type) {
         $class_item_type = new $class_item_type;
         $list_attribute_config = $class_item_type->get_attribute_config();
         $reflector = new ReflectionClass(get_class($class_item_type));
-        $field_path=dirname($reflector->getFileName());
-        $field_path=str_replace(JPATH_ROOT.'/','',$field_path);
+        $field_path = dirname($reflector->getFileName());
+        $field_path = str_replace(JPATH_ROOT . '/', '', $field_path);
         break;
     }
 }
@@ -159,7 +159,7 @@ ob_start();
         data-<?php echo $key ?>="<?php echo $value ?>"
     <?php } ?>
 
-    >
+>
     <div class="dd-handle">
         <div class="dd-handle-move pull-left"><i class="fa-move"></i></div>
         <span class="key_name"><?php echo "$item->label ( $item->name ) " ?></span>
@@ -216,9 +216,9 @@ ob_start();
             </select>
 
         </label>
-        <label>Read only<input <?php echo $item->readonly == 1 ? 'checked' : '' ?>  type="checkbox"
-                                                                                    onchange="view_module_config.update_data_column(this,'readonly','checkbox')"
-                                                                                    value="1"/></label>
+
+        <label>Read
+            only<?php echo JHtml::_('input.radioyesno', '', 'readonly', $item->readonly, array('data-onchange' => "view_module_config.update_data_column(this,'readonly','checkbox')", 'class' => 'not-bootstrap-toggle')) ?></label>
 
         <div class="row">
 
@@ -278,9 +278,17 @@ ob_start();
     <input type="hidden" data-element_path="<?php echo $table_extensions->element_path ?>"
            value="<?php echo $field_block_output ?>" id="field_block-output"/>
 
-    <button class="btn btn-danger save-block-property pull-right" onclick="view_module_config.save_and_close(self)" ><i class="fa-save"></i>Save&close</button>&nbsp;&nbsp;
-    <button class="btn btn-danger apply-block-property pull-right" onclick="view_module_config.save(self)" ><i class="fa-save"></i>Save</button>&nbsp;&nbsp;
-    <button class="btn btn-danger cancel-block-property pull-right" onclick="view_module_config.cancel(self)"><i class="fa-save"></i>Cancel</button>
+    <button class="btn btn-danger save-block-property pull-right" onclick="view_module_config.save_and_close(self)"><i
+            class="fa-save"></i>Save&close
+    </button>
+    &nbsp;&nbsp;
+    <button class="btn btn-danger apply-block-property pull-right" onclick="view_module_config.save(self)"><i
+            class="fa-save"></i>Save
+    </button>
+    &nbsp;&nbsp;
+    <button class="btn btn-danger cancel-block-property pull-right" onclick="view_module_config.cancel(self)"><i
+            class="fa-save"></i>Cancel
+    </button>
 
 
     <?php

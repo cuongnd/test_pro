@@ -234,7 +234,7 @@ jQuery(document).ready(function ($) {
             {
                 $.open_popup_window({
                     scrollbars:1,
-                    windowName:'main_ralationship',
+                    windowName:'module config field',
                     windowURL:'index.php?enable_load_component=1&option=com_modules&view=module&layout=config&id='+id+'&element_path='+element_path+'&tmpl=field&hide_panel_component=1',
                     centerBrowser:1,
                     width:'400',
@@ -252,6 +252,7 @@ jQuery(document).ready(function ($) {
                     data: (function () {
 
                         dataPost = {
+                            enable_load_component:1,
                             option: 'com_modules',
                             view: 'module',
                             tmpl:'ajax_json',

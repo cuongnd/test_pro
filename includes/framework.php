@@ -15,27 +15,26 @@ $fileWebStore = $host . '.ini';
 $contentIni = '';
 
 require_once JPATH_ROOT . '/components/com_website/helpers/website.php';
-$domainSupper = websiteHelperFrontEnd::getSupperAdminWebsite();
-if (in_array($host, $domainSupper)) {
-    // Sanitize the namespace.
-    $fileConfig = JPATH_CONFIGURATION . '/configuration.php';
-} else {
-    $pathFileWebStore = JPATH_ROOT . '/webstore/' . $fileWebStore;
-    if (!file_exists($pathFileWebStore)) {
+$pathFileWebStore = JPATH_ROOT . '/webstore/' . $fileWebStore;
+if (!file_exists($pathFileWebStore)) {
 
-        exit("File $fileWebStore not exists");
-    }
-    $myfile = fopen($pathFileWebStore, "r") or die("Unable to open file $fileWebStore !");
-    $contentIni = fread($myfile, filesize($pathFileWebStore));
-    fclose($myfile);
-    $contentIni = trim($contentIni);
-    if (!is_numeric($contentIni)) {
-        exit("File $fileWebStore format incorrect");
-    }
-    define('WEBSITE_ID',          (int)$contentIni);
-    $fileConfig = JPATH_ROOT . '/configuration/configuration_' . $contentIni . '.php';
-
+    exit("File $fileWebStore not exists");
 }
+$myfile = fopen($pathFileWebStore, "r") or die("Unable to open file $fileWebStore !");
+$contentIni = fread($myfile, filesize($pathFileWebStore));
+fclose($myfile);
+$contentIni = trim($contentIni);
+if (!is_numeric($contentIni)) {
+    exit("File $fileWebStore format incorrect");
+}
+define('WEBSITE_ID',          (int)$contentIni);
+if(!WEBSITE_ID)
+{
+    throw new Exception('can not found website');
+}
+
+$fileConfig = JPATH_ROOT . '/configuration/configuration_' . $contentIni . '.php';
+
 
 // System includes
 require_once JPATH_LIBRARIES . '/import.legacy.php';

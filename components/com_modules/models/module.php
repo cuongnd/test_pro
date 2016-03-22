@@ -703,6 +703,11 @@ class ModulesModelModule extends JModelAdmin
 
 		$website=JFactory::getWebsite();
 		$ui_path= 'modules/website/website_'.$website->website_id.'/'.$item->module;
+		jimport('joomla.filesystem.folder');
+		if(!JFolder::exists(JPATH_ROOT.DS.$ui_path))
+		{
+			$ui_path= 'modules/'.$item->module;
+		}
 		$website=JFactory::getWebsite();
 		$db=JFactory::getDbo();
 		require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
@@ -728,28 +733,27 @@ class ModulesModelModule extends JModelAdmin
 		$filename=$pathInfo['filename'];
 		$dirName=$pathInfo['dirname'];
 		$website=JFactory::getWebsite();
-		$xml_file="modules/website/website_$website->website_id/$item->module/$item->module.xml";
 
+		$xml_file=$ui_path.DS.$item->module.'.xml';
 		JFile::write(JPATH_ROOT.'/'.$xml_file,$string_xml);
 
 
 
 
-
+		require_once JPATH_ROOT.'/components/com_modules/helpers/module.php';
 		$query=$db->getQuery(true);
 		$query->select('*')
 			->from('#__control')
-			->where('element_path LIKE '.$query->q('%root_module%'))
-			->where('type='.$query->q('module'))
-			->where('website_id='.(int)$website->website_id)
+			->where('element_path = '.$query->q(module_helper::MODULE_ROOT_NAME))
+			->where('type='.$query->q(module_helper::ELEMENT_TYPE))
 		;
 		$control=$db->setQuery($query)->loadObject();
+		if(!$control)
+		{
+			throw new Exception('there are no global module config in database, please config global module property in backend ad layout first');
+		}
 		$fields=$control->fields;
 		$fields=base64_decode($fields);
-
-
-
-
 		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
 		ob_start();
 		parent::render_to_xml($fields);
@@ -958,10 +962,17 @@ class ModulesModelModule extends JModelAdmin
 			$website=JFactory::getWebsite();
 			// Get the module XML.
 			$client = JApplicationHelper::getClientInfo($table->client_id);
-			$path   = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/' . $table->module . '/' . $table->module . '.xml');
+			$module_path='modules/website/website_'.$website->website_id.'/' . $table->module;
+			$xml_module_path= $module_path. '/' . $table->module . '.xml';
+			if(!JFolder::exists(JPATH_ROOT.DS.$module_path))
+			{
+				$xml_module_path= 'modules/' .$table->module.DS. $table->module . '.xml';
+			}
 
+			$path   = JPath::clean($client->path.DS .$xml_module_path );
 			if (file_exists($path))
 			{
+
 				$this->_cache[$pk]->xml = simplexml_load_file($path);
 			}
 			else
@@ -1038,12 +1049,10 @@ class ModulesModelModule extends JModelAdmin
 
 		$client   = JApplicationHelper::getClientInfo($clientId);
 		$website=JFactory::getWebsite();
-		$formFile = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/' . $module . '/' . $module . '.xml');
-
+		$module_path=JPath::get_module_path($module);
 		// Load the core and/or local language file(s).
-		$lang->load($module, $client->path, null, false, true)
-			||	$lang->load($module, $client->path . '/modules/website/website_'.$website->website_id.'/' . $module, null, false, true);
-
+		$lang->load($module, $module_path, null, false, true);
+		$formFile=$module_path.DS.$module.'.xml';
 		if (file_exists($formFile))
 		{
 			// Get the module form.

@@ -1,80 +1,12 @@
 <form>
-					<field type="text" readonly="false" label="Id" default=""
-						   name="id" onchange=""
+					<field type="text" readonly="false" label="" default=""
+						   name="" onchange=""
 
 
 												>
 											</field>
-					<field type="checkbox" label="Id" default="0"
-						   name="enable_id" onchange="">
+					<field type="checkbox" label="" default="0"
+						   name="enable_" onchange="">
 
 					</field>
-					
-					<field type="text" readonly="false" label="title" default=""
-						   name="title" onchange=""
-
-
-												>
-											</field>
-					<field type="checkbox" label="title" default="0"
-						   name="enable_title" onchange="">
-
-					</field>
-					
-					<field type="list" readonly="false" label="Show title" default=""
-						   name="showtitle" onchange=""
-
-
-												>
-																							<option value="yes">Yes</option>
-																																<option value="no">No</option>
-																				</field>
-					<field type="checkbox" label="Show title" default="0"
-						   name="enable_showtitle" onchange="">
-
-					</field>
-					
-					<field type="text" readonly="false" label="Module" default=""
-						   name="module" onchange=""
-
-
-												>
-											</field>
-					<field type="checkbox" label="Module" default="0"
-						   name="enable_module" onchange="">
-
-					</field>
-					
-					<field type="text" readonly="false" label="Postion" default=""
-						   name="position" onchange=""
-
-
-												>
-											</field>
-					<field type="checkbox" label="Postion" default="0"
-						   name="enable_position" onchange="">
-
-					</field>
-					
-					<field type="text" readonly="false" label="Module" default=""
-						   name="params" onchange=""
-
-
-												>
-											</field>
-					<field type="checkbox" label="Module" default="0"
-						   name="enable_params" onchange="">
-
-					</field>
-					<fields name="params">
-					<field type="text" readonly="false" label="class sfx" default=""
-						   name="class_sfx" onchange=""
-
-
-												>
-											</field>
-					<field type="checkbox" label="class sfx" default="0"
-						   name="enable_class_sfx" onchange="">
-
-					</field>
-					</fields></form>
+					</form>

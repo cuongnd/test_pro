@@ -62,7 +62,7 @@ class UtilityHelper
         $user->setParam(self::$key_screen_size_editing,$screenSizeEditing);
         if(!$user->save())
         {
-            throw new Exception('cannot save params');
+            throw new Exception($user->getError());
         }
 
         return $screenSizeEditing;

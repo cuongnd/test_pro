@@ -63,15 +63,31 @@ class ModulesControllerModule extends JControllerForm
 		$element_path=$app->input->get('element_path','','string');
 		$db=JFactory::getDbo();
 		require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+		require_once JPATH_ROOT.'/components/com_modules/helpers/module.php';
 		$table_control=new JTableUpdateTable($db,'control');
-		$table_control->load(array(
+		$filter=array(
 			'element_path'=>$element_path,
-			'type'=>'module',
-			'website_id'=>$website->website_id
-		));
-		$table_control->website_id=$website->website_id;
+			'type'=>module_helper::ELEMENT_TYPE
+		);
+		if($element_path==module_helper::MODULE_ROOT_NAME)
+		{
+		}else{
+			$filter['website_id']=$website->website_id;
+		}
+		$table_control->load($filter);
+		if(!$table_control->id)
+		{
+			throw new Exception('there are no global module config in database, please config global module property in backend ad layout first');
+		}
+		if($element_path==module_helper::MODULE_ROOT_NAME)
+		{
+			$table_control->website_id=null;
+		}else{
+			$table_control->website_id=$website->website_id;
+		}
+
 		$table_control->element_path=$element_path;
-		$table_control->type='module';
+		$table_control->type=module_helper::ELEMENT_TYPE;
 		$table_control->fields=$fields;
 		$response=new stdClass();
 		$response->e=0;

@@ -324,12 +324,16 @@ class JPath
 	{
 		jimport('joomla.filesystem.folder');
 		$website=JFactory::getWebsite();
-		$path=($root?JPATH_ROOT.DS:'').'components/website/website_'.$website->website_id.'/'.$component;
-		if(!JFolder::exists($path))
+		$component_path='components/website/website_'.$website->website_id.'/'.$component;
+		if(!JFolder::exists(JPATH_ROOT.DS.$component_path))
 		{
-			$path=($root?JPATH_ROOT.DS:'').'components/'.$component;
+			$component_path='components/'.$component;
 		}
-		return $path;
+		if($root)
+		{
+			$component_path=JPATH_ROOT.DS.$component_path;
+		}
+		return $component_path;
 	}
 
 	public static function get_component_url($component)
@@ -343,5 +347,21 @@ class JPath
 			$component_url=JUri::root().'components/'.$component;
 		}
 		return $component_url;
+	}
+
+	public static function get_module_path($module,$root=true)
+	{
+		jimport('joomla.filesystem.folder');
+		$website=JFactory::getWebsite();
+		$module_path='modules/website/website_'.$website->website_id.'/'.$module;
+		if(!JFolder::exists(JPATH_ROOT.DS.$module_path))
+		{
+			$module_path='modules/'.$module;
+		}
+		if($root)
+		{
+			$module_path=JPATH_ROOT.DS.$module_path;
+		}
+		return $module_path;
 	}
 }

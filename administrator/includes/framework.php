@@ -39,6 +39,11 @@ else
     $contentIni= fread($myfile,filesize($pathFileWebStore));
     fclose($myfile);
     $contentIni=trim($contentIni);
+    if(!$contentIni)
+    {
+        throw new Exception('can not found website');
+    }
+
     define('WEBSITE_ID',          $contentIni);
     if(!is_numeric($contentIni))
     {

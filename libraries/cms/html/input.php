@@ -100,8 +100,6 @@ abstract class JHtmlInput
 	public static function radioyesno($class_right,$name,$value,$attr=array(),$more='')
 	{
 		$doc=JFactory::getDocument();
-		$class=$attr['class'].' form-control';
-		unset($attr['class']);
 		$attr = implode(', ', array_map(
 			function ($v, $k) { return "$k=\"$v\""; },
 			$attr,

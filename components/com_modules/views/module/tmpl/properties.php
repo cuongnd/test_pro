@@ -17,11 +17,16 @@ require_once JPATH_ROOT . '/libraries/joomla/form/fields/radioyesno.php';
 $website=JFactory::getWebsite();
 $ui_path = $item->module;
 $table_control = new JTableUpdateTable($db, 'control');
-
+$element_path='modules/website/website_'.$website->website_id.'/' . $ui_path;
+jimport('joomla.filesystem.folder');
+if(!JFolder::exists(JPATH_ROOT.DS.$element_path))
+{
+    $element_path='modules/' . $ui_path;
+}
 $table_control->load(
     array(
-        "element_path" => 'modules/website/website_'.$website->website_id.'/' . $ui_path,
-        "type" => 'module',
+        "element_path" => $element_path,
+        "type" => module_helper::ELEMENT_TYPE,
         'website_id'=>$website->website_id
     )
 );
@@ -29,12 +34,12 @@ $fields = $table_control->fields;
 $fields = base64_decode($fields);
 
 require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+require_once JPATH_ROOT.'/components/com_modules/helpers/module.php';
 $fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
 $table_control->load(
     array(
-        "element_path" => "root_module",
-        "type" => 'module',
-        'website_id'=>$website->website_id
+        "element_path" => module_helper::MODULE_ROOT_NAME,
+        "type" =>module_helper::ELEMENT_TYPE
     )
 );
 $main_fields = $table_control->fields;
