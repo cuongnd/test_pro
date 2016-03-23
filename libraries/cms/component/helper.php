@@ -482,7 +482,6 @@ class JComponentHelper
 		try
 		{
 			$components = $cache->get(array($db, 'loadObjectList'), array('option'), $option, false);
-
 			/**
 			 * Verify $components is an array, some cache handlers return an object even though
 			 * the original was a single object array.

@@ -345,7 +345,6 @@
       <excludeFolder url="file://$MODULE_DIR$/modules/website/website_6" />
       <excludeFolder url="file://$MODULE_DIR$/msd1.24.4" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/acymailing" />
-      <excludeFolder url="file://$MODULE_DIR$/plugins/authentication" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/captcha" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/content" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/editors" />

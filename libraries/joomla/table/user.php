@@ -75,7 +75,7 @@ class JTableUser extends JTable
 
 		// Reset the table.
 		$this->reset();
-		$list_user_group_id=JUserHelper::get_list_user_group();
+		$list_user_group_id=JUserHelper::get_list_user_group_id();
 		// Load the user data.
 		$query = $this->_db->getQuery(true)
 			->select('users.*')
@@ -98,19 +98,8 @@ class JTableUser extends JTable
 
 		if ($return !== false)
 		{
-			$list_user_group=JUserHelper::get_list_user_group();
-			// Load the user groups.
-			$query->clear()
-                ->select('g.id,g.title')
-				->from($this->_db->quoteName('#__usergroups') . ' AS g')
-				->join('INNER', $this->_db->quoteName('#__user_usergroup_map') . ' AS m ON m.group_id = g.id')
-				->where('m.group_id IN ('.implode(',',$list_user_group).')')
-				->where($this->_db->quoteName('m.user_id') . ' = ' . (int) $userId);
-			$this->_db->setQuery($query);
-            $listGroup=$this->_db->loadObjectList();
 			// Add the groups to the user data.
-			$this->groups = $this->_db->loadAssocList('id', 'id');
-            $this->website_id=$listGroup[0]->website_id;
+			$this->groups = JAccess::getGroupsByUser($userId,true);
 
 		}
 
