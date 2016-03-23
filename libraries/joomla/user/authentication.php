@@ -104,7 +104,7 @@ class JAuthentication extends JObject
 
 		if (!$isLoaded)
 		{
-			JLog::add(JText::_('JLIB_USER_ERROR_AUTHENTICATION_LIBRARIES'), JLog::WARNING, 'jerror');
+			throw new Exception('there are no plugin user authentication, please check again');
 		}
 	}
 

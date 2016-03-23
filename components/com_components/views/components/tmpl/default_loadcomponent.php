@@ -8,8 +8,9 @@ $db=JFactory::getDbo();
 $query = $db->getQuery(true);
 $query->from('#__components as component')
     ->select('component.*')
-    ->where('type="component"')
-    ->where('website_id=' . (int)$website->website_id)
+    ->leftJoin('#__extensions AS extensions ON extensions.id=component.extension_id')
+    ->where('component.type='.$query->q('component'))
+    ->where('extensions.website_id=' . (int)$website->website_id)
     ->group('component.name')
 ;
 $listComponent = $db->setQuery($query)->loadObjectList();

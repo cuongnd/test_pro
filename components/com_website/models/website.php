@@ -54,6 +54,10 @@ class WebsiteModelWebsite extends JModelAdmin
         $tableWebsite->title=$domain;
         $tableWebsite->alias=$domain;
         $tableWebsite->introtext=$domain;
+        if($user->id)
+        {
+            throw new  Exception('website no created by, please login again');
+        }
         $tableWebsite->created_by=$user->id;
         $tableWebsite->created=JFactory::getDate()->format('Y-m-d h:i:m');
         if(!$tableWebsite->store())
@@ -105,7 +109,7 @@ class WebsiteModelWebsite extends JModelAdmin
         $steps[]='createContentCategory';
         $session=JFactory::getSession();
         $website_id=$session->get('website_id',0);
-        if($website_id) {
+      /*  if($website_id) {
             $db = $this->getDbo();
             $query = $db->getQuery(true);
             $query->select('c.element AS element,"administrator/components" AS path');
@@ -138,7 +142,7 @@ class WebsiteModelWebsite extends JModelAdmin
                     }
                 }
             }
-        }
+        }*/
         $steps[]='finish';
         return $steps;
     }
@@ -171,18 +175,40 @@ class WebsiteModelWebsite extends JModelAdmin
             //copy from website template
             $website_template_id=websiteHelperFrontEnd::getOneTemplateWebsite();
         }
-        require_once JPATH_ROOT.'/administrator/components/com_templates/helpers/styles.php';
-        $listStyle=StylesHelper::getStylesByWebsiteId($website_template_id);
-        $listStyleId=array();
-        JModelLegacy::addIncludePath(JPATH_ROOT.'/administrator/components/com_templates/models');
-        $modelStyle=JModelLegacy::getInstance('style','TemplatesModel');
-        foreach($listStyle as $style)
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('*')
+            ->from('#__extensions')
+            ->where('website_id='.(int)$website_id)
+        ;
+        $list_extensions=$db->setQuery($query)->loadObjectList();
+        $list_older_extension=array();
+        foreach($list_extensions AS $extensions)
         {
-            $listStyleId[]=$style->id;
+            $list_older_extension[$extensions->copy_from]=$extensions->id;
         }
-        if(!$modelStyle->duplicateAndAssign($listStyleId,$website_id))
+        $query->clear()
+            ->select('template_styles.*')
+            ->from('#__template_styles AS template_styles')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=template_styles.extension_id')
+            ->where('extensions.website_id='.(int)$website_template_id)
+        ;
+        $list_modules=$db->setQuery($query)->loadObjectList();
+        $table_template=JTable::getInstance('template');
+        foreach($list_modules AS $template)
         {
-            $this->setError($modelStyle->getError());
+            $table_template->bind((array)$template);
+            $table_template->id=0;
+            $table_template->copy_from=$template->id;
+            if($extension_id=$list_older_extension[$template->extension_id])
+            {
+                $table_template->extension_id=$extension_id;
+            }
+            $ok=$table_template->store();
+            if(!$ok){
+                throw new Exception($table_template->getError());
+            }
         }
         return true;
 
@@ -580,32 +606,20 @@ class WebsiteModelWebsite extends JModelAdmin
             ->where('extensions.website_id='.(int)$website_template_id)
         ;
         $list_components=$db->setQuery($query)->loadObjectList();
-        $table_component=JTable::getInstance('extension');
+        $table_component=JTable::getInstance('component');
         foreach($list_components AS $component)
         {
             $table_component->bind((array)$component);
             $table_component->id=0;
             $table_component->copy_from=$component->id;
-            $table_component->extension_id=$website_id;
-            $ok=$table_extension->store();
-            if(!$ok){
-                throw new Exception($table_extension->getError());
+            if($extension_id=$list_older_extension[$component->extension_id])
+            {
+                $table_component->extension_id=$extension_id;
             }
-        }
-
-
-        require_once JPATH_ROOT.'/administrator/components/com_components/helpers/components.php';
-        $listComponent=componentsHelper::getComponentByWebsiteId($website_template_id);
-        $listComponentId=array();
-        JModelLegacy::addIncludePath(JPATH_ROOT.'/administrator/components/com_components/models');
-        $modelComponent=JModelLegacy::getInstance('component','componentsModel');
-        foreach($listComponent as $component)
-        {
-            $listComponentId[]=$component->id;
-        }
-        if(!$modelComponent->duplicateAndAssign($listComponentId,$website_id))
-        {
-            $this->setError($modelComponent->getError());
+            $ok=$table_component->store();
+            if(!$ok){
+                throw new Exception($table_component->getError());
+            }
         }
         return true;
     }
@@ -616,24 +630,43 @@ class WebsiteModelWebsite extends JModelAdmin
             //copy from website template
             $website_template_id=websiteHelperFrontEnd::getOneTemplateWebsite();
         }
-        require_once JPATH_ROOT.'/administrator/components/com_website/helpers/modules.php';
-        $listModule=modulesHelper::getModulesByWebsiteId($website_template_id);
-
-        $listModuleId=array();
-        JModelLegacy::addIncludePath(JPATH_ROOT.'/administrator/components/com_website/models');
-        $modelModule=JModelLegacy::getInstance('module','modulesModel');
-        foreach($listModule as $module)
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('*')
+            ->from('#__extensions')
+            ->where('website_id='.(int)$website_id)
+        ;
+        $list_extensions=$db->setQuery($query)->loadObjectList();
+        $list_older_extension=array();
+        foreach($list_extensions AS $extensions)
         {
-            $listModuleId[]=$module->id;
+            $list_older_extension[$extensions->copy_from]=$extensions->id;
         }
-
-        if(!$modelModule->duplicateAndAssign($listModuleId,$website_id))
+        $query->clear()
+            ->select('*')
+            ->from('#__modules AS modules')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=modules.extension_id')
+            ->where('extensions.website_id='.(int)$website_template_id)
+        ;
+        $list_modules=$db->setQuery($query)->loadObjectList();
+        $table_module=JTable::getInstance('module');
+        foreach($list_modules AS $module)
         {
-            $this->setError($modelModule->getError());
+            $table_module->bind((array)$module);
+            $table_module->id=0;
+            $table_module->copy_from=$module->id;
+            if($extension_id=$list_older_extension[$module->extension_id])
+            {
+                $table_module->extension_id=$extension_id;
+            }
+            $ok=$table_module->store();
+            if(!$ok){
+                throw new Exception($table_module->getError());
+            }
         }
         return true;
     }
-    //TODO chua lam xong plugin
     public function createPlugins($website_id=0,$website_template_id=0)
     {
         if(!$website_template_id)
@@ -641,20 +674,40 @@ class WebsiteModelWebsite extends JModelAdmin
             //copy from website template
             $website_template_id=websiteHelperFrontEnd::getOneTemplateWebsite();
         }
-        require_once JPATH_ROOT.'/administrator/components/com_plugins/helpers/plugins.php';
-        $listPlugin=PluginsHelper::getPluginsByWebsiteId($website_template_id);
-
-        $listPluginId=array();
-        JModelLegacy::addIncludePath(JPATH_ROOT.'/administrator/components/com_plugins/models');
-        $modelPlugin=JModelLegacy::getInstance('plugin','pluginsModel');
-        foreach($listPlugin as $plugin)
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('*')
+            ->from('#__extensions')
+            ->where('website_id='.(int)$website_id)
+        ;
+        $list_extensions=$db->setQuery($query)->loadObjectList();
+        $list_older_extension=array();
+        foreach($list_extensions AS $extensions)
         {
-            $listPluginId[]=$plugin->id;
+            $list_older_extension[$extensions->copy_from]=$extensions->id;
         }
-
-        if(!$modelPlugin->duplicateAndAssign($listPluginId,$website_id))
+        $query->clear()
+            ->select('*')
+            ->from('#__plugins AS plugins')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=plugins.extension_id')
+            ->where('extensions.website_id='.(int)$website_template_id)
+        ;
+        $list_plugins=$db->setQuery($query)->loadObjectList();
+        $table_plugin=JTable::getInstance('plugin');
+        foreach($list_plugins AS $plugins)
         {
-            $this->setError($modelPlugin->getError());
+            $table_plugin->bind((array)$plugins);
+            $table_plugin->id=0;
+            $table_plugin->copy_from=$plugins->id;
+            if($extension_id=$list_older_extension[$plugins->extension_id])
+            {
+                $table_plugin->extension_id=$extension_id;
+            }
+            $ok=$table_plugin->store();
+            if(!$ok){
+                throw new Exception($table_plugin->getError());
+            }
         }
         return true;
     }

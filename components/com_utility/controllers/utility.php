@@ -118,13 +118,14 @@ class UtilityControllerUtility extends UtilityController
         $query = $db->getQuery(true);
         if (count($list_position)) {
             foreach ($list_position as $position) {
-                $query = $db->getQuery(true);
-                $query->update('#__position_config')
-                    ->set('menu_item_id=' . (int)$menu_item_active_id)
-                    ->where('id=' . (int)$position->id);
-                $db->setQuery($query);
-                $db->execute();
-
+                if(!$position->menu_item_id) {
+                    $query = $db->getQuery(true);
+                    $query->update('#__position_config')
+                        ->set('menu_item_id=' . (int)$menu_item_active_id)
+                        ->where('id=' . (int)$position->id);
+                    $db->setQuery($query);
+                    $db->execute();
+                }
                 $query = $db->getQuery(true);
                 $query->select('position_config.id,position_config.menu_item_id')
                     ->from('#__position_config AS position_config')

@@ -44,15 +44,14 @@ class PlgAuthenticationJoomla extends JPlugin
 
 		// Get a database object
 		$db    = JFactory::getDbo();
+		$list_user_group_id=JUserHelper::get_list_user_group_id();
 		$query = $db->getQuery(true)
 			->select('user.id, user.password')
 			->from('#__users AS user')
-			->where('username=' . $db->quote($credentials['username']))
-            ->leftJoin('#__user_usergroup_map AS u_g_m ON u_g_m.user_id=user.id')
-            ->leftJoin('#__usergroups AS u_g ON u_g.id=u_g_m.group_id')
-            ->where('u_g.website_id='.(int)$website->website_id)
+			//->where('username=' . $db->quote($credentials['username']))
+            ->leftJoin('#__user_usergroup_map AS user_usergroup_map ON user_usergroup_map.user_id=user.id')
+			->where('user_usergroup_map.group_id IN('.implode(',',$list_user_group_id).')')
         ;
-
 		$db->setQuery($query);
 		$result = $db->loadObject();
 		if ($result)

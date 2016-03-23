@@ -290,78 +290,61 @@ class JAccess
 	 *
 	 * @since   11.1
 	 */
-	public static function getGroupsByUser($userId, $recursive = true)
+	public static function getGroupsByUser($userId,$recursive)
 	{
-		// Creates a simple unique string for each parameter combination:
 		$storeId = $userId . ':' . (int) $recursive;
-		$website=JFactory::getWebsite();
-		if (!isset(self::$groupsByUser[$storeId]))
+		if (isset(self::$groupsByUser[$storeId]))
 		{
-			// TODO: Uncouple this from JComponentHelper and allow for a configuration setting or value injection.
-			if (class_exists('JComponentHelper'))
-			{
-				$guestUsergroup = JComponentHelper::getParams('com_users')->get('guest_usergroup', 1);
-			}
-			else
-			{
-				$guestUsergroup = 1;
-			}
-			// Guest user (if only the actually assigned group is requested)
-			if (empty($userId) && !$recursive)
-			{
-				$result = array($guestUsergroup);
-			}
-			// Registered user and guest if all groups are requested
-			else
-			{
-				$db = JFactory::getDbo();
-
-				// Build the database query to get the rules for the asset.
-				$query = $db->getQuery(true)
-					->select($recursive ? 'b.id' : 'a.id');
-
-				if (empty($userId))
-				{
-					$query->from('#__usergroups AS a')
-						->where('a.id = ' . (int) $guestUsergroup);
-				}
-				else
-				{
-					$query->from('#__user_usergroup_map AS map')
-						->where('map.user_id = ' . (int) $userId)
-						->join('LEFT', '#__usergroups AS a ON a.id = map.group_id');
-				}
-
-				// If we want the rules cascading up to the global asset node we need a self-join.
-				if ($recursive)
-				{
-					$query->join('LEFT', '#__usergroups AS b ON b.lft <= a.lft AND b.rgt >= a.rgt');
-				}
-
-				// Execute the query and load the rules from the result.
-				$query->where('a.website_id='.(int)$website->website_id);
-				$query->where('b.website_id='.(int)$website->website_id);
-				$query->where('b.parent_id!=b.id');
-				$db->setQuery($query);
-				$result = $db->loadColumn();
-
-				// Clean up any NULL or duplicate values, just in case
-				JArrayHelper::toInteger($result);
-
-				if (empty($result))
-				{
-					$result = array('1');
-				}
-				else
-				{
-					$result = array_unique($result);
-
-				}
-			}
-
-			self::$groupsByUser[$storeId] = $result;
+			return self::$groupsByUser[$storeId];
 		}
 
+		if (!$userId) {
+			$user_group_default=JUserHelper::get_user_group_default();
+			self::$groupsByUser[$storeId][]=$user_group_default->id;
+			return self::$groupsByUser[$storeId];
+		}
+		$list_user_group=JUserHelper::get_list_user_group();
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('user_usergroup_map.group_id')
+			->from('#__user_usergroup_map AS user_usergroup_map')
+			->where('user_usergroup_map.user_id='.(int)$userId)
+		;
+		$user_group_id=$db->setQuery($query)->loadResult();
+		$children_list_user_group=array();
+		foreach($list_user_group as $user_group)
+		{
+			$parent_id = $user_group->parent_id;
+			$list = @$children_list_user_group[$parent_id] ? $children_list_user_group[$parent_id] : array();
+			if($user_group->id!=$user_group->parent_id)
+			{
+				array_push($list, $user_group);
+			}
+			$children_list_user_group[$parent_id] = $list;
+		}
+		$list_user_group_id=array();
+		if($recursive)
+		{
+			$list_user_group_id[]=$user_group_id;
+		}
+		if(!function_exists('sub_get_list_group_id')) {
+			function sub_get_list_group_id($root_user_group_id, $children_list_user_group, &$list_user_group_id=array())
+			{
+				if(count($children_list_user_group[$root_user_group_id]))
+				{
+					foreach($children_list_user_group[$root_user_group_id] as $user_group)
+					{
+						$root_user_group_id=$user_group->id;
+						array_push($list_user_group_id,$user_group);
+						sub_get_list_group_id($root_user_group_id,$children_list_user_group,$list_user_group_id);
+					}
+
+				}
+			};
+		}
+		get_list_group($user_group_id, $children_list_user_group, $list_user_group_id);
+
+		self::$groupsByUser[$storeId]=$list_user_group_id;
 		return self::$groupsByUser[$storeId];
 	}
 

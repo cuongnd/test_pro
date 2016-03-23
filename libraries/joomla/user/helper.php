@@ -15,12 +15,17 @@ defined('_JEXEC') or die(__FILE__);
  *
  * This class has influences and some method logic from the Horde Auth package
  *
+ * @property  root_user_group
  * @package     Joomla.Platform
  * @subpackage  User
  * @since       11.1
  */
 abstract class JUserHelper
 {
+	public static $list_user_group_id=array();
+	public static $root_user_group=null;
+	public static $root_user_group_id=0;
+	public static $list_user_group=array();
 	/**
 	 * Method to add a user to a group.
 	 *
@@ -284,14 +289,16 @@ abstract class JUserHelper
 	 */
 	public static function getUserId($username)
 	{
+
 		$website=JFactory::getWebsite();
+		$list_user_group=self::get_list_user_group();
 		// Initialise some variables
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('user.id')
 			->from('#__users as user')
-			->leftJoin('#__user_usergroup_map AS u_g_m ON u_g_m.user_id=user.id')
-			->leftJoin('#__usergroups AS u_g ON u_g.id=u_g_m.group_id')
+			->leftJoin('#__user_usergroup_map AS user_usergroup_map ON user_usergroup_map.user_id=user.id')
+			->leftJoin('#__usergroups AS usergroups ON usergroups.id=user_usergroup_map.group_id')
 			->where('u_g.website_id='.(int)$website->website_id)
 			->where($db->quoteName('username') . ' = ' . $db->quote($username));
 		$db->setQuery($query, 0, 1);
@@ -824,36 +831,58 @@ abstract class JUserHelper
 
 		return $user;
 	}
-
-	public static function get_user_type_default()
-	{
+	public static function get_root_user_group(){
+		if(static::$root_user_group)
+		{
+			return static::$root_user_group;
+		}
 		$website=JFactory::getWebsite();
 		$db=JFactory::getDbo();
 		$query=$db->getQuery(true);
 		$query->select('usergroups.*')
-			->from('#__usergroups AS  usergroups')
-			->where('usergroups.website_id='.(int)$website->website_id)
+			->from('#__usergroups AS usergroups')
+			->leftJoin('#__user_group_id_website_id AS user_group_id_website_id ON user_group_id_website_id.user_group_id= usergroups.id')
+			->where('user_group_id_website_id.website_id='.(int)$website->website_id)
 		;
-		$user_groups=$db->setQuery($query)->loadObjectList();
-		$user_group_id=0;
-		if(count($user_groups))
+		static::$root_user_group=$db->setQuery($query)->loadObject();
+		if(!static::$root_user_group)
 		{
-			foreach($user_groups as $user_group)
-			{
-				if($user_group->title=='Registered')
-				{
-					$user_group_id= $user_group->id;
-					break;
-				}
-			}
-			if(!$user_group_id)
-			{
-				$user_group_id=reset($user_groups)->id;
-			}
-		}else{
-			throw new Exception('there are no group user in website');
+			throw new Exception('website is not exists user group');
 		}
-		return $user_group_id;
+		return static::$root_user_group;
+	}
+	public static function get_root_user_group_id(){
+		if(static::$root_user_group_id)
+		{
+			return static::$root_user_group_id;
+		}
+		$website=JFactory::getWebsite();
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('user_group_id_website_id.user_group_id')
+			->from('#__user_group_id_website_id AS user_group_id_website_id')
+			->where('user_group_id_website_id.website_id='.(int)$website->website_id)
+		;
+		static::$root_user_group_id=$db->setQuery($query)->loadResult();
+		if(!static::$root_user_group_id)
+		{
+			throw new Exception('website is not exists user group');
+		}
+		return static::$root_user_group_id;
+	}
+	public static function get_user_group_default()
+	{
+		$list_user_group=self::get_list_user_group();
+
+		foreach($list_user_group as $user_group)
+		{
+			if($user_group->title=='Registered')
+			{
+				return $user_group;
+				break;
+			}
+		}
+		return false;
 	}
 
 	public static function check_user_group_by_user_group_id($user_group_id)
@@ -867,6 +896,63 @@ abstract class JUserHelper
 			->where('usergroups.website_id='.(int)$website->website_id)
 		;
 		return $db->setQuery($query)->loadResult();
+
+	}
+
+	public static function get_list_user_group()
+	{
+		if(count(static::$list_user_group))
+		{
+			return static::$list_user_group;
+		}
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('usergroups.*')
+			->from('#__usergroups AS usergroups')
+		;
+		$list_user_group=$db->setQuery($query)->loadObjectList();
+
+		$children_list_user_group=array();
+		foreach($list_user_group as $user_group)
+		{
+			$parent_id = $user_group->parent_id;
+			$list = @$children_list_user_group[$parent_id] ? $children_list_user_group[$parent_id] : array();
+			if($user_group->id!=$user_group->parent_id)
+			{
+				array_push($list, $user_group);
+			}
+			$children_list_user_group[$parent_id] = $list;
+		}
+		function sub_get_list_group($root_user_group_id,$children_list_user_group,&$list_user_group=array())
+		{
+			if(count($children_list_user_group[$root_user_group_id]))
+			{
+				foreach($children_list_user_group[$root_user_group_id] as $user_group)
+				{
+					$id=$user_group->id;
+					array_push($list_user_group,$user_group);
+					sub_get_list_group($id,$children_list_user_group,$list_user_group);
+				}
+
+			}
+		};
+		static::$list_user_group=array();
+		$root_user_group=self::get_root_user_group();
+		array_push(static::$list_user_group,$root_user_group);
+		$root_user_group_id=self::get_root_user_group_id();
+		sub_get_list_group($root_user_group_id,$children_list_user_group,static::$list_user_group);
+		return static::$list_user_group;
+	}
+
+	public static function get_list_user_group_id()
+	{
+		$list_user_group=self::get_list_user_group();
+		$list_user_group_id=array();
+		foreach($list_user_group as $user_group)
+		{
+			$list_user_group_id[]=$user_group->id;
+		}
+		return $list_user_group_id;
 
 	}
 

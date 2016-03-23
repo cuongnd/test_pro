@@ -82,15 +82,13 @@ class GroupsHelper
     public function getChildrenGroupUserByParentGroupId($parent_group_id=0)
     {
 
+        $list_user_group=JUserHelper::get_list_user_group();
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
         $query->select('ug.*');
-        $query->from('#__usergroups AS ug');
-        $query->leftJoin('#__usergroups AS ug1 ON ug1.parent_id='.(int)$parent_group_id);
-        $query->where('ug.website_id=ug1.website_id');
-        $query->where('ug.parent_id!='.(int)$parent_group_id);
-        $query->group('ug.id');
-        echo $query->dump();
+        $query->from('#__usergroups AS ug')
+        ->where('ug.id IN ('.implode(',',$list_user_group).')')
+            ;
         $db->setQuery($query);
         try
         {

@@ -472,9 +472,10 @@ class JComponentHelper
 
         $db = JFactory::getDbo();
         $query = $db->getQuery(true)
-            ->select('id, element AS "option", params, enabled')
-            ->from('#__components')
-            ->where('website_id='.(int)$website->website_id)
+            ->select('components.id, components.element AS "option", components.params, components.enabled')
+            ->from('#__components AS components')
+			->leftJoin('#__extensions AS extensions ON extensions.id=components.extension_id')
+            ->where('extensions.website_id='.(int)$website->website_id)
         ;
 		$db->setQuery($query);
 		$cache = JFactory::getCache('_system', 'callback');

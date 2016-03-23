@@ -477,10 +477,10 @@ final class JApplicationSite extends JApplicationCms
                 ->select('s.id, s.home, s.template, s.params')
                 ->from('#__template_styles as s')
                 ->where('s.client_id = 0')
-                ->where('e.enabled = 1')
-                ->join('LEFT', '#__extensions as e ON e.element=s.template AND e.type=' . $db->quote('template') . ' AND e.client_id=s.client_id');
+                ->where('extensions.enabled = 1')
+                ->join('LEFT', '#__extensions as extensions ON extensions.element=s.template AND extensions.type=' . $db->quote('template') . ' AND extensions.client_id=s.client_id');
             $website = JFactory::getWebsite();
-            $query->where('s.website_id=' . (int)$website->website_id);
+            $query->where('extensions.website_id=' . (int)$website->website_id);
             $db->setQuery($query);
             $templates = $db->loadObjectList('id');
             foreach ($templates as &$template) {

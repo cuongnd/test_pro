@@ -316,13 +316,14 @@ abstract class JPluginHelper
 
 		$db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('folder AS type, element AS name, params,website_id');
-        $query->from('#__plugins');
-        $query->where('enabled >= 1');
-        $query->where('state >= 0');
-        $query->where('website_id = '.$website_id);
+        $query->select('plugins.folder AS type, plugins.element AS name, plugins.params,extensions.website_id');
+        $query->from('#__plugins AS plugins');
+        $query->where('plugins.enabled >= 1');
+        $query->where('plugins.state >= 0');
+		$query->leftJoin('#__extensions AS extensions ON extensions.id=plugins.extension_id');
+        $query->where('extensions.website_id = '.(int)$website_id);
         //$query->where('access IN (' . $levels . ')');
-        $query->order('ordering');
+        $query->order('plugins.ordering');
         $db->setQuery($query);
         $plugins=$db->loadObjectList();
 		static::$plugins=$plugins;

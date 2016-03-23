@@ -75,14 +75,13 @@ class JTableUser extends JTable
 
 		// Reset the table.
 		$this->reset();
-
+		$list_user_group_id=JUserHelper::get_list_user_group();
 		// Load the user data.
 		$query = $this->_db->getQuery(true)
 			->select('users.*')
 			->from($this->_db->quoteName('#__users').' AS users')
 			->leftJoin('#__user_usergroup_map AS user_usergroup_map ON user_usergroup_map.user_id=users.id')
-			->leftJoin('#__usergroups AS usergroups ON usergroups.id=user_usergroup_map.group_id')
-			->where('usergroups.website_id='.(int)$website->website_id)
+			->where('user_usergroup_map.group_id IN('.implode(',',$list_user_group_id).')')
 			->where($this->_db->quoteName('users.id') . ' = ' . (int) $userId);
 		$this->_db->setQuery($query);
 		$data = (array) $this->_db->loadAssoc();
@@ -99,12 +98,13 @@ class JTableUser extends JTable
 
 		if ($return !== false)
 		{
+			$list_user_group=JUserHelper::get_list_user_group();
 			// Load the user groups.
 			$query->clear()
-                ->select('g.id,g.title,g.website_id')
+                ->select('g.id,g.title')
 				->from($this->_db->quoteName('#__usergroups') . ' AS g')
 				->join('INNER', $this->_db->quoteName('#__user_usergroup_map') . ' AS m ON m.group_id = g.id')
-				->where('g.website_id='.(int)$website->website_id)
+				->where('m.group_id IN ('.implode(',',$list_user_group).')')
 				->where($this->_db->quoteName('m.user_id') . ' = ' . (int) $userId);
 			$this->_db->setQuery($query);
             $listGroup=$this->_db->loadObjectList();

@@ -434,8 +434,8 @@ abstract class JModuleHelper
         $website=JFactory::getWebsite();
         $website_id=$website->website_id;
         $domain=$website->domain;
-        $query->where('m.website_id = '.$website_id);
-
+        $query->leftJoin('#__extensions AS extensions ON extensions.id=m.extension_id');
+		$query->where('extensions.website_id='.(int)$website_id);
         $query->order('m.position, m.ordering');
         $query->group('m.id');
 		// Set the query
