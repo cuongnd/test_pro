@@ -359,6 +359,8 @@ ob_start();
     $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/less/disableedit.less');
 
     $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/assets/less/mainFrontEnd.less');
+    //$doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/less/template_backend.less');
+    $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/less/icomoon.less');
     if(JFile::exists(JPATH_ROOT. "/layouts/website/less/" . $websiteTable->source_less))
     {
         $doc->addLessStyleSheet(JUri::root() ."/layouts/website/less/" . $websiteTable->source_less);

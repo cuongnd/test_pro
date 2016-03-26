@@ -67,30 +67,30 @@ class MenusViewMenus extends JViewLegacy
 
 		$canDo	= JHelperContent::getActions('com_menus');
 		require_once JPATH_ROOT.'/includes/toolbar.php';
-		JToolbarHelperFrontEnd::title(JText::_('COM_MENUS_VIEW_MENUS_TITLE'), 'list menumgr');
+		JToolbarHelper::title(JText::_('COM_MENUS_VIEW_MENUS_TITLE'), 'list menumgr');
 
 		if ($canDo->get('core.create'))
 		{
-			JToolbarHelperFrontEnd::addNew('menu.add');
+			JToolbarHelper::addNew('menu.add');
 		}
 		if ($canDo->get('core.edit'))
 		{
-			JToolbarHelperFrontEnd::editList('menu.edit');
+			JToolbarHelper::editList('menu.edit');
 		}
 		if ($canDo->get('core.delete'))
 		{
-			JToolbarHelperFrontEnd::divider();
-			JToolbarHelperFrontEnd::deleteList('', 'menus.delete');
+			JToolbarHelper::divider();
+			JToolbarHelper::deleteList('', 'menus.delete');
 		}
 
-		JToolbarHelperFrontEnd::custom('menus.rebuild', 'refresh.png', 'refresh_f2.png', 'JTOOLBAR_REBUILD', true);
+		JToolbarHelper::custom('menus.rebuild', 'refresh.png', 'refresh_f2.png', 'JTOOLBAR_REBUILD', true);
 		if ($canDo->get('core.admin'))
 		{
-			JToolbarHelperFrontEnd::divider();
-			JToolbarHelperFrontEnd::preferences('com_menus');
+			JToolbarHelper::divider();
+			JToolbarHelper::preferences('com_menus');
 		}
-		JToolbarHelperFrontEnd::divider();
-		JToolbarHelperFrontEnd::help('JHELP_MENUS_MENU_MANAGER');
+		JToolbarHelper::divider();
+		JToolbarHelper::help('JHELP_MENUS_MENU_MANAGER');
         $supperAdmin=JFactory::isSupperAdmin();
         if($supperAdmin){
             $option1=new stdClass();

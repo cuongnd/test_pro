@@ -9,4 +9,4 @@
 
 defined('_JEXEC') or die;
 ?>
-<div class="btn-toolbar" id="<?php echo $displayData['id']; ?>">
+<div class="btn-toolbar pull-right form-inline" id="<?php echo $displayData['id']; ?>">

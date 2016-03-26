@@ -634,8 +634,18 @@ class JDocument
             require_once JPATH_ROOT . '/libraries/less.php-master/lessc.inc.php';
             $parser = new lessc();
             //$less->setFormatter(new F0FLessFormatterJoomla);
+            try{
+                $content = $parser->compileFile(JPATH_ROOT . '/' . $in_put_file_less_compile);
+            }catch(Exception $e){
+                $error_message = $e->getMessage();
+                if($error_message)
+                {
+                    throw new Exception($error_message);
+                }
+            }
 
-            $content = $parser->compileFile(JPATH_ROOT . '/' . $in_put_file_less_compile);
+
+
             require_once JPATH_ROOT . '/libraries/cssmin/cssmin-v3.0.1-minified.php';
             $content = CssMin::minify($content);
             JFile::write(JPATH_ROOT . '/' . $out_put_file_less_compile, $content);

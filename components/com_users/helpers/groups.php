@@ -119,20 +119,16 @@ class GroupsHelper
         $listGroup=$db->loadObjectList();
         return $listGroup;
     }
-    public function  getAllGroupByWebsiteId($website_id)
+    public function  get_group_id_by_website_id($website_id)
     {
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
-        $query->select('*')
-            ->from('#__usergroups')
-            ->where(
-                array(
-                    'website_id='.(int)$website_id
-                )
-            );
-
+        $sql="SELECT GROUP_CONCAT(lv SEPARATOR ',') AS list_id FROM ( SELECT @pv:=(SELECT GROUP_CONCAT(id SEPARATOR ',') FROM #__usergroups WHERE parent_id IN (@pv)) AS lv FROM #__usergroups JOIN (SELECT @pv:=(SELECT user_group_id FROM #__user_group_id_website_id AS user_group_id_website_id WHERE user_group_id_website_id.website_id=".(int)$website_id." LIMIT 0,1))tmp WHERE parent_id IN (@pv)) a;
+";
+        $query->setQuery($sql);
         $db->setQuery($query);
-        $listGroup=$db->loadObjectList();
+        $listGroup=$db->loadResult();
+        $listGroup=explode(',',$listGroup);
         return $listGroup;
     }
 }

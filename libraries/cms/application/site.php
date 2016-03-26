@@ -522,7 +522,6 @@ final class JApplicationSite extends JApplicationCms
                     break;
                 }
             }
-
             // Check, the data were found and if template really exists
             if (!file_exists(JPATH_THEMES . '/' . $template->template . '/index.php')) {
                 throw new InvalidArgumentException(JText::sprintf('JERROR_COULD_NOT_FIND_TEMPLATE', $original_tmpl));

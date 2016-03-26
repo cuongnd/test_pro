@@ -61,7 +61,7 @@ class PlgAuthenticationJoomla extends JPlugin
 			{
 				$match=true;
 			}
-			$match=true;
+
 			if ($match === true)
 			{
 				// Bring this in line with the rest of the system
@@ -98,6 +98,7 @@ class PlgAuthenticationJoomla extends JPlugin
 		// Check the two factor authentication
 		if ($response->status == JAuthentication::STATUS_SUCCESS)
 		{
+
 			require_once JPATH_ROOT . '/components/com_users/helpers/users.php';
 
 			$methods = UsersHelper::getTwoFactorMethods();
@@ -191,6 +192,7 @@ class PlgAuthenticationJoomla extends JPlugin
 					}
 					else
 					{
+
 						/*
 						 * Two factor authentication enabled and no OTEPs defined. The
 						 * user has used them all up. Therefore anything he enters is

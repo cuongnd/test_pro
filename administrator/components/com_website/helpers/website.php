@@ -134,76 +134,7 @@ class websiteHelperBackend
 	}
 	function getOptionListWebsite($task='quick_assign_website')
 	{
-		$listWebsite= websiteHelperFrontEnd::getWebsites();
-		$option=array();
-		$option[] = JHTML::_('select.option', '',  "-- ".JText::_("SELECT_WEBSITR_ASSIGN")." --");
-		$option[] = JHTML::_('select.option', '-1',  JText::_("Run for all"));
-		$option[] = JHTML::_('select.option', '0',  JText::_("None"));
-		foreach($listWebsite as $website)
-		{
-			$option[] = JHTML::_('select.option',$website->id,  $website->title);
 
-		}
-
-
-		$js=<<<javascript
-			if (document.adminForm.boxchecked.value==0){
-				alert('Please first make a selection from the list');
-			}else if (document.adminForm.website_id.value==''){
-				alert('Please first make a selection from website from list website');
-			}else{
-				 Joomla.submitbutton('{$task}')
-			}
-javascript;
-		$change=Jtext::_('Change');
-		$option= JHTML::_('select.genericlist', $option,  'website_id',  'class = "btn btn-default inputbox" size = "1"',  'value',  'text' );
-		$html=<<<HTML
-		<div class="btn-group group-assign-website">
-		  <div  class="btn btn-default checkbox">
-			<label>
-			  <input name="copy" value="1" type="checkbox"> Copy and
-			</label>
-		  </div>
-		  {$option}
-		  <button type="button" onclick="{$js}" name="change" class="btn btn-default">{$change}</button>
-		</div>
-HTML;
-		$style=<<<style
-		<style type="text/css">
-		 .group-assign-website .active.btn-success
-		 {
-			background: none;
-			color:#000;
-			text-shadow:white !important;
-		 }
-		 .group-assign-website .checkbox label
-		 {
-			margin-bottom: 3px;
-			margin-top: 2px;
-			text-shadow: inherit;
-		 }
-		 .group-assign-website .checkbox input[type="checkbox"]
-		{
-			margin-left: 0;
-			margin-right: 4px;
-			margin-top: 2px;
-		}
-		.group-assign-website #website_id_chzn a.chzn-single
-		{
-			border-left: 0 none;
-			border-radius: 0;
-			border-right: 0 none;
-			padding: 4px;
-		}
-		.group-assign-website button[name="change"]
-		{
-			padding: 6px 8px 7px 3px;
-		}
-</style>
-style;
-
-		$html.=$style;
-		return $html;
 	}
 	function getGenericlistWebsite($name='website_id',$attribute='',$selected)
 	{

@@ -11,7 +11,7 @@
 defined('_JEXEC') or die('Restricted Access');
 
 
-JToolbarHelperFrontEnd::title('Dashboard');
+JToolbarHelper::title('Dashboard');
 $orderDir = $this->lists['order_Dir'];
 $order = $this->lists['order'];
 $itemsCount = count($this->items);

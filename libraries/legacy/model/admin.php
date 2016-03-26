@@ -1041,6 +1041,44 @@ abstract class JModelAdmin extends JModelForm
 
 		return true;
 	}
+
+	public function duplicate(&$pks)
+	{
+		$user	= JFactory::getUser();
+		$db		= $this->getDbo();
+
+
+		$table = $this->getTable();
+
+		foreach ($pks as $pk)
+		{
+			if ($table->load($pk, true))
+			{
+				// Reset the id to create a new record.
+				$table->id = 0;
+
+				// Alter the title.
+
+				if (!$table->check() || !$table->store())
+				{
+					throw new Exception($table->getError());
+				}
+
+			}
+			else
+			{
+				throw new Exception($table->getError());
+			}
+		}
+
+
+		// Clear modules cache
+		$this->cleanCache();
+
+		return true;
+	}
+
+
 	public function issystem(&$pks, $value = 1)
 	{
 		$dispatcher = JEventDispatcher::getInstance();

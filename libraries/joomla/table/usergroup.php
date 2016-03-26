@@ -106,7 +106,7 @@ class JTableUserGroup extends JTable
 	 */
 	protected static $root_id = 0;
 
-	public $website_id = 0;
+	protected $website_id = 0;
 
 	/**
 	 * Sets the debug level on or off

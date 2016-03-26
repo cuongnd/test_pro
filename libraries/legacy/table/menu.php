@@ -150,18 +150,20 @@ class JTableMenu extends JTable
                 }
                 $children[$pt] = $list;
             }
-
-            function get_list_children_menu_item_id_by_menu_id($root_id, $list, &$children) {
-                if (@$children[$root_id]) {
-                    foreach ($children[$root_id] as $v) {
-                        $root_id = $v -> id;
-                        array_push($list,$root_id);
-                        get_list_children_menu_item_id_by_menu_id($root_id, $list, $children);
+            if(!function_exists('sub_get_list_children_menu_item_id_by_menu_id')) {
+                function sub_get_list_children_menu_item_id_by_menu_id($root_id, $list, &$children)
+                {
+                    if (@$children[$root_id]) {
+                        foreach ($children[$root_id] as $v) {
+                            $root_id = $v->id;
+                            array_push($list, $root_id);
+                            sub_get_list_children_menu_item_id_by_menu_id($root_id, $list, $children);
+                        }
                     }
+                    return $list;
                 }
-                return $list;
             }
-            $this->list_children_menu_item_id=get_list_children_menu_item_id_by_menu_id($root_id,array(),$children);
+            $this->list_children_menu_item_id=sub_get_list_children_menu_item_id_by_menu_id($root_id,array(),$children);
             if(empty($this->list_children_menu_item_id)){
                 $this->list_children_menu_item_id=array(0);
             }

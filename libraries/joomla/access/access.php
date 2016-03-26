@@ -342,7 +342,7 @@ class JAccess
 				}
 			};
 		}
-		get_list_group($user_group_id, $children_list_user_group, $list_user_group_id);
+		sub_get_list_group_id($user_group_id, $children_list_user_group, $list_user_group_id);
 
 		self::$groupsByUser[$storeId]=$list_user_group_id;
 		return self::$groupsByUser[$storeId];

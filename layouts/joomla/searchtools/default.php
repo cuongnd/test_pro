@@ -30,17 +30,19 @@ $formSelector = !empty($data['options']['formSelector']) ? $data['options']['for
 JHtml::_('searchtools.form', $formSelector, $data['options']);
 
 ?>
-<div class="js-stools clearfix">
-	<div class="clearfix">
-		<div class="js-stools-container-bar">
-			<?php echo JLayoutHelper::render('joomla.searchtools.default.bar', $data); ?>
+<div class="row form-group">
+	<div class="form-inline">
+		<div class="clearfix">
+			<div class="js-stools-container-bar">
+				<?php echo JLayoutHelper::render('joomla.searchtools.default.bar', $data); ?>
+			</div>
+			<div class="js-stools-container-list hidden-phone hidden-tablet">
+				<?php echo JLayoutHelper::render('joomla.searchtools.default.list', $data); ?>
+			</div>
 		</div>
-		<div class="js-stools-container-list hidden-phone hidden-tablet">
-			<?php echo JLayoutHelper::render('joomla.searchtools.default.list', $data); ?>
+		<!-- Filters div -->
+		<div class="js-stools-container-filters hidden-phone clearfix">
+			<?php echo JLayoutHelper::render('joomla.searchtools.default.filters', $data); ?>
 		</div>
-	</div>
-	<!-- Filters div -->
-	<div class="js-stools-container-filters hidden-phone clearfix">
-		<?php echo JLayoutHelper::render('joomla.searchtools.default.filters', $data); ?>
 	</div>
 </div>

@@ -348,6 +348,7 @@ class JApplicationCms extends JApplicationWeb
 		try
 		{
 			$menu = JMenu::getInstance($name, $options);
+
 		}
 		catch (Exception $e)
 		{
@@ -772,7 +773,6 @@ class JApplicationCms extends JApplicationWeb
 
 			// OK, the credentials are authenticated and user is authorised.  Let's fire the onLogin event.
 			$results = $this->triggerEvent('onUserLogin', array((array) $response, $options));
-
 			/*
 			 * If any of the user plugins did not successfully complete the login routine
 			 * then the whole method fails.

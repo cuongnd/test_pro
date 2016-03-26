@@ -25,127 +25,16 @@ class JMenuSite extends JMenu
 	 */
 	public function load()
 	{
+
+		if(!empty($this->_items))
+		{
+			return $this->_items;
+		}
 		$db    = JFactory::getDbo();
-		$query = $db->getQuery(true);
-
-		$query->select('m.id,m.menu_type_id,m.hidden, m.menutype,m.binding_source_key,m.binding_source,m.binding_source_value,m.icon,m.lesscontent, m.title, m.alias, m.note, m.path AS route, m.link, m.type, m.level, m.language,m.configviewlayout');
-		$query->select($db->quoteName('m.browserNav') . ', m.access, m.params, m.home, m.img, m.template_style_id, m.component_id, m.parent_id');
-		$query->select('e.element as component');
-		$query->from('#__menu AS m');
-		$query->leftJoin('#__extensions AS e ON m.component_id = e.id');
-		$query->where('m.published = 1');
-		$query->where('m.parent_id > 0');
-		$query->where('m.client_id = 0');
-		$query->where('m.alias != '.$query->quote('root'));
-		$query->order('m.lft');
-        $website=JFactory::getWebsite();
-        $query->leftJoin('#__menu_types AS mt ON mt.id=m.menu_type_id');
-        $query->where('mt.website_id='.$website->website_id);
-
-
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OSE Added - OSE and Open Source Excellence is the registered trade mark of the Open Source Excellence PTE LTD.
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		$where = null;
-		if (!defined('DS'))
-		{
-			define('DS', DIRECTORY_SEPARATOR);
-		}		
-		if (file_exists(JPATH_SITE.DS.'components'.DS.'com_osemsc'.DS.'init.php') && file_exists(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_ose_cpu'.DS.'define.php') && !file_exists(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_osemsc'.DS.'installer.dummy.ini'))
-		{
-			require_once(JPATH_SITE.DS.'components'.DS.'com_osemsc'.DS.'init.php');
-		
-			$content_ids = oseRegistry::call('content')->getRestrictedContent('joomla','menu');
-		
-			$where = (COUNT($content_ids) > 0)?$query->where(' m.id NOT IN ('.implode(',',$content_ids).')'):null;
-		}
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OSE Added - OSE and Open Source Excellence is the registered trade mark of the Open Source Excellence PTE LTD.
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// Set the query
-        $cache = JFactory::getCache('_system', 'callback');
-		$items1=array();
-        try
-        {
-            $db->setQuery($query);
-			$items1 = $db->loadObjectList();// $cache->get(array($db, 'loadObjectList'), null, md5($query), false);
-			$items1=JArrayHelper::pivot($items1,'id');
-        }
-
-        catch (RuntimeException $e)
-        {
-            // Fatal error.
-            JLog::add(JText::sprintf('JERROR_LOADING_MENUS', md5($query), $e->getMessage()), JLog::WARNING, 'jerror');
-            return false;
-        }
-		JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_phpmyadmin/models');
-		$modalDataSources=JModelLegacy::getInstance('DataSources','phpMyAdminModel');
-		$items=array();
-		if(count($items1))
-		{
-			foreach ($items1 as $i => $item)
-			{
-				$query=array();
-				$url = str_replace('index.php?', '', $item->link);
-				$url = str_replace('&amp;', '&', $url);
-				parse_str($url, $query);
-				foreach($query as $key_query=>$value_key_query)
-				{
-					if(trim($value_key_query)=='')
-					{
-						unset($query[$key_query]);
-					}
-				}
-
-				if(empty($query))
-				{
-					$item->link='index.php?option=com_utility&view=blank';
-					$item->type="component";
-					$table_menu=JTable::getInstance('Menu');
-					JTable::addIncludePath(JPATH_ROOT.'/components/com_menus/tables');
-					if(!$table_menu->load($item->id))
-					{
-						throw new Exception($table_menu->getError());
-					}
-					if(!$table_menu->bind((array)$item))
-					{
-						throw new Exception($table_menu->getError());
-					}
-					if(!$table_menu->store())
-					{
-						throw new Exception($table_menu->getError());
-					}
-				}
-
-				$items[$i]=$item;
-				$item1=$item;
-				if(trim($item->binding_source)!='')
-				{
-					$list_item_binding_source=$modalDataSources->getListDataSource($item->binding_source);
-
-
-					if(count($list_item_binding_source))
-					{
-						$children = array();
-
-						// First pass - collect children
-						foreach ($list_item_binding_source as $v)
-						{
-							$pt = $v->parent_id;
-							$list = @$children[$pt] ? $children[$pt] : array();
-							array_push($list, $v);
-							$children[$pt] = $list;
-						}
-
-						$id=key($children);
-						JMenuSite::treerecurse_menu_item($id, $items,$item, $children);
-
-
-					}
-				}
-			}
-		}
-
+		$website=JFactory::getWebsite();
+		require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
+		$items=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website->website_id);
+		$items=JArrayHelper::pivot($items,'id');
 		$this->_items=$items;
 		foreach ($this->_items as &$item)
 		{
@@ -177,6 +66,37 @@ class JMenuSite extends JMenu
 			//end parse configviewlayout
 		}
 
+
+	}
+	public function get_menu_item_by_menu_type_id($menu_type_id,$recurse=false)
+	{
+		$children = array();
+		// First pass - collect children
+		foreach ($this->_items as $v) {
+			$pt = $v->parent_id;
+			$pt=$pt?$pt:'root';
+			$list = @$children[$pt] ? $children[$pt] : array();
+			if ($v->id != $v->parent_id || $v->parent_id!=null) {
+				array_push($list, $v);
+			}
+			$children[$pt] = $list;
+		}
+		$list_root_menu_item=$children['root'];
+		unset($children['root']);
+		$list_menu_item=array();
+		foreach($list_root_menu_item as $root_menu_item)
+		{
+			if($root_menu_item->menu_type_id==$menu_type_id)
+			{
+				if($recurse)
+				{
+					$list_menu_item[]=$root_menu_item;
+				}
+				MenusHelperFrontEnd::sub_get_list_children_menu_item_by_root_menu_item_id($root_menu_item->id,$list_menu_item,$children);
+				break;
+			}
+		}
+		return $list_menu_item;
 	}
 	function treerecurse_menu_item($id, &$items,$item, &$children, $maxlevel = 9999, $level = 0)
 	{

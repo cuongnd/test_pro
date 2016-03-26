@@ -291,15 +291,14 @@ abstract class JUserHelper
 	{
 
 		$website=JFactory::getWebsite();
-		$list_user_group=self::get_list_user_group();
+		$list_user_group_id=self::get_list_user_group_id();
 		// Initialise some variables
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('user.id')
 			->from('#__users as user')
 			->leftJoin('#__user_usergroup_map AS user_usergroup_map ON user_usergroup_map.user_id=user.id')
-			->leftJoin('#__usergroups AS usergroups ON usergroups.id=user_usergroup_map.group_id')
-			->where('u_g.website_id='.(int)$website->website_id)
+			->where('user_usergroup_map.group_id IN ('.implode(',',$list_user_group_id).')')
 			->where($db->quoteName('username') . ' = ' . $db->quote($username));
 		$db->setQuery($query, 0, 1);
 

@@ -38,7 +38,7 @@ $fileConfig = JPATH_ROOT . '/configuration/configuration_' . $contentIni . '.php
 
 // System includes
 require_once JPATH_LIBRARIES . '/import.legacy.php';
-
+require_once JPATH_ROOT.'/includes/toolbar.php';
 // Set system error handling
 JError::setErrorHandling(E_NOTICE, 'message');
 JError::setErrorHandling(E_WARNING, 'message');

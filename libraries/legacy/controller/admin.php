@@ -142,6 +142,41 @@ class JControllerAdmin extends JControllerLegacy
 
 		$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_list, false));
 	}
+	public function duplicate()
+	{
+		// Check for request forgeries
+		JSession::checkToken() or (JText::_('JINVALID_TOKEN'));
+
+		// Get items to remove from the request.
+		$cid = JFactory::getApplication()->input->get('cid', array(), 'array');
+
+		if (!is_array($cid) || count($cid) < 1)
+		{
+			JLog::add(JText::_($this->text_prefix . '_NO_ITEM_SELECTED'), JLog::WARNING, 'jerror');
+		}
+		else
+		{
+			// Get the model.
+			$model = $this->getModel();
+			// Make sure the item ids are integers
+			jimport('joomla.utilities.arrayhelper');
+			JArrayHelper::toInteger($cid);
+			// duplicate the items.
+			if ($model->duplicate($cid))
+			{
+
+				$this->setMessage(JText::plural($this->text_prefix . '_N_ITEMS_DUPLICATE', count($cid)));
+			}
+			else
+			{
+				$this->setMessage($model->getError());
+			}
+		}
+		// Invoke the postDelete method to allow for the child class to access the model.
+		$this->postDeleteHook($model, $cid);
+
+		$this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_list, false));
+	}
 
 	/**
 	 * Function that allows child controller access to model data

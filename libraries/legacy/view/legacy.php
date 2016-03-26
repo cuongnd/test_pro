@@ -257,6 +257,10 @@ class JViewLegacy extends JObject
 	 *
 	 * @deprecated  13.3 Use native PHP syntax.
 	 */
+	public function render_toolbar(){
+		$toolbar = JToolbar::getInstance('toolbar')->render('toolbar');
+		return $toolbar;
+	}
 	public function assign()
 	{
 		JLog::add(__METHOD__ . ' is deprecated. Use native PHP syntax.', JLog::WARNING, 'deprecated');

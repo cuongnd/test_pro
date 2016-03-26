@@ -299,8 +299,7 @@ class JRouterSite extends JRouter
 			die;
 		}
 		$app   = JApplicationCms::getInstance('site');
-		$menu  = $app->getMenu();
-
+		$menu  = $app->getMenu('site');
 		$route = $uri->getPath();
 
 		// Remove the suffix
@@ -328,7 +327,6 @@ class JRouterSite extends JRouter
 				return $this->parseRawRoute($uri);
 
 			}
-
 			$item = $menu->getDefault(JFactory::getLanguage()->getTag());
 
 			// If user not allowed to see default menu item then avoid notices

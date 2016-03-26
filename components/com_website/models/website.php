@@ -54,7 +54,7 @@ class WebsiteModelWebsite extends JModelAdmin
         $tableWebsite->title=$domain;
         $tableWebsite->alias=$domain;
         $tableWebsite->introtext=$domain;
-        if($user->id)
+        if(!$user->id)
         {
             throw new  Exception('website no created by, please login again');
         }
@@ -240,13 +240,8 @@ class WebsiteModelWebsite extends JModelAdmin
             $this->setError($tableUser->getError());
         }
         require_once JPATH_ROOT.'/components/com_users/helpers/groups.php';
-        $listGroup=GroupsHelper::getAllGroupByWebsiteId($website_id);
-        $groups=array();
-        foreach($listGroup as $group) {
-            $groups[]=$group->id;
-
-        }
-        $tableUser->groups = $groups;
+        $listGroup=GroupsHelper::get_group_id_by_website_id($website_id);
+        $tableUser->groups = $listGroup;
 
         if(!$tableUser->store())
         {
@@ -436,7 +431,6 @@ class WebsiteModelWebsite extends JModelAdmin
         $table_user_group=JTable::getInstance('usergroup','Jtable');
         $table_user_group->load($old_parent_id);
         $table_user_group->id=0;
-        $table_user_group->website_id=$website_id;
         $table_user_group->copy_from=$old_parent_id;
         $ok=$table_user_group->parent_store();
         if(!$ok)
@@ -486,7 +480,6 @@ class WebsiteModelWebsite extends JModelAdmin
                     $table_user_group->id = 0;
                     $table_user_group->copy_from = $v->id;
                     $table_user_group->parent_id = $new_parent_id;
-                    $table_user_group->website_id = $website_id;
                     $ok = $table_user_group->parent_store();
                     if (!$ok) {
                         throw new Exception($table_user_group->getError());
@@ -713,31 +706,98 @@ class WebsiteModelWebsite extends JModelAdmin
     }
     function createMenus($website_id=0,$website_template_id=0)
     {
+
         if(!$website_template_id)
         {
             //copy from website template
             $website_template_id=websiteHelperFrontEnd::getOneTemplateWebsite();
         }
-        require_once JPATH_ROOT.'/administrator/components/com_menus/helpers/menus.php';
-        $listMenuTypes=MenusHelper::getMenuTypesByWebsiteId($website_template_id);
-
-        $totalMenuItem=MenusHelper::getTotalMenuItemByWebsiteId($website_template_id);
-        if($totalMenuItem>100)
+        //copy menu type
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('*')
+            ->from('#__menu_types')
+            ->where('website_id='.(int)$website_template_id)
+        ;
+        $list_older_menu_type=array();
+        $list_menu_type=$db->setQuery($query)->loadObjectList();
+        require_once JPATH_ROOT.'/libraries/legacy/table/menu/type.php';
+        $table_menu_type=JTable::getInstance('menutype','JTable');
+        foreach($list_menu_type AS $menu_type)
         {
-            $this->setError('there are many menu item in website template');
-            return false;
+            $table_menu_type->bind((array)$menu_type);
+            $table_menu_type->id=0;
+            $table_menu_type->copy_from=$menu_type->id;
+            $table_menu_type->website_id=$website_id;
+            $ok=$table_menu_type->store();
+            if(!$ok){
+                throw new Exception($table_menu_type->getError());
+            }
+            $list_older_menu_type[$menu_type->id]=$table_menu_type->id;
         }
-        $listMenuTypeId=array();
-        JModelLegacy::addIncludePath(JPATH_ROOT.'/administrator/components/com_menus/models');
-        $modelMenuType=JModelLegacy::getInstance('Menu','MenusModel');
-        foreach($listMenuTypes as $menuType)
+        $query->clear()
+            ->select('menu.*')
+            ->from('#__menu AS menu')
+            ->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_id=menu.id')
+            ->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+            ->where('menu_types.website_id='.(int)$website_template_id)
+        ;
+        $list_root_menu=$db->setQuery($query)->loadObjectList('id');
+        $table_menu=JTable::getInstance('menu');
+        foreach($list_root_menu AS $menu)
         {
-            $listMenuTypeId[]=$menuType->id;
+            $table_menu->bind((array)$menu);
+            $table_menu->id=0;
+            $table_menu->copy_from=$menu->id;
+            $table_menu->menu_type_id=$list_older_menu_type[$menu->menu_type_id];
+            $ok=$table_menu->store();
+            if(!$ok){
+                throw new Exception($table_menu->getError());
+            }
+            $list_older_menu_item[$menu->id]=$table_menu->id;
         }
-
-        if(!$modelMenuType->duplicateAndAssign($listMenuTypeId,$website_id))
+        require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
+        foreach($list_older_menu_item AS $old_menu_item_id=>$new_menu_item_id)
         {
-            $this->setError($modelMenuType->getError());
+            $list_children_menu_item_id=MenusHelperFrontEnd::get_chilren_menu_item_id_by_menu_item_id($old_menu_item_id);
+            $query->clear()
+                ->select('*')
+                ->from('#__menu AS menu')
+                ->where('menu.id IN('.implode(',',$list_children_menu_item_id).')')
+                ;
+            $list_rows=$db->setQuery($query)->loadObjectList();
+            $children = array();
+            // First pass - collect children
+            foreach ($list_rows as $v) {
+                $pt = $v->parent_id;
+                $list = @$children[$pt] ? $children[$pt] : array();
+                if ($v->id != $v->parent_id || $v->parent_id!=null) {
+                    array_push($list, $v);
+                }
+                $children[$pt] = $list;
+            }
+            if(!function_exists('sub_execute_copy_rows_table_menu')) {
+                function sub_execute_copy_rows_table_menu(JTable $table_menu, $old_menu_item_id = 0, $new_menu_item_id, $children)
+                {
+                    if ($children[$old_menu_item_id]) {
+                        foreach ($children[$old_menu_item_id] as $v) {
+                            $table_menu->bind((array)$v);
+                            $table_menu->id = 0;
+                            $table_menu->copy_from = $v->id;
+                            $table_menu->parent_id = $new_menu_item_id;
+                            $table_menu->getDbo()->rebuild_action=1;
+                            $ok = $table_menu->store();
+                            if (!$ok) {
+                                throw new Exception($table_menu->getError());
+                            }
+                            $new_menu_item_id = $table_menu->id;
+                            $old_parent_id = $v->id;
+                            sub_execute_copy_rows_table_menu($table_menu, $old_parent_id, $new_menu_item_id, $children);
+                        }
+                    }
+                }
+            }
         }
         return true;
     }

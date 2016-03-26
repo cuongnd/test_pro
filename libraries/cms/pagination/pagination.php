@@ -502,7 +502,6 @@ class JPagination
 	{
 		// Keep B/C for overrides done with chromes
 		$chromePath = JPATH_THEMES . '/' . JFactory::getApplication()->getTemplate() . '/html/pagination.php';
-
 		if (file_exists($chromePath))
 		{
 			$list = array();

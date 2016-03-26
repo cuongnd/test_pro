@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
  * @package  Joomla.Administrator
  * @since    1.5
  */
-abstract class JToolbarHelperFrontEnd
+abstract class JToolbarHelper
 {
 	/**
 	 * Title cell.
@@ -33,7 +33,6 @@ abstract class JToolbarHelperFrontEnd
 	{
 		$layout = new JLayoutFile('joomla.toolbar.title');
 		$html   = $layout->render(array('title' => $title, 'icon' => $icon));
-
 		$app = JFactory::getApplication();
 		$app->JComponentTitle = $html;
 		JFactory::getDocument()->setTitle($app->get('sitename') . ' - ' . JText::_('JADMINISTRATION') . ' - ' . $title);
@@ -351,6 +350,14 @@ abstract class JToolbarHelperFrontEnd
 
 		// Add an edit button.
 		$bar->appendButton('Standard', 'edit', $alt, $task, true);
+	}
+
+	public static function duplicate($task = 'duplicate', $alt = 'JTOOLBAR_DUPLICATE')
+	{
+		$bar = JToolbar::getInstance('toolbar');
+
+		// Add an edit button.
+		$bar->appendButton('Standard', 'duplicate', $alt, $task, true);
 	}
 
 	/**

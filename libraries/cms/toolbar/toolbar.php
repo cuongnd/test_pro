@@ -171,8 +171,22 @@ class JToolbar
 		$layout = new JLayoutFile('joomla.toolbar.containerclose');
 
 		$html[] = $layout->render(array());
-
-		return implode('', $html);
+		$doc=JFactory::getDocument();
+		$app=JFactory::getApplication();
+		$html= implode('', $html);
+		ob_start();
+		?>
+		<div id="toolbar" class="row form-group">
+			<div class="col-md-6">
+				<?php echo $app->JComponentTitle ?>
+			</div>
+			<div class="col-md-6">
+				<?php echo $html ?>
+			</div>
+		</div>
+		<?php
+		$html=ob_get_clean();
+		return $html;
 	}
 
 	/**

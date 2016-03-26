@@ -60,12 +60,10 @@
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_website" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_xmap" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/help" />
-      <excludeFolder url="file://$MODULE_DIR$/administrator/language" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/log" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/logs" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/modules" />
-      <excludeFolder url="file://$MODULE_DIR$/administrator/templates" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/android" />
       <excludeFolder url="file://$MODULE_DIR$/android_application" />
@@ -117,7 +115,6 @@
       <excludeFolder url="file://$MODULE_DIR$/global_css_images_js" />
       <excludeFolder url="file://$MODULE_DIR$/images" />
       <excludeFolder url="file://$MODULE_DIR$/jaextmanager_data" />
-      <excludeFolder url="file://$MODULE_DIR$/layouts" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/Fancy product designer 1.0.1 - CodeCanyon" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/GWTUMLDrawer_1.0_Beta_3" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/PHP-SQL-Parser/examples" />
@@ -138,7 +135,6 @@
       <excludeFolder url="file://$MODULE_DIR$/libraries/kint-0.9" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/kunena" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/layouts" />
-      <excludeFolder url="file://$MODULE_DIR$/libraries/less.php-master" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/php-merge-xml-master" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/phpass" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/phpmailer" />
@@ -174,7 +170,6 @@
       <excludeFolder url="file://$MODULE_DIR$/media/jquery" />
       <excludeFolder url="file://$MODULE_DIR$/media/jquery-validation-1.13.1" />
       <excludeFolder url="file://$MODULE_DIR$/media/jui" />
-      <excludeFolder url="file://$MODULE_DIR$/media/jui_front_end" />
       <excludeFolder url="file://$MODULE_DIR$/media/kendo-ui-core-master" />
       <excludeFolder url="file://$MODULE_DIR$/media/kendotest" />
       <excludeFolder url="file://$MODULE_DIR$/media/kunena" />
@@ -393,7 +388,6 @@
       <excludeFolder url="file://$MODULE_DIR$/plugins/system/suggestion" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/system/updatedata" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/system/wfmediaelement" />
-      <excludeFolder url="file://$MODULE_DIR$/plugins/twofactorauth" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/vmcalculation" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/vmcustom" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/vmpayment" />

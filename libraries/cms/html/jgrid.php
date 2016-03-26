@@ -368,6 +368,7 @@ abstract class JHtmlJGrid
 		return static::state($states, $value, $i, $prefix, $enabled, true, $checkbox);
 	}
 
+
 	/**
 	 * Returns an array of standard published state filter options.
 	 *

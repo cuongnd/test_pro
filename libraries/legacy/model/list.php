@@ -276,6 +276,7 @@ class JModelList extends JModelLegacy
 
 
 		}
+
 		catch (RuntimeException $e)
 		{
 			$this->setError($e->getMessage());
