@@ -185,6 +185,7 @@ class CategoriesHelper
                 throw new Exception($table_content->getError());
             }
         }
+
         return true;
     }
 	/**
