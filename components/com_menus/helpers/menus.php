@@ -77,13 +77,13 @@ class MenusHelperFrontEnd
 			{
 				$sub_list_menu_item=array();
 				$sub_list_menu_item[]=$root_menu_item;
-				MenusHelperFrontEnd::sub_get_list_children_menu_item_by_root_menu_item_id($root_menu_item->id,$sub_list_menu_item,$children);
+				MenusHelperFrontEnd::get_list_children_menu_item_by_root_menu_item_id($root_menu_item->id,$sub_list_menu_item,$children);
 				$list_menu_item=array_merge($list_menu_item,$sub_list_menu_item);
 			}
 		}
 		return $list_menu_item;
 	}
-	public static function sub_get_list_children_menu_item_by_root_menu_item_id($root_menu_item_id=0,&$list_menu_item=array(),$children)
+	public static function get_list_children_menu_item_by_root_menu_item_id($root_menu_item_id=0, &$list_menu_item=array(), $children)
 	{
 		if ($children[$root_menu_item_id]) {
 
@@ -94,9 +94,73 @@ class MenusHelperFrontEnd
 			foreach ($children[$root_menu_item_id] as $v) {
 				$id = $v->id;
 				$list_menu_item[]=$v;
-				MenusHelperFrontEnd::sub_get_list_children_menu_item_by_root_menu_item_id($id, $list_menu_item, $children);
+				MenusHelperFrontEnd::get_list_children_menu_item_by_root_menu_item_id($id, $list_menu_item, $children);
 			}
 		}
+	}
+
+	public static function get_children_menu_item_id_by_menu_item_id($menu_item_id)
+	{
+		$db    = JFactory::getDbo();
+
+		$query = $db->getQuery(true);
+		$query->clear();
+		$query->select('menu.*,menu_types.id as menu_type_id,menu_types.website_id')
+			->from('#__menu AS menu')
+			->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_id=menu.id')
+			->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+		;
+		$db->setQuery($query);
+		$list_menu_item = $db->loadObjectList('id');
+
+		$children = array();
+		// First pass - collect children
+		foreach ($list_menu_item as $v) {
+			$pt = $v->parent_id;
+			$pt=$pt?$pt:'root';
+			$list = @$children[$pt] ? $children[$pt] : array();
+			if ($v->id != $v->parent_id || $v->parent_id!=null) {
+				array_push($list, $v);
+			}
+			$children[$pt] = $list;
+		}
+		$list_menu_item=array();
+		MenusHelperFrontEnd::get_list_children_menu_item_by_root_menu_item_id($menu_item_id,$list_menu_item,$children);
+		$list_menu_item_id=array();
+		foreach($list_menu_item as $menu_item)
+		{
+			$list_menu_item_id[]=$menu_item->id;
+		}
+		return $list_menu_item_id;
+	}
+	public static function get_children_menu_item_by_menu_item_id($menu_item_id)
+	{
+		$db    = JFactory::getDbo();
+
+		$query = $db->getQuery(true);
+		$query->clear();
+		$query->select('menu.*,menu_types.id as menu_type_id,menu_types.website_id')
+			->from('#__menu AS menu')
+			->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_id=menu.id')
+			->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+		;
+		$db->setQuery($query);
+		$list_menu_item = $db->loadObjectList('id');
+
+		$children = array();
+		// First pass - collect children
+		foreach ($list_menu_item as $v) {
+			$pt = $v->parent_id;
+			$pt=$pt?$pt:'root';
+			$list = @$children[$pt] ? $children[$pt] : array();
+			if ($v->id != $v->parent_id || $v->parent_id!=null) {
+				array_push($list, $v);
+			}
+			$children[$pt] = $list;
+		}
+		$list_menu_item=array();
+		MenusHelperFrontEnd::get_list_children_menu_item_by_root_menu_item_id($menu_item_id,$list_menu_item,$children);
+		return $list_menu_item;
 	}
 
 	public function getMenuTypesByWebsiteId($website_id=0)

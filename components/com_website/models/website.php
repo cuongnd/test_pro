@@ -671,12 +671,15 @@ class WebsiteModelWebsite extends JModelAdmin
         $query=$db->getQuery(true);
         $query->clear()
             ->select('*')
-            ->from('#__extensions')
-            ->where('website_id='.(int)$website_id)
+            ->from('#__categories')
+            ->where('website_id='.(int)$website_template_id)
+            ->where('parent_id IS NULL OR parent_id=id')
         ;
-        $list_extensions=$db->setQuery($query)->loadObjectList();
-        $list_older_extension=array();
-        foreach($list_extensions AS $extensions)
+        $list_categories=$db->setQuery($query)->loadObjectList();
+        $list_older_categories=array();
+        $category_table=JTable::getInstance('category');
+
+        foreach($list_categories AS $category)
         {
             $list_older_extension[$extensions->copy_from]=$extensions->id;
         }
@@ -736,6 +739,8 @@ class WebsiteModelWebsite extends JModelAdmin
             }
             $list_older_menu_type[$menu_type->id]=$table_menu_type->id;
         }
+
+
         $query->clear()
             ->select('menu.*')
             ->from('#__menu AS menu')
@@ -760,13 +765,7 @@ class WebsiteModelWebsite extends JModelAdmin
         require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
         foreach($list_older_menu_item AS $old_menu_item_id=>$new_menu_item_id)
         {
-            $list_children_menu_item_id=MenusHelperFrontEnd::get_chilren_menu_item_id_by_menu_item_id($old_menu_item_id);
-            $query->clear()
-                ->select('*')
-                ->from('#__menu AS menu')
-                ->where('menu.id IN('.implode(',',$list_children_menu_item_id).')')
-                ;
-            $list_rows=$db->setQuery($query)->loadObjectList();
+            $list_rows=MenusHelperFrontEnd::get_children_menu_item_by_menu_item_id($old_menu_item_id);
             $children = array();
             // First pass - collect children
             foreach ($list_rows as $v) {
@@ -787,17 +786,19 @@ class WebsiteModelWebsite extends JModelAdmin
                             $table_menu->copy_from = $v->id;
                             $table_menu->parent_id = $new_menu_item_id;
                             $table_menu->getDbo()->rebuild_action=1;
-                            $ok = $table_menu->store();
+                            $ok = $table_menu->parent_store();
                             if (!$ok) {
                                 throw new Exception($table_menu->getError());
                             }
                             $new_menu_item_id = $table_menu->id;
                             $old_parent_id = $v->id;
-                            sub_execute_copy_rows_table_menu($table_menu, $old_parent_id, $new_menu_item_id, $children);
+                            sub_execute_copy_rows_table_category($table_menu, $old_parent_id, $new_menu_item_id, $children);
                         }
                     }
                 }
             }
+            sub_execute_copy_rows_table_category($table_menu,$old_menu_item_id,$new_menu_item_id,$children);
+
         }
         return true;
     }
@@ -924,57 +925,10 @@ class WebsiteModelWebsite extends JModelAdmin
             //copy from website template
             $website_template_id=websiteHelperFrontEnd::getOneTemplateWebsite();
         }
-        require_once JPATH_ROOT.'/administrator/components/com_categories/helpers/categories.php';
-        $rootId=CategoriesHelper::createRootCategory($website_id);
-        if(!$rootId)
-        {
-            $this->setError('There is not root category');
-            return false;
-        }
-        //copy category
-        $listCategory=CategoriesHelper::getListCategoryByWebsiteId($website_template_id);
-        if(!count($listCategory))
-        {
-            $this->setError('There is not category to copy');
-            return false;
-        }
-        $pks=array();
-        foreach($listCategory as $category)
-        {
-            $pks[]=$category->id;
-        }
-        JModelLegacy::addIncludePath(JPATH_ROOT.'/administrator/components/com_categories/models');
-        $modelCategory=JModelLegacy::getInstance('Category','CategoriesModel');
-        $state= $modelCategory->batchCopy($rootId,$pks);
-        if(!$state)
-        {
-            $this->setError($modelCategory->getError());
-            return false;
+        require_once JPATH_ROOT.'/components/com_categories/helpers/categories.php';
+        $ok=CategoriesHelper::copy_categories($website_template_id,$website_id);
+        return $ok;
 
-        }
-
-
-        $listCategory=CategoriesHelper::getListCategoryByWebsiteId($website_id);
-
-        $pks1=array();
-        foreach($listCategory as $category)
-        {
-            $pks1[]=$category->id;
-        }
-
-
-        JModelLegacy::addIncludePath(JPATH_ROOT.'/administrator/components/com_content/models');
-        $modelArticle=JModelLegacy::getInstance('Article','ContentModel');
-        $state= $modelArticle->batchCopyAllArticleOfWebsiteToOtherWebsite($website_id);
-        if(!$state)
-        {
-            $this->setError($modelArticle->getError());
-            return false;
-
-        }
-
-
-        return true;
     }
 
     public function CheckCreateContentCategory(&$layout)

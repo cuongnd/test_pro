@@ -92,7 +92,7 @@ class JMenuSite extends JMenu
 				{
 					$list_menu_item[]=$root_menu_item;
 				}
-				MenusHelperFrontEnd::sub_get_list_children_menu_item_by_root_menu_item_id($root_menu_item->id,$list_menu_item,$children);
+				MenusHelperFrontEnd::get_list_children_menu_item_by_root_menu_item_id($root_menu_item->id,$list_menu_item,$children);
 				break;
 			}
 		}

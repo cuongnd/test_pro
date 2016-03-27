@@ -964,7 +964,10 @@ class JTableMenu extends JTable
 
         return $result;
     }
-
+    public function parent_store()
+    {
+        return parent::store();
+    }
     /**
      * Method to set the publishing state for a node or list of nodes in the database
      * table.  The method respects rows checked out by other users and will attempt

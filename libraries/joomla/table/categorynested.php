@@ -17,7 +17,7 @@ defined('_JEXEC') or die(__FILE__);
  * @link        http://docs.joomla.org/JTableNested
  * @since       11.1
  */
-class JTableCategoryNested extends JTableNested
+class JTableCategory extends JTable
 {
 	/**
 	 * Object property holding the primary key of the parent node.  Provides
@@ -27,6 +27,8 @@ class JTableCategoryNested extends JTableNested
 	 * @since  11.1
 	 */
 	public $parent_id;
+	public $menu_type_id;
+	public $list_children_menu_item_id=array();
 
 	/**
 	 * Object property holding the depth level of the node in the tree.
@@ -105,7 +107,6 @@ class JTableCategoryNested extends JTableNested
 	 * @since  3.3
 	 */
 	protected static $root_id = 0;
-	public  $website_id = 0;
 
 	/**
 	 * Sets the debug level on or off
@@ -120,7 +121,60 @@ class JTableCategoryNested extends JTableNested
 	{
 		$this->_debug = (int) $level;
 	}
+	public function init(){
+		if($this->menu_type_id==0)
+		{
+			throw new  Exception('menu type id not exists');
+		}
+		if($this->parent_id==0)
+		{
+			$this->parent_id=$this->getRootId($this->menu_type_id);
+		}
+		if(empty($this->$this->list_children_menu_item_id))
+		{
+			$root_id=$this->getRootId($this->menu_type_id);
+			$query=$this->_db->getQuery(true);
+			$query->select('*')
+				->from('#__menu')
+			;
+			$children = array();
+			$list_menu=$this->_db->setQuery($query)->loadObjectList();
+			// First pass - collect children
+			foreach ($list_menu as $item)
+			{
+				$pt = $item->parent_id;
+				$list = @$children[$pt] ? $children[$pt] : array();
+				if($item->id!=$item->parent_id)
+				{
+					array_push($list, $item);
+				}
+				$children[$pt] = $list;
+			}
+			if(!function_exists('sub_get_list_children_menu_item_id_by_menu_id')) {
+				function sub_get_list_children_menu_item_id_by_menu_id($root_id, $list, &$children)
+				{
+					if (@$children[$root_id]) {
+						foreach ($children[$root_id] as $v) {
+							$root_id = $v->id;
+							array_push($list, $root_id);
+							sub_get_list_children_menu_item_id_by_menu_id($root_id, $list, $children);
+						}
+					}
+					return $list;
+				}
+			}
+			$this->list_children_menu_item_id=sub_get_list_children_menu_item_id_by_menu_id($root_id,array(),$children);
+			if(empty($this->list_children_menu_item_id)){
+				$this->list_children_menu_item_id=array(0);
+			}
+		}
+	}
+	public function __construct(JDatabaseDriver $db)
+	{
+		parent::__construct('#__menu', 'id', $db);
 
+
+	}
 	/**
 	 * Method to get an array of nodes from a given node to its root.
 	 *
@@ -138,13 +192,12 @@ class JTableCategoryNested extends JTableNested
 		$pk = (is_null($pk)) ? $this->$k : $pk;
 
 		// Get the path from the node to the root.
-		$select = ($diagnostic) ? 'p.' . $k . ', p.parent_id, p.level, p.lft, p.rgt' : 'p.*';
+		$select = ($diagnostic) ? 'p.id, p.parent_id, p.level, p.lft, p.rgt' : 'p.*';
 		$query = $this->_db->getQuery(true)
 			->select($select)
-			->from($this->_tbl . ' AS n, ' . $this->_tbl . ' AS p')
+			->from('#__menu AS n,#__menu   AS p')
 			->where('n.lft BETWEEN p.lft AND p.rgt')
-			->where('n.' . $k . ' = ' . (int) $pk)
-            ->where('n.website_id='.(int)$this->website_id)
+			->where('n.id= ' . (int) $pk)
 			->order('p.lft');
 
 		$this->_db->setQuery($query);
@@ -175,7 +228,6 @@ class JTableCategoryNested extends JTableNested
 			->from($this->_tbl . ' AS n, ' . $this->_tbl . ' AS p')
 			->where('n.lft BETWEEN p.lft AND p.rgt')
 			->where('p.' . $k . ' = ' . (int) $pk)
-            ->where('n.website_id='.(int)$this->website_id)
 			->order('n.lft');
 
 		return $this->_db->setQuery($query)->loadObjectList();
@@ -225,6 +277,7 @@ class JTableCategoryNested extends JTableNested
 	 */
 	public function setLocation($referenceId, $position = 'after')
 	{
+		$website=JFactory::getWebsite();
 		// Make sure the location is valid.
 		if (($position != 'before') && ($position != 'after') && ($position != 'first-child') && ($position != 'last-child'))
 		{
@@ -256,8 +309,7 @@ class JTableCategoryNested extends JTableNested
 
 		$query = $this->_db->getQuery(true)
 			->select($k)
-			->from($this->_tbl)
-            ->where('website_id='.(int)$this->website_id)
+			->from('#__menu')
 			->where('parent_id = ' . $this->parent_id);
 
 		if ($where)
@@ -326,9 +378,9 @@ class JTableCategoryNested extends JTableNested
 		// Get the ids of child nodes.
 		$query = $this->_db->getQuery(true)
 			->select($k)
-			->from($this->_tbl)
-			->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt)
-            ->where('website_id='.(int)$this->website_id);
+			->from('#__menu')
+			->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
+
 		$children = $this->_db->setQuery($query)->loadColumn();
 
 		// @codeCoverageIgnoreStart
@@ -356,25 +408,23 @@ class JTableCategoryNested extends JTableNested
 		}
 
 		/*
-		 * Move the sub-tree out of the nested sets by negating its left and right values.
-		 */
+         * Move the sub-tree out of the nested sets by negating its left and right values.
+         */
 		$query->clear()
-			->update($this->_tbl)
+			->update('#__menu')
 			->set('lft = lft * (-1), rgt = rgt * (-1)')
-            ->where('website_id='.(int)$this->website_id)
 			->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
 		$this->_db->setQuery($query);
 
 		$this->_runQuery($query, 'JLIB_DATABASE_ERROR_MOVE_FAILED');
 
 		/*
-		 * Close the hole in the tree that was opened by removing the sub-tree from the nested sets.
-		 */
+         * Close the hole in the tree that was opened by removing the sub-tree from the nested sets.
+         */
 		// Compress the left values.
 		$query->clear()
-			->update($this->_tbl)
+			->update('#__menu')
 			->set('lft = lft - ' . (int) $node->width)
-            ->where('website_id='.(int)$this->website_id)
 			->where('lft > ' . (int) $node->rgt);
 		$this->_db->setQuery($query);
 
@@ -382,9 +432,8 @@ class JTableCategoryNested extends JTableNested
 
 		// Compress the right values.
 		$query->clear()
-			->update($this->_tbl)
+			->update('#__menu')
 			->set('rgt = rgt - ' . (int) $node->width)
-            ->where('website_id='.(int)$this->website_id)
 			->where('rgt > ' . (int) $node->rgt);
 		$this->_db->setQuery($query);
 
@@ -417,9 +466,8 @@ class JTableCategoryNested extends JTableNested
 			// Get the last root node as the reference node.
 			$query->clear()
 				->select($this->_tbl_key . ', parent_id, level, lft, rgt')
-				->from($this->_tbl)
+				->from('#__menu')
 				->where('parent_id = 0')
-                ->where('website_id='.(int)$this->website_id)
 				->order('lft DESC');
 			$this->_db->setQuery($query, 0, 1);
 			$reference = $this->_db->loadObject();
@@ -442,14 +490,13 @@ class JTableCategoryNested extends JTableNested
 		}
 
 		/*
-		 * Create space in the nested sets at the new location for the moved sub-tree.
-		 */
+         * Create space in the nested sets at the new location for the moved sub-tree.
+         */
 
 		// Shift left values.
 		$query->clear()
-			->update($this->_tbl)
+			->update('#__menu')
 			->set('lft = lft + ' . (int) $node->width)
-            ->where('website_id='.(int)$this->website_id)
 			->where($repositionData->left_where);
 		$this->_db->setQuery($query);
 
@@ -457,27 +504,25 @@ class JTableCategoryNested extends JTableNested
 
 		// Shift right values.
 		$query->clear()
-			->update($this->_tbl)
+			->update('#__menu')
 			->set('rgt = rgt + ' . (int) $node->width)
-            ->where('website_id='.(int)$this->website_id)
 			->where($repositionData->right_where);
 		$this->_db->setQuery($query);
 
 		$this->_runQuery($query, 'JLIB_DATABASE_ERROR_MOVE_FAILED');
 
 		/*
-		 * Calculate the offset between where the node used to be in the tree and
-		 * where it needs to be in the tree for left ids (also works for right ids).
-		 */
+         * Calculate the offset between where the node used to be in the tree and
+         * where it needs to be in the tree for left ids (also works for right ids).
+         */
 		$offset = $repositionData->new_lft - $node->lft;
 		$levelOffset = $repositionData->new_level - $node->level;
 
 		// Move the nodes back into position in the tree using the calculated offsets.
 		$query->clear()
-			->update($this->_tbl)
+			->update('#__menu')
 			->set('rgt = ' . (int) $offset . ' - rgt')
 			->set('lft = ' . (int) $offset . ' - lft')
-            ->where('website_id='.(int)$this->website_id)
 			->set('level = level + ' . (int) $levelOffset)
 			->where('lft < 0');
 		$this->_db->setQuery($query);
@@ -488,7 +533,7 @@ class JTableCategoryNested extends JTableNested
 		if ($node->parent_id != $repositionData->new_parent_id)
 		{
 			$query = $this->_db->getQuery(true)
-				->update($this->_tbl);
+				->update('#__menu');
 
 			// Update the title and alias fields if they exist for the table.
 			$fields = $this->getFields();
@@ -497,7 +542,7 @@ class JTableCategoryNested extends JTableNested
 			{
 				$query->set('title = ' . $this->_db->quote($this->title));
 			}
-            $query->where('website_id='.(int)$this->website_id);
+
 			if (array_key_exists('alias', $fields)  && $this->alias !== null)
 			{
 				$query->set('alias = ' . $this->_db->quote($this->alias));
@@ -599,24 +644,21 @@ class JTableCategoryNested extends JTableNested
 		{
 			// Delete the node and all of its children.
 			$query->clear()
-				->delete($this->_tbl)
-                ->where('website_id='.(int)$this->website_id)
+				->delete('#__menu')
 				->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
 			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
 
 			// Compress the left values.
 			$query->clear()
-				->update($this->_tbl)
+				->update('#__menu')
 				->set('lft = lft - ' . (int) $node->width)
-                ->where('website_id='.(int)$this->website_id)
 				->where('lft > ' . (int) $node->rgt);
 			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
 
 			// Compress the right values.
 			$query->clear()
-				->update($this->_tbl)
+				->update('#__menu')
 				->set('rgt = rgt - ' . (int) $node->width)
-                ->where('website_id='.(int)$this->website_id)
 				->where('rgt > ' . (int) $node->rgt);
 			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
 		}
@@ -625,42 +667,37 @@ class JTableCategoryNested extends JTableNested
 		{
 			// Delete the node.
 			$query->clear()
-				->delete($this->_tbl)
-                ->where('website_id='.(int)$this->website_id)
+				->delete('#__menu')
 				->where('lft = ' . (int) $node->lft);
 			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
 
 			// Shift all node's children up a level.
 			$query->clear()
-				->update($this->_tbl)
+				->update('#__menu')
 				->set('lft = lft - 1')
 				->set('rgt = rgt - 1')
-                ->where('website_id='.(int)$this->website_id)
 				->set('level = level - 1')
 				->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
 			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
 
 			// Adjust all the parent values for direct children of the deleted node.
 			$query->clear()
-				->update($this->_tbl)
-                ->where('website_id='.(int)$this->website_id)
+				->update('#__menu')
 				->set('parent_id = ' . (int) $node->parent_id)
 				->where('parent_id = ' . (int) $node->$k);
 			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
 
 			// Shift all of the left values that are right of the node.
 			$query->clear()
-				->update($this->_tbl)
-                ->where('website_id='.(int)$this->website_id)
+				->update('#__menu')
 				->set('lft = lft - 2')
 				->where('lft > ' . (int) $node->rgt);
 			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
 
 			// Shift all of the right values that are right of the node.
 			$query->clear()
-				->update($this->_tbl)
+				->update('#__menu')
 				->set('rgt = rgt - 2')
-                ->where('website_id='.(int)$this->website_id)
 				->where('rgt > ' . (int) $node->rgt);
 			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
 		}
@@ -702,8 +739,7 @@ class JTableCategoryNested extends JTableNested
 
 			$query = $this->_db->getQuery(true)
 				->select('COUNT(' . $this->_tbl_key . ')')
-                ->where('website_id='.(int)$this->website_id)
-				->from($this->_tbl)
+				->from('#__menu')
 				->where($this->_tbl_key . ' = ' . $this->parent_id);
 
 			if (!$this->_db->setQuery($query)->loadResult())
@@ -718,7 +754,7 @@ class JTableCategoryNested extends JTableNested
 
 			return false;
 		}
-		// @codeCoverageIgnoreStart
+			// @codeCoverageIgnoreStart
 		catch (Exception $e)
 		{
 			// Database error - rethrow.
@@ -728,7 +764,14 @@ class JTableCategoryNested extends JTableNested
 
 		return true;
 	}
+	public function get_root_by_menu_item_id($menu_item_id=0){
+		$query=$this->_db->getQuery(true);
+		$sql='select @parent:=parent_id as prnt, title, id from (select @parent:='.$menu_item_id.' ) a join (select * from #__menu order by id desc) b where @parent=id';
+		$query->setQuery($sql);
+		$root_id=$this->_db->setQuery($query)->loadResult();
+		return $root_id;
 
+	}
 	/**
 	 * Method to store a node in the database table.
 	 *
@@ -742,7 +785,7 @@ class JTableCategoryNested extends JTableNested
 	public function store($updateNulls = false)
 	{
 		$k = $this->_tbl_key;
-
+		$this->init();
 		// Implement JObservableInterface: Pre-processing by observers
 		// 2.5 upgrade issue - check if property_exists before executing
 		if (property_exists($this, '_observers'))
@@ -759,22 +802,23 @@ class JTableCategoryNested extends JTableNested
 		// @codeCoverageIgnoreEnd
 
 		/*
-		 * If the primary key is empty, then we assume we are inserting a new node into the
-		 * tree.  From this point we would need to determine where in the tree to insert it.
-		 */
+         * If the primary key is empty, then we assume we are inserting a new node into the
+         * tree.  From this point we would need to determine where in the tree to insert it.
+         */
 		if (empty($this->$k))
 		{
 			/*
-			 * We are inserting a node somewhere in the tree with a known reference
-			 * node.  We have to make room for the new node and set the left and right
-			 * values before we insert the row.
-			 */
+             * We are inserting a node somewhere in the tree with a known reference
+             * node.  We have to make room for the new node and set the left and right
+             * values before we insert the row.
+             */
 			if ($this->_location_id >= 0)
 			{
 				// Lock the table for writing.
 				if (!$this->_lock())
 				{
 					// Error message set in lock method.
+					$this->setError('Error message set in lock method');
 					return false;
 				}
 
@@ -782,11 +826,11 @@ class JTableCategoryNested extends JTableNested
 				if ($this->_location_id == 0)
 				{
 					// Get the last root node as the reference node.
+					$root_id=$this->getRootId($this->menu_type_id);
 					$query = $this->_db->getQuery(true)
 						->select($this->_tbl_key . ', parent_id, level, lft, rgt')
-						->from($this->_tbl)
-                        ->where('website_id='.(int)$this->website_id)
-						->where('parent_id = 0')
+						->from('#__menu')
+						->where('id='.(int)$root_id)
 						->order('lft DESC');
 					$this->_db->setQuery($query, 0, 1);
 					$reference = $this->_db->loadObject();
@@ -806,7 +850,7 @@ class JTableCategoryNested extends JTableNested
 					{
 						// Error message set in getNode method.
 						$this->_unlock();
-
+						$this->setError('Error message set in getNode method');
 						return false;
 					}
 				}
@@ -817,23 +861,26 @@ class JTableCategoryNested extends JTableNested
 					// Error message set in getNode method.
 					$this->_unlock();
 
+					$this->setError('Error message set unlock method');
 					return false;
 				}
 
 				// Create space in the tree at the new location for the new node in left ids.
 				$query = $this->_db->getQuery(true)
-					->update($this->_tbl)
+					->update('#__menu')
 					->set('lft = lft + 2')
-                    ->where('website_id='.(int)$this->website_id)
-					->where($repositionData->left_where);
+					->where($repositionData->left_where)
+					->where('id IN ('.implode(',',$this->list_children_menu_item_id).')')
+				;
 				$this->_runQuery($query, 'JLIB_DATABASE_ERROR_STORE_FAILED');
 
 				// Create space in the tree at the new location for the new node in right ids.
 				$query->clear()
-					->update($this->_tbl)
+					->update('#__menu')
 					->set('rgt = rgt + 2')
-                    ->where('website_id='.(int)$this->website_id)
-					->where($repositionData->right_where);
+					->where($repositionData->right_where)
+					->where('id IN ('.implode(',',$this->list_children_menu_item_id).')')
+				;
 				$this->_runQuery($query, 'JLIB_DATABASE_ERROR_STORE_FAILED');
 
 				// Set the object values.
@@ -846,16 +893,17 @@ class JTableCategoryNested extends JTableNested
 			{
 				// Negative parent ids are invalid
 				$e = new UnexpectedValueException(sprintf('%s::store() used a negative _location_id', get_class($this)));
+
 				$this->setError($e);
 
 				return false;
 			}
 		}
 		/*
-		 * If we have a given primary key then we assume we are simply updating this
-		 * node in the tree.  We should assess whether or not we are moving the node
-		 * or just updating its data fields.
-		 */
+         * If we have a given primary key then we assume we are simply updating this
+         * node in the tree.  We should assess whether or not we are moving the node
+         * or just updating its data fields.
+         */
 		else
 		{
 			// If the location has been set, move the node to its new location.
@@ -985,8 +1033,7 @@ class JTableCategoryNested extends JTableNested
 				// Ensure that children are not checked out.
 				$query->clear()
 					->select('COUNT(' . $k . ')')
-					->from($this->_tbl)
-                    ->where('website_id='.(int)$this->website_id)
+					->from('#__menu')
 					->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt)
 					->where('(checked_out <> 0 AND checked_out <> ' . (int) $userId . ')');
 				$this->_db->setQuery($query);
@@ -1009,10 +1056,9 @@ class JTableCategoryNested extends JTableNested
 				// Get any ancestor nodes that have a lower publishing state.
 				$query->clear()
 					->select('n.' . $k)
-					->from($this->_db->quoteName($this->_tbl) . ' AS n')
+					->from($this->_db->quoteName('#__menu') . ' AS n')
 					->where('n.lft < ' . (int) $node->lft)
 					->where('n.rgt > ' . (int) $node->rgt)
-                    ->where('n.website_id='.(int)$this->website_id)
 					->where('n.parent_id > 0')
 					->where('n.published < ' . (int) $compareState);
 
@@ -1034,9 +1080,8 @@ class JTableCategoryNested extends JTableNested
 
 			// Update and cascade the publishing state.
 			$query->clear()
-				->update($this->_db->quoteName($this->_tbl))
+				->update($this->_db->quoteName('#__menu'))
 				->set('published = ' . (int) $state)
-                ->where('website_id='.(int)$this->website_id)
 				->where('(lft > ' . (int) $node->lft . ' AND rgt < ' . (int) $node->rgt . ') OR ' . $k . ' = ' . (int) $pk);
 			$this->_db->setQuery($query)->execute();
 
@@ -1107,26 +1152,23 @@ class JTableCategoryNested extends JTableNested
 			// Get the primary keys of child nodes.
 			$query = $this->_db->getQuery(true)
 				->select($this->_tbl_key)
-				->from($this->_tbl)
-                ->where('website_id='.(int)$this->website_id)
+				->from('#__menu')
 				->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
 
 			$children = $this->_db->setQuery($query)->loadColumn();
 
 			// Shift left and right values for the node and its children.
 			$query->clear()
-				->update($this->_tbl)
+				->update('#__menu')
 				->set('lft = lft - ' . (int) $sibling->width)
 				->set('rgt = rgt - ' . (int) $sibling->width)
-                ->where('website_id='.(int)$this->website_id)
 				->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
 			$this->_db->setQuery($query)->execute();
 
 			// Shift left and right values for the sibling and its children.
 			$query->clear()
-				->update($this->_tbl)
+				->update('#__menu')
 				->set('lft = lft + ' . (int) $node->width)
-                ->where('website_id='.(int)$this->website_id)
 				->set('rgt = rgt + ' . (int) $node->width)
 				->where('lft BETWEEN ' . (int) $sibling->lft . ' AND ' . (int) $sibling->rgt)
 				->where($this->_tbl_key . ' NOT IN (' . implode(',', $children) . ')');
@@ -1196,27 +1238,24 @@ class JTableCategoryNested extends JTableNested
 			// Get the primary keys of child nodes.
 			$query->clear()
 				->select($this->_tbl_key)
-				->from($this->_tbl)
-                ->where('website_id='.(int)$this->website_id)
+				->from('#__menu')
 				->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
 			$this->_db->setQuery($query);
 			$children = $this->_db->loadColumn();
 
 			// Shift left and right values for the node and its children.
 			$query->clear()
-				->update($this->_tbl)
+				->update('#__menu')
 				->set('lft = lft + ' . (int) $sibling->width)
 				->set('rgt = rgt + ' . (int) $sibling->width)
-                ->where('website_id='.(int)$this->website_id)
 				->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
 			$this->_db->setQuery($query)->execute();
 
 			// Shift left and right values for the sibling and its children.
 			$query->clear()
-				->update($this->_tbl)
+				->update('#__menu')
 				->set('lft = lft - ' . (int) $node->width)
 				->set('rgt = rgt - ' . (int) $node->width)
-                ->where('website_id='.(int)$this->website_id)
 				->where('lft BETWEEN ' . (int) $sibling->lft . ' AND ' . (int) $sibling->rgt)
 				->where($this->_tbl_key . ' NOT IN (' . implode(',', $children) . ')');
 			$this->_db->setQuery($query)->execute();
@@ -1240,73 +1279,51 @@ class JTableCategoryNested extends JTableNested
 	 *
 	 * @since   11.1
 	 */
-	public function getRootId()
+	public function getRootId($menu_type_id=0)
 	{
 		if ((int) self::$root_id > 0)
 		{
 			return self::$root_id;
 		}
-
-		// Get the root item.
-		$k = $this->_tbl_key;
-        $app=JFactory::getApplication();
-        $post=$app->input->getArray($_POST);
-        $this->website_id=$this->website_id?$this->website_id:$post['filter']['website_id'];
-		// Test for a unique record with parent_id = 0
-		$query = $this->_db->getQuery(true)
-			->select($k)
-			->from($this->_tbl)
-            ->where('website_id='.(int)$this->website_id)
-			->where('parent_id = id');
-		$result = $this->_db->setQuery($query)->loadColumn();
-		if (count($result) == 1)
+		$menuitemmenutype_table=JTable::getInstance('menuitemmenutype');
+		$menuitemmenutype_table->load(array('menu_type_id'=>$menu_type_id));
+		if($menuitemmenutype_table->id)
 		{
-			self::$root_id = $result[0];
-
+			self::$root_id=$menuitemmenutype_table->menu_id;
 			return self::$root_id;
-		}
-
-		// Test for a unique record with lft = 0
-		$query->clear()
-			->select($k)
-			->from($this->_tbl)
-            ->where('website_id='.(int)$this->website_id)
-			->where('lft = 0');
-
-		$result = $this->_db->setQuery($query)->loadColumn();
-
-		if (count($result) == 1)
-		{
-			self::$root_id = $result[0];
-
-			return self::$root_id;
-		}
-
-		$fields = $this->getFields();
-
-		if (array_key_exists('alias', $fields))
-		{
-			// Test for a unique record alias = root
-			$query->clear()
-				->select($k)
-				->from($this->_tbl)
-                ->where('website_id='.(int)$this->website_id)
-				->where('alias = ' . $this->_db->quote('root'));
-
-			$result = $this->_db->setQuery($query)->loadColumn();
-
-			if (count($result) == 1)
+		}else{
+			$query=$this->_db->getQuery(true);
+			$query->insert('#__menu')
+				->set('title='.$query->q('Menu_Item_Root'))
+				->set('alias='.$query->q('root'))
+			;
+			$ok=$this->_db->setQuery($query)->execute();
+			if(!$ok)
 			{
-				self::$root_id = $result[0];
-
-				return self::$root_id;
+				throw  new Exception($this->_db->getErrorMsg());
 			}
+			$new_menu_item_id=$this->_db->insertid();
+			$query=$this->_db->getQuery(true);
+			$query->update('#__menu')
+				->set('parent_id='.(int)$new_menu_item_id)
+				->where('id='.(int)$new_menu_item_id)
+			;
+			$ok=$this->_db->setQuery($query)->execute();
+			if(!$ok)
+			{
+				throw  new Exception($this->_db->getErrorMsg());
+			}
+
+			$menuitemmenutype_table->menu_id=$new_menu_item_id;
+			$menuitemmenutype_table->menu_type_id=$menu_type_id;
+			$ok=$menuitemmenutype_table->store();
+			if(!$ok)
+			{
+				throw new Exception($menuitemmenutype_table->getErrorMsg());
+			}
+			return $new_menu_item_id;
 		}
-
-		$e = new UnexpectedValueException(sprintf('%s::getRootId', get_class($this)));
-		$this->setError($e);
 		self::$root_id = false;
-
 		return false;
 	}
 
@@ -1324,20 +1341,23 @@ class JTableCategoryNested extends JTableNested
 	 * @since   11.1
 	 * @throws  RuntimeException on database error.
 	 */
-	public function rebuild($parentId = null, $leftId = 0, $level = 0, $path = '')
+	public function rebuild($menu_type_id=0,$parentId=0,$leftId = 0, $level = 0, $path = '')
 	{
-
+		if($menu_type_id==0)
+		{
+			throw new Exception('menu type id is null');
+		}
 		// If no parent is provided, try to find it.
-		if ($parentId === null)
+		if ($parentId==0||$parentId === null)
 		{
 			// Get the root item.
-			$parentId = $this->getRootId();
-
+			$parentId = $this->getRootId($menu_type_id);
 			if ($parentId === false)
 			{
 				return false;
 			}
 		}
+
 
 		$query = $this->_db->getQuery(true);
 
@@ -1346,10 +1366,10 @@ class JTableCategoryNested extends JTableNested
 		{
 			$query->clear()
 				->select($this->_tbl_key . ', alias')
-                ->where('website_id='.(int)$this->website_id)
-				->from($this->_tbl)
-                ->where('parent_id = %d')
-				->where('extension !='.$query->quote('system'));
+				->from('#__menu')
+				->where('parent_id = %d')
+				->where('parent_id!=id')
+			;
 
 			// If the table has an ordering field, use that for ordering.
 			if (property_exists($this, 'ordering'))
@@ -1372,16 +1392,15 @@ class JTableCategoryNested extends JTableNested
 
 		// The right value of this node is the left value + 1
 		$rightId = $leftId + 1;
-
 		// Execute this function recursively over all children
 		foreach ($children as $node)
 		{
 			/*
-			 * $rightId is the current right value, which is incremented on recursion return.
-			 * Increment the level for the children.
-			 * Add this item's alias to the path (but avoid a leading /)
-			 */
-			$rightId = $this->rebuild($node->{$this->_tbl_key}, $rightId, $level + 1, $path . (empty($path) ? '' : '/') . $node->alias);
+             * $rightId is the current right value, which is incremented on recursion return.
+             * Increment the level for the children.
+             * Add this item's alias to the path (but avoid a leading /)
+             */
+			$rightId = $this->rebuild($menu_type_id,$node->{$this->_tbl_key}, $rightId, $level + 1, $path . (empty($path) ? '' : '/') . $node->alias);
 
 			// If there is an update failure, return false to break out of the recursion.
 			if ($rightId === false)
@@ -1393,11 +1412,10 @@ class JTableCategoryNested extends JTableNested
 		// We've got the left value, and now that we've processed
 		// the children of this node we also know the right value.
 		$query->clear()
-			->update($this->_tbl)
+			->update('#__menu')
 			->set('lft = ' . (int) $leftId)
 			->set('rgt = ' . (int) $rightId)
 			->set('level = ' . (int) $level)
-            ->where('website_id='.(int)$this->website_id)
 			->set('path = ' . $this->_db->quote($path))
 			->where($this->_tbl_key . ' = ' . (int) $parentId);
 		$this->_db->setQuery($query)->execute();
@@ -1434,7 +1452,6 @@ class JTableCategoryNested extends JTableNested
 		$query = $this->_db->getQuery(true)
 			->select('p.alias')
 			->from($this->_tbl . ' AS n, ' . $this->_tbl . ' AS p')
-            ->where('n.website_id='.(int)$this->website_id)
 			->where('n.lft BETWEEN p.lft AND p.rgt')
 			->where('n.' . $this->_tbl_key . ' = ' . (int) $pk)
 			->order('p.lft');
@@ -1453,9 +1470,8 @@ class JTableCategoryNested extends JTableNested
 
 		// Update the path field for the node.
 		$query->clear()
-			->update($this->_tbl)
+			->update('#__menu')
 			->set('path = ' . $this->_db->quote($path))
-            ->where('website_id='.(int)$this->website_id)
 			->where($this->_tbl_key . ' = ' . (int) $pk);
 
 		$this->_db->setQuery($query)->execute();
@@ -1507,8 +1523,7 @@ class JTableCategoryNested extends JTableNested
 				{
 					// Do an update to change the lft values in the table for each id
 					$query->clear()
-						->update($this->_tbl)
-                        ->where('website_id='.(int)$this->website_id)
+						->update('#__menu')
 						->where($this->_tbl_key . ' = ' . (int) $idArray[$i])
 						->set('lft = ' . (int) $lft_array[$i]);
 
@@ -1573,8 +1588,7 @@ class JTableCategoryNested extends JTableNested
 		// Get the node data.
 		$query = $this->_db->getQuery(true)
 			->select($this->_tbl_key . ', parent_id, level, lft, rgt')
-            ->where('website_id='.(int)$this->website_id)
-			->from($this->_tbl)
+			->from('#__menu')
 			->where($k . ' = ' . (int) $id);
 		$row = $this->_db->setQuery($query, 0, 1)->loadObject();
 
@@ -1615,12 +1629,15 @@ class JTableCategoryNested extends JTableNested
 		// Make sure the reference an object with a left and right id.
 		if (!is_object($referenceNode) || !(isset($referenceNode->lft) && isset($referenceNode->rgt)))
 		{
+			$this->setError('Make sure the reference an object with a left and right id');
+
 			return false;
 		}
 
 		// A valid node cannot have a width less than 2.
 		if ($nodeWidth < 2)
 		{
+			$this->setError('A valid node cannot have a width less than 2');
 			return false;
 		}
 
@@ -1709,8 +1726,7 @@ class JTableCategoryNested extends JTableNested
 		{
 			$query = $this->_db->getQuery(true)
 				->select($this->_tbl_key . ', parent_id, lft, rgt, level')
-                ->where('website_id='.(int)$this->website_id)
-				->from($this->_tbl)
+				->from('#__menu')
 				->order($this->_tbl_key);
 			$this->_db->setQuery($query);
 

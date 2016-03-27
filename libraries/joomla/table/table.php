@@ -817,7 +817,6 @@ abstract class JTable extends JObject implements JObservableInterface
 			if ($error)
 			{
 				$this->setError($error);
-
 				return false;
 			}
 			else
@@ -841,7 +840,6 @@ abstract class JTable extends JObject implements JObservableInterface
 				if (!$asset->check() || !$asset->store($updateNulls))
 				{
 					$this->setError($asset->getError());
-
 					return false;
 				}
 				else
@@ -859,12 +857,12 @@ abstract class JTable extends JObject implements JObservableInterface
 						$this->_db->setQuery($query)->execute();
 					}
 				}
+
 			}
 		}
 
 		// Implement JObservableInterface: Post-processing by observers
 		$this->_observers->update('onAfterStore', array(&$result));
-
 		return $result;
 	}
 
