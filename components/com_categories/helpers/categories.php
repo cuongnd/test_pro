@@ -131,7 +131,7 @@ class CategoriesHelper
             $children[$pt] = $list;
         }
         if(!function_exists('sub_execute_copy_rows_table_category')) {
-            function sub_execute_copy_rows_table_category(JTable $table_category,$list_category=array(), $old_category_id = 0, $new_category_id, $children)
+            function sub_execute_copy_rows_table_category(JTable $table_category, &$list_old_category_id=array(), $old_category_id = 0, $new_category_id, $children)
             {
                 if ($children[$old_category_id]) {
                     foreach ($children[$old_category_id] as $v) {
@@ -144,10 +144,11 @@ class CategoriesHelper
                         if (!$ok) {
                             throw new Exception($table_category->getError());
                         }
-                        $new_category_id = $table_category->id;
-                        $old_parent_id = $v->id;
-                        $list_category[$new_category_id]=$old_parent_id;
-                        sub_execute_copy_rows_table_category($table_category, $list_category,$old_parent_id, $new_category_id, $children);
+
+                        $new_category_id1 = $table_category->id;
+                        $old_category_id1 = $v->id;
+                        $list_old_category_id[$old_category_id1]=$new_category_id1;
+                        sub_execute_copy_rows_table_category($table_category, $list_old_category_id,$old_category_id1, $new_category_id1, $children);
                     }
                 }
             }
@@ -157,30 +158,33 @@ class CategoriesHelper
 
 
 
-        $list_category=array();
+        $a_list_old_category_id=array();
         foreach($list_old_category_id AS $old_category_id=>$new_category_id)
         {
-            $list_category1=array();
-            $list_category1[$old_category_id]=$new_category_id;
-            sub_execute_copy_rows_table_category($table_category,$list_category1,$old_category_id, $new_category_id,$children);
-            $list_category=array_merge($list_category1,$list_category);
+            $list_old_category_id1=array();
+            $list_old_category_id1[$old_category_id]=$new_category_id;
+            sub_execute_copy_rows_table_category($table_category,$list_old_category_id1,$old_category_id, $new_category_id,$children);
+            $a_list_old_category_id=$list_old_category_id1+$a_list_old_category_id;
         }
-        echo "<pre>";
-        print_r($list_category);
-        echo "</pre>";
-        die;
-       /* $query->clear()
+        $query->clear()
             ->select('content.*')
             ->from('#__content AS content')
-            ->where('content.catid IN ('.implode(',',$list_old_category_id1).')')
+            ->where('content.catid IN ('.implode(',',array_keys($a_list_old_category_id)).')')
         ;
-        echo $query->dump();
         $db->setQuery($query);
         $list_content=$db->loadObjectList();
-        echo "<pre>";
-        print_r($list_content);
-        echo "</pre>";
-        */
+        $table_content=JTable::getInstance('content');
+        foreach($list_content as $content)
+        {
+            $table_content->bind((array)$content);
+            $table_content->id=0;
+            $category_id=$content->catid;
+            $table_content->catid=$a_list_old_category_id[$category_id];
+            $ok = $table_content->store();
+            if (!$ok) {
+                throw new Exception($table_content->getError());
+            }
+        }
         return true;
     }
 	/**
