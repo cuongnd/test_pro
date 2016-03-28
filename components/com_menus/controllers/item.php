@@ -140,6 +140,7 @@ class MenusControllerItem extends JControllerForm
 
         $table_menu_item = JTable::getInstance('Menu','JTable');
         $table_menu_item->load($data['id']);
+
         if ($table_menu_item->home) {
             $data['language'] = '*';
             $data['published'] = 1;
@@ -151,7 +152,7 @@ class MenusControllerItem extends JControllerForm
             die;
         }
 
-        if (!$table_menu_item->store()) {
+        if (!$table_menu_item->parent_store()) {
             $result->e = 1;
             $result->m = $table_menu_item->getError();
             echo json_encode($result);

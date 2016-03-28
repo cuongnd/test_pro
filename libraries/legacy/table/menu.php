@@ -122,6 +122,7 @@ class JTableMenu extends JTable
         $this->_debug = (int) $level;
     }
     public function init(){
+
         if($this->menu_type_id==0)
         {
             throw new  Exception('menu type id not exists');
@@ -1288,11 +1289,11 @@ class JTableMenu extends JTable
         {
             return self::$root_id;
         }
-        $menuitemmenutype_table=JTable::getInstance('menuitemmenutype');
-        $menuitemmenutype_table->load(array('menu_type_id'=>$menu_type_id));
-        if($menuitemmenutype_table->id)
+        $menu_item_menu_type_table=JTable::getInstance('menuitemmenutype');
+        $menu_item_menu_type_table->load(array('menu_type_id'=>$menu_type_id));
+        if($menu_item_menu_type_table->id)
         {
-            self::$root_id=$menuitemmenutype_table->menu_id;
+            self::$root_id=$menu_item_menu_type_table->menu_id;
             return self::$root_id;
         }else{
             $query=$this->_db->getQuery(true);
@@ -1317,12 +1318,12 @@ class JTableMenu extends JTable
                 throw  new Exception($this->_db->getErrorMsg());
             }
 
-            $menuitemmenutype_table->menu_id=$new_menu_item_id;
-            $menuitemmenutype_table->menu_type_id=$menu_type_id;
-            $ok=$menuitemmenutype_table->store();
+            $menu_item_menu_type_table->menu_id=$new_menu_item_id;
+            $menu_item_menu_type_table->menu_type_id=$menu_type_id;
+            $ok=$menu_item_menu_type_table->store();
             if(!$ok)
             {
-                throw new Exception($menuitemmenutype_table->getErrorMsg());
+                throw new Exception($menu_item_menu_type_table->getErrorMsg());
             }
             return $new_menu_item_id;
         }
@@ -1392,7 +1393,6 @@ class JTableMenu extends JTable
         $this->_db->setQuery(sprintf($this->_cache['rebuild.sql'], (int) $parentId));
 
         $children = $this->_db->loadObjectList();
-
         // The right value of this node is the left value + 1
         $rightId = $leftId + 1;
         // Execute this function recursively over all children

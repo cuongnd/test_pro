@@ -636,26 +636,27 @@ class WebsiteModelWebsite extends JModelAdmin
             ->where('website_id=' . (int)$website_id);
         $list_extensions = $db->setQuery($query)->loadObjectList();
         $list_older_extension = array();
-
         foreach ($list_extensions AS $extension) {
             $list_older_extension[$extension->copy_from] = $extension->id;
         }
+
         $query->clear()
             ->select('plugins.*,extensions.website_id')
             ->from('#__plugins AS plugins')
             ->innerJoin('#__extensions AS extensions ON extensions.id=plugins.extension_id')
             ->where('extensions.website_id=' . (int)$website_template_id)
-            ->group('plugins.id')
+            ->group('plugins.name')
         ;
 
         $list_plugins = $db->setQuery($query)->loadObjectList();
+
         $table_plugin = JTable::getInstance('plugin');
         foreach ($list_plugins AS $plugins) {
             $table_plugin->bind((array)$plugins);
             $table_plugin->id = 0;
             $table_plugin->copy_from = $plugins->id;
             $extension_id = $plugins->extension_id;
-            $plugins->extension_id = $list_older_extension[$extension_id];
+            $table_plugin->extension_id = $list_older_extension[$extension_id];
             $ok = $table_plugin->store();
             if (!$ok) {
                 throw new Exception($table_plugin->getError());
@@ -724,10 +725,9 @@ class WebsiteModelWebsite extends JModelAdmin
             // First pass - collect children
             foreach ($list_rows as $v) {
                 $pt = $v->parent_id;
+                $pt=($pt==''||$pt==$v->id)?'list_root':$pt;
                 $list = @$children[$pt] ? $children[$pt] : array();
-                if ($v->id != $v->parent_id || $v->parent_id != null) {
-                    array_push($list, $v);
-                }
+                array_push($list, $v);
                 $children[$pt] = $list;
             }
             if (!function_exists('sub_execute_copy_rows_table_menu')) {

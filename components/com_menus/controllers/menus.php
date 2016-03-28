@@ -37,7 +37,6 @@ class MenusControllerMenus extends JControllerAdmin
 		$menu_type_id=$input->get('menu_type_id',0,'int');
 		$menu_item_id=$input->get('menu_item_id',0,'int');
 		require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
-		MenusHelperFrontEnd::fix_menu_items_by_menu_type_id($menu_type_id);
 		$table_menu_item = JTable::getInstance('Menu');
 		$table_menu_item->load($menu_item_id);
 		$result = new stdClass();

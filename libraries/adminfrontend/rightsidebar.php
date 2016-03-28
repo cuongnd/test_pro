@@ -6,15 +6,14 @@
  * Time: 3:04
  */
 $website=JFactory::getWebsite();
+$list_menu_item_item_id=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website->website_id);
+
 $db = JFactory::getDbo();
 $query = $db->getQuery(true);
 $query->from('#__menu As menu');
 $query->select('menu.parent_id, menu.id,menu.title,menu.link,menu.icon');
-$query->leftJoin('#__menu_types AS menuType ON menuType.id=menu.menu_type_id');
-$query->select('menuType.title as menu_type');
-$query->where('menuType.website_id=' . (int)$website->website_id);
-$query->where('menuType.client_id=0');
-$query->order('menuType.id,menu.ordering');
+$query->where('menu.id IN('.implode(',',$list_menu_item_item_id).')');
+$query->order('menu.ordering');
 $listMenu = $db->setQuery($query)->loadObjectList();
 $a_listMenu = array();
 foreach ($listMenu as $menu) {

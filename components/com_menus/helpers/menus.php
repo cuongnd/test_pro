@@ -60,11 +60,9 @@ class MenusHelperFrontEnd
 		// First pass - collect children
 		foreach ($list_menu_item as $v) {
 			$pt = $v->parent_id;
-			$pt=$pt?$pt:'root';
+			$pt=($pt==''||$pt==$v->id)?'root':$pt;
 			$list = @$children[$pt] ? $children[$pt] : array();
-			if ($v->id != $v->parent_id || $v->parent_id!=null) {
-				array_push($list, $v);
-			}
+            array_push($list, $v);
 			$children[$pt] = $list;
 		}
 
@@ -163,7 +161,58 @@ class MenusHelperFrontEnd
 		return $list_menu_item;
 	}
 
-	public function getMenuTypesByWebsiteId($website_id=0)
+    public static function get_menu_type_id_by_menu_item_id($menu_item_id)
+    {
+        $db    = JFactory::getDbo();
+
+        $query = $db->getQuery(true);
+        $query->clear();
+        $query->select('menu.*')
+            ->from('#__menu AS menu')
+        ;
+        $db->setQuery($query);
+        $list_menu_item = $db->loadObjectList('id');
+
+
+        if (!function_exists('sub_get_root_menu_item_id_by_menu_item_id')) {
+            function sub_get_root_menu_item_id_by_menu_item_id( $menu_item_id = 0, $list_menu_item)
+            {
+                $menu_item=$list_menu_item[$menu_item_id];
+                if(!$menu_item)
+                {
+                    throw new Exception('there are no exists this menu item');
+                }
+                if($menu_item->id==$menu_item->parent_id||$menu_item->parent_id=='')
+                {
+                    return $menu_item_id;
+                }else{
+
+                    return sub_get_root_menu_item_id_by_menu_item_id($menu_item->parent_id,$list_menu_item);
+                }
+            }
+        }
+        $root_menu_item_id=sub_get_root_menu_item_id_by_menu_item_id($menu_item_id,$list_menu_item);
+        if($root_menu_item_id)
+        {
+            $query->select('menu_type_id_menu_id.menu_type_id')
+                ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
+                ->where('menu_type_id_menu_id.menu_id='.(int)$root_menu_item_id)
+                ;
+            $db->setQuery($query);
+            return $db->loadResult();
+        }
+        return false;
+    }
+
+    public static function get_list_menu_item_id_by_website_id($website_id)
+    {
+        $list_menu_item_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website_id);
+        $list_menu_item_item_id=JArrayHelper::pivot($list_menu_item_item,'id');
+        $list_menu_item_item_id=array_keys($list_menu_item_item_id);
+        return $list_menu_item_item_id;
+    }
+
+    public function getMenuTypesByWebsiteId($website_id=0)
     {
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
@@ -174,83 +223,6 @@ class MenusHelperFrontEnd
         return $db->loadObjectList();
 
     }
-	public function fix_menu_items_by_menu_type_id($menu_type_id=0)
-	{
-		$website=JFactory::getWebsite();
-		$db=JFactory::getDbo();
-
-
-		//fix doule root
-		$query=$db->getQuery(true);
-		$query->select('menu_item.id,menu_item.parent_id,menu_item.menu_type_id')
-			->from('#__menu AS menu_item')
-			->leftJoin('#__menu_types AS menu_type ON menu_type.id=menu_item.menu_type_id')
-			->where('menu_item.menu_type_id='.(int)$menu_type_id)
-			->where('menu_item.id=menu_item.parent_id')
-			->where('menu_type.website_id='.(int)$website->website_id)
-		;
-		$list=$db->setQuery($query)->loadObjectList();
-		if(count($list)>1)
-		{
-			$fist_menu_item=array_pop($list);
-			foreach($list as $menu_item)
-			{
-				$query=$db->getQuery(true);
-				$query->update('#__menu')
-					->set('parent_id='.(int)$fist_menu_item->id)
-					->where('id='.(int)$menu_item->id)
-				;
-				$db->setQuery($query)->execute();
-			}
-		}
-		//end fix doule root
-
-
-		//fix menu item
-		$query = $db->getQuery(true);
-		$query->from('#__menu As menu ')
-			->select('menu.parent_id, menu.id,menu.binding_source,menu.binding_source_key,menu.binding_source_value,menu.access,menu.level,menu.icon,menu.title,menu.link,menu.alias')
-			->leftJoin('#__menu_types AS menuType ON menu.menu_type_id=menuType.id')
-			->where('menuType.id='.(int)$menu_type_id)
-			->select('menuType.id as menu_type_id,menuType.title as menu_type_title');
-
-		$query->order('menu.ordering');
-
-		$db->setQuery($query);
-		$list_menu_item1 = $db->loadObjectList();
-
-		//end get list menu type
-
-
-		$list_menu_item = array();
-		$root_menu_item = new stdClass();
-		foreach ($list_menu_item1 as $menu_item) {
-			if ($menu_item->id != $menu_item->parent_id) {
-				$list_menu_item[] = $menu_item;
-			}
-			if ($menu_item->id == $menu_item->parent_id) {
-				$root_menu_item = $menu_item;
-			}
-		}
-		$list_menu_item_not_root=$list_menu_item;
-
-		MenusHelperFrontEnd::get_list_menu_item_not_root($root_menu_item->id,$list_menu_item_not_root);
-
-
-		if(count($list_menu_item_not_root))
-		{
-			foreach($list_menu_item_not_root as $menu_item)
-			{
-				$query->clear()
-					->update('#__menu')
-					->set('parent_id='.(int)$root_menu_item->id)
-					->where('id='.(int)$menu_item->id)
-					;
-				$db->setQuery($query);
-				$db->execute();
-			}
-		}
-	}
 
 	public function getMenuItemDefault($website_id)
     {

@@ -166,7 +166,6 @@ class ModulesControllerModule extends JControllerForm
 		$tableModule->screensize=$screenSize;
 		$tableModule->published=1;
 		$tableModule->params=$tableExtension->params;
-		$tableModule->website_id=$tableExtension->website_id;
 		$tableModule->extension_id=$module_id;
 		$tableModule->position_id=$position;
 		$tableModule->client_id=0;

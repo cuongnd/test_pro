@@ -1,5 +1,6 @@
 <?php
 $website=JFactory::getWebsite();
+
 $db = JFactory::getDbo();
 $query = $db->getQuery(true);
 $query->from('#__menu As menu');

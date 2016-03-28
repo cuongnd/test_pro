@@ -214,6 +214,7 @@ class JTableUser extends JTable
 			$this->lastvisitDate = $this->_db->getNullDate();
 		}
        $groups=$this->groups;
+        $list_user_group_id=JUserHelper::get_list_user_group_id();
         $firstGroup=reset($groups);
 		// Check for existing username
 		$query = $this->_db->getQuery(true)
@@ -223,7 +224,7 @@ class JTableUser extends JTable
             ->leftJoin('#__user_usergroup_map AS ugm ON ugm.user_id=u.id')
             ->leftJoin('#__usergroups AS usergroups ON usergroups.id=ugm.group_id')
             ->where('ugm.group_id='.(int)$firstGroup)
-            ->where('usergroups.website_id='.(int)$website->website_id)
+            ->where('usergroups.id IN('.implode(',',$list_user_group_id).')')
 			->where('u.id != ' . (int) $this->id);
 		$this->_db->setQuery($query);
 
@@ -235,14 +236,14 @@ class JTableUser extends JTable
 
 			return false;
 		}
-
+        $list_user_group_id=JUserHelper::get_list_user_group_id();
 		// Check for existing email
 		$query->clear()
 			->select($this->_db->quoteName('u.id'))
 			->from($this->_db->quoteName('#__users').' AS u ')
 			->leftJoin('#__user_usergroup_map AS ugm ON ugm.user_id=u.id')
 			->leftJoin('#__usergroups AS usergroups ON usergroups.id=ugm.group_id')
-			->where('usergroups.website_id='.(int)$website->website_id)
+            ->where('usergroups.id IN('.implode(',',$list_user_group_id).')')
 			->where($this->_db->quoteName('email') . ' = ' . $this->_db->quote($this->email))
 			->where($this->_db->quoteName('u.id') . ' != ' . (int) $this->id);
 		$this->_db->setQuery($query);

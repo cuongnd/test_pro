@@ -220,13 +220,14 @@ abstract class JFactory
 	}
 	public function get_page_login()
 	{
+        $website=JFactory::getWebsite();
+        $list_menu_item_item_id=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website->website_id);
 		$db=JFactory::getDbo();
 		$query=$db->getQuery(true);
-		$website=JFactory::getWebsite();
+
 		$query->select('menu.id')
 			->from('#__menu AS menu')
-			->leftJoin('#__menu_types AS menu_type ON menu_type.id=menu.menu_type_id')
-			->where('menu_type.website_id='.(int)$website->website_id)
+			->where('menu.id IN('.implode(',',$list_menu_item_item_id).')')
 			->where('menu.page_type='.$query->q('login'))
 			;
 		$itemId=$db->setQuery($query)->loadResult();
