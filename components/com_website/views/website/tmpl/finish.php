@@ -9,7 +9,7 @@ $sub_domain=$session->get('sub_domain','');
     <br/>
     you can login your website by this link below to edit your website
     <br/>
-    <a href="http://<?php echo $sub_domain ?>/administrator">http://<?php echo $sub_domain ?>/administrator</a>
+    <a href="http://admin.<?php echo $sub_domain ?>/">http://admin.<?php echo $sub_domain ?></a>
     <br/>
     or you can click this link below to view your website
     <br/>
