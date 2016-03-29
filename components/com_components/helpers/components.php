@@ -51,9 +51,11 @@ class componentsHelper
     {
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
-        $query->select('*')
-            ->from('#__components')
-            ->where('website_id='.(int)$website_id);
+        $query->clear()
+            ->select('components.*')
+            ->from('#__components AS components')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=components.extension_id')
+            ->where('extensions.website_id=' . (int)$website_id);
         $db->setQuery($query);
         return $db->loadObjectList();
 

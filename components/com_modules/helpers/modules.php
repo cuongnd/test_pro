@@ -58,9 +58,12 @@ abstract class ModulesHelper
     {
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
-        $query->select('*')
-            ->from('#__modules')
-            ->where('website_id='.(int)$website_id);
+        $query->clear()
+            ->select('modules.*')
+            ->from('#__modules AS modules')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=modules.extension_id')
+            ->where('extensions.website_id=' . (int)$website_id);
+
         $db->setQuery($query);
         return $db->loadObjectList();
     }

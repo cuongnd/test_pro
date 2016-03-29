@@ -7,7 +7,7 @@
  */
 $website=JFactory::getWebsite();
 $list_menu_item_item_id=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website->website_id);
-
+$list_menu_item_item_id[]=0;
 $db = JFactory::getDbo();
 $query = $db->getQuery(true);
 $query->from('#__menu As menu');

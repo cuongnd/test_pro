@@ -45,7 +45,7 @@ class MenusHelperFrontEnd
 	public static function get_list_menu_item_by_website_id($website_id)
 	{
 		$db    = JFactory::getDbo();
-
+        $app=JFactory::getApplication();
 		$query = $db->getQuery(true);
 		$query->clear();
 		$query->select('menu.*,menu_types.id as menu_type_id,menu_types.website_id')

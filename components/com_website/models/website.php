@@ -703,6 +703,10 @@ class WebsiteModelWebsite extends JModelAdmin
         }
 
         $list_root_menu=MenusHelperFrontEnd::get_list_root_menu_item_by_website_id($website_template_id);
+        if(!count($list_root_menu))
+        {
+            throw new Exception('there are no menu item');
+        }
         $list_root_menu=JArrayHelper::pivot($list_root_menu,'id');
         $table_menu = JTable::getInstance('menu');
         foreach ($list_root_menu AS $menu) {
@@ -827,7 +831,7 @@ class WebsiteModelWebsite extends JModelAdmin
         if (!$website_id) {
             $this->setError('Can not found website');
         }
-        require_once JPATH_ROOT . '/administrator/components/com_components/helpers/components.php';
+        require_once JPATH_ROOT . '/components/com_components/helpers/components.php';
         $listComponent = componentsHelper::getComponentByWebsiteId($website_id);
         if (!count($listComponent)) {
             $layout = $this->getPrevLayoutByLayout('createcomponents');
@@ -845,7 +849,7 @@ class WebsiteModelWebsite extends JModelAdmin
         if (!$website_id) {
             $this->setError('Can not found website');
         }
-        require_once JPATH_ROOT . '/administrator/components/com_website/helpers/modules.php';
+        require_once JPATH_ROOT . '/components/com_modules/helpers/modules.php';
         $listModule = ModulesHelper::getModulesByWebsiteId($website_id);
         if (!count($listModule)) {
             $layout = $this->getPrevLayoutByLayout('createmodules');
@@ -1233,9 +1237,11 @@ class WebsiteModelWebsite extends JModelAdmin
     {
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('c.*');
-        $query->from('#__components AS c');
-        $query->where('c.website_id=' . (int)$website_id);
+        $query->select('components.*');
+        $query->from('#__components AS components')
+            ->leftJoin('#__extensions AS extensions.id=components.extension_id')
+            ->where('extensions.website_id=' . (int)$website_id)
+        ;
         $db->setQuery($query);
         $components = $db->loadObjectList();
 

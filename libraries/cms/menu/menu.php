@@ -226,7 +226,6 @@ class JMenu
 	 */
 	public function getActive()
 	{
-
 		if ($this->_active)
 		{
 			$item = &$this->_items[$this->_active];
