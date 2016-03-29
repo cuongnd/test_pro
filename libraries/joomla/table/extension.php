@@ -48,6 +48,32 @@ class JTableExtension extends JTable
 
 			return false;
 		}
+        if(!$this->website_id)
+        {
+            $this->setError(JText::_('there are no website setting'));
+            return false;
+        }
+        if(!$this->type)
+        {
+            $this->setError(JText::_('there are no type'));
+            return false;
+        }
+        $query = $this->_db->getQuery(true);
+        $query ->select('COUNT(*)')
+            ->from('#__extensions')
+            ->where('name='.$query->q($this->name))
+            ->where('element='.$query->q($this->element))
+            ->where('type='.$query->q($this->type))
+            ->where('website_id='.(int)$this->website_id)
+            ->where('id!='.(int)$this->id)
+        ;
+        $this->_db->setQuery($query);
+        $total_record=$this->_db->loadResult();
+        if($total_record)
+        {
+            $this->setError(JText::_('this extension exists'));
+            return false;
+        }
 		return true;
 	}
 

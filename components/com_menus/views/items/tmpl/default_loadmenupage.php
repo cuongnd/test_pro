@@ -1,51 +1,34 @@
 <?php
 $website=JFactory::getWebsite();
-
+$app=JFactory::getApplication();
 $db = JFactory::getDbo();
 $query = $db->getQuery(true);
-$query->from('#__menu As menu');
-$query->select('menu.parent_id, menu.id,menu.title,menu.link,menu.icon');
-$query->leftJoin('#__menu_types AS menuType ON menuType.id=menu.menu_type_id');
-$query->select('menuType.title as menu_type');
-$query->where('menuType.website_id=' . (int)$website->website_id);
-$query->where('menuType.client_id=0');
-$query->order('menuType.id,menu.ordering');
-$listMenu = $db->setQuery($query)->loadObjectList();
-$a_listMenu = array();
-foreach ($listMenu as $menu) {
-    $a_listMenu[$menu->menu_type][] = $menu;
-}
+require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
+$list_menu_type=MenusHelperFrontEnd::get_menu_type_by_website_id($website->website_id);
+
 ?>
 <ul class="nav sub hide">
 
-    <?php foreach ($a_listMenu as $menu_type => $menus) { ?>
+    <?php foreach ($list_menu_type as $menu_type) { ?>
         <li><a href="javascript:void(0)" class="notExpand link_javascript"><i
-                    class=st-files></i> <?php echo JString::sub_string($menu_type, 12) ?></a>
+                    class=st-files></i> <?php echo JString::sub_string($menu_type->title, 12) ?></a>
 
             <?php
-            $menu_root=new stdClass();
-            foreach ($menus as $key=>$item)
-            {
-                if($item->parent_id==$item->id)
-                {
-                    $menu_root=$item;
-                    unset($menus[$key]);
-                    break;
-                }
-            }
-
+            $list_menu_item=MenusHelperFrontEnd::get_list_all_menu_item_by_menu_type_id($menu_type->id);
             $children = array();
 
             // First pass - collect children
-            foreach ($menus as $v)
+            foreach ($list_menu_item as $v)
             {
                 $pt = $v->parent_id;
+                $pt=($pt==''||$pt==$v->id)?'list_root':$pt;
                 $list = @$children[$pt] ? $children[$pt] : array();
                 array_push($list, $v);
                 $children[$pt] = $list;
             }
-
-            $menus= treerecurse($menu_root->id,array(),$children,99,0);
+            unset($children['list_root']);
+            $root_menu_item_id=MenusHelperFrontEnd::get_root_menu_item_id_by_menu_type_id($menu_type->id);
+            $menus= treerecurse($root_menu_item_id,array(),$children,99,0);
             create_html_list($menus,$menuItemIdActive);
 
             ?>

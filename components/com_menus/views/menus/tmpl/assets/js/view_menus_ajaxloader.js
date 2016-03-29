@@ -608,13 +608,62 @@ jQuery(document).ready(function($){
             name=self.attr('name');
             $('input[type="radio"][name="'+name+'"]').val(0);
             self.val(1);
+            var dd_item=self.closest('.dd-item');
+            id=dd_item.data('id');
+            var ajax_web_design=$.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: this_host+'/index.php',
+                data: (function () {
+
+                    dataPost = {
+                        enable_load_component:1,
+                        option: 'com_menus',
+                        task: 'item.ajax_update_home_page',
+                        data:{
+                            id:id
+
+                        }
+
+                    };
+                    return dataPost;
+                })(),
+                beforeSend: function () {
+                    $('.div-loading').css({
+                        display: "block"
+
+
+                    });
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+
+                    $('.div-loading').css({
+                        display: "none"
+
+
+                    });
+                    if(response.e==1)
+                    {
+                        alert(response.m);
+                    }else{
+                        alert('saved successfully');
+                    }
+
+
+
+
+                }
+            });
+
+
+
         },
         call_on_change:function(self){
             self = $(self);
             name=self.attr('name');
-            $('input[type="radio"][name="'+name+'"]').each(function(){
-                menu_ajax_loader.update_data_column(this,'home','radio');
-            });
+
         },
         set_auto_complete:function(){
             $(".icon_menu_item").select2(menu_ajax_loader.icon_option);

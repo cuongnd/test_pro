@@ -152,52 +152,57 @@ class JFormFieldMenuitem extends JFormFieldGroupedList
 	 *
 	 * @since   1.6
 	 */
-	protected function getGroups()
+	protected function getInput()
 	{
-		$groups = array();
-
-		$menu_type_id = $this->menu_type_id;
-
+        $website=JFactory::getWebsite();
 		// Get the menu items.
-		$items = MenusHelper::getMenuLinks($menu_type_id, 0, 0, $this->published, $this->language);
+        $list_menu_type=MenusHelperFrontEnd::get_menu_type_by_website_id($website->website_id);
+        ob_start();
+        ?>
+        <select name="<?php echo $this->name ?>" id="<?php echo $this->id ?>">
+            <optgroup label="No select">
+                <option value="">None</option>
+            </optgroup>
+            <?php foreach($list_menu_type as $memu_type){ ?>
+            <optgroup label="<?php echo $memu_type->title ?>">
+                <?php
+                $root_menu_item_id=MenusHelperFrontEnd::get_root_menu_item_id_by_menu_type_id($memu_type->id);
+                $list_children_menu_item=MenusHelperFrontEnd::get_children_menu_item_by_menu_item_id($root_menu_item_id);
+                $children = array();
+                // First pass - collect children
+                foreach ($list_children_menu_item as $v) {
+                    $pt = $v->parent_id;
+                    $pt=($pt==''||$pt==$v->id)?'list_root':$pt;
+                    $list = @$children[$pt] ? $children[$pt] : array();
+                    array_push($list, $v);
+                    $children[$pt] = $list;
+                }
+                if (!function_exists('sub_render_menu_item')) {
+                    function sub_render_menu_item(&$html,$menu_item_selected=0, $root_menu_item_id, $children,$level=0,$max_level=999)
+                    {
+                        if ($children[$root_menu_item_id]) {
+                            $level1=$level+1;
+                            foreach ($children[$root_menu_item_id] as $v) {
+                                $root_menu_item_id=$v->id;
+                                $title=$v->title;
+                                $title=str_repeat('---',$level).$title;
+                                $html.='<option '.($menu_item_selected==$v->id?'selected':'').'  value="'.$v->id.'">'.$title.'</option>';
+                                sub_render_menu_item($html,$menu_item_selected,$root_menu_item_id, $children,$level1,$max_level);
+                            }
+                        }
+                    }
+                }
+                $html='';
+                $menu_item_selected=$this->value;
+                sub_render_menu_item($html,$menu_item_selected,$root_menu_item_id,$children);
+                echo $html;
+                ?>
+            </optgroup>
+            <?php } ?>
+        </select>
 
-		$groups['None'][] = JHtml::_(
-			'select.option', 0, 'None', 'value', 'text',
-			false  ,$this->value
-		);
-		foreach ($items as $item)
-		{
-			// Initialize the group.
-			$groups[$item->menu_type_title][] = JHtml::_(
-				'select.option', $item->value, $item->text, 'value', 'text',
-				in_array($item->type, $this->disable)  ,$this->value
-			);
-		}
-		$scriptId='lib_cms_form_fields_menuitem';
-		ob_start();
-		?>
-		<script type="text/javascript" id="<?php echo $scriptId ?>">
-			<?php
-				ob_get_clean();
-				ob_start();
-			?>
-			jQuery(document).ready(function($){
-			});
-			<?php
-			 $script=ob_get_clean();
-			 ob_start();
-			  ?>
-		</script>
-		<?php
-		ob_get_clean();
-		$doc=JFactory::getDocument();
-		$doc->addScriptDeclaration($script,"text/javascript",$scriptId);
-
-
-
-		// Merge any additional groups in the XML definition.
-		$groups = array_merge(parent::getGroups(), $groups);
-
-		return $groups;
+        <?php
+        $html=ob_get_clean();
+        return $html;
 	}
 }

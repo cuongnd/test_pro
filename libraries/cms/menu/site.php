@@ -127,16 +127,15 @@ class JMenuSite extends JMenu
 	}
 
 	public function get_menu_default_by_website_id($website_id){
-		$db=JFactory::getDbo();
-		$query=$db->getQuery(true);
-		$query->select('menu.*')
-			->from('#__menu AS menu')
-			->where('menu.home=1')
-			->leftJoin('#__menu_types AS menu_type ON menu_type.id=menu.menu_type_id')
-			->where('menu_type.website_id='.(int)$website_id)
-			;
-		$item=$db->setQuery($query)->loadObject();
-		return $item;
+        $list_menu=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website_id);
+        foreach($list_menu as $menu)
+        {
+            if($menu->home==1)
+            {
+                return $menu;
+            }
+        }
+	    return 0;
 	}
 	/**
 	 * Gets menu items by attribute
@@ -199,19 +198,14 @@ class JMenuSite extends JMenu
 	 */
 	public function getDefault($language = '*')
 	{
-		if (array_key_exists($language, $this->_default) && JApplication::getInstance('site')->getLanguageFilter())
-		{
-			return $this->_items[$this->_default[$language]];
-		}
-		elseif (array_key_exists('*', $this->_default))
-		{
-			return $this->_items[$this->_default['*']];
-		}
-		else
-		{
-
-			return 0;
-		}
+       foreach($this->_items as $item)
+       {
+           if($item->home==1)
+           {
+               return $item;
+           }
+       }
+        return 0;
 	}
 
 }

@@ -75,17 +75,24 @@ final class JApplicationSite extends JApplicationCms
      */
     protected function authorise($itemid)
     {
+        return true;
         $menus = $this->getMenu();
         $user = JFactory::getUser();
+        $login_itemId = JFactory::get_page_login();
+        if($login_itemId==$itemid)
+        {
+            return true;
+        }
         if (!$menus->authorise($itemid)) {
             if ($user->get('id') == 0) {
                 // Set the data
                 $this->setUserState('users.login.form.data', array('return' => JUri::getInstance()->toString()));
-
                 //$url = JRoute::_('index.php?option=com_users&view=login', false);
-                $url = JFactory::get_page_login();
+                $login_itemId = JFactory::get_page_login();
+
                 $this->enqueueMessage(JText::_('JGLOBAL_YOU_MUST_LOGIN_FIRST'));
-                $this->redirect($url);
+                $this->redirect(JUri::root()."?index.php?option=com_users&view=login&itemId=$login_itemId");
+                return false;
             } else {
                 $this->enqueueMessage(JText::_('JERROR_ALERTNOAUTHOR'), 'error');
             }
@@ -115,6 +122,7 @@ final class JApplicationSite extends JApplicationCms
 
         // Set up the params
         $document = $this->getDocument();
+
         $router = static::getRouter();
         $params = $this->getParams();
         // Register the document object with JFactory
@@ -724,6 +732,7 @@ final class JApplicationSite extends JApplicationCms
         $Itemid = $this->input->getInt('Itemid', null);
 
         $this->authorise($Itemid);
+
     }
 
 

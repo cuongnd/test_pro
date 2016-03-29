@@ -42,12 +42,34 @@ class JTablePlugin extends JTable
 	public function check()
 	{
 		// Check for valid name
-		if (trim($this->name) == '' || trim($this->element) == '')
+		if (trim($this->folder) == '' || trim($this->element) == ''||trim($this->name) == '')
 		{
 			$this->setError(JText::_('JLIB_DATABASE_ERROR_MUSTCONTAIN_A_TITLE_EXTENSION'));
 
 			return false;
 		}
+        if(!$this->extension_id)
+        {
+            $this->setError(JText::_('there are no extension'));
+            return false;
+        }
+
+        $query = $this->_db->getQuery(true);
+        $query ->select('COUNT(*)')
+            ->from('#__extensions')
+            ->where('name='.$query->q($this->name))
+            ->where('extension_id='.(int)$this->extension_id)
+            ->where('element='.$query->q($this->element))
+            ->where('folder='.$query->q($this->folder))
+            ->where('id!='.(int)$this->id)
+        ;
+        $this->_db->setQuery($query);
+        $total_record=$this->_db->loadResult();
+        if($total_record)
+        {
+            $this->setError(JText::_('this extension exists'));
+            return false;
+        }
 		return true;
 	}
 

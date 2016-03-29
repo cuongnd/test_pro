@@ -162,6 +162,46 @@ class MenusControllerItem extends JControllerForm
         echo json_encode($result);
         die;
     }
+    public function ajax_update_home_page()
+    {
+        $app = JFactory::getApplication();
+        $input = $app->input;
+        $data = $input->get('data', array(), 'array');
+        $menu_item_id=$data['id'];
+        $db = JFactory::getDbo();
+        $result = new stdClass();
+        $result->e = 0;
+        $result->m = "save success";
+        $table_menu_item = JTable::getInstance('Menu','JTable');
+        $table_menu_item->load($menu_item_id);
+        $table_menu_item->home=1;
+        if (!$table_menu_item->parent_store()) {
+
+            $result->e = 1;
+            $result->m = $table_menu_item->getError();
+            echo json_encode($result);
+            die;
+        }
+        $query=$db->getQuery(true);
+        require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
+        $website=JFactory::getWebsite();
+        $list_menu_item_id=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website->website_id);
+        $query->update('#__menu')
+            ->set('home=0')
+            ->where('id!='.(int)$menu_item_id)
+            ;
+        $db->setQuery($query);
+        $ok=$db->execute();
+        if(!$ok)
+        {
+            $result->e = 1;
+            $result->m = $db->getError();
+            echo json_encode($result);
+            die;
+        }
+        echo json_encode($result);
+        die;
+    }
 
     public function ajax_clone_item_menu()
     {
@@ -611,7 +651,7 @@ class MenusControllerItem extends JControllerForm
         $result->e = 0;
         $result->m = "save success";
 
-        if (!$tableMenuItem->store()) {
+        if (!$tableMenuItem->parent_store()) {
             $result->e = 1;
             $result->m = $tableMenuItem->getError();
             echo json_encode($result);
@@ -652,7 +692,7 @@ class MenusControllerItem extends JControllerForm
         $tableMenuItem->load($menu_item);
         $tableMenuItem->bind($data);
         // Attempt to save the data.
-        if (!$tableMenuItem->store()) {
+        if (!$tableMenuItem->parent_store()) {
 
             // Redirect back to the edit screen.
             echo JText::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $modelItem->getError());
@@ -676,6 +716,7 @@ class MenusControllerItem extends JControllerForm
         echo json_encode($htmlReturn);
         die;
     }
+
     public function ajax_save_property_menu_item_of_component()
     {
 

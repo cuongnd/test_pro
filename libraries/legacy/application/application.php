@@ -51,6 +51,7 @@ class JApplication extends JApplicationBase
 	 * @deprecated  4.0
 	 */
 	protected $_name = null;
+	protected $_login_menu_item_id = null;
 
 	/**
 	 * The scope of the application.

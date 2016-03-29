@@ -145,10 +145,11 @@ class JTableMenuType extends JTable
 			// Verify that no items are checked out
 			$query = $this->_db->getQuery(true)
 				->select('id')
-				->from('#__menu')
-				->where('menu_type_id=' . (int)$this->id)
+				->from('#__menu_types')
 				->where('checked_out !=' . (int) $userId)
-				->where('checked_out !=0');
+				->where('checked_out !=0')
+                ->where('id='.(int)$this->id)
+            ;
 			$this->_db->setQuery($query);
 
 			if ($this->_db->loadRowList())
@@ -162,69 +163,7 @@ class JTableMenuType extends JTable
 			}
 
 		}
-
-        if(parent::store($updateNulls))
-        {
-
-            $query = $this->_db->getQuery(true)
-                ->select('id')
-                ->from('#__menu')
-                ->where('parent_id = id')
-                ->where('menu_type_id='.(int)$this->id)
-            ;
-            $result = $this->_db->setQuery($query)->loadResult();
-            if(!$result)
-            {
-
-                $query->clear();
-                $query->select('MAX(id)')
-                    ->from('#__menu');
-                $parent_id=$this->_db->setQuery($query)->loadResult();
-                if($parent_id)
-                    $parent_id++;
-                else
-                    $parent_id=1;
-                $root=new stdClass();
-                $root->id=$parent_id;
-                $root->menu_type_id=$this->id;
-                $root->title=$query->q('Menu_Item_Root');
-                $root->alias=$query->q('root');
-                $root->published=1;
-                $root->parent_id=$parent_id;
-                $root->level=0;
-                $root->lft=0;
-                $root->rgt=0;
-                $listKeyOfObjectRoot=array();
-                $listValueOfObjectRoot=array();
-                foreach($root as $key=>$value)
-                {
-                    $listKeyOfObjectRoot[]=$key;
-                    $listValueOfObjectRoot[]=$value;
-
-                }
-                $query->clear();
-                //	 * $query->insert('#__a')->columns('id, title')->values(array('1,2', '3,4'));
-                $query->insert('#__menu')
-                    ->columns(implode(',',$listKeyOfObjectRoot))
-                    ->values(implode(',',$listValueOfObjectRoot));
-                $this->_db->setQuery($query);
-                if(!$this->_db->execute())
-                {
-                    $this->setError($this->_db->getErrorMsg());
-                    return false;
-                }
-                $insertId=$this->_db->insertid();
-                $query=$query->clear();
-                $query->update('#__menu')->set('parent_id='.(int)$insertId)->where('id='.(int)$insertId);
-                $this->_db->setQuery($query);
-                if(!$this->_db->execute())
-                {
-                    $this->setError($this->_db->getErrorMsg());
-                    return false;
-                }
-            }
-            return true;
-        }
+        return parent::store($updateNulls);
 	}
 
 	/**

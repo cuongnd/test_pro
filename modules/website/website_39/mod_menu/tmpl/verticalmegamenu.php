@@ -5,6 +5,11 @@ $app=JFactory::getApplication();
 $website=JFactory::getWebsite();
 require_once JPATH_ROOT . '/modules/website/website_'.$website->website_id.'/mod_menu/helper.php';
 $menu_type_id = $params->get('menu_type_id');
+$list_menu_item=MenusHelperFrontEnd::get_list_all_menu_item_by_menu_type_id($menu_type_id);
+echo "<pre>";
+print_r($list_menu_item);
+echo "</pre>";
+die;
 $db = JFactory::getDbo();
 $query = $db->getQuery(true);
 $query->select('menu.*')

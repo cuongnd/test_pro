@@ -89,7 +89,6 @@ class JRouterSite extends JRouter
 		$uri->setPath(trim($path, '/'));
 
 		$vars += parent::parse($uri);
-
 		return $vars;
 	}
 
@@ -199,6 +198,7 @@ class JRouterSite extends JRouter
 				$vars = $vars + $item->query;
 			}
 		}
+
         $tmpl=$this->getVar('tmpl','');
         if(!$Itemid)
         {

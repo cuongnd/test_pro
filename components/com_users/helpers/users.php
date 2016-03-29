@@ -162,12 +162,12 @@ class UsersHelper
 	}
     public function getTotalUserByWebsiteId($website_id)
     {
-		$list_user_group=JUserHelper::get_list_user_group();
+		$list_user_group_id=JUserHelper::get_list_user_group_id();
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
         $query->select('COUNT(*)')
             ->from('#__user_usergroup_map AS ugm')
-			->where('ugm.group_id IN ('.implode(',',$list_user_group).')')
+			->where('ugm.group_id IN ('.implode(',',$list_user_group_id).')')
 			;
         $db->setQuery($query);
         return $db->loadResult();

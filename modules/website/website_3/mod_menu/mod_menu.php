@@ -124,3 +124,4 @@ $css=JUtility::remove_string_css($css);
 $doc->addStyleDeclaration($css);
 
 ?>
+

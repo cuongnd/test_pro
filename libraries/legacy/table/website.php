@@ -228,7 +228,17 @@ class JTableWebsite extends JTable
 			// Put array back together delimited by ", "
 			$this->metakey = implode(", ", $clean_keys);
 		}
-
+        $query=$this->_db->getQuery(true);
+        $query->select('COUNT(*)')
+            ->from('#__website')
+            ->where('(title='.$query->q($this->title).' OR alias='.$query->q($this->alias).')')
+            ;
+        $total=$this->_db->setQuery($query)->loadResult();
+        if($total)
+        {
+            $this->setError(JText::_('there are exists title or alias'));
+            return false;
+        }
 		return true;
 	}
 

@@ -14,7 +14,7 @@ define('FOLDER_SYSTEM_CACHE_LONGTIME',         '_systemcachelongtime');
 
 // Global definitions
 $parts = explode(DIRECTORY_SEPARATOR, JPATH_BASE);
-
+defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 // Defines.
 define('JPATH_ROOT',          implode(DIRECTORY_SEPARATOR, $parts));
 define('JPATH_SITE',          JPATH_ROOT);

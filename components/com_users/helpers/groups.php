@@ -107,11 +107,11 @@ class GroupsHelper
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
         $query->select('*')
-            ->from('#__usergroups')
+            ->from('#__usergroups AS usergroups')
+            ->leftJoin('#__user_group_id_website_id AS user_group_id_website_id ON user_group_id_website_id.user_group_id=usergroups.id')
             ->where(
                 array(
-                    'website_id='.(int)$website_id,
-                    'title!='.$db->q('Public')
+                    'user_group_id_website_id.website_id='.(int)$website_id
                 )
             );
 

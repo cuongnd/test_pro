@@ -27,7 +27,6 @@ class JTableMenu extends JTable
      * @since  11.1
      */
     public $parent_id;
-    public $menu_type_id;
     public $list_children_menu_item_id=array();
 
     /**

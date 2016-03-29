@@ -19,211 +19,183 @@ defined('_JEXEC') or die(__FILE__);
  */
 class JTableComponent extends JTable
 {
-	/**
-	 * Constructor
-	 *
-	 * @param   JDatabaseDriver  $db  Database driver object.
-	 *
-	 * @since   11.1
-	 */
-	public function __construct($db)
-	{
-		parent::__construct('#__components', 'id', $db);
-	}
+    /**
+     * Constructor
+     *
+     * @param   JDatabaseDriver $db Database driver object.
+     *
+     * @since   11.1
+     */
+    public function __construct($db)
+    {
+        parent::__construct('#__components', 'id', $db);
+    }
 
-	/**
-	 * Overloaded check function
-	 *
-	 * @return  boolean  True if the object is ok
-	 *
-	 * @see     JTable::check()
-	 * @since   11.1
-	 */
-	public function check()
-	{
-        $supperAdmin=JFactory::isSupperAdmin();
-        if($supperAdmin)
+    /**
+     * Overloaded check function
+     *
+     * @return  boolean  True if the object is ok
+     *
+     * @see     JTable::check()
+     * @since   11.1
+     */
+    public function check()
+    {
+        if(!$this->website_id)
         {
-            if(!$this->website_id)
-            {
-                $this->setError(JText::_('Please select website'));
-                return false;
-            }
+            $this->setError(JText::_('there are no website setting'));
+            return false;
         }
-        else
+        if(!$this->name)
         {
-            $app=JFactory::getApplication();
-            $option=$app->input->getString('option','');
-            if($app->getClientId()==0&&$option=='com_website')
-            {
-
-            }
-            else
-            {
-                $website=JFactory::getWebsite();
-                $this->website_id=$website->website_id;
-            }
-        }
-		// Check for valid name
-		if (trim($this->name) == '' || trim($this->element) == '')
-		{
-			$this->setError(JText::_('JLIB_DATABASE_ERROR_MUSTCONTAIN_A_TITLE_EXTENSION'));
-
-			return false;
-		}
-        $query=$this->_db->getQuery(true);
-        $query->select('id');
-        $query->from('#__components');
-        if($this->id)
-            $query->where('id!='.(int)$this->id);
-        $query->where('element='.$query->q($this->element));
-        $query->where('website_id='.$this->website_id);
-        $this->_db->setQuery($query);
-        $listComponent=$this->_db->loadObjectList();
-        if(count($listComponent))
-        {
-            $this->setError(JText::_('EXISTS_COMPONENT:'.$this->name));
+            $this->setError(JText::_('there are no name component'));
             return false;
         }
 
-		return true;
-	}
+        // Check for valid name
+        if (trim($this->name) == '' || trim($this->element) == '') {
+            $this->setError(JText::_('JLIB_DATABASE_ERROR_MUSTCONTAIN_A_TITLE_EXTENSION'));
 
-	/**
-	 * Overloaded bind function
-	 *
-	 * @param   array  $array   Named array
-	 * @param   mixed  $ignore  An optional array or space separated list of properties
-	 * to ignore while binding.
-	 *
-	 * @return  mixed  Null if operation was satisfactory, otherwise returns an error
-	 *
-	 * @see     JTable::bind()
-	 * @since   11.1
-	 */
-	public function bind($array, $ignore = '')
-	{
-		if (isset($array['params']) && is_array($array['params']))
-		{
-			$registry = new JRegistry;
-			$registry->loadArray($array['params']);
-			$array['params'] = (string) $registry;
-		}
+            return false;
+        }
+        $query = $this->_db->getQuery(true);
+        $query->select('id')
+            ->from('#__components')
+            ->where('id!=' . (int)$this->id)
+            ->where('name=' . $query->q($this->name))
+            ->where('website_id=' . $this->website_id);
+        $this->_db->setQuery($query);
+        $listComponent = $this->_db->loadObjectList();
+        if (count($listComponent)) {
+            $this->setError(JText::_('EXISTS_COMPONENT:' . $this->name));
+            return false;
+        }
 
-		if (isset($array['control']) && is_array($array['control']))
-		{
-			$registry = new JRegistry;
-			$registry->loadArray($array['control']);
-			$array['control'] = (string) $registry;
-		}
+        return true;
+    }
 
-		return parent::bind($array, $ignore);
-	}
+    /**
+     * Overloaded bind function
+     *
+     * @param   array $array Named array
+     * @param   mixed $ignore An optional array or space separated list of properties
+     * to ignore while binding.
+     *
+     * @return  mixed  Null if operation was satisfactory, otherwise returns an error
+     *
+     * @see     JTable::bind()
+     * @since   11.1
+     */
+    public function bind($array, $ignore = '')
+    {
+        if (isset($array['params']) && is_array($array['params'])) {
+            $registry = new JRegistry;
+            $registry->loadArray($array['params']);
+            $array['params'] = (string)$registry;
+        }
 
-	/**
-	 * Method to create and execute a SELECT WHERE query.
-	 *
-	 * @param   array  $options  Array of options
-	 *
-	 * @return  string  The database query result
-	 *
-	 * @since   11.1
-	 */
-	public function find($options = array())
-	{
-		// Get the JDatabaseQuery object
-		$query = $this->_db->getQuery(true);
+        if (isset($array['control']) && is_array($array['control'])) {
+            $registry = new JRegistry;
+            $registry->loadArray($array['control']);
+            $array['control'] = (string)$registry;
+        }
 
-		foreach ($options as $col => $val)
-		{
-			$query->where($col . ' = ' . $this->_db->quote($val));
-		}
+        return parent::bind($array, $ignore);
+    }
 
-		$query->select($this->_db->quoteName('id'))
-			->from($this->_db->quoteName('#__components'));
-		$this->_db->setQuery($query);
+    /**
+     * Method to create and execute a SELECT WHERE query.
+     *
+     * @param   array $options Array of options
+     *
+     * @return  string  The database query result
+     *
+     * @since   11.1
+     */
+    public function find($options = array())
+    {
+        // Get the JDatabaseQuery object
+        $query = $this->_db->getQuery(true);
 
-		return $this->_db->loadResult();
-	}
+        foreach ($options as $col => $val) {
+            $query->where($col . ' = ' . $this->_db->quote($val));
+        }
 
-	/**
-	 * Method to set the publishing state for a row or list of rows in the database
-	 * table.  The method respects checked out rows by other users and will attempt
-	 * to checkin rows that it can after adjustments are made.
-	 *
-	 * @param   mixed    $pks     An optional array of primary key values to update.  If not
-	 *                            set the instance property value is used.
-	 * @param   integer  $state   The publishing state. eg. [0 = unpublished, 1 = published]
-	 * @param   integer  $userId  The user id of the user performing the operation.
-	 *
-	 * @return  boolean  True on success.
-	 *
-	 * @since   11.1
-	 */
-	public function publish($pks = null, $state = 1, $userId = 0)
-	{
-		$k = $this->_tbl_key;
+        $query->select($this->_db->quoteName('id'))
+            ->from($this->_db->quoteName('#__components'));
+        $this->_db->setQuery($query);
 
-		// Sanitize input.
-		JArrayHelper::toInteger($pks);
-		$userId = (int) $userId;
-		$state = (int) $state;
+        return $this->_db->loadResult();
+    }
 
-		// If there are no primary keys set check to see if the instance key is set.
-		if (empty($pks))
-		{
-			if ($this->$k)
-			{
-				$pks = array($this->$k);
-			}
-			// Nothing to set publishing state on, return false.
-			else
-			{
-				$this->setError(JText::_('JLIB_DATABASE_ERROR_NO_ROWS_SELECTED'));
+    /**
+     * Method to set the publishing state for a row or list of rows in the database
+     * table.  The method respects checked out rows by other users and will attempt
+     * to checkin rows that it can after adjustments are made.
+     *
+     * @param   mixed $pks An optional array of primary key values to update.  If not
+     *                            set the instance property value is used.
+     * @param   integer $state The publishing state. eg. [0 = unpublished, 1 = published]
+     * @param   integer $userId The user id of the user performing the operation.
+     *
+     * @return  boolean  True on success.
+     *
+     * @since   11.1
+     */
+    public function publish($pks = null, $state = 1, $userId = 0)
+    {
+        $k = $this->_tbl_key;
 
-				return false;
-			}
-		}
+        // Sanitize input.
+        JArrayHelper::toInteger($pks);
+        $userId = (int)$userId;
+        $state = (int)$state;
 
-		// Build the WHERE clause for the primary keys.
-		$where = $k . '=' . implode(' OR ' . $k . '=', $pks);
+        // If there are no primary keys set check to see if the instance key is set.
+        if (empty($pks)) {
+            if ($this->$k) {
+                $pks = array($this->$k);
+            } // Nothing to set publishing state on, return false.
+            else {
+                $this->setError(JText::_('JLIB_DATABASE_ERROR_NO_ROWS_SELECTED'));
 
-		// Determine if there is checkin support for the table.
-		if (!property_exists($this, 'checked_out') || !property_exists($this, 'checked_out_time'))
-		{
-			$checkin = '';
-		}
-		else
-		{
-			$checkin = ' AND (checked_out = 0 OR checked_out = ' . (int) $userId . ')';
-		}
+                return false;
+            }
+        }
 
-		// Update the publishing state for rows with the given primary keys.
-		$query = $this->_db->getQuery(true)
-			->update($this->_db->quoteName($this->_tbl))
-			->set($this->_db->quoteName('enabled') . ' = ' . (int) $state)
-			->where('(' . $where . ')' . $checkin);
-		$this->_db->setQuery($query);
-		$this->_db->execute();
+        // Build the WHERE clause for the primary keys.
+        $where = $k . '=' . implode(' OR ' . $k . '=', $pks);
 
-		// If checkin is supported and all rows were adjusted, check them in.
-		if ($checkin && (count($pks) == $this->_db->getAffectedRows()))
-		{
-			// Checkin the rows.
-			foreach ($pks as $pk)
-			{
-				$this->checkin($pk);
-			}
-		}
+        // Determine if there is checkin support for the table.
+        if (!property_exists($this, 'checked_out') || !property_exists($this, 'checked_out_time')) {
+            $checkin = '';
+        } else {
+            $checkin = ' AND (checked_out = 0 OR checked_out = ' . (int)$userId . ')';
+        }
 
-		// If the JTable instance value is in the list of primary keys that were set, set the instance.
-		if (in_array($this->$k, $pks))
-		{
-			$this->enabled = $state;
-		}
+        // Update the publishing state for rows with the given primary keys.
+        $query = $this->_db->getQuery(true)
+            ->update($this->_db->quoteName($this->_tbl))
+            ->set($this->_db->quoteName('enabled') . ' = ' . (int)$state)
+            ->where('(' . $where . ')' . $checkin);
+        $this->_db->setQuery($query);
+        $this->_db->execute();
 
-		$this->setError('');
+        // If checkin is supported and all rows were adjusted, check them in.
+        if ($checkin && (count($pks) == $this->_db->getAffectedRows())) {
+            // Checkin the rows.
+            foreach ($pks as $pk) {
+                $this->checkin($pk);
+            }
+        }
 
-		return true;
-	}
+        // If the JTable instance value is in the list of primary keys that were set, set the instance.
+        if (in_array($this->$k, $pks)) {
+            $this->enabled = $state;
+        }
+
+        $this->setError('');
+
+        return true;
+    }
 }

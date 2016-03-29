@@ -231,7 +231,9 @@ abstract class JFactory
 			->where('menu.page_type='.$query->q('login'))
 			;
 		$itemId=$db->setQuery($query)->loadResult();
-		return '?Itemid='.$itemId;
+        $app=JFactory::getApplication();
+		return $itemId;
+
 	}
 	/**
 	 * Get a document object.

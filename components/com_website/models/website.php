@@ -47,27 +47,33 @@ class WebsiteModelWebsite extends JModelAdmin
      */
     public function createBasicInfoWebsite($domain = '')
     {
-
+        $app=JFactory::getApplication();
         $user = JFactory::getUser();
-        $tableWebsite = $this->getTable();
-        $tableWebsite->id = 0;
-        $tableWebsite->title = $domain;
-        $tableWebsite->alias = $domain;
-        $tableWebsite->introtext = $domain;
+        $table_website = $this->getTable();
+        $table_website->id = 0;
+        $table_website->title = $domain;
+        $table_website->alias = $domain;
+        $table_website->introtext = $domain;
         if (!$user->id) {
-            throw new  Exception('website no created by, please login again');
+            $this->setError('please login again<a href="index.php?option=com_users&view=login">(click here)</a>');
+            return false;
         }
-        $tableWebsite->created_by = $user->id;
-        $tableWebsite->created = JFactory::getDate()->format('Y-m-d h:i:m');
-        if (!$tableWebsite->store()) {
-            if ($error = $tableWebsite->getError()) {
-                // Fatal error
-                $this->setError($error);
+        $table_website->created_by = $user->id;
+        $table_website->created = JFactory::getDate()->format('Y-m-d h:i:m');
+        $ok=$table_website->check();
+        if(!$ok)
+        {
+            $this->setError($table_website->getError());
 
-                return false;
-            }
+            return false;
         }
-        return $tableWebsite->id;
+        $ok=$table_website->store();
+        if (!$ok) {
+            $this->setError($table_website->getError());
+
+            return false;
+        }
+        return $table_website->id;
 
 
     }
@@ -485,7 +491,7 @@ class WebsiteModelWebsite extends JModelAdmin
         if (!$website_id) {
             $this->setError('Can not found website');
         }
-        require_once JPATH_ROOT . '/administrator/components/com_users/helpers/groups.php';
+        require_once JPATH_ROOT . '/components/com_users/helpers/groups.php';
         $listRootUserGroup = GroupsHelper::getRootUserGroupByWebsiteId($website_id);
         if (!count($listRootUserGroup)) {
             $layout = $this->getPrevLayoutByLayout('creategroupuser');
@@ -504,7 +510,7 @@ class WebsiteModelWebsite extends JModelAdmin
             $this->setError('Can not found website');
         }
 
-        require_once JPATH_ROOT . '/administrator/components/com_users/helpers/users.php';
+        require_once JPATH_ROOT . '/components/com_users/helpers/users.php';
         $listRootUserGroup = UsersHelper::getTotalUserByWebsiteId($website_id);
         if (!count($listRootUserGroup)) {
             $layout = $this->getPrevLayoutByLayout('createsupperadmin');
@@ -522,7 +528,7 @@ class WebsiteModelWebsite extends JModelAdmin
         if (!$website_id) {
             $this->setError('Can not found website');
         }
-        require_once JPATH_ROOT . '/administrator/components/com_users/helpers/levels.php';
+        require_once JPATH_ROOT . '/components/com_users/helpers/levels.php';
         $listUserLevel = levelsHelper::getListUserLevelByWebsiteId($website_id);
         if (!count($listUserLevel)) {
             $layout = $this->getPrevLayoutByLayout('createviewaccesslevels');
@@ -672,6 +678,7 @@ class WebsiteModelWebsite extends JModelAdmin
             //copy from website template
             $website_template_id = websiteHelperFrontEnd::getOneTemplateWebsite();
         }
+
         //copy menu type
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
@@ -695,21 +702,14 @@ class WebsiteModelWebsite extends JModelAdmin
             $list_older_menu_type[$menu_type->id] = $table_menu_type->id;
         }
 
-
-        $query->clear()
-            ->select('menu.*')
-            ->from('#__menu AS menu')
-            ->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_id=menu.id')
-            ->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
-            ->where('menu_types.website_id=' . (int)$website_template_id);
-        $list_root_menu = $db->setQuery($query)->loadObjectList('id');
+        $list_root_menu=MenusHelperFrontEnd::get_list_root_menu_item_by_website_id($website_template_id);
+        $list_root_menu=JArrayHelper::pivot($list_root_menu,'id');
         $table_menu = JTable::getInstance('menu');
         foreach ($list_root_menu AS $menu) {
             $table_menu->bind((array)$menu);
             $table_menu->id = 0;
             $table_menu->copy_from = $menu->id;
-            $table_menu->menu_type_id = $list_older_menu_type[$menu->menu_type_id];
-            $ok = $table_menu->store();
+            $ok = $table_menu->parent_store();
             if (!$ok) {
                 throw new Exception($table_menu->getError());
             }
@@ -1067,8 +1067,7 @@ class WebsiteModelWebsite extends JModelAdmin
         $query->select('*');
         $query->where(
             array(
-                'domain=' . $query->q($domain),
-                'website_id=' . (int)$website_id
+                'domain=' . $query->q($domain)
             )
         );
         $db->setQuery($query);
@@ -1077,12 +1076,42 @@ class WebsiteModelWebsite extends JModelAdmin
             $this->setError('Existed this domain in our system');
             return false;
         }
-        $query->clear();
-        //$query->insert('#__a')->columns('id, title')->values('1,2')->values('3,4');
-        $query->insert('#__domain_website')->columns('domain,website_id')->values($query->q($domain) . ',' . $website_id)->values($query->q("admin.".$domain) . ',' . $website_id);
-        $db->setQuery($query);
-        if (!$db->execute()) {
-            $this->setError($db->getErrorMsg());
+        $table_domain_website=JTable::getInstance('domainwebsite');
+        $table_domain_website->id=0;
+        $table_domain_website->domain=$domain;
+        $table_domain_website->website_id=$website_id;
+
+        $ok=$table_domain_website->check();
+        if(!$ok)
+        {
+            $this->setError($table_domain_website->getError());
+
+            return false;
+        }
+
+        $ok=$table_domain_website->store();
+        if(!$ok)
+        {
+            $this->setError($table_domain_website->getError());
+        }
+        $table_domain_website->id=0;
+        $table_domain_website->domain="admin.$domain";
+        $table_domain_website->website_id=$website_id;
+
+        $ok=$table_domain_website->check();
+        if(!$ok)
+        {
+            $this->setError($table_domain_website->getError());
+
+            return false;
+        }
+
+
+
+        $ok=$table_domain_website->store();
+        if(!$ok)
+        {
+            $this->setError($table_domain_website->getError());
         }
         return true;
     }

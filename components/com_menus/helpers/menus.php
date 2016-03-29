@@ -212,6 +212,90 @@ class MenusHelperFrontEnd
         return $list_menu_item_item_id;
     }
 
+    public static function get_list_root_menu_item_id_by_website_id($website_id)
+    {
+        $db    = JFactory::getDbo();
+
+        $query = $db->getQuery(true);
+        $query->clear();
+        $query->select('menu.id')
+            ->from('#__menu AS menu')
+            ->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_id=menu.id')
+            ->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+            ->where('menu_types.website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $list_menu_item = $db->loadColumn();
+        return $list_menu_item;
+    }
+
+    public static function get_list_root_menu_item_by_website_id($website_id)
+    {
+        $db    = JFactory::getDbo();
+
+        $query = $db->getQuery(true);
+        $query->clear();
+        $query->select('menu.*,menu_types.id as menu_type_id,menu_types.website_id')
+            ->from('#__menu AS menu')
+            ->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_id=menu.id')
+            ->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+            ->where('menu_types.website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $list_menu_item = $db->loadObjectList();
+        return $list_menu_item;
+    }
+
+    public static function get_menu_type_by_website_id($website_id)
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('*')
+            ->from('#__menu_types')
+            ->where('website_id='.(int)$website_id);
+        $db->setQuery($query);
+        return $db->loadObjectList();
+    }
+
+    public static function get_list_all_menu_item_by_menu_type_id($menu_type_id)
+    {
+        $root_menu_item=MenusHelperFrontEnd::get_root_menu_item_by_menu_type_id($menu_type_id);
+        $list_children_menu_item=MenusHelperFrontEnd::get_children_menu_item_by_menu_item_id($root_menu_item->id);
+        array_unshift($list_children_menu_item,$root_menu_item);
+        return $list_children_menu_item;
+
+    }
+
+    public static function get_root_menu_item_id_by_menu_type_id($menu_type_id)
+    {
+        $db    = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->clear();
+        $query->select('menu_type_id_menu_id.menu_id')
+            ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
+            ->where('menu_type_id_menu_id.menu_type_id='.(int)$menu_type_id)
+        ;
+        $db->setQuery($query);
+        $root_menu_item_id = $db->loadResult();
+        return $root_menu_item_id;
+    }
+
+    private static function get_root_menu_item_by_menu_type_id($menu_type_id)
+    {
+        $db    = JFactory::getDbo();
+
+        $query = $db->getQuery(true);
+        $query->clear();
+        $query->select('menu.*')
+            ->from('#__menu AS menu')
+            ->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_id=menu.id')
+            ->where('menu_type_id_menu_id.menu_type_id='.(int)$menu_type_id)
+        ;
+        $db->setQuery($query);
+        $item = $db->loadObject();
+        return $item;
+    }
+
     public function getMenuTypesByWebsiteId($website_id=0)
     {
         $db=JFactory::getDbo();

@@ -1023,6 +1023,7 @@ class JApplicationCms extends JApplicationWeb
 
 		// Trigger the onAfterRoute event.
 		JPluginHelper::importPlugin('system');
+
 		$this->triggerEvent('onAfterRoute');
 	}
 

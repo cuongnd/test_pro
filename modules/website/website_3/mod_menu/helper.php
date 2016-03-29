@@ -70,9 +70,7 @@ class ModMenuHelper
             $showAll = $params->get('showAllChildren', 1);
             $menu_type_id = $params->get('menu_type_id');
             $menu_type_id = $menu_type_id ? $menu_type_id : ModMenuHelper::getDefaultMenuType();
-
-
-            $items = $menu->getItems(array('menu_type_id', 'hidden'), array($menu_type_id, 0));
+            $items = $menu->get_menu_item_by_menu_type_id($menu_type_id);
             $lastitem = 0;
 
             if ($items) {
@@ -123,7 +121,6 @@ class ModMenuHelper
 
                         default:
                             $router = $app::getRouter();
-
                             if ($router->getMode() != JROUTER_MODE_SEF) {
                                 $item->flink = 'index.php?Itemid=' . $item->id;
                                 if (isset($item->query['format']) && $app->get('sef_suffix')) {
@@ -142,7 +139,6 @@ class ModMenuHelper
 
                         $item->flink = JRoute::_($item->flink);
                     }
-
                     // We prevent the double encoding because for some reason the $item is shared for menu modules and we get double encoding
                     // when the cause of that is found the argument should be removed
                     $item->title = htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8', false);
@@ -186,7 +182,7 @@ class ModMenuHelper
             ?>
         <li class="<?php echo $active_menu_item_id == $menu_item->id ? ' menu-active ' : '' ?>">
             <a
-                href="<?php echo JUri::root() . '?Itemid=' . $menu_item->id ?>"><i
+                href="<?php echo JUri::root().$menu_item->link ?>"><i
                     class="<?php echo $menu_item->icon ?>"></i> <?php echo $menu_item->title ?></a>
             <?php
             $html .= ob_get_clean();

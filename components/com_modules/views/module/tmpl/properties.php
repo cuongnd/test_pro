@@ -5,6 +5,7 @@ JHtml::_('bootstrap.framework');
 $app = JFactory::getApplication();
 $modelPosition = JModelLegacy::getInstance('Module', 'ModulesModel');
 $item = $modelPosition->getItem();
+
 $module_id = $item->id;
 $form = $this->form;
 $doc=JFactory::getDocument();
@@ -18,17 +19,19 @@ $website=JFactory::getWebsite();
 $ui_path = $item->module;
 $table_control = new JTableUpdateTable($db, 'control');
 $element_path='modules/website/website_'.$website->website_id.'/' . $ui_path;
+
 jimport('joomla.filesystem.folder');
 if(!JFolder::exists(JPATH_ROOT.DS.$element_path))
 {
     $element_path='modules/' . $ui_path;
 }
+$filter= array(
+    "element_path" => $element_path,
+    "type" => module_helper::ELEMENT_TYPE,
+    'website_id'=>$website->website_id
+);
 $table_control->load(
-    array(
-        "element_path" => $element_path,
-        "type" => module_helper::ELEMENT_TYPE,
-        'website_id'=>$website->website_id
-    )
+    $filter
 );
 $fields = $table_control->fields;
 $fields = base64_decode($fields);

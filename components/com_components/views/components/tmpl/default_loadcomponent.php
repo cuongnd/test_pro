@@ -9,20 +9,21 @@ $query = $db->getQuery(true);
 $query->from('#__components as component')
     ->select('component.*')
     ->leftJoin('#__extensions AS extensions ON extensions.id=component.extension_id')
-    ->where('component.type='.$query->q('component'))
     ->where('extensions.website_id=' . (int)$website->website_id)
     ->group('component.name')
 ;
+
 $listComponent = $db->setQuery($query)->loadObjectList();
+
 $listLayOut = array();
 $website = JFactory::getWebsite();
 foreach ($listComponent as $com) {
     $is_private_component=true;
-    $folder_view=JPATH_ROOT . '/components/website/website_'.$website->website_id.'/' . $com->element . '/views';
+    $folder_view=JPATH_ROOT . '/components/website/website_'.$website->website_id.'/' . $com->name . '/views';
     if(!JFolder::exists($folder_view))
     {
         $is_private_component=false;
-        $folder_view=JPATH_ROOT . '/components/' . $com->element . '/views';
+        $folder_view=JPATH_ROOT . '/components/' . $com->name . '/views';
     }
     $views = JFolder::folders($folder_view);
     foreach ($views as $view) {
@@ -33,7 +34,7 @@ foreach ($listComponent as $com) {
             $item_layout->paths=$layouts;
             $item_layout->component_id=$com->id;
             $item_layout->is_private_component=$is_private_component;
-            $listLayOut[$com->element][$view] = $item_layout;
+            $listLayOut[$com->name][$view] = $item_layout;
         }
     }
 

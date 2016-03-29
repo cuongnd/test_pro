@@ -415,7 +415,6 @@ class JAccess
 			$id =$db->loadResult();
 			self::$authorised[]=$id;
 		}
-
 		if (empty(self::$viewLevels))
 		{
 			// Get a database object.
