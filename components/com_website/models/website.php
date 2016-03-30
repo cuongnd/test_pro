@@ -607,7 +607,7 @@ class WebsiteModelWebsite extends JModelAdmin
             $list_older_extension[$extensions->copy_from] = $extensions->id;
         }
         $query->clear()
-            ->select('*')
+            ->select('modules.*')
             ->from('#__modules AS modules')
             ->leftJoin('#__extensions AS extensions ON extensions.id=modules.extension_id')
             ->where('extensions.website_id=' . (int)$website_template_id);
@@ -617,9 +617,9 @@ class WebsiteModelWebsite extends JModelAdmin
             $table_module->bind((array)$module);
             $table_module->id = 0;
             $table_module->copy_from = $module->id;
-            if ($extension_id = $list_older_extension[$module->extension_id]) {
-                $table_module->extension_id = $extension_id;
-            }
+            $extension_id = $module->extension_id;
+            $extension_id = $list_older_extension[$extension_id];
+            $table_module->extension_id = $extension_id;
             $ok = $table_module->store();
             if (!$ok) {
                 throw new Exception($table_module->getError());
@@ -852,6 +852,59 @@ class WebsiteModelWebsite extends JModelAdmin
                 throw new Exception($table_menu_item_id_position_id_ordering->getError());
             }
         }
+        $query->clear()
+            ->select('modules.id')
+            ->from('#__modules AS modules')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=modules.extension_id')
+            ->where('extensions.website_id='.(int)$website_id)
+        ;
+        $list_module_id=$db->setQuery($query)->loadColumn();
+
+        $table_module_menu=JTable::getInstance('module');
+        foreach($list_module_id as $module_id)
+        {
+            $table_module_menu->load($module_id);
+            $position_id=$table_module_menu->position_id;
+            $position_id=$list_old_position_config[$position_id];
+            $table_module_menu->position_id=$position_id;
+            $table_module_menu->position="position-$position_id";
+            $ok = $table_module_menu->store();
+            if (!$ok) {
+                throw new Exception($table_module_menu->getError());
+            }
+        }
+        //copy table module_menu
+        $query->clear()
+            ->select('modules_menu.*')
+            ->from('#__modules_menu AS modules_menu')
+            ->leftJoin('#__modules AS modules ON modules.id=modules_menu.moduleid')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=modules.extension_id')
+            ->where('extensions.website_id='.(int)$website_template_id)
+        ;
+        $list_module_menu=$db->setQuery($query)->loadObjectList();
+
+        $query->clear()
+            ->select('modules.id,modules.copy_from')
+            ->from('#__modules AS modules')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=modules.extension_id')
+            ->where('extensions.website_id='.(int)$website_id)
+        ;
+        $list_new_module=$db->setQuery($query)->loadObjectList('copy_from');
+        $table_module_menu=JTable::getInstance('modulemenu');
+        foreach($list_module_menu as $module_menu)
+        {
+            $table_module_menu->id=0;
+            $table_module_menu->moduleid=$list_new_module[$module_menu->moduleid]->id;
+            $menuid=$module_menu->menuid;
+            $menuid=$a_list_older_menu_item1[$menuid];
+            $menuid=$menuid?$menuid:null;
+            $table_module_menu->menuid=$menuid;
+            $ok = $table_module_menu->store();
+            if (!$ok) {
+                throw new Exception($table_module_menu->getError());
+            }
+        }
+
         // First pass - collect children
         return true;
     }
