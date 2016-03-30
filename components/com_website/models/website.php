@@ -709,6 +709,7 @@ class WebsiteModelWebsite extends JModelAdmin
         }
         $list_root_menu=JArrayHelper::pivot($list_root_menu,'id');
         $table_menu = JTable::getInstance('menu');
+        $menuitemmenutype = JTable::getInstance('menuitemmenutype');
         foreach ($list_root_menu AS $menu) {
             $table_menu->bind((array)$menu);
             $table_menu->id = 0;
@@ -718,6 +719,14 @@ class WebsiteModelWebsite extends JModelAdmin
                 throw new Exception($table_menu->getError());
             }
             $list_older_menu_item[$menu->id] = $table_menu->id;
+            $menuitemmenutype->id=0;
+            $menuitemmenutype->menu_type_id = $list_older_menu_type[$menu->menu_type_id];
+            $menuitemmenutype->menu_id =  $table_menu->id;
+            $ok = $menuitemmenutype->store();
+            if (!$ok) {
+                throw new Exception($menuitemmenutype->getError());
+            }
+
         }
         require_once JPATH_ROOT . '/components/com_menus/helpers/menus.php';
         $a_list_older_menu_item1 = array();
@@ -776,7 +785,7 @@ class WebsiteModelWebsite extends JModelAdmin
         unset($children['list_root']);
 
         if (!function_exists('sub_execute_copy_rows_table_position')) {
-            function sub_execute_copy_rows_table_position(JTable $table_position, $list_older_menu_item, $old_position_id = 0, $new_position_id, $children,$level=0,$max_level=999)
+            function sub_execute_copy_rows_table_position(JTable $table_position, &$list_old_position_config,$list_older_menu_item, $old_position_id = 0, $new_position_id, $children,$level=0,$max_level=999)
             {
                 if ($children[$old_position_id]&&$level<=$max_level) {
                     $level1=$level+1;
@@ -795,12 +804,14 @@ class WebsiteModelWebsite extends JModelAdmin
                         }
                         $new_position_id1 = $table_position->id;
                         $old_position_id1 = $v->id;
-                        sub_execute_copy_rows_table_position($table_position, $list_older_menu_item, $old_position_id1, $new_position_id1, $children,$level1,$max_level);
+                        $list_old_position_config[$old_position_id1]=$new_position_id1;
+                        sub_execute_copy_rows_table_position($table_position,$list_old_position_config, $list_older_menu_item, $old_position_id1, $new_position_id1, $children,$level1,$max_level);
                     }
                 }
             }
         }
         $table_position = JTable::getInstance('positionnested');
+        $list_old_position_config=array();
         foreach ($list_root_position as $position) {
 
 
@@ -816,8 +827,29 @@ class WebsiteModelWebsite extends JModelAdmin
                 if (!$ok) {
                     throw new Exception($table_position->getError());
                 }
-                sub_execute_copy_rows_table_position($table_position, $a_list_older_menu_item1, $position->id, $table_position->id, $children);
+                $list_old_position_config[$position->id]=$table_position->id;
+                sub_execute_copy_rows_table_position($table_position,$list_old_position_config, $a_list_older_menu_item1, $position->id, $table_position->id, $children);
 
+            }
+        }
+
+        $query->clear()
+            ->select('menu_item_id_position_id_ordering.*')
+            ->from('#__menu_item_id_position_id_ordering AS menu_item_id_position_id_ordering')
+            ->where('menu_item_id_position_id_ordering.website_id='.(int)$website_template_id)
+        ;
+        $db->setQuery($query);
+        $list_menu_item_id_position_id = $db->loadObjectList();
+        $table_menu_item_id_position_id_ordering = JTable::getInstance('menu_item_id_position_id_ordering');
+        foreach ($list_menu_item_id_position_id as $menu_position) {
+            $table_menu_item_id_position_id_ordering->bind($menu_position);
+            $table_menu_item_id_position_id_ordering->menu_item_id=$a_list_older_menu_item1[$menu_position->menu_item_id];
+            $table_menu_item_id_position_id_ordering->position_id=$list_old_position_config[$menu_position->position_id];
+            $table_menu_item_id_position_id_ordering->id=0;
+            $table_menu_item_id_position_id_ordering->website_id=$website_id;
+            $ok = $table_menu_item_id_position_id_ordering->store();
+            if (!$ok) {
+                throw new Exception($table_menu_item_id_position_id_ordering->getError());
             }
         }
         // First pass - collect children

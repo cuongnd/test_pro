@@ -606,7 +606,7 @@ class websiteHelperFrontEnd
 
     public static function getOneTemplateWebsite()
     {
-        return 38;
+        return 128;
     }
 
     public function compileLess($input, $output)

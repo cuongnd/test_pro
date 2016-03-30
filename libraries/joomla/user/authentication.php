@@ -256,6 +256,7 @@ class JAuthentication extends JObject
 	{
 		// Get plugins
 		$plugins = JPluginHelper::getPlugin('authentication');
+
 		// Create authentication response
 		$response = new JAuthenticationResponse;
 
@@ -330,7 +331,6 @@ class JAuthentication extends JObject
 	{
 		// Get plugins in case they haven't been imported already
 		JPluginHelper::importPlugin('user');
-
 		JPluginHelper::importPlugin('authentication');
 		$dispatcher = JEventDispatcher::getInstance();
 		$results = $dispatcher->trigger('onUserAuthorisation', array($response, $options));

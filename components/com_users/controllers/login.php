@@ -28,7 +28,6 @@ class UsersControllerLogin extends UsersController
 	public function login()
 	{
 		JSession::checkToken('post') or jexit(JText::_('JInvalid_Token'));
-
 		$app    = JFactory::getApplication();
 		$input  = $app->input;
 		$method = $input->getMethod();
@@ -60,7 +59,6 @@ class UsersControllerLogin extends UsersController
 		$credentials['username']  = $data['username'];
 		$credentials['password']  = $data['password'];
 		$credentials['secretkey'] = $data['secretkey'];
-
 		// Perform the log in.
 		if (true === $app->login($credentials, $options))
 		{

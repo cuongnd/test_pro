@@ -56,6 +56,7 @@ class PlgAuthenticationJoomla extends JPlugin
 		$result = $db->loadObject();
 		if ($result)
 		{
+
 			$match = JUserHelper::verifyPassword($credentials['password'], $result->password, $result->id);
 			if($credentials['login_facebook']==1)
 			{

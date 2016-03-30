@@ -23,7 +23,7 @@ $website = JFactory::getWebsite();
 require_once JPATH_ROOT . '/libraries/joomla/form/fields/icon.php';
 $db = JFactory::getDbo();
 require_once JPATH_ROOT . '/components/com_phpmyadmin/tables/updatetable.php';
-$table_extensions = new JTableUpdateTable($db, 'control');
+$table_control = new JTableUpdateTable($db, 'control');
 $filter = array(
     'type' => module_helper::ELEMENT_TYPE
 );
@@ -36,25 +36,25 @@ if ($element_path == module_helper::MODULE_ROOT_NAME) {
     $filter['element_path'] = 'modules/website/website_' . $website->website_id . '/' . $element_path;
     $filter['website_id'] = $website->website_id;
 }
-$table_extensions->load($filter);
-if (!$table_extensions->id) {
-    $table_extensions->id = 0;
-    $table_extensions->id = $id;
+$table_control->load($filter);
+if (!$table_control->id) {
+    $table_control->id = 0;
+    $table_control->id = $id;
     if ($element_path == module_helper::MODULE_ROOT_NAME) {
-        $table_extensions->element_path = module_helper::MODULE_ROOT_NAME;
+        $table_control->element_path = module_helper::MODULE_ROOT_NAME;
     } else {
-        $table_extensions->website_id = $website->websie_id;
-        $table_extensions->element_path = 'modules/website/website_' . $website->website_id . '/' . $element_path;
+        $table_control->website_id = $website->website_id;
+        $table_control->element_path = 'modules/website/website_' . $website->website_id . '/' . $element_path;
     }
-    $table_extensions->type = module_helper::ELEMENT_TYPE;
-
-    $ok = $table_extensions->store();
+    $table_control->type = module_helper::ELEMENT_TYPE;
+    $ok = $table_control->store();
     if (!$ok) {
-        throw new Exception($table_extensions->getError());
+        throw new Exception($table_control->getError());
     }
+
 
 }
-$fields = $table_extensions->fields;
+$fields = $table_control->fields;
 $fields = base64_decode($fields);
 $field_block_output = $fields;
 require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
@@ -275,7 +275,7 @@ ob_start();
 
         </div>
     </div>
-    <input type="hidden" data-element_path="<?php echo $table_extensions->element_path ?>"
+    <input type="hidden" data-element_path="<?php echo $table_control->element_path ?>"
            value="<?php echo $field_block_output ?>" id="field_block-output"/>
 
     <button class="btn btn-danger save-block-property pull-right" onclick="view_module_config.save_and_close(self)"><i

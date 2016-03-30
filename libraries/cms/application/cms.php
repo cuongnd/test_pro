@@ -722,7 +722,6 @@ class JApplicationCms extends JApplicationWeb
 		jimport('joomla.user.authentication');
 
 		$authenticate = JAuthentication::getInstance();
-
 		$response = $authenticate->authenticate($credentials, $options);
 
 		// Import the user plugin group.

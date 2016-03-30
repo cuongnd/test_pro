@@ -165,11 +165,13 @@ abstract class JPluginHelper
 
 			// Load the plugins from the database.
 			$plugins = static::load();
+
 			// Get the specified plugin(s).
 			for ($i = 0, $t = count($plugins); $i < $t; $i++)
 			{
 				if ($plugins[$i]->type == $type && ($plugin === null || $plugins[$i]->name == $plugin))
 				{
+
 					static::import($plugins[$i], $autocreate, $dispatcher);
 					$results = true;
 				}

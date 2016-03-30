@@ -189,6 +189,7 @@ class MenusControllerItem extends JControllerForm
         $query->update('#__menu')
             ->set('home=0')
             ->where('id!='.(int)$menu_item_id)
+            ->where('id IN('.implode(',',$list_menu_item_id).')')
             ;
         $db->setQuery($query);
         $ok=$db->execute();

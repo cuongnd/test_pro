@@ -75,9 +75,13 @@ class ModulesControllerModule extends JControllerForm
 			$filter['website_id']=$website->website_id;
 		}
 		$table_control->load($filter);
-		if(!$table_control->id)
+		if(!$table_control->id &&$element_path!=module_helper::MODULE_ROOT_NAME )
 		{
-			throw new Exception('there are no global module config in database, please config global module property in backend ad layout first');
+			throw new Exception('cannot found control, this control must created before setup config, please check again');
+		}
+		if(!$table_control->id &&$element_path==module_helper::MODULE_ROOT_NAME )
+		{
+            throw new Exception('there are no global module config in database, please config global module property in backend ad layout first');
 		}
 		if($element_path==module_helper::MODULE_ROOT_NAME)
 		{

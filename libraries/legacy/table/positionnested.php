@@ -740,6 +740,9 @@ class JTablePositionNested extends JTable
 	 * @link    http://docs.joomla.org/JTableNested/store
 	 * @since   11.1
 	 */
+    public function parent_store($updateNulls = false){
+        return parent::store($updateNulls);
+    }
 	public function store($updateNulls = false)
 	{
 		$k = $this->_tbl_key;
@@ -914,9 +917,6 @@ class JTablePositionNested extends JTable
 
 		return $result;
 	}
-    public function parent_store(){
-        return parent::store();
-    }
 	/**
 	 * Method to set the publishing state for a node or list of nodes in the database
 	 * table.  The method respects rows checked out by other users and will attempt
@@ -1268,7 +1268,7 @@ class JTablePositionNested extends JTable
 
 		$query->select($k)
 			->from($this->_tbl)
-			->where('parent_id =id ')
+			->where('(parent_id =id || parent_id IS NULL )')
 			->where('website_id = '.(int)$this->website_id)
 			->where('screensize = '.$query->q($this->screensize))
 		;

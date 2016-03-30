@@ -338,13 +338,11 @@ class JComponentHelper
 			define('JPATH_COMPONENT_SITE', JPATH_SITE . '/components/' . $option);
 		}
 
-		define('JPATH_COMPONENT_ADMINISTRATOR', JPATH_ADMINISTRATOR . '/components/' . $option);
 
 		$path = JPATH_COMPONENT . '/' . $file . '.php';
 		// If component is disabled throw error
 		if (!file_exists($path))
 		{
-
 			throw new Exception($option.':'.JText::_('JLIB_APPLICATION_ERROR_COMPONENT_NOT_FOUND'), 404);
 		}
 

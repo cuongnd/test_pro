@@ -648,23 +648,23 @@ XML;
             $bootstrapColumnType='col-lg-';
         }
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables/');
-        $tablePosition=JTable::getInstance('positionnested');
+        $table_position=JTable::getInstance('positionnested');
         $website=JFactory::getWebsite();
-        $tablePosition->website_id=$website->website_id;
-        $tablePosition->parent_id=(int)$parentRowId;
-        $tablePosition->type='column';
-        $tablePosition->screenSize=$screenSize;
-        $tablePosition->bootstrap_column_type=$bootstrapColumnType;
-        $tablePosition->gs_x=(int)$childrenColumnX;
-        $tablePosition->gs_y=(int)$childrenColumnY;
-        $tablePosition->width=(int)$childrenColumnWidth;
-        $tablePosition->height=(int)$childrenColumnHeight;
-        $tablePosition->menu_item_id=(int)$menu_item_id;
-        if(!$tablePosition->store())
+        $table_position->website_id=$website->website_id;
+        $table_position->parent_id=(int)$parentRowId;
+        $table_position->type='column';
+        $table_position->screenSize=$screenSize;
+        $table_position->bootstrap_column_type=$bootstrapColumnType;
+        $table_position->gs_x=(int)$childrenColumnX;
+        $table_position->gs_y=(int)$childrenColumnY;
+        $table_position->width=(int)$childrenColumnWidth;
+        $table_position->height=(int)$childrenColumnHeight;
+        $table_position->menu_item_id=(int)$menu_item_id;
+        if(!$table_position->parent_store())
         {
-
+            throw new Exception($table_position->getError());
         }
-        return $tablePosition->id;
+        return $table_position->id;
     }
     public function updateColumnInScreen($columnId,$columnX,$columnWidth,$columnY,$columnHeight)
     {
@@ -953,7 +953,6 @@ XML;
                 $query->where('poscon.menu_item_id=' . (int)$menuItemActive->id);
             }
 
-
             $a_list_position_config = $db->setQuery($query)->loadColumn();
             $currentScreenSize = UtilityHelper::getSelectScreenSize($currentScreenSize, $a_list_position_config);
             //end set position config exists
@@ -1050,7 +1049,7 @@ XML;
                 $website = JFactory::getWebsite();
                 $query->where($screenSize!='' ? 'LOWER(poscon.screensize)=' . $query->q(strtolower($screenSize)) : '1=1')
                     ->where('client_id=' . (int)$client_id)
-                    ->where('id=parent_id')
+                    ->where('(id=parent_id || parent_id IS NULL)')
                     ->where('poscon.website_id=' . (int)$website->website_id)
                     ;
 

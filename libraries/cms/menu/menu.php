@@ -205,7 +205,6 @@ class JMenu
 	 */
 	public function setActive($id)
 	{
-
 		if (isset($this->_items[$id]))
 		{
 			$this->_active = $id;
@@ -232,8 +231,15 @@ class JMenu
 
 			return $item;
 		}
+        foreach($this->_items as $item)
+        {
+            if($item->home==1)
+            {
+                return $item;
+            }
+        }
 
-		return null;
+		return end($this->_items);
 	}
 
 	/**

@@ -179,7 +179,8 @@ class JRouterSite extends JRouter
 
 			return $vars;
 		}
-		// Get the variables from the uri
+
+        // Get the variables from the uri
 		$this->setVars($uri->getQuery(true));
 
 		// Get the itemid, if it hasn't been set force it to null
@@ -350,7 +351,6 @@ class JRouterSite extends JRouter
 		$segments = explode('/', $route);
 
 		$items=$menu->getItems(array('route'),array($route) );
-
 
 
 		if($items[0]->id)
@@ -638,7 +638,6 @@ class JRouterSite extends JRouter
 
 		// Build the application route
 		$built = false;
-
 		if (!empty($query['Itemid']))
 		{
 			$item = $menu->getItem($query['Itemid']);
