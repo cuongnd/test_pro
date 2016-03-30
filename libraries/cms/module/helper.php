@@ -396,7 +396,7 @@ abstract class JModuleHelper
 			->join('LEFT', '#__modules_menu AS mm ON mm.moduleid = m.id')
 			->where('m.published = 1')
 
-			->join('LEFT', '#__extensions AS e ON e.element = m.module AND e.client_id = m.client_id')
+			->join('LEFT', '#__extensions AS e ON e.element = m.module')
 			->where('e.enabled = 1');
 
 		$date = JFactory::getDate();
@@ -407,7 +407,7 @@ abstract class JModuleHelper
 
 			//->where('m.access IN (' . $groups . ')')
 			->where('m.client_id = ' . $clientId)
-			->where('(mm.menuid = ' . (int) $Itemid . ' OR mm.menuid <= 0)');
+			->where('(mm.menuid = ' . (int) $Itemid . ' OR mm.menuid IS NULL)');
 
 		// Filter by language
 		if ($app->isSite() && $app->getLanguageFilter())
