@@ -54,6 +54,10 @@ class MenusControllerItem extends JControllerForm
         $table_menu_item->php_content = $php_content;
         $result = new stdClass();
         $result->e = 0;
+        $ok = $table_menu_item->check();
+        if (!$ok) {
+            throw new Exception($table_menu_item->getError());
+        }
         if (!$table_menu_item->store()) {
             $result->e = 1;
             $result->m = $table_menu_item->getError();
@@ -151,7 +155,10 @@ class MenusControllerItem extends JControllerForm
             echo json_encode($result);
             die;
         }
-
+        $ok = $table_menu_item->check();
+        if (!$ok) {
+            throw new Exception($table_menu_item->getError());
+        }
         if (!$table_menu_item->parent_store()) {
             $result->e = 1;
             $result->m = $table_menu_item->getError();
@@ -175,6 +182,10 @@ class MenusControllerItem extends JControllerForm
         $table_menu_item = JTable::getInstance('Menu','JTable');
         $table_menu_item->load($menu_item_id);
         $table_menu_item->home=1;
+        $ok = $table_menu_item->check();
+        if (!$ok) {
+            throw new Exception($table_menu_item->getError());
+        }
         if (!$table_menu_item->parent_store()) {
 
             $result->e = 1;
@@ -219,6 +230,10 @@ class MenusControllerItem extends JControllerForm
         $table_menu_item->alias = $table_menu_item->alias . JUserHelper::genRandomPassword(3);
         $result = new stdClass();
         $result->e = 0;
+        $ok = $table_menu_item->check();
+        if (!$ok) {
+            throw new Exception($table_menu_item->getError());
+        }
         if (!$table_menu_item->parent_store()) {
             $result->e = 1;
             $result->m = $table_menu_item->getError();
@@ -326,6 +341,10 @@ class MenusControllerItem extends JControllerForm
 
         $response = new stdClass();
         $response->e = 0;
+        $ok = $table_menu_item->check();
+        if (!$ok) {
+            throw new Exception($table_menu_item->getError());
+        }
         if (!$table_menu_item->store()) {
             $response->e = 1;
 
@@ -379,6 +398,10 @@ class MenusControllerItem extends JControllerForm
 
 
         $tableMenuItem->bind($form);
+        $ok = $tableMenuItem->check();
+        if (!$ok) {
+            throw new Exception($tableMenuItem->getError());
+        }
         if (!$tableMenuItem->store()) {
             echo $tableMenuItem->getError();
         }

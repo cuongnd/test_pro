@@ -219,6 +219,30 @@ class WebsiteControllerWebsite extends JControllerForm
         echo json_encode($respone_array);
         exit();
     }
+    protected function createControl()
+    {
+        $session=JFactory::getSession();
+        $website_id=$session->get('website_id',0);
+        $modelWebsite=$this->getModel();
+        $modelWebsite->createControl($website_id);
+        $view = &$this->getView('website', 'html', 'WebsiteView');
+        $view->errors=$modelWebsite->getErrors();
+
+        $layout='createcontrol';
+        if(count($view->errors))
+            $layout=$modelWebsite->getPrevLayoutByLayout($layout);
+        $view->setLayout($layout);
+        $view->parentDisPlay();
+        $contents = ob_get_contents();
+        ob_end_clean(); // get the callback function
+        $respone_array[] = array(
+            'key' => '.main-display',
+            'contents' => $contents
+        );
+        $this->SetProgressSuccess($layout,$respone_array);
+        echo json_encode($respone_array);
+        exit();
+    }
     protected function createViewAccessLevels()
     {
         $session=JFactory::getSession();

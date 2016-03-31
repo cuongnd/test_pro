@@ -1281,48 +1281,7 @@ class JTableCategory extends JTable
 	 */
 	public function getRootId($menu_type_id=0)
 	{
-		if ((int) self::$root_id > 0)
-		{
-			return self::$root_id;
-		}
-		$menuitemmenutype_table=JTable::getInstance('menuitemmenutype');
-		$menuitemmenutype_table->load(array('menu_type_id'=>$menu_type_id));
-		if($menuitemmenutype_table->id)
-		{
-			self::$root_id=$menuitemmenutype_table->menu_id;
-			return self::$root_id;
-		}else{
-			$query=$this->_db->getQuery(true);
-			$query->insert('#__menu')
-				->set('title='.$query->q('Menu_Item_Root'))
-				->set('alias='.$query->q('root'))
-			;
-			$ok=$this->_db->setQuery($query)->execute();
-			if(!$ok)
-			{
-				throw  new Exception($this->_db->getErrorMsg());
-			}
-			$new_menu_item_id=$this->_db->insertid();
-			$query=$this->_db->getQuery(true);
-			$query->update('#__menu')
-				->set('parent_id='.(int)$new_menu_item_id)
-				->where('id='.(int)$new_menu_item_id)
-			;
-			$ok=$this->_db->setQuery($query)->execute();
-			if(!$ok)
-			{
-				throw  new Exception($this->_db->getErrorMsg());
-			}
 
-			$menuitemmenutype_table->menu_id=$new_menu_item_id;
-			$menuitemmenutype_table->menu_type_id=$menu_type_id;
-			$ok=$menuitemmenutype_table->store();
-			if(!$ok)
-			{
-				throw new Exception($menuitemmenutype_table->getErrorMsg());
-			}
-			return $new_menu_item_id;
-		}
 		self::$root_id = false;
 		return false;
 	}
