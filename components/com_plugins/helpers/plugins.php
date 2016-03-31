@@ -51,9 +51,10 @@ class PluginsHelper
     {
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
-        $query->select('*')
-            ->from('#__plugins')
-            ->where('website_id='.(int)$website_id);
+        $query->select('plugins.*')
+            ->from('#__plugins AS plugins')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=plugins.extension_id')
+            ->where('extensions.website_id='.(int)$website_id);
         $db->setQuery($query);
         return $db->loadObjectList();
     }

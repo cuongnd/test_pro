@@ -59,6 +59,20 @@ abstract class JHtmlInput
 		$html=ob_get_clean();
 		return $html;
 	}
+	public static function button($name,$value,$type="submit",$attr=array())
+	{
+		$str_attr = implode(', ', array_map(
+			function ($v, $k) { return "$k=\"$v\""; },
+			$attr,
+			array_keys($attr)
+		));
+		ob_start();
+		?>
+		<button type="<?php echo $type ?>" class="btn btn-primary" name="<?php echo $name ?>"  <?php echo $str_attr ?> ><?php echo $value ?></button>
+		<?php
+		$html=ob_get_clean();
+		return $html;
+	}
 	public static function price($class_right,$name,$value,$attr=array(),$min=0,$max=1000,$sign="$",$more='')
 	{
 		$doc=JFactory::getDocument();

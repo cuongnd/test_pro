@@ -1,116 +1,34 @@
-<config>
-    <fields name="params">
-        <field type="menu" readonly="false" label="Menu type id" default=""
-               name="menu_type_id" onchange=""
+<config><fields name="params">
+					<field type="menu" readonly="false" label="Menu type" default=""
+						   name="menu_type_id" onchange=""
 
 
-               multiple="false" size="1">
-        </field>
-        <field type="checkbox" label="Menu type id" default="0"
-               name="enable_menu_type_id" onchange="">
+													 multiple="false" 													 size="1" 												>
+											</field>
+					<field type="checkbox" label="Menu type" default="0"
+						   name="enable_menu_type_id" onchange="">
 
-        </field>
-
-        <field type="stylegenerator" readonly="false" label="Base" default=""
-               name="base" onchange=""
-
-
-                >
-        </field>
-        <field type="checkbox" label="Base" default="0"
-               name="enable_base" onchange="">
-
-        </field>
-
-        <field type="integer" readonly="false" label="start Level" default=""
-               name="startlevel" onchange=""
+					</field>
+					
+					<field type="modulelayout" readonly="false" label="Menu type343" default=""
+						   name="menu_type_id" onchange=""
 
 
-               last="10" step="1">
-        </field>
-        <field type="checkbox" label="start Level" default="0"
-               name="enable_startlevel" onchange="">
+												>
+											</field>
+					<field type="checkbox" label="Menu type343" default="0"
+						   name="enable_menu_type_id" onchange="">
 
-        </field>
-
-        <field type="integer" readonly="false" label="End Level" default=""
-               name="endlevel" onchange=""
-
-
-               last="10" step="1">
-        </field>
-        <field type="checkbox" label="End Level" default="0"
-               name="enable_endlevel" onchange="">
-
-        </field>
-
-        <field type="list" readonly="false" label="Main menu style item" default=""
-               name="showallchildren" onchange=""
+					</field>
+					
+					<field type="modulelayout" readonly="false" label="Layout" default=""
+						   name="layout" onchange=""
 
 
-               multiple="false" size="1">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </field>
-        <field type="checkbox" label="Main menu style item" default="0"
-               name="enable_showallchildren" onchange="">
+												>
+											</field>
+					<field type="checkbox" label="Layout" default="0"
+						   name="enable_layout" onchange="">
 
-        </field>
-
-        <field type="modulelayout" readonly="false" label="Layout" default=""
-               name="layout" onchange=""
-
-
-                >
-        </field>
-        <field type="checkbox" label="Layout" default="0"
-               name="enable_layout" onchange="">
-
-        </field>
-        <fields name="menu_config">
-            <field type="stylegenerator" readonly="false" label="Main menu style item" default=""
-                   name="main_menu_style_item" onchange=""
-
-
-                   element_apply_style="ul.menu > li > a">
-            </field>
-            <field type="checkbox" label="Main menu style item" default="0"
-                   name="enable_main_menu_style_item" onchange="">
-
-            </field>
-
-            <field type="stylegenerator" readonly="false" label="Main menu style item open" default=""
-                   name="main_menu_style_item_open" onchange=""
-
-
-                   element_apply_style="ul.menu > li.open > a">
-            </field>
-            <field type="checkbox" label="Main menu style item open" default="0"
-                   name="enable_main_menu_style_item_open" onchange="">
-
-            </field>
-
-            <field type="radioyesno" readonly="false" label="Enable sticky" default=""
-                   name="sticky" onchange=""
-
-
-                    >
-            </field>
-            <field type="checkbox" label="Enable sticky" default="0"
-                   name="enable_sticky" onchange="">
-
-            </field>
-
-            <field type="radioyesno" readonly="false" label="scroll" default=""
-                   name="scroll" onchange=""
-
-
-                    >
-            </field>
-            <field type="checkbox" label="scroll" default="0"
-                   name="enable_scroll" onchange="">
-
-            </field>
-        </fields>
-    </fields>
-</config>
+					</field>
+					</fields></config>

@@ -224,25 +224,25 @@ class WebsiteModelWebsite extends JModelAdmin
             $website_template_id = websiteHelperFrontEnd::getOneTemplateWebsite();
         }
         require_once JPATH_ROOT . '/libraries/joomla/table/user.php';
-        $tableUser = JTable::getInstance('User', 'JTable');
-        $tableUser->id = 0;
-        $tableUser->email = $email;
-        $tableUser->block = 0;
-        $tableUser->issystem = 1;
-        $tableUser->name = 'admin';
-        $tableUser->username = 'admin';
+        $table_user = JTable::getInstance('User', 'JTable');
+        $table_user->id = 0;
+        $table_user->email = $email;
+        $table_user->block = 0;
+        $table_user->issystem = 1;
+        $table_user->name = 'admin';
+        $table_user->username = 'admin';
         //$password=JUserHelper::genRandomPassword(8);
         $password = '123456';
-        $tableUser->password = md5($password);
-        if (!$tableUser->store()) {
-            $this->setError($tableUser->getError());
+        $table_user->password = md5($password);
+        if (!$table_user->store()) {
+            $this->setError($table_user->getError());
         }
         require_once JPATH_ROOT . '/components/com_users/helpers/groups.php';
-        $listGroup = GroupsHelper::get_group_id_by_website_id($website_id);
-        $tableUser->groups = $listGroup;
+        $list_group_id = GroupsHelper::get_group_id_by_website_id($website_id);
+        $table_user->groups = $list_group_id;
 
-        if (!$tableUser->store()) {
-            $this->setError($tableUser->getError());
+        if (!$table_user->store()) {
+            $this->setError($table_user->getError());
             return false;
         }
         return true;
@@ -261,7 +261,7 @@ class WebsiteModelWebsite extends JModelAdmin
             ->select('user_group_id_website_id.user_group_id')
             ->from('#__user_group_id_website_id AS user_group_id_website_id')
             ->where('website_id=' . (int)$website_id);
-        $root_id = $db->setQuery($query)->loadResult();
+        $root_user_group_id = $db->setQuery($query)->loadResult();
 
         $query = $db->getQuery(true);
         $query->select('usergroups.*')
@@ -278,46 +278,46 @@ class WebsiteModelWebsite extends JModelAdmin
             $list = @$children[$pt] ? $children[$pt] : array();
             if ($v->id != $v->parent_id) {
                 array_push($list, $v);
-            } elseif ($root_id == $v->id && $v->id == $v->parent_id) {
+            } elseif ($root_user_group_id == $v->id && $v->id == $v->parent_id) {
                 $list_id[$v->copy_from] = $v->id;
             }
             $children[$pt] = $list;
         }
+        if(!function_exists('get_array_older_id')) {
+            function get_array_older_id($children, $root_id, &$list_id = array())
+            {
 
-        function get_array_older_id($children, $root_id, &$list_id = array())
-        {
-
-            if (@$children[$root_id]) {
-                foreach ($children[$root_id] as $v) {
-                    $root_id = $v->id;
-                    $list_id[$v->copy_from] = $v->id;
-                    get_array_older_id($children, $root_id, $list_id);
+                if (@$children[$root_id]) {
+                    foreach ($children[$root_id] as $v) {
+                        $root_id = $v->id;
+                        $list_id[$v->copy_from] = $v->id;
+                        get_array_older_id($children, $root_id, $list_id);
+                    }
                 }
             }
         }
-
         $query->clear()
-            ->select('*')
-            ->from('#__viewlevels')
+            ->select('viewlevels.*')
+            ->from('#__viewlevels AS viewlevels')
             ->where('website_id=' . (int)$website_template_id);
-        $list_viewlevels = $db->setQuery($query)->loadObjectList();
-        $table_viewlevels = JTable::getInstance('viewlevel');
-        foreach ($list_viewlevels AS $viewlevels) {
-            $table_viewlevels->bind((array)$viewlevels);
-            $table_viewlevels->id = 0;
-            $table_viewlevels->copy_from = $viewlevels->id;
-            $rules = $viewlevels->rules;
+        $list_view_levels = $db->setQuery($query)->loadObjectList();
+        $table_view_levels = JTable::getInstance('viewlevel');
+        foreach ($list_view_levels AS $view_levels) {
+            $table_view_levels->bind((array)$view_levels);
+            $table_view_levels->id = 0;
+            $table_view_levels->copy_from = $view_levels->id;
+            $rules = $view_levels->rules;
             $rules = json_decode($rules);
             foreach ($rules AS $key => $rule) {
                 if ($list_id[$rule]) {
                     $rules[$key] = $list_id[$rule];
                 }
             }
-            $table_viewlevels->rules = json_encode($rules);
-            $table_viewlevels->website_id = $website_id;
-            $ok = $table_viewlevels->store();
+            $table_view_levels->rules = json_encode($rules);
+            $table_view_levels->website_id = $website_id;
+            $ok = $table_view_levels->store();
             if (!$ok) {
-                throw new Exception($table_viewlevels->getError());
+                throw new Exception($table_view_levels->getError());
             }
         }
         return true;
@@ -405,14 +405,14 @@ class WebsiteModelWebsite extends JModelAdmin
             ->select('user_group_id_website_id.user_group_id')
             ->from('#__user_group_id_website_id AS user_group_id_website_id')
             ->where('website_id=' . (int)$website_template_id);
-        $old_parent_id = $db->setQuery($query)->loadResult();
-        if (!$old_parent_id) {
+        $old_root_user_group_id = $db->setQuery($query)->loadResult();
+        if (!$old_root_user_group_id) {
             throw new Exception('there are no exists user group in website template');
         }
         $table_user_group = JTable::getInstance('usergroup', 'Jtable');
-        $table_user_group->load($old_parent_id);
+        $table_user_group->load($old_root_user_group_id);
         $table_user_group->id = 0;
-        $table_user_group->copy_from = $old_parent_id;
+        $table_user_group->copy_from = $old_root_user_group_id;
         $ok = $table_user_group->parent_store();
         if (!$ok) {
             throw new Exception($table_user_group->getError());
@@ -437,11 +437,11 @@ class WebsiteModelWebsite extends JModelAdmin
             ->from('#__usergroups As usergroups ')
             ->order('usergroups.ordering');
         $db->setQuery($query);
-        $list_rows = $db->loadObjectList('id');
+        $list_user_group = $db->loadObjectList('id');
         $children = array();
 
 // First pass - collect children
-        foreach ($list_rows as $v) {
+        foreach ($list_user_group as $v) {
             $pt = $v->parent_id;
             $list = @$children[$pt] ? $children[$pt] : array();
             if ($v->id != $v->parent_id) {
@@ -450,7 +450,7 @@ class WebsiteModelWebsite extends JModelAdmin
             $children[$pt] = $list;
         }
 
-        function execute_copy_rows_table($website_id, JTable $table_user_group, $old_parent_id = 0, $new_parent_id, $children)
+        function execute_copy_rows_table_group_user($website_id, JTable $table_user_group, $old_parent_id = 0, $new_parent_id, $children)
         {
             if ($children[$old_parent_id]) {
                 foreach ($children[$old_parent_id] as $v) {
@@ -464,12 +464,12 @@ class WebsiteModelWebsite extends JModelAdmin
                     }
                     $new_parent_id = $table_user_group->id;
                     $old_parent_id = $v->id;
-                    execute_copy_rows_table($website_id, $table_user_group, $old_parent_id, $new_parent_id, $children);
+                    execute_copy_rows_table_group_user($website_id, $table_user_group, $old_parent_id, $new_parent_id, $children);
                 }
             }
         }
 
-        execute_copy_rows_table($website_id, $table_user_group, $old_parent_id, $new_parent_id, $children);
+        execute_copy_rows_table_group_user($website_id, $table_user_group, $old_root_user_group_id, $new_parent_id, $children);
         return true;
     }
 
@@ -953,7 +953,7 @@ class WebsiteModelWebsite extends JModelAdmin
             $this->setError('Can not found website');
             return false;
         }
-        require_once JPATH_ROOT . '/administrator/components/com_plugins/helpers/plugins.php';
+        require_once JPATH_ROOT . '/components/com_plugins/helpers/plugins.php';
         $listPlugin = PluginsHelper::getPluginsByWebsiteId($website_id);
         if (!count($listPlugin)) {
             $layout = $this->getPrevLayoutByLayout('createplugins');
@@ -971,7 +971,7 @@ class WebsiteModelWebsite extends JModelAdmin
         if (!$website_id) {
             $this->setError('Can not found website');
         }
-        require_once JPATH_ROOT . '/administrator/components/com_templates/helpers/styles.php';
+        require_once JPATH_ROOT . '/components/com_templates/helpers/styles.php';
         $listStyle = StylesHelper::getStylesByWebsiteId($website_id);
         if (!count((array)$listStyle)) {
             $layout = $this->getPrevLayoutByLayout('createstyles');
@@ -1014,8 +1014,28 @@ class WebsiteModelWebsite extends JModelAdmin
         return true;
     }
 
-    public function changeParams($website_id)
+    public function changeParams($website_id,$website_template_id = 0)
     {
+        if (!$website_template_id) {
+            //copy from website template
+            $website_template_id = websiteHelperFrontEnd::getOneTemplateWebsite();
+        }
+        $list_menu_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website_id);
+        $list_menu_item=JArrayHelper::pivot($list_menu_item,'copy_from');
+        $table_menu=JTable::getInstance('menu');
+        foreach($list_menu_item AS $menu_item)
+        {
+            $table_menu->load($menu_item->id);
+            $params = new JRegistry;
+            $params->loadString($menu_item->params);
+            $use_main_frame=$params->get('use_main_frame',0);
+            $params->set('use_main_frame',$list_menu_item[$use_main_frame]->id);
+            $table_menu->params=$params->toString();
+            $ok = $table_menu->store();
+            if (!$ok) {
+                throw new Exception($table_menu->getError());
+            }
+        }
         return true;
     }
 

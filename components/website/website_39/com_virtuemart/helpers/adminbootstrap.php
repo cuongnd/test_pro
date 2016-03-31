@@ -26,6 +26,23 @@ class AdminUIHelper {
      * in the left column and the content in the right column.  This function sets up the table and
      * displayes the admin menu in the left column.
      */
+     static function render_menu() {
+        ob_start();
+        ?>
+        <div class="row-fluid">
+            <div class="col-md-3 menu">
+            <ul>
+
+</ul>
+</div>
+            <div class="col-md-9 content">
+
+</div>
+        </div>
+        <?php
+        $html=ob_get_clean();
+        return $html;
+     }
     static function startAdminArea($backEnd=true) {
 		if (JRequest::getWord ( 'format') =='pdf') return;
 		if (JRequest::getWord ( 'tmpl') =='component') self::$backEnd=false;

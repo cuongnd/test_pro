@@ -149,13 +149,12 @@ class MenusHelperFrontEnd
 		// First pass - collect children
 		foreach ($list_menu_item as $v) {
 			$pt = $v->parent_id;
-			$pt=$pt?$pt:'root';
+			$pt=($pt==''||$pt==$v->id)?'list_root':$pt;
 			$list = @$children[$pt] ? $children[$pt] : array();
-			if ($v->id != $v->parent_id || $v->parent_id!=null) {
-				array_push($list, $v);
-			}
+            array_push($list, $v);
 			$children[$pt] = $list;
 		}
+        unset($children['list_root']);
 		$list_menu_item=array();
 		MenusHelperFrontEnd::get_list_children_menu_item_by_root_menu_item_id($menu_item_id,$list_menu_item,$children);
 		return $list_menu_item;
@@ -194,6 +193,7 @@ class MenusHelperFrontEnd
         $root_menu_item_id=sub_get_root_menu_item_id_by_menu_item_id($menu_item_id,$list_menu_item);
         if($root_menu_item_id)
         {
+            $query->clear();
             $query->select('menu_type_id_menu_id.menu_type_id')
                 ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
                 ->where('menu_type_id_menu_id.menu_id='.(int)$root_menu_item_id)
@@ -294,6 +294,13 @@ class MenusHelperFrontEnd
         $db->setQuery($query);
         $item = $db->loadObject();
         return $item;
+    }
+
+    public static function get_root_menu_item_id_by_menu_item_id($menu_item_id)
+    {
+        $menu_type_id=MenusHelperFrontEnd::get_menu_type_id_by_menu_item_id($menu_item_id);
+        $root_menu_item_id=MenusHelperFrontEnd::get_root_menu_item_id_by_menu_type_id($menu_type_id);
+        return $root_menu_item_id;
     }
 
     public function getMenuTypesByWebsiteId($website_id=0)

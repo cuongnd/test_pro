@@ -106,6 +106,7 @@ ob_start();
                         $list_menu_item1=$children[$root_menu->menu_id];
                         ?>
                         <div class="menu_type_item col-md-6" data-menu-type-id="<?php echo $root_menu->menu_type_id ?>">
+                            <?php echo JHtml::_('input.button','create_new_menu_item','create new menu item') ?>
                             <h3><?php echo $root_menu->title ?>(<?php echo $root_menu->menu_type_id ?>
                                 )<i
                                     class="fa-copy"></i></h3><a title="rebuid menu" href="javascript:void(0)"

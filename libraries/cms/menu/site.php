@@ -75,15 +75,15 @@ class JMenuSite extends JMenu
 		// First pass - collect children
 		foreach ($this->_items as $v) {
 			$pt = $v->parent_id;
-			$pt=$pt?$pt:'root';
+			$pt=($pt==''||$pt==$v->id)?'list_root':$pt;
 			$list = @$children[$pt] ? $children[$pt] : array();
 			if ($v->id != $v->parent_id || $v->parent_id!=null) {
 				array_push($list, $v);
 			}
 			$children[$pt] = $list;
 		}
-		$list_root_menu_item=$children['root'];
-		unset($children['root']);
+		$list_root_menu_item=$children['list_root'];
+		unset($children['list_root']);
 		$list_menu_item=array();
 		foreach($list_root_menu_item as $root_menu_item)
 		{

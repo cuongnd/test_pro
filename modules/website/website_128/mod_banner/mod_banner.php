@@ -34,4 +34,4 @@ else
 
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
-require JModuleHelper::getLayoutPath('mod_footer', $params->get('layout', 'default'));
+require JModuleHelper::getLayoutPath($module->module, $params->get('layout', 'default'));

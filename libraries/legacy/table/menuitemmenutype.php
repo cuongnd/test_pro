@@ -24,4 +24,7 @@ class JTableMenuItemMenuType extends JTable
         parent::__construct('#__menu_type_id_menu_id', 'id', $db);
 
     }
+    public function store($updateNulls = false){
+        return parent::store($updateNulls);
+    }
 }

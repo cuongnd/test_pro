@@ -213,6 +213,64 @@ jQuery(document).ready(function($){
 
 
         },
+        create_new_menu_item: function (self) {
+            var menu_type_id=self.closest('.menu_type_item').data('menuTypeId');
+            var ajax_web_design=$.ajax({
+
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: this_host+'/index.php',
+                data: (function () {
+
+                    var dataPost = {
+                        enable_load_component:1,
+                        option: 'com_menus',
+                        task: 'item.ajax_create_new_menu_item',
+                        menu_type_id:menu_type_id
+
+                    };
+                    return dataPost;
+                })(),
+                beforeSend: function () {
+                    $('.div-loading').css({
+                        display: "block"
+
+
+                    });
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+                    $('.div-loading').css({
+                        display: "none"
+
+
+                    });
+                    if(response.e==1)
+                    {
+                        alert(response.m);
+                    }else
+                    {
+
+                        alert(response.m);
+                        var menu_clone=response.r;
+/*
+                        li_clone.data('id',menu_clone.id);
+                        li_clone.data('parent_id',menu_clone.parent_id);
+                        li_clone.data('title',menu_clone.title);
+                        li_clone.data('alias',menu_clone.alias);
+                        li_clone.find('.key_name:first').html(menu_clone.title + " ( " +menu_clone.id+','+ menu_clone.alias + " ) ");
+*/
+                        //do some thing
+                    }
+
+
+
+                }
+            });
+
+            console.log('dfgdfgdfgdfgfdgdf');
+        },
         init_menu_ajax_loader:function(){
 
 
@@ -224,6 +282,9 @@ jQuery(document).ready(function($){
             });
             $(document).on('click','.add_sub_node',function(){
                 menu_ajax_loader.add_sub_node($(this));
+            });
+            $(document).on('click','button[name="create_new_menu_item"]',function(){
+                menu_ajax_loader.create_new_menu_item($(this));
             });
             $(document).on('click','.rebuild_root_menu',function(){
                 var menu_type_id=$(this).data('menu_type_id');

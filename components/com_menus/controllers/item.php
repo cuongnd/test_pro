@@ -219,7 +219,39 @@ class MenusControllerItem extends JControllerForm
         $table_menu_item->alias = $table_menu_item->alias . JUserHelper::genRandomPassword(3);
         $result = new stdClass();
         $result->e = 0;
-        if (!$table_menu_item->store('clone')) {
+        if (!$table_menu_item->parent_store()) {
+            $result->e = 1;
+            $result->m = $table_menu_item->getError();
+        } else {
+            $result->m = "clone successfully";
+            $menu_clone=new stdClass();
+            $menu_clone->id=$table_menu_item->id;
+            $menu_clone->parent_id=$table_menu_item->parent_id;
+            $menu_clone->title=$table_menu_item->title;
+            $result->r = $menu_clone;
+        }
+        echo json_encode($result);
+        die;
+    }
+
+    public function ajax_create_new_menu_item()
+    {
+        $app = JFactory::getApplication();
+        $input = $app->input;
+        $menu_type_id = $input->get('menu_type_id', 0, 'int');
+        require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
+        $root_menu_item_id=MenusHelperFrontEnd::get_root_menu_item_id_by_menu_type_id($menu_type_id);
+        $table_menu_item = JTable::getInstance('Menu');
+        $table_menu_item->id = 0;
+        $table_menu_item->lft = null;
+        $table_menu_item->rgt = null;
+        $table_menu_item->level = null;
+        $table_menu_item->parent_id = $root_menu_item_id;
+        $table_menu_item->title = "new menu item";
+        $table_menu_item->alias = $table_menu_item->alias . JUserHelper::genRandomPassword(3);
+        $result = new stdClass();
+        $result->e = 0;
+        if (!$table_menu_item->parent_store()) {
             $result->e = 1;
             $result->m = $table_menu_item->getError();
         } else {

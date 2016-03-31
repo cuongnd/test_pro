@@ -9,400 +9,120 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/images/vmenu/off.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/images/vmenu/on.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/images/vmenu/zakladka.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/ajax-loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/file.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/folder-closed.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/folder.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/minus.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/plus.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/treeview-black-line.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/treeview-black.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/treeview-default-line.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/treeview-default.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/treeview-famfamfam-line.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/treeview-famfamfam.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/treeview-gray-line.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/treeview-gray.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/treeview-red-line.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/images/treeview-red.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/arrow.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_convert.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_coupe.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_hdr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_pickup.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_sedan.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_sports.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_sub.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_sub_left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bg_suv.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bullet.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/images/bullet_on.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/images/icon_bullet_1.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/images/line_blue.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/images/line_grey.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/images/menu_home_bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/ajax-loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/file.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/folder-closed.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/folder.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/minus.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/plus.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/treeview-black-line.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/treeview-black.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/treeview-default-line.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/treeview-default.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/treeview-famfamfam-line.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/treeview-famfamfam.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/treeview-gray-line.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/treeview-gray.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/treeview-red-line.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/images/treeview-red.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/access.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/config.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/controller.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/controllers/component.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/controllers/components.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/controllers/domains.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/controllers/extension.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/controllers/extensions.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/controllers/gioithieu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/controllers/homepage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/controllers/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/controllers/websites.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/gianhang.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/gianhang.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/helpers/components.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/helpers/domains.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/helpers/extensions.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/helpers/gioithieu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/helpers/homepage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/helpers/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/helpers/plugins.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/layouts/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/layouts/toolbar/cancelselect.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/layouts/toolbar/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/layouts/toolbar/newplugin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/component.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/components.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/danhgia.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/domains.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/extension.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/extensions.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/fields/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/fields/pluginordering.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/forms/component.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/forms/extensions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/forms/filter_components.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/forms/filter_domains.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/forms/filter_extensions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/forms/filter_gioithieu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/forms/filter_plugins.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/forms/homepage.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/forms/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/forms/plugins.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/gioithieu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/homepage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/plugins.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/models/websites.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/bando/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/bando/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/bando/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/bando/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/bando/tmpl/default_loadcomponent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/bando/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/bando/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/chinhsach/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/chinhsach/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/chinhsach/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/chinhsach/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/chinhsach/tmpl/default_loadcomponent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/chinhsach/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/chinhsach/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/component/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/component/tmpl/assets/css/view_component_config.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/component/tmpl/assets/js/view_component_config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/component/tmpl/assets/less/view_component_config.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/component/tmpl/config_default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/component/tmpl/edit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/component/tmpl/edit_options.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/component/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/component/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/danhgia/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/danhgia/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/danhgia/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/danhgia/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/danhgia/tmpl/default_loadcomponent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/danhgia/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/danhgia/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/domains/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/domains/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/domains/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/domains/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/domains/tmpl/default_loadcomponent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/domains/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/domains/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/extensions/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/extensions/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/extensions/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/extensions/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/extensions/tmpl/default_loadcomponent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/extensions/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/extensions/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/gioithieu/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/gioithieu/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/gioithieu/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/gioithieu/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/gioithieu/tmpl/default_loadcomponent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/gioithieu/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/gioithieu/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/hoidap/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/hoidap/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/hoidap/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/hoidap/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/hoidap/tmpl/default_loadcomponent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/hoidap/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/hoidap/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/homepage/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/homepage/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/homepage/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/homepage/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/homepage/tmpl/default_loadcomponent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/homepage/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/homepage/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/lienhe/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/lienhe/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/lienhe/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/lienhe/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/lienhe/tmpl/default_loadcomponent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/lienhe/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/lienhe/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/plugins/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/plugins/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/plugins/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/plugins/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/plugins/tmpl/default_loadcomponent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/plugins/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_gianhang/views/plugins/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/legacy/table/control.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/legacy/table/menu_item_id_position_id_ordering.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_login/assets/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_login/helper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_login/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_login/mod_login.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_login/mod_login.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_login/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_login/tmpl/default2.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_login/tmpl/default2_logout.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_login/tmpl/default_logout.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_login/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/Gruntfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/LICENSE-MIT" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/addons/bootstrap/jquery.smartmenus.bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/addons/keyboard/jquery.smartmenus.keyboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/addons/keyboard/jquery.smartmenus.keyboard.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/_mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/_sm-blue.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/mixins/_round-corners-last-item.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/mixins/_sub-items-indentation.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/sm-blue.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-blue/sm-blue.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/_mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/_sm-clean.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/mixins/_round-corners-last-item.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/mixins/_sub-items-indentation.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/sm-clean.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-clean/sm-clean.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-core-css.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-mint/_mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-mint/_sm-mint.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-mint/mixins/_sub-items-indentation.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-mint/sm-mint.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-mint/sm-mint.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-simple/_mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-simple/_sm-simple.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-simple/mixins/_sub-items-indentation.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-simple/sm-simple.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/css/sm-simple/sm-simple.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/jquery.smartmenus.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/dist/jquery.smartmenus.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/smartmenus.jquery.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/addons/bootstrap/jquery.smartmenus.bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/addons/bootstrap/jquery.smartmenus.bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/addons/keyboard/jquery.smartmenus.keyboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/_mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/_sm-blue.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/mixins/_round-corners-last-item.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/mixins/_sub-items-indentation.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/sm-blue.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/sm-blue.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/_mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/_sm-clean.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/mixins/_round-corners-last-item.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/mixins/_sub-items-indentation.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/sm-clean.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-clean/sm-clean.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-core-css.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-mint/_mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-mint/_sm-mint.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-mint/mixins/_sub-items-indentation.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-mint/sm-mint.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-mint/sm-mint.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-simple/_mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-simple/_sm-simple.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-simple/mixins/_sub-items-indentation.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-simple/sm-simple.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-simple/sm-simple.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/bootstrap-navbar-fixed-bottom.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/bootstrap-navbar-fixed-top.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/bootstrap-navbar-static-top.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/bootstrap-navbar.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/demo/keyboard-navigation.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/jquery.smartmenus.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/demo-assets/demo.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/demo-assets/readme.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/demo-assets/shjs/shjs.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/demo-assets/shjs/shjs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/demo-assets/themes-switcher.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/libs/jquery/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/js/jquery-1.10.2.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/js/vmenuModule.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/less/vmenuModule.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/admin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/admin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/admin_left.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/admin_left.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/navigation_menu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/assets/verticalmegamenu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/helper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/mod_menu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/mod_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/mod_menu1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/default_component.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/default_heading.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/default_separator.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/default_url.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/nav.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/navigation.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/navigation_component.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/navigation_heading.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/navigation_separator.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/navigation_url.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/verticalmegamenu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/css/css_footer_menu.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/css/jquery.treeview.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.hoverIntent.minified.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/megamenu.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/menu.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/custom_mega_menu_styles/menu.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/dcmegamenu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/homcategory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/jquery.cookie.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/jquery.treeview.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/js/verticalmegamenu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/asset/less/homcategory.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/css/default.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/css/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/images/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/changelog.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/async.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/demo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/images.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/large.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/prerendered.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/screen.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/simple.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/sortable.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/source.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/demo/source.phps" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/jquery.treeview.async.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/jquery.treeview.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/jquery.treeview.edit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/jquery.treeview.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/jquery.treeview.sortable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/lib/jquery.cookie.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/lib/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/jquery.treeview/todo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/js/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/assets/js/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/fields/category.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/fields/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/helper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/mod_virtuemart_category.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/mod_virtuemart_category.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/mod_virtuemart_category1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/tmpl/all.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/tmpl/current.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/tmpl/footermenu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/tmpl/homecategory.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/tmpl/mainmenu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/tmpl/megamenu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/tmpl/test" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_category/tmpl/verticalmegamenu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/assets/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/assets/js/javacript.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/helper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/mod_virtuemart_product.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/mod_virtuemart_product.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/tmpl/default_3d.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/tmpl/default_active.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/tmpl/default_audio.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/tmpl/default_code.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/tmpl/default_graphic.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/tmpl/default_photo.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/tmpl/default_theme.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/tmpl/default_video.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_virtuemart_product/tmpl/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/access.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/config.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/controller.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/controllers/component.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/controllers/components.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/controllers/domains.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/controllers/extension.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/controllers/extensions.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/controllers/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/controllers/websites.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/helpers/components.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/helpers/domains.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/helpers/extensions.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/helpers/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/helpers/plugins.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/helpers/websites.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/layouts/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/layouts/toolbar/cancelselect.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/layouts/toolbar/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/layouts/toolbar/newplugin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/component.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/components.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/domains.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/extension.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/extensions.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/fields/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/fields/pluginordering.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/forms/component.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/forms/extensions.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/forms/filter_components.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/forms/filter_domains.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/forms/filter_extensions.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/forms/filter_plugins.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/forms/filter_websites.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/forms/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/forms/plugins.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/forms/websites.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/plugins.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/models/websites.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/supperadmin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/supperadmin.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/component/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/component/tmpl/assets/css/view_component_config.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/component/tmpl/assets/js/view_component_config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/component/tmpl/assets/less/view_component_config.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/component/tmpl/config_default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/component/tmpl/edit.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/component/tmpl/edit_options.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/component/tmpl/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/component/view.html.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/components/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/components/tmpl/assets/js/loadcomponents.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/components/tmpl/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/components/tmpl/default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/components/tmpl/default_loadcomponent.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/components/tmpl/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/components/view.html.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/domains/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/domains/tmpl/assets/js/loadcomponents.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/domains/tmpl/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/domains/tmpl/default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/domains/tmpl/default_loadcomponent.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/domains/tmpl/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/domains/view.html.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/extensions/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/extensions/tmpl/assets/js/loadcomponents.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/extensions/tmpl/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/extensions/tmpl/default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/extensions/tmpl/default_loadcomponent.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/extensions/tmpl/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/extensions/view.html.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/plugins/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/plugins/tmpl/assets/js/loadcomponents.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/plugins/tmpl/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/plugins/tmpl/default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/plugins/tmpl/default_loadcomponent.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/plugins/tmpl/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/plugins/view.html.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/websites/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/websites/tmpl/assets/js/loadcomponents.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/websites/tmpl/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/websites/tmpl/default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/websites/tmpl/default_loadcomponent.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/websites/tmpl/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/websites/view.html.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administrator/language/en-GB/en-GB.ini" afterPath="$PROJECT_DIR$/administrator/language/en-GB/en-GB.ini" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/controllers/item.php" afterPath="$PROJECT_DIR$/components/com_menus/controllers/item.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_modules/controllers/module.php" afterPath="$PROJECT_DIR$/components/com_modules/controllers/module.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_modules/views/module/tmpl/config_default.php" afterPath="$PROJECT_DIR$/components/com_modules/views/module/tmpl/config_default.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_users/controllers/login.php" afterPath="$PROJECT_DIR$/components/com_users/controllers/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_users/views/login/tmpl/default_login.php" afterPath="$PROJECT_DIR$/components/com_users/views/login/tmpl/default_login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/helper/utility.php" afterPath="$PROJECT_DIR$/components/com_utility/helper/utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_website/helpers/website.php" afterPath="$PROJECT_DIR$/components/com_website/helpers/website.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/helpers/menus.php" afterPath="$PROJECT_DIR$/components/com_menus/helpers/menus.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" afterPath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js" afterPath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_plugins/helpers/plugins.php" afterPath="$PROJECT_DIR$/components/com_plugins/helpers/plugins.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_templates/helpers/styles.php" afterPath="$PROJECT_DIR$/components/com_templates/helpers/styles.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_website/models/website.php" afterPath="$PROJECT_DIR$/components/com_website/models/website.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/application/cms.php" afterPath="$PROJECT_DIR$/libraries/cms/application/cms.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/component/helper.php" afterPath="$PROJECT_DIR$/libraries/cms/component/helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/menu/menu.php" afterPath="$PROJECT_DIR$/libraries/cms/menu/menu.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/plugin/helper.php" afterPath="$PROJECT_DIR$/libraries/cms/plugin/helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/router/site.php" afterPath="$PROJECT_DIR$/libraries/cms/router/site.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/user/authentication.php" afterPath="$PROJECT_DIR$/libraries/joomla/user/authentication.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/legacy/table/positionnested.php" afterPath="$PROJECT_DIR$/libraries/legacy/table/positionnested.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/adminbootstrap.php" afterPath="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/adminbootstrap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/language/en-GB/en-GB.ini" afterPath="$PROJECT_DIR$/language/en-GB/en-GB.ini" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/html/input.php" afterPath="$PROJECT_DIR$/libraries/cms/html/input.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/menu/site.php" afterPath="$PROJECT_DIR$/libraries/cms/menu/site.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/legacy/table/menu.php" afterPath="$PROJECT_DIR$/libraries/legacy/table/menu.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/legacy/table/menuitemmenutype.php" afterPath="$PROJECT_DIR$/libraries/legacy/table/menuitemmenutype.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_128/mod_banner/mod_banner.php" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_banner/mod_banner.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_128/mod_danhmucraovat/mod_danhmucraovat.php" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_danhmucraovat/mod_danhmucraovat.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_128/mod_danhmucsanpham/mod_danhmucsanpham.php" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_danhmucsanpham/mod_danhmucsanpham.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_128/mod_hoidapgianhang/mod_hoidapgianhang.php" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_hoidapgianhang/mod_hoidapgianhang.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_128/mod_menu/helper.php" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/helper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_128/mod_menu/mod_menu.php" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/mod_menu.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_128/mod_menu/mod_menu.xml" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/mod_menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/verticalmegamenu.php" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/verticalmegamenu.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_128/mod_thongkegianhang/mod_thongkegianhang.php" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_thongkegianhang/mod_thongkegianhang.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_128/mod_thongtintaikhoan/mod_thongtintaikhoan.php" afterPath="$PROJECT_DIR$/modules/website/website_128/mod_thongtintaikhoan/mod_thongtintaikhoan.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_39/mod_menu/mod_menu.php" afterPath="$PROJECT_DIR$/modules/website/website_39/mod_menu/mod_menu.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/authentication/joomla/joomla.php" afterPath="$PROJECT_DIR$/plugins/authentication/joomla/joomla.php" />
     </list>
     <ignored path="test_pro.iws" />
@@ -431,7 +151,113 @@
     <favorites_list name="test_pro" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="item.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_menus/controllers/item.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.423077">
+              <caret line="249" column="48" selection-start-line="249" selection-start-column="48" selection-end-line="249" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menus.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_menus/helpers/menus.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mod_menu.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/mod_menu.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="17.0">
+              <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+              <folding>
+                <element signature="e#6#237#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/default.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.6153846">
+              <caret line="31" column="20" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajaxloader.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.8846154">
+              <caret line="108" column="54" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
+              <folding>
+                <marker date="1459412684300" expanded="true" signature="2871:3003" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="html.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/cms/html/html.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.846154">
+              <caret line="93" column="27" selection-start-line="93" selection-start-column="27" selection-end-line="93" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="input.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/cms/html/input.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.115385">
+              <caret line="70" column="65" selection-start-line="70" selection-start-column="65" selection-end-line="70" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_menus_ajaxloader.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="229" column="49" selection-start-line="229" selection-start-column="37" selection-end-line="229" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/nav.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.076923">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menuitemmenutype.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menuitemmenutype.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="2.3486843">
+              <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -452,29 +278,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/components/com_supperadmin/helpers/domains.php" />
-        <option value="$PROJECT_DIR$/components/com_supperadmin/models/domains.php" />
-        <option value="$PROJECT_DIR$/components/com_supperadmin/views/domains/tmpl/default.php" />
-        <option value="$PROJECT_DIR$/components/com_users/helpers/groups.php" />
-        <option value="$PROJECT_DIR$/components/com_users/helpers/users.php" />
-        <option value="$PROJECT_DIR$/components/com_components/helpers/components.php" />
-        <option value="$PROJECT_DIR$/components/com_modules/helpers/modules.php" />
-        <option value="$PROJECT_DIR$/libraries/adminfrontend/rightsidebar.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/menu/site.php" />
-        <option value="$PROJECT_DIR$/components/com_menus/helpers/menus.php" />
-        <option value="$PROJECT_DIR$/libraries/joomla/factory.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/router/site.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/menu/menu.php" />
-        <option value="$PROJECT_DIR$/components/com_menus/controllers/item.php" />
-        <option value="$PROJECT_DIR$/plugins/authentication/joomla/joomla.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/plugin/helper.php" />
-        <option value="$PROJECT_DIR$/libraries/joomla/user/authentication.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/application/cms.php" />
-        <option value="$PROJECT_DIR$/components/com_users/controllers/login.php" />
-        <option value="$PROJECT_DIR$/components/com_users/users.php" />
-        <option value="$PROJECT_DIR$/components/com_users/views/login/tmpl/default_login.php" />
         <option value="$PROJECT_DIR$/libraries/legacy/table/menu_item_id_position_id_ordering.php" />
-        <option value="$PROJECT_DIR$/components/com_website/models/website.php" />
         <option value="$PROJECT_DIR$/components/com_website/helpers/website.php" />
         <option value="&lt;ebab288d-42d3-466b-91db-96e920f3e6b9&gt;/configuration/configuration_128.php" />
         <option value="$PROJECT_DIR$/components/com_utility/controllers/utility.php" />
@@ -503,6 +307,28 @@
         <option value="$PROJECT_DIR$/components/com_gianhang/views/chinhsach/tmpl/default.php" />
         <option value="$PROJECT_DIR$/components/com_gianhang/views/lienhe/tmpl/default.php" />
         <option value="$PROJECT_DIR$/components/com_gianhang/models/danhgia.php" />
+        <option value="$PROJECT_DIR$/libraries/legacy/table/modulemenu.php" />
+        <option value="$PROJECT_DIR$/libraries/cms/module/helper.php" />
+        <option value="$PROJECT_DIR$/administrator/language/en-GB/en-GB.ini" />
+        <option value="$PROJECT_DIR$/language/en-GB/en-GB.lib_joomla.ini" />
+        <option value="$PROJECT_DIR$/components/com_plugins/helpers/plugins.php" />
+        <option value="$PROJECT_DIR$/components/com_templates/helpers/styles.php" />
+        <option value="$PROJECT_DIR$/components/com_website/models/website.php" />
+        <option value="$PROJECT_DIR$/language/en-GB/en-GB.ini" />
+        <option value="$PROJECT_DIR$/plugins/authentication/joomla/joomla.php" />
+        <option value="$PROJECT_DIR$/modules/website/website_128/mod_danhmucsanpham/mod_danhmucsanpham.php" />
+        <option value="$PROJECT_DIR$/modules/website/website_128/mod_banner/mod_banner.php" />
+        <option value="$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/adminbootstrap.php" />
+        <option value="$PROJECT_DIR$/libraries/legacy/table/menu.php" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/mod_menu.php" />
+        <option value="$PROJECT_DIR$/components/com_menus/helpers/menus.php" />
+        <option value="$PROJECT_DIR$/libraries/cms/menu/site.php" />
+        <option value="$PROJECT_DIR$/modules/website/website_39/mod_menu/helper.php" />
+        <option value="$PROJECT_DIR$/libraries/cms/html/input.php" />
+        <option value="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" />
+        <option value="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js" />
+        <option value="$PROJECT_DIR$/components/com_menus/controllers/item.php" />
+        <option value="$PROJECT_DIR$/libraries/legacy/table/menuitemmenutype.php" />
       </list>
     </option>
   </component>
@@ -610,6 +436,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprflat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -747,7 +605,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="website_39" />
+              <option name="myItemId" value="website_128" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mod_menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tmpl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -779,91 +645,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
+              <option name="myItemId" value="website" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="com_gianhang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com_gianhang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com_gianhang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="helpers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com_gianhang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="website_3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -874,7 +664,7 @@
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="jtableme&#9;null&#9;null&#10;positionnested&#9;FILE&#9;file://H:/project/test_pro/libraries/legacy/table/positionnested.php&#10;jcompo&#9;null&#9;null&#10;juser&#9;null&#9;null&#10;jplu&#9;null&#9;null&#10;japplica&#9;null&#9;null&#10;jrouter&#9;null&#9;null&#10;jfieldmenuite&#9;null&#9;null&#10;menuitem&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/menuitem.php&#10;get_menu_item_by_menu_type_id&#9;null&#9;null&#10;menu.&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/menu/menu.php&#10;jtabletype&#9;null&#9;null&#10;jtableex&#9;null&#9;null&#10;jtablemen&#9;null&#9;null&#10;jtablecatego&#9;null&#9;null&#10;jtablecategor&#9;null&#9;null&#10;jtablecate&#9;null&#9;null&#10;jcomp&#9;null&#9;null&#10;jtablemenuty&#9;null&#9;null&#10;jtableus&#9;null&#9;null&#10;JPagination &#9;null&#9;null&#10;jtabe&#9;null&#9;null&#10;jtables&#9;null&#9;null&#10;pluginhel&#9;null&#9;null&#10;pluginhe&#9;null&#9;null&#10;Jtablen&#9;null&#9;null&#10;jtableuser&#9;null&#9;null&#10;jformbeh&#9;null&#9;null&#10;modulela&#9;FILE&#9;file://H:/project/test_pro/libraries/legacy/form/field/modulelayout.php&#10;WEBSITE_ID&#9;null&#9;null&#10;jhtml&#9;null&#9;null&#10;modulelay&#9;null&#9;null&#10;ajaxloader&#9;FILE&#9;file://H:/project/test_pro/components/com_menus/views/menus/tmpl/ajaxloader.php&#10;getProfile&#9;null&#9;null&#10;jsite&#9;null&#9;null&#10;radioyesno&#9;null&#9;null&#10;vmjs&#9;null&#9;null&#10;vmht&#9;null&#9;null&#10;jgri&#9;null&#9;null&#10;jro&#9;null&#9;null&#10;jmodule&#9;null&#9;null&#10;jcompone&#9;null&#9;null&#10;jfieldd&#9;null&#9;null&#10;jcompon&#9;null&#9;null&#10;jfieldcon&#9;null&#9;null&#10;driv&#9;null&#9;null&#10;dataso&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/datasource.js&#10;ajax_save_datasource_relationship&#9;null&#9;null&#10;jfieldatas&#9;null&#9;null&#10;jcomponent&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="menuitemmenutype&#9;FILE&#9;file://H:/project/test_pro/libraries/legacy/table/menuitemmenutype.php&#10;get_menu_item_by_menu_type_id&#9;null&#9;null&#10;ajax_clone_item_menu&#9;null&#9;null&#10;jtableme&#9;null&#9;null&#10;moduleh&#9;null&#9;null&#10;jtablemodu&#9;null&#9;null&#10;jmodule&#9;null&#9;null&#10;positionnested&#9;FILE&#9;file://H:/project/test_pro/libraries/legacy/table/positionnested.php&#10;jcompo&#9;null&#9;null&#10;juser&#9;null&#9;null&#10;jplu&#9;null&#9;null&#10;japplica&#9;null&#9;null&#10;jrouter&#9;null&#9;null&#10;jfieldmenuite&#9;null&#9;null&#10;menuitem&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/form/field/menuitem.php&#10;menu.&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/menu/menu.php&#10;jtabletype&#9;null&#9;null&#10;jtableex&#9;null&#9;null&#10;jtablemen&#9;null&#9;null&#10;jtablecatego&#9;null&#9;null&#10;jtablecategor&#9;null&#9;null&#10;jtablecate&#9;null&#9;null&#10;jcomp&#9;null&#9;null&#10;jtablemenuty&#9;null&#9;null&#10;jtableus&#9;null&#9;null&#10;JPagination &#9;null&#9;null&#10;jtabe&#9;null&#9;null&#10;jtables&#9;null&#9;null&#10;pluginhel&#9;null&#9;null&#10;pluginhe&#9;null&#9;null&#10;Jtablen&#9;null&#9;null&#10;jtableuser&#9;null&#9;null&#10;jformbeh&#9;null&#9;null&#10;modulela&#9;FILE&#9;file://H:/project/test_pro/libraries/legacy/form/field/modulelayout.php&#10;WEBSITE_ID&#9;null&#9;null&#10;jhtml&#9;null&#9;null&#10;modulelay&#9;null&#9;null&#10;ajaxloader&#9;FILE&#9;file://H:/project/test_pro/components/com_menus/views/menus/tmpl/ajaxloader.php&#10;getProfile&#9;null&#9;null&#10;jsite&#9;null&#9;null&#10;radioyesno&#9;null&#9;null&#10;vmjs&#9;null&#9;null&#10;vmht&#9;null&#9;null&#10;jgri&#9;null&#9;null&#10;jro&#9;null&#9;null&#10;jcompone&#9;null&#9;null&#10;jfieldd&#9;null&#9;null&#10;jcompon&#9;null&#9;null&#10;jfieldcon&#9;null&#9;null&#10;driv&#9;null&#9;null" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libraries/cms/application/cms.php" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
     <property name="LayoutCode.rearrangeEntriesXML" value="false" />
@@ -917,11 +707,11 @@
       <recent name="H:\project\test_pro\modules\website\website_39\mod_virtuemart_category\asset" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\project\test_pro\modules\website\website_128" />
+      <recent name="H:\project\test_pro\components\website\website_39" />
+      <recent name="H:\project\test_pro\libraries\legacy\table" />
       <recent name="H:\project\test_pro\components\com_gianhang\models" />
       <recent name="H:\project\test_pro\components\com_gianhang\views" />
-      <recent name="H:\project\test_pro\components\com_gianhang\controllers" />
-      <recent name="H:\project\test_pro\components\com_gianhang\helpers" />
-      <recent name="H:\project\test_pro\libraries\legacy\table" />
     </key>
   </component>
   <component name="RunManager">
@@ -977,24 +767,6 @@
       <created>1441660052781</created>
       <option name="number" value="Default" />
       <updated>1441660052781</updated>
-    </task>
-    <task id="LOCAL-00001" summary="sdfdsfds">
-      <created>1441661327801</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1441661327801</updated>
-    </task>
-    <task id="LOCAL-00002" summary="sdfdsfds">
-      <created>1441662130370</created>
-      <option name="number" value="00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1441662130370</updated>
-    </task>
-    <task id="LOCAL-00003" summary="sdfdsfds">
-      <created>1442404088711</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1442404088711</updated>
     </task>
     <task id="LOCAL-00004" summary="Rejected commit: Default">
       <created>1454050144297</created>
@@ -1272,7 +1044,25 @@
       <option name="project" value="LOCAL" />
       <updated>1459248588511</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="update module supper admin">
+      <created>1459312943262</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1459312943263</updated>
+    </task>
+    <task id="LOCAL-00051" summary="update module supper admin">
+      <created>1459335782843</created>
+      <option name="number" value="00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1459335782843</updated>
+    </task>
+    <task id="LOCAL-00052" summary="update module supper admin">
+      <created>1459335797003</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1459335797003</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1288,14 +1078,15 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20244215" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20244215" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26285347" sideWeight="0.86860067" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25173852" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2506964" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20584145" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6815021" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.7130919" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21015424" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27760968" sideWeight="0.13139932" order="1" side_tool="true" content_ui="tabs" />
@@ -1309,7 +1100,6 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26279864" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
@@ -1322,10 +1112,10 @@
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20308483" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20244215" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840616" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21028744" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21015424" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1336,11 +1126,11 @@
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20584145" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27019498" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2367688" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25945538" sideWeight="0.86860067" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25255972" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26285347" sideWeight="0.86860067" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2506964" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27760968" sideWeight="0.13139932" order="1" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1380,346 +1170,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/com_users/models/registration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/plugin/helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.307693">
-          <caret line="108" column="28" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/user/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.692307">
-          <caret line="346" column="50" selection-start-line="346" selection-start-column="50" selection-end-line="346" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/user/authentication.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.730769">
-          <caret line="260" column="48" selection-start-line="260" selection-start-column="48" selection-end-line="260" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/application/cms.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8461537">
-          <caret line="724" column="0" selection-start-line="724" selection-start-column="0" selection-end-line="724" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_users/controllers/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.8076925">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_users/users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_users/views/login/tmpl/default_login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="60" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menu_item_id_position_id_ordering.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_website/models/website.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="797" column="96" selection-start-line="797" selection-start-column="96" selection-end-line="797" selection-end-column="96" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_website/helpers/website.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="591" column="25" selection-start-line="591" selection-start-column="25" selection-end-line="591" selection-end-column="25" />
-          <folding>
-            <marker date="1459268079907" expanded="true" signature="31559:31819" placeholder="..." />
-            <marker date="1459268079907" expanded="true" signature="31603:31697" placeholder="..." />
-            <marker date="1459268079907" expanded="true" signature="31614:31686" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/verticalmegamenu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/elements/ui/grid.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.576923">
-          <caret line="311" column="84" selection-start-line="311" selection-start-column="72" selection-end-line="311" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_utility/controllers/utility.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615">
-          <caret line="792" column="45" selection-start-line="792" selection-start-column="45" selection-end-line="792" selection-end-column="45" />
-          <folding>
-            <marker date="1459304932194" expanded="true" signature="15251:15273" placeholder="SELECT * FRO... Products" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_utility/helper/utility.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.346153">
-          <caret line="662" column="41" selection-start-line="662" selection-start-column="29" selection-end-line="662" selection-end-column="41" />
-          <folding>
-            <marker date="1459305087329" expanded="true" signature="13629:13837" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/positionnested.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231">
-          <caret line="924" column="35" selection-start-line="924" selection-start-column="35" selection-end-line="924" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/views/domains/tmpl/assets/js/loadcomponents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1458792646601" expanded="true" signature="3379:4400" placeholder="..." />
-            <marker date="1458792646601" expanded="true" signature="3459:3583" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/nav.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-          <folding>
-            <marker date="1459220953811" expanded="true" signature="25003:25156" placeholder="select @pare... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/control.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.115385">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_modules/views/module/tmpl/properties.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385">
-          <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
-          <folding>
-            <marker date="1459219367123" expanded="true" signature="5310:5567" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_modules/models/module.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
-          <caret line="752" column="50" selection-start-line="752" selection-start-column="0" selection-end-line="753" selection-end-column="0" />
-          <folding>
-            <marker date="1458619991792" expanded="true" signature="30744:30798" placeholder="INSERT INTO #__modules_menu... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_modules/controllers/module.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_modules/views/module/tmpl/config_default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.076923">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/language/en-GB/en-GB.lib_joomla.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="25" column="42" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/utilities/utility.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.115385">
-          <caret line="705" column="23" selection-start-line="705" selection-start-column="23" selection-end-line="705" selection-end-column="23" />
-          <folding>
-            <marker date="1459309673395" expanded="true" signature="7877:7946" placeholder="ALTER TABLE `${$table}`... " />
-            <marker date="1459309673395" expanded="true" signature="8093:8164" placeholder="ALTER TABLE `${$table}`... " />
-            <marker date="1459309673395" expanded="true" signature="9362:9396" placeholder="ALTER TABLE `${$table}`... " />
-            <marker date="1459309673395" expanded="true" signature="10010:10071" placeholder="ALTER TABLE ${$table}... " />
-            <marker date="1459309673395" expanded="true" signature="10190:10262" placeholder="ALTER TABLE ${$table}... " />
-            <marker date="1459309673395" expanded="true" signature="10650:10670" placeholder="CREATE TABLE... ${$table}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/component/helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.6153846">
-          <caret line="345" column="0" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/controllers/homepage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.192307">
-          <caret line="31" column="72" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/gianhang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="10" column="64" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.9615383">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-          <folding>
-            <element signature="e#6#250#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/legacy/view/legacy.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5384617">
-          <caret line="392" column="9" selection-start-line="392" selection-start-column="9" selection-end-line="392" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/models/homepage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6153846">
-          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/helpers/homepage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-35.307693">
-          <caret line="60" column="38" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/views/homepage/view.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615">
-          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/views/homepage/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="24.846153">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/views/gioithieu/tmpl/assets/js/loadcomponents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1458792646601" expanded="true" signature="3379:4400" placeholder="..." />
-            <marker date="1458792646601" expanded="true" signature="3459:3583" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/views/gioithieu/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
-          <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/controllers/gioithieu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_gianhang/helpers/gioithieu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-35.307693">
-          <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/com_gianhang/models/gioithieu.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.8461537">
@@ -1827,6 +1277,334 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10225564">
           <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_banner/tmpl/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_danhmucsanpham/tmpl/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_danhmucraovat/tmpl/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_hoidapgianhang/tmpl/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_thongkegianhang/tmpl/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_thongtintaikhoan/tmpl/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/module.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.8076925">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/modulemenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.6923075">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/language/en-GB/en-GB.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="261" column="54" selection-start-line="261" selection-start-column="54" selection-end-line="261" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/language/en-GB/en-GB.lib_joomla.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="647" column="0" selection-start-line="647" selection-start-column="0" selection-end-line="647" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/components/com_plugins/helpers/plugins.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.076923">
+          <caret line="59" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_plugins/helpers/plugins.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.769231">
+          <caret line="56" column="63" selection-start-line="55" selection-start-column="11" selection-end-line="56" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_templates/helpers/styles.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.423077">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/module/helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.230769">
+          <caret line="582" column="46" selection-start-line="582" selection-start-column="46" selection-end-line="582" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/models/forms/item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.076923">
+          <caret line="231" column="40" selection-start-line="231" selection-start-column="26" selection-end-line="231" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_website/models/website.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.3076925">
+          <caret line="1024" column="0" selection-start-line="1024" selection-start-column="0" selection-end-line="1024" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/language/en-GB/en-GB.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="152" column="43" selection-start-line="152" selection-start-column="43" selection-end-line="152" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/authentication/joomla/joomla.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.115385">
+          <caret line="56" column="36" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_danhmucsanpham/mod_danhmucsanpham.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.769231">
+          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_hoidapgianhang/mod_hoidapgianhang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.038462">
+          <caret line="36" column="52" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_banner/mod_banner.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/adminui.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="213" column="29" selection-start-line="213" selection-start-column="29" selection-end-line="213" selection-end-column="29" />
+          <folding>
+            <marker date="1457668428630" expanded="true" signature="9300:9666" placeholder="SELECT `jmmo... #__virtuemart_modules" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/helpers/adminbootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9230769">
+          <caret line="28" column="32" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="32" />
+          <folding>
+            <marker date="1459400148030" expanded="true" signature="2215:2247" placeholder="..." />
+            <marker date="1459400148030" expanded="true" signature="4757:4816" placeholder="..." />
+            <marker date="1459400148030" expanded="true" signature="5360:5726" placeholder="SELECT `jmmo... #__virtuemart_modules" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_banhangonline/views/domains/tmpl/assets/js/loadcomponents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding>
+            <marker date="1458792646601" expanded="true" signature="3379:4400" placeholder="..." />
+            <marker date="1458792646601" expanded="true" signature="3459:3583" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_39/com_virtuemart/virtuemart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/joomla/table/table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.230769">
+          <caret line="761" column="47" selection-start-line="761" selection-start-column="4" selection-end-line="761" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-119.96154">
+          <caret line="940" column="0" selection-start-line="940" selection-start-column="0" selection-end-line="940" selection-end-column="0" />
+          <folding>
+            <marker date="1459408254510" expanded="true" signature="25413:25566" placeholder="select @pare... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/menu/site.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.730769">
+          <caret line="85" column="34" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/mod_menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="17.0">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+          <folding>
+            <element signature="e#6#237#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_39/mod_menu/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6153846">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/html/html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.846154">
+          <caret line="93" column="27" selection-start-line="93" selection-start-column="27" selection-end-line="93" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/html/input.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.115385">
+          <caret line="70" column="65" selection-start-line="70" selection-start-column="65" selection-end-line="70" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="108" column="54" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
+          <folding>
+            <marker date="1459412684300" expanded="true" signature="2871:3003" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="229" column="49" selection-start-line="229" selection-start-column="37" selection-end-line="229" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/helpers/menus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/controllers/item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.423077">
+          <caret line="249" column="48" selection-start-line="249" selection-start-column="48" selection-end-line="249" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_128/mod_menu/tmpl/nav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.076923">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menuitemmenutype.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.3486843">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
           <folding />
         </state>
       </provider>

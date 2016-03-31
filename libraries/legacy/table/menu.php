@@ -122,7 +122,7 @@ class JTableMenu extends JTable
     }
     public function init(){
 
-        if($this->menu_type_id==0)
+        if($this->menu_type_id==0&&($this->parent_id==null||$this->parent_id==''||$this->parent_id==$this->id))
         {
             throw new  Exception('menu type id not exists');
         }
@@ -581,7 +581,13 @@ class JTableMenu extends JTable
     {
         $k = $this->_tbl_key;
         $pk = (is_null($pk)) ? $this->$k : $pk;
-
+        $website=JFactory::getWebsite();
+        $list_menu_item_id=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website->website_id);
+        if(!in_array($pk,$list_menu_item_id))
+        {
+            $this->setError('you cannot delete this menu item, because it is other website');
+            return false;
+        }
         // Implement JObservableInterface: Pre-processing by observers
         $this->_observers->update('onBeforeDelete', array($pk));
 
@@ -932,7 +938,6 @@ class JTableMenu extends JTable
         {
             $oldCallObservers = $this->_observers->doCallObservers(false);
         }
-
         $result = parent::store($updateNulls);
 
         // Implement JObservableInterface: Restore previous callable observers state:
@@ -1284,50 +1289,34 @@ class JTableMenu extends JTable
      */
     public function getRootId($menu_type_id=0)
     {
+
         if ((int) self::$root_id > 0)
         {
             return self::$root_id;
         }
-        $menu_item_menu_type_table=JTable::getInstance('menuitemmenutype');
-        $menu_item_menu_type_table->load(array('menu_type_id'=>$menu_type_id));
-        if($menu_item_menu_type_table->id)
+        $root_menu_item=false;
+        if($this->id!=0&&$this->id==$this->parent_id)
         {
-            self::$root_id=$menu_item_menu_type_table->menu_id;
-            return self::$root_id;
-        }else{
-            $query=$this->_db->getQuery(true);
-            $query->insert('#__menu')
-                ->set('title='.$query->q('Menu_Item_Root'))
-                ->set('alias='.$query->q('root'))
-            ;
-            $ok=$this->_db->setQuery($query)->execute();
-            if(!$ok)
-            {
-                throw  new Exception($this->_db->getErrorMsg());
-            }
-            $new_menu_item_id=$this->_db->insertid();
-            $query=$this->_db->getQuery(true);
-            $query->update('#__menu')
-                ->set('parent_id='.(int)$new_menu_item_id)
-                ->where('id='.(int)$new_menu_item_id)
-            ;
-            $ok=$this->_db->setQuery($query)->execute();
-            if(!$ok)
-            {
-                throw  new Exception($this->_db->getErrorMsg());
-            }
-
-            $menu_item_menu_type_table->menu_id=$new_menu_item_id;
-            $menu_item_menu_type_table->menu_type_id=$menu_type_id;
-            $ok=$menu_item_menu_type_table->store();
-            if(!$ok)
-            {
-                throw new Exception($menu_item_menu_type_table->getErrorMsg());
-            }
-            return $new_menu_item_id;
+            $root_menu_item=$this->id;
         }
-        self::$root_id = false;
-        return false;
+
+        if($this->id!=0)
+        {
+            $root_menu_item=$this->get_root_by_menu_item_id($this->id);
+        }elseif($this->parent_id!=0)
+        {
+            $root_menu_item=MenusHelperFrontEnd::get_root_menu_item_id_by_menu_item_id($this->parent_id);
+        }elseif($menu_type_id!=0)
+        {
+            $root_menu_item=MenusHelperFrontEnd::get_root_menu_item_id_by_menu_type_id($menu_type_id);
+        }else{
+            $this->setError('there are no root menu');
+            return false;
+        }
+
+        self::$root_id=$root_menu_item;
+        return self::$root_id;
+
     }
 
     /**

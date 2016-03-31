@@ -51,6 +51,7 @@ class PlgAuthenticationJoomla extends JPlugin
 			->where('username=' . $db->quote($credentials['username']))
             ->leftJoin('#__user_usergroup_map AS user_usergroup_map ON user_usergroup_map.user_id=user.id')
 			->where('user_usergroup_map.group_id IN('.implode(',',$list_user_group_id).')')
+            ->group('user.id')
         ;
 		$db->setQuery($query);
 		$result = $db->loadObject();
