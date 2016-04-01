@@ -18,7 +18,6 @@
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_components" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_config" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_contact" />
-      <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_content" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_contenthistory" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_cpanel" />
       <excludeFolder url="file://$MODULE_DIR$/administrator/components/com_easyblog" />

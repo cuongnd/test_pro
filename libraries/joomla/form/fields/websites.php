@@ -40,45 +40,16 @@ class JFormFieldWebsites extends JFormField
 	 */
 	protected function getInput()
 	{
-        $supperAdmin=JFactory::isSupperAdmin();
-        if(!$supperAdmin)
-            return;
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
         $query->from('#__website');
-        $query->select('id,title');
+        $query->select('id,name');
         $db->setQuery($query);
         $listWebsite=$db->loadObjectList();
-        $query=$db->getQuery(true);
-        $query->from('#__domain_website');
-        $query->select('id,domain,website_id');
-        $db->setQuery($query);
-        $listWebsiteDomain=$db->loadObjectList();
-        foreach($listWebsiteDomain as $domainWebsite)
-        {
-            foreach($listWebsite as $key=> $website)
-            {
-                if($website->id==$domainWebsite->website_id)
-                {
-                    $listWebsite[$key]->listSite[]=$domainWebsite->domain;
-                }
-            }
-        }
-        $options1[] = JHtml::_('select.option', '','Select Website');
-        $options1[] = JHtml::_('select.option', '-1','Run for all');
-        $options1[] = JHtml::_('select.option', '0','None');
-        $options2=array();
-        foreach($listWebsite as $key=>$website)
-        {
-            $title=$listWebsite[$key]->title.'('.implode($website->listSite).')';
-            $options2[] = JHtml::_('select.option',$website->id, $title);
-        }
-        $options=array_merge($options1,$options2);
         $attribute=array();
         $attribute[]=$this->onchange?'onchange="'.$this->onchange.'"':'';
         $attribute=implode(' ',$attribute);
-
-        $html = JHtml::_('select.genericlist', $options, $this->name,$attribute, 'value', 'text', $this->value, $this->id);
+        $html = JHtml::_('select.genericlist', $listWebsite, $this->name,$attribute, 'id', 'name', $this->value);
 
         return $html;
 	}

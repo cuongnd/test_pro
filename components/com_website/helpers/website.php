@@ -33,6 +33,17 @@ class websiteHelperFrontEnd
         return $website_name;
     }
 
+    public static function get_list_website()
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->from('#__website');
+        $query->select('*');
+        $db->setQuery($query);
+        $list_website=$db->loadObjectList();
+        return $list_website;
+    }
+
     /**
      * Configure the Linkbar.
      *

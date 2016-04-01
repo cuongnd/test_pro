@@ -1476,4 +1476,19 @@ abstract class JModelAdmin extends JModelForm
 		$table->title = $data['0'];
 		$table->alias = $data['1'];
 	}
+    public function getTable($type = '', $prefix = 'JTable', $config = array())
+    {
+        $website_name=JFactory::get_website_name();
+        $option=$this->get('option');
+        $table_path="components/website/website_$website_name/$option/tables";
+        if(!JFolder::exists(JPATH_ROOT.DS.$table_path))
+        {
+            $table_path="components/$option/tables";
+        }
+        JTable::addIncludePath(JPATH_ROOT.DS.$table_path);
+        if(!$type)
+            $type=$this->get('name','');
+        return JTable::getInstance($type, $prefix, $config);
+    }
+
 }

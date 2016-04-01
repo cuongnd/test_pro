@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_plugins
+ * @subpackage  com_supperadmin
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,10 +13,10 @@ defined('_JEXEC') or die;
  * View to edit a plugin.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_plugins
+ * @subpackage  com_supperadmin
  * @since       1.5
  */
-class PluginsViewPlugin extends JViewLegacy
+class supperadminViewdomain extends JViewLegacy
 {
 	protected $item;
 
@@ -51,19 +51,15 @@ class PluginsViewPlugin extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		JFactory::getApplication()->input->set('hidemainmenu', true);
 
-		$canDo = JHelperContent::getActions('com_plugins');
+		$canDo = JHelperContent::getActions('com_supperadmin');
 
-		JToolbarHelper::title(JText::sprintf('COM_PLUGINS_MANAGER_PLUGIN', JText::_($this->item->name)), 'power-cord plugin');
+		JToolbarHelper::title(JText::sprintf('Domain', JText::_($this->item->name)), 'power-cord plugin');
 
 		// If not checked out, can save the item.
-		if ($canDo->get('core.edit'))
-		{
-			JToolbarHelper::apply('plugin.apply');
-			JToolbarHelper::save('plugin.save');
-		}
-		JToolbarHelper::cancel('plugin.cancel', 'JTOOLBAR_CLOSE');
+        JToolbarHelper::apply('domain.apply');
+        JToolbarHelper::save('domain.save');
+		JToolbarHelper::cancel('domain.cancel', 'JTOOLBAR_CLOSE');
 		JToolbarHelper::divider();
 		// Get the help information for the plugin item.
 

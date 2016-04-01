@@ -14,5 +14,8 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_supperadmin'))
 }
 
 $controller	= JControllerLegacy::getInstance('supperadmin');
-$controller->execute(JFactory::getApplication()->input->get('task'));
+$app=JFactory::getApplication();
+$task=JFactory::getApplication()->input->get('task');
+
+$controller->execute($task);
 $controller->redirect();

@@ -83,82 +83,25 @@ class supperadminViewdomains extends JViewLegacy
 		$canDo = JHelperContent::getActions('com_supperadmin');
         $bar = JToolBar::getInstance('toolbar');
 		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
-        if ($canDo->get('core.create'))
-        {
-            // Instantiate a new JLayoutFile instance and render the layout
-            $layout = new JLayoutFile('toolbar.newcomponent');
+        JToolbarHelper::editList('domain.edit');
+        JToolbarHelper::addNew('domain.add');
+        JToolbarHelper::publish('domains.publish', 'JTOOLBAR_ENABLE', true);
+        JToolbarHelper::unpublish('domains.unpublish', 'JTOOLBAR_DISABLE', true);
+        JToolbarHelper::deleteList('do you want delete this item','domains.remove');
 
-            $bar->appendButton('Custom', $layout->render(array()), 'new');
-        }
-		if ($canDo->get('core.edit'))
-		{
-			JToolbarHelper::editList('component.edit');
-		}
-        if ($canDo->get('core.create'))
-        {
-            JToolbarHelper::custom('domains.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
-        }
-		JToolbarHelper::duplicate('domains.duplicate');
-		if ($canDo->get('core.edit.state'))
-		{
-			JToolbarHelper::publish('domains.publish', 'JTOOLBAR_ENABLE', true);
-			JToolbarHelper::unpublish('domains.unpublish', 'JTOOLBAR_DISABLE', true);
-			JToolbarHelper::checkin('domains.checkin');
-		}
-        if ($this->state->get('filter.published') == -2)
-        {
-            JToolbarHelper::deleteList('', 'domains.delete', 'JTOOLBAR_EMPTY_TRASH');
-        }
-        elseif ($canDo->get('core.edit.state'))
-        {
-            JToolbarHelper::trash('domains.trash');
-        }
-        JToolbarHelper::publish('domains.issystem','Is system');
-        JToolbarHelper::unpublish('domains.isnotsystem','Is system');
-		if ($canDo->get('core.admin'))
-		{
-			JToolbarHelper::preferences('com_supperadmin');
-		}
-
-		JToolbarHelper::help('JHELP_domains_component_MANAGER');
-
-		JHtmlSidebar::setAction('index.php?option=com_supperadmin&view=supperadmin');
-
-        $supperAdmin=JFactory::isSupperAdmin();
-        if($supperAdmin){
-            $option1=new stdClass();
-            $option1->id=-1;
-            $option1->title="Run for all";
-            $listWebsite1[]=$option1;
-            $option1=new stdClass();
-            $option1->id=-0;
-            $option1->title="None";
-            $listWebsite1[]=$option1;
-            $listWebsite2= websiteHelperFrontEnd::getdomains();
-            $listWebsite=array_merge($listWebsite1,$listWebsite2);
-            JHtmlSidebar::addFilter(
-                JText::_('JOPTION_SELECT_WEBSITE'),
-                'filter_website_id',
-                JHtml::_('select.options',$listWebsite, 'id', 'title', $this->state->get('filter.website_id'))
-            );
-        }
+        $listWebsite= websiteHelperFrontEnd::get_list_website();
+        JHtmlSidebar::addFilter(
+            JText::_('Select website'),
+            'filter_website_id',
+            JHtml::_('select.options',$listWebsite, 'id', 'title', $this->state->get('filter.website_id'))
+        );
 		JHtmlSidebar::addFilter(
 				JText::_('JOPTION_SELECT_PUBLISHED'),
 				'filter_enabled',
 				JHtml::_('select.options', domainsHelper::publishedOptions(), 'value', 'text', $this->state->get('filter.enabled'), true)
 		);
 
-		JHtmlSidebar::addFilter(
-				JText::_('folder'),
-				'filter_folder',
-				JHtml::_('select.options', domainsHelper::folderOptions(), 'value', 'text', $this->state->get('filter.folder'))
-		);
 
-		JHtmlSidebar::addFilter(
-				JText::_('JOPTION_SELECT_ACCESS'),
-				'filter_access',
-				JHtml::_('select.options', JHtml::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
-		);
 
 		$this->sidebar = JHtmlSidebar::render();
 

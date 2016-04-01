@@ -78,24 +78,10 @@ $sortFields = $this->getSortFields();
                             <?php echo JHtml::_('grid.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
                         </th>
                         <th class="title">
-                            <?php echo JHtml::_('grid.sort', 'extension name', 'name', $listDirn, $listOrder); ?>
+                            <?php echo JHtml::_('grid.sort', 'domain', 'domain', $listDirn, $listOrder); ?>
                         </th>
                         <th class="title">
-                            <?php echo JHtml::_('grid.sort', 'website', 'a.website_id', $listDirn, $listOrder); ?>
-                        </th>
-                        <th class="title">
-                            <?php echo JHtml::_('grid.sort', 'Is System', 'a.issystem', $listDirn, $listOrder); ?>
-                        </th>
-
-
-                        <th width="10%" class="nowrap hidden-phone">
-                            <?php echo JHtml::_('grid.sort', 'folder', 'folder', $listDirn, $listOrder); ?>
-                        </th>
-                        <th width="10%" class="nowrap hidden-phone">
-                            <?php echo JHtml::_('grid.sort', 'element', 'element', $listDirn, $listOrder); ?>
-                        </th>
-                        <th width="5%" class="hidden-phone">
-                            <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ACCESS', 'access', $listDirn, $listOrder); ?>
+                            <?php echo JHtml::_('grid.sort', 'website', 'website.name', $listDirn, $listOrder); ?>
                         </th>
                         <th width="1%" class="nowrap center hidden-phone">
                             <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
@@ -155,19 +141,7 @@ $sortFields = $this->getSortFields();
                                 <?php endif; ?>
                             </td>
                             <td class="center hidden-phone">
-                                <?php //echo $item->website ?>
-                            </td>
-                            <td class="center">
-                                <?php echo JHtml::_('jgrid.is_system', $item->issystem, $i, 'domains.', $canChange); ?>
-                            </td>
-                            <td class="nowrap small hidden-phone">
-                                <?php echo $this->escape($item->folder); ?>
-                            </td>
-                            <td class="nowrap small hidden-phone">
-                                <?php echo $this->escape($item->element); ?>
-                            </td>
-                            <td class="small hidden-phone">
-                                <?php echo $this->escape($item->access_level); ?>
+                                <?php echo $item->website_name ?>
                             </td>
                             <td class="center hidden-phone">
                                 <?php echo (int)$item->id; ?>
