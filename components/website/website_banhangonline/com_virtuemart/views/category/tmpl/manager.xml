@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?> <metadata>
+                    <field type="menuitem" readonly="false" label="link edit product" default=""
+                           name="link_edit_product" onchange=""
+
+
+                                                >
+                                            </field>
+                    <field type="checkbox" label="link edit product" default="0"
+                           name="enable_link_edit_product" onchange="">
+
+                    </field>
+                    </metadata>

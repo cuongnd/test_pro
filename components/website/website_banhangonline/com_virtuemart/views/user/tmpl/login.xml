@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?> <metadata>
+                    <field type="menuitem" readonly="false" label="Menu Item return" default=""
+                           name="menu_item_return" onchange=""
+
+
+                                                >
+                                            </field>
+                    <field type="checkbox" label="Menu Item return" default="0"
+                           name="enable_menu_item_return" onchange="">
+
+                    </field>
+                    </metadata>

@@ -24,6 +24,7 @@ abstract class JFactory
 	 * @since  11.1
 	 */
 	public static $application = null;
+	public static $website_name = '';
 
 	/**
 	 * Global cache object
@@ -144,7 +145,31 @@ abstract class JFactory
 
 		return in_array($domain,$domainSupper);
     }
-	/**
+
+    public static function get_website_name()
+    {
+        if(static::$website_name)
+        {
+            return static::$website_name;
+        }
+        $website=JFactory::getWebsite();
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('name')
+            ->from('#__website')
+            ->where('id='.(int)$website->website_id)
+            ;
+        $db->setQuery($query);
+        $website_name=$db->loadResult();
+        if(!$website_name)
+        {
+            throw new Exception('website name empty, please check');
+        }
+        static::$website_name=$website_name;
+        return static::$website_name;
+    }
+
+    /**
 	 * Get a configuration object
 	 *
 	 * Returns the global {@link JRegistry} object, only creating it if it doesn't already exist.

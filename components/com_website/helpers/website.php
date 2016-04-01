@@ -20,6 +20,19 @@ class websiteHelperFrontEnd
 {
     public static $extension = 'com_website';
 
+    public static function get_website_name_by_website_id($website_id=0)
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('name')
+            ->from('#__website')
+            ->where('id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $website_name=$db->loadResult();
+        return $website_name;
+    }
+
     /**
      * Configure the Linkbar.
      *

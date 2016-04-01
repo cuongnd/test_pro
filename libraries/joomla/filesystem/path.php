@@ -324,7 +324,8 @@ class JPath
 	{
 		jimport('joomla.filesystem.folder');
 		$website=JFactory::getWebsite();
-		$component_path='components/website/website_'.$website->website_id.'/'.$component;
+        $website_name=JFactory::get_website_name();
+		$component_path='components/website/website_'.$website_name.'/'.$component;
 		if(!JFolder::exists(JPATH_ROOT.DS.$component_path))
 		{
 			$component_path='components/'.$component;
@@ -339,9 +340,9 @@ class JPath
 	public static function get_component_url($component)
 	{
 		jimport('joomla.filesystem.folder');
-		$website=JFactory::getWebsite();
-		$path=JPATH_ROOT.'/components/website/website_'.$website->website_id.'/'.$component;
-		$component_url=JUri::root().'components/website/website_'.$website->website_id.'/'.$component;
+        $website_name=JFactory::get_website_name();
+		$path=JPATH_ROOT.'/components/website/website_'.$website_name.'/'.$component;
+		$component_url=JUri::root().'components/website/website_'.$website_name.'/'.$component;
 		if(!JFolder::exists($path))
 		{
 			$component_url=JUri::root().'components/'.$component;
@@ -352,8 +353,8 @@ class JPath
 	public static function get_module_path($module,$root=true)
 	{
 		jimport('joomla.filesystem.folder');
-		$website=JFactory::getWebsite();
-		$module_path='modules/website/website_'.$website->website_id.'/'.$module;
+        $website_name=JFactory::get_website_name();
+		$module_path='modules/website/website_'.$website_name.'/'.$module;
 		if(!JFolder::exists(JPATH_ROOT.DS.$module_path))
 		{
 			$module_path='modules/'.$module;

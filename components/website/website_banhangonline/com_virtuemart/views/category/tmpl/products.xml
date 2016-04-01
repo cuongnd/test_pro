@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?> <metadata>
+                    <field type="menuitem" readonly="false" label="menu item product detail" default=""
+                           name="menu_item_product_detail" onchange=""
+
+
+                                                >
+                                            </field>
+                    <field type="checkbox" label="menu item product detail" default="0"
+                           name="enable_menu_item_product_detail" onchange="">
+
+                    </field>
+                    </metadata>

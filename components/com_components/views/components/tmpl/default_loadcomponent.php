@@ -17,9 +17,10 @@ $listComponent = $db->setQuery($query)->loadObjectList();
 
 $listLayOut = array();
 $website = JFactory::getWebsite();
+$website_name=JFactory::get_website_name();
 foreach ($listComponent as $com) {
     $is_private_component=true;
-    $folder_view=JPATH_ROOT . '/components/website/website_'.$website->website_id.'/' . $com->name . '/views';
+    $folder_view=JPATH_ROOT . '/components/website/website_'.$website_name.'/' . $com->name . '/views';
     if(!JFolder::exists($folder_view))
     {
         $is_private_component=false;

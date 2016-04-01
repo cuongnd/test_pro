@@ -71,6 +71,13 @@ class WebsiteControllerWebsite extends JControllerForm
         $your_domain=$post['your_domain'];
         $sub_domain=$post['sub_domain'];
         $email=$post['email'];
+        $session_website = JModelLegacy::getInstance('session_website');
+        $session_website->load();
+        $session_website->sub_domain=$sub_domain;
+        $session_website->your_domain=$your_domain;
+        $session_website->email=$email;
+        $session_website->saveToSession();
+
         $uri=JFactory::getURI();
         $host=$uri->getHost();
         $host=strtolower($host);

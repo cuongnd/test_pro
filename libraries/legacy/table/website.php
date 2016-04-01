@@ -167,6 +167,17 @@ class JTableWebsite extends JTable
 	 */
 	public function check()
 	{
+		if (trim($this->name) == '')
+		{
+			$this->setError(JText::_('website name not empty'));
+			return false;
+		}
+
+        if ( preg_match('/\s/',trim($this->name)) )
+		{
+			$this->setError(JText::_('website name not space'));
+			return false;
+		}
 		if (trim($this->title) == '')
 		{
 			$this->setError(JText::_('COM_website_WARNING_PROVIDE_VALID_NAME'));

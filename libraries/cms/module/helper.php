@@ -210,10 +210,14 @@ abstract class JModuleHelper
 		// Get the template
 		$template = $app->getTemplate();
 		$website=JFactory::getWebsite();
+        $website_name=JFactory::get_website_name();
 		// Get module path
 		$module->module = preg_replace('/[^A-Z0-9_\.-]/i', '', $module->module);
-		$path = JPATH_BASE . '/modules/website/website_'.$website->website_id.'/' . $module->module . '/' . $module->module . '.php';
-
+		$path = JPATH_BASE . '/modules/website/website_'.$website_name.'/' . $module->module . '/' . $module->module . '.php';
+        if(!JFile::exists($path))
+        {
+            $path = JPATH_BASE . '/modules/' . $module->module . '/' . $module->module . '.php';
+        }
 		// Load the module
 		if (file_exists($path))
 		{
@@ -332,10 +336,11 @@ abstract class JModuleHelper
 			$defaultLayout = ($temp[1]) ? $temp[1] : 'default';
 		}
 		$website=JFactory::getWebsite();
+        $website_name=JFactory::get_website_name();
 		// Build the template and base path for the layout
-		$tPath = JPATH_THEMES . '/' . $template . '/html/website/website_'.$website->website_id.'/' . $module . '/' . $layout . '.php';
-		$bPath = JPATH_BASE . '/modules/website/website_'.$website->website_id.'/' . $module . '/tmpl/' . $defaultLayout . '.php';
-		$dPath = JPATH_BASE . '/modules/website/website_'.$website->website_id.'/' . $module . '/tmpl/default.php';
+		$tPath = JPATH_THEMES . '/' . $template . '/html/website/website_'.$website_name.'/' . $module . '/' . $layout . '.php';
+		$bPath = JPATH_BASE . '/modules/website/website_'.$website_name.'/' . $module . '/tmpl/' . $defaultLayout . '.php';
+		$dPath = JPATH_BASE . '/modules/website/website_'.$website_name.'/' . $module . '/tmpl/default.php';
 
 		// If the template has a layout override use it
 		if (file_exists($tPath))
@@ -576,11 +581,12 @@ abstract class JModuleHelper
             return false;
         }
 		$website=JFactory::getWebsite();
+        $website_name=JFactory::get_website_name();
         foreach($listModule as $module)
         {
             $params = new JRegistry;
             $params->loadString($module->params);
-            $helperFile=JPATH_BASE . '/modules/website/website_'.$website->website_id.'/' . $module->module . '/helper.php';
+            $helperFile=JPATH_BASE . '/modules/website/website_'.$website_name.'/' . $module->module . '/helper.php';
             if(!$module->updated&&file_exists($helperFile))
                 require_once $helperFile;
             $moduleName=$module->module;

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?> <metadata>
+                    <field type="text" readonly="false" label="" default=""
+                           name="" onchange=""
+
+
+                                                >
+                                            </field>
+                    <field type="checkbox" label="" default="0"
+                           name="enable_" onchange="">
+
+                    </field>
+                    </metadata>

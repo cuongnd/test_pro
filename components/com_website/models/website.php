@@ -49,9 +49,12 @@ class WebsiteModelWebsite extends JModelAdmin
     {
         $app=JFactory::getApplication();
         $user = JFactory::getUser();
+        $session_website = JModelLegacy::getInstance('session_website');
+        $session_website->load();
         $table_website = $this->getTable();
         $table_website->id = 0;
         $table_website->title = $domain;
+        $table_website->name = $session_website->sub_domain;
         $table_website->alias = $domain;
         $table_website->introtext = $domain;
         if (!$user->id) {
@@ -592,6 +595,9 @@ class WebsiteModelWebsite extends JModelAdmin
             ->where('extensions.website_id=' . (int)$website_template_id);
         $list_components = $db->setQuery($query)->loadObjectList();
         $table_component = JTable::getInstance('component');
+        $website_name=websiteHelperFrontEnd::get_website_name_by_website_id($website_id);
+        $website_template_name=websiteHelperFrontEnd::get_website_name_by_website_id($website_template_id);
+
         foreach ($list_components AS $component) {
             $table_component->bind((array)$component);
             $table_component->id = 0;
@@ -603,10 +609,10 @@ class WebsiteModelWebsite extends JModelAdmin
             if (!$ok) {
                 throw new Exception($table_component->getError());
             }
-            $source_component_path="components/website/website_$website_template_id/$component->name";
+            $source_component_path="components/website/website_$website_template_name/$component->name";
             if(JFolder::exists(JPATH_ROOT.DS.$source_component_path))
             {
-                $new_destination_component_path="components/website/website_$website_id/$component->name";
+                $new_destination_component_path="components/website/website_$website_name/$component->name";
                 $ok=JFolder::copy(JPATH_ROOT.DS.$source_component_path,JPATH_ROOT.DS.$new_destination_component_path,'',true);
                 if (!$ok) {
                     throw new Exception('copy component error');
@@ -670,6 +676,8 @@ class WebsiteModelWebsite extends JModelAdmin
         $list_modules = $db->setQuery($query)->loadObjectList();
         $table_module = JTable::getInstance('module');
         jimport('joomla.filesystem.folder');
+        $website_name=websiteHelperFrontEnd::get_website_name_by_website_id($website_id);
+        $website_template_name=websiteHelperFrontEnd::get_website_name_by_website_id($website_template_id);
         foreach ($list_modules AS $module) {
             $table_module->bind((array)$module);
             $table_module->id = 0;
@@ -681,10 +689,10 @@ class WebsiteModelWebsite extends JModelAdmin
             if (!$ok) {
                 throw new Exception($table_module->getError());
             }
-            $module_path="modules/website/website_$website_template_id/$module->module";
+            $module_path="modules/website/website_$website_template_name/$module->module";
             if(JFolder::exists(JPATH_ROOT.DS.$module_path))
             {
-                $new_module_path="modules/website/website_$website_id/$module->module";
+                $new_module_path="modules/website/website_$website_name/$module->module";
                 $ok=JFolder::copy(JPATH_ROOT.DS.$module_path,JPATH_ROOT.DS.$new_module_path,'',true);
                 if (!$ok) {
                     throw new Exception('copy module error');
@@ -1164,7 +1172,9 @@ class WebsiteModelWebsite extends JModelAdmin
 
     public function CheckFinish(&$layout)
     {
-
+        $session_website = JModelLegacy::getInstance('session_website');
+        $session_website->load();
+        $session_website->clear();
         $layout = 'finish';
         return true;
     }
@@ -1306,6 +1316,10 @@ class WebsiteModelWebsite extends JModelAdmin
         {
             $this->setError($table_domain_website->getError());
         }
+
+
+
+
         return true;
     }
 
