@@ -44,6 +44,40 @@ class websiteHelperFrontEnd
         return $list_website;
     }
 
+    public static function get_list_domain_by_website($website_id)
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->from('#__domain_website AS domain_website')
+            ->select('domain_website.*')
+            ->where('domain_website.website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $list_domain=$db->loadObjectList();
+        return $list_domain;
+    }
+
+    public static function get_list_domain_website_id_by_website($website_id)
+    {
+        $list_domain=self::get_list_domain_by_website($website_id);
+        $list_domain=JArrayHelper::pivot($list_domain,'id');
+        return array_keys($list_domain);
+    }
+
+    public static function get_list_domain_website_id_available_by_website_id($website_id)
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->from('#__domain_website AS domain_website')
+            ->select('domain_website.*')
+            ->where('(domain_website.website_id='.(int)$website_id.' OR domain_website.website_id IS NULL)')
+        ;
+        $db->setQuery($query);
+        $list_domain=$db->loadObjectList();
+        $list_domain=JArrayHelper::pivot($list_domain,'id');
+        return array_keys($list_domain);
+    }
+
     /**
      * Configure the Linkbar.
      *

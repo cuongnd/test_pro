@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset
+            addfieldpath="/components/website/website_supper_admin/com_supperadmin/models/fields"
+    >
+        <field
+                name="id"
+                label="JGLOBAL_FIELD_ID_LABEL"
+                description="JGLOBAL_FIELD_ID_DESC"
+                type="text"
+                default="0"
+                readonly="true"
+                class="readonly"/>
+
+        <field
+                name="title"
+                type="text"
+                required="true"
+                label="Title"
+                description="Title"/>
+        <field
+                name="name"
+                type="text"
+                readonly="true"
+                label="Name"
+                description="Name"/>
+
+
+        <field
+                name="list_domain"
+                type="domains"
+                required="true"
+                multiple="true"
+                label="Apply domain"
+                description="Apply domain"/>
+
+
+        <field
+                name="enabled"
+                type="list"
+                class="chzn-color-state"
+                label="JSTATUS"
+                description="COM_PLUGINS_FIELD_ENABLED_DESC"
+                size="1"
+                default="1">
+            <option value="1">JENABLED</option>
+            <option value="0">JDISABLED</option>
+        </field>
+
+        <field
+                name="introtext"
+                type="editor"
+                readonly="true"
+                label="Description"
+                description="Description"/>
+
+
+
+    </fieldset>
+</form>

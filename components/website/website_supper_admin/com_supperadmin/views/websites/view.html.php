@@ -79,86 +79,24 @@ class supperadminViewwebsites extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/com_supperadmin/helpers/websites.php';
+		require_once JPATH_ROOT.DS.'components/website/website_supper_admin/com_supperadmin/helpers/websites.php';
 		$canDo = JHelperContent::getActions('com_supperadmin');
         $bar = JToolBar::getInstance('toolbar');
-		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
-        if ($canDo->get('core.create'))
-        {
-            // Instantiate a new JLayoutFile instance and render the layout
-            $layout = new JLayoutFile('toolbar.newcomponent');
+		JToolbarHelper::title(JText::_('Website manager'), 'power-cord component');
+        JToolbarHelper::addNew('website.adđ');
+        JToolbarHelper::editList('website.edit');
+        JToolbarHelper::publish('websites.publish');
+        JToolbarHelper::unpublish('websites.unpublish');
+        JToolbarHelper::deleteList('Do you want delete this websites ','websites.delete');
 
-            $bar->appendButton('Custom', $layout->render(array()), 'new');
-        }
-		if ($canDo->get('core.edit'))
-		{
-			JToolbarHelper::editList('component.edit');
-		}
-        if ($canDo->get('core.create'))
-        {
-            JToolbarHelper::custom('websites.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
-        }
-		JToolbarHelper::duplicate('websites.duplicate');
-		if ($canDo->get('core.edit.state'))
-		{
-			JToolbarHelper::publish('websites.publish', 'JTOOLBAR_ENABLE', true);
-			JToolbarHelper::unpublish('websites.unpublish', 'JTOOLBAR_DISABLE', true);
-			JToolbarHelper::checkin('websites.checkin');
-		}
-        if ($this->state->get('filter.published') == -2)
-        {
-            JToolbarHelper::deleteList('', 'websites.delete', 'JTOOLBAR_EMPTY_TRASH');
-        }
-        elseif ($canDo->get('core.edit.state'))
-        {
-            JToolbarHelper::trash('websites.trash');
-        }
-        JToolbarHelper::publish('websites.issystem','Is system');
-        JToolbarHelper::unpublish('websites.isnotsystem','Is system');
-		if ($canDo->get('core.admin'))
-		{
-			JToolbarHelper::preferences('com_supperadmin');
-		}
 
-		JToolbarHelper::help('JHELP_websites_component_MANAGER');
 
-		JHtmlSidebar::setAction('index.php?option=com_supperadmin&view=supperadmin');
-
-        $supperAdmin=JFactory::isSupperAdmin();
-        if($supperAdmin){
-            $option1=new stdClass();
-            $option1->id=-1;
-            $option1->title="Run for all";
-            $listWebsite1[]=$option1;
-            $option1=new stdClass();
-            $option1->id=-0;
-            $option1->title="None";
-            $listWebsite1[]=$option1;
-            $listWebsite2= websiteHelperFrontEnd::getWebsites();
-            $listWebsite=array_merge($listWebsite1,$listWebsite2);
-            JHtmlSidebar::addFilter(
-                JText::_('JOPTION_SELECT_WEBSITE'),
-                'filter_website_id',
-                JHtml::_('select.options',$listWebsite, 'id', 'title', $this->state->get('filter.website_id'))
-            );
-        }
 		JHtmlSidebar::addFilter(
 				JText::_('JOPTION_SELECT_PUBLISHED'),
 				'filter_enabled',
 				JHtml::_('select.options', websitesHelper::publishedOptions(), 'value', 'text', $this->state->get('filter.enabled'), true)
 		);
 
-		JHtmlSidebar::addFilter(
-				JText::_('folder'),
-				'filter_folder',
-				JHtml::_('select.options', websitesHelper::folderOptions(), 'value', 'text', $this->state->get('filter.folder'))
-		);
-
-		JHtmlSidebar::addFilter(
-				JText::_('JOPTION_SELECT_ACCESS'),
-				'filter_access',
-				JHtml::_('select.options', JHtml::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
-		);
 
 		$this->sidebar = JHtmlSidebar::render();
 
@@ -177,9 +115,6 @@ class supperadminViewwebsites extends JViewLegacy
 				'ordering' => JText::_('JGRID_HEADING_ORDERING'),
 				'enabled' => JText::_('JSTATUS'),
 				'name' => JText::_('JGLOBAL_TITLE'),
-				'folder' => JText::_('folder'),
-				'element' => JText::_('element'),
-				'access' => JText::_('JGRID_HEADING_ACCESS'),
 				'id' => JText::_('JGRID_HEADING_ID')
 		);
 	}

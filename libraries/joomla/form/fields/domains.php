@@ -21,7 +21,7 @@ JFormHelper::loadFieldClass('text');
  * @see         JFormRuleEmail
  * @since       11.1
  */
-class JFormFieldWebsites extends JFormField
+class JFormFieldDomains extends JFormField
 {
 	/**
 	 * The form field type.
@@ -29,7 +29,7 @@ class JFormFieldWebsites extends JFormField
 	 * @var    string
 	 * @since  11.1
 	 */
-	protected $type = 'Websites';
+	protected $type = 'domains';
 
 	/**
 	 * Method to get the field input markup for e-mail addresses.
@@ -42,16 +42,25 @@ class JFormFieldWebsites extends JFormField
 	{
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
-        $query->from('#__website');
-        $query->select('id,name');
+        $query->from('#__domain_website');
+        $query->select('id,domain');
         $db->setQuery($query);
         $list_website=$db->loadObjectList();
-        $option=array('id'=>'','name'=>'select website');
+        $option=array(
+            'id'=>'',
+            'domain='=>"please select domain"
+            );
         array_unshift($list_website,(object)$option);
-        $attribute=array();
+        $attr = '';
+        $attr .= !empty($this->class) ? ' class="' . $this->class . '"' : '';
+        $attr .= !empty($this->size) ? ' size="' . $this->size . '"' : '';
+        $attr .= $this->multiple ? ' multiple' : '';
+        $attr .= $this->required ? ' required aria-required="true"' : '';
+        $attr .= $this->autofocus ? ' autofocus' : '';
+
         $attribute[]=$this->onchange?'onchange="'.$this->onchange.'"':'';
         $attribute=implode(' ',$attribute);
-        $html = JHtml::_('select.genericlist', $list_website, $this->name,$attribute, 'id', 'name', $this->value);
+        $html = JHtml::_('select.genericlist', $list_website, $this->name,$attr, 'id', 'domain', $this->value);
 
         return $html;
 	}

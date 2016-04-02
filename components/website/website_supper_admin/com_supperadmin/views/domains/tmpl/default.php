@@ -44,22 +44,11 @@ $sortFields = $this->getSortFields();
 
     <div class="view-domains-default">
         <?php echo $this->render_toolbar() ?>
-        <form action="<?php echo JRoute::_('index.php?option=com_supperadmin&view=domains'); ?>" method="post"
-              name="adminForm" id="adminForm">
+        <form action="<?php echo JRoute::_('index.php?option=com_supperadmin&view=domains'); ?>" method="post" name="adminForm" id="adminForm">
             <div id="main-container">
                 <?php if (!empty($this->sidebar)) : ?>
                     <?php echo $this->sidebar; ?>
                 <?php endif; ?>
-                <div class="row form-group">
-                    <div class="col-md-12">
-                        <div class="form-inline">
-                            <div class="form-group">
-                                <label for="exampleInputName2">Asign website</label>
-                                <?php echo $this->listWebsite; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <?php
                 echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this));
                 ?>
@@ -78,7 +67,7 @@ $sortFields = $this->getSortFields();
                             <?php echo JHtml::_('grid.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
                         </th>
                         <th class="title">
-                            <?php echo JHtml::_('grid.sort', 'domain', 'domain', $listDirn, $listOrder); ?>
+                            <?php echo JHtml::_('grid.sort', 'domain', 'a.domain', $listDirn, $listOrder); ?>
                         </th>
                         <th class="title">
                             <?php echo JHtml::_('grid.sort', 'website', 'website.name', $listDirn, $listOrder); ?>
@@ -135,7 +124,7 @@ $sortFields = $this->getSortFields();
                                 <?php if ($canEdit) : ?>
                                     <a class="quick-edit-title"
                                        href="<?php echo JRoute::_('index.php?option=com_supperadmin&task=domain.edit&id=' . (int)$item->id); ?>">
-                                        <?php echo $item->domain; ?></a>
+                                        <?php echo $item->domain; ?></a> <a href="http://www.<?php echo $item->domain ?>" target="_blank"><i class="fa-external-link"></i></a>
                                 <?php else : ?>
                                     <?php echo $item->domain; ?>
                                 <?php endif; ?>

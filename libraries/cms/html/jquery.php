@@ -129,4 +129,43 @@ abstract class JHtmlJquery
 		}
 		return;
 	}
+    public static function fixedheadertable($selector = '.fixedheadertable', $debug = null, $options = array(),$callAgain=''){
+        $app=JFactory::getApplication();
+        $client=$app->getClientId();
+        if (isset(static::$loaded[__METHOD__][$selector]))
+        {
+            return;
+        }
+        $doc=JFactory::getDocument();
+        $doc->addStyleSheet(JUri::root().'media/system/js/Fixed-Header-Table-master/css/defaultTheme.css');
+        // Include jQuery
+        JHtml::_('jquery.framework');
+        JHtml::_('script', 'js/Fixed-Header-Table-master/jquery.fixedheadertable.js', false, true, false, false, $debug);
+        $doc=JFactory::getDocument();
+        $scriptId='lib_cms_html_jquery_fixedheadertable';
+        $scriptId=$callAgain!=''?$scriptId.'_'.$callAgain:$scriptId;
+        $options_str = json_encode($options, ($debug && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : false));
+        ob_start();
+        ?>
+        <script type="text/javascript" id="<?php echo $scriptId ?>">
+            <?php
+            ob_get_clean();
+            ob_start();
+            ?>
+            jQuery(document).ready(function ($){
+                $('<?php echo $selector ?>').fixedHeaderTable(
+                    <?php echo $options_str ?>
+                );
+            });
+            <?php
+            $script=ob_get_clean();
+            ob_start();
+            ?>
+        </script>
+        <?php
+        ob_get_clean();
+        $doc->addScriptDeclaration($script,"text/javascript",$scriptId);
+        static::$loaded[__METHOD__][$selector] = true;
+        return;
+    }
 }

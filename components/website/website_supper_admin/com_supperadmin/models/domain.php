@@ -106,6 +106,7 @@ class supperadminModeldomain extends JModelAdmin
             $domain=$data['domain'];
             $website_id=$data['website_id'];
             $domain_path="webstore/$domain.ini";
+            jimport('joomla.filesystem.file');
             $write_ok=JFile::write(JPATH_ROOT.DS.$domain_path,$website_id);
             if(!$write_ok)
             {
@@ -263,59 +264,6 @@ class supperadminModeldomain extends JModelAdmin
             }
         }
 
-
-        // Clear modules cache
-        $this->cleanCache();
-
-        return true;
-    }
-    /**
-     * Method to delete rows.
-     *
-     * @param   array  &$pks  An array of item ids.
-     *
-     * @return  boolean  Returns true on success, false on failure.
-     *
-     * @since   1.6
-     * @throws  Exception
-     */
-    public function delete(&$pks)
-    {
-        $pks	= (array) $pks;
-        $user	= JFactory::getUser();
-        $table	= $this->getTable();
-        $supperAdmin=JFactory::isSupperAdmin();
-        // Iterate the items to delete each one.
-        foreach ($pks as $pk)
-        {
-            if ($table->load($pk))
-            {
-                // Access checks.
-                if ($table->enabled != -2)
-                {
-                    JError::raiseWarning(403, JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'));
-                    return;
-                }
-                if(!$supperAdmin&&$table->issystem==1)
-                {
-
-                    $this->setError('domain:'.$table->name.' cannot delete');
-                    continue;
-                }
-
-                if (!$table->delete($pk))
-                {
-                    throw new Exception($table->getError());
-                }
-
-
-                // Clear module cache
-            }
-            else
-            {
-                throw new Exception($table->getError());
-            }
-        }
 
         // Clear modules cache
         $this->cleanCache();

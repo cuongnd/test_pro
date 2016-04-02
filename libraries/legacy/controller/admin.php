@@ -57,7 +57,6 @@ class JControllerAdmin extends JControllerLegacy
 	public function __construct($config = array())
 	{
 		parent::__construct($config);
-
 		// Define standard task mappings.
 
 		// Value = 0
@@ -110,7 +109,6 @@ class JControllerAdmin extends JControllerLegacy
 	{
 		// Check for request forgeries
 		JSession::checkToken() or (JText::_('JINVALID_TOKEN'));
-
 		// Get items to remove from the request.
 		$cid = JFactory::getApplication()->input->get('cid', array(), 'array');
 
@@ -126,7 +124,6 @@ class JControllerAdmin extends JControllerLegacy
 			// Make sure the item ids are integers
 			jimport('joomla.utilities.arrayhelper');
 			JArrayHelper::toInteger($cid);
-
 			// Remove the items.
 			if ($model->delete($cid))
 			{

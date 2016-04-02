@@ -26,10 +26,80 @@ class JTableWebsite extends JTable
 	 *
 	 * @since   11.1
 	 */
+    public $id=0;
+    public $name='';
+    public $title='';
+    public $alias='';
 	public function __construct(JDatabaseDriver $db)
 	{
 		parent::__construct('#__website', 'id', $db);
 	}
+    public function publish($pks = null, $state = 1, $userId = 0)
+    {
+        $k = $this->_tbl_key;
+
+        // Sanitize input.
+        JArrayHelper::toInteger($pks);
+        $userId = (int) $userId;
+        $state = (int) $state;
+
+        // If there are no primary keys set check to see if the instance key is set.
+        if (empty($pks))
+        {
+            if ($this->$k)
+            {
+                $pks = array($this->$k);
+            }
+            // Nothing to set publishing state on, return false.
+            else
+            {
+                $this->setError(JText::_('JLIB_DATABASE_ERROR_NO_ROWS_SELECTED'));
+
+                return false;
+            }
+        }
+
+        // Build the WHERE clause for the primary keys.
+        $where = $k . '=' . implode(' OR ' . $k . '=', $pks);
+
+        // Determine if there is checkin support for the table.
+        if (!property_exists($this, 'checked_out') || !property_exists($this, 'checked_out_time'))
+        {
+            $checkin = '';
+        }
+        else
+        {
+            $checkin = ' AND (checked_out = 0 OR checked_out = ' . (int) $userId . ')';
+        }
+
+        // Update the publishing state for rows with the given primary keys.
+        $query = $this->_db->getQuery(true)
+            ->update($this->_db->quoteName($this->_tbl))
+            ->set($this->_db->quoteName('enabled') . ' = ' . (int) $state)
+            ->where('(' . $where . ')' . $checkin);
+        $this->_db->setQuery($query);
+        $this->_db->execute();
+
+        // If checkin is supported and all rows were adjusted, check them in.
+        if ($checkin && (count($pks) == $this->_db->getAffectedRows()))
+        {
+            // Checkin the rows.
+            foreach ($pks as $pk)
+            {
+                $this->checkin($pk);
+            }
+        }
+
+        // If the JTable instance value is in the list of primary keys that were set, set the instance.
+        if (in_array($this->$k, $pks))
+        {
+            $this->enabled = $state;
+        }
+
+        $this->setError('');
+
+        return true;
+    }
 
 	/**
 	 * Method to compute the default name of the asset.
@@ -243,6 +313,7 @@ class JTableWebsite extends JTable
         $query->select('COUNT(*)')
             ->from('#__website')
             ->where('(title='.$query->q($this->title).' OR alias='.$query->q($this->alias).')')
+            ->where('id!='.(int)$this->id)
             ;
         $total=$this->_db->setQuery($query)->loadResult();
         if($total)
@@ -252,6 +323,7 @@ class JTableWebsite extends JTable
         }
 		return true;
 	}
+
 
 	/**
 	 * Overrides JTable::store to set modified data and user id.
@@ -287,8 +359,6 @@ class JTableWebsite extends JTable
 				$this->created_by = $user->get('id');
 			}
 		}
-
-
 		return parent::store($updateNulls);
 	}
 
@@ -305,80 +375,4 @@ class JTableWebsite extends JTable
 	 *
 	 * @since   11.1
 	 */
-	public function publish($pks = null, $state = 1, $userId = 0)
-	{
-		$k = $this->_tbl_key;
-
-		// Sanitize input.
-		JArrayHelper::toInteger($pks);
-		$userId = (int) $userId;
-		$state = (int) $state;
-
-		// If there are no primary keys set check to see if the instance key is set.
-		if (empty($pks))
-		{
-			if ($this->$k)
-			{
-				$pks = array($this->$k);
-			}
-			// Nothing to set publishing state on, return false.
-			else
-			{
-				$this->setError(JText::_('JLIB_DATABASE_ERROR_NO_ROWS_SELECTED'));
-
-				return false;
-			}
-		}
-
-		// Build the WHERE clause for the primary keys.
-		$where = $k . '=' . implode(' OR ' . $k . '=', $pks);
-
-		// Determine if there is checkin support for the table.
-		if (!property_exists($this, 'checked_out') || !property_exists($this, 'checked_out_time'))
-		{
-			$checkin = '';
-		}
-		else
-		{
-			$checkin = ' AND (checked_out = 0 OR checked_out = ' . (int) $userId . ')';
-		}
-
-		// Update the publishing state for rows with the given primary keys.
-		$query = $this->_db->getQuery(true)
-			->update($this->_db->quoteName($this->_tbl))
-			->set($this->_db->quoteName('state') . ' = ' . (int) $state)
-			->where('(' . $where . ')' . $checkin);
-		$this->_db->setQuery($query);
-
-		try
-		{
-			$this->_db->execute();
-		}
-		catch (RuntimeException $e)
-		{
-			$this->setError($e->getMessage());
-
-			return false;
-		}
-
-		// If checkin is supported and all rows were adjusted, check them in.
-		if ($checkin && (count($pks) == $this->_db->getAffectedRows()))
-		{
-			// Checkin the rows.
-			foreach ($pks as $pk)
-			{
-				$this->checkin($pk);
-			}
-		}
-
-		// If the JTable instance value is in the list of primary keys that were set, set the instance.
-		if (in_array($this->$k, $pks))
-		{
-			$this->state = $state;
-		}
-
-		$this->setError('');
-
-		return true;
-	}
 }

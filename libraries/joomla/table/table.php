@@ -1549,7 +1549,6 @@ abstract class JTable extends JObject implements JObservableInterface
 			$query = $this->_db->getQuery(true)
 				->update($this->_tbl)
 				->set('published = ' . (int) $state);
-
 			// Determine if there is checkin support for the table.
 			if (property_exists($this, 'checked_out') || property_exists($this, 'checked_out_time'))
 			{

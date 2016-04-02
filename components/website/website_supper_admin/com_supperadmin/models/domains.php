@@ -25,19 +25,19 @@ class supperadminModeldomains extends JModelList
      * @see     JController
      * @since   1.6
      */
+    protected $context = 'domains';
     public function __construct($config = array())
     {
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
                 'id', 'a.id',
                 'title', 'a.name',
-                'website_id', 'extension.website_id',
+                'domain', 'a.domain',
                 'name', 'a.name',
                 'checked_out', 'a.checked_out',
                 'checked_out_time', 'a.checked_out_time',
                 'state', 'a.state',
                 'enabled', 'a.enabled',
-                'access', 'a.access', 'access_level',
                 'ordering', 'a.ordering',
             );
         }
@@ -45,13 +45,6 @@ class supperadminModeldomains extends JModelList
         parent::__construct($config);
     }
 
-    function getItems()
-    {
-        $items = parent::getItems();
-        require_once JPATH_ROOT . '/components/com_website/helpers/website.php';
-        $items = websiteHelperFrontEnd::setKeyWebsite($items);
-        return $items;
-    }
 
 
     /**
@@ -84,28 +77,7 @@ class supperadminModeldomains extends JModelList
         $this->setState('params', $params);
 
         // List state information.
-        parent::populateState('id', 'asc');
-    }
-
-    /**
-     * Method to get a store id based on model configuration state.
-     *
-     * This is necessary because the model is used by the component and
-     * different modules that might need different sets of data or different
-     * ordering requirements.
-     *
-     * @param   string    A prefix for the store id.
-     *
-     * @return  string    A store id.
-     */
-    protected function getStoreId($id = '')
-    {
-        // Compile the store id.
-        $id .= ':' . $this->getState('filter.search');
-        $id .= ':' . $this->getState('filter.state');
-        $id .= ':' . $this->getState('filter.website_id');
-
-        return parent::getStoreId($id);
+        parent::populateState('website.name', 'asc');
     }
 
     /**
@@ -118,7 +90,7 @@ class supperadminModeldomains extends JModelList
         // Create a new query object.
         $db = $this->getDbo();
         $query = $db->getQuery(true);
-
+        $app=JFactory::getApplication();
         // Select the required fields from the table.
         $query->select(
             $this->getState(
@@ -129,11 +101,14 @@ class supperadminModeldomains extends JModelList
             ->from($db->quoteName('#__domain_website') . ' AS a')
             ->leftJoin('#__website AS website ON website.id=a.website_id')
             ->select('website.name AS website_name')
+            ->group('a.id')
         ;
 
         // Join over the users for the checked out user.
 
-
+        // Add the list ordering clause.
+        $query->order($db->escape($this->getState('list.ordering', 'website.name')) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));
+        //echo $query->dump();
         return $query;
     }
 }

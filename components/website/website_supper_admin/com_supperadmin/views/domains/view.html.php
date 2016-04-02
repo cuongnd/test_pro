@@ -43,6 +43,7 @@ class supperadminViewdomains extends JViewLegacy
 
 		$this->items      = $this->get('Items');
 		$this->pagination = $this->get('Pagination');
+
         $this->filterForm    = $this->get('FilterForm');
 		$this->state      = $this->get('State');
 
@@ -82,12 +83,12 @@ class supperadminViewdomains extends JViewLegacy
 		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_supperadmin/helpers/domains.php';
 		$canDo = JHelperContent::getActions('com_supperadmin');
         $bar = JToolBar::getInstance('toolbar');
-		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
+		JToolbarHelper::title(JText::_('Domain manager'), 'power-cord component');
         JToolbarHelper::editList('domain.edit');
         JToolbarHelper::addNew('domain.add');
         JToolbarHelper::publish('domains.publish', 'JTOOLBAR_ENABLE', true);
         JToolbarHelper::unpublish('domains.unpublish', 'JTOOLBAR_DISABLE', true);
-        JToolbarHelper::deleteList('do you want delete this item','domains.remove');
+        JToolbarHelper::deleteList('do you want delete this item','domains.delete');
 
         $listWebsite= websiteHelperFrontEnd::get_list_website();
         JHtmlSidebar::addFilter(

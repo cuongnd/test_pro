@@ -246,7 +246,6 @@ class JControllerLegacy extends JObject
 		{
 			$command = $filter->clean($command, 'cmd');
 		}
-
 		// Check for a controller.task command.
 		if (strpos($command, '.') !== false)
 		{
@@ -350,7 +349,6 @@ class JControllerLegacy extends JObject
 				$this->taskMap[strtolower($mName)] = $mName;
 			}
 		}
-
 		// Set the view name
 		if (empty($this->name))
 		{
@@ -362,7 +360,7 @@ class JControllerLegacy extends JObject
 			{
 				$this->name = $this->getName();
 			}
-		}
+        }
 
 		// Set a base path for use by the controller
 		if (array_key_exists('base_path', $config))
@@ -430,7 +428,9 @@ class JControllerLegacy extends JObject
 			$this->default_view = $this->getName();
 		}
 
-	}
+
+
+    }
 
 	/**
 	 * Adds to the search path for templates and resources.

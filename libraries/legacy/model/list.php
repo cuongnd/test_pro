@@ -246,7 +246,6 @@ class JModelList extends JModelLegacy
 		$id .= ':' . $this->getState('list.limit');
 		$id .= ':' . $this->getState('list.ordering');
 		$id .= ':' . $this->getState('list.direction');
-
 		return md5($this->context . ':' . $id);
 	}
 
@@ -273,6 +272,7 @@ class JModelList extends JModelLegacy
 		try
 		{
 			$total = (int) $this->_getListCount($query);
+
 
 
 		}

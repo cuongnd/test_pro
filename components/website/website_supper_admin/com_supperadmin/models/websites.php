@@ -25,6 +25,7 @@ class supperadminModelwebsites extends JModelList
 	 * @see     JController
 	 * @since   1.6
 	 */
+    protected $context = 'websites';
 	public function __construct($config = array())
 	{
 		if (empty($config['filter_fields']))
@@ -110,91 +111,11 @@ class supperadminModelwebsites extends JModelList
 		$id .= ':' . $this->getState('filter.search');
 		$id .= ':' . $this->getState('filter.access');
 		$id .= ':' . $this->getState('filter.state');
-		$id .= ':' . $this->getState('filter.folder');
-		$id .= ':' . $this->getState('filter.language');
 		$id .= ':' . $this->getState('filter.website_id');
 
 		return parent::getStoreId($id);
 	}
 
-	/**
-	 * Returns an object list
-	 *
-	 * @param   string The query
-	 * @param   int    Offset
-	 * @param   int    The number of records
-	 * @return  array
-	 */
-	protected function _getList($query, $limitstart = 0, $limit = 0)
-	{
-		$search = $this->getState('filter.search');
-		$ordering = $this->getState('list.ordering', 'ordering');
-		if ($ordering == 'name' || (!empty($search) && stripos($search, 'id:') !== 0))
-		{
-			$this->_db->setQuery($query);
-			$result = $this->_db->loadObjectList();
-			$this->translate($result);
-			if (!empty($search))
-			{
-				foreach ($result as $i => $item)
-				{
-					if (!preg_match("/$search/i", $item->name))
-					{
-						unset($result[$i]);
-					}
-				}
-			}
-
-			$direction = ($this->getState('list.direction') == 'desc') ? -1 : 1;
-			JArrayHelper::sortObjects($result, $ordering, $direction, true, true);
-
-			$total = count($result);
-			$this->cache[$this->getStoreId('getTotal')] = $total;
-			if ($total < $limitstart)
-			{
-				$limitstart = 0;
-				$this->setState('list.start', 0);
-			}
-			return array_slice($result, $limitstart, $limit ? $limit : null);
-		}
-		else
-		{
-			if ($ordering == 'ordering')
-			{
-				$query->order('a.folder ASC');
-				$ordering = 'a.ordering';
-			}
-			$query->order($this->_db->quoteName($ordering) . ' ' . $this->getState('list.direction'));
-
-			if ($ordering == 'folder')
-			{
-				$query->order('a.ordering ASC');
-			}
-			$result = parent::_getList($query, $limitstart, $limit);
-			$this->translate($result);
-			return $result;
-		}
-	}
-
-	/**
-	 * Translate a list of objects
-	 *
-	 * @param   array The array of objects
-	 * @return  array The array of translated objects
-	 */
-	protected function translate(&$items)
-	{
-		$lang = JFactory::getLanguage();
-
-		foreach ($items as &$item)
-		{
-			$source = JPATH_supperadmin . '/' . $item->folder . '/' . $item->element;
-			$extension = 'plg_' . $item->folder . '_' . $item->element;
-			$lang->load($extension . '.sys', JPATH_ADMINISTRATOR, null, false, true)
-				|| $lang->load($extension . '.sys', $source, null, false, true);
-			$item->name = JText::_($item->name);
-		}
-	}
 
 	/**
 	 * Build an SQL query to load the list data.
@@ -211,15 +132,15 @@ class supperadminModelwebsites extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.id,a.title ,a.issystem, a.checked_out, a.checked_out_time,' .
+				'a.id,a.title,a.name,a.introtext ,a.issystem, a.checked_out, a.checked_out_time,' .
 					' a.enabled, a.access, a.ordering'
 			)
 		)
-			->from($db->quoteName('#__website') . ' AS a');
-
-		// Join over the users for the checked out user.
-		$query->select('uc.name AS editor')
-			->join('LEFT', '#__users AS uc ON uc.id=a.checked_out');
+			->from($db->quoteName('#__website') . ' AS a')
+            ->leftJoin('#__domain_website AS domain_website ON domain_website.website_id=a.id')
+            ->select("GROUP_CONCAT(DISTINCT domain_website.domain ORDER BY domain_website.domain SEPARATOR '<br/>') AS list_domain")
+            ->group('a.id')
+        ;
 
 
         // Filter by published state
@@ -248,7 +169,7 @@ class supperadminModelwebsites extends JModelList
 
 
 
-
+        //echo $query->dump();
 		return $query;
 	}
 }
