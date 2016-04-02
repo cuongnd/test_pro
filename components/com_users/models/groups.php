@@ -201,33 +201,12 @@ class UsersModelGroups extends JModelList
 		}
 		// Filter the comments over the search string if set.
 
-        $supperAdmin=JFactory::isSupperAdmin();
-        if($supperAdmin)
-        {
-            //filter by website
-            $website_id = $this->getState('filter.website_id');
-            if (is_numeric($website_id))
-            {
-                $query->where('a.website_id = ' .(int) $website_id);
-            }
-        }
-        else
-        {
-            //allway filter by website
-            $website=JFactory::getWebsite();
-            $website_id=$website->website_id;
-            $domain=$website->domain;
-            $query->where('a.website_id = '.$website_id );
-        }
+
 
 
 
 		// Filter by group user
-        $parent_group_id = $this->getState('filter.parent_group_id');
-		if (is_numeric($parent_group_id))
-		{
-            $query->where('a.website_id = ' .(int) $parent_group_id);
-		}
+
         $query->where('a.title!= ' .$query->q('root'));
 		// Add the list ordering clause.
 		$query->order($db->escape($this->getState('list.ordering', 'a.lft')) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));

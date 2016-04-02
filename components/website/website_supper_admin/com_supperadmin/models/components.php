@@ -35,7 +35,6 @@ class supperadminModelcomponents extends JModelList
                 'website_id','extension.website_id',
 				'name', 'a.name',
 				'folder', 'a.folder',
-				'element', 'a.element',
 				'checked_out', 'a.checked_out',
 				'checked_out_time', 'a.checked_out_time',
 				'state', 'a.state',
@@ -216,7 +215,7 @@ class supperadminModelcomponents extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.id ,a.issystem, a.name,a.title, a.element, a.folder, a.checked_out, a.checked_out_time,' .
+				'a.id ,a.issystem, a.name,a.title,  a.checked_out, a.checked_out_time,' .
 					' a.enabled, a.access, a.ordering'
 			)
 		)

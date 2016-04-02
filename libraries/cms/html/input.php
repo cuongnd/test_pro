@@ -31,15 +31,17 @@ abstract class JHtmlInput
 	{
 		$class=$attr['class'].' form-control';
 		unset($attr['class']);
-		$str_attr=array();
-		foreach($attr as $key=>$value){
-			$str_attr[]="$key=\"$value\"";
-		}
-		$str_attr=implode(' ',$str_attr);
+
+        $str_attr = implode(', ', array_map(
+            function ($v, $k) { return "$k=\"$v\""; },
+            $attr,
+            array_keys($attr)
+        ));
+
 		ob_start();
 		?>
 		<div class="<?php echo $class_right ?>">
-			<input type="text" name="<?php echo $name ?>" value="<?php echo $value ?>" class="<?php echo $class ?>" <?php echo $str_attr ?> >
+			<input type="text" name="<?php echo $name ?>" value="<?php echo $value ?>" size="<?php echo $size ?>" class="<?php echo $class ?>" <?php echo $str_attr ?> >
 		</div>
 		<?php
 		$html=ob_get_clean();

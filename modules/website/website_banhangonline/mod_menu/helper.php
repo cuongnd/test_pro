@@ -43,7 +43,7 @@ class ModMenuHelper
         $showAll = $params->get('showAllChildren', 1);
         $menu_type_id = $params->get('menu_type_id');
         $menu_type_id = $menu_type_id ? $menu_type_id : ModMenuHelper::getDefaultMenuType();
-        $items = $menu->get_menu_item_by_menu_type_id($menu_type_id);
+        $items = $menu->getItems(array('menu_type_id', 'hidden'), array($menu_type_id, 0));
         $module->list_menu_item = $items;
 
     }

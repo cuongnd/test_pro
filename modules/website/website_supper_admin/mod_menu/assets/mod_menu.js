@@ -1,24 +1,24 @@
 //huong dan su dung
 /*
- $('.verticalmegamenu').verticalmegamenu();
+ $('.mod_menu').mod_menu();
 
- verticalmegamenu=$('.verticalmegamenu').data('verticalmegamenu');
- console.log(verticalmegamenu);
+ mod_menu=$('.mod_menu').data('mod_menu');
+ console.log(mod_menu);
  */
 
-// jQuery Plugin for SprFlat admin verticalmegamenu
-// Control options and basic function of verticalmegamenu
+// jQuery Plugin for SprFlat admin mod_menu
+// Control options and basic function of mod_menu
 // version 1.0, 28.02.2013
 // by SuggeElson www.suggeelson.com
 
 (function($) {
 
     // here we go!
-    $.verticalmegamenu = function(element, options) {
+    $.mod_menu = function(element, options) {
 
         // plugin's default options
         var defaults = {
-            //main color scheme for verticalmegamenu
+            //main color scheme for mod_menu
             //be sure to be same as colors on main.css or custom-variables.less
 
         }
@@ -41,7 +41,6 @@
                 autostart: false,
                 autohide: true
             });
-            console.log('sdfsdfsdfds');
         }
 
         plugin.example_function = function() {
@@ -52,16 +51,16 @@
     }
 
     // add the plugin to the jQuery.fn object
-    $.fn.verticalmegamenu = function(options) {
+    $.fn.mod_menu = function(options) {
 
         // iterate through the DOM elements we are attaching the plugin to
         return this.each(function() {
 
             // if plugin has not already been attached to the element
-            if (undefined == $(this).data('verticalmegamenu')) {
-                var plugin = new $.verticalmegamenu(this, options);
+            if (undefined == $(this).data('mod_menu')) {
+                var plugin = new $.mod_menu(this, options);
 
-                $(this).data('verticalmegamenu', plugin);
+                $(this).data('mod_menu', plugin);
 
             }
 

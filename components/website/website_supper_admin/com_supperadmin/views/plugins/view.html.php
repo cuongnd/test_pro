@@ -79,7 +79,7 @@ class supperadminViewplugins extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/com_supperadmin/helpers/plugins.php';
+		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_supperadmin/helpers/plugins.php';
 		$canDo = JHelperContent::getActions('com_supperadmin');
         $bar = JToolBar::getInstance('toolbar');
 		JToolbarHelper::title(JText::_('COM_supperadmin_MANAGER_supperadmin'), 'power-cord component');
