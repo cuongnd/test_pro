@@ -226,13 +226,16 @@ class MenusControllerItem extends JControllerForm
         $table_menu_item->lft = null;
         $table_menu_item->rgt = null;
         $table_menu_item->level = null;
-        $table_menu_item->title = $table_menu_item->title . '1';
-        $table_menu_item->alias = $table_menu_item->alias . JUserHelper::genRandomPassword(3);
+        $random_string=JUtility::gen_random_string();
+        $table_menu_item->link =$random_string ;
+        $table_menu_item->title = $random_string;
+        $table_menu_item->alias = $random_string;
         $result = new stdClass();
         $result->e = 0;
         $ok = $table_menu_item->check();
         if (!$ok) {
-            throw new Exception($table_menu_item->getError());
+            $result->e = 1;
+            $result->m = $table_menu_item->getError();
         }
         if (!$table_menu_item->parent_store()) {
             $result->e = 1;
@@ -262,7 +265,9 @@ class MenusControllerItem extends JControllerForm
         $table_menu_item->rgt = null;
         $table_menu_item->level = null;
         $table_menu_item->parent_id = $root_menu_item_id;
+        $random_string=JUtility::gen_random_string();
         $table_menu_item->title = "new menu item";
+        $table_menu_item->link = $random_string;
         $table_menu_item->alias = $table_menu_item->alias . JUserHelper::genRandomPassword(3);
         $result = new stdClass();
         $result->e = 0;

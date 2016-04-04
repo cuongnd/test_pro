@@ -308,7 +308,6 @@ class JFormHelper
 				array_unshift($paths, trim($path));
 			}
 		}
-
 		return $paths;
 	}
 }

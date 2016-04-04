@@ -23,6 +23,8 @@ class GroupsHelper
 	 * @since  1.6
 	 */
 	protected static $actions;
+
+
     public function  createRootGroup($website_id)
     {
 

@@ -49,7 +49,6 @@ class ConfigViewComponentHtml extends ConfigViewCmsHtml
 
 			return false;
 		}
-
 		// Bind the form to the data.
 		if ($form && $component->params)
 		{

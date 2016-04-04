@@ -59,7 +59,8 @@ class ConfigControllerComponent extends JControllerLegacy
 	public function save()
 	{
 		JLog::add('ConfigControllerComponent is deprecated. Use ConfigControllerComponentSave instead.', JLog::WARNING, 'deprecated');
-
+        echo "sdfsdfsdfds";
+        die;
 		$controller = new ConfigControllerComponentSave;
 
 		return $controller->execute();

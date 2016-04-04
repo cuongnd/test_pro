@@ -41,11 +41,7 @@ class JTableComponent extends JTable
      */
     public function check()
     {
-        if(!$this->website_id)
-        {
-            $this->setError(JText::_('there are no website setting'));
-            return false;
-        }
+
         if(!$this->name)
         {
             $this->setError(JText::_('there are no name component'));
@@ -53,17 +49,20 @@ class JTableComponent extends JTable
         }
 
         // Check for valid name
-        if (trim($this->name) == '' || trim($this->element) == '') {
+        if (trim($this->name) == '') {
             $this->setError(JText::_('JLIB_DATABASE_ERROR_MUSTCONTAIN_A_TITLE_EXTENSION'));
 
             return false;
         }
+        $website=JFactory::getWebsite();
         $query = $this->_db->getQuery(true);
-        $query->select('id')
-            ->from('#__components')
-            ->where('id!=' . (int)$this->id)
-            ->where('name=' . $query->q($this->name))
-            ->where('website_id=' . $this->website_id);
+        $query->select('component.id')
+            ->from('#__components AS component')
+            ->where('component.id!=' . (int)$this->id)
+            ->where('component.name=' . $query->q($this->name))
+            ->leftJoin('#__extensions AS extension ON extension.id=component.extension_id')
+            ->where('extension.website_id='.(int)$website->website_id)
+        ;
         $this->_db->setQuery($query);
         $listComponent = $this->_db->loadObjectList();
         if (count($listComponent)) {

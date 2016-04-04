@@ -30,15 +30,16 @@ class ConfigHelperConfig extends JHelperContent
 		$website=JFactory::getWebsite();
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
-			->select('element,website_id')
-			->from('#__components')
-			->where('website_id='.(int)$website->website_id)
-			->where('enabled = 1');
+			->select('component.*')
+			->from('#__components AS component')
+            ->leftJoin('#__extensions AS extension ON extension.id=component.id')
+			->where('component.enabled = 1')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=component.extension_id')
+            ->where('extensions.website_id='.(int)$website->website_id)
+        ;
 		$db->setQuery($query);
 		$result = $db->loadObjectList();
-        require_once JPATH_ROOT.'/administrator/components/com_website/helpers/website.php';
-        $result=websiteHelperBackend::setKeyWebsite($result);
-		return $result;
+ 		return $result;
 	}
 
 	/**
@@ -52,7 +53,14 @@ class ConfigHelperConfig extends JHelperContent
 	 */
 	public static function hasComponentConfig($component)
 	{
-		return is_file(JPATH_ADMINISTRATOR . '/components/' . $component->element . '/config.xml');
+        $website_name=JFactory::get_website_name();
+        $component_path='components/website/website_'.$website_name.'/' . $component->name;
+        if(!JFolder::exists(JPATH_ROOT.DS.$component_path))
+        {
+            $component_path='components/' . $component->name;
+        }
+        $path_config_xml=JPATH_ROOT.DS.$component_path  . '/config.xml';
+		return is_file($path_config_xml);
 	}
 
 	/**
@@ -74,7 +82,7 @@ class ConfigHelperConfig extends JHelperContent
 		// Remove com_config from the array as that may have weird side effects
 		foreach ($components as $key=> $component)
 		{
-            if($component->element=='com_config')
+            if($component->name=='com_config')
             {
                 unset($components[$key]);
                 continue;
@@ -85,6 +93,7 @@ class ConfigHelperConfig extends JHelperContent
 				$result[] = $component;
 			}
 		}
+
 		return $result;
 	}
 
@@ -108,7 +117,7 @@ class ConfigHelperConfig extends JHelperContent
 				// Load the core file then
 				// Load extension-local file.
 				$lang->load($component->element . '.sys', JPATH_BASE, null, false, true)
-				|| $lang->load($component->element . '.sys', JPATH_ADMINISTRATOR . '/components/' . $component->element, null, false, true);
+				|| $lang->load($component->element . '.sys', JPATH_ROOT . '/components/' . $component->element, null, false, true);
 			}
 		}
 	}

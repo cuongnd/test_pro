@@ -36,22 +36,10 @@ class ConfigController extends JControllerLegacy
 	 * @since   1.5
 	 * @deprecated  4.0
 	 */
-	public function display($cachable = false, $urlparams = array())
-	{
-		// Set the default view name and format from the Request.
-		$vName = $this->input->get('view', 'application');
+    public function display($cachable = false, $urlparams = false)
+    {
 
-		JLog::add('ConfigController is deprecated. Use ConfigControllerApplicationDisplay or ConfigControllerComponentDisplay instead.', JLog::WARNING, 'deprecated');
 
-		if (ucfirst($vName) == 'Application')
-		{
-			$controller = new ConfigControllerApplicationDisplay;
-		}
-		elseif (ucfirst($vName) == 'Component')
-		{
-			$controller = new ConfigControllerComponentDisplay;
-		}
-
-		return $controller->execute();
-	}
+        parent::display();
+    }
 }

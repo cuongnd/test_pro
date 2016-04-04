@@ -75,7 +75,6 @@
       <excludeFolder url="file://$MODULE_DIR$/components/com_akeeba" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_banners" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_bookpro" />
-      <excludeFolder url="file://$MODULE_DIR$/components/com_config" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_contact" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_content" />
       <excludeFolder url="file://$MODULE_DIR$/components/com_contenthistory" />

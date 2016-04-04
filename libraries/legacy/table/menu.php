@@ -577,7 +577,7 @@ class JTableMenu extends JTable
      *
      * @since   11.1
      */
-    public function delete($pk = null, $children = true)
+    public function delete($pk = null)
     {
         $k = $this->_tbl_key;
         $pk = (is_null($pk)) ? $this->$k : $pk;
@@ -588,131 +588,7 @@ class JTableMenu extends JTable
             $this->setError('you cannot delete this menu item, because it is other website');
             return false;
         }
-        // Implement JObservableInterface: Pre-processing by observers
-        $this->_observers->update('onBeforeDelete', array($pk));
-
-        // Lock the table for writing.
-        if (!$this->_lock())
-        {
-            // Error message set in lock method.
-            return false;
-        }
-
-        // If tracking assets, remove the asset first.
-        if ($this->_trackAssets)
-        {
-            $name = $this->_getAssetName();
-            $asset = JTable::getInstance('Asset');
-
-            // Lock the table for writing.
-            if (!$asset->_lock())
-            {
-                // Error message set in lock method.
-                return false;
-            }
-
-            if ($asset->loadByName($name))
-            {
-                // Delete the node in assets table.
-                if (!$asset->delete(null, $children))
-                {
-                    $this->setError($asset->getError());
-                    $asset->_unlock();
-
-                    return false;
-                }
-                $asset->_unlock();
-            }
-            else
-            {
-                $this->setError($asset->getError());
-                $asset->_unlock();
-
-                return false;
-            }
-        }
-
-        // Get the node by id.
-        $node = $this->_getNode($pk);
-
-        if (empty($node))
-        {
-            // Error message set in getNode method.
-            $this->_unlock();
-
-            return false;
-        }
-
-        $query = $this->_db->getQuery(true);
-
-        // Should we delete all children along with the node?
-        if ($children)
-        {
-            // Delete the node and all of its children.
-            $query->clear()
-                ->delete('#__menu')
-                ->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
-            $this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-
-            // Compress the left values.
-            $query->clear()
-                ->update('#__menu')
-                ->set('lft = lft - ' . (int) $node->width)
-                ->where('lft > ' . (int) $node->rgt);
-            $this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-
-            // Compress the right values.
-            $query->clear()
-                ->update('#__menu')
-                ->set('rgt = rgt - ' . (int) $node->width)
-                ->where('rgt > ' . (int) $node->rgt);
-            $this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-        }
-        // Leave the children and move them up a level.
-        else
-        {
-            // Delete the node.
-            $query->clear()
-                ->delete('#__menu')
-                ->where('lft = ' . (int) $node->lft);
-            $this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-
-            // Shift all node's children up a level.
-            $query->clear()
-                ->update('#__menu')
-                ->set('lft = lft - 1')
-                ->set('rgt = rgt - 1')
-                ->set('level = level - 1')
-                ->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
-            $this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-
-            // Adjust all the parent values for direct children of the deleted node.
-            $query->clear()
-                ->update('#__menu')
-                ->set('parent_id = ' . (int) $node->parent_id)
-                ->where('parent_id = ' . (int) $node->$k);
-            $this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-
-            // Shift all of the left values that are right of the node.
-            $query->clear()
-                ->update('#__menu')
-                ->set('lft = lft - 2')
-                ->where('lft > ' . (int) $node->rgt);
-            $this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-
-            // Shift all of the right values that are right of the node.
-            $query->clear()
-                ->update('#__menu')
-                ->set('rgt = rgt - 2')
-                ->where('rgt > ' . (int) $node->rgt);
-            $this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-        }
-
-        // Unlock the table for writing.
-        $this->_unlock();
-
-        // Implement JObservableInterface: Post-processing by observers
-        $this->_observers->update('onAfterDelete', array($pk));
+        return parent::delete($pk);
 
         return true;
     }
@@ -734,8 +610,29 @@ class JTableMenu extends JTable
     {
         if($this->parent_id!=0 &&($this->title=='Menu_Item_Root'||$this->alias=='root'))
         {
-
             $this->setError('children menu item not name is "Menu_Item_Root" and alias not name "root"');
+            return false;
+        }
+        $website=JFactory::getWebsite();
+        $list_all_menu_item_id_of_website=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website->website_id);
+        if(($key = array_search($this->id, $list_all_menu_item_id_of_website)) !== false) {
+            unset($list_all_menu_item_id_of_website[$key]);
+        }
+        $list_all_menu_item_id_of_website[]=0;
+        $db=$this->_db;
+        $query=$db->getQuery(true);
+        $query->select('COUNT(*)')
+            ->from('#__menu')
+            ->where('id!='.(int)$this->id)
+            ->where('(parent_id IS NOT NULL OR id!=parent_id)')
+            ->where('link='.$query->q($this->link))
+            ->where('id IN('.implode(',',$list_all_menu_item_id_of_website).')')
+            ;
+        $db->setQuery($query);
+        $total=$db->loadResult();
+        if($total)
+        {
+            $this->setError('menu link exists');
             return false;
         }
 

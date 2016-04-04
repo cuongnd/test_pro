@@ -19,13 +19,13 @@ defined('_JEXEC') or die;
 	<?php foreach ($this->components as $component) : ?>
 		<?php
 		$active = '';
-		if ($this->currentComponent == $component->element)
+		if ($this->currentComponent == $component->name)
 		{
 			$active = ' class="active"';
 		}
 		?>
 		<li <?php echo $active; ?>>
-			<a href="index.php?option=com_config&view=component&component=<?php echo $component->element; ?>"><?php echo JText::_($component->element); ?><?php if(!$supperAdmin){ ?> <br/>[<?php echo $component->website ?>] <?php } ?></a>
+			<a href="index.php?option=com_config&view=component&component=<?php echo $component->name; ?>"><?php echo $component->title; ?></a>
 		</li>
 	<?php endforeach; ?>
 </ul>

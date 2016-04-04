@@ -32,7 +32,6 @@ class ConfigModelConfig extends ConfigModelForm
 	{
 		// Get the form.
 		$form = $this->loadForm('com_config.config', 'config', array('control' => 'jform', 'load_data' => $loadData));
-
 		if (empty($form))
 		{
 			return false;

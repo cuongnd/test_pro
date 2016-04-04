@@ -127,6 +127,11 @@ class UsersController extends JControllerLegacy
 					$model = $this->getModel('groups');
 					break;
 
+				case 'group':
+					// If the user is already logged in, redirect to the profile page.
+					$model = $this->getModel('group');
+					break;
+
 				default:
 					$model = $this->getModel('Login');
 					break;

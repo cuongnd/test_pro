@@ -65,7 +65,7 @@ class ConfigControllerDisplay extends JControllerBase
 
 		if ($this->app->isAdmin())
 		{
-			$paths->insert(JPATH_ADMINISTRATOR . '/components/' . $componentFolder . '/view/' . $viewName . '/tmpl', 1);
+			$paths->insert(JPATH_ROOT . '/components/' . $componentFolder . '/view/' . $viewName . '/tmpl', 1);
 		}
 		else
 		{

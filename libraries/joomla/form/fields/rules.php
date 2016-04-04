@@ -144,10 +144,9 @@ class JFormFieldRules extends JFormField
 		$section = $this->section;
 		$component = $this->component;
 		$assetField = $this->assetField;
-
+        $website=JFactory::getWebsite();
 		// Get the actions for the asset.
 		$actions = JAccess::getActions($component, $section);
-
 		// Iterate over the children and add to the actions.
 		foreach ($this->element->children() as $el)
 		{
@@ -166,8 +165,11 @@ class JFormFieldRules extends JFormField
 			$query = $db->getQuery(true)
 				->select($db->quoteName('id'))
 				->from($db->quoteName('#__assets'))
-				->where($db->quoteName('name') . ' = ' . $db->quote($component));
+				->where($db->quoteName('name') . ' = ' . $db->quote($component))
+                ->where('website_id='.(int)$website->website_id)
+            ;
 			$db->setQuery($query);
+
 			$assetId = (int) $db->loadResult();
 		}
 		else
@@ -181,195 +183,227 @@ class JFormFieldRules extends JFormField
 
 		// Get the rules for just this asset (non-recursive).
 		$assetRules = JAccess::getAssetRules($assetId);
-
 		// Get the available user groups.
-		$groups = $this->getUserGroups();
-
+        $list_user_group = JUserHelper::get_list_user_group();
 		// Prepare output
 		$html = array();
-
+        $html[]='<div class="row-fluid">';
 		// Description
 		$html[] = '<p class="rule-desc">' . JText::_('JLIB_RULES_SETTINGS_DESC') . '</p>';
 
 		// Begin tabs
-		$html[] = '<div id="permissions-sliders" class="tabbable tabs-left">';
+		$html[] = '<div id="permissions-sliders" class="tabbable col-md-3">';
 
 		// Building tab nav
 		$html[] = '<ul class="nav nav-tabs">';
         $supperAdmin=JFactory::isSupperAdmin();
-		foreach ($groups as $group)
-		{
-			// Initial Active Tab
-			$active = "";
+        $root_user_group_id=JUserHelper::get_root_user_group_id();
 
-			if ($group->value == 1)
-			{
-				$active = "active";
-			}
+        $children = array();
+        // First pass - collect children
+        foreach ($list_user_group as $v) {
+            $pt = $v->parent_id;
+            $pt=($pt==''||$pt==$v->id)?'list_root':$pt;
+            $list = @$children[$pt] ? $children[$pt] : array();
+            array_push($list, $v);
+            $children[$pt] = $list;
+        }
+        $root_group=reset($children['list_root']);
+        unset($children['list_root']);
 
-			$html[] = '<li class="' . $active . '">';
-			$html[] = '<a href="#permission-' . $group->value . '" data-toggle="tab">';
-            $website=$supperAdmin?" [ $group->website ] ":'';
-            $text=$group->parent_id==0?$group->text.$website:$group->text;
-			$html[] = str_repeat('<span class="level">&ndash;</span> ', $curLevel = $group->level) . $text;
-			$html[] = '</a>';
-			$html[] = '</li>';
-		}
+        if (!function_exists('sub_render_group_user')) {
+            function sub_render_group_user(&$html=array(),$root_group_user_id, $children, $level=0, $max_level=999)
+            {
+                if ($children[$root_group_user_id]) {
+                    $level1=$level+1;
+                    foreach ($children[$root_group_user_id] as $group) {
+                        $root_group_user_id1=$group->id;
+                        $title=$group->title;
+                        $title=str_repeat('<span class="gi">|&mdash;</span>',$level1).$title;
+
+                        $html[] = '<li class="' . $active . '">';
+                        $html[] = '<a href="#permission-' . $group->id . '" data-toggle="tab">';
+
+                        $html[] = str_repeat('<span class="level">&ndash;</span> ',$level) . $group->title;
+                        $html[] = '</a>';
+                        $html[] = '</li>';
+                        sub_render_group_user($html,$root_group_user_id1, $children,$level1,$max_level);
+                    }
+                }
+            }
+        }
+        sub_render_group_user($html,$root_user_group_id,$children);
+
+
 
 		$html[] = '</ul>';
 
 		$html[] = '<div class="tab-content">';
 
-		// Start a row for each user group.
-		foreach ($groups as $group)
-		{
-			// Initial Active Pane
-			$active = "";
+        if (!function_exists('sub_render_group_user_rule')) {
+            function sub_render_group_user_rule(&$html=array(),$self,$assetRules,$assetId,$actions,$root_group_user_id, $children, $level=0, $max_level=999)
+            {
+                if ($children[$root_group_user_id]) {
+                    $level1=$level+1;
+                    foreach ($children[$root_group_user_id] as $group) {
 
-			if ($group->value == 1)
-			{
-				$active = " active";
-			}
+                        $root_group_user_id1=$group->id;
+                        $title=$group->title;
+                        $title=str_repeat('<span class="gi">|&mdash;</span>',$level1).$title;
 
-			$html[] = '<div class="tab-pane' . $active . '" id="permission-' . $group->value . '">';
-			$html[] = '<table class="table table-striped">';
-			$html[] = '<thead>';
-			$html[] = '<tr>';
+                        // Initial Active Pane
+                        $active = "";
 
-			$html[] = '<th class="actions" id="actions-th' . $group->value . '">';
-			$html[] = '<span class="acl-action">' . JText::_('JLIB_RULES_ACTION') . '</span>';
-			$html[] = '</th>';
+                        if ($group->value == 1)
+                        {
+                            $active = " active";
+                        }
 
-			$html[] = '<th class="settings" id="settings-th' . $group->value . '">';
-			$html[] = '<span class="acl-action">' . JText::_('JLIB_RULES_SELECT_SETTING') . '</span>';
-			$html[] = '</th>';
+                        $html[] = '<div class="tab-pane' . $active . '" id="permission-' . $group->id . '">';
+                        $html[] = '<table class="table table-striped">';
+                        $html[] = '<thead>';
+                        $html[] = '<tr>';
 
-			// The calculated setting is not shown for the root group of global configuration.
-			$canCalculateSettings = ($group->parent_id || !empty($component));
+                        $html[] = '<th class="actions" id="actions-th' . $group->id . '">';
+                        $html[] = '<span class="acl-action">' . JText::_('JLIB_RULES_ACTION') . '</span>';
+                        $html[] = '</th>';
 
-			if ($canCalculateSettings)
-			{
-				$html[] = '<th id="aclactionth' . $group->value . '">';
-				$html[] = '<span class="acl-action">' . JText::_('JLIB_RULES_CALCULATED_SETTING') . '</span>';
-				$html[] = '</th>';
-			}
+                        $html[] = '<th class="settings" id="settings-th' . $group->id . '">';
+                        $html[] = '<span class="acl-action">' . JText::_('JLIB_RULES_SELECT_SETTING') . '</span>';
+                        $html[] = '</th>';
 
-			$html[] = '</tr>';
-			$html[] = '</thead>';
-			$html[] = '<tbody>';
+                        // The calculated setting is not shown for the root group of global configuration.
+                        $canCalculateSettings = ($group->parent_id || !empty($component));
 
-			foreach ($actions as $action)
-			{
-				$html[] = '<tr>';
-				$html[] = '<td headers="actions-th' . $group->value . '">';
-				$html[] = '<label for="' . $this->id . '_' . $action->name . '_' . $group->value . '" class="hasTooltip" title="'
-					. htmlspecialchars(JText::_($action->title) . ' ' . JText::_($action->description), ENT_COMPAT, 'UTF-8') . '">';
-				$html[] = JText::_($action->title);
-				$html[] = '</label>';
-				$html[] = '</td>';
+                        if ($canCalculateSettings)
+                        {
+                            $html[] = '<th id="aclactionth' . $group->ud . '">';
+                            $html[] = '<span class="acl-action">' . JText::_('JLIB_RULES_CALCULATED_SETTING') . '</span>';
+                            $html[] = '</th>';
+                        }
 
-				$html[] = '<td headers="settings-th' . $group->value . '">';
+                        $html[] = '</tr>';
+                        $html[] = '</thead>';
+                        $html[] = '<tbody>';
 
-				$html[] = '<select class="input-small" name="' . $this->name . '[' . $action->name . '][' . $group->value . ']" id="' . $this->id . '_' . $action->name
-					. '_' . $group->value . '" title="'
-					. JText::sprintf('JLIB_RULES_SELECT_ALLOW_DENY_GROUP', JText::_($action->title), trim($group->text)) . '">';
+                        foreach ($actions as $action)
+                        {
+                            $html[] = '<tr>';
+                            $html[] = '<td headers="actions-th' . $group->id . '">';
+                            $html[] = '<label for="' . $self->id . '_' . $action->name . '_' . $group->id . '" class="hasTooltip" title="'
+                                . htmlspecialchars(JText::_($action->title) . ' ' . JText::_($action->description), ENT_COMPAT, 'UTF-8') . '">';
+                            $html[] = JText::_($action->title);
+                            $html[] = '</label>';
+                            $html[] = '</td>';
 
-				$inheritedRule = JAccess::checkGroup($group->value, $action->name, $assetId);
+                            $html[] = '<td headers="settings-th' . $group->id . '">';
 
-				// Get the actual setting for the action for this group.
-				$assetRule = $assetRules->allow($action->name, $group->value);
+                            $html[] = '<select class="input-small" name="' . $self->name . '[' . $action->name . '][' . $group->id . ']" id="' . $self->id . '_' . $action->name
+                                . '_' . $group->id . '" title="'
+                                . JText::sprintf('JLIB_RULES_SELECT_ALLOW_DENY_GROUP', JText::_($action->title), trim($group->text)) . '">';
 
-				// Build the dropdowns for the permissions sliders
+                            $inheritedRule = JAccess::checkGroup($group->id, $action->name, $assetId);
 
-				// The parent group has "Not Set", all children can rightly "Inherit" from that.
-				$html[] = '<option value=""' . ($assetRule === null ? ' selected="selected"' : '') . '>'
-					. JText::_(empty($group->parent_id) && empty($component) ? 'JLIB_RULES_NOT_SET' : 'JLIB_RULES_INHERITED') . '</option>';
-				$html[] = '<option value="1"' . ($assetRule === true ? ' selected="selected"' : '') . '>' . JText::_('JLIB_RULES_ALLOWED')
-					. '</option>';
-				$html[] = '<option value="0"' . ($assetRule === false ? ' selected="selected"' : '') . '>' . JText::_('JLIB_RULES_DENIED')
-					. '</option>';
+                            // Get the actual setting for the action for this group.
+                            $assetRule = $assetRules->allow($action->name, $group->id);
 
-				$html[] = '</select>&#160; ';
+                            // Build the dropdowns for the permissions sliders
 
-				// If this asset's rule is allowed, but the inherited rule is deny, we have a conflict.
-				if (($assetRule === true) && ($inheritedRule === false))
-				{
-					$html[] = JText::_('JLIB_RULES_CONFLICT');
-				}
+                            // The parent group has "Not Set", all children can rightly "Inherit" from that.
+                            $html[] = '<option value=""' . ($assetRule === null ? ' selected="selected"' : '') . '>'
+                                . JText::_(empty($group->parent_id) && empty($component) ? 'JLIB_RULES_NOT_SET' : 'JLIB_RULES_INHERITED') . '</option>';
+                            $html[] = '<option value="1"' . ($assetRule === true ? ' selected="selected"' : '') . '>' . JText::_('JLIB_RULES_ALLOWED')
+                                . '</option>';
+                            $html[] = '<option value="0"' . ($assetRule === false ? ' selected="selected"' : '') . '>' . JText::_('JLIB_RULES_DENIED')
+                                . '</option>';
 
-				$html[] = '</td>';
+                            $html[] = '</select>&#160; ';
 
-				// Build the Calculated Settings column.
-				// The inherited settings column is not displayed for the root group in global configuration.
-				if ($canCalculateSettings)
-				{
-					$html[] = '<td headers="aclactionth' . $group->value . '">';
+                            // If this asset's rule is allowed, but the inherited rule is deny, we have a conflict.
+                            if (($assetRule === true) && ($inheritedRule === false))
+                            {
+                                $html[] = JText::_('JLIB_RULES_CONFLICT');
+                            }
 
-					// This is where we show the current effective settings considering currrent group, path and cascade.
-					// Check whether this is a component or global. Change the text slightly.
+                            $html[] = '</td>';
 
-					if (JAccess::checkGroup($group->value, 'core.admin', $assetId) !== true)
-					{
-						if ($inheritedRule === null)
-						{
-							$html[] = '<span class="label label-important">' . JText::_('JLIB_RULES_NOT_ALLOWED') . '</span>';
-						}
-						elseif ($inheritedRule === true)
-						{
-							$html[] = '<span class="label label-success">' . JText::_('JLIB_RULES_ALLOWED') . '</span>';
-						}
-						elseif ($inheritedRule === false)
-						{
-							if ($assetRule === false)
-							{
-								$html[] = '<span class="label label-important">' . JText::_('JLIB_RULES_NOT_ALLOWED') . '</span>';
-							}
-							else
-							{
-								$html[] = '<span class="label"><i class="icon-lock icon-white"></i> ' . JText::_('JLIB_RULES_NOT_ALLOWED_LOCKED')
-									. '</span>';
-							}
-						}
-					}
-					elseif (!empty($component))
-					{
-						$html[] = '<span class="label label-success"><i class="icon-lock icon-white"></i> ' . JText::_('JLIB_RULES_ALLOWED_ADMIN')
-							. '</span>';
-					}
-					else
-					{
-						// Special handling for  groups that have global admin because they can't  be denied.
-						// The admin rights can be changed.
-						if ($action->name === 'core.admin')
-						{
-							$html[] = '<span class="label label-success">' . JText::_('JLIB_RULES_ALLOWED') . '</span>';
-						}
-						elseif ($inheritedRule === false)
-						{
-							// Other actions cannot be changed.
-							$html[] = '<span class="label label-important"><i class="icon-lock icon-white"></i> '
-								. JText::_('JLIB_RULES_NOT_ALLOWED_ADMIN_CONFLICT') . '</span>';
-						}
-						else
-						{
-							$html[] = '<span class="label label-success"><i class="icon-lock icon-white"></i> ' . JText::_('JLIB_RULES_ALLOWED_ADMIN')
-								. '</span>';
-						}
-					}
+                            // Build the Calculated Settings column.
+                            // The inherited settings column is not displayed for the root group in global configuration.
+                            if ($canCalculateSettings)
+                            {
+                                $html[] = '<td headers="aclactionth' . $group->id . '">';
 
-					$html[] = '</td>';
-				}
+                                // This is where we show the current effective settings considering currrent group, path and cascade.
+                                // Check whether this is a component or global. Change the text slightly.
 
-				$html[] = '</tr>';
-			}
+                                if (JAccess::checkGroup($group->id, 'core.admin', $assetId) !== true)
+                                {
+                                    if ($inheritedRule === null)
+                                    {
+                                        $html[] = '<span class="label label-important">' . JText::_('JLIB_RULES_NOT_ALLOWED') . '</span>';
+                                    }
+                                    elseif ($inheritedRule === true)
+                                    {
+                                        $html[] = '<span class="label label-success">' . JText::_('JLIB_RULES_ALLOWED') . '</span>';
+                                    }
+                                    elseif ($inheritedRule === false)
+                                    {
+                                        if ($assetRule === false)
+                                        {
+                                            $html[] = '<span class="label label-important">' . JText::_('JLIB_RULES_NOT_ALLOWED') . '</span>';
+                                        }
+                                        else
+                                        {
+                                            $html[] = '<span class="label"><i class="icon-lock icon-white"></i> ' . JText::_('JLIB_RULES_NOT_ALLOWED_LOCKED')
+                                                . '</span>';
+                                        }
+                                    }
+                                }
+                                elseif (!empty($component))
+                                {
+                                    $html[] = '<span class="label label-success"><i class="icon-lock icon-white"></i> ' . JText::_('JLIB_RULES_ALLOWED_ADMIN')
+                                        . '</span>';
+                                }
+                                else
+                                {
+                                    // Special handling for  groups that have global admin because they can't  be denied.
+                                    // The admin rights can be changed.
+                                    if ($action->name === 'core.admin')
+                                    {
+                                        $html[] = '<span class="label label-success">' . JText::_('JLIB_RULES_ALLOWED') . '</span>';
+                                    }
+                                    elseif ($inheritedRule === false)
+                                    {
+                                        // Other actions cannot be changed.
+                                        $html[] = '<span class="label label-important"><i class="icon-lock icon-white"></i> '
+                                            . JText::_('JLIB_RULES_NOT_ALLOWED_ADMIN_CONFLICT') . '</span>';
+                                    }
+                                    else
+                                    {
+                                        $html[] = '<span class="label label-success"><i class="icon-lock icon-white"></i> ' . JText::_('JLIB_RULES_ALLOWED_ADMIN')
+                                            . '</span>';
+                                    }
+                                }
 
-			$html[] = '</tbody>';
-			$html[] = '</table></div>';
-		}
+                                $html[] = '</td>';
+                            }
+
+                            $html[] = '</tr>';
+                        }
+
+                        $html[] = '</tbody>';
+                        $html[] = '</table></div>';
+
+                        sub_render_group_user_rule($html,$self,$assetRules,$assetId,$actions,$root_group_user_id1, $children,$level1,$max_level);
+                    }
+                }
+            }
+        }
+        sub_render_group_user_rule($html,$this,$assetRules,$assetId,$actions,$root_user_group_id,$children);
 
 		$html[] = '</div></div>';
 
-		$html[] = '<div class="alert">';
+		$html[] = '<div class="alert col-md-9">';
 
 		if ($section == 'component' || $section == null)
 		{
@@ -380,6 +414,7 @@ class JFormFieldRules extends JFormField
 			$html[] = JText::_('JLIB_RULES_SETTING_NOTES_ITEM');
 		}
 
+		$html[] = '</div>';
 		$html[] = '</div>';
 
 		return implode("\n", $html);
@@ -392,21 +427,5 @@ class JFormFieldRules extends JFormField
 	 *
 	 * @since   11.1
 	 */
-	protected function getUserGroups()
-	{
-		$db = JFactory::getDbo();
-		$website=JFactory::getWebsite();
-		$query = $db->getQuery(true)
-			->select('a.id AS value,a.website_id, a.title AS text, COUNT(DISTINCT b.id) AS level, a.parent_id')
-			->from('#__usergroups AS a')
-			->join('LEFT', $db->quoteName('#__usergroups') . ' AS b ON a.lft > b.lft AND a.rgt < b.rgt')
-			->group('a.id, a.title, a.lft, a.rgt, a.parent_id')
-			->where('a.website_id='.(int)$website->website_id)
-			->order('a.lft ASC');
-		$db->setQuery($query);
-		$options = $db->loadObjectList();
-        require_once JPATH_ROOT.'/administrator/components/com_website/helpers/website.php';
-        $options= websiteHelperBackend::setKeyWebsite($options);
-		return $options;
-	}
+
 }

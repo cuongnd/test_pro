@@ -46,9 +46,9 @@ class ConfigControllerTemplatesSave extends JControllerBase
 		$app = JFactory::getApplication();
 
 		// Access back-end com_templates
-		JLoader::register('TemplatesControllerStyle', JPATH_ADMINISTRATOR . '/components/com_templates/controllers/style.php');
-		JLoader::register('TemplatesModelStyle', JPATH_ADMINISTRATOR . '/components/com_templates/models/style.php');
-		JLoader::register('TemplatesTableStyle', JPATH_ADMINISTRATOR . '/components/com_templates/tables/style.php');
+		JLoader::register('TemplatesControllerStyle', JPATH_ROOT . '/components/com_templates/controllers/style.php');
+		JLoader::register('TemplatesModelStyle', JPATH_ROOT . '/components/com_templates/models/style.php');
+		JLoader::register('TemplatesTableStyle', JPATH_ROOT . '/components/com_templates/tables/style.php');
 		$controllerClass = new TemplatesControllerStyle;
 
 		// Get a document object

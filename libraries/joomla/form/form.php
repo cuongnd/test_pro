@@ -863,7 +863,6 @@ class JForm
 				return false;
 			}
 		}
-
 		// Attempt to load the XML file.
 		$xml = simplexml_load_file($file);
 

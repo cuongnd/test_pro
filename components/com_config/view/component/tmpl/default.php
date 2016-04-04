@@ -11,31 +11,25 @@ defined('_JEXEC') or die;
 
 $app = JFactory::getApplication();
 $template = $app->getTemplate();
-
 // Load the tooltip behavior.
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
 ?>
 <script type="text/javascript">
-	Joomla.submitbutton = function(task)
-	{
-		if (document.formvalidator.isValid(document.id('component-form')))
-		{
-			Joomla.submitform(task, document.getElementById('component-form'));
-		}
-	}
+
 </script>
-<form action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="component-form" method="post" name="adminForm" autocomplete="off" class="form-validate form-horizontal">
+<?php echo $this->render_toolbar() ?>
+<form action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="adminForm" method="post" name="adminForm" autocomplete="off" class="form-validate form-horizontal">
 	<div class="row-fluid">
 		<!-- Begin Sidebar -->
-		<div id="sidebar" class="span4">
+		<div id="sidebar" class="col-md-3">
 			<div class="sidebar-nav">
 				<?php echo $this->loadTemplate('navigation'); ?>
 			</div>
 		</div>
 		<!-- End Sidebar -->
-		<div class="span8">
+		<div class="col-md-9">
 			<ul class="nav nav-tabs" id="configTabs">
 				<?php $fieldSets = $this->form->getFieldsets(); ?>
 				<?php foreach ($fieldSets as $name => $fieldSet) : ?>

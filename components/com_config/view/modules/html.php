@@ -10,18 +10,20 @@
 defined('_JEXEC') or die;
 
 /**
- * View to edit a template style.
+ * View to edit a module.
  *
- * @since  3.2
+ * @package     Joomla.Site
+ * @subpackage  com_config
+ * @since       3.2
  */
-class ConfigViewTemplatesHtml extends ConfigViewCmsHtml
+class ConfigViewModulesHtml extends ConfigViewCmsHtml
 {
 	public $item;
 
 	public $form;
 
 	/**
-	 * Method to render the view.
+	 * Display the view
 	 *
 	 * @return  string  The rendered view.
 	 *
@@ -29,8 +31,9 @@ class ConfigViewTemplatesHtml extends ConfigViewCmsHtml
 	 */
 	public function render()
 	{
-		$user = JFactory::getUser();
-		$this->userIsSuperAdmin = $user->authorise('core.admin');
+		$lang = JFactory::getApplication()->getLanguage();
+		$lang->load('', JPATH_ADMINISTRATOR, $lang->getTag());
+		$lang->load('com_modules', JPATH_ADMINISTRATOR, $lang->getTag());
 
 		return parent::render();
 	}

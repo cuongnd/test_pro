@@ -170,7 +170,7 @@ class UsersModelGroups extends JModelList
 		// Create a new query object.
 		$db = $this->getDbo();
 		$query = $db->getQuery(true);
-
+        $list_user_group=JUserHelper::get_list_user_group_id();
 		// Select the required fields from the table.
 		$query->select(
 			$this->getState(
@@ -178,12 +178,11 @@ class UsersModelGroups extends JModelList
 				'a.*'
 			)
 		);
-		$query->from($db->quoteName('#__usergroups') . ' AS a');
+		$query->from($db->quoteName('#__usergroups') . ' AS a')
+            ->where('a.id IN('.implode(',',$list_user_group).')')
 
-		// Add the level in the tree.
-		$query->select('COUNT(DISTINCT c2.id) AS level1')
-			->join('LEFT OUTER', $db->quoteName('#__usergroups') . ' AS c2 ON a.lft > c2.lft AND a.rgt < c2.rgt')
-			->group('a.id, a.lft, a.rgt, a.parent_id, a.title');
+        ;
+
 
 		// Filter the comments over the search string if set.
 		$search = $this->getState('filter.search');

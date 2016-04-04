@@ -111,6 +111,10 @@ abstract class JViewHtml extends JViewBase
 
 		return $path;
 	}
+    public function render_toolbar(){
+        $toolbar = JToolbar::getInstance('toolbar')->render('toolbar');
+        return $toolbar;
+    }
 
 	/**
 	 * Method to get the view paths.

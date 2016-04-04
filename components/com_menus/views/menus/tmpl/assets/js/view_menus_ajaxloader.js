@@ -254,6 +254,7 @@ jQuery(document).ready(function($){
 
                         alert(response.m);
                         var menu_clone=response.r;
+                        location.reload();
 /*
                         li_clone.data('id',menu_clone.id);
                         li_clone.data('parent_id',menu_clone.parent_id);
@@ -271,6 +272,58 @@ jQuery(document).ready(function($){
 
             console.log('dfgdfgdfgdfgfdgdf');
         },
+        create_new_menu_type: function (self) {
+            var menu_type_name=$('input[name="menu_type_name"]').val();
+            if(menu_type_name.trim()=='')
+            {
+                alert('please input menu type');
+                return false;
+            }
+            ajax_web_design=$.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: this_host+'/index.php',
+                data: (function () {
+
+                    dataPost = {
+                        enable_load_component:1,
+                        option: 'com_menus',
+                        task: 'menu.ajax_create_new_menu_type',
+                        menu_type_name:menu_type_name
+                    };
+                    return dataPost;
+                })(),
+                beforeSend: function () {
+                    $('.div-loading').css({
+                        display: "block"
+
+
+                    });
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+                    $('.div-loading').css({
+                        display: "none"
+
+
+                    });
+                    if(response.e==1)
+                    {
+                        alert(response.m);
+                    }else
+                    {
+                        alert(response.m);
+                        location.reload();
+                    }
+
+
+
+
+                }
+            });
+
+        },
         init_menu_ajax_loader:function(){
 
 
@@ -279,6 +332,9 @@ jQuery(document).ready(function($){
 
             $(document).on('click','.add_node',function(){
                 menu_ajax_loader.add_node($(this));
+            });
+            $(document).on('click','.create_menu_type',function(){
+                menu_ajax_loader.create_new_menu_type($(this));
             });
             $(document).on('click','.add_sub_node',function(){
                 menu_ajax_loader.add_sub_node($(this));

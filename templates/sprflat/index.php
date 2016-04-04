@@ -543,8 +543,10 @@ if ($ajaxGetContent) {
 
                                 <div class="screen-layout">
                                     <?php
-
-                                    echo websiteHelperFrontEnd::displayLayout($this, $enableEditWebsite);
+                                    if($menuItemActiveId)
+                                    {
+                                        echo websiteHelperFrontEnd::displayLayout($this, $enableEditWebsite);
+                                    }
                                     ?>
                                     <?php
                                     include JPATH_ROOT . '/components/com_utility/views/module/tmpl/default_item.php';
@@ -598,8 +600,10 @@ if ($ajaxGetContent) {
 
     <?php
 
-
-    echo websiteHelperFrontEnd::displayLayout($this, 0);
+    if($menuItemActiveId)
+    {
+        echo websiteHelperFrontEnd::displayLayout($this, 0);
+    }
 
     ?>
     <div class="edit_website"><a href="javascript:void(0)"><i class="im-cog"></i></a></div>

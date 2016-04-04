@@ -124,21 +124,11 @@ JText::script('COM_USERS_GROUPS_CONFIRM_DELETE');
                         <?php echo JHtml::_('grid.checkall'); ?>
                     </th>
                     <th class="left">
-                        <?php echo JHtml::_('grid.sort', 'COM_USERS_HEADING_GROUP_TITLE', 'a.title', $listDirn, $listOrder); ?>
+                        <?php echo JHtml::_('grid.sort', 'Group name', 'a.title', $listDirn, $listOrder); ?>
                     </th>
                     <th width="20%" class="center">
-                        <?php echo JText::_('COM_USERS_HEADING_USERS_IN_GROUP'); ?>
+                        <?php echo JText::_('total user'); ?>
                     </th>
-                    <?php if ($supperAdmin) { ?>
-                        <th class="title">
-                            <?php echo JHtml::_('grid.sort', 'JGLOBAL_RUN_FOR', 'a.website_id', $listDirn, $listOrder); ?>
-                        </th>
-                    <?php } ?>
-                    <?php if ($supperAdmin) { ?>
-                        <th class="title">
-                            <?php echo JHtml::_('grid.sort', 'Is System', 'a.issystem', $listDirn, $listOrder); ?>
-                        </th>
-                    <?php } ?>
                     <th width="1%">
                         <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
                     </th>
@@ -153,54 +143,61 @@ JText::script('COM_USERS_GROUPS_CONFIRM_DELETE');
                 </tr>
                 </tfoot>
                 <tbody>
-                <?php foreach ($this->items as $i => $item) :
-                    $canCreate = $user->authorise('core.create', 'com_users');
-                    $canEdit = $user->authorise('core.edit', 'com_users');
-
-                    // If this group is super admin and this user is not super admin, $canEdit is false
-                    if (!$user->authorise('core.admin') && (JAccess::checkGroup($item->id, 'core.admin'))) {
-                        $canEdit = false;
+                <?php
+                $first_group_item = array_shift($this->items);
+                $children = array();
+                // First pass - collect children
+                foreach ($this->items as $v) {
+                    $pt = $v->parent_id;
+                    $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+                    $list = @$children[$pt] ? $children[$pt] : array();
+                    if ($v->id != $v->parent_id || $v->parent_id != null) {
+                        array_push($list, $v);
                     }
-                    $canChange = $user->authorise('core.edit.state', 'com_users');
-                    ?>
-                    <tr class="row<?php echo $i % 2; ?>">
-                        <td class="center">
-                            <?php if ($canEdit) : ?>
-                                <?php echo JHtml::_('grid.id', $i, $item->id); ?>
-                            <?php endif; ?>
-                        </td>
-                        <td>
-                            <?php echo str_repeat('<span class="gi">|&mdash;</span>', $item->level-1) ?>
-                            <?php if ($canEdit) : ?>
-                                <a href="<?php echo JRoute::_('index.php?option=com_users&task=group.edit&id=' . $item->id); ?>">
-                                    <?php echo $this->escape($item->title); ?></a>
-                            <?php else : ?>
-                                <?php echo $this->escape($item->title); ?>
-                            <?php endif; ?>
-                            <?php if (JDEBUG) : ?>
-                                <div class="small"><a
-                                        href="<?php echo JRoute::_('index.php?option=com_users&view=debuggroup&group_id=' . (int)$item->id); ?>">
-                                        <?php echo JText::_('COM_USERS_DEBUG_GROUP'); ?></a></div>
-                            <?php endif; ?>
-                        </td>
-                        <td class="center">
-                            <?php echo $item->user_count ? $item->user_count : ''; ?>
-                        </td>
-                        <?php if ($supperAdmin) { ?>
-                            <td class="center hidden-phone">
-                                <?php echo $item->website ?>
-                            </td>
-                        <?php } ?>
-                        <?php if ($supperAdmin) { ?>
-                            <td class="center">
-                                <?php echo JHtml::_('jgrid.is_system', $item->issystem, $i, 'groups.', $canChange); ?>
-                            </td>
-                        <?php } ?>
-                        <td class="center">
-                            <?php echo (int)$item->id; ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+                    $children[$pt] = $list;
+                }
+                unset($children['list_root']);
+                if (!function_exists('render_group_item_layout')) {
+                    function render_group_item_layout($root_group_item_id = 0, $children, $level = 0, $max_level = 999,$index=0)
+                    {
+                        if ($children[$root_group_item_id] && $level < $max_level) {
+
+                            usort($children[$root_group_item_id], function ($item1, $item2) {
+                                if ($item1->ordering == $item2->ordering) return 0;
+                                return $item1->ordering < $item2->ordering ? -1 : 1;
+                            });
+                            $level1 = $level + 1;
+                            foreach ($children[$root_group_item_id] as $i => $item) {
+                                $root_group_item_id1 = $item->id;
+                                $title=str_repeat('<span class="gi">|&mdash;</span>', $level).$item->title;
+                                ?>
+                                <tr class="row<?php echo $index % 2; ?>">
+                                    <td class="center">
+                                        <?php echo JHtml::_('grid.id', $index, $item->id); ?>
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo JRoute::_('index.php?option=com_users&task=group.edit&id=' . $item->id); ?>">
+                                            <?php echo $title; ?></a>
+                                    </td>
+                                    <td class="center">
+                                        <?php echo $item->user_count ? $item->user_count : ''; ?>
+                                    </td>
+                                    <td class="center">
+                                        <?php echo (int)$item->id; ?>
+                                    </td>
+                                </tr>
+                                <?php
+                                $index++;
+                                render_group_item_layout($root_group_item_id1, $children, $level1, $max_level,$index);
+                            }
+                        }
+
+
+                    }
+                }
+                render_group_item_layout($first_group_item->id, $children);
+                ?>
+
                 </tbody>
             </table>
             <input type="hidden" name="task" value=""/>

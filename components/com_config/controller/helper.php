@@ -116,7 +116,6 @@ class ConfigControllerHelper
 		$controller = new $controllerName;
 		$controller->options = array();
 		$controller->options = $tasks;
-
 		return $controller;
 	}
 }

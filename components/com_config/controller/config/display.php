@@ -38,9 +38,8 @@ class ConfigControllerConfigDisplay extends ConfigControllerDisplay
 		$layoutName   = $this->input->getWord('layout', 'default');
 
 		// Access back-end com_config
-		JLoader::registerPrefix(ucfirst($viewName), JPATH_ADMINISTRATOR . '/components/com_config');
+		JLoader::registerPrefix(ucfirst($viewName), JPATH_ROOT . '/components/com_config');
 		$displayClass = new ConfigControllerApplicationDisplay;
-
 		// Set back-end required params
 		$document->setType('json');
 		$app->input->set('view', 'application');
@@ -64,7 +63,6 @@ class ConfigControllerConfigDisplay extends ConfigControllerDisplay
 			if ($viewName != 'close')
 			{
 				$model = new $modelClass;
-
 				// Access check.
 				if (!JFactory::getUser()->authorise('core.admin', $model->getState('component.option')))
 				{

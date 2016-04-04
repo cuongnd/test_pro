@@ -18,31 +18,27 @@ require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
 $website = JFactory::getWebsite();
 require_once JPATH_ROOT . '/libraries/joomla/form/fields/icon.php';
 $db = JFactory::getDbo();
-$website=JFactory::getWebsite();
+$website = JFactory::getWebsite();
 $query = $db->getQuery(true);
 $query->select('menu_types.id as menu_type_id,menu_types.title as title,menu_type_id_menu_id.menu_id AS menu_id')
     ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
     ->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
-    ->where('menu_types.website_id='.(int)$website->website_id)
-    ;
-$list_menu_type=$db->setQuery($query)->loadObjectList('menu_id');
+    ->where('menu_types.website_id=' . (int)$website->website_id);
+$list_menu_type = $db->setQuery($query)->loadObjectList('menu_id');
 
 $query = $db->getQuery(true);
 $query->select('menu.*')
     ->from('#__menu As menu ')
-    ->order('menu.ordering')
-    ;
+    ->order('menu.ordering');
 $db->setQuery($query);
 $list_menu_item1 = $db->loadObjectList('id');
 $children = array();
 
 // First pass - collect children
-foreach ($list_menu_item1 as $v)
-{
+foreach ($list_menu_item1 as $v) {
     $pt = $v->parent_id;
     $list = @$children[$pt] ? $children[$pt] : array();
-    if($v->id!=$v->parent_id)
-    {
+    if ($v->id != $v->parent_id) {
         array_push($list, $v);
     }
     $children[$pt] = $list;
@@ -55,8 +51,8 @@ ob_start();
 <script type="text/javascript" id="<?php echo $scriptId ?>">
 
     <?php
-        ob_get_clean();
-        ob_start();
+    ob_get_clean();
+    ob_start();
     ?>
     jQuery(document).ready(function ($) {
 
@@ -64,9 +60,9 @@ ob_start();
         menu_ajax_loader.init_menu_ajax_loader();
     });
     <?php
-     $script=ob_get_clean();
-     ob_start();
-      ?>
+    $script = ob_get_clean();
+    ob_start();
+    ?>
 </script>
 <?php
 ob_get_clean();
@@ -91,9 +87,18 @@ ob_start();
 ?>
 <div style="background: #fff">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-3">
             <label>show more option<input onchange="menu_ajax_loader.show_more_options(this);" type="checkbox" checked
                                           class="show_more_options"></label>
+
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <input type="text" class="form-control" style="width: 300px" name="menu_type_name" placeholder="Menu type name">
+                  <span class="input-group-btn">
+                    <button class="btn btn-secondary create_menu_type" type="button">create!</button>
+                  </span>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -103,10 +108,10 @@ ob_start();
                 <div class="row">
                     <?php
                     foreach ($list_menu_type as $root_menu) {
-                        $list_menu_item1=$children[$root_menu->menu_id];
+                        $list_menu_item1 = $children[$root_menu->menu_id];
                         ?>
                         <div class="menu_type_item col-md-6" data-menu-type-id="<?php echo $root_menu->menu_type_id ?>">
-                            <?php echo JHtml::_('input.button','create_new_menu_item','create new menu item') ?>
+                            <?php echo JHtml::_('input.button', 'create_new_menu_item', 'create new menu item') ?>
                             <h3><?php echo $root_menu->title ?>(<?php echo $root_menu->menu_type_id ?>
                                 )<i
                                     class="fa-copy"></i></h3><a title="rebuid menu" href="javascript:void(0)"
@@ -161,7 +166,7 @@ function create_html_list($root_id, $children, $binding_source)
                         data-<?php echo $key ?>="<?php echo $value ?>"
                     <?php } ?>
 
-                    >
+                >
                     <div class="dd-handle">
                         <div class="dd-handle-move pull-left"><i class="fa-move"></i></div>
                         <span class="key_name"><?php echo "$item->title ($item->id, $item->alias ) " ?></span>
@@ -173,7 +178,7 @@ function create_html_list($root_id, $children, $binding_source)
                                 class="im-plus"></i></button>
 
                     </div>
-                    <h6><?php echo $item->link  ?></h6>
+                    <h6><?php echo $item->link ?></h6>
                     <div class="more_options">
                         <div>
                             <button class="add_node">add node</button>
@@ -198,17 +203,17 @@ function create_html_list($root_id, $children, $binding_source)
                         <label>
                             Link
                             <?php
-                            echo JHtml::_('input.text', '','link', $item->link, array("class" => 'menu_link','onchange'=>"menu_ajax_loader.update_data_column(this,'link')"),'',200);
+                            echo JHtml::_('input.text', '', 'link', $item->link, array("class" => 'menu_link', 'onchange' => "menu_ajax_loader.update_data_column(this,'link')"), '', 200);
                             ?>
                         </label>
                         <label>Home<input <?php echo $item->home == 1 ? 'checked' : '' ?> name="home" type="radio"
                                                                                           onchange="menu_ajax_loader.home_update_value(this);menu_ajax_loader.call_on_change(this)"
                                                                                           value="<?php echo $item->home == 1 ? 1 : 0 ?>"/></label>
                         <label>published<input <?php echo $item->published == 1 ? 'checked' : '' ?> name="published"
-                                                                                               type="checkbox"
-                                                                                               onchange="menu_ajax_loader.update_data_column(this,'published','checkbox')"
-                                                                                               value="1"/></label>
-                        <?php echo JHtml::row_control('','','hide','input.radioyesno',$item->id.'-hide', $item->hidden,array("data-onchange"=>"menu_ajax_loader.update_data_column(this,'hidden','checkbox')")) ?>
+                                                                                                    type="checkbox"
+                                                                                                    onchange="menu_ajax_loader.update_data_column(this,'published','checkbox')"
+                                                                                                    value="1"/></label>
+                        <?php echo JHtml::row_control('', '', 'hide', 'input.radioyesno', $item->id . '-hide', $item->hidden, array("data-onchange" => "menu_ajax_loader.update_data_column(this,'hidden','checkbox')")) ?>
                         <?php
                         if ($item->binding_source) {
                             $binding_source->setValue($item->binding_source);
@@ -243,11 +248,10 @@ function create_html_list($root_id, $children, $binding_source)
             ?>
         </ol>
         <?php
-    }else{
+    } else {
 
     }
 }
-
 
 
 $contents = ob_get_clean();

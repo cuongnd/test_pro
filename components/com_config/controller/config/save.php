@@ -76,7 +76,7 @@ class ConfigControllerConfigSave extends JControllerBase
 		$data = $return;
 
 		// Access back-end com_config
-		JLoader::registerPrefix('Config', JPATH_ADMINISTRATOR . '/components/com_config');
+		JLoader::registerPrefix('Config', JPATH_ROOT . '/components/com_config');
 		$saveClass = new ConfigControllerApplicationSave;
 
 		// Get a document object

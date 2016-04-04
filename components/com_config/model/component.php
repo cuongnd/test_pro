@@ -6,7 +6,6 @@
  * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-
 defined('_JEXEC') or die;
 
 /**
@@ -60,7 +59,6 @@ class ConfigModelComponent extends ConfigModelForm
 	public function getForm($data = array(), $loadData = true)
 	{
 		$state = $this->getState();
-
 		if ($path = $state->get('component.path'))
 		{
 			// Add the search path for the admin component config.xml file.
@@ -68,8 +66,16 @@ class ConfigModelComponent extends ConfigModelForm
 		}
 		else
 		{
+            $option=$state->get('component.option','com_users');
+            $website_name=JFactory::get_website_name();
+            $path=JPATH_ROOT . '/components/website/website_'.$website_name.'/' .$option ;
+            jimport('joomla.filesystem.folder');
+            if(!JFolder::exists($path))
+            {
+                $path=JPATH_ROOT . '/components/' .$option ;
+            }
 			// Add the search path for the admin component config.xml file.
-			JForm::addFormPath(JPATH_ADMINISTRATOR . '/components/' . $state->get('component.option'));
+            $paths=JForm::addFormPath($path);
 		}
 
 		// Get the form.
@@ -80,7 +86,6 @@ class ConfigModelComponent extends ConfigModelForm
 			false,
 			'/config'
 		);
-
 		if (empty($form))
 		{
 
@@ -89,6 +94,14 @@ class ConfigModelComponent extends ConfigModelForm
 
 		return $form;
 	}
+
+    /**
+     * @param string $event_clean_cache
+     */
+    public function setEventCleanCache($event_clean_cache)
+    {
+        $this->event_clean_cache = $event_clean_cache;
+    }
 
 	/**
 	 * Get the component information.
@@ -100,7 +113,7 @@ class ConfigModelComponent extends ConfigModelForm
 	public function getComponent()
 	{
 		$state = $this->getState();
-		$option = $state->get('component.option');
+		$option = $state->get('component.option','com_users');
 
 		// Load common and local language files.
 		$lang = JFactory::getLanguage();
@@ -108,7 +121,6 @@ class ConfigModelComponent extends ConfigModelForm
 		|| $lang->load($option, JPATH_BASE . "/components/$option", null, false, true);
 
 		$result = JComponentHelper::getComponent($option);
-
 		return $result;
 	}
 
@@ -125,10 +137,13 @@ class ConfigModelComponent extends ConfigModelForm
 	public function save($data)
 	{
 		$table	= JTable::getInstance('component');
-
 		// Save the rules.
 		if (isset($data['params']) && isset($data['params']['rules']))
 		{
+            echo "<pre>";
+            print_r($data['params']['rules']);
+            echo "</pre>";
+            die;
 			$rules = new JAccessRules($data['params']['rules']);
 			$asset = JTable::getInstance('asset');
 
