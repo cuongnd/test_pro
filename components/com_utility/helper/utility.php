@@ -493,20 +493,21 @@ XML;
             $screen_size = UtilityHelper::getScreenSize();
         }
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables/');
-        $tablePosition=JTable::getInstance('positionnested');
+        $table_position=JTable::getInstance('positionnested');
 
         $website=JFactory::getWebsite();
 
-        $tablePosition->website_id=$website->website_id;
-        $tablePosition->parent_id=(int)$parentColumnId;
-        $tablePosition->menu_item_id=(int)$menu_item_id;
-        $tablePosition->type='row';
-        $tablePosition->screensize=$screen_size;
-        if(!$tablePosition->store())
+        $table_position->website_id=$website->website_id;
+        $table_position->parent_id=(int)$parentColumnId;
+        $table_position->menu_item_id=(int)$menu_item_id;
+        $table_position->type='row';
+        $table_position->screensize=$screen_size;
+        if(!$table_position->parent_store())
         {
-            echo $tablePosition->getError();
+            echo $table_position->getError();
+            die;
         }
-        return $tablePosition->id;
+        return $table_position->id;
     }
     public function InsertElementInScreen($screenSize,$parentColumnId,$menu_item_id,$type,$pathElement)
     {
@@ -526,7 +527,7 @@ XML;
         $tablePosition->ui_path=$pathElement;
         $tablePosition->screenSize=$screenSize;
 
-        if(!$tablePosition->store())
+        if(!$tablePosition->parent_store())
         {
             echo $tablePosition->getError();
         }

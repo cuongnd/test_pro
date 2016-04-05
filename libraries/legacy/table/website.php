@@ -312,7 +312,7 @@ class JTableWebsite extends JTable
         $query=$this->_db->getQuery(true);
         $query->select('COUNT(*)')
             ->from('#__website')
-            ->where('(title='.$query->q($this->title).' OR alias='.$query->q($this->alias).')')
+            ->where('(title='.$query->q($this->title).' OR alias='.$query->q($this->alias).' OR name='.$query->q($this->name).' )')
             ->where('id!='.(int)$this->id)
             ;
         $total=$this->_db->setQuery($query)->loadResult();

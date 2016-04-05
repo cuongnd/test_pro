@@ -186,7 +186,7 @@ class ModulesControllerModule extends JControllerForm
 		$query=$db->getQuery(true);
 		//	 * $query->insert('#__a')->set('id = 1');
 
-		$query->insert('#__modules_menu')->set('moduleid='.(int)$newModuleId.',menuid=0');
+		$query->insert('#__modules_menu')->set('moduleid='.(int)$newModuleId.',menuid=NULL');
 		$db->setQuery($query);
 		if(!$db->execute())
 		{

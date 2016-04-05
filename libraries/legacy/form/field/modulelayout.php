@@ -66,7 +66,7 @@ class JFormFieldModulelayout extends JFormField
 		{
 			$template_style_id = $this->form->getValue('template_style_id');
 		}
-
+        $website_name=JFactory::get_website_name();
 		$template_style_id = preg_replace('#\W#', '', $template_style_id);
 		// If an extension and view are present build the options.
 		if ($module && $client)
@@ -76,7 +76,7 @@ class JFormFieldModulelayout extends JFormField
 			$lang = JFactory::getLanguage();
 			$module_path=JPath::get_module_path($module);
 			$lang->load($module . '.sys', $client->path, null, false, true)
-				|| $lang->load($module . '.sys', $client->path . '/modules/website/website_'.$website->website_id.'/' . $module, null, false, true);
+				|| $lang->load($module . '.sys', $client->path . '/modules/website/website_'.$website_name.'/' . $module, null, false, true);
 
 			// Get the database object and a new query object.
 			$db = JFactory::getDbo();
@@ -106,7 +106,7 @@ class JFormFieldModulelayout extends JFormField
 
 			// Build the search paths for module layouts.
 
-			$module_path=$client->path . '/modules/website/website_'.$website->website_id.'/' . $module.'/tmpl';
+			$module_path=$client->path . '/modules/website/website_'.$website_name.'/' . $module.'/tmpl';
 			jimport('joomla.filesystem.folder');
 			if(!JFolder::exists($module_path))
 			{
@@ -147,10 +147,10 @@ class JFormFieldModulelayout extends JFormField
 					$lang->load('tpl_' . $template->element . '.sys', $client->path, null, false, true)
 						|| $lang->load('tpl_' . $template->element . '.sys', $client->path . '/templates/' . $template->element, null, false, true);
 
-					$template_path = $client->path . '/templates/' . $template->element . '/html/website/website_'.$website->website_id.'/' . $module.'/tmpl';
+					$template_path = $client->path . '/templates/' . $template->element . '/html/website/website_'.$website_name.'/' . $module.'/tmpl';
 					if(!JFolder::exists($template_path))
 					{
-						$template_path=$client->path . '/modules/website/website_'.$website->website_id.'/' . $module.'/tmpl';
+						$template_path=$client->path . '/modules/website/website_'.$website_name.'/' . $module.'/tmpl';
 					}
 					if(!JFolder::exists($template_path))
 					{

@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.5
  */
-class supperadminViewconfig extends JViewLegacy
+class supperadminViewdaskboard extends JViewLegacy
 {
 	protected $item;
 
@@ -29,8 +29,6 @@ class supperadminViewconfig extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-        $form = $this->model->getForm();
-        $component = $this->model->getComponent();
         $user = JFactory::getUser();
 		$this->state	= $this->get('State');
 		$this->item		= $this->get('Item');

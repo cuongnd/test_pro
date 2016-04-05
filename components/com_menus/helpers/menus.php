@@ -303,6 +303,30 @@ class MenusHelperFrontEnd
         return $root_menu_item_id;
     }
 
+    public static function get_all_menu_item_not_root_menu_item($website_id)
+    {
+        $list_menu_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website_id);
+        $list_menu_item_return=array();
+        foreach($list_menu_item as $item)
+        {
+            if($item->title=='Menu_item_root' OR $item->alias=='root')
+            {
+                continue;
+            }else{
+                $list_menu_item_return[]=$item;
+            }
+        }
+        return $list_menu_item_return;
+    }
+
+    public static function get_menu_item_by_menu_item_id($menu_item_id)
+    {
+        $website=JFactory::getWebsite();
+        $list_menu_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website->website_id);
+        $list_menu_item=JArrayHelper::pivot($list_menu_item,'id');
+        return $list_menu_item[$menu_item_id];
+    }
+
     public function getMenuTypesByWebsiteId($website_id=0)
     {
         $db=JFactory::getDbo();

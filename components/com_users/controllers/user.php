@@ -1,5 +1,5 @@
 <?php
-require_once  JPATH_ROOT.'/libraries/facebook-php-sdk-v4-master/src/Facebook/autoload.php';
+//require_once  JPATH_ROOT.'/libraries/facebook-php-sdk-v4-master/src/Facebook/autoload.php';
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
@@ -42,7 +42,6 @@ class UsersControllerUser extends UsersController
 		$app    = JFactory::getApplication();
 		$input  = $app->input;
 		$method = $input->getMethod();
-
 		// Populate the data array:
 		$data = array();
 		$data['return']    = base64_decode($app->input->post->get('return', '', 'BASE64'));

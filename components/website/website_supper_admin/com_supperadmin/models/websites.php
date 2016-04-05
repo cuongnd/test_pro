@@ -138,7 +138,7 @@ class supperadminModelwebsites extends JModelList
 		)
 			->from($db->quoteName('#__website') . ' AS a')
             ->leftJoin('#__domain_website AS domain_website ON domain_website.website_id=a.id')
-            ->select("GROUP_CONCAT(DISTINCT domain_website.domain ORDER BY domain_website.domain SEPARATOR '<br/>') AS list_domain")
+            ->select("GROUP_CONCAT(DISTINCT CONCAT(domain_website.domain,' ','<a target=\"_blank\" href=\"http://www.',domain_website.domain,'\"> <i class=\"fa-external-link\"></i></a>') ORDER BY domain_website.domain SEPARATOR '<br/>') AS list_domain")
             ->group('a.id')
         ;
 

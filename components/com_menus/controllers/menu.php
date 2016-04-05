@@ -31,7 +31,65 @@ class MenusControllerMenu extends JControllerForm
 	{
 		$this->setRedirect(JRoute::_('index.php?option=com_menus&view=menus', false));
 	}
-
+    public function ajax_create_new_menu_type(){
+        $website=JFactory::getWebsite();
+        $app      = JFactory::getApplication();
+        $input=$app->input;
+        $menu_type=$input->getString('menu_type_name','');
+        require_once JPATH_ROOT . '/libraries/legacy/table/menu/type.php';
+        $table_menu_type = JTable::getInstance('menutype', 'JTable');
+        $table_menu_type->menutype=$menu_type;
+        $table_menu_type->title=$menu_type;
+        $table_menu_type->description=$menu_type;
+        $table_menu_type->website_id=$website->website_id;
+        $result = new stdClass();
+        $result->e = 0;
+        $ok = $table_menu_type->check();
+        if (!$ok) {
+            $result->e = 1;
+            $result->m = $table_menu_type->getError();
+            echo json_encode($result);
+            die;
+        }
+        $ok = $table_menu_type->store();
+        if (!$ok) {
+            $result->e = 1;
+            $result->m = $table_menu_type->getError();
+            echo json_encode($result);
+            die;
+        }
+        $table_menu_item = JTable::getInstance('Menu');
+        $table_menu_item->id = 0;
+        $table_menu_item->title = 'Menu_item_root';
+        $table_menu_item->alias = 'root';
+        $ok = $table_menu_item->check();
+        if (!$ok) {
+            $result->e = 1;
+            $result->m = $table_menu_item->getError();
+            echo json_encode($result);
+            die;
+        }
+        if (!$table_menu_item->parent_store()) {
+            $result->e = 1;
+            $result->m = $table_menu_item->getError();
+            echo json_encode($result);
+            die;
+        }
+        $table_menu_item_menu_type = JTable::getInstance('menuitemmenutype');
+        $table_menu_item_menu_type->id=0;
+        $table_menu_item_menu_type->menu_type_id = $table_menu_type->id;
+        $table_menu_item_menu_type->menu_id =  $table_menu_item->id;
+        $ok = $table_menu_item_menu_type->store();
+        if (!$ok) {
+            $result->e = 1;
+            $result->m = $table_menu_item_menu_type->getError();
+            echo json_encode($result);
+            die;
+        }
+        $result->m = "create new menu type successfully";
+        echo json_encode($result);
+        die;
+    }
 	/**
 	 * Method to save a menu item.
 	 *

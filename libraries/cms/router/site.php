@@ -490,7 +490,9 @@ class JRouterSite extends JRouter
         }
         if(!$Itemid&&$tmpl=='')
         {
-            $items=$menu->getItems();
+            $website=JFactory::getWebsite();
+            $items=MenusHelperFrontEnd::get_all_menu_item_not_root_menu_item($website->website_id);
+            $list_vars2=$this->getVars();
             foreach($items as $item)
             {
                 $link=$item->link;
@@ -548,8 +550,19 @@ class JRouterSite extends JRouter
             }
 
         }
-        if($this->getVar('Itemid')) {
-            $menu->setActive($this->getVar('Itemid'));
+        if($menu_item_id=$this->getVar('Itemid')) {
+
+            $item=MenusHelperFrontEnd::get_menu_item_by_menu_item_id($menu_item_id);
+            if($item) {
+                $link = $item->link;
+                $uri_link = JUri::getInstance($link);
+                $list_vars1 = $uri_link->getVars();
+                foreach($list_vars1 AS $key=>$value){
+                    $vars[$key]=$value;
+                }
+            }
+            $menu->setActive($menu_item_id);
+
         }
 		return $vars;
 	}

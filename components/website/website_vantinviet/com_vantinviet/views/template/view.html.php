@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_gianhang
+ * @subpackage  com_supperadmin
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -10,13 +10,13 @@
 defined('_JEXEC') or die;
 
 /**
- * View class for a list of homepage.
+ * View class for a list of domains.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_gianhang
+ * @subpackage  com_supperadmin
  * @since       1.5
  */
-class gianhangViewhomepage extends JViewLegacy
+class supperadminViewdomains extends JViewLegacy
 {
 	protected $items;
 
@@ -57,20 +57,20 @@ class gianhangViewhomepage extends JViewLegacy
 		if (!count($this->items))
 		{
 			JFactory::getApplication()->enqueueMessage(
-				JText::_('com_gianhang_MSG_MANAGE_NO_gianhang'),
+				JText::_('COM_supperadmin_MSG_MANAGE_NO_supperadmin'),
 				'warning'
 			);
 		}
 
-        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('homepage.quick_assign_website');
+        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('domains.quick_assign_website');
 		$this->addToolbar();
         $this->addCommand();
 		parent::display($tpl);
 	}
     function addCommand()
     {
-        $this->command='com_gianhang';
-        $this->controller_task='homepage.ajaxSaveForm';
+        $this->command='com_supperadmin';
+        $this->controller_task='domains.ajaxSaveForm';
     }
 	/**
 	 * Add the page title and toolbar.
@@ -79,8 +79,8 @@ class gianhangViewhomepage extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/com_gianhang/helpers/homepage.php';
-		$canDo = JHelperContent::getActions('com_gianhang');
+		require_once JPATH_ROOT.'/components/com_supperadmin/helpers/domains.php';
+		$canDo = JHelperContent::getActions('com_supperadmin');
         $bar = JToolBar::getInstance('toolbar');
 		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
         if ($canDo->get('core.create'))
@@ -96,40 +96,69 @@ class gianhangViewhomepage extends JViewLegacy
 		}
         if ($canDo->get('core.create'))
         {
-            JToolbarHelper::custom('homepage.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
+            JToolbarHelper::custom('domains.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
         }
-		JToolbarHelper::duplicate('homepage.duplicate');
+		JToolbarHelper::duplicate('domains.duplicate');
 		if ($canDo->get('core.edit.state'))
 		{
-			JToolbarHelper::publish('homepage.publish', 'JTOOLBAR_ENABLE', true);
-			JToolbarHelper::unpublish('homepage.unpublish', 'JTOOLBAR_DISABLE', true);
-			JToolbarHelper::checkin('homepage.checkin');
+			JToolbarHelper::publish('domains.publish', 'JTOOLBAR_ENABLE', true);
+			JToolbarHelper::unpublish('domains.unpublish', 'JTOOLBAR_DISABLE', true);
+			JToolbarHelper::checkin('domains.checkin');
 		}
         if ($this->state->get('filter.published') == -2)
         {
-            JToolbarHelper::deleteList('', 'homepage.delete', 'JTOOLBAR_EMPTY_TRASH');
+            JToolbarHelper::deleteList('', 'domains.delete', 'JTOOLBAR_EMPTY_TRASH');
         }
         elseif ($canDo->get('core.edit.state'))
         {
-            JToolbarHelper::trash('homepage.trash');
+            JToolbarHelper::trash('domains.trash');
         }
-        JToolbarHelper::publish('homepage.issystem','Is system');
-        JToolbarHelper::unpublish('homepage.isnotsystem','Is system');
+        JToolbarHelper::publish('domains.issystem','Is system');
+        JToolbarHelper::unpublish('domains.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
-			JToolbarHelper::preferences('com_gianhang');
+			JToolbarHelper::preferences('com_supperadmin');
 		}
 
-		JToolbarHelper::help('JHELP_homepage_component_MANAGER');
+		JToolbarHelper::help('JHELP_domains_component_MANAGER');
 
-		JHtmlSidebar::setAction('index.php?option=com_gianhang&view=gianhang');
+		JHtmlSidebar::setAction('index.php?option=com_supperadmin&view=supperadmin');
 
+        $supperAdmin=JFactory::isSupperAdmin();
+        if($supperAdmin){
+            $option1=new stdClass();
+            $option1->id=-1;
+            $option1->title="Run for all";
+            $listWebsite1[]=$option1;
+            $option1=new stdClass();
+            $option1->id=-0;
+            $option1->title="None";
+            $listWebsite1[]=$option1;
+            $listWebsite2= websiteHelperFrontEnd::getdomains();
+            $listWebsite=array_merge($listWebsite1,$listWebsite2);
+            JHtmlSidebar::addFilter(
+                JText::_('JOPTION_SELECT_WEBSITE'),
+                'filter_website_id',
+                JHtml::_('select.options',$listWebsite, 'id', 'title', $this->state->get('filter.website_id'))
+            );
+        }
 		JHtmlSidebar::addFilter(
 				JText::_('JOPTION_SELECT_PUBLISHED'),
 				'filter_enabled',
-				JHtml::_('select.options', homepageHelper::publishedOptions(), 'value', 'text', $this->state->get('filter.enabled'), true)
+				JHtml::_('select.options', domainsHelper::publishedOptions(), 'value', 'text', $this->state->get('filter.enabled'), true)
 		);
 
+		JHtmlSidebar::addFilter(
+				JText::_('folder'),
+				'filter_folder',
+				JHtml::_('select.options', domainsHelper::folderOptions(), 'value', 'text', $this->state->get('filter.folder'))
+		);
+
+		JHtmlSidebar::addFilter(
+				JText::_('JOPTION_SELECT_ACCESS'),
+				'filter_access',
+				JHtml::_('select.options', JHtml::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
+		);
 
 		$this->sidebar = JHtmlSidebar::render();
 

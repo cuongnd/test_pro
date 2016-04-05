@@ -16,9 +16,10 @@ require_once JPATH_ROOT . '/libraries/joomla/form/field.php';
 require_once JPATH_ROOT . '/libraries/joomla/form/fields/radioyesno.php';
 
 $website=JFactory::getWebsite();
+$website_name=JFactory::get_website_name();
 $ui_path = $item->module;
 $table_control = new JTableUpdateTable($db, 'control');
-$element_path='modules/website/website_'.$website->website_id.'/' . $ui_path;
+$element_path='modules/website/website_'.$website_name.'/' . $ui_path;
 
 jimport('joomla.filesystem.folder');
 if(!JFolder::exists(JPATH_ROOT.DS.$element_path))
@@ -35,7 +36,6 @@ $table_control->load(
 );
 $fields = $table_control->fields;
 $fields = base64_decode($fields);
-
 require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
 require_once JPATH_ROOT.'/components/com_modules/helpers/module.php';
 $fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);

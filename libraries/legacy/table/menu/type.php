@@ -38,32 +38,14 @@ class JTableMenuType extends JTable
 	 * @see     JTable::check()
 	 * @since   11.1
 	 */
-	public function check()
+	public function check($website_id=0)
 	{
-        $supperAdmin=JFactory::isSupperAdmin();
-        if($supperAdmin)
+        if(!$website_id)
         {
-            if (!$this->website_id)
-            {
-                $this->setError(JText::_('JLIB_DATABASE_ERROR_WEBSITE_EMPTY'));
-                return false;
-            }
+            $website=JFactory::getWebsite();
+            $website_id=$website->website_id;
         }
-        else
-        {
-            $app=JFactory::getApplication();
-            $option=$app->input->getString('option','');
-            if($app->getClientId()==0&&$option=='com_website')
-            {
 
-            }
-            else
-            {
-                $website=JFactory::getWebsite();
-                $this->website_id=$website->website_id;
-            }
-
-        }
 		$this->menutype = JApplication::stringURLSafe($this->menutype);
 
 		if (empty($this->menutype))
@@ -80,31 +62,13 @@ class JTableMenuType extends JTable
 		}
 
 		// Check for unique menutype.
-		$query = $this->_db->getQuery(true)
-			->select('COUNT(id)')
+		$query = $this->_db->getQuery(true);
+			$query->select('COUNT(id)')
 			->from($this->_db->quoteName('#__menu_types'))
-			->where($this->_db->quoteName('menutype') . ' = ' . $this->_db->quote($this->menutype))
-			->where($this->_db->quoteName('id') . ' <> ' . (int) $this->id);
-        if($supperAdmin)
-        {
-                $query->where('website_id='.(int)$this->website_id);
-        }
-        else
-        {
-            $app=JFactory::getApplication();
-            $option=$app->input->getString('option','');
-            if($app->getClientId()==0&&$option=='com_website')
-            {
-                $query->where('website_id='.(int)$this->website_id);
-            }
-            else
-            {
-                $website=JFactory::getWebsite();
-                $this->website_id=$website->website_id;
-                $query->where('website_id='.(int)$this->website_id);
-            }
-
-        }
+			->where($this->_db->quoteName('id') . ' <> ' . (int) $this->id)
+            ->where('website_id='.(int)$website_id)
+            ->where('menutype='.$query->q($this->menutype))
+        ;
         $this->_db->setQuery($query);
 
 		if ($this->_db->loadResult())
