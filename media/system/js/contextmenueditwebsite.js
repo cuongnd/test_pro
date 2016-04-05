@@ -154,6 +154,7 @@ jQuery(document).ready(function ($) {
                             copy_object_id: contextMenuUtil.copy_object_id,
                             copy_element_type: contextMenuUtil.copy_element_type,
                             past_object_id: past_object_id,
+                            enable_load_component: 1,
                             past_element_type: past_element_type,
                         };
                         return dataPost;
@@ -189,6 +190,7 @@ jQuery(document).ready(function ($) {
                         option: 'com_modules',
                         task: 'module.copyModule',
                         view: 'module',
+                        enable_load_component: 1,
                         tmpl: 'ajax_json'
                     };
                     return dataPost;
@@ -233,6 +235,7 @@ jQuery(document).ready(function ($) {
                             move_element_type: contextMenuUtil.move_element_type,
                             past_object_id: past_object_id,
                             past_element_type: past_element_type,
+                            enable_load_component: 1,
                             view: 'blocks',
                             tmpl: 'ajax_json'
                         };
@@ -280,6 +283,7 @@ jQuery(document).ready(function ($) {
                     dataPost = {
                         option: 'com_modules',
                         task: 'module.moveModule',
+                        enable_load_component: 1,
                         view: 'module',
                         tmpl: 'ajax_json'
                     };
@@ -318,6 +322,7 @@ jQuery(document).ready(function ($) {
                         option: 'com_components',
                         task: 'component.moveComponent',
                         view: 'component',
+                        enable_load_component: 1,
                         tmpl: 'ajax_json'
                     };
                     return dataPost;
@@ -405,6 +410,7 @@ jQuery(document).ready(function ($) {
                             option: 'com_utility',
                             task: 'utility.ajaxDuplicateBlock',
                             view: 'blocks',
+                            enable_load_component: 1,
                             block_id: block_id,
                             element_type: element_type,
                             tmpl: 'ajax_json'
@@ -510,6 +516,7 @@ jQuery(document).ready(function ($) {
                     option: 'com_utility',
                     task: 'blocks.ajax_copy_block_from_orther_website',
                     website: website,
+                    enable_load_component: 1,
                     menu_active_id: menuItemActiveId
 
                 };
@@ -592,6 +599,7 @@ jQuery(document).ready(function ($) {
                     option: 'com_phpmyadmin',
                     task: 'datasources.ajax_copy_database_from_orther_website',
                     website: website,
+                    enable_load_component: 1,
                     menu_active_id: menuItemActiveId
 
                 };

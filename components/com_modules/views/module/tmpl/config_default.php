@@ -30,10 +30,11 @@ $filter = array(
 if ($id != 0) {
     $filter['id'] = $id;
 }
+$website_name=JFactory::get_website_name();
 if ($element_path == module_helper::MODULE_ROOT_NAME) {
     $filter['element_path'] = module_helper::MODULE_ROOT_NAME;
 } else {
-    $filter['element_path'] = 'modules/website/website_' . $website->website_id . '/' . $element_path;
+    $filter['element_path'] = 'modules/website/website_' . $website_name . '/' . $element_path;
     $filter['website_id'] = $website->website_id;
 }
 $table_control->load($filter);
@@ -44,7 +45,7 @@ if (!$table_control->id) {
         $table_control->element_path = module_helper::MODULE_ROOT_NAME;
     } else {
         $table_control->website_id = $website->website_id;
-        $table_control->element_path = 'modules/website/website_' . $website->website_id . '/' . $element_path;
+        $table_control->element_path = 'modules/website/website_' . $website_name . '/' . $element_path;
     }
     $table_control->type = module_helper::ELEMENT_TYPE;
     $ok = $table_control->store();
