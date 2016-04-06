@@ -360,6 +360,15 @@ abstract class JFormField
         return $list_path;
     }
 
+    public static function get_list_type_must_change_params_when_create_website()
+    {
+        return array(
+            'menu',
+            'menuitem',
+            'selectblock'
+        );
+    }
+
     /**
      * Method to get certain otherwise inaccessible properties from the form field object.
      *

@@ -137,6 +137,7 @@
                 {
                     $('.field_your_domain').show();
                     $('.field_suggestionyourdomain').show();
+
                 }
                 else
                 {
@@ -147,7 +148,7 @@
 
             $.validator.setDefaults({ ignore: ":hidden:not(select)" });
             plugin.create_form=$element.find('#create-website-form').validate({
-                ignore: ":hidden",
+                ignore: ":hidden:not(select)",
                 rules:{
                     your_domain:{
                         required:true,

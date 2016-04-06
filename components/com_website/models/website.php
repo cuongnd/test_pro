@@ -111,8 +111,8 @@ class WebsiteModelWebsite extends JModelAdmin
         $steps[] = 'createPlugins';
         $steps[] = 'createStyles';
         $steps[] = 'createMenus';
-        $steps[] = 'changeParams';
         $steps[] = 'createControl';
+        $steps[] = 'changeParams';
         $steps[] = 'createContentCategory';
         $session = JFactory::getSession();
         $website_id = $session->get('website_id', 0);
@@ -635,12 +635,18 @@ class WebsiteModelWebsite extends JModelAdmin
             ->where('control.website_id=' . (int)$website_template_id);
         $list_control = $db->setQuery($query)->loadObjectList();
         $list_older_control = array();
+        $website_name=websiteHelperFrontEnd::get_website_name_by_website_id($website_id);
+        $website_name_template=websiteHelperFrontEnd::get_website_name_by_website_id($website_template_id);
         $table_control=JTable::getInstance('control');
         foreach ($list_control AS $control) {
             $table_control->bind($control);
             $table_control->id=0;
             $element_path=$control->element_path;
-            $element_path=str_replace("website_$website_template_id","website_$website_id",$element_path);
+            $type=$table_control->type;
+            if($type=='module')
+            {
+                $element_path=str_replace("website_$website_name_template","website_$website_name",$element_path);
+            }
             $table_control->element_path= $element_path;
             $table_control->website_id=$website_id;
             $ok = $table_control->store();
@@ -794,9 +800,6 @@ class WebsiteModelWebsite extends JModelAdmin
             $table_menu->id = 0;
             $table_menu->copy_from = $menu->id;
             $ok = $table_menu->check();
-            if (!$ok) {
-                throw new Exception($table_menu->getError());
-            }
             $ok = $table_menu->parent_store();
             if (!$ok) {
                 throw new Exception($table_menu->getError());
@@ -840,10 +843,6 @@ class WebsiteModelWebsite extends JModelAdmin
                             $table_menu->copy_from = $v->id;
                             $table_menu->parent_id = $new_menu_item_id;
                             $table_menu->getDbo()->rebuild_action = 1;
-                            $ok = $table_menu->check();
-                            if (!$ok) {
-                                throw new Exception($table_menu->getError());
-                            }
                             $ok = $table_menu->parent_store();
                             if (!$ok) {
                                 throw new Exception($table_menu->getError());
@@ -1113,6 +1112,7 @@ class WebsiteModelWebsite extends JModelAdmin
             $website_template_id = websiteHelperFrontEnd::getOneTemplateWebsite();
         }
         $list_menu_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website_id);
+
         $list_menu_item=JArrayHelper::pivot($list_menu_item,'copy_from');
         $table_menu=JTable::getInstance('menu');
         foreach($list_menu_item AS $menu_item)
@@ -1123,11 +1123,31 @@ class WebsiteModelWebsite extends JModelAdmin
             $use_main_frame=$params->get('use_main_frame',0);
             $params->set('use_main_frame',$list_menu_item[$use_main_frame]->id);
             $table_menu->params=$params->toString();
-            $ok = $table_menu->store();
+            $ok = $table_menu->parent_store();
             if (!$ok) {
                 throw new Exception($table_menu->getError());
             }
         }
+        //update param module
+
+        $list_module=JModuleHelper::get_list_module_by_website_id($website_id);
+        $table_module=JTable::getInstance('module');
+        foreach($list_module AS $module)
+        {
+            $params=$module->params;
+            $control=JControlHelper::get_control_module_by_module_id($module->id);
+            $str_params=JModuleHelper::change_param_module_by_fields($website_id,$params,$control->fields);
+            $table_module->load($module->id);
+            $table_module->params=$str_params;
+            $ok=$table_module->store();
+            if (!$ok) {
+                throw new Exception($table_module->getError());
+            }
+        }
+        //update params blocks
+        //update params component
+        //update params plugins
+
         return true;
     }
 
@@ -1254,7 +1274,7 @@ class WebsiteModelWebsite extends JModelAdmin
                     $this->setError("Cannot copy file configuration");
                 }
             }
-            $fileWebStore = $domainWebsite->domain . '.ini';
+            $fileWebStore =strtolower($domainWebsite->domain . '.ini');
             if (!JFile::write($pathFolderWebStore . $fileWebStore, $domainWebsite->website_id)) {
                 $this->setError("can not create and write file webstore");
             }

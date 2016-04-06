@@ -38,29 +38,36 @@ class JFormFieldMenu extends JFormFieldList
 	 *
 	 * @since   1.6
 	 */
-	protected function getOptions()
+	protected function getInput()
 	{
-        require_once JPATH_ROOT.'/administrator/components/com_website/helpers/website.php';
-        $listMenuType=JHtml::_('menu.menus');
-        $listWebsite=websiteHelperBackend::getForAllWebsiteType();
-        $option=array();
-        foreach($listWebsite as $website)
-        {
-            $option[] = JHTML::_('select.option', '<OPTGROUP>',$website->title);
-            foreach($listMenuType as $menuType)
-            {
-                if($menuType->website_id==$website->id)
-                {
-                    $option[] = JHTML::_('select.option', $menuType->id,$menuType->title);
-                }
-            }
+        $website=JFactory::getWebsite();
+        $list_menu_type=MenusHelperFrontEnd::get_list_menu_type_by_website_id($website->website_id);
+        $option=array(
+            'id'=>'',
+            'title'=>'please select menu type'
+        );
+        array_unshift($list_menu_type,$option);
+        $attr='';
+        $attr .= !empty($this->class) ? ' class="' . $this->class . '"' : '';
+        $attr .= !empty($this->size) ? ' size="' . $this->size . '"' : '';
+        $attr .= $this->multiple ? ' multiple' : '';
+        $attr .= $this->required ? ' required aria-required="true"' : '';
+        $attr .= $this->autofocus ? ' autofocus' : '';
+        return JHtml::_('select.genericlist',$list_menu_type,$this->name,$attr,'id','title',$this->value);
 
-
-        }
-
-		// Merge any additional options in the XML definition.
-		$options = array_merge(parent::getOptions(), $option);
-
-		return $options;
 	}
+    public static function get_new_value_by_old_value($website_id,$params,$path){
+        $menu_item_id=$params->get($path,0);
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('id')
+            ->from('#__menu_types')
+            ->where('copy_from='.(int)$menu_item_id)
+            ->where('website_id='.(int)$website_id)
+            ;
+        $db->setQuery($query);
+
+        $menu_item_id=$db->loadResult();
+        return $menu_item_id;
+    }
 }

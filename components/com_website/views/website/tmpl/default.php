@@ -9,7 +9,7 @@ $doc->addScript(JUri::root() . '/media/system/js/jquery-validation-1.13.1/dist/j
 $doc->addScript(JUri::root() . '/media/jui_front_end/bootstrap-3.3.0/dist/js/bootstrap.js');
 $doc->addScript(JUri::root() . '/components/com_website/assets/js/view_website_default.js');
 require_once JPATH_ROOT.'/components/com_website/helpers/website.php';
-$list_websie_enable_create_sub_domain=websiteHelperFrontEnd::get_list_websie_enable_create_sub_domain();
+$list_websie_enable_create_sub_domain=websiteHelperFrontEnd::get_list_website_enable_create_sub_domain();
 
 $option=array(
     'id'=>'',
@@ -63,7 +63,7 @@ $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
             <div class="form-group">
                 <label for="virtuemart_category_id" class="col-sm-2 control-label"><?php echo JText::_('Category') ?></label>
                 <div class="col-sm-10">
-                    <?php echo JHtml::_('select.genericlist',$list_category,'virtuemart_category_id',array('class'=>'required'),'virtuemart_category_id','tree_category'); ?>
+                    <?php //echo JHtml::_('select.genericlist',$list_category,'virtuemart_category_id',array('class'=>'required'),'virtuemart_category_id','tree_category'); ?>
                 </div>
             </div>
 
@@ -114,7 +114,7 @@ $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
                         <div class="input-group-addon">
 
 
-                            <?php echo JHtml::_('select.genericlist',$list_websie_enable_create_sub_domain,'domain',array('class'=>'required'),'id','domain'); ?>
+                            <?php echo JHtml::_('select.genericlist',$list_websie_enable_create_sub_domain,'domain_id',array('class'=>'required'),'id','domain'); ?>
                         </div><!-- /btn-group -->
                         <div class="input-group-addon">
                             <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="top"

@@ -610,11 +610,16 @@ class JTableMenu extends JTable
     {
         if($this->parent_id!=0 &&($this->title=='Menu_Item_Root'||$this->alias=='root'))
         {
+            echo "<pre>";
+            print_r(JUtility::printDebugBacktrace());
+            echo "</pre>";
+            die;
             $this->setError('children menu item not name is "Menu_Item_Root" and alias not name "root"');
             return false;
         }
         $website=JFactory::getWebsite();
-        $list_all_menu_item_id_of_website=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website->website_id);
+        $website_id=$website->website_id;
+        $list_all_menu_item_id_of_website=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website_id);
         if(($key = array_search($this->id, $list_all_menu_item_id_of_website)) !== false) {
             unset($list_all_menu_item_id_of_website[$key]);
         }
@@ -660,12 +665,6 @@ class JTableMenu extends JTable
      */
     public function store($updateNulls = false)
     {
-        if($this->parent_id!=0 && $this->alias=='root')
-        {
-
-            $this->setError('children menu item not name is "Menu_Item_Root" and alias not name "root"');
-            return false;
-        }
 
         $k = $this->_tbl_key;
         $this->init();
@@ -848,12 +847,6 @@ class JTableMenu extends JTable
     }
     public function parent_store()
     {
-        if($this->parent_id!=0 &&$this->alias=='root')
-        {
-
-            $this->setError('children menu item not name is "Menu_Item_Root" and alias not name "root"');
-            return false;
-        }
 
         return parent::store();
     }

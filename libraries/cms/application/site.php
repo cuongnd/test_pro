@@ -180,8 +180,8 @@ final class JApplicationSite extends JApplicationCms
 
         $view=$this->input->get('view',substr($component,4));
         $layout=$this->input->get('layout','default');
-
-        $element_path="components/website/website_$website->website_id/$component/views/$view/tmpl/$layout.xml";
+        $website_name=JFactory::get_website_name();
+        $element_path="components/website/website_$website_name/$component/views/$view/tmpl/$layout.xml";
         if(!JFile::exists(JPATH_ROOT.'/'.$element_path))
         {
             $element_path="components/$component/$view/tmpl/$layout.xml";

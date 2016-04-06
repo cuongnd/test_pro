@@ -78,6 +78,41 @@ class websiteHelperFrontEnd
         return array_keys($list_domain);
     }
 
+    public static function get_domain_name_by_domain_id($domain_id)
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->from('#__domain_website AS domain_website')
+            ->select('domain_website.*')
+            ->where('(domain_website.website_id='.(int)$website_id.' OR domain_website.website_id IS NULL)')
+        ;
+        $db->setQuery($query);
+        $list_domain=$db->loadObjectList();
+        $list_domain=JArrayHelper::pivot($list_domain,'id');
+        return array_keys($list_domain);
+    }
+
+    public static function check_domain_enable_create_website($domain_id)
+    {
+        $list_website_enalbe_create_sub_domain=websiteHelperFrontEnd::get_list_website_enable_create_sub_domain();
+        $list_website_enalbe_create_sub_domain=JArrayHelper::pivot($list_website_enalbe_create_sub_domain,'id');
+        return $list_website_enalbe_create_sub_domain[$domain_id];
+    }
+
+    private static function is_website_supper_admin()
+    {
+        $website=JFactory::getWebsite();
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('website.id')
+            ->from('#__website AS website')
+            ->where('website.supper_admin=1')
+            ->where('website.id='.(int)$website->website_id)
+            ;
+        $db->setQuery($query);
+        return $db->loadResult();
+    }
+
     /**
      * Configure the Linkbar.
      *
@@ -158,14 +193,17 @@ class websiteHelperFrontEnd
             self::create_tree_category_list($return_list_category, $category->virtuemart_category_id, $list_category, $level1);
         }
     }
-    public  function  get_list_websie_enable_create_sub_domain()
+    public  function  get_list_website_enable_create_sub_domain()
     {
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
         $query->select('*')
-            ->from('#__domain_website')
-            ->where('enable_create_subdomain=1')
-        ;
+            ->from('#__domain_website');
+        $is_website_supper_admin=websiteHelperFrontEnd::is_website_supper_admin();
+        if(!$is_website_supper_admin)
+        {
+            $query->where('enable_create_subdomain=1');
+        }
         return $db->setQuery($query)->loadObjectList();
     }
     public static function copy_rows_table($website_id,JTable $table_instance, $root_id, $id_name, $parent_id_name)

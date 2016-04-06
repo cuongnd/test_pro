@@ -34,6 +34,11 @@ $filter= array(
 $table_control->load(
     $filter
 );
+if(!$table_control->id)
+{
+    throw new Exception('please config module params');
+
+}
 $fields = $table_control->fields;
 $fields = base64_decode($fields);
 require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';

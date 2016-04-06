@@ -71,6 +71,10 @@ $doc->addScriptDeclaration($js_content);
 
                     }
                     foreach ($children[$root_menu_item_id] as $i => $item) {
+                        if($item->hidden==1)
+                        {
+                            continue;
+                        }
                         $root_menu_item_id1 = $item->id;
                         ?>
 

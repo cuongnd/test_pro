@@ -70,6 +70,7 @@ class WebsiteControllerWebsite extends JControllerForm
         $post=$input->getArray($_POST);
         $your_domain=$post['your_domain'];
         $sub_domain=$post['sub_domain'];
+        $domain_id=$post['domain_id'];
         $email=$post['email'];
         $session_website = JModelLegacy::getInstance('session_website');
         $session_website->load();
@@ -77,13 +78,12 @@ class WebsiteControllerWebsite extends JControllerForm
         $session_website->your_domain=$your_domain;
         $session_website->email=$email;
         $session_website->saveToSession();
-
-        $uri=JFactory::getURI();
-        $host=$uri->getHost();
-        $host=strtolower($host);
-        $host=str_replace('www.','',$host);
-        $host='.'.$host;
-        $sub_domain=$sub_domain.$host;
+        $domain=websiteHelperFrontEnd::check_domain_enable_create_website($domain_id);
+        if(!$domain)
+        {
+            $this->setRedirect('index.php?option=com_website&view=website','you cannot create website this domain');
+        }
+        $sub_domain="$sub_domain.$domain->domain";
         if($sub_domain!='')
         {
             $session=JFactory::getSession();

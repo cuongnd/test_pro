@@ -327,7 +327,9 @@ class MenusHelperFrontEnd
         return $list_menu_item[$menu_item_id];
     }
 
-    public function getMenuTypesByWebsiteId($website_id=0)
+
+
+    public function get_list_menu_type_by_website_id($website_id=0)
     {
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
