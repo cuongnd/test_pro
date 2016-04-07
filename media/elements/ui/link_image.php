@@ -89,7 +89,7 @@ class elementLink_ImageHelper extends  elementHelper
         ob_start();
         ?>
         <a data-method-submit="<?php echo $method_submit ?>" link-to-page="<?php echo $link_to_page ?>" type="<?php echo $button_type ?>" class="block-item block-item-link-image <?php echo $css_class ?> " href="<?php echo $link ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" id="<?php echo $id; ?>" element-type="<?php echo $block->type ?>">
-            <img src="<?php echo $image_source ?>">
+            <img src="<?php echo $image_source ?>" class="img-responsive">
             <?php if($text!=''){ ?><h5 style="text-align: center"><?php echo $text ?></h5><?php } ?>
         </a>
         <?php

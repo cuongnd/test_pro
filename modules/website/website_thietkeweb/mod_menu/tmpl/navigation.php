@@ -11,10 +11,10 @@ defined('_JEXEC') or die;
 JHtml::_('jquery.framework');
 JHTML::_('behavior.core');
 $doc = JFactory::getDocument();
-$doc->addScript(JUri::root() . '/modules/website/website_vantinviet/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/jquery.smartmenus.js');
-$doc->addScript(JUri::root() . '/modules/website/website_vantinviet/mod_menu/assets/navigation_menu.js');
-$doc->addStyleSheet(JUri::root() . '/modules/website/website_vantinviet/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-core-css.css');
-$doc->addStyleSheet(JUri::root() . '/modules/website/website_vantinviet/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/sm-blue.css');
+$doc->addScript(JUri::root() . '/modules/website/website_thietkeweb/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/jquery.smartmenus.js');
+$doc->addScript(JUri::root() . '/modules/website/website_thietkeweb/mod_menu/assets/navigation_menu.js');
+$doc->addStyleSheet(JUri::root() . '/modules/website/website_thietkeweb/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-core-css.css');
+$doc->addStyleSheet(JUri::root() . '/modules/website/website_thietkeweb/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/sm-blue.css');
 ob_start();
 ?>
 <script type="text/javascript">
@@ -71,10 +71,6 @@ $doc->addScriptDeclaration($js_content);
 
                     }
                     foreach ($children[$root_menu_item_id] as $i => $item) {
-                        if($item->hidden==1)
-                        {
-                            continue;
-                        }
                         $root_menu_item_id1 = $item->id;
                         ?>
 

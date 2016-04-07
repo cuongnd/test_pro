@@ -702,7 +702,8 @@ class ModulesModelModule extends JModelAdmin
 		}
 
 		$website=JFactory::getWebsite();
-		$ui_path= 'modules/website/website_'.$website->website_id.'/'.$item->module;
+        $website_name=JFactory::get_website_name();
+		$ui_path= 'modules/website/website_'.$website_name.'/'.$item->module;
 		jimport('joomla.filesystem.folder');
 		if(!JFolder::exists(JPATH_ROOT.DS.$ui_path))
 		{

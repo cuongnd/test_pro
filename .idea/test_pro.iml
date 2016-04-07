@@ -120,8 +120,6 @@
       <excludeFolder url="file://$MODULE_DIR$/libraries/PHP-SQL-Parser/libs" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/PHP-SQL-Parser/tests" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/PHPExcel-1.8" />
-      <excludeFolder url="file://$MODULE_DIR$/libraries/adminbackend" />
-      <excludeFolder url="file://$MODULE_DIR$/libraries/adminfrontend" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/array2xml-master" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/compat" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/cssmin" />

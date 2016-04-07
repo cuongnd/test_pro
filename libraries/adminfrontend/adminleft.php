@@ -49,6 +49,10 @@ $db=JFactory::getDbo();
             <button type=submit><i class="ec-search s20"></i></button>
         </form>
     </li>
+    <?php
+    $is_website_designing=JFactory::is_website_designing();
+    if($is_website_designing){
+    ?>
     <li><a href="index.php?option=com_bookpro">Dashboard <i class=im-screen></i></a></li>
     <li><a href="javascript:void(0)" class="link_javascript">Option <i class=im-paragraph-justify></i></a>
         <ul class="nav sub">
@@ -167,6 +171,16 @@ $db=JFactory::getDbo();
     </li>
     <li class="load_element"><a href="javascript:void(0)" class="link_ajax notExpand" data-type="element">Elements <i class=im-paragraph-justify></i><span class="element-property-manager"><i element-config="global_element_config" data-type="param_element" class="fa-list-alt"></i></span></a>
     </li>
+    <?php }else{
+        $website_name=JFactory::get_website_name();
+        $main_component="com_$website_name";
+        $main_component_path=JPath::get_component_path($main_component);
+        $file_admin_menu_left_path=$main_component_path.DS.'admin_menu_left.php';
+        if(file_exists($file_admin_menu_left_path))
+        {
+            require_once $file_admin_menu_left_path;
+        }
+    } ?>
 </ul>
 
 <?php

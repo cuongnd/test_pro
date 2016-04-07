@@ -3,7 +3,7 @@ JHtml::_('jquery.framework');
 $doc = JFactory::getDocument();
 $doc->addScriptNotCompile(JUri::root() . '/media/system/js/jquery-vertical-mega-menu-1/js/jquery.hoverIntent.js');
 $doc->addScriptNotCompile(JUri::root() . '/media/system/js/jquery-vertical-mega-menu-1/js/jquery.dcverticalmegamenu.1.1.js');
-$doc->addScriptNotCompile(JUri::root() . '/modules/website/website_39/mod_virtuemart_category/asset/js/verticalmegamenu.js');
+$doc->addScriptNotCompile(JUri::root() . '/modules/website/website_vantinviet/mod_virtuemart_category/asset/js/verticalmegamenu.js');
 $doc->addStyleSheet(JUri::root() . '/media/system/js/jquery-vertical-mega-menu-1/css/vertical_menu_basic.css');
 $doc->addStyleSheet(JUri::root() . '/media/system/js/jquery-vertical-mega-menu-1/css/vertical_menu.css');
 

@@ -1,6 +1,6 @@
 <?php
 $doc = JFactory::getDocument();
-$doc->addLessStyleSheet(JUri::root() . '/modules/website/website_39/mod_virtuemart_category/asset/less/homcategory.less');
+$doc->addLessStyleSheet(JUri::root() . '/modules/website/website_vantinviet/mod_virtuemart_category/asset/less/homcategory.less');
 $category_name = $params->get('config_layout.on_browser.home_page_category_config.category_name', '');
 $parent_category_id = $params->get('config_layout.on_browser.home_page_category_config.parent_category_id', 0);
 $parent_category_of_products = $params->get('config_layout.on_browser.home_page_category_config.parent_category_of_products', 0);

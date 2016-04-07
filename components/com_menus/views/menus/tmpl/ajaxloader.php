@@ -201,6 +201,12 @@ function create_html_list($root_id, $children, $binding_source)
                             ?>
                         </label>
                         <label>
+                            Menu item alias
+                            <?php
+                            //echo JHtml::_('access.level', 'access_level', $item->access, array("class" => 'menu_access_level'));
+                            ?>
+                        </label>
+                        <label>
                             Link
                             <?php
                             echo JHtml::_('input.text', '', 'link', $item->link, array("class" => 'menu_link', 'onchange' => "menu_ajax_loader.update_data_column(this,'link')"), '', 200);

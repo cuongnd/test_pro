@@ -481,7 +481,7 @@ if ($ajaxGetContent) {
             <div id=header-area class=fadeInDown>
                 <?php
 
-                //include JPATH_ROOT.'/libraries/adminfrontend/admintop.php';
+                include JPATH_ROOT.'/libraries/adminfrontend/admintop.php';
 
                 ?>
 

@@ -416,7 +416,8 @@ XML;
         $view=$uri_link->getVar('view',substr($option,4));
         $layout=$uri_link->getVar('layout','default');
         $website=JFactory::getWebsite();
-        $element_path="components/website/website_$website->website_id/$option/views/$view/tmpl/$layout.xml";
+        $website_name=JFactory::get_website_name();
+        $element_path="components/website/website_$website_name/$option/views/$view/tmpl/$layout.xml";
 		
         if(!JFile::exists(JPATH_ROOT.'/'.$element_path))
         {

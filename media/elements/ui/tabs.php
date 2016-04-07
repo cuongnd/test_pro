@@ -29,7 +29,8 @@ class elementTabsHelper extends  elementHelper
         $doc->addStyleSheet(JUri::root().'/media/system/js/Zozo_Tabs_v.6.5/css/zozo.examples.min.css');
         $doc->addStyleSheet(JUri::root().'/media/system/js/Zozo_Tabs_v.6.5/css/zozo.tabs.min.css');
         $doc->addStyleSheet(JUri::root() . "/$dirName/$filename.css");
-        $doc->addScript(JUri::root() . "/media/elements/ui/divrow.js");
+        if($enableEditWebsite)
+            $doc->addScript(JUri::root() . "/media/elements/ui/divrow.js");
         $doc->addScript(JUri::root() . "/$dirName/$filename.js");
         $doc->addScript(JUri::root().'/media/system/js/jquery-cookie-master/src/jquery.cookie.js');
         $html='';

@@ -60,12 +60,8 @@ jimport('joomla.filesystem.folder');
 
 
 $list_field_type = array();
-$list_path = array(
-    'libraries/joomla/form/fields',
-    'libraries/legacy/form/field',
-    'libraries/cms/form/field',
-    'administrator/components/com_virtuemart/elements'
-);
+$list_path=JFormField::get_list_field_path();
+
 
 foreach ($list_path as $path) {
     $_list_field_type = JFolder::files(JPATH_ROOT . '/' . $path, '.php');

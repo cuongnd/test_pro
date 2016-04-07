@@ -40,17 +40,17 @@ $doc->addScript(JUri::root().'/media/system/js/gridstack/src/gridstack.js');
 $doc->addStyleSheet(JUri::root().'/media/system/js/gridstack/src/gridstack.css');
 $doc->addScript(JUri::root().'/media/system/js/Nestable-master/jquery.nestable.js');
 if($enableEditWebsite) {
-    $doc->addScript(JUri::root() . '/templates/shoponline123/js/design.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/js/design.js');
 
 }else
 {
-    $doc->addScript(JUri::root() . '/templates/shoponline123/js/javascriptdisableedit.js');
-    $doc->addStyleSheet(JUri::root().'/templates/shoponline123/css/disableedit.css');
+    $doc->addScript(JUri::root() . '/templates/sprflat/js/javascriptdisableedit.js');
+    $doc->addStyleSheet(JUri::root().'/templates/sprflat/css/disableedit.css');
 
 }
 $doc->addScript(JUri::root().'/media/system/js/malihu-custom-scrollbar-plugin-3.0.7/js/minified/jquery.mousewheel.min.js');
 $doc->addScript(JUri::root().'/media/system/js/malihu-custom-scrollbar-plugin-3.0.7/jquery.mCustomScrollbar.js');
-$doc->addScript(JUri::root().'/templates/shoponline123/js/javascript.js');
+$doc->addScript(JUri::root().'/templates/sprflat/js/javascript.js');
 $doc->addStyleSheet(JUri::root().'/media/system/js/malihu-custom-scrollbar-plugin-3.0.7/jquery.mCustomScrollbar.css');
 $uri=JFactory::getURI();
 $host=$uri->getHost();

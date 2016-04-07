@@ -23,7 +23,8 @@ class elementFormWizardHelper extends  elementHelper
         $dirName=$pathInfo['dirname'];
         $doc=JFactory::getDocument();
         $doc->addStyleSheet(JUri::root() . "/$dirName/$filename.css");
-        $doc->addScript(JUri::root() . "/media/elements/ui/divrow.js");
+        if($enableEditWebsite)
+            $doc->addScript(JUri::root() . "/media/elements/ui/divrow.js");
         $doc->addScript(JUri::root() . "/$dirName/$filename.js");
 
         $params = new JRegistry;

@@ -17,7 +17,8 @@ defined('_JEXEC') or die(__FILE__);
 
 abstract class JFactory
 {
-	/**
+    const IS_WEBSITE_DESIGNING = true;
+    /**
 	 * Global application object
 	 *
 	 * @var    JApplicationCms
@@ -127,6 +128,20 @@ abstract class JFactory
 
 		return self::$application;
 	}
+    public static function is_website_supper_admin()
+    {
+        $website=JFactory::getWebsite();
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('website.id')
+            ->from('#__website AS website')
+            ->where('website.supper_admin=1')
+            ->where('website.id='.(int)$website->website_id)
+        ;
+        $db->setQuery($query);
+        return $db->loadResult();
+    }
+
     public static function isSupperAdmin()
     {
         $website=JFactory::getWebsite();
@@ -198,6 +213,14 @@ abstract class JFactory
 
 		return self::$config;
 	}
+
+    public static function is_website_designing()
+    {
+        $session=JFactory::getSession();
+        $is_website_designing=$session->get(self::IS_WEBSITE_DESIGNING,true);
+        return $is_website_designing;
+    }
+
     public function isSupperSite($domain='')
     {
 

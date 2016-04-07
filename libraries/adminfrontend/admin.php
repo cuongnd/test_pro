@@ -1,7 +1,5 @@
 <?php
 $doc=JFactory::getDocument();
-$doc->addStyleSheet(JUri::root().'/templates/sprflat/html/mod_menu/assets/admin.css');
-$doc->addScript(JUri::root().'/templates/sprflat/html/mod_menu/assets/admin.js');
 $uri=JFactory::getURI();
 $url=JUri::root();
 

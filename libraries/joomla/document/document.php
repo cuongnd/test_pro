@@ -444,6 +444,10 @@ class JDocument
         if (trim($host) == '') {
             $path=$uri->getPath();
             $path=JUtility::format_url($path);
+            if(!file_exists(JPATH_ROOT.DS.$path))
+            {
+                return;
+            }
             $uri = JUri::getInstance($current_url.$path);
         }
         $path = $uri->getPath();

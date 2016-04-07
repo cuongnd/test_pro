@@ -1,7 +1,5 @@
 <?php
 $doc=JFactory::getDocument();
-$doc->addStyleSheet(JUri::root().'/templates/shoponline123/html/mod_menu/assets/admin.css');
-$doc->addScript(JUri::root().'/templates/shoponline123/html/mod_menu/assets/admin.js');
 $uri=JFactory::getURI();
 $url=JUri::root();
 

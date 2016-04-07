@@ -19,7 +19,8 @@ class elementTabContentHelper extends elementHelper
         $dirName = $pathInfo['dirname'];
         $doc = JFactory::getDocument();
         $doc->addLessStyleSheet(JUri::root().'/media/elements/ui/tabcontent.less');
-        $doc->addScript(JUri::root() . '/media/elements/ui/divrow.js');
+        if($enableEditWebsite)
+            $doc->addScript(JUri::root() . '/media/elements/ui/divrow.js');
         $doc->addStyleSheet(JUri::root() . "/$dirName/$filename.css");
         $doc->addScript(JUri::root() . "/$dirName/$filename.js");
         $params = new JRegistry;
