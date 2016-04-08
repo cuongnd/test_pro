@@ -666,7 +666,7 @@ abstract class JHtmlBehavior
 		$script .= 'if(r){r.open("GET","./",true);r.send(null)}';
 		$script .= '},' . $refreshTime . ');';
 
-		$document->addScriptDeclaration($script);
+		$document->addScriptDeclaration($script,'','script_keepalive');
 		static::$loaded[__METHOD__] = true;
 
 		return;

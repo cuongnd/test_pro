@@ -25,7 +25,7 @@ defined('_JEXEC') or  die('Direct Access to ' . basename(__FILE__) . ' is not al
 
 require_once('helper.php');
 JHtml::_('jquery.framework');
-if (!class_exists('VmConfig')) require(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_virtuemart' . DS . 'helpers' . DS . 'config.php');
+if (!class_exists('VmConfig')) require(JPATH_ROOT . DS . 'components' . DS . 'com_virtuemart' . DS . 'helpers' . DS . 'config.php');
 vmJsApi::jQuery();
 vmJsApi::cssSite();
 $class_sfx = $params->get('class_sfx', '');

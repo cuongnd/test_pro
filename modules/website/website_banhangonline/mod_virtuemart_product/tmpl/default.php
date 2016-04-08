@@ -1,6 +1,5 @@
 <?php // no direct access
-echo  "sfsfsd";
-return;
+
 JHtml::_('jquery.framework');
 
 $doc = JFactory::getDocument();

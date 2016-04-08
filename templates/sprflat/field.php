@@ -56,7 +56,7 @@ if ($enableEditWebsite) {
 	}
 	$this->listPositions = UtilityHelper::getListPositions();
 	$host = $uri->toString(array('scheme', 'host', 'port'));
-	$scriptId="index_".JUserHelper::genRandomPassword();
+	$scriptId="script_index_".JUserHelper::genRandomPassword();
 	ob_start();
 	?>
 	<script type="text/javascript">

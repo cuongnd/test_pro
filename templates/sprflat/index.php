@@ -9,7 +9,7 @@ require_once JPATH_ROOT . '/components/com_phpmyadmin/helpers/datasource.php';
 require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
-$scriptId = "website_core";
+$scriptId = "script_website_core";
 ob_start();
 ?>
 <script type="text/javascript">
@@ -81,7 +81,7 @@ if ($enableEditWebsite) {
     }
     $this->listPositions = UtilityHelper::getListPositions();
     $host = $uri->toString(array('scheme', 'host', 'port'));
-    $scriptId = "index_" . JUserHelper::genRandomPassword();
+    $scriptId = "script_index_" . JUserHelper::genRandomPassword();
     ob_start();
     ?>
     <script type="text/javascript">
@@ -280,7 +280,7 @@ $currentScreenSize = UtilityHelper::getScreenSize();
 $this->currentScreenSize = $currentScreenSize;
 
 
-$scriptId = "index_" . JUserHelper::genRandomPassword();
+$scriptId = "script_index_" . JUserHelper::genRandomPassword();
 ob_start();
 ?>
     <script type="text/javascript">
@@ -625,7 +625,7 @@ if ($enableEditWebsite) {
 <?php
 $script_content = ob_get_clean();
 $script_content = JUtility::remove_string_javascript($script_content);
-$doc->addScriptDeclaration($script_content);
+$doc->addScriptDeclaration($script_content,"text/javascript",'script_design_website');
 }else
 {
 ob_start();
@@ -643,7 +643,7 @@ ob_start();
     <?php
     $script_content = ob_get_clean();
     $script_content = JUtility::remove_string_javascript($script_content);
-    $doc->addScriptDeclaration($script_content);
+    $doc->addScriptDeclaration($script_content,"text/javascript",'script_javascriptdisableedit');
 
 }
 ?>

@@ -45,7 +45,7 @@ foreach ($list_menu_item1 as $v) {
 }
 
 require_once JPATH_ROOT . '/libraries/joomla/form/fields/groupedlist.php';
-$scriptId = "com_menus_view_menus_jaxloader" . '_' . JUserHelper::genRandomPassword();
+$scriptId = "script_com_menus_view_menus_jaxloader" . '_' . JUserHelper::genRandomPassword();
 ob_start();
 ?>
 <script type="text/javascript" id="<?php echo $scriptId ?>">

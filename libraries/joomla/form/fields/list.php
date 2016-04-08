@@ -41,7 +41,7 @@ class JFormFieldList extends JFormField
 		$attr = '';
 		JHtml::_('formbehavior.chosen', 'select',null,array(),JUserHelper::genRandomPassword());
 		$doc=JFactory::getDocument();
-		$scriptId='lib_joomla_form_fields_list';
+		$scriptId='script_lib_joomla_form_fields_list';
 		ob_start();
 		?>
 		<script type="text/javascript" id="<?php echo $scriptId ?>">

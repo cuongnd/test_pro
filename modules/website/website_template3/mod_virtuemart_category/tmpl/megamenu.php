@@ -2,9 +2,9 @@
 JHtml::_('jquery.framework');
 $doc = JFactory::getDocument();
 $doc->addScriptNotCompile(JUri::root() . '/media/system/js/jquery-vertical-mega-menu-1/js/jquery.hoverIntent.js');
-$doc->addScriptNotCompile(JUri::root() . '/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.3.js');
-$doc->addScriptNotCompile(JUri::root() . '/modules/website/website_39/mod_virtuemart_category/asset/js/dcmegamenu.js');
-$doc->addLessStyleSheetTest(JUri::root() . '/modules/website/website_39/mod_virtuemart_category/asset/js/custom_mega_menu_styles/megamenu.less');
+$doc->addScriptNotCompile(JUri::root() . '/modules/website/website_template3/mod_virtuemart_category/asset/js/custom_mega_menu_styles/js/jquery.dcmegamenu.1.3.js');
+$doc->addScriptNotCompile(JUri::root() . '/modules/website/website_template3/mod_virtuemart_category/asset/js/dcmegamenu.js');
+$doc->addLessStyleSheetTest(JUri::root() . '/modules/website/website_template3/mod_virtuemart_category/asset/js/custom_mega_menu_styles/megamenu.less');
 
 
 /* Setting */

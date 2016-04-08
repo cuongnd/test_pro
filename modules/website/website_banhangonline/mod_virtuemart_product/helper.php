@@ -13,18 +13,20 @@ defined('_JEXEC') or  die( 'Direct Access to '.basename(__FILE__).' is not allow
 *
 * www.virtuemart.net
 */
-if (!class_exists( 'VmConfig' )) require(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_virtuemart'.DS.'helpers'.DS.'config.php');
+$com_virtuemart_path=JPath::get_component_path('com_virtuemart');
+$com_virtuemart_url=JPath::get_component_url('com_virtuemart');
+if (!class_exists( 'VmConfig' )) require($com_virtuemart_path.DS.'helpers'.DS.'config.php');
 VmConfig::loadConfig();
 // Load the language file of com_virtuemart.
 JFactory::getLanguage()->load('com_virtuemart');
-if (!class_exists( 'calculationHelper' )) require(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_virtuemart'.DS.'helpers'.DS.'calculationh.php');
-if (!class_exists( 'CurrencyDisplay' )) require(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_virtuemart'.DS.'helpers'.DS.'currencydisplay.php');
-if (!class_exists( 'VirtueMartModelVendor' )) require(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_virtuemart'.DS.'models'.DS.'vendor.php');
-if (!class_exists( 'VmImage' )) require(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_virtuemart'.DS.'helpers'.DS.'image.php');
-if (!class_exists( 'shopFunctionsF' )) require(JPATH_SITE.DS.'components'.DS.'com_virtuemart'.DS.'helpers'.DS.'shopfunctionsf.php');
-if (!class_exists( 'calculationHelper' )) require(JPATH_COMPONENT_SITE.DS.'helpers'.DS.'cart.php');
+if (!class_exists( 'calculationHelper' )) require($com_virtuemart_path.DS.'helpers'.DS.'calculationh.php');
+if (!class_exists( 'CurrencyDisplay' )) require($com_virtuemart_path.DS.'helpers'.DS.'currencydisplay.php');
+if (!class_exists( 'VirtueMartModelVendor' )) require($com_virtuemart_path.DS.'models'.DS.'vendor.php');
+if (!class_exists( 'VmImage' )) require($com_virtuemart_path.DS.'helpers'.DS.'image.php');
+if (!class_exists( 'shopFunctionsF' )) require($com_virtuemart_path.DS.'helpers'.DS.'shopfunctionsf.php');
+if (!class_exists( 'calculationHelper' )) require($com_virtuemart_path.DS.'helpers'.DS.'cart.php');
 if (!class_exists( 'VirtueMartModelProduct' )){
-   JLoader::import( 'product', JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_virtuemart' . DS . 'models' );
+   JLoader::import( 'product', $com_virtuemart_path . DS . 'models' );
 }
 
 class mod_virtuemart_product {

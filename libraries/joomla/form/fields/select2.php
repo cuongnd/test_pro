@@ -73,7 +73,7 @@ class JFormFieldSelect2 extends JFormField
 		$doc=JFactory::getDocument();
 		$doc->addScript(JUri::root().'/media/jui_front_end/js/select2.jquery.js');
 		ob_start();
-		$scriptId="lib_joomla_form_fields_select2".JUserHelper::genRandomPassword();
+		$scriptId="script_lib_joomla_form_fields_select2".JUserHelper::genRandomPassword();
 		?>
 		<script type="text/javascript">
 			function <?php echo $scriptId ?>() {

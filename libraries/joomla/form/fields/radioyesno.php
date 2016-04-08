@@ -47,7 +47,7 @@ class JFormFieldRadioYesNo extends JFormField
 		$doc=JFactory::getDocument();
 		$doc->addStyleSheet(JUri::root() . '/media/system/js/bootstrap-toggle-master/css/bootstrap-toggle.css');
 		$doc->addScript(JUri::root() . '/media/system/js/bootstrap-toggle-master/js/bootstrap-toggle.js');
-		$scriptId = "libraries_joomla_form_fields_radioyesno" . '_' . JUserHelper::genRandomPassword();
+		$scriptId = "script_libraries_joomla_form_fields_radioyesno" . '_' . JUserHelper::genRandomPassword();
 		ob_start();
 		?>
 		<script type="text/javascript">

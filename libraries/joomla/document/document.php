@@ -548,6 +548,17 @@ class JDocument
      */
     public function addScriptDeclaration($content, $type = 'text/javascript', $scriptId = '')
     {
+        $scriptId=strtolower($scriptId);
+        $sub_script=substr($scriptId,0,7);
+        if($sub_script!='script_')
+        {
+            echo "<pre>";
+            echo $sub_script;
+            print_r(JUtility::printDebugBacktrace());
+            echo "</pre>";
+            die;
+            throw new RuntimeException('check script_id is must has first string is "script_"'.$scriptId);
+        }
 
         $bt = debug_backtrace();
         $callingFile = array(

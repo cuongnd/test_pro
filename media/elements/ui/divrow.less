@@ -1,24 +1,19 @@
-.div-row.enable-create-drop-element
-{
-  border-color: #eb2636 ;
-  margin-top:18px;
+.div-row.enable-create-drop-element {
+  border-color: #eb2636;
+  margin-top: 18px;
   display: block;
-  padding-bottom:15px;
+  padding-bottom: 15px;
   width: 100% !important;
 
 }
 
-.control-element.block-item.block-item-row
-{
-  border-color:#eb2636 ;
+.control-element.block-item.block-item-row {
+  border-color: #eb2636;
 }
-{
 
-}
+
 .item_control {
   position: absolute;
-
-
 
 }
 
@@ -44,8 +39,7 @@
   width: auto;
   z-index: 0 !important;
 
-  &:hover
-  {
+  &:hover {
 
   }
 }
@@ -77,38 +71,107 @@
   text-rendering: auto;
   transform: rotate(90deg);
 
-
 }
 
 .item_control .ui-resizable-handle::before {
   /*content: "\f065";*/
 }
 
-.item_control[data-gs-width="12"] { width: 100% }
-.item_control[data-gs-width="11"] { width: 91.66666667% }
-.item_control[data-gs-width="10"] { width: 83.33333333% }
-.item_control[data-gs-width="9"]  { width: 75% }
-.item_control[data-gs-width="8"]  { width: 66.66666667% }
-.item_control[data-gs-width="7"]  { width: 58.33333333% }
-.item_control[data-gs-width="6"]  { width: 50% }
-.item_control[data-gs-width="5"]  { width: 41.66666667% }
-.item_control[data-gs-width="4"]  { width: 33.33333333% }
-.item_control[data-gs-width="3"]  { width: 25% }
-.item_control[data-gs-width="2"]  { width: 16.66666667% }
-.item_control[data-gs-width="1"]  { width: 8.33333333% }
+.item_control[data-gs-width="12"] {
+  width: 100%
+}
 
-.item_control[data-gs-x="12"] { left: 100% }
-.item_control[data-gs-x="11"] { left: 91.66666667% }
-.item_control[data-gs-x="10"] { left: 83.33333333% }
-.item_control[data-gs-x="9"]  { left: 75% }
-.item_control[data-gs-x="8"]  { left: 66.66666667% }
-.item_control[data-gs-x="7"]  { left: 58.33333333% }
-.item_control[data-gs-x="6"]  { left: 50% }
-.item_control[data-gs-x="5"]  { left: 41.66666667% }
-.item_control[data-gs-x="4"]  { left: 33.33333333% }
-.item_control[data-gs-x="3"]  { left: 25% }
-.item_control[data-gs-x="2"]  { left: 16.66666667% }
-.item_control[data-gs-x="1"]  { left: 8.33333333% }
+.item_control[data-gs-width="11"] {
+  width: 91.66666667%
+}
+
+.item_control[data-gs-width="10"] {
+  width: 83.33333333%
+}
+
+.item_control[data-gs-width="9"] {
+  width: 75%
+}
+
+.item_control[data-gs-width="8"] {
+  width: 66.66666667%
+}
+
+.item_control[data-gs-width="7"] {
+  width: 58.33333333%
+}
+
+.item_control[data-gs-width="6"] {
+  width: 50%
+}
+
+.item_control[data-gs-width="5"] {
+  width: 41.66666667%
+}
+
+.item_control[data-gs-width="4"] {
+  width: 33.33333333%
+}
+
+.item_control[data-gs-width="3"] {
+  width: 25%
+}
+
+.item_control[data-gs-width="2"] {
+  width: 16.66666667%
+}
+
+.item_control[data-gs-width="1"] {
+  width: 8.33333333%
+}
+
+.item_control[data-gs-x="12"] {
+  left: 100%
+}
+
+.item_control[data-gs-x="11"] {
+  left: 91.66666667%
+}
+
+.item_control[data-gs-x="10"] {
+  left: 83.33333333%
+}
+
+.item_control[data-gs-x="9"] {
+  left: 75%
+}
+
+.item_control[data-gs-x="8"] {
+  left: 66.66666667%
+}
+
+.item_control[data-gs-x="7"] {
+  left: 58.33333333%
+}
+
+.item_control[data-gs-x="6"] {
+  left: 50%
+}
+
+.item_control[data-gs-x="5"] {
+  left: 41.66666667%
+}
+
+.item_control[data-gs-x="4"] {
+  left: 33.33333333%
+}
+
+.item_control[data-gs-x="3"] {
+  left: 25%
+}
+
+.item_control[data-gs-x="2"] {
+  left: 16.66666667%
+}
+
+.item_control[data-gs-x="1"] {
+  left: 8.33333333%
+}
 
 @media (max-width: 768px) {
   /*.item_control {
@@ -131,12 +194,13 @@
   -ms-transition: left .3s, top .3s, height .3s, width .3s;
   transition: left .3s, top .3s, height .3s, width .3s;
 }
+
 /*Don't animate the placeholder or when dragging/resizing*/
 .grid-stack.grid-stack-animate .item_control.ui-draggable-dragging,
 .grid-stack.grid-stack-animate .item_control.ui-resizable-resizing,
-.grid-stack.grid-stack-animate .item_control.grid-stack-placeholder{
+.grid-stack.grid-stack-animate .item_control.grid-stack-placeholder {
   -webkit-transition: left .0s, top .0s, height .0s, width .0s;
   -moz-transition: left .0s, top .0s, height .0s, width .0s;
   -o-transition: left .0s, top .0s, height .0s, width .0s;
-  transition:  left .0s, top .0s, height .0s, width .0s;
+  transition: left .0s, top .0s, height .0s, width .0s;
 }

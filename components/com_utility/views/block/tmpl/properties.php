@@ -42,7 +42,7 @@ $main_fields=base64_decode($main_fields);
 require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
 $main_fields = (array)up_json_decode($main_fields, false, 512, JSON_PARSE_JAVASCRIPT);
 
-$scriptId = "view_block_property";
+$scriptId = "script_view_block_property";
 ob_start();
 ?>
 <script type="text/javascript">

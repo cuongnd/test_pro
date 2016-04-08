@@ -121,7 +121,7 @@ abstract class JHtmlInput
 			$attr,
 			array_keys($attr)
 		));
-		$scriptId = $name;
+		$scriptId = "script_$name";
 		ob_start();
 		?>
 		<script type="text/javascript">

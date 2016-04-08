@@ -180,7 +180,7 @@ class JFormFieldShowInPage extends JFormFieldGroupedList
 				in_array($item->type, $this->disable)  ,$this->value
 			);
 		}
-		$scriptId='lib_cms_form_fields_menuitem';
+		$scriptId='script_lib_cms_form_fields_menuitem';
 		ob_start();
 		?>
 		<script type="text/javascript" id="<?php echo $scriptId ?>">

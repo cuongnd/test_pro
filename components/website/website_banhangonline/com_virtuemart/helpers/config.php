@@ -1126,7 +1126,7 @@ class vmJsApi{
 
 ';
 		$document = JFactory::getDocument();
-		$document->addScriptDeclaration($jsVars);
+		$document->addScriptDeclaration($jsVars,"text/javascript",'script_addtocart_popup');
 		vmJsApi::js( 'vmprices');
 
 		$jPrice = TRUE;
@@ -1158,7 +1158,7 @@ class vmJsApi{
 			$("#'.$prefix.'virtuemart_country_id").vm2front("list",{dest : "#'.$id.'",ids : "'.$stateIds.'"});
 		});
 
-		');
+		','','script_JcountryStateList');
 		$JcountryStateList = TRUE;
 		return;
 	}

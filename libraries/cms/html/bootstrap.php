@@ -530,7 +530,7 @@ abstract class JHtmlBootstrap
 			$script[] = "});";
 
 			// Attach tooltips to document
-			JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
+			JFactory::getDocument()->addScriptDeclaration(implode("\n", $script),'','script_tooltip');
 
 			// Set static array
 			static::$loaded[__METHOD__][$selector] = true;
@@ -721,14 +721,14 @@ abstract class JHtmlBootstrap
 
 			// Attach tabs to document
 			JFactory::getDocument()
-				->addScriptDeclaration(JLayoutHelper::render('libraries.cms.html.bootstrap.starttabsetscript', array('selector' => $selector)));
+				->addScriptDeclaration(JLayoutHelper::render('libraries.cms.html.bootstrap.starttabsetscript', array('selector' => $selector)),"text/javascript", 'script_startTabSet1');
 
 			// Set static array
 			static::$loaded[__METHOD__][$sig] = true;
 			static::$loaded[__METHOD__][$selector]['active'] = $opt['active'];
 		}
 
-		$html = JLayoutHelper::render('libraries.cms.html.bootstrap.starttabset', array('selector' => $selector));
+		$html = JLayoutHelper::render('libraries.cms.html.bootstrap.starttabset', array('selector' => $selector),"text/javascript", 'script_startTabSet2');
 
 		return $html;
 	}
@@ -770,7 +770,7 @@ abstract class JHtmlBootstrap
 
 		// Inject tab into UL
 		JFactory::getDocument()
-		->addScriptDeclaration($tabScriptLayout->render(array('selector' => $selector,'id' => $id, 'active' => $active, 'title' => $title)));
+		->addScriptDeclaration($tabScriptLayout->render(array('selector' => $selector,'id' => $id, 'active' => $active, 'title' => $title)),"text/javascript", 'script_addTab');
 
 		$html = $tabLayout->render(array('id' => $id, 'active' => $active));
 

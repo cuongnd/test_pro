@@ -11,6 +11,16 @@ defined('_JEXEC') or die;
 ?>
 <div class="search<?php echo $moduleclass_sfx ?>">
 	<form action="<?php echo JRoute::_('index.php');?>" method="post" class="form-inline">
+        <div class="input-group"> <span class="input-group-addon">Label 2</span>
+            <select id="lunch" class="selectpicker form-control" data-live-search="true" title="Please select a lunch ...">
+                <option>Hot Dog, Fries and a Soda</option>
+                <option>Burger, Shake and a Smile</option>
+                <option>Sugar, Spice and all things nice</option>
+                <option>Baby Back Ribs</option>
+                <option>A really really long option made to illustrate an issue with the live search in an inline form</option>
+            </select>
+        </div>
+
 		<?php
 			$output = '<label for="mod-search-searchword" class="element-invisible">' . $label . '</label> ';
 			$output .= '<input name="searchword" id="mod-search-searchword" maxlength="' . $maxlength . '"  class="inputbox search-query" type="text" size="' . $width . '" value="' . $text . '"  onblur="if (this.value==\'\') this.value=\'' . $text . '\';" onfocus="if (this.value==\'' . $text . '\') this.value=\'\';" />';

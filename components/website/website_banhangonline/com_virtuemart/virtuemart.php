@@ -20,7 +20,6 @@ if( !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not 
 
 /* Require the config */
 
-
 //Console::logSpeed('virtuemart start');
 if (!class_exists( 'VmConfig' )) require(JPATH_COMPONENT_SITE .'/helpers/config.php');
 VmConfig::loadConfig();

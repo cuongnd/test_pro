@@ -389,6 +389,7 @@ abstract class JModuleHelper
 		}
 		$app = JFactory::getApplication();
 		$Itemid = $app->input->getInt('Itemid');
+        $menu_type=MenusHelperFrontEnd::get_menu_type_id_by_menu_item_id($Itemid);
 		$user = JFactory::getUser();
 		$groups = implode(',', $user->getAuthorisedViewLevels());
 		$lang = JFactory::getLanguage()->getTag();
@@ -457,6 +458,25 @@ abstract class JModuleHelper
 		for ($i = 0, $n = count($modules); $i < $n; $i++)
 		{
 			$module = &$modules[$i];
+            $params = new JRegistry;
+            $params->loadString($module->params);
+            if($module->module=='mod_menu')
+            {
+                if(!$params->exists('only_show_width_menu_type'))
+                {
+                    throw new Exception('please config only_show_width_menu_type param in module menu');
+                }
+                $only_show_width_menu_type=$params->get('only_show_width_menu_type',false);
+                $only_show_width_menu_type=JUtility::toStrictBoolean($only_show_width_menu_type);
+                $menu_active_id
+                if($only_show_width_menu_type)
+                {
+                    echo "<pre>";
+                    print_r($only_show_width_menu_type);
+                    echo "</pre>";
+                    die;
+                }
+            }
 
 			// The module is excluded if there is an explicit prohibition
 			$negHit = ($negId === (int) $module->menuid);

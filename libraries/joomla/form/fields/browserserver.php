@@ -203,7 +203,7 @@ class JFormFieldBrowserServer extends JFormField
 		$list     = '';
 		$uri=JFactory::getURI();
 		require_once JPATH_ROOT.'/libraries/joomla/user/helper.php';
-		$scriptId = "libraries_joomla_form_fields_browserserver_".JUserHelper::genRandomPassword();
+		$scriptId = "script_libraries_joomla_form_fields_browserserver_".JUserHelper::genRandomPassword();
 		ob_start();
 		?>
 		<script type="text/javascript">

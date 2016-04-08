@@ -17,7 +17,7 @@ $db->setQuery($query);
 $currentDataSource=$db->loadObjectList();
 $doc=JFactory::getDocument();
 
-$scriptId = "tab_footer";
+$scriptId = "script_tab_footer";
 ob_start();
 ?>
 <script type="text/javascript">

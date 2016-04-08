@@ -78,7 +78,7 @@ class elementHtmlHelper extends  elementHelper
 
 
         $doc=JFactory::getDocument();
-        $scriptId = "ui_html_".$block->id;
+        $scriptId = "script_ui_html_".$block->id;
         ob_start();
         ?>
         <script type="text/javascript">

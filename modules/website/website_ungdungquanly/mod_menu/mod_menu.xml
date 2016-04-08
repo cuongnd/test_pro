@@ -1,0 +1,34 @@
+<config><fields name="params">
+					<field type="menu" readonly="false" label="Menu type" default=""
+						   name="menu_type_id" onchange=""
+
+
+													 multiple="false" 													 size="1" 												>
+											</field>
+					<field type="checkbox" label="Menu type" default="0"
+						   name="enable_menu_type_id" onchange="">
+
+					</field>
+					
+					<field type="modulelayout" readonly="false" label="Menu type343" default=""
+						   name="menu_type_id" onchange=""
+
+
+												>
+											</field>
+					<field type="checkbox" label="Menu type343" default="0"
+						   name="enable_menu_type_id" onchange="">
+
+					</field>
+					
+					<field type="modulelayout" readonly="false" label="Layout" default=""
+						   name="layout" onchange=""
+
+
+												>
+											</field>
+					<field type="checkbox" label="Layout" default="0"
+						   name="enable_layout" onchange="">
+
+					</field>
+					</fields></config>

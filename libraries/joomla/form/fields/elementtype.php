@@ -47,7 +47,7 @@ class JFormFieldElementType extends JFormFieldList
 
 		$type= $data->get('type','');
 		$ui_path= $data->get('ui_path','');
-		$scriptId='lib_joomla_form_fields_element_type';
+		$scriptId='script_lib_joomla_form_fields_element_type';
 		ob_start();
 		?>
 		<script type="text/javascript" id="<?php echo $scriptId ?>">

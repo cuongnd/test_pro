@@ -79,7 +79,6 @@ class VmModel extends JModelList  {
 		$name = strtolower($name);
 		$className = 'VirtueMartModel'.ucfirst($name);
 
-
 		if(empty(self::$_vmmodels[strtolower($className)])){
 			if( !class_exists($className) ){
 
