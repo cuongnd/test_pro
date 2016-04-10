@@ -36,7 +36,7 @@ $main_menu_style_item_open=$params->get('menu_config.main_menu_style_item_open')
 $enable_main_menu_style_item_open=JUtility::toStrictBoolean($params->get('menu_config.enable_main_menu_style_item_open'));
 
 $enable_sticky=$params->get('sticky',0);
-$scriptId="script_module_menu_".$module->id;
+$scriptId="module_menu_".$module->id;
 ob_start();
 ?>
 	<script type="text/javascript">

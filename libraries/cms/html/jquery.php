@@ -142,7 +142,7 @@ abstract class JHtmlJquery
         JHtml::_('jquery.framework');
         JHtml::_('script', 'js/Fixed-Header-Table-master/jquery.fixedheadertable.js', false, true, false, false, $debug);
         $doc=JFactory::getDocument();
-        $scriptId='lib_cms_html_jquery_fixedheadertable';
+        $scriptId='script_lib_cms_html_jquery_fixedheadertable';
         $scriptId=$callAgain!=''?$scriptId.'_'.$callAgain:$scriptId;
         $options_str = json_encode($options, ($debug && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : false));
         ob_start();

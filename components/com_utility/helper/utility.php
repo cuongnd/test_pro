@@ -982,6 +982,7 @@ XML;
         }else{
             $query->where('poscon.menu_item_id='.(int)$menuItemActive->id);
         }
+        //if case this menu item use main frame and this using
         $listPositionsSetting=$db->setQuery($query)->loadObjectList();
         //UtilityHelper::getListPositionsSetting2('',$use_main_frame,$menuItemActive->id,$listPositionsSetting,0,1,9999);
         if($use_main_frame)

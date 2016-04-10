@@ -388,8 +388,9 @@ abstract class JModuleHelper
 			return $clean;
 		}
 		$app = JFactory::getApplication();
-		$Itemid = $app->input->getInt('Itemid');
-        $menu_type=MenusHelperFrontEnd::get_menu_type_id_by_menu_item_id($Itemid);
+        $active_menu_item=JMenuSite::get_active_menu_item();
+		$Itemid = $active_menu_item->id;
+        $active_menu_type_id=MenusHelperFrontEnd::get_menu_type_id_by_menu_item_id($Itemid);
 		$user = JFactory::getUser();
 		$groups = implode(',', $user->getAuthorisedViewLevels());
 		$lang = JFactory::getLanguage()->getTag();
@@ -462,19 +463,13 @@ abstract class JModuleHelper
             $params->loadString($module->params);
             if($module->module=='mod_menu')
             {
-                if(!$params->exists('only_show_width_menu_type'))
-                {
-                    throw new Exception('please config only_show_width_menu_type param in module menu');
-                }
+                $menu_type_id=$params->get('menu_type_id',0);
                 $only_show_width_menu_type=$params->get('only_show_width_menu_type',false);
                 $only_show_width_menu_type=JUtility::toStrictBoolean($only_show_width_menu_type);
-                $menu_active_id
-                if($only_show_width_menu_type)
+                if($only_show_width_menu_type&&$menu_type_id!=$active_menu_type_id)
                 {
-                    echo "<pre>";
-                    print_r($only_show_width_menu_type);
-                    echo "</pre>";
-                    die;
+                    unset($module);
+                    continue;
                 }
             }
 

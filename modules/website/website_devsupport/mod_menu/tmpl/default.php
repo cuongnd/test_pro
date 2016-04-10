@@ -11,8 +11,8 @@ defined('_JEXEC') or die;
 JHtml::_('jquery.framework');
 JHTML::_('behavior.core');
 $doc = JFactory::getDocument();
-$doc->addScript(JUri::root() . '/media/system/js/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/js/vmenuModule.js');
-$doc->addScript(JUri::root() . '/modules/website/website_thietkeweb/mod_menu/assets/mod_menu.js');
+$doc->addScript(JUri::root() . '/modules/website/website_supper_admin/mod_menu/assets/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/js/vmenuModule.js');
+$doc->addScript(JUri::root() . '/modules/website/website_supper_admin/mod_menu/assets/mod_menu.js');
 $doc->addLessStyleSheetTest(JUri::root() . '/media/system/js/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/less/vmenuModule.less');
 
 $scriptId = "script_module_" . $module->id;
@@ -73,6 +73,10 @@ $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 
                         }
                         foreach ($children[$root_menu_item_id] as $i => $item) {
+                            if($item->hidden==1)
+                            {
+                                continue;
+                            }
                             $root_menu_item_id1 = $item->id;
                             ?>
 

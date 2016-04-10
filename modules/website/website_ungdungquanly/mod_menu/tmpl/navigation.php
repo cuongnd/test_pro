@@ -11,10 +11,10 @@ defined('_JEXEC') or die;
 JHtml::_('jquery.framework');
 JHTML::_('behavior.core');
 $doc = JFactory::getDocument();
-$doc->addScript(JUri::root() . '/modules/website/website_ungdungquanly/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/jquery.smartmenus.js');
+$doc->addScript(JUri::root() . '/media/system/js/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/jquery.smartmenus.js');
 $doc->addScript(JUri::root() . '/modules/website/website_ungdungquanly/mod_menu/assets/navigation_menu.js');
-$doc->addStyleSheet(JUri::root() . '/modules/website/website_ungdungquanly/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-core-css.css');
-$doc->addStyleSheet(JUri::root() . '/modules/website/website_ungdungquanly/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/sm-blue.css');
+$doc->addStyleSheet(JUri::root() . '/media/system/js/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-core-css.css');
+$doc->addStyleSheet(JUri::root() . '/media/system/js/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/src/css/sm-blue/sm-blue.css');
 ob_start();
 ?>
 <script type="text/javascript">

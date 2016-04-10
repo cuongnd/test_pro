@@ -88,7 +88,7 @@ abstract class JHtmlSearchtools
 					});
 				})(jQuery);
 			";
-			$doc->addScriptDeclaration($script);
+			$doc->addScriptDeclaration($script,'','script_searchtools');
 
 			static::$loaded[__METHOD__][$sig] = true;
 		}

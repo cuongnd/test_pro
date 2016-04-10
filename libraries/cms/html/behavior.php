@@ -428,7 +428,7 @@ abstract class JHtmlBehavior
 		JFactory::getDocument()->addScriptDeclaration(
 			"window.addEvent('domready', function() {
 				new Joomla.JMultiSelect('" . $id . "');
-			});"
+			});",'','script_multiselect'
 		);
 
 		// Set static array

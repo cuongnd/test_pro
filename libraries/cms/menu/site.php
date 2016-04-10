@@ -18,7 +18,14 @@ defined('_JEXEC') or die(__FILE__);
  */
 class JMenuSite extends JMenu
 {
-	/**
+    public static function get_active_menu_item()
+    {
+        $app=JFactory::getApplication();
+        $menu=$app->getMenu();
+        return $menu->getActive();
+    }
+
+    /**
 	 * Loads the entire menu table into memory.
 	 *
 	 * @return  array

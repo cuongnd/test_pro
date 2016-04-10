@@ -179,7 +179,7 @@ class MenusHelperFrontEnd
                 $menu_item=$list_menu_item[$menu_item_id];
                 if(!$menu_item)
                 {
-                    throw new Exception('there are no exists this menu item');
+                    //throw new Exception('there are no exists this menu item');
                 }
                 if($menu_item->id==$menu_item->parent_id||$menu_item->parent_id=='')
                 {
