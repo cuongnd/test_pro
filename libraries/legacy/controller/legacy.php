@@ -15,6 +15,7 @@ defined('_JEXEC') or die(__FILE__);
  * Controller (Controllers are where you put all the actual code.) Provides basic
  * functionality, such as rendering views (aka displaying templates).
  *
+ * @property JDocument document
  * @package     Joomla.Legacy
  * @subpackage  Controller
  * @since       12.2
@@ -37,6 +38,7 @@ class JControllerLegacy extends JObject
 	 * @since  12.2
 	 */
 	protected $default_view;
+
 
 	/**
 	 * The mapped task that was performed.
@@ -644,7 +646,6 @@ class JControllerLegacy extends JObject
 			$view->setModel($model, true);
 		}
 
-		$view->document = $document;
 
 		$conf = JFactory::getConfig();
 

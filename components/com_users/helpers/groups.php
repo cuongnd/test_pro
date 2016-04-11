@@ -24,6 +24,12 @@ class GroupsHelper
 	 */
 	protected static $actions;
 
+    public static function get_user_group_id_default()
+    {
+        $user_group= JUserHelper::get_user_group_default();
+        return $user_group->id;
+    }
+
 
     public function  createRootGroup($website_id)
     {

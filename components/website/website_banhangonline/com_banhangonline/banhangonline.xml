@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.1" method="upgrade">
-	<name>com_supperadmin</name>
+	<name>com_banhangonline</name>
 	<author>Joomla! Project</author>
 	<creationDate>April 2006</creationDate>
 	<copyright>(C) 2005 - 2014 Open Source Matters. All rights reserved.	</copyright>
@@ -8,7 +8,7 @@
 	<authorEmail>admin@joomla.org</authorEmail>
 	<authorUrl>www.joomla.org</authorUrl>
 	<version>3.0.0</version>
-	<description>COM_supperadmin_XML_DESCRIPTION</description>
+	<description>com_banhangonline_XML_DESCRIPTION</description>
 	<administration>
 		<files folder="admin">
 			<filename>config.xml</filename>
@@ -21,8 +21,8 @@
 			<folder>views</folder>
 		</files>
 		<languages folder="admin">
-			<language tag="en-GB">language/en-GB.com_supperadmin.ini</language>
-			<language tag="en-GB">language/en-GB.com_supperadmin.sys.ini</language>
+			<language tag="en-GB">language/en-GB.com_banhangonline.ini</language>
+			<language tag="en-GB">language/en-GB.com_banhangonline.sys.ini</language>
 		</languages>
 	</administration>
 </extension>

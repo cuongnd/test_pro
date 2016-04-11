@@ -1,7 +1,7 @@
 <?php
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
-$doc->addLessStyleSheet(JUri::root() . '/supperadmin/com_supperadmin/views/component/tmpl/assets/less/view_component_config.less');
+$doc->addLessStyleSheet(JUri::root() . '/supperadmin/com_banhangonline/views/component/tmpl/assets/less/view_component_config.less');
 $db = JFactory::getDbo();
 JHtml::_('jquery.framework');
 $doc->addStyleSheet(JUri::root() . "/media/jui_front_end/css/select2.css");
@@ -9,7 +9,7 @@ $doc->addStyleSheet(JUri::root() . "/media/system/js/jquery.appendGrid-master/jq
 $doc->addScript(JUri::root() . "/media/system/js/Nestable-master/jquery.nestable.js");
 $doc->addScript(JUri::root() . "/media/jui_front_end/js/select2.jquery.js");
 $doc->addScript(JUri::root() . "/media/system/js/cassandraMAP-cassandra/lib/cassandraMap.js");
-$doc->addScript(JUri::root() . "/supperadmin/com_supperadmin/views/component/tmpl/assets/js/view_component_config.js");
+$doc->addScript(JUri::root() . "/supperadmin/com_banhangonline/views/component/tmpl/assets/js/view_component_config.js");
 $doc->addScript(JUri::root() . "/media/system/js/base64.js");
 $doc->addScript(JUri::root() . "/media/system/js/jquery.appendGrid-master/jquery.appendGrid-development.js");
 $id = $app->input->get('id', 0, 'int');

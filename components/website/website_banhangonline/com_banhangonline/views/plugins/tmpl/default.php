@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -19,11 +19,11 @@ JHtml::_('formbehavior.chosen', 'select');
 $user		= JFactory::getUser();
 $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
-$canOrder	= $user->authorise('core.edit.state',	'com_supperadmin');
+$canOrder	= $user->authorise('core.edit.state',	'com_banhangonline');
 $saveOrder	= $listOrder == 'ordering';
 if ($saveOrder)
 {
-	$saveOrderingUrl = 'index.php?option=com_supperadmin&task=supperadmin.saveOrderAjax&tmpl=component';
+	$saveOrderingUrl = 'index.php?option=com_banhangonline&task=supperadmin.saveOrderAjax&tmpl=component';
 	JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 $sortFields = $this->getSortFields();
@@ -45,7 +45,7 @@ $sortFields = $this->getSortFields();
 		Joomla.tableOrdering(order, dirn, '');
 	}
 </script>
-<form action="<?php echo JRoute::_('index.php?option=com_supperadmin&view=supperadmin'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_banhangonline&view=supperadmin'); ?>" method="post" name="adminForm" id="adminForm">
 <?php if (!empty( $this->sidebar)) : ?>
 	<div id="sidebar-container" class="span2">
 		<?php echo $this->sidebar; ?>
@@ -83,7 +83,7 @@ $sortFields = $this->getSortFields();
 						<?php echo JHtml::_('grid.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
 					</th>
 					<th class="title">
-						<?php echo JHtml::_('grid.sort', 'COM_supperadmin_NAME_HEADING', 'name', $listDirn, $listOrder); ?>
+						<?php echo JHtml::_('grid.sort', 'com_banhangonline_NAME_HEADING', 'name', $listDirn, $listOrder); ?>
 					</th>
                     <?php if($supperAdmin){ ?>
                         <th class="title">
@@ -98,10 +98,10 @@ $sortFields = $this->getSortFields();
 
 
                     <th width="10%" class="nowrap hidden-phone">
-						<?php echo JHtml::_('grid.sort', 'COM_supperadmin_FOLDER_HEADING', 'folder', $listDirn, $listOrder); ?>
+						<?php echo JHtml::_('grid.sort', 'com_banhangonline_FOLDER_HEADING', 'folder', $listDirn, $listOrder); ?>
 					</th>
 					<th width="10%" class="nowrap hidden-phone">
-						<?php echo JHtml::_('grid.sort', 'COM_supperadmin_ELEMENT_HEADING', 'element', $listDirn, $listOrder); ?>
+						<?php echo JHtml::_('grid.sort', 'com_banhangonline_ELEMENT_HEADING', 'element', $listDirn, $listOrder); ?>
 					</th>
 					<th width="5%" class="hidden-phone">
 						<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ACCESS', 'access', $listDirn, $listOrder); ?>
@@ -121,9 +121,9 @@ $sortFields = $this->getSortFields();
 			<tbody>
 			<?php foreach ($this->items as $i => $item) :
 				$ordering   = ($listOrder == 'ordering');
-				$canEdit    = $user->authorise('core.edit',       'com_supperadmin');
+				$canEdit    = $user->authorise('core.edit',       'com_banhangonline');
 				$canCheckin = $user->authorise('core.manage',     'com_checkin') || $item->checked_out == $user->get('id') || $item->checked_out == 0;
-				$canChange  = $user->authorise('core.edit.state', 'com_supperadmin') && $canCheckin;
+				$canChange  = $user->authorise('core.edit.state', 'com_banhangonline') && $canCheckin;
 				?>
 				<tr class="row<?php echo $i % 2; ?>" item-id="<?php echo $item->id?>" sortable-group-id="<?php echo $item->folder?>">
 					<td class="order nowrap center hidden-phone">
@@ -156,7 +156,7 @@ $sortFields = $this->getSortFields();
 							<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'supperadmin.', $canCheckin); ?>
 						<?php endif; ?>
 						<?php if ($canEdit) : ?>
-							<a class="quick-edit-title" href="<?php echo JRoute::_('index.php?option=com_supperadmin&task=component.edit&id='.(int) $item->id); ?>">
+							<a class="quick-edit-title" href="<?php echo JRoute::_('index.php?option=com_banhangonline&task=component.edit&id='.(int) $item->id); ?>">
 								<?php echo $item->name; ?></a>
 						<?php else : ?>
 								<?php echo $item->name; ?>

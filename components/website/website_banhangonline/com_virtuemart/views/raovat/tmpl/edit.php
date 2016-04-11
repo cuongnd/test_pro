@@ -27,15 +27,15 @@ ob_start();
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-        $('.view-raovat-edit').view_raovat_edit({
+        /*$('.view-raovat-edit').view_raovat_edit({
             add_new_popup:<?php echo $this->add_new_popup ?>
-        });
+        });*/
     });
 </script>
 <?php
 $js_content = ob_get_clean();
 $js_content = JUtility::remove_string_javascript($js_content);
-$doc->addScriptDeclaration($js_content);
+$doc->addScriptDeclaration($js_content,'','script_view_raovat_edit');
 
 ?>
 <div class="view-raovat-edit">

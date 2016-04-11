@@ -1,7 +1,7 @@
 
 <?php
 $doc=JFactory::getDocument();
-$doc->addScript(JUri::root().'/supperadmin/com_supperadmin/views/supperadmin/tmpl/assets/js/loadsupperadmin.js');
+$doc->addScript(JUri::root().'/supperadmin/com_banhangonline/views/supperadmin/tmpl/assets/js/loadsupperadmin.js');
 jimport('joomla.filesystem.folder');
 $website=JFactory::getWebsite();
 $db=JFactory::getDbo();

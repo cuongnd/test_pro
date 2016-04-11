@@ -54,7 +54,7 @@
             content= $.base64.encode(content);
             block_id=self.attr('data-block-id');
             ajaxSaveBlockHtml=$.ajax({
-                type: "GET",
+                type: "POST",
                 dataType: "json",
                 url: this_host+'/index.php',
                 data: (function () {

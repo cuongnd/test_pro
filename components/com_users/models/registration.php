@@ -222,7 +222,8 @@ class UsersModelRegistration extends JModelForm
 
 			if(!$system||!JUserHelper::check_user_group_by_user_group_id($system))
 			{
-				$system = JUserHelper::get_user_type_default();
+                require_once JPATH_ROOT.'/components/com_users/helpers/groups.php';
+				$system = GroupsHelper::get_user_group_id_default();
 			}
 
 			$this->data->groups[] = $system;

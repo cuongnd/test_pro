@@ -145,7 +145,6 @@ class JControllerForm extends JControllerLegacy
 	{
 		$app = JFactory::getApplication();
 		$context = "$this->option.edit.$this->context";
-
 		// Access check.
 		if (!$this->allowAdd())
 		{
@@ -165,7 +164,6 @@ class JControllerForm extends JControllerLegacy
 
 		// Clear the record edit information from the session.
 		$app->setUserState($context . '.data', null);
-
 		// Redirect to the edit screen.
 		$this->setRedirect(
 			JRoute::_(

@@ -32,7 +32,6 @@ $offline = VmConfig::get('shop_is_offline',0);
 vmRam('Start');
 vmSetStartTime('Start');
 $app=JFactory::getApplication();
-
 VmConfig::loadJLang('com_virtuemart', true);
 $input = JFactory::getApplication()->input;
 

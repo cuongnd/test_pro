@@ -116,7 +116,6 @@ final class JApplicationSite extends JApplicationCms
             $component = $this->input->getCmd('option', null);
 
         }
-
         // Load the document to the API
         $this->loadDocument();
 

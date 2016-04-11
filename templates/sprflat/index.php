@@ -237,7 +237,7 @@ if (!$ajaxGetContent) {
     $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/less/csswheneditsite.less');
     if(JFile::exists(JPATH_ROOT. "/layouts/website/less/" . $websiteTable->source_less))
     {
-        $doc->addLessStyleSheet(JUri::root() . "/layouts/website/less/" . $websiteTable->source_less);
+        $doc->addLessStyleSheetTest(JUri::root() . "/layouts/website/less/" . $websiteTable->source_less);
     }
 
 
@@ -363,7 +363,7 @@ ob_start();
     $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/less/icomoon.less');
     if(JFile::exists(JPATH_ROOT. "/layouts/website/less/" . $websiteTable->source_less))
     {
-        $doc->addLessStyleSheet(JUri::root() ."/layouts/website/less/" . $websiteTable->source_less);
+        $doc->addLessStyleSheetTest(JUri::root() ."/layouts/website/less/" . $websiteTable->source_less);
     }
 
 

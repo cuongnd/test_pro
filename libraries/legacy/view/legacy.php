@@ -74,6 +74,7 @@ class JViewLegacy extends JObject
 	 *
 	 * @var array
 	 */
+    protected $document;
 	protected $_path = array('template' => array(), 'helper' => array());
 
 	/**
@@ -133,7 +134,7 @@ class JViewLegacy extends JObject
 				$this->_name = $this->getName();
 			}
 		}
-
+        $this->document=JFactory::getDocument();
 		// Set the charset (used by the variable escaping functions)
 		if (array_key_exists('charset', $config))
 		{

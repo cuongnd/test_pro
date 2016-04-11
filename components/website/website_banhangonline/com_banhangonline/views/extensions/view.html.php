@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * View class for a list of extensions.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  * @since       1.5
  */
 class supperadminViewextensions extends JViewLegacy
@@ -57,7 +57,7 @@ class supperadminViewextensions extends JViewLegacy
 		if (!count($this->items))
 		{
 			JFactory::getApplication()->enqueueMessage(
-				JText::_('COM_supperadmin_MSG_MANAGE_NO_supperadmin'),
+				JText::_('com_banhangonline_MSG_MANAGE_NO_supperadmin'),
 				'warning'
 			);
 		}
@@ -69,7 +69,7 @@ class supperadminViewextensions extends JViewLegacy
 	}
     function addCommand()
     {
-        $this->command='com_supperadmin';
+        $this->command='com_banhangonline';
         $this->controller_task='extensions.ajaxSaveForm';
     }
 	/**
@@ -79,8 +79,8 @@ class supperadminViewextensions extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/com_supperadmin/helpers/extensions.php';
-		$canDo = JHelperContent::getActions('com_supperadmin');
+		require_once JPATH_ROOT.'/components/com_banhangonline/helpers/extensions.php';
+		$canDo = JHelperContent::getActions('com_banhangonline');
         $bar = JToolBar::getInstance('toolbar');
 		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
         if ($canDo->get('core.create'))
@@ -117,12 +117,12 @@ class supperadminViewextensions extends JViewLegacy
         JToolbarHelper::unpublish('extensions.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
-			JToolbarHelper::preferences('com_supperadmin');
+			JToolbarHelper::preferences('com_banhangonline');
 		}
 
 		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');
 
-		JHtmlSidebar::setAction('index.php?option=com_supperadmin&view=supperadmin');
+		JHtmlSidebar::setAction('index.php?option=com_banhangonline&view=supperadmin');
 
         $supperAdmin=JFactory::isSupperAdmin();
         if($supperAdmin){

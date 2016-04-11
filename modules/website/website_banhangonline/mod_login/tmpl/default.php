@@ -35,7 +35,7 @@ $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 
 ?>
 <div id="mod_login_<?php echo $module->id ?>" class="mod_login pull-right mod_login_<?php echo $module->id ?>">
-    <a class="dropdown-toggle" data-toggle = "dropdown" href="#"><i class="fa-fullscreen"></i> <?php echo JText::_('Đăng ký') ?></a>
+    <a class="dropdown-toggle" data-toggle = "dropdown" href="#"><i class="im-user"></i> <?php echo JText::_('Đăng nhập') ?></a>
     <div class = "dropdown-menu">
         <div class="profile row-fluid" >
             <div class="col-md-12">

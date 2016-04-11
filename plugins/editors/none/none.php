@@ -110,7 +110,7 @@ class PlgEditorNone extends JPlugin
 			{
 				insertAtCursor(document.getElementById(editor), text);
 			}";
-			$doc->addScriptDeclaration($js);
+			$doc->addScriptDeclaration($js,'','script_onGetInsertMethod');
 		}
 
 		return true;

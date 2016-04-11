@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
 	<fieldset
-		addfieldpath="/administrator/supperadmin/com_supperadmin/models/fields"
+		addfieldpath="/administrator/supperadmin/com_banhangonline/models/fields"
 	>
 		<field
 			name="id"
@@ -15,8 +15,8 @@
 		<field
 			name="name"
 			type="hidden"
-			label="COM_supperadmin_FIELD_NAME_LABEL"
-			description="COM_supperadmin_FIELD_NAME_DESC" />
+			label="com_banhangonline_FIELD_NAME_LABEL"
+			description="com_banhangonline_FIELD_NAME_DESC" />
 
         <field name="website_id" type="websites"
                description="COM_component_FIELD_WEBSITE_DESC"
@@ -28,7 +28,7 @@
 			type="list"
 			class="chzn-color-state"
 			label="JSTATUS"
-			description="COM_supperadmin_FIELD_ENABLED_DESC"
+			description="com_banhangonline_FIELD_ENABLED_DESC"
 			size="1"
 			default="1">
 				<option value="1">JENABLED</option>
@@ -53,8 +53,8 @@
 			type="text"
 			class="readonly"
 			size="20"
-			label="COM_supperadmin_FIELD_FOLDER_LABEL"
-			description="COM_supperadmin_FIELD_FOLDER_DESC"
+			label="com_banhangonline_FIELD_FOLDER_LABEL"
+			description="com_banhangonline_FIELD_FOLDER_DESC"
 			readonly="true" />
 
 		<field
@@ -62,8 +62,8 @@
 			type="text"
 			class="readonly"
 			size="20"
-			label="COM_supperadmin_FIELD_ELEMENT_LABEL"
-			description="COM_supperadmin_FIELD_ELEMENT_DESC"
+			label="com_banhangonline_FIELD_ELEMENT_LABEL"
+			description="com_banhangonline_FIELD_ELEMENT_DESC"
 			readonly="true" />
 
 	</fieldset>

@@ -251,7 +251,7 @@ jQuery(document).ready(function($){
 
                     dataPost = {
                         enable_load_component:1,
-                        option: 'com_supperadmin',
+                        option: 'com_banhangonline',
                         task: 'component.ajax_save_field_params',
                         fields: fields,
                         element_path: element_path

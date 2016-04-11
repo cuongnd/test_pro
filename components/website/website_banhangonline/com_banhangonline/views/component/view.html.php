@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * View to edit a component.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  * @since       1.5
  */
 class supperadminViewcomponent extends JViewLegacy
@@ -61,9 +61,9 @@ class supperadminViewcomponent extends JViewLegacy
 	{
 		JFactory::getApplication()->input->set('hidemainmenu', true);
 
-		$canDo = JHelperContent::getActions('com_supperadmin');
+		$canDo = JHelperContent::getActions('com_banhangonline');
 
-		JToolbarHelper::title(JText::sprintf('COM_supperadmin_MANAGER_component', JText::_($this->item->name)), 'power-cord component');
+		JToolbarHelper::title(JText::sprintf('com_banhangonline_MANAGER_component', JText::_($this->item->name)), 'power-cord component');
 
 		// If not checked out, can save the item.
 		if ($canDo->get('core.edit'))

@@ -220,7 +220,7 @@ class JFormFieldAutocompletetext extends JFormField
 		$doc->addStyleSheet(JUri::root() . '/libraries/joomla/form/fields/autocompletetext.less','text/css','',array('rel'=>'stylesheet/less'));
 		$doc->addScript(JUri::root().'/media/Kendo_UI_Professional_Q2_2015/src/build/less-js/dist/less-1.5.0.js');
 
-		$scriptId="lib_joomla_form_fields_autocomplete_text".JUserHelper::genRandomPassword();
+		$scriptId="script_lib_joomla_form_fields_autocomplete_text".JUserHelper::genRandomPassword();
 		ob_start();
 		?>
 		<script type="text/javascript">

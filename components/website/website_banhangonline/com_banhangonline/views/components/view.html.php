@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * View class for a list of supperadmin.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  * @since       1.5
  */
 class supperadminViewcomponents extends JViewLegacy
@@ -57,7 +57,7 @@ class supperadminViewcomponents extends JViewLegacy
 		if (!count($this->items))
 		{
 			JFactory::getApplication()->enqueueMessage(
-				JText::_('COM_supperadmin_MSG_MANAGE_NO_supperadmin'),
+				JText::_('com_banhangonline_MSG_MANAGE_NO_supperadmin'),
 				'warning'
 			);
 		}
@@ -69,7 +69,7 @@ class supperadminViewcomponents extends JViewLegacy
 	}
     function addCommand()
     {
-        $this->command='com_supperadmin';
+        $this->command='com_banhangonline';
         $this->controller_task='supperadmin.ajaxSaveForm';
     }
 	/**
@@ -79,10 +79,10 @@ class supperadminViewcomponents extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/com_supperadmin/helpers/components.php';
-		$canDo = JHelperContent::getActions('com_supperadmin');
+		require_once JPATH_ROOT.'/components/com_banhangonline/helpers/components.php';
+		$canDo = JHelperContent::getActions('com_banhangonline');
         $bar = JToolBar::getInstance('toolbar');
-		JToolbarHelper::title(JText::_('COM_supperadmin_MANAGER_supperadmin'), 'power-cord component');
+		JToolbarHelper::title(JText::_('com_banhangonline_MANAGER_supperadmin'), 'power-cord component');
         if ($canDo->get('core.create'))
         {
             // Instantiate a new JLayoutFile instance and render the layout
@@ -117,12 +117,12 @@ class supperadminViewcomponents extends JViewLegacy
         JToolbarHelper::unpublish('supperadmin.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
-			JToolbarHelper::preferences('com_supperadmin');
+			JToolbarHelper::preferences('com_banhangonline');
 		}
 
 		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');
 
-		JHtmlSidebar::setAction('index.php?option=com_supperadmin&view=supperadmin');
+		JHtmlSidebar::setAction('index.php?option=com_banhangonline&view=supperadmin');
 
         $supperAdmin=JFactory::isSupperAdmin();
         if($supperAdmin){
@@ -149,7 +149,7 @@ class supperadminViewcomponents extends JViewLegacy
 		);
 
 		JHtmlSidebar::addFilter(
-				JText::_('COM_supperadmin_OPTION_FOLDER'),
+				JText::_('com_banhangonline_OPTION_FOLDER'),
 				'filter_folder',
 				JHtml::_('select.options', componentsHelper::folderOptions(), 'value', 'text', $this->state->get('filter.folder'))
 		);
@@ -177,8 +177,8 @@ class supperadminViewcomponents extends JViewLegacy
 				'ordering' => JText::_('JGRID_HEADING_ORDERING'),
 				'enabled' => JText::_('JSTATUS'),
 				'name' => JText::_('JGLOBAL_TITLE'),
-				'folder' => JText::_('COM_supperadmin_FOLDER_HEADING'),
-				'element' => JText::_('COM_supperadmin_ELEMENT_HEADING'),
+				'folder' => JText::_('com_banhangonline_FOLDER_HEADING'),
+				'element' => JText::_('com_banhangonline_ELEMENT_HEADING'),
 				'access' => JText::_('JGRID_HEADING_ACCESS'),
 				'id' => JText::_('JGRID_HEADING_ID')
 		);

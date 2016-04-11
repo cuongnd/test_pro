@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,10 +13,10 @@ defined('_JEXEC') or die;
  * Methods supporting a list of component records.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  * @since       1.6
  */
-class supperadminModeldomains extends JModelList
+class banhangonlineModellistraovat extends JModelList
 {
 	/**
 	 * Constructor.
@@ -32,18 +32,11 @@ class supperadminModeldomains extends JModelList
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'title', 'a.name',
-                'website_id','extension.website_id',
-				'name', 'a.name',
-				'folder', 'a.folder',
-				'element', 'a.element',
 				'checked_out', 'a.checked_out',
 				'checked_out_time', 'a.checked_out_time',
 				'state', 'a.state',
 				'enabled', 'a.enabled',
-				'access', 'a.access', 'access_level',
 				'ordering', 'a.ordering',
-				'client_id', 'a.client_id',
-                'issystem', 'a.issystem'
 			);
 		}
 
@@ -52,8 +45,6 @@ class supperadminModeldomains extends JModelList
     function getItems()
     {
         $items=parent::getItems();
-		require_once JPATH_ROOT.'/components/com_website/helpers/website.php';
-        $items=websiteHelperFrontEnd::setKeyWebsite($items);
         return $items;
     }
 
@@ -76,22 +67,12 @@ class supperadminModeldomains extends JModelList
 		$search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);
 
-		$accessId = $this->getUserStateFromRequest($this->context . '.filter.access', 'filter_access', null, 'int');
-		$this->setState('filter.access', $accessId);
-
 		$state = $this->getUserStateFromRequest($this->context . '.filter.enabled', 'filter_enabled', '', 'string');
 		$this->setState('filter.enabled', $state);
-        $website_id = $this->getUserStateFromRequest($this->context . '.filter.website_id', 'filter_website_id', '', 'int');
-		$this->setState('filter.website_id', $website_id);
 
-		$folder = $this->getUserStateFromRequest($this->context . '.filter.folder', 'filter_folder', null, 'cmd');
-		$this->setState('filter.folder', $folder);
-
-		$language = $this->getUserStateFromRequest($this->context . '.filter.language', 'filter_language', '');
-		$this->setState('filter.language', $language);
 
 		// Load the parameters.
-		$params = JComponentHelper::getParams('com_supperadmin');
+		$params = JComponentHelper::getParams('com_banhangonline');
 		$this->setState('params', $params);
 
 		// List state information.
@@ -113,11 +94,7 @@ class supperadminModeldomains extends JModelList
 	{
 		// Compile the store id.
 		$id .= ':' . $this->getState('filter.search');
-		$id .= ':' . $this->getState('filter.access');
 		$id .= ':' . $this->getState('filter.state');
-		$id .= ':' . $this->getState('filter.folder');
-		$id .= ':' . $this->getState('filter.language');
-		$id .= ':' . $this->getState('filter.website_id');
 
 		return parent::getStoreId($id);
 	}
@@ -166,15 +143,9 @@ class supperadminModeldomains extends JModelList
 		{
 			if ($ordering == 'ordering')
 			{
-				$query->order('a.folder ASC');
 				$ordering = 'a.ordering';
 			}
 			$query->order($this->_db->quoteName($ordering) . ' ' . $this->getState('list.direction'));
-
-			if ($ordering == 'folder')
-			{
-				$query->order('a.ordering ASC');
-			}
 			$result = parent::_getList($query, $limitstart, $limit);
 			$this->translate($result);
 			return $result;
@@ -193,7 +164,7 @@ class supperadminModeldomains extends JModelList
 
 		foreach ($items as &$item)
 		{
-			$source = JPATH_supperadmin . '/' . $item->folder . '/' . $item->element;
+			$source = JPATH_banhangonline . '/' . $item->folder . '/' . $item->element;
 			$extension = 'plg_' . $item->folder . '_' . $item->element;
 			$lang->load($extension . '.sys', JPATH_ADMINISTRATOR, null, false, true)
 				|| $lang->load($extension . '.sys', $source, null, false, true);
@@ -219,7 +190,7 @@ class supperadminModeldomains extends JModelList
 				'a.*'
 			)
 		)
-			->from($db->quoteName('#__domain_website') . ' AS a');
+			->from($db->quoteName('#__banhangonline_raovat') . ' AS a');
 
 		// Join over the users for the checked out user.
 

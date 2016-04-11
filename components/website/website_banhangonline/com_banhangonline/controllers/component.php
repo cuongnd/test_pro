@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * component controller class.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  * @since       1.6
  */
 class supperadminControllercomponent extends JControllerForm
@@ -35,7 +35,7 @@ class supperadminControllercomponent extends JControllerForm
         $user = JFactory::getUser();
         $userId = $user->get('id');
         // Check general edit permission first.
-        if ($user->authorise('core.edit', 'com_supperadmin.component.' . $recordId))
+        if ($user->authorise('core.edit', 'com_banhangonline.component.' . $recordId))
         {
             return true;
         }

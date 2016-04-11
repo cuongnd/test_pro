@@ -320,6 +320,11 @@ class JPath
 
 	public static function get_component_path($component,$root=true)
 	{
+        if(trim($component)=='')
+        {
+            throw new Exception('component name must not empty');
+        }
+
 		jimport('joomla.filesystem.folder');
 		$website=JFactory::getWebsite();
         $website_name=JFactory::get_website_name();

@@ -393,7 +393,7 @@ abstract class JHtmlBehavior
 			SqueezeBox.assign($('" . $selector . "').get(), {
 				parse: 'rel'
 			});
-		});"
+		});",'','script_squeezeBox'
 		);
 
 		// Set static array

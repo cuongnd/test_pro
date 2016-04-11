@@ -193,7 +193,7 @@ class JFormFieldTable extends JFormField
 		JHtml::_('jquery.framework');
 		JHtml::_('script', 'system/html5fallback.js', false, true);
 		ob_start();
-		$scriptId="lib_joomla_form_fields_bindingSource".JUserHelper::genRandomPassword();
+		$scriptId="script_lib_joomla_form_fields_bindingSource".JUserHelper::genRandomPassword();
 		?>
 		<script type="text/javascript" id="<?php echo $scriptId ?>">
 			jQuery(document).ready(function($){

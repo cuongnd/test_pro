@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -24,12 +24,12 @@ $this->fieldsets = $this->form->getFieldsets('params');
 	}
 </script>
 
-<form action="<?php echo JRoute::_('index.php?option=com_supperadmin&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="style-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_banhangonline&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="style-form" class="form-validate">
 	<div class="form-horizontal">
 
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
 
-		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_supperadmin_component', true)); ?>
+		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('com_banhangonline_component', true)); ?>
 
 		<div class="row-fluid">
 			<div class="span9">

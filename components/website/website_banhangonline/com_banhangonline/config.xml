@@ -11,7 +11,7 @@
 			label="JCONFIG_PERMISSIONS_LABEL"
 			filter="rules"
 			validate="rules"
-			component="com_supperadmin"
+			component="com_banhangonline"
 			section="component" />
 	</fieldset>
 </config>

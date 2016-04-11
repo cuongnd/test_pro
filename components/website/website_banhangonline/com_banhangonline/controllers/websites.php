@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * supperadmin list controller class.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_banhangonline
  * @since       1.6
  */
 class supperadminControllerwebsites extends JControllerAdmin
@@ -47,14 +47,14 @@ class supperadminControllerwebsites extends JControllerAdmin
             if (empty($pks))
             {
                 $return=array(
-                    JText::_('COM_supperadmin_ERROR_NO_supperadmin_SELECTED')
+                    JText::_('com_banhangonline_ERROR_NO_supperadmin_SELECTED')
                 );
                 die(json_encode($return));
             }
             $model = $this->getModel();
             $model->ajaxSaveForm($pks);
             $return=array(
-                JText::plural('COM_supperadmin_N_supperadmin_DUPLICATED', count($pks))
+                JText::plural('com_banhangonline_N_supperadmin_DUPLICATED', count($pks))
             );
             die(json_encode($return));
         } catch (Exception $e)
@@ -107,30 +107,30 @@ class supperadminControllerwebsites extends JControllerAdmin
             try {
                 if (empty($pks))
                 {
-                    throw new Exception(JText::_('COM_supperadmin_ERROR_NO_COMPONENT_SELECTED'));
+                    throw new Exception(JText::_('com_banhangonline_ERROR_NO_COMPONENT_SELECTED'));
                 }
                 $model = $this->getModel();
                 $model->duplicateAndAssign($pks,$website_id);
-                $this->setMessage(JText::plural('COM_supperadmin_N_MODULE_DUPLICATED', count($pks)));
+                $this->setMessage(JText::plural('com_banhangonline_N_MODULE_DUPLICATED', count($pks)));
             } catch (Exception $e)
             {
                 JError::raiseWarning(500, $e->getMessage());
             }
-            $this->setRedirect(JRoute::_('index.php?option=com_supperadmin'));
+            $this->setRedirect(JRoute::_('index.php?option=com_banhangonline'));
         }
         else {
             try {
                 if (empty($pks)) {
-                    throw new Exception(JText::_('COM_supperadmin_ERROR_NO_MODULE_SELECTED'));
+                    throw new Exception(JText::_('com_banhangonline_ERROR_NO_MODULE_SELECTED'));
                 }
                 $model = $this->getModel();
                 $model->quick_assign_website($pks, $website_id);
-                $this->setMessage(JText::plural('COM_supperadmin_N_QUICK_ASSIGN', count($pks)));
+                $this->setMessage(JText::plural('com_banhangonline_N_QUICK_ASSIGN', count($pks)));
             } catch (Exception $e) {
                 JError::raiseWarning(500, $e->getMessage());
             }
 
-            $this->setRedirect(JRoute::_('index.php?option=com_supperadmin'));
+            $this->setRedirect(JRoute::_('index.php?option=com_banhangonline'));
         }
     }
 

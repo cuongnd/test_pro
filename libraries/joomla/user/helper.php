@@ -819,11 +819,12 @@ abstract class JUserHelper
 		$website=JFactory::getWebsite();
 		$db=JFactory::getDbo();
 		$query=$db->getQuery(true);
+        $list_user_group_id=JUserHelper::get_list_user_group_id();
 		$query->select('user.*')
 			->from('#__users AS user')
 			->leftJoin('#__user_usergroup_map AS  user_usergroup_map ON user_usergroup_map.user_id=user.id')
 			->leftJoin('#__usergroups AS  usergroups ON usergroups.id=user_usergroup_map.group_id')
-			->where('usergroups.website_id='.(int)$website->website_id)
+			->where('usergroups.id IN ('.implode(',',$list_user_group_id).')')
 			->where('user.email='.$query->q($email))
 			;
 		$user=$db->setQuery($query)->loadObject();
@@ -889,10 +890,11 @@ abstract class JUserHelper
 		$website=JFactory::getWebsite();
 		$db=JFactory::getDbo();
 		$query=$db->getQuery(true);
+        $list_user_group_id=JUserHelper::get_list_user_group_id();
 		$query->select('usergroups.id')
 			->from('#__usergroups AS  usergroups')
 			->where('usergroups.id='.(int)$user_group_id)
-			->where('usergroups.website_id='.(int)$website->website_id)
+            ->where('usergroups.id IN ('.implode(',',$list_user_group_id).')')
 		;
 		return $db->setQuery($query)->loadResult();
 

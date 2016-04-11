@@ -298,6 +298,7 @@ class JComponentHelper
 		$app = JFactory::getApplication();
         $input=$app->input;
 		$config=JFactory::getConfig();
+        $document=JFactory::getDocument();
 		$admin_load_component=$config->get('admin_load_component',0);
         $disable_component=$input->get('disable_component',0,'int');
         if($disable_component)

@@ -185,6 +185,7 @@ class JRouterSite extends JRouter
 
 		// Get the itemid, if it hasn't been set force it to null
         $Itemid=$app->input->getInt('Itemid', null);
+
         if($Itemid)
         {
             $this->setVar('Itemid', $Itemid);
@@ -209,7 +210,9 @@ class JRouterSite extends JRouter
 
         if(!$Itemid&&$tmpl=='')
         {
-            $items=$menu->getItems();
+            $website=JFactory::getWebsite();
+            $items=MenusHelperFrontEnd::get_all_menu_item_not_root_menu_item($website->website_id);
+
             foreach($items as $item)
             {
                 $link=$item->link;
@@ -266,10 +269,20 @@ class JRouterSite extends JRouter
             }
 
         }
-        if($this->getVar('Itemid')) {
-            $menu->setActive($this->getVar('Itemid'));
-        }
 
+        if($menu_item_id=$this->getVar('Itemid')) {
+            $item=MenusHelperFrontEnd::get_menu_item_by_menu_item_id($menu_item_id);
+            if($item) {
+                $link = $item->link;
+                $uri_link = JUri::getInstance($link);
+                $list_vars1 = $uri_link->getVars();
+                foreach($list_vars1 AS $key=>$value){
+                    $vars[$key]=$value;
+                }
+            }
+            $menu->setActive($menu_item_id);
+
+        }
         // Set the active menu item
 
 
@@ -484,6 +497,7 @@ class JRouterSite extends JRouter
         $Itemid=$app->input->getInt('Itemid', null);
         $items=$menu->getItems(array('route'),array($route) );
         $tmpl=$this->getVar('tmpl','');
+
         if(!$Itemid)
         {
             $Itemid=$this->getVar('menuItemActiveId');;
@@ -850,7 +864,8 @@ class JRouterSite extends JRouter
 			{
 				// Use the component routing handler if it exists
 				$website=JFactory::getWebsite();
-				$path = JPATH_SITE . '/components/website/website_'.$website->website_id.'/' . $component . '/router.php';
+                $component_path=JPath::get_component_path($component);
+				$path = $component_path.DS. 'router.php';
 				jimport('joomla.filesystem.file');
 				if(!JFile::exists($path))
 				{

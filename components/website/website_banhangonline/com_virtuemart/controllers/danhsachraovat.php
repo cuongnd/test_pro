@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.6
  */
-class supperadminControllerdomains extends JControllerAdmin
+class VirtuemartControllerDanhsachraovat extends JControllerAdmin
 {
 	/**
 	 * Method to get a model object, loading it if required.
@@ -29,7 +29,7 @@ class supperadminControllerdomains extends JControllerAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getModel($name = 'extension', $prefix = 'supperadminModel', $config = array('ignore_request' => true))
+	public function getModel($name = 'domain', $prefix = 'supperadminModel', $config = array('ignore_request' => true))
 	{
 		$model = parent::getModel($name, $prefix, $config);
 		return $model;

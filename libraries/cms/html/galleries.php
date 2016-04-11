@@ -49,7 +49,7 @@ abstract class JHtmlGalleries
         $doc->addStyleSheet(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/themes/base/all.css');
         $doc->addStyleSheet(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/themes/base/sortable.css');
         $doc->addLessStyleSheetTest(JUri::root() . '/libraries/cms/html/galleries.less');
-        $scriptId = $name;
+        $scriptId = "script_$name";
         ob_start();
         ?>
         <script type="text/javascript">

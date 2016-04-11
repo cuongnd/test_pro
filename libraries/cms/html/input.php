@@ -86,7 +86,7 @@ abstract class JHtmlInput
 			$str_attr[]="$key=\"$value\"";
 		}
 		$str_attr=implode(' ',$str_attr);
-		$scriptId = $name;
+		$scriptId = "script_$name";
 		ob_start();
 		?>
 		<script type="text/javascript">
