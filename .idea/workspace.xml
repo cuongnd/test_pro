@@ -9,30 +9,95 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/listmywebsite.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/listmywebsite.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/filter_listmywebsite.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/listmywebsite.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/frontend.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/frontend.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/frontend.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/frontend.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/domain.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/mywebsite.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/domains.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/domain.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/mywebsite.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domain/tmpl/edit.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domain/view.html.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/view.html.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/mywebsite/tmpl/edit.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/component.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/components.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/extension.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/extensions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/components.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/extensions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/websites.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/components.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/extensions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/component.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/extensions.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/filter_components.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/filter_extensions.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/filter_plugins.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/plugins.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/websites.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/plugins.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/websites.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/component/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/component/tmpl/assets/css/view_component_config.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/component/tmpl/assets/js/view_component_config.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/component/tmpl/assets/less/view_component_config.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/component/tmpl/config_default.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/component/tmpl/edit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/component/tmpl/edit_options.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/component/tmpl/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/components/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/components/tmpl/default.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/components/tmpl/default_loadcomponent.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/components/tmpl/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/components/view.html.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/extensions/tmpl/assets/js/loadcomponents.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/extensions/tmpl/default.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/extensions/tmpl/default.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/extensions/tmpl/default_loadcomponent.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/extensions/view.html.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/plugins/tmpl/default.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/plugins/view.html.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/websites/tmpl/default_loadcomponent.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/websites/view.html.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_users/models/forms/registration.xml" afterPath="$PROJECT_DIR$/components/com_users/models/forms/registration.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_website/views/website/tmpl/default.php" afterPath="$PROJECT_DIR$/components/com_website/views/website/tmpl/default.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administrator/components/com_virtuemart1/models/product.php" afterPath="$PROJECT_DIR$/administrator/components/com_virtuemart1/models/product.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/banhangonline.xml" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/banhangonline.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controller.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/listmywebsite.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/listmywebsite.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/listmywebsite.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/listmywebsite.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/listraovat.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/listraovat.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/fields/pluginordering.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/fields/pluginordering.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/default.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/default.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/default.xml" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/default.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/frontend.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/frontend.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/view.html.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/view.html.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/default.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/default.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/default.xml" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/default.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/frontend.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/frontend.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/view.html.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/view.html.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/virtuemart.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/virtuemart.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/application/site.php" afterPath="$PROJECT_DIR$/libraries/cms/application/site.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/raovat/view.html.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/raovat/view.html.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/router/site.php" afterPath="$PROJECT_DIR$/libraries/cms/router/site.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_banhangonline/mod_login/tmpl/default_logout.php" afterPath="$PROJECT_DIR$/modules/website/website_banhangonline/mod_login/tmpl/default_logout.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_banhangonline/mod_menu/tmpl/default.php" afterPath="$PROJECT_DIR$/modules/website/website_banhangonline/mod_menu/tmpl/default.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_banhangonline/mod_menu/tmpl/navigation.php" afterPath="$PROJECT_DIR$/modules/website/website_banhangonline/mod_menu/tmpl/navigation.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/websites.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/domains.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/plugins.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/domains.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/component.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/domain.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/extension.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/mywebsite.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/filter_websites.xml" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/filter_domains.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/component/view.html.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/mywebsite/view.html.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/components/tmpl/assets/js/loadcomponents.js" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/tmpl/assets/js/loadcomponents.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/components/tmpl/default.xml" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/mywebsite/tmpl/edit.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/extensions/index.html" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/mywebsite/tmpl/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/extensions/tmpl/index.html" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/mywebsite/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/plugins/index.html" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/tmpl/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/plugins/tmpl/assets/js/loadcomponents.js" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domain/tmpl/assets/js/loadcomponents.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/plugins/tmpl/default.xml" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domain/tmpl/edit.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/plugins/tmpl/default_loadcomponent.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/tmpl/default_loadcomponent.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/plugins/tmpl/index.html" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/websites/index.html" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domain/tmpl/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/websites/tmpl/assets/js/loadcomponents.js" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/mywebsite/tmpl/assets/js/loadcomponents.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/websites/tmpl/default.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/tmpl/default.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/websites/tmpl/default.xml" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/tmpl/default.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/websites/tmpl/index.html" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domain/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/tables/domain.php" afterPath="$PROJECT_DIR$/libraries/legacy/table/domain.php" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/modules/website/website_vantinviet/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/.gitignore" afterPath="$PROJECT_DIR$/media/system/js/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/.gitignore" />
     </list>
     <ignored path="test_pro.iws" />
@@ -1691,95 +1756,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="view.html.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/view.html.php">
+      <file leaf-file-name="domains.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/domains.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.423077">
-              <caret line="50" column="76" selection-start-line="50" selection-start-column="76" selection-end-line="50" selection-end-column="76" />
+            <state vertical-scroll-proportion="-42.576923">
+              <caret line="103" column="39" selection-start-line="103" selection-start-column="29" selection-end-line="103" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="listmywebsite.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/listmywebsite.php">
+      <file leaf-file-name="domain.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/domain.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.423077">
+              <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="domain.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/domain.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-7.8461537">
-              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="listmywebsite.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/listmywebsite.php">
+      <file leaf-file-name="website.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/legacy/table/website.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.038462">
-              <caret line="194" column="54" selection-start-line="194" selection-start-column="54" selection-end-line="194" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="filter_listmywebsite.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/filter_listmywebsite.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/default.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693">
-              <caret line="45" column="56" selection-start-line="45" selection-start-column="56" selection-end-line="45" selection-end-column="56" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1460415517186" expanded="true" signature="1998:2043" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="2200:2403" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="2588:2765" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="2616:2765" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="2641:2765" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="2716:2765" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="2977:3026" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="3138:3187" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="3321:3370" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="3532:3581" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="3759:3990" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="3784:3961" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="3826:3935" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="4018:4136" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="4623:4857" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="4773:4857" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="5319:5366" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="5503:5515" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="5540:5657" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="5800:5853" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="5964:6017" placeholder="..." />
-                <marker date="1460415517186" expanded="true" signature="7017:7113" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="virtuemart.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/virtuemart.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.230769">
-              <caret line="121" column="8" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="site.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libraries/cms/application/site.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.730769">
-              <caret line="118" column="39" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -1788,28 +1799,58 @@
       <file leaf-file-name="site.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/cms/router/site.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769">
-              <caret line="487" column="0" selection-start-line="487" selection-start-column="0" selection-end-line="487" selection-end-column="0" />
+            <state vertical-scroll-proportion="-11.115385">
+              <caret line="568" column="53" selection-start-line="568" selection-start-column="53" selection-end-line="568" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view.html.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domain/view.html.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.576923">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domain/tmpl/edit.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="frontend.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/frontend.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.16">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/com_website/views/website/tmpl/default.php">
+        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/default.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9230769">
-              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+            <state vertical-scroll-proportion="-2.6153846">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navigation.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/website/website_banhangonline/mod_menu/tmpl/navigation.php">
+      <file leaf-file-name="frontend.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/frontend.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4033019">
-              <caret line="62" column="17" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
+            <state vertical-scroll-proportion="-2.6153846">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1836,22 +1877,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/libraries/legacy/view/legacy.php" />
-        <option value="$PROJECT_DIR$/libraries/legacy/controller/legacy.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/html/input.php" />
-        <option value="$PROJECT_DIR$/plugins/editors/none/none.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/html/behavior.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/html/galleries.php" />
-        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/views/raovat/tmpl/edit.php" />
-        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/controllers/domains.php" />
-        <option value="$PROJECT_DIR$/modules/website/website_vantinviet/mod_menu/tmpl/navigation.php" />
-        <option value="$PROJECT_DIR$/media/elements/ui/html.js" />
-        <option value="$PROJECT_DIR$/libraries/joomla/form/fields/autocompletetext.php" />
-        <option value="$PROJECT_DIR$/libraries/joomla/form/fields/table.php" />
-        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/views/gianhang/tmpl/edit.php" />
-        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/views/danhsachraovat/view.html.php" />
-        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/models/danhsachraovat.php" />
-        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controller.php" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/banhangonline.php" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/access.xml" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/component/tmpl/assets/js/view_component_config.js" />
@@ -1865,28 +1890,44 @@
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/router.php" />
         <option value="$PROJECT_DIR$/libraries/joomla/filesystem/path.php" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/raovat.php" />
-        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/raovat/view.html.php" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/tables/raovat.php" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/listraovat.php" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/listraovat.php" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/listraovat.php" />
-        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/default.php" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/raovat.xml" />
         <option value="$PROJECT_DIR$/modules/website/website_banhangonline/mod_menu/tmpl/default.php" />
         <option value="$PROJECT_DIR$/components/com_users/models/forms/registration.xml" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/frontend.xml" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/view.html.php" />
         <option value="$PROJECT_DIR$/modules/website/website_banhangonline/mod_login/tmpl/default_logout.php" />
-        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/listmywebsite.php" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/listmywebsite.php" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/listmywebsite.php" />
-        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/view.html.php" />
-        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/default.php" />
         <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/virtuemart.php" />
         <option value="$PROJECT_DIR$/libraries/cms/application/site.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/router/site.php" />
         <option value="$PROJECT_DIR$/components/com_website/views/website/tmpl/default.php" />
+        <option value="$PROJECT_DIR$/administrator/components/com_virtuemart1/models/product.php" />
         <option value="$PROJECT_DIR$/modules/website/website_banhangonline/mod_menu/tmpl/navigation.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/raovat/view.html.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/listmywebsite.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/mywebsite/view.html.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/mywebsite.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/mywebsite.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/view.html.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/banhangonline.xml" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/default.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/tmpl/default.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/domains.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/filter_domains.xml" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/view.html.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/domains.php" />
+        <option value="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/models/domain.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/domain.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/domain.php" />
+        <option value="$PROJECT_DIR$/libraries/cms/router/site.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domain/view.html.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/default.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/frontend.php" />
+        <option value="$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/frontend.php" />
       </list>
     </option>
   </component>
@@ -1977,6 +2018,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2183,16 +2226,622 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="legacy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="legacy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="table" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_supper_admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_supperadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_supper_admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_supperadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_supper_admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_supperadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_supper_admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_supperadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_supper_admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_supperadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_supper_admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_supperadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tables" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_banhangonline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="administrator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="administrator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="administrator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_virtuemart1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="administrator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_virtuemart1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="jrout&#9;null&#9;null&#10;jrouter&#9;null&#9;null&#10;ajaxSaveBlockHtml&#9;null&#9;null&#10;jrou&#9;null&#9;null&#10;Jcom&#9;null&#9;null&#10;jmodul&#9;null&#9;null&#10;HTML&#9;null&#9;null&#10;jfieldconf&#9;null&#9;null&#10;jfieldme&#9;null&#9;null&#10;jfieldselect&#9;null&#9;null&#10;jfieldmenuitem&#9;null&#9;null&#10;Jfieldmenu&#9;null&#9;null&#10;jfieldmenu&#9;null&#9;null&#10;jfieldselec&#9;null&#9;null&#10;jmodu&#9;null&#9;null&#10;jtabmem&#9;null&#9;null&#10;ajaxDuplicateBlock&#9;null&#9;null&#10;aJaxInsertElement&#9;null&#9;null&#10;aJaxInsertRow&#9;null&#9;null&#10;jmodule&#9;null&#9;null&#10;jsite&#9;null&#9;null&#10;jfieldmod&#9;null&#9;null&#10;fixedheadertable&#9;FILE&#9;file://H:/project/test_pro/media/system/js/Fixed-Header-Table-master/jquery.fixedheadertable.js&#10;jtablewe&#9;null&#9;null&#10;jfieldwe&#9;null&#9;null&#10;jtablemen&#9;null&#9;null&#10;jtablemenuty&#9;null&#9;null&#10;jcomp&#9;null&#9;null&#10;jfieldmen&#9;null&#9;null&#10;JTableMenu&#9;null&#9;null&#10;ajax_clone_item_menu&#9;null&#9;null&#10;jtableme&#9;null&#9;null&#10;jtable&#9;null&#9;null&#10;menu&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/menu/menu.php&#10;jfieldedit&#9;null&#9;null&#10;jtabledom&#9;null&#9;null&#10;jfieldom&#9;null&#9;null&#10;tabledo&#9;null&#9;null&#10;jtablepl&#9;null&#9;null&#10;jfieldli&#9;null&#9;null&#10;jfieldw&#9;null&#9;null&#10;jfieldlis&#9;null&#9;null&#10;jfieldweb&#9;null&#9;null&#10;jfieldwebsites&#9;null&#9;null&#10;jfieldtex&#9;null&#9;null&#10;JFormField&#9;null&#9;null&#10;JForm&#9;null&#9;null&#10;jmenu&#9;null&#9;null&#10;jcomponent&#9;null&#9;null&#10;menuitemmenutype&#9;FILE&#9;file://H:/project/test_pro/libraries/legacy/table/menuitemmenutype.php" />
+    <property name="SearchEverywhereHistoryKey" value="jrout&#9;null&#9;null&#10;jtablewe&#9;null&#9;null&#10;jrouter&#9;null&#9;null&#10;ajaxSaveBlockHtml&#9;null&#9;null&#10;jrou&#9;null&#9;null&#10;Jcom&#9;null&#9;null&#10;jmodul&#9;null&#9;null&#10;HTML&#9;null&#9;null&#10;jfieldconf&#9;null&#9;null&#10;jfieldme&#9;null&#9;null&#10;jfieldselect&#9;null&#9;null&#10;jfieldmenuitem&#9;null&#9;null&#10;Jfieldmenu&#9;null&#9;null&#10;jfieldmenu&#9;null&#9;null&#10;jfieldselec&#9;null&#9;null&#10;jmodu&#9;null&#9;null&#10;jtabmem&#9;null&#9;null&#10;ajaxDuplicateBlock&#9;null&#9;null&#10;aJaxInsertElement&#9;null&#9;null&#10;aJaxInsertRow&#9;null&#9;null&#10;jmodule&#9;null&#9;null&#10;jsite&#9;null&#9;null&#10;jfieldmod&#9;null&#9;null&#10;fixedheadertable&#9;FILE&#9;file://H:/project/test_pro/media/system/js/Fixed-Header-Table-master/jquery.fixedheadertable.js&#10;jfieldwe&#9;null&#9;null&#10;jtablemen&#9;null&#9;null&#10;jtablemenuty&#9;null&#9;null&#10;jcomp&#9;null&#9;null&#10;jfieldmen&#9;null&#9;null&#10;JTableMenu&#9;null&#9;null&#10;ajax_clone_item_menu&#9;null&#9;null&#10;jtableme&#9;null&#9;null&#10;jtable&#9;null&#9;null&#10;menu&#9;FILE&#9;file://H:/project/test_pro/libraries/cms/menu/menu.php&#10;jfieldedit&#9;null&#9;null&#10;jtabledom&#9;null&#9;null&#10;jfieldom&#9;null&#9;null&#10;tabledo&#9;null&#9;null&#10;jtablepl&#9;null&#9;null&#10;jfieldli&#9;null&#9;null&#10;jfieldw&#9;null&#9;null&#10;jfieldlis&#9;null&#9;null&#10;jfieldweb&#9;null&#9;null&#10;jfieldwebsites&#9;null&#9;null&#10;jfieldtex&#9;null&#9;null&#10;JFormField&#9;null&#9;null&#10;JForm&#9;null&#9;null&#10;jmenu&#9;null&#9;null&#10;jcomponent&#9;null&#9;null&#10;menuitemmenutype&#9;FILE&#9;file://H:/project/test_pro/libraries/legacy/table/menuitemmenutype.php" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/components/com_website/views/website/tmpl/default.php" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
     <property name="LayoutCode.rearrangeEntriesXML" value="false" />
@@ -2227,19 +2876,19 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files (x86)\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="H:\project\test_pro\modules\website\website_banhangonline" />
-      <recent name="H:\project\test_pro\components\website" />
-      <recent name="H:\project\test_pro\components\website\website_39\website_supper_admin" />
-      <recent name="H:\project\test_pro\templates\sprflat\less" />
-      <recent name="H:\project\test_pro\components\com_website\assets\less" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\project\test_pro\components\website\website_banhangonline\com_banhangonline\views\domain\tmpl" />
       <recent name="H:\project\test_pro\components\website\website_banhangonline\com_banhangonline\models\forms" />
       <recent name="H:\project\test_pro\components\website\website_banhangonline\com_banhangonline\models" />
       <recent name="H:\project\test_pro\components\website\website_banhangonline\com_banhangonline\helpers" />
       <recent name="H:\project\test_pro\components\website\website_banhangonline\com_banhangonline\controllers" />
-      <recent name="H:\project\test_pro\components\website\website_banhangonline\com_banhangonline\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\project\test_pro\libraries\legacy\table" />
+      <recent name="H:\project\test_pro\modules\website\website_banhangonline" />
+      <recent name="H:\project\test_pro\components\website" />
+      <recent name="H:\project\test_pro\components\website\website_39\website_supper_admin" />
+      <recent name="H:\project\test_pro\templates\sprflat\less" />
     </key>
   </component>
   <component name="RunManager">
@@ -2295,12 +2944,6 @@
       <created>1441660052781</created>
       <option name="number" value="Default" />
       <updated>1441660052781</updated>
-    </task>
-    <task id="LOCAL-00018" summary="add new element">
-      <created>1456384098934</created>
-      <option name="number" value="00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1456384098934</updated>
     </task>
     <task id="LOCAL-00019" summary="update data">
       <created>1456398482732</created>
@@ -2590,7 +3233,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460371441800</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="update module supper admin">
+      <created>1460427134096</created>
+      <option name="number" value="00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1460427134098</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2606,20 +3255,17 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.018080669" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33426183" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17609255" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27956298" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28727508" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42320818" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42280945" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.018080669" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33379695" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14781491" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26172465" sideWeight="0.82282794" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2627,11 +3273,14 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26279864" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2643,7 +3292,7 @@
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17609255" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17416452" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14781491" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -2652,13 +3301,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26279864" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.018080669" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.018080669" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4010239" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33379695" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27956298" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42420027" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28727508" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42320818" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26172465" sideWeight="0.82282794" order="1" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -2698,226 +3347,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/access.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/components/tmpl/assets/js/loadcomponents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-          <folding>
-            <marker date="1460364584754" expanded="true" signature="3403:4424" placeholder="..." />
-            <marker date="1460364584754" expanded="true" signature="3483:3607" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/component/tmpl/assets/js/view_component_config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="253" column="33" selection-start-line="253" selection-start-column="33" selection-end-line="253" selection-end-column="33" />
-          <folding>
-            <marker date="1460364485464" expanded="true" signature="15680:15694" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/components/com_content/views/articles/view.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7097745">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_modules/views/modules/view.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="100" column="44" selection-start-line="100" selection-start-column="38" selection-end-line="100" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_modules/controllers/module.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
-          <caret line="417" column="23" selection-start-line="417" selection-start-column="23" selection-end-line="417" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/components/com_content/controllers/article.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="16" column="54" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/legacy/controller/legacy.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.846154">
-          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/legacy/controller/form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.327273">
-          <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/banhangonline.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
-          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/f0f/view/raw.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.9230769">
-          <caret line="198" column="42" selection-start-line="198" selection-start-column="42" selection-end-line="198" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/banhangonline.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/filter_listraovat.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_modules/views/modules/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
-          <caret line="46" column="64" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/system/js/core-uncompressed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
-          <folding>
-            <marker date="1460367862496" expanded="true" signature="11840:11870" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_k2/router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.46015036">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/filesystem/path.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
-          <caret line="320" column="27" selection-start-line="320" selection-start-column="27" selection-end-line="320" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/virtuemart_parser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/raovat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.846154">
-          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/raovat/tmpl/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
-          <caret line="18" column="82" selection-start-line="18" selection-start-column="82" selection-end-line="18" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/raovat/tmpl/edit.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/raovat/view.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6153846">
-          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/raovat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="92.11539">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/tables/raovat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.923077">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/components.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.8846154">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/listraovat.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.346153">
           <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2926,7 +3359,7 @@
         <state vertical-scroll-proportion="26.153847">
           <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
           <folding>
-            <element signature="e#6#255#0#PHP" expanded="true" />
+            <element signature="e#6#255#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2935,15 +3368,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-21.0">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.807693">
-          <caret line="126" column="59" selection-start-line="126" selection-start-column="59" selection-end-line="126" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2951,15 +3375,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.461538">
           <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/website/website_vantinviet/mod_menu/tmpl/navigation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385">
-          <caret line="76" column="25" selection-start-line="73" selection-start-column="23" selection-end-line="76" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2967,7 +3382,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.807693">
           <caret line="78" column="29" selection-start-line="75" selection-start-column="27" selection-end-line="78" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2975,7 +3389,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="9.615385">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2983,15 +3396,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-23.73077">
           <caret line="81" column="30" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/frontend.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2999,15 +3403,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.576923">
           <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/view.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3015,7 +3410,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.307693">
           <caret line="46" column="101" selection-start-line="46" selection-start-column="101" selection-end-line="46" selection-end-column="101" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3030,17 +3424,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/listmywebsite.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
-          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/listmywebsite.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
+        <state vertical-scroll-proportion="0.0">
           <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
           <folding />
         </state>
@@ -3056,55 +3442,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/listmywebsite.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.038462">
+        <state vertical-scroll-proportion="0.0">
           <caret line="194" column="54" selection-start-line="194" selection-start-column="54" selection-end-line="194" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/view.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.423077">
-          <caret line="50" column="76" selection-start-line="50" selection-start-column="76" selection-end-line="50" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693">
-          <caret line="45" column="56" selection-start-line="45" selection-start-column="56" selection-end-line="45" selection-end-column="56" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1460415517186" expanded="true" signature="1998:2043" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="2200:2403" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="2588:2765" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="2616:2765" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="2641:2765" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="2716:2765" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="2977:3026" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="3138:3187" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="3321:3370" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="3532:3581" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="3759:3990" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="3784:3961" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="3826:3935" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="4018:4136" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="4623:4857" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="4773:4857" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="5319:5366" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="5503:5515" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="5540:5657" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="5800:5853" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="5964:6017" placeholder="..." />
-            <marker date="1460415517186" expanded="true" signature="7017:7113" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/virtuemart.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.230769">
+        <state vertical-scroll-proportion="0.0">
           <caret line="121" column="8" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="8" />
           <folding />
         </state>
@@ -3112,32 +3458,324 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/application/site.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.730769">
+        <state vertical-scroll-proportion="0.0">
           <caret line="118" column="39" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/router/site.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769">
-          <caret line="487" column="0" selection-start-line="487" selection-start-column="0" selection-end-line="487" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/com_website/views/website/tmpl/default.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
+        <state vertical-scroll-proportion="0.0">
           <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/components/com_virtuemart1/models/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40902257">
+          <caret line="1725" column="9" selection-start-line="1725" selection-start-column="9" selection-end-line="1725" selection-end-column="9" />
+          <folding>
+            <marker date="1460431596674" expanded="true" signature="30296:30389" placeholder="SELECT * FRO... #__virtuemart_product_prices" />
+            <marker date="1460431596674" expanded="true" signature="33832:33920" placeholder="SELECT `prod... #__virtuemart_products" />
+            <marker date="1460431596674" expanded="true" signature="48914:49020" placeholder="SELECT pc.vi... #__virtuemart_product_categories" />
+            <marker date="1460431596674" expanded="true" signature="50359:50508" placeholder="SELECT `virt... #__virtuemart_product_shoppergroups" />
+            <marker date="1460431596674" expanded="true" signature="56232:56510" placeholder="SELECT `l`.`... #__virtuemart_products" />
+            <marker date="1460431596674" expanded="true" signature="58396:58554" placeholder="SELECT `id`,... #__virtuemart_product_categories" />
+            <marker date="1460431596674" expanded="true" signature="59016:59109" placeholder="UPDATE `#__v... " />
+            <marker date="1460431596674" expanded="true" signature="66425:66547" placeholder="DELETE FROM " />
+            <marker date="1460431596674" expanded="true" signature="73507:73678" placeholder="SELECT `prod... #__virtuemart_products" />
+            <marker date="1460431596674" expanded="true" signature="74215:74356" placeholder="SELECT `prod... #__virtuemart_products_${$lang}" />
+            <marker date="1460431596674" expanded="true" signature="74444:74599" placeholder="INSERT INTO `#__virtuemart_products_${$lang}`... " />
+            <marker date="1460431596674" expanded="true" signature="75976:76020" placeholder="SELECT * FRO... #__virtuemart_product_prices" />
+            <marker date="1460431596674" expanded="true" signature="76910:76966" placeholder="SELECT * FRO... #__virtuemart_product_customfields" />
+            <marker date="1460431596674" expanded="true" signature="84975:85088" placeholder="SELECT DISTI... #__virtuemart_manufacturers_${VMLANG}" />
+            <marker date="1460431596674" expanded="true" signature="91989:92089" placeholder="UPDATE `#__v... " />
+            <marker date="1460431596674" expanded="true" signature="93014:93225" placeholder="SELECT l.pro... #__virtuemart_products_${VMLANG}" />
+            <marker date="1460431596674" expanded="true" signature="94483:94713" placeholder="SELECT * FRO... #__virtuemart_products" />
+            <marker date="1460431596674" expanded="true" signature="96273:96422" placeholder="SELECT IF(CO... #__virtuemart_products" />
+            <marker date="1460431596674" expanded="true" signature="96618:96806" placeholder="SELECT virtu... #__virtuemart_products_${VMLANG}" />
+            <marker date="1460431596674" expanded="true" signature="97033:97164" placeholder="SELECT virtu... #__virtuemart_products" />
+            <marker date="1460431596674" expanded="true" signature="97393:97478" placeholder="SELECT * FRO... #__virtuemart_products_${VMLANG}" />
+            <marker date="1460431596674" expanded="true" signature="99861:100263" placeholder="SELECT ou.* #__virtuemart_order_userinfos" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/website/website_vantinviet/mod_menu/tmpl/navigation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385">
+          <caret line="71" column="21" selection-start-line="67" selection-start-column="19" selection-end-line="71" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/website/website_banhangonline/mod_menu/tmpl/navigation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4033019">
-          <caret line="62" column="17" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
+        <state vertical-scroll-proportion="-11.346154">
+          <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/view.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5384617">
+          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/raovat/view.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/listmywebsite.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.576923">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/mywebsite/tmpl/assets/js/loadcomponents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1460364584731" expanded="true" signature="3403:4424" placeholder="..." />
+            <marker date="1460364584731" expanded="true" signature="3483:3607" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/mywebsite/view.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/mywebsite.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.1153846">
+          <caret line="35" column="41" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/mywebsite.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.23077">
+          <caret line="96" column="54" selection-start-line="96" selection-start-column="54" selection-end-line="96" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/mywebsite/tmpl/edit.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/mywebsite.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.8461537">
+          <caret line="13" column="23" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/view.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5384617">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/tmpl/assets/js/loadcomponents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1460446566497" expanded="true" signature="3403:4424" placeholder="..." />
+            <marker date="1460446566497" expanded="true" signature="3483:3607" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/banhangonline.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.461538">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/domains.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="7.8461537">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <marker date="1460447159633" expanded="true" signature="1956:2001" placeholder="..." />
+            <marker date="1460447159633" expanded="true" signature="2158:2361" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/filter_domains.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="11.115385">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_website/helpers/website.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.384615">
+          <caret line="45" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <marker date="1459912240309" expanded="true" signature="35002:35262" placeholder="..." />
+            <marker date="1459912240309" expanded="true" signature="35046:35140" placeholder="..." />
+            <marker date="1459912240309" expanded="true" signature="35057:35129" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domains/view.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.461538">
+          <caret line="91" column="45" selection-start-line="91" selection-start-column="45" selection-end-line="91" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/helpers/domains.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="56" column="49" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/forms/domain.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/models/domain.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-24.26923">
+          <caret line="272" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/controllers/domain.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.423077">
+          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/domains.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-42.576923">
+          <caret line="103" column="39" selection-start-line="103" selection-start-column="29" selection-end-line="103" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/website.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/models/domain.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domain/view.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.576923">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/router/site.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385">
+          <caret line="568" column="53" selection-start-line="568" selection-start-column="53" selection-end-line="568" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/domain/tmpl/edit.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listraovat/tmpl/frontend.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_banhangonline/com_banhangonline/views/listmywebsite/tmpl/frontend.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>

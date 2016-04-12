@@ -562,7 +562,6 @@ class JRouterSite extends JRouter
         if($menu_item_id=$this->getVar('Itemid')) {
 
             $item=MenusHelperFrontEnd::get_menu_item_by_menu_item_id($menu_item_id);
-
             if($item) {
                 $link = $item->link;
                 $uri_link = JUri::getInstance($link);

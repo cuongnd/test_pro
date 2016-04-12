@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_banhangonline
  * @since       1.5
  */
-class banhangonlineViewraovat extends JViewLegacy
+class banhangonlineViewdomain extends JViewLegacy
 {
 	protected $item;
 
@@ -54,12 +54,12 @@ class banhangonlineViewraovat extends JViewLegacy
 
 		$canDo = JHelperContent::getActions('com_banhangonline');
 
-		JToolbarHelper::title(JText::sprintf('raovat', JText::_($this->item->name)), 'power-cord plugin');
+		JToolbarHelper::title(JText::sprintf('Domain', JText::_($this->item->name)), 'power-cord plugin');
 
 		// If not checked out, can save the item.
-        JToolbarHelper::apply('raovat.apply');
-        JToolbarHelper::save('raovat.save');
-		JToolbarHelper::cancel('raovat.cancel', 'JTOOLBAR_CLOSE');
+        JToolbarHelper::apply('domain.apply');
+        JToolbarHelper::save('domain.save');
+		JToolbarHelper::cancel('domain.cancel', 'JTOOLBAR_CLOSE');
 		JToolbarHelper::divider();
 		// Get the help information for the plugin item.
 

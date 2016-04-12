@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="extensions" option="extensions">
+	<layout title="edit" option="edit">
 		<help
-			key = "extensions"
+			key = "edit"
 		/>
 		<message>
-			<![CDATA[banhangonline]]>
+			<![CDATA[edit]]>
 		</message>
 	</layout>
 

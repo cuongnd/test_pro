@@ -48,7 +48,7 @@ class banhangonlineViewlistraovat extends JViewLegacy
 		if (!count($this->items))
 		{
 			JFactory::getApplication()->enqueueMessage(
-				JText::_('com_banhangonline_MSG_MANAGE_NO_supperadmin'),
+				JText::_('com_banhangonline_MSG_MANAGE_NO_banhangonline'),
 				'warning'
 			);
 		}

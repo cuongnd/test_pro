@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_banhangonline
  * @since       1.5
  */
-class banhangonlineViewraovat extends JViewLegacy
+class banhangonlineViewmywebsite extends JViewLegacy
 {
 	protected $item;
 

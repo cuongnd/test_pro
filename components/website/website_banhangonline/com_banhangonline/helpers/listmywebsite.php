@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 /**
- * supperadmin component helper.
+ * banhangonline component helper.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_banhangonline

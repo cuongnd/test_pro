@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 /**
- * supperadmin master display controller.
+ * banhangonline master display controller.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_banhangonline

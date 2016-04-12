@@ -12,7 +12,7 @@ defined('JPATH_BASE') or die;
 JFormHelper::loadFieldClass('ordering');
 
 /**
- * Supports an HTML select list of supperadmin
+ * Supports an HTML select list of banhangonline
  *
  * @package     Joomla.Administrator
  * @subpackage  com_banhangonline

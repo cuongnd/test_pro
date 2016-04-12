@@ -21,7 +21,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
 $canOrder = $user->authorise('core.edit.state', 'com_banhangonline');
 $saveOrder = $listOrder == 'ordering';
 if ($saveOrder) {
-    $saveOrderingUrl = 'index.php?option=com_banhangonline&task=dlistraovat.saveOrderAjax&tmpl=component';
+    $saveOrderingUrl = 'index.php?option=com_banhangonline&task=ddomains.saveOrderAjax&tmpl=component';
     JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 $sortFields = $this->getSortFields();
@@ -40,11 +40,10 @@ $sortFields = $this->getSortFields();
             Joomla.tableOrdering(order, dirn, '');
         }
     </script>
-<?php echo $this->render_toolbar() ?>
-    <div class="view-listraovat-default">
 
-        <form action="<?php echo JRoute::_('index.php?option=com_banhangonline&view=listraovat'); ?>" method="post"
-              name="adminForm" id="adminForm">
+    <div class="view-domains-default">
+        <?php echo $this->render_toolbar() ?>
+        <form action="<?php echo JRoute::_('index.php?option=com_banhangonline&view=domains'); ?>" method="post" name="adminForm" id="adminForm">
             <div id="main-container">
                 <?php if (!empty($this->sidebar)) : ?>
                     <?php echo $this->sidebar; ?>
@@ -67,7 +66,10 @@ $sortFields = $this->getSortFields();
                             <?php echo JHtml::_('grid.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
                         </th>
                         <th class="title">
-                            <?php echo JHtml::_('grid.sort', 'title', 'title', $listDirn, $listOrder); ?>
+                            <?php echo JHtml::_('grid.sort', 'domain', 'a.domain', $listDirn, $listOrder); ?>
+                        </th>
+                        <th class="title">
+                            <?php echo JHtml::_('grid.sort', 'website', 'website.name', $listDirn, $listOrder); ?>
                         </th>
                         <th width="1%" class="nowrap center hidden-phone">
                             <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
@@ -112,7 +114,7 @@ $sortFields = $this->getSortFields();
                                 <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                             </td>
                             <td class="center">
-                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'listraovat.', $canChange); ?>
+                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'domains.', $canChange); ?>
                             </td>
                             <td>
                                 <?php if ($item->checked_out) : ?>
@@ -120,11 +122,14 @@ $sortFields = $this->getSortFields();
                                 <?php endif; ?>
                                 <?php if ($canEdit) : ?>
                                     <a class="quick-edit-title"
-                                       href="<?php echo JRoute::_('index.php?option=com_banhangonline&task=raovat.edit&id=' . (int)$item->id); ?>">
-                                        <?php echo $item->title; ?></a>
+                                       href="<?php echo JRoute::_('index.php?option=com_banhangonline&task=domain.edit&id=' . (int)$item->id); ?>">
+                                        <?php echo $item->domain; ?></a> <a href="http://www.<?php echo $item->domain ?>" target="_blank"><i class="fa-external-link"></i></a>
                                 <?php else : ?>
-                                    <?php echo $item->title; ?>
+                                    <?php echo $item->domain; ?>
                                 <?php endif; ?>
+                            </td>
+                            <td class="center hidden-phone">
+                                <?php echo $item->website_name ?>
                             </td>
                             <td class="center hidden-phone">
                                 <?php echo (int)$item->id; ?>

@@ -56,26 +56,26 @@ $doc->addScriptDeclaration($js_content,"text/javascript",'script_navigation_menu
         }
         unset($children['list_root']);
         if(!function_exists('render_menu_item_mod_menu')){
-            function render_menu_item_mod_menu($list,$root_menu_item_id=0, $children,$level=0,$max_level=999){
-
-                $menu_item=$list[$root_menu_item_id];
-                if($menu_item->alias!=='root' && ($menu_item->hidden==1||!$menu_item->published))
-                {
-                    return;
-                }
-                if ($children[$root_menu_item_id]&&$level<$max_level) {
+            function render_menu_item_mod_menu($root_menu_item_id=0, $children,$level=0,$max_level=999){
+                if (count($children[$root_menu_item_id])>0&&$level<$max_level) {
 
                     usort($children[$root_menu_item_id], function ($item1, $item2) {
                         if ($item1->ordering == $item2->ordering) return 0;
                         return $item1->ordering < $item2->ordering ? -1 : 1;
                     });
                     $level1=$level+1;
+                    if($level>0)
+                    {
+                        echo '<ul  class="nav-child">';
+
+                    }
                     foreach ($children[$root_menu_item_id] as $i => $item) {
-                        if($item->hidden==1 || !$item->published)
+                        $root_menu_item_id1 = $item->id;
+                        if($item->hidden==1||!$item->published)
                         {
                             continue;
                         }
-                        $root_menu_item_id1 = $item->id;
+
                         ?>
 
                     <li class="item-<?php echo $item->id ?> ">
@@ -93,7 +93,7 @@ $doc->addScriptDeclaration($js_content,"text/javascript",'script_navigation_menu
                                 break;
                         endswitch;
 
-                        render_menu_item_mod_menu($list,$root_menu_item_id1, $children,$level1,$max_level);
+                        render_menu_item_mod_menu($root_menu_item_id1, $children,$level1,$max_level);
                     }
                     if($level>0)
                     {
@@ -114,7 +114,7 @@ $doc->addScriptDeclaration($js_content,"text/javascript",'script_navigation_menu
 
         $list=JArrayHelper::pivot($list,'id');
 
-        render_menu_item_mod_menu($list,$first_menu_item->id,$children);
+        render_menu_item_mod_menu($first_menu_item->id,$children);
         ?></ul>
 
 </div>

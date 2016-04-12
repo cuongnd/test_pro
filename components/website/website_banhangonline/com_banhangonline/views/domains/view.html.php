@@ -10,13 +10,13 @@
 defined('_JEXEC') or die;
 
 /**
- * View class for a list of listmywebsite.
+ * View class for a list of domains.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_banhangonline
  * @since       1.5
  */
-class banhangonlineViewlistmywebsite extends JViewLegacy
+class banhangonlineViewdomains extends JViewLegacy
 {
 	protected $items;
 
@@ -32,8 +32,18 @@ class banhangonlineViewlistmywebsite extends JViewLegacy
 		$layout = JRequest::getVar('layout');
 		$tpl = JRequest::getVar('tpl');
 		$this->setLayout($layout);
+		switch ($tpl) {
+			case "loadcomponent":
+				parent::display($tpl);
+				return;
+				break;
+
+		}
+
+
 		$this->items      = $this->get('Items');
 		$this->pagination = $this->get('Pagination');
+
         $this->filterForm    = $this->get('FilterForm');
 		$this->state      = $this->get('State');
 
@@ -48,7 +58,7 @@ class banhangonlineViewlistmywebsite extends JViewLegacy
 		if (!count($this->items))
 		{
 			JFactory::getApplication()->enqueueMessage(
-				JText::_('there are no website, please create new website'),
+				JText::_('COM_banhangonline_MSG_MANAGE_NO_banhangonline'),
 				'warning'
 			);
 		}
@@ -60,7 +70,7 @@ class banhangonlineViewlistmywebsite extends JViewLegacy
     function addCommand()
     {
         $this->command='com_banhangonline';
-        $this->controller_task='listmywebsite.ajaxSaveForm';
+        $this->controller_task='domains.ajaxSaveForm';
     }
 	/**
 	 * Add the page title and toolbar.
@@ -69,39 +79,29 @@ class banhangonlineViewlistmywebsite extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/website/website_banhangonline/com_banhangonline/helpers/listmywebsite.php';
-		$canDo = listmywebsiteHelper::getActions('com_banhangonline');
+		require_once JPATH_ROOT.DS.'components/website/website_banhangonline/com_banhangonline/helpers/domains.php';
+		$canDo = JHelperContent::getActions('com_banhangonline');
         $bar = JToolBar::getInstance('toolbar');
-		JToolbarHelper::title(JText::_('website của tôi'), 'power-cord component');
-        if ($canDo->get('core.create'))
-        {
-            JToolbarHelper::addNew('mywebsite.add');
-        }
-		if ($canDo->get('core.edit'))
-		{
-			JToolbarHelper::editList('mywebsite.edit');
-		}
-		if ($canDo->get('core.edit.state'))
-		{
-			JToolbarHelper::publish('listmywebsite.publish', 'JTOOLBAR_ENABLE', true);
-			JToolbarHelper::unpublish('listmywebsite.unpublish', 'JTOOLBAR_DISABLE', true);
-		}
-        if ($this->state->get('filter.published') == -2)
-        {
-            JToolbarHelper::deleteList('', 'listmywebsite.delete', 'JTOOLBAR_EMPTY_TRASH');
-        }
-        elseif ($canDo->get('core.edit.state'))
-        {
-            JToolbarHelper::trash('listmywebsite.trash');
-        }
-		if ($canDo->get('core.admin'))
-		{
-			JToolbarHelper::preferences('com_banhangonline');
-		}
+		JToolbarHelper::title(JText::_('Domain manager'), 'power-cord component');
+        JToolbarHelper::editList('domain.edit');
+        JToolbarHelper::addNew('domain.add');
+        JToolbarHelper::publish('domains.publish', 'JTOOLBAR_ENABLE', true);
+        JToolbarHelper::unpublish('domains.unpublish', 'JTOOLBAR_DISABLE', true);
+        JToolbarHelper::deleteList('do you want delete this item','domains.delete');
 
-		JToolbarHelper::help('JHELP_listmywebsite_component_MANAGER');
+        $listWebsite= domainsHelper::get_list_website();
+        JHtmlSidebar::addFilter(
+            JText::_('Select website'),
+            'filter_website_id',
+            JHtml::_('select.options',$listWebsite, 'id', 'title', $this->state->get('filter.website_id'))
+        );
+		JHtmlSidebar::addFilter(
+				JText::_('JOPTION_SELECT_PUBLISHED'),
+				'filter_enabled',
+				JHtml::_('select.options', domainsHelper::publishedOptions(), 'value', 'text', $this->state->get('filter.enabled'), true)
+		);
 
-		JHtmlSidebar::setAction('index.php?option=com_banhangonline&view=banhangonline');
+
 
 		$this->sidebar = JHtmlSidebar::render();
 

@@ -8,7 +8,6 @@
  */
 
 defined('_JEXEC') or die;
-$supperAdmin = JFactory::isSupperAdmin();
 // Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
@@ -117,7 +116,7 @@ $sortFields = $this->getSortFields();
                             </td>
                             <td>
                                 <?php if ($item->checked_out) : ?>
-                                    <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'supperadmin.', $canCheckin); ?>
+                                    <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'banhangonline.', $canCheckin); ?>
                                 <?php endif; ?>
                                 <?php if ($canEdit) : ?>
                                     <a class="quick-edit-title"
