@@ -29,7 +29,7 @@ $user = JFactory::getUser();
 
 
 
-$scriptId = "website_view_website_default";
+$scriptId = "script_website_view_website_default";
 ob_start();
 ?>
 <script type="text/javascript">

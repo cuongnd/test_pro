@@ -185,7 +185,6 @@ class JRouterSite extends JRouter
 
 		// Get the itemid, if it hasn't been set force it to null
         $Itemid=$app->input->getInt('Itemid', null);
-
         if($Itemid)
         {
             $this->setVar('Itemid', $Itemid);
@@ -330,7 +329,6 @@ class JRouterSite extends JRouter
 
 		// Get the variables from the uri
 		$vars = $uri->getQuery(true);
-
 		// Handle an empty URL (special case)
 		if (empty($route))
 		{
@@ -447,6 +445,7 @@ class JRouterSite extends JRouter
 				}
 			}
 
+
 			$vars['Itemid'] = $found->id;
 			$vars['option'] = $found->component;
 		}
@@ -486,14 +485,7 @@ class JRouterSite extends JRouter
 				$this->setVars($vars);
 			}
 		}
-		else
-		{
-			// Set active menu item
-			if ($item = $menu->getActive())
-			{
-				$vars = $item->query;
-			}
-		}
+
         $Itemid=$app->input->getInt('Itemid', null);
         $items=$menu->getItems(array('route'),array($route) );
         $tmpl=$this->getVar('tmpl','');
@@ -502,11 +494,13 @@ class JRouterSite extends JRouter
         {
             $Itemid=$this->getVar('menuItemActiveId');;
         }
+
         if(!$Itemid&&$tmpl=='')
         {
             $website=JFactory::getWebsite();
             $items=MenusHelperFrontEnd::get_all_menu_item_not_root_menu_item($website->website_id);
             $list_vars2=$this->getVars();
+
             foreach($items as $item)
             {
                 $link=$item->link;
@@ -564,9 +558,11 @@ class JRouterSite extends JRouter
             }
 
         }
+
         if($menu_item_id=$this->getVar('Itemid')) {
 
             $item=MenusHelperFrontEnd::get_menu_item_by_menu_item_id($menu_item_id);
+
             if($item) {
                 $link = $item->link;
                 $uri_link = JUri::getInstance($link);
@@ -578,6 +574,7 @@ class JRouterSite extends JRouter
             $menu->setActive($menu_item_id);
 
         }
+
 		return $vars;
 	}
 
@@ -601,7 +598,6 @@ class JRouterSite extends JRouter
 		}
 
 		$component = preg_replace('/[^A-Z0-9_\.-]/i', '', $query['option']);
-
 		$crouter = $this->getComponentRouter($component);
 
 		$query = $crouter->preprocess($query);

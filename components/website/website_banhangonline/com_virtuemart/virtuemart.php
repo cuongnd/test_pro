@@ -116,6 +116,10 @@ if (class_exists($_class)) {
     $controller->redirect();
 } else {
 
+    echo "<pre>";
+    print_r(JUtility::printDebugBacktrace());
+    echo "</pre>";
+    die;
     vmDebug('VirtueMart controller not found: '. $_class);
 	throw  new Exception('VirtueMart controller not found: '. $_class);
     $app = Jfactory::getApplication();

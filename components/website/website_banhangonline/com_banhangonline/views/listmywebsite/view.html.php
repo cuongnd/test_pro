@@ -10,13 +10,13 @@
 defined('_JEXEC') or die;
 
 /**
- * View class for a list of listraovat.
+ * View class for a list of listmywebsite.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_banhangonline
  * @since       1.5
  */
-class banhangonlineViewlistraovat extends JViewLegacy
+class banhangonlineViewlistmywebsite extends JViewLegacy
 {
 	protected $items;
 
@@ -48,7 +48,7 @@ class banhangonlineViewlistraovat extends JViewLegacy
 		if (!count($this->items))
 		{
 			JFactory::getApplication()->enqueueMessage(
-				JText::_('com_banhangonline_MSG_MANAGE_NO_supperadmin'),
+				JText::_('there are no website, please create new website'),
 				'warning'
 			);
 		}
@@ -60,7 +60,7 @@ class banhangonlineViewlistraovat extends JViewLegacy
     function addCommand()
     {
         $this->command='com_banhangonline';
-        $this->controller_task='listraovat.ajaxSaveForm';
+        $this->controller_task='listmywebsite.ajaxSaveForm';
     }
 	/**
 	 * Add the page title and toolbar.
@@ -69,41 +69,41 @@ class banhangonlineViewlistraovat extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/website/website_banhangonline/com_banhangonline/helpers/listraovat.php';
-		$canDo = listraovatHelper::getActions('com_banhangonline');
+		require_once JPATH_ROOT.'/components/website/website_banhangonline/com_banhangonline/helpers/listmywebsite.php';
+		$canDo = listmywebsiteHelper::getActions('com_banhangonline');
         $bar = JToolBar::getInstance('toolbar');
-		JToolbarHelper::title(JText::_('LIST_RAOVAT_MANAGER'), 'power-cord component');
+		JToolbarHelper::title(JText::_('website của tôi'), 'power-cord component');
         if ($canDo->get('core.create'))
         {
-            JToolbarHelper::addNew('raovat.add');
+            JToolbarHelper::addNew('mywebsite.add');
         }
 		if ($canDo->get('core.edit'))
 		{
-			JToolbarHelper::editList('raovat.edit');
+			JToolbarHelper::editList('mywebsite.edit');
 		}
         if ($canDo->get('core.create'))
         {
-            JToolbarHelper::custom('listraovat.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
+            JToolbarHelper::custom('listmywebsite.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
         }
 		if ($canDo->get('core.edit.state'))
 		{
-			JToolbarHelper::publish('listraovat.publish', 'JTOOLBAR_ENABLE', true);
-			JToolbarHelper::unpublish('listraovat.unpublish', 'JTOOLBAR_DISABLE', true);
+			JToolbarHelper::publish('listmywebsite.publish', 'JTOOLBAR_ENABLE', true);
+			JToolbarHelper::unpublish('listmywebsite.unpublish', 'JTOOLBAR_DISABLE', true);
 		}
         if ($this->state->get('filter.published') == -2)
         {
-            JToolbarHelper::deleteList('', 'listraovat.delete', 'JTOOLBAR_EMPTY_TRASH');
+            JToolbarHelper::deleteList('', 'listmywebsite.delete', 'JTOOLBAR_EMPTY_TRASH');
         }
         elseif ($canDo->get('core.edit.state'))
         {
-            JToolbarHelper::trash('listraovat.trash');
+            JToolbarHelper::trash('listmywebsite.trash');
         }
 		if ($canDo->get('core.admin'))
 		{
 			JToolbarHelper::preferences('com_banhangonline');
 		}
 
-		JToolbarHelper::help('JHELP_listraovat_component_MANAGER');
+		JToolbarHelper::help('JHELP_listmywebsite_component_MANAGER');
 
 		JHtmlSidebar::setAction('index.php?option=com_banhangonline&view=banhangonline');
 

@@ -44,7 +44,7 @@ JHtml::_('behavior.keepalive');
                             } endif; ?>
                         </div>
                     <?php endif; ?>
-                    <a href="index.php?option=com_banhangonline&view=listraovat" class="btn btn-primary"  ><?php echo JText::_('Quản lý đăng tin rao vặt') ?></a>
+                    <a href="<?php echo JRoute::_('index.php?option=com_banhangonline&view=listraovat') ?>" class="btn btn-primary"  ><?php echo JText::_('Quản lý đăng tin rao vặt') ?></a>
                     <a href="index.php?option=com_virtuemart&view=gianhang&layout=edit" class="btn btn-primary"  ><?php echo JText::_('Tạo gian hàng') ?></a>
                     <div class="logout-button">
                         <input type="submit" name="Submit" class="btn btn-primary" value="<?php echo JText::_('JLOGOUT'); ?>" />

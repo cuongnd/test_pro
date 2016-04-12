@@ -27,7 +27,6 @@ $js_content = ob_get_clean();
 $js_content = JUtility::remove_string_javascript($js_content);
 $doc->addScriptDeclaration($js_content,"text/javascript",'script_navigation_menu');
 
-
 // Note. It is important to remove spaces between elements.
 ?>
 <div class="navigation-mega-menu">
@@ -42,22 +41,28 @@ $doc->addScriptDeclaration($js_content,"text/javascript",'script_navigation_menu
     }
     ?>>
         <?php
-        $first_menu_item=array_shift($list);
+
+        $first_menu_item=reset($list);
         $children = array();
         // First pass - collect children
         foreach ($list as $v) {
             $pt = $v->parent_id;
             $pt=($pt==''||$pt==$v->id)?'list_root':$pt;
-            $list = @$children[$pt] ? $children[$pt] : array();
+            $a_list = @$children[$pt] ? $children[$pt] : array();
             if ($v->id != $v->parent_id || $v->parent_id!=null) {
-                array_push($list, $v);
+                array_push($a_list, $v);
             }
-            $children[$pt] = $list;
+            $children[$pt] = $a_list;
         }
         unset($children['list_root']);
         if(!function_exists('render_menu_item_mod_menu')){
-            function render_menu_item_mod_menu($root_menu_item_id=0, $children,$level=0,$max_level=999){
+            function render_menu_item_mod_menu($list,$root_menu_item_id=0, $children,$level=0,$max_level=999){
 
+                $menu_item=$list[$root_menu_item_id];
+                if($menu_item->alias!=='root' && ($menu_item->hidden==1||!$menu_item->published))
+                {
+                    return;
+                }
                 if ($children[$root_menu_item_id]&&$level<$max_level) {
 
                     usort($children[$root_menu_item_id], function ($item1, $item2) {
@@ -65,12 +70,11 @@ $doc->addScriptDeclaration($js_content,"text/javascript",'script_navigation_menu
                         return $item1->ordering < $item2->ordering ? -1 : 1;
                     });
                     $level1=$level+1;
-                    if($level>0)
-                    {
-                        echo '<ul  class="nav-child">';
-
-                    }
                     foreach ($children[$root_menu_item_id] as $i => $item) {
+                        if($item->hidden==1 || !$item->published)
+                        {
+                            continue;
+                        }
                         $root_menu_item_id1 = $item->id;
                         ?>
 
@@ -89,7 +93,7 @@ $doc->addScriptDeclaration($js_content,"text/javascript",'script_navigation_menu
                                 break;
                         endswitch;
 
-                        render_menu_item_mod_menu($root_menu_item_id1, $children,$level1,$max_level);
+                        render_menu_item_mod_menu($list,$root_menu_item_id1, $children,$level1,$max_level);
                     }
                     if($level>0)
                     {
@@ -107,7 +111,10 @@ $doc->addScriptDeclaration($js_content,"text/javascript",'script_navigation_menu
 
             }
         }
-        render_menu_item_mod_menu($first_menu_item->id,$children);
+
+        $list=JArrayHelper::pivot($list,'id');
+
+        render_menu_item_mod_menu($list,$first_menu_item->id,$children);
         ?></ul>
 
 </div>
