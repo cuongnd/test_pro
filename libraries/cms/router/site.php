@@ -329,6 +329,7 @@ class JRouterSite extends JRouter
 
 		// Get the variables from the uri
 		$vars = $uri->getQuery(true);
+
 		// Handle an empty URL (special case)
 		if (empty($route))
 		{
@@ -352,7 +353,8 @@ class JRouterSite extends JRouter
 
 				// Set the active menu item
 
-				$menu->setActive($vars['Itemid']);
+
+                $menu->setActive($vars['Itemid']);
 
 			}
 
@@ -361,13 +363,7 @@ class JRouterSite extends JRouter
 
 		$segments = explode('/', $route);
 
-		$items=$menu->getItems(array('route'),array($route) );
-
-
-		if($items[0]->id)
-		{
-			$vars['Itemid'] = $items[0]->id;
-		}elseif (count($segments) > 1 && $segments[0] == 'component')
+		if (count($segments) > 1 && $segments[0] == 'component')
 		{
 
 			$vars['option'] = 'com_' . $segments[1];
@@ -375,12 +371,13 @@ class JRouterSite extends JRouter
 			//$vars['Itemid'] = null;
 			$route = implode('/', array_slice($segments, 2));
 
-
 		}
 		else
 		{
+
 			// Get menu items.
-			$items = $menu->getMenu();
+            $website=JFactory::getWebsite();
+            $items=MenusHelperFrontEnd::get_all_menu_item_not_root_menu_item($website->website_id);
 
 			$found           = false;
 			$route_lowercase = JString::strtolower($route);
@@ -533,6 +530,39 @@ class JRouterSite extends JRouter
                     ){
                         $this->setVar('Itemid',$item->id);
                         break;
+                    }
+                }
+
+            }
+
+            if(!$this->getVar('Itemid'))
+            {
+                $controller=$this->getVar('controller');
+                if(!$controller)
+                {
+                    $task=$this->getVar('task','');
+                    $task=explode('.',$task);
+                    if(count($task)>1)
+                    {
+                        $controller=$task[0];
+                    }
+                }
+                if($controller)
+                {
+                    foreach($items as $item)
+                    {
+                        $link=$item->link;
+                        $uri_link=JUri::getInstance($link);
+                        $list_vars1=$uri_link->getVars();
+                        $list_vars2=$this->getVars();
+
+                        if(
+                            $list_vars1['option']==$list_vars2['option']&&
+                            $list_vars1['view']==$controller
+                        ){
+                            $this->setVar('Itemid',$item->id);
+                            break;
+                        }
                     }
                 }
 

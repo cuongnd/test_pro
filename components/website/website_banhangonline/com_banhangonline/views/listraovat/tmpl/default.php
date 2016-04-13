@@ -144,5 +144,4 @@ $sortFields = $this->getSortFields();
     </div>
 <?php
 // Search tools bar
-echo JLayoutHelper::render('joomla.contextmenu.contextmenu', array('view' => $this), null, array('debug' => false));
 ?>

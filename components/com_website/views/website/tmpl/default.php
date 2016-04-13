@@ -7,10 +7,12 @@ JHtml::_('behavior.formvalidation');
 $doc->addLessStyleSheetTest(JUri::root() . 'components/com_website/assets/less/view-website-default.less');
 $doc->addScript(JUri::root() . '/media/system/js/jquery-validation-1.13.1/dist/jquery.validate.js');
 $doc->addScript(JUri::root() . '/media/jui_front_end/bootstrap-3.3.0/dist/js/bootstrap.js');
+$doc->addScript(JUri::root() . '/media/system/js/jquery.utility.js');
 $doc->addScript(JUri::root() . '/components/com_website/assets/js/view_website_default.js');
 require_once JPATH_ROOT.'/components/com_website/helpers/website.php';
 $list_websie_enable_create_sub_domain=websiteHelperFrontEnd::get_list_website_enable_create_sub_domain();
-
+$input=JFactory::getApplication()->input;
+$action=$input->get('action','');
 $option=array(
     'id'=>'',
     'domain'=>JText::_('please select domain')
@@ -35,7 +37,7 @@ ob_start();
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
         $('.view-website-default').view_website_default({
-
+            action:"<?php echo $action ?>"
         });
     });
 </script>

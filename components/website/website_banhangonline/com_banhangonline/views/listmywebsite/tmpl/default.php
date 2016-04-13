@@ -74,6 +74,9 @@ $sortFields = $this->getSortFields();
                         <th class="title">
                             <?php echo JHtml::_('grid.sort', 'title', 'title', $listDirn, $listOrder); ?>
                         </th>
+                        <th class="title">
+                            <?php echo JText::_('Action') ?>
+                        </th>
                         <th width="1%" class="nowrap center hidden-phone">
                             <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
                         </th>
@@ -130,6 +133,19 @@ $sortFields = $this->getSortFields();
                                 <?php else : ?>
                                     <?php echo $item->title; ?>
                                 <?php endif; ?>
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown"><?php echo JText::_('Chuyển tới')?>
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php echo JText::_('Quản lý website này') ?></a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+                                        <li role="presentation" class="divider"></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+                                    </ul>
+                                </div>
                             </td>
                             <td class="center hidden-phone">
                                 <?php echo (int)$item->id; ?>

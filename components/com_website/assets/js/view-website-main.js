@@ -3,6 +3,8 @@ jQuery(document).ready(function($){
 
         next($(this));
     });
+    $('input[name="autoSetup"]').prop('checked', true);
+    $('.setup .next').trigger( "click" );
     function sethtmlfortag(respone_array)
     {
         respone_array = $.parseJSON(respone_array);

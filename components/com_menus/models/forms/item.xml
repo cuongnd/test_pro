@@ -94,6 +94,24 @@
 				value="-2">
 				JTRASHED</option>
 		</field>
+		<field
+			name="is_main_dashboard"
+			type="list"
+			class="chzn-color-state"
+			id="is_main_dashboard"
+			label="Main dashboard"
+			description="Main dashboard"
+			size="1"
+			default="1"
+			filter="integer">
+			<option
+				value="1">
+				Yes</option>
+			<option
+				value="0">
+				No</option>
+
+		</field>
 
 		<field
 			name="parent_id"

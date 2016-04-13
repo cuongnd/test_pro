@@ -35,7 +35,6 @@
         // the "constructor" method that gets called when the object is created
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
-            console.log($element);
             $element.find('.u-vmenu').vmenuModule({
                 Speed: 200,
                 autostart: false,

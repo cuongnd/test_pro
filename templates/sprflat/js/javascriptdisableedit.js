@@ -383,26 +383,7 @@ jQuery(document).ready(function ($) {
                 return dataPost;
             })(),
             beforeSend: function () {
-                /*
-                 $( "#dialog_show_view" ).dialog({
-                 width:800,
-                 modal:true,
-                 buttons: {
-                 Yes: function () {
-                 // $(obj).removeAttr('onclick');
-                 // $(obj).parents('.Parent').remove();
 
-                 $(this).dialog("close");
-                 },
-                 No: function () {
-                 $(this).dialog("close");
-                 }
-                 },
-                 close: function (event, ui) {
-                 $(this).remove();
-                 }
-                 });
-                 */
 
 
                 // $('.loading').popup();

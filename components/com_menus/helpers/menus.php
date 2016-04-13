@@ -327,6 +327,19 @@ class MenusHelperFrontEnd
         return $list_menu_item[$menu_item_id];
     }
 
+    public static function get_menu_daskboard_item_id()
+    {
+        $website=JFactory::getWebsite();
+        $list_menu_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website->website_id);
+        foreach($list_menu_item as $menu_item)
+        {
+            if($menu_item->is_main_dashboard==1)
+            {
+                return $menu_item->id;
+            }
+        }
+        return 0;
+    }
 
 
     public function get_list_menu_type_by_website_id($website_id=0)

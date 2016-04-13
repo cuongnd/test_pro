@@ -18,6 +18,7 @@
 
         // plugin's default options
         var defaults = {
+            action:''
             //main color scheme for view_website_default
             //be sure to be same as colors on main.css or custom-variables.less
 
@@ -112,6 +113,7 @@
         };
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
+            var action=plugin.settings.action;
             $.validator.addMethod("domain",function(nname){
                 name = nname.replace('http://','');
                 nname = nname.replace('https://','');
@@ -302,8 +304,15 @@
             })
 
 
+            if(action=='auto')
+            {
+                var random_number = $.random(100000,9999999);
+                $element.find('input[name="sub_domain"]').val('template'+random_number.toString());
+                $element.find('select[name="domain_id"]').val(88).trigger("chosen:updated");
+                $element.find('.create-website').trigger( "click" );
 
-        }
+            }
+        };
 
         plugin.example_function = function() {
 

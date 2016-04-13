@@ -1009,6 +1009,7 @@
 
         //center modal in page
         plugin.centerModal = function () {
+            console.log('plugin.centerModal');
             $('.modal').each(function(){
                 if($(this).hasClass('in') == false){
                   $(this).show();

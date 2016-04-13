@@ -604,9 +604,9 @@ if ($ajaxGetContent) {
     {
         echo websiteHelperFrontEnd::displayLayout($this, 0);
     }
-
+    $menu_dashboard_item_id=MenusHelperFrontEnd::get_menu_daskboard_item_id();
     ?>
-    <div class="edit_website"><a href="javascript:void(0)"><i class="im-cog"></i></a></div>
+    <div class="edit_website"><a href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_dashboard_item_id ?>"><i class="im-cog"></i></a></div>
 
 <?php } ?>
 <!-- Javascripts -->

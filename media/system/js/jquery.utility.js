@@ -24,6 +24,13 @@
 		}
 		return object_list;
 	};
+    $.random = function(min,max)
+    {
+        min = parseInt(min);
+        max = parseInt(max);
+        return Math.floor( Math.random() * (max - min + 1) ) + min;
+    }
+
 	$.array_chunk=function(array,groupsize){
 		var sets = [], chunks, i = 0;
 		chunks = array.length / groupsize;

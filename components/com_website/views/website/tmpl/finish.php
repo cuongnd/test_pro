@@ -24,6 +24,7 @@ $sub_domain=$session->get('sub_domain','');
         $('.setup button.cancel').remove();
         $('.autosetup').remove();
         $('.setup button.next').html('Finish');
+        window.location.href = "index.php?option=com_website&view=website&action=auto";
     });
 
 </script>

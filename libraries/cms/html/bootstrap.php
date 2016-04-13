@@ -307,7 +307,7 @@ abstract class JHtmlBootstrap
 			JFactory::getDocument()->addScriptDeclaration(
 				"(function($){
 					$('#$selector').modal($options);
-					})(jQuery);"
+					})(jQuery);",'','script_modal'
 			);
 
 			// Set static array

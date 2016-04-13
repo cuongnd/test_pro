@@ -8,98 +8,112 @@
  */
 
 defined('_JEXEC') or die;
+JHtml::_('jquery.framework');
+JHTML::_('behavior.core');
+$doc = JFactory::getDocument();
+$doc->addScript(JUri::root() . '/media/system/js/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/js/vmenuModule.js');
+$doc->addScript(JUri::root() . '/modules/mod_menu/assets/mod_menu.js');
+$doc->addLessStyleSheetTest(JUri::root() . '/media/system/js/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/less/vmenuModule.less');
+
+$scriptId = "script_module_" . $module->id;
+ob_start();
+?>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#mod_menu_<?php echo $module->id ?>').mod_menu();
+    });
+</script>
+<?php
+$script = ob_get_clean();
+$script = JUtility::remove_string_javascript($script);
+$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+
+
 
 // Note. It is important to remove spaces between elements.
 ?>
-	<?php // The menu class is deprecated. Use nav instead. ?>
-	<ul class="nav menu<?php echo $class_sfx;?>"<?php
-	$tag = '';
+<div class="vertical-mega-menu"  id="mod_menu_<?php echo $module->id ?>">
+    <div class="u-vmenu">
+        <?php // The menu class is deprecated. Use nav instead. ?>
+        <ul class="nav menu<?php echo $class_sfx; ?>"<?php
+        $tag = '';
 
-	if ($params->get('tag_id') != null)
-	{
-		$tag = $params->get('tag_id') . '';
-		echo ' id="' . $tag . '"';
-	}
-	?>>
-		<?php
-		foreach ($list as $i => &$item)
-		{
-			$class = 'item-' . $item->id;
+        if ($params->get('tag_id') != null) {
+            $tag = $params->get('tag_id') . '';
+            echo ' id="' . $tag . '"';
+        }
+        ?>>
+            <?php
+            $first_menu_item=array_shift($list);
+            $children = array();
+            // First pass - collect children
+            foreach ($list as $v) {
+                $pt = $v->parent_id;
+                $pt=($pt==''||$pt==$v->id)?'list_root':$pt;
+                $list = @$children[$pt] ? $children[$pt] : array();
+                if ($v->id != $v->parent_id || $v->parent_id!=null) {
+                    array_push($list, $v);
+                }
+                $children[$pt] = $list;
+            }
+            unset($children['list_root']);
+            if(!function_exists('render_menu_item_mod_menu')){
+                function render_menu_item_mod_menu($root_menu_item_id=0, $children,$level=0,$max_level=999){
 
-			if ($item->id == $active_id)
-			{
-				$class .= ' current';
-			}
+                    if ($children[$root_menu_item_id]&&$level<$max_level) {
 
-			if (in_array($item->id, $path))
-			{
-				$class .= ' active';
-			}
-			elseif ($item->type == 'alias')
-			{
-				$aliasToId = $item->params->get('aliasoptions');
+                        usort($children[$root_menu_item_id], function ($item1, $item2) {
+                            if ($item1->ordering == $item2->ordering) return 0;
+                            return $item1->ordering < $item2->ordering ? -1 : 1;
+                        });
+                        $level1=$level+1;
+                        if($level>0)
+                        {
+                            echo '<ul  class="nav-child">';
 
-				if (count($path) > 0 && $aliasToId == $path[count($path) - 1])
-				{
-					$class .= ' active';
-				}
-				elseif (in_array($aliasToId, $path))
-				{
-					$class .= ' alias-parent-active';
-				}
-			}
+                        }
+                        foreach ($children[$root_menu_item_id] as $i => $item) {
+                            if($item->hidden==1 || !$item->published)
+                            {
+                                continue;
+                            }
+                            $root_menu_item_id1 = $item->id;
+                            ?>
 
-			if ($item->type == 'separator')
-			{
-				$class .= ' divider';
-			}
+                            <li class="item-<?php echo $item->id ?> ">
+                            <?php
+                            switch ($item->type) :
+                                case 'separator':
+                                case 'url':
+                                case 'component':
+                                case 'heading':
+                                    require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
+                                    break;
 
-			if ($item->deeper)
-			{
-				$class .= ' deeper';
-			}
+                                default:
+                                    require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+                                    break;
+                            endswitch;
 
-			if ($item->parent)
-			{
-				$class .= ' parent';
-			}
+                            render_menu_item_mod_menu($root_menu_item_id1, $children,$level1,$max_level);
+                        }
+                        if($level>0)
+                        {
+                            echo '</li></ul>';
 
-			if (!empty($class))
-			{
-				$class = ' class="' . trim($class) . '"';
-			}
-			$class.=' e-change-lang';
-			echo '<li' . $class . '>';
+                        }
 
-			// Render the menu item.
-			switch ($item->type) :
-				case 'separator':
-				case 'url':
-				case 'component':
-				case 'heading':
-					require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
-					break;
 
-				default:
-					require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
-					break;
-			endswitch;
 
-			// The next item is deeper.
-			if ($item->deeper)
-			{
-				echo '<ul class="nav-child unstyled small">';
-			}
-			elseif ($item->shallower)
-	{
-		// The next item is shallower.
-		echo '</li>';
-		echo str_repeat('</ul></li>', $item->level_diff);
-	}
-	else
-	{
-		// The next item is on the same level.
-		echo '</li>';
-	}
-}
-?></ul>
+                    }
+
+
+
+
+
+                }
+            }
+            render_menu_item_mod_menu($first_menu_item->id,$children);
+            ?></ul>
+    </div>
+</div>

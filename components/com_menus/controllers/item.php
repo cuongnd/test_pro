@@ -703,20 +703,42 @@ class MenusControllerItem extends JControllerForm
         $form = $app->input->get('jform', array(), 'array');
         $form['params']=json_encode($form['params']);
         JTable::addIncludePath(JPATH_ROOT . '/components/com_menus/tables');
-        $tableMenuItem = JTable::getInstance('Menu', 'MenusTable');
-        $tableMenuItem->load($form['id']);
-        $tableMenuItem->bind($form);
+        $table_menu_item = JTable::getInstance('Menu', 'MenusTable');
+        $table_menu_item->load($form['id']);
+        $table_menu_item->bind($form);
 
 
         $result = new stdClass();
         $result->e = 0;
         $result->m = "save success";
 
-        if (!$tableMenuItem->parent_store()) {
+        if (!$table_menu_item->parent_store()) {
             $result->e = 1;
-            $result->m = $tableMenuItem->getError();
+            $result->m = $table_menu_item->getError();
             echo json_encode($result);
             die;
+        }
+        $is_main_dashboard=$table_menu_item->is_main_dashboard;
+        if($is_main_dashboard)
+        {
+            $db=JFactory::getDbo();
+            $query=$db->getQuery(true);
+            require_once JPATH_ROOT.DS.'components/com_menus/helpers/menus.php';
+            $website=JFactory::getWebsite();
+            $list_menu_item_id=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website->website_id);
+            $query->update('#__menu')
+                ->set('is_main_dashboard=0')
+                ->where('id IN ('.implode(',',$list_menu_item_id).')')
+                ->where('id!='.(int)$table_menu_item->id)
+                ;
+            $ok=$db->setQuery($query)->execute();
+            if(!$ok)
+            {
+                $result->e = 1;
+                $result->m = $db->getErrorMsg();
+                echo json_encode($result);
+                die;
+            }
         }
         echo json_encode($result);
         die;
