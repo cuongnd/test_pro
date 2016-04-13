@@ -70,7 +70,7 @@ ob_start();
                 <?php foreach ($views as $view => $item_layout) { ?>
                     <li>
                         <a href="javascript:void(0)" class="notExpand link_javascript"><i
-                                class=ec-pencil2></i><?php echo JString::sub_string(JText::_($view), 7) ?></a>
+                                class=ec-pencil2></i><?php echo JString::sub_string(JText::_($view), 15) ?></a>
                         <ul class="nav sub">
                             <?php foreach ($item_layout->paths as $layout) { ?>
 
