@@ -47,6 +47,7 @@ class WebsiteModelWebsite extends JModelAdmin
      */
     public function createBasicInfoWebsite($domain = '')
     {
+        $website_template_id = websiteHelperFrontEnd::getOneTemplateWebsite();
         $app=JFactory::getApplication();
         $user = JFactory::getUser();
         $session_website = JModelLegacy::getInstance('session_website');
@@ -62,6 +63,7 @@ class WebsiteModelWebsite extends JModelAdmin
             return false;
         }
         $table_website->created_by = $user->id;
+        $table_website->copy_from = $website_template_id;
         $table_website->created = JFactory::getDate()->format('Y-m-d h:i:m');
         $ok=$table_website->check();
         if(!$ok)
@@ -1192,10 +1194,22 @@ class WebsiteModelWebsite extends JModelAdmin
 
     public function CheckFinish(&$layout)
     {
+        $session=JFactory::getSession();
+        $website_id=$session->get('website_id',0);
+        $table_website=$this->getTable();
+        $table_website->load($website_id);
+        $table_website->setup_finish=1;
+        $ok=$table_website->store();
+        if(!$ok)
+        {
+            $this->setError($table_website->getError());
+            return false;
+        }
         $session_website = JModelLegacy::getInstance('session_website');
         $session_website->load();
         $session_website->clear();
         $layout = 'finish';
+
         return true;
     }
 

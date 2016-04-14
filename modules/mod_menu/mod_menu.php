@@ -8,7 +8,7 @@
  */
 
 defined('_JEXEC') or die;
-
+return;
 // Include the syndicate functions only once
 require_once __DIR__ . '/helper.php';
 
