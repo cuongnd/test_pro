@@ -188,14 +188,14 @@ class websitetemplateproModellisttemplate extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.*,website.title AS website_title,website.is_template_website,website.id AS website_id'
+				'a.*,website.title AS website_title,website.is_template_website,website.id AS website_id,CASE WHEN a.id>0 THEN 1 ELSE 0 END AS exits_template_website'
 			)
 		)
 			->from($db->quoteName('#__webtempro_templates') . ' AS a');
 		// Join over the users for the checked out user.
         $query->rightJoin('#__website AS website ON website.id=a.website_id');
 
-
+        $query->group('website.id');
 		return $query;
 	}
 }

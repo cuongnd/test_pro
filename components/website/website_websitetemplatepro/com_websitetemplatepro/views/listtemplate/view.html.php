@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 /**
- * View class for a list of listmywebsite.
+ * View class for a list of listtemplate.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_websitetemplatepro
@@ -29,6 +29,9 @@ class websitetemplateproViewlisttemplate extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+
+
+
 		$layout = JRequest::getVar('layout');
 		$tpl = JRequest::getVar('tpl');
 		$this->setLayout($layout);
@@ -60,7 +63,7 @@ class websitetemplateproViewlisttemplate extends JViewLegacy
     function addCommand()
     {
         $this->command='com_websitetemplatepro';
-        $this->controller_task='listmywebsite.ajaxSaveForm';
+        $this->controller_task='listtemplate.ajaxSaveForm';
     }
 	/**
 	 * Add the page title and toolbar.
@@ -72,34 +75,21 @@ class websitetemplateproViewlisttemplate extends JViewLegacy
 		require_once JPATH_ROOT.DS.'components/website/website_websitetemplatepro/com_websitetemplatepro/helpers/listtemplatecategory.php';
 		$canDo = listtemplatecategoryHelper::getActions('com_websitetemplatepro');
         $bar = JToolBar::getInstance('toolbar');
-		JToolbarHelper::title(JText::_('website của tôi'), 'power-cord component');
-        if ($canDo->get('core.create'))
-        {
-            JToolbarHelper::addNew('mywebsite.add');
-        }
-		if ($canDo->get('core.edit'))
-		{
-			JToolbarHelper::editList('mywebsite.edit');
-		}
+		JToolbarHelper::title(JText::_('List website template'), 'power-cord component');
 		if ($canDo->get('core.edit.state'))
 		{
-			JToolbarHelper::publish('listmywebsite.publish', 'JTOOLBAR_ENABLE', true);
-			JToolbarHelper::unpublish('listmywebsite.unpublish', 'JTOOLBAR_DISABLE', true);
+			JToolbarHelper::publish('listtemplate.publish', 'JTOOLBAR_ENABLE', true);
+			JToolbarHelper::unpublish('listtemplate.unpublish', 'JTOOLBAR_DISABLE', true);
 		}
-        if ($this->state->get('filter.published') == -2)
-        {
-            JToolbarHelper::deleteList('', 'listmywebsite.delete', 'JTOOLBAR_EMPTY_TRASH');
-        }
-        elseif ($canDo->get('core.edit.state'))
-        {
-            JToolbarHelper::trash('listmywebsite.trash');
-        }
+        JToolbarHelper::publish('listtemplate.enable_clone_website', 'Enable clone website', true);
+        JToolbarHelper::unpublish('listtemplate.disable_clone_website', 'Disable clone website', true);
+        JToolbarHelper::custom('listtemplate.asign_vm_product','','','Asign vm product',true);
 		if ($canDo->get('core.admin'))
 		{
 			JToolbarHelper::preferences('com_websitetemplatepro');
 		}
 
-		JToolbarHelper::help('JHELP_listmywebsite_component_MANAGER');
+		JToolbarHelper::help('JHELP_listtemplate_component_MANAGER');
 
 		JHtmlSidebar::setAction('index.php?option=com_websitetemplatepro&view=websitetemplatepro');
 

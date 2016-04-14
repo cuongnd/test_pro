@@ -10,28 +10,7 @@
 defined('_JEXEC') or die;
 
 $app		= JFactory::getApplication();
-$date		= JFactory::getDate();
-$cur_year	= JHtml::_('date', $date, 'Y');
-$csite_name	= $app->get('sitename');
+require_once __DIR__ . '/helper.php';
 
-if (is_int(JString::strpos(JText :: _('MOD_FOOTER_LINE1'), '%date%')))
-{
-	$line1 = str_replace('%date%', $cur_year, JText :: _('MOD_FOOTER_LINE1'));
-}
-else
-{
-	$line1 = JText :: _('MOD_FOOTER_LINE1');
-}
-
-if (is_int(JString::strpos($line1, '%sitename%')))
-{
-	$lineone = str_replace('%sitename%', $csite_name, $line1);
-}
-else
-{
-	$lineone = $line1;
-}
-
-$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
-
+$list_product_best_sale=mod_templatebestsaller_helper::get_list_product_best_sale();
 require JModuleHelper::getLayoutPath($module->module, $params->get('layout', 'default'));

@@ -16,7 +16,7 @@ defined('_JEXEC') or die(__FILE__);
  * @since       11.1
  * @deprecated  Class will be removed upon completion of transition to UCM
  */
-class JTabletemplate extends JTable
+class JTableRaovat extends JTable
 {
     /**
      *
@@ -29,7 +29,7 @@ class JTabletemplate extends JTable
     public $id=0;
     public function __construct(JDatabaseDriver $db)
     {
-        parent::__construct('#__webtempro_templates', 'id', $db);
+        parent::__construct('#__cpanel_raovat', 'id', $db);
 
     }
     public function check()

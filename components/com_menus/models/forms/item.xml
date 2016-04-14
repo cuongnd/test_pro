@@ -114,6 +114,43 @@
 		</field>
 
 		<field
+			name="is_backend"
+			type="list"
+			class="chzn-color-state"
+			id="is_backend"
+			label="is menu backend"
+			description="is menu backend"
+			size="1"
+			default="1"
+			filter="integer">
+			<option
+				value="1">
+				Yes</option>
+			<option
+				value="0">
+				No</option>
+
+		</field>
+		<field
+			name="is_menu_supper_admin"
+			type="list"
+			class="chzn-color-state"
+			id="is_menu_supper_admin"
+			label="is menu supper admin"
+			description="is menu supper admin"
+			size="1"
+			default="1"
+			filter="integer">
+			<option
+				value="1">
+				Yes</option>
+			<option
+				value="0">
+				No</option>
+
+		</field>
+
+		<field
 			name="parent_id"
 			type="menuparent"
 			label="COM_MENUS_ITEM_FIELD_PARENT_LABEL"

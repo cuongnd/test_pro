@@ -29,7 +29,7 @@ $enable_main_menu_style_item=JUtility::toStrictBoolean($params->get('menu_config
 
 $main_menu_style_item=$params->get('menu_config.main_menu_style_item');
 if(trim($main_menu_style_item)!=='') {
-	$list_style_main_menu_style_item=UtilityHelper::get_build_css($main_menu_style_item);
+    $list_style_main_menu_style_item=UtilityHelper::get_build_css($main_menu_style_item);
 }
 
 $main_menu_style_item_open=$params->get('menu_config.main_menu_style_item_open');
@@ -39,13 +39,13 @@ $enable_sticky=$params->get('sticky',0);
 $scriptId="script_module_menu_".$module->id;
 ob_start();
 ?>
-	<script type="text/javascript">
-		jQuery(document).ready(function($){
-			<?php if($enable_sticky){ ?>
-			$("#module_<?php echo $module->id ?>").sticky({topSpacing:0});
-			<?php } ?>
-		});
-	</script>
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        <?php if($enable_sticky){ ?>
+        $("#module_<?php echo $module->id ?>").sticky({topSpacing:0});
+        <?php } ?>
+    });
+</script>
 <?php
 $script=ob_get_clean();
 $script=JUtility::remove_string_javascript($script);
@@ -57,66 +57,66 @@ $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 
 
 if(trim($main_menu_style_item_open)!=='') {
-	$list_style_main_menu_style_item_open=UtilityHelper::get_build_css($main_menu_style_item_open);
+    $list_style_main_menu_style_item_open=UtilityHelper::get_build_css($main_menu_style_item_open);
 }
 if (count($list))
 {
-	?>
-	<div id="module_<?php echo $module->id ?>" data-block-parent-id="<?php echo  $module->position ?>" data-block-id="<?php echo  $module->id ?>">
-	<?php
-	require JModuleHelper::getLayoutPath('mod_menu', $params->get('layout', 'default'));
-	?>
-	</div>
-	<?php
+    ?>
+    <div id="module_<?php echo $module->id ?>" data-block-parent-id="<?php echo  $module->position ?>" data-block-id="<?php echo  $module->id ?>">
+        <?php
+        require JModuleHelper::getLayoutPath('mod_menu', $params->get('layout', 'default'));
+        ?>
+    </div>
+    <?php
 }
 ob_start();
 ?>
 <style type="text/css">
-	<?php if($enable_main_menu_style_item&&$list_style_main_menu_style_item){ ?>
-		div[data-block-parent-id="<?php echo  $module->position ?>"][ data-block-id="<?php echo  $module->id ?>"] ul.menu >li > a
-		{
-			<?php
-			$none_hover=$list_style_main_menu_style_item['none_hover'];
-			foreach($none_hover as $key=>$value)
-			{
-				echo "$key:$value;";
-			}
-			  ?>
-		}
-	div[data-block-parent-id="<?php echo  $module->position ?>"][ data-block-id="<?php echo  $module->id ?>"] ul.menu >li > a:hover
-	{
-	<?php
+    <?php if($enable_main_menu_style_item&&$list_style_main_menu_style_item){ ?>
+    div[data-block-parent-id="<?php echo  $module->position ?>"][ data-block-id="<?php echo  $module->id ?>"] ul.menu >li > a
+    {
+    <?php
+    $none_hover=$list_style_main_menu_style_item['none_hover'];
+    foreach($none_hover as $key=>$value)
+    {
+        echo "$key:$value;";
+    }
+      ?>
+    }
+    div[data-block-parent-id="<?php echo  $module->position ?>"][ data-block-id="<?php echo  $module->id ?>"] ul.menu >li > a:hover
+    {
+    <?php
         $none_hover=$list_style_main_menu_style_item['hover'];
         foreach($none_hover as $key=>$value)
         {
             echo "$key:$value;";
         }
           ?>
-	}
-	<?php } ?>
+    }
+    <?php } ?>
 
-	<?php if($enable_main_menu_style_item_open&&$list_style_main_menu_style_item_open){ ?>
-		div[data-block-parent-id="<?php echo  $module->position ?>"][ data-block-id="<?php echo  $module->id ?>"] ul.menu >li.open > a
-		{
-			<?php
-			$none_hover=$list_style_main_menu_style_item_open['none_hover'];
-			foreach($none_hover as $key=>$value)
-			{
-				echo "$key:$value;";
-			}
-			  ?>
-		}
-	div[data-block-parent-id="<?php echo  $module->position ?>"][ data-block-id="<?php echo  $module->id ?>"] ul.menu >li.open > a:hover
-	{
-	<?php
+    <?php if($enable_main_menu_style_item_open&&$list_style_main_menu_style_item_open){ ?>
+    div[data-block-parent-id="<?php echo  $module->position ?>"][ data-block-id="<?php echo  $module->id ?>"] ul.menu >li.open > a
+    {
+    <?php
+    $none_hover=$list_style_main_menu_style_item_open['none_hover'];
+    foreach($none_hover as $key=>$value)
+    {
+        echo "$key:$value;";
+    }
+      ?>
+    }
+    div[data-block-parent-id="<?php echo  $module->position ?>"][ data-block-id="<?php echo  $module->id ?>"] ul.menu >li.open > a:hover
+    {
+    <?php
         $none_hover=$list_style_main_menu_style_item_open['hover'];
         foreach($none_hover as $key=>$value)
         {
             echo "$key:$value;";
         }
           ?>
-	}
-	<?php } ?>
+    }
+    <?php } ?>
 </style>
 <?php
 $css=ob_get_clean();

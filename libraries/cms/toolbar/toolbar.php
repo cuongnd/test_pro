@@ -177,10 +177,10 @@ class JToolbar
 		ob_start();
 		?>
 		<div id="toolbar" class="row form-group">
-			<div class="col-md-6">
+			<div class="pull-left">
 				<?php echo $app->JComponentTitle ?>
 			</div>
-			<div class="col-md-6">
+			<div class="pull-right">
 				<?php echo $html ?>
 			</div>
 		</div>

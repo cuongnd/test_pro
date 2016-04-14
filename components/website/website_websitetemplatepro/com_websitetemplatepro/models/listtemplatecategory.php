@@ -31,7 +31,7 @@ class websitetemplateproModellisttemplatecategory extends JModelList
 		{
 			$config['filter_fields'] = array(
 				'id', 'a.id',
-				'category_name', 'a.category_name',
+				'category_name', 'categories_en_gb.category_name',
 				'checked_out', 'a.checked_out',
 				'checked_out_time', 'a.checked_out_time',
 				'state', 'a.state',
@@ -192,10 +192,12 @@ class websitetemplateproModellisttemplatecategory extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.category_name'
+				'categories_en_gb.category_name'
 			)
 		)
-			->from($db->quoteName('#__webtempro_categories_en_gb') . ' AS a');
+			->from($db->quoteName('#__webtempro_categories') . ' AS a')
+            ->leftJoin('#__webtempro_categories_en_gb AS categories_en_gb USING(id)')
+        ;
         $user=JFactory::getUser();
         $query->where('a.created_by='.(int)$user->id);
 		// Join over the users for the checked out user.

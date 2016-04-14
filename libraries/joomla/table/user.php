@@ -372,6 +372,11 @@ class JTableUser extends JTable
 	 */
 	public function delete($userId = null)
 	{
+        echo "hello delete user";
+        echo "<pre>";
+        print_r(JUtility::printDebugBacktrace());
+        echo "</pre>";
+        die;
 		// Set the primary key to delete.
 		$k = $this->_tbl_key;
 

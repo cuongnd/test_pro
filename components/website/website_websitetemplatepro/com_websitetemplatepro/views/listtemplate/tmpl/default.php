@@ -127,7 +127,7 @@ $sortFields = $this->getSortFields();
                                 <?php echo JHtml::_('grid.id', $i, $item->website_id); ?>
                             </td>
                             <td class="center">
-                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'listtemplatecategory.', $canChange); ?>
+                                <?php echo JHtml::_('jgrid.published', $item->published, $i, 'listtemplate.', $canChange); ?>
                             </td>
                             <td>
                                 <?php if ($item->checked_out) : ?>
@@ -135,7 +135,7 @@ $sortFields = $this->getSortFields();
                                 <?php endif; ?>
                                 <?php if ($canEdit) : ?>
                                     <a class="quick-edit-title"
-                                       href="<?php echo JRoute::_('index.php?option=com_websitetemplatepro&task=raovat.edit&id=' . (int)$item->id); ?>">
+                                       href="<?php echo JRoute::_('index.php?option=com_websitetemplatepro&task=template.edit&id=' . (int)$item->id); ?>">
                                         <?php echo $item->category_name; ?></a>
                                 <?php else : ?>
                                     <?php echo $item->category_name; ?>
@@ -148,13 +148,13 @@ $sortFields = $this->getSortFields();
                                 <?php
 
                                 $states = array(
-                                    1 => array('is_not_template_website', 'JPUBLISHED', 'JLIB_HTML_UNPUBLISH_ITEM', 'set is template', true, 'is_template_website', 'is_template_website'),
-                                    0 => array('is_template_website', 'JUNPUBLISHED', 'JLIB_HTML_PUBLISH_ITEM', 'unset template', true, 'unpublish', 'unpublish')
+                                    1 => array('disable_clone_website', 'Disable clone website', 'Disable clone website', 'set is template', true, 'publish', 'publish'),
+                                    0 => array('enable_clone_website', 'Enable clone website', 'Enable clone website', 'unset template', true, 'unpublish', 'unpublish')
                                 );
 
 
                                 ?>
-                                <?php echo JHtml::_('jgrid.state',$states, $item->is_template_website, $i, 'listtemplate.', $canChange); ?>
+                                <?php echo JHtml::_('jgrid.state',$states, $item->exits_template_website, $i, 'listtemplate.', $canChange); ?>
                             </td>
                             <td>
                                 <div class="dropdown">

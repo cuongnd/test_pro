@@ -75,9 +75,24 @@ final class JApplicationSite extends JApplicationCms
      */
     protected function authorise($itemid)
     {
+        $menu_item=MenusHelperFrontEnd::get_menu_item_by_menu_item_id($itemid);
+        $is_backend=$menu_item->is_backend;
+        $user = JFactory::getUser();
+        if($is_backend&&!$user->id)
+        {
+            $this->enqueueMessage(JText::_('JGLOBAL_YOU_MUST_LOGIN_FIRST'));
+            $login_itemId = JFactory::get_page_login();
+            if($login_itemId)
+            {
+                $this->redirect(JRoute::_('index.php?option=com_users&view=login'));
+            }else{
+                $this->redirect(JRoute::_('index.php?option=com_users&view=login&template=system'));
+            }
+            return false;
+        }
         return true;
         $menus = $this->getMenu();
-        $user = JFactory::getUser();
+
         $login_itemId = JFactory::get_page_login();
         if($login_itemId==$itemid)
         {

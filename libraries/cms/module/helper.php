@@ -343,6 +343,7 @@ abstract class JModuleHelper
 		$tPath = JPATH_THEMES . '/' . $template . '/html/website/website_'.$website_name.'/' . $module . '/' . $layout . '.php';
 		$bPath = JPATH_BASE . '/modules/website/website_'.$website_name.'/' . $module . '/tmpl/' . $defaultLayout . '.php';
 		$dPath = JPATH_BASE . '/modules/website/website_'.$website_name.'/' . $module . '/tmpl/default.php';
+		$root_path = JPATH_BASE . '/modules/' . $module . '/tmpl/default.php';
 
 		// If the template has a layout override use it
 		if (file_exists($tPath))
@@ -353,10 +354,12 @@ abstract class JModuleHelper
 		{
 			return $bPath;
 		}
-		else
+		elseif (file_exists($dPath))
 		{
 			return $dPath;
-		}
+		}else{
+            return $root_path;
+        }
 	}
 	/**
 	 * Load published modules.
