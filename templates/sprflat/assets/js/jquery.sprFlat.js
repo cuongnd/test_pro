@@ -88,6 +88,7 @@
                 animation: true, //animation effect toggle
                 closeEffect: 'bounceOutDown' //close effect for alerts see http://daneden.github.io/animate.css/
             },
+            menu_item_active:{},
             backToTop: {
                 active: true, //activate back to top
                 scrolltime: 800, //scroll time speed

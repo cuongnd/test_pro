@@ -190,7 +190,7 @@ class JFormFieldFont extends JFormField
 		$maximumSelectionLength=$this->element['maximumSelectionLength'] ? (string) $this->element['maximumSelectionLength'] : 10;
 		$maximumSelectionSize=$this->element['maximumSelectionSize'] ? (string) $this->element['maximumSelectionSize'] : 10;
 		$tags=$this->element['tags'] ? (boolean) $this->element['tags'] : false;
-		$scriptId="lib_cms_form_fields_font".'_'.JUserHelper::genRandomPassword();
+		$scriptId="script_lib_cms_form_fields_font".'_'.JUserHelper::genRandomPassword();
 		$doc->addScript(JUri::root().'/media/jui_front_end/js/select2.jquery.js');
 		ob_start();
 		?>

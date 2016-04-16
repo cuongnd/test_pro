@@ -83,6 +83,9 @@ $sortFields = $this->getSortFields();
                         <th class="title">
                             <?php echo JHtml::_('grid.sort', 'Is System', 'a.issystem', $listDirn, $listOrder); ?>
                         </th>
+                        <th class="title">
+                            <?php echo JText::_('Is template Supper admin') ?>
+                        </th>
                         <th width="1%" class="nowrap center hidden-phone">
                             <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
                         </th>
@@ -151,6 +154,18 @@ $sortFields = $this->getSortFields();
                             </td>
                             <td class="center">
                                 <?php echo JHtml::_('jgrid.is_system', $item->issystem, $i, 'websites.', $canChange); ?>
+                            </td>
+                            <td>
+                                <?php
+
+                                $states = array(
+                                    1 => array('is_not_template_supper_admin', 'is not template supper admin', 'is not template supper admin', 'is not template supper admin', true, 'publish', 'publish'),
+                                    0 => array('is_template_supper_admin', 'is template supper admin', 'is  template supper admin', 'is  template supper admin', true, 'unpublish', 'unpublish')
+                                );
+
+
+                                ?>
+                                <?php echo JHtml::_('jgrid.state',$states, $item->is_template_supper_admin, $i, 'websites.', $canChange); ?>
                             </td>
                             <td class="center hidden-phone">
                                 <?php echo (int)$item->id; ?>

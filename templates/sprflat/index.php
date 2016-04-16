@@ -39,6 +39,7 @@ $menuItemActiveId = $menu->getActive()->id;
 
 $menuItemActiveId = $menuItemActiveId ? $menuItemActiveId : 0;
 $menuItemActive = $menu->getItem($menuItemActiveId);
+
 $lessContent = $menuItemActive->lesscontent;
 if (trim($lessContent) != '') {
     require_once JPATH_ROOT . '/libraries/f0f/less/less.php';
@@ -110,7 +111,8 @@ if ($enableEditWebsite) {
         var source_less = "<?php echo str_replace('.less','.css',$websiteTable->source_less) ?>";
         jQuery(document).ready(function ($) {
             $('body').sprFlat({
-                show_popup_control:<?php echo json_encode($show_popup_control) ?>
+                show_popup_control:<?php echo json_encode($show_popup_control) ?>,
+                menu_item_active:<?php echo json_encode($menuItemActive) ?>
             });
         });
     </script>
@@ -605,8 +607,15 @@ if ($ajaxGetContent) {
         echo websiteHelperFrontEnd::displayLayout($this, 0);
     }
     $menu_dashboard_item_id=MenusHelperFrontEnd::get_menu_daskboard_item_id();
+
+    $is_backend=$menuItemActive->is_backend;
+    if($is_backend)
+    {
+        $menu_supper_dashboard_item_id=MenusHelperFrontEnd::get_menu_supper_daskboard_item_id();
+    }
+
     ?>
-    <div class="edit_website"><a href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_dashboard_item_id ?>"><i class="im-cog"></i></a></div>
+    <div class="edit_website"><a href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_supper_dashboard_item_id?$menu_supper_dashboard_item_id:$menu_dashboard_item_id ?>"><i class="im-cog"></i></a></div>
 
 <?php } ?>
 <!-- Javascripts -->

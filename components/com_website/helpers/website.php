@@ -113,6 +113,7 @@ class websiteHelperFrontEnd
         return $db->loadResult();
     }
 
+
     /**
      * Configure the Linkbar.
      *
@@ -279,13 +280,20 @@ class websiteHelperFrontEnd
                         }
                         $html .= websiteHelperFrontEnd::getHeaderHtml($v, $enableEditWebsite, $prevV);
                         $html .= '
-                        <div class="grid-stack-item   show-grid-stack-item block-item grid-stack-item_' . $v->parent_id . '" data-ordering="' . $v->ordering . ' ' . $css_class . '" data-block-parent-id="' . $v->parent_id . '" data-position="' . $v->position . '"  data-bootstrap-type="' . $v->type . '" data-screensize="' . $v->screensize . '"  data-block-id="' . $v->id . '" data-gs-x="' . $v->gs_x . '" data-gs-y="' . $v->gs_y . '" data-gs-width="' . $v->width . '" data-gs-height="' . $v->height . '" element-type="' . $v->type . '">
+                        <div class="grid-stack-item   show-grid-stack-item block-item grid-stack-item_' . $v->parent_id . '" data-ordering="' . $v->ordering . ' ' . $css_class . '" '.($v->menu_item_id!=$v->active_menu_item_id?' data-gs-no-resize="true" ':'').'  data-block-parent-id="' . $v->parent_id . '" data-position="' . $v->position . '"  data-bootstrap-type="' . $v->type . '" data-screensize="' . $v->screensize . '"  data-block-id="' . $v->id . '" data-gs-x="' . $v->gs_x . '" data-gs-y="' . $v->gs_y . '" data-gs-width="' . $v->width . '" data-gs-height="' . $v->height . '" element-type="' . $v->type . '">
                             <div class="grid-stack-item-content edit-style allow-edit-style" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '">
-                                <div class="item-row" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '">col(<span class="offset-width">o:' . $offset . '-w:' . $v->width . '</span>)</div>
+                                <div class="item-row" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '">col(<span class="offset-width">o:' . $offset . '-w:' . $v->width . '</span>)</div>';
+                         if($v->menu_item_id==$v->active_menu_item_id){
+                        $html .= '
                                 <span class="drag label label-default move-column " data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '"><i class="glyphicon glyphicon-move "></i></span>
                                 <a class="remove label label-danger remove-column" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '" href="javascript:void(0)"><i class="glyphicon-remove glyphicon"></i></a>
                                 <a class="add label label-danger add-row" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '" href="javascript:void(0)"><i class="glyphicon glyphicon-plus"></i></a>
-                                <a href="javascript:void(0)" class="menu label label-danger menu-list config-block" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '"><i class="im-menu2"></i></a>
+                                <a href="javascript:void(0)" class="menu label label-danger menu-list config-block" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '"><i class="im-menu2"></i></a>';
+                         }else{
+                             $html .= '<a class="add label label-danger add-row" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '" href="javascript:void(0)"><i class="glyphicon glyphicon-plus"></i></a>';
+
+                         }
+                        $html .= '
                                 <div id="position_content_' . $v->id . '" data-block-parent-id="' . $v->parent_id . '" data-axis="' . $axis . '" data-block-id="' . $v->id . '" class="position-content' . $setClass . ' block-item block-item-column' . ($v->position == ' position-component ' ? ' position-component ' : '') . ' ' . ($enableEditWebsite ? ' control-element ' : '') . ' "  element-type="' . $v->type . '">';
                         if ($v->position == 'position-component') {
                             $html .= '<div class="error"><jdoc:include type="message" /></div><jdoc:include type="component"/>';

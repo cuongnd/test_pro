@@ -235,6 +235,8 @@ final class JApplicationSite extends JApplicationCms
         // Trigger the onAfterDispatch event.
         JPluginHelper::importPlugin('system');
         $this->triggerEvent('onAfterDispatch');
+        $this->update_current_website_from_parent_website();
+        $this->update_current_website_from_supper_admin_template_website();
     }
 
     /**
@@ -807,5 +809,21 @@ final class JApplicationSite extends JApplicationCms
                 $this->template->params = new JRegistry($styleParams);
             }
         }
+    }
+
+    private function update_current_website_from_parent_website()
+    {
+        $website=JFactory::getWebsite();
+       require_once JPATH_ROOT.'/components/com_website/helpers/update_website.php';
+        /** @noinspection PhpMethodParametersCountMismatchInspection */
+        update_website::update_current_website_from_parent_website($website->website_id);
+    }
+
+    private function update_current_website_from_supper_admin_template_website()
+    {
+        $website=JFactory::getWebsite();
+        require_once JPATH_ROOT.'/components/com_website/helpers/update_supper_admin_template_website.php';
+        /** @noinspection PhpMethodParametersCountMismatchInspection */
+        update_supper_admin_template_website::update_current_website_from_supper_admin_template_website($website->website_id);
     }
 }
