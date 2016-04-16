@@ -10,66 +10,10 @@
   <component name="ChangeListManager">
     <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/models/config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/models/passwordusermanager.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/layout/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/layout/tmpl/assets/js/loadcomponents.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/layout/tmpl/config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/layout/tmpl/config.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/layout/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/layout/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/passwordusermanager/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/passwordusermanager/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/passwordusermanager/tmpl/config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/passwordusermanager/tmpl/config.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/passwordusermanager/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_cpanel/views/passwordusermanager/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_menus/views/menutypes/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_website/helpers/update_supper_admin_template_website.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/com_website/helpers/update_website.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/assets/images/sprite.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/assets/js/view_product_frontend.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/assets/js/view_raovat_default.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/assets/js/view_supperadminconfig_default.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/assets/less/svg-icons.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/assets/less/view_product_demo.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/assets/less/view_product_frontend.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/assets/less/view_raovat_default.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/controllers/passwordusermanager.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/controllers/supperadminconfig.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/models/passwordusermanager.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/models/supperadminconfig.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/passwordusermanager/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/passwordusermanager/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/passwordusermanager/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/passwordusermanager/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/passwordusermanager/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/passwordusermanager/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/supperadminconfig/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/supperadminconfig/tmpl/assets/js/loadcomponents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/supperadminconfig/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/supperadminconfig/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/supperadminconfig/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/supperadminconfig/view.html.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery-fullscreen-plugin-master/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/controllers/item.php" afterPath="$PROJECT_DIR$/components/com_menus/controllers/item.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/helpers/menus.php" afterPath="$PROJECT_DIR$/components/com_menus/helpers/menus.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/models/forms/item.xml" afterPath="$PROJECT_DIR$/components/com_menus/models/forms/item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php" afterPath="$PROJECT_DIR$/components/com_utility/views/block/tmpl/config_default.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_website/helpers/website.php" afterPath="$PROJECT_DIR$/components/com_website/helpers/website.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/controllers/website.php" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/controllers/website.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/controllers/websites.php" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/controllers/websites.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/models/website.php" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/models/website.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/models/websites.php" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/models/websites.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/websites/tmpl/default.php" afterPath="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/websites/tmpl/default.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layouts/website/less/supper.websitetemplatepro.com.less" afterPath="$PROJECT_DIR$/layouts/website/less/supper.websitetemplatepro.com.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/application/site.php" afterPath="$PROJECT_DIR$/libraries/cms/application/site.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/database/driver/mysqli.php" afterPath="$PROJECT_DIR$/libraries/joomla/database/driver/mysqli.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/form/fields/color.php" afterPath="$PROJECT_DIR$/libraries/joomla/form/fields/color.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/form/fields/font.php" afterPath="$PROJECT_DIR$/libraries/joomla/form/fields/font.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/elements/ui/row.php" afterPath="$PROJECT_DIR$/media/elements/ui/row.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/assets/js/jquery.sprFlat.js" afterPath="$PROJECT_DIR$/templates/sprflat/assets/js/jquery.sprFlat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/index.php" afterPath="$PROJECT_DIR$/templates/sprflat/index.php" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/modules/website/website_vantinviet/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/.gitignore" afterPath="$PROJECT_DIR$/media/system/js/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/.gitignore" />
     </list>
     <ignored path="test_pro.iws" />
@@ -3150,12 +3094,6 @@
       <option name="number" value="Default" />
       <updated>1441660052781</updated>
     </task>
-    <task id="LOCAL-00024" summary="update new">
-      <created>1457093773916</created>
-      <option name="number" value="00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1457093773916</updated>
-    </task>
     <task id="LOCAL-00025" summary="update new">
       <created>1457145286891</created>
       <option name="number" value="00025" />
@@ -3444,7 +3382,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460653224385</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="update module supper admin">
+      <created>1460788809955</created>
+      <option name="number" value="00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1460788809955</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3463,6 +3407,7 @@
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23600605" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267776" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41638225" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -3481,7 +3426,6 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26279864" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32593855" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
@@ -3563,6 +3507,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3570,6 +3515,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5384617">
           <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3599,6 +3545,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1460649197645" expanded="true" signature="3319:4340" placeholder="..." />
+            <marker date="1460649197645" expanded="true" signature="3399:3523" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3606,6 +3556,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-100.03846">
           <caret line="168" column="51" selection-start-line="168" selection-start-column="51" selection-end-line="168" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3613,6 +3564,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1459480967606" expanded="true" signature="3379:4400" placeholder="..." />
+            <marker date="1459480967606" expanded="true" signature="3459:3583" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3620,6 +3575,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1459480967606" expanded="true" signature="3379:4400" placeholder="..." />
+            <marker date="1459480967606" expanded="true" signature="3459:3583" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3627,6 +3586,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.692307">
           <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3641,6 +3601,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.8461537">
           <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3655,6 +3616,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.7307693">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3662,6 +3624,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="65" column="47" selection-start-line="65" selection-start-column="47" selection-end-line="65" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3669,6 +3632,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.8461537">
           <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3676,6 +3640,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.961538">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3683,6 +3648,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-19.192308">
           <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3690,6 +3656,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.8076925">
           <caret line="192" column="26" selection-start-line="192" selection-start-column="26" selection-end-line="192" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3697,6 +3664,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41541353">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

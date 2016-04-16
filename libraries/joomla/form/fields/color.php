@@ -163,7 +163,7 @@ class JFormFieldColor extends JFormField
         $disabled = $this->disabled ? ' disabled' : '';
         $autofocus = $this->autofocus ? ' autofocus' : '';
 
-        $scriptId = "libraries_joomla_form_fields_color" . '_' . JUserHelper::genRandomPassword();
+        $scriptId = "script_libraries_joomla_form_fields_color" . '_' . JUserHelper::genRandomPassword();
 // Initialize some field attributes.
         ob_start();
         ?>
