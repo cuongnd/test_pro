@@ -148,67 +148,18 @@ class JTableMenuType extends JTable
 		// If no primary key is given, return false.
 		if ($pk !== null)
 		{
-			// Get the user id
-			$userId = JFactory::getUser()->id;
+			//check is menu home
+            $list_menu_item=MenusHelperFrontEnd::get_list_all_menu_item_by_menu_type_id($pk);
+            foreach($list_menu_item as $menu_item)
+            {
+                if($menu_item->home==1)
+                {
+                    $this->setError('you canot delete this menu type because it exists menu item home page');
+                    return false;
+                }
 
-			// Get the old value of the table
-			$table = JTable::getInstance('Menutype', 'JTable');
-			$table->load($pk);
+          }
 
-			// Verify that no items are checked out
-			$query = $this->_db->getQuery(true)
-				->select('id')
-				->from('#__menu')
-				->where('menu_type_id=' . $pk)
-				->where('client_id=0')
-				->where('(checked_out NOT IN (0,' . (int) $userId . ') OR home=1 AND language=' . $this->_db->quote('*') . ')');
-			$this->_db->setQuery($query);
-			if ($this->_db->loadRowList())
-			{
-				$this->setError(JText::sprintf('JLIB_DATABASE_ERROR_DELETE_FAILED', get_class($this), JText::_('JLIB_DATABASE_ERROR_MENUTYPE')));
-
-				return false;
-			}
-
-			// Verify that no module for this menu are checked out
-			$query->clear()
-				->select('id')
-				->from('#__modules')
-                ->where(array(
-                    '(module=' . $this->_db->quote('mod_menu').' AND client_id=0)',
-                    '(module=' . $this->_db->quote('mod_jbmenu').' AND client_id=0)'
-                ),'OR')
-                ->where('params LIKE ' . $this->_db->quote('%"menu_type_id":' . $pk . '%'))
-				->where('checked_out !=' . (int) $userId)
-				->where('checked_out !=0');
-			$this->_db->setQuery($query);
-			if ($this->_db->loadRowList())
-			{
-				$this->setError(JText::sprintf('JLIB_DATABASE_ERROR_DELETE_FAILED', get_class($this), JText::_('JLIB_DATABASE_ERROR_MENUTYPE')));
-
-				//return false;
-			}
-
-			// Delete the menu items
-			$query->clear()
-				->delete('#__menu')
-				->where('menu_type_id=' . (int)$pk)
-				->where('client_id=0');
-			$this->_db->setQuery($query);
-			$this->_db->execute();
-
-			// Update the module items
-			$query->clear()
-				->delete('#__modules')
-                ->where(array(
-                    '(module=' . $this->_db->quote('mod_menu').' AND client_id=0)',
-                    '(module=' . $this->_db->quote('mod_jbmenu').' AND client_id=0)'
-                ),'OR')
-                ->where('params LIKE ' . $this->_db->quote('%"menu_type_id":' . $pk . '%'))
-            ;
-			$this->_db->setQuery($query);
-
-			$this->_db->execute();
 		}
 
 		return parent::delete($pk);

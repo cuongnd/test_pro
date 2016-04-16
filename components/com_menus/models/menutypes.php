@@ -102,10 +102,11 @@ class MenusModelMenutypes extends JModelLegacy
 		$db = JFactory::getDbo();
 		$query =$db->getQuery(true);
         $menu_type_id=$menu_type_id?$menu_type_id:$app->input->getInt('menu_type_id',0);
-        $query->select('com.name, com.element AS ' . $db->quoteName('option'))
+        $query->select('com.name, com.name AS ' . $db->quoteName('option'))
 			->from('#__components AS com')
+            ->leftJoin('#__extensions AS extension ON extension.id=com.extension_id')
 			->where('com.enabled = 1')
-            ->leftJoin('#__menu_types AS mt ON mt.website_id=com.website_id')
+            ->leftJoin('#__menu_types AS mt ON mt.website_id=extension.website_id')
             ->where('mt.id='.(int)$menu_type_id)
 			->order('name ASC');
 		$db->setQuery($query);

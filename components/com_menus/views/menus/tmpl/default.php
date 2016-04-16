@@ -34,6 +34,7 @@ $modMenuId = (int) $this->get('ModMenuId');
 		}
 	}
 </script>
+<?php echo $this->render_toolbar() ?>
 <form action="<?php echo JRoute::_('index.php?option=com_menus&view=menus');?>" method="post" name="adminForm" id="adminForm">
 <?php if (!empty( $this->sidebar)) : ?>
 	<div id="j-sidebar-container" class="span2">
@@ -43,14 +44,6 @@ $modMenuId = (int) $this->get('ModMenuId');
 <?php else : ?>
 	<div id="j-main-container">
 <?php endif;?>
-        <?php if($supperAdmin){ ?>
-            <div id="quick-tool" class="btn-toolbar row-fluid">
-                <div class="assign-website btn-group pull-left">
-                    <label ><?php echo JText::_('ASSIGN_WEBSITE');?></label>
-                    <?php echo $this->listWebsite; ?>
-                </div>
-            </div>
-        <?php } ?>
 		<div id="filter-bar" class="btn-toolbar">
 			<div class="filter-search btn-group pull-left">
 				<label for="filter_search" class="element-invisible"><?php echo JText::_('COM_MENUS_MENU_SEARCH_FILTER');?></label>

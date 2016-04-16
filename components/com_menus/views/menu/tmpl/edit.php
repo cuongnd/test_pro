@@ -25,7 +25,7 @@ JHtml::_('formbehavior.chosen', 'select');
 		}
 	}
 </script>
-
+<?php echo $this->render_toolbar() ?>
 <form action="<?php echo JRoute::_('index.php?option=com_menus&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-horizontal">
 	<fieldset>
 		<legend><?php echo JText::_('COM_MENUS_MENU_DETAILS');?></legend>

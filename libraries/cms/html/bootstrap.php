@@ -633,7 +633,7 @@ abstract class JHtmlBootstrap
 			JFactory::getDocument()->addScriptDeclaration(
 				"(function($){
 					$('#$selector').collapse($options);
-				})(jQuery);"
+				})(jQuery);",'','script_start_accordion'
 			);
 
 			// Set static array
