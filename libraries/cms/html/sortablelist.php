@@ -47,8 +47,13 @@ abstract class JHtmlSortablelist
 		}
 
 		// Depends on jQuery UI
-		JHtml::_('jquery.ui', array('core', 'sortable'));
-
+        $doc=JFactory::getDocument();
+        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/core.js');
+        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/widget.js');
+        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/mouse.js');
+        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/position.js');
+        $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/button.js');
+        JHtml::_('jquery.ui', array('core', 'sortable'));
 		JHtml::_('script', 'jui/sortablelist.js', false, true);
 		JHtml::_('stylesheet', 'jui/sortablelist.css', false, true, false);
 
@@ -59,7 +64,7 @@ abstract class JHtmlSortablelist
 					var sortableList = new $.JSortableList('#" . $tableId . " tbody','" . $formId . "','" . $sortDir . "' , '" . $saveOrderingUrl . "','','" . $nestedList . "');
 				});
 			})(jQuery);
-			"
+			",'','script_sort_able_list'
 		);
 
 		if ($proceedSaveOrderButton)

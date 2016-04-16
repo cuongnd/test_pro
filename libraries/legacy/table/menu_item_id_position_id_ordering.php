@@ -6,7 +6,6 @@
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
-
 defined('_JEXEC') or die(__FILE__);
 
 /**
@@ -28,7 +27,8 @@ class JTableMenu_item_id_position_id_ordering extends JTable
 	 */
 	public function __construct(JDatabaseDriver $db)
 	{
-		parent::__construct('#__menu_item_id_position_id_ordering', 'id', $db);
+        $keys=array('menu_item_id','position_id','website_id');
+		parent::__construct('#__menu_item_id_position_id_ordering', $keys, $db);
 	}
 
     public function check()

@@ -866,16 +866,16 @@ class WebsiteModelWebsite extends JModelAdmin
             ->from('#__position_config AS position_config');
         $db->setQuery($query);
         $list_position_config = $db->loadObjectList();
-        $children_menu_item_of_root_menu_item = array();
+        $children_position = array();
         foreach ($list_position_config as $v) {
             $pt = $v->parent_id;
             $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
-            $list = @$children_menu_item_of_root_menu_item[$pt] ? $children_menu_item_of_root_menu_item[$pt] : array();
+            $list = @$children_position[$pt] ? $children_position[$pt] : array();
             array_push($list, $v);
             $children_menu_item_of_root_menu_item[$pt] = $list;
         }
-        $list_root_position = $children_menu_item_of_root_menu_item['list_root'];
-        unset($children_menu_item_of_root_menu_item['list_root']);
+        $list_root_position = $children_position['list_root'];
+        unset($children_position['list_root']);
 
         if (!function_exists('sub_execute_copy_rows_table_position')) {
             function sub_execute_copy_rows_table_position(JTable $table_position, &$list_old_position_config,$list_older_menu_item, $old_position_id = 0, $new_position_id, $children,$level=0,$max_level=999)

@@ -341,13 +341,13 @@ class MenusHelperFrontEnd
         return 0;
     }
 
-    public static function get_menu_supper_daskboard_item_id()
+    public static function get_dashboard_menu_supper_admin_id()
     {
         $website=JFactory::getWebsite();
         $list_menu_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website->website_id);
         foreach($list_menu_item as $menu_item)
         {
-            if($menu_item->is_menu_supper_admin==1)
+            if($menu_item->is_dashboard_menu_supper_admin==1)
             {
                 return $menu_item->id;
             }

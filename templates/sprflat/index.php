@@ -611,7 +611,7 @@ if ($ajaxGetContent) {
     $is_backend=$menuItemActive->is_backend;
     if($is_backend)
     {
-        $menu_supper_dashboard_item_id=MenusHelperFrontEnd::get_menu_supper_daskboard_item_id();
+        $menu_supper_dashboard_item_id=MenusHelperFrontEnd::get_dashboard_menu_supper_admin_id();
     }
 
     ?>
