@@ -441,7 +441,19 @@ class JComponentHelper
 		return $html;
 	}
 
-	/**
+    public static function get_extension_id_by_component_name($website_id, $name)
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('id')
+            ->where('website_id='.(int)$website_id)
+            ->where('element='.$query->q($name))
+            ->where('type='.$query->q('component'))
+            ;
+        return $db->setQuery($query)->loadResult();
+    }
+
+    /**
 	 * Load the installed components into the components property.
 	 *
 	 * @param   string  $option  The element value for the extension

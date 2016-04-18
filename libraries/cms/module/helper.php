@@ -582,6 +582,18 @@ abstract class JModuleHelper
         return $params->toString();
     }
 
+    public static function get_extension_id_by_module_name($website_id, $name)
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('id')
+            ->where('website_id='.(int)$website_id)
+            ->where('element='.$query->q($name))
+            ->where('type='.$query->q('component'))
+        ;
+        return $db->setQuery($query)->loadResult();
+    }
+
     public function modifyModuleShowInMenuItem()
     {
         $website=JFactory::getWebsite();

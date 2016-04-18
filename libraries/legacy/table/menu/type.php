@@ -81,54 +81,6 @@ class JTableMenuType extends JTable
 		return true;
 	}
 
-	/**
-	 * Method to store a row in the database from the JTable instance properties.
-	 * If a primary key value is set the row with that primary key value will be
-	 * updated with the instance property values.  If no primary key value is set
-	 * a new row will be inserted into the database with the properties from the
-	 * JTable instance.
-	 *
-	 * @param   boolean  $updateNulls  True to update fields even if they are null.
-	 *
-	 * @return  boolean  True on success.
-	 *
-	 * @link    http://docs.joomla.org/JTable/store
-	 * @since   11.1
-	 */
-	public function store($updateNulls = false)
-	{
-		if ($this->id)
-		{
-			// Get the user id
-			$userId = JFactory::getUser()->id;
-
-			// Get the old value of the table
-			$table = JTable::getInstance('Menutype', 'JTable');
-			$table->load($this->id);
-
-			// Verify that no items are checked out
-			$query = $this->_db->getQuery(true)
-				->select('id')
-				->from('#__menu_types')
-				->where('checked_out !=' . (int) $userId)
-				->where('checked_out !=0')
-                ->where('id='.(int)$this->id)
-            ;
-			$this->_db->setQuery($query);
-
-			if ($this->_db->loadRowList())
-			{
-
-				$this->setError(
-					JText::sprintf('JLIB_DATABASE_ERROR_STORE_FAILED', get_class($this), JText::_('JLIB_DATABASE_ERROR_MENUTYPE_CHECKOUT'))
-				);
-
-				return false;
-			}
-
-		}
-        return parent::store($updateNulls);
-	}
 
 	/**
 	 * Method to delete a row from the database table by primary key value.
@@ -154,7 +106,7 @@ class JTableMenuType extends JTable
             {
                 if($menu_item->home==1)
                 {
-                    $this->setError('you canot delete this menu type because it exists menu item home page');
+                    $this->setError('you cannot delete this menu type because it exists menu item home page');
                     return false;
                 }
 
