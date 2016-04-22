@@ -563,10 +563,10 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 			die;
 		}
 		//end for test
-		$max_qurery=1000;
+		$max_qurery=100;
 		if($this->rebuild_action)
 		{
-			$max_qurery=10000;
+			$max_qurery=1000;
 		}
 		if(count($this->log)>$max_qurery)
 		{

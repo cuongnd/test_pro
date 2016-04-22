@@ -88,16 +88,19 @@ class UtilityControllerUtility extends UtilityController
 
 
         $menu_item_active_id = $app->input->get('menu_item_active_id', 0, 'int');
+        require_once JPATH_ROOT.'/components/com_utility/helper/block_helper.php';
+        block_helper::remove_all_block_not_exists_menu_item();
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
         $tablePosition = JTable::getInstance('positionnested');
         $website = JFactory::getWebsite();
         $tablePosition->webisite_id = $website->website_id;
-        $parentId = $tablePosition->getRootId();
+        $root_position_id = $tablePosition->getRootId();
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query->select('position_config.id,position_config.menu_item_id')
             ->from('#__position_config AS position_config')
-            ->where('position_config.parent_id=' . (int)$parentId)
+            ->where('position_config.parent_id=' . (int)$root_position_id)
+            ->where('position_config.parent_id!=position_config.id')
             ->where('position_config.menu_item_id=' . (int)$menu_item_active_id)
         ;
         $db->setQuery($query);

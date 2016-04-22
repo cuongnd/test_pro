@@ -873,7 +873,6 @@ abstract class JUserHelper
 	public static function get_user_group_default()
 	{
 		$list_user_group=self::get_list_user_group();
-
 		foreach($list_user_group as $user_group)
 		{
 			if($user_group->title=='Registered')

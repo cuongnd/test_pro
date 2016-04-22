@@ -16,7 +16,7 @@ defined('_JEXEC') or die(__FILE__);
  * @since       11.1
  * @deprecated  Class will be removed upon completion of transition to UCM
  */
-class JTableMenu_item_id_position_id_ordering extends JTable
+class JTableRoot_position_id_website_id extends JTable
 {
 	/**
 	 * Constructor
@@ -27,7 +27,7 @@ class JTableMenu_item_id_position_id_ordering extends JTable
 	 */
 	public function __construct(JDatabaseDriver $db)
 	{
-		parent::__construct('#__menu_item_id_position_id_ordering', 'id', $db);
+		parent::__construct('#__root_position_id_website_id', 'id', $db);
 	}
 
     public function check()

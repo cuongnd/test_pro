@@ -25,17 +25,22 @@ $contentIni = fread($myfile, filesize($pathFileWebStore));
 fclose($myfile);
 $contentIni = trim($contentIni);
 if (!is_numeric($contentIni)) {
+
+}
+$contentIni=explode(':',$contentIni);
+if(count($contentIni)!=2)
+{
     exit("File $fileWebStore format incorrect");
 }
-define('WEBSITE_ID',          (int)$contentIni);
+$website_id=$contentIni[0];
+$website_name=$contentIni[1];
+define('WEBSITE_ID',          (int)$website_id);
 if(!WEBSITE_ID)
 {
     throw new Exception('can not found website');
 }
 
-$fileConfig = JPATH_ROOT . '/configuration/configuration_' . $contentIni . '.php';
-
-
+$fileConfig = JPATH_ROOT . '/configuration/configuration_' . $website_name . '.php';
 // System includes
 require_once JPATH_LIBRARIES . '/import.legacy.php';
 require_once JPATH_ROOT.'/includes/toolbar.php';

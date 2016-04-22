@@ -13,7 +13,7 @@ class JConfig {
     public $captcha = 'recaptcha';
     public $cookie_domain = '';
     public $cookie_path = '';
-    public $db = 'test_pro';
+    public $db = 'webtemppro';
     public $dbprefix = 'ueb3c_';
     public $dbtype = 'mysqli';
     public $debug = '0';
@@ -49,7 +49,7 @@ class JConfig {
     public $offline_message = 'This site is down for maintenance.<br /> Please check back again soon.';
     public $offset = 'Asia/Bangkok';
     public $offset_user = 'UTC';
-    public $password = '';
+    public $password = '123456';
     public $robots = '';
     public $secret = 'rjDJD5tKY1iUXy3q2cyfhHunM3m7mDy9';
     public $sef = '1';

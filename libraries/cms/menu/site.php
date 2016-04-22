@@ -41,7 +41,6 @@ class JMenuSite extends JMenu
 		$website=JFactory::getWebsite();
 		require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
 		$items=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website->website_id);
-
 		$items=JArrayHelper::pivot($items,'id');
 		$this->_items=$items;
 		foreach ($this->_items as &$item)

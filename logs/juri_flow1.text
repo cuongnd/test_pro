@@ -3831,3 +3831,89 @@
 2016-03-10T15:40:02+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
 2016-03-10T15:40:07+00:00	DEBUG	-	class:JApplicationCms
 2016-03-10T15:40:07+00:00	DEBUG	-	legacy $url:/component/users/profile.html
+2016-04-19T09:46:29+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:46:29+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2016-04-19T09:46:39+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:46:39+00:00	DEBUG	-	legacy $url:/component/users/?view=profile
+2016-04-19T09:47:11+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:47:11+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T09:47:20+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:47:20+00:00	DEBUG	-	legacy $url:/component/users/?view=profile
+2016-04-19T09:51:04+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:51:04+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T09:51:06+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:51:06+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T09:51:08+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:51:08+00:00	DEBUG	-	legacy $url:/component/users/?view=profile
+2016-04-19T09:52:30+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:52:30+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T09:52:30+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:52:30+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T09:52:30+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:52:30+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T09:52:30+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:52:30+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T09:52:32+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:52:32+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T09:52:35+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T09:52:35+00:00	DEBUG	-	legacy $url:/component/users/?view=profile
+2016-04-19T14:32:20+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T14:32:20+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T14:32:29+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T14:32:29+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T14:32:54+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T14:32:54+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T14:32:55+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T14:32:55+00:00	DEBUG	-	legacy $url:/component/users/?view=profile
+2016-04-19T14:37:10+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T14:37:10+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T14:37:17+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T14:37:17+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T14:37:20+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T14:37:20+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T14:52:04+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T14:52:04+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-19T14:52:07+00:00	DEBUG	-	class:JApplicationCms
+2016-04-19T14:52:07+00:00	DEBUG	-	legacy $url:/component/users/?view=profile
+2016-04-20T01:55:42+00:00	DEBUG	-	class:JApplicationCms
+2016-04-20T01:55:42+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-20T01:55:51+00:00	DEBUG	-	class:JApplicationCms
+2016-04-20T01:55:51+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2016-04-20T01:55:55+00:00	DEBUG	-	class:JApplicationCms
+2016-04-20T01:55:55+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-20T01:55:57+00:00	DEBUG	-	class:JApplicationCms
+2016-04-20T01:55:57+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-20T01:56:12+00:00	DEBUG	-	class:JApplicationCms
+2016-04-20T01:56:12+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-20T01:56:14+00:00	DEBUG	-	class:JApplicationCms
+2016-04-20T01:56:14+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-20T01:56:14+00:00	DEBUG	-	class:JApplicationCms
+2016-04-20T01:56:14+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-20T01:56:16+00:00	DEBUG	-	class:JApplicationCms
+2016-04-20T01:56:16+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-20T01:56:16+00:00	DEBUG	-	class:JApplicationCms
+2016-04-20T01:56:16+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-20T01:56:27+00:00	DEBUG	-	class:JApplicationCms
+2016-04-20T01:56:27+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2016-04-22T03:46:52+00:00	DEBUG	-	class:JApplicationCms
+2016-04-22T03:46:52+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-22T03:47:04+00:00	DEBUG	-	class:JApplicationCms
+2016-04-22T03:47:04+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-22T03:47:15+00:00	DEBUG	-	class:JApplicationCms
+2016-04-22T03:47:15+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-22T03:47:15+00:00	DEBUG	-	class:JApplicationCms
+2016-04-22T03:47:15+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-22T03:47:37+00:00	DEBUG	-	class:JApplicationCms
+2016-04-22T03:47:37+00:00	DEBUG	-	legacy $url:/component/users/?view=profile
+2016-04-22T03:47:44+00:00	DEBUG	-	class:JApplicationCms
+2016-04-22T03:47:44+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-22T03:48:56+00:00	DEBUG	-	class:JApplicationCms
+2016-04-22T03:48:56+00:00	DEBUG	-	legacy $url:index.php?option=com_users&view=login&template=system
+2016-04-22T03:49:02+00:00	DEBUG	-	class:JApplicationCms
+2016-04-22T03:49:02+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-22T03:49:06+00:00	DEBUG	-	class:JApplicationCms
+2016-04-22T03:49:06+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system
+2016-04-22T03:49:06+00:00	DEBUG	-	class:JApplicationCms
+2016-04-22T03:49:06+00:00	DEBUG	-	legacy $url:/component/users/?view=profile
+2016-04-22T03:49:07+00:00	DEBUG	-	class:JApplicationCms
+2016-04-22T03:49:07+00:00	DEBUG	-	legacy $url:/component/users/?view=login&amp;template=system

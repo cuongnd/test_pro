@@ -74,51 +74,55 @@ class update_supper_admin_template_website
     }
     private function copy_components($website_id,$template_supper_admin_website_id){
         $db = JFactory::getDbo();
+        //delete all extension supper admin
+        $query = $db->getQuery(true);
+        $query->delete_all('#__components AS components','components.*')
+            ->where('components.supper_admin_component_id IS NOT NULL')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=components.extension_id')
+            ->where('extensions.website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $ok = $db->execute();
+        if (!$ok) {
+            throw new Exception($db->getErrorMsg());
+        }
 
         $query = $db->getQuery(true);
         $query->clear()
             ->select('
-                component_supper_admin.name,
-                component_supper_admin.id AS component_id_supper_admin,component_of_current_website.id AS component_id_current_website,
-                component_supper_admin.params AS component_params_supper_admin,
-                component_of_current_website.params AS component_params_current_website,
-                component_supper_admin.extension_id AS extension_id_supper_admin,
-                component_of_current_website.extension_id AS extension_id_current_website,
-                extension_supper_admin.website_id AS supper_admin_website_id,
-                extension_current_website.website_id AS current_website_website_id
+                    component_supper_admin.id AS component_supper_admin_component_id,
+                    component_supper_admin.name AS component_supper_admin_component_name,
+                    extension_supper_admin.id AS supper_admin_extension_id,
+                    current_website_extension.id AS current_website_extension_extension_id,
+                    component_of_current_website.id as component_current_website_component_id,
+                    component_of_current_website.name AS component_of_current_website_component_name
                 ')
             ->from('#__components AS component_supper_admin')
-            ->leftJoin('#__components AS component_of_current_website ON
-             component_of_current_website.name=component_supper_admin.name
-              ')
             ->leftJoin('#__extensions AS extension_supper_admin ON extension_supper_admin.id=component_supper_admin.extension_id')
-            ->leftJoin('#__extensions AS extension_current_website ON extension_current_website.id=component_of_current_website.extension_id')
-
             ->where('extension_supper_admin.website_id=' . (int)$template_supper_admin_website_id)
-            ->where('(extension_current_website.website_id=' . (int)$website_id.' OR extension_current_website.website_id IS NULL)')
+            ->where('extension_supper_admin.type=' . $query->q('component'))
+            ->leftJoin('#__components AS component_of_current_website ON component_of_current_website.name=component_supper_admin.name
+             AND component_of_current_website.extension_id IN(
+                    SELECT id FROM #__extensions WHERE website_id='.(int)$website_id.'
+            )')
+            ->innerJoin('#__extensions AS current_website_extension ON current_website_extension.type=extension_supper_admin.type
+                        AND current_website_extension.element=extension_supper_admin.element AND current_website_extension.folder=extension_supper_admin.folder
+                        AND current_website_extension.website_id='.(int)$website_id)
+            ->where('component_of_current_website.name IS NULL')
+            ->where('current_website_extension.id IS NOT NULL')
+            ->group('component_supper_admin.name')
         ;
-
         $list_components = $db->setQuery($query)->loadObjectList();
         $table_component=JTable::getInstance('component');
 
 
         foreach ($list_components AS $component) {
-            if($component->component_id_current_website&&$component->website_id=$website_id)
-            {
-                $table_component->load($component->component_id_current_website);
-                $component_params_supper_admin = new JRegistry;
-                $component_params_supper_admin->loadString($component->component_params_supper_admin);
-                $component_params_current_website = new JRegistry;
-                $component_params_current_website->loadString($component->component_params_current_website);
-                $component_params_current_website->merge($component_params_supper_admin);
-                $table_component->params=$component_params_current_website->toString();
 
-            }else{
-                $table_component->load($component->component_id_supper_admin);
-                $table_component->id=0;
-                $extension_id_2_current_website=JComponentHelper::get_extension_id_by_component_name($website_id,$component->name);
-                $table_component->extension_id=$extension_id_2_current_website;
-            }
+            $table_component->load($component->component_supper_admin_component_id);
+            $table_component->id=0;
+            $table_component->extension_id=$component->current_website_extension_extension_id;
+            $table_component->copy_from=$component->component_supper_admin_component_id;
+            $table_component->supper_admin_component_id=$component->component_supper_admin_component_id;
             $ok = $table_component->store();
             if (!$ok) {
                 throw new Exception($table_component->getError());
@@ -127,7 +131,62 @@ class update_supper_admin_template_website
         return true;
 
     }
-    private function copy_Plugins($website_id,$template_supper_admin_website_id){
+    private function copy_plugins($website_id,$template_supper_admin_website_id){
+        $db = JFactory::getDbo();
+        //delete all extension supper admin
+        $query = $db->getQuery(true);
+        $query->delete_all('#__plugins AS plugins','plugins.*')
+            ->where('plugins.supper_admin_plugin_id IS NOT NULL')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=plugins.extension_id')
+            ->where('extensions.website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $ok = $db->execute();
+        if (!$ok) {
+            throw new Exception($db->getErrorMsg());
+        }
+
+        $query = $db->getQuery(true);
+        $query->clear()
+            ->select('
+                    plugin_supper_admin.id AS plugin_supper_admin_plugin_id,
+                    plugin_supper_admin.name AS plugin_supper_admin_plugin_name,
+                    extension_supper_admin.id AS supper_admin_extension_id,
+                    current_website_extension.id AS current_website_extension_extension_id,
+                    plugin_of_current_website.id as plugin_current_website_plugin_id,
+                    plugin_of_current_website.name AS plugin_of_current_website_plugin_name
+                ')
+            ->from('#__plugins AS plugin_supper_admin')
+            ->leftJoin('#__extensions AS extension_supper_admin ON extension_supper_admin.id=plugin_supper_admin.extension_id')
+            ->where('extension_supper_admin.website_id=' . (int)$template_supper_admin_website_id)
+            ->where('extension_supper_admin.type=' . $query->q('plugin'))
+            ->leftJoin('#__plugins AS plugin_of_current_website ON plugin_of_current_website.name=plugin_supper_admin.name AND plugin_of_current_website.element=plugin_supper_admin.element AND plugin_of_current_website.folder=plugin_supper_admin.folder
+             AND plugin_of_current_website.extension_id IN(
+                    SELECT id FROM #__extensions WHERE website_id='.(int)$website_id.'
+            )')
+            ->innerJoin('#__extensions AS current_website_extension ON current_website_extension.type=extension_supper_admin.type
+                        AND current_website_extension.element=extension_supper_admin.element AND current_website_extension.folder=extension_supper_admin.folder
+                        AND current_website_extension.website_id='.(int)$website_id)
+            ->where('plugin_of_current_website.name IS NULL')
+            ->where('current_website_extension.id IS NOT NULL')
+            ->order('plugin_supper_admin.folder,plugin_supper_admin.element,plugin_supper_admin.name')
+        ;
+        $list_plugins = $db->setQuery($query)->loadObjectList();
+        $table_plugin=JTable::getInstance('plugin');
+
+
+        foreach ($list_plugins AS $plugin) {
+
+            $table_plugin->load($plugin->plugin_supper_admin_plugin_id);
+            $table_plugin->id=0;
+            $table_plugin->extension_id=$plugin->current_website_extension_extension_id;
+            $table_plugin->copy_from=$plugin->plugin_supper_admin_plugin_id;
+            $table_plugin->supper_admin_plugin_id=$plugin->plugin_supper_admin_plugin_id;
+            $ok = $table_plugin->store();
+            if (!$ok) {
+                throw new Exception($table_plugin->getError());
+            }
+        }
         return true;
 
     }
@@ -139,29 +198,51 @@ class update_supper_admin_template_website
         //copy menu type
         $db = JFactory::getDbo();
 
+        $query = $db->getQuery(true);
+        $query->delete_all('#__menu AS menu','menu.*')
+            ->where('menu.supper_admin_menu_item_id IS NOT NULL')
+            ->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_id=menu.id')
+            ->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+            ->where('menu_types.website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $ok = $db->execute();
+        if (!$ok) {
+            throw new Exception($db->getErrorMsg());
+        }
+
+
+
+
+        //delete all extension supper admin
+        $query = $db->getQuery(true);
+        $query->delete('ueb3c_menu_types')
+            ->where('super_admin_menu_type_id IS NOT NULL')
+            ->where('website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $ok = $db->execute();
+        if (!$ok) {
+            throw new Exception($db->getErrorMsg());
+        }
+
+
         $query=$db->getQuery(true);
         //get template menu type
         $query->clear()
-            ->select('menu_types.id AS supper_admin_menu_type_id,menu_types2.id AS current_website_menu_type_id,menu_types2.website_id AS current_website_website_id')
+            ->select('menu_types.id ')
             ->from('#__menu_types AS menu_types')
             ->where('menu_types.website_id=' . (int)$template_supper_admin_website_id)
-            ->where('(menu_types2.website_id=' . (int)$website_id.' OR  menu_types2.website_id IS NULL)')
-            ->leftJoin('#__menu_types AS menu_types2 ON menu_types2.menutype=menu_types.menutype')
         ;
-        $list_older_menu_type = array();
-        $list_menu_type = $db->setQuery($query)->loadObjectList();
+        $list_menu_type_id = $db->setQuery($query)->loadColumn();
         require_once JPATH_ROOT . '/libraries/legacy/table/menu/type.php';
         $table_menu_type = JTable::getInstance('menutype', 'JTable');
-        foreach ($list_menu_type AS $menu_type) {
-            if($menu_type->current_website_menu_type_id)
-            {
-                $table_menu_type->load($menu_type->current_website_menu_type_id);
-            }else{
-                $table_menu_type->load($menu_type->supper_admin_menu_type_id);
-                $table_menu_type->id = 0;
-                $table_menu_type->super_admin_menu_type_id = $menu_type->supper_admin_menu_type_id;
-                $table_menu_type->website_id = $website_id;
-            }
+        foreach ($list_menu_type_id AS $menu_type_id) {
+            $table_menu_type->load($menu_type_id);
+            $table_menu_type->id = 0;
+            $table_menu_type->super_admin_menu_type_id = $menu_type_id;
+            $table_menu_type->copy_from = $menu_type_id;
+            $table_menu_type->website_id = $website_id;
 
             $ok = $table_menu_type->store();
             if (!$ok) {
@@ -172,7 +253,10 @@ class update_supper_admin_template_website
         return true;
 
     }
+    static $list_menu_item=null;
     private function copy_menus($website_id,$template_supper_admin_website_id){
+
+        $db = JFactory::getDbo();
 
 
         $db = JFactory::getDbo();
@@ -180,10 +264,9 @@ class update_supper_admin_template_website
         //get template menu type
         $query->clear()
             ->select('
-                menu_types.id AS supper_admin_menu_type_id,menu_types2.id AS current_website_menu_type_id,
-                menu_type_id_menu_id.menu_id AS current_website_menu_item_id
+                menu.id
                 ')
-            ->from('#__menu_types AS menu_types')
+            ->from('#__menu AS menu')
             ->where('menu_types.website_id=' . (int)$template_supper_admin_website_id)
             ->leftJoin('#__menu_types AS menu_types2 ON menu_types2.menutype=menu_types.menutype')
             ->where('menu_types2.website_id='.(int)$website_id)
@@ -245,56 +328,62 @@ class update_supper_admin_template_website
 
             $supper_admin_menu_item_id=$menu_item->supper_admin_menu_item_id;
             $current_website_menu_item_id=$menu_item->current_website_menu_item_id;
-            $update_supper_menu_item=function($function_call_back, $supper_admin_parent_menu_item_id=0, $current_website_parent_menu_item_id, $level=0, $max_level=999){
-                $db=JFactory::getDbo();
-                $query=$db->getQuery(true);
-                $query->select('
+            $update_supper_menu_item=function($function_call_back,$supper_admin_parent_menu_item_id=0, $current_website_parent_menu_item_id, $level=0, $max_level=999){
+                if(!static::$list_menu_item) {
+                    $db = JFactory::getDbo();
+                    $query = $db->getQuery(true);
+                    $query->select('
                     supper_admin_menu.title AS supper_admin_menu_title,
                     current_website_menu.title AS current_website_menu_title,
                     supper_admin_menu.id AS supper_admin_menu_item_id,current_website_menu.id AS current_website_menu_item_id,
                     supper_admin_menu.params AS supper_admin_menu_item_params,
-                    current_website_menu.params AS current_website_menu_item_params
+                    current_website_menu.params AS current_website_menu_item_params,
+                    supper_admin_menu.parent_id AS  supper_admin_parent_id,
+                    current_website_menu.parent_id AS current_website_parent_id
                     ')
-                    ->from('#__menu AS supper_admin_menu')
-                    ->where('supper_admin_menu.parent_id='.(int)$supper_admin_parent_menu_item_id)
-                    ->leftJoin('#__menu AS current_website_menu ON current_website_menu.title=supper_admin_menu.title AND current_website_menu.parent_id='.(int)$current_website_parent_menu_item_id.' AND current_website_menu.alias!='.$query->q('root'))
-                    ->where('supper_admin_menu.alias!='.$query->q('root'))
-                    ->group('supper_admin_menu.id,current_website_menu.id')
-                    ;
-                $list_menu_item=$db->setQuery($query)->loadObjectList();
-                foreach($list_menu_item as $menu_item)
+                        ->from('#__menu AS supper_admin_menu')
+                        //->where('supper_admin_menu.parent_id=' . (int)$supper_admin_parent_menu_item_id)
+                        ->leftJoin('#__menu AS current_website_menu ON current_website_menu.title=supper_admin_menu.title AND current_website_menu.parent_id=' . (int)$current_website_parent_menu_item_id . ' AND current_website_menu.alias!=' . $query->q('root'))
+                        ->where('supper_admin_menu.alias!=' . $query->q('root'))
+                        ->group('supper_admin_menu.id,current_website_menu.id');
+                    $list_menu_item = $db->setQuery($query)->loadObjectList();
+                    static::$list_menu_item=$list_menu_item;
+                }
+                foreach(static::$list_menu_item as $menu_item)
                 {
-                    $table_menu = JTable::getInstance('menu');
-                    if($menu_item->current_website_menu_item_id)
-                    {
-                        $table_menu->load($menu_item->current_website_menu_item_id);
-                        if($menu_item->supper_admin_menu_item_params=!$menu_item->current_website_menu_item_params)
-                        {
-                            $supper_admin_menu_item_params = new JRegistry;
-                            $supper_admin_menu_item_params->loadString($menu_item->supper_admin_menu_item_params);
-                            $current_website_menu_item_params = new JRegistry;
-                            $current_website_menu_item_params->loadString($menu_item->current_website_menu_item_params);
-                            $current_website_menu_item_params->merge($supper_admin_menu_item_params);
-                            $table_menu->params = $current_website_menu_item_params->toString();
-                        }
-                    }else{
-                        $table_menu->load($menu_item->supper_admin_menu_item_id);
+                    if($menu_item->supper_admin_parent_id==$supper_admin_parent_menu_item_id) {
+                        $table_menu = JTable::getInstance('menu');
                         $table_menu->id=0;
+                        if ($menu_item->current_website_menu_item_id) {
+                            $table_menu->load($menu_item->current_website_menu_item_id);
+                            if ($menu_item->supper_admin_menu_item_params = !$menu_item->current_website_menu_item_params) {
+                                $supper_admin_menu_item_params = new JRegistry;
+                                $supper_admin_menu_item_params->loadString($menu_item->supper_admin_menu_item_params);
+                                $current_website_menu_item_params = new JRegistry;
+                                $current_website_menu_item_params->loadString($menu_item->current_website_menu_item_params);
+                                $current_website_menu_item_params->merge($supper_admin_menu_item_params);
+                                $table_menu->params = $current_website_menu_item_params->toString();
+                            }
+                        } else {
+                            $table_menu->load($menu_item->supper_admin_menu_item_id);
+                            $table_menu->id = 0;
+                        }
+                        $home = $table_menu->home;
+                        if ($home) {
+                            $table_menu->is_dashboard_menu_supper_admin = 1;
+                        }
+                        $table_menu->parent_id = $current_website_parent_menu_item_id;
+                        $table_menu->supper_admin_menu_item_id = $menu_item->supper_admin_menu_item_id;
+                        $table_menu->home = 0;
+                        $ok = $table_menu->parent_store();
+                        if (!$ok) {
+                            throw new Exception($table_menu->getError());
+                        }
+
+                        $supper_admin_parent_menu_item_id1 = $menu_item->supper_admin_menu_item_id;
+                        $current_website_parent_menu_item_id1 = $table_menu->id;
+                        $function_call_back($function_call_back,$supper_admin_parent_menu_item_id1, $current_website_parent_menu_item_id1);
                     }
-                    $home=$table_menu->home;
-                    if($home)
-                    {
-                        $table_menu->is_dashboard_menu_supper_admin=1;
-                    }
-                    $table_menu->parent_id=$current_website_parent_menu_item_id;
-                    $table_menu->home=0;
-                    $ok = $table_menu->parent_store();
-                    if (!$ok) {
-                        throw new Exception($table_menu->getError());
-                    }
-                    $supper_admin_parent_menu_item_id1=$menu_item->supper_admin_menu_item_id;
-                    $current_website_parent_menu_item_id1=$table_menu->id;
-                    $function_call_back($function_call_back,$supper_admin_parent_menu_item_id1,$current_website_parent_menu_item_id1);
                 }
             };
             $update_supper_menu_item($update_supper_menu_item,$supper_admin_menu_item_id,$current_website_menu_item_id);
@@ -305,109 +394,92 @@ class update_supper_admin_template_website
         return true;
 
     }
+    static $list_position=null;
     private function copy_blocks($website_id,$template_supper_admin_website_id){
-        //delete old block
 
-        $list_menu_item_supper_admin_site=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($template_supper_admin_website_id);
-        $db = JFactory::getDbo();
-        $query = $db->getQuery(true);
-        $sql='
-          DELETE position_config.* FROM #__position_config AS position_config
-          LEFT JOIN #__menu AS menu ON menu.id=position_config.menu_item_id
-           WHERE  menu.copy_from IN ('.implode(',',$list_menu_item_supper_admin_site).') AND position_config.website_id='.(int)$website_id.'
-          ';
-        $query->setQuery($sql);
-        $ok=$db->setQuery($query)->execute();
-        if (!$ok) {
-            throw new Exception($db->getErrorMsg());
-        }
         //end delete old block
+        $list_menu_item=MenusHelperFrontEnd::get_all_menu_item_not_root_menu_item($website_id);
+        $list_menu_item=JArrayHelper::pivot($list_menu_item,'supper_admin_menu_item_id');
         $db=JFactory::getDbo();
+        $db->rebuild_action = 1;
         $query=$db->getQuery(true);
         $query->clear()
-            ->select('position_config.id,position_config.parent_id,position_config.website_id,position_config.menu_item_id,position_config.copy_from')
-            ->from('#__position_config AS position_config')
-            ->leftJoin('#__menu AS menu ON menu.id=position_config.menu_item_id')
+            ->select('
+                supper_website_position_id_website_id.position_id AS supper_website_position_id,
+                current_website_position_id_website_id.position_id AS current_website_position_id
+            ')
+            ->from('#__root_position_id_website_id AS supper_website_position_id_website_id,#__root_position_id_website_id AS current_website_position_id_website_id')
+            ->where('supper_website_position_id_website_id.website_id='.(int)$template_supper_admin_website_id)
+            ->where('current_website_position_id_website_id.website_id='.(int)$website_id)
+
         ;
         $db->setQuery($query);
-        $list_position_config = $db->loadObjectList();
-        $children_position = array();
-        foreach ($list_position_config as $v) {
-            $pt = $v->parent_id;
-            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
-            $list = @$children_position[$pt] ? $children_position[$pt] : array();
-            array_push($list, $v);
-            $children_position[$pt] = $list;
-        }
+        $list_root_position_config = $db->loadObjectList();
+        foreach($list_root_position_config AS $position){
+            $root_supper_admin_website_position_id=$position->supper_website_position_id;
+            $root_current_website_position_id=$position->current_website_position_id;
+            $update_position_current_website=function($function_call_back,$website_id,$list_menu_item,$root_supper_admin_website_position_id=0,$root_current_website_position_id,$level=0, $max_level=999){
+                if(!static::$list_position) {
+                    $db = JFactory::getDbo();
+                    $query = $db->getQuery(true);
+                    $query->select('
+                        supper_admin_position_config.id AS supper_admin_position_id,
+                        current_website_position_config.id AS current_website_position_id,
+                        supper_admin_position_config.params AS supper_admin_website_params,
+                        current_website_position_config.params AS current_website_params,
+                        supper_admin_position_config.menu_item_id AS supper_admin_menu_item_id,
+                        current_website_position_config.menu_item_id AS current_website_menu_item_id,
+                        supper_admin_position_config.parent_id AS supper_admin_parent_id,
+                        current_website_position_config.parent_id AS current_website_parent_id,
+                        current_website_position_config.supper_admin_block_id AS current_website_supper_admin_block_id
+                    ')
+                        ->from('#__position_config AS supper_admin_position_config')
+                        //->where('supper_admin_position_config.parent_id=' . (int)$root_supper_admin_website_position_id)
+                        ->leftJoin('#__position_config AS current_website_position_config ON current_website_position_config.supper_admin_block_id=supper_admin_position_config.id');
+                    $db->setQuery($query);
+                    $list_position = $db->loadObjectList();
+                    static::$list_position=$list_position;
+                }
 
-        $list_root_position = $children_position['list_root'];
+                $table_position=JTable::getInstance('positionnested');
+                $table_position->id=0;
+                foreach(static::$list_position as $position)
+                {
+                    if($position->supper_admin_parent_id==$root_supper_admin_website_position_id) {
+                        if ($position->current_website_position_id) {
 
-        unset($children_position['list_root']);
-        if (!function_exists('sub_execute_copy_rows_table_position')) {
-            function sub_execute_copy_rows_table_position(JTable $table_position,$website_id=0,$list_older_menu_item, $old_position_id = 0, $new_position_id, $children,$level=0,$max_level=999)
-            {
-                if ($children[$old_position_id]&&$level<=$max_level) {
-                    $level1=$level+1;
-                    foreach ($children[$old_position_id] as $v) {
-                        $table_position->load($v->id);
-                        $table_position->id = 0;
+                            if ($position->supper_admin_website_params = !$position->current_website_params) {
+                                $table_position->load($position->current_website_position_id);
+                                $supper_admin_website_params = new JRegistry;
+                                $supper_admin_website_params->loadString($position->supper_admin_website_params);
+                                $current_website_params = new JRegistry;
+                                $current_website_params->loadString($position->current_website_params);
+                                $current_website_params->merge($supper_admin_website_params);
+                                $table_position->params = $current_website_params->toString();
+                            }
+
+                        } else {
+                            $table_position->load($position->supper_admin_position_id);
+                            $table_position->id = 0;
+                        }
+                        $table_position->parent_id = $root_current_website_position_id;
                         $table_position->website_id = $website_id;
-                        $table_position->copy_from = $v->id;
-                        $table_position->level = $level1;
-                        $table_position->menu_item_id = $list_older_menu_item[$v->menu_item_id]->id;
-                        $table_position->parent_id = $new_position_id;
-                        $table_position->getDbo()->rebuild_action = 1;
-                        $ok = $table_position->parent_store(true);
+
+                        $table_position->supper_admin_block_id = $position->supper_admin_position_id;
+                        $table_position->menu_item_id = $list_menu_item[$position->supper_admin_menu_item_id]->id;
+                        $ok = $table_position->parent_store();
                         if (!$ok) {
                             throw new Exception($table_position->getError());
                         }
-
-/*                        echo "<hr/>";
-                        echo "<br/>";
-                        echo 'menu_item_id:'.$list_older_menu_item[$v->menu_item_id]->id;
-                        echo "<br/>";
-                        echo 'id:'.$table_position->id;
-                        echo "<br/>";
-                        echo "<hr/>";
-*/
-                        $new_position_id1 = $table_position->id;
-                        $old_position_id1 = $v->id;
-                        sub_execute_copy_rows_table_position($table_position,$website_id, $list_older_menu_item, $old_position_id1, $new_position_id1, $children,$level1,$max_level);
+                        $root_supper_admin_website_position_id = $position->supper_admin_position_id;
+                        $root_current_website_position_id = $table_position->id;
+                        $function_call_back($function_call_back,$website_id, $list_menu_item, $root_supper_admin_website_position_id, $root_current_website_position_id);
                     }
                 }
-            }
-        }
-        $table_position = JTable::getInstance('positionnested');
-        $list_old_position_config=array();
-        $list_menu_item_id=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($template_supper_admin_website_id);
-        $list_menu_item_id_of_website=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website_id);
-        $query = $db->getQuery(true);
-        //get template menu type
-        $query->clear()
-            ->select('menu.id,menu.copy_from')
-            ->from('#__menu AS menu')
-            ->leftJoin('#__menu AS menu2 ON menu2.id=menu.copy_from')
-            ->where('menu2.id IN ('.implode(',',$list_menu_item_id).')')
-            ->where('menu.id IN ('.implode(',',$list_menu_item_id_of_website).')')
-        ;
-        $db->setQuery($query);
-        $list_menu_of_website=$db->loadObjectList('copy_from');
-
-        $query = $db->getQuery(true);
-
-        $query->select('position_config.id')
-            ->from('#__position_config AS position_config')
-            ->where('(position_config.parent_id =position_config.id || parent_id IS NULL )')
-            ->where('position_config.website_id = '.(int)$website_id)
-            ->group('position_config.id')
-        ;
-        $root_id= $db->setQuery($query)->loadResult();
-        foreach ($list_root_position as $position) {
+            };
+            $update_position_current_website($update_position_current_website,$website_id,$list_menu_item,$root_supper_admin_website_position_id,$root_current_website_position_id);
 
 
-            if ($position->website_id == $template_supper_admin_website_id) {
-                sub_execute_copy_rows_table_position($table_position,$website_id, $list_menu_of_website, $position->id,$root_id, $children_position);
-            }
         }
         return true;
     }
@@ -503,51 +575,51 @@ class update_supper_admin_template_website
     }
     private function copy_modules($website_id,$template_supper_admin_website_id){
         $db = JFactory::getDbo();
+        //delete all extension supper admin
+        $query = $db->getQuery(true);
+        $query->delete_all('#__modules AS modules','modules.*')
+            ->where('modules.supper_admin_module_id IS NOT NULL')
+            ->leftJoin('#__extensions AS extensions ON extensions.id=modules.extension_id')
+            ->where('extensions.website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $ok = $db->execute();
+        if (!$ok) {
+            throw new Exception($db->getErrorMsg());
+        }
 
         $query = $db->getQuery(true);
         $query->clear()
             ->select('
-                module_supper_admin.module,
-                module_supper_admin.id AS module_id_supper_admin,module_of_current_website.id AS module_id_current_website,
-                module_supper_admin.params AS module_params_supper_admin,
-                module_of_current_website.params AS module_params_current_website,
-                module_supper_admin.extension_id AS extension_id_supper_admin,
-                module_of_current_website.extension_id AS extension_id_current_website,
-                extension_supper_admin.website_id AS supper_admin_website_id,
-                extension_current_website.website_id AS current_website_website_id
+                    module_supper_admin.id AS module_supper_admin_module_id,
+                    module_supper_admin.module AS module_supper_admin_module_name,
+                    extension_supper_admin.id AS supper_admin_extension_id,
+                    current_website_extension.id AS current_website_extension_extension_id
                 ')
             ->from('#__modules AS module_supper_admin')
-            ->leftJoin('#__modules AS module_of_current_website ON
-             module_of_current_website.module=module_supper_admin.module
-              ')
             ->leftJoin('#__extensions AS extension_supper_admin ON extension_supper_admin.id=module_supper_admin.extension_id')
-            ->leftJoin('#__extensions AS extension_current_website ON extension_current_website.id=module_of_current_website.extension_id')
-
             ->where('extension_supper_admin.website_id=' . (int)$template_supper_admin_website_id)
-            ->where('(extension_current_website.website_id=' . (int)$website_id.' OR extension_current_website.website_id IS NULL ) ')
-        ;
-        $table_module=JTable::getInstance('module');
-        $list_modules = $db->setQuery($query)->loadObjectList();
-        foreach ($list_modules AS $module) {
-            if($module->module_id_current_website)
-            {
-                if($module->module_params_supper_admin!=$module->module_params_current_website) {
-                    $table_module->load($module->module_id_current_website);
-                    $module_params_supper_admin = new JRegistry;
-                    $module_params_supper_admin->loadString($module->module_params_supper_admin);
-                    $module_params_current_website = new JRegistry;
-                    $module_params_current_website->loadString($module->module_params_current_website);
-                    $module_params_current_website->merge($module_params_supper_admin);
-                    $table_module->params = $module_params_current_website->toString();
-                }
+            ->where('extension_supper_admin.type=' . $query->q('module'))
 
-            }else{
-                $table_module->load($module->module_id_supper_admin);
-                $table_module->id=0;
-                $extension_id_2_current_website=JmoduleHelper::get_extension_id_by_module_name($website_id,$module->name);
-                $table_module->extension_id=$extension_id_2_current_website;
-            }
-            $ok = $table_module->store();
+            ->innerJoin('#__extensions AS current_website_extension ON current_website_extension.type=extension_supper_admin.type
+                        AND current_website_extension.element=extension_supper_admin.element AND current_website_extension.folder=extension_supper_admin.folder
+                        AND current_website_extension.website_id='.(int)$website_id)
+            ->where('current_website_extension.id IS NOT NULL')
+            ->group('module_supper_admin.module')
+        ;
+        $list_modules = $db->setQuery($query)->loadObjectList();
+        $table_module=JTable::getInstance('module');
+
+
+        foreach ($list_modules AS $module) {
+
+            $table_module->load($module->module_supper_admin_module_id);
+            $table_module->id=0;
+            $table_module->extension_id=$module->current_website_extension_extension_id;
+            $table_module->asset_id=null;
+            $table_module->copy_from=$module->module_supper_admin_module_id;
+            $table_module->supper_admin_module_id=$module->module_supper_admin_module_id;
+            $ok = $table_module->store(true);
             if (!$ok) {
                 throw new Exception($table_module->getError());
             }
@@ -559,54 +631,40 @@ class update_supper_admin_template_website
     private function copy_extensions($website_id,$template_supper_admin_website_id){
 
         $db = JFactory::getDbo();
-
+        //delete all extension supper admin
+        $query = $db->getQuery(true);
+        $query->delete('#__extensions')
+            ->where('supper_admin_extension_id IS NOT NULL')
+            ->where('website_id='.(int)$website_id)
+            ;
+        $db->setQuery($query);
+        $ok = $db->execute();
+        if (!$ok) {
+            throw new Exception($db->getErrorMsg());
+        }
         $query = $db->getQuery(true);
         $query->clear()
-            ->select('
-                extension_supper_admin.element,
-                extension_supper_admin.website_id AS supper_admin_website_id,
-                extension_of_current_website.website_id AS current_website_website_id,
-                extension_supper_admin.id AS extension_id_supper_admin,extension_of_current_website.id AS extension_id_current_website,
-                extension_supper_admin.params AS extension_params_supper_admin,
-                extension_of_current_website.params AS extension_params_current_website
-                ')
-            ->from('#__extensions AS extension_supper_admin')
-            ->leftJoin('#__extensions AS extension_of_current_website ON
-             extension_of_current_website.name=extension_supper_admin.name AND extension_of_current_website.type=extension_supper_admin.type AND extension_of_current_website.website_id='.(int)$website_id.'
-              AND extension_of_current_website.element=extension_supper_admin.element AND extension_of_current_website.folder=extension_supper_admin.folder
-              ')
-            ->where('extension_supper_admin.website_id=' . (int)$template_supper_admin_website_id)
-
+            ->select('extension.type,extension.id,extension.name,extension.element,extension.folder,extension2.id AS extension_id')
+            ->from('#__extensions AS extension')
+            ->where('extension.website_id=' . (int)$template_supper_admin_website_id)
+            ->leftJoin('#__extensions AS extension2 ON extension2.type=extension.type AND extension2.element=extension.element AND extension2.folder=extension.folder AND extension2.website_id='.(int)$website_id)
+            ->where('(extension2.type IS NULL AND extension2.element IS NULL AND extension2.folder IS NULL)')
+            ->group("extension.type,extension.element,extension.folder")
         ;
-        $list_extensions = $db->setQuery($query)->loadObjectList();
+        $list_extension = $db->setQuery($query)->loadObjectList();
         $table_extension=JTable::getInstance('extension');
 
-
-
-        foreach ($list_extensions AS $extensions) {
-            if($extensions->extension_id_current_website)
-            {
-                if($extensions->extension_params_supper_admin!=$extensions->extension_params_current_website) {
-                    $table_extension->load($extensions->extension_id_current_website);
-                    $extension_params_supper_admin = new JRegistry;
-                    $extension_params_supper_admin->loadString($extensions->extension_params_supper_admin);
-                    $extension_params_current_website = new JRegistry;
-                    $extension_params_current_website->loadString($extensions->extension_params_current_website);
-                    $extension_params_current_website->merge($extension_params_supper_admin);
-                    $table_extension->params = $extension_params_current_website->toString();
-                }
-
-            }else{
-                $table_extension->load($extensions->extension_id_supper_admin);
-                $table_extension->id=0;
-                $table_extension->supper_admin_extension_id=$extensions->extension_id_supper_admin;
-                $table_extension->website_id=$website_id;
-            }
+        foreach ($list_extension AS $extension) {
+            $table_extension->load($extension->id);
+            $table_extension->id=0;
+            $table_extension->website_id=$website_id;
+            $table_extension->supper_admin_extension_id=$extension->id;
             $ok = $table_extension->store();
             if (!$ok) {
                 throw new Exception($table_extension->getError());
             }
         }
+
     }
     private function getListStep()
     {

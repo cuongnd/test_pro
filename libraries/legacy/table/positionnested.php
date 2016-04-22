@@ -1266,11 +1266,9 @@ class JTablePositionNested extends JTable
 
 		$query = $this->_db->getQuery(true);
 
-		$query->select($k)
-			->from($this->_tbl)
-			->where('(parent_id =id || parent_id IS NULL )')
+		$query->select('position_id')
+			->from('#__root_position_id_website_id')
 			->where('website_id = '.(int)$this->website_id)
-			->where('screensize = '.$query->q($this->screensize))
 		;
 		$result = $this->_db->setQuery($query)->loadResult();
 

@@ -817,6 +817,33 @@ abstract class JDatabaseQuery
 	}
 
 	/**
+	 * Add a table name to the DELETE clause of the query.
+	 *
+	 * Note that you must not mix insert, update, delete and select method calls when building a query.
+	 *
+	 * Usage:
+	 * $query->delete('#__a')->where('id = 1');
+	 *
+	 * @param   string  $table  The name of the table to delete from.
+	 *
+	 * @return  JDatabaseQuery  Returns this object to allow chaining.
+	 *
+	 * @since   11.1
+	 */
+	public function delete_all($table = null,$delete='')
+	{
+		$this->type = 'delete';
+		$this->delete = new JDatabaseQueryElement("DELETE $delete", null);
+
+		if (!empty($table))
+		{
+			$this->from($table);
+		}
+
+		return $this;
+	}
+
+	/**
 	 * Method to escape a string for usage in an SQL statement.
 	 *
 	 * This method is provided for use where the query object is passed to a function for modification.

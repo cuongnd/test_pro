@@ -1258,11 +1258,15 @@ class WebsiteModelWebsite extends JModelAdmin
 
     public function createConfiguration($website_id = 0, $website_template_id = 0)
     {
+        echo "sua chua cai nay";
+        die;
         $db = $this->getDbo();
         $query = $db->getQuery(true);
-        $query->select('*');
-        $query->from('#__domain_website');
-        $query->where('website_id=' . (int)$website_id);
+        $query->select('*')
+            ->from('#__domain_website AS domain_website')
+            ->where('website_id=' . (int)$website_id)
+            ->leftJoin('#__website AS website ON website.id = domain_website.website_id')
+        ;
         $db->setQuery($query);
         $listDomainWebsite = $db->loadObjectList();
         if (!count($listDomainWebsite)) {
@@ -1289,7 +1293,8 @@ class WebsiteModelWebsite extends JModelAdmin
                 }
             }
             $fileWebStore =strtolower($domainWebsite->domain . '.ini');
-            if (!JFile::write($pathFolderWebStore . $fileWebStore, $domainWebsite->website_id)) {
+            $content="$domainWebsite->website_id:$domainWebsite->domain";
+            if (!JFile::write($pathFolderWebStore . $fileWebStore,$content )) {
                 $this->setError("can not create and write file webstore");
             }
         }
