@@ -576,6 +576,7 @@ abstract class JModuleHelper
         $fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
         $tmp = new JRegistry;
         $tmp->loadString($str_params);
+
         $params=$tmp;
         $list_type=JFormField::get_list_type_must_change_params_when_create_website();
         $change_param_module_by_fields($change_param_module_by_fields,$list_type,$website_id,$fields[0],$params);

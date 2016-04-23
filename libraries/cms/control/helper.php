@@ -71,17 +71,33 @@ abstract class JControlHelper
     {
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
-        $query->select('control.*')
+        $query->select('module.*,website.id AS website_id,website.name AS website_name')
             ->from('#__modules AS module')
             ->leftJoin('#__extensions AS extension ON extension.id=module.extension_id')
             ->leftJoin('#__website AS website ON website.id=extension.website_id')
-            ->leftJoin('#__control AS control ON control.element_path=CONCAT("modules/website/website_",website.name,"/", module.module) OR control.element_path = CONCAT("modules/", module.module) ')
             ->where('module.id='.(int)$module_id)
-            ->where('control.type='.$query->q('module'))
-            ->where('control.website_id=extension.website_id')
-
             ;
         $db->setQuery($query);
-        return $db->loadObject();
+        $module=$db->loadObject();
+        $ui_path = $module->module;
+        $table_control = JTable::getInstance('control');
+
+        $element_path='modules/website/website_'.$module->website_name.'/' . $ui_path;
+
+        jimport('joomla.filesystem.folder');
+        if(!JFolder::exists(JPATH_ROOT.DS.$element_path))
+        {
+            $element_path='modules/' . $ui_path;
+        }
+        require_once JPATH_ROOT.'/components/com_modules/helpers/module.php';
+        $filter= array(
+            "element_path" => $element_path,
+            "type" => module_helper::ELEMENT_TYPE,
+            'website_id'=>$module->website_id
+        );
+        $table_control->load(
+            $filter
+        );
+        return $table_control;
     }
 }

@@ -222,7 +222,6 @@ abstract class ModulesHelper
 		$query	= $db->getQuery(true)
 			->select('e.id AS id,e.element AS value, e.name AS text')
 			->from('#__extensions as e')
-			->where('e.client_id = ' . (int) $clientId)
 			->where('e.type = ' . $db->quote('module'))
 			->where('e.website_id='.(int)$website->website_id)
 			->group('e.element,e.name');
