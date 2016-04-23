@@ -217,7 +217,7 @@ class update_supper_admin_template_website
         //delete all extension supper admin
         $query = $db->getQuery(true);
         $query->delete('ueb3c_menu_types')
-            ->where('super_admin_menu_type_id IS NOT NULL')
+            ->where('supper_admin_menu_type_id IS NOT NULL')
             ->where('website_id='.(int)$website_id)
         ;
         $db->setQuery($query);
@@ -240,7 +240,7 @@ class update_supper_admin_template_website
         foreach ($list_menu_type_id AS $menu_type_id) {
             $table_menu_type->load($menu_type_id);
             $table_menu_type->id = 0;
-            $table_menu_type->super_admin_menu_type_id = $menu_type_id;
+            $table_menu_type->supper_admin_menu_type_id = $menu_type_id;
             $table_menu_type->copy_from = $menu_type_id;
             $table_menu_type->website_id = $website_id;
 
@@ -263,15 +263,10 @@ class update_supper_admin_template_website
         $query = $db->getQuery(true);
         //get template menu type
         $query->clear()
-            ->select('
-                menu.id
-                ')
-            ->from('#__menu AS menu')
-            ->where('menu_types.website_id=' . (int)$template_supper_admin_website_id)
-            ->leftJoin('#__menu_types AS menu_types2 ON menu_types2.menutype=menu_types.menutype')
-            ->where('menu_types2.website_id='.(int)$website_id)
-            ->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_type_id=menu_types2.id')
-            ->where('menu_type_id_menu_id.menu_id IS NULL')
+            ->select('menu_type.*')
+            ->from('#__menu_types AS menu_type')
+            ->where('menu_type.website_id=' . (int)$website_id)
+            ->where('menu_type.supper_admin_menu_type_id IS NOT NULL')
         ;
         $db->setQuery($query);
         $list_menu_type=$db->loadObjectList();
@@ -282,7 +277,7 @@ class update_supper_admin_template_website
             //copy_ root menu item
             $table_menu->id = 0;
             $table_menu->copy_from = null;
-            $table_menu->menu_type_id = $menu_type->current_website_menu_type_id;
+            $table_menu->menu_type_id = $menu_type->id;
             $table_menu->title = 'Menu_item_root';
             $table_menu->alias = 'root';
             $table_menu->parent_id = null;
@@ -295,7 +290,7 @@ class update_supper_admin_template_website
             //store old  menu item
             //copy_ link root menu item width menu type
             $table_menu_item_menu_type->id=0;
-            $table_menu_item_menu_type->menu_type_id = $menu_type->current_website_menu_type_id;
+            $table_menu_item_menu_type->menu_type_id = $menu_type->id;
             $table_menu_item_menu_type->menu_id =  $new_menu_item;
             $ok = $table_menu_item_menu_type->store();
             if (!$ok) {
@@ -303,93 +298,66 @@ class update_supper_admin_template_website
             }
             //end get link root menu item width menu type
         }
-
         $query = $db->getQuery(true);
         //get template menu type
         $query->clear()
-            ->select('
-                menu_types.id AS supper_admin_menu_type_id,menu_types2.id AS current_website_menu_type_id,
-                menu_type_id_menu_id.menu_id AS current_website_menu_item_id,
-                menu_type_id_menu_id2.menu_id AS supper_admin_menu_item_id
-                ')
-            ->from('#__menu_types AS menu_types')
-            ->where('menu_types.website_id=' . (int)$template_supper_admin_website_id)
-            ->leftJoin('#__menu_types AS menu_types2 ON menu_types2.menutype=menu_types.menutype')
-            ->where('menu_types2.website_id='.(int)$website_id)
-            ->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_type_id=menu_types2.id')
-            ->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id2 ON menu_type_id_menu_id2.menu_type_id=menu_types.id')
-            ->where('menu_type_id_menu_id.menu_id IS NOT NULL')
+            ->select('current_website.id AS current_website_menu_item_id,menu_type_id_menu_id2.id AS supper_admin_website_menu_item_id')
+            ->from('#__menu AS current_website')
+            ->innerJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_id=current_website.id')
+            ->innerJoin('#__menu_types AS current_website_menu_type ON current_website_menu_type.id=menu_type_id_menu_id.menu_type_id')
+            ->where('current_website_menu_type.supper_admin_menu_type_id IS NOT NULL')
+            ->where('current_website_menu_type.website_id ='.(int)$website_id)
+            ->innerJoin('#__menu_types AS supper_admin_menu_types ON supper_admin_menu_types.id=current_website_menu_type.supper_admin_menu_type_id')
+            ->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id2 ON menu_type_id_menu_id2.menu_type_id=supper_admin_menu_types.id')
         ;
         $db->setQuery($query);
-        $list_older_root_menu_item=$db->loadObjectList();
+        $list_current_website_root_menu_item=$db->loadObjectList();
+        $query->clear()
+            ->select('menu.id,menu.parent_id')
+            ->from('#__menu AS menu')
+        ;
+        $list_menu_item=$db->setQuery($query)->loadObjectList();
+
+        $children_menu_item = array();
+        foreach ($list_menu_item as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_menu_item[$pt] ? $children_menu_item[$pt] : array();
+            array_push($list, $v);
+            $children_menu_item[$pt] = $list;
+        }
+        $list_root_menu_item = $children_menu_item['list_root'];
+        unset($children_menu_item['list_root']);
         require_once JPATH_ROOT . '/components/com_menus/helpers/menus.php';
-        $a_list_older_menu_item1 = array();
-        foreach ($list_older_root_menu_item AS $menu_item) {
+        foreach ($list_current_website_root_menu_item AS $menu_item) {
 
-            $supper_admin_menu_item_id=$menu_item->supper_admin_menu_item_id;
+            $supper_admin_menu_item_id=$menu_item->supper_admin_website_menu_item_id;
             $current_website_menu_item_id=$menu_item->current_website_menu_item_id;
-            $update_supper_menu_item=function($function_call_back,$supper_admin_parent_menu_item_id=0, $current_website_parent_menu_item_id, $level=0, $max_level=999){
-                if(!static::$list_menu_item) {
-                    $db = JFactory::getDbo();
-                    $query = $db->getQuery(true);
-                    $query->select('
-                    supper_admin_menu.title AS supper_admin_menu_title,
-                    current_website_menu.title AS current_website_menu_title,
-                    supper_admin_menu.id AS supper_admin_menu_item_id,current_website_menu.id AS current_website_menu_item_id,
-                    supper_admin_menu.params AS supper_admin_menu_item_params,
-                    current_website_menu.params AS current_website_menu_item_params,
-                    supper_admin_menu.parent_id AS  supper_admin_parent_id,
-                    current_website_menu.parent_id AS current_website_parent_id
-                    ')
-                        ->from('#__menu AS supper_admin_menu')
-                        //->where('supper_admin_menu.parent_id=' . (int)$supper_admin_parent_menu_item_id)
-                        ->leftJoin('#__menu AS current_website_menu ON current_website_menu.title=supper_admin_menu.title AND current_website_menu.parent_id=' . (int)$current_website_parent_menu_item_id . ' AND current_website_menu.alias!=' . $query->q('root'))
-                        ->where('supper_admin_menu.alias!=' . $query->q('root'))
-                        ->group('supper_admin_menu.id,current_website_menu.id');
-                    $list_menu_item = $db->setQuery($query)->loadObjectList();
-                    static::$list_menu_item=$list_menu_item;
-                }
-                foreach(static::$list_menu_item as $menu_item)
-                {
-                    if($menu_item->supper_admin_parent_id==$supper_admin_parent_menu_item_id) {
-                        $table_menu = JTable::getInstance('menu');
-                        $table_menu->id=0;
-                        if ($menu_item->current_website_menu_item_id) {
-                            $table_menu->load($menu_item->current_website_menu_item_id);
-                            if ($menu_item->supper_admin_menu_item_params = !$menu_item->current_website_menu_item_params) {
-                                $supper_admin_menu_item_params = new JRegistry;
-                                $supper_admin_menu_item_params->loadString($menu_item->supper_admin_menu_item_params);
-                                $current_website_menu_item_params = new JRegistry;
-                                $current_website_menu_item_params->loadString($menu_item->current_website_menu_item_params);
-                                $current_website_menu_item_params->merge($supper_admin_menu_item_params);
-                                $table_menu->params = $current_website_menu_item_params->toString();
-                            }
-                        } else {
-                            $table_menu->load($menu_item->supper_admin_menu_item_id);
-                            $table_menu->id = 0;
-                        }
-                        $home = $table_menu->home;
-                        if ($home) {
-                            $table_menu->is_dashboard_menu_supper_admin = 1;
-                        }
-                        $table_menu->parent_id = $current_website_parent_menu_item_id;
-                        $table_menu->supper_admin_menu_item_id = $menu_item->supper_admin_menu_item_id;
-                        $table_menu->home = 0;
-                        $ok = $table_menu->parent_store();
-                        if (!$ok) {
-                            throw new Exception($table_menu->getError());
-                        }
+            $update_supper_menu_item=function($function_call_back,$supper_admin_parent_menu_item_id=0, $current_website_parent_menu_item_id,$children_menu_item, $level=0, $max_level=999){
 
-                        $supper_admin_parent_menu_item_id1 = $menu_item->supper_admin_menu_item_id;
-                        $current_website_parent_menu_item_id1 = $table_menu->id;
-                        $function_call_back($function_call_back,$supper_admin_parent_menu_item_id1, $current_website_parent_menu_item_id1);
+                foreach($children_menu_item[$supper_admin_parent_menu_item_id] as $menu_item)
+                {
+                    $table_menu = JTable::getInstance('menu');
+                    $table_menu->load($menu_item->id);
+                    $table_menu->id=0;
+                    $home = $table_menu->home;
+                    if ($home) {
+                        $table_menu->is_dashboard_menu_supper_admin = 1;
                     }
+                    $table_menu->home = 0;
+                    $table_menu->parent_id = $current_website_parent_menu_item_id;
+                    $table_menu->supper_admin_menu_item_id = $menu_item->id;
+                    $ok = $table_menu->parent_store();
+                    if (!$ok) {
+                        throw new Exception($table_menu->getError());
+                    }
+
+                    $supper_admin_parent_menu_item_id1 = $menu_item->id;
+                    $current_website_parent_menu_item_id1 = $table_menu->id;
+                    $function_call_back($function_call_back,$supper_admin_parent_menu_item_id1, $current_website_parent_menu_item_id1,$children_menu_item);
                 }
             };
-            $update_supper_menu_item($update_supper_menu_item,$supper_admin_menu_item_id,$current_website_menu_item_id);
-
-
-
+            $update_supper_menu_item($update_supper_menu_item,$supper_admin_menu_item_id,$current_website_menu_item_id,$children_menu_item);
         }
         return true;
 
@@ -397,90 +365,92 @@ class update_supper_admin_template_website
     static $list_position=null;
     private function copy_blocks($website_id,$template_supper_admin_website_id){
 
-        //end delete old block
-        $list_menu_item=MenusHelperFrontEnd::get_all_menu_item_not_root_menu_item($website_id);
-        $list_menu_item=JArrayHelper::pivot($list_menu_item,'supper_admin_menu_item_id');
+
         $db=JFactory::getDbo();
-        $db->rebuild_action = 1;
         $query=$db->getQuery(true);
+        $query->delete_all('#__position_config AS position_config','position_config.*')
+            ->leftJoin('#__root_position_id_website_id AS root_position_id_website_id ON root_position_id_website_id.position_id=position_config.id')
+            ->where('root_position_id_website_id.website_id='.(int)$website_id)
+            ->where('position_config.supper_admin_block_id IS NOT NULL')
+            ;
+        $db->setQuery($query);
+        $ok=$db->execute();
+        if(!$ok)
+        {
+            throw new Exception($db->getErrorMsg());
+        }
+
         $query->clear()
-            ->select('
-                supper_website_position_id_website_id.position_id AS supper_website_position_id,
-                current_website_position_id_website_id.position_id AS current_website_position_id
-            ')
-            ->from('#__root_position_id_website_id AS supper_website_position_id_website_id,#__root_position_id_website_id AS current_website_position_id_website_id')
-            ->where('supper_website_position_id_website_id.website_id='.(int)$template_supper_admin_website_id)
-            ->where('current_website_position_id_website_id.website_id='.(int)$website_id)
+            ->select('position_config.id,position_config.parent_id')
+            ->from('#__position_config AS position_config')
+        ;
+        $list_position_config=$db->setQuery($query)->loadObjectList();
+
+        $children_position_config = array();
+        foreach ($list_position_config as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_position_config[$pt] ? $children_position_config[$pt] : array();
+            array_push($list, $v);
+            $children_position_config[$pt] = $list;
+        }
+        $list_root_menu_item = $children_position_config['list_root'];
+        unset($children_position_config['list_root']);
+
+        $query->clear()
+            ->select('root_position_id_website_id.id as current_website_root_position_id,root_position_id_website_id2.id AS supper_admin_website_root_position_id')
+            ->from('#__root_position_id_website_id AS root_position_id_website_id,#__root_position_id_website_id AS root_position_id_website_id2')
+            ->where('root_position_id_website_id.website_id='.(int)$website_id)
+            ->where('root_position_id_website_id2.website_id='.(int)$template_supper_admin_website_id)
 
         ;
         $db->setQuery($query);
-        $list_root_position_config = $db->loadObjectList();
-        foreach($list_root_position_config AS $position){
-            $root_supper_admin_website_position_id=$position->supper_website_position_id;
-            $root_current_website_position_id=$position->current_website_position_id;
-            $update_position_current_website=function($function_call_back,$website_id,$list_menu_item,$root_supper_admin_website_position_id=0,$root_current_website_position_id,$level=0, $max_level=999){
-                if(!static::$list_position) {
-                    $db = JFactory::getDbo();
-                    $query = $db->getQuery(true);
-                    $query->select('
-                        supper_admin_position_config.id AS supper_admin_position_id,
-                        current_website_position_config.id AS current_website_position_id,
-                        supper_admin_position_config.params AS supper_admin_website_params,
-                        current_website_position_config.params AS current_website_params,
-                        supper_admin_position_config.menu_item_id AS supper_admin_menu_item_id,
-                        current_website_position_config.menu_item_id AS current_website_menu_item_id,
-                        supper_admin_position_config.parent_id AS supper_admin_parent_id,
-                        current_website_position_config.parent_id AS current_website_parent_id,
-                        current_website_position_config.supper_admin_block_id AS current_website_supper_admin_block_id
-                    ')
-                        ->from('#__position_config AS supper_admin_position_config')
-                        //->where('supper_admin_position_config.parent_id=' . (int)$root_supper_admin_website_position_id)
-                        ->leftJoin('#__position_config AS current_website_position_config ON current_website_position_config.supper_admin_block_id=supper_admin_position_config.id');
-                    $db->setQuery($query);
-                    $list_position = $db->loadObjectList();
-                    static::$list_position=$list_position;
-                }
+        $root_position=$db->loadObject();
 
-                $table_position=JTable::getInstance('positionnested');
-                $table_position->id=0;
-                foreach(static::$list_position as $position)
-                {
-                    if($position->supper_admin_parent_id==$root_supper_admin_website_position_id) {
-                        if ($position->current_website_position_id) {
+        $query->clear()
+            ->select('menu.id,menu.parent_id')
+            ->from('#__menu AS menu')
+        ;
+        $list_menu_item=$db->setQuery($query)->loadObjectList();
 
-                            if ($position->supper_admin_website_params = !$position->current_website_params) {
-                                $table_position->load($position->current_website_position_id);
-                                $supper_admin_website_params = new JRegistry;
-                                $supper_admin_website_params->loadString($position->supper_admin_website_params);
-                                $current_website_params = new JRegistry;
-                                $current_website_params->loadString($position->current_website_params);
-                                $current_website_params->merge($supper_admin_website_params);
-                                $table_position->params = $current_website_params->toString();
-                            }
-
-                        } else {
-                            $table_position->load($position->supper_admin_position_id);
-                            $table_position->id = 0;
-                        }
-                        $table_position->parent_id = $root_current_website_position_id;
-                        $table_position->website_id = $website_id;
-
-                        $table_position->supper_admin_block_id = $position->supper_admin_position_id;
-                        $table_position->menu_item_id = $list_menu_item[$position->supper_admin_menu_item_id]->id;
-                        $ok = $table_position->parent_store();
-                        if (!$ok) {
-                            throw new Exception($table_position->getError());
-                        }
-                        $root_supper_admin_website_position_id = $position->supper_admin_position_id;
-                        $root_current_website_position_id = $table_position->id;
-                        $function_call_back($function_call_back,$website_id, $list_menu_item, $root_supper_admin_website_position_id, $root_current_website_position_id);
-                    }
-                }
-            };
-            $update_position_current_website($update_position_current_website,$website_id,$list_menu_item,$root_supper_admin_website_position_id,$root_current_website_position_id);
-
-
+        $children_menu_item = array();
+        foreach ($list_menu_item as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_menu_item[$pt] ? $children_menu_item[$pt] : array();
+            array_push($list, $v);
+            $children_menu_item[$pt] = $list;
         }
+
+
+
+        $insert_position_current_website=function($function_call_back,$website_id,$list_menu_item,$root_supper_admin_website_position_id=0,$root_current_website_position_id,$children_position_config,$level=0, $max_level=999){
+            $table_position=JTable::getInstance('positionnested');
+            $table_position->id=0;
+            echo "<pre>";
+            print_r($children_position_config);
+            print_r($children_position_config[$root_supper_admin_website_position_id]);
+            echo "</pre>";
+            die;
+            foreach($children_position_config[$root_supper_admin_website_position_id] as $position)
+            {
+                $table_position->load($position->id);
+                $table_position->id = 0;
+                $table_position->parent_id = $root_current_website_position_id;
+                $table_position->website_id = $website_id;
+
+                $table_position->supper_admin_block_id = $position->supper_admin_position_id;
+                $table_position->menu_item_id = $list_menu_item[$position->supper_admin_menu_item_id]->id;
+                $ok = $table_position->parent_store();
+                if (!$ok) {
+                    throw new Exception($table_position->getError());
+                }
+                $root_supper_admin_website_position_id = $position->supper_admin_position_id;
+                $root_current_website_position_id = $table_position->id;
+                $function_call_back($function_call_back,$website_id, $list_menu_item, $root_supper_admin_website_position_id, $root_current_website_position_id,$children_position_config);
+            }
+        };
+        $insert_position_current_website($insert_position_current_website,$website_id,$root_position->supper_admin_website_root_position_id,$root_position->current_website_root_position_id,$children_position_config);
         return true;
     }
     private function config_blocks_menu($website_id,$template_supper_admin_website_id){
