@@ -23,7 +23,7 @@ class update_supper_admin_template_website
         }
         if($template_supper_admin_website_id)
         {
-            //update_supper_admin_template_website::action_step_by_step($website_id,$template_supper_admin_website_id);
+            update_supper_admin_template_website::action_step_by_step($website_id,$template_supper_admin_website_id);
         }
 
     }
@@ -700,6 +700,93 @@ class update_supper_admin_template_website
         return true;
 
     }
+    private function change_params_menus($website_id,$template_supper_admin_website_id){
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('menu.id,menu.parent_id,menu.supper_admin_menu_item_id')
+            ->from('#__menu AS menu');
+        $db->setQuery($query);
+        $list_menu_item = $db->loadObjectList();
+        $children_menu_item = array();
+        foreach ($list_menu_item as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_menu_item[$pt] ? $children_menu_item[$pt] : array();
+            array_push($list, $v);
+            $children_menu_item[$pt] = $list;
+        }
+        $list_root_menu_item = $children_menu_item['list_root'];
+        unset($children_menu_item['list_root']);
+        //get root position of current website
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('menu_type_id_menu_id.menu_id')
+            ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
+            ->innerJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+            ->where('menu_types.website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $list_root_menu_item_id = $db->loadColumn();
+
+        $get_menu_item_of_website=function($function_call_back, $menu_item_id=0, &$list_menu_item_of_website, $children_menu_item=array(), $level=0, $max_level=999){
+            if ($children_menu_item[$menu_item_id]) {
+                $level1=$level+1;
+                foreach ($children_menu_item[$menu_item_id] as $menu_item) {
+                    if($menu_item->supper_admin_menu_item_id) {
+                        $list_menu_item_of_website[$menu_item->supper_admin_menu_item_id] = $menu_item;
+                        $menu_item_id_1 = $menu_item->id;
+                        $function_call_back($function_call_back, $menu_item_id_1, $list_menu_item_of_website, $children_menu_item, $level1, $max_level);
+                    }
+                }
+            }
+        };
+        $list_menu_item_of_website=array();
+        foreach($list_root_menu_item_id AS $root_menu_item_id)
+        {
+            $get_menu_item_of_website($get_menu_item_of_website,$root_menu_item_id,$list_menu_item_of_website,$children_menu_item);
+        }
+        $table_menu = JTable::getInstance('menu');
+        JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_menus/models');
+        $menu_model = JModelLegacy::getInstance('item','MenusModel');
+        JForm::addFormPath(JPATH_ROOT.'/components/com_menus/models/forms');
+        foreach($list_menu_item_of_website AS $menu_item)
+        {
+            $item= $menu_model->getItem($menu_item->id);
+            $params = new JRegistry;
+            $params->loadString($item->params);
+            $form=$menu_model->getForm((array)$item);
+            $field_sets= $form->getFieldset();
+            foreach($field_sets as $field)
+            {
+                $function_name='get_new_value_by_old_value';
+                if(method_exists ( $field ,$function_name))
+                {
+                    $field_name=$field->__get('fieldname');
+
+                    $item->$field_name= call_user_func(array($field, $function_name), $website_id,$item->$field_name,$field_name);
+                }
+            }
+            echo "<pre>";
+            print_r($item);
+            echo "</pre>";
+            die;
+            $params=$table_menu->params;
+            if($params)
+            {
+                $params=JMenuSite::change_param_module_by_fields($website_id,$params);
+            }
+            $table_menu->params=$params;
+            $ok=$table_menu->store();
+            if (!$ok) {
+                throw new Exception($table_menu->getError());
+            }
+        }
+        echo "<pre>";
+        print_r($list_menu_item_of_website);
+        echo "</pre>";
+        die;
+    }
     private function change_params_modules($website_id,$template_supper_admin_website_id){
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
@@ -761,9 +848,41 @@ class update_supper_admin_template_website
 
 
 
-        $table_module=JTable::getInstance('module');
+        JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_modules/models');
+        $module_model = JModelLegacy::getInstance('module','ModulesModel');
+        JForm::addFormPath(JPATH_ROOT.'/components/com_modules/models/forms');
+
         foreach($list_module_of_current_website AS $module)
         {
+            $module_model->setState('module.id',$module->id);
+            $item=$module_model->getItem($module->id);
+            $form=$module_model->getForm((array)$item);
+            echo "<pre>";
+            print_r($form);
+            echo "</pre>";
+            die;
+
+            $control=JControlHelper::get_control_module_by_module_id($module->id);
+            if($control)
+            {
+                JModuleHelper::change_param_module_by_fields($website_id,$form,$control->fields);
+            }
+            die;
+
+            $field_sets= $form->getFieldset();
+            foreach($field_sets as $field)
+            {
+                $function_name='get_new_value_by_old_value';
+                if(method_exists ( $field ,$function_name))
+                {
+                    $field_name=$field->__get('fieldname');
+
+                    $item->$field_name= call_user_func(array($field, $function_name), $website_id,$item->$field_name,$field_name);
+                }
+            }
+
+
+
             $params=$module->params;
             $control=JControlHelper::get_control_module_by_module_id($module->id);
             if($control)
@@ -782,7 +901,6 @@ class update_supper_admin_template_website
                 throw new Exception($table_module->getError());
             }
         }
-        die;
         //update params blocks
         //update params component
         //update params plugins

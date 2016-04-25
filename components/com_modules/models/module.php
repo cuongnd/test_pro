@@ -47,10 +47,10 @@ class ModulesModelModule extends JModelAdmin
 	 */
 	protected function populateState()
 	{
-		$app = JFactory::getApplication('administrator');
+		$app = JFactory::getApplication('site');
 
 		// Load the User state.
-		$pk = $app->input->getInt('id');
+		$pk = $app->input->getInt('id')||$app->getUserState('module.id');
 
 		if (!$pk)
 		{
@@ -674,7 +674,7 @@ class ModulesModelModule extends JModelAdmin
 		return $this->_client;
 	}
 
-	/**
+    /**
 	 * Method to get the record form.
 	 *
 	 * @param   array    $data      Data for the form.
@@ -753,6 +753,7 @@ class ModulesModelModule extends JModelAdmin
 		{
 			throw new Exception('there are no global module config in database, please config global module property in backend ad layout first');
 		}
+
 		$fields=$control->fields;
 		$fields=base64_decode($fields);
 		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
@@ -850,8 +851,13 @@ class ModulesModelModule extends JModelAdmin
 	public function getItem($pk = null)
 	{
 
+        if (empty($this->getState('module.id'))) {
+            echo "<pre>";
+            print_r(JUtility::printDebugBacktrace());
+            echo "</pre>";
+            die;
+        }
 		$pk = (!empty($pk)) ? (int) $pk : (int) $this->getState('module.id');
-
 		$db = $this->getDbo();
 
 		if (!isset($this->_cache[$pk]))
@@ -874,6 +880,10 @@ class ModulesModelModule extends JModelAdmin
 			// Check if we are creating a new extension.
 			if (empty($pk))
 			{
+                echo "<pre>";
+                print_r(JUtility::printDebugBacktrace());
+                echo "</pre>";
+                die;
 				if ($extensionId = (int) $this->getState('extension.id'))
 				{
 					$query	= $db->getQuery(true)
@@ -905,13 +915,7 @@ class ModulesModelModule extends JModelAdmin
 					$table->module    = $extension->element;
 					$table->client_id = $extension->client_id;
 				}
-				else
-				{
-					$app = JFactory::getApplication();
-					$app->redirect(JRoute::_('index.php?option=com_modules&view=modules', false));
 
-					return false;
-				}
 			}
 
 			// Convert to the JObject before adding other data.

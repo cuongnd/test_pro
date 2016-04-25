@@ -268,24 +268,7 @@ class ModulesModelModules extends JModelList
 		{
 			$query->where('a.access = ' . (int) $access);
 		}
-        $supperAdmin=JFactory::isSupperAdmin();
-        if($supperAdmin)
-        {
-            //filter by website
-            $website_id = $this->getState('filter.website_id');
-            if ($website_id)
-            {
-                $query->where('a.website_id = ' . $website_id);
-            }
-        }
-        else
-        {
-            //allway filter by website
-            $website=JFactory::getWebsite();
-            $website_id=$website->website_id;
-            $domain=$website->domain;
-            $query->where('a.website_id = '.$website_id );
-        }
+
 
         // Filter by published state
 		$state = $this->getState('filter.state');

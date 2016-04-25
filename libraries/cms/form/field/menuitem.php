@@ -205,4 +205,22 @@ class JFormFieldMenuitem extends JFormFieldGroupedList
         $html=ob_get_clean();
         return $html;
 	}
+    public  function get_new_value_by_old_value($website_id,$params,$path){
+        echo "<pre>";
+        print_r($this);
+        echo "</pre>";
+        die;
+        $menu_item_id=$params->get($path,0);
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('id')
+            ->from('#__menu')
+            ->where('copy_from='.(int)$menu_item_id)
+            ->where('website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $menu_item_id=$db->loadResult();
+        return $menu_item_id;
+    }
+
 }
