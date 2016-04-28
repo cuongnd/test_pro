@@ -4,8 +4,8 @@ JHtml::_('jquery.framework');
 JHtml::_('bootstrap.framework');
 $app = JFactory::getApplication();
 $modelPosition = JModelLegacy::getInstance('Module', 'ModulesModel');
-$item = $modelPosition->getItem();
-
+$id=$app->input->getInt('id',0);
+$item = $modelPosition->getItem($id);
 $module_id = $item->id;
 $form = $this->form;
 $doc=JFactory::getDocument();

@@ -527,60 +527,87 @@ abstract class JModuleHelper
     }
 
     /**
-     * @param $str_params
-     * @param $str_fields_base64
+     * @param $form
+     * @param $str_params_base64
      */
-    public static function change_param_module_by_fields($website_id,$str_params, $str_fields_base64)
+    public static function change_property_module_by_fields($website_id, &$form, $str_params_base64, $str_main_property_base64)
     {
         /**
          * @param int $level
          * @param int $max_level
          */
-        $change_param_module_by_fields =function ($function_call_back,$list_type=array(),$website_id, $field, &$params,$path='',&$level=0, $max_level=999) {
-            $list_field=$field->children;
-            unset($field->children);
-            if($level==0)
-            {
-                $path1=$path;
-            }else{
-                $path1=$path!=""?"$path.$field->name":$field->name;
+        $change_property_module_by_fields =function ($function_call_back, $list_type=array(), $website_id, $fields,$type_fields_module, &$form, $path='', &$level=0, $max_level=999) {
+            if($type_fields_module=='params'){
+                $path='params';
             }
-            if(count($list_field) && $level<$max_level) {
+            if(is_array($fields)&&count($fields))
+            {
+                foreach($fields as $field) {
+                    $list_field = $field->children;
+                    unset($field->children);
+                    if ($level == 0) {
+                        $path1 = $path;
+                    } else {
+                        $path1 = $path != "" ? "$path.$field->name" : $field->name;
+                    }
+                    if (count($list_field) && $level < $max_level) {
+                        $level1 = $level + 1;
+                        foreach ($list_field AS $field1) {
+                            $function_call_back($function_call_back,  $list_type, $website_id, $field1,$type_fields_module, $form, $path1, $level1, $max_level);
+                        }
+                    } else {
 
-                $level1=$level+1;
-                foreach($list_field AS $field1)
-                {
-                    $function_call_back($function_call_back,$list_type,$website_id,$field1,$params,$path1,$level1,$max_level);
+                        $type = $field->type;
+                        $type=$type?$type:'text';
+                        if (in_array($type, $list_type)) {
+                            $class_field_path = $field->addfieldpath;
+                            if (file_exists(JPATH_ROOT . DS . $class_field_path)) {
+                                require_once JPATH_ROOT . DS . $class_field_path;
+                            }
+                            $field_object=$form->getField($field->name,$path);
+                            if (method_exists($field_object, 'get_new_value_by_old_value')) {
+                                $new_value = call_user_func(array($field_object, 'get_new_value_by_old_value'), $website_id);
+                                $form->setValue($field->name,$path,$new_value);
+                            }
+                        }
+                    }
                 }
             }else{
-                $type=$field->type;
-                if(in_array($type,$list_type))
-                {
-                    $class_field_path=$field->addfieldpath;
-                    if(file_exists(JPATH_ROOT.DS.$class_field_path))
-                    {
-                        require_once JPATH_ROOT.DS.$class_field_path;
+
+                $field=$fields;
+                if ($level == 0) {
+                    $path1 = $path;
+                } else {
+                    $path1 = $path != "" ? "$path.$field->name" : $field->name;
+                }
+                $type = $field->type;
+                $type=$type?$type:'text';
+                if (in_array($type, $list_type)) {
+                    $class_field_path = $field->addfieldpath;
+                    if (file_exists(JPATH_ROOT . DS . $class_field_path)) {
+                        require_once JPATH_ROOT . DS . $class_field_path;
                     }
-                    $class_field='JFormField'.$type;
-                    if(method_exists($class_field,'get_new_value_by_old_value'))
-                    {
-                        $new_value=call_user_func(array($class_field, 'get_new_value_by_old_value'),$website_id,$params,$path1);
-                        $params->set($path1,$new_value);
+
+                    $field_object=$form->getField($field->name,$path);
+                    if (method_exists($field_object, 'get_new_value_by_old_value')) {
+                        $new_value=call_user_func(array($field_object, 'get_new_value_by_old_value'), $website_id);
+                        $form->setValue($field->name,$path,$new_value);
                     }
                 }
             }
 
         };
-        $fields = base64_decode($str_fields_base64);
-        require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
-        $fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
-        $tmp = new JRegistry;
-        $tmp->loadString($str_params);
 
-        $params=$tmp;
+        require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+
         $list_type=JFormField::get_list_type_must_change_params_when_create_website();
-        $change_param_module_by_fields($change_param_module_by_fields,$list_type,$website_id,$fields[0],$params);
-        return $params->toString();
+
+        $main_property = base64_decode($str_main_property_base64);
+        $main_property = (array)up_json_decode($main_property, false, 512, JSON_PARSE_JAVASCRIPT);
+        $change_property_module_by_fields($change_property_module_by_fields,$list_type,$website_id,$main_property,'property',$form);
+        $params_property = base64_decode($str_params_base64);
+        $params_property = (array)up_json_decode($params_property, false, 512, JSON_PARSE_JAVASCRIPT);
+        $change_property_module_by_fields($change_property_module_by_fields,$list_type,$website_id,$params_property,'params',$form);
     }
 
     public static function get_extension_id_by_module_name($website_id, $name)

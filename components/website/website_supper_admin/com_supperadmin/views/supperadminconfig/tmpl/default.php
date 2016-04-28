@@ -42,6 +42,14 @@ $doc->addScriptDeclaration($script, "text/javascript", $script_id);
                                 class="btn btn-primary form-control set_request_update_website"><?php echo JText::_('set request update website') ?></button>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="inputEmail3"
+                           class="col-sm-5 control-label"><?php echo JText::_('set request update supper admin website') ?></label>
+                    <div class="col-sm-7">
+                        <button type="button"
+                                class="btn btn-primary form-control set_request_update_supper_admin_website"><?php echo JText::_('set request update supper admin website') ?></button>
+                    </div>
+                </div>
 
             </form>
         </div>

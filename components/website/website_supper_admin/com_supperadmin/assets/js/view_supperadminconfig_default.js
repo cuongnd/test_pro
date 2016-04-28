@@ -77,9 +77,54 @@
 
             });
         };
+        plugin.set_request_update_supper_admin_website = function () {
+            $element.find('.set_request_update_supper_admin_website').click(function(){
+                var option_click= {
+                    enable_load_component: 1,
+                    option: 'com_supperadmin',
+                    task: 'supperadminconfig.ajax_set_request_update_supper_admin_website'
+                };
+                option_click= $.param(option_click);
+                var data={};
+                var ajax=$.ajax({
+                    contentType: 'application/json',
+                    type: "POST",
+                    dataType: "json",
+                    url: this_host+'/index.php?'+option_click,
+                    data: JSON.stringify(data),
+                    beforeSend: function () {
+                        $('.div-loading').css({
+                            display: "block"
+
+
+                        });
+                    },
+                    success: function (response) {
+                        $('.div-loading').css({
+                            display: "none"
+
+
+                        });
+                        if(response.e==0)
+                        {
+                            alert('supper admin request update supper admin website success');
+
+
+                        }else if(response.e==1){
+                            alert(response.m);
+                        }
+
+
+
+                    }
+                });
+
+            });
+        };
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
             plugin.set_request_update_website();
+            plugin.set_request_update_supper_admin_website();
 
         }
 

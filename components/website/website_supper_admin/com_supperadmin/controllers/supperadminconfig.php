@@ -43,11 +43,33 @@ class SupperadminControllerSupperadminconfig extends JControllerForm
     }
     public function ajax_set_request_update_website()
     {
+       die;
         $website=JFactory::getWebsite();
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
         $query->update('#__website AS website')
             ->where('website.id='.(int)$website->website_id)
+            ->set('website.supper_admin_request_update=1')
+        ;
+        $db->setQuery($query);
+        $ok=$db->execute();
+        $response=new stdClass();
+        $response->e=0;
+        if(!$ok)
+        {
+            $response->e=1;
+            $response->m=$db->getErrorMsg();
+        }
+        echo json_encode($response);
+        die;
+    }
+    public function ajax_set_request_update_supper_admin_website()
+    {
+        $website=JFactory::getWebsite();
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->update('#__website AS website')
+            ->where('is_template_supper_admin!=1')
             ->set('website.supper_admin_request_update=1')
         ;
         $db->setQuery($query);

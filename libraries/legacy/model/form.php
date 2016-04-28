@@ -184,6 +184,7 @@ abstract class JModelForm extends JModelLegacy
 			{
 				// Get the data for the form.
 				$data = $this->loadFormData();
+
 			}
 			else
 			{

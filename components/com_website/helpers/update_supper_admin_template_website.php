@@ -14,7 +14,17 @@ class update_supper_admin_template_website
 
 
         //update_supper_admin_template_website::remove_duplicate_row();
-
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('supper_admin_request_update')
+            ->from('#__website')
+            ->where('id='.(int)$website_id);
+        $db->setQuery($query);
+        $supper_admin_request_update=$db->loadResult();
+        if(!$supper_admin_request_update)
+        {
+            return;
+        }
         $table_website=JTable::getInstance('website');
         $table_website->load(array('is_template_supper_admin'=>1));
         $template_supper_admin_website_id=$table_website->id;
@@ -114,6 +124,9 @@ class update_supper_admin_template_website
         ;
         $list_components = $db->setQuery($query)->loadObjectList();
         $table_component=JTable::getInstance('component');
+        jimport('joomla.filesystem.folder');
+        $website_name=websiteHelperFrontEnd::get_website_name_by_website_id($website_id);
+        $website_template_name=websiteHelperFrontEnd::get_website_name_by_website_id($template_supper_admin_website_id);
 
 
         foreach ($list_components AS $component) {
@@ -127,6 +140,19 @@ class update_supper_admin_template_website
             if (!$ok) {
                 throw new Exception($table_component->getError());
             }
+
+            $source_component_path="components/website/website_$website_template_name/$table_component->name";
+            if(JFolder::exists(JPATH_ROOT.DS.$source_component_path))
+            {
+                $new_destination_component_path="components/website/website_$website_name/$table_component->name";
+                $ok=JFolder::copy(JPATH_ROOT.DS.$source_component_path,JPATH_ROOT.DS.$new_destination_component_path,'',true);
+                if (!$ok) {
+                    throw new Exception('copy component error');
+                }
+            }
+
+
+
         }
         return true;
 
@@ -756,6 +782,7 @@ class update_supper_admin_template_website
             $params = new JRegistry;
             $params->loadString($item->params);
             $form=$menu_model->getForm((array)$item);
+            $form->bind($item);
             $field_sets= $form->getFieldset();
             foreach($field_sets as $field)
             {
@@ -763,29 +790,19 @@ class update_supper_admin_template_website
                 if(method_exists ( $field ,$function_name))
                 {
                     $field_name=$field->__get('fieldname');
-
-                    $item->$field_name= call_user_func(array($field, $function_name), $website_id,$item->$field_name,$field_name);
+                    $group=$field->__get('group');
+                    $new_value= call_user_func(array($field, $function_name), $website_id);
+                    $form->setValue($field_name,$group,$new_value);
                 }
             }
-            echo "<pre>";
-            print_r($item);
-            echo "</pre>";
-            die;
-            $params=$table_menu->params;
-            if($params)
-            {
-                $params=JMenuSite::change_param_module_by_fields($website_id,$params);
-            }
-            $table_menu->params=$params;
+            $item=$form->getData();
+            $item=$item->toObject();
+            $table_menu->bind($item);
             $ok=$table_menu->store();
             if (!$ok) {
                 throw new Exception($table_menu->getError());
             }
         }
-        echo "<pre>";
-        print_r($list_menu_item_of_website);
-        echo "</pre>";
-        die;
     }
     private function change_params_modules($website_id,$template_supper_admin_website_id){
         $db=JFactory::getDbo();
@@ -852,50 +869,32 @@ class update_supper_admin_template_website
         $module_model = JModelLegacy::getInstance('module','ModulesModel');
         JForm::addFormPath(JPATH_ROOT.'/components/com_modules/models/forms');
 
+        $table_module=JTable::getInstance('module');
+        $main_table_control = JTable::getInstance('control');
+        require_once JPATH_ROOT.'/components/com_modules/helpers/module.php';
+        $main_table_control->load(
+            array(
+                "element_path" => module_helper::MODULE_ROOT_NAME,
+                "type" =>module_helper::ELEMENT_TYPE
+            )
+        );
+        $app = JFactory::getApplication('site');
         foreach($list_module_of_current_website AS $module)
         {
-            $module_model->setState('module.id',$module->id);
             $item=$module_model->getItem($module->id);
             $form=$module_model->getForm((array)$item);
-            echo "<pre>";
-            print_r($form);
-            echo "</pre>";
-            die;
-
-            $control=JControlHelper::get_control_module_by_module_id($module->id);
-            if($control)
-            {
-                JModuleHelper::change_param_module_by_fields($website_id,$form,$control->fields);
-            }
-            die;
-
-            $field_sets= $form->getFieldset();
-            foreach($field_sets as $field)
-            {
-                $function_name='get_new_value_by_old_value';
-                if(method_exists ( $field ,$function_name))
-                {
-                    $field_name=$field->__get('fieldname');
-
-                    $item->$field_name= call_user_func(array($field, $function_name), $website_id,$item->$field_name,$field_name);
-                }
-            }
-
-
-
-            $params=$module->params;
-            $control=JControlHelper::get_control_module_by_module_id($module->id);
-            if($control)
-            {
-                $params=JModuleHelper::change_param_module_by_fields($website_id,$params,$control->fields);
-            }
+            $form->bind($item);
+            $module_control=JControlHelper::get_control_module_by_module_id($item->id);
+            JModuleHelper::change_property_module_by_fields($website_id,$form,$module_control->fields,$main_table_control->fields);
+            $item=$form->getData();
+            $item=$item->toObject();
             $table_module->load($module->id);
+            $table_module->bind((array)$item);
             $position_id=$table_module->position_id;
             $position_id=$list_position_of_website[$position_id]->id;
             $table_module->position_id=$position_id;
             $position="position-$position_id";
             $table_module->position=$position;
-            $table_module->params=$params;
             $ok=$table_module->store();
             if (!$ok) {
                 throw new Exception($table_module->getError());
@@ -942,7 +941,9 @@ class update_supper_admin_template_website
         ;
         $list_modules = $db->setQuery($query)->loadObjectList();
         $table_module=JTable::getInstance('module');
-
+        jimport('joomla.filesystem.folder');
+        $website_name=websiteHelperFrontEnd::get_website_name_by_website_id($website_id);
+        $website_template_name=websiteHelperFrontEnd::get_website_name_by_website_id($template_supper_admin_website_id);
 
         foreach ($list_modules AS $module) {
 
@@ -956,6 +957,19 @@ class update_supper_admin_template_website
             if (!$ok) {
                 throw new Exception($table_module->getError());
             }
+
+            $module_path="modules/website/website_$website_template_name/$table_module->module";
+            if(JFolder::exists(JPATH_ROOT.DS.$module_path))
+            {
+                $new_module_path="modules/website/website_$website_name/$table_module->module";
+                $ok=JFolder::copy(JPATH_ROOT.DS.$module_path,JPATH_ROOT.DS.$new_module_path,'',true);
+                if (!$ok) {
+                    throw new Exception('copy module error');
+                }
+            }
+
+
+
         }
         return true;
 
@@ -987,12 +1001,13 @@ class update_supper_admin_template_website
             $table_control->bind($control);
             $table_control->id=0;
             $element_path=$control->element_path;
+            $new_element_path='';
             $type=$table_control->type;
             if($type=='module')
             {
-                $element_path=str_replace("website_$website_name_template","website_$website_name",$element_path);
+                $new_element_path=str_replace("website_$website_name_template","website_$website_name",$element_path);
             }
-            $table_control->element_path= $element_path;
+            $table_control->element_path= $new_element_path;
             $table_control->copy_from= $control->id;
             $table_control->supper_admin_control_id= $control->id;
             $table_control->website_id=$website_id;
@@ -1004,6 +1019,15 @@ class update_supper_admin_template_website
         return true;
 
 
+    }
+    private function finish($website_id,$template_supper_admin_website_id){
+        $table_website=JTable::getInstance('website');
+        $table_website->load($website_id);
+        $table_website->supper_admin_request_update=0;
+        $ok = $table_website->store();
+        if (!$ok) {
+            throw new Exception($table_website->getError());
+        }
     }
     private function copy_extensions($website_id,$template_supper_admin_website_id){
 

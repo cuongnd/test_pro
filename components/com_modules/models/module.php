@@ -51,7 +51,6 @@ class ModulesModelModule extends JModelAdmin
 
 		// Load the User state.
 		$pk = $app->input->getInt('id')||$app->getUserState('module.id');
-
 		if (!$pk)
 		{
 			if ($extensionId = (int) $app->getUserState('com_modules.add.module.id'))
@@ -689,25 +688,23 @@ class ModulesModelModule extends JModelAdmin
 		// The folder and element vars are passed when saving the form.
 		if (empty($data))
 		{
-			$item		= $this->getItem();
-			$clientId	= $item->client_id;
-			$module		= $item->module;
-			$id			= $item->id;
+            $data		= (array)$this->getItem();
+			$clientId	= $data->client_id;
+			$module		= $data->module;
+			$id			= $data->id;
 		}
 		else
 		{
-			$clientId	= JArrayHelper::getValue($data, 'client_id');
 			$module		= JArrayHelper::getValue($data, 'module');
-			$id			= JArrayHelper::getValue($data, 'id');
+ 			$id			= JArrayHelper::getValue($data, 'id');
 		}
-
 		$website=JFactory::getWebsite();
         $website_name=JFactory::get_website_name();
-		$ui_path= 'modules/website/website_'.$website_name.'/'.$item->module;
+		$ui_path= 'modules/website/website_'.$website_name.'/'.$data['module'];
 		jimport('joomla.filesystem.folder');
 		if(!JFolder::exists(JPATH_ROOT.DS.$ui_path))
 		{
-			$ui_path= 'modules/'.$item->module;
+			$ui_path= 'modules/'.$data['module'];
 		}
 		$website=JFactory::getWebsite();
 		$db=JFactory::getDbo();
@@ -735,8 +732,9 @@ class ModulesModelModule extends JModelAdmin
 		$dirName=$pathInfo['dirname'];
 		$website=JFactory::getWebsite();
 
-		$xml_file=$ui_path.DS.$item->module.'.xml';
-		JFile::write(JPATH_ROOT.'/'.$xml_file,$string_xml);
+		$xml_file_path=$ui_path.DS.$data['module'].'.xml';
+
+		JFile::write(JPATH_ROOT.'/'.$xml_file_path,$string_xml);
 
 
 
@@ -770,7 +768,6 @@ class ModulesModelModule extends JModelAdmin
 
 
 		// These variables are used to add data from the plugin XML files.
-		$this->setState('item.client_id', $clientId);
 		$this->setState('item.module', $module);
 
 		// Get the form.
@@ -825,7 +822,6 @@ class ModulesModelModule extends JModelAdmin
 		if (empty($data))
 		{
 			$data = $this->getItem();
-
 			// This allows us to inject parameter settings into a new module.
 			$params = $app->getUserState('com_modules.add.module.params');
 			if (is_array($params))
@@ -851,12 +847,6 @@ class ModulesModelModule extends JModelAdmin
 	public function getItem($pk = null)
 	{
 
-        if (empty($this->getState('module.id'))) {
-            echo "<pre>";
-            print_r(JUtility::printDebugBacktrace());
-            echo "</pre>";
-            die;
-        }
 		$pk = (!empty($pk)) ? (int) $pk : (int) $this->getState('module.id');
 		$db = $this->getDbo();
 
@@ -869,7 +859,6 @@ class ModulesModelModule extends JModelAdmin
 
 			// Attempt to load the row.
 			$return = $table->load($pk);
-
 			// Check for a table object error.
 			if ($return === false && $error = $table->getError())
 			{
@@ -880,10 +869,6 @@ class ModulesModelModule extends JModelAdmin
 			// Check if we are creating a new extension.
 			if (empty($pk))
 			{
-                echo "<pre>";
-                print_r(JUtility::printDebugBacktrace());
-                echo "</pre>";
-                die;
 				if ($extensionId = (int) $this->getState('extension.id'))
 				{
 					$query	= $db->getQuery(true)
@@ -985,7 +970,6 @@ class ModulesModelModule extends JModelAdmin
 				$this->_cache[$pk]->xml = null;
 			}
 		}
-
 		return $this->_cache[$pk];
 	}
 

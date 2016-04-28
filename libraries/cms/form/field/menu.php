@@ -56,18 +56,19 @@ class JFormFieldMenu extends JFormFieldList
         return JHtml::_('select.genericlist',$list_menu_type,$this->name,$attr,'id','title',$this->value);
 
 	}
-    public static function get_new_value_by_old_value($website_id){
-        $menu_type_id=$params->get($path,0);
-        $db=JFactory::getDbo();
-        $query=$db->getQuery(true);
-        $query->select('id')
-            ->from('#__menu_types')
-            ->where('copy_from='.(int)$menu_type_id)
-            ->where('website_id='.(int)$website_id)
-            ;
-        $db->setQuery($query);
-
-        $menu_type_id=$db->loadResult();
-        return $menu_type_id;
+    public  function get_new_value_by_old_value($website_id){
+        if($this->value) {
+            $db = JFactory::getDbo();
+            $query = $db->getQuery(true);
+            $query->select('id')
+                ->from('#__menu_types')
+                ->where('copy_from=' . (int)$this->value)
+                ->where('website_id=' . (int)$website_id);
+            $db->setQuery($query);
+            $menu_type_id = $db->loadResult();
+            return $menu_type_id;
+        }else{
+            return $this->value;
+        }
     }
 }

@@ -1138,7 +1138,7 @@ class WebsiteModelWebsite extends JModelAdmin
         {
             $params=$module->params;
             $control=JControlHelper::get_control_module_by_module_id($module->id);
-            $str_params=JModuleHelper::change_param_module_by_fields($website_id,$params,$control->fields);
+            $str_params=JModuleHelper::change_property_module_by_fields($website_id,$params,$control->fields);
             $table_module->load($module->id);
             $table_module->params=$str_params;
             $ok=$table_module->store();
