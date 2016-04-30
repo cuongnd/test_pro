@@ -355,7 +355,6 @@ class JComponentHelper
 		$contents = null;
 		// Execute the component.
 		$contents = static::executeComponent($path);
-
 		// Revert the scope
 		$app->scope = $scope;
 

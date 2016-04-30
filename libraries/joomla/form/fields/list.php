@@ -93,6 +93,7 @@ class JFormFieldList extends JFormField
 
 		return implode($html);
 	}
+
 	public function get_attribute_config()
 	{
 		return array(

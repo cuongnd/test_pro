@@ -819,7 +819,6 @@ abstract class JFormField
 
         return $name;
     }
-
     /**
      * Method to get the field name used.
      *

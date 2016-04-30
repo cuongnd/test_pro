@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die;
 
-JLoader::register('MenusHelper', JPATH_ADMINISTRATOR . '/components/com_menus/helpers/menus.php');
+JLoader::register('MenusHelper', JPATH_ROOT . '/components/com_menus/helpers/menus.php');
 
 /**
  * @package     Joomla.Administrator

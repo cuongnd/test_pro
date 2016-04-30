@@ -252,7 +252,7 @@ class JApplicationWeb extends JApplicationBase
         }
 
         // Trigger the onBeforeRespond event.
-        //$this->triggerEvent('onBeforeRespond');
+        $this->triggerEvent('onBeforeRespond');
 
         // Send the application response.
         $this->respond();

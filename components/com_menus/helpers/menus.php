@@ -23,7 +23,7 @@ class MenusHelperFrontEnd
 	 * Defines the valid request variables for the reverse lookup.
 	 */
 	protected static $_filter = array('option', 'view', 'layout');
-
+    public static $list_menu_item_id_by_website_id=array();
 	/**
 	 * Configure the Linkbar.
 	 *
@@ -205,10 +205,13 @@ class MenusHelperFrontEnd
 
     public static function get_list_menu_item_id_by_website_id($website_id)
     {
-        $list_menu_item_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website_id);
-        $list_menu_item_item_id=JArrayHelper::pivot($list_menu_item_item,'id');
-        $list_menu_item_item_id=array_keys($list_menu_item_item_id);
-        return $list_menu_item_item_id;
+        if(!static::$list_menu_item_id_by_website_id[$website_id]) {
+            $list_menu_item_item = MenusHelperFrontEnd::get_list_menu_item_by_website_id($website_id);
+            $list_menu_item_item_id = JArrayHelper::pivot($list_menu_item_item, 'id');
+            $list_menu_item_item_id = array_keys($list_menu_item_item_id);
+            static::$list_menu_item_id_by_website_id[$website_id]=$list_menu_item_item_id;
+        }
+        return static::$list_menu_item_id_by_website_id[$website_id];
     }
 
     public static function get_list_root_menu_item_id_by_website_id($website_id)

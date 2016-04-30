@@ -92,8 +92,8 @@ class MenusViewItems extends JViewLegacy
 				case 'component':
 				default:
 					// Load language
-						$lang->load($item->componentname . '.sys', JPATH_ADMINISTRATOR, null, false, true)
-					||	$lang->load($item->componentname . '.sys', JPATH_ADMINISTRATOR . '/components/' . $item->componentname, null, false, true);
+						$lang->load($item->componentname . '.sys', JPATH_ROOT, null, false, true)
+					||	$lang->load($item->componentname . '.sys', JPATH_ROOT . '/components/' . $item->componentname, null, false, true);
 
 					if (!empty($item->componentname))
 					{

@@ -230,13 +230,14 @@ final class JApplicationSite extends JApplicationCms
         $contents = ob_get_clean();
 
         $document->setBuffer($contents, 'component');
+        $this->update_current_website_from_parent_website();
+        $this->update_current_website_from_supper_admin_template_website();
 
 
         // Trigger the onAfterDispatch event.
         JPluginHelper::importPlugin('system');
         $this->triggerEvent('onAfterDispatch');
-        $this->update_current_website_from_parent_website();
-        $this->update_current_website_from_supper_admin_template_website();
+
     }
 
     /**
@@ -574,6 +575,7 @@ final class JApplicationSite extends JApplicationCms
      */
     protected function initialiseApp($options = array())
     {
+
         $user = JFactory::getUser();
         // If the user is a guest we populate it with the guest user group.
         if ($user->guest) {

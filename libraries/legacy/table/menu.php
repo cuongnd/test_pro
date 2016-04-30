@@ -665,7 +665,10 @@ class JTableMenu extends JTable
      */
     public function store($updateNulls = false)
     {
-
+        echo "<pre>";
+        print_r(JUtility::printDebugBacktrace());
+        echo "</pre>";
+        die;
         $k = $this->_tbl_key;
         $this->init();
         // Implement JObservableInterface: Pre-processing by observers

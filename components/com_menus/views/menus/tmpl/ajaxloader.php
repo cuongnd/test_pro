@@ -25,9 +25,8 @@ $query->select('menu_types.id as menu_type_id,menu_types.title as title,menu_typ
     ->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
     ->where('menu_types.website_id=' . (int)$website->website_id);
 $list_menu_type = $db->setQuery($query)->loadObjectList('menu_id');
-
 $query = $db->getQuery(true);
-$query->select('menu.*')
+$query->select('menu.id,menu.parent_id,menu.ordering,menu.title,menu.link,menu.alias,menu.menu_type_id')
     ->from('#__menu As menu ')
     ->order('menu.ordering');
 $db->setQuery($query);
@@ -43,7 +42,6 @@ foreach ($list_menu_item1 as $v) {
     }
     $children[$pt] = $list;
 }
-
 require_once JPATH_ROOT . '/libraries/joomla/form/fields/groupedlist.php';
 $scriptId = "script_com_menus_view_menus_jaxloader" . '_' . JUserHelper::genRandomPassword();
 ob_start();

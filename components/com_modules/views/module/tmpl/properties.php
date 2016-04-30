@@ -8,6 +8,7 @@ $id=$app->input->getInt('id',0);
 $item = $modelPosition->getItem($id);
 $module_id = $item->id;
 $form = $this->form;
+$form->bind($item);
 $doc=JFactory::getDocument();
 $db = JFactory::getDbo();
 $doc->addScript(JUri::root().'/media/system/js/clipboard.js-master/dist/clipboard.js');

@@ -73,8 +73,8 @@ class MenusModelMenutypes extends JModelLegacy
 
 							$this->addReverseLookupUrl($option);
 							if (isset($option->request['option'])) {
-								$lang->load($option->request['option'] . '.sys', JPATH_ADMINISTRATOR, null, false, true)
-								|| $lang->load($option->request['option'] . '.sys', JPATH_ADMINISTRATOR . '/components/' . $option->request['option'], null, false, true);
+								$lang->load($option->request['option'] . '.sys', JPATH_ROOT, null, false, true)
+								|| $lang->load($option->request['option'] . '.sys', JPATH_ROOT . '/components/' . $option->request['option'], null, false, true);
 							}
 						}
 					}
@@ -127,8 +127,8 @@ class MenusModelMenutypes extends JModelLegacy
 
                             $this->addReverseLookupUrl($option);
                             if (isset($option->request['option'])) {
-                                $lang->load($option->request['option'] . '.sys', JPATH_ADMINISTRATOR, null, false, true)
-                                || $lang->load($option->request['option'] . '.sys', JPATH_ADMINISTRATOR . '/components/' . $option->request['option'], null, false, true);
+                                $lang->load($option->request['option'] . '.sys', JPATH_ROOT, null, false, true)
+                                || $lang->load($option->request['option'] . '.sys', JPATH_ROOT . '/components/' . $option->request['option'], null, false, true);
                             }
                         }
                     }
@@ -157,7 +157,7 @@ class MenusModelMenutypes extends JModelLegacy
 
 	protected function getTypeOptionsByComponent($component)
 	{
-        $component1=array('backend'=>JPATH_ADMINISTRATOR,'frontend'=>JPATH_SITE);
+        $component1=array('backend'=>JPATH_ROOT,'frontend'=>JPATH_SITE);
 
         foreach($component1 as $key=> $path) {
             $options[$key] = array();

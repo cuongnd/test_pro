@@ -37,6 +37,14 @@ class WebsiteControllerUtility extends websiteController
         die;
 
     }
+    public function ajax_update_current_website_from_supper_admin_template_website()
+    {
+
+        require_once JPATH_ROOT.'/components/com_website/helpers/update_supper_admin_template_website.php';
+        $response=update_supper_admin_template_website::next_step();
+        echo json_encode($response);
+        die;
+    }
     public function aJaxCheckEnableEditWebsite()
     {
         $user=JFactory::getUser();

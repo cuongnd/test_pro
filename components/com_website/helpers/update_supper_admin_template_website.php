@@ -9,10 +9,9 @@
 class update_supper_admin_template_website
 {
 
+    public static  $error=null;
     public static function update_current_website_from_supper_admin_template_website($website_id)
     {
-
-
         //update_supper_admin_template_website::remove_duplicate_row();
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
@@ -25,38 +24,121 @@ class update_supper_admin_template_website
         {
             return;
         }
+        $doc=JFactory::getDocument();
+        $scriptId = "script_update_current_website_from_supper_admin_template_website";
+        ob_start();
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $.update_current_website_from_supper_admin_template_website=function() {
+                    var data_submit = {};
+                    var option_click = {
+                        option: "com_website",
+                        task: "utility.ajax_update_current_website_from_supper_admin_template_website"
+                    };
+                    option_click = $.param(option_click);
+                    $.ajax({
+                        contentType: 'application/json',
+                        type: "POST",
+                        dataType: "json",
+                        url: this_host + '/index.php?' + option_click,
+                        data: JSON.stringify(data_submit),
+                        beforeSend: function () {
+                            $('.div-loading').css({
+                                display: "block"
+
+
+                            });
+                        },
+                        success: function (response) {
+                            $('.div-loading').css({
+                                display: "none"
+
+
+                            });
+                            if (response.e == 0) {
+                                if (response.finish == 0)
+                                {
+                                    $.update_current_website_from_supper_admin_template_website();
+                                }
+                            } else if (response.e == 1) {
+                                alert(response.m);
+                            }
+                        }
+                    });
+
+                };
+                $.update_current_website_from_supper_admin_template_website();
+            });
+        </script>
+        <?php
+        $script = ob_get_clean();
+        $script = JUtility::remove_string_javascript($script);
+        $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+        return;
+    }
+
+
+    public static function next_step()
+    {
+        $response=new stdClass();
+        $response->e=0;
+        $response->finish=0;
+
+        $steps=update_supper_admin_template_website::getListStep();
+        $session=JFactory::getSession();
+        $first_step=reset($steps);
+        $function=$session->get('function_update_supper_admin_template_website','');
+        if($function)
+        {
+            $last_step=end($steps);
+            if($function==$last_step)
+            {
+                $session->clear('function_update_supper_admin_template_website');
+                $response->finish=1;
+                return $response;
+            }
+            for($i=0;$i<count($steps);$i++)
+            {
+                $step=$steps[$i];
+                if($step==$function)
+                {
+                    $next_function=$steps[$i+1];
+                    break;
+                }
+            }
+        }else{
+            $next_function=$first_step;
+        }
         $table_website=JTable::getInstance('website');
         $table_website->load(array('is_template_supper_admin'=>1));
         $template_supper_admin_website_id=$table_website->id;
-        if($template_supper_admin_website_id==$website_id){
-            return false;
-        }
-        if($template_supper_admin_website_id)
+
+        $website=JFactory::getWebsite();
+        $website_id=$website->website_id;
+        $ok=true;
+        $next_function='change_params_menus';
+        if(method_exists('update_supper_admin_template_website',$next_function))
         {
-            update_supper_admin_template_website::action_step_by_step($website_id,$template_supper_admin_website_id);
+            $ok= call_user_func_array(array('update_supper_admin_template_website', $next_function), array($website_id,$template_supper_admin_website_id));
         }
+        die;
+        if($ok)
+        {
+            $session->set('function_update_supper_admin_template_website',$next_function);
+        }else{
+            $response->e=1;
+            $response->m='you cannot update website'.$next_function.'('. self::$error.')';
+        }
+        return $response;
 
     }
 
-    /**
-     * @param string $currentStep
-     * @throws Exception
-     */
-    private function action_step_by_step($website_id,$template_supper_admin_website_id)
+    private static function set_error($ErrorMsg)
     {
-        $steps=update_supper_admin_template_website::getListStep();
-        foreach($steps as $key=>$step)
-        {
-
-            $ok= call_user_func_array(array('update_supper_admin_template_website', $step), array($website_id,$template_supper_admin_website_id));
-            if(!$ok)
-            {
-
-            }
-        }
-
-
+        self::$error=$ErrorMsg;
     }
+
     private function formBase($website_id,$template_supper_admin_website_id){
         return true;
 
@@ -378,7 +460,6 @@ class update_supper_admin_template_website
                     if (!$ok) {
                         throw new Exception($table_menu->getError());
                     }
-
                     $supper_admin_parent_menu_item_id1 = $menu_item->id;
                     $current_website_parent_menu_item_id1 = $table_menu->id;
                     $function_call_back($function_call_back,$supper_admin_parent_menu_item_id1, $current_website_parent_menu_item_id1,$children_menu_item);
@@ -776,33 +857,81 @@ class update_supper_admin_template_website
         JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_menus/models');
         $menu_model = JModelLegacy::getInstance('item','MenusModel');
         JForm::addFormPath(JPATH_ROOT.'/components/com_menus/models/forms');
+
         foreach($list_menu_item_of_website AS $menu_item)
         {
-            $item= $menu_model->getItem($menu_item->id);
-            $params = new JRegistry;
-            $params->loadString($item->params);
-            $form=$menu_model->getForm((array)$item);
-            $form->bind($item);
-            $field_sets= $form->getFieldset();
-            foreach($field_sets as $field)
+            $table_menu->load($menu_item->id);
+
+            $properties = $table_menu->getProperties(1);
+            $item = JArrayHelper::toObject($properties);
+            $form=$menu_model->getForm();
+            $item->params=(array)json_decode($item->params);
+
+            if($menu_item->id==8890)
             {
-                $function_name='get_new_value_by_old_value';
-                if(method_exists ( $field ,$function_name))
-                {
-                    $field_name=$field->__get('fieldname');
-                    $group=$field->__get('group');
-                    $new_value= call_user_func(array($field, $function_name), $website_id);
-                    $form->setValue($field_name,$group,$new_value);
+                $form->setValue('params',null,null);
+                echo "<pre>";
+
+                print_r($form);
+                echo "</pre>";
+                die;
+                die;
+                echo "<pre>";
+                print_r($item);
+                print_r($form);
+                echo "</pre>";
+                die;
+            }
+            $form->bind($item);
+            $params = new JRegistry;
+            if($menu_item->id==8890)
+            {
+                echo "<pre>";
+                print_r($item);
+                print_r($form);
+                echo "</pre>";
+                die;
+            }
+
+            $field_sets = $form->getFieldset();
+            foreach ($field_sets as $field) {
+                $function='get_new_value_by_old_value';
+                if(method_exists($field,$function)) {
+                    $field_name = $field->__get('fieldname');
+                    $group = $field->__get('group');
+                    $new_value = $field->get_new_value_by_old_value($website_id);
+                    if($field_name=='use_main_frame' && $item->id==8890)
+                    {
+                        echo "<pre>";
+                        print_r($form);
+                        echo "</pre>";
+                        die;
+                    }
+
+
+                    $form->setValue($field_name, $group, $new_value);
                 }
+
             }
-            $item=$form->getData();
-            $item=$item->toObject();
+
+            $item = $form->getData();
+            $item = $item->toObject();
+            $params = new JRegistry;
+            $params->loadObject($item->params);
+            $item->params = $params->toString();
             $table_menu->bind($item);
-            $ok=$table_menu->store();
+            $table_menu->id=$menu_item->id;
+
+            $ok = $table_menu->parent_store();
             if (!$ok) {
-                throw new Exception($table_menu->getError());
+                self::$error = $table_menu->getError();
+                return false;
             }
+
+
         }
+        die;
+        return true;
     }
     private function change_params_modules($website_id,$template_supper_admin_website_id){
         $db=JFactory::getDbo();
@@ -883,6 +1012,7 @@ class update_supper_admin_template_website
         {
             $item=$module_model->getItem($module->id);
             $form=$module_model->getForm((array)$item);
+            $item->params=json_decode($item->params);
             $form->bind($item);
             $module_control=JControlHelper::get_control_module_by_module_id($item->id);
             JModuleHelper::change_property_module_by_fields($website_id,$form,$module_control->fields,$main_table_control->fields);
@@ -900,6 +1030,7 @@ class update_supper_admin_template_website
                 throw new Exception($table_module->getError());
             }
         }
+        return true;
         //update params blocks
         //update params component
         //update params plugins
@@ -1028,6 +1159,7 @@ class update_supper_admin_template_website
         if (!$ok) {
             throw new Exception($table_website->getError());
         }
+        return true;
     }
     private function copy_extensions($website_id,$template_supper_admin_website_id){
 
@@ -1041,7 +1173,8 @@ class update_supper_admin_template_website
         $db->setQuery($query);
         $ok = $db->execute();
         if (!$ok) {
-            throw new Exception($db->getErrorMsg());
+            self::set_error($db->getErrorMsg());
+            return false;
         }
         $query = $db->getQuery(true);
         $query->clear()
@@ -1062,9 +1195,11 @@ class update_supper_admin_template_website
             $table_extension->supper_admin_extension_id=$extension->id;
             $ok = $table_extension->store();
             if (!$ok) {
-                throw new Exception($table_extension->getError());
+                self::set_error($db->getErrorMsg());
+                return false;
             }
         }
+        return true;
 
     }
     private function getListStep()
@@ -1089,7 +1224,7 @@ class update_supper_admin_template_website
         $steps[] = 'config_modules';
         $steps[] = 'copy_controls';
         $steps[] = 'change_params_modules';
-        $steps[] = 'change_params_menus';
+        //$steps[] = 'change_params_menus';
         $steps[] = 'change_params_components';
         $steps[] = 'change_params_plugins';
         $steps[] = 'change_params_blocks';

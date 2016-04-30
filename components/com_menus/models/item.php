@@ -617,7 +617,6 @@ class MenusModelItem extends JModelAdmin
 		$pk = (!empty($pk)) ? $pk : (int) $this->getState('item.id');
 		// Get a level row instance.
 		$table = $this->getTable();
-
 		// Attempt to load the row.
 		$table->load($pk);
 
@@ -819,9 +818,8 @@ class MenusModelItem extends JModelAdmin
 	 * @return  JTable    A database object
 	 * @since   1.6
 	 */
-	public function getTable($type = 'Menu', $prefix = 'MenusTable', $config = array())
+	public function getTable($type = 'Menu', $prefix = 'JTable', $config = array())
 	{
-        JTable::addIncludePath(JPATH_ROOT.'/administrator/components/com_menus/tables');
 		return JTable::getInstance($type, $prefix, $config);
 	}
 
@@ -880,7 +878,7 @@ class MenusModelItem extends JModelAdmin
 	 * @since   1.6
 	 * @throws    Exception if there is an error in the form event.
 	 */
-	protected function preprocessForm(JForm $form, $data, $group = 'content')
+	protected function preprocessFormpreprocessForm(JForm $form, $data, $group = 'content')
 	{
 		$link = $this->getState('item.link');
 		$type = $this->getState('item.type');
