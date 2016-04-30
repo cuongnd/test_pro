@@ -117,11 +117,12 @@ class update_supper_admin_template_website
         $website=JFactory::getWebsite();
         $website_id=$website->website_id;
         $ok=true;
-        //$next_function='change_params_modules';
+        $next_function='config_modules';
         if(method_exists('update_supper_admin_template_website',$next_function))
         {
             $ok= call_user_func_array(array('update_supper_admin_template_website', $next_function), array($website_id,$template_supper_admin_website_id));
         }
+        die;
         if($ok)
         {
             $session->set('function_update_supper_admin_template_website',$next_function);
@@ -732,7 +733,6 @@ class update_supper_admin_template_website
         ;
         $db->setQuery($query);
         $list_module_of_current_website = $db->loadObjectList('supper_admin_module_id');
-
         $query=$db->getQuery(true);
         $query->clear()
             ->select('menu.id,menu.parent_id,menu.supper_admin_menu_item_id')
@@ -785,19 +785,20 @@ class update_supper_admin_template_website
             ->innerJoin('#__extensions AS extension ON extension.id=modules.extension_id')
             ->where('extension.website_id='.(int)$template_supper_admin_website_id)
         ;
-
         $db->setQuery($query);
         $list_modules_menu = $db->loadObjectList();
         $table_module_menu = JTable::getInstance('modulemenu');
-        foreach($list_module_of_current_website AS $item)
+        foreach($list_modules_menu AS $item)
         {
             $table_module_menu->id=0;
             $table_module_menu->moduleid=$list_module_of_current_website[$item->moduleid]->id;
             if($item->menuid)
             {
                 $table_module_menu->menuid=$list_menu_item_of_website[$item->menuid]->id;
+            }else{
+                $table_module_menu->menuid=null;
             }
-            $ok = $table_module_menu->store();
+            $ok = $table_module_menu->store(true);
             if (!$ok) {
                 throw new Exception($table_module_menu->getError());
             }
@@ -1189,7 +1190,7 @@ class update_supper_admin_template_website
         $steps[] = 'config_modules';
         $steps[] = 'copy_controls';
         $steps[] = 'change_params_modules';
-        //$steps[] = 'change_params_menus';
+        $steps[] = 'change_params_menus';
         $steps[] = 'change_params_components';
         $steps[] = 'change_params_plugins';
         $steps[] = 'change_params_blocks';
