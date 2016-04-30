@@ -411,7 +411,7 @@ class phpMyAdminModelDataSources extends JModelList
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
-		$app = JFactory::getApplication('administrator');
+		$app = JFactory::getApplication('site');
 
 		$parentId = $this->getUserStateFromRequest($this->context . '.filter.parent_id', 'filter_parent_id', 0, 'int');
 		$this->setState('filter.parent_id', $parentId);

@@ -150,8 +150,6 @@ class JForm
 			}
 			elseif (is_object($v) || JArrayHelper::isAssociative($v))
 			{
-
-
 				// If the value is an object or an associative array hand it off to the recursive bind level method.
 				$this->bindLevel($k, $v);
 			}

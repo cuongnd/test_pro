@@ -117,12 +117,11 @@ class update_supper_admin_template_website
         $website=JFactory::getWebsite();
         $website_id=$website->website_id;
         $ok=true;
-        $next_function='change_params_menus';
+        //$next_function='change_params_modules';
         if(method_exists('update_supper_admin_template_website',$next_function))
         {
             $ok= call_user_func_array(array('update_supper_admin_template_website', $next_function), array($website_id,$template_supper_admin_website_id));
         }
-        die;
         if($ok)
         {
             $session->set('function_update_supper_admin_template_website',$next_function);
@@ -855,72 +854,35 @@ class update_supper_admin_template_website
         }
         $table_menu = JTable::getInstance('menu');
         JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_menus/models');
-        $menu_model = JModelLegacy::getInstance('item','MenusModel');
+        $menu_model = JModelLegacy::getInstance('uitem','MenusModel');
         JForm::addFormPath(JPATH_ROOT.'/components/com_menus/models/forms');
-
+        $app=JFactory::getApplication();
         foreach($list_menu_item_of_website AS $menu_item)
         {
-            $table_menu->load($menu_item->id);
 
-            $properties = $table_menu->getProperties(1);
-            $item = JArrayHelper::toObject($properties);
-            $form=$menu_model->getForm();
-            $item->params=(array)json_decode($item->params);
-
-            if($menu_item->id==8890)
-            {
-                $form->setValue('params',null,null);
-                echo "<pre>";
-
-                print_r($form);
-                echo "</pre>";
-                die;
-                die;
-                echo "<pre>";
-                print_r($item);
-                print_r($form);
-                echo "</pre>";
-                die;
-            }
-            $form->bind($item);
-            $params = new JRegistry;
-            if($menu_item->id==8890)
-            {
-                echo "<pre>";
-                print_r($item);
-                print_r($form);
-                echo "</pre>";
-                die;
-            }
-
+            $app->input->set('id',$menu_item->id);
+            $menu_model->setState('item.id',$menu_item->id);
+            $item=$menu_model->getItem($menu_item->id);
+            $form=$menu_model->getForm((array)$item,true);
             $field_sets = $form->getFieldset();
             foreach ($field_sets as $field) {
+                $field_name = $field->__get('fieldname');
+                $group = $field->__get('group');
                 $function='get_new_value_by_old_value';
                 if(method_exists($field,$function)) {
-                    $field_name = $field->__get('fieldname');
-                    $group = $field->__get('group');
+
                     $new_value = $field->get_new_value_by_old_value($website_id);
-                    if($field_name=='use_main_frame' && $item->id==8890)
-                    {
-                        echo "<pre>";
-                        print_r($form);
-                        echo "</pre>";
-                        die;
-                    }
-
-
                     $form->setValue($field_name, $group, $new_value);
                 }
 
             }
 
-            $item = $form->getData();
+            $item =clone $form->getData();
             $item = $item->toObject();
             $params = new JRegistry;
             $params->loadObject($item->params);
             $item->params = $params->toString();
             $table_menu->bind($item);
-            $table_menu->id=$menu_item->id;
 
             $ok = $table_menu->parent_store();
             if (!$ok) {
@@ -930,7 +892,6 @@ class update_supper_admin_template_website
 
 
         }
-        die;
         return true;
     }
     private function change_params_modules($website_id,$template_supper_admin_website_id){
@@ -995,7 +956,7 @@ class update_supper_admin_template_website
 
 
         JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_modules/models');
-        $module_model = JModelLegacy::getInstance('module','ModulesModel');
+        $module_model = JModelLegacy::getInstance('umodule','ModulesModel');
         JForm::addFormPath(JPATH_ROOT.'/components/com_modules/models/forms');
 
         $table_module=JTable::getInstance('module');
@@ -1010,21 +971,25 @@ class update_supper_admin_template_website
         $app = JFactory::getApplication('site');
         foreach($list_module_of_current_website AS $module)
         {
-            $item=$module_model->getItem($module->id);
-            $form=$module_model->getForm((array)$item);
-            $item->params=json_decode($item->params);
+            $app->input->set('id',$module->id);
+            $module_model->setState('module.id',$module->id);
+            $item=$module_model->getItem();
+            $form=$module_model->getForm();
             $form->bind($item);
             $module_control=JControlHelper::get_control_module_by_module_id($item->id);
             JModuleHelper::change_property_module_by_fields($website_id,$form,$module_control->fields,$main_table_control->fields);
-            $item=$form->getData();
+            $item=clone $form->getData();
             $item=$item->toObject();
-            $table_module->load($module->id);
+            $params = new JRegistry;
+            $params->loadObject($item->params);
+            $item->params = $params->toString();
             $table_module->bind((array)$item);
             $position_id=$table_module->position_id;
             $position_id=$list_position_of_website[$position_id]->id;
             $table_module->position_id=$position_id;
             $position="position-$position_id";
             $table_module->position=$position;
+            $table_module->id=$module->id;
             $ok=$table_module->store();
             if (!$ok) {
                 throw new Exception($table_module->getError());

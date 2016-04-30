@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_utility
+ * @subpackage  com_modules
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,25 +13,25 @@ defined('_JEXEC') or die;
  * Module model.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_utility
+ * @subpackage  com_modules
  * @since       1.6
  */
-class UtilityModelField extends JModelAdmin
+class ModulesModelUModule extends JModelAdmin
 {
 	/**
 	 * @var    string  The prefix to use with controller messages.
 	 * @since  1.6
 	 */
-	protected $text_prefix = 'com_utility';
+	protected $text_prefix = 'COM_MODULES';
 
 	/**
-	 * @var    string  The help screen key for the position.
+	 * @var    string  The help screen key for the module.
 	 * @since  1.6
 	 */
 	protected $helpKey = 'JHELP_EXTENSIONS_MODULE_MANAGER_EDIT';
 
 	/**
-	 * @var    string  The help screen base URL for the position.
+	 * @var    string  The help screen base URL for the module.
 	 * @since  1.6
 	 */
 	protected $helpURL;
@@ -50,20 +50,19 @@ class UtilityModelField extends JModelAdmin
 		$app = JFactory::getApplication('site');
 
 		// Load the User state.
-		$pk = $app->input->getInt('id');
-
+		$pk = $app->input->getInt('id')||$app->getUserState('module.id');
 		if (!$pk)
 		{
-			if ($extensionId = (int) $app->getUserState('com_utility.add.position.id'))
+			if ($extensionId = (int) $app->getUserState('com_modules.add.module.id'))
 			{
 				$this->setState('extension.id', $extensionId);
 			}
 		}
 
-		$this->setState('position.id', $pk);
+		$this->setState('module.id', $pk);
 
 		// Load the parameters.
-		$params	= JComponentHelper::getParams('com_utility');
+		$params	= JComponentHelper::getParams('com_modules');
 		$this->setState('params', $params);
 	}
 
@@ -73,7 +72,7 @@ class UtilityModelField extends JModelAdmin
         $db		= $this->getDbo();
         $tuples=array();
 /*        // Access checks.
-        if (!$user->authorise('core.create', 'com_utility'))
+        if (!$user->authorise('core.create', 'com_modules'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }
@@ -147,41 +146,7 @@ class UtilityModelField extends JModelAdmin
 
         return true;
     }
-	public function duplicateBlock($block_id,&$a_listId=array(),$block_parent_id=0,$website_id=0,$menu_item_id=0)
-	{
-		$db=$this->_db;
-		$tableBlock=$this->getTable();
-		$tableBlock->load($block_id);
-		$tableBlock->id=0;
-		if($website_id)
-		{
-			$tableBlock->website_id=$website_id;
-		}
-		if($menu_item_id)
-		{
-			$tableBlock->menu_item_id=$menu_item_id;
-		}
-		$tableBlock->store();
-		$new_id=$tableBlock->id;
-		$a_listId[]=$new_id;
-		if($block_parent_id!=0)
-		{
-			$tableBlock->parent_id=$block_parent_id;
-			$tableBlock->store();
-		}
-		$query=$db->getQuery(true);
-		$query->select('id')
-			->from('#__position_config')
-			->where('parent_id='.(int)$block_id)
-		;
-		$listId=$db->setQuery($query)->loadColumn();
-		if(count($listId))
-		{
-			foreach($listId as $block_id) {
-				$this->duplicateBlock($block_id,$a_listId,$new_id,$website_id,$menu_item_id);
-			}
-		}
-	}
+
 
     function ajaxSaveForm($pks)
     {
@@ -303,7 +268,7 @@ class UtilityModelField extends JModelAdmin
         $db		= $this->getDbo();
 
         // Access checks.
-        if (!$user->authorise('core.create', 'com_utility'))
+        if (!$user->authorise('core.create', 'com_modules'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }
@@ -357,7 +322,7 @@ class UtilityModelField extends JModelAdmin
 
 		foreach ($pks as $pk)
 		{
-			if ($user->authorise('core.create', 'com_utility'))
+			if ($user->authorise('core.create', 'com_modules'))
 			{
 				$table->reset();
 				$table->load($pk);
@@ -452,7 +417,7 @@ class UtilityModelField extends JModelAdmin
 
 		foreach ($pks as $pk)
 		{
-			if ($user->authorise('core.edit', 'com_utility'))
+			if ($user->authorise('core.edit', 'com_modules'))
 			{
 				$table->reset();
 				$table->load($pk);
@@ -510,15 +475,15 @@ class UtilityModelField extends JModelAdmin
 	{
 		$user = JFactory::getUser();
 
-		// Check for existing position.
+		// Check for existing module.
 		if (!empty($record->id))
 		{
-			return $user->authorise('core.edit.state', 'com_utility.position.' . (int) $record->id);
+			return $user->authorise('core.edit.state', 'com_modules.module.' . (int) $record->id);
 		}
 		// Default to component settings if module not known.
 		else
 		{
-			return parent::canEditState('com_utility');
+			return parent::canEditState('com_modules');
 		}
 	}
 
@@ -544,7 +509,7 @@ class UtilityModelField extends JModelAdmin
 			if ($table->load($pk))
 			{
 				// Access checks.
-				if (!$user->authorise('core.delete', 'com_utility.position.'.(int) $pk) || $table->published != -2)
+				if (!$user->authorise('core.delete', 'com_modules.module.'.(int) $pk) || $table->published != -2)
 				{
 					JError::raiseWarning(403, JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'));
 					return;
@@ -596,7 +561,7 @@ class UtilityModelField extends JModelAdmin
 		$db		= $this->getDbo();
 
 		// Access checks.
-		if (!$user->authorise('core.create', 'com_utility'))
+		if (!$user->authorise('core.create', 'com_modules'))
 		{
 			throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
 		}
@@ -708,7 +673,7 @@ class UtilityModelField extends JModelAdmin
 		return $this->_client;
 	}
 
-	/**
+    /**
 	 * Method to get the record form.
 	 *
 	 * @param   array    $data      Data for the form.
@@ -723,21 +688,37 @@ class UtilityModelField extends JModelAdmin
 		// The folder and element vars are passed when saving the form.
 		if (empty($data))
 		{
-
-			$item		= $this->getItem();
-			$clientId	= $item->client_id;
-			$module		= $item->module;
-			$id			= $item->id;
+            $data		= (array)$this->getItem();
+			$clientId	= $data->client_id;
+			$module		= $data->module;
+			$id			= $data->id;
 		}
 		else
 		{
-			$clientId	= JArrayHelper::getValue($data, 'client_id');
 			$module		= JArrayHelper::getValue($data, 'module');
-			$id			= JArrayHelper::getValue($data, 'id');
+ 			$id			= JArrayHelper::getValue($data, 'id');
 		}
-
-		$fields=base64_decode($item->fields);
-
+		$website=JFactory::getWebsite();
+        $website_name=JFactory::get_website_name();
+		$ui_path= 'modules/website/website_'.$website_name.'/'.$data['module'];
+		jimport('joomla.filesystem.folder');
+		if(!JFolder::exists(JPATH_ROOT.DS.$ui_path))
+		{
+			$ui_path= 'modules/'.$data['module'];
+		}
+		$website=JFactory::getWebsite();
+		$db=JFactory::getDbo();
+		require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+		$query=$db->getQuery(true);
+		$query->select('*')
+			->from('#__control')
+			->where('element_path LIKE '.$query->q('%'.$ui_path.'%'))
+			->where('type='.$query->q('module'))
+			->where('website_id='.(int)$website->website_id)
+		;
+		$control=$db->setQuery($query)->loadObject();
+		$fields=$control->fields;
+		$fields=base64_decode($fields);
 		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
 		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
 		ob_start();
@@ -749,15 +730,49 @@ class UtilityModelField extends JModelAdmin
 		$pathInfo=pathinfo($ui_path);
 		$filename=$pathInfo['filename'];
 		$dirName=$pathInfo['dirname'];
-		$element_path=$item->element_path;
-		$element_path=str_replace('.php','.xml',$element_path);
-		JFile::write(JPATH_ROOT."/$element_path",$string_xml);
+		$website=JFactory::getWebsite();
+
+		$xml_file_path=$ui_path.DS.$data['module'].'.xml';
+
+		JFile::write(JPATH_ROOT.'/'.$xml_file_path,$string_xml);
+
+
+
+
+		require_once JPATH_ROOT.'/components/com_modules/helpers/module.php';
+		$query=$db->getQuery(true);
+		$query->select('*')
+			->from('#__control')
+			->where('element_path = '.$query->q(module_helper::MODULE_ROOT_NAME))
+			->where('type='.$query->q(module_helper::ELEMENT_TYPE))
+		;
+		$control=$db->setQuery($query)->loadObject();
+		if(!$control)
+		{
+			throw new Exception('there are no global module config in database, please config global module property in backend ad layout first');
+		}
+
+		$fields=$control->fields;
+		$fields=base64_decode($fields);
+		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		ob_start();
+		parent::render_to_xml($fields);
+		$string_xml=ob_get_clean();
+		$string_xml='<form>'.$string_xml.'</form>';
+		jimport('joomla.filesystem.file');
+		JFile::write(JPATH_ROOT.'/components/com_modules/models/forms/module.xml',$string_xml);
+
+
+
+
+
+
 		// These variables are used to add data from the plugin XML files.
-		$this->setState('item.client_id', $clientId);
 		$this->setState('item.module', $module);
 
 		// Get the form.
-		$form = $this->loadForm('com_utility.field',  'field', array('control' => 'jform', 'load_data' => $loadData),false,JPATH_ROOT.'/components/com_utility/models/forms/field.xml');
+		$form = $this->loadForm('com_modules.module', 'module', array('control' => 'jform', 'load_data' => $loadData));
+
 		if (empty($form))
 		{
 			return false;
@@ -769,8 +784,8 @@ class UtilityModelField extends JModelAdmin
 
 		// Check for existing module
 		// Modify the form based on Edit State access controls.
-		if ($id != 0 && (!$user->authorise('core.edit.state', 'com_utility.position.'.(int) $id))
-			|| ($id == 0 && !$user->authorise('core.edit.state', 'com_utility'))
+		if ($id != 0 && (!$user->authorise('core.edit.state', 'com_modules.module.'.(int) $id))
+			|| ($id == 0 && !$user->authorise('core.edit.state', 'com_modules'))
 		)
 		{
 			// Disable fields for display.
@@ -800,21 +815,22 @@ class UtilityModelField extends JModelAdmin
 	protected function loadFormData()
 	{
 		$app = JFactory::getApplication();
+
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_utility.edit.field.data', array());
+		$data = JFactory::getApplication()->getUserState('com_modules.edit.module.data', array());
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
-			// This allows us to inject parameter settings into a new position.
-			$params = $app->getUserState('com_utility.add.field.params');
+			// This allows us to inject parameter settings into a new module.
+			$params = $app->getUserState('com_modules.add.module.params');
 			if (is_array($params))
 			{
 				$data->set('params', $params);
 			}
 		}
 
-		$this->preprocessData('com_utility.field', $data);
+		$this->preprocessData('com_modules.module', $data);
 
 		return $data;
 	}
@@ -831,8 +847,7 @@ class UtilityModelField extends JModelAdmin
 	public function getItem($pk = null)
 	{
 
-
-		$pk = (!empty($pk)) ? (int) $pk : (int) $this->getState('field.id');
+		$pk = (!empty($pk)) ? (int) $pk : (int) $this->getState('module.id');
 		$db = $this->getDbo();
 
 		if (!isset($this->_cache[$pk]))
@@ -841,9 +856,9 @@ class UtilityModelField extends JModelAdmin
 
 			// Get a row instance.
 			$table = $this->getTable();
+
 			// Attempt to load the row.
 			$return = $table->load($pk);
-
 			// Check for a table object error.
 			if ($return === false && $error = $table->getError())
 			{
@@ -876,7 +891,7 @@ class UtilityModelField extends JModelAdmin
 
 					if (empty($extension))
 					{
-						$this->setError('com_utility_ERROR_CANNOT_FIND_MODULE');
+						$this->setError('COM_MODULES_ERROR_CANNOT_FIND_MODULE');
 
 						return false;
 					}
@@ -885,13 +900,7 @@ class UtilityModelField extends JModelAdmin
 					$table->module    = $extension->element;
 					$table->client_id = $extension->client_id;
 				}
-				else
-				{
-					$app = JFactory::getApplication();
-					$app->redirect(JRoute::_('index.php?option=com_utility&view=modules', false));
 
-					return false;
-				}
 			}
 
 			// Convert to the JObject before adding other data.
@@ -900,8 +909,9 @@ class UtilityModelField extends JModelAdmin
 
 			// Convert the params field to an array.
 			$registry = new JRegistry;
-			$registry->loadString(strtolower($table->params));
-			$this->_cache[$pk]->params = $registry->toArray();
+
+			$registry->loadString($table->params);
+			$this->_cache[$pk]->params = $registry->toObject();
 
 			// Determine the page assignment mode.
 			$query	= $db->getQuery(true)
@@ -942,9 +952,17 @@ class UtilityModelField extends JModelAdmin
 			$website=JFactory::getWebsite();
 			// Get the module XML.
 			$client = JApplicationHelper::getClientInfo($table->client_id);
-			$path   = JPath::clean($client->path . '/modules/website/website_'.$website->website_id.'/' . $table->module . '/' . $table->module . '.xml');
+			$module_path='modules/website/website_'.$website->website_id.'/' . $table->module;
+			$xml_module_path= $module_path. '/' . $table->module . '.xml';
+			if(!JFolder::exists(JPATH_ROOT.DS.$module_path))
+			{
+				$xml_module_path= 'modules/' .$table->module.DS. $table->module . '.xml';
+			}
+
+			$path   = JPath::clean($client->path.DS .$xml_module_path );
 			if (file_exists($path))
 			{
+
 				$this->_cache[$pk]->xml = simplexml_load_file($path);
 			}
 			else
@@ -952,7 +970,6 @@ class UtilityModelField extends JModelAdmin
 				$this->_cache[$pk]->xml = null;
 			}
 		}
-
 		return $this->_cache[$pk];
 	}
 
@@ -979,9 +996,8 @@ class UtilityModelField extends JModelAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getTable($type = 'Field', $prefix = 'JTable', $config = array())
+	public function getTable($type = 'Module', $prefix = 'JTable', $config = array())
 	{
-		JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
 		return JTable::getInstance($type, $prefix, $config);
 	}
 
@@ -1012,31 +1028,20 @@ class UtilityModelField extends JModelAdmin
 	 * @since   1.6
 	 * @throws  Exception if there is an error loading the form.
 	 */
-
-
-
-
 	protected function preprocessForm(JForm $form, $data, $group = 'content')
 	{
-
-
 		jimport('joomla.filesystem.path');
-		JForm::addFormPath(JPATH_ROOT . '/components/com_utility/models/forms');
-		$form->loadFile('field', false);
+
 		$lang     = JFactory::getLanguage();
 		$clientId = $this->getState('item.client_id');
 		$module   = $this->getState('item.module');
-		$element_path=$data->element_path;
 
 		$client   = JApplicationHelper::getClientInfo($clientId);
-		$formFile = JPath::clean(JPATH_ROOT."/$dirName/$filename.xml");
-		if($data->type=="row")
-		{
-			$formFile=JPATH_ROOT."/media/elements/ui/row.xml";
-		}elseif($data->type=="column")
-		{
-			$formFile=JPATH_ROOT."/media/elements/ui/column.xml";
-		}
+		$website=JFactory::getWebsite();
+		$module_path=JPath::get_module_path($module);
+		// Load the core and/or local language file(s).
+		$lang->load($module, $module_path, null, false, true);
+		$formFile=$module_path.DS.$module.'.xml';
 		if (file_exists($formFile))
 		{
 			// Get the module form.
@@ -1065,12 +1070,13 @@ class UtilityModelField extends JModelAdmin
 		}
 
 		// Load the default advanced params
-
-		//$form->loadFile('advanced', false);
+		JForm::addFormPath(JPATH_ROOT . '/components/com_modules/models/forms');
+		$form->loadFile('advanced', false);
 
 		// Trigger the default form events.
 		parent::preprocessForm($form, $data, $group);
 	}
+
 	/**
 	 * Loads ContentHelper for filters before validating data.
 	 *
@@ -1104,7 +1110,7 @@ class UtilityModelField extends JModelAdmin
 		$dispatcher = JEventDispatcher::getInstance();
 		$input      = JFactory::getApplication()->input;
 		$table      = $this->getTable();
-		$pk         = (!empty($data['id'])) ? $data['id'] : (int) $this->getState('position.id');
+		$pk         = (!empty($data['id'])) ? $data['id'] : (int) $this->getState('module.id');
 		$isNew      = true;
 
 		// Include the content modules for the onSave events.
@@ -1151,7 +1157,7 @@ class UtilityModelField extends JModelAdmin
 		}
 
 		// Trigger the onExtensionBeforeSave event.
-		$result = $dispatcher->trigger('onExtensionBeforeSave', array('com_utility.position', &$table, $isNew));
+		$result = $dispatcher->trigger('onExtensionBeforeSave', array('com_modules.module', &$table, $isNew));
 
 		if (in_array(false, $result, true))
 		{
@@ -1257,7 +1263,7 @@ class UtilityModelField extends JModelAdmin
 		}
 
 		// Trigger the onExtensionAfterSave event.
-		$dispatcher->trigger('onExtensionAfterSave', array('com_utility.position', &$table, $isNew));
+		$dispatcher->trigger('onExtensionAfterSave', array('com_modules.module', &$table, $isNew));
 
 		// Compute the extension id of this module in case the controller wants it.
 		$query	= $db->getQuery(true)
@@ -1278,8 +1284,8 @@ class UtilityModelField extends JModelAdmin
 			return false;
 		}
 
-		$this->setState('position.id', $extensionId);
-		$this->setState('position.id', $table->id);
+		$this->setState('module.id', $extensionId);
+		$this->setState('module.id', $table->id);
 
 		// Clear modules cache
 		$this->cleanCache();
@@ -1320,6 +1326,6 @@ class UtilityModelField extends JModelAdmin
 	 */
 	protected function cleanCache($group = null, $client_id = 0)
 	{
-		parent::cleanCache('com_utility', $this->getClient());
+		parent::cleanCache('com_modules', $this->getClient());
 	}
 }

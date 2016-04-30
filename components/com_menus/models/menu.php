@@ -187,7 +187,7 @@ class MenusModelMenu extends JModelAdmin
 	 */
 	protected function populateState()
 	{
-		$app = JFactory::getApplication('administrator');
+		$app = JFactory::getApplication('site');
 
 		// Load the User state.
 		$id = $app->input->getInt('id');

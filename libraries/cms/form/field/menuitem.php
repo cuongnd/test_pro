@@ -259,9 +259,6 @@ class JFormFieldMenuitem extends JFormFieldGroupedList
                 ->where('id IN (' . implode(',', $list_menu_item_id_exclusion_root_of_website) . ')');
             $db->setQuery($query);
             $menu_item_id = $db->loadResult();
-            echo $query->dump();
-            echo $menu_item_id;
-            die;
             return $menu_item_id;
         } else {
             return $this->value;

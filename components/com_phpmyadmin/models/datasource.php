@@ -47,7 +47,7 @@ class phpMyAdminModelDataSource extends JModelAdmin
      */
     protected function populateState()
     {
-        $app = JFactory::getApplication('administrator');
+        $app = JFactory::getApplication('site');
 
         // Load the User state.
         $pk = $app->input->getInt('id');

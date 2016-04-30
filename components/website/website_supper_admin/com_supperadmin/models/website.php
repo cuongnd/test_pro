@@ -181,7 +181,7 @@ class supperadminModelWebsite extends JModelAdmin
     	// Execute the parent method.
 		parent::populateState();
 
-		$app = JFactory::getApplication('administrator');
+		$app = JFactory::getApplication('site');
 
 		// Load the User state.
 		$pk = $app->input->getInt('id');

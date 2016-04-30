@@ -19,7 +19,7 @@ require_once JPATH_ROOT . '/administrator/components/com_menus/helpers/menus.php
  * @subpackage  com_menus
  * @since       1.6
  */
-class MenusModelItem extends JModelAdmin
+class MenusModelUitem extends JModelAdmin
 {
 	/**
 	 * @var        string    The prefix to use with controller messages.
@@ -641,65 +641,6 @@ class MenusModelItem extends JModelAdmin
 			$table->params = '{}';
 		}
 
-		// If the link has been set in the state, possibly changing link type.
-		if ($link = $this->getState('item.link'))
-		{
-			// Check if we are changing away from the actual link type.
-			if (MenusHelper::getLinkKey($table->link) != MenusHelper::getLinkKey($link))
-			{
-
-				$table->link = $link;
-			}
-		}
-
-		switch ($table->type)
-		{
-			case 'alias':
-				$table->component_id = 0;
-				$args = array();
-
-				parse_str(parse_url($table->link, PHP_URL_QUERY), $args);
-				break;
-
-			case 'separator':
-			case 'heading':
-				$table->link = '';
-				$table->component_id = 0;
-				break;
-
-			case 'url':
-				$table->component_id = 0;
-
-				parse_str(parse_url($table->link, PHP_URL_QUERY));
-				break;
-
-			case 'component':
-			default:
-				// Enforce a valid type.
-				$table->type = 'component';
-
-				// Ensure the integrity of the component_id field is maintained, particularly when changing the menu item type.
-				$args = array();
-				parse_str(parse_url($table->link, PHP_URL_QUERY), $args);
-
-				if (isset($args['option']))
-				{
-					// Load the language file for the component.
-					$lang = JFactory::getLanguage();
-					$lang->load($args['option'], JPATH_ADMINISTRATOR, null, false, true)
-						|| $lang->load($args['option'], JPATH_ADMINISTRATOR . '/components/' . $args['option'], null, false, true);
-
-					// Determine the component id.
-					$component = JComponentHelper::getComponent($args['option']);
-
-					if (isset($component->id))
-					{
-						$table->component_id = $component->id;
-					}
-				}
-				break;
-		}
-
 		// We have a valid type, inject it into the state for forms to use.
 		$this->setState('item.type', $table->type);
 
@@ -712,29 +653,7 @@ class MenusModelItem extends JModelAdmin
 		$registry->loadString($table->params);
 		$result->params = $registry->toArray();
 
-		// Merge the request arguments in to the params for a component.
-		if ($table->type == 'component')
-		{
-			// Note that all request arguments become reserved parameter names.
-			$result->request = $args;
-			$result->params = array_merge($result->params, $args);
-		}
 
-		if ($table->type == 'alias')
-		{
-			// Note that all request arguments become reserved parameter names.
-			$args = array();
-			parse_str(parse_url($table->link, PHP_URL_QUERY), $args);
-			$result->params = array_merge($result->params, $args);
-		}
-
-		if ($table->type == 'url')
-		{
-			// Note that all request arguments become reserved parameter names.
-			$args = array();
-			parse_str(parse_url($table->link, PHP_URL_QUERY), $args);
-			$result->params = array_merge($result->params, $args);
-		}
 
 		// Load associated menu items
 		$app = JFactory::getApplication();
