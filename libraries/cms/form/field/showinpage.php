@@ -207,4 +207,66 @@ class JFormFieldShowInPage extends JFormFieldGroupedList
 
 		return $groups;
 	}
+    public function get_new_value_by_old_value($website_id)
+    {
+        if ($this->value) {
+            $db = JFactory::getDbo();
+            $query = $db->getQuery(true);
+            $query->clear();
+            $query->select('menu.id,menu.parent_id,menu.copy_from')
+                ->from('#__menu AS menu');
+            $db->setQuery($query);
+            $list_all_menu_item = $db->loadObjectList();
+
+            $list_menu_item = array();
+            // First pass - collect children
+            foreach ($list_all_menu_item as $v) {
+                $pt = $v->parent_id;
+                $pt = ($pt == '' || $pt == $v->id) ? 'root' : $pt;
+                $list = @$list_menu_item[$pt] ? $list_menu_item[$pt] : array();
+                array_push($list, $v);
+                $list_menu_item[$pt] = $list;
+            }
+
+            unset($list_menu_item['root']);
+
+            $query = $db->getQuery(true);
+            $query->clear();
+            $query->select('menu_type_id_menu_id.menu_id')
+                ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
+                ->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+                ->where('menu_types.website_id=' . (int)$website_id);
+            $db->setQuery($query);
+            $list_root_menu_item_id = $db->loadColumn();
+
+            $get_menu_item_exclusion_root_of_website = function ($function_call_back, $root_menu_item_id = 0, &$list_menu_item_id_exclusion_root_of_website, $list_menu_item = array(), $level = 0, $max_level = 999) {
+                if ($list_menu_item[$root_menu_item_id]) {
+                    $level1 = $level + 1;
+                    foreach ($list_menu_item[$root_menu_item_id] as $v) {
+                        $list_menu_item_id_exclusion_root_of_website[] = $v->id;
+                        $menu_item_id_1 = $v->id;
+                        $function_call_back($function_call_back, $menu_item_id_1, $list_menu_item_id_exclusion_root_of_website, $list_menu_item, $level1, $max_level);
+                    }
+                }
+            };
+
+
+            $list_menu_item_id_exclusion_root_of_website = array();
+            foreach ($list_root_menu_item_id as $root_menu_item_id) {
+                $get_menu_item_exclusion_root_of_website($get_menu_item_exclusion_root_of_website, $root_menu_item_id, $list_menu_item_id_exclusion_root_of_website, $list_menu_item);
+            }
+
+            $query = $db->getQuery(true);
+            $query->select('id')
+                ->from('#__menu')
+                ->where('copy_from=' . (int)$this->value)
+                ->where('id IN (' . implode(',', $list_menu_item_id_exclusion_root_of_website) . ')');
+            $db->setQuery($query);
+            $menu_item_id = $db->loadResult();
+            return $menu_item_id;
+        } else {
+            return null;
+        }
+    }
+
 }

@@ -952,7 +952,9 @@ class ModulesModelModule extends JModelAdmin
 			$website=JFactory::getWebsite();
 			// Get the module XML.
 			$client = JApplicationHelper::getClientInfo($table->client_id);
-			$module_path='modules/website/website_'.$website->website_id.'/' . $table->module;
+            require_once JPATH_ROOT.'/components/com_website/helpers/website.php';
+            $website_name=websiteHelperFrontEnd::get_website_name_by_website_id($website->website_id);
+            $module_path='modules/website/website_'.$website_name.'/' . $table->module;
 			$xml_module_path= $module_path. '/' . $table->module . '.xml';
 			if(!JFolder::exists(JPATH_ROOT.DS.$module_path))
 			{

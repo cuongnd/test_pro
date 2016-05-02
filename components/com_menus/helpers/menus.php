@@ -357,6 +357,74 @@ class MenusHelperFrontEnd
         return 0;
     }
 
+    public static function remove_all_menu_not_exists_menu_type()
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('menu_type_id_menu_id.menu_id, menu_type_id_menu_id.menu_type_id')
+            ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
+        ;
+        $db->setQuery($query);
+        $list_root_menu_item=$db->loadObjectList();
+        $query->clear()
+            ->select('menu.id,menu.parent_id')
+            ->from('#__menu AS menu')
+        ;
+        $list_menu_item=$db->setQuery($query)->loadObjectList();
+
+        $children_menu_item = array();
+        foreach ($list_menu_item as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_menu_item[$pt] ? $children_menu_item[$pt] : array();
+            array_push($list, $v);
+            $children_menu_item[$pt] = $list;
+        }
+
+        unset($children_menu_item['list_root']);
+        $list_all_menu_item_has_menu_type=array();
+        foreach($list_root_menu_item as $root_menu_item)
+        {
+            $list_all_menu_item_has_menu_type[]=$root_menu_item->menu_id;
+            $get_list_all_menu_item_menu_type=function($function_call_back,&$list_all_menu_item_has_menu_type=array(), $menu_item_id=0, $children_menu_item){
+
+                if(count($children_menu_item[$menu_item_id]))
+                {
+                    foreach($children_menu_item[$menu_item_id] as $menu_item)
+                    {
+                        $list_all_menu_item_has_menu_type[]=$menu_item->id;
+                        $function_call_back($function_call_back,$list_all_menu_item_has_menu_type,$menu_item->id,$children_menu_item);
+
+                    }
+                }
+            };
+            $get_list_all_menu_item_menu_type($get_list_all_menu_item_menu_type,$list_all_menu_item_has_menu_type,$root_menu_item->menu_id,$children_menu_item);
+
+        }
+        $list_menu_item_not_menu_type=array();
+
+        foreach($list_menu_item as $menu_item)
+        {
+            if(!in_array($menu_item->id,$list_all_menu_item_has_menu_type))
+            {
+                $list_menu_item_not_menu_type[]=$menu_item->id;
+            }
+        }
+        if(count($list_menu_item_not_menu_type))
+        {
+            $query->clear();
+            $query->delete('#__menu')
+                ->where('id IN ('.implode(',',$list_menu_item_not_menu_type).')')
+                ;
+            $db->setQuery($query);
+            $ok=$db->execute();
+            if(!$ok)
+            {
+                throw new Exception($db->getErrorMsg());
+            }
+        }
+    }
+
 
     public function get_list_menu_type_by_website_id($website_id=0)
     {

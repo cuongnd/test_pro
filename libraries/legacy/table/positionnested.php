@@ -791,7 +791,7 @@ class JTablePositionNested extends JTable
 						->from($this->_tbl)
 						->where('website_id='.(int)$this->website_id)
 						->where('LOWER(screensize)='.$this->_db->q($this->screensize))
-						->where('parent_id='.(int)$this->getRootId())
+						->where('parent_id='.(int)$this->get_root_id())
 						->order('lft DESC');
 					$this->_db->setQuery($query, 0, 1);
 					$reference = $this->_db->loadObject();
@@ -1249,7 +1249,7 @@ class JTablePositionNested extends JTable
 	 *
 	 * @since   11.1
 	 */
-	public function getRootId()
+	public function get_root_id()
 	{
 
 		if ((int) self::$root_id > 0)
@@ -1342,7 +1342,7 @@ class JTablePositionNested extends JTable
 	/**
 	 * Method to recursively rebuild the whole nested set tree.
 	 *
-	 * @param   integer  $parentId  The root of the tree to rebuild.
+	 * @param   integer  $parent_id  The root of the tree to rebuild.
 	 * @param   integer  $leftId    The left id to start with in building the tree.
 	 * @param   integer  $level     The level to assign to the current nodes.
 	 * @param   string   $path      The path to the current nodes.
@@ -1353,19 +1353,18 @@ class JTablePositionNested extends JTable
 	 * @since   11.1
 	 * @throws  RuntimeException on database error.
 	 */
-	public function rebuild($parentId = null, $leftId = 0, $level = 0, $path = '',$menu_item_id=0,$screeensize='',$only_page=0)
+	public function rebuild($parent_id = null, $leftId = 0, $level = 0, $path = '', $menu_item_id=0, $screeensize='', $only_page=0)
 	{
 		// If no parent is provided, try to find it.
-		if ($parentId === null)
+		if ($parent_id === null)
 		{
 			// Get the root item.
-			$parentId = $this->getRootId();
-			if ($parentId === false)
+			$parent_id = $this->get_root_id();
+			if ($parent_id === false)
 			{
 				return false;
 			}
 		}
-
 		$query = $this->_db->getQuery(true);
 
 		// Build the structure of the recursive query.
@@ -1373,11 +1372,10 @@ class JTablePositionNested extends JTable
 		{
 
 			$query->clear()
-				->select($this->_tbl_key . ', alias')
-				->from($this->_tbl)
+				->select('id, alias')
+				->from('#__position_config')
                 ->where('parent_id = %d')
-                ->where('alias!='.$query->quote('ROOT'))
-				->where('website_id='.(int)$this->website_id)
+                ->where('id <> parent_id')
 			;
 
 			// If the table has an ordering field, use that for ordering.
@@ -1394,13 +1392,13 @@ class JTablePositionNested extends JTable
 
 		// Make a shortcut to database object.
 		// Assemble the query to find all children of this node.
-		$this->_db->setQuery(sprintf($this->_cache['rebuild.sql'], (int) $parentId));
+        $str_query=sprintf($this->_cache['rebuild.sql'], (int) $parent_id);
+		$this->_db->setQuery($str_query);
 
 		$children = $this->_db->loadObjectList();
 		// The right value of this node is the left value + 1
 		$rightId = $leftId + 1;
 		// Execute this function recursively over all children
-
 		foreach ($children as $node)
 		{
 
@@ -1425,7 +1423,7 @@ class JTablePositionNested extends JTable
 			->set('rgt = ' . (int) $rightId)
 			->set('level = ' . (int) $level)
 			->set('path = ' . $this->_db->quote($path))
-			->where($this->_tbl_key . ' = ' . (int) $parentId);
+			->where($this->_tbl_key . ' = ' . (int) $parent_id);
 		if($menu_item_id!=0)
 		{
 			$query->set('menu_item_id='.(int)$menu_item_id);

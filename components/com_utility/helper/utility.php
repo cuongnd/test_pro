@@ -938,7 +938,7 @@ XML;
         JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
         $tablePosition=JTable::getInstance('positionnested');
         $tablePosition->webisite_id=$website->website_id;
-        $parentId = $tablePosition->getRootId();
+        $parentId = $tablePosition->get_root_id();
         $tablePosition->load($parentId);
         $db=JFactory::getDbo();
         if(!$enableEditWebsite) {

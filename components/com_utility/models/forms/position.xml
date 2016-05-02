@@ -1,289 +1,237 @@
 <form>
 					<field type="text" readonly="true" label="Id" default=""
-						   name="id"
+						   name="id" 
 
 												>
 											</field>
 					<field type="checkbox" label="Id" default="0"
-						   name="enable_id" onchange="">
-
+						   name="enable_id" 
 					</field>
-
-									
+					
 					<field type="text" readonly="false" label="Name" default=""
-						   name="name"
+						   name="name" 
 
 												>
 											</field>
 					<field type="checkbox" label="Name" default="0"
-						   name="enable_name" onchange="">
-
+						   name="enable_name" 
 					</field>
-
-									
+					
 					<field type="text" readonly="false" label="Title" default=""
-						   name="title"
+						   name="title" 
 
 												>
 											</field>
 					<field type="checkbox" label="Title" default="0"
-						   name="enable_title" onchange="">
-
+						   name="enable_title" 
 					</field>
-
-									
+					
 					<field type="textarea" readonly="false" label="Note" default=""
-						   name="introtext"
+						   name="introtext" 
 
 												>
 											</field>
 					<field type="checkbox" label="Note" default="0"
-						   name="enable_introtext" onchange="">
-
+						   name="enable_introtext" 
 					</field>
-
-									
+					
 					<field type="filelist" readonly="false" label="Source less" default=""
-						   name="source_less"
+						   name="source_less" 
 
 													 directory="layouts/kendo_grid_layout/less" 													 multiple="false" 													 size="1" 												>
 											</field>
 					<field type="checkbox" label="Source less" default="0"
-						   name="enable_source_less" onchange="">
-
+						   name="enable_source_less" 
 					</field>
-
-									
+					
 					<field type="select2" readonly="false" label="Css class" default=""
-						   name="css_class"
+						   name="css_class" 
 
 													 maximumSelectionSize="10" 												>
 											</field>
 					<field type="checkbox" label="Css class" default="0"
-						   name="enable_css_class" onchange="">
-
+						   name="enable_css_class" 
 					</field>
-
-									
+					
 					<field type="accesslevel" readonly="false" label="access" default=""
-						   name="access"
+						   name="access" 
 
 													 multiple="false" 													 size="1" 												>
 											</field>
 					<field type="checkbox" label="access" default="0"
-						   name="enable_access" onchange="">
-
+						   name="enable_access" 
 					</field>
-
-									
+					
 					<field type="list" readonly="false" label="Only Page" default=""
-						   name="only_page"
+						   name="only_page" 
 
 													 multiple="false" 													 size="1" 												>
 																							<option value="1">Yes</option>
 																																<option value="0">No</option>
 																				</field>
 					<field type="checkbox" label="Only Page" default="0"
-						   name="enable_only_page" onchange="">
-
+						   name="enable_only_page" 
 					</field>
-
-									
+					
 					<field type="advancedbindingsourceselect2" readonly="false" label="Advanced" default=""
-						   name="advanced_params"
+						   name="advanced_params" 
 
 												>
 											</field>
 					<field type="checkbox" label="Advanced" default="0"
-						   name="enable_advanced_params" onchange="">
-
+						   name="enable_advanced_params" 
 					</field>
-
-									
+					
 					<field type="showinpage" readonly="false" label="show in page" default=""
-						   name="menu_item_id"
+						   name="menu_item_id" 
 
 												>
 											</field>
 					<field type="checkbox" label="show in page" default="0"
-						   name="enable_menu_item_id" onchange="">
-
+						   name="enable_menu_item_id" 
 					</field>
-
-									
+					
 					<field type="elementtype" readonly="false" label="Convert to element type" default=""
-						   name="convert_type"
+						   name="convert_type" 
 
 													 onchange="element_ui_element.convert_to_element($(this))" 													 multiple="false" 													 size="1" 												>
 											</field>
 					<field type="checkbox" label="Convert to element type" default="0"
-						   name="enable_convert_type" onchange="">
-
+						   name="enable_convert_type" 
 					</field>
-
-									
+					
 					<field type="text" readonly="true" label="Ui path" default=""
-						   name="ui_path"
+						   name="ui_path" 
 
 												>
 											</field>
 					<field type="checkbox" label="Ui path" default="0"
-						   name="enable_ui_path" onchange="">
-
+						   name="enable_ui_path" 
 					</field>
-
-									
+					
 					<field type="radioyesno" readonly="true" label="Is template" default=""
-						   name="is_template"
+						   name="is_template" 
 
 												>
 											</field>
 					<field type="checkbox" label="Is template" default="0"
-						   name="enable_is_template" onchange="">
-
+						   name="enable_is_template" 
 					</field>
-
-													<fields name="params"><fields name="element">
+					<fields name="params"><fields name="element">
 					<field type="text" readonly="false" label="Element config" default=""
-						   name="debug"
+						   name="debug" 
 
 												>
 											</field>
 					<field type="checkbox" label="Element config" default="0"
-						   name="enable_debug" onchange="">
-
+						   name="enable_debug" 
 					</field>
-
-									
+					
 					<field type="radioyesno" readonly="false" label="disable" default=""
-						   name="disable"
+						   name="disable" 
 
 												>
 											</field>
 					<field type="checkbox" label="disable" default="0"
-						   name="enable_disable" onchange="">
-
+						   name="enable_disable" 
 					</field>
-
-									
+					
 					<field type="gradient" readonly="false" label="css3 gradient generator" default=""
-						   name="css3_gradient_generator"
+						   name="css3_gradient_generator" 
 
 												>
 											</field>
 					<field type="checkbox" label="css3 gradient generator" default="0"
-						   name="enable_css3_gradient_generator" onchange="">
-
+						   name="enable_css3_gradient_generator" 
 					</field>
-
-									
+					
 					<field type="stylegenerator" readonly="false" label="css3 style generator" default=""
-						   name="stylegenerator"
+						   name="stylegenerator" 
 
 																									>
 											</field>
 					<field type="checkbox" label="css3 style generator" default="0"
-						   name="enable_stylegenerator" onchange="">
-
+						   name="enable_stylegenerator" 
 					</field>
-
-									
+					
 					<field type="browserserver" readonly="false" label="Image template" default=""
-						   name="image_template"
+						   name="image_template" 
 
 													 get_image_type="image" 												>
 											</field>
 					<field type="checkbox" label="Image template" default="0"
-						   name="enable_image_template" onchange="">
-
+						   name="enable_image_template" 
 					</field>
-
-									</fields>				<fields name="style">
+					</fields><fields name="style">
 					<field type="stylegenerator" readonly="false" label="Style element" default=""
-						   name="style_element"
+						   name="style_element" 
 
 																									>
 											</field>
 					<field type="checkbox" label="Style element" default="0"
-						   name="enable_style_element" onchange="">
-
+						   name="enable_style_element" 
 					</field>
-
-									
+					
 					<field type="stylegenerator" readonly="false" label="Style controler" default=""
-						   name="style_controler"
+						   name="style_controler" 
 
 																									>
 											</field>
 					<field type="checkbox" label="Style controler" default="0"
-						   name="enable_style_controler" onchange="">
-
+						   name="enable_style_controler" 
 					</field>
-
-									</fields>				<fields name="advanced"><fields name="clone_config">
+					</fields><fields name="advanced"><fields name="clone_config">
 					<field type="radioyesno" readonly="false" label="Enable clone" default=""
-						   name="turn_on_clone_config"
+						   name="turn_on_clone_config" 
 
 												>
 											</field>
 					<field type="checkbox" label="Enable clone" default="0"
-						   name="enable_turn_on_clone_config" onchange="">
-
+						   name="enable_turn_on_clone_config" 
 					</field>
-
-									
+					
 					<field type="selectblock" readonly="false" label="Title item" default=""
-						   name="title_item"
+						   name="title_item" 
 
 												>
 											</field>
 					<field type="checkbox" label="Title item" default="0"
-						   name="enable_title_item" onchange="">
-
+						   name="enable_title_item" 
 					</field>
-
-									
+					
 					<field type="selectblock" readonly="false" label="Control add" default=""
-						   name="control_add"
+						   name="control_add" 
 
 												>
 											</field>
 					<field type="checkbox" label="Control add" default="0"
-						   name="enable_control_add" onchange="">
-
+						   name="enable_control_add" 
 					</field>
-
-									
+					
 					<field type="selectblock" readonly="false" label="Control remove" default=""
-						   name="control_remove"
+						   name="control_remove" 
 
 												>
 											</field>
 					<field type="checkbox" label="Control remove" default="0"
-						   name="enable_control_remove" onchange="">
-
+						   name="enable_control_remove" 
 					</field>
-
-									
+					
 					<field type="selectblock" readonly="false" label="Control select number" default=""
-						   name="control_seletect_number"
+						   name="control_seletect_number" 
 
 												>
 											</field>
 					<field type="checkbox" label="Control select number" default="0"
-						   name="enable_control_seletect_number" onchange="">
-
+						   name="enable_control_seletect_number" 
 					</field>
-
-									
+					
 					<field type="selectblock" readonly="false" label="Aria clone append" default=""
-						   name="aria_clone_append"
+						   name="aria_clone_append" 
 
 												>
 											</field>
 					<field type="checkbox" label="Aria clone append" default="0"
-						   name="enable_aria_clone_append" onchange="">
-
+						   name="enable_aria_clone_append" 
 					</field>
-
-									</fields>				</fields>				</fields>				</form>
+					</fields></fields></fields></form>

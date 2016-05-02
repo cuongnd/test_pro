@@ -100,4 +100,44 @@ abstract class JControlHelper
         );
         return $table_control;
     }
+
+    public static function get_position_control_by_position_id($id)
+    {
+        $table_position=JTable::getInstance('positionnested');
+        $table_position->load($id);
+        $ui_path= $table_position->ui_path;
+
+        if($ui_path[0]=='/')
+        {
+            $ui_path = substr($ui_path, 1);
+        }
+        if($table_position->type=='row')
+        {
+            $ui_path='media/elements/ui/row.php';
+        }
+        $db=JFactory::getDbo();
+        require_once JPATH_ROOT.'/components/com_utility/helper/block_helper.php';
+        $query=$db->getQuery(true);
+        $query->select('*')
+            ->from('#__control')
+            ->where('element_path LIKE '.$query->q('%'.$ui_path.'%'))
+            ->where('type='.$query->q(block_helper::ELEMENT_TYPE_NAME))
+        ;
+        $control=$db->setQuery($query)->loadObject();
+        return $control;
+    }
+
+    public static function get_main_control_element()
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('*')
+            ->from('#__control')
+            ->where('element_path LIKE '.$query->q(block_helper::ROOT_ELEMENT_NAME))
+            ->where('type='.$query->q(block_helper::ELEMENT_TYPE_NAME))
+        ;
+
+        $control=$db->setQuery($query)->loadObject();
+        return $control;
+    }
 }

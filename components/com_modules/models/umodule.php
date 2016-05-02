@@ -683,127 +683,127 @@ class ModulesModelUModule extends JModelAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getForm($data = array(), $loadData = true)
-	{
-		// The folder and element vars are passed when saving the form.
-		if (empty($data))
-		{
+    public function getForm($data = array(), $loadData = true)
+    {
+        // The folder and element vars are passed when saving the form.
+        if (empty($data))
+        {
             $data		= (array)$this->getItem();
-			$clientId	= $data->client_id;
-			$module		= $data->module;
-			$id			= $data->id;
-		}
-		else
-		{
-			$module		= JArrayHelper::getValue($data, 'module');
- 			$id			= JArrayHelper::getValue($data, 'id');
-		}
-		$website=JFactory::getWebsite();
+            $clientId	= $data->client_id;
+            $module		= $data->module;
+            $id			= $data->id;
+        }
+        else
+        {
+            $module		= JArrayHelper::getValue($data, 'module');
+            $id			= JArrayHelper::getValue($data, 'id');
+        }
+        $website=JFactory::getWebsite();
         $website_name=JFactory::get_website_name();
-		$ui_path= 'modules/website/website_'.$website_name.'/'.$data['module'];
-		jimport('joomla.filesystem.folder');
-		if(!JFolder::exists(JPATH_ROOT.DS.$ui_path))
-		{
-			$ui_path= 'modules/'.$data['module'];
-		}
-		$website=JFactory::getWebsite();
-		$db=JFactory::getDbo();
-		require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
-		$query=$db->getQuery(true);
-		$query->select('*')
-			->from('#__control')
-			->where('element_path LIKE '.$query->q('%'.$ui_path.'%'))
-			->where('type='.$query->q('module'))
-			->where('website_id='.(int)$website->website_id)
-		;
-		$control=$db->setQuery($query)->loadObject();
-		$fields=$control->fields;
-		$fields=base64_decode($fields);
-		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
-		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
-		ob_start();
-		parent::render_to_xml($fields);
-		$string_xml=ob_get_clean();
-		$string_xml='<config>'.$string_xml.'</config>';
-		jimport('joomla.filesystem.file');
+        $ui_path= 'modules/website/website_'.$website_name.'/'.$data['module'];
+        jimport('joomla.filesystem.folder');
+        if(!JFolder::exists(JPATH_ROOT.DS.$ui_path))
+        {
+            $ui_path= 'modules/'.$data['module'];
+        }
+        $website=JFactory::getWebsite();
+        $db=JFactory::getDbo();
+        require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+        $query=$db->getQuery(true);
+        $query->select('*')
+            ->from('#__control')
+            ->where('element_path LIKE '.$query->q('%'.$ui_path.'%'))
+            ->where('type='.$query->q('module'))
+            ->where('website_id='.(int)$website->website_id)
+        ;
+        $control=$db->setQuery($query)->loadObject();
+        $fields=$control->fields;
+        $fields=base64_decode($fields);
+        require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+        $fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+        ob_start();
+        parent::render_to_xml($fields);
+        $string_xml=ob_get_clean();
+        $string_xml='<config>'.$string_xml.'</config>';
+        jimport('joomla.filesystem.file');
 
-		$pathInfo=pathinfo($ui_path);
-		$filename=$pathInfo['filename'];
-		$dirName=$pathInfo['dirname'];
-		$website=JFactory::getWebsite();
+        $pathInfo=pathinfo($ui_path);
+        $filename=$pathInfo['filename'];
+        $dirName=$pathInfo['dirname'];
+        $website=JFactory::getWebsite();
 
-		$xml_file_path=$ui_path.DS.$data['module'].'.xml';
+        $xml_file_path=$ui_path.DS.$data['module'].'.xml';
 
-		JFile::write(JPATH_ROOT.'/'.$xml_file_path,$string_xml);
-
-
-
-
-		require_once JPATH_ROOT.'/components/com_modules/helpers/module.php';
-		$query=$db->getQuery(true);
-		$query->select('*')
-			->from('#__control')
-			->where('element_path = '.$query->q(module_helper::MODULE_ROOT_NAME))
-			->where('type='.$query->q(module_helper::ELEMENT_TYPE))
-		;
-		$control=$db->setQuery($query)->loadObject();
-		if(!$control)
-		{
-			throw new Exception('there are no global module config in database, please config global module property in backend ad layout first');
-		}
-
-		$fields=$control->fields;
-		$fields=base64_decode($fields);
-		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
-		ob_start();
-		parent::render_to_xml($fields);
-		$string_xml=ob_get_clean();
-		$string_xml='<form>'.$string_xml.'</form>';
-		jimport('joomla.filesystem.file');
-		JFile::write(JPATH_ROOT.'/components/com_modules/models/forms/module.xml',$string_xml);
+        JFile::write(JPATH_ROOT.'/'.$xml_file_path,$string_xml);
 
 
 
 
+        require_once JPATH_ROOT.'/components/com_modules/helpers/module.php';
+        $query=$db->getQuery(true);
+        $query->select('*')
+            ->from('#__control')
+            ->where('element_path = '.$query->q(module_helper::MODULE_ROOT_NAME))
+            ->where('type='.$query->q(module_helper::ELEMENT_TYPE))
+        ;
+        $control=$db->setQuery($query)->loadObject();
+        if(!$control)
+        {
+            throw new Exception('there are no global module config in database, please config global module property in backend ad layout first');
+        }
+
+        $fields=$control->fields;
+        $fields=base64_decode($fields);
+        $fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+        ob_start();
+        parent::render_to_xml($fields);
+        $string_xml=ob_get_clean();
+        $string_xml='<form>'.$string_xml.'</form>';
+        jimport('joomla.filesystem.file');
+        JFile::write(JPATH_ROOT.'/components/com_modules/models/forms/module.xml',$string_xml);
 
 
-		// These variables are used to add data from the plugin XML files.
-		$this->setState('item.module', $module);
 
-		// Get the form.
-		$form = $this->loadForm('com_modules.module', 'module', array('control' => 'jform', 'load_data' => $loadData));
 
-		if (empty($form))
-		{
-			return false;
-		}
 
-		$form->setFieldAttribute('position', 'client', $this->getState('item.client_id') == 0 ? 'site' : 'administrator');
 
-		$user = JFactory::getUser();
+        // These variables are used to add data from the plugin XML files.
+        $this->setState('item.module', $module);
 
-		// Check for existing module
-		// Modify the form based on Edit State access controls.
-		if ($id != 0 && (!$user->authorise('core.edit.state', 'com_modules.module.'.(int) $id))
-			|| ($id == 0 && !$user->authorise('core.edit.state', 'com_modules'))
-		)
-		{
-			// Disable fields for display.
-			$form->setFieldAttribute('ordering', 'disabled', 'true');
-			$form->setFieldAttribute('published', 'disabled', 'true');
-			$form->setFieldAttribute('publish_up', 'disabled', 'true');
-			$form->setFieldAttribute('publish_down', 'disabled', 'true');
+        // Get the form.
+        $form = $this->loadForm('com_modules.module', 'module', array('control' => 'jform', 'load_data' => $loadData));
 
-			// Disable fields while saving.
-			// The controller has already verified this is a record you can edit.
-			$form->setFieldAttribute('ordering', 'filter', 'unset');
-			$form->setFieldAttribute('published', 'filter', 'unset');
-			$form->setFieldAttribute('publish_up', 'filter', 'unset');
-			$form->setFieldAttribute('publish_down', 'filter', 'unset');
-		}
+        if (empty($form))
+        {
+            return false;
+        }
 
-		return $form;
-	}
+        $form->setFieldAttribute('position', 'client', $this->getState('item.client_id') == 0 ? 'site' : 'administrator');
+
+        $user = JFactory::getUser();
+
+        // Check for existing module
+        // Modify the form based on Edit State access controls.
+        if ($id != 0 && (!$user->authorise('core.edit.state', 'com_modules.module.'.(int) $id))
+            || ($id == 0 && !$user->authorise('core.edit.state', 'com_modules'))
+        )
+        {
+            // Disable fields for display.
+            $form->setFieldAttribute('ordering', 'disabled', 'true');
+            $form->setFieldAttribute('published', 'disabled', 'true');
+            $form->setFieldAttribute('publish_up', 'disabled', 'true');
+            $form->setFieldAttribute('publish_down', 'disabled', 'true');
+
+            // Disable fields while saving.
+            // The controller has already verified this is a record you can edit.
+            $form->setFieldAttribute('ordering', 'filter', 'unset');
+            $form->setFieldAttribute('published', 'filter', 'unset');
+            $form->setFieldAttribute('publish_up', 'filter', 'unset');
+            $form->setFieldAttribute('publish_down', 'filter', 'unset');
+        }
+
+        return $form;
+    }
 
 	/**
 	 * Method to get the data that should be injected in the form.
@@ -844,134 +844,136 @@ class ModulesModelUModule extends JModelAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getItem($pk = null)
-	{
+    public function getItem($pk = null)
+    {
 
-		$pk = (!empty($pk)) ? (int) $pk : (int) $this->getState('module.id');
-		$db = $this->getDbo();
+        $pk = (!empty($pk)) ? (int) $pk : (int) $this->getState('module.id');
+        $db = $this->getDbo();
 
-		if (!isset($this->_cache[$pk]))
-		{
-			$false = false;
+        if (!isset($this->_cache[$pk]))
+        {
+            $false = false;
 
-			// Get a row instance.
-			$table = $this->getTable();
+            // Get a row instance.
+            $table = $this->getTable();
 
-			// Attempt to load the row.
-			$return = $table->load($pk);
-			// Check for a table object error.
-			if ($return === false && $error = $table->getError())
-			{
-				$this->setError($error);
+            // Attempt to load the row.
+            $return = $table->load($pk);
+            // Check for a table object error.
+            if ($return === false && $error = $table->getError())
+            {
+                $this->setError($error);
 
-				return $false;
-			}
-			// Check if we are creating a new extension.
-			if (empty($pk))
-			{
-				if ($extensionId = (int) $this->getState('extension.id'))
-				{
-					$query	= $db->getQuery(true)
-						->select('element, client_id')
-						->from('#__extensions')
-						->where('id = ' . $extensionId)
-						->where('type = ' . $db->quote('module'));
-					$db->setQuery($query);
+                return $false;
+            }
+            // Check if we are creating a new extension.
+            if (empty($pk))
+            {
+                if ($extensionId = (int) $this->getState('extension.id'))
+                {
+                    $query	= $db->getQuery(true)
+                        ->select('element, client_id')
+                        ->from('#__extensions')
+                        ->where('id = ' . $extensionId)
+                        ->where('type = ' . $db->quote('module'));
+                    $db->setQuery($query);
 
-					try
-					{
-						$extension = $db->loadObject();
-					}
-					catch (RuntimeException $e)
-					{
-						$this->setError($e->getMessage);
+                    try
+                    {
+                        $extension = $db->loadObject();
+                    }
+                    catch (RuntimeException $e)
+                    {
+                        $this->setError($e->getMessage);
 
-						return false;
-					}
+                        return false;
+                    }
 
-					if (empty($extension))
-					{
-						$this->setError('COM_MODULES_ERROR_CANNOT_FIND_MODULE');
+                    if (empty($extension))
+                    {
+                        $this->setError('COM_MODULES_ERROR_CANNOT_FIND_MODULE');
 
-						return false;
-					}
+                        return false;
+                    }
 
-					// Extension found, prime some module values.
-					$table->module    = $extension->element;
-					$table->client_id = $extension->client_id;
-				}
+                    // Extension found, prime some module values.
+                    $table->module    = $extension->element;
+                    $table->client_id = $extension->client_id;
+                }
 
-			}
+            }
 
-			// Convert to the JObject before adding other data.
-			$properties        = $table->getProperties(1);
-			$this->_cache[$pk] = JArrayHelper::toObject($properties, 'JObject');
+            // Convert to the JObject before adding other data.
+            $properties        = $table->getProperties(1);
+            $this->_cache[$pk] = JArrayHelper::toObject($properties, 'JObject');
 
-			// Convert the params field to an array.
-			$registry = new JRegistry;
+            // Convert the params field to an array.
+            $registry = new JRegistry;
 
-			$registry->loadString($table->params);
-			$this->_cache[$pk]->params = $registry->toObject();
+            $registry->loadString($table->params);
+            $this->_cache[$pk]->params = $registry->toObject();
 
-			// Determine the page assignment mode.
-			$query	= $db->getQuery(true)
-				->select($db->quoteName('menuid'))
-				->from($db->quoteName('#__modules_menu'))
-				->where($db->quoteName('moduleid') . ' = ' . (int) $pk);
-			$db->setQuery($query);
-			$assigned = $db->loadColumn();
+            // Determine the page assignment mode.
+            $query	= $db->getQuery(true)
+                ->select($db->quoteName('menuid'))
+                ->from($db->quoteName('#__modules_menu'))
+                ->where($db->quoteName('moduleid') . ' = ' . (int) $pk);
+            $db->setQuery($query);
+            $assigned = $db->loadColumn();
 
-			if (empty($pk))
-			{
-				// If this is a new module, assign to all pages.
-				$assignment = 0;
-			}
-			elseif (empty($assigned))
-			{
-				// For an existing module it is assigned to none.
-				$assignment = '-';
-			}
-			else
-			{
-				if ($assigned[0] > 0)
-				{
-					$assignment = 1;
-				}
-				elseif ($assigned[0] < 0)
-				{
-					$assignment = -1;
-				}
-				else
-				{
-					$assignment = 0;
-				}
-			}
+            if (empty($pk))
+            {
+                // If this is a new module, assign to all pages.
+                $assignment = 0;
+            }
+            elseif (empty($assigned))
+            {
+                // For an existing module it is assigned to none.
+                $assignment = '-';
+            }
+            else
+            {
+                if ($assigned[0] > 0)
+                {
+                    $assignment = 1;
+                }
+                elseif ($assigned[0] < 0)
+                {
+                    $assignment = -1;
+                }
+                else
+                {
+                    $assignment = 0;
+                }
+            }
 
-			$this->_cache[$pk]->assigned   = $assigned;
-			$this->_cache[$pk]->assignment = $assignment;
-			$website=JFactory::getWebsite();
-			// Get the module XML.
-			$client = JApplicationHelper::getClientInfo($table->client_id);
-			$module_path='modules/website/website_'.$website->website_id.'/' . $table->module;
-			$xml_module_path= $module_path. '/' . $table->module . '.xml';
-			if(!JFolder::exists(JPATH_ROOT.DS.$module_path))
-			{
-				$xml_module_path= 'modules/' .$table->module.DS. $table->module . '.xml';
-			}
+            $this->_cache[$pk]->assigned   = $assigned;
+            $this->_cache[$pk]->assignment = $assignment;
+            $website=JFactory::getWebsite();
+            // Get the module XML.
+            $client = JApplicationHelper::getClientInfo($table->client_id);
+            require_once JPATH_ROOT.'/components/com_website/helpers/website.php';
+            $website_name=websiteHelperFrontEnd::get_website_name_by_website_id($website->website_id);
+            $module_path='modules/website/website_'.$website_name.'/' . $table->module;
+            $xml_module_path= $module_path. '/' . $table->module . '.xml';
+            if(!JFolder::exists(JPATH_ROOT.DS.$module_path))
+            {
+                $xml_module_path= 'modules/' .$table->module.DS. $table->module . '.xml';
+            }
 
-			$path   = JPath::clean($client->path.DS .$xml_module_path );
-			if (file_exists($path))
-			{
+            $path   = JPath::clean($client->path.DS .$xml_module_path );
+            if (file_exists($path))
+            {
 
-				$this->_cache[$pk]->xml = simplexml_load_file($path);
-			}
-			else
-			{
-				$this->_cache[$pk]->xml = null;
-			}
-		}
-		return $this->_cache[$pk];
-	}
+                $this->_cache[$pk]->xml = simplexml_load_file($path);
+            }
+            else
+            {
+                $this->_cache[$pk]->xml = null;
+            }
+        }
+        return $this->_cache[$pk];
+    }
 
 	/**
 	 * Get the necessary data to load an item help screen.

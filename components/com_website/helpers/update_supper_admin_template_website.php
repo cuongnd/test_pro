@@ -117,12 +117,12 @@ class update_supper_admin_template_website
         $website=JFactory::getWebsite();
         $website_id=$website->website_id;
         $ok=true;
-        $next_function='config_modules';
+        //$next_function='change_params_blocks';
         if(method_exists('update_supper_admin_template_website',$next_function))
         {
             $ok= call_user_func_array(array('update_supper_admin_template_website', $next_function), array($website_id,$template_supper_admin_website_id));
         }
-        die;
+        //die;
         if($ok)
         {
             $session->set('function_update_supper_admin_template_website',$next_function);
@@ -798,9 +798,11 @@ class update_supper_admin_template_website
             }else{
                 $table_module_menu->menuid=null;
             }
-            $ok = $table_module_menu->store(true);
-            if (!$ok) {
-                throw new Exception($table_module_menu->getError());
+            if($table_module_menu->moduleid) {
+                $ok = $table_module_menu->store(true);
+                if (!$ok) {
+                    throw new Exception($table_module_menu->getError());
+                }
             }
 
         }
@@ -895,6 +897,84 @@ class update_supper_admin_template_website
         }
         return true;
     }
+    private function change_params_blocks($website_id,$template_supper_admin_website_id){
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('position_config.id,position_config.parent_id,position_config.supper_admin_block_id')
+            ->from('#__position_config AS position_config');
+        $db->setQuery($query);
+        $list_position=$db->loadObjectList();
+
+        $list_position_config = $db->loadObjectList();
+        $children_position = array();
+        foreach ($list_position_config as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_position[$pt] ? $children_position[$pt] : array();
+            array_push($list, $v);
+            $children_position[$pt] = $list;
+        }
+        $list_root_position = $children_position['list_root'];
+        unset($children_position['list_root']);
+
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('position_id')
+            ->from('#__root_position_id_website_id')
+            ->where('website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $root_position_id=$db->loadResult();
+        $list_position_of_website=array();
+        $change_params_blocks=function($function_call_back, &$list_position_id_of_website=array(), $root_position_id=0, $children_position=array(), $level=0, $max_level=999){
+            if ($children_position[$root_position_id]) {
+                $level1=$level+1;
+                foreach ($children_position[$root_position_id] as $v) {
+                    if($v->supper_admin_block_id) {
+                        $root_position_id1 = $v->id;
+                        $list_position_id_of_website[] = $root_position_id1;
+                        $function_call_back($function_call_back, $list_position_id_of_website, $root_position_id1, $children_position, $level1, $max_level);
+                    }
+
+                }
+            }
+        };
+        $change_params_blocks($change_params_blocks,$list_position_of_website,$root_position_id,$children_position);
+        $table_position=JTable::getInstance('positionnested');
+        JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_utility/models');
+        JForm::addFormPath(JPATH_ROOT.'/components/com_utility/models/forms');
+        $model_position=JModelLegacy::getInstance('uposition','UtilityModel');
+        $app=JFactory::getApplication();
+        $db->rebuild_action=1;
+        foreach($list_position_of_website as $position_id)
+        {
+            $app->input->set('id',$position_id);
+            $model_position->setState('position.id',$position_id);
+            $item=$model_position->getItem($position_id);
+            $form=$model_position->getForm((array)$item,false);
+            $form->bind((array)$item);
+
+            $position_control=JControlHelper::get_position_control_by_position_id($position_id);
+            $main_control_block=JControlHelper::get_main_control_element();
+            block_helper::change_property_position_by_fields($website_id,$form,$position_control->fields,$main_control_block->fields);
+            $item=clone $form->getData();
+
+            $item=$item->toObject();
+
+            $params = new JRegistry;
+            $params->loadObject($item->params);
+            $item->params = $params->toString();
+            $table_position->bind((array)$item);
+            $table_position->id=$position_id;
+            $ok=$table_position->parent_store();
+            if (!$ok) {
+                throw new Exception($table_position->getError());
+            }
+
+        }
+        return true;
+    }
     private function change_params_modules($website_id,$template_supper_admin_website_id){
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
@@ -974,13 +1054,15 @@ class update_supper_admin_template_website
         {
             $app->input->set('id',$module->id);
             $module_model->setState('module.id',$module->id);
-            $item=$module_model->getItem();
-            $form=$module_model->getForm();
+            $item=$module_model->getItem($module->id);
+
+            $form=$module_model->getForm(array(),false);
             $form->bind($item);
             $module_control=JControlHelper::get_control_module_by_module_id($item->id);
             JModuleHelper::change_property_module_by_fields($website_id,$form,$module_control->fields,$main_table_control->fields);
             $item=clone $form->getData();
             $item=$item->toObject();
+
             $params = new JRegistry;
             $params->loadObject($item->params);
             $item->params = $params->toString();
@@ -1194,6 +1276,7 @@ class update_supper_admin_template_website
         $steps[] = 'change_params_components';
         $steps[] = 'change_params_plugins';
         $steps[] = 'change_params_blocks';
+        $steps[] = 'rebuild_blocks';
         $steps[] = 'copy_ContentCategory';
         $steps[] = 'finish';
         return $steps;

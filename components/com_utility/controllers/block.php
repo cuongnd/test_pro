@@ -38,7 +38,7 @@ class UtilityControllerBlock extends JControllerForm
         $tablePosition = JTable::getInstance('positionnested');
         $website = JFactory::getWebsite();
         $tablePosition->webisite_id = $website->website_id;
-        $parentId = $tablePosition->getRootId();
+        $parentId = $tablePosition->get_root_id();
 
         $query = $db->getQuery(true);
         $query->select('position_config.id,position_config.menu_item_id,position_config.screensize,position_config.lft,position_config.rgt')

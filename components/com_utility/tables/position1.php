@@ -155,7 +155,7 @@ class JTablePosition extends JTablePositionNested
     public function store($updateNulls = false)
     {
         $db = JFactory::getDbo();
-        $rootId=$this->getRootId();
+        $rootId=$this->get_root_id();
 
         if($rootId==false)
         {
@@ -351,16 +351,16 @@ class JTablePosition extends JTablePositionNested
      * Method to recursively rebuild the whole nested set tree.
      *
      * @param  $menu_type_id 
-     * @param integer $parentId The root of the tree to rebuild.
+     * @param integer $parent_id The root of the tree to rebuild.
      * @param integer $leftId The left id to start with in building the tree.
      * @param integer $level The level to assign to the current nodes.
      * @param string $path The path to the current nodes.
      *
      * @return integer 1 + value of root rgt on success, false on failure
      */
-    function rebuild($parentId = null, $leftId = 0, $level = 0, $path = '')
+    function rebuild($parent_id = null, $leftId = 0, $level = 0, $path = '')
     {
-        return parent::rebuild( $parentId, $leftId, $level, $path);
+        return parent::rebuild( $parent_id, $leftId, $level, $path);
     }
 
     /**

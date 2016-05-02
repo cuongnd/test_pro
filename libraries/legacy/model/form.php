@@ -161,7 +161,6 @@ abstract class JModelForm extends JModelLegacy
 
 		// Create a signature hash.
 		$hash = md5($source . serialize($options));
-
 		// Check if we can use a previously loaded form.
 		if (isset($this->_forms[$hash]) && !$clear)
 		{
@@ -176,12 +175,10 @@ abstract class JModelForm extends JModelLegacy
 
 		try
 		{
-
-
 			$form = JForm::getInstance($name, $source, $options, false, $xpath);
-
 			if (isset($options['load_data']) && $options['load_data'])
 			{
+
 				// Get the data for the form.
 				$data = $this->loadFormData();
 

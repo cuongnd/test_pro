@@ -365,6 +365,7 @@ abstract class JFormField
         return array(
             'menu',
             'menuitem',
+            'showinpage',
             'selectblock'
         );
     }

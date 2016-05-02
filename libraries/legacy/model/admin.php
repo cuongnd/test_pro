@@ -292,7 +292,7 @@ abstract class JModelAdmin extends JModelForm
 					?>
 
 					<field type="<?php echo $item->type?$item->type:'text' ?>" readonly="<?php echo $item->readonly==1?'true':'false' ?>" label="<?php echo $item->label ?>" default="<?php echo $item->default ?>"
-						   name="<?php echo $name ?>" onchange="<?php echo strtolower($item->onchange) ?>"
+						   name="<?php echo $name ?>" <?php if($item->onchange){ ?> onchange="<?php echo strtolower($item->onchange) ?>" <?php } ?>
 
 
 						<?php
@@ -317,7 +317,7 @@ abstract class JModelAdmin extends JModelForm
 						} ?>
 					</field>
 					<field type="checkbox" label="<?php echo $item->label ?>" default="0"
-						   name="enable_<?php echo $name ?>" onchange="<?php echo strtolower($item->onchange) ?>">
+						   name="enable_<?php echo $name ?>" <?php if($item->onchange){ ?> onchange="<?php echo strtolower($item->onchange) ?>" <?php } ?> >
 
 					</field>
 					<?php

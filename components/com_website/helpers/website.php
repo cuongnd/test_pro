@@ -595,7 +595,7 @@ class websiteHelperFrontEnd
         $menuItemActiveId = $menu->getActive()->id;
 
 
-        $rootId = $tablePosition->getRootId();
+        $rootId = $tablePosition->get_root_id();
         if ($os == 'android') {
 
             $modules = JModuleHelper::load();

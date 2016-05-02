@@ -353,18 +353,33 @@ class JPath
 		return $component_url;
 	}
 
-	public static function get_module_path($module,$root=true)
+	public static function get_module_path($module_name, $root=true)
 	{
 		jimport('joomla.filesystem.folder');
         $website_name=JFactory::get_website_name();
-		$module_path='modules/website/website_'.$website_name.'/'.$module;
+		$module_path='modules/website/website_'.$website_name.'/'.$module_name;
 		if(!JFolder::exists(JPATH_ROOT.DS.$module_path))
 		{
-			$module_path='modules/'.$module;
+			$module_path='modules/'.$module_name;
 		}
 		if($root)
 		{
 			$module_path=JPATH_ROOT.DS.$module_path;
+		}
+		return $module_path;
+	}
+	public static function get_url_module_path($module_name, $root=true)
+	{
+		jimport('joomla.filesystem.folder');
+        $website_name=JFactory::get_website_name();
+		$module_path='modules/website/website_'.$website_name.'/'.$module_name;
+		if(!JFolder::exists(JPATH_ROOT.DS.$module_path))
+		{
+			$module_path='modules/'.$module_name;
+		}
+		if($root)
+		{
+			$module_path=JUri::root().DS.$module_path;
 		}
 		return $module_path;
 	}
