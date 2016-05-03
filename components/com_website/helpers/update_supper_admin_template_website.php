@@ -117,7 +117,7 @@ class update_supper_admin_template_website
         $website=JFactory::getWebsite();
         $website_id=$website->website_id;
         $ok=true;
-        //$next_function='change_params_blocks';
+        //$next_function='copy_blocks';
         if(method_exists('update_supper_admin_template_website',$next_function))
         {
             $ok= call_user_func_array(array('update_supper_admin_template_website', $next_function), array($website_id,$template_supper_admin_website_id));
@@ -498,7 +498,7 @@ class update_supper_admin_template_website
         $db->setQuery($query);
         $root_position=$db->loadObject();
         $query->clear()
-            ->select('menu.id,menu.parent_id,menu.supper_admin_menu_item_id')
+            ->select('menu.id,menu.parent_id,menu.supper_admin_menu_item_id,menu.title')
             ->from('#__menu AS menu')
         ;
         $list_menu_item=$db->setQuery($query)->loadObjectList('id');
@@ -526,7 +526,6 @@ class update_supper_admin_template_website
         ;
         $db->setQuery($query);
         $list_current_website_root_menu_item_id=$db->loadColumn();
-
         $list_menu_item_of_website=array();
         foreach($list_current_website_root_menu_item_id as $root_menu_item_id)
         {
@@ -541,8 +540,9 @@ class update_supper_admin_template_website
                     if($sub_menu_item->supper_admin_menu_item_id)
                     {
                         $list_menu_item_of_website[$sub_menu_item->supper_admin_menu_item_id]=$sub_menu_item;
+                        $function_call_back($function_call_back,$list_menu_item_of_website,$sub_menu_item->id,$children_menu_item);
                     }
-                    $function_call_back($function_call_back,$list_menu_item_of_website,$children_menu_item);
+
 
                 }
             };
@@ -562,7 +562,6 @@ class update_supper_admin_template_website
             array_push($list, $v);
             $children_position_config[$pt] = $list;
         }
-
         $insert_position_current_website=function($function_call_back, $website_id, $list_menu_item_of_website, $root_supper_admin_website_position_id=0, $root_current_website_position_id, $children_position_config, $level=0, $max_level=999){
             $table_position=JTable::getInstance('positionnested');
             foreach($children_position_config[$root_supper_admin_website_position_id] as $position)
@@ -575,7 +574,11 @@ class update_supper_admin_template_website
                 $table_position->supper_admin_block_id = $position->id;
                 $table_position->copy_from = $position->id;
                 $menu_item_id=$table_position->menu_item_id;
-                $table_position->menu_item_id = $list_menu_item_of_website[$menu_item_id]->id;
+                $menu_item_id=$list_menu_item_of_website[$menu_item_id]->id;
+                if($menu_item_id)
+                {
+                    $table_position->menu_item_id =$menu_item_id ;
+                }
                 $ok = $table_position->parent_store();
                 if (!$ok) {
                     throw new Exception($table_position->getError());
@@ -808,6 +811,102 @@ class update_supper_admin_template_website
         }
         return true;
 
+    }
+    private function rebuild_blocks($website_id,$template_supper_admin_website_id){
+        require_once JPATH_ROOT.'/components/com_utility/helper/block_helper.php';
+        require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
+        MenusHelperFrontEnd::remove_all_menu_not_exists_menu_type();
+        block_helper::remove_all_block_not_exists_menu_item();
+        require_once JPATH_ROOT.'/components/com_utility/controllers/block.php';
+        UtilityControllerBlock::fix_screen_size();
+
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('menu.id,menu.parent_id,menu.supper_admin_menu_item_id')
+            ->from('#__menu AS menu');
+        $db->setQuery($query);
+        $list_menu_item = $db->loadObjectList();
+        $children_menu_item = array();
+        foreach ($list_menu_item as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_menu_item[$pt] ? $children_menu_item[$pt] : array();
+            array_push($list, $v);
+            $children_menu_item[$pt] = $list;
+        }
+        $list_root_menu_item = $children_menu_item['list_root'];
+        unset($children_menu_item['list_root']);
+        //get root position of current website
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('menu_type_id_menu_id.menu_id')
+            ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
+            ->innerJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+            ->where('menu_types.website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $list_root_menu_item_id = $db->loadColumn();
+
+        $get_menu_item_of_website=function($function_call_back, $menu_item_id=0, &$list_menu_item_of_website, $children_menu_item=array(), $level=0, $max_level=999){
+            if ($children_menu_item[$menu_item_id]) {
+                $level1=$level+1;
+                foreach ($children_menu_item[$menu_item_id] as $menu_item) {
+                    if($menu_item->supper_admin_menu_item_id) {
+                        $list_menu_item_of_website[$menu_item->supper_admin_menu_item_id] = $menu_item;
+                        $menu_item_id_1 = $menu_item->id;
+                        $function_call_back($function_call_back, $menu_item_id_1, $list_menu_item_of_website, $children_menu_item, $level1, $max_level);
+                    }
+                }
+            }
+        };
+        $list_menu_item_of_website=array();
+        foreach($list_root_menu_item_id AS $root_menu_item_id)
+        {
+            $get_menu_item_of_website($get_menu_item_of_website,$root_menu_item_id,$list_menu_item_of_website,$children_menu_item);
+        }
+        $table_menu = JTable::getInstance('menu');
+        JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_menus/models');
+        $menu_model = JModelLegacy::getInstance('uitem','MenusModel');
+        JForm::addFormPath(JPATH_ROOT.'/components/com_menus/models/forms');
+        $app=JFactory::getApplication();
+        foreach($list_menu_item_of_website AS $menu_item)
+        {
+
+            $app->input->set('id',$menu_item->id);
+            $menu_model->setState('item.id',$menu_item->id);
+            $item=$menu_model->getItem($menu_item->id);
+            $form=$menu_model->getForm((array)$item,true);
+            $field_sets = $form->getFieldset();
+            foreach ($field_sets as $field) {
+                $field_name = $field->__get('fieldname');
+                $group = $field->__get('group');
+                $function='get_new_value_by_old_value';
+                if(method_exists($field,$function)) {
+
+                    $new_value = $field->get_new_value_by_old_value($website_id);
+                    $form->setValue($field_name, $group, $new_value);
+                }
+
+            }
+
+            $item =clone $form->getData();
+            $item = $item->toObject();
+            $params = new JRegistry;
+            $params->loadObject($item->params);
+            $item->params = $params->toString();
+            $table_menu->bind($item);
+
+            $ok = $table_menu->parent_store();
+            if (!$ok) {
+                self::$error = $table_menu->getError();
+                return false;
+            }
+
+
+        }
+
+        return true;
     }
     private function change_params_menus($website_id,$template_supper_admin_website_id){
         $db=JFactory::getDbo();
@@ -1276,7 +1375,7 @@ class update_supper_admin_template_website
         $steps[] = 'change_params_components';
         $steps[] = 'change_params_plugins';
         $steps[] = 'change_params_blocks';
-        $steps[] = 'rebuild_blocks';
+        //$steps[] = 'rebuild_blocks';
         $steps[] = 'copy_ContentCategory';
         $steps[] = 'finish';
         return $steps;

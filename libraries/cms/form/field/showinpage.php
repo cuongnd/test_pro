@@ -253,6 +253,7 @@ class JFormFieldShowInPage extends JFormFieldGroupedList
 
             $list_menu_item_id_exclusion_root_of_website = array();
             foreach ($list_root_menu_item_id as $root_menu_item_id) {
+                $list_menu_item_id_exclusion_root_of_website[]=$root_menu_item_id;
                 $get_menu_item_exclusion_root_of_website($get_menu_item_exclusion_root_of_website, $root_menu_item_id, $list_menu_item_id_exclusion_root_of_website, $list_menu_item);
             }
 
