@@ -281,7 +281,7 @@ if ($enableEditWebsite) {
 
 			};
 		';
-	$doc->addScriptDeclaration($js);
+	$doc->addScriptDeclaration($js,'','script_template_field');
 	if (!$ajaxGetContent) {
 
 		JHtml::_('jquery.framework');

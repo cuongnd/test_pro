@@ -540,6 +540,7 @@ class MenusModelItem extends JModelAdmin
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
+
 		// The folder and element vars are passed when saving the form.
 		if (empty($data))
 		{
@@ -879,12 +880,11 @@ class MenusModelItem extends JModelAdmin
 	 * @since   1.6
 	 * @throws    Exception if there is an error in the form event.
 	 */
-	protected function preprocessFormpreprocessForm(JForm $form, $data, $group = 'content')
+	protected function preprocessForm(JForm $form, $data, $group = 'content')
 	{
 		$link = $this->getState('item.link');
 		$type = $this->getState('item.type');
 		$formFile = false;
-
 		// Initialise form with component view params if available.
 		if ($type == 'component')
 		{
@@ -898,13 +898,12 @@ class MenusModelItem extends JModelAdmin
 			// Confirm that the option is defined.
 			$option = '';
 			$base = '';
-			$website=JFactory::getWebsite();
+			$website_name=JFactory::get_website_name();
 			if (isset($args['option']))
 			{
 				// The option determines the base path to work with.
 				$option = $args['option'];
-
-				$base = JPATH_SITE . '/components/website/website_'.$website->website_id.'/' . $option;
+				$base = JPATH_SITE . '/components/website/website_'.$website_name.'/' . $option;
 				jimport('joomla.filesystem.folder');
 				if(!JFolder::exists($base))
 				{
@@ -913,6 +912,7 @@ class MenusModelItem extends JModelAdmin
 			}
 			// Confirm a view is defined.
 			$formFile = false;
+
 			if (isset($args['view']))
 			{
 				$view = $args['view'];

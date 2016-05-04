@@ -399,7 +399,16 @@ class MenusControllerItem extends JControllerForm
         foreach ($form['params'] as $keyParam => $valueParam) {
             $params->set($keyParam, trim($valueParam));
         }
-        $form['params'] = json_encode($params);
+        $form['params'] = $params->toString();
+
+
+
+        $params_configviewlayout = new JRegistry;
+        $params_configviewlayout->loadString($tableMenuItem->configviewlayout);
+        foreach ($form['configviewlayout'] as $keyParam_configviewlayout => $valueParam_configviewlayout) {
+            $params_configviewlayout->set($keyParam_configviewlayout, trim($valueParam_configviewlayout));
+        }
+        $form['configviewlayout'] = base64_encode($params_configviewlayout->toString());
 
 
         $tableMenuItem->bind($form);
@@ -410,7 +419,7 @@ class MenusControllerItem extends JControllerForm
         if (!$tableMenuItem->store()) {
             echo $tableMenuItem->getError();
         }
-
+        echo "save complated";
         die;
     }
 

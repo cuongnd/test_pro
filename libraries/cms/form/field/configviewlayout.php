@@ -280,8 +280,7 @@ class JFormFieldConfigViewLayout extends JFormField
                         }
 
                         $item_field = $form->getField($item->name, $group);
-
-                        if ($string_params == 'params') {
+                        if ($string_params == 'configviewlayout') {
 
                             $setup_value_enable = $form->getData()->get($group.'.enable_' . $name );
                             $setup_value_enable = $setup_value_enable == 'on' ? 1 : 0;
@@ -393,6 +392,7 @@ XML;
         $data_source_id = $this->form->getData()->get('params')->data->bindingSource;
         $mode_select_column = $this->form->getData()->get('params')->config_update_data;
         require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+        require_once JPATH_ROOT.'/libraries/joomla/form/fields/radioyesno.php';
         $object_mode_select_column = up_json_decode($mode_select_column, false, 512, JSON_PARSE_JAVASCRIPT);
         require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
         $maxDepth=(int)$this->element['maxDepth'];
@@ -454,7 +454,6 @@ XML;
             $table_extensions->store();
 
         }
-
         $fields = $table_extensions->fields;
         $fields = base64_decode($fields);
 		
@@ -464,11 +463,10 @@ XML;
         if (!count($fields)) {
             $fields = array(new stdClass());
         }
-
         ob_start();
         JUtility::render_to_xml($fields);
         $string_xml=ob_get_clean();
-        $string_xml='<?xml version="1.0" encoding="utf-8"?> <metadata>'.$string_xml.'</metadata>';
+        $string_xml='<?xml version="1.0" encoding="utf-8"?> <metadata><fields name="configviewlayout">'.$string_xml.'</fields></metadata>';
         jimport('joomla.filesystem.file');
 
 
@@ -478,6 +476,7 @@ XML;
         $config_value_setup=base64_decode($this->value);
         $param_config_value_setup = new JRegistry;
         $param_config_value_setup->loadString($config_value_setup);
+        $this->form->setValue('configviewlayout','',json_decode($config_value_setup));
         $scriptId = "script_field_configviewlayout_" . $data->get('id',0);
         ob_start();
         ?>
@@ -523,7 +522,7 @@ XML;
                 </div>
 
                 <div class="properties view-layout">
-                    <?php echo JFormFieldConfigViewLayout::stree_node_xml($fields, $data->get('id',0), '', '', $this->form,$param_config_value_setup); ?>
+                    <?php echo JFormFieldConfigViewLayout::stree_node_xml($fields, $data->get('id',0), 'configviewlayout', '', $this->form,$param_config_value_setup); ?>
                 </div>
                 <input type="hidden" name="menu_item_id" value="<?php echo $data->get('id',0) ?>">
 

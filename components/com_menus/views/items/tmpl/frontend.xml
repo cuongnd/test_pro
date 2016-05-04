@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?> <metadata><fields name="configviewlayout">
+                    <field type="menu" readonly="false" label="Menu type" default=""
+                           name="layout_menu_type_id" onchange=""
+
+
+                                                     multiple="false"                                                      size="1"                                                 >
+                                            </field>
+                    <field type="checkbox" label="Menu type" default="0"
+                           name="enable_layout_menu_type_id" onchange="">
+
+                    </field>
+                    </fields></metadata>

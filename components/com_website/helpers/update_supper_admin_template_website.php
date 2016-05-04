@@ -12,6 +12,7 @@ class update_supper_admin_template_website
     public static  $error=null;
     public static function update_current_website_from_supper_admin_template_website($website_id)
     {
+        $user=JFactory::getUser();
         //update_supper_admin_template_website::remove_duplicate_row();
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
@@ -20,7 +21,7 @@ class update_supper_admin_template_website
             ->where('id='.(int)$website_id);
         $db->setQuery($query);
         $supper_admin_request_update=$db->loadResult();
-        if(!$supper_admin_request_update)
+        if(!$supper_admin_request_update || !$user->id)
         {
             return;
         }

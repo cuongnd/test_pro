@@ -45,7 +45,6 @@ class MenusViewItems extends JViewLegacy
 				break;
 
 		}
-
 		$lang 		= JFactory::getLanguage();
 		$this->items		= $this->get('Items');
         //echo $this->get('ListQuery')->dump();

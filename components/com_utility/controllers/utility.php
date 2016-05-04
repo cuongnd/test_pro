@@ -119,8 +119,6 @@ class UtilityControllerUtility extends UtilityController
 
     public function update_menu_item_from_root_menu($list_position, $menu_item_active_id = 0)
     {
-        echo "dgsfsdf";
-        die;
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         if (count($list_position)) {
