@@ -86,6 +86,9 @@ $sortFields = $this->getSortFields();
                         <th class="title">
                             <?php echo JText::_('Is template Supper admin') ?>
                         </th>
+                        <th class="title">
+                            <?php echo JText::_('request update supper admin') ?>
+                        </th>
                         <th width="1%" class="nowrap center hidden-phone">
                             <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
                         </th>
@@ -166,6 +169,17 @@ $sortFields = $this->getSortFields();
 
                                 ?>
                                 <?php echo JHtml::_('jgrid.state',$states, $item->is_template_supper_admin, $i, 'websites.', $canChange); ?>
+                            </td>
+                            <td>
+                                <?php
+                                if(!$item->is_template_supper_admin) {
+                                    $states = array(
+                                        1 => array('disable_supper_admin_request_update', 'disable supper admin request update', 'disable supper admin request update', 'disable supper admin request update', true, 'publish', 'publish'),
+                                        0 => array('enable_supper_admin_request_update', 'enable supper admin request update', 'enable supper admin request update', 'enable supper admin request update', true, 'unpublish', 'unpublish')
+                                    );
+                                    echo JHtml::_('jgrid.state',$states, $item->supper_admin_request_update, $i, 'websites.', $canChange);
+                                }
+                                ?>
                             </td>
                             <td class="center hidden-phone">
                                 <?php echo (int)$item->id; ?>

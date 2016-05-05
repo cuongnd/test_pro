@@ -441,7 +441,7 @@ class MenusControllerItem extends JControllerForm
                 ->from('#__components AS com')
                 ->leftJoin('#__menu_types AS mt ON mt.website_id=com.website_id')
                 ->where('mt.id=' . (int)$menu_type_id)
-                ->where('com.element=' . $query->quote($component))
+                ->where('com.name=' . $query->quote($component))
                 ->where('com.enabled=1');
             $db->setQuery($query);
             $result = $db->loadResult();
@@ -711,8 +711,7 @@ class MenusControllerItem extends JControllerForm
         $app = JFactory::getApplication();
         $form = $app->input->get('jform', array(), 'array');
         $form['params']=json_encode($form['params']);
-        JTable::addIncludePath(JPATH_ROOT . '/components/com_menus/tables');
-        $table_menu_item = JTable::getInstance('Menu', 'MenusTable');
+        $table_menu_item = JTable::getInstance('Menu');
         $table_menu_item->load($form['id']);
         $table_menu_item->bind($form);
 

@@ -21,7 +21,12 @@ class update_supper_admin_template_website
             ->where('id='.(int)$website_id);
         $db->setQuery($query);
         $supper_admin_request_update=$db->loadResult();
-        if(!$supper_admin_request_update || !$user->id)
+        $enableEditWebsite = UtilityHelper::getEnableEditWebsite();
+        if($enableEditWebsite)
+        {
+            return;
+        }
+        if(!$supper_admin_request_update || !$user->id )
         {
             return;
         }
@@ -118,7 +123,7 @@ class update_supper_admin_template_website
         $website=JFactory::getWebsite();
         $website_id=$website->website_id;
         $ok=true;
-        //$next_function='copy_blocks';
+        //$next_function='copy_modules';
         if(method_exists('update_supper_admin_template_website',$next_function))
         {
             $ok= call_user_func_array(array('update_supper_admin_template_website', $next_function), array($website_id,$template_supper_admin_website_id));
@@ -739,7 +744,7 @@ class update_supper_admin_template_website
         $list_module_of_current_website = $db->loadObjectList('supper_admin_module_id');
         $query=$db->getQuery(true);
         $query->clear()
-            ->select('menu.id,menu.parent_id,menu.supper_admin_menu_item_id')
+            ->select('menu.id,menu.parent_id,menu.supper_admin_menu_item_id,menu.title')
             ->from('#__menu AS menu');
         $db->setQuery($query);
         $list_menu_item = $db->loadObjectList();
@@ -796,6 +801,7 @@ class update_supper_admin_template_website
         {
             $table_module_menu->id=0;
             $table_module_menu->moduleid=$list_module_of_current_website[$item->moduleid]->id;
+
             if($item->menuid)
             {
                 $table_module_menu->menuid=$list_menu_item_of_website[$item->menuid]->id;
@@ -807,7 +813,9 @@ class update_supper_admin_template_website
                 if (!$ok) {
                     throw new Exception($table_module_menu->getError());
                 }
+            }else{
             }
+
 
         }
         return true;
@@ -1223,7 +1231,6 @@ class update_supper_admin_template_website
         jimport('joomla.filesystem.folder');
         $website_name=websiteHelperFrontEnd::get_website_name_by_website_id($website_id);
         $website_template_name=websiteHelperFrontEnd::get_website_name_by_website_id($template_supper_admin_website_id);
-
         foreach ($list_modules AS $module) {
 
             $table_module->load($module->module_supper_admin_module_id);

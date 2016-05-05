@@ -43,6 +43,19 @@ class MenusViewItems extends JViewLegacy
 				parent::display($tpl);
 				return;
 				break;
+		}
+		switch ($layout) {
+			case "frontend":
+
+                $app=JFactory::getApplication();
+                $menu=$app->getMenu();
+                $active_menu_item=$menu->getActive();
+                $configviewlayout=$active_menu_item->configviewlayout;
+                $menu_type_id=$configviewlayout->get('menu_type_id',0);
+                $this->items		= MenusHelperFrontEnd::get_list_all_menu_item_by_menu_type_id($menu_type_id);
+				parent::display($tpl);
+				return;
+				break;
 
 		}
 		$lang 		= JFactory::getLanguage();

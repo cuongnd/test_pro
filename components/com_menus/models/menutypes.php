@@ -50,7 +50,7 @@ class MenusModelMenutypes extends JModelLegacy
 		// Get the list of components.
 		$db = JFactory::getDbo();
 		$query =$db->getQuery(true);
-		$query->select('com.id,com.name, com.element AS ' . $db->quoteName('option'))
+		$query->select('com.id,com.name, com.name AS ' . $db->quoteName('option'))
 			->from('#__components AS com')
 			->where('com.enabled = 1')
 			->where('com.website_id='.(int)$website_id)

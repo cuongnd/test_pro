@@ -217,6 +217,34 @@ class supperadminModelWebsite extends JModelAdmin
 
         return true;
     }
+    public function set_state_supper_admin_request_update(&$pk, $value = 1)
+    {
+
+        $dispatcher = JEventDispatcher::getInstance();
+        $user = JFactory::getUser();
+        $table = $this->getTable();
+        $table->reset();
+        $table->id=0;
+        if ($table->load($pk))
+        {
+
+            if (!$this->canEditState($table))
+            {
+                // Prune items that you can't change.
+                unset($pk);
+                JLog::add(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), JLog::WARNING, 'jerror');
+                return false;
+            }
+        }
+        $table->supper_admin_request_update=$value;
+
+        $table->store();
+
+        // Clear the component's cache
+        $this->cleanCache();
+
+        return true;
+    }
 
 
 

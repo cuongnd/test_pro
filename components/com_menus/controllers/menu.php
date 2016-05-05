@@ -90,6 +90,52 @@ class MenusControllerMenu extends JControllerForm
         echo json_encode($result);
         die;
     }
+    public function ajax_delete_menu_type(){
+        $result = new stdClass();
+        $result->e = 0;
+        $website=JFactory::getWebsite();
+        $app      = JFactory::getApplication();
+        $input=$app->input;
+        $menu_type_id=$input->getInt('menu_type_id',0);
+
+
+        $db = JFactory::getDbo();
+
+        $query = $db->getQuery(true);
+        $query->delete_all('#__menu AS menu','menu.*')
+            ->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_id=menu.id')
+            ->where('menu_type_id_menu_id.menu_type_id='.(int)$menu_type_id)
+        ;
+        $db->setQuery($query);
+        $ok = $db->execute();
+        if (!$ok) {
+            $result->e = 1;
+            $result->m = $db->getErrorMsg();
+            echo json_encode($result);
+            die;
+        }
+
+
+
+
+        //delete all extension supper admin
+        $query = $db->getQuery(true);
+        $query->delete('ueb3c_menu_types')
+            ->where('id='.(int)$menu_type_id)
+        ;
+        $db->setQuery($query);
+        $ok = $db->execute();
+        if (!$ok) {
+            $result->e = 1;
+            $result->m = $db->getErrorMsg();
+            echo json_encode($result);
+            die;
+        }
+
+        $result->m = "delete menu type successfully";
+        echo json_encode($result);
+        die;
+    }
 	/**
 	 * Method to save a menu item.
 	 *

@@ -20,9 +20,9 @@ require_once JPATH_ROOT . '/libraries/joomla/form/fields/icon.php';
 $db = JFactory::getDbo();
 $website = JFactory::getWebsite();
 $query = $db->getQuery(true);
-$query->select('menu_types.id as menu_type_id,menu_types.title as title,menu_type_id_menu_id.menu_id AS menu_id')
+$query->select('menu_types.id as menu_type_id,menu_types.title as title,menu_type_id_menu_id.menu_id AS menu_id,menu_types.website_id')
     ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
-    ->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+    ->innerJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
     ->where('menu_types.website_id=' . (int)$website->website_id);
 $list_menu_type = $db->setQuery($query)->loadObjectList('menu_id');
 $query = $db->getQuery(true);
@@ -112,7 +112,7 @@ ob_start();
                             <?php echo JHtml::_('input.button', 'create_new_menu_item', 'create new menu item') ?>
                             <h3><?php echo $root_menu->title ?>(<?php echo $root_menu->menu_type_id ?>
                                 )<i
-                                    class="fa-copy"></i></h3><a title="rebuid menu" href="javascript:void(0)"
+                                    class="fa-copy"></i><button class="btn btn-secondary delete_menu_type" type="button">Delete!</button><button class="btn btn-secondary edit_menu_type" type="button">Edit!</button></h3><a title="rebuid menu" href="javascript:void(0)"
                                                                 data-menu_item_id="<?php echo $root_menu->menu_id ?>"
                                                                 data-menu_type_id="<?php echo $root_menu->menu_type_id ?>"
                                                                 class="rebuild_root_menu"><i

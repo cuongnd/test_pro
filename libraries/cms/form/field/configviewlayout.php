@@ -307,9 +307,6 @@ XML;
 
                             ?>
                             <?php if ($item_field) { ?>
-                                <?php
-                                $item_field->setValue($param_config_value_setup->get($key_path1));
-                                ?>
                                 <div class="form-horizontal property-item">
 
                                     <div class="row">

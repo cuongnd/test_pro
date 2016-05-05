@@ -88,6 +88,7 @@ class supperadminViewwebsites extends JViewLegacy
         JToolbarHelper::publish('websites.publish');
         JToolbarHelper::unpublish('websites.unpublish');
         JToolbarHelper::deleteList('Do you want delete this websites ','websites.delete');
+        JToolbarHelper::custom('websites.request_update_supper_admin','publish','','Set request update supper admin');
 
 
 

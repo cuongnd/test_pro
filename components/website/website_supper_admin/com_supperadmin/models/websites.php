@@ -43,7 +43,8 @@ class supperadminModelwebsites extends JModelList
 				'ordering', 'a.ordering',
 				'client_id', 'a.client_id',
                 'issystem', 'a.issystem',
-                'is_template_supper_admin', 'a.is_template_supper_admin'
+                'is_template_supper_admin', 'a.is_template_supper_admin',
+                'supper_admin_request_update', 'a.supper_admin_request_update'
 			);
 		}
 
@@ -134,7 +135,7 @@ class supperadminModelwebsites extends JModelList
 			$this->getState(
 				'list.select',
 				'a.id,a.title,a.name,a.introtext ,a.issystem, a.checked_out, a.checked_out_time,' .
-					' a.enabled, a.access, a.ordering,a.is_template_supper_admin'
+					' a.enabled, a.access, a.ordering,a.is_template_supper_admin,a.supper_admin_request_update'
 			)
 		)
 			->from($db->quoteName('#__website') . ' AS a')

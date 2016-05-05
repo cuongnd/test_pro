@@ -5,7 +5,6 @@ $db = JFactory::getDbo();
 $query = $db->getQuery(true);
 require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
 $list_menu_type=MenusHelperFrontEnd::get_menu_type_by_website_id($website->website_id);
-
 ?>
 <ul class="nav sub hide">
 
