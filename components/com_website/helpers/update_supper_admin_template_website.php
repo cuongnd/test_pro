@@ -36,11 +36,17 @@ class update_supper_admin_template_website
         ?>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
-                $.update_current_website_from_supper_admin_template_website=function() {
+                $.update_current_website_from_supper_admin_template_website=function(reset,current_step,count_error_ajax) {
+                    if(typeof reset=='undefined')
+                    {
+                        reset=0;
+                    }
                     var data_submit = {};
                     var option_click = {
                         option: "com_website",
-                        task: "utility.ajax_update_current_website_from_supper_admin_template_website"
+                        task: "utility.ajax_update_current_website_from_supper_admin_template_website",
+                        reset:reset,
+                        current_step:current_step
                     };
                     option_click = $.param(option_click);
                     $.ajax({
@@ -65,16 +71,33 @@ class update_supper_admin_template_website
                             if (response.e == 0) {
                                 if (response.finish == 0)
                                 {
-                                    $.update_current_website_from_supper_admin_template_website();
+                                    current_step=response.current_step;
+                                    $.update_current_website_from_supper_admin_template_website('',current_step,count_error_ajax);
                                 }
                             } else if (response.e == 1) {
                                 alert(response.m);
+                            }
+                        },
+                        error: function(request, status, err) {
+                            if (status == "timeout") {
+                                // timeout -> reload the page and try again
+                                console.log("timeout");
+                                $.update_current_website_from_supper_admin_template_website();
+                            } else {
+                                if(count_error_ajax>10)
+                                {
+                                    console.log('too many error ajax');
+                                }else {
+                                    // another error occured
+                                    count_error_ajax++;
+                                    $.update_current_website_from_supper_admin_template_website(1, current_step, count_error_ajax);
+                                }
                             }
                         }
                     });
 
                 };
-                $.update_current_website_from_supper_admin_template_website();
+                $.update_current_website_from_supper_admin_template_website('','',0);
             });
         </script>
         <?php
@@ -90,11 +113,17 @@ class update_supper_admin_template_website
         $response=new stdClass();
         $response->e=0;
         $response->finish=0;
-
+        $app=JFactory::getApplication();
+        $reset=$app->input->getInt('reset',0);
         $steps=update_supper_admin_template_website::getListStep();
         $session=JFactory::getSession();
         $first_step=reset($steps);
+        if($reset)
+        {
+            $session->clear('function_update_supper_admin_template_website');
+        }
         $function=$session->get('function_update_supper_admin_template_website','');
+
         if($function)
         {
             $last_step=end($steps);
@@ -123,7 +152,7 @@ class update_supper_admin_template_website
         $website=JFactory::getWebsite();
         $website_id=$website->website_id;
         $ok=true;
-        //$next_function='copy_modules';
+        //$next_function='rebuild_blocks';
         if(method_exists('update_supper_admin_template_website',$next_function))
         {
             $ok= call_user_func_array(array('update_supper_admin_template_website', $next_function), array($website_id,$template_supper_admin_website_id));
@@ -136,6 +165,7 @@ class update_supper_admin_template_website
             $response->e=1;
             $response->m='you cannot update website'.$next_function.'('. self::$error.')';
         }
+        $response->current_step=$next_function;
         return $response;
 
     }
@@ -824,97 +854,11 @@ class update_supper_admin_template_website
     private function rebuild_blocks($website_id,$template_supper_admin_website_id){
         require_once JPATH_ROOT.'/components/com_utility/helper/block_helper.php';
         require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
-        MenusHelperFrontEnd::remove_all_menu_not_exists_menu_type();
-        block_helper::remove_all_block_not_exists_menu_item();
+        MenusHelperFrontEnd::remove_all_menu_not_exists_menu_type_by_website_id($website_id);
+        block_helper::remove_all_block_not_exists_menu_item_by_website_id($website_id);
         require_once JPATH_ROOT.'/components/com_utility/controllers/block.php';
-        UtilityControllerBlock::fix_screen_size();
-
-        $db=JFactory::getDbo();
-        $query=$db->getQuery(true);
-        $query->clear()
-            ->select('menu.id,menu.parent_id,menu.supper_admin_menu_item_id')
-            ->from('#__menu AS menu');
-        $db->setQuery($query);
-        $list_menu_item = $db->loadObjectList();
-        $children_menu_item = array();
-        foreach ($list_menu_item as $v) {
-            $pt = $v->parent_id;
-            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
-            $list = @$children_menu_item[$pt] ? $children_menu_item[$pt] : array();
-            array_push($list, $v);
-            $children_menu_item[$pt] = $list;
-        }
-        $list_root_menu_item = $children_menu_item['list_root'];
-        unset($children_menu_item['list_root']);
-        //get root position of current website
-        $query=$db->getQuery(true);
-        $query->clear()
-            ->select('menu_type_id_menu_id.menu_id')
-            ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
-            ->innerJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
-            ->where('menu_types.website_id='.(int)$website_id)
-        ;
-        $db->setQuery($query);
-        $list_root_menu_item_id = $db->loadColumn();
-
-        $get_menu_item_of_website=function($function_call_back, $menu_item_id=0, &$list_menu_item_of_website, $children_menu_item=array(), $level=0, $max_level=999){
-            if ($children_menu_item[$menu_item_id]) {
-                $level1=$level+1;
-                foreach ($children_menu_item[$menu_item_id] as $menu_item) {
-                    if($menu_item->supper_admin_menu_item_id) {
-                        $list_menu_item_of_website[$menu_item->supper_admin_menu_item_id] = $menu_item;
-                        $menu_item_id_1 = $menu_item->id;
-                        $function_call_back($function_call_back, $menu_item_id_1, $list_menu_item_of_website, $children_menu_item, $level1, $max_level);
-                    }
-                }
-            }
-        };
-        $list_menu_item_of_website=array();
-        foreach($list_root_menu_item_id AS $root_menu_item_id)
-        {
-            $get_menu_item_of_website($get_menu_item_of_website,$root_menu_item_id,$list_menu_item_of_website,$children_menu_item);
-        }
-        $table_menu = JTable::getInstance('menu');
-        JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_menus/models');
-        $menu_model = JModelLegacy::getInstance('uitem','MenusModel');
-        JForm::addFormPath(JPATH_ROOT.'/components/com_menus/models/forms');
-        $app=JFactory::getApplication();
-        foreach($list_menu_item_of_website AS $menu_item)
-        {
-
-            $app->input->set('id',$menu_item->id);
-            $menu_model->setState('item.id',$menu_item->id);
-            $item=$menu_model->getItem($menu_item->id);
-            $form=$menu_model->getForm((array)$item,true);
-            $field_sets = $form->getFieldset();
-            foreach ($field_sets as $field) {
-                $field_name = $field->__get('fieldname');
-                $group = $field->__get('group');
-                $function='get_new_value_by_old_value';
-                if(method_exists($field,$function)) {
-
-                    $new_value = $field->get_new_value_by_old_value($website_id);
-                    $form->setValue($field_name, $group, $new_value);
-                }
-
-            }
-
-            $item =clone $form->getData();
-            $item = $item->toObject();
-            $params = new JRegistry;
-            $params->loadObject($item->params);
-            $item->params = $params->toString();
-            $table_menu->bind($item);
-
-            $ok = $table_menu->parent_store();
-            if (!$ok) {
-                self::$error = $table_menu->getError();
-                return false;
-            }
-
-
-        }
-
+        UtilityControllerBlock::fix_screen_size_by_website_id($website_id);
+        UtilityControllerBlock::rebuild_website_by_website_id($website_id);
         return true;
     }
     private function change_params_menus($website_id,$template_supper_admin_website_id){
@@ -1383,7 +1327,7 @@ class update_supper_admin_template_website
         $steps[] = 'change_params_components';
         $steps[] = 'change_params_plugins';
         $steps[] = 'change_params_blocks';
-        //$steps[] = 'rebuild_blocks';
+        $steps[] = 'rebuild_blocks';
         $steps[] = 'copy_ContentCategory';
         $steps[] = 'finish';
         return $steps;

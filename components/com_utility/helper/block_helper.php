@@ -120,6 +120,75 @@ class block_helper
             throw new Exception($db->getErrorMsg());
         }*/
     }
+    public static function remove_all_block_not_exists_menu_item_by_website_id($website_id=0)
+    {
+        JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
+        $tablePosition = JTable::getInstance('positionnested');
+        $list_menu_item_id=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website_id);
+        $root_position_id = $tablePosition->get_root_id_by_website_id($website_id);
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('position_config.id,position_config.parent_id,position_config.menu_item_id')
+            ->from('#__position_config AS position_config')
+            ->where('position_config.parent_id=' . (int)$root_position_id)
+            ->where('position_config.parent_id!=position_config.id')
+        ;
+        $db->setQuery($query);
+        $db->rebuild_action=1;
+        $list_position = $db->loadObjectList();
+        $list_delete=array();
+        $list_delete[]=0;
+        foreach($list_position as $position)
+        {
+            if(!in_array($position->menu_item_id,$list_menu_item_id))
+            {
+                array_push($list_delete,$position->id);
+            }
+        }
+        foreach($list_delete as $item)
+        {
+            $action_delete=function($function_call_back, $parent_position_id=0){
+                $db=JFactory::getDbo();
+                $query=$db->getQuery(true);
+                $query->select('id')
+                    ->from('#__position_config')
+                    ->where('parent_id='.(int)$parent_position_id)
+                ;
+                $list_position_id=$db->setQuery($query)->loadColumn();
+                if(count($list_position_id))
+                {
+                    foreach($list_position_id as $position_id)
+                    {
+                        $function_call_back($function_call_back,$position_id);
+
+                    }
+                }else{
+                    $query=$db->getQuery(true);
+                    $query->delete('#__position_config')
+                        ->where('id='.(int)$parent_position_id)
+                    ;
+                    $db->setQuery($query);
+                    $ok=$db->execute();
+                    if(!$ok)
+                    {
+                        throw new Exception($db->getErrorMsg());
+                    }
+
+                }
+            };
+            $action_delete($action_delete,$item);
+
+        }
+       /* $query = $db->getQuery(true);
+        $query->delete('#__position_config')
+            ->where('id IN('.implode(',',$list_delete).')')
+            ;
+        $db->setQuery($query);
+        if(!$db->execute())
+        {
+            throw new Exception($db->getErrorMsg());
+        }*/
+    }
     public static function fix_block()
     {
         $db=JFactory::getDbo();

@@ -25,6 +25,7 @@ $query->select('menu_types.id as menu_type_id,menu_types.title as title,menu_typ
     ->innerJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
     ->where('menu_types.website_id=' . (int)$website->website_id);
 $list_menu_type = $db->setQuery($query)->loadObjectList('menu_id');
+
 $query = $db->getQuery(true);
 $query->select('menu.id,menu.parent_id,menu.ordering,menu.title,menu.link,menu.alias,menu.menu_type_id')
     ->from('#__menu As menu ')

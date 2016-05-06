@@ -1,4 +1,5 @@
 <?php
+return;
 defined('_JEXEC') or die( 'Direct Access to '.basename(__FILE__).' is not allowed.' );
 /*
 * featured/Latest/Topten/Random Products Module

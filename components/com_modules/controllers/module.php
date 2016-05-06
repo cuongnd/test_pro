@@ -163,7 +163,8 @@ class ModulesControllerModule extends JControllerForm
 		$screenSize=UtilityHelper::getCurrentScreenSizeEditing();
 		$tableModule=JTable::getInstance('Module','JTable');
 		$tableModule->id=0;
-		$tableModule->title=$tableExtension->name;
+        require_once JPATH_ROOT.'/libraries/joomla/user/helper.php';
+		$tableModule->title=$tableExtension->name.JUserHelper::genRandomPassword();
 		$tableModule->module=$tableExtension->element;
 		$tableModule->showtitle=1;
 		$tableModule->position='position-'.$position;

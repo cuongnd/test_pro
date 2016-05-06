@@ -111,7 +111,48 @@ class JTablePositionNested extends JTable
 
 	}
 
-	/**
+    private static function create_root_position_by_website_id($website_id)
+    {
+        $db=JFactory::getDbo();
+        $query = $db->getQuery(true);
+
+        $query->insert('#__position_config')
+            ->set('website_id = '.(int)$website_id)
+            ->set('position = '.$query->q('ROOT'))
+            ->set('alias = '.$query->q('ROOT'))
+        ;
+        $db->setQuery($query);
+        if(!$db->execute())
+        {
+            throw new Exception($db->getErrorMsg());
+        }
+        $root_position_id=$db->insertid();
+
+        $query = $db->getQuery(true)
+            ->update('#__position_config')
+            ->set('parent_id = '.(int)$root_position_id)
+            ->where('id='.(int)$root_position_id)
+        ;
+        $db->setQuery($query);
+        if(!$db->execute())
+        {
+            throw new Exception($db->getErrorMsg());
+        }
+        $key='#__position_config.' . $root_position_id;
+        $asset = JTable::getInstance('Asset');
+        $asset->id=0;
+        $asset->name=$key;
+        $asset->website_id=$website_id;
+        $asset->title=$key;
+
+        if(!$asset->store())
+        {
+            throw new Exception($asset->getError());
+        }
+        return $root_position_id;
+    }
+
+    /**
 	 * Sets the debug level on or off
 	 *
 	 * @param   integer  $level  0 = off, 1 = on
@@ -1281,6 +1322,32 @@ class JTablePositionNested extends JTable
         {
 			self::$root_id = $this->createRoot($this->screensize);
 			return self::$root_id;
+
+
+        }
+
+	}
+	public static function get_root_id_by_website_id($website_id)
+	{
+
+        $db=JFactory::getDbo();
+		$query = $db->getQuery(true);
+
+		$query->select('position_id')
+			->from('#__root_position_id_website_id')
+			->where('website_id = '.(int)$website_id)
+		;
+		$root_position_id = $db->setQuery($query)->loadResult();
+
+		if ($root_position_id)
+		{
+			return $root_position_id;
+		}
+        else
+        {
+
+            $root_position_id = self::create_root_position_by_website_id($website_id);
+			return $root_position_id;
 
 
         }

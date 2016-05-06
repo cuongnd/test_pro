@@ -90,6 +90,7 @@ class UtilityControllerUtility extends UtilityController
         $menu_item_active_id = $app->input->get('menu_item_active_id', 0, 'int');
         require_once JPATH_ROOT.'/components/com_utility/helper/block_helper.php';
         require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
+        MenusHelperFrontEnd::remove_all_menu_type_not_exists_menu_item();
         MenusHelperFrontEnd::remove_all_menu_not_exists_menu_type();
         block_helper::remove_all_block_not_exists_menu_item();
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');

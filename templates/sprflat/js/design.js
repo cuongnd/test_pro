@@ -331,7 +331,12 @@ jQuery(document).ready(function ($) {
                         });
                     },
                     success: function (response) {
-                        window.location.href = this_host+'?Itemid='+menuItemActiveId;
+                        if(response==1)
+                        {
+                            alert('rebuild sucessfull');
+                            window.location.href = this_host+'?Itemid='+menuItemActiveId;
+                        }
+
                         //reload website here
                     }
                 });

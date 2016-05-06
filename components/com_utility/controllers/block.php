@@ -61,6 +61,149 @@ class UtilityControllerBlock extends JControllerForm
             $db->setQuery($query)->execute();
         }
     }
+    public static function fix_screen_size_by_website_id($website_id=0)
+    {
+        $app = JFactory::getApplication();
+        $db=JFactory::getDbo();
+        require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
+        JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
+        $tablePosition = JTable::getInstance('positionnested');
+        $root_position_id = $tablePosition->get_root_id_by_website_id($website_id);
+        $query = $db->getQuery(true);
+        $query->select('position_config.id,position_config.menu_item_id,position_config.screensize,position_config.lft,position_config.rgt')
+            ->from('#__position_config AS position_config')
+            ->where('position_config.parent_id=' . (int)$root_position_id)
+            ->where('position_config.id<>position_config.parent_id')
+        ;
+        $db->setQuery($query);
+        $list_root_position = $db->loadObjectList();
+
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('position_config.id,position_config.parent_id')
+            ->from('#__position_config AS position_config');
+        $db->setQuery($query);
+        $list_position_config = $db->loadObjectList();
+        $children_position = array();
+        foreach ($list_position_config as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_position[$pt] ? $children_position[$pt] : array();
+            array_push($list, $v);
+            $children_position[$pt] = $list;
+        }
+        unset($children_position['list_root']);
+        foreach($list_root_position as $root_position)
+        {
+            if($root_position->screensize) {
+                $screensize = $root_position->screensize;
+                $update_screen_size = function ($function_call_back, $root_position_id = 0, $screensize = '1280X768', $children_position = array(), $level = 0, $max_level = 999) {
+                    $db = JFactory::getDbo();
+                    $query = $db->getQuery(true);
+                    if ($children_position[$root_position_id]) {
+                        $level1 = $level + 1;
+                        foreach ($children_position[$root_position_id] as $v) {
+                            $query = $db->getQuery(true)
+                                ->update('#__position_config')
+                                ->set('screensize=' . $query->q($screensize))
+                                ->where('id=' . (int)$v->id);
+                            $ok=$db->setQuery($query)->execute();
+                            if(!$ok)
+                            {
+                                throw new Exception($db->getErrorMsg());
+                            }
+                            $root_position_id1 = $v->id;
+                            $function_call_back($function_call_back, $root_position_id1, $screensize, $children_position, $level1, $max_level);
+
+                        }
+                    }
+                };
+                $update_screen_size($update_screen_size, $root_position->id, $screensize, $children_position);
+            }
+            else{
+                $query = $db->getQuery(true)
+                    ->delete('#__position_config')
+                    ->where('id=' . (int)$root_position->id);
+                $ok=$db->setQuery($query)->execute();
+                if(!$ok)
+                {
+                    throw new Exception($db->getErrorMsg());
+                }
+            }
+        }
+    }
+    public static function rebuild_website_by_website_id($website_id=0)
+    {
+        $app = JFactory::getApplication();
+        $db=JFactory::getDbo();
+        require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
+        JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
+        $tablePosition = JTable::getInstance('positionnested');
+        $root_position_id = $tablePosition->get_root_id_by_website_id($website_id);
+        $query = $db->getQuery(true);
+        $query->select('position_config.id,position_config.menu_item_id,position_config.screensize,position_config.lft,position_config.rgt')
+            ->from('#__position_config AS position_config')
+            ->where('position_config.parent_id=' . (int)$root_position_id)
+            ->where('position_config.id<>position_config.parent_id')
+        ;
+        $db->setQuery($query);
+        $list_root_position = $db->loadObjectList();
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('position_config.id,position_config.parent_id')
+            ->from('#__position_config AS position_config');
+        $db->setQuery($query);
+        $list_position_config = $db->loadObjectList();
+        $children_position = array();
+        foreach ($list_position_config as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_position[$pt] ? $children_position[$pt] : array();
+            array_push($list, $v);
+            $children_position[$pt] = $list;
+        }
+        unset($children_position['list_root']);
+        foreach($list_root_position as $root_position)
+        {
+            $left=1;
+            $rebuild_position_website = function ($function_call_back, $root_position_id = 0, &$left = 0, $children_position = array(), $level = 1, $max_level = 999) {
+                $db = JFactory::getDbo();
+                $query = $db->getQuery(true);
+                if ($children_position[$root_position_id]) {
+                    $level1 = $level + 1;
+                    foreach ($children_position[$root_position_id] as $v) {
+                        $root_position_id1 = $v->id;
+                        $function_call_back($function_call_back, $root_position_id1, $left, $children_position, $level1, $max_level);
+                        $right=$left+1;
+                        $query = $db->getQuery(true)
+                            ->update('#__position_config')
+                            ->set('lft=' . $query->q($left))
+                            ->set('rgt=' . $query->q($right))
+                            ->set('level = ' . (int) $level)
+                            ->where('id=' . (int)$v->id);
+                        $ok=$db->setQuery($query)->execute();
+                        if(!$ok)
+                        {
+                            throw new Exception($db->getErrorMsg());
+                        }
+
+                    }
+                }
+            };
+            $rebuild_position_website($rebuild_position_website, $root_position->id, $left, $children_position);
+            $right=$left+1;
+            $query = $db->getQuery(true)
+                ->update('#__position_config')
+                ->set('lft=' . $query->q($left))
+                ->set('rgt=' . $query->q($right))
+                ->where('id=' . (int)$root_position->id);
+            $ok=$db->setQuery($query)->execute();
+            if(!$ok)
+            {
+                throw new Exception($db->getErrorMsg());
+            }
+        }
+    }
 
     function executeQuery()
     {
