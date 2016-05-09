@@ -1355,7 +1355,13 @@ class WebsiteModelWebsite extends JModelAdmin
         $session_website->load();
         $session_website->clear();
         $layout = 'finish';
-
+        require_once JPATH_ROOT.'/components/com_utility/helper/block_helper.php';
+        require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
+        MenusHelperFrontEnd::remove_all_menu_not_exists_menu_type_by_website_id($website_id);
+        block_helper::remove_all_block_not_exists_menu_item_by_website_id($website_id);
+        require_once JPATH_ROOT.'/components/com_utility/controllers/block.php';
+        UtilityControllerBlock::fix_screen_size_by_website_id($website_id);
+        UtilityControllerBlock::rebuild_website_by_website_id($website_id);
         return true;
     }
 
