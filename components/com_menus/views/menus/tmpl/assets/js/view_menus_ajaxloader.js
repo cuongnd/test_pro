@@ -325,6 +325,12 @@ jQuery(document).ready(function($){
 
         },
         delete_menu_type: function (self) {
+            if (!confirm('Are you sure you want delete menu type ?')) {
+                return false;
+            }
+
+
+
             var menu_type_id=self.closest('.menu_type_item').data('menuTypeId');
             ajax_web_design=$.ajax({
                 type: "GET",

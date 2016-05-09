@@ -587,7 +587,6 @@ abstract class JModuleHelper
                     if (file_exists(JPATH_ROOT . DS . $class_field_path)) {
                         require_once JPATH_ROOT . DS . $class_field_path;
                     }
-
                     $field_object=$form->getField($field->name,$path);
                     if (method_exists($field_object, 'get_new_value_by_old_value')) {
                         $new_value=call_user_func(array($field_object, 'get_new_value_by_old_value'), $website_id);

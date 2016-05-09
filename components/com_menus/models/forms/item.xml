@@ -112,6 +112,24 @@
 				No</option>
 
 		</field>
+		<field
+			name="is_user_dashboard"
+			type="list"
+			class="chzn-color-state"
+			id="is_main_dashboard"
+			label="is user dashboard"
+			description="is user dashboard"
+			size="1"
+			default="1"
+			filter="integer">
+			<option
+				value="1">
+				Yes</option>
+			<option
+				value="0">
+				No</option>
+
+		</field>
 
 		<field
 			name="is_backend"

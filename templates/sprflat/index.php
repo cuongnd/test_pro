@@ -336,12 +336,14 @@ ob_start();
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/dialog.js');
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/droppable.js');
     $doc->addScript(JUri::root() . '/media/system/js/purl-master/purl-master/purl.js');
+    $doc->addScript(JUri::root() . '/media/system/js/sidr-master/src/jquery.sidr.js');
 
     require_once JPATH_ROOT . '/components/com_website/helpers/website.php';
 
     JHtml::_('jquery.framework');
     JHtml::_('jquery.ui', array('core', 'sortable'));
     $doc->addLessStyleSheet(JUri::root() . "/templates/$this->template/less/custom.less");
+    $doc->addLessStyleSheet(JUri::root() . "/media/system/js/sidr-master/dist/stylesheets/jquery.sidr.light.css");
 
 
 
@@ -606,16 +608,21 @@ if ($ajaxGetContent) {
     {
         echo websiteHelperFrontEnd::displayLayout($this, 0);
     }
-    $menu_dashboard_item_id=MenusHelperFrontEnd::get_menu_daskboard_item_id();
-
-    $is_backend=$menuItemActive->is_backend;
-    if($is_backend)
-    {
-        $menu_supper_dashboard_item_id=MenusHelperFrontEnd::get_dashboard_menu_supper_admin_id();
-    }
+    $menu_supper_dashboard_item_id=MenusHelperFrontEnd::get_dashboard_menu_supper_admin_id();
+    $menu_dashboard_item_id=MenusHelperFrontEnd::get_menu_dashboard_item_id();
+    $menu_user_dashboard_item_id=MenusHelperFrontEnd::get_menu_user_dashboard_item_id();
 
     ?>
-    <div class="edit_website"><a href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_supper_dashboard_item_id?$menu_supper_dashboard_item_id:$menu_dashboard_item_id ?>"><i class="im-cog"></i></a></div>
+
+    <div class="edit_website"><i class="im-cog"></i></div>
+    <div id="sidr">
+        <ul>
+            <li><a class="smooth" href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_supper_dashboard_item_id ?>">Supper admin dashboard</a></li>
+            <li><a class="smooth" href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_dashboard_item_id ?>">Admin dashboard</a></li>
+            <li><a class="smooth" href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_user_dashboard_item_id ?>">User dashboard</a></li>
+            <li><a class="smooth" href="<?php echo JUri::root() ?>">Site</a></li>
+        </ul>
+    </div>
 
 <?php } ?>
 <!-- Javascripts -->

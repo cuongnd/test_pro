@@ -748,6 +748,29 @@ class MenusControllerItem extends JControllerForm
                 die;
             }
         }
+
+        $is_user_dashboard=$table_menu_item->is_user_dashboard;
+        if($is_user_dashboard)
+        {
+            $db=JFactory::getDbo();
+            $query=$db->getQuery(true);
+            require_once JPATH_ROOT.DS.'components/com_menus/helpers/menus.php';
+            $website=JFactory::getWebsite();
+            $list_menu_item_id=MenusHelperFrontEnd::get_list_menu_item_id_by_website_id($website->website_id);
+            $query->update('#__menu')
+                ->set('is_user_dashboard=0')
+                ->where('id IN ('.implode(',',$list_menu_item_id).')')
+                ->where('id!='.(int)$table_menu_item->id)
+                ;
+            $ok=$db->setQuery($query)->execute();
+            if(!$ok)
+            {
+                $result->e = 1;
+                $result->m = $db->getErrorMsg();
+                echo json_encode($result);
+                die;
+            }
+        }
         $is_menu_supper_admin=$table_menu_item->is_menu_supper_admin;
         if($is_menu_supper_admin)
         {

@@ -260,9 +260,44 @@ class WebsiteModelWebsite extends JModelAdmin
         if (!$table_user->store()) {
             $this->setError($table_user->getError());
         }
-        require_once JPATH_ROOT . '/components/com_users/helpers/groups.php';
-        $list_group_id = GroupsHelper::get_group_id_by_website_id($website_id);
-        $table_user->groups = $list_group_id;
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('usergroups.id,usergroups.parent_id,user_group_id_website_id.website_id AS website_id')
+            ->from('#__usergroups AS usergroups')
+            ->leftJoin('#__user_group_id_website_id AS user_group_id_website_id ON user_group_id_website_id.user_group_id=usergroups.id')
+        ;
+        $list_user_group=$db->setQuery($query)->loadObjectList();
+        $children_user_group = array();
+        foreach ($list_user_group as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_user_group[$pt] ? $children_user_group[$pt] : array();
+            array_push($list, $v);
+            $children_user_group[$pt] = $list;
+        }
+        $list_root_user_group = $children_user_group['list_root'];
+        unset($children_user_group['list_root']);
+
+        $list_user_group_of_website=array();
+        foreach($list_root_user_group AS $root_user_group)
+        {
+            if($root_user_group->website_id==$website_id)
+            {
+                $list_user_group_of_website[]=$root_user_group->id;
+                $get_list_user_group_of_website=function($function_call_back, $user_group_id=0, &$list_user_group_of_website, $children_user_group, $level=0, $max_level=999){
+                    foreach($children_user_group[$user_group_id] as $user_group)
+                    {
+                        $user_group_id_1=$user_group->id;
+                        $list_user_group_of_website[]=$user_group_id_1;
+                        $function_call_back($function_call_back,$user_group_id_1, $list_user_group_of_website,$children_user_group);
+                    }
+                };
+                $get_list_user_group_of_website($get_list_user_group_of_website,$root_user_group->id,$list_user_group_of_website,$children_user_group);
+            }
+        }
+
+        $table_user->groups = $list_user_group_of_website;
 
         if (!$table_user->store()) {
             $this->setError($table_user->getError());
@@ -271,6 +306,7 @@ class WebsiteModelWebsite extends JModelAdmin
         return true;
 
     }
+
 
     public function createViewAccessLevels($website_id = 0, $website_template_id = 0)
     {
@@ -862,8 +898,11 @@ class WebsiteModelWebsite extends JModelAdmin
             $a_list_older_menu_item1 = $list_older_menu_item1 + $a_list_older_menu_item1;
         }
         $query->clear()
-            ->select('position_config.id,position_config.parent_id,position_config.website_id,position_config.menu_item_id')
-            ->from('#__position_config AS position_config');
+            ->select('position_config.id,position_config.parent_id,position_config.menu_item_id,root_position_id_website_id.website_id')
+            ->from('#__position_config AS position_config')
+            ->leftJoin('#__root_position_id_website_id AS root_position_id_website_id ON root_position_id_website_id.position_id=position_config.id')
+        ;
+
         $db->setQuery($query);
         $list_position_config = $db->loadObjectList();
         $children_position = array();
@@ -872,23 +911,28 @@ class WebsiteModelWebsite extends JModelAdmin
             $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
             $list = @$children_position[$pt] ? $children_position[$pt] : array();
             array_push($list, $v);
-            $children_menu_item_of_root_menu_item[$pt] = $list;
+            $children_position[$pt] = $list;
         }
         $list_root_position = $children_position['list_root'];
         unset($children_position['list_root']);
-
         if (!function_exists('sub_execute_copy_rows_table_position')) {
             function sub_execute_copy_rows_table_position(JTable $table_position, &$list_old_position_config,$list_older_menu_item, $old_position_id = 0, $new_position_id, $children,$level=0,$max_level=999)
             {
                 if ($children[$old_position_id]&&$level<=$max_level) {
                     $level1=$level+1;
+
                     foreach ($children[$old_position_id] as $v) {
                         $table_position->load($v->id);
                         $table_position->id = 0;
                         $table_position->website_id = null;
                         $table_position->copy_from = $v->id;
                         $table_position->level = $level1;
-                        $table_position->menu_item_id = $list_older_menu_item[$v->menu_item_id];
+                        $menu_item_id=$v->menu_item_id;
+                        $menu_item_id=$list_older_menu_item[$menu_item_id];
+                        if($menu_item_id)
+                        {
+                            $table_position->menu_item_id = $menu_item_id;
+                        }
                         $table_position->parent_id = $new_position_id;
                         $table_position->getDbo()->rebuild_action = 1;
                         $ok = $table_position->parent_store();
@@ -906,8 +950,6 @@ class WebsiteModelWebsite extends JModelAdmin
         $table_position = JTable::getInstance('positionnested');
         $list_old_position_config=array();
         foreach ($list_root_position as $position) {
-
-
             if ($position->website_id == $website_template_id) {
                 $table_position->load($position->id);
                 $table_position->id = 0;
@@ -920,8 +962,15 @@ class WebsiteModelWebsite extends JModelAdmin
                 if (!$ok) {
                     throw new Exception($table_position->getError());
                 }
+                $table_root_position_id_website_id=JTable::getInstance('root_position_id_website_id');
+                $table_root_position_id_website_id->position_id=$table_position->id;
+                $table_root_position_id_website_id->website_id=$website_id;
+                $ok = $table_root_position_id_website_id->store();
+                if (!$ok) {
+                    throw new Exception($table_root_position_id_website_id->getError());
+                }
                 $list_old_position_config[$position->id]=$table_position->id;
-                sub_execute_copy_rows_table_position($table_position,$list_old_position_config, $a_list_older_menu_item1, $position->id, $table_position->id, $children_menu_item_of_root_menu_item);
+                sub_execute_copy_rows_table_position($table_position,$list_old_position_config, $a_list_older_menu_item1, $position->id, $table_position->id, $children_position);
 
             }
         }
@@ -940,9 +989,11 @@ class WebsiteModelWebsite extends JModelAdmin
             $table_menu_item_id_position_id_ordering->position_id=$list_old_position_config[$menu_position->position_id];
             $table_menu_item_id_position_id_ordering->id=0;
             $table_menu_item_id_position_id_ordering->website_id=$website_id;
-            $ok = $table_menu_item_id_position_id_ordering->store();
-            if (!$ok) {
-                throw new Exception($table_menu_item_id_position_id_ordering->getError());
+            if($table_menu_item_id_position_id_ordering->website_id&&$table_menu_item_id_position_id_ordering->menu_item_id&&$table_menu_item_id_position_id_ordering->position_id) {
+                $ok = $table_menu_item_id_position_id_ordering->store();
+                if (!$ok) {
+                    throw new Exception($table_menu_item_id_position_id_ordering->getError());
+                }
             }
         }
         $query->clear()
@@ -1113,34 +1164,128 @@ class WebsiteModelWebsite extends JModelAdmin
             //copy from website template
             $website_template_id = websiteHelperFrontEnd::getOneTemplateWebsite();
         }
-        $list_menu_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website_id);
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('menu.id,menu.parent_id,menu.copy_from')
+            ->from('#__menu AS menu');
+        $db->setQuery($query);
+        $list_menu_item = $db->loadObjectList();
+        $children_menu_item = array();
+        foreach ($list_menu_item as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_menu_item[$pt] ? $children_menu_item[$pt] : array();
+            array_push($list, $v);
+            $children_menu_item[$pt] = $list;
+        }
 
-        $list_menu_item=JArrayHelper::pivot($list_menu_item,'copy_from');
-        $table_menu=JTable::getInstance('menu');
-        foreach($list_menu_item AS $menu_item)
+        $list_root_menu_item = $children_menu_item['list_root'];
+        unset($children_menu_item['list_root']);
+        //get root position of current website
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('menu_type_id_menu_id.menu_id')
+            ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
+            ->innerJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
+            ->where('menu_types.website_id='.(int)$website_id)
+        ;
+        $db->setQuery($query);
+        $list_root_menu_item_id = $db->loadColumn();
+
+        $get_menu_item_of_website=function($function_call_back, $menu_item_id=0, &$list_menu_item_of_website, $children_menu_item=array(), $level=0, $max_level=999){
+            if ($children_menu_item[$menu_item_id]) {
+                $level1=$level+1;
+                foreach ($children_menu_item[$menu_item_id] as $menu_item) {
+                    $menu_item_id_1 = $menu_item->id;
+                    $list_menu_item_of_website[]=$menu_item;
+                    $function_call_back($function_call_back, $menu_item_id_1, $list_menu_item_of_website, $children_menu_item, $level1, $max_level);
+                }
+            }
+        };
+        $list_menu_item_of_website=array();
+        foreach($list_root_menu_item_id AS $root_menu_item_id)
         {
-            $table_menu->load($menu_item->id);
+            $get_menu_item_of_website($get_menu_item_of_website,$root_menu_item_id,$list_menu_item_of_website,$children_menu_item);
+        }
+
+
+
+
+
+        $table_menu = JTable::getInstance('menu');
+        JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_menus/models');
+        $menu_model = JModelLegacy::getInstance('uitem','MenusModel');
+        JForm::addFormPath(JPATH_ROOT.'/components/com_menus/models/forms');
+        $app=JFactory::getApplication();
+
+        foreach($list_menu_item_of_website AS $menu_item)
+        {
+
+            $app->input->set('id',$menu_item->id);
+            $menu_model->setState('item.id',$menu_item->id);
+            $item=$menu_model->getItem($menu_item->id);
+            $form=$menu_model->getForm((array)$item,true);
+            $field_sets = $form->getFieldset();
+            foreach ($field_sets as $field) {
+                $field_name = $field->__get('fieldname');
+                $group = $field->__get('group');
+                $function='get_new_value_by_old_value';
+                if(method_exists($field,$function)) {
+
+                    $new_value = $field->get_new_value_by_old_value($website_id);
+                    $form->setValue($field_name, $group, $new_value);
+                }
+
+            }
+
+            $item =clone $form->getData();
+            $item = $item->toObject();
             $params = new JRegistry;
-            $params->loadString($menu_item->params);
-            $use_main_frame=$params->get('use_main_frame',0);
-            $params->set('use_main_frame',$list_menu_item[$use_main_frame]->id);
-            $table_menu->params=$params->toString();
+            $params->loadObject($item->params);
+            $item->params = $params->toString();
+            $table_menu->bind($item);
+            $table_menu->id=$menu_item->id;
             $ok = $table_menu->parent_store();
             if (!$ok) {
                 throw new Exception($table_menu->getError());
+                return false;
             }
         }
         //update param module
-
+        $app=JFactory::getApplication();
         $list_module=JModuleHelper::get_list_module_by_website_id($website_id);
+        JModelLegacy::addIncludePath(JPATH_ROOT.'/components/com_modules/models');
+        $module_model = JModelLegacy::getInstance('umodule','ModulesModel');
+        JForm::addFormPath(JPATH_ROOT.'/components/com_modules/models/forms');
+
         $table_module=JTable::getInstance('module');
+        $main_table_control = JTable::getInstance('control');
+        require_once JPATH_ROOT.'/components/com_modules/helpers/module.php';
+        $main_table_control->load(
+            array(
+                "element_path" => module_helper::MODULE_ROOT_NAME,
+                "type" =>module_helper::ELEMENT_TYPE
+            )
+        );
+
         foreach($list_module AS $module)
         {
-            $params=$module->params;
-            $control=JControlHelper::get_control_module_by_module_id($module->id);
-            $str_params=JModuleHelper::change_property_module_by_fields($website_id,$params,$control->fields);
-            $table_module->load($module->id);
-            $table_module->params=$str_params;
+
+            $app->input->set('id',$module->id);
+            $module_model->setState('module.id',$module->id);
+            $item=$module_model->getItem($module->id);
+            $form=$module_model->getForm(array(),false);
+            $form->bind($item);
+            $module_control=JControlHelper::get_control_module_by_module_id($item->id);
+            JModuleHelper::change_property_module_by_fields($website_id,$form,$module_control->fields,$main_table_control->fields);
+            $item=clone $form->getData();
+            $item=$item->toObject();
+            $params = new JRegistry;
+            $params->loadObject($item->params);
+            $item->params = $params->toString();
+            $table_module->bind((array)$item);
+            $table_module->id=$module->id;
             $ok=$table_module->store();
             if (!$ok) {
                 throw new Exception($table_module->getError());
@@ -1199,6 +1344,7 @@ class WebsiteModelWebsite extends JModelAdmin
         $table_website=$this->getTable();
         $table_website->load($website_id);
         $table_website->setup_finish=1;
+        $table_website->supper_admin_request_update=1;
         $ok=$table_website->store();
         if(!$ok)
         {
@@ -1258,11 +1404,9 @@ class WebsiteModelWebsite extends JModelAdmin
 
     public function createConfiguration($website_id = 0, $website_template_id = 0)
     {
-        echo "sua chua cai nay";
-        die;
         $db = $this->getDbo();
         $query = $db->getQuery(true);
-        $query->select('*')
+        $query->select('website.id AS website_id,website.name AS website_name,domain_website.domain')
             ->from('#__domain_website AS domain_website')
             ->where('website_id=' . (int)$website_id)
             ->leftJoin('#__website AS website ON website.id = domain_website.website_id')
@@ -1278,7 +1422,8 @@ class WebsiteModelWebsite extends JModelAdmin
             //copy from website template
             $website_template_id = websiteHelperFrontEnd::getOneTemplateWebsite();
         }
-        $templateConfigurationFile = 'configuration_' . $website_template_id . '.php';
+        $website_template_name=websiteHelperFrontEnd::get_website_name_by_website_id($website_template_id);
+        $templateConfigurationFile = 'configuration_' . $website_template_name . '.php';
         if (!JFile::exists($templateConfigurationFilePath . $templateConfigurationFile)) {
             $this->setError("File template configuration not exists");
             return false;
@@ -1286,14 +1431,14 @@ class WebsiteModelWebsite extends JModelAdmin
         $pathFolderWebStore = JPATH_ROOT . '/webstore/';
         foreach ($listDomainWebsite as $domainWebsite) {
             //create file configuration
-            $newFileConfiguration = "configuration_{$domainWebsite->website_id}.php";
+            $newFileConfiguration = "configuration_{$domainWebsite->website_name}.php";
             if (!JFile::exists($templateConfigurationFilePath . $newFileConfiguration)) {
                 if (!JFile::copy($templateConfigurationFilePath . $templateConfigurationFile, $templateConfigurationFilePath . $newFileConfiguration)) {
                     $this->setError("Cannot copy file configuration");
                 }
             }
             $fileWebStore =strtolower($domainWebsite->domain . '.ini');
-            $content="$domainWebsite->website_id:$domainWebsite->domain";
+            $content="$domainWebsite->website_id:$domainWebsite->website_name";
             if (!JFile::write($pathFolderWebStore . $fileWebStore,$content )) {
                 $this->setError("can not create and write file webstore");
             }

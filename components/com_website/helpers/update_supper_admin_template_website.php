@@ -938,7 +938,7 @@ class update_supper_admin_template_website
             $params->loadObject($item->params);
             $item->params = $params->toString();
             $table_menu->bind($item);
-
+            $table_menu->id=$menu_item->id;
             $ok = $table_menu->parent_store();
             if (!$ok) {
                 self::$error = $table_menu->getError();

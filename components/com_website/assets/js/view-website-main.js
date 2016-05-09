@@ -56,6 +56,8 @@ jQuery(document).ready(function($){
             },
             success: function (result) {
                 sethtmlfortag(result);
+                result= $.parseJSON(result);
+
                 $('.setup button').removeAttr('disabled');
                 currentStep=$('input[name="currentStep"]').val();
                 if(currentStep!='Finish'&&$('input[name="autoSetup"]').is(':checked'))

@@ -38,6 +38,12 @@
             }
             console.log(uri_current_link);
 
+            $('.edit_website').sidr({
+                timing: 'ease-in-out',
+                speed: 500,
+                side:'right'
+            });
+
             $(document).bind('keypress', function(event) {
                 //shift+q
                 if( event.which === 81 && event.shiftKey ) {
@@ -371,6 +377,8 @@ jQuery(document).ready(function ($) {
 
 
     $(document).on('click', '.edit_website', function () {
+
+        return;
         $.ajax({
             type: "GET",
             url: this_host + '/index.php',

@@ -9,19 +9,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/sprflat/less/disableedit.min.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/.gradle/2.8/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/android_application/bho886/.gradle/2.8/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/.idea/workspace.xml" afterPath="$PROJECT_DIR$/android_application/bho886/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/controllers/item.php" afterPath="$PROJECT_DIR$/components/com_menus/controllers/item.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/helpers/menus.php" afterPath="$PROJECT_DIR$/components/com_menus/helpers/menus.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" afterPath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_modules/controllers/module.php" afterPath="$PROJECT_DIR$/components/com_modules/controllers/module.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/controllers/block.php" afterPath="$PROJECT_DIR$/components/com_utility/controllers/block.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/controllers/utility.php" afterPath="$PROJECT_DIR$/components/com_utility/controllers/utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_utility/helper/block_helper.php" afterPath="$PROJECT_DIR$/components/com_utility/helper/block_helper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/models/forms/item.xml" afterPath="$PROJECT_DIR$/components/com_menus/models/forms/item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js" afterPath="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_website/assets/js/view-website-main.js" afterPath="$PROJECT_DIR$/components/com_website/assets/js/view-website-main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_website/helpers/update_supper_admin_template_website.php" afterPath="$PROJECT_DIR$/components/com_website/helpers/update_supper_admin_template_website.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/virtuemart.php" afterPath="$PROJECT_DIR$/components/website/website_banhangonline/com_virtuemart/virtuemart.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/legacy/table/positionnested.php" afterPath="$PROJECT_DIR$/libraries/legacy/table/positionnested.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_banhangonline/mod_virtuemart_category/mod_virtuemart_category.php" afterPath="$PROJECT_DIR$/modules/website/website_banhangonline/mod_virtuemart_category/mod_virtuemart_category.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/website/website_banhangonline/mod_virtuemart_product/mod_virtuemart_product.php" afterPath="$PROJECT_DIR$/modules/website/website_banhangonline/mod_virtuemart_product/mod_virtuemart_product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/js/design.js" afterPath="$PROJECT_DIR$/templates/sprflat/js/design.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_website/models/website.php" afterPath="$PROJECT_DIR$/components/com_website/models/website.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/module/helper.php" afterPath="$PROJECT_DIR$/libraries/cms/module/helper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/index.php" afterPath="$PROJECT_DIR$/templates/sprflat/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/js/javascriptdisableedit.js" afterPath="$PROJECT_DIR$/templates/sprflat/js/javascriptdisableedit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/less/disableedit.less" afterPath="$PROJECT_DIR$/templates/sprflat/less/disableedit.less" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/modules/website/website_vantinviet/mod_menu/assets/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/.gitignore" afterPath="$PROJECT_DIR$/media/system/js/Responsive-Cross-platform-jQuery-Navigation-Menu-Plugin-Smart-Menus/.gitignore" />
     </list>
     <ignored path="test_pro.iws" />
@@ -1679,7 +1681,123 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="website.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_website/models/website.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.192307">
+              <caret line="1346" column="54" selection-start-line="1346" selection-start-column="54" selection-end-line="1346" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="website.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_website/controllers/website.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.9636364">
+              <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+              <folding>
+                <marker date="1460071439801" expanded="true" signature="21741:21895" placeholder="..." />
+                <marker date="1460071439801" expanded="true" signature="21792:21868" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="groups.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_users/helpers/groups.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.615385">
+              <caret line="136" column="29" selection-start-line="136" selection-start-column="29" selection-end-line="136" selection-end-column="29" />
+              <folding>
+                <marker date="1460303516589" expanded="true" signature="3854:4237" placeholder="SELECT GROUP... pv" />
+                <marker date="1460303516589" expanded="true" signature="3910:4234" placeholder="SELECT @pv:=... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helper.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/joomla/user/helper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.0">
+              <caret line="946" column="51" selection-start-line="946" selection-start-column="51" selection-end-line="946" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="update_supper_admin_template_website.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_website/helpers/update_supper_admin_template_website.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.346153">
+              <caret line="908" column="9" selection-start-line="864" selection-start-column="8" selection-end-line="908" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="root_position_id_website_id.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/legacy/table/root_position_id_website_id.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.538462">
+              <caret line="18" column="39" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="framework.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/framework.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.153846">
+              <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helper.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/cms/module/helper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.5384617">
+              <caret line="536" column="32" selection-start-line="536" selection-start-column="32" selection-end-line="536" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_menus_ajaxloader.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.3268293">
+              <caret line="327" column="64" selection-start-line="327" selection-start-column="64" selection-end-line="327" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery.blockproperties.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/sprflat/js/jquery.blockproperties.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="951" column="0" selection-start-line="951" selection-start-column="0" selection-end-line="951" selection-end-column="0" />
+              <folding>
+                <marker date="1456730099183" expanded="true" signature="1684:2699" placeholder="..." />
+                <marker date="1456730099183" expanded="true" signature="1765:1884" placeholder="..." />
+                <marker date="1456730099183" expanded="true" signature="4897:5919" placeholder="..." />
+                <marker date="1456730099183" expanded="true" signature="4978:5097" placeholder="..." />
+                <marker date="1456730099183" expanded="true" signature="7875:8886" placeholder="..." />
+                <marker date="1456730099183" expanded="true" signature="7956:8075" placeholder="..." />
+                <marker date="1456730099183" expanded="true" signature="10737:11740" placeholder="..." />
+                <marker date="1456730099183" expanded="true" signature="10818:10937" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -1700,15 +1818,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/otheradmintool/tmpl/default.php" />
-        <option value="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/controllers/otheradmintool.php" />
-        <option value="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/assets/js/view_otheradmintool_default.js" />
-        <option value="$PROJECT_DIR$/components/com_utility/models/position.php" />
-        <option value="$PROJECT_DIR$/components/com_utility/models/uposition.php" />
-        <option value="$PROJECT_DIR$/libraries/legacy/model/form.php" />
-        <option value="$PROJECT_DIR$/components/com_utility/models/forms/advanced.xml" />
-        <option value="$PROJECT_DIR$/components/com_utility/models/forms/position.xml" />
-        <option value="$PROJECT_DIR$/libraries/legacy/model/admin.php" />
         <option value="$PROJECT_DIR$/libraries/joomla/form/form.php" />
         <option value="$PROJECT_DIR$/libraries/cms/control/helper.php" />
         <option value="$PROJECT_DIR$/libraries/joomla/form/field.php" />
@@ -1725,14 +1834,11 @@
         <option value="$PROJECT_DIR$/components/com_menus/views/items/tmpl/frontend.php" />
         <option value="$PROJECT_DIR$/components/com_menus/views/items/view.html.php" />
         <option value="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/websites/view.html.php" />
-        <option value="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/websites/tmpl/default.php" />
         <option value="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/models/websites.php" />
         <option value="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/controllers/websites.php" />
         <option value="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/models/website.php" />
-        <option value="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js" />
         <option value="$PROJECT_DIR$/components/com_menus/controllers/menu.php" />
         <option value="&lt;ebab288d-42d3-466b-91db-96e920f3e6b9&gt;/webstore/admin.banhangonline88.com.ini" />
-        <option value="$PROJECT_DIR$/components/com_menus/controllers/item.php" />
         <option value="$PROJECT_DIR$/components/com_menus/models/menutypes.php" />
         <option value="$PROJECT_DIR$/libraries/cms/application/cms.php" />
         <option value="$PROJECT_DIR$/libraries/joomla/application/web.php" />
@@ -1743,14 +1849,26 @@
         <option value="$PROJECT_DIR$/components/com_utility/helper/block_helper.php" />
         <option value="$PROJECT_DIR$/libraries/legacy/table/positionnested.php" />
         <option value="$PROJECT_DIR$/components/com_utility/controllers/block.php" />
-        <option value="$PROJECT_DIR$/components/com_website/helpers/update_supper_admin_template_website.php" />
         <option value="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php" />
         <option value="$PROJECT_DIR$/components/com_menus/views/items/tmpl/default_loadmenupage.php" />
         <option value="$PROJECT_DIR$/components/com_utility/controllers/utility.php" />
         <option value="$PROJECT_DIR$/templates/sprflat/js/design.js" />
-        <option value="$PROJECT_DIR$/components/com_menus/helpers/menus.php" />
         <option value="$PROJECT_DIR$/components/com_modules/controllers/module.php" />
         <option value="&lt;ebab288d-42d3-466b-91db-96e920f3e6b9&gt;/webstore/admin.websitetemplatepro.com.ini" />
+        <option value="$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/websites/tmpl/default.php" />
+        <option value="$PROJECT_DIR$/templates/sprflat/js/javascriptdisableedit.js" />
+        <option value="$PROJECT_DIR$/templates/sprflat/less/disableedit.less" />
+        <option value="$PROJECT_DIR$/components/com_menus/helpers/menus.php" />
+        <option value="$PROJECT_DIR$/components/com_menus/models/forms/item.xml" />
+        <option value="$PROJECT_DIR$/components/com_menus/controllers/item.php" />
+        <option value="$PROJECT_DIR$/templates/sprflat/index.php" />
+        <option value="$PROJECT_DIR$/components/com_website/assets/js/view-website-main.js" />
+        <option value="&lt;ebab288d-42d3-466b-91db-96e920f3e6b9&gt;/webstore/admin.template3.banhangonline88.com.ini" />
+        <option value="&lt;ebab288d-42d3-466b-91db-96e920f3e6b9&gt;/webstore/template3.banhangonline88.com.ini" />
+        <option value="$PROJECT_DIR$/libraries/cms/module/helper.php" />
+        <option value="$PROJECT_DIR$/components/com_website/helpers/update_supper_admin_template_website.php" />
+        <option value="$PROJECT_DIR$/components/com_website/models/website.php" />
+        <option value="$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js" />
       </list>
     </option>
   </component>
@@ -1901,105 +2019,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
+              <option name="myItemId" value="sprflat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="joomla" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="joomla" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_pro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website_vantinviet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com_vantinviet" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2012,8 +2040,8 @@
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="aJaxInsertModule&#9;null&#9;null&#10;ajax_rebuild_block&#9;null&#9;null&#10;positionnested&#9;FILE&#9;file://H:/project/test_pro/libraries/legacy/table/positionnested.php&#10;ajaxSavePropertyComponent&#9;null&#9;null&#10;ajax_save_property_menu_item_of_component&#9;null&#9;null&#10;jmenu&#9;null&#9;null&#10;jfieldconfigviewlayout&#9;null&#9;null&#10;jfieldmenui&#9;null&#9;null&#10;jfieldmen&#9;null&#9;null&#10;showinpage&#9;null&#9;null&#10;jtablepo&#9;null&#9;null&#10;jfieldinte&#9;null&#9;null&#10;JFormFieldText&#9;null&#9;null&#10;jtablemod&#9;null&#9;null&#10;jform&#9;null&#9;null&#10;jtablem&#9;null&#9;null&#10;jmodulehe&#9;null&#9;null&#10;JFormFieldHidden&#9;null&#9;null&#10;JFormFieldMenu&#9;null&#9;null&#10;jtableme&#9;null&#9;null&#10;elementuibu&#9;null&#9;null&#10;componenthe&#9;null&#9;null&#10;JTableMenu&#9;null&#9;null&#10;MenusTableMenu&#9;null&#9;null&#10;jtablemen&#9;null&#9;null&#10;JFormFieldMenuitem&#9;null&#9;null&#10;jfield&#9;null&#9;null&#10;jfieldme&#9;null&#9;null&#10;jfielmen&#9;null&#9;null&#10;jtablemodul&#9;null&#9;null&#10;menu_item_id_position_id_ordering&#9;FILE&#9;file://H:/project/test_pro/libraries/legacy/table/menu_item_id_position_id_ordering.php&#10;elementta&#9;null&#9;null&#10;jtablee&#9;null&#9;null&#10;rebuild_action&#9;null&#9;null&#10;jtablepos&#9;null&#9;null&#10;jtabletype&#9;null&#9;null&#10;jmodule&#9;null&#9;null&#10;Jmod&#9;null&#9;null&#10;jtableex&#9;null&#9;null&#10;elementrow&#9;null&#9;null&#10;jsite&#9;null&#9;null&#10;ajaxSavePropertiesComponent&#9;null&#9;null&#10;elementbu&#9;null&#9;null&#10;jtableus&#9;null&#9;null&#10;elementbut&#9;null&#9;null&#10;jtablepro&#9;null&#9;null&#10;jtableproduct&#9;null&#9;null&#10;jgrid&#9;null&#9;null&#10;jfieldweb&#9;null&#9;null&#10;jrout&#9;null&#9;null" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libraries/legacy/table/menu.php" />
+    <property name="SearchEverywhereHistoryKey" value="delete_menu_type&#9;null&#9;null&#10;jtableroot_position_id_website_id&#9;null&#9;null&#10;aJaxCheckEnableEditWebsite&#9;null&#9;null&#10;aJaxInsertModule&#9;null&#9;null&#10;ajax_rebuild_block&#9;null&#9;null&#10;positionnested&#9;FILE&#9;file://H:/project/test_pro/libraries/legacy/table/positionnested.php&#10;ajaxSavePropertyComponent&#9;null&#9;null&#10;ajax_save_property_menu_item_of_component&#9;null&#9;null&#10;jmenu&#9;null&#9;null&#10;jfieldconfigviewlayout&#9;null&#9;null&#10;jfieldmenui&#9;null&#9;null&#10;jfieldmen&#9;null&#9;null&#10;showinpage&#9;null&#9;null&#10;jtablepo&#9;null&#9;null&#10;jfieldinte&#9;null&#9;null&#10;JFormFieldText&#9;null&#9;null&#10;jtablemod&#9;null&#9;null&#10;jform&#9;null&#9;null&#10;jtablem&#9;null&#9;null&#10;jmodulehe&#9;null&#9;null&#10;JFormFieldHidden&#9;null&#9;null&#10;JFormFieldMenu&#9;null&#9;null&#10;jtableme&#9;null&#9;null&#10;elementuibu&#9;null&#9;null&#10;componenthe&#9;null&#9;null&#10;JTableMenu&#9;null&#9;null&#10;MenusTableMenu&#9;null&#9;null&#10;jtablemen&#9;null&#9;null&#10;JFormFieldMenuitem&#9;null&#9;null&#10;jfield&#9;null&#9;null&#10;jfieldme&#9;null&#9;null&#10;jfielmen&#9;null&#9;null&#10;jtablemodul&#9;null&#9;null&#10;menu_item_id_position_id_ordering&#9;FILE&#9;file://H:/project/test_pro/libraries/legacy/table/menu_item_id_position_id_ordering.php&#10;elementta&#9;null&#9;null&#10;jtablee&#9;null&#9;null&#10;rebuild_action&#9;null&#9;null&#10;jtablepos&#9;null&#9;null&#10;jtabletype&#9;null&#9;null&#10;jmodule&#9;null&#9;null&#10;Jmod&#9;null&#9;null&#10;jtableex&#9;null&#9;null&#10;elementrow&#9;null&#9;null&#10;jsite&#9;null&#9;null&#10;ajaxSavePropertiesComponent&#9;null&#9;null&#10;elementbu&#9;null&#9;null&#10;jtableus&#9;null&#9;null&#10;elementbut&#9;null&#9;null&#10;jtablepro&#9;null&#9;null&#10;jtableproduct&#9;null&#9;null" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libraries/cms/module/helper.php" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
     <property name="LayoutCode.rearrangeEntriesXML" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
@@ -2115,12 +2143,6 @@
       <created>1441660052781</created>
       <option name="number" value="Default" />
       <updated>1441660052781</updated>
-    </task>
-    <task id="LOCAL-00041" summary="update module supper admin">
-      <created>1458735940720</created>
-      <option name="number" value="00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1458735940720</updated>
     </task>
     <task id="LOCAL-00042" summary="update module supper admin">
       <created>1458985056618</created>
@@ -2410,7 +2432,13 @@
       <option name="project" value="LOCAL" />
       <updated>1462463532861</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="update module supper admin">
+      <created>1462521263947</created>
+      <option name="number" value="00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1462521263948</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2426,16 +2454,16 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3643959" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25835475" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19537275" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30398458" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37465182" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45904437" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33617747" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.68941504" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1773779" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.67548746" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17673522" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26172465" sideWeight="0.82282794" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2460,10 +2488,10 @@
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36459908" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19537275" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15431164" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1773779" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17673522" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -2474,11 +2502,11 @@
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32423207" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33617747" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1996587" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30501392" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25835475" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37542662" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30398458" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45904437" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26172465" sideWeight="0.82282794" order="1" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -2518,198 +2546,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/form/field.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.423077">
-          <caret line="367" column="23" selection-start-line="367" selection-start-column="23" selection-end-line="367" selection-end-column="23" />
-          <folding>
-            <marker date="1462175160490" expanded="true" signature="29609:29959" placeholder="..." />
-            <marker date="1462175160490" expanded="true" signature="29779:29945" placeholder="..." />
-            <marker date="1462175160490" expanded="true" signature="30046:30384" placeholder="..." />
-            <marker date="1462175160490" expanded="true" signature="30204:30370" placeholder="..." />
-            <marker date="1462175160490" expanded="true" signature="30509:30687" placeholder="..." />
-            <marker date="1462175160490" expanded="true" signature="30551:30611" placeholder="..." />
-            <marker date="1462175160490" expanded="true" signature="30639:30676" placeholder="..." />
-            <marker date="1462175160490" expanded="true" signature="30768:30803" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/supperadminconfig/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/assets/js/view_supperadminconfig_default.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="114" column="25" selection-start-line="114" selection-start-column="25" selection-end-line="114" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/showinpage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-30.26923">
-          <caret line="255" column="82" selection-start-line="255" selection-start-column="82" selection-end-line="255" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_components/views/component/tmpl/config_default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.8076925">
-          <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sprflat/field.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.730769">
-          <caret line="283" column="60" selection-start-line="283" selection-start-column="60" selection-end-line="283" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_menus/views/item/tmpl/field.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/legacy/model/form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.730769">
-          <caret line="192" column="33" selection-start-line="192" selection-start-column="19" selection-end-line="192" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1538463">
-          <caret line="667" column="0" selection-start-line="667" selection-start-column="0" selection-end-line="667" selection-end-column="0" />
-          <folding>
-            <marker date="1462288993476" expanded="true" signature="21240:21393" placeholder="select @pare... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/menu/site.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.846154">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/utilities/utility.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.076923">
-          <caret line="124" column="45" selection-start-line="124" selection-start-column="45" selection-end-line="124" selection-end-column="45" />
-          <folding>
-            <marker date="1459762270040" expanded="true" signature="9008:9077" placeholder="ALTER TABLE `${$table}`... " />
-            <marker date="1459762270040" expanded="true" signature="9224:9295" placeholder="ALTER TABLE `${$table}`... " />
-            <marker date="1459762270040" expanded="true" signature="10493:10527" placeholder="ALTER TABLE `${$table}`... " />
-            <marker date="1459762270040" expanded="true" signature="11141:11202" placeholder="ALTER TABLE ${$table}... " />
-            <marker date="1459762270040" expanded="true" signature="11321:11393" placeholder="ALTER TABLE ${$table}... " />
-            <marker date="1459762270040" expanded="true" signature="11781:11801" placeholder="CREATE TABLE... ${$table}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_menus/views/items/tmpl/default.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_content/views/categories/tmpl/default.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2816265">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_menus/views/items/tmpl/frontend.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2816265">
-          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/form/fields/radioyesno.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34638554">
-          <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/configviewlayout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3448277">
-          <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/configviewlayout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769">
-          <caret line="299" column="8" selection-start-line="299" selection-start-column="8" selection-end-line="299" selection-end-column="8" />
-          <folding>
-            <marker date="1462410327810" expanded="true" signature="9717:9974" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_menus/views/items/tmpl/frontend.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.346153">
-          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_menus/views/items/view.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40963855">
-          <caret line="54" column="67" selection-start-line="54" selection-start-column="67" selection-end-line="54" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_menus/models/item.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9879518">
-          <caret line="887" column="0" selection-start-line="887" selection-start-column="0" selection-end-line="887" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/websites/view.html.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.5">
           <caret line="90" column="82" selection-start-line="90" selection-start-column="82" selection-end-line="90" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/websites/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.192307">
-          <caret line="177" column="86" selection-start-line="177" selection-start-column="52" selection-end-line="177" selection-end-column="86" />
           <folding />
         </state>
       </provider>
@@ -2746,26 +2586,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="339" column="36" selection-start-line="339" selection-start-column="24" selection-end-line="339" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/com_menus/controllers/menu.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-29.461538">
           <caret line="131" column="16" selection-start-line="131" selection-start-column="16" selection-end-line="131" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_menus/controllers/item.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.230769">
-          <caret line="443" column="33" selection-start-line="443" selection-start-column="33" selection-end-line="443" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -2882,22 +2706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_website/helpers/update_supper_admin_template_website.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
-          <caret line="51" column="28" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sprflat/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.615385">
-          <caret line="613" column="66" selection-start-line="613" selection-start-column="66" selection-end-line="613" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/com_menus/views/menus/tmpl/ajaxloader.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.653847">
@@ -2947,26 +2755,248 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_modules/controllers/module.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.730769">
+          <caret line="165" column="68" selection-start-line="165" selection-start-column="68" selection-end-line="165" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.115385">
+          <caret line="639" column="29" selection-start-line="639" selection-start-column="29" selection-end-line="639" selection-end-column="29" />
+          <folding>
+            <marker date="1462288993476" expanded="true" signature="21240:21393" placeholder="select @pare... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_supper_admin/com_supperadmin/views/websites/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.538462">
+          <caret line="176" column="74" selection-start-line="176" selection-start-column="74" selection-end-line="176" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_cpanel/models/listtemplate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.423077">
+          <caret line="190" column="60" selection-start-line="190" selection-start-column="60" selection-end-line="190" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/website/website_websitetemplatepro/com_websitetemplatepro/models/listtemplate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.5">
+          <caret line="184" column="37" selection-start-line="184" selection-start-column="37" selection-end-line="184" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_website/controllers/utility.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.730769">
+          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/system/js/sidr-master/src/jquery.sidr.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="236" column="33" selection-start-line="236" selection-start-column="33" selection-end-line="236" selection-end-column="33" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/less/csswheneditsite.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/js/javascriptdisableedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/less/disableedit.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/system/js/sidr-master/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor vertical-scroll-proportion="0.2019802">
+            <caret line="6" column="60" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="60" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/com_menus/helpers/menus.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
-          <caret line="362" column="52" selection-start-line="362" selection-start-column="52" selection-end-line="362" selection-end-column="52" />
+        <state vertical-scroll-proportion="-10.730769">
+          <caret line="350" column="44" selection-start-line="350" selection-start-column="27" selection-end-line="350" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/models/forms/item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.884615">
+          <caret line="115" column="35" selection-start-line="115" selection-start-column="18" selection-end-line="115" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/controllers/item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.346154">
+          <caret line="760" column="40" selection-start-line="760" selection-start-column="40" selection-end-line="760" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.807693">
+          <caret line="617" column="19" selection-start-line="617" selection-start-column="19" selection-end-line="617" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_website/assets/js/view-website-main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_website/views/website/tmpl/createmenus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="1" column="28" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_website/views/website/view.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7272727">
+          <caret line="60" column="45" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_users/helpers/groups.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.615385">
+          <caret line="136" column="29" selection-start-line="136" selection-start-column="29" selection-end-line="136" selection-end-column="29" />
+          <folding>
+            <marker date="1460303516589" expanded="true" signature="3854:4237" placeholder="SELECT GROUP... pv" />
+            <marker date="1460303516589" expanded="true" signature="3910:4234" placeholder="SELECT @pv:=... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/user/helper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.846154">
-          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+        <state vertical-scroll-proportion="-11.0">
+          <caret line="946" column="51" selection-start-line="946" selection-start-column="51" selection-end-line="946" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_modules/controllers/module.php">
+    <entry file="file://$PROJECT_DIR$/includes/framework.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.730769">
-          <caret line="165" column="68" selection-start-line="165" selection-start-column="68" selection-end-line="165" selection-end-column="68" />
+        <state vertical-scroll-proportion="-13.153846">
+          <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_website/controllers/website.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9636364">
+          <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+          <folding>
+            <marker date="1460071439801" expanded="true" signature="21741:21895" placeholder="..." />
+            <marker date="1460071439801" expanded="true" signature="21792:21868" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/root_position_id_website_id.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.538462">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/module/helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5384617">
+          <caret line="536" column="32" selection-start-line="536" selection-start-column="32" selection-end-line="536" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_website/helpers/update_supper_admin_template_website.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.346153">
+          <caret line="908" column="9" selection-start-line="864" selection-start-column="8" selection-end-line="908" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_website/models/website.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.192307">
+          <caret line="1346" column="54" selection-start-line="1346" selection-start-column="54" selection-end-line="1346" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sprflat/js/jquery.blockproperties.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="951" column="0" selection-start-line="951" selection-start-column="0" selection-end-line="951" selection-end-column="0" />
+          <folding>
+            <marker date="1456730099183" expanded="true" signature="1684:2699" placeholder="..." />
+            <marker date="1456730099183" expanded="true" signature="1765:1884" placeholder="..." />
+            <marker date="1456730099183" expanded="true" signature="4897:5919" placeholder="..." />
+            <marker date="1456730099183" expanded="true" signature="4978:5097" placeholder="..." />
+            <marker date="1456730099183" expanded="true" signature="7875:8886" placeholder="..." />
+            <marker date="1456730099183" expanded="true" signature="7956:8075" placeholder="..." />
+            <marker date="1456730099183" expanded="true" signature="10737:11740" placeholder="..." />
+            <marker date="1456730099183" expanded="true" signature="10818:10937" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/views/menus/tmpl/assets/js/view_menus_ajaxloader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3268293">
+          <caret line="327" column="64" selection-start-line="327" selection-start-column="64" selection-end-line="327" selection-end-column="64" />
           <folding />
         </state>
       </provider>
