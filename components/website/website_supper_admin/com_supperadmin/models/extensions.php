@@ -25,6 +25,7 @@ class supperadminModelextensions extends JModelList
 	 * @see     JController
 	 * @since   1.6
 	 */
+    protected $context = 'extensions';
 	public function __construct($config = array())
 	{
 		if (empty($config['filter_fields']))
@@ -32,7 +33,7 @@ class supperadminModelextensions extends JModelList
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'title', 'a.name',
-                'website_id','extension.website_id',
+                'website_id','a.website_id',
 				'name', 'a.name',
 				'folder', 'a.folder',
 				'element', 'a.element',
@@ -83,7 +84,6 @@ class supperadminModelextensions extends JModelList
 		$this->setState('filter.enabled', $state);
         $website_id = $this->getUserStateFromRequest($this->context . '.filter.website_id', 'filter_website_id', '', 'int');
 		$this->setState('filter.website_id', $website_id);
-
 		$folder = $this->getUserStateFromRequest($this->context . '.filter.folder', 'filter_folder', null, 'cmd');
 		$this->setState('filter.folder', $folder);
 
@@ -93,34 +93,11 @@ class supperadminModelextensions extends JModelList
 		// Load the parameters.
 		$params = JComponentHelper::getParams('com_supperadmin');
 		$this->setState('params', $params);
-
 		// List state information.
-		parent::populateState('folder', 'asc');
-	}
 
-	/**
-	 * Method to get a store id based on model configuration state.
-	 *
-	 * This is necessary because the model is used by the component and
-	 * different modules that might need different sets of data or different
-	 * ordering requirements.
-	 *
-	 * @param   string    A prefix for the store id.
-	 *
-	 * @return  string    A store id.
-	 */
-	protected function getStoreId($id = '')
-	{
-		// Compile the store id.
-		$id .= ':' . $this->getState('filter.search');
-		$id .= ':' . $this->getState('filter.access');
-		$id .= ':' . $this->getState('filter.state');
-		$id .= ':' . $this->getState('filter.folder');
-		$id .= ':' . $this->getState('filter.language');
-		$id .= ':' . $this->getState('filter.website_id');
 
-		return parent::getStoreId($id);
-	}
+    }
+
 
 	/**
 	 * Returns an object list
@@ -176,28 +153,7 @@ class supperadminModelextensions extends JModelList
 				$query->order('a.ordering ASC');
 			}
 			$result = parent::_getList($query, $limitstart, $limit);
-			$this->translate($result);
 			return $result;
-		}
-	}
-
-	/**
-	 * Translate a list of objects
-	 *
-	 * @param   array The array of objects
-	 * @return  array The array of translated objects
-	 */
-	protected function translate(&$items)
-	{
-		$lang = JFactory::getLanguage();
-
-		foreach ($items as &$item)
-		{
-			$source = JPATH_supperadmin . '/' . $item->folder . '/' . $item->element;
-			$extension = 'plg_' . $item->folder . '_' . $item->element;
-			$lang->load($extension . '.sys', JPATH_ADMINISTRATOR, null, false, true)
-				|| $lang->load($extension . '.sys', $source, null, false, true);
-			$item->name = JText::_($item->name);
 		}
 	}
 
@@ -271,12 +227,13 @@ class supperadminModelextensions extends JModelList
 		$website_id = $this->getState('filter.website_id');
 		if ($website_id)
 		{
-			$query->where('extensions.website_id = ' . $website_id);
+			$query->where('a.website_id = ' . $website_id);
 		}
 
 
-
-
+        $query->group('a.id');
+        $query->order('a.name');
+        echo $query->dump();
 		return $query;
 	}
 }

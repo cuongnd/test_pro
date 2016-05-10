@@ -42,6 +42,7 @@ class JComponentHelper
 	public static function getComponent($option, $strict = false)
 	{
 
+
 		if (!isset(static::$components[$option]))
 		{
 			if (static::load($option))
@@ -59,7 +60,6 @@ class JComponentHelper
 		{
 			$result = static::$components[$option];
 		}
-
 		return $result;
 	}
 

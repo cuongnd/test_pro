@@ -17,14 +17,13 @@
 			<option value="">JOPTION_SELECT_PUBLISHED</option>
 		</field>
 		<field
-			name="category_id"
-			type="category"
-			label="JOPTION_FILTER_CATEGORY"
-			extension="com_content"
-			description="JOPTION_FILTER_CATEGORY_DESC"
+			name="website_id"
+			type="website"
+			label="Website"
+			description="Website"
 			onchange="this.form.submit();"
 			>
-			<option value="">JOPTION_SELECT_CATEGORY</option>
+			<option value="">select website</option>
 		</field>
 		<field
 			name="level"

@@ -489,6 +489,7 @@ class JModelList extends JModelLegacy
 			// Receive & set list options
 			if ($list = $app->getUserStateFromRequest($this->context . '.list', 'list', array(), 'array'))
 			{
+
 				foreach ($list as $name => $value)
 				{
 					// Extra validations

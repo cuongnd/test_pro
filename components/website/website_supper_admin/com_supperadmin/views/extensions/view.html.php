@@ -29,18 +29,7 @@ class supperadminViewextensions extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-		$layout = JRequest::getVar('layout');
-		$tpl = JRequest::getVar('tpl');
-		$this->setLayout($layout);
-		switch ($tpl) {
-			case "loadcomponent":
-				parent::display($tpl);
-				return;
-				break;
-
-		}
-
-
+        return;
 		$this->items      = $this->get('Items');
 		$this->pagination = $this->get('Pagination');
         $this->filterForm    = $this->get('FilterForm');
@@ -123,25 +112,12 @@ class supperadminViewextensions extends JViewLegacy
 		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');
 
 		JHtmlSidebar::setAction('index.php?option=com_supperadmin&view=supperadmin');
-
-        $supperAdmin=JFactory::isSupperAdmin();
-        if($supperAdmin){
-            $option1=new stdClass();
-            $option1->id=-1;
-            $option1->title="Run for all";
-            $listWebsite1[]=$option1;
-            $option1=new stdClass();
-            $option1->id=-0;
-            $option1->title="None";
-            $listWebsite1[]=$option1;
-            $listWebsite2= websiteHelperFrontEnd::getWebsites();
-            $listWebsite=array_merge($listWebsite1,$listWebsite2);
-            JHtmlSidebar::addFilter(
-                JText::_('JOPTION_SELECT_WEBSITE'),
-                'filter_website_id',
-                JHtml::_('select.options',$listWebsite, 'id', 'title', $this->state->get('filter.website_id'))
-            );
-        }
+        $listWebsite=websiteHelperFrontEnd::get_list_website();
+        JHtmlSidebar::addFilter(
+            JText::_('JOPTION_SELECT_WEBSITE'),
+            'filter_website_id',
+            JHtml::_('select.options',$listWebsite, 'id', 'title', $this->state->get('filter.website_id'))
+        );
 		JHtmlSidebar::addFilter(
 				JText::_('JOPTION_SELECT_PUBLISHED'),
 				'filter_enabled',
@@ -161,6 +137,7 @@ class supperadminViewextensions extends JViewLegacy
 		);
 
 		$this->sidebar = JHtmlSidebar::render();
+
 
 	}
 

@@ -51,11 +51,6 @@ class JFormFieldDomains extends JFormField
         ;
         $db->setQuery($query);
         $list_website=$db->loadObjectList();
-        $option=array(
-            'id'=>'',
-            'domain='=>"please select domain"
-        );
-        array_unshift($list_website,(object)$option);
         $attr = '';
         $attr .= !empty($this->class) ? ' class="' . $this->class . '"' : '';
         $attr .= !empty($this->size) ? ' size="' . $this->size . '"' : '';

@@ -46,136 +46,145 @@ $sortFields = $this->getSortFields();
         <?php echo $this->render_toolbar() ?>
         <form action="<?php echo JRoute::_('index.php?option=com_supperadmin&view=extensions'); ?>" method="post"
               name="adminForm" id="adminForm">
+
             <div id="main-container">
-                <?php if (!empty($this->sidebar)) : ?>
-                    <?php echo $this->sidebar; ?>
-                <?php endif; ?>
-                <div class="row form-group">
-                    <div class="col-md-12">
-                        <div class="form-inline">
-                            <div class="form-group">
-                                <label for="exampleInputName2">Asign website</label>
-                                <?php echo $this->listWebsite; ?>
+                <div class="row">
+                    <div class="col-md-2">
+                        <?php if (!empty($this->sidebar)) : ?>
+                            <?php echo $this->sidebar; ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?php
+                                echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this));
+                                ?>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-striped" id="itemList">
+                                    <thead>
+                                    <tr>
+                                        <th width="1%" class="nowrap center hidden-phone">
+                                            <?php echo JHtml::_('grid.sort', '<i class="icon-menu-2"></i>', 'ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
+                                        </th>
+                                        <th width="1%" class="hidden-phone">
+                                            <?php echo JHtml::_('grid.checkall'); ?>
+                                        </th>
+                                        <th width="1%" class="nowrap center">
+                                            <?php echo JHtml::_('grid.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
+                                        </th>
+                                        <th class="title">
+                                            <?php echo JHtml::_('grid.sort', 'extension name', 'name', $listDirn, $listOrder); ?>
+                                        </th>
+                                        <th class="title">
+                                            <?php echo JHtml::_('grid.sort', 'website', 'a.website_name', $listDirn, $listOrder); ?>
+                                        </th>
+                                        <th class="title">
+                                            <?php echo JHtml::_('grid.sort', 'Is System', 'a.issystem', $listDirn, $listOrder); ?>
+                                        </th>
+
+
+                                        <th width="10%" class="nowrap hidden-phone">
+                                            <?php echo JHtml::_('grid.sort', 'folder', 'folder', $listDirn, $listOrder); ?>
+                                        </th>
+                                        <th width="10%" class="nowrap hidden-phone">
+                                            <?php echo JHtml::_('grid.sort', 'element', 'element', $listDirn, $listOrder); ?>
+                                        </th>
+                                        <th width="5%" class="hidden-phone">
+                                            <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ACCESS', 'access', $listDirn, $listOrder); ?>
+                                        </th>
+                                        <th width="1%" class="nowrap center hidden-phone">
+                                            <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="12">
+
+                                            <?php echo $this->pagination->getListFooter(); ?>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <?php foreach ($this->items as $i => $item) :
+                                        $ordering = ($listOrder == 'ordering');
+                                        $canEdit = $user->authorise('core.edit', 'com_supperadmin');
+                                        $canCheckin = $user->authorise('core.manage', 'com_checkin') || $item->checked_out == $user->get('id') || $item->checked_out == 0;
+                                        $canChange = $user->authorise('core.edit.state', 'com_supperadmin') && $canCheckin;
+                                        ?>
+                                        <tr class="row<?php echo $i % 2; ?>" item-id="<?php echo $item->id ?>"
+                                            sortable-group-id="<?php echo $item->folder ?>">
+                                            <td class="order nowrap center hidden-phone">
+                                                <?php
+                                                $iconClass = '';
+                                                if (!$canChange) {
+                                                    $iconClass = ' inactive';
+                                                } elseif (!$saveOrder) {
+                                                    $iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
+                                                }
+                                                ?>
+                                                <span class="sortable-handler<?php echo $iconClass ?>">
+							<i class="icon-menu"></i>
+						</span>
+                                                <?php if ($canChange && $saveOrder) : ?>
+                                                    <input type="text" style="display:none" name="order[]" size="5"
+                                                           value="<?php echo $item->ordering; ?>" class="width-20 text-area-order "/>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td class="center hidden-phone">
+                                                <?php echo JHtml::_('grid.id', $i, $item->id); ?>
+                                            </td>
+                                            <td class="center">
+                                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'extensions.', $canChange); ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($item->checked_out) : ?>
+                                                    <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'supperadmin.', $canCheckin); ?>
+                                                <?php endif; ?>
+                                                <?php if ($canEdit) : ?>
+                                                    <a class="quick-edit-title"
+                                                       href="<?php echo JRoute::_('index.php?option=com_supperadmin&task=extension.edit&id=' . (int)$item->id); ?>">
+                                                        <?php echo $item->name; ?></a>
+                                                <?php else : ?>
+                                                    <?php echo $item->name; ?>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td class="center hidden-phone">
+                                                <?php echo $item->website_name ?>
+                                            </td>
+                                            <td class="center">
+                                                <?php echo JHtml::_('jgrid.is_system', $item->issystem, $i, 'extensions.', $canChange); ?>
+                                            </td>
+                                            <td class="nowrap small hidden-phone">
+                                                <?php echo $this->escape($item->folder); ?>
+                                            </td>
+                                            <td class="nowrap small hidden-phone">
+                                                <?php echo $this->escape($item->element); ?>
+                                            </td>
+                                            <td class="small hidden-phone">
+                                                <?php echo $this->escape($item->access_level); ?>
+                                            </td>
+                                            <td class="center hidden-phone">
+                                                <?php echo (int)$item->id; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php
-                echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this));
-                ?>
+
+
 
                 <div class="clearfix"></div>
-                <table class="table table-striped" id="itemList">
-                    <thead>
-                    <tr>
-                        <th width="1%" class="nowrap center hidden-phone">
-                            <?php echo JHtml::_('grid.sort', '<i class="icon-menu-2"></i>', 'ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
-                        </th>
-                        <th width="1%" class="hidden-phone">
-                            <?php echo JHtml::_('grid.checkall'); ?>
-                        </th>
-                        <th width="1%" class="nowrap center">
-                            <?php echo JHtml::_('grid.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
-                        </th>
-                        <th class="title">
-                            <?php echo JHtml::_('grid.sort', 'extension name', 'name', $listDirn, $listOrder); ?>
-                        </th>
-                        <th class="title">
-                            <?php echo JHtml::_('grid.sort', 'website', 'a.website_id', $listDirn, $listOrder); ?>
-                        </th>
-                        <th class="title">
-                            <?php echo JHtml::_('grid.sort', 'Is System', 'a.issystem', $listDirn, $listOrder); ?>
-                        </th>
-
-
-                        <th width="10%" class="nowrap hidden-phone">
-                            <?php echo JHtml::_('grid.sort', 'folder', 'folder', $listDirn, $listOrder); ?>
-                        </th>
-                        <th width="10%" class="nowrap hidden-phone">
-                            <?php echo JHtml::_('grid.sort', 'element', 'element', $listDirn, $listOrder); ?>
-                        </th>
-                        <th width="5%" class="hidden-phone">
-                            <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ACCESS', 'access', $listDirn, $listOrder); ?>
-                        </th>
-                        <th width="1%" class="nowrap center hidden-phone">
-                            <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tfoot>
-                    <tr>
-                        <td colspan="12">
-
-                            <?php echo $this->pagination->getListFooter(); ?>
-                        </td>
-                    </tr>
-                    </tfoot>
-                    <tbody>
-                    <?php foreach ($this->items as $i => $item) :
-                        $ordering = ($listOrder == 'ordering');
-                        $canEdit = $user->authorise('core.edit', 'com_supperadmin');
-                        $canCheckin = $user->authorise('core.manage', 'com_checkin') || $item->checked_out == $user->get('id') || $item->checked_out == 0;
-                        $canChange = $user->authorise('core.edit.state', 'com_supperadmin') && $canCheckin;
-                        ?>
-                        <tr class="row<?php echo $i % 2; ?>" item-id="<?php echo $item->id ?>"
-                            sortable-group-id="<?php echo $item->folder ?>">
-                            <td class="order nowrap center hidden-phone">
-                                <?php
-                                $iconClass = '';
-                                if (!$canChange) {
-                                    $iconClass = ' inactive';
-                                } elseif (!$saveOrder) {
-                                    $iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
-                                }
-                                ?>
-                                <span class="sortable-handler<?php echo $iconClass ?>">
-							<i class="icon-menu"></i>
-						</span>
-                                <?php if ($canChange && $saveOrder) : ?>
-                                    <input type="text" style="display:none" name="order[]" size="5"
-                                           value="<?php echo $item->ordering; ?>" class="width-20 text-area-order "/>
-                                <?php endif; ?>
-                            </td>
-                            <td class="center hidden-phone">
-                                <?php echo JHtml::_('grid.id', $i, $item->id); ?>
-                            </td>
-                            <td class="center">
-                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'extensions.', $canChange); ?>
-                            </td>
-                            <td>
-                                <?php if ($item->checked_out) : ?>
-                                    <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'supperadmin.', $canCheckin); ?>
-                                <?php endif; ?>
-                                <?php if ($canEdit) : ?>
-                                    <a class="quick-edit-title"
-                                       href="<?php echo JRoute::_('index.php?option=com_supperadmin&task=component.edit&id=' . (int)$item->id); ?>">
-                                        <?php echo $item->name; ?></a>
-                                <?php else : ?>
-                                    <?php echo $item->name; ?>
-                                <?php endif; ?>
-                            </td>
-                            <td class="center hidden-phone">
-                                <?php echo $item->website ?>
-                            </td>
-                            <td class="center">
-                                <?php echo JHtml::_('jgrid.is_system', $item->issystem, $i, 'extensions.', $canChange); ?>
-                            </td>
-                            <td class="nowrap small hidden-phone">
-                                <?php echo $this->escape($item->folder); ?>
-                            </td>
-                            <td class="nowrap small hidden-phone">
-                                <?php echo $this->escape($item->element); ?>
-                            </td>
-                            <td class="small hidden-phone">
-                                <?php echo $this->escape($item->access_level); ?>
-                            </td>
-                            <td class="center hidden-phone">
-                                <?php echo (int)$item->id; ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
 
                 <input type="hidden" name="task" value=""/>
                 <input type="hidden" name="boxchecked" value="0"/>
