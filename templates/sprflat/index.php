@@ -261,6 +261,7 @@ if (!$ajaxGetContent) {
 
 
     $doc->addLessStyleSheet("$this->baseurl/templates/$this->template/less/custom.less");
+    $doc->addStyleSheet(JUri::root().'/media/jui_front_end/css/jquery.searchtools.css');
 
 }
 
@@ -337,7 +338,7 @@ ob_start();
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/droppable.js');
     $doc->addScript(JUri::root() . '/media/system/js/purl-master/purl-master/purl.js');
     $doc->addScript(JUri::root() . '/media/system/js/sidr-master/src/jquery.sidr.js');
-
+    $doc->addStyleSheet(JUri::root().'/media/jui_front_end/css/jquery.searchtools.css');
     require_once JPATH_ROOT . '/components/com_website/helpers/website.php';
 
     JHtml::_('jquery.framework');

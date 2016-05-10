@@ -49,7 +49,12 @@ $sortFields = $this->getSortFields();
 
             <div id="main-container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-2">
+                        <?php if (!empty($this->sidebar)) : ?>
+                            <?php echo $this->sidebar; ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="col-md-10">
                         <div class="row">
                             <div class="col-md-12">
                                 <?php

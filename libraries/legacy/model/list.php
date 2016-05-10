@@ -470,11 +470,11 @@ class JModelList extends JModelLegacy
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
+
 		// If the context is set, assume that stateful lists are used.
 		if ($this->context)
 		{
 			$app = JFactory::getApplication();
-
 			// Receive & set filters
 			if ($filters = $app->getUserStateFromRequest($this->context . '.filter', 'filter', array(), 'array'))
 			{

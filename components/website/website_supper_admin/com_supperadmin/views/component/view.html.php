@@ -10,13 +10,13 @@
 defined('_JEXEC') or die;
 
 /**
- * View to edit a component.
+ * View to edit a plugin.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_supperadmin
  * @since       1.5
  */
-class supperadminViewcomponent extends JViewLegacy
+class supperadminViewComponent extends JViewLegacy
 {
 	protected $item;
 
@@ -29,19 +29,11 @@ class supperadminViewcomponent extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-		$layout=$this->getLayout();
-		if($layout=='config')
-		{
-			parent::display('default');
-			return;
-		}
-
 		$this->state	= $this->get('State');
-
 		$this->item		= $this->get('Item');
-
 		$this->form		= $this->get('Form');
-        // Check for errors.
+
+		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
 			JError::raiseError(500, implode("\n", $errors));
@@ -59,21 +51,17 @@ class supperadminViewcomponent extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		JFactory::getApplication()->input->set('hidemainmenu', true);
 
 		$canDo = JHelperContent::getActions('com_supperadmin');
 
-		JToolbarHelper::title(JText::sprintf('COM_supperadmin_MANAGER_component', JText::_($this->item->name)), 'power-cord component');
+		JToolbarHelper::title(JText::sprintf('Website', JText::_($this->item->name)), 'power-cord plugin');
 
 		// If not checked out, can save the item.
-		if ($canDo->get('core.edit'))
-		{
-			JToolbarHelper::apply('component.apply');
-			JToolbarHelper::save('component.save');
-		}
+        JToolbarHelper::apply('component.apply');
+        JToolbarHelper::save('component.save');
 		JToolbarHelper::cancel('component.cancel', 'JTOOLBAR_CLOSE');
 		JToolbarHelper::divider();
-		// Get the help information for the component item.
+		// Get the help information for the plugin item.
 
 		$lang = JFactory::getLanguage();
 

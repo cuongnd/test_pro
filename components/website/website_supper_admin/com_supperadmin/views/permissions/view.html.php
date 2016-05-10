@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.5
  */
-class supperadminViewextensions extends JViewLegacy
+class supperadminViewpermissions extends JViewLegacy
 {
 	protected $items;
 
@@ -80,11 +80,6 @@ class supperadminViewextensions extends JViewLegacy
 		$canDo = JHelperContent::getActions('com_supperadmin');
         $bar = JToolBar::getInstance('toolbar');
 		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
-        $layout = new JLayoutFile('toolbar.newcomponent');
-
-        $bar->appendButton('Custom', $layout->render(array()), 'new');
-        JToolbarHelper::editList('extension.edit');
-        JToolbarHelper::addNew('extension.add');
         if ($canDo->get('core.create'))
         {
             // Instantiate a new JLayoutFile instance and render the layout
@@ -94,7 +89,7 @@ class supperadminViewextensions extends JViewLegacy
         }
 		if ($canDo->get('core.edit'))
 		{
-			JToolbarHelper::editList('extension.edit');
+			JToolbarHelper::editList('component.edit');
 		}
         if ($canDo->get('core.create'))
         {

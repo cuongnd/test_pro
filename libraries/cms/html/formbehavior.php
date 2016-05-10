@@ -98,7 +98,7 @@ abstract class JHtmlFormbehavior
 	}
 	public static function select2($selector = '.advancedSelect', $debug = null, $options = array(),$callAgain='')
 	{
-		$selector=$selector.':not([disableChosen="true"])';
+		$selector=$selector.':not([disable_select2="true"])';
 		$app=JFactory::getApplication();
 		$client=$app->getClientId();
 		$jui=$client==0?'jui_front_end':'jui';

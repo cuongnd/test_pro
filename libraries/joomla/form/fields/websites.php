@@ -50,6 +50,7 @@ class JFormFieldWebsites extends JFormField
         array_unshift($list_website,(object)$option);
         $attribute=array();
         $attribute[]=$this->onchange?'onchange="'.$this->onchange.'"':'';
+        $attribute[]=' disableChosen="true" ';
         $attribute=implode(' ',$attribute);
         $html = JHtml::_('select.genericlist', $list_website, $this->name,$attribute, 'id', 'name', $this->value);
 

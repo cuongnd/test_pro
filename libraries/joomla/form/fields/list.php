@@ -38,8 +38,8 @@ class JFormFieldList extends JFormField
 	protected function getInput()
 	{
 		$html = array();
-		$attr = '';
-		JHtml::_('formbehavior.chosen', 'select',null,array(),JUserHelper::genRandomPassword());
+		$attr = ' disableChosen="true" ';
+		JHtml::_('formbehavior.select2', 'select',null,array(),JUserHelper::genRandomPassword());
 		$doc=JFactory::getDocument();
 		$scriptId='script_lib_joomla_form_fields_list';
 		ob_start();

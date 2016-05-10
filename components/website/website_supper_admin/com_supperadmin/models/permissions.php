@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.6
  */
-class supperadminModelExtensions extends JModelList
+class supperadminModelpermissions extends JModelList
 {
     /**
      * Constructor.
@@ -25,7 +25,7 @@ class supperadminModelExtensions extends JModelList
      * @see     JController
      * @since   1.6
      */
-    protected $context = 'extensions';
+    protected $context = 'permissions';
     public function __construct($config = array())
     {
         if (empty($config['filter_fields'])) {
