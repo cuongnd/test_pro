@@ -145,13 +145,13 @@ class gianhangViewextensions extends JViewLegacy
 		JHtmlSidebar::addFilter(
 				JText::_('JOPTION_SELECT_PUBLISHED'),
 				'filter_enabled',
-				JHtml::_('select.options', extensionsHelper::publishedOptions(), 'value', 'text', $this->state->get('filter.enabled'), true)
+				JHtml::_('select.options', extensions_Supper_Admin_Helper::publishedOptions(), 'value', 'text', $this->state->get('filter.enabled'), true)
 		);
 
 		JHtmlSidebar::addFilter(
 				JText::_('folder'),
 				'filter_folder',
-				JHtml::_('select.options', extensionsHelper::folderOptions(), 'value', 'text', $this->state->get('filter.folder'))
+				JHtml::_('select.options', extensions_Supper_Admin_Helper::folderOptions(), 'value', 'text', $this->state->get('filter.folder'))
 		);
 
 		JHtmlSidebar::addFilter(

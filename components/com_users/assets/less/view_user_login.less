@@ -1,3 +1,13 @@
+.contentpane
+{
+  background: #75b9e6 ;
+  #login{
+    .login-wrapper
+    {
+      padding: 10px;
+    }
+  }
+}
 .view-user-login
 {
   .form-horizontal .left-input-icon, .form-inline .left-input-icon {
@@ -31,6 +41,7 @@
     display: inline-block;
     height: auto;
     width: 100%;
+    padding: 10px;
     .login,.register
     {
       display: block !important;
@@ -43,4 +54,67 @@
     color: #768399;
     margin-right: -1px;
   }
+}
+
+div.login-page {
+  background: #75b9e6;
+}
+div.login-page #login {
+  margin: 10% auto 0 auto;
+  position: relative;
+  width: 420px;
+}
+div.login-page #login #logo {
+  position: absolute;
+  top: -75px;
+  left: 50%;
+  margin-left: -105px;
+  /* width of the logo devided by 2 */
+}
+div.login-page #login .login-wrapper {
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  border-radius: 4px;
+  display: inline-block;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+}
+div.login-page #login .login-wrapper .nav-tabs.nav-justified li:first-child a {
+  border-top-left-radius: 4px;
+}
+div.login-page #login .login-wrapper .nav-tabs.nav-justified li:last-child a {
+  border-top-right-radius: 4px;
+}
+div.login-page #login .login-wrapper .nav-tabs.nav-justified li a {
+  border: none;
+}
+div.login-page #login .login-wrapper #user-info {
+  position: relative;
+  height: 156px;
+}
+div.login-page #login .login-wrapper #user-info img.cover {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+div.login-page #login .login-wrapper #user-info h4.headline {
+  float: left;
+  padding: 10px 30px;
+}
+div.error-page {
+  margin-top: 5%;
+  background-color: #f3f5f6;
+}
+div.error-page h1.error-number {
+  text-align: center;
+  font-size: 20em;
+  font-family: 'Cantarell';
+}
+div.mce-fullscreen #header {
+  display: none;
+}
+div.full-screen {
+  width: 100%;
+}
+div.full-screen #header {
+  left: 0;
 }

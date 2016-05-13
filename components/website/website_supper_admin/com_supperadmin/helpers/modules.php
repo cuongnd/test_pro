@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_gianhang
+ * @subpackage  com_supperadmin
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -10,15 +10,15 @@
 defined('_JEXEC') or die;
 
 /**
- * gianhang component helper.
+ * supperadmin component helper.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_gianhang
+ * @subpackage  com_supperadmin
  * @since       1.6
  */
-class extensionsHelper
+class modulesHelper
 {
-	public static $extension = 'com_gianhang';
+	public static $extension = 'com_supperadmin';
 
 	/**
 	 * Configure the Linkbar.
@@ -43,31 +43,16 @@ class extensionsHelper
 		JLog::add(__METHOD__ . '() is deprecated, use JHelperContent::getActions() with new arguments order instead.', JLog::WARNING, 'deprecated');
 
 		// Get list of actions
-		$result = JHelperContent::getActions('com_gianhang');
+		$result = JHelperContent::getActions('com_supperadmin');
 
 		return $result;
 	}
-
-    public static function get_list_extension_by_website_and_type($website_id, $extension_type)
-    {
-        $db=JFactory::getDbo();
-        $query=$db->getQuery(true);
-        $query->select('*')
-            ->from('#__extensions')
-            ->where('website_id='.(int)$website_id)
-            ->where('type='.(int)$query->q($extension_type))
-
-        ;
-        $db->setQuery($query);
-        return $db->loadObjectList();
-    }
-
     public function getComponentByWebsiteId($website_id)
     {
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
         $query->select('*')
-            ->from('#__gianhang')
+            ->from('#__supperadmin')
             ->where('website_id='.(int)$website_id);
         $db->setQuery($query);
         return $db->loadObjectList();
@@ -128,7 +113,7 @@ class extensionsHelper
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('DISTINCT(folder) AS value, folder AS text')
-			->from('#__extensions')
+			->from('#__modules')
 			->where($db->quoteName('type') . ' = ' . $db->quote('component'))
 			->order('folder');
 

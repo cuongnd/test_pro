@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.6
  */
-class supperadminControllerExtension extends JControllerForm
+class supperadminControllerplugin extends JControllerForm
 {
     /**
      * Method override to check if you can edit an existing record.
@@ -42,18 +42,6 @@ class supperadminControllerExtension extends JControllerForm
 
         // Since there is no asset tracking, revert to the component permissions.
         return parent::allowEdit($data, $key);
-    }
-    public function ajax_get_list_extension_by_website_and_type(){
-        $app=JFactory::getApplication();
-        $input=$app->input;
-        $post = file_get_contents('php://input');
-        $post = json_decode($post);
-        $website_id=$post->website_id;
-        $extension_type=$post->extension_type;
-        require_once JPATH_ROOT.'/components/website/website_supper_admin/com_supperadmin/helpers/extensionssupperadmin.php';
-        $list_extension=extensions_Supper_Admin_Helper::get_list_extension_by_website_and_type($website_id,$extension_type);
-        echo json_encode($list_extension);
-        die;
     }
     public function ajax_remove_component()
     {

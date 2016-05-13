@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.6
  */
-class supperadminModelExtensions extends JModelList
+class supperadminModelmodules extends JModelList
 {
     /**
      * Constructor.
@@ -25,15 +25,15 @@ class supperadminModelExtensions extends JModelList
      * @see     JController
      * @since   1.6
      */
-    protected $context = 'extensions';
+    protected $context = 'modules';
     public function __construct($config = array())
     {
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
                 'id', 'a.id',
-                'title', 'a.name',
+                'title', 'a.module',
                 'domain', 'a.domain',
-                'name', 'a.name',
+                'name', 'a.module',
                 'checked_out', 'a.checked_out',
                 'checked_out_time', 'a.checked_out_time',
                 'state', 'a.state',
@@ -95,22 +95,18 @@ class supperadminModelExtensions extends JModelList
         $query->select(
             $this->getState(
                 'list.select',
-                'a.id,a.name,a.type,a.element,a.published,a.folder,a.enabled,a.access,website.name AS website_name'
+                'a.id,a.title,a.module,a.published,a.access,website.name AS website_name'
             )
         )
-            ->from($db->quoteName('#__extensions') . ' AS a')
-            ->leftJoin('#__website AS website ON website.id=a.website_id')
+            ->from($db->quoteName('#__modules') . ' AS a')
+            ->leftJoin('#__extensions AS extension ON extension.id=a.extension_id')
+            ->leftJoin('#__website AS website ON website.id=extension.website_id')
             ->group('a.id')
         ;
         $website_id=$this->getState('filter.website_id');
         if($website_id)
         {
-            $query->where('a.website_id='.(int)$website_id);
-        }
-        $element_type=$this->getState('filter.element_type');
-        if($element_type)
-        {
-            $query->where('a.type='.$query->q($element_type));
+            $query->where('extension.website_id='.(int)$website_id);
         }
         // Join over the users for the checked out user.
         // Add the list ordering clause.

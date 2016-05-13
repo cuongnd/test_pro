@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.6
  */
-class extensionsHelper
+class extensions_Supper_Admin_Helper
 {
 	public static $extension = 'com_supperadmin';
 
@@ -47,6 +47,35 @@ class extensionsHelper
 
 		return $result;
 	}
+
+    public static function get_list_extension_by_type($type='component')
+    {
+        if(!$type)
+        {
+            $type='component';
+        }
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('*')
+            ->from('#__extensions')
+            ->where('type='.$query->q($type));
+        $db->setQuery($query);
+        return $db->loadObjectList();
+    }
+    public static function get_list_extension_by_website_and_type($website_id=0, $extension_type='module')
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('*')
+            ->from('#__extensions')
+            ->where('website_id='.(int)$website_id)
+            ->where('type='.$query->q($extension_type))
+
+        ;
+        $db->setQuery($query);
+        return $db->loadObjectList();
+    }
+
     public function getComponentByWebsiteId($website_id)
     {
         $db=JFactory::getDbo();

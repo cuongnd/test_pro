@@ -16,7 +16,7 @@ defined('_JEXEC') or die(__FILE__);
  * @subpackage  Form
  * @since       11.1
  */
-abstract class JFormField
+abstract class JFormField extends JObject
 {
     /**
      * The description text for the form field. Usually used in tooltips.

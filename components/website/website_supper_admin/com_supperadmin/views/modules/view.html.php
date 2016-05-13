@@ -10,13 +10,13 @@
 defined('_JEXEC') or die;
 
 /**
- * View class for a list of extensions.
+ * View class for a list of modules.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_supperadmin
  * @since       1.5
  */
-class supperadminViewextensions extends JViewLegacy
+class supperadminViewmodules extends JViewLegacy
 {
 	protected $items;
 
@@ -51,7 +51,7 @@ class supperadminViewextensions extends JViewLegacy
 			);
 		}
 
-        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('extensions.quick_assign_website');
+        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('modules.quick_assign_website');
 		$this->addToolbar();
 
         JHtmlSidebar::addFilter(
@@ -67,7 +67,7 @@ class supperadminViewextensions extends JViewLegacy
     function addCommand()
     {
         $this->command='com_supperadmin';
-        $this->controller_task='extensions.ajaxSaveForm';
+        $this->controller_task='modules.ajaxSaveForm';
     }
 	/**
 	 * Add the page title and toolbar.
@@ -76,7 +76,7 @@ class supperadminViewextensions extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_supperadmin/helpers/extensionssupperadmin.php';
+		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_supperadmin/helpers/modules.php';
 		$canDo = JHelperContent::getActions('com_supperadmin');
         $bar = JToolBar::getInstance('toolbar');
 		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
@@ -98,25 +98,25 @@ class supperadminViewextensions extends JViewLegacy
 		}
         if ($canDo->get('core.create'))
         {
-            JToolbarHelper::custom('extensions.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
+            JToolbarHelper::custom('modules.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
         }
-		JToolbarHelper::duplicate('extensions.duplicate');
+		JToolbarHelper::duplicate('modules.duplicate');
 		if ($canDo->get('core.edit.state'))
 		{
-			JToolbarHelper::publish('extensions.publish', 'JTOOLBAR_ENABLE', true);
-			JToolbarHelper::unpublish('extensions.unpublish', 'JTOOLBAR_DISABLE', true);
-			JToolbarHelper::checkin('extensions.checkin');
+			JToolbarHelper::publish('modules.publish', 'JTOOLBAR_ENABLE', true);
+			JToolbarHelper::unpublish('modules.unpublish', 'JTOOLBAR_DISABLE', true);
+			JToolbarHelper::checkin('modules.checkin');
 		}
         if ($this->state->get('filter.published') == -2)
         {
-            JToolbarHelper::deleteList('', 'extensions.delete', 'JTOOLBAR_EMPTY_TRASH');
+            JToolbarHelper::deleteList('', 'modules.delete', 'JTOOLBAR_EMPTY_TRASH');
         }
         elseif ($canDo->get('core.edit.state'))
         {
-            JToolbarHelper::trash('extensions.trash');
+            JToolbarHelper::trash('modules.trash');
         }
-        JToolbarHelper::publish('extensions.issystem','Is system');
-        JToolbarHelper::unpublish('extensions.isnotsystem','Is system');
+        JToolbarHelper::publish('modules.issystem','Is system');
+        JToolbarHelper::unpublish('modules.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
 			JToolbarHelper::preferences('com_supperadmin');

@@ -16,13 +16,13 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.6
  */
-class supperadminModelExtension extends JModelAdmin
+class supperadminModelmodule extends JModelAdmin
 {
 	/**
 	 * @var     string  The help screen key for the module.
 	 * @since   1.6
 	 */
-	protected $helpKey = 'JHELP_EXTENSIONS_component_MANAGER_EDIT';
+	protected $helpKey = 'JHELP_moduleS_component_MANAGER_EDIT';
 
 	/**
 	 * @var     string  The help screen base URL for the module.
@@ -40,13 +40,13 @@ class supperadminModelExtension extends JModelAdmin
 	 * @var     string  The event to trigger after saving the data.
 	 * @since   1.6
 	 */
-	protected $event_after_save = 'onExtensionAfterSave';
+	protected $event_after_save = 'onmoduleAfterSave';
 
 	/**
 	 * @var     string  The event to trigger after before the data.
 	 * @since   1.6
 	 */
-	protected $event_before_save = 'onExtensionBeforeSave';
+	protected $event_before_save = 'onmoduleBeforeSave';
 
 	/**
 	 * Method to get the record form.
@@ -77,7 +77,7 @@ class supperadminModelExtension extends JModelAdmin
 		$this->setState('item.element',	$element);
 
 		// Get the form.
-		$form = $this->loadForm('com_supperadmin.extension', 'extension', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_supperadmin.module', 'module', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form))
 		{
 
@@ -134,14 +134,14 @@ class supperadminModelExtension extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_supperadmin.edit.extension.data', array());
+		$data = JFactory::getApplication()->getUserState('com_supperadmin.edit.module.data', array());
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
 		}
 
-		$this->preprocessData('com_supperadmin.extension', $data);
+		$this->preprocessData('com_supperadmin.module', $data);
 
 		return $data;
 	}
@@ -239,7 +239,7 @@ class supperadminModelExtension extends JModelAdmin
                 }
                 if($table->issystem)
                 {
-                    $this->setError('you cannot delete extension system');
+                    $this->setError('you cannot delete module system');
                     return false;
                 }
                 if (!$table->delete($pk))
@@ -267,7 +267,7 @@ class supperadminModelExtension extends JModelAdmin
         $db		= $this->getDbo();
         $tuples=array();
 /*        // Access checks.
-        if (!$user->authorise('core.create', 'com_extension'))
+        if (!$user->authorise('core.create', 'com_module'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }*/
@@ -352,7 +352,7 @@ class supperadminModelExtension extends JModelAdmin
 	{
 
 
-		$pk = (!empty($pk)) ? $pk : (int) $this->getState('extension.id');
+		$pk = (!empty($pk)) ? $pk : (int) $this->getState('module.id');
 
 		if (!isset($this->_cache[$pk]))
 		{
@@ -379,7 +379,7 @@ class supperadminModelExtension extends JModelAdmin
 			$registry->loadString($table->params);
 			$this->_cache[$pk]->params = $registry->toArray();
 
-			// Get the extension XML.
+			// Get the module XML.
 			$path = JPath::clean(JPATH_ROOT . '/' . $table->folder . '/' . $table->element . '/' . $table->element . '.xml');
 
 			if (file_exists($path))
@@ -404,7 +404,7 @@ class supperadminModelExtension extends JModelAdmin
 	 * @param   array  Configuration array for model. Optional.
 	 * @return  JTable	A database object
 	*/
-	public function getTable($type = 'extension', $prefix = 'JTable', $config = array())
+	public function getTable($type = 'module', $prefix = 'JTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
@@ -427,7 +427,7 @@ class supperadminModelExtension extends JModelAdmin
 		// Load the User state.
 		$pk = $app->input->getInt('id');
 
-		$this->setState('extension.id', $pk);
+		$this->setState('module.id', $pk);
 	}
 
 

@@ -22,7 +22,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
 $canOrder = $user->authorise('core.edit.state', 'com_supperadmin');
 $saveOrder = $listOrder == 'ordering';
 if ($saveOrder) {
-    $saveOrderingUrl = 'index.php?option=com_supperadmin&task=plugins.saveOrderAjax&tmpl=component';
+    $saveOrderingUrl = 'index.php?option=com_supperadmin&task=modules.saveOrderAjax&tmpl=component';
     JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 $sortFields = $this->getSortFields();
@@ -42,9 +42,9 @@ $sortFields = $this->getSortFields();
         }
     </script>
 
-    <div class="view-plugins-default">
+    <div class="view-modules-default">
         <?php echo $this->render_toolbar() ?>
-        <form action="<?php echo JRoute::_('index.php?option=com_supperadmin&view=plugins'); ?>" method="post"
+        <form action="<?php echo JRoute::_('index.php?option=com_supperadmin&view=modules'); ?>" method="post"
               name="adminForm" id="adminForm">
 
             <div id="main-container">
@@ -132,7 +132,7 @@ $sortFields = $this->getSortFields();
                                                 <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                                             </td>
                                             <td class="center">
-                                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'plugins.', $canChange); ?>
+                                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'modules.', $canChange); ?>
                                             </td>
                                             <td>
                                                 <?php if ($item->checked_out) : ?>
@@ -162,7 +162,7 @@ $sortFields = $this->getSortFields();
                                                 <?php echo $item->website_name ?>
                                             </td>
                                             <td class="center">
-                                                <?php echo JHtml::_('jgrid.is_system', $item->issystem, $i, 'plugins.', $canChange); ?>
+                                                <?php echo JHtml::_('jgrid.is_system', $item->issystem, $i, 'modules.', $canChange); ?>
                                             </td>
                                             <td class="small hidden-phone">
                                                 <?php echo $this->escape($item->access_level); ?>

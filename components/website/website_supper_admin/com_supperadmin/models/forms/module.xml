@@ -13,41 +13,23 @@
                 class="readonly"/>
 
         <field
-                name="name"
+                name="module"
+                type="module"
+                required="true"
+                label="Module"
+                description="Module"/>
+        <field
+                name="title"
                 type="text"
                 required="true"
-                label="name"
-                description="name"/>
-        <field
-                name="element"
-                type="text"
-                required="true"
-                label="Element"
-                description="Element"/>
-        <field
-                name="folder"
-                type="text"
-                required="true"
-                label="Folder"
-                description="Folder"/>
-        <field
-                name="type"
-                type="list"
-                class="chzn-color-state"
-                label="Type"
-                description="Type"
-                size="1"
-                default="module">
-            <option value="">please select type extension</option>
-            <option value="module">module</option>
-            <option value="component">component</option>
-            <option value="plugin">plugin</option>
-        </field>
+                label="Title"
+                description="Title"/>
 
 
-        <field name="website_id" type="websites"
-               description="website"
-               label="website"
+        <field name="extension_id" type="selectextension" extension_type="module"
+               description="Extension"
+               label="Extension"
+               maximumSelectionLength="1"
         />
 
 
@@ -75,11 +57,11 @@
         </field>
 
         <field
-                name="introtext"
+                name="note"
                 type="editor"
                 readonly="true"
-                label="Description"
-                description="Description"/>
+                label="Note"
+                description="Note"/>
 
 
 

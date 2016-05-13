@@ -119,10 +119,10 @@ abstract class JHtmlFormbehavior
 		$options['placeholder_text_multiple'] = isset($options['placeholder_text_multiple']) ? $options['placeholder_text_multiple']: JText::_('JGLOBAL_SELECT_SOME_OPTIONS');
 		$options['placeholder_text_single']   = isset($options['placeholder_text_single']) ? $options['placeholder_text_single'] : JText::_('JGLOBAL_SELECT_AN_OPTION');
 		$options['no_results_text']           = isset($options['no_results_text']) ? $options['no_results_text'] : JText::_('JGLOBAL_SELECT_NO_RESULTS_MATCH');
+		$options['width']           = 'resolve';
 
 		// Options array to json options string
 		$options_str = json_encode($options, ($debug && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : false));
-
 		JHtml::_('stylesheet', $jui.'/select2.css', false, true);
 		$doc=JFactory::getDocument();
 		$doc->addScript(JUri::root().'/media/jui_front_end/js/select2.jquery.js');

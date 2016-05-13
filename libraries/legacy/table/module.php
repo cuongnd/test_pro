@@ -113,29 +113,6 @@ class JTableModule extends JTable
 	 */
 	public function check()
 	{
-        $supperAdmin=JFactory::isSupperAdmin();
-        if($supperAdmin)
-        {
-            if(!$this->website_id)
-            {
-                $this->setError(JText::_('Please select website_id'));
-                return false;
-            }
-        }
-        else
-        {
-            $app=JFactory::getApplication();
-            $option=$app->input->getString('option','');
-            if($app->getClientId()==0&&$option=='com_website')
-            {
-
-            }
-            else
-            {
-                $website=JFactory::getWebsite();
-                $this->website_id=$website->website_id;
-            }
-        }
 		// Check for valid name
 		if (trim($this->title) == '')
 		{
