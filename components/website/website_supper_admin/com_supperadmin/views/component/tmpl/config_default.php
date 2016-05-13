@@ -79,7 +79,7 @@ foreach ($list_path as $path) {
 
 
 //get list field table position config
-$list_field_table_position_config = $db->getTableColumns('#__modules');
+$list_field_table_position_config = $db->getTableColumns('#__components');
 $list_field_table_position_config = array_keys($list_field_table_position_config);
 //end get list field table position config
 
@@ -303,7 +303,7 @@ ob_start();
         return;
     }
     $response_array[] = array(
-        'key' => '.panel.extension-module-config .panel-body',
+        'key' => '.panel.extension-component-config .panel-body',
         'contents' => $contents
     );
 

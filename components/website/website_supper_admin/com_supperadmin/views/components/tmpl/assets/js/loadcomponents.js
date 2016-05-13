@@ -89,24 +89,24 @@
 
                         });
                         var html='';
-                        if(!$('.extension-module-config').length) {
-                            html = $('<div class="panel module panel-primary extension-module-config  panelMove toggle panelRefresh panelClose"  >' +
-                                '<div class="panel-heading module-handle">' +
-                                '<h4 class="panel-title">module manager</h4>' +
+                        if(!$('.extension-component-config').length) {
+                            html = $('<div class="panel component panel-primary extension-component-config  panelMove toggle panelRefresh panelClose"  >' +
+                                '<div class="panel-heading component-handle">' +
+                                '<h4 class="panel-title">component manager</h4>' +
 
                                 '</div>' +
-                                '<div class="panel-body module"></div>' +
-                                '<div class="panel-footer module-handle-footer">' +
-                                '<button class="btn btn-danger save-block-property pull-right" onclick="view_module_config.save_and_close(self)" ><i class="fa-save"></i>Save&close</button>&nbsp;&nbsp;' +
-                                '<button class="btn btn-danger apply-block-property pull-right" onclick="view_module_config.save(self)" ><i class="fa-save"></i>Save</button>&nbsp;&nbsp;' +
-                                '<button class="btn btn-danger cancel-block-property pull-right" onclick="view_module_config.cancel(self)"><i class="fa-save"></i>Cancel</button>' +
+                                '<div class="panel-body component"></div>' +
+                                '<div class="panel-footer component-handle-footer">' +
+                                '<button class="btn btn-danger save-block-property pull-right" onclick="view_component_config.save_and_close(self)" ><i class="fa-save"></i>Save&close</button>&nbsp;&nbsp;' +
+                                '<button class="btn btn-danger apply-block-property pull-right" onclick="view_component_config.save(self)" ><i class="fa-save"></i>Save</button>&nbsp;&nbsp;' +
+                                '<button class="btn btn-danger cancel-block-property pull-right" onclick="view_component_config.cancel(self)"><i class="fa-save"></i>Cancel</button>' +
                                 '</div>'+
                                 '</div>'
                             );
                             $('body').prepend(html);
 
                             html.draggable({
-                                handle: '.module-handle,.module-handle-footer'
+                                handle: '.component-handle,.component-handle-footer'
                             });
                         }
                         Joomla.sethtmlfortag1(response);
@@ -123,7 +123,7 @@
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
             document.title = 'config view';
-            $element.find(".list-module .item-element").draggable({
+            $element.find(".list-component .item-element").draggable({
                 appendTo: 'body',
                 helper: "clone"
                 /* revert:true,

@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.6
  */
-class supperadminControllersupperadmin extends JControllerAdmin
+class supperadminControllercomponents extends JControllerAdmin
 {
 	/**
 	 * Method to get a model object, loading it if required.
@@ -29,7 +29,7 @@ class supperadminControllersupperadmin extends JControllerAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getModel($name = 'component', $prefix = 'supperadminModel', $config = array('ignore_request' => true))
+	public function getModel($name = 'website', $prefix = 'supperadminModel', $config = array('ignore_request' => true))
 	{
 		$model = parent::getModel($name, $prefix, $config);
 		return $model;
@@ -94,29 +94,6 @@ class supperadminControllersupperadmin extends JControllerAdmin
      * Method to clone an existing module.
      * @since   1.6
      */
-    public function duplicate()
-    {
-        // Check for request forgeries
-        JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
-        $pks = $this->input->post->get('cid', array(), 'array');
-        JArrayHelper::toInteger($pks);
-
-        try {
-            if (empty($pks))
-            {
-                throw new Exception(JText::_('COM_supperadmin_ERROR_NO_supperadmin_SELECTED'));
-            }
-            $model = $this->getModel();
-            $model->duplicate($pks);
-            $this->setMessage(JText::plural('COM_supperadmin_N_supperadmin_DUPLICATED', count($pks)));
-        } catch (Exception $e)
-        {
-            JError::raiseWarning(500, $e->getMessage());
-        }
-
-        $this->setRedirect('index.php?option=com_supperadmin&view=supperadmin');
-    }
     function quick_assign_website()
     {
         $app=JFactory::getApplication();

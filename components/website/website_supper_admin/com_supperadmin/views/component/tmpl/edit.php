@@ -11,23 +11,45 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
 $filed_set=$this->form->getFieldset();
+
+
+$doc=JFactory::getDocument();
+$scriptId = "script_view_component_default";
+ob_start();
 ?>
 <script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('.view-component-default').view_component_default({
 
+
+        });
+
+
+    });
 </script>
-<?php echo $this->render_toolbar() ?>
-<form action="<?php echo JRoute::_('index.php?option=com_supperadmin&view=domain&layout=edit&id=' . (int) $this->item->id); ?>" method="post"  name="adminForm" id="adminForm" class="form-validate">
+<?php
+$script = ob_get_clean();
+$script = JUtility::remove_string_javascript($script);
+$doc->addScriptDeclaration($script, "text/javascript", $scriptId);
+$doc->addScript(JUri::root().'/components/website/website_supper_admin/com_supperadmin/assets/js/view_component_default.js');
 
-	<div class="form-horizontal">
-        <?php foreach ($this->form->getFieldset() as $field) : ?>
-            <div class="form-group">
-                <label for="<?php $field->name ?>" class="col-sm-2 control-label"><?php echo $field->label; ?></label>
-                <div class="col-sm-10">
-                    <?php echo $field->input; ?>
+
+?>
+<div class="view-component-default">
+    <?php echo $this->render_toolbar() ?>
+    <form action="<?php echo JRoute::_('index.php?option=com_supperadmin&view=extension&layout=edit&id=' . (int) $this->item->id); ?>" method="post"  name="adminForm" id="adminForm" class="form-validate">
+
+        <div class="form-horizontal">
+            <?php foreach ($this->form->getFieldset() as $field) : ?>
+                <div class="form-group">
+                    <label for="<?php $field->name ?>" class="col-sm-2 control-label"><?php echo $field->label; ?></label>
+                    <div class="col-sm-10">
+                        <?php echo $field->input; ?>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
-	</div>
-	<input type="hidden" name="task" value="" />
-    <?php echo JHtml::_('form.token'); ?>
-</form>
+            <?php endforeach; ?>
+        </div>
+        <input type="hidden" name="task" value="" />
+        <?php echo JHtml::_('form.token'); ?>
+    </form>
+</div>

@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.5
  */
-class supperadminViewComponent extends JViewLegacy
+class supperadminViewcomponent extends JViewLegacy
 {
 	protected $item;
 
@@ -54,7 +54,7 @@ class supperadminViewComponent extends JViewLegacy
 
 		$canDo = JHelperContent::getActions('com_supperadmin');
 
-		JToolbarHelper::title(JText::sprintf('Website', JText::_($this->item->name)), 'power-cord plugin');
+		JToolbarHelper::title(JText::sprintf('Component', JText::_($this->item->name)), 'power-cord plugin');
 
 		// If not checked out, can save the item.
         JToolbarHelper::apply('component.apply');

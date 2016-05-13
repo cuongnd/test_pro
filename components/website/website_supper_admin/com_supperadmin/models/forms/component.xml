@@ -1,70 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-	<fieldset
-		addfieldpath="/administrator/supperadmin/com_supperadmin/models/fields"
-	>
-		<field
-			name="id"
-			label="JGLOBAL_FIELD_ID_LABEL"
-			description ="JGLOBAL_FIELD_ID_DESC"
-			type="text"
-			default="0"
-			readonly="true"
-			class="readonly" />
-
-		<field
-			name="name"
-			type="hidden"
-			label="COM_supperadmin_FIELD_NAME_LABEL"
-			description="COM_supperadmin_FIELD_NAME_DESC" />
-
-        <field name="website_id" type="websites"
-               description="COM_component_FIELD_WEBSITE_DESC"
-               label="JGLOBAL_WEBSITE"
-                />
-
-		<field
-			name="enabled"
-			type="list"
-			class="chzn-color-state"
-			label="JSTATUS"
-			description="COM_supperadmin_FIELD_ENABLED_DESC"
-			size="1"
-			default="1">
-				<option value="1">JENABLED</option>
-				<option value="0">JDISABLED</option>
-		</field>
+    <fieldset
+            addfieldpath="/components/website/website_supper_admin/com_supperadmin/models/fields"
+    >
+        <field
+                name="id"
+                label="JGLOBAL_FIELD_ID_LABEL"
+                description="JGLOBAL_FIELD_ID_DESC"
+                type="text"
+                default="0"
+                readonly="true"
+                class="readonly"/>
 
         <field
-			name="access"
-			type="accesslevel"
-			label="JFIELD_ACCESS_LABEL"
-			description="JFIELD_ACCESS_DESC"
-			size="1" />
+                name="name"
+                type="text"
+                required="true"
+                readonly="true"
+                class="readonly"
+                label="component"
+                description="component"/>
+        <field
+                name="title"
+                type="text"
+                required="true"
+                label="Title"
+                description="Title"/>
 
-		<field
-			name="ordering"
-			type="componentordering"
-			label="JFIELD_ORDERING_LABEL"
-			description="JFIELD_ORDERING_DESC" />
 
-		<field
-			name="folder"
-			type="text"
-			class="readonly"
-			size="20"
-			label="COM_supperadmin_FIELD_FOLDER_LABEL"
-			description="COM_supperadmin_FIELD_FOLDER_DESC"
-			readonly="true" />
+        <field name="extension_id" type="selectextension" extension_type="component"
+               description="Extension"
+               label="Extension"
+               maximumSelectionLength="1"
+        />
 
-		<field
-			name="element"
-			type="text"
-			class="readonly"
-			size="20"
-			label="COM_supperadmin_FIELD_ELEMENT_LABEL"
-			description="COM_supperadmin_FIELD_ELEMENT_DESC"
-			readonly="true" />
 
-	</fieldset>
+        <field
+                name="is_system"
+                type="list"
+                class="chzn-color-state"
+                label="Is extension system"
+                description="Is extension system"
+                size="1"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="published"
+                type="list"
+                class="chzn-color-state"
+                label="published"
+                description="published"
+                size="1"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field
+                name="note"
+                type="editor"
+                readonly="true"
+                label="Note"
+                description="Note"/>
+
+
+
+    </fieldset>
 </form>

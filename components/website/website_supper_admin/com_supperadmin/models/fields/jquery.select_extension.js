@@ -51,7 +51,7 @@
             var $option = '<option value="">please select extension</option>';
             $select_list_extension.append($option);
             $.each(list_extension, function (index, item) {
-                var $option = '<option  '+(item.id==extension.extension_id?' selected ':'') +' value="' + item.id + '">' + item.element + '</option>';
+                var $option = '<option data-element="'+item.element+'"  '+(item.id==extension.extension_id?' selected ':'') +' value="' + item.id + '">' + item.element + '</option>';
                 $select_list_extension.append($option);
             });
             $select_list_extension.trigger('change');

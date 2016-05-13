@@ -62,6 +62,19 @@ class extensionsHelper
         return $db->loadObjectList();
     }
 
+    public static function get_website_id_by_extension_id($extension_id)
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('website_id')
+            ->from('#__extensions')
+            ->where('id='.(int)$extension_id)
+
+        ;
+        $db->setQuery($query);
+        return $db->loadResult();
+    }
+
     public function getComponentByWebsiteId($website_id)
     {
         $db=JFactory::getDbo();

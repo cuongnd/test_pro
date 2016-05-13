@@ -57,8 +57,8 @@ class JFormFieldSelectExtension extends JFormField
                     element_id:"<?php echo $this->id ?>",
                     element_name:"<?php echo $this->name ?>",
                     extension:{
-                        id:<?php echo $this->form->getValue('id') ?>,
-                        extension_id:<?php echo $this->value ?>
+                        id:<?php echo ($id=$this->form->getValue('id'))?$id:0 ?>,
+                        extension_id:<?php echo ($extension_id=$this->value)?$extension_id:0 ?>
 
 
 
@@ -72,6 +72,7 @@ class JFormFieldSelectExtension extends JFormField
         $script = ob_get_clean();
         $script = JUtility::remove_string_javascript($script);
         $extension_id=$this->form->getValue('extension_id');
+
         $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
@@ -104,16 +105,16 @@ class JFormFieldSelectExtension extends JFormField
         ob_start();
         ?>
         <div id="<?php echo $element_id ?>">
-            <select  class="list-website" disableChosen="true" >
-                <option value=""><?php JText::_('please select website') ?></option>
+            <select   class="list-website" disableChosen="true" >
+                <option value=""><?php echo JText::_('please select website') ?></option>
                 <?php foreach($list_website AS $website){ ?>
-                <option <?php echo $website->extension_id==$this->value?'selected':'' ?>  value="<?php echo $website->id ?>"><?php echo $website->name ?></option>
+                <option <?php echo ($this->value&&$website->extension_id==$this->value)?'selected':'' ?>  value="<?php echo $website->id ?>"><?php echo $website->name ?></option>
                 <?php } ?>
             </select>
             <select disableChosen="true" name="<?php echo $this->name?>" id="<?php echo $this->id ?>">
                 <option value=""><?php echo JText::_('please select extension') ?></option>
                 <?php foreach($list_extension as $extension){ ?>
-                    <option data-element="<?php echo $extension->element ?>" <?php echo $extension->id==$this->value?'selected':'' ?> value="<?php echo $extension->id ?>"><?php echo $extension->element ?></option>
+                    <option data-element="<?php echo $extension->element ?>" <?php echo ($this->value&&$extension->id==$this->value)?'selected':'' ?> value="<?php echo $extension->id ?>"><?php echo $extension->element ?></option>
                 <?php } ?>
             </select>
         </div>

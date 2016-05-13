@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 /**
- * View class for a list of supperadmin.
+ * View class for a list of components.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_supperadmin
@@ -29,17 +29,6 @@ class supperadminViewcomponents extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-		$layout = JRequest::getVar('layout');
-		$tpl = JRequest::getVar('tpl');
-		$this->setLayout($layout);
-		switch ($tpl) {
-			case "loadcomponent":
-				parent::display($tpl);
-				return;
-				break;
-
-		}
-
 
 		$this->items      = $this->get('Items');
 		$this->pagination = $this->get('Pagination');
@@ -62,15 +51,23 @@ class supperadminViewcomponents extends JViewLegacy
 			);
 		}
 
-        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('supperadmin.quick_assign_website');
+        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('components.quick_assign_website');
 		$this->addToolbar();
+
+        JHtmlSidebar::addFilter(
+            JText::_('JOPTION_SELECT_PUBLISHED'),
+            'filter_published',
+            JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
+        );
+
+        $this->sidebar = JHtmlSidebar::render();
         $this->addCommand();
 		parent::display($tpl);
 	}
     function addCommand()
     {
         $this->command='com_supperadmin';
-        $this->controller_task='supperadmin.ajaxSaveForm';
+        $this->controller_task='components.ajaxSaveForm';
     }
 	/**
 	 * Add the page title and toolbar.
@@ -82,7 +79,12 @@ class supperadminViewcomponents extends JViewLegacy
 		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_supperadmin/helpers/components.php';
 		$canDo = JHelperContent::getActions('com_supperadmin');
         $bar = JToolBar::getInstance('toolbar');
-		JToolbarHelper::title(JText::_('COM_supperadmin_MANAGER_supperadmin'), 'power-cord component');
+		JToolbarHelper::title(JText::_('Components manager'), 'power-cord component');
+        $layout = new JLayoutFile('toolbar.newcomponent');
+
+        $bar->appendButton('Custom', $layout->render(array()), 'new');
+        JToolbarHelper::editList('component.edit');
+        JToolbarHelper::addNew('component.add');
         if ($canDo->get('core.create'))
         {
             // Instantiate a new JLayoutFile instance and render the layout
@@ -96,25 +98,25 @@ class supperadminViewcomponents extends JViewLegacy
 		}
         if ($canDo->get('core.create'))
         {
-            JToolbarHelper::custom('supperadmin.duplicate', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
+            JToolbarHelper::custom('components.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
         }
-
+		JToolbarHelper::duplicate('components.duplicate');
 		if ($canDo->get('core.edit.state'))
 		{
-			JToolbarHelper::publish('supperadmin.publish', 'JTOOLBAR_ENABLE', true);
-			JToolbarHelper::unpublish('supperadmin.unpublish', 'JTOOLBAR_DISABLE', true);
-			JToolbarHelper::checkin('supperadmin.checkin');
+			JToolbarHelper::publish('components.publish', 'JTOOLBAR_ENABLE', true);
+			JToolbarHelper::unpublish('components.unpublish', 'JTOOLBAR_DISABLE', true);
+			JToolbarHelper::checkin('components.checkin');
 		}
         if ($this->state->get('filter.published') == -2)
         {
-            JToolbarHelper::deleteList('', 'supperadmin.delete', 'JTOOLBAR_EMPTY_TRASH');
+            JToolbarHelper::deleteList('', 'components.delete', 'JTOOLBAR_EMPTY_TRASH');
         }
         elseif ($canDo->get('core.edit.state'))
         {
-            JToolbarHelper::trash('supperadmin.trash');
+            JToolbarHelper::trash('components.trash');
         }
-        JToolbarHelper::publish('supperadmin.issystem','Is system');
-        JToolbarHelper::unpublish('supperadmin.isnotsystem','Is system');
+        JToolbarHelper::publish('components.issystem','Is system');
+        JToolbarHelper::unpublish('components.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
 			JToolbarHelper::preferences('com_supperadmin');
@@ -122,45 +124,7 @@ class supperadminViewcomponents extends JViewLegacy
 
 		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');
 
-		JHtmlSidebar::setAction('index.php?option=com_supperadmin&view=supperadmin');
 
-        $supperAdmin=JFactory::isSupperAdmin();
-        if($supperAdmin){
-            $option1=new stdClass();
-            $option1->id=-1;
-            $option1->title="Run for all";
-            $listWebsite1[]=$option1;
-            $option1=new stdClass();
-            $option1->id=-0;
-            $option1->title="None";
-            $listWebsite1[]=$option1;
-            $listWebsite2= websiteHelperFrontEnd::getWebsites();
-            $listWebsite=array_merge($listWebsite1,$listWebsite2);
-            JHtmlSidebar::addFilter(
-                JText::_('JOPTION_SELECT_WEBSITE'),
-                'filter_website_id',
-                JHtml::_('select.options',$listWebsite, 'id', 'title', $this->state->get('filter.website_id'))
-            );
-        }
-		JHtmlSidebar::addFilter(
-				JText::_('JOPTION_SELECT_PUBLISHED'),
-				'filter_enabled',
-				JHtml::_('select.options', componentsHelper::publishedOptions(), 'value', 'text', $this->state->get('filter.enabled'), true)
-		);
-
-		JHtmlSidebar::addFilter(
-				JText::_('COM_supperadmin_OPTION_FOLDER'),
-				'filter_folder',
-				JHtml::_('select.options', componentsHelper::folderOptions(), 'value', 'text', $this->state->get('filter.folder'))
-		);
-
-		JHtmlSidebar::addFilter(
-				JText::_('JOPTION_SELECT_ACCESS'),
-				'filter_access',
-				JHtml::_('select.options', JHtml::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
-		);
-
-		$this->sidebar = JHtmlSidebar::render();
 
 	}
 
@@ -177,8 +141,8 @@ class supperadminViewcomponents extends JViewLegacy
 				'ordering' => JText::_('JGRID_HEADING_ORDERING'),
 				'enabled' => JText::_('JSTATUS'),
 				'name' => JText::_('JGLOBAL_TITLE'),
-				'folder' => JText::_('COM_supperadmin_FOLDER_HEADING'),
-				'element' => JText::_('COM_supperadmin_ELEMENT_HEADING'),
+				'folder' => JText::_('folder'),
+				'element' => JText::_('element'),
 				'access' => JText::_('JGRID_HEADING_ACCESS'),
 				'id' => JText::_('JGRID_HEADING_ID')
 		);

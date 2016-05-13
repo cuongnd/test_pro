@@ -73,10 +73,10 @@ $sortFields = $this->getSortFields();
                                             <?php echo JHtml::_('grid.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
                                         </th>
                                         <th class="title">
-                                            <?php echo JHtml::_('grid.sort', 'module title', 'name', $listDirn, $listOrder); ?>
+                                            <?php echo JHtml::_('grid.sort', 'plugin title', 'name', $listDirn, $listOrder); ?>
                                         </th>
                                         <th class="title">
-                                            <?php echo JHtml::_('grid.sort', 'module name', 'name', $listDirn, $listOrder); ?>
+                                            <?php echo JHtml::_('grid.sort', 'plugin name', 'name', $listDirn, $listOrder); ?>
                                         </th>
                                         <th class="title">
                                             <?php echo JHtml::_('grid.sort', 'website', 'a.website_name', $listDirn, $listOrder); ?>
@@ -140,7 +140,7 @@ $sortFields = $this->getSortFields();
                                                 <?php endif; ?>
                                                 <?php if ($canEdit) : ?>
                                                     <a class="quick-edit-title"
-                                                       href="<?php echo JRoute::_('index.php?option=com_supperadmin&task=module.edit&id=' . (int)$item->id); ?>">
+                                                       href="<?php echo JRoute::_('index.php?option=com_supperadmin&task=plugin.edit&id=' . (int)$item->id); ?>">
                                                         <?php echo $item->title; ?></a>
                                                 <?php else : ?>
                                                     <?php echo $item->title; ?>
@@ -152,10 +152,10 @@ $sortFields = $this->getSortFields();
                                                 <?php endif; ?>
                                                 <?php if ($canEdit) : ?>
                                                     <a class="quick-edit-title"
-                                                       href="<?php echo JRoute::_('index.php?option=com_supperadmin&task=module.edit&id=' . (int)$item->id); ?>">
-                                                        <?php echo $item->module; ?></a>
+                                                       href="<?php echo JRoute::_('index.php?option=com_supperadmin&task=plugin.edit&id=' . (int)$item->id); ?>">
+                                                        <?php echo $item->plugin; ?></a>
                                                 <?php else : ?>
-                                                    <?php echo $item->module; ?>
+                                                    <?php echo $item->plugin; ?>
                                                 <?php endif; ?>
                                             </td>
                                             <td class="center hidden-phone">

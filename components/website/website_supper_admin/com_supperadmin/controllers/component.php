@@ -67,6 +67,7 @@ class supperadminControllercomponent extends JControllerForm
         echo json_encode($response);
         die;
     }
+
     public function ajax_save_field_params()
     {
         $app=JFactory::getApplication();

@@ -280,7 +280,7 @@ jQuery(document).ready(function($){
                         alert(response.r);
                         if(close==1)
                         {
-                            $('.panel.extension-module-config').remove();
+                            $('.panel.extension-component-config').remove();
                         }
                     }
 
@@ -300,7 +300,7 @@ jQuery(document).ready(function($){
         },
         cancel:function()
         {
-            $('.panel.extension-module-config').remove();
+            $('.panel.extension-component-config').remove();
         },
         add_node:function(self){
             li=self.closest('.dd-item');
