@@ -44,8 +44,33 @@ class websitetemplateproModellisttemplatecategory extends JModelList
 	}
     function getItems()
     {
-        $items=parent::getItems();
-        return $items;
+        // Get a storage key.
+        $store = $this->getStoreId();
+
+        // Try to load the data from internal storage.
+        if (isset($this->cache[$store]))
+        {
+            return $this->cache[$store];
+        }
+
+        // Load the list items.
+        $query = $this->_getListQuery();
+
+        try
+        {
+
+            $items = $this->_getList($query);
+        }
+        catch (RuntimeException $e)
+        {
+            $this->setError($e->getMessage());
+
+            return false;
+        }
+
+        // Add the items to the internal cache.
+        $this->cache[$store] = $items;
+        return $this->cache[$store];
     }
 
 
@@ -79,7 +104,6 @@ class websitetemplateproModellisttemplatecategory extends JModelList
 		// Load the parameters.
 		$params = JComponentHelper::getParams('com_websitetemplatepro');
 		$this->setState('params', $params);
-
 		// List state information.
 		parent::populateState('id', 'asc');
 	}
@@ -184,7 +208,9 @@ class websitetemplateproModellisttemplatecategory extends JModelList
 	 */
 	protected function getListQuery()
 	{
-		// Create a new query object.
+
+
+        // Create a new query object.
 		$db = $this->getDbo();
 		$query = $db->getQuery(true);
 
@@ -192,24 +218,21 @@ class websitetemplateproModellisttemplatecategory extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'categories_en_gb.category_name'
+				'a.id,a.parent_id,a.ordering,categories_en_gb.category_name'
 			)
 		)
 			->from($db->quoteName('#__webtempro_categories') . ' AS a')
-            ->leftJoin('#__webtempro_categories_en_gb AS categories_en_gb USING(id)')
+            ->innerJoin('#__webtempro_categories_en_gb AS categories_en_gb USING(id)')
         ;
-        $user=JFactory::getUser();
-        $query->where('a.created_by='.(int)$user->id);
 		// Join over the users for the checked out user.
         $parent_id=$this->getState('filter.parent_id');
         if($parent_id!=0)
         {
             $query->where('a.parent_id='.(int)$parent_id);
-        }else{
-            $query->where('a.parent_id IS NULL');
         }
-
-
+        $query->group('a.id');
+        $query->order('a.id');
+        echo $query->dump();
 		return $query;
 	}
 }
