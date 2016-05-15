@@ -9,140 +9,87 @@
 
 defined('_JEXEC') or die;
 // Include the component HTML helpers.
-JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.multiselect');
-JHtml::_('formbehavior.chosen', 'select');
+$list_category = $this->items;
 
-$user = JFactory::getUser();
-$listOrder = $this->escape($this->state->get('list.ordering'));
-$listDirn = $this->escape($this->state->get('list.direction'));
-$canOrder = $user->authorise('core.edit.state', 'com_websitetemplatepro');
-$saveOrder = $listOrder == 'ordering';
-if ($saveOrder) {
-    $saveOrderingUrl = 'index.php?option=com_websitetemplatepro&task=dlisttemplatecategory.saveOrderAjax&tmpl=component';
-    JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+$children_category = array();
+foreach ($list_category as $category) {
+    $pt = $category->parent_id;
+    $pt = ($pt == '' || $pt == $category->id) ? 'list_root' : $pt;
+    $list = @$children_category[$pt] ? $children_category[$pt] : array();
+    array_push($list, $category);
+    $children_category[$pt] = $list;
 }
-$sortFields = $this->getSortFields();
+$list_root_category = $children_category['list_root'];
+$user = JFactory::getUser();
+$doc = JFactory::getDocument();
+$doc->addLessStyleSheetTest(JUri::root() . 'components/website/website_websitetemplatepro/com_websitetemplatepro/assets/less/view_listtemplatecategory_frontend.less');
+$doc->addScript(JUri::root() . '/media/system/js/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/js/vmenuModule.js');
+$doc->addLessStyleSheetTest(JUri::root() . '/media/system/js/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/less/vmenuModule.less');
+
+
+$doc->addScript(JUri::root() . 'components/website/website_websitetemplatepro/com_websitetemplatepro/assets/js/view_listtemplatecategory_frontend.js');
+
+$script_id = "script_view_listtemplatecategory_frontend";
+ob_start();
 ?>
-    <script type="text/javascript">
-        Joomla.orderTable = function () {
-            table = document.getElementById("sortTable");
-            direction = document.getElementById("directionTable");
-            order = table.options[table.selectedIndex].value;
-            if (order != '<?php echo $listOrder; ?>') {
-                dirn = 'asc';
-            }
-            else {
-                dirn = direction.options[direction.selectedIndex].value;
-            }
-            Joomla.tableOrdering(order, dirn, '');
-        }
-    </script>
-<?php echo $this->render_toolbar() ?>
-    <div class="view-listtemplatecategory-default">
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('.view-listtemplatecategory-frontend').view_listtemplatecategory_frontend({
 
-        <form action="<?php echo JRoute::_('index.php?option=com_websitetemplatepro&view=listtemplatecategory'); ?>" method="post"
-              name="adminForm" id="adminForm">
-            <div id="main-container">
-                <?php if (!empty($this->sidebar)) : ?>
-                    <?php echo $this->sidebar; ?>
-                <?php endif; ?>
-                <?php
-                echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this));
-                ?>
-
-                <div class="clearfix"></div>
-                <table class="table table-striped" id="itemList">
-                    <thead>
-                    <tr>
-                        <th width="1%" class="nowrap center hidden-phone">
-                            <?php echo JHtml::_('grid.sort', '<i class="icon-menu-2"></i>', 'ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
-                        </th>
-                        <th width="1%" class="hidden-phone">
-                            <?php echo JHtml::_('grid.checkall'); ?>
-                        </th>
-                        <th width="1%" class="nowrap center">
-                            <?php echo JHtml::_('grid.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
-                        </th>
-                        <th class="title">
-                            <?php echo JHtml::_('grid.sort', 'title', 'title', $listDirn, $listOrder); ?>
-                        </th>
-                        <th width="1%" class="nowrap center hidden-phone">
-                            <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tfoot>
-                    <tr>
-                        <td colspan="12">
-
-                            <?php echo $this->pagination->getListFooter(); ?>
-                        </td>
-                    </tr>
-                    </tfoot>
-                    <tbody>
-                    <?php foreach ($this->items as $i => $item) :
-                        $ordering = ($listOrder == 'ordering');
-                        $canEdit = $user->authorise('core.edit', 'com_websitetemplatepro');
-                        $canCheckin = $user->authorise('core.manage', 'com_checkin') || $item->checked_out == $user->get('id') || $item->checked_out == 0;
-                        $canChange = $user->authorise('core.edit.state', 'com_websitetemplatepro') && $canCheckin;
-                        ?>
-                        <tr class="row<?php echo $i % 2; ?>" item-id="<?php echo $item->id ?>"
-                            sortable-group-id="<?php echo $item->folder ?>">
-                            <td class="order nowrap center hidden-phone">
-                                <?php
-                                $iconClass = '';
-                                if (!$canChange) {
-                                    $iconClass = ' inactive';
-                                } elseif (!$saveOrder) {
-                                    $iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
-                                }
-                                ?>
-                                <span class="sortable-handler<?php echo $iconClass ?>">
-							<i class="icon-menu"></i>
-						</span>
-                                <?php if ($canChange && $saveOrder) : ?>
-                                    <input type="text" style="display:none" name="order[]" size="5"
-                                           value="<?php echo $item->ordering; ?>" class="width-20 text-area-order "/>
-                                <?php endif; ?>
-                            </td>
-                            <td class="center hidden-phone">
-                                <?php echo JHtml::_('grid.id', $i, $item->id); ?>
-                            </td>
-                            <td class="center">
-                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'listtemplatecategory.', $canChange); ?>
-                            </td>
-                            <td>
-                                <?php if ($item->checked_out) : ?>
-                                    <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'websitetemplatepro.', $canCheckin); ?>
-                                <?php endif; ?>
-                                <?php if ($canEdit) : ?>
-                                    <a class="quick-edit-title"
-                                       href="<?php echo JRoute::_('index.php?option=com_websitetemplatepro&task=raovat.edit&id=' . (int)$item->id); ?>">
-                                        <?php echo $item->category_name; ?></a>
-                                <?php else : ?>
-                                    <?php echo $item->category_name; ?>
-                                <?php endif; ?>
-                            </td>
-                            <td class="center hidden-phone">
-                                <?php echo (int)$item->id; ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
-
-                <input type="hidden" name="task" value=""/>
-                <input type="hidden" name="boxchecked" value="0"/>
-                <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>"/>
-                <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>"/>
-                <?php echo JHtml::_('form.token'); ?>
-            </div>
-        </form>
-    </div>
+        });
+    });
+</script>
 <?php
-// Search tools bar
-echo JLayoutHelper::render('joomla.contextmenu.contextmenu', array('view' => $this), null, array('debug' => false));
+$script = ob_get_clean();
+$script = JUtility::remove_string_javascript($script);
+$doc->addScriptDeclaration($script, "text/javascript", $script_id);
 ?>
+
+
+<div class="view-listtemplatecategory-frontend">
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="vertical-mega-menu">
+                <div class="u-vmenu">
+                    <ul class="nav menu">
+                        <?php foreach ($list_root_category as $i => $category) :
+                            $render_category_item = function ($item, $i = 0, $level = 0) {
+                                ob_start();
+                                ?>
+                                <a data-category_id="<?php echo $item->id; ?>" href="javascript:void(0)"><?php echo $item->category_name; ?></a>
+                                <?php
+                                $html = ob_get_clean();
+                                return $html;
+
+                            };
+                            echo '<li>' . $render_category_item($category, $i);
+                            $render_categories = function ($function_callback, $category_id = 0, $children_category = array(), $list_category = array(), $render_category_item, $i, $level = 0, $max_level = 9999) {
+                                $category = $list_category[$category_id];
+                                $level1 = $level + 1;
+                                if (count($children_category[$category_id])) {
+                                    echo '<ul>';
+                                    foreach ($children_category[$category_id] as $category) {
+                                        echo '<li>' . $render_category_item($category, $i, $level1);
+                                        $category_id1 = $category->id;
+                                        $function_callback($function_callback, $category_id1, $children_category, $list_category, $render_category_item, $i, $level1, $max_level);
+                                    }
+                                    echo '</li></ul>';
+                                }
+                            };
+                            $render_categories($render_categories, $category->id, $children_category, $list_category, $render_category_item, $i);
+
+                        endforeach; ?>
+                        </li></ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="area-list-template">
+
+            </div>
+        </div>
+    </div>
+
+</div>
