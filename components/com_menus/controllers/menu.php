@@ -136,6 +136,37 @@ class MenusControllerMenu extends JControllerForm
         echo json_encode($result);
         die;
     }
+    public function ajax_update_menu_type_title(){
+        $result = new stdClass();
+        $result->e = 0;
+        $website=JFactory::getWebsite();
+        $app      = JFactory::getApplication();
+        $input=$app->input;
+        $menu_type_id=$input->getInt('menu_type_id',0);
+        $menu_type_title=$input->getString('menu_type_title','');
+        JTable::addIncludePath(JPATH_ROOT.'/libraries/legacy/table/menu');
+        $table_menu_type=JTable::getInstance('MenuType','JTable');
+        $table_menu_type->load($menu_type_id);
+        $table_menu_type->title=$menu_type_title;
+        if(!$table_menu_type->check())
+        {
+            $result->e = 1;
+            $result->m =$table_menu_type->getError() ;
+            echo json_encode($result);
+            die;
+        }
+        if(!$table_menu_type->store())
+        {
+            $result->e = 1;
+            $result->m =$table_menu_type->getError() ;
+            echo json_encode($result);
+            die;
+        }
+
+        $result->m = "edit  menu type title successfully";
+        echo json_encode($result);
+        die;
+    }
 	/**
 	 * Method to save a menu item.
 	 *

@@ -99,10 +99,10 @@
 			type="list"
 			class="chzn-color-state"
 			id="is_main_dashboard"
-			label="is main dashboard"
-			description="is main dashboard"
+			label="is admin dashboard"
+			description="is admin dashboard"
 			size="1"
-			default="1"
+			default="0"
 			filter="integer">
 			<option
 				value="1">
@@ -116,7 +116,7 @@
 			name="is_user_dashboard"
 			type="list"
 			class="chzn-color-state"
-			id="is_main_dashboard"
+			id="is_user_dashboard"
 			label="is user dashboard"
 			description="is user dashboard"
 			size="1"

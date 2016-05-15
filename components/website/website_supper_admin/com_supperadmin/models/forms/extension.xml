@@ -27,7 +27,6 @@
         <field
                 name="folder"
                 type="text"
-                required="true"
                 label="Folder"
                 description="Folder"/>
         <field

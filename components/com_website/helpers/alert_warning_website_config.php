@@ -185,6 +185,24 @@ class alert_warning_website_config
         }
         return true;
     }
+    private function check_admin_dashboard($website_id){
+        $exists_admin_dashboard=false;
+        $list_menu_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website_id);
+        foreach($list_menu_item as $menu_item)
+        {
+            if($menu_item->is_main_dashboard==1)
+            {
+                $exists_admin_dashboard=true;
+                break;
+            }
+        }
+        if(!$exists_admin_dashboard)
+        {
+            self::set_error('there is not exists menu item admin dashboard, please set admin dashboard');
+            return false;
+        }
+        return true;
+    }
     private function finish($website_id){
         return true;
     }
@@ -193,6 +211,7 @@ class alert_warning_website_config
         $steps = array();
         $steps[] = 'check_exists_menu_item';
         $steps[] = 'check_home_page';
+        $steps[] = 'check_admin_dashboard';
         $steps[] = 'finish';
         return $steps;
     }

@@ -5,10 +5,17 @@ $db = JFactory::getDbo();
 $query = $db->getQuery(true);
 require_once JPATH_ROOT.'/components/com_menus/helpers/menus.php';
 $list_menu_type=MenusHelperFrontEnd::get_menu_type_by_website_id($website->website_id);
+$is_supper_admin_site=JFactory::is_website_supper_admin();
 ?>
 <ul class="nav sub hide">
 
-    <?php foreach ($list_menu_type as $menu_type) { ?>
+    <?php
+    foreach ($list_menu_type as $menu_type) {
+        if(!$is_supper_admin_site && $menu_type->supper_admin_menu_type_id)
+        {
+            continue;
+        }
+        ?>
         <li><a href="javascript:void(0)" class="notExpand link_javascript"><i
                     class=st-files></i> <?php echo JString::sub_string($menu_type->title, 12) ?></a>
 

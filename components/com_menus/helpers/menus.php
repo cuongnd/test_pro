@@ -47,7 +47,7 @@ class MenusHelperFrontEnd
 		$db    = JFactory::getDbo();
 		$query = $db->getQuery(true);
 		$query->clear();
-		$query->select('menu.*,menu_types.id as menu_type_id,menu_types.website_id')
+		$query->select('menu.*,menu_types.id as menu_type_id,menu_types.website_id,menu_types.title AS menu_type_title')
 			->from('#__menu AS menu')
 			->leftJoin('#__menu_type_id_menu_id AS menu_type_id_menu_id ON menu_type_id_menu_id.menu_id=menu.id')
 			->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
@@ -74,7 +74,22 @@ class MenusHelperFrontEnd
 			{
 				$sub_list_menu_item=array();
 				$sub_list_menu_item[]=$root_menu_item;
-				MenusHelperFrontEnd::get_list_children_menu_item_by_root_menu_item_id($root_menu_item->id,$sub_list_menu_item,$children);
+                $get_list_children_menu_item_by_root_menu_item_id=function($function_callback, $menu_type_title='', $root_menu_item_id=0, &$list_menu_item=array(), $children_menu_item){
+                    if ($children_menu_item[$root_menu_item_id]) {
+
+                        usort($children_menu_item[$root_menu_item_id], function ($item1, $item2) {
+                            if ($item1->ordering == $item2->ordering) return 0;
+                            return $item1->ordering < $item2->ordering ? -1 : 1;
+                        });
+                        foreach ($children_menu_item[$root_menu_item_id] as $menu_item) {
+                            $id = $menu_item->id;
+                            $menu_item->menu_type_title=$menu_type_title;
+                            $list_menu_item[]=$menu_item;
+                            $function_callback($function_callback,$menu_type_title,$id, $list_menu_item, $children_menu_item);
+                        }
+                    }
+                };
+                $get_list_children_menu_item_by_root_menu_item_id($get_list_children_menu_item_by_root_menu_item_id,$root_menu_item->menu_type_title,$root_menu_item->id,$sub_list_menu_item,$children);
 				$list_menu_item=array_merge($list_menu_item,$sub_list_menu_item);
 			}
 		}

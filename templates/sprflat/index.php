@@ -39,7 +39,6 @@ $menuItemActiveId = $menu->getActive()->id;
 
 $menuItemActiveId = $menuItemActiveId ? $menuItemActiveId : 0;
 $menuItemActive = $menu->getItem($menuItemActiveId);
-
 $lessContent = $menuItemActive->lesscontent;
 if (trim($lessContent) != '') {
     require_once JPATH_ROOT . '/libraries/f0f/less/less.php';
@@ -331,6 +330,7 @@ ob_start();
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/mouse.js');
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/position.js');
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/button.js');
+    $doc->addScript(JUri::root() . '/media/system/js/bootstrap-notify-master/bootstrap-notify.js');
 
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/draggable.js');
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/resizable.js');
@@ -533,7 +533,7 @@ if ($ajaxGetContent) {
                             <h4 class=panel-title><i class="en-screen" title="pointer"></i><a class="website_properties"
                                                                                               href="javascript:void(0)"><i
                                         class="im-globe" title="properties"></i></a> <a class="page-properties"
-                                                                                        href="javascript:void(0)"><?php echo $menuItemActive->title ?></a>(<a
+                                                                                        href="javascript:void(0)"><?php echo $menuItemActive->title ?>(<?php echo $menuItemActive->menu_type_title ?>)</a>(<a
                                     class="page-properties" target="_blank"
                                     href="<?php echo str_replace('admin.', '', JUri::root()) ?>?Itemid=<?php echo $menuItemActive->id ?>"><?php echo $menuItemActive->title ?></a>)
                             </h4>

@@ -377,6 +377,64 @@ jQuery(document).ready(function($){
             });
 
         },
+        edit_menu_type_title: function (self) {
+            if (!confirm('Are you sure you want edit menu type ?')) {
+                return false;
+            }
+            var menu_type_title=self.closest('.menu_type_item').data('menu_type_title');
+            var menu_type_title = prompt("Please enter menu type title", menu_type_title);
+            if (menu_type_title.trim() == null || menu_type_title.trim() == '') {
+                alert('menu type title cannot empty');
+            }
+
+
+            var menu_type_id=self.closest('.menu_type_item').data('menuTypeId');
+            ajax_web_design=$.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: this_host+'/index.php',
+                data: (function () {
+
+                    dataPost = {
+                        enable_load_component:1,
+                        option: 'com_menus',
+                        task: 'menu.ajax_update_menu_type_title',
+                        menu_type_id:menu_type_id,
+                        menu_type_title:menu_type_title
+                    };
+                    return dataPost;
+                })(),
+                beforeSend: function () {
+                    $('.div-loading').css({
+                        display: "block"
+
+
+                    });
+                    // $('.loading').popup();
+                },
+                success: function (response) {
+                    $('.div-loading').css({
+                        display: "none"
+
+
+                    });
+                    if(response.e==1)
+                    {
+                        alert(response.m);
+                    }else
+                    {
+                        alert(response.m);
+                        location.reload();
+                    }
+
+
+
+
+                }
+            });
+
+        },
         init_menu_ajax_loader:function(){
 
 
@@ -392,6 +450,11 @@ jQuery(document).ready(function($){
             $(document).on('click','.delete_menu_type',function(){
                 menu_ajax_loader.delete_menu_type($(this));
             });
+
+            $(document).on('click','.edit_menu_type_title',function(){
+                menu_ajax_loader.edit_menu_type_title($(this));
+            });
+
             $(document).on('click','.add_sub_node',function(){
                 menu_ajax_loader.add_sub_node($(this));
             });

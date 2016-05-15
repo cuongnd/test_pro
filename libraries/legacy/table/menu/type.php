@@ -60,7 +60,22 @@ class JTableMenuType extends JTable
 		{
 			$this->title = $this->menutype;
 		}
-
+        //check exit menu type title
+        $query=$this->_db->getQuery(true);
+        $query->select('COUNT(*)')
+            ->from('#__menu_types')
+            ->where('website_id='.(int)$website_id)
+            ->where('title LIKE '.$query->q("%$this->title%"))
+            ->where('id <>'.(int)$this->id)
+            ;
+        $this->_db->setQuery($query);
+        $total=$this->_db->loadResult();
+        if($total>0)
+        {
+            $this->setError('menu type title exists, please select other');
+            return false;
+        }
+        //end check exit menu type title
 		// Check for unique menutype.
 		$query = $this->_db->getQuery(true);
 			$query->select('COUNT(id)')

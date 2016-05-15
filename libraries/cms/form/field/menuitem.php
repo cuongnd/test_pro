@@ -154,16 +154,23 @@ class JFormFieldMenuitem extends JFormFieldGroupedList
         $website = JFactory::getWebsite();
         // Get the menu items.
         $list_menu_type = MenusHelperFrontEnd::get_menu_type_by_website_id($website->website_id);
+        $is_supper_admin_site=JFactory::is_website_supper_admin();
         ob_start();
         ?>
         <select name="<?php echo $this->name ?>" id="<?php echo $this->id ?>">
             <optgroup label="No select">
                 <option value="">None</option>
             </optgroup>
-            <?php foreach ($list_menu_type as $memu_type) { ?>
-                <optgroup label="<?php echo $memu_type->title ?>">
+            <?php foreach ($list_menu_type as $menu_type) {
+                if(!$is_supper_admin_site && $menu_type->supper_admin_menu_type_id)
+                {
+                    continue;
+                }
+                ?>
+
+                <optgroup label="<?php echo $menu_type->title ?>">
                     <?php
-                    $root_menu_item_id = MenusHelperFrontEnd::get_root_menu_item_id_by_menu_type_id($memu_type->id);
+                    $root_menu_item_id = MenusHelperFrontEnd::get_root_menu_item_id_by_menu_type_id($menu_type->id);
                     $list_children_menu_item = MenusHelperFrontEnd::get_children_menu_item_by_menu_item_id($root_menu_item_id);
                     $children = array();
                     // First pass - collect children
