@@ -45,6 +45,14 @@ class WebsiteControllerUtility extends websiteController
         echo json_encode($response);
         die;
     }
+    public function ajax_alert_warning_website_config()
+    {
+
+        require_once JPATH_ROOT.'/components/com_website/helpers/alert_warning_website_config.php';
+        $response=alert_warning_website_config::next_step();
+        echo json_encode($response);
+        die;
+    }
     public function aJaxCheckEnableEditWebsite()
     {
         $user=JFactory::getUser();

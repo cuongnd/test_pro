@@ -588,9 +588,34 @@ class JTableMenu extends JTable
             $this->setError('you cannot delete this menu item, because it is other website');
             return false;
         }
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('COUNT(*)')
+            ->from('#__menu AS menu')
+            ->where('menu.params LIKE '.$query->q("%\"use_main_frame\":\"$pk\"%"))
+            ;
+        $db->setQuery($query);
+        $total_home_page=$db->loadResult();
+        if($total_home_page)
+        {
+            $this->setError('you cannot delete this menu item, because it is main frame, please remove main frame from this menu item');
+            return false;
+        }
+
+        $query=$db->getQuery(true);
+        $query->select('COUNT(*)')
+            ->from('#__menu AS menu')
+            ->where('menu.parent_id ='.(int)$pk)
+            ;
+        $db->setQuery($query);
+        $total_children=$db->loadResult();
+        if($total_children)
+        {
+            $this->setError('you cannot delete this menu item, because it is has sub menu item, please remove children menu item first');
+            return false;
+        }
         return parent::delete($pk);
 
-        return true;
     }
 
     /**

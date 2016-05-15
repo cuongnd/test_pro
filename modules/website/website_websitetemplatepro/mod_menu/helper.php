@@ -121,8 +121,12 @@ class ModMenuHelper
 
                         default:
                             $router = $app::getRouter();
-                            if ($router->getMode() != JROUTER_MODE_SEF) {
-                                $item->flink = 'index.php?Itemid=' . $item->id;
+                            if ($router->getMode() == JROUTER_MODE_SEF) {
+                                $item->flink = JRoute::_('index.php?Itemid=' . $item->id);
+                               if($item->home==1)
+                               {
+                                   $item->flink=JUri::root();
+                               }
                                 if (isset($item->query['format']) && $app->get('sef_suffix')) {
                                     $item->flink .= '&format=' . $item->query['format'];
                                 }

@@ -32,7 +32,7 @@ abstract class JLogLogger
 	 * @var    array  Translation array for JLogEntry priorities to text strings.
 	 * @since  12.2
 	 */
-	protected $priorities = array(
+	public static $priorities = array(
 		JLog::EMERGENCY => 'EMERGENCY',
 		JLog::ALERT => 'ALERT',
 		JLog::CRITICAL => 'CRITICAL',

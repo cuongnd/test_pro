@@ -29,6 +29,18 @@ class extensions_Supper_Admin_Helper
 	{
 		// No submenu for this component.
 	}
+    public static function get_website_id_by_extension_id($extension_id)
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('website_id')
+            ->from('#__extensions')
+            ->where('id='.(int)$extension_id)
+
+        ;
+        $db->setQuery($query);
+        return $db->loadResult();
+    }
 
 	/**
 	 * Gets a list of the actions that can be performed.

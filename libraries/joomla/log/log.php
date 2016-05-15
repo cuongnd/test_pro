@@ -114,7 +114,7 @@ class JLog
 	 * @since  11.1
 	 */
 	protected $lookup = array();
-
+    public static $str_console=array();
 	/**
 	 * Constructor.
 	 *
@@ -310,4 +310,10 @@ class JLog
 
 		return $loggers;
 	}
+
+    public static function console($str,$type)
+    {
+        $type=JLogLogger::$priorities[$type];
+        static::$str_console[$type][]=$str;
+    }
 }

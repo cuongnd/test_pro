@@ -1,6 +1,7 @@
 <?php
 class templateSprflatHelper
 {
+    public static $DIV_CONSOLR='area-console';
     public static function compileLess($input,$output)
     {
         $cssTemplate=basename($output);

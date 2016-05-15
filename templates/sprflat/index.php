@@ -664,6 +664,8 @@ ob_start();
 
 }
 ?>
+<?php echo templateSprflatHelper::$DIV_CONSOLR ?>
+
 <jdoc:include type="modules" name="debug"/>
 
 

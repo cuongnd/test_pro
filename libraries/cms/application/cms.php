@@ -261,7 +261,7 @@ class JApplicationCms extends JApplicationWeb
 		}
         // Trigger the onAfterRespond event.
         $this->triggerEvent('onAfterRespond');
-
+        $this->console();
 
 
         // Send the application response.
@@ -1077,4 +1077,24 @@ class JApplicationCms extends JApplicationWeb
 
 		return $this->getBody();
 	}
+
+    private function console()
+    {
+        $str_console=JLog::$str_console;
+        ob_start();
+        ?>
+        <?php foreach($str_console as $type=> $console){ ?>
+        <?php foreach($console as $str){ ?>
+            <div class="alert alert-<?php echo strtolower($type) ?>" role="alert">
+                <?php echo $str ?>
+            </div>
+        <?php } ?>
+    <?php } ?>
+        <?php
+        $html=ob_get_clean();
+        require_once JPATH_ROOT.'/templates/sprflat/helper/template.php';
+        $body=$this->response->body[0];
+        $body=str_replace(templateSprflatHelper::$DIV_CONSOLR,$html,$body);
+        $this->response->body[0]=$body;
+    }
 }

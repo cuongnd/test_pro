@@ -57,6 +57,7 @@ class JRoute
 		if (!is_array($url) && (strpos($url, '&') !== 0) && (strpos($url, 'index.php') !== 0))
 		{
 
+
 			return $url;
 		}
 
@@ -97,7 +98,6 @@ class JRoute
 		{
 			$url = htmlspecialchars($url);
 		}
-
 		return $url;
 	}
 }

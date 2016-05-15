@@ -232,6 +232,8 @@ final class JApplicationSite extends JApplicationCms
         $document->setBuffer($contents, 'component');
         $this->update_current_website_from_parent_website();
         $this->update_current_website_from_supper_admin_template_website();
+        $this->alert_warning_website_config();
+
 
 
         // Trigger the onAfterDispatch event.
@@ -828,4 +830,14 @@ final class JApplicationSite extends JApplicationCms
         /** @noinspection PhpMethodParametersCountMismatchInspection */
         update_supper_admin_template_website::update_current_website_from_supper_admin_template_website($website->website_id);
     }
+
+    private function alert_warning_website_config()
+    {
+        $website=JFactory::getWebsite();
+        require_once JPATH_ROOT.'/components/com_website/helpers/alert_warning_website_config.php';
+        /** @noinspection PhpMethodParametersCountMismatchInspection */
+        alert_warning_website_config::alert($website->website_id);
+
+    }
+
 }
