@@ -36,8 +36,25 @@ class websitetemplateproControllerlisttemplatecategory extends JControllerAdmin
 	}
     public function ajax_get_website_template_by_category(){
 
-        echo 1;
+        $app=JFactory::getApplication();
+        $input=$app->input;
+        $respone_array=array();
+        $post = file_get_contents('php://input');
+        $post = json_decode($post);
+        $view = $this->getView('listtemplatecategory', 'listtemplate', 'websitetemplateproView');
+        $view->category_id=$post->category_id;
+
+        ob_start();
+        $view->setLayout('frontend');
+        $view->display('listtemplate');
+        $contents = ob_get_clean();
+        $respone_array[] = array(
+            'key' => '.area-list-template',
+            'contents' => $contents
+        );
+        echo json_encode($respone_array);
         die;
+
     }
 
 

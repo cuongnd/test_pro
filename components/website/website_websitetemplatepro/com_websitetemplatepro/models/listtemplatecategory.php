@@ -218,11 +218,13 @@ class websitetemplateproModellisttemplatecategory extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.id,a.parent_id,a.ordering,categories_en_gb.category_name'
+				'a.id,a.parent_id,a.ordering,categories_en_gb.category_name,count(product.id) AS total_product'
 			)
 		)
 			->from($db->quoteName('#__webtempro_categories') . ' AS a')
             ->innerJoin('#__webtempro_categories_en_gb AS categories_en_gb USING(id)')
+            ->leftJoin('#__webtempro_products AS product ON product.category_id=a.id')
+
         ;
 		// Join over the users for the checked out user.
         $parent_id=$this->getState('filter.parent_id');

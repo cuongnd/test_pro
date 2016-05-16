@@ -58,7 +58,7 @@ $doc->addScriptDeclaration($script, "text/javascript", $script_id);
                             $render_category_item = function ($item, $i = 0, $level = 0) {
                                 ob_start();
                                 ?>
-                                <a data-category_id="<?php echo $item->id; ?>" href="javascript:void(0)"><?php echo $item->category_name; ?></a>
+                                <a data-category_id="<?php echo $item->id; ?>" href="javascript:void(0)"><?php echo $item->category_name; ?><span class="badge"><?php echo $item->total_product ?></span></a>
                                 <?php
                                 $html = ob_get_clean();
                                 return $html;
@@ -87,7 +87,7 @@ $doc->addScriptDeclaration($script, "text/javascript", $script_id);
         </div>
         <div class="col-md-9">
             <div class="area-list-template">
-
+                <?php echo $this->loadtemplate('listtemplate') ?>
             </div>
         </div>
     </div>

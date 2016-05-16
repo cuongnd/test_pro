@@ -53,7 +53,6 @@
                 ajax_web_design=$.ajax({
                     contentType: 'application/json',
                     type: "POST",
-                    dataType: "json",
                     url: this_host+'/index.php?'+option_click,
                     data: JSON.stringify(data_submit),
                     beforeSend: function () {
@@ -63,20 +62,14 @@
 
                         });
                     },
-                    success: function (response) {
+                    success: function (respone_array) {
                         $('.div-loading').css({
                             display: "none"
 
 
                         });
-                        if(response.e==0)
-                        {
-
-
-
-                        }else if(response.e==1){
-
-                        }
+                        console.log(respone_array);
+                        Joomla.sethtmlfortag(respone_array);
 
 
 
