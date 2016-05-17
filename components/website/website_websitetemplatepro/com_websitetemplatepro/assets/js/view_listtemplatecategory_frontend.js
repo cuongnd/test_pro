@@ -18,6 +18,8 @@
 
         // plugin's default options
         var defaults = {
+            totalPages:300,
+            category_id:0
             //main color scheme for view_listtemplatecategory_frontend
             //be sure to be same as colors on main.css or custom-variables.less
 
@@ -40,48 +42,101 @@
                 autohide: true
             });
         };
-        plugin.load_website_template_by_category = function () {
-            $element.find('.u-vmenu a').click(function(){
-                var option_click= {
-                    option: 'com_websitetemplatepro',
-                    task: 'listtemplatecategory.ajax_get_website_template_by_category',
+        plugin.load_website_template_by_category=function(category_id,count_error_ajax,page_selected) {
+            if(category_id=='')
+            {
+                return false;
+            }
+            var option_click = {
+                option: 'com_websitetemplatepro',
+                task: 'listtemplatecategory.ajax_get_website_template_by_category',
 
-                };
-                option_click= $.param(option_click);
-                var data_submit={};
-                data_submit.category_id=$(this).data('category_id');
-                ajax_web_design=$.ajax({
-                    contentType: 'application/json',
-                    type: "POST",
-                    url: this_host+'/index.php?'+option_click,
-                    data: JSON.stringify(data_submit),
-                    beforeSend: function () {
-                        $('.div-loading').css({
-                            display: "block"
-
-
-                        });
-                    },
-                    success: function (respone_array) {
-                        $('.div-loading').css({
-                            display: "none"
+            };
+            option_click = $.param(option_click);
+            var data_submit = {};
+            data_submit.category_id =category_id;
+            data_submit.page_selected =page_selected;
+            var ajax_web_design = $.ajax({
+                contentType: 'application/json',
+                type: "POST",
+                url: this_host + '/index.php?' + option_click,
+                data: JSON.stringify(data_submit),
+                beforeSend: function () {
+                    $('.div-loading').css({
+                        display: "block"
 
 
-                        });
-                        console.log(respone_array);
-                        Joomla.sethtmlfortag(respone_array);
+                    });
+                },
+                success: function (respone_array) {
+                    $('.div-loading').css({
+                        display: "none"
 
 
+                    });
+                    Joomla.sethtmlfortag(respone_array);
+                    plugin.reset_pagination(1);
 
+                },
+                error: function (request, status, err) {
+                    if (status == "timeout") {
+                        // timeout -> reload the page and try again
+                        console.log("timeout");
+                        plugin.load_website_template_by_category(category_id,count_error_ajax,page_selected);
+                    } else {
+                        if (count_error_ajax > 10) {
+                            console.log('too many error ajax');
+                        } else {
+                            // another error occured
+                            count_error_ajax++;
+                            plugin.load_website_template_by_category(category_id,count_error_ajax,page_selected);
+                        }
                     }
-                });
+                }
 
             });
+        };
+
+        plugin.load_website_template_by_category_by_click = function () {
+            $element.find('.u-vmenu a').click(function(){
+                var category_id =$(this).data('category_id');
+                plugin.load_website_template_by_category(category_id,0,1);
+            });
+        };
+        plugin.reset_pagination = function (page) {
+            var total_page=$element.find('.area-list-template #pagination').data('total_page');
+            plugin.settings.totalPages=total_page;
+            plugin.init_pagination();
+        };
+        plugin.select_page_template = function (page_selected) {
+            var category_id=$element.find('.area-list-template #pagination').data('category_id');
+            plugin.settings.category_id=category_id;
+            console.log(category_id);
+            plugin.load_website_template_by_category(category_id,0,page_selected);
+        };
+        plugin.init_pagination = function () {
+            var total_page=$element.find('.area-list-template #pagination').data('total_page');
+            var page_selected=$element.find('.area-list-template #pagination').data('page_selected');
+            plugin.settings.totalPages=total_page;
+            $element.find('.area-list-template #pagination').twbsPagination({
+                totalPages: total_page,
+                visiblePages: 7,
+                startPage: page_selected,
+                initiateStartPageClick:false,
+                onPageClick: function (event, page_selected) {
+                    plugin.select_page_template(page_selected);
+                }
+            });
+        };
+        plugin.effect_product = function () {
+            var $area_list_template=$element.find('.area-list-template');
         };
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
             plugin.set_menu();
-            plugin.load_website_template_by_category();
+            plugin.load_website_template_by_category_by_click();
+            plugin.init_pagination();
+            plugin.effect_product();
 
 
         }

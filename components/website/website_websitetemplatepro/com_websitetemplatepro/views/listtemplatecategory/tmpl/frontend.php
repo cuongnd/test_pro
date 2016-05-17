@@ -26,7 +26,7 @@ $doc = JFactory::getDocument();
 $doc->addLessStyleSheetTest(JUri::root() . 'components/website/website_websitetemplatepro/com_websitetemplatepro/assets/less/view_listtemplatecategory_frontend.less');
 $doc->addScript(JUri::root() . '/media/system/js/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/js/vmenuModule.js');
 $doc->addLessStyleSheetTest(JUri::root() . '/media/system/js/Smooth-Multilevel-Accordion-Menu-Plugin-For-jQuery-vmenu/less/vmenuModule.less');
-
+$doc->addScript(JUri::root() . '/media/system/js/esimakin-twbs-pagination/jquery.twbsPagination.js');
 
 $doc->addScript(JUri::root() . 'components/website/website_websitetemplatepro/com_websitetemplatepro/assets/js/view_listtemplatecategory_frontend.js');
 
@@ -58,7 +58,7 @@ $doc->addScriptDeclaration($script, "text/javascript", $script_id);
                             $render_category_item = function ($item, $i = 0, $level = 0) {
                                 ob_start();
                                 ?>
-                                <a data-category_id="<?php echo $item->id; ?>" href="javascript:void(0)"><?php echo $item->category_name; ?><span class="badge"><?php echo $item->total_product ?></span></a>
+                                <a data-category_id="<?php echo $item->id; ?>" href="javascript:void(0)"><?php echo $item->category_name; ?><span class="badge"><?php echo $item->total_product?$item->total_product:'' ?></span></a>
                                 <?php
                                 $html = ob_get_clean();
                                 return $html;

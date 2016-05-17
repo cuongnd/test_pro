@@ -23,6 +23,7 @@ class websitetemplateproViewlisttemplatecategory extends JViewLegacy
 	 * Display the view
 	 */
     public $category_id=0;
+    public $page_selected=1;
 	public function display($tpl = null)
 	{
         require_once JPATH_ROOT.'/components/website/website_websitetemplatepro/com_websitetemplatepro/helpers/listwebsitetemplate.php';

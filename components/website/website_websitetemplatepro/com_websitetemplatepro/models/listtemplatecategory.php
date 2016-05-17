@@ -234,7 +234,7 @@ class websitetemplateproModellisttemplatecategory extends JModelList
         }
         $query->group('a.id');
         $query->order('a.id');
-        echo $query->dump();
+        //echo $query->dump();
 		return $query;
 	}
 }

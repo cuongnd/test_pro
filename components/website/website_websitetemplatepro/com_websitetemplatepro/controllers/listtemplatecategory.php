@@ -43,6 +43,7 @@ class websitetemplateproControllerlisttemplatecategory extends JControllerAdmin
         $post = json_decode($post);
         $view = $this->getView('listtemplatecategory', 'listtemplate', 'websitetemplateproView');
         $view->category_id=$post->category_id;
+        $view->page_selected=$post->page_selected;
 
         ob_start();
         $view->setLayout('frontend');

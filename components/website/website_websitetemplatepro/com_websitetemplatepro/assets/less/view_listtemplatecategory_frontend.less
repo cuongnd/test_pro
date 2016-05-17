@@ -1,3 +1,76 @@
 a.demo{
   padding: 20px 40px;
 }
+.view-listtemplatecategory-frontend
+{
+  .product
+  {
+    position: relative;
+    .link-detail
+    {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      text-align: center;
+    }
+    .mask
+    {
+
+    }
+  }
+
+  .product .mask {
+    opacity: 0;
+    overflow:visible;
+    border:40px solid rgba(0,0,0,0.7);
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: none;
+
+  }
+  .product a.info {
+    position:relative;
+    top:-10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s 0s ease-in-out;
+    -moz-transition: opacity 0.5s 0s ease-in-out;
+    -o-transition: opacity 0.5s 0s ease-in-out;
+    -ms-transition: opacity 0.5s 0s ease-in-out;
+    transition: opacity 0.5s 0s ease-in-out;
+  }
+  .product:hover .mask {
+    opacity: 1;
+    border:10px solid rgba(0,0,0,0.7);
+  }
+  .product:hover a.info {
+    opacity:1;
+    -moz-transition-delay: 0.3s;
+    -webkit-transition-delay: 0.3s;
+    -o-transition-delay: 0.3s;
+    -ms-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+  }
+
+
+
+  .area-list-template
+  {
+
+    #pagination
+    {
+      margin: 0 auto;
+      display: table;
+    }
+  }
+}

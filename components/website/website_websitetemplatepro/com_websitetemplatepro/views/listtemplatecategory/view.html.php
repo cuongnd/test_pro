@@ -36,9 +36,21 @@ class websitetemplateproViewlisttemplatecategory extends JViewLegacy
 		$this->pagination = $this->get('Pagination');
         $this->filterForm    = $this->get('FilterForm');
 		$this->state      = $this->get('State');
-        $first_item=reset($this->items);
+        $app=JFactory::getApplication();
+        $this->category_id=$app->getUserState('listtemplatecategory.category_id','',0);
+        if(!(int)$this->category_id) {
+            $first_item = reset($this->items);
+            $this->category_id = $first_item->id;
+            $app->setUserState('listtemplatecategory.category_id',$this->category_id);
+        }
+        $this->page_selected=$app->getUserState('listtemplatecategory.page_selected','',0,'int');
+        if(!$this->page_selected)
+        {
+            $this->page_selected=1;
+            $app->setUserState('listtemplatecategory.page_selected',$this->page_selected);
+        }
         require_once JPATH_ROOT.'/components/website/website_websitetemplatepro/com_websitetemplatepro/helpers/listwebsitetemplate.php';
-        $this->list_template_website=listwebsitetemplateHelper::get_list_template_website_by_category_id_include_children($first_item->id);
+        $this->list_template_website=listwebsitetemplateHelper::get_list_template_website_by_category_id_include_children($this->category_id);
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
