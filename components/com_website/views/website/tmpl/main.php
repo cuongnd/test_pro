@@ -13,6 +13,8 @@ JHtml::_('jquery.framework');
 JHtml::_('bootstrap.framework');
 $doc->addStyleSheet(JUri::root().'components/com_website/assets/css/view-website-main.css');
 $doc->addScript(JUri::root().'components/com_website/assets/js/view-website-main.js');
+$input=JFactory::getApplication()->input;
+$action=$input->getString('action','');
 ?>
 
 <div class="create-website">
@@ -59,5 +61,6 @@ $doc->addScript(JUri::root().'components/com_website/assets/js/view-website-main
         </div>
     </div>
 </div>
+<input type="hidden" name="action" value="<?php echo $action ?>"
 
 

@@ -57,7 +57,7 @@ class JFormFieldDomains extends JFormField
         $attr .= $this->multiple ? ' multiple' : '';
         $attr .= $this->required ? ' required aria-required="true"' : '';
         $attr .= $this->autofocus ? ' autofocus' : '';
-
+        $attr.=' disableChosen="true" ';
         $attribute[]=$this->onchange?'onchange="'.$this->onchange.'"':'';
         $attribute=implode(' ',$attribute);
         $html = JHtml::_('select.genericlist', $list_website, $this->name,$attr, 'id', 'domain', $this->value);

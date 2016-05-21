@@ -51,6 +51,12 @@ class websitetemplateproControllertemplate extends JControllerForm
         return parent::getModel($name, $prefix, array('ignore_request' => true));
     }
     public function front_end_user_edit_website(){
+        $user=JFactory::getUser();
+        if(!$user->id)
+        {
+            $this->setRedirect(JRoute::_('index.php?option=com_users&view=login'));
+            return;
+        }
         echo "sdfdfsdfsd";
         die;
     }

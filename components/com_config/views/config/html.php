@@ -29,6 +29,8 @@ class ConfigViewConfigHtml extends ConfigViewCmsHtml
 	 */
 	public function render()
 	{
+        echo "sdfsdfd";
+        die;
 		$user = JFactory::getUser();
 		$this->userIsSuperAdmin = $user->authorise('core.admin');
 

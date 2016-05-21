@@ -48,12 +48,12 @@
             });
         }
 
-        plugin.create_website = function (self) {
+        plugin.create_website = function ($self,count_error_ajax) {
             if ($element.find('#create-website-form').valid()) {
-                var btn = self;
+                var btn = $self;
                 //btn.button('loading');
-                your_domain= $element.find('input[name="your_domain"]').val();
-                sub_domain= $element.find('input[name="sub_domain"]').val();
+                var your_domain= $element.find('input[name="your_domain"]').val();
+                var sub_domain= $element.find('input[name="sub_domain"]').val();
                 $.ajax({
                     type: "GET",
                     url: 'index.php',
@@ -83,8 +83,8 @@
                     },
                     success: function(result) {
                         result= $.parseJSON(result);
-                        exits=result.exits;
-                        if(exits==='true'||exits==1)
+                        var stop=result.stop;
+                        if(stop=='true'||stop==1)
                         {
                             $('.div-loading').css({
                                 display: 'none'
@@ -106,7 +106,24 @@
                             $('#create-website-form').submit();
                         }
 
+                    },
+                    error: function(request, status, err) {
+                        if (status == "timeout") {
+                            // timeout -> reload the page and try again
+                            console.log("timeout");
+                            plugin.create_website($self,count_error_ajax);
+                        } else {
+                            if(count_error_ajax>10)
+                            {
+                                console.log('too many error ajax');
+                            }else {
+                                // another error occured
+                                count_error_ajax++;
+                                plugin.create_website($self,count_error_ajax);
+                            }
+                        }
                     }
+
                 });
             }
 
@@ -298,7 +315,7 @@
 
 
             $element.find('input.create-website').click(function () {
-                plugin.create_website($(this));
+                plugin.create_website($(this),0);
 
 
             })
@@ -308,7 +325,7 @@
             {
                 var random_number = $.random(100000,9999999);
                 $element.find('input[name="sub_domain"]').val('template'+random_number.toString());
-                $element.find('select[name="domain_id"]').val(88).trigger("chosen:updated");
+                $element.find('select[name="domain_id"]').val(752).trigger("chosen:updated");
                 $element.find('.create-website').trigger( "click" );
 
             }

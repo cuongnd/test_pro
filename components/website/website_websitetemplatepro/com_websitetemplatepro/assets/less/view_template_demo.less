@@ -1,0 +1,110 @@
+.view-template-demo {
+  background: #fff none repeat scroll 0 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+
+  width: 100%;
+  .demo {
+    border: medium none;
+    height: 2000px;
+    left: 0;
+    position: absolute;
+    top: -65px;
+    width: 100%;
+    z-index: -11;
+  }
+  .demo-header
+  {
+    background: #fff;
+  }
+  .image
+  {
+    height: 200px;
+  }
+  #desktop {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: url("../images/sprite.svg?c13e0a8") no-repeat scroll 3px 0 transparent;
+    opacity: .4;
+    width: 34px;
+    height: 28px;
+    display: block;
+    float: right;
+    margin-right: 18px;
+    cursor: pointer
+  }
+
+  #desktop:hover, #desktop.active {
+    opacity: 1
+  }
+
+  #tablet-portrait {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: url("../images/sprite.svg?c13e0a8") no-repeat scroll -31px 4px transparent;
+    opacity: .4;
+    width: 23px;
+    height: 27px;
+    display: block;
+    cursor: pointer
+  }
+
+  #tablet-portrait:hover, #tablet-portrait.active {
+    opacity: 1
+  }
+
+  #tablet-landscape {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-right: 18px;
+    background: url("../images/sprite.svg?c13e0a8") no-repeat scroll -53px 8px transparent;
+    opacity: .4;
+    width: 23px;
+    height: 29px;
+    display: block;
+    cursor: pointer
+  }
+
+  #tablet-landscape:hover, #tablet-landscape.active {
+    opacity: 1
+  }
+
+  #iphone-portrait {
+    position: relative;
+    top: 0;
+    background: url("../images/sprite.svg?c13e0a8") no-repeat scroll -79px 6px transparent;
+    opacity: .4;
+    width: 12px;
+    height: 29px;
+    display: block;
+    cursor: pointer;
+    margin-right: 4px
+  }
+
+  #iphone-portrait:hover, #iphone-portrait.active {
+    opacity: 1
+  }
+
+  #iphone-landscape {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: url("../images/sprite.svg?c13e0a8") no-repeat scroll -95px 14px transparent;
+    opacity: .4;
+    width: 22px;
+    height: 28px;
+    display: block;
+    margin-right: 17px;
+    cursor: pointer
+  }
+
+  #iphone-landscape:hover, #iphone-landscape.active {
+    opacity: 1
+  }
+}

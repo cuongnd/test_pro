@@ -83,6 +83,10 @@ class listwebsitetemplateHelper
             ->from('#__webtempro_products AS product')
             ->innerJoin('#__webtempro_products_en_gb AS products_en_gb ON products_en_gb.id=product.id')
             ->where('product.category_id IN ('.implode(',',$list_children_category_include_parent_category).')')
+            ->leftJoin('#__website AS website ON website.id=product.website_id')
+            ->select('product.website_id')
+            ->leftJoin('#__domain_website AS domain_website ON domain_website.website_id=website.id AND domain_website.domain NOT LIKE '.$query->q('%admin%'))
+            ->select('domain_website.domain AS link_demo')
             ;
         $db->setQuery($query);
         $list_template_website=$db->loadObjectList();

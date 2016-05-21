@@ -4,6 +4,7 @@ $total_template_per_page=24;
 $list_template_website=$this->list_template_website;
 $list_template_website_per_page=array_chunk($list_template_website,$total_template_per_page);
 $col=3;
+
 $list_list_template_website=array_chunk($list_template_website_per_page[$this->page_selected-1],$col);
 ?>
 <?php foreach($list_list_template_website as $list_template_website){
@@ -15,8 +16,9 @@ $list_list_template_website=array_chunk($list_template_website_per_page[$this->p
                     <img class="img-responsive img-thumbnail" src="<?php echo $template->image_url ?>">
                     <div class="mask img-responsive img-thumbnail">
                         <div class="link-detail">
-                            <a href="<?php echo JRoute::_('index.php?option=com_websitetemplatepro&task=template.front_end_user_edit_website&template_id='.$template->id) ?>" class="btn btn-primary"><?php echo JText::_('Demo') ?></a>
-                            <a href="<?php echo JRoute::_('index.php?option=com_websitetemplatepro&task=product.edit') ?>" class="btn btn-primary"><?php echo JText::_('Edit') ?></a>
+                            <a href="<?php echo JRoute::_('index.php?option=com_websitetemplatepro&view=template&layout=demo&id='.$template->id) ?>" target="_blank" class="btn btn-primary"><?php echo JText::_('Demo') ?></a>
+                            <a href="<?php echo JRoute::_('index.php?option=com_websitetemplatepro&task=template.front_end_user_edit_website&id='.$template->id) ?>" target="_blank" class="btn btn-primary"><?php echo JText::_('Edit') ?></a>
+
                         </div>
                     </div>
                 </div>

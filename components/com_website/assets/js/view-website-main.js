@@ -1,10 +1,13 @@
 jQuery(document).ready(function($){
     $(document).on('click','.setup .next',function(){
 
-        next($(this));
+        next($(this),0);
     });
-    $('input[name="autoSetup"]').prop('checked', true);
-    $('.setup .next').trigger( "click" );
+    var action=$('input[name="action"]').val();
+    if(action=='auto') {
+        $('input[name="autoSetup"]').prop('checked', true);
+        $('.setup .next').trigger("click");
+    }
     function sethtmlfortag(respone_array)
     {
         respone_array = $.parseJSON(respone_array);
@@ -19,13 +22,14 @@ jQuery(document).ready(function($){
     }
 
 
-    function next(thisObject)
+    function next(thisObject,count_error_ajax)
     {
+        var action=$('input[name="action"]').val();
         $('.setup button').attr('disabled','disabled');
-        currentStep=$('input[name="currentStep"]').val();
+        var currentStep=$('input[name="currentStep"]').val();
         if(currentStep=='Finish')
         {
-            website=$('input[name="website"]').val();
+            var website=$('input[name="website"]').val();
             window.location.assign("http://"+website);
             return;
         }
@@ -36,7 +40,8 @@ jQuery(document).ready(function($){
                 dataPost = {
                     option: 'com_website',
                     task: 'website.nextStep',
-                    currentStep:currentStep
+                    currentStep:currentStep,
+                    action:action
                 };
                 return dataPost;
             })(),
@@ -77,7 +82,24 @@ jQuery(document).ready(function($){
                     width:progress_success.toString()+'%'
                 });
 
+            },
+            error: function(request, status, err) {
+                if (status == "timeout") {
+                    // timeout -> reload the page and try again
+                    console.log("timeout");
+                    next(thisObject,count_error_ajax);
+                } else {
+                    if(count_error_ajax>10)
+                    {
+                        console.log('too many error ajax');
+                    }else {
+                        // another error occured
+                        count_error_ajax++;
+                        next(thisObject,count_error_ajax);
+                    }
+                }
             }
+
         });
 
     }

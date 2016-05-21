@@ -11,6 +11,23 @@
                 default="0"
                 readonly="true"
                 class="readonly"/>
+        <field name="website_id" type="websites"
+               description="website"
+               label="website"
+        />
+        <field
+                name="type"
+                type="list"
+                class="chzn-color-state"
+                label="Type"
+                description="Type"
+                size="1"
+                default="module">
+            <option value="">please select type extension</option>
+            <option value="module">module</option>
+            <option value="component">component</option>
+            <option value="plugin">plugin</option>
+        </field>
 
         <field
                 name="name"
@@ -29,25 +46,8 @@
                 type="text"
                 label="Folder"
                 description="Folder"/>
-        <field
-                name="type"
-                type="list"
-                class="chzn-color-state"
-                label="Type"
-                description="Type"
-                size="1"
-                default="module">
-            <option value="">please select type extension</option>
-            <option value="module">module</option>
-            <option value="component">component</option>
-            <option value="plugin">plugin</option>
-        </field>
 
 
-        <field name="website_id" type="websites"
-               description="website"
-               label="website"
-        />
 
 
         <field

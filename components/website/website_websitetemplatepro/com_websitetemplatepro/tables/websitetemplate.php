@@ -30,7 +30,7 @@ class JTablewebsitetemplate extends JTable
     public $website_id=0;
     public function __construct(JDatabaseDriver $db)
     {
-        parent::__construct('#__webtempro_templates', 'id', $db);
+        parent::__construct('#__webtempro_products', 'id', $db);
 
     }
     public function check()

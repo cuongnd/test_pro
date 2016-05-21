@@ -47,6 +47,7 @@ class WebsiteModelWebsite extends JModelAdmin
      */
     public function createBasicInfoWebsite($domain = '')
     {
+        $website=JFactory::getWebsite();
         $website_template_id = websiteHelperFrontEnd::getOneTemplateWebsite();
         $app=JFactory::getApplication();
         $user = JFactory::getUser();
@@ -57,6 +58,7 @@ class WebsiteModelWebsite extends JModelAdmin
         $table_website->title = $domain;
         $table_website->name = $session_website->sub_domain;
         $table_website->alias = $domain;
+        $table_website->created_by_website_id = $website->website_id;
         $table_website->introtext = $domain;
         if (!$user->id) {
             $this->setError('please login again<a href="index.php?option=com_users&view=login">(click here)</a>');

@@ -1472,6 +1472,13 @@ abstract class JDatabaseQuery
 
 		return $this;
 	}
+	public function custom_update($table,$alia_table='')
+	{
+		$this->type = 'update';
+		$this->update = new JDatabaseQueryElement('UPDATE ', $table);
+
+		return $this;
+	}
 
 	/**
 	 * Adds a tuple, or array of tuples that would be used as values for an INSERT INTO statement.

@@ -105,6 +105,7 @@ class JUri
 	 * @since  11.1
 	 */
 	protected static $current;
+	protected static $admin_current;
 
 	/**
 	 * Constructor.
@@ -317,6 +318,35 @@ class JUri
 		}
 
 		return self::$current;
+	}
+	public static function admin_current($parts=array('scheme', 'host', 'port', 'path','query'))
+	{
+		// Get the current URL.
+		if (empty(self::$admin_current))
+		{
+
+            $uri = self::getInstance();
+
+            $query = $uri->getQuery();
+            $str_uri = '';
+            $str_uri .= in_array('scheme', $parts) ? (!empty($uri->scheme) ? $uri->scheme . '://' : '') : '';
+            $str_uri .= in_array('user', $parts) ? $uri->user : '';
+            $str_uri .= in_array('pass', $parts) ? (!empty($uri->pass) ? ':' : '') . $uri->pass . (!empty($uri->user) ? '@' : '') : '';
+            $host= $uri->host;
+            if (strpos($host, 'www.') !== false) {
+                $host=str_replace('www.','www.admin.',$host);
+            }else{
+                $host="admin.$host";
+            }
+            $str_uri .= in_array('host', $parts) ? $host : '';
+            $str_uri .= in_array('port', $parts) ? (!empty($uri->port) ? ':' : '') . $uri->port : '';
+            $str_uri .= in_array('path', $parts) ? $uri->path : '';
+            $str_uri .= in_array('query', $parts) ? (!empty($query) ? '?' . $query : '') : '';
+            $str_uri .= in_array('fragment', $parts) ? (!empty($uri->fragment) ? '#' . $uri->fragment : '') : '';
+			self::$admin_current = $str_uri;
+		}
+
+		return self::$admin_current;
 	}
 
 	/**

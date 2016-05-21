@@ -10,25 +10,21 @@
 defined('_JEXEC') or die;
 
 /**
- * View class for a list of listmywebsite.
+ * View to edit a plugin.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_websitetemplatepro
  * @since       1.5
  */
-class websitetemplateproViewlisttemplatecategory extends JViewLegacy
+class websitetemplateproViewconfig extends JViewLegacy
 {
 
 	/**
 	 * Display the view
 	 */
-    public $category_id=0;
-    public $page_selected=1;
 	public function display($tpl = null)
 	{
-
-        require_once JPATH_ROOT.'/components/website/website_websitetemplatepro/com_websitetemplatepro/helpers/listwebsitetemplate.php';
-        $this->list_template_website=listwebsitetemplateHelper::get_list_template_website_by_category_id_include_children($this->category_id);
 		parent::display($tpl);
 	}
+
 }

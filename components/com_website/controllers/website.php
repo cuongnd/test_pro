@@ -70,6 +70,7 @@ class WebsiteControllerWebsite extends JControllerForm
         $post=$input->getArray($_POST);
         $your_domain=strtolower($post['your_domain']);
         $sub_domain=strtolower($post['sub_domain']);
+        $action=$input->getString('action','');
         $domain_id=$post['domain_id'];
         $email=strtolower($post['email']);
         $session_website = JModelLegacy::getInstance('session_website');
@@ -91,7 +92,7 @@ class WebsiteControllerWebsite extends JControllerForm
             $session->set('your_domain',$your_domain);
             $session->set('email',$email);
         }
-        $this->setRedirect('index.php?option=com_website&view=website&layout=main&firstsetup=1');
+        $this->setRedirect('index.php?option=com_website&view=website&layout=main&firstsetup=1&action='.$action);
         return;
     }
     function SetProgressSuccess($function,&$respone_array=array())
@@ -540,19 +541,19 @@ class WebsiteControllerWebsite extends JControllerForm
     //ajax check exists your domain and sub domain
     function ajaxCheckExistsYourDomainAndSubDomain()
     {
-        $exits=false;
+        $stop=false;
         $input=JFactory::getApplication()->input;
         $youDomain=$input->getString('your_domain','');
         $modelWebsite=$this->getModel();
         if($youDomain!=''&&$modelWebsite->checkExistsDomain($youDomain))
-            $exits=true;
+            $stop=true;
         $sub_domain=$input->getString('sub_domain','');
 
 
         if($sub_domain!=''&&$modelWebsite->checkExistsDomain($sub_domain))
-            $exits=true;
+            $stop=true;
         $arrayResult=array();
-        $arrayResult['exits']=$exits;
+        $arrayResult['stop']=$stop;
         echo json_encode($arrayResult);
         die;
     }

@@ -1,8 +1,10 @@
 Finish
 <input type="hidden" name="currentStep" value="Finish">
 <?php
+$input=JFactory::getApplication()->input;
 $session=JFactory::getSession();
 $sub_domain=$session->get('sub_domain','');
+$action=$input->getString('action','');
 ?>
 <div class="row-fluid">
     Thanks for using our product
@@ -24,7 +26,9 @@ $sub_domain=$session->get('sub_domain','');
         $('.setup button.cancel').remove();
         $('.autosetup').remove();
         $('.setup button.next').html('Finish');
-        window.location.href = "index.php?option=com_website&view=website&action=auto";
+        <?php if($action=='auto'){ ?>
+            window.location.href = "index.php?option=com_website&view=website&action=<?php echo $action ?>";
+        <?php } ?>
     });
 
 </script>

@@ -12,7 +12,7 @@ $doc->addScript(JUri::root() . '/components/com_website/assets/js/view_website_d
 require_once JPATH_ROOT.'/components/com_website/helpers/website.php';
 $list_websie_enable_create_sub_domain=websiteHelperFrontEnd::get_list_website_enable_create_sub_domain();
 $input=JFactory::getApplication()->input;
-$action=$input->get('action','');
+$action=$input->getString('action','');
 $option=array(
     'id'=>'',
     'domain'=>JText::_('please select domain')
@@ -143,6 +143,7 @@ $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
             <input type="hidden" name="option" value="com_website">
             <input type="hidden" name="formName" value="formBase">
             <input type="hidden" name="task" value="website.next">
+            <input type="hidden" name="action" value="<?php echo $action ?>">
         </form>
     </div>
 </div>
