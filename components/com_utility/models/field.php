@@ -885,13 +885,7 @@ class UtilityModelField extends JModelAdmin
 					$table->module    = $extension->element;
 					$table->client_id = $extension->client_id;
 				}
-				else
-				{
-					$app = JFactory::getApplication();
-					$app->redirect(JRoute::_('index.php?option=com_utility&view=modules', false));
 
-					return false;
-				}
 			}
 
 			// Convert to the JObject before adding other data.

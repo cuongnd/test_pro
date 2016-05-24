@@ -1,0 +1,19 @@
+.preview {
+	z-index: 1;
+}
+.itemField.field-config {
+	width: 400px;
+}
+.list_css_property .panel-group .item:nth-of-type(2n+1) {
+	background-color: #f9f9f9;
+}
+.list_css_property .panel-group .item {
+	border: 1px solid #ddd;
+	margin: 5px;
+	padding: 5px;
+}
+.stree_node_xml {
+	height: 300px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}

@@ -339,6 +339,7 @@ ob_start();
     $doc->addScript(JUri::root() . '/media/system/js/purl-master/purl-master/purl.js');
     $doc->addScript(JUri::root() . '/media/system/js/sidr-master/src/jquery.sidr.js');
     $doc->addStyleSheet(JUri::root().'/media/jui_front_end/css/jquery.searchtools.css');
+    $doc->addStyleSheet(JUri::root() . '/media/system/js/animate.css-master/animate.css');
     require_once JPATH_ROOT . '/components/com_website/helpers/website.php';
 
     JHtml::_('jquery.framework');
@@ -349,6 +350,8 @@ ob_start();
 
 
 
+    $doc->addScript(JUri::root() . '/media/system/js/jquery.utility.js');
+    $doc->addScript(JUri::root() . '/media/system/js/jquery.appear-master/jquery.appear.js');
     $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jRespond.min.js');
     $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/quicksearch/jquery.quicksearch.js');
     $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/misc/countTo/jquery.countTo.js');
@@ -646,14 +649,18 @@ $script_content = JUtility::remove_string_javascript($script_content);
 $doc->addScriptDeclaration($script_content,"text/javascript",'script_design_website');
 }else
 {
+$listPositionsSetting= websiteHelperFrontEnd::$listPositionsSetting;
 ob_start();
 ?>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
+            console.log('javascriptdisableedit');
             $('body').javascriptdisableedit({
                 menuItemActiveId:<?php echo $menuItemActiveId?>,
                 currentScreenSize: "<?php echo $currentScreenSize ?>",
-                currentLink: "<?php echo $uri->toString() ?>"
+                currentLink: "<?php echo $uri->toString() ?>",
+                listPositionsSetting:<?php echo json_encode($listPositionsSetting) ?>
+
             });
         });
 

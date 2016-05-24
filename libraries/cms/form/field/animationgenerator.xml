@@ -1,0 +1,944 @@
+<config><fields name="params"><fields name="option_font">
+					<field type="font" readonly="false" label="font family" default=""
+						   name="font_family" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="font family" default="0"
+						   name="enable_font_family" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="color" readonly="false" label="font_color" default="#ccc"
+						   name="color" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="font_color" default="0"
+						   name="enable_color" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="font size" default="30"
+						   name="font_size" onchange="stylegenerator.update_style();"
+
+
+																										 last="200" 													 step="1" 													 on_change="stylegenerator.update_style();" 												>
+											</field>
+					<field type="checkbox" label="font size" default="0"
+						   name="enable_font_size" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="font weight" default="30"
+						   name="font_weight" onchange="stylegenerator.update_style();"
+
+
+																										 last="500" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="font weight" default="0"
+						   name="enable_font_weight" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="font_variant" default=""
+						   name="font_variant" onchange="stylegenerator.update_style();"
+
+
+																										 last="500" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="font_variant" default="0"
+						   name="enable_font_variant" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="line_height" default="30"
+						   name="line_height" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 													 on_change="stylegenerator.update_style();" 												>
+											</field>
+					<field type="checkbox" label="line_height" default="0"
+						   name="enable_line_height" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="letter spacing" default=""
+						   name="letter_spacing" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="letter spacing" default="0"
+						   name="enable_letter_spacing" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="word_spacing" default=""
+						   name="word_spacing" onchange="stylegenerator.update_style();"
+
+
+																										 last="30" 													 step="1" 													 on_change="stylegenerator.update_style();" 												>
+											</field>
+					<field type="checkbox" label="word_spacing" default="0"
+						   name="enable_word_spacing" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="csstextalign" readonly="false" label="text align" default=""
+						   name="text_align" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="text align" default="0"
+						   name="enable_text_align" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="list" readonly="false" label="text_decoration" default=""
+						   name="text_decoration" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="inherit">inherit</option>
+																																<option value="none">none</option>
+																																<option value="underline">underline</option>
+																																<option value="overline">overline</option>
+																																<option value="line-through">line-through</option>
+																																<option value="blink">blink</option>
+																				</field>
+					<field type="checkbox" label="text_decoration" default="0"
+						   name="enable_text_decoration" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="list" readonly="false" label="text_transform" default=""
+						   name="text_transform" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="inherit">inherit</option>
+																																<option value="uppercase">uppercase</option>
+																																<option value="capitalize">capitalize</option>
+																																<option value="full-size-kana">full-size-kana</option>
+																																<option value="full-width">full-width</option>
+																																<option value="lowercase">lowercase</option>
+																																<option value="none">none</option>
+																				</field>
+					<field type="checkbox" label="text_transform" default="0"
+						   name="enable_text_transform" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="list" readonly="false" label="end color" default=""
+						   name="vertical_align" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="inherit">inherit</option>
+																																<option value="baseline">baseline</option>
+																																<option value="bottom">bottom</option>
+																																<option value="sub">sub</option>
+																																<option value="super">super</option>
+																																<option value="top">top</option>
+																																<option value="middle">middle</option>
+																																<option value="text-bottom">text-bottom</option>
+																				</field>
+					<field type="checkbox" label="end color" default="0"
+						   name="enable_vertical_align" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="list" readonly="false" label="white_space" default=""
+						   name="white_space" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="inherit">inherit</option>
+																																<option value="normal">normal</option>
+																																<option value="pre">pre</option>
+																																<option value="nowrap">nowrap</option>
+																																<option value="pre-wrap">pre-wrap</option>
+																																<option value="pre-line">pre-line</option>
+																				</field>
+					<field type="checkbox" label="white_space" default="0"
+						   name="enable_white_space" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="text_shadow">
+					<field type="range" readonly="false" label="Text shadow angle" default=""
+						   name="text_shadow_angle" onchange="stylegenerator.update_style();"
+
+
+																										 last="90" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Text shadow angle" default="0"
+						   name="enable_text_shadow_angle" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="Text shadow distance" default=""
+						   name="text_shadow_distance" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Text shadow distance" default="0"
+						   name="enable_text_shadow_distance" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="text shodow blur" default=""
+						   name="text_shadow_blur" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="text shodow blur" default="0"
+						   name="enable_text_shadow_blur" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="color" readonly="false" label="Text shadow color" default=""
+						   name="text_shadow_color" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="Text shadow color" default="0"
+						   name="enable_text_shadow_color" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="Text shadow opacity" default=""
+						   name="text_shadow_opacity" onchange="stylegenerator.update_style();"
+
+
+																										 last="1" 													 step="0.1" 												>
+											</field>
+					<field type="checkbox" label="Text shadow opacity" default="0"
+						   name="enable_text_shadow_opacity" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="box_shadow">
+					<field type="rangeofintegers" readonly="false" label=" Horizontal Length" default=""
+						   name="horizontal_length" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 													 on_change="stylegenerator.update_style();stylegenerator.update_style();" 												>
+											</field>
+					<field type="checkbox" label=" Horizontal Length" default="0"
+						   name="enable_horizontal_length" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label=" Vertical Length" default=""
+						   name="vertical_length" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 													 on_change="stylegenerator.update_style();stylegenerator.update_style();" 												>
+											</field>
+					<field type="checkbox" label=" Vertical Length" default="0"
+						   name="enable_vertical_length" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label=" Blur Radius" default=""
+						   name="blur_radius" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label=" Blur Radius" default="0"
+						   name="enable_blur_radius" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="Spread Radius" default=""
+						   name="spread_radius" onchange="stylegenerator.update_style();"
+
+
+													 first="-200" 													 last="200" 													 step="1" 													 on_change="stylegenerator.update_style();" 												>
+											</field>
+					<field type="checkbox" label="Spread Radius" default="0"
+						   name="enable_spread_radius" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="color" readonly="false" label="font-family" default=""
+						   name="shadow_color" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="font-family" default="0"
+						   name="enable_shadow_color" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="Opacity" default="1"
+						   name="opacity" onchange="stylegenerator.update_style();"
+
+
+																										 last="1" 													 step="0.1" 													 on_change="stylegenerator.update_style();" 												>
+											</field>
+					<field type="checkbox" label="Opacity" default="0"
+						   name="enable_opacity" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="list" readonly="false" label="Box shdow type" default=""
+						   name="box_shadow_type" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="outline">Outline</option>
+																																<option value="Inset">Inset</option>
+																				</field>
+					<field type="checkbox" label="Box shdow type" default="0"
+						   name="enable_box_shadow_type" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="background">
+					<field type="color" readonly="false" label=" Background Color" default=""
+						   name="background_color" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label=" Background Color" default="0"
+						   name="enable_background_color" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="browserserver" readonly="false" label="background_image" default=""
+						   name="background_image" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="background_image" default="0"
+						   name="enable_background_image" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="list" readonly="false" label="background repeat" default=""
+						   name="background_repeat" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="repeat">repeat</option>
+																																<option value="repeat-x">repeat-x</option>
+																																<option value="repeat-y">repeat-y</option>
+																																<option value="inherit">inherit</option>
+																																<option value="initial">initial</option>
+																																<option value="auto">auto</option>
+																				</field>
+					<field type="checkbox" label="background repeat" default="0"
+						   name="enable_background_repeat" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="list" readonly="false" label="background position" default=""
+						   name="background_position" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="top">top</option>
+																																<option value="inherit">inherit</option>
+																																<option value="initial">initial</option>
+																																<option value="unset">unset</option>
+																																<option value="bottom">bottom</option>
+																																<option value="center">center</option>
+																				</field>
+					<field type="checkbox" label="background position" default="0"
+						   name="enable_background_position" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="width_option">
+					<field type="rangeofintegers" readonly="false" label="width" default="200"
+						   name="width" onchange="stylegenerator.update_style();"
+
+
+																										 last="10000" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="width" default="0"
+						   name="enable_width" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="min_width" default="200"
+						   name="min_width" onchange="stylegenerator.update_style();"
+
+
+																										 last="10000" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="min_width" default="0"
+						   name="enable_min_width" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="Max width" default="200"
+						   name="max_width" onchange="stylegenerator.update_style();"
+
+
+																										 last="10000" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="Max width" default="0"
+						   name="enable_max_width" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="height option">
+					<field type="rangeofintegers" readonly="false" label="height" default="200"
+						   name="height" onchange="stylegenerator.update_style();"
+
+
+																										 last="10000" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="height" default="0"
+						   name="enable_height" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="Min height" default="200"
+						   name="min_height" onchange="stylegenerator.update_style();"
+
+
+																										 last="10000" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="Min height" default="0"
+						   name="enable_min_height" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="Max height" default="200"
+						   name="max_height" onchange="stylegenerator.update_style();"
+
+
+																										 last="10000" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="Max height" default="0"
+						   name="enable_max_height" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="position_option">
+					<field type="list" readonly="false" label="position" default=""
+						   name="position" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="none">none</option>
+																																<option value="static">static</option>
+																																<option value="absolute">absolute</option>
+																																<option value="fixed">fixed</option>
+																																<option value="relative">relative</option>
+																																<option value="initial">initial</option>
+																																<option value="inherit">inherit</option>
+																				</field>
+					<field type="checkbox" label="position" default="0"
+						   name="enable_position" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="left" default=""
+						   name="left" onchange="stylegenerator.update_style();"
+
+
+													 first="-200" 													 last="200" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="left" default="0"
+						   name="enable_left" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="right" default=""
+						   name="right" onchange="stylegenerator.update_style();"
+
+
+													 first="-2000" 													 last="2000" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="right" default="0"
+						   name="enable_right" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="top" default="5"
+						   name="top" onchange="stylegenerator.update_style();"
+
+
+													 first="-2000" 													 last="2000" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="top" default="0"
+						   name="enable_top" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="bottom" default="0"
+						   name="bottom" onchange="stylegenerator.update_style();"
+
+
+													 first="2000" 													 last="-2000" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="bottom" default="0"
+						   name="enable_bottom" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="padding">
+					<field type="rangeofintegers" readonly="false" label="padding_all" default=""
+						   name="padding" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="padding_all" default="0"
+						   name="enable_padding" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="padding_top" default=""
+						   name="padding_top" onchange="stylegenerator.update_style();"
+
+
+													 first="-200" 													 last="200" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="padding_top" default="0"
+						   name="enable_padding_top" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="padding_right" default=""
+						   name="padding_right" onchange="stylegenerator.update_style();"
+
+
+													 first="-200" 													 last="200" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="padding_right" default="0"
+						   name="enable_padding_right" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="padding_bottom" default=""
+						   name="padding_bottom" onchange="stylegenerator.update_style();"
+
+
+													 first="-200" 													 last="200" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="padding_bottom" default="0"
+						   name="enable_padding_bottom" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="padding left" default=""
+						   name="padding_left" onchange="stylegenerator.update_style();"
+
+
+													 first="-200" 													 last="200" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="padding left" default="0"
+						   name="enable_padding_left" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="margin">
+					<field type="rangeofintegers" readonly="false" label="margin all" default="0"
+						   name="margin" onchange="stylegenerator.update_style();"
+
+
+													 first="-200" 													 last="200" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="margin all" default="0"
+						   name="enable_margin" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="margin_top" default="0"
+						   name="margin_top" onchange="stylegenerator.update_style();"
+
+
+													 first="-200" 													 last="200" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="margin_top" default="0"
+						   name="enable_margin_top" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="margin right" default="0"
+						   name="margin_right" onchange="stylegenerator.update_style();"
+
+
+													 first="-200" 													 last="200" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="margin right" default="0"
+						   name="enable_margin_right" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="margin_bottom" default="0"
+						   name="margin_bottom" onchange="stylegenerator.update_style();"
+
+
+													 first="-200" 													 last="200" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="margin_bottom" default="0"
+						   name="enable_margin_bottom" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="margin left" default="0"
+						   name="margin_left" onchange="stylegenerator.update_style();"
+
+
+													 first="-200" 													 last="200" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="margin left" default="0"
+						   name="enable_margin_left" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="border"><fields name="border_all">
+					<field type="cssborderstyle" readonly="false" label="Border all style" default=""
+						   name="border_all_style" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="Border all style" default="0"
+						   name="enable_border_all_style" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="Border all width" default=""
+						   name="border_all_width" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Border all width" default="0"
+						   name="enable_border_all_width" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="color" readonly="false" label="border all color" default=""
+						   name="border_all_color" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="border all color" default="0"
+						   name="enable_border_all_color" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="top">
+					<field type="cssborderstyle" readonly="false" label="Border Style" default=""
+						   name="border_top_style" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="Border Style" default="0"
+						   name="enable_border_top_style" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="border top width" default=""
+						   name="border_top_width" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="border top width" default="0"
+						   name="enable_border_top_width" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="color" readonly="false" label="border top color" default=""
+						   name="border_top_color" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="border top color" default="0"
+						   name="enable_border_top_color" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="right">
+					<field type="cssborderstyle" readonly="false" label="Border right style" default=""
+						   name="border_right_style" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="Border right style" default="0"
+						   name="enable_border_right_style" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="Border right width" default=""
+						   name="border_right_width" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Border right width" default="0"
+						   name="enable_border_right_width" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="color" readonly="false" label="Border right color" default=""
+						   name="border_right_color" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="Border right color" default="0"
+						   name="enable_border_right_color" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="bottom">
+					<field type="cssborderstyle" readonly="false" label="Border bottom style" default=""
+						   name="border_bottom_style" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="Border bottom style" default="0"
+						   name="enable_border_bottom_style" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="Border bottom color" default=""
+						   name="border_bottom_width" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Border bottom color" default="0"
+						   name="enable_border_bottom_width" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="color" readonly="false" label="Border bottom color" default=""
+						   name="border_bottom_color" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="Border bottom color" default="0"
+						   name="enable_border_bottom_color" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="left">
+					<field type="cssborderstyle" readonly="false" label="Border left color" default=""
+						   name="border_left_style" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="Border left color" default="0"
+						   name="enable_border_left_style" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="Border left width" default=""
+						   name="border_left_width" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="Border left width" default="0"
+						   name="enable_border_left_width" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="color" readonly="false" label="Border left color" default=""
+						   name="border_left_color" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="Border left color" default="0"
+						   name="enable_border_left_color" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields></fields><fields name="border_radius">
+					<field type="rangeofintegers" readonly="false" label="border all radius width" default=""
+						   name="border_all_radius_width" onchange="stylegenerator.update_style();"
+
+
+																										 last="100" 													 step="1" 												>
+											</field>
+					<field type="checkbox" label="border all radius width" default="0"
+						   name="enable_border_all_radius_width" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="border radius Top Left" default=""
+						   name="border_radius_top_left" onchange="stylegenerator.update_style();"
+
+
+																										 last="200" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="border radius Top Left" default="0"
+						   name="enable_border_radius_top_left" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="border_radius_top_right" default=""
+						   name="border_radius_top_right" onchange="stylegenerator.update_style();"
+
+
+																										 last="200" 													 step="1" 													 on_change="stylegenerator.update_style();" 												>
+											</field>
+					<field type="checkbox" label="border_radius_top_right" default="0"
+						   name="enable_border_radius_top_right" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="border radius buttom right" default=""
+						   name="border_radius_buttom_left" onchange="stylegenerator.update_style();"
+
+
+																										 last="200" 													 step="1" 																									>
+											</field>
+					<field type="checkbox" label="border radius buttom right" default="0"
+						   name="enable_border_radius_buttom_left" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="rangeofintegers" readonly="false" label="border radius buttom right" default=""
+						   name="border_radius_buttom_right" onchange="stylegenerator.update_style();"
+
+
+																										 last="200" 													 step="1" 													 on_change="stylegenerator.update_style();" 												>
+											</field>
+					<field type="checkbox" label="border radius buttom right" default="0"
+						   name="enable_border_radius_buttom_right" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields><fields name="other_option">
+					<field type="list" readonly="false" label="box sizing" default=""
+						   name="box_sizing" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="auto">auto</option>
+																																<option value="content-box">content-box</option>
+																																<option value="border-box">border-box</option>
+																																<option value="initial">initial</option>
+																																<option value="inherit">inherit</option>
+																				</field>
+					<field type="checkbox" label="box sizing" default="0"
+						   name="enable_box_sizing" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="list" readonly="false" label="overflow" default=""
+						   name="overflow" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="auto">auto</option>
+																																<option value="visible">visible</option>
+																																<option value="hidden">hidden</option>
+																																<option value="scroll">scroll</option>
+																																<option value="initial">initial</option>
+																																<option value="inherit">inherit</option>
+																				</field>
+					<field type="checkbox" label="overflow" default="0"
+						   name="enable_overflow" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="list" readonly="false" label="overflow-x" default=""
+						   name="overflow_x" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="auto">auto</option>
+																																<option value="visible">visible</option>
+																																<option value="hidden">hidden</option>
+																																<option value="scroll">scroll</option>
+																																<option value="initial">initial</option>
+																				</field>
+					<field type="checkbox" label="overflow-x" default="0"
+						   name="enable_overflow_x" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="list" readonly="false" label="overflow-y" default=""
+						   name="overflow_y" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="auto">auto</option>
+																																<option value="visible">visible</option>
+																																<option value="hidden">hidden</option>
+																																<option value="scroll">scroll</option>
+																																<option value="initial">initial</option>
+																																<option value="inherit">inherit</option>
+																				</field>
+					<field type="checkbox" label="overflow-y" default="0"
+						   name="enable_overflow_y" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="text" readonly="false" label="z-index" default=""
+						   name="z_index" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="z-index" default="0"
+						   name="enable_z_index" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="list" readonly="false" label="float" default=""
+						   name="float" onchange="stylegenerator.update_style();"
+
+
+												>
+																							<option value="auto">auto</option>
+																																<option value="left">left</option>
+																																<option value="right">right</option>
+																																<option value="none">none</option>
+																				</field>
+					<field type="checkbox" label="float" default="0"
+						   name="enable_float" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="text" readonly="false" label="clear" default=""
+						   name="clear" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="clear" default="0"
+						   name="enable_clear" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="cssdisplay" readonly="false" label="display" default=""
+						   name="display" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="display" default="0"
+						   name="enable_display" onchange="stylegenerator.update_style();">
+
+					</field>
+					
+					<field type="text" readonly="false" label="visibility" default=""
+						   name="visibility" onchange="stylegenerator.update_style();"
+
+
+												>
+											</field>
+					<field type="checkbox" label="visibility" default="0"
+						   name="enable_visibility" onchange="stylegenerator.update_style();">
+
+					</field>
+					</fields></fields></config>

@@ -140,6 +140,7 @@ class supperadminModelwebsites extends JModelList
 			->from($db->quoteName('#__website') . ' AS a')
             ->leftJoin('#__domain_website AS domain_website ON domain_website.website_id=a.id')
             ->select("GROUP_CONCAT(DISTINCT CONCAT(domain_website.domain,' ','<a target=\"_blank\" href=\"http://www.',domain_website.domain,'\"> <i class=\"fa-external-link\"></i></a>') ORDER BY domain_website.domain SEPARATOR '<br/>') AS list_domain")
+            ->order('domain_website.domain,a.title,a.name,a.introtext')
             ->group('a.id')
         ;
 
@@ -165,7 +166,9 @@ class supperadminModelwebsites extends JModelList
 			if (stripos($search, 'id:') === 0)
 			{
 				$query->where('a.id = ' . (int) substr($search, 3));
-			}
+			}else{
+                $query->where('(a.title LIKE '.$query->q("%$search%").' OR a.name LIKE '.$query->q("%$search%").' OR a.introtext LIKE '.$query->q("%$search%").' OR domain_website.domain LIKE '.$query->q("%$search%").' ) ');
+            }
 		}
 
 

@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 /**
  * website component helper.
  *
+ * @property array|mixed listPositionsSetting
  * @package     Joomla.Administrator
  * @subpackage  com_website
  * @since       1.6
@@ -19,6 +20,7 @@ defined('_JEXEC') or die;
 class websiteHelperFrontEnd
 {
     public static $extension = 'com_website';
+    public static $listPositionsSetting = array();
 
     public static function get_website_name_by_website_id($website_id=0)
     {
@@ -549,6 +551,7 @@ class websiteHelperFrontEnd
         }
 
         $listPositionsSetting = UtilityHelper::getPositionByPage($enableEditWebsite);
+        static::$listPositionsSetting=$listPositionsSetting;
 
         //$listPositionsSetting = UtilityHelper::getListPositionsSetting('',$use_main_frame);
         $cssBlocks = websiteHelperFrontEnd::getBlocksCss($listPositionsSetting);
@@ -710,7 +713,19 @@ class websiteHelperFrontEnd
 
     public static function getOneTemplateWebsite()
     {
-        return 128;
+        $website=JFactory::getWebsite();
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('id')
+            ->where('default_template='.(int)$website->website_id)
+            ;
+        $db->setQuery($query);
+        $website_id=$db->loadResult();
+        if(!$website_id)
+        {
+            throw new Exception('there are no website template of this website, please setup');
+        }
+        return $website_id;
     }
 
     public function compileLess($input, $output)

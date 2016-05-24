@@ -13,6 +13,8 @@ class elementHelper
         $doc->addScript(JUri::root() . "/media/elements/ui/element.js");
         $doc->addScript(JUri::root() . "/media/elements/ui/button.js");
         $doc->addScript(JUri::root().'/media/system/js/sticky-master/jquery.sticky.js');
+        $doc->addStyleSheet(JUri::root() . '/media/system/js/animate.css-master/animate.css');
+        $animation=$block->animation;
 
         $turn_on_clone_config=$params->get('advanced.clone_config.turn_on_clone_config',false);
 

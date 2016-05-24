@@ -8,6 +8,8 @@ $modelPosition=JModelLegacy::getInstance('Position','UtilityModel');
 $modelPosition->setState('position.id',$block_id);
 $app->input->set('id',$block_id);
 $form=$modelPosition->getForm();
+
+
 ob_start();
 $response_array=array();
 $requestString='/\[(.+?)\]/';
@@ -20,6 +22,7 @@ $field=array_pop($parameter);
 array_reverse($parameter);
 $group=implode('.',$parameter);
 $contents = $form->getInput($field,$group);
+
 $tmpl=$app->input->get('tmpl');
 if(strtolower($tmpl)=='field')
 {

@@ -11,6 +11,11 @@
                 default="0"
                 readonly="true"
                 class="readonly"/>
+        <field name="extension_id" type="selectextension" extension_type="component"
+               description="Extension"
+               label="Extension"
+               maximumSelectionLength="1"
+        />
 
         <field
                 name="name"
@@ -28,11 +33,6 @@
                 description="Title"/>
 
 
-        <field name="extension_id" type="selectextension" extension_type="component"
-               description="Extension"
-               label="Extension"
-               maximumSelectionLength="1"
-        />
 
 
         <field

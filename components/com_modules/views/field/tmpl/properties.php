@@ -1,4 +1,5 @@
 <?php
+
 $app=JFactory::getApplication();
 $module_id=$app->input->get('id',0,'int');
 $field=$app->input->get('field','','string');

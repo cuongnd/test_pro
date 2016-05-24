@@ -12,7 +12,8 @@
             current_screen_size:'',
             menuItemActiveId:0,
             currentScreenSize:"",
-            currentLink:""
+            currentLink:"",
+            listPositionsSetting:[]
         }
 
         // current instance of the object
@@ -24,9 +25,36 @@
         var $element = $(element), // reference to the jQuery version of DOM element
             element = element;    // reference to the actual DOM element
         // the "constructor" method that gets called when the object is created
+        plugin.create_animation=function(list_position){
+
+        };
+        plugin.set_animation_block = function () {
+            var listPositionsSetting=plugin.settings.listPositionsSetting;
+            $.each(listPositionsSetting,function(index,position){
+                var animation=position.animation;
+                var block_id=position.id;
+                var parent_id=position.parent_id;
+                if(animation!='') {
+                    var html_block='*[data-block-parent-id="' + parent_id + '"][data-block-id="' + block_id + '"]';
+                    var $block=$('*[data-block-parent-id="' + parent_id + '"][data-block-id="' + block_id + '"]');
+                    $block.appear();
+                    $(document.body).on('appear', html_block, function(e, $affected) {
+                        $(this).addClass(animation + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                            $(this).removeClass('animation');
+                            $(this).removeClass('animated');
+                        });
+                    });
+
+
+
+
+                }
+            });
+        };
         plugin.init = function () {
             plugin.settings = $.extend({}, defaults, options);
             var currentScreenSize=plugin.settings.currentScreenSize;
+            plugin.set_animation_block();
             plugin.reload_page_when_screen_size_null(currentScreenSize);
             plugin.set_current_screen_size();
             this.check_is_loaded_position();

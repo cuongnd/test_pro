@@ -389,7 +389,7 @@
       <excludeFolder url="file://$MODULE_DIR$/plugins/vmpayment" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/vmshipment" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/xmap" />
-      <excludeFolder url="file://$MODULE_DIR$/templates/sprflat/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/templates/sprflat/assets/js/pages" />
       <excludeFolder url="file://$MODULE_DIR$/templates/sprflat/css" />
       <excludeFolder url="file://$MODULE_DIR$/templates/sprflat/demo" />
       <excludeFolder url="file://$MODULE_DIR$/templates/sprflat/html/com_users" />

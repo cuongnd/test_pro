@@ -833,10 +833,15 @@ final class JApplicationSite extends JApplicationCms
 
     private function alert_warning_website_config()
     {
-        $website=JFactory::getWebsite();
-        require_once JPATH_ROOT.'/components/com_website/helpers/alert_warning_website_config.php';
-        /** @noinspection PhpMethodParametersCountMismatchInspection */
-        alert_warning_website_config::alert($website->website_id);
+        $session=JFactory::getSession();
+        $state_alert_warning_website_config=$session->get('state_alert_warning_website_config',true);
+        if($state_alert_warning_website_config) {
+            $website = JFactory::getWebsite();
+            require_once JPATH_ROOT . '/components/com_website/helpers/alert_warning_website_config.php';
+            /** @noinspection PhpMethodParametersCountMismatchInspection */
+            alert_warning_website_config::alert($website->website_id);
+            $session->set('state_alert_warning_website_config',false);
+        }
 
     }
 
