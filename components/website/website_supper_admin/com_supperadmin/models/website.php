@@ -100,12 +100,35 @@ class supperadminModelWebsite extends JModelAdmin
             jimport('joomla.filesystem.file');
             $file_configuration_path=JPATH_ROOT.DS. "configuration/configuration_$id.php";
             $new_name_file_configuration_path=JPATH_ROOT.DS. "configuration/configuration_$name.php";
+
             if(JFile::exists($file_configuration_path)) {
                 rename($file_configuration_path,$new_name_file_configuration_path);
             }
 
             $db=$this->_db;
+            $query=$db->getQuery(true);
+            $query->select('id')
+                ->from('#__domain_website')
+                ->where('website_id='.(int)$id)
+                ->where('id NOT IN('.implode(',',$list_domain).')')
+                ;
+            $db->setQuery($query);
+            echo $query->dump();
+            $list_domain_delete=$db->loadColumn();
             $table_domain_website=JTable::getInstance('domainwebsite');
+            foreach($list_domain_delete as $website_domain_id)
+            {
+                $table_domain_website->load($website_domain_id);
+                $file_webstore_domain_path=JPATH_ROOT.DS. "webstore/$table_domain_website->domain.ini";
+                if(JFile::delete($file_webstore_domain_path)) {
+                    throw new Exception('cannot delete file '.$file_webstore_domain_path);
+                }
+                if(!$table_domain_website->delete($website_domain_id))
+                {
+                    $this->setError($table_domain_website->getError());
+                    return false;
+                }
+            }
             foreach($list_domain as $website_domain_id)
             {
                 $table_domain_website->load($website_domain_id);

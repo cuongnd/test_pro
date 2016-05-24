@@ -31,8 +31,8 @@
                 type="domains"
                 required="true"
                 multiple="true"
-                label="Apply domain"
-                description="Apply domain"/>
+                label="List domain point to website"
+                description="List domain point to website"/>
 
 
         <field
