@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.5
  */
-class productsViewFileGroup extends JViewLegacy
+class ProductsViewImage extends JViewLegacy
 {
 	protected $item;
 
