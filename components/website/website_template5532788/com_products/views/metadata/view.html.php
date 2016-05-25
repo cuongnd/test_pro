@@ -4,7 +4,7 @@
  * @subpackage  com_supperadmin
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @license     GNU metadata Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.5
  */
-class ProductsViewProduct extends JViewLegacy
+class productsViewMetadata extends JViewLegacy
 {
 	protected $item;
 
