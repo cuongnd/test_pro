@@ -1,0 +1,33 @@
+{
+    "name": "lorem-ipsum",
+    "title": "jQuery Lorem Ipsum",
+    "description": "Lorem your ipsum dolor.",
+    "keywords": [
+        "lorem",
+        "ipsum",
+        "dolor",
+        "placeholder",
+        "placekitten",
+        "lorempixel",
+        "placehold",
+        "dummyimage",
+        "yckart"
+    ],
+    "version": "0.0.1",
+    "author": {
+        "name": "Yannick Albert",
+        "email": "mail@yckart.com",
+        "url": "https://github.com/yckart"
+    },
+    "licenses": [{
+        "type": "MIT",
+        "url": "http://yckart.com/mit/"
+    }],
+    "homepage": "http://yckart.github.com/jquery.lorem.js",
+    "demo": "http://yckart.github.com/jquery.lorem.js",
+    "docs": "https://github.com/yckart/jquery.lorem.js",
+    "bugs": "https://github.com/yckart/jquery.lorem.js/issues",
+    "dependencies": {
+        "jquery": ">=1.8"
+    }
+}

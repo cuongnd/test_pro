@@ -1,16 +1,16 @@
 
 <?php
 $doc=JFactory::getDocument();
-$doc->addScript(JUri::root().'/supperadmin/com_supperadmin/views/supperadmin/tmpl/assets/js/loadsupperadmin.js');
+$doc->addScript(JUri::root().'/products/com_products/views/products/tmpl/assets/js/loadproducts.js');
 jimport('joomla.filesystem.folder');
 $website=JFactory::getWebsite();
 $db=JFactory::getDbo();
 $query = $db->getQuery(true);
-$query->from('#__supperadmin as component')
+$query->from('#__products as component')
     ->select('component.*')
-    ->leftJoin('#__extensions AS extensions ON extensions.id=component.extension_id')
+    ->leftJoin('#__productcategories AS productcategories ON productcategories.id=component.extension_id')
     ->where('component.type='.$query->q('component'))
-    ->where('extensions.website_id=' . (int)$website->website_id)
+    ->where('productcategories.website_id=' . (int)$website->website_id)
     ->group('component.name')
 ;
 $listComponent = $db->setQuery($query)->loadObjectList();
@@ -18,11 +18,11 @@ $listLayOut = array();
 $website = JFactory::getWebsite();
 foreach ($listComponent as $com) {
     $is_private_component=true;
-    $folder_view=JPATH_ROOT . '/supperadmin/website/website_'.$website->website_id.'/' . $com->element . '/views';
+    $folder_view=JPATH_ROOT . '/products/website/website_'.$website->website_id.'/' . $com->element . '/views';
     if(!JFolder::exists($folder_view))
     {
         $is_private_component=false;
-        $folder_view=JPATH_ROOT . '/supperadmin/' . $com->element . '/views';
+        $folder_view=JPATH_ROOT . '/products/' . $com->element . '/views';
     }
     $views = JFolder::folders($folder_view);
     foreach ($views as $view) {
@@ -46,7 +46,7 @@ ob_start();
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-        $('ul.list-component').load_supperadmin({
+        $('ul.list-component').load_products({
             show_popup_control:<?php echo json_encode($show_popup_control) ?>
         });
 
@@ -76,7 +76,7 @@ ob_start();
                                     data-layout="<?php echo $layout ?>" title="<?php echo JText::_($layout) ?>"
                                     class="item-element view_item">
                                     <a href="javascript:void(0)"><i
-                                            class="ec-pencil2 layout-config" data-id="<?php echo $item_layout->component_id ?>" data-element-type="extension_component" data-element_path="<?php echo $item_layout->is_private_component?"supperadmin/website/website_$website->website_id/$com/views/$view/tmpl/$layout":"supperadmin/$com/views/$view/tmpl/$layout" ?>" ></i><?php echo JString::sub_string(JText::_($layout), 7) ?>
+                                            class="ec-pencil2 layout-config" data-id="<?php echo $item_layout->component_id ?>" data-element-type="extension_component" data-element_path="<?php echo $item_layout->is_private_component?"products/website/website_$website->website_id/$com/views/$view/tmpl/$layout":"products/$com/views/$view/tmpl/$layout" ?>" ></i><?php echo JString::sub_string(JText::_($layout), 7) ?>
                                     </a>
                                 </li>
                             <?php } ?>

@@ -1,24 +1,24 @@
 //huong dan su dung
 /*
- $('.load_supperadmin').load_supperadmin();
+ $('.load_products').load_products();
 
- load_supperadmin=$('.load_supperadmin').data('load_supperadmin');
- console.log(load_supperadmin);
+ load_products=$('.load_products').data('load_products');
+ console.log(load_products);
  */
 
-// jQuery Plugin for SprFlat admin load_supperadmin
-// Control options and basic function of load_supperadmin
+// jQuery Plugin for SprFlat admin load_products
+// Control options and basic function of load_products
 // version 1.0, 28.02.2013
 // by SuggeElson www.suggeelson.com
 
 (function($) {
 
     // here we go!
-    $.load_supperadmin = function(element, options) {
+    $.load_products = function(element, options) {
 
         // plugin's default options
         var defaults = {
-            //main color scheme for load_supperadmin
+            //main color scheme for load_products
             //be sure to be same as colors on main.css or custom-variables.less
 
         }
@@ -48,7 +48,7 @@
                 $.open_popup_window({
                     scrollbars:1,
                     windowName:'view layout config',
-                    windowURL:'index.php?enable_load_component=1&option=com_supperadmin&view=component&layout=config&id='+id+'&element_path='+element_path+'&tmpl=field&hide_panel_component=1',
+                    windowURL:'index.php?enable_load_component=1&option=com_products&view=component&layout=config&id='+id+'&element_path='+element_path+'&tmpl=field&hide_panel_component=1',
                     centerBrowser:1,
                     width:'800',
                     menubar:0,
@@ -65,7 +65,7 @@
                     data: (function () {
 
                         dataPost = {
-                            option: 'com_supperadmin',
+                            option: 'com_products',
                             view: 'component',
                             tmpl:'ajax_json',
                             layout:'config',
@@ -149,16 +149,16 @@
     }
 
     // add the plugin to the jQuery.fn object
-    $.fn.load_supperadmin = function(options) {
+    $.fn.load_products = function(options) {
 
         // iterate through the DOM elements we are attaching the plugin to
         return this.each(function() {
 
             // if plugin has not already been attached to the element
-            if (undefined == $(this).data('load_supperadmin')) {
-                var plugin = new $.load_supperadmin(this, options);
+            if (undefined == $(this).data('load_products')) {
+                var plugin = new $.load_products(this, options);
 
-                $(this).data('load_supperadmin', plugin);
+                $(this).data('load_products', plugin);
 
             }
 

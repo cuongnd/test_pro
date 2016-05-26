@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_products
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * View class for a list of extensions.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_products
  * @since       1.5
  */
 class productsViewFiles extends JViewLegacy
@@ -47,7 +47,7 @@ class productsViewFiles extends JViewLegacy
 		if (!count($this->items))
 		{
 			JFactory::getApplication()->enqueueMessage(
-				JText::_('COM_supperadmin_MSG_MANAGE_NO_supperadmin'),
+				JText::_('com_products_MSG_MANAGE_NO_products'),
 				'warning'
 			);
 		}
@@ -67,7 +67,7 @@ class productsViewFiles extends JViewLegacy
 	}
     function addCommand()
     {
-        $this->command='com_supperadmin';
+        $this->command='com_products';
         $this->controller_task='extensions.ajaxSaveForm';
     }
 	/**
@@ -77,8 +77,8 @@ class productsViewFiles extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_supperadmin/helpers/extensionssupperadmin.php';
-		$canDo = JHelperContent::getActions('com_supperadmin');
+		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_products/helpers/extensionsproducts.php';
+		$canDo = JHelperContent::getActions('com_products');
         $bar = JToolBar::getInstance('toolbar');
 		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
         $layout = new JLayoutFile('toolbar.newcomponent');
@@ -120,7 +120,7 @@ class productsViewFiles extends JViewLegacy
         JToolbarHelper::unpublish('extensions.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
-			JToolbarHelper::preferences('com_supperadmin');
+			JToolbarHelper::preferences('com_products');
 		}
 
 		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');

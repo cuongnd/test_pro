@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_config
  * @since       1.6
  */
-class supperadminModelConfig extends JModelAdmin
+class productsModelConfig extends JModelAdmin
 {
 	/**
 	 * @var     string  The help screen key for the module.

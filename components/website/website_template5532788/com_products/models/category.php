@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_products
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * component model.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_products
  * @since       1.6
  */
 class productsModelcategory extends JModelAdmin
@@ -77,7 +77,7 @@ class productsModelcategory extends JModelAdmin
 		$this->setState('item.element',	$element);
 
 		// Get the form.
-		$form = $this->loadForm('com_supperadmin.extension', 'extension', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_products.extension', 'extension', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form))
 		{
 
@@ -134,14 +134,14 @@ class productsModelcategory extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_supperadmin.edit.extension.data', array());
+		$data = JFactory::getApplication()->getUserState('com_products.edit.extension.data', array());
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
 		}
 
-		$this->preprocessData('com_supperadmin.extension', $data);
+		$this->preprocessData('com_products.extension', $data);
 
 		return $data;
 	}
@@ -161,7 +161,7 @@ class productsModelcategory extends JModelAdmin
         $db		= $this->getDbo();
 
         // Access checks.
-        if (!$user->authorise('core.create', 'com_supperadmin'))
+        if (!$user->authorise('core.create', 'com_products'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }
@@ -308,7 +308,7 @@ class productsModelcategory extends JModelAdmin
         $db		= $this->getDbo();
 
         // Access checks.
-        if (!$user->authorise('core.create', 'com_supperadmin'))
+        if (!$user->authorise('core.create', 'com_products'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }
@@ -459,12 +459,12 @@ class productsModelcategory extends JModelAdmin
 	}
 
 	/**
-	 * Custom clean cache method, supperadmin are cached in 2 places for different clients
+	 * Custom clean cache method, products are cached in 2 places for different clients
 	 *
 	 * @since   1.6
 	 */
 	protected function cleanCache($group = null, $client_id = 0)
 	{
-		parent::cleanCache('com_supperadmin');
+		parent::cleanCache('com_products');
 	}
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="extensions" option="extensions">
+	<layout title="productcategories" option="productcategories">
 		<help
-			key = "extensions"
+			key = "productcategories"
 		/>
 		<message>
-			<![CDATA[supperadmin]]>
+			<![CDATA[products]]>
 		</message>
 	</layout>
 

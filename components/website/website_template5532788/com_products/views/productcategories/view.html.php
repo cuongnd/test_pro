@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_products
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -10,10 +10,10 @@
 defined('_JEXEC') or die;
 
 /**
- * View class for a list of extensions.
+ * View class for a list of productcategories.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_product
  * @since       1.5
  */
 class productsViewProductCategories extends JViewLegacy
@@ -47,12 +47,12 @@ class productsViewProductCategories extends JViewLegacy
 		if (!count($this->items))
 		{
 			JFactory::getApplication()->enqueueMessage(
-				JText::_('COM_supperadmin_MSG_MANAGE_NO_supperadmin'),
+				JText::_('there are no item'),
 				'warning'
 			);
 		}
 
-        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('extensions.quick_assign_website');
+        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('productcategories.quick_assign_website');
 		$this->addToolbar();
 
         JHtmlSidebar::addFilter(
@@ -67,8 +67,8 @@ class productsViewProductCategories extends JViewLegacy
 	}
     function addCommand()
     {
-        $this->command='com_supperadmin';
-        $this->controller_task='extensions.ajaxSaveForm';
+        $this->command='com_products';
+        $this->controller_task='productcategories.ajaxSaveForm';
     }
 	/**
 	 * Add the page title and toolbar.
@@ -77,15 +77,15 @@ class productsViewProductCategories extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_supperadmin/helpers/extensionssupperadmin.php';
-		$canDo = JHelperContent::getActions('com_supperadmin');
+		require_once JPATH_ROOT.'/components/website/website_template5532788/com_products/helpers/productcategories.php';
+		$canDo = JHelperContent::getActions('com_products');
         $bar = JToolBar::getInstance('toolbar');
-		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
+		JToolbarHelper::title(JText::_('Product category manager'), 'power-cord component');
         $layout = new JLayoutFile('toolbar.newcomponent');
 
         $bar->appendButton('Custom', $layout->render(array()), 'new');
-        JToolbarHelper::editList('extension.edit');
-        JToolbarHelper::addNew('extension.add');
+        JToolbarHelper::editList('productcategory.edit');
+        JToolbarHelper::addNew('productcategory.add');
         if ($canDo->get('core.create'))
         {
             // Instantiate a new JLayoutFile instance and render the layout
@@ -95,35 +95,35 @@ class productsViewProductCategories extends JViewLegacy
         }
 		if ($canDo->get('core.edit'))
 		{
-			JToolbarHelper::editList('extension.edit');
+			JToolbarHelper::editList('productcategory.edit');
 		}
         if ($canDo->get('core.create'))
         {
-            JToolbarHelper::custom('extensions.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
+            JToolbarHelper::custom('productcategories.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
         }
-		JToolbarHelper::duplicate('extensions.duplicate');
+		JToolbarHelper::duplicate('productcategories.duplicate');
 		if ($canDo->get('core.edit.state'))
 		{
-			JToolbarHelper::publish('extensions.publish', 'JTOOLBAR_ENABLE', true);
-			JToolbarHelper::unpublish('extensions.unpublish', 'JTOOLBAR_DISABLE', true);
-			JToolbarHelper::checkin('extensions.checkin');
+			JToolbarHelper::publish('productcategories.publish', 'JTOOLBAR_ENABLE', true);
+			JToolbarHelper::unpublish('productcategories.unpublish', 'JTOOLBAR_DISABLE', true);
+			JToolbarHelper::checkin('productcategories.checkin');
 		}
         if ($this->state->get('filter.published') == -2)
         {
-            JToolbarHelper::deleteList('', 'extensions.delete', 'JTOOLBAR_EMPTY_TRASH');
+            JToolbarHelper::deleteList('', 'productcategories.delete', 'JTOOLBAR_EMPTY_TRASH');
         }
         elseif ($canDo->get('core.edit.state'))
         {
-            JToolbarHelper::trash('extensions.trash');
+            JToolbarHelper::trash('productcategories.trash');
         }
-        JToolbarHelper::publish('extensions.issystem','Is system');
-        JToolbarHelper::unpublish('extensions.isnotsystem','Is system');
+        JToolbarHelper::publish('productcategories.issystem','Is system');
+        JToolbarHelper::unpublish('productcategories.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
-			JToolbarHelper::preferences('com_supperadmin');
+			JToolbarHelper::preferences('com_products');
 		}
 
-		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');
+		JToolbarHelper::help('JHELP_productcategories_component_MANAGER');
 
 
 

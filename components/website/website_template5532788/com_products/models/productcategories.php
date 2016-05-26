@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_products
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * Methods supporting a list of component records.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_products
  * @since       1.6
  */
 class ProductsModelProductCategories extends JModelList
@@ -73,7 +73,7 @@ class ProductsModelProductCategories extends JModelList
 
 
         // Load the parameters.
-        $params = JComponentHelper::getParams('com_supperadmin');
+        $params = JComponentHelper::getParams('com_products');
         $this->setState('params', $params);
 
         // List state information.
@@ -95,10 +95,10 @@ class ProductsModelProductCategories extends JModelList
         $query->select(
             $this->getState(
                 'list.select',
-                'a.id,a.name,a.type,a.element,a.published,a.folder,a.enabled,a.access,website.name AS website_name'
+                'a.*'
             )
         )
-            ->from($db->quoteName('#__extensions') . ' AS a')
+            ->from($db->quoteName('#__ecommerce_product_category') . ' AS a')
             ->leftJoin('#__website AS website ON website.id=a.website_id')
             ->group('a.id')
         ;

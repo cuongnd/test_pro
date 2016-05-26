@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width'>
+        <meta http-equiv='X-UA-Compatible' content='chrome=1'>
+
+        <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Numans'>
+        <style>
+            body {
+                padding: 0 10%;
+                font-family: sans-serif
+            }
+            .left {
+                float:left;
+                margin:0 10px 10px 0;
+            }
+            .right {
+                float:right;
+                margin:0 0 10px 10px;
+            }
+            .row {
+                display:table;
+                width:100%;
+                margin:0 auto
+            }
+            .col {
+                display:table-cell;
+                vertical-align:top;
+                padding-left:5px;
+                padding-right:5px;
+            }
+            @media all and (max-width: 640px) {
+                .col {
+                    display:block
+                }
+            }
+        </style>
+        <title>jquery.lorem.js | Lorem your ipsum dolor</title>
+    </head>
+
+    <body>
+        <h1 data-lorem="3"></h1>
+
+        <div data-lorem="1p"></div>
+
+        <img src="" data-lorem="abstract animals business cats city food nightlife fashion"
+        alt='foo' width="240" height="160" class="left">
+        <div data-lorem="2p-80"></div>
+
+        <img src="" data-lorem="people, nature, sports, technics, transport, g"
+        width="240" height="160" class="right">
+        <div data-lorem="2p-120"></div>
+
+        <div data-lorem="2p-80-col" class="row">
+            <img src="" data-lorem="nightlife fashion" width="320" height="240" class="col">
+        </div>
+
+
+        <script src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+        <script src='jquery.lorem.js'></script>
+        <script>
+            $(function () {
+                $('[data-lorem]').lorem();
+            });
+
+            /* Image URL-Parameter
+                ${g} - grayscale | as `g`, somewhere within `data-lorem`
+                ${w} - width | from `width`
+                ${h} - height | from `height`
+                ${c} - category | from `data-lorem`
+                ${t} - text | taken from `title` or `alt`
+            */
+
+            // lorempixel.com
+            // 'http://lorempixel.com/${g}/${w}/${h}/${c}'
+
+            // placehold.it
+            // 'http://placehold.it/${w}x${h}&text=${t}'
+
+            // placekitten.com
+            // 'http://placekitten.com/${g}/${w}/${h}'
+
+            // dummyimage.com
+            // 'http://dummyimage.com/${w}x${h}&text=${t}'
+        </script>
+    </body>
+</html>

@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_passwordusermanager
  * @since       1.6
  */
-class supperadminModelpasswordusermanager extends JModelAdmin
+class productsModelpasswordusermanager extends JModelAdmin
 {
 	/**
 	 * @var     string  The help screen key for the module.

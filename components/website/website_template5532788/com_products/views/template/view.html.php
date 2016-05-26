@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_products
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,10 +13,10 @@ defined('_JEXEC') or die;
  * View class for a list of domains.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_products
  * @since       1.5
  */
-class supperadminViewdomains extends JViewLegacy
+class productsViewdomains extends JViewLegacy
 {
 	protected $items;
 
@@ -57,7 +57,7 @@ class supperadminViewdomains extends JViewLegacy
 		if (!count($this->items))
 		{
 			JFactory::getApplication()->enqueueMessage(
-				JText::_('COM_supperadmin_MSG_MANAGE_NO_supperadmin'),
+				JText::_('COM_products_MSG_MANAGE_NO_products'),
 				'warning'
 			);
 		}
@@ -69,7 +69,7 @@ class supperadminViewdomains extends JViewLegacy
 	}
     function addCommand()
     {
-        $this->command='com_supperadmin';
+        $this->command='com_products';
         $this->controller_task='domains.ajaxSaveForm';
     }
 	/**
@@ -79,8 +79,8 @@ class supperadminViewdomains extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/com_supperadmin/helpers/domains.php';
-		$canDo = JHelperContent::getActions('com_supperadmin');
+		require_once JPATH_ROOT.'/components/com_products/helpers/domains.php';
+		$canDo = JHelperContent::getActions('com_products');
         $bar = JToolBar::getInstance('toolbar');
 		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
         if ($canDo->get('core.create'))
@@ -117,15 +117,15 @@ class supperadminViewdomains extends JViewLegacy
         JToolbarHelper::unpublish('domains.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
-			JToolbarHelper::preferences('com_supperadmin');
+			JToolbarHelper::preferences('com_products');
 		}
 
 		JToolbarHelper::help('JHELP_domains_component_MANAGER');
 
-		JHtmlSidebar::setAction('index.php?option=com_supperadmin&view=supperadmin');
+		JHtmlSidebar::setAction('index.php?option=com_products&view=products');
 
-        $supperAdmin=JFactory::isSupperAdmin();
-        if($supperAdmin){
+        $products=JFactory::isproducts();
+        if($products){
             $option1=new stdClass();
             $option1->id=-1;
             $option1->title="Run for all";

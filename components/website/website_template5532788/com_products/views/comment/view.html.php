@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_products
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * View to edit a plugin.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_supperadmin
+ * @subpackage  com_products
  * @since       1.5
  */
 class productsViewComment extends JViewLegacy
@@ -52,7 +52,7 @@ class productsViewComment extends JViewLegacy
 	protected function addToolbar()
 	{
 
-		$canDo = JHelperContent::getActions('com_supperadmin');
+		$canDo = JHelperContent::getActions('com_products');
 
 		JToolbarHelper::title(JText::sprintf('Website', JText::_($this->item->name)), 'power-cord plugin');
 
