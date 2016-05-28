@@ -99,6 +99,10 @@ class ProductsModelProducts extends JModelList
             )
         )
             ->from($db->quoteName('#__ecommerce_product') . ' AS a')
+            ->leftJoin('#__ecommerce_product AS product ON product.id=a.parent_id')
+            ->select('product.product_name AS parent_product_name')
+            ->leftJoin('#__ecommerce_product_category AS product_category ON product_category.id=a.product_category_id')
+            ->select('product_category.product_category_name AS product_category_name')
             ->group('a.id')
         ;
         echo $query->dump();

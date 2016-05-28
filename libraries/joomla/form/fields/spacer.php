@@ -102,8 +102,4 @@ class JFormFieldSpacer extends JFormField
 	 *
 	 * @since   11.1
 	 */
-	protected function getTitle()
-	{
-		return $this->getLabel();
-	}
 }

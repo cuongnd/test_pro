@@ -22,7 +22,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
 $canOrder = $user->authorise('core.edit.state', 'com_products');
 $saveOrder = $listOrder == 'ordering';
 if ($saveOrder) {
-    $saveOrderingUrl = 'index.php?option=com_products&task=products.saveOrderAjax&tmpl=component';
+    $saveOrderingUrl = 'index.php?option=com_products&task=productcategories.saveOrderAjax&tmpl=component';
     JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 $sortFields = $this->getSortFields();
@@ -42,9 +42,9 @@ $sortFields = $this->getSortFields();
         }
     </script>
 
-    <div class="view-products-default">
+    <div class="view-productcategories-default">
         <?php echo $this->render_toolbar() ?>
-        <form action="<?php echo JRoute::_('index.php?option=com_products&view=products'); ?>" method="post"
+        <form action="<?php echo JRoute::_('index.php?option=com_products&view=productcategories'); ?>" method="post"
               name="adminForm" id="adminForm">
 
             <div id="main-container">
@@ -73,13 +73,13 @@ $sortFields = $this->getSortFields();
                                             <?php echo JHtml::_('grid.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
                                         </th>
                                         <th class="title">
-                                            <?php echo JHtml::_('grid.sort', 'product name', 'a.product_name', $listDirn, $listOrder); ?>
+                                            <?php echo JHtml::_('grid.sort', 'category name', 'a.title', $listDirn, $listOrder); ?>
                                         </th>
                                         <th class="title">
-                                            <?php echo JHtml::_('grid.sort', 'parent product name', 'a.parent_product_name', $listDirn, $listOrder); ?>
+                                            <?php echo JHtml::_('grid.sort', 'code', 'a.code', $listDirn, $listOrder); ?>
                                         </th>
                                         <th class="title">
-                                            <?php echo JHtml::_('grid.sort', 'Product category name', 'a.product_category_name', $listDirn, $listOrder); ?>
+                                            <?php echo JHtml::_('grid.sort', 'Parent category', 'product_category.parent_product_category_title', $listDirn, $listOrder); ?>
                                         </th>
 
 
@@ -111,6 +111,31 @@ $sortFields = $this->getSortFields();
                                         $canEdit = $user->authorise('core.edit', 'com_products');
                                         $canCheckin = $user->authorise('core.manage', 'com_checkin') || $item->checked_out == $user->get('id') || $item->checked_out == 0;
                                         $canChange = $user->authorise('core.edit.state', 'com_products') && $canCheckin;
+                                        // Get the parents of item for sorting
+                                        if ($item->level > 1)
+                                        {
+                                            $parentsStr = "";
+                                            $_currentParentId = $item->parent_id;
+                                            $parentsStr = " " . $_currentParentId;
+                                            for ($i2 = 0; $i2 < $item->level; $i2++)
+                                            {
+                                                foreach ($this->ordering as $k => $v)
+                                                {
+                                                    $v = implode("-", $v);
+                                                    $v = "-" . $v . "-";
+                                                    if (strpos($v, "-" . $_currentParentId . "-") !== false)
+                                                    {
+                                                        $parentsStr .= " " . $k;
+                                                        $_currentParentId = $k;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            $parentsStr = "";
+                                        }
                                         ?>
                                         <tr class="row<?php echo $i % 2; ?>" item-id="<?php echo $item->id ?>"
                                             sortable-group-id="<?php echo $item->folder ?>">
@@ -135,28 +160,26 @@ $sortFields = $this->getSortFields();
                                                 <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                                             </td>
                                             <td class="center">
-                                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'products.', $canChange); ?>
+                                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'productcategories.', $canChange); ?>
                                             </td>
                                             <td>
+                                                <?php echo str_repeat('<span class="gi">&mdash;</span>', $item->level - 1) ?>
                                                 <?php if ($item->checked_out) : ?>
                                                     <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'products.', $canCheckin); ?>
                                                 <?php endif; ?>
                                                 <?php if ($canEdit) : ?>
                                                     <a class="quick-edit-title"
-                                                       href="<?php echo JRoute::_('index.php?option=com_products&task=product.edit&id=' . (int)$item->id); ?>">
-                                                        <?php echo $item->product_name; ?></a>
+                                                       href="<?php echo JRoute::_('index.php?option=com_products&task=productcategory.edit&id=' . (int)$item->id); ?>">
+                                                        <?php echo $item->title; ?></a>
                                                 <?php else : ?>
-                                                    <?php echo $item->product_name; ?>
+                                                    <?php echo $item->title; ?>
                                                 <?php endif; ?>
                                             </td>
                                             <td class="center hidden-phone">
-                                                <?php echo $item->parent_product_name ?>
+                                                <?php echo $item->code ?>
                                             </td>
                                             <td class="center hidden-phone">
-                                                <?php echo $item->product_category_name ?>
-                                            </td>
-                                            <td class="center">
-                                                <?php echo JHtml::_('jgrid.is_system', $item->issystem, $i, 'products.', $canChange); ?>
+                                                <?php echo $item->parent_product_category_title ?>
                                             </td>
                                             <td class="nowrap small hidden-phone">
                                                 <?php echo $this->escape($item->folder); ?>

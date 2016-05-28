@@ -21,7 +21,7 @@ JFormHelper::loadFieldClass('text');
  * @see         JFormRuleEmail
  * @since       11.1
  */
-class JFormFieldParentProductCategory extends JFormField
+class JFormFieldproductcategory extends JFormField
 {
     /**
      * The form field type.
@@ -29,7 +29,7 @@ class JFormFieldParentProductCategory extends JFormField
      * @var    string
      * @since  11.1
      */
-    protected $type = 'parentproductcategory';
+    protected $type = 'productcategory';
 
     /**
      * Method to get the field input markup for e-mail addresses.
@@ -65,20 +65,16 @@ class JFormFieldParentProductCategory extends JFormField
         //$list_product_category[]=$option;
         unset($children_product_category['list_root']);
 
-        $get_list_product_category=function($function_call_back, $product_category_id=0, $current_product_category_id,&$list_product_category, $children_product_category, $level=1, $max_level=999){
+        $get_list_product_category=function($function_call_back, $product_category_id=0,&$list_product_category, $children_product_category, $level=0, $max_level=999){
             $level1=$level+1;
             foreach($children_product_category[$product_category_id] as $product_category)
             {
 
                 $product_category_id1=$product_category->id;
-                if($product_category_id1==$current_product_category_id)
-                {
-                    continue;
-                }
                 $product_category->text=str_repeat('---',$level).$product_category->text;
                 $list_product_category[]=$product_category;
 
-                $function_call_back($function_call_back,$product_category_id1, $current_product_category_id,$list_product_category,$children_product_category,$level1,$max_level);
+                $function_call_back($function_call_back,$product_category_id1,$list_product_category,$children_product_category,$level1,$max_level);
             }
         };
         $current_product_category_id=$this->form->getValue('id');
@@ -86,23 +82,21 @@ class JFormFieldParentProductCategory extends JFormField
         {
             if($root_category->website_id==$website->website_id)
             {
-                if($current_product_category_id!=$root_category->id) {
-                    $list_product_category[] = $root_category;
-                    $get_list_product_category($get_list_product_category, $root_category->id, $current_product_category_id, $list_product_category, $children_product_category);
-                }
+                $get_list_product_category($get_list_product_category, $root_category->id, $list_product_category, $children_product_category);
+
             }
 
         }
         $doc=JFactory::getDocument();
         $doc->addLessStyleSheet(JUri::root().'media/system/js/select2-4.0.0/dist/css/select2.css');
         $doc->addScript(JUri::root().'/media/system/js/select2-4.0.0/dist/js/select2.full.js');
-        $doc->addScript(JUri::root().'/components/website/website_template5532788/com_products/models/fields/jquery.parentproductcategory.js');
+        $doc->addScript(JUri::root().'/components/website/website_template5532788/com_products/models/fields/jquery.productcategory.js');
         $script_id = "script_field_parent_product_category_" . $this->id;
         ob_start();
         ?>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
-                $('#<?php echo $this->id; ?>').field_parentproductcategory({
+                $('#<?php echo $this->id; ?>').field_productcategory({
                     list_product_category:<?php echo json_encode($list_product_category)?>,
                     field:{
                         name:"<?php echo $this->name ?>"

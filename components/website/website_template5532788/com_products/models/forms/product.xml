@@ -26,16 +26,22 @@
             filter="unset"/>
 
     <field
-            name="parent_id"
-            type="parentproductcategory"
-            label="Parent product category"
-            description="Parent product category"/>
+            name="product_category_id"
+            type="productcategory"
+            label="Product category"
+            description="Product category"/>
 
 
 
 
 
 
+    <field
+            name="children_product"
+            type="childrenproduct"
+            label="Children products"
+            description="Children products"
+            />
     <field
             name="code"
             type="code"
@@ -45,10 +51,10 @@
             size="40"
             required="true"/>
     <field
-            name="title"
+            name="product_name"
             type="text"
-            label="JGLOBAL_TITLE"
-            description="JFIELD_TITLE_DESC"
+            label="Product name"
+            description="Product name"
             class="input-xxlarge input-large-text"
             size="40"
 

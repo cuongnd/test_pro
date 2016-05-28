@@ -45,10 +45,10 @@
             size="40"
             required="true"/>
     <field
-            name="title"
+            name="product_category_name"
             type="text"
-            label="JGLOBAL_TITLE"
-            description="JFIELD_TITLE_DESC"
+            label="Product category name"
+            description="Product category name"
             class="input-xxlarge input-large-text"
             size="40"
 
