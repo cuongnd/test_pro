@@ -54,12 +54,12 @@ class ProductsViewProduct extends JViewLegacy
 
 		$canDo = JHelperContent::getActions('com_products');
 
-		JToolbarHelper::title(JText::sprintf('Website', JText::_($this->item->name)), 'power-cord plugin');
+		JToolbarHelper::title(JText::sprintf('Product', JText::_($this->item->name)), 'power-cord plugin');
 
 		// If not checked out, can save the item.
-        JToolbarHelper::apply('extension.apply');
-        JToolbarHelper::save('extension.save');
-		JToolbarHelper::cancel('extension.cancel', 'JTOOLBAR_CLOSE');
+        JToolbarHelper::apply('product.apply');
+        JToolbarHelper::save('product.save');
+		JToolbarHelper::cancel('product.cancel', 'JTOOLBAR_CLOSE');
 		JToolbarHelper::divider();
 		// Get the help information for the plugin item.
 

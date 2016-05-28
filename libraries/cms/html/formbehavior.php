@@ -125,7 +125,8 @@ abstract class JHtmlFormbehavior
 		$options_str = json_encode($options, ($debug && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : false));
 		JHtml::_('stylesheet', $jui.'/select2.css', false, true);
 		$doc=JFactory::getDocument();
-		$doc->addScript(JUri::root().'/media/jui_front_end/js/select2.jquery.js');
+        $doc->addLessStyleSheet(JUri::root().'media/system/js/select2-4.0.0/dist/css/select2.css');
+        $doc->addScript(JUri::root().'/media/system/js/select2-4.0.0/dist/js/select2.full.js');
 		$scriptId='lib_cms_html_form_behavior_form_select2'.$callAgain;
 		$ajaxCallFunction='setSelect2'.$callAgain;
 		ob_start();
@@ -225,7 +226,7 @@ abstract class JHtmlFormbehavior
 						});
 					});
 				})(jQuery);
-				"
+				",'','script_ajaxChosen'
 			);
 
 			static::$loaded[__METHOD__][$selector] = true;

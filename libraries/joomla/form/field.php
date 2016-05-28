@@ -695,7 +695,7 @@ abstract class JFormField extends JObject
      *
      * @since   11.1
      */
-    protected function getTitle()
+    public function getTitle()
     {
         $title = '';
 
@@ -1066,4 +1066,42 @@ abstract class JFormField extends JObject
         $options['show_title']=$this->show_title;
         return JLayoutHelper::render($this->renderLayout, array('input' => $this->getInput(), 'label' => $this->getLabel(), 'options' => $options));
     }
+    protected function getData()
+    {
+        $data = array();
+        foreach ($this->element->children() as $item)
+        {
+
+            // Only add <option /> elements.
+            if ($item->getName() != 'data')
+            {
+                continue;
+            }
+
+            // Filter requirements
+            if ($requires = explode(',', (string) $item['requires']))
+            {
+                // Requires multilanguage
+                if (in_array('multilanguage', $requires) && !JLanguageMultilang::isEnabled())
+                {
+                    continue;
+                }
+
+                // Requires associations
+                if (in_array('associations', $requires) && !JLanguageAssociations::isEnabled())
+                {
+                    continue;
+                }
+            }
+
+            $key = (string) $item['key'];
+            $value = (string) $item['value'];
+
+
+            // Add the option object to the result set.
+            $data[$key] = $value;
+        }
+        return $data;
+    }
+
 }

@@ -949,7 +949,7 @@ abstract class JHtml
 			align: "Tl",
 			singleClick: true,
 			firstDay: ' . JFactory::getLanguage()->getFirstDay() . '
-			});});'
+			});});','','script_setup_calendar'
                 );
             $done[] = $id;
         }

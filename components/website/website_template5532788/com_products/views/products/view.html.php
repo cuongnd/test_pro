@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 /**
- * View class for a list of extensions.
+ * View class for a list of products.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_products
@@ -52,7 +52,7 @@ class productsViewProducts extends JViewLegacy
 			);
 		}
 
-        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('extensions.quick_assign_website');
+        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('products.quick_assign_website');
 		$this->addToolbar();
 
         JHtmlSidebar::addFilter(
@@ -68,7 +68,7 @@ class productsViewProducts extends JViewLegacy
     function addCommand()
     {
         $this->command='com_products';
-        $this->controller_task='extensions.ajaxSaveForm';
+        $this->controller_task='products.ajaxSaveForm';
     }
 	/**
 	 * Add the page title and toolbar.
@@ -77,15 +77,14 @@ class productsViewProducts extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_products/helpers/extensionsproducts.php';
 		$canDo = JHelperContent::getActions('com_products');
         $bar = JToolBar::getInstance('toolbar');
-		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
+		JToolbarHelper::title(JText::_('Product manager'), 'power-cord component');
         $layout = new JLayoutFile('toolbar.newcomponent');
 
         $bar->appendButton('Custom', $layout->render(array()), 'new');
-        JToolbarHelper::editList('extension.edit');
-        JToolbarHelper::addNew('extension.add');
+        JToolbarHelper::editList('product.edit');
+        JToolbarHelper::addNew('product.add');
         if ($canDo->get('core.create'))
         {
             // Instantiate a new JLayoutFile instance and render the layout
@@ -95,35 +94,35 @@ class productsViewProducts extends JViewLegacy
         }
 		if ($canDo->get('core.edit'))
 		{
-			JToolbarHelper::editList('extension.edit');
+			JToolbarHelper::editList('product.edit');
 		}
         if ($canDo->get('core.create'))
         {
-            JToolbarHelper::custom('extensions.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
+            JToolbarHelper::custom('products.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
         }
-		JToolbarHelper::duplicate('extensions.duplicate');
+		JToolbarHelper::duplicate('products.duplicate');
 		if ($canDo->get('core.edit.state'))
 		{
-			JToolbarHelper::publish('extensions.publish', 'JTOOLBAR_ENABLE', true);
-			JToolbarHelper::unpublish('extensions.unpublish', 'JTOOLBAR_DISABLE', true);
-			JToolbarHelper::checkin('extensions.checkin');
+			JToolbarHelper::publish('products.publish', 'JTOOLBAR_ENABLE', true);
+			JToolbarHelper::unpublish('products.unpublish', 'JTOOLBAR_DISABLE', true);
+			JToolbarHelper::checkin('products.checkin');
 		}
         if ($this->state->get('filter.published') == -2)
         {
-            JToolbarHelper::deleteList('', 'extensions.delete', 'JTOOLBAR_EMPTY_TRASH');
+            JToolbarHelper::deleteList('', 'products.delete', 'JTOOLBAR_EMPTY_TRASH');
         }
         elseif ($canDo->get('core.edit.state'))
         {
-            JToolbarHelper::trash('extensions.trash');
+            JToolbarHelper::trash('products.trash');
         }
-        JToolbarHelper::publish('extensions.issystem','Is system');
-        JToolbarHelper::unpublish('extensions.isnotsystem','Is system');
+        JToolbarHelper::publish('products.issystem','Is system');
+        JToolbarHelper::unpublish('products.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
 			JToolbarHelper::preferences('com_products');
 		}
 
-		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');
+		JToolbarHelper::help('JHELP_products_component_MANAGER');
 
 
 

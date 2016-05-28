@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_products
  * @since       1.5
  */
-class productsViewcategory extends JViewLegacy
+class productsViewProductCategory extends JViewLegacy
 {
 	protected $item;
 
@@ -32,7 +32,6 @@ class productsViewcategory extends JViewLegacy
 		$this->state	= $this->get('State');
 		$this->item		= $this->get('Item');
 		$this->form		= $this->get('Form');
-
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
@@ -54,12 +53,12 @@ class productsViewcategory extends JViewLegacy
 
 		$canDo = JHelperContent::getActions('com_products');
 
-		JToolbarHelper::title(JText::sprintf('Website', JText::_($this->item->name)), 'power-cord plugin');
+		JToolbarHelper::title(JText::sprintf('product category', JText::_($this->item->name)), 'power-cord plugin');
 
 		// If not checked out, can save the item.
-        JToolbarHelper::apply('extension.apply');
-        JToolbarHelper::save('extension.save');
-		JToolbarHelper::cancel('extension.cancel', 'JTOOLBAR_CLOSE');
+        JToolbarHelper::apply('productcategory.apply');
+        JToolbarHelper::save('productcategory.save');
+		JToolbarHelper::cancel('productcategory.cancel', 'JTOOLBAR_CLOSE');
 		JToolbarHelper::divider();
 		// Get the help information for the plugin item.
 

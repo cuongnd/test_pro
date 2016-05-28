@@ -39,8 +39,8 @@
     <field
             name="code"
             type="code"
-            label="product code"
-            description="product code"
+            label="product category code"
+            description="product category code"
             class="input-xxlarge input-large-text"
             size="40"
             required="true"/>
@@ -53,8 +53,8 @@
             size="40"
 
             required="true">
-        <data key="auto_genera_type" value="word" />
-        <data key="auto_genera_character" value="product_category" />
+            <data key="auto_genera_type" value="word" />
+            <data key="auto_genera_character" value="product_category" />
     </field>
 
     <field
@@ -75,8 +75,8 @@
             filter="JComponentHelper::filterText"
             buttons="true"
             hide="readmore,pagebreak">
-        <data key="auto_genera_type" value="paragraphs" />
-        <data key="auto_genera_character" value="doc" />
+    <data key="auto_genera_type" value="paragraphs" />
+    <data key="auto_genera_character" value="doc" />
     </field>
 
     <field
@@ -102,8 +102,8 @@
             description="JFIELD_META_DESCRIPTION_DESC"
             rows="3"
             cols="40">
-        <data key="auto_genera_type" value="paragraphs" />
-        <data key="auto_genera_character" value="doc" />
+    <data key="auto_genera_type" value="paragraphs" />
+    <data key="auto_genera_character" value="doc" />
     </field>
 
 

@@ -77,7 +77,7 @@ class ProductsModelProductCategories extends JModelList
         $this->setState('params', $params);
 
         // List state information.
-        parent::populateState('a.id', 'asc');
+        parent::populateState('a.lft', 'asc');
     }
 
     /**
@@ -99,19 +99,13 @@ class ProductsModelProductCategories extends JModelList
             )
         )
             ->from($db->quoteName('#__ecommerce_product_category') . ' AS a')
-            ->leftJoin('#__website AS website ON website.id=a.website_id')
+            ->leftJoin('#__ecommerce_product_category AS product_category ON product_category.id=a.parent_id')
+            ->select('product_category.title as parent_product_category_title')
             ->group('a.id')
         ;
-        $website_id=$this->getState('filter.website_id');
-        if($website_id)
-        {
-            $query->where('a.website_id='.(int)$website_id);
-        }
-        $element_type=$this->getState('filter.element_type');
-        if($element_type)
-        {
-            $query->where('a.type='.$query->q($element_type));
-        }
+        $website=JFactory::getWebsite();
+        $query->where('a.website_id='.(int)$website->website_id);
+        $query->where('a.alias<>'.$query->q('root'));
         // Join over the users for the checked out user.
         // Add the list ordering clause.
         $query->order($db->escape($this->getState('list.ordering', 'a.id')) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));

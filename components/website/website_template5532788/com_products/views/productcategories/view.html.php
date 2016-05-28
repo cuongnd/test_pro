@@ -84,6 +84,7 @@ class productsViewProductCategories extends JViewLegacy
         $layout = new JLayoutFile('toolbar.newcomponent');
 
         $bar->appendButton('Custom', $layout->render(array()), 'new');
+        JToolbarHelper::custom('productcategories.rebuild', 'refresh.png', 'refresh_f2.png', 'JTOOLBAR_REBUILD', false);
         JToolbarHelper::editList('productcategory.edit');
         JToolbarHelper::addNew('productcategory.add');
         if ($canDo->get('core.create'))

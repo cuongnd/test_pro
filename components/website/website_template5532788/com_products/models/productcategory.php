@@ -16,13 +16,13 @@ defined('_JEXEC') or die;
  * @subpackage  com_products
  * @since       1.6
  */
-class productsModelproduct extends JModelAdmin
+class productsModelProductCategory extends JModelAdmin
 {
 	/**
 	 * @var     string  The help screen key for the module.
 	 * @since   1.6
 	 */
-	protected $helpKey = 'JHELP_productS_component_MANAGER_EDIT';
+	protected $helpKey = 'JHELP_productcategoryS_component_MANAGER_EDIT';
 
 	/**
 	 * @var     string  The help screen base URL for the module.
@@ -40,13 +40,13 @@ class productsModelproduct extends JModelAdmin
 	 * @var     string  The event to trigger after saving the data.
 	 * @since   1.6
 	 */
-	protected $event_after_save = 'onproductAfterSave';
+	protected $event_after_save = 'onproductcategoryAfterSave';
 
 	/**
 	 * @var     string  The event to trigger after before the data.
 	 * @since   1.6
 	 */
-	protected $event_before_save = 'onproductBeforeSave';
+	protected $event_before_save = 'onproductcategoryBeforeSave';
 
 	/**
 	 * Method to get the record form.
@@ -77,7 +77,7 @@ class productsModelproduct extends JModelAdmin
 		$this->setState('item.element',	$element);
 
 		// Get the form.
-		$form = $this->loadForm('com_products.product', 'product', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_products.productcategory', 'productcategory', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form))
 		{
 
@@ -134,14 +134,14 @@ class productsModelproduct extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_products.edit.product.data', array());
+		$data = JFactory::getApplication()->getUserState('com_products.edit.productcategory.data', array());
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
 		}
 
-		$this->preprocessData('com_products.product', $data);
+		$this->preprocessData('com_products.productcategory', $data);
 
 		return $data;
 	}
@@ -239,7 +239,7 @@ class productsModelproduct extends JModelAdmin
                 }
                 if($table->issystem)
                 {
-                    $this->setError('you cannot delete product system');
+                    $this->setError('you cannot delete productcategory system');
                     return false;
                 }
                 if (!$table->delete($pk))
@@ -267,7 +267,7 @@ class productsModelproduct extends JModelAdmin
         $db		= $this->getDbo();
         $tuples=array();
 /*        // Access checks.
-        if (!$user->authorise('core.create', 'com_product'))
+        if (!$user->authorise('core.create', 'com_productcategory'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }*/
@@ -341,60 +341,6 @@ class productsModelproduct extends JModelAdmin
         return true;
     }
 
-	/**
-	 * Method to get a single record.
-	 *
-	 * @param   integer	The id of the primary key.
-	 *
-	 * @return  mixed  Object on success, false on failure.
-	 */
-	public function getItem($pk = null)
-	{
-
-
-		$pk = (!empty($pk)) ? $pk : (int) $this->getState('product.id');
-
-		if (!isset($this->_cache[$pk]))
-		{
-			$false	= false;
-
-			// Get a row instance.
-			$table = $this->getTable();
-
-			// Attempt to load the row.
-			$return = $table->load($pk);
-
-			// Check for a table object error.
-			if ($return === false && $table->getError())
-			{
-				$this->setError($table->getError());
-				return $false;
-			}
-			// Convert to the JObject before adding other data.
-			$properties = $table->getProperties(1);
-			$this->_cache[$pk] = JArrayHelper::toObject($properties, 'JObject');
-
-			// Convert the params field to an array.
-			$registry = new JRegistry;
-			$registry->loadString($table->params);
-			$this->_cache[$pk]->params = $registry->toArray();
-
-			// Get the product XML.
-			$path = JPath::clean(JPATH_ROOT . '/' . $table->folder . '/' . $table->element . '/' . $table->element . '.xml');
-
-			if (file_exists($path))
-			{
-				$this->_cache[$pk]->xml = simplexml_load_file($path);
-			}
-			else
-			{
-				$this->_cache[$pk]->xml = null;
-			}
-
-
-        }
-		return $this->_cache[$pk];
-	}
 
 	/**
 	 * Returns a reference to the a Table object, always creating it.
@@ -404,8 +350,9 @@ class productsModelproduct extends JModelAdmin
 	 * @param   array  Configuration array for model. Optional.
 	 * @return  JTable	A database object
 	*/
-	public function getTable($type = 'product', $prefix = 'JTable', $config = array())
+	public function getTable($type = 'productcategory', $prefix = 'JTable', $config = array())
 	{
+
 		return JTable::getInstance($type, $prefix, $config);
 	}
 
@@ -427,7 +374,7 @@ class productsModelproduct extends JModelAdmin
 		// Load the User state.
 		$pk = $app->input->getInt('id');
 
-		$this->setState('product.id', $pk);
+		$this->setState('productcategory.id', $pk);
 	}
 
 
@@ -445,6 +392,22 @@ class productsModelproduct extends JModelAdmin
 		$condition[] = 'folder = ' . $this->_db->quote($table->folder);
 		return $condition;
 	}
+    public function rebuild()
+    {
+        // Get an instance of the table object.
+        $table = $this->getTable();
+
+        if (!$table->rebuild())
+        {
+            $this->setError($table->getError());
+            return false;
+        }
+
+        // Clear the cache
+        $this->cleanCache();
+
+        return true;
+    }
 
 
 	/**

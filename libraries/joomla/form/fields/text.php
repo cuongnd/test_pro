@@ -182,7 +182,13 @@ class JFormFieldText extends JFormField
 		$pattern      = !empty($this->pattern) ? ' pattern="' . $this->pattern . '"' : '';
 		$inputmode    = !empty($this->inputmode) ? ' inputmode="' . $this->inputmode . '"' : '';
 		$dirname      = !empty($this->dirname) ? ' dirname="' . $this->dirname . '"' : '';
-
+        $list_attr_data=[];
+        foreach($this->getData() as $key=> $item)
+        {
+            $list_attr_data[]='data-'.$key.'="'.$item.'"';
+        }
+        $list_attr_data=implode(' ',$list_attr_data);
+        $list_attr_data=" $list_attr_data ";
 		// Initialize JavaScript field attributes.
 		$onchange = !empty($this->onchange) ? ' onchange="' . $this->onchange . '"' : '';
 
@@ -199,7 +205,7 @@ class JFormFieldText extends JFormField
 
 		$html[] = '<input type="text" name="' . $this->name . '" id="' . $this->id . '"' . $dirname . ' value="'
 			. htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"' . $class . $size . $disabled . $readonly . $list
-			. $hint . $onchange . $maxLength . $required . $autocomplete . $autofocus . $spellcheck . $inputmode . $pattern . ' />';
+			. $hint . $onchange . $maxLength . $required . $autocomplete . $autofocus . $spellcheck . $inputmode . $pattern . $list_attr_data .'  />';
 		$html[] = $datalist;
 
 		return implode($html);

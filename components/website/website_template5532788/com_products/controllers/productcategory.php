@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_cpanel
  * @since       1.6
  */
-class productsControllerproduct extends JControllerForm
+class productsControllerProductCategory extends JControllerForm
 {
     /**
      * Method override to check if you can edit an existing record.
@@ -33,8 +33,8 @@ class productsControllerproduct extends JControllerForm
         parent::__construct($config);
 // An article edit form can come from the articles or featured view.
         // Adjust the redirect view on the value of 'return' in the request.
-        $this->view_list = 'products';
-        $this->view_item = 'product';
+        $this->view_list = 'productcategories';
+        $this->view_item = 'productcategory';
     }
 
     protected function allowAdd($data = array())
@@ -42,7 +42,7 @@ class productsControllerproduct extends JControllerForm
         return true;
     }
 
-    public function getModel($name = 'product', $prefix = 'ProductsModel', $config = array())
+    public function getModel($name = 'productcategory', $prefix = 'ProductsModel', $config = array())
     {
         return parent::getModel($name, $prefix, array('ignore_request' => true));
     }

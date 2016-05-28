@@ -798,7 +798,6 @@ class JTableNested extends JTable
 				{
 					// Error message set in getNode method.
 					$this->_unlock();
-
 					$this->setError('Error message set unlock method');
 					return false;
 				}

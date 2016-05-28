@@ -254,7 +254,7 @@ class JFormFieldMedia extends JFormField
 			$script[] = '	}';
 
 			// Add the script to the document head.
-			JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
+			JFactory::getDocument()->addScriptDeclaration(implode("\n", $script),'','script_jMediaRefreshPreviewTip');
 
 			self::$initialised = true;
 		}

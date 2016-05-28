@@ -145,13 +145,20 @@ class JFormFieldTextarea extends JFormField
 		// Initialize JavaScript field attributes.
 		$onchange = $this->onchange ? ' onchange="' . $this->onchange . '"' : '';
 		$onclick = $this->onclick ? ' onclick="' . $this->onclick . '"' : '';
+        $list_attr_data=[];
+        foreach($this->getData() as $key=> $item)
+        {
+            $list_attr_data[]='data-'.$key.'="'.$item.'"';
+        }
+        $list_attr_data=implode(' ',$list_attr_data);
+        $list_attr_data=" $list_attr_data ";
 
 		// Including fallback code for HTML5 non supported browsers.
 		JHtml::_('jquery.framework');
 		JHtml::_('script', 'system/html5fallback.js', false, true);
 
 		return '<textarea name="' . $this->name . '" id="' . $this->id . '"' . $columns . $rows . $class
-			. $hint . $disabled . $readonly . $onchange . $onclick . $required . $autocomplete . $autofocus . $spellcheck . ' >'
+			. $hint . $disabled . $readonly . $onchange . $onclick . $required . $autocomplete . $autofocus . $spellcheck .$list_attr_data . ' >'
 			. htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '</textarea>';
 	}
 }

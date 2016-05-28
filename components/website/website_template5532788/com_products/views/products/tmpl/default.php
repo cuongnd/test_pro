@@ -22,7 +22,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
 $canOrder = $user->authorise('core.edit.state', 'com_products');
 $saveOrder = $listOrder == 'ordering';
 if ($saveOrder) {
-    $saveOrderingUrl = 'index.php?option=com_products&task=extensions.saveOrderAjax&tmpl=component';
+    $saveOrderingUrl = 'index.php?option=com_products&task=products.saveOrderAjax&tmpl=component';
     JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 $sortFields = $this->getSortFields();
@@ -42,9 +42,9 @@ $sortFields = $this->getSortFields();
         }
     </script>
 
-    <div class="view-extensions-default">
+    <div class="view-products-default">
         <?php echo $this->render_toolbar() ?>
-        <form action="<?php echo JRoute::_('index.php?option=com_products&view=extensions'); ?>" method="post"
+        <form action="<?php echo JRoute::_('index.php?option=com_products&view=products'); ?>" method="post"
               name="adminForm" id="adminForm">
 
             <div id="main-container">
@@ -73,7 +73,7 @@ $sortFields = $this->getSortFields();
                                             <?php echo JHtml::_('grid.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
                                         </th>
                                         <th class="title">
-                                            <?php echo JHtml::_('grid.sort', 'extension name', 'name', $listDirn, $listOrder); ?>
+                                            <?php echo JHtml::_('grid.sort', 'product name', 'name', $listDirn, $listOrder); ?>
                                         </th>
                                         <th class="title">
                                             <?php echo JHtml::_('grid.sort', 'website', 'a.website_name', $listDirn, $listOrder); ?>
@@ -135,7 +135,7 @@ $sortFields = $this->getSortFields();
                                                 <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                                             </td>
                                             <td class="center">
-                                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'extensions.', $canChange); ?>
+                                                <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'products.', $canChange); ?>
                                             </td>
                                             <td>
                                                 <?php if ($item->checked_out) : ?>
@@ -143,7 +143,7 @@ $sortFields = $this->getSortFields();
                                                 <?php endif; ?>
                                                 <?php if ($canEdit) : ?>
                                                     <a class="quick-edit-title"
-                                                       href="<?php echo JRoute::_('index.php?option=com_products&task=extension.edit&id=' . (int)$item->id); ?>">
+                                                       href="<?php echo JRoute::_('index.php?option=com_products&task=product.edit&id=' . (int)$item->id); ?>">
                                                         <?php echo $item->name; ?></a>
                                                 <?php else : ?>
                                                     <?php echo $item->name; ?>
@@ -153,7 +153,7 @@ $sortFields = $this->getSortFields();
                                                 <?php echo $item->website_name ?>
                                             </td>
                                             <td class="center">
-                                                <?php echo JHtml::_('jgrid.is_system', $item->issystem, $i, 'extensions.', $canChange); ?>
+                                                <?php echo JHtml::_('jgrid.is_system', $item->issystem, $i, 'products.', $canChange); ?>
                                             </td>
                                             <td class="nowrap small hidden-phone">
                                                 <?php echo $this->escape($item->folder); ?>

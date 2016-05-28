@@ -234,7 +234,7 @@ abstract class JHtmlTag
 						});
 					});
 				})(jQuery);
-				"
+				",'','script_keyup'
 			);
 		}
 	}

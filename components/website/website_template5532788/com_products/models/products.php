@@ -95,26 +95,12 @@ class ProductsModelProducts extends JModelList
         $query->select(
             $this->getState(
                 'list.select',
-                'a.id,a.name,a.type,a.element,a.published,a.folder,a.enabled,a.access,website.name AS website_name'
+                'a.*'
             )
         )
-            ->from($db->quoteName('#__extensions') . ' AS a')
-            ->leftJoin('#__website AS website ON website.id=a.website_id')
+            ->from($db->quoteName('#__ecommerce_product') . ' AS a')
             ->group('a.id')
         ;
-        $website_id=$this->getState('filter.website_id');
-        if($website_id)
-        {
-            $query->where('a.website_id='.(int)$website_id);
-        }
-        $element_type=$this->getState('filter.element_type');
-        if($element_type)
-        {
-            $query->where('a.type='.$query->q($element_type));
-        }
-        // Join over the users for the checked out user.
-        // Add the list ordering clause.
-        $query->order($db->escape($this->getState('list.ordering', 'a.id')) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));
         echo $query->dump();
         return $query;
     }

@@ -303,7 +303,7 @@ abstract class JHtmlBehavior
 				}
 			});
 			var JTooltips = new Tips($('$selector').get(), $options);
-		});"
+		});",'','script_JTooltips'
 		);
 
 		// Set static array
@@ -530,7 +530,7 @@ abstract class JHtmlBehavior
 
 		if ($translation)
 		{
-			$document->addScriptDeclaration($translation);
+			$document->addScriptDeclaration($translation,'','script_translation');
 		}
 
 		static::$loaded[__METHOD__] = true;

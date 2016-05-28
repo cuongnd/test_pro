@@ -64,7 +64,7 @@ class JFormFieldUser extends JFormField
 		$script[] = '	}';
 
 		// Add the script to the document head.
-		JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
+		JFactory::getDocument()->addScriptDeclaration(implode("\n", $script),'','script_jselect_user');
 
 		// Load the current username if available.
 		$table = JTable::getInstance('user');
