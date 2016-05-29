@@ -11,10 +11,25 @@
 			class="readonly" />
 
 		<field
-			name="title"
+			name="currency_name"
 			type="text"
-			label="Title"
-			description="Title" />
+			label="Currency name"
+			description="Currency name" />
+		<field
+			name="currency_code"
+			type="text"
+			label="Currency code"
+			description="Currency code" />
+		<field
+			name="currency_code"
+			type="text"
+			label="Currency code"
+			description="Currency code" />
+		<field
+			name="currency_symbol"
+			type="text"
+			label="Currency symbol"
+			description="Currency symbol" />
 
 		<field
 			name="fulltext"

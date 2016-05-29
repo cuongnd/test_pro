@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="generals" option="generals">
+	<layout title="productcategories" option="productcategories">
 		<help
-			key = "generals"
+			key = "productcategories"
 		/>
 		<message>
 			<![CDATA[products]]>

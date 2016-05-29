@@ -4,7 +4,7 @@
  * @subpackage  com_products
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @license     GNU currency Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
@@ -16,13 +16,13 @@ defined('_JEXEC') or die;
  * @subpackage  com_products
  * @since       1.6
  */
-class productsModelGeneral extends JModelAdmin
+class productsModelcurrency extends JModelAdmin
 {
 	/**
 	 * @var     string  The help screen key for the module.
 	 * @since   1.6
 	 */
-	protected $helpKey = 'JHELP_generalS_component_MANAGER_EDIT';
+	protected $helpKey = 'JHELP_currencyS_component_MANAGER_EDIT';
 
 	/**
 	 * @var     string  The help screen base URL for the module.
@@ -40,13 +40,13 @@ class productsModelGeneral extends JModelAdmin
 	 * @var     string  The event to trigger after saving the data.
 	 * @since   1.6
 	 */
-	protected $event_after_save = 'ongeneralAfterSave';
+	protected $event_after_save = 'oncurrencyAfterSave';
 
 	/**
 	 * @var     string  The event to trigger after before the data.
 	 * @since   1.6
 	 */
-	protected $event_before_save = 'ongeneralBeforeSave';
+	protected $event_before_save = 'oncurrencyBeforeSave';
 
 	/**
 	 * Method to get the record form.
@@ -77,7 +77,7 @@ class productsModelGeneral extends JModelAdmin
 		$this->setState('item.element',	$element);
 
 		// Get the form.
-		$form = $this->loadForm('com_products.general', 'general', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_products.currency', 'currency', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form))
 		{
 
@@ -134,14 +134,14 @@ class productsModelGeneral extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_products.edit.general.data', array());
+		$data = JFactory::getApplication()->getUserState('com_products.edit.currency.data', array());
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
 		}
 
-		$this->preprocessData('com_products.general', $data);
+		$this->preprocessData('com_products.currency', $data);
 
 		return $data;
 	}
@@ -178,12 +178,7 @@ class productsModelGeneral extends JModelAdmin
 	 */
 	public function getItem($pk = null)
 	{
-        $config=productsconfig::get_com_products_config();
-        if($config)
-        {
-            $pk=$config->id;
-        }
-		$pk = (!empty($pk)) ? $pk : (int) $this->getState('general.id');
+		$pk = (!empty($pk)) ? $pk : (int) $this->getState('currency.id');
 
 		if (!isset($this->_cache[$pk]))
 		{
@@ -210,7 +205,7 @@ class productsModelGeneral extends JModelAdmin
 			$registry->loadString($table->params);
 			$this->_cache[$pk]->params = $registry->toArray();
 
-			// Get the general XML.
+			// Get the currency XML.
 			$path = JPath::clean(JPATH_ROOT . '/' . $table->folder . '/' . $table->element . '/' . $table->element . '.xml');
 
 			if (file_exists($path))
@@ -235,7 +230,7 @@ class productsModelGeneral extends JModelAdmin
 	 * @param   array  Configuration array for model. Optional.
 	 * @return  JTable	A database object
 	*/
-	public function getTable($type = 'config', $prefix = 'JTable', $config = array())
+	public function getTable($type = 'currency', $prefix = 'JTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
@@ -258,15 +253,10 @@ class productsModelGeneral extends JModelAdmin
 		// Load the User state.
 		$pk = $app->input->getInt('id');
 
-		$this->setState('general.id', $pk);
+		$this->setState('currency.id', $pk);
 	}
     public function save($data)
     {
-        $config=productsconfig::get_com_products_config();
-        if($config)
-        {
-            $data['id']=$config->id;
-        }
         $array_params=$data['params'];
         $params = new JRegistry;
         $params->loadArray($array_params);

@@ -64,6 +64,7 @@ class JFormFieldChildrenProduct extends JFormField
         $doc=JFactory::getDocument();
         $doc->addLessStyleSheet(JUri::root().'media/system/js/select2-4.0.0/dist/css/select2.css');
         $doc->addScript(JUri::root().'/media/system/js/select2-4.0.0/dist/js/select2.full.js');
+        $doc->addScript(JUri::root().'/media/system/js/jquery.utility.js');
         $doc->addScript(JUri::root().'/components/website/website_template5532788/com_products/models/fields/jquery.childrenproduct.js');
         $script_id = "script_field_children_product_" . $this->id;
         ob_start();
@@ -92,38 +93,61 @@ class JFormFieldChildrenProduct extends JFormField
                 <div class="children-product-item">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3><?php echo JText::_('Product children') ?> <span class="order">1</span></h3>
+                            <h3><?php echo JText::_('Product children') ?> <span class="children-product-item-order">1</span></h3>
                         </div>
                     </div>
-                    <div class="base-product-properties ">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Children product name</label>
-                                <input type="text" class="form-control" data-name="product_name" placeholder="<?php echo JText::_('product name') ?>">
+                    <div class="base-product-properties form-horizontal ">
+
+                        <?php
+                        $class_left='col-md-4';
+                        $class_right='col-md-8';
+                        ?>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="children_product_name" class="col-md-4">Children product name</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" size="40" value="" data-name="children_product_name" aria-invalid="false">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="children_product_name" class="col-md-4">Children product price</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" size="40" value="" data-name="children_product_name" aria-invalid="false">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="children_product_name" class="col-md-4">Children product name</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" size="40" value="" data-name="children_product_name" aria-invalid="false">
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="form-group">
-                                <label for="images">Images</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="children_product_name" class="col-md-4">Children product name</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" size="40" value="" data-name="children_product_name" aria-invalid="false">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="children_product_name" class="col-md-4">Children product name</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" size="40" value="" data-name="children_product_name" aria-invalid="false">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="children_product_name" class="col-md-4">Children product name</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" size="40" value="" data-name="children_product_name" aria-invalid="false">
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                            </div>
-                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-2">sdfsdfdsfdsfds</div>
