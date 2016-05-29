@@ -62,6 +62,16 @@
         <data key="auto_genera_type" value="word" />
         <data key="auto_genera_character" value="product_category" />
     </field>
+    <field
+            name="price"
+            type="price"
+            label="Price"
+            description="Price"
+            class="input-xxlarge input-large-text"
+            size="40"
+
+            required="true">
+    </field>
 
     <field
             name="alias"

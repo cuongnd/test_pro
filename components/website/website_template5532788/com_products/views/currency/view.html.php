@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_products
  * @since       1.5
  */
-class productsViewGeneral extends JViewLegacy
+class productsViewCurrency extends JViewLegacy
 {
 	protected $item;
 
@@ -29,11 +29,9 @@ class productsViewGeneral extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-
 		$this->state	= $this->get('State');
 		$this->item		= $this->get('Item');
 		$this->form		= $this->get('Form');
-
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
@@ -55,10 +53,12 @@ class productsViewGeneral extends JViewLegacy
 
 		$canDo = JHelperContent::getActions('com_products');
 
-		JToolbarHelper::title(JText::sprintf('Website', JText::_($this->item->name)), 'power-cord plugin');
+		JToolbarHelper::title(JText::sprintf('product category', JText::_($this->item->name)), 'power-cord plugin');
 
 		// If not checked out, can save the item.
-        JToolbarHelper::apply('general.apply');
+        JToolbarHelper::apply('currency.apply');
+        JToolbarHelper::save('currency.save');
+		JToolbarHelper::cancel('currency.cancel', 'JTOOLBAR_CLOSE');
 		JToolbarHelper::divider();
 		// Get the help information for the plugin item.
 

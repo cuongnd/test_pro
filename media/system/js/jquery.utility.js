@@ -75,15 +75,57 @@
 
         return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
     };
-    $.makeid=function()
+    $.makeid=function(length)
     {
+        if(typeof length=='undefined')
+        {
+            length=5;
+        }
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-        for( var i=0; i < 5; i++ )
+        for( var i=0; i < length; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
 
         return text;
+    }
+    $.fn.getOuterHTML = function() {
+        var wrapper = $('<div class="getOuterHTML"></div>');
+        $(this).wrap(wrapper);
+        var html=$(this).parent().html();
+        $(this).unwrap();
+        return html;
+    };
+    $.fn.add_event_element = function(event,call_back_function,event_class) {
+        $(this).each(function(){
+            if(typeof event_class=='undefined' || event_class.trim()=='')
+            {
+                throw 'there are no event class';
+                return;
+            }
+            if(!$(this).hasClass(event_class))
+            {
+                $(this).on(event,call_back_function).addClass(event_class);
+            }
+        });
+
+    };
+    $.get_year_old_by_date = function(dateString) {
+        if(dateString=='')
+        {
+            return '';
+        }
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    };
+    $.randomDate=function(start, end) {
+        return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     }
 
 })(jQuery);
