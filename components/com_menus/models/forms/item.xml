@@ -65,6 +65,13 @@
 			size="1" />
 
 		<field
+			name="item_fields"
+			type="listfield"
+			label="Item fields"
+			description="Item fields"
+			 />
+
+		<field
 			name="type"
 			type="menutype"
 			label="COM_MENUS_ITEM_FIELD_TYPE_LABEL"

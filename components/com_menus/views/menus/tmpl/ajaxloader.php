@@ -35,7 +35,7 @@ if(!$is_supper_admin_site)
 $list_menu_type = $db->setQuery($query)->loadObjectList('menu_id');
 
 $query = $db->getQuery(true);
-$query->select('menu.id,menu.parent_id,menu.ordering,menu.title,menu.link,menu.alias,menu.menu_type_id')
+$query->select('menu.id,menu.parent_id,menu.ordering,menu.title,menu.link,menu.alias,menu.menu_type_id,menu.published,menu.home')
     ->from('#__menu As menu ')
     ->order('menu.ordering');
 $db->setQuery($query);

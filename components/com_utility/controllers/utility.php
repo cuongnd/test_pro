@@ -41,6 +41,45 @@ class UtilityControllerUtility extends UtilityController
     function loadFile()
     {
     }
+    public function ajax_save_control_component_field_params()
+    {
+        $app=JFactory::getApplication();
+        $website=JFactory::getWebsite();
+        $fields=$app->input->get('fields','','string');
+        $element_path=$app->input->get('element_path','','string');
+        $db=JFactory::getDbo();
+        require_once JPATH_ROOT.'/components/com_phpmyadmin/tables/updatetable.php';
+        require_once JPATH_ROOT.'/components/com_modules/helpers/module.php';
+        require_once JPATH_ROOT.'/components/com_components/helpers/components.php';
+        $table_control=new JTableUpdateTable($db,'control');
+        $filter=array(
+            'element_path'=>$element_path,
+            'type'=>componentsHelper::ELEMENT_TYPE
+        );
+        $filter['website_id']=$website->website_id;
+        $table_control->load($filter);
+        if(!$table_control->id )
+        {
+            throw new Exception('cannot found control, this control must created before setup config, please check again');
+        }
+        $table_control->website_id=$website->website_id;
+        $table_control->element_path=$element_path;
+
+
+        $table_control->type=componentsHelper::ELEMENT_TYPE;
+        $table_control->fields=$fields;
+        $response=new stdClass();
+        $response->e=0;
+        if(!$table_control->store())
+        {
+            $response->e=1;
+            $response->r=$table_control->getError();
+        }else{
+            $response->r="save success";
+        }
+        echo json_encode($response);
+        die;
+    }
 
     public function aJaxSetPreview()
     {

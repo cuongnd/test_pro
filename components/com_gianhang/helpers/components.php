@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_gianhang
  * @since       1.6
  */
-class componentsHelper
+class gianhangcomponentsHelper
 {
 	public static $extension = 'com_gianhang';
 

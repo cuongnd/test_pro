@@ -138,6 +138,9 @@ if (!$ajaxGetContent) {
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/position.js');
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/button.js');
     $doc->addScript(JUri::root() . '/media/system/js/base64.js');
+    $doc->addScript(JUri::root() . "/media/system/js/Nestable-master/jquery.nestable.js");
+    $doc->addScript(JUri::root() . "/media/system/js/jquery.utility.js");
+
     $doc->addScript(JUri::root() . '/media/system/js/popline-master/scripts/jquery.popline.js');
 
     $doc->addStyleSheet(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/themes/base/all.css');

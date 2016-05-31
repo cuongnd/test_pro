@@ -56,7 +56,7 @@ $list_field_table_position_config = array_keys($list_field_table_position_config
 require_once JPATH_ROOT . '/libraries/joomla/form/fields/groupedlist.php';
 
 
-$scriptId = "view_layout_createitem";
+$scriptId = "script_view_layout_createitem";
 ob_start();
 ?>
 <script type="text/javascript">

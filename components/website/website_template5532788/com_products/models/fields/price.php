@@ -43,15 +43,7 @@ class JFormFieldPrice extends JFormField
         $db = JFactory::getDbo();
         $user = JFactory::getUser();
         $website=JFactory::getWebsite();
-        $config=productsconfig::get_com_products_config();
-        $default_currency_id=$config->params->get('default_currency',0);;
-        $query = $db->getQuery(true);
-        $query->clear()
-            ->select('currency.*')
-            ->from('#__ecommerce_currency AS currency')
-            ->where('id='.(int)$default_currency_id)
-        ;
-        $currency=$db->setQuery($query)->loadObject();
+        $currency=productsconfig::get_default_currency();
         $doc=JFactory::getDocument();
         $doc->addLessStyleSheet(JUri::root().'media/system/js/select2-4.0.0/dist/css/select2.css');
         $doc->addScript(JUri::root().'/media/system/js/select2-4.0.0/dist/js/select2.full.js');

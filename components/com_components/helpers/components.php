@@ -18,7 +18,8 @@ defined('_JEXEC') or die;
  */
 class componentsHelper
 {
-	public static $extension = 'com_components';
+    const ELEMENT_TYPE = 'component';
+    public static $extension = 'com_components';
 
 	/**
 	 * Configure the Linkbar.

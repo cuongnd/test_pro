@@ -21,6 +21,7 @@ $is_supper_admin_site=JFactory::is_website_supper_admin();
 
             <?php
             $list_menu_item=MenusHelperFrontEnd::get_list_all_menu_item_by_menu_type_id($menu_type->id);
+
             $children = array();
 
             // First pass - collect children
@@ -71,6 +72,7 @@ function create_html_list($nodes,$menuItemIdActive)
     echo '<ul class="nav sub">';
 
     foreach ($nodes as $menu) {
+
         $childNodes = $menu->children;
         ob_start();
 
@@ -98,7 +100,7 @@ function treerecurse($id,  $list, &$children, $maxlevel = 9999, $level = 0)
             $id = $v->id;
             $list[$id] = $v;
             $list[$id]->children = @$children[$id];
-            unset($children[$id]);
+            //unset($children[$id]);
             $list = treerecurse($id,$list, $children, $maxlevel, $level + 1);
         }
     }

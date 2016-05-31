@@ -70,6 +70,7 @@
                 document.title = 'data source properties';
             }
             $element.find('.getFieldType').click(function(){
+                console.log('ffffffffffffffffff');
                 plugin.getFieldTypeOfDataSource($(this));
             });
 

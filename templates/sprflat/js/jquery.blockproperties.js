@@ -1179,30 +1179,30 @@ jQuery(document).ready(function($){
             console.log('hello input change');
         });
         $(document).on('click','.getFieldType',function(){
-            panelProperties=$(this).closest('.block-properties');
-            if(panelProperties.attr('data-properties-type')=='website')
-            {
-                blockPropertiesUtil.getFieldTypeOfWebsite($(this));
-            }else if(panelProperties.attr('data-properties-type')=='module')
-            {
-                blockPropertiesUtil.getFieldTypeOfModule($(this));
-            } else if(panelProperties.attr('data-properties-type')=='block')
-            {
-                blockPropertiesUtil.getFieldTypeOfBlock($(this));
-            }else if(panelProperties.attr('data-properties-type')=='component')
-            {
-                blockPropertiesUtil.getFieldTypeOfComponent($(this));
-            }else if(panelProperties.attr('data-properties-type')=='datasource')
-            {
-                var sprFlat=$('body').data('sprFlat');
-                var show_popup_control=sprFlat.settings.show_popup_control;
-                if(!show_popup_control)
-                {
-                    blockPropertiesUtil.getFieldTypeOfDataSource($(this));
+            var click_event='click_event_get_field_type';
+            var $self=$(this);
+            if(!$self.hasClass(click_event)) {
+
+                var panelProperties = $(this).closest('.block-properties');
+
+                if (panelProperties.attr('data-properties-type') == 'website') {
+                    blockPropertiesUtil.getFieldTypeOfWebsite($(this));
+                } else if (panelProperties.attr('data-properties-type') == 'module') {
+                    blockPropertiesUtil.getFieldTypeOfModule($(this));
+                } else if (panelProperties.attr('data-properties-type') == 'block') {
+                    blockPropertiesUtil.getFieldTypeOfBlock($(this));
+                } else if (panelProperties.attr('data-properties-type') == 'component') {
+                    //blockPropertiesUtil.getFieldTypeOfComponent($(this));
+                } else if (panelProperties.attr('data-properties-type') == 'datasource') {
+                    var sprFlat = $('body').data('sprFlat');
+                    var show_popup_control = sprFlat.settings.show_popup_control;
+                    if (!show_popup_control) {
+                        blockPropertiesUtil.getFieldTypeOfDataSource($(this));
+                    }
                 }
+                $self.addClass(click_event);
+
             }
-
-
 
         });
 

@@ -336,7 +336,7 @@ class JFormFieldConfigUpdate extends JFormField
         );
 
         $tables=$db->getTableList();
-        $scriptId = "lib_cms_form_fields_configupdate" . '_' . JUserHelper::genRandomPassword();
+        $scriptId = "script_lib_cms_form_fields_configupdate" . '_' . JUserHelper::genRandomPassword();
         ob_start();
         ?>
         <script type="text/javascript" id="<?php echo $scriptId ?>">

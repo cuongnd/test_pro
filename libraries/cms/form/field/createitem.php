@@ -319,7 +319,7 @@ class JFormFieldCreateitem extends JFormField
         $db = JFactory::getDbo();
         JHtml::_('jquery.framework');
         $doc->addStyleSheet(JUri::root() . "/media/jui_front_end/css/select2.css");
-        $doc->addScript(JUri::root() . "/media/system/js/Nestable-master/jquery.nestable.js");
+
         $doc->addScript(JUri::root() . "/libraries/cms/form/field/createitem.js");
         $doc->addScript(JUri::root() . "/media/system/js/cassandraMAP-cassandra/lib/cassandraMap.js");
         $doc->addScript(JUri::root() . "/media/system/js/purl-master/purl-master/purl.js");
@@ -356,7 +356,7 @@ class JFormFieldCreateitem extends JFormField
         }
         $field_config=$this->value->field_config;
         $parse_field_config=(array)up_json_decode($field_config, false, 512, JSON_PARSE_JAVASCRIPT);
-        $scriptId = "script_field_createitem_" . $data->get('id',0);
+        $scriptId = "script_field_createitem_" . $this->id;
         ob_start();
         ?>
         <script type="text/javascript">

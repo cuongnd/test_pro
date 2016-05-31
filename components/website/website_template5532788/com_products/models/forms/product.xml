@@ -72,15 +72,27 @@
 
             required="true">
     </field>
-
     <field
-            name="alias"
-            type="text"
-            label="JFIELD_ALIAS_LABEL"
-            description="JFIELD_ALIAS_DESC"
-            hint="JFIELD_ALIAS_PLACEHOLDER"
-            size="45"/>
+            name="compare_at_price"
+            type="price"
+            label="Compare at price"
+            description="Compare at price"
+            class="input-xxlarge input-large-text"
+            size="40"
 
+            required="true">
+    </field>
+
+    <fieldset name="basic" label="COM_CONTENT_ATTRIBS_FIELDSET_LABEL">
+        <field
+                name="alias"
+                type="text"
+                label="JFIELD_ALIAS_LABEL"
+                description="JFIELD_ALIAS_DESC"
+                hint="JFIELD_ALIAS_PLACEHOLDER"
+                size="45"/>
+
+    </fieldset>
 
 
     <field

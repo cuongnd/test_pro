@@ -60,11 +60,13 @@ class JFormFieldChildrenProduct extends JFormField
             ->where('type='.$query->q(productsconfig::TYPE_PRODCUT))
 
         ;
+        $currency=productsconfig::get_default_currency();
         $list_field=$db->setQuery($query)->loadObjectList();
         $doc=JFactory::getDocument();
         $doc->addLessStyleSheet(JUri::root().'media/system/js/select2-4.0.0/dist/css/select2.css');
         $doc->addScript(JUri::root().'/media/system/js/select2-4.0.0/dist/js/select2.full.js');
         $doc->addScript(JUri::root().'/media/system/js/jquery.utility.js');
+        $doc->addScript(JUri::root().'/media/system/js/BobKnothe-autoNumeric/autoNumeric.js');
         $doc->addScript(JUri::root().'/components/website/website_template5532788/com_products/models/fields/jquery.childrenproduct.js');
         $script_id = "script_field_children_product_" . $this->id;
         ob_start();
@@ -113,7 +115,10 @@ class JFormFieldChildrenProduct extends JFormField
                                 <div class="form-group">
                                     <label for="children_product_name" class="col-md-4">Children product price</label>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" size="40" value="" data-name="children_product_name" aria-invalid="false">
+                                        <input type="text" class="form-control" size="40"
+                                               value="" data-a-sign="<?php echo $currency->currency_symbol ?> " value="<?php echo $this->value ?>"   placeholder="<?php echo $currency->currency_symbol ?>"
+                                               data-v-min="0" data-v-max="999999"
+                                               data-name="children_product_price" >
                                     </div>
                                 </div>
                                 <div class="form-group">

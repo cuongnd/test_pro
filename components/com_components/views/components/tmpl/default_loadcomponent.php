@@ -78,7 +78,7 @@ ob_start();
                                     data-layout="<?php echo $layout ?>" title="<?php echo JText::_($layout) ?>"
                                     class="item-element view_item">
                                     <a href="javascript:void(0)"><i
-                                            class="ec-pencil2 layout-config" data-id="<?php echo $item_layout->component_id ?>" data-element-type="extension_component" data-element_path="<?php echo $item_layout->is_private_component?"components/website/website_$website->website_id/$com/views/$view/tmpl/$layout":"components/$com/views/$view/tmpl/$layout" ?>" ></i><?php echo JString::sub_string(JText::_($layout), 7) ?>
+                                            class="ec-pencil2 layout-config" data-id="<?php echo $item_layout->component_id ?>" data-element-type="extension_component" data-element_path="<?php echo $item_layout->is_private_component?"components/website/website_$website_name/$com/views/$view/tmpl/$layout":"components/$com/views/$view/tmpl/$layout" ?>" ></i><?php echo JString::sub_string(JText::_($layout), 7) ?>
                                     </a>
                                 </li>
                             <?php } ?>

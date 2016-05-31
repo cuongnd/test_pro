@@ -208,22 +208,24 @@ Joomla.sethtmlfortag1 = function (respone_array,set_inner_type) {
 
         });
     }
-    scripts=respone_array.scripts;
+    var scripts=respone_array.scripts;
+    var list_file_js=[];
     if(typeof scripts!="undefined" )
     {
 
         $.each(scripts, function( index, value ) {
             index=index.replace(this_host,'');
-            curent_script=$('head').find('script[src="'+this_host+index+'"]');
+            var curent_script=$('head').find('script[src="'+this_host+index+'"]');
             if(!curent_script.length)
             {
-                script=$('<script src="'+this_host+index+'" type="text/javascript"></script>');
+                var script=$('<script src="'+this_host+index+'" type="text/javascript"></script>');
                 $('head').append(script);
+                list_file_js.push(this_host+index);
             }
         });
     }
 
-    styleSheets=respone_array.styleSheets;
+    var styleSheets=respone_array.styleSheets;
 
     if(typeof styleSheets!="undefined" )
     {
@@ -258,35 +260,41 @@ Joomla.sethtmlfortag1 = function (respone_array,set_inner_type) {
             string_attribs=string_attribs.join(' ');
 
             $('head').find('link[href*="'+source+'"]').remove();
-            curent_styleSheets=$('head').find('link[href="'+source+'"]');
+            var curent_styleSheets=$('head').find('link[href="'+source+'"]');
             if(!curent_styleSheets.length)
             {
-                styleSheet=$('<link href="'+source+'" media="screen" type="text/css" '+string_attribs+'>');
+                var styleSheet=$('<link href="'+source+'" media="screen" type="text/css" '+string_attribs+'>');
                 $('head').append(styleSheet);
             }
         });
     }
 
+    console.log(list_file_js);
+    $.getMultiScripts(list_file_js, '').done(function() {
+        var scriptDeclaration=respone_array.scriptDeclaration;
+        if(typeof scriptDeclaration!="undefined" )
+        {
+            jQuery.each(scriptDeclaration, function( index, script ) {
+                var myFunction = new Function(script.scriptDeclaration);
+                myFunction();
+            });
+        }
+    });
 
-    scriptDeclaration=respone_array.scriptDeclaration;
-    if(typeof scriptDeclaration!="undefined" )
-    {
-        $.each(scriptDeclaration, function( index, script ) {
-            var myFunction = new Function(script.scriptDeclaration);
-            myFunction();
-        });
-    }
 
-    scriptAjaxCallFunction=respone_array.scriptAjaxCallFunction;
+
+
+
+    var scriptAjaxCallFunction=respone_array.scriptAjaxCallFunction;
     if(typeof scriptAjaxCallFunction!="undefined" )
     {
         $.each(scriptAjaxCallFunction, function( index, script ) {
-           csriptId=script.scriptId;
+           var csriptId=script.scriptId;
             if(csriptId!='')
             {
                 if(!$('script#'+csriptId).length)
                 {
-                    htmlScript=$('<script type="text/javascript" id="'+csriptId+'"></script>');
+                    var htmlScript=$('<script type="text/javascript" id="'+csriptId+'"></script>');
                     htmlScript.html(script.scriptContent);
                     $('head').append(htmlScript);
                 }

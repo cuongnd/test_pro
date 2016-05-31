@@ -110,6 +110,20 @@
         });
 
     };
+    $.fn.set_plugin_element = function(setup_plugin_function,setup_plugin_class,parameter) {
+        $(this).each(function(){
+            if(typeof setup_plugin_class=='undefined' || setup_plugin_class.trim()=='')
+            {
+                throw 'there are no setup function class';
+                return;
+            }
+            if(!$(this).hasClass(setup_plugin_class) && setup_plugin_function instanceof Function)
+            {
+                setup_plugin_function(parameter);
+            }
+        });
+
+    };
     $.get_year_old_by_date = function(dateString) {
         if(dateString=='')
         {
@@ -126,6 +140,17 @@
     };
     $.randomDate=function(start, end) {
         return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    }
+    $.getMultiScripts = function(arr, path) {
+        var _arr = $.map(arr, function(scr) {
+            return $.getScript( (path||"") + scr );
+        });
+
+        _arr.push($.Deferred(function( deferred ){
+            $( deferred.resolve );
+        }));
+
+        return $.when.apply($, _arr);
     }
 
 })(jQuery);

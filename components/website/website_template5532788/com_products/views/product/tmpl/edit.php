@@ -10,7 +10,8 @@
 defined('_JEXEC') or die;
 JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
-$filed_set=$this->form->getFieldset();
+//$group=$this->form->getControlGroup();
+$filed_set=$this->form->getFieldset('');
 $doc=JFactory::getDocument();
 $scriptId = "script_view_product_edit";
 $debug=true;
