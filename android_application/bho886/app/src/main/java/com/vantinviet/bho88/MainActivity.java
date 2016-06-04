@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private int screen_size_height = 0;
     private JSONArray modules;
     public static String title="BHO88";
-    private boolean debug=false;
+    private boolean debug=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,13 +100,14 @@ public class MainActivity extends AppCompatActivity {
 
         config.screen_size_width=screen_size_width;
         config.screen_size_height=screen_size_height;
+
         config.screenDensity=screenDensity;
         if (host.equals("")) {
             String test_page="&Itemid=433";
-            //test_page="";
-            host = "http://www.banhangonline88.com/index.php?os=android&screenSize=" + screenSize+"&version="+local_version+test_page;
+            test_page="";
+            host = config.root_url +"/index.php?os=android&screenSize=" + screenSize+"&version="+local_version+test_page;
         }else{
-            host = "http://banhangonline88.com/"+host;
+            host = config.root_url +host;
         }
 
 
@@ -170,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 JSONParser jParser = new JSONParser();
                 // get json string from url
                 JSONObject json = jParser.getJSONFromUrl(params[0]);
-                //System.out.println(json.toString());
+                System.out.println(json.toString());
                 return_json = json.toString();
 
             } catch (Throwable t) {

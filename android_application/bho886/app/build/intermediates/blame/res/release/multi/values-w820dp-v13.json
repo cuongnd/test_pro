@@ -2035,8 +2035,27 @@
                     "startLine": 147,
                     "startColumn": 4,
                     "startOffset": 8034,
+                    "endColumn": 35,
+                    "endOffset": 8065
+                },
+                "from": {
+                    "file": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\values-w820dp\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 168,
+                        "endColumn": 35,
+                        "endOffset": 199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 148,
+                    "startColumn": 4,
+                    "startOffset": 8070,
                     "endColumn": 52,
-                    "endOffset": 8082
+                    "endOffset": 8118
                 },
                 "from": {
                     "file": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\values-w820dp\\strings.xml",
@@ -2051,12 +2070,12 @@
             },
             {
                 "to": {
-                    "startLine": 148,
+                    "startLine": 149,
                     "startColumn": 4,
-                    "startOffset": 8087,
-                    "endLine": 154,
+                    "startOffset": 8123,
+                    "endLine": 155,
                     "endColumn": 12,
-                    "endOffset": 8373
+                    "endOffset": 8409
                 },
                 "from": {
                     "file": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\values-w820dp\\styles.xml",
@@ -2072,12 +2091,12 @@
             },
             {
                 "to": {
-                    "startLine": 155,
+                    "startLine": 156,
                     "startColumn": 4,
-                    "startOffset": 8378,
-                    "endLine": 158,
+                    "startOffset": 8414,
+                    "endLine": 159,
                     "endColumn": 12,
-                    "endOffset": 8586
+                    "endOffset": 8622
                 },
                 "from": {
                     "file": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\values-w820dp\\styles.xml",
@@ -2093,12 +2112,12 @@
             },
             {
                 "to": {
-                    "startLine": 159,
+                    "startLine": 160,
                     "startColumn": 4,
-                    "startOffset": 8591,
-                    "endLine": 161,
+                    "startOffset": 8627,
+                    "endLine": 162,
                     "endColumn": 12,
-                    "endOffset": 8739
+                    "endOffset": 8775
                 },
                 "from": {
                     "file": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\values-w820dp\\styles.xml",
@@ -2114,12 +2133,12 @@
             },
             {
                 "to": {
-                    "startLine": 162,
+                    "startLine": 163,
                     "startColumn": 4,
-                    "startOffset": 8744,
-                    "endLine": 165,
+                    "startOffset": 8780,
+                    "endLine": 166,
                     "endColumn": 12,
-                    "endOffset": 8972
+                    "endOffset": 9008
                 },
                 "from": {
                     "file": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\values-w820dp\\styles.xml",
@@ -2135,12 +2154,12 @@
             },
             {
                 "to": {
-                    "startLine": 166,
+                    "startLine": 167,
                     "startColumn": 4,
-                    "startOffset": 8977,
-                    "endLine": 170,
+                    "startOffset": 9013,
+                    "endLine": 171,
                     "endColumn": 12,
-                    "endOffset": 9279
+                    "endOffset": 9315
                 },
                 "from": {
                     "file": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\values-w820dp\\themes.xml",

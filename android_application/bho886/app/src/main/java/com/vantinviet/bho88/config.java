@@ -18,6 +18,8 @@ public class config {
     public static int screen_size_width;
     public static int screen_size_height;
     public static int screenDensity;
+    //public static String root_url ="http://www.banhangonline88.com";
+    public static String root_url ="http://www.countdown.vantinviet.com";
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public  static  String get_version()

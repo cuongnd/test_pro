@@ -48,8 +48,9 @@
         </field>
 
         <field name="default_template" type="websites"
-               description="Default of website"
-               label="Default of website"
+               description="Is temple of websites"
+               label="Is temple of websites"
+               multiple="true"
         />
 
 
@@ -58,6 +59,7 @@
                 type="list"
                 class="chzn-color-state"
                 label="JSTATUS"
+
                 description="COM_PLUGINS_FIELD_ENABLED_DESC"
                 size="1"
                 default="1">

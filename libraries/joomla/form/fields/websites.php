@@ -49,6 +49,11 @@ class JFormFieldWebsites extends JFormField
         $option=array('id'=>'','name'=>'select website');
         array_unshift($list_website,(object)$option);
         $attribute=array();
+        if($this->multiple)
+        {
+            $attribute[]=' multiple="true" ';
+        }
+        $this->value=explode(',',$this->value);
         $attribute[]=$this->onchange?'onchange="'.$this->onchange.'"':'';
         $attribute[]=' disableChosen="true" ';
         $attribute=implode(' ',$attribute);

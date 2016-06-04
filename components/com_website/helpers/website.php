@@ -612,7 +612,7 @@ class websiteHelperFrontEnd
                 }
                 $module = str_replace("_", "", $module);
                 $class_module = $module . "Helper";
-                if (class_exists($class_module)) {
+                if (class_exists($class_module) && method_exists($class_module,'android_set_data_source') ) {
                     $class_module::android_set_data_source($modules[$key], $params, $data_source);
                 }
             }
@@ -717,7 +717,8 @@ class websiteHelperFrontEnd
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
         $query->select('id')
-            ->where('default_template='.(int)$website->website_id)
+            ->from('#__website')
+            ->where('default_template LIKE '.$query->q("%,$website->website_id,%") .'OR default_template LIKE '.$query->q("$website->website_id,%").' OR default_template LIKE  '.$query->q("%,$website->website_id"))
             ;
         $db->setQuery($query);
         $website_id=$db->loadResult();

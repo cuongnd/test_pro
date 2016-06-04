@@ -291,6 +291,7 @@ class JFormFieldlistfield extends JFormField
     }
     protected function getInput()
     {
+
         $app = JFactory::getApplication();
         $doc = JFactory::getDocument();
         $db = JFactory::getDbo();
@@ -310,7 +311,7 @@ class JFormFieldlistfield extends JFormField
         $link=$menu_item->link;
         $uri_link=JFactory::getURI($link);
         $view=$uri_link->getVar('view');
-        $component=$uri_link->getVar('component');
+        $component=$uri_link->getVar('option');
 
         require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
         require_once JPATH_ROOT . '/components/com_modules/helpers/module.php';
@@ -320,7 +321,20 @@ class JFormFieldlistfield extends JFormField
         require_once JPATH_ROOT . '/components/com_phpmyadmin/tables/updatetable.php';
         $table_control = new JTableUpdateTable($db, 'control');
         $website_name=JFactory::get_website_name();
-        $element_path='components/website/website_' . $website_name . '/' . $component.'/models/form/'.$view.'.xml';
+        $xml_file=$this->element['xml_file'];
+        $file_xml='';
+        switch($xml_file){
+            case 'table':
+                $file_xml="table_".$view;
+                break;
+            case 'filter':
+                $file_xml="filter_".$view;
+                break;
+            default:
+                $file_xml=$view;
+                break;
+        }
+        $element_path='components/website/website_' . $website_name . '/' . $component.'/models/form/'.$file_xml.'.xml';
         $filter['element_path'] = $element_path;
         $filter['website_id'] = $website->website_id;
         $table_control->load($filter);
@@ -348,10 +362,11 @@ class JFormFieldlistfield extends JFormField
         jimport('joomla.filesystem.folder');
 
         $list_field_type = array();
-        $list_path = JFormField::get_list_field_path();
+        $list_field_path = JFormField::get_list_field_path();
 
-
-        foreach ($list_path as $path) {
+        $component_path=JPath::get_component_path($component,false);
+        $list_field_path[]=$component_path.'/models/fields';
+        foreach ($list_field_path as $path) {
             $_list_field_type = JFolder::files(JPATH_ROOT . '/' . $path, '.php');
             foreach ($_list_field_type as $fied_type) {
                 $list_field_type[] = (object)array(
@@ -361,10 +376,29 @@ class JFormFieldlistfield extends JFormField
             }
         }
 
+        //get list field table position config
+        $config_class_component=substr($component,4).'config';
+        $config_class_component_path='components/'.$component.'/helpers/'.$config_class_component.'.php';
+        jimport('joomla.filesystem.file');
+        if(!JFile::exists(JPATH_ROOT.DS.$config_class_component_path))
+        {
+            $config_class_component_path='components/website/website_'.$website_name.'/'.$component.'/helpers/'.$config_class_component.'.php';
+        }
 
-//get list field table position config
-        $list_field_table_position_config = $db->getTableColumns('#__modules');
-        $list_field_table_position_config = array_keys($list_field_table_position_config);
+        $list_field_table=[];
+        if(JFile::exists(JPATH_ROOT.DS.$config_class_component_path))
+        {
+            require_once JPATH_ROOT.DS.$config_class_component_path;
+            $args=array($view);
+            $table=call_user_func_array("$config_class_component::get_table_by_view", $args);
+            if($table)
+            {
+                $list_field_table = $db->getTableColumns($table);
+            }
+        }
+
+
+        $list_field_table = array_keys($list_field_table);
 //end get list field table position config
 
         require_once JPATH_ROOT . '/libraries/joomla/form/fields/groupedlist.php';
@@ -381,7 +415,7 @@ class JFormFieldlistfield extends JFormField
             ?>
             jQuery(document).ready(function ($) {
 
-                list_field_config.field_name_option.tags =<?php echo json_encode($list_field_table_position_config) ?>;
+                list_field_config.field_name_option.tags =<?php echo json_encode($list_field_table) ?>;
                 list_field_config.init_list_field_config();
             });
             <?php
@@ -547,7 +581,7 @@ class JFormFieldlistfield extends JFormField
                         <div class="row">
                             <div class="menu_type_item col-md-12" data-menu-type-id="<?php echo $menu_type_id ?>">
                                 <div id="field_block" class="dd">
-                                    <?php echo create_html_list($fields, '', $list_field_type, $list_field_table_position_config); ?>
+                                    <?php echo create_html_list($fields, '', $list_field_type, $list_field_table); ?>
                                 </div>
                             </div>
 

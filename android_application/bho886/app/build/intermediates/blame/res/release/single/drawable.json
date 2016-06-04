@@ -1,23 +1,23 @@
 [
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_cab_background_internal_bg.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_cab_background_internal_bg.xml"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_cab_background_top_material.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_cab_background_top_material.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_inverse_gradient.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_inverse_gradient.xml"
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_cab_background_internal_bg.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_default_gradient_rounded.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_default_gradient_rounded.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_success_gradient.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_success_gradient.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_default_gradient_rounded.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_default_gradient_rounded.xml"
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_inverse_gradient.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_inverse_gradient.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_success_rounded.xml",
@@ -40,12 +40,12 @@
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_warning_gradient_rounded.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_warning_gradient_rounded.xml"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_danger_gradient.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_danger_gradient.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_warning_gradient_rounded.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_warning_gradient_rounded.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_primary_rounded.xml",
@@ -60,12 +60,12 @@
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_borderless_material.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_purple.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_purple.xml"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\edittext_background_warning.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\edittext_background_warning.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_purple.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_purple.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_dialog_material_background_light.xml",
@@ -76,24 +76,24 @@
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_check_material.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_check_material.xml"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\snackbar_background.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\drawable\\snackbar_background.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\thumbnail_circle_minimal.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\thumbnail_circle_minimal.xml"
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_check_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_check_material.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_success.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_success.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_radio_material.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_radio_material.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_success.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_success.xml"
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\thumbnail_circle_minimal.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\thumbnail_circle_minimal.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\thumbnail_placeholder_default.xml",
@@ -112,12 +112,12 @@
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\thumbnail_container_rounded.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_default_gradient.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_default_gradient.xml"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_default_mtrl_shape.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_default_gradient.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_default_gradient.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_info_gradient.xml",
@@ -132,24 +132,24 @@
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_holo_light.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_purple_gradient_rounded.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_purple_gradient_rounded.xml"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_warning_gradient.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_warning_gradient.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_purple_gradient_rounded.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_purple_gradient_rounded.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\edittext_background_rounded_warning.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\edittext_background_rounded_warning.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_item_background_holo_dark.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_item_background_holo_dark.xml"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_list_selector_background_transition_holo_light.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_item_background_holo_dark.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_warning.xml",
@@ -160,12 +160,12 @@
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\edittext_background_rounded_success.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_default_rounded.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_default_rounded.xml"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_item_background_holo_light.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_default_rounded.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_default_rounded.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_inverse.xml",
@@ -176,20 +176,20 @@
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_inverse_gradient_rounded.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_inverse_gradient_rounded.xml"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_danger.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_danger.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_inverse_gradient_rounded.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_inverse_gradient_rounded.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_purple_rounded.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_purple_rounded.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_dialog_material_background_dark.xml",
@@ -252,27 +252,27 @@
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_info_gradient_rounded.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_tab_indicator_material.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_tab_indicator_material.xml"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_danger_rounded.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_danger_rounded.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_primary_gradient.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_primary_gradient.xml"
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_tab_indicator_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_tab_indicator_material.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\edittext_background_success.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\edittext_background_success.xml"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_textfield_search_material.xml",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_textfield_search_material.xml"
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\button_primary_gradient.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\button_primary_gradient.xml"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\indicator_corner_bg.xml",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\src\\main\\res\\drawable\\indicator_corner_bg.xml"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\res\\merged\\release\\drawable\\abc_textfield_search_material.xml",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_textfield_search_material.xml"
     }
 ]
