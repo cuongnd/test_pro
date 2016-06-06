@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">bho88</string>
+    <string name="app_name">countdown</string>
     <string name="root_url">http://www.banhangonline88.com/</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>

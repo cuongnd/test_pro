@@ -170,16 +170,16 @@ $sortFields = $this->getSortFields();
                                                 <?php if ($canEdit) : ?>
                                                     <a class="quick-edit-title"
                                                        href="<?php echo JRoute::_('index.php?option=com_products&task=productcategory.edit&id=' . (int)$item->id); ?>">
-                                                        <?php echo $item->title; ?></a>
+                                                        <?php echo $item->product_category_name; ?></a>
                                                 <?php else : ?>
-                                                    <?php echo $item->title; ?>
+                                                    <?php echo $item->product_category_name; ?>
                                                 <?php endif; ?>
                                             </td>
                                             <td class="center hidden-phone">
                                                 <?php echo $item->code ?>
                                             </td>
                                             <td class="center hidden-phone">
-                                                <?php echo $item->parent_product_category_title ?>
+                                                <?php echo $item->parent_product_category_name ?>
                                             </td>
                                             <td class="nowrap small hidden-phone">
                                                 <?php echo $this->escape($item->folder); ?>

@@ -357,6 +357,7 @@ abstract class JFormField extends JObject
             'libraries/cms/form/field',
             $com_vituemart.DS.'elements'
         );
+
         return $list_path;
     }
 

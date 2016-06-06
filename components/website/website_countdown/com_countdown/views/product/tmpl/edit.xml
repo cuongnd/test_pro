@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <fields name="configviewlayout">
+        <field type="text" readonly="false" label="sdfsd" default=""
+               name="tesst1232" onchange=""
+
+
+        >
+        </field>
+        <field type="checkbox" label="sdfsd" default="0"
+               name="enable_tesst1232" onchange="">
+
+        </field>
+    </fields>
+</metadata>

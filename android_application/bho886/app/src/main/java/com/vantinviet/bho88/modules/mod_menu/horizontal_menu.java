@@ -161,12 +161,12 @@ public class horizontal_menu {
                 bootstrap_button.setOnClickListener(getOnClickDoSomething(bootstrap_button,menu_item));
                 Resources resource = context.getResources();
 
-                bootstrap_button.setOnClickListener(new View.OnClickListener() {
+               /* bootstrap_button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         quickAction.show(v);
                     }
-                });
+                });*/
                 bootstrap_button_group.addView(bootstrap_button);
             }
 
@@ -194,7 +194,7 @@ public class horizontal_menu {
                     String id=menu_item.getString("id");
                     String title=menu_item.getString("title");
                     link=link+"&Itemid="+id+"&os=android&screenSize="+ screenSize+"&version="+local_version;
-                    MainActivity.host=link;
+                    MainActivity.host="/"+link;
                     Intent i = new Intent(v.getContext(), MainActivity.class);
                     v.getContext().startActivity(i);
                     MainActivity.title=title;

@@ -610,13 +610,13 @@ class websiteHelperFrontEnd
                 if (file_exists($file_helper)) {
                     require_once $file_helper;
                 }
+
                 $module = str_replace("_", "", $module);
                 $class_module = $module . "Helper";
                 if (class_exists($class_module) && method_exists($class_module,'android_set_data_source') ) {
                     $class_module::android_set_data_source($modules[$key], $params, $data_source);
                 }
             }
-            ob_get_clean();
             $return_children = array(
                 'modules' => (array)$modules,
                 'root_id' => $rootId,
@@ -626,7 +626,7 @@ class websiteHelperFrontEnd
             ob_clean();
             header('Content-Type: application/json');
             //echo json_encode($return);
-            echo json_encode($return_children, JSON_NUMERIC_CHECK);
+            echo json_encode($return_children);
             die;
         }
         $cache = JFactory::getCache('_system', 'callback');

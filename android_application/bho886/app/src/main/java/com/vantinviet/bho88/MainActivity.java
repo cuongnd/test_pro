@@ -308,6 +308,8 @@ public class MainActivity extends AppCompatActivity {
         }
         int level1 = level + 1;
         if (level == 0) {
+
+
             JSONArray jsonArray = new JSONArray();
             try {
                 jsonArray = root.getJSONArray(Integer.toString(root_id));

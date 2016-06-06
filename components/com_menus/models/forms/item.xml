@@ -67,8 +67,24 @@
 		<field
 			name="item_fields"
 			type="listfield"
+            xml_type="item"
 			label="Item fields"
 			description="Item fields"
+			 />
+
+		<field
+			name="filter_fields"
+			type="listfield"
+            xml_type="filter"
+			label="filter fields"
+			description="filter fields"
+			 />
+		<field
+			name="table_fields"
+			type="listfield"
+            xml_type="table"
+			label="show table fields"
+			description="show table fields"
 			 />
 
 		<field

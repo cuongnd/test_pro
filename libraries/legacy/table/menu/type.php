@@ -72,7 +72,7 @@ class JTableMenuType extends JTable
         $total=$this->_db->loadResult();
         if($total>0)
         {
-            $this->setError('menu type title exists, please select other');
+            $this->setError('menu type title exists or menu type title is duplicate menu type title system, please select other');
             return false;
         }
         //end check exit menu type title

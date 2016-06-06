@@ -39,24 +39,23 @@ class JFormFieldRadioYesNo extends JFormField
 	{
 		$html = '';
 		// Initialize some field attributes.
-		$class     = !empty($this->class) ? ' class="radio ' . $this->class . ' noStyle"' : ' class="radio noStyle"';
+	 	$class     = !empty($this->class) ? ' class="radio ' . $this->class . ' noStyle"' : ' class="radio noStyle"';
 		$required  = $this->required ? ' required aria-required="true"' : '';
 		$autofocus = $this->autofocus ? ' autofocus' : '';
 		$disabled  = $this->disabled ? ' disabled' : '';
 		$readonly  = $this->readonly;
 		$doc=JFactory::getDocument();
-		$doc->addStyleSheet(JUri::root() . '/media/system/js/bootstrap-toggle-master/css/bootstrap-toggle.css');
-		$doc->addScript(JUri::root() . '/media/system/js/bootstrap-toggle-master/js/bootstrap-toggle.js');
-		$scriptId = "script_libraries_joomla_form_fields_radioyesno" . '_' . JUserHelper::genRandomPassword();
+		$doc->addScript(JUri::root() . '/media/system/js/jQuery-Toggle-Button-Plugin-For-Bootstrap-Bootstrap-Checkbox/js/bootstrap-checkbox.js');
+		$scriptId = "script_libraries_joomla_form_fields_radioyesno" . '_' . $this->name;
 		ob_start();
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function ($) {
-				$('input[name="<?php echo $this->name ?>"]').bootstrapToggle();
+				$('input[name="<?php echo $this->name ?>"]').checkboxpicker({
 
-				$('input[name="<?php echo $this->name ?>"]').change(function() {
-					<?php echo $this->onchange ?>
-			 	})
+				}).change(function() {
+					<?php echo $this->onchange ?>;
+				});
 
 			});
 		</script>
