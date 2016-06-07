@@ -117,6 +117,25 @@
 				value="-2">
 				JTRASHED</option>
 		</field>
+
+		<field
+			name="mobile_response_type"
+			type="list"
+			class="chzn-color-state"
+			id="mobile_response_type"
+			label="Mobile response type"
+			description="Mobile response type"
+			size="1"
+			default="html"
+			filter="integer">
+			<option
+				value="html">
+				html</option>
+			<option
+				value="json">
+				json</option>
+		</field>
+
 		<field
 			name="is_main_dashboard"
 			type="list"

@@ -21,6 +21,7 @@ public class application_cms {
         TextView myTextview = new TextView(context);
         Spanned sp = Html.fromHtml(content);
         myTextview.setText(sp);
+        linear_layout.setPadding(10, 10, 10, 10);
         ((LinearLayout) linear_layout).addView(myTextview);
     }
 }

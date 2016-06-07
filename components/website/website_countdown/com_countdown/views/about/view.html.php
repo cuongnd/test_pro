@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_cpanel
  * @since       1.5
  */
-class ProductsViewcpanel extends JViewLegacy
+class countdownViewabout extends JViewLegacy
 {
 	public function display($tpl = null)
 	{
