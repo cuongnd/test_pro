@@ -6,7 +6,7 @@
  * Date: 28/05/2016
  * Time: 3:24 CH
  */
-class productsconfig
+class countdownconfig
 {
 
     const TYPE_PRODCUT = 'product';

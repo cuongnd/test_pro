@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,7 +24,12 @@ import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.vantinviet.bho88.libraries.android.http.JSONParser;
+import com.vantinviet.bho88.libraries.cms.application.application_cms;
+import com.vantinviet.bho88.libraries.utilities.utilities;
 import com.vantinviet.bho88.media.element.slider.banner_rotator.elementBanner_RotatorHelper;
 import com.vantinviet.bho88.media.element.ui.grid.element_grid_helper;
 import com.vantinviet.bho88.media.element.ui.link_image.element_link_image_helper;
@@ -46,7 +52,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String host="";
+    public static String host = "";
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -60,8 +66,13 @@ public class MainActivity extends AppCompatActivity {
     private int screen_size_width = 0;
     private int screen_size_height = 0;
     private JSONArray modules;
-    public static String title="BHO88";
-    private boolean debug=true;
+    public static String title = "BHO88";
+    private boolean debug = true;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,16 +82,13 @@ public class MainActivity extends AppCompatActivity {
         //Remove title bar
 
 
-
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int screenDensity = (int)metrics.density;
+        int screenDensity = (int) metrics.density;
         int screenDensityDPI = metrics.densityDpi;
         float screenscaledDensity = metrics.scaledDensity;
         int width = metrics.widthPixels;
         int height = metrics.heightPixels;
-
-
 
 
         System.out.println("Screen Density=" + screenDensity + "\n"
@@ -90,24 +98,23 @@ public class MainActivity extends AppCompatActivity {
                 + "Width=" + width);
         screen_size_width = width;
         screen_size_height = height;
-        if(screenDensity==0)
-        {
-            screenDensity=1;
+        if (screenDensity == 0) {
+            screenDensity = 1;
         }
-        String screenSize = Integer.toString(width/screenDensity) + "x" + Integer.toString(height);
-        System.out.println(width/screenDensity);
-        String local_version= config.get_version();
+        String screenSize = Integer.toString(width / screenDensity) + "x" + Integer.toString(height);
+        System.out.println(width / screenDensity);
+        String local_version = config.get_version();
 
-        config.screen_size_width=screen_size_width;
-        config.screen_size_height=screen_size_height;
+        config.screen_size_width = screen_size_width;
+        config.screen_size_height = screen_size_height;
 
-        config.screenDensity=screenDensity;
+        config.screenDensity = screenDensity;
         if (host.equals("")) {
-            String test_page="&Itemid=433";
-            test_page="";
-            host = config.root_url +"/index.php?os=android&screenSize=" + screenSize+"&version="+local_version+test_page;
-        }else{
-            host = config.root_url +host;
+            String test_page = "&Itemid=433";
+            test_page = "";
+            host = config.root_url + "/index.php?os=android&screenSize=" + screenSize + "&version=" + local_version + test_page;
+        } else {
+            host = config.root_url + host;
         }
 
 
@@ -116,7 +123,51 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(host);
         (new AsyncJsonElementViewLoader()).execute(host);
 
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Main Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.vantinviet.bho88/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Main Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.vantinviet.bho88/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }
+
     private class AsyncJsonElementViewLoader extends AsyncTask<String, Void, String> {
         private final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
 
@@ -127,23 +178,21 @@ public class MainActivity extends AppCompatActivity {
             try {
                 JSONObject json_object = new JSONObject(json_string);
 
-                String version=json_object.getString("version");
-                String local_version= config.get_version();
-                if(version!=local_version)
-                {
+                String version = json_object.getString("version");
+                String local_version = config.get_version();
+                if (version != local_version) {
                     int root_id = json_object.getInt("root_id");
                     JSONObject children = json_object.getJSONObject("children");
-                    modules= json_object.getJSONArray("modules");
+                    modules = json_object.getJSONArray("modules");
                     set_cache_json_by_screen_size(screen_size_width, screen_size_height, 0, json_object.toString());
                     tree_recurse(root_id, children, null, null, null, 0, 0);
 
-                }
-                else{
+                } else {
                     String cache_json = get_cache_json_by_screen_size(screen_size_width, screen_size_height, 0);
                     if (cache_json != "") {
                         JSONObject json = new JSONObject(cache_json);
                         int root_id = json.getInt("root_id");
-                        modules= json_object.getJSONArray("modules");
+                        modules = json_object.getJSONArray("modules");
                         JSONObject children = json.getJSONObject("children");
                         tree_recurse(root_id, children, null, null, null, 0, 0);
                     }
@@ -182,11 +231,52 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    private class AsyncComponentViewLoader extends AsyncTask<component_params, Void, component_response> {
+        private final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+
+        @Override
+        protected void onPostExecute(component_response com_response) {
+            super.onPostExecute(com_response);
+            dialog.dismiss();
+            try {
+                application_cms.execute_component(context, com_response.linear_layout, host, com_response.content);
+            } catch (Throwable t) {
+                t.printStackTrace();
+            }
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.setMessage("Downloading component...");
+            dialog.show();
+        }
+
+        @Override
+        protected component_response doInBackground(component_params... component_params) {
+
+            component_response com_response=new component_response(component_params[0].link, component_params[0].linear_layout,"");
+            try {
+                String content = utilities.callURL(component_params[0].link);
+                com_response = new component_response(component_params[0].link, component_params[0].linear_layout,content);
+
+            } catch (Throwable t) {
+                t.printStackTrace();
+            }
+            return com_response;
+        }
+
+
+    }
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         System.out.println("ratator");
     }
+
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private String get_cache_json_by_screen_size(int screen_size_width, int screen_size_height, int menu_item_id) throws UnsupportedEncodingException {
         String cache_file = "android_" + String.valueOf(menu_item_id) + "_" + String.valueOf(screen_size_width) + "X" + String.valueOf(screen_size_height);
@@ -282,8 +372,7 @@ public class MainActivity extends AppCompatActivity {
             ScrollView scroll_view = new ScrollView(MainActivity.this);
             scroll_view.setId(scroll_view_id);
             scroll_view.setLayoutParams(new ViewGroup.LayoutParams(screen_size_width, screen_size_height));
-            if(debug)
-            {
+            if (debug) {
                 currentStrokeColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
                 scroll_view.setBackgroundColor(currentStrokeColor);
 
@@ -293,8 +382,7 @@ public class MainActivity extends AppCompatActivity {
 
             //add new row liner layout
             LinearLayout row_linear_layout = new LinearLayout(MainActivity.this);
-            if(debug)
-            {
+            if (debug) {
                 currentStrokeColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
                 row_linear_layout.setBackgroundColor(currentStrokeColor);
 
@@ -358,7 +446,7 @@ public class MainActivity extends AppCompatActivity {
                             EditText input_object = this.render_element_edit_text(object_parent, children);
                             break;
                         case "banner_rotator":
-                            elementBanner_RotatorHelper.render_banner_rotator(context,object_parent, children,width);
+                            elementBanner_RotatorHelper.render_banner_rotator(context, object_parent, children, width);
                             break;
                         case "link_image":
                             element_link_image_helper.render_element(context, object_parent, children, width);
@@ -409,14 +497,13 @@ public class MainActivity extends AppCompatActivity {
             String type = object.getString("type");
             linear_layout.setId(id);
             Random rnd = new Random();
-            if(debug) {
+            if (debug) {
                 int currentStrokeColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
                 linear_layout.setBackgroundColor(currentStrokeColor);
             }
             linear_layout.setLayoutParams(new ViewGroup.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT));
             linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-            if(debug)
-            {
+            if (debug) {
                 //linear_layout=a_render_element_text_view("row-"+id+":"+Integer.toString(width),id,linear_layout);
             }
             ((LinearLayout) parent_object).addView(linear_layout);
@@ -425,6 +512,26 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return linear_layout;
+    }
+    private static class component_params {
+        String link;
+        LinearLayout linear_layout;
+
+        component_params(String link, LinearLayout linear_layout) {
+            this.link = link;
+            this.linear_layout = linear_layout;
+        }
+    }
+    private static class component_response {
+        String link;
+        LinearLayout linear_layout;
+        String content;
+
+        component_response(String link, LinearLayout linear_layout,String content) {
+            this.link = link;
+            this.linear_layout = linear_layout;
+            this.content = content;
+        }
     }
 
     public LinearLayout render_element_column(LinearLayout parent_object, JSONObject object, JSONObject prev_object, int width) {
@@ -438,7 +545,7 @@ public class MainActivity extends AppCompatActivity {
             linear_layout.setId(id);
             Resources resource = context.getResources();
             Random rnd = new Random();
-            if(debug) {
+            if (debug) {
                 int currentStrokeColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
                 linear_layout.setBackgroundColor(currentStrokeColor);
             }
@@ -458,7 +565,7 @@ public class MainActivity extends AppCompatActivity {
                 if (prev_type.toLowerCase().contains("column")) {
                     offset = object.getInt("gs_x") - (prev_object.getInt("gs_x") + prev_object.getInt("width"));
                     linear_layout.setPadding(width * offset, 0, 0, 0);
-                }else{
+                } else {
                     offset = object.getInt("gs_x");
                     linear_layout.setPadding(width * offset, 0, 0, 0);
                 }
@@ -469,23 +576,24 @@ public class MainActivity extends AppCompatActivity {
             //linear_layout = a_render_element_text_view("column-" + id + ":" + Integer.toString(a_width), id, linear_layout);
             linear_layout.setLayoutParams(new ViewGroup.LayoutParams(a_width, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-            String position=object.getString("position");
+            String position = object.getString("position");
             if (position.toLowerCase().contains("position-component")) {
-                EditText edit_text = new EditText(MainActivity.this);
-                edit_text.setText("position-component");
-                ((LinearLayout) linear_layout).addView(edit_text);
-            }else{
 
-                for (int i=0;i<modules.length();i++)
-                {
-                    JSONObject module=modules.getJSONObject(i);
+                String host_tmpl_component = host.replaceAll("os=android&", "");
+                host_tmpl_component = host_tmpl_component + "&tmpl=android&layout=android";
+                component_params params = new component_params(host_tmpl_component, linear_layout);
+                (new AsyncComponentViewLoader()).execute(params);
+                //((LinearLayout) linear_layout).addView(edit_text);
+            } else {
+
+                for (int i = 0; i < modules.length(); i++) {
+                    JSONObject module = modules.getJSONObject(i);
                     String module_position = module.getString("position");
-                    if (module_position.toLowerCase().contains("position-"+String.valueOf(id)))
-                    {
-                        String module_name=module.getString("module");
+                    if (module_position.toLowerCase().contains("position-" + String.valueOf(id))) {
+                        String module_name = module.getString("module");
                         switch (module_name) {
                             case "mod_menu":
-                                modMenuHelper.render_menu(context, linear_layout, module,width);
+                                modMenuHelper.render_menu(context, linear_layout, module, width);
                                 break;
                             case "mod_virtuemart_category":
                                 mod_virtuemart_category_helper.render_module(context, linear_layout, module, width);

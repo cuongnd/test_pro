@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_products
  * @since       1.5
  */
-class ProductsController extends JControllerLegacy
+class countdownController extends JControllerLegacy
 {
 	/**
 	 * Method to display a view.

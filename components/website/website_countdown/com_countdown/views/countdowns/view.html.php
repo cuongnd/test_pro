@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_products
  * @since       1.5
  */
-class productsViewProducts extends JViewLegacy
+class countdownViewcountdowns extends JViewLegacy
 {
 	protected $items;
 

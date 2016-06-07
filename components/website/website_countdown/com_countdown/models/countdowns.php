@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_countdowns
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,10 +13,10 @@ defined('_JEXEC') or die;
  * Methods supporting a list of component records.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_countdowns
  * @since       1.6
  */
-class ProductsModelProducts extends JModelList
+class countdownModelcountdowns extends JModelList
 {
     /**
      * Constructor.
@@ -73,7 +73,7 @@ class ProductsModelProducts extends JModelList
 
 
         // Load the parameters.
-        $params = JComponentHelper::getParams('com_products');
+        $params = JComponentHelper::getParams('com_countdown');
         $this->setState('params', $params);
 
         // List state information.
@@ -105,7 +105,6 @@ class ProductsModelProducts extends JModelList
             ->select('product_category.product_category_name AS product_category_name')
             ->group('a.id')
         ;
-        echo $query->dump();
         return $query;
     }
     public function getItems()
