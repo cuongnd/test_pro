@@ -987,7 +987,39 @@ class JUtility
         return $result;
 
     }
+    public  static function element_to_obj($element) {
+        //print_r($element);
+        $obj = array();
+        $attr = array();
+        $arr = array();
+        $name = $element->tagName;
+        foreach ($element->attributes as $attribute) {
+            $attr[$attribute->name] = $attribute->value;
+            if ($attribute->name == 'id') {
+                $name .= '#'.$attribute->value;
+            }
+        }
+        if (!empty($attr)) {
+            $arr["attributes"] = $attr;
+        }
+        if ($element->nodeValue != '') {
+            $arr["value"] = $element->nodeValue;
+        }
 
+        foreach ($element->childNodes as $subElement) {
+            if ($subElement->nodeType == XML_TEXT_NODE) {
+
+            }
+            elseif ($subElement->nodeType == XML_CDATA_SECTION_NODE) {
+
+            }
+            else {
+                $arr["child_nodes"][] = self::element_to_obj($subElement);
+            }
+        }
+        $obj[$name] = $arr;
+        return $obj;
+    }
      static function getMemoryUseByVar($var, $unit = "", $decimals = 2, $format = true)
     {
         $new_object = new stdClass();
