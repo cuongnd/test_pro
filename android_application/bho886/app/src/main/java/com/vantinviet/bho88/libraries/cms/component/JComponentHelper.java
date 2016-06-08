@@ -6,6 +6,8 @@ import com.vantinviet.bho88.libraries.joomla.factory;
 import com.vantinviet.bho88.libraries.utilities.md5;
 import com.vantinviet.bho88.libraries.utilities.utilities;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -40,7 +42,24 @@ public class JComponentHelper {
         return content;
     }
 
-    public static void renderComponent(JSONObject json_object) {
+    public static void renderComponent(JSONObject json_object) throws JSONException {
+        abstract class MyFun {
+            public abstract void render_element(JSONObject json_object,String root_element, int level, int max_level) throws JSONException;
+        }
+        final MyFun fun2 = new  MyFun() {
 
+            @Override public  void render_element(JSONObject json_object,String root_element,int level,int max_level) throws JSONException {
+                int level1=level+1;
+                JSONObject sub_json_object = json_object.getJSONObject(root_element);
+                System.out.println(sub_json_object);
+                if(level<max_level)
+                {
+                    System.out.println("xin chao");
+                    render_element(json_object,root_element,level1, max_level);
+                }
+            }
+        };
+        String root_element="html";
+        fun2.render_element(json_object,root_element,0,999);
     }
 }
