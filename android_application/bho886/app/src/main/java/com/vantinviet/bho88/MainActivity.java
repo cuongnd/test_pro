@@ -29,7 +29,9 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.vantinviet.bho88.libraries.android.http.JSONParser;
 import com.vantinviet.bho88.libraries.cms.application.application_cms;
-import com.vantinviet.bho88.libraries.utilities.utilities;
+import com.vantinviet.bho88.libraries.cms.component.JComponentHelper;
+import com.vantinviet.bho88.libraries.cms.menu.menu;
+import com.vantinviet.bho88.libraries.joomla.factory;
 import com.vantinviet.bho88.media.element.slider.banner_rotator.elementBanner_RotatorHelper;
 import com.vantinviet.bho88.media.element.ui.grid.element_grid_helper;
 import com.vantinviet.bho88.media.element.ui.link_image.element_link_image_helper;
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Remove title bar
 
-
+        factory.setContext(context);
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int screenDensity = (int) metrics.density;
@@ -184,6 +186,11 @@ public class MainActivity extends AppCompatActivity {
                     int root_id = json_object.getInt("root_id");
                     JSONObject children = json_object.getJSONObject("children");
                     modules = json_object.getJSONArray("modules");
+                    JSONObject active_menu_item = json_object.getJSONObject("active_menu_item");
+                    JSONArray list_menu_item = json_object.getJSONArray("list_menu_item");
+                    menu menu= factory.getMenu();
+                    menu.setMenuActive(active_menu_item);
+                    menu.setItems(list_menu_item);
                     set_cache_json_by_screen_size(screen_size_width, screen_size_height, 0, json_object.toString());
                     tree_recurse(root_id, children, null, null, null, 0, 0);
 
@@ -194,6 +201,11 @@ public class MainActivity extends AppCompatActivity {
                         int root_id = json.getInt("root_id");
                         modules = json_object.getJSONArray("modules");
                         JSONObject children = json.getJSONObject("children");
+                        JSONObject active_menu_item = json.getJSONObject("active_menu_item");
+                        JSONArray list_menu_item = json_object.getJSONArray("list_menu_item");
+                        menu menu= factory.getMenu();
+                        menu.setItems(list_menu_item);
+                        menu.setMenuActive(active_menu_item);
                         tree_recurse(root_id, children, null, null, null, 0, 0);
                     }
 
@@ -259,7 +271,9 @@ public class MainActivity extends AppCompatActivity {
 
             component_response com_response=new component_response(component_params[0].link, component_params[0].linear_layout,"");
             try {
-                String content = utilities.callURL(component_params[0].link);
+                String link=component_params[0].link;
+                String content= JComponentHelper.getContentComponent(link);
+
                 com_response = new component_response(component_params[0].link, component_params[0].linear_layout,content);
 
             } catch (Throwable t) {

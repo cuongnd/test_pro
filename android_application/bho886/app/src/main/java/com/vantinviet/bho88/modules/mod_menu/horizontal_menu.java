@@ -17,9 +17,8 @@ import com.vantinviet.bho88.MainActivity;
 import com.vantinviet.bho88.R;
 import com.vantinviet.bho88.config;
 import com.vantinviet.bho88.libraries.android.registry.Registry;
-import com.vantinviet.bho88.libraries.cms.menu.JMenu;
-import com.vantinviet.bho88.libraries.legacy.JFactory;
-import com.vantinviet.bho88.libraries.legacy.application.JApplication;
+import com.vantinviet.bho88.libraries.cms.menu.menu;
+import com.vantinviet.bho88.libraries.joomla.factory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -201,7 +200,7 @@ public class horizontal_menu {
                     Intent i = new Intent(v.getContext(), MainActivity.class);
                     v.getContext().startActivity(i);
                     MainActivity.title=title;
-                    JMenu menu=JMenu.getInstance();
+                    menu menu= factory.getMenu();
                     menu.setMenuActive(menu_item);
                     //(new AsyncJsonElementViewLoader()).execute(link);
                     System.out.println(link);

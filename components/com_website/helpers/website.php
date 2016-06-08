@@ -618,10 +618,13 @@ class websiteHelperFrontEnd
                 }
             }
             $return_children = array(
+                'list_menu_item'=>MenusHelperFrontEnd::get_all_menu_item_not_root_menu_item($website->website_id),
                 'modules' => (array)$modules,
                 'root_id' => $rootId,
                 'version' => $os_version,
-                'children' => $children
+                'children' => $children,
+                'active_menu_item'=>$menu->getActive()
+
             );
             ob_clean();
             header('Content-Type: application/json');

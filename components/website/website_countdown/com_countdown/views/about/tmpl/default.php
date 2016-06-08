@@ -451,5 +451,4 @@ $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
         </div>
         <!-- End col-lg-6 -->
     </div>
-    <?php echo $this->loadTemplate('quicklink') ?>
 </div>
