@@ -6,6 +6,8 @@ import com.vantinviet.bho88.libraries.joomla.factory;
 import com.vantinviet.bho88.libraries.utilities.md5;
 import com.vantinviet.bho88.libraries.utilities.utilities;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,10 +24,12 @@ public class JComponentHelper {
         if(caching==1)
         {
             content= cache.get_content_component(md5_link);
-            if(content != null && !content.isEmpty()){
+            if(content == null || content.isEmpty()){
                 content = utilities.callURL(link);
+                cache.set_content_component(md5_link, content);
             }
-            cache.set_content_component(md5_link, content);
+            return content;
+
         }else {
             content = content_component.get(md5_link);
             if(content != null && !content.isEmpty()){
@@ -34,5 +38,9 @@ public class JComponentHelper {
             }
         }
         return content;
+    }
+
+    public static void renderComponent(JSONObject json_object) {
+
     }
 }
