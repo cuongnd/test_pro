@@ -27,11 +27,16 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.vantinviet.bho88.configuration.configuration;
 import com.vantinviet.bho88.libraries.android.http.JSONParser;
 import com.vantinviet.bho88.libraries.cms.application.application_cms;
 import com.vantinviet.bho88.libraries.cms.component.JComponentHelper;
 import com.vantinviet.bho88.libraries.cms.menu.menu;
+import com.vantinviet.bho88.libraries.joomla.cache.cache;
 import com.vantinviet.bho88.libraries.joomla.factory;
+import com.vantinviet.bho88.libraries.legacy.application.JApplication;
+import com.vantinviet.bho88.libraries.utilities.md5;
+import com.vantinviet.bho88.libraries.utilities.utilities;
 import com.vantinviet.bho88.media.element.slider.banner_rotator.elementBanner_RotatorHelper;
 import com.vantinviet.bho88.media.element.ui.grid.element_grid_helper;
 import com.vantinviet.bho88.media.element.ui.link_image.element_link_image_helper;
@@ -226,18 +231,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            String return_json = "";
-            try {
-                // instantiate our json parser
-                JSONParser jParser = new JSONParser();
-                // get json string from url
-                JSONObject json = jParser.getJSONFromUrl(params[0]);
-                System.out.println(json.toString());
-                return_json = json.toString();
-
-            } catch (Throwable t) {
-                t.printStackTrace();
-            }
+            String link=params[0];
+            String return_json = JApplication.get_content_website(link);
             return return_json;
         }
 
@@ -272,6 +267,7 @@ public class MainActivity extends AppCompatActivity {
             component_response com_response=new component_response(component_params[0].link, component_params[0].linear_layout,"");
             try {
                 String link=component_params[0].link;
+                System.out.println(link);
                 String content= JComponentHelper.getContentComponent(link);
 
                 com_response = new component_response(component_params[0].link, component_params[0].linear_layout,content);
