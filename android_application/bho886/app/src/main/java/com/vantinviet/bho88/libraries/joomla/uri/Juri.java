@@ -3,15 +3,15 @@ package com.vantinviet.bho88.libraries.joomla.uri;
 /**
  * Created by cuongnd on 6/8/2016.
  */
-public class uri {
+public class JUri {
     private static String link;
-    private static uri ourInstance = new uri(link);
+    private static JUri ourInstance = new JUri(link);
 
-    public static uri getInstance(String link) {
+    public static JUri getInstance(String link) {
 
         return ourInstance;
     }
 
-    private uri(String link) {
+    private JUri(String link) {
     }
 }
