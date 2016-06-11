@@ -6,5 +6,5 @@ package com.vantinviet.bho88.configuration;
 public class configuration_countdown extends configuration {
     protected float cachetime=150000;
     public int caching=1;
-    protected String cache_handler="JCacheFile";
+    public String cache_handler="file";
 }

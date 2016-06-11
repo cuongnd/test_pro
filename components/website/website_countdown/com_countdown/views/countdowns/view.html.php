@@ -18,12 +18,11 @@ defined('_JEXEC') or die;
  */
 class countdownViewcountdowns extends JViewLegacy
 {
-	protected $items;
+	public $items;
 
-	protected $pagination;
+	public $pagination;
 
-	protected $state;
-
+	public $state;
 	/**
 	 * Display the view
 	 */
@@ -34,6 +33,7 @@ class countdownViewcountdowns extends JViewLegacy
 		$this->items      = $this->get('Items');
 		$this->pagination = $this->get('Pagination');
         $this->filterForm    = $this->get('FilterForm');
+
 		$this->state      = $this->get('State');
 
 		// Check for errors.
@@ -52,7 +52,6 @@ class countdownViewcountdowns extends JViewLegacy
 			);
 		}
 
-        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('products.quick_assign_website');
 		$this->addToolbar();
 
         JHtmlSidebar::addFilter(

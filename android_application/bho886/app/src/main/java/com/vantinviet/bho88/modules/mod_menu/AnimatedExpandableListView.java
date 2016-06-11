@@ -48,9 +48,9 @@ public class AnimatedExpandableListView extends ExpandableListView {
      * class does it is by exploiting how an ExpandableListView works.
      *
      * Normally when {@link ExpandableListView#collapseGroup(int)} or
-     * {@link ExpandableListView#expandGroup(int)} is called, the view toggles
+     * {@link ExpandableListView#expandGroup(int)} is called, the JView toggles
      * the flag for a group and calls notifyDataSetChanged to cause the ListView
-     * to refresh all of it's view. This time however, depending on whether a
+     * to refresh all of it's JView. This time however, depending on whether a
      * group is expanded or collapsed, certain childViews will either be ignored
      * or added to the list.
      *
@@ -61,10 +61,10 @@ public class AnimatedExpandableListView extends ExpandableListView {
      * ExpandableListView does this is by calling getView() in the adapter.
      * However since the adapter knows that we are animating a certain group,
      * instead of returning the real views for the children of the group being
-     * animated, it will return a fake dummy view. This dummy view will then
+     * animated, it will return a fake dummy JView. This dummy JView will then
      * draw the real child views within it's dispatchDraw function. The reason
      * we do this is so that we can animate all of it's children by simply
-     * animating the dummy view. After we complete the animation, we tell the
+     * animating the dummy JView. After we complete the animation, we tell the
      * adapter to stop animating the group and call notifyDataSetChanged. Now
      * the ExpandableListView is forced to refresh it's views again, except this
      * time, it will get the real views for the expanded group.
@@ -76,9 +76,9 @@ public class AnimatedExpandableListView extends ExpandableListView {
      * 2. The ExpandableListView calls expandGroup.
      * 3. ExpandGroup calls notifyDataSetChanged.
      * 4. As an result, getChildView is called for expanding group.
-     * 5. Since the adapter is in "animating mode", it will return a dummy view.
-     * 6. This dummy view draws the actual children of the expanding group.
-     * 7. This dummy view's height is animated from 0 to it's expanded height.
+     * 5. Since the adapter is in "animating mode", it will return a dummy JView.
+     * 6. This dummy JView draws the actual children of the expanding group.
+     * 7. This dummy JView's height is animated from 0 to it's expanded height.
      * 8. Once the animation completes, the adapter is notified to stop
      *    animating the group and notifyDataSetChanged is called again.
      * 9. This forces the ExpandableListView to refresh all of it's views again.
@@ -97,9 +97,9 @@ public class AnimatedExpandableListView extends ExpandableListView {
      * 1. The ExpandableListView tells the adapter to animate a certain group.
      * 2. The ExpandableListView calls notifyDataSetChanged.
      * 3. As an result, getChildView is called for expanding group.
-     * 4. Since the adapter is in "animating mode", it will return a dummy view.
-     * 5. This dummy view draws the actual children of the expanding group.
-     * 6. This dummy view's height is animated from it's current height to 0.
+     * 4. Since the adapter is in "animating mode", it will return a dummy JView.
+     * 5. This dummy JView draws the actual children of the expanding group.
+     * 6. This dummy JView's height is animated from it's current height to 0.
      * 7. Once the animation completes, the adapter is notified to stop
      *    animating the group and notifyDataSetChanged is called again.
      * 8. collapseGroup is finally called.
@@ -162,7 +162,7 @@ public class AnimatedExpandableListView extends ExpandableListView {
         if (groupFlatPos != -1) {
             int childIndex = groupFlatPos - getFirstVisiblePosition();
             if (childIndex < getChildCount()) {
-                // Get the view for the group is it is on screen...
+                // Get the JView for the group is it is on screen...
                 View v = getChildAt(childIndex);
                 if (v.getBottom() >= getBottom()) {
                     // If the user is not going to be able to see the animation
@@ -196,7 +196,7 @@ public class AnimatedExpandableListView extends ExpandableListView {
         if (groupFlatPos != -1) {
             int childIndex = groupFlatPos - getFirstVisiblePosition();
             if (childIndex >= 0 && childIndex < getChildCount()) {
-                // Get the view for the group is it is on screen...
+                // Get the JView for the group is it is on screen...
                 View v = getChildAt(childIndex);
                 if (v.getBottom() >= getBottom()) {
                     // If the user is not going to be able to see the animation
@@ -217,7 +217,7 @@ public class AnimatedExpandableListView extends ExpandableListView {
         int firstChildPos = getPackedPositionChild(packedPos);
         int firstGroupPos = getPackedPositionGroup(packedPos);
 
-        // If the first visible view on the screen is a child view AND it's a
+        // If the first visible JView on the screen is a child JView AND it's a
         // child of the group we are trying to collapse, then set that
         // as the first child position of the group... see
         // {@link #startCollapseAnimation(int, int)} for why this is necessary
@@ -245,10 +245,10 @@ public class AnimatedExpandableListView extends ExpandableListView {
         int firstChildPosition;
 
         /**
-         * This variable contains the last known height value of the dummy view.
+         * This variable contains the last known height value of the dummy JView.
          * We save this information so that if the user collapses a group
          * before it fully expands, the collapse animation will start from the
-         * CURRENT height of the dummy view and not from the full expanded
+         * CURRENT height of the dummy JView and not from the full expanded
          * height.
          */
         int dummyHeight = -1;
@@ -362,16 +362,16 @@ public class AnimatedExpandableListView extends ExpandableListView {
 
                 if (childPosition < info.firstChildPosition) {
                     // The reason why we do this is to support the collapse
-                    // this group when the group view is not visible but the
+                    // this group when the group JView is not visible but the
                     // children of this group are. When notifyDataSetChanged
                     // is called, the ExpandableListView tries to keep the
                     // list position the same by saving the first visible item
                     // and jumping back to that item after the views have been
                     // refreshed. Now the problem is, if a group has 2 items
                     // and the first visible item is the 2nd child of the group
-                    // and this group is collapsed, then the dummy view will be
+                    // and this group is collapsed, then the dummy JView will be
                     // used for the group. But now the group only has 1 item
-                    // which is the dummy view, thus when the ListView is trying
+                    // which is the dummy JView, thus when the ListView is trying
                     // to restore the scroll position, it will try to jump to
                     // the second item of the group. But this group no longer
                     // has a second item, so it is forced to jump to the next
@@ -388,7 +388,7 @@ public class AnimatedExpandableListView extends ExpandableListView {
 
                 final DummyView dummyView = (DummyView) convertView;
 
-                // Clear the views that the dummy view draws.
+                // Clear the views that the dummy JView draws.
                 dummyView.clearViews();
 
                 // Set the style of the divider
@@ -530,7 +530,7 @@ public class AnimatedExpandableListView extends ExpandableListView {
         }
 
         /**
-         * Add a view for the DummyView to draw.
+         * Add a JView for the DummyView to draw.
          * @param childView View to draw
          */
         public void addFakeView(View childView) {

@@ -16,9 +16,9 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.vantinviet.bho88.MainActivity;
 import com.vantinviet.bho88.R;
 import com.vantinviet.bho88.config;
-import com.vantinviet.bho88.libraries.android.registry.Registry;
-import com.vantinviet.bho88.libraries.cms.menu.menu;
-import com.vantinviet.bho88.libraries.joomla.factory;
+import com.vantinviet.bho88.libraries.android.registry.JRegistry;
+import com.vantinviet.bho88.libraries.cms.menu.JMenu;
+import com.vantinviet.bho88.libraries.joomla.JFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -138,7 +138,7 @@ public class horizontal_menu {
             String params=object.getString("params");
             JSONObject json_object_params=new JSONObject(params);
 
-            Registry a_params = new Registry(json_object_params);
+            JRegistry a_params = new JRegistry(json_object_params);
             JSONObject menu_config=json_object_params.getJSONObject("menu_config");
             if(menu_config.has("scroll")) {
                 scroll =menu_config.getString("scroll");
@@ -200,8 +200,8 @@ public class horizontal_menu {
                     Intent i = new Intent(v.getContext(), MainActivity.class);
                     v.getContext().startActivity(i);
                     MainActivity.title=title;
-                    menu menu= factory.getMenu();
-                    menu.setMenuActive(menu_item);
+                    JMenu JMenu = JFactory.getMenu();
+                    JMenu.setMenuActive(menu_item);
                     //(new AsyncJsonElementViewLoader()).execute(link);
                     System.out.println(link);
                 } catch (JSONException e) {

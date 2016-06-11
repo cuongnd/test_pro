@@ -4,9 +4,6 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Environment;
 
-import com.vantinviet.bho88.configuration.configuration;
-import com.vantinviet.bho88.libraries.joomla.factory;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -75,5 +72,17 @@ public class JFile {
             error = e.getMessage();
 
         }
+    }
+
+    public static boolean exists(String md5_link, String folder) {
+        File root = new File(Environment.getExternalStorageDirectory(),folder);
+        if (!root.exists()) {
+            root.mkdirs();
+        }
+        File a_cache_file = new File(root, md5_link);
+        if (a_cache_file.exists()) {
+            return true;
+        }
+        return  false;
     }
 }

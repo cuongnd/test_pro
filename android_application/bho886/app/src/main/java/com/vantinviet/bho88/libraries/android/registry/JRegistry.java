@@ -8,9 +8,9 @@ import java.util.ArrayList;
 /**
  * Created by cuongnd on 11/01/2016.
  */
-public class Registry {
+public class JRegistry {
     JSONObject json_object_params;
-    public Registry(JSONObject json_object_params) {
+    public JRegistry(JSONObject json_object_params) {
         this.json_object_params=json_object_params;
     }
     protected String _get(String path, String r_default, String type,JSONObject json_object_params) {
@@ -30,7 +30,7 @@ public class Registry {
         }
         else {
             String[] parts = path.split("\\.");
-            String fist_item = "";
+            String first_item = "";
             String else_string = "";
             ArrayList<String> mylist = new ArrayList<String>();
             for(int i=0;i<parts.length;i++)
@@ -38,8 +38,8 @@ public class Registry {
                 if(i==0)
                 {
 
-                    fist_item=parts[i];
-                    System.out.println(fist_item);
+                    first_item=parts[i];
+                    System.out.println(first_item);
                 }else
                 {
                     mylist.add(parts[i]); //this adds an element to the list.
@@ -50,9 +50,9 @@ public class Registry {
             stockArr = mylist.toArray(stockArr);
             else_string=implodeArray(stockArr,".");
 
-            if (json_object_params.has(fist_item)) {
+            if (json_object_params.has(first_item)) {
                 try {
-                    json_object_params = json_object_params.getJSONObject(fist_item);
+                    json_object_params = json_object_params.getJSONObject(first_item);
                     r_string= this._get(else_string, r_default, type, json_object_params);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -91,5 +91,12 @@ public class Registry {
         }
 
         return output;
+    }
+
+    public static JRegistry getParams(JSONObject json_object) throws JSONException {
+        String params=json_object.getString("params");
+        JSONObject json_object_params=new JSONObject(params);
+        JRegistry a_params = new JRegistry(json_object_params);
+        return  a_params;
     }
 }

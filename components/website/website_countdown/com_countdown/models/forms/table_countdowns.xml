@@ -1,0 +1,21 @@
+<form>
+					<field type="text" readonly="false" label="Id" default=""
+						   name="id" 
+
+											>
+											</field>
+					<field type="checkbox" label="Id" default="0"
+						   name="enable_id"  >
+
+					</field>
+					
+					<field type="text" readonly="false" label="Count down name" default=""
+						   name="countdown_name" 
+
+											>
+											</field>
+					<field type="checkbox" label="Count down name" default="0"
+						   name="enable_countdown_name"  >
+
+					</field>
+					</form>

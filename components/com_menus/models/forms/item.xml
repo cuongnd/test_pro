@@ -67,7 +67,7 @@
 		<field
 			name="item_fields"
 			type="listfield"
-            xml_type="item"
+			xml_file="item"
 			label="Item fields"
 			description="Item fields"
 			 />
@@ -75,14 +75,14 @@
 		<field
 			name="filter_fields"
 			type="listfield"
-            xml_type="filter"
+			xml_file="filter"
 			label="filter fields"
 			description="filter fields"
 			 />
 		<field
 			name="table_fields"
 			type="listfield"
-            xml_type="table"
+			xml_file="table"
 			label="show table fields"
 			description="show table fields"
 			 />
@@ -346,6 +346,27 @@
 					description="select position component"
 					required="true"
 					size="1" />
+			<field
+					name="android_render"
+					type="list"
+					label="Android render"
+					description="Android render"
+					default="auto"
+			>
+				<option value="auto">Auto</option>
+				<option value="customizable">customizable</option>
+			</field>
+			<field
+					name="android_render_form_type"
+					type="list"
+					label="Android render form type"
+					description="Android render form type"
+					default="form"
+			>
+				<option value="form">form</option>
+				<option value="list">List</option>
+			</field>
+
 
 		</fieldset>
 	</fields>

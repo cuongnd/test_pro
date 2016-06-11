@@ -7,8 +7,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.vantinviet.bho88.libraries.cms.menu.menu;
-import com.vantinviet.bho88.libraries.joomla.factory;
+import com.vantinviet.bho88.libraries.cms.component.JComponentHelper;
+import com.vantinviet.bho88.libraries.cms.menu.JMenu;
+import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.legacy.exception.exception;
 
 import org.json.JSONException;
@@ -18,14 +19,14 @@ import org.json.JSONObject;
 /**
  * Created by cuongnd on 12/17/2015.
  */
-public class application_cms {
+public class JApplicationCms {
     public static Context main_context;
 
-    public static void execute_component(final Context context, View linear_layout, String host, String content) throws exception, JSONException {
+    public static void execute_component(final Context context, LinearLayout linear_layout, String host, String component_content) throws exception, JSONException {
 
 
-        menu menu= factory.getMenu();
-        JSONObject menu_active=menu.getMenuActive();
+        JMenu JMenu = JFactory.getMenu();
+        JSONObject menu_active= JMenu.getMenuActive();
         System.out.println("menu_active");
         System.out.println(menu_active);
         System.out.println("end menu_active");
@@ -39,13 +40,11 @@ public class application_cms {
         System.out.println("mobile_response_type:"+mobile_response_type);
         if(mobile_response_type.equals("json"))
         {
-            JSONObject json_object = new JSONObject(content);
-            System.out.println("json_object");
-            System.out.println(json_object);
-            System.out.println("end json_object");
+            JSONObject json_element = new JSONObject(component_content);
+            JComponentHelper.renderComponent(context,json_element,linear_layout);
         }else {
             TextView myTextview = new TextView(context);
-            Spanned sp = Html.fromHtml(content);
+            Spanned sp = Html.fromHtml(component_content);
             myTextview.setText(sp);
             linear_layout.setPadding(10, 10, 10, 10);
             ((LinearLayout) linear_layout).addView(myTextview);

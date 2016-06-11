@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
 /**
- * Action item, displayed as menu with icon and text.
+ * Action item, displayed as JMenu with icon and text.
  * 
  * @author Lorensius. W. L. T <lorenz@londatiga.net>
  * 
@@ -130,7 +130,7 @@ public class ActionItem {
     }
     
     /**
-     * @return  true if button is sticky, menu stays visible after press
+     * @return  true if button is sticky, JMenu stays visible after press
      */
     public boolean isSticky() {
         return sticky;

@@ -334,7 +334,7 @@ class JFormFieldlistfield extends JFormField
                 $file_xml=$view;
                 break;
         }
-        $element_path='components/website/website_' . $website_name . '/' . $component.'/models/form/'.$file_xml.'.xml';
+        $element_path='components/website/website_' . $website_name . '/' . $component.'/models/forms/'.$file_xml.'.xml';
         $filter['element_path'] = $element_path;
         $filter['website_id'] = $website->website_id;
         $table_control->load($filter);

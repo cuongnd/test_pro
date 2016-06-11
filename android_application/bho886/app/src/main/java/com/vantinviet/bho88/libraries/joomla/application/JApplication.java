@@ -1,12 +1,13 @@
 package com.vantinviet.bho88.libraries.joomla.application;
 
+import android.content.Context;
+
 import com.vantinviet.bho88.configuration.configuration;
 import com.vantinviet.bho88.libraries.android.http.JSONParser;
-import com.vantinviet.bho88.libraries.cms.menu.menu;
+import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.cache.cache;
-import com.vantinviet.bho88.libraries.joomla.factory;
+import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.utilities.md5;
-import com.vantinviet.bho88.libraries.utilities.utilities;
 
 import org.json.JSONObject;
 
@@ -18,14 +19,27 @@ import java.util.Map;
  */
 public class JApplication {
     public static Map<String, String> content_website =new HashMap<String, String>();
-    public menu getMenu() {
-        menu menu = com.vantinviet.bho88.libraries.cms.menu.menu.getInstance();
-        return  menu;
+    public static JApplication instance;
+    public Context context;
+
+    /* Static 'instance' method */
+    public static JApplication getInstance( ) {
+
+        if (instance == null) {
+            instance = new JApplication();
+        }
+        return instance;
+    }
+
+
+    public JMenu getMenu() {
+        JMenu menu = JMenu.getInstance();
+        return menu;
     }
 
     public static String get_content_website(String link) {
         String md5_link= md5.encryptMD5(link);
-        configuration config= factory.getConfig();
+        configuration config= JFactory.getConfig();
         String content ="";
         int caching=config.caching;
         if(caching==1)
@@ -39,7 +53,7 @@ public class JApplication {
 
         }else {
             content = content_website.get(md5_link);
-            if(content != null && !content.isEmpty()){
+            if(content == null || content.isEmpty()){
                 content = call_json_get_content_website(link);
                 content_website.put(md5_link,content);
             }

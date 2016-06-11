@@ -65,7 +65,7 @@ public class PopupWindows {
 	 */
 	protected void preShow() {
 		if (mRootView == null) 
-			throw new IllegalStateException("setContentView was not called with a view to display.");
+			throw new IllegalStateException("setContentView was not called with a JView to display.");
 	
 		onShow();
 
@@ -93,9 +93,9 @@ public class PopupWindows {
 	}
 
 	/**
-	 * Set content view.
+	 * Set content JView.
 	 * 
-	 * @param root Root view
+	 * @param root Root JView
 	 */
 	public void setContentView(View root) {
 		mRootView = root;
@@ -104,7 +104,7 @@ public class PopupWindows {
 	}
 
 	/**
-	 * Set content view.
+	 * Set content JView.
 	 * 
 	 * @param layoutResID Resource id
 	 */

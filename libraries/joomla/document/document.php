@@ -34,6 +34,7 @@ class JDocument
      * @since  11.1
      */
     public $description = '';
+    public $android_response = '';
 
     /**
      * Document full URL
@@ -1187,6 +1188,11 @@ class JDocument
 
         $app->mimeType = $this->_mime;
         $app->charSet = $this->_charset;
+    }
+
+    public function set_android_response($response)
+    {
+        $this->android_response=$response;
     }
 
 }

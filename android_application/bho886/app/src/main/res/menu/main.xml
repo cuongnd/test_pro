@@ -1,4 +1,4 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<JMenu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.daimajia.slider.demo.MainActivity" >
@@ -20,4 +20,4 @@
         android:title="GitHub"
         >
     </item>
-</menu>
+</JMenu>

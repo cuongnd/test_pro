@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.vantinviet.bho88.R;
-import com.vantinviet.bho88.libraries.android.registry.Registry;
+import com.vantinviet.bho88.libraries.android.registry.JRegistry;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -82,7 +82,7 @@ public class vertical_menu {
 
             String params=object.getString("params");
             JSONObject json_object_params=new JSONObject(params);
-            Registry a_params = new Registry(json_object_params);
+            JRegistry a_params = new JRegistry(json_object_params);
 
 
         } catch (JSONException e) {

@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.vantinviet.bho88.R;
 import com.vantinviet.bho88.libraries.android.http.JSONParser;
-import com.vantinviet.bho88.libraries.android.registry.Registry;
+import com.vantinviet.bho88.libraries.android.registry.JRegistry;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,15 +59,15 @@ public class element_grid_helper {
             String params=object.getString("params");
             JSONObject json_object_params=new JSONObject(params);
             System.out.println(json_object_params);
-            Registry a_params = new Registry(json_object_params);
+            JRegistry a_params = new JRegistry(json_object_params);
 
             String formart_header=a_params.get("config_view_grid.formart_header", "", "string");
             byte[] data_formart_header = Base64.decode(formart_header, Base64.DEFAULT);
             formart_header = new String(data_formart_header, "UTF-8");
 
-            Registry params_formart_header = new Registry(new JSONObject(formart_header));
+            JRegistry params_format_header = new JRegistry(new JSONObject(formart_header));
 
-            String mode_select_column_template=params_formart_header.get("mode_select_column_template","","String");
+            String mode_select_column_template=params_format_header.get("mode_select_column_template","","String");
             JSONArray array_mode_select_column_template=new JSONArray(mode_select_column_template);
             List<String> list_column_title = new ArrayList<String>();
             list_column_name = new ArrayList<String>();

@@ -33,7 +33,7 @@ class countdownconfig
     }
     public static function get_table_by_view($view){
         $list_table=array(
-            '#__ecommerce_product'=>'product,products'
+            '#__countdown_countdown'=>'countdown,countdowns'
         );
         foreach($list_table as $table=>$views)
         {

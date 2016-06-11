@@ -623,7 +623,8 @@ class websiteHelperFrontEnd
                 'root_id' => $rootId,
                 'version' => $os_version,
                 'children' => $children,
-                'active_menu_item'=>$menu->getActive()
+                'active_menu_item'=>$menu->getActive(),
+                'request'=>$app->input->getArray()
 
             );
             ob_clean();

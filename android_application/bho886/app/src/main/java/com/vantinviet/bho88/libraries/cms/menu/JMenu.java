@@ -6,9 +6,9 @@ import org.json.JSONObject;
 /**
  * Created by cuongnd on 6/7/2016.
  */
-public class menu {
+public class JMenu {
 
-    private static menu singleton;
+    private static JMenu singleton;
     private int menuActiveId;
     private JSONObject menuActive;
     private JSONArray items;
@@ -16,14 +16,14 @@ public class menu {
     /* A private Constructor prevents any other
      * class from instantiating.
      */
-    private menu(){
+    private JMenu(){
 
     }
 
     /* Static 'instance' method */
-    public static menu getInstance( ) {
+    public static JMenu getInstance( ) {
         if (singleton == null) {
-            singleton = new menu();
+            singleton = new JMenu();
         }
         System.out.println(singleton);
         return singleton;

@@ -34,6 +34,7 @@ class JModelList extends JModelLegacy
 	 * @since  12.2
 	 */
 	protected $context = null;
+	public $column_fields = null;
 
 	/**
 	 * Valid filter fields or ordering.
@@ -58,6 +59,7 @@ class JModelList extends JModelLegacy
 	 * @since  3.2
 	 */
 	protected $filterFormName = null;
+	protected $ShowColumn = null;
 
 	/**
 	 * Associated HTML form
@@ -351,6 +353,142 @@ class JModelList extends JModelLegacy
 		{
 			// Get the form.
 			$form = $this->loadForm($this->context . '.filter', $this->filterFormName, array('control' => '', 'load_data' => $loadData));
+		}
+
+		return $form;
+	}
+
+	public function render_to_xml_show_column()
+	{
+		$model_name=$this->name;
+		$component=$this->option;
+		$component_path=JPath::get_component_path($component,false);
+		$xml_show_column_path=$component_path.DS."models/forms/table_".$model_name.".xml";
+		$table_control=JTable::getInstance('control');
+		$table_control->load(array(
+			"element_path"=>$xml_show_column_path
+		));
+		$fields=$table_control->fields;
+		$fields=base64_decode($fields);
+		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		ob_start();
+		self::render_to_xml($fields);
+		$string_xml=ob_get_clean();
+		$string_xml='<form>'.$string_xml.'</form>';
+		jimport('joomla.filesystem.file');
+		JFile::write(JPATH_ROOT.'/'.$xml_show_column_path,$string_xml);
+
+	}
+
+	function render_to_xml($fields,$maxLevel = 9999, $level = 0)
+	{
+		if($level<=$maxLevel)
+		{
+			foreach ($fields as $item) {
+				$level1=$level+1;
+				if(is_array($item->children)&&count($item->children)>0 ) {
+					if($level==0){
+						if(strtolower($item->name)!='option')
+						{
+							echo '<fields name="'.strtolower($item->name).'">';
+						}
+					}else{
+						echo '<fields name="'.strtolower($item->name).'">';
+					}
+					JModelAdmin::render_to_xml($item->children,  $maxLevel, $level1);
+					if($level==0){
+						if(strtolower($item->name)!='option')
+						{
+							echo '</fields>';
+						}
+					}else{
+						echo '</fields>';
+					}
+				}else{
+					$config_property=$item->config_property;
+					$config_property=base64_decode($config_property);
+					$config_property = (array)up_json_decode($config_property, false, 512, JSON_PARSE_JAVASCRIPT);
+
+					$config_params=$item->config_params;
+					$config_params=base64_decode($config_params);
+					$config_params = (array)up_json_decode($config_params, false, 512, JSON_PARSE_JAVASCRIPT);
+					$name=strtolower($item->name);
+					?>
+
+					<field type="<?php echo $item->type?$item->type:'text' ?>" readonly="<?php echo $item->readonly==1?'true':'false' ?>" label="<?php echo $item->label ?>" default="<?php echo $item->default ?>"
+						   name="<?php echo $name ?>" <?php if($item->onchange){ ?> onchange="<?php echo strtolower($item->onchange) ?>" <?php } ?>
+
+
+						<?php
+						foreach($config_property as $a_item){ ?>
+							<?php if($a_item->property_key&&$a_item->property_value){
+								echo " ";
+								echo "{$a_item->property_key}=\"{$a_item->property_value}\"";
+								echo " ";
+							} ?>
+						<?php }
+
+
+						?>
+					>
+						<?php if(count($config_params)){
+
+							foreach($config_params as $a_item){ ?>
+								<?php if($a_item->param_key!=''&&$a_item->param_value!=''){ ?>
+									<option value="<?php echo $a_item->param_key ?>"><?php echo $a_item->param_value ?></option>
+								<?php } ?>
+							<?php }
+						} ?>
+					</field>
+					<field type="checkbox" label="<?php echo $item->label ?>" default="0"
+						   name="enable_<?php echo $name ?>" <?php if($item->onchange){ ?> onchange="<?php echo strtolower($item->onchange) ?>" <?php } ?> >
+
+					</field>
+					<?php
+				}
+
+			}
+
+		}
+
+	}
+
+	public function getColumnFields(){
+		$model_name=$this->name;
+		$component=$this->option;
+		$component_path=JPath::get_component_path($component,false);
+		$xml_show_column_path=$component_path.DS."models/forms/table_".$model_name.".xml";
+		$table_control=JTable::getInstance('control');
+		$table_control->load(array(
+			"element_path"=>$xml_show_column_path
+		));
+		$fields=$table_control->fields;
+		$fields=base64_decode($fields);
+		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		return $fields;
+	}
+	public function getShowColumn($data = array(), $loadData = true)
+	{
+		self::render_to_xml_show_column();
+		$form = null;
+
+		// Try to locate the filter form automatically. Example: ContentModelArticles => "filter_articles"
+		if (empty($this->ShowColumn))
+		{
+			$classNameParts = explode('Model', get_called_class());
+
+			if (count($classNameParts) == 2)
+			{
+				$this->ShowColumn = 'table_' . strtolower($classNameParts[1]);
+			}
+		}
+
+		if (!empty($this->ShowColumn))
+		{
+			// Get the form.
+			$form = $this->loadForm($this->context . '.table', $this->ShowColumn, array('control' => '', 'load_data' => $loadData));
 		}
 
 		return $form;

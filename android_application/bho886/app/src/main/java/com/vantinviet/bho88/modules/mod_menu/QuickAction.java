@@ -102,7 +102,7 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
     }
     
 	/**
-	 * Set root view.
+	 * Set root JView.
 	 * 
 	 * @param id Layout resource id
 	 */
@@ -116,7 +116,7 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 		mScroller	= (ScrollView) mRootView.findViewById(R.id.scroller);
 		
 		//This was previously defined on show() method, moved here to prevent force close that occured
-		//when tapping fastly on a view to show quickaction dialog.
+		//when tapping fastly on a JView to show quickaction dialog.
 		//Thanx to zammbi (github.com/zammbi)
 		mRootView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 		
@@ -216,7 +216,7 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 	}
 	
 	/**
-	 * Show quickaction popup. Popup is automatically positioned, on top or bottom of anchor view.
+	 * Show quickaction popup. Popup is automatically positioned, on top or bottom of anchor JView.
 	 * 
 	 */
 	public void show (View anchor) {
@@ -297,7 +297,7 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 	 * 
 	 * @param screenWidth screen width
 	 * @param requestedX distance from left edge
-	 * @param onTop flag to indicate where the popup should be displayed. Set TRUE if displayed on top of anchor view
+	 * @param onTop flag to indicate where the popup should be displayed. Set TRUE if displayed on top of anchor JView
 	 * 		  and vice versa
 	 */
 	private void setAnimationStyle(int screenWidth, int requestedX, boolean onTop) {

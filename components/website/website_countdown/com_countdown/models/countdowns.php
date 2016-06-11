@@ -98,11 +98,11 @@ class countdownModelcountdowns extends JModelList
                 'a.*'
             )
         )
-            ->from($db->quoteName('#__ecommerce_product') . ' AS a')
-            ->leftJoin('#__ecommerce_product AS product ON product.id=a.parent_id')
-            ->select('product.product_name AS parent_product_name')
-            ->leftJoin('#__ecommerce_product_category AS product_category ON product_category.id=a.product_category_id')
-            ->select('product_category.product_category_name AS product_category_name')
+            ->from($db->quoteName('#__countdown_countdown') . ' AS a')
+            ->leftJoin('#__countdown_countdown AS countdown ON countdown.id=a.parent_id')
+            ->select('countdown.countdown_name AS parent_countdown_name')
+            ->leftJoin('#__countdown_countdown_category AS countdown_category ON countdown_category.id=a.countdown_category_id')
+            ->select('countdown_category.countdown_category_name AS countdown_category_name')
             ->group('a.id')
         ;
         return $query;

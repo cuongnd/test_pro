@@ -83,6 +83,9 @@ class JViewLegacy extends JObject
 	 * @var string
 	 */
 	protected $_template = null;
+	public $show_column;
+	public $columnFields;
+
 
 	/**
 	 * The output of the template script.
@@ -211,6 +214,20 @@ class JViewLegacy extends JObject
 	 */
 	public function display($tpl = null)
 	{
+		$app=JFactory::getApplication();
+		$menu=$app->getMenu();
+		$active_menu=$menu->getActive();
+		$mobile_response_type=$active_menu->mobile_response_type;
+		$tmpl=$app->input->getString('tmpl','');
+		$this->show_column    = $this->get('ShowColumn');
+		$this->columnFields    = $this->get('ColumnFields');
+
+		if($tmpl=="android"&&$mobile_response_type=="json")
+		{
+			$doc=JFactory::getDocument();
+			$doc->set_android_response($this);
+			return;
+		}
 		$result = $this->loadTemplate($tpl);
 
 		if ($result instanceof Exception)

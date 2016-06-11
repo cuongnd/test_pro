@@ -3,7 +3,7 @@ package com.vantinviet.bho88.modules.mod_menu;
 import android.content.Context;
 import android.view.View;
 
-import com.vantinviet.bho88.libraries.android.registry.Registry;
+import com.vantinviet.bho88.libraries.android.registry.JRegistry;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +20,7 @@ public class modMenuHelper {
         try {
             String params=object.getString("params");
             JSONObject json_object_params=new JSONObject(params);
-            Registry a_params = new Registry(json_object_params);
+            JRegistry a_params = new JRegistry(json_object_params);
             System.out.println(json_object_params);
             String layout="";
             layout=a_params.get("layout","","string");
