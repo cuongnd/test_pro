@@ -65,6 +65,15 @@
 			size="1" />
 
 		<field
+			name="control_item"
+			type="listcontrolbutton"
+			xml_file="control_item"
+			label="Control Item"
+			description="Control item"
+			 />
+
+
+		<field
 			name="item_fields"
 			type="listfield"
 			xml_file="item"
@@ -86,6 +95,14 @@
 			label="show table fields"
 			description="show table fields"
 			 />
+		<field
+				name="control_list"
+				type="listcontrolbutton"
+				xml_file="control_list"
+				label="Control list"
+				description="Control list"
+		/>
+
 
 		<field
 			name="type"

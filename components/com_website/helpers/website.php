@@ -506,7 +506,6 @@ class websiteHelperFrontEnd
     static function displayLayout($this_layout, $enableEditWebsite = 0)
     {
 
-
         $app = JFactory::getApplication();
         if ($enableEditWebsite) {
             $currentScreenSize = UtilityHelper::getCurrentScreenSizeEditing();
@@ -529,6 +528,8 @@ class websiteHelperFrontEnd
             throw new Exception(JText::_('the are no active menu '), 404);
 
         }
+
+
         $use_main_frame = $params->get('use_main_frame', 0);
         $listPositionsSetting = array();
         require JPATH_ROOT . '/libraries/cms/version/version.php';
@@ -596,7 +597,6 @@ class websiteHelperFrontEnd
         $tablePosition->website_id = $website->website_id;
         $menu = JMenu::getInstance('site');
         $menuItemActiveId = $menu->getActive()->id;
-
 
         $rootId = $tablePosition->get_root_id();
         if ($os == 'android') {

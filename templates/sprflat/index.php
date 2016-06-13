@@ -383,6 +383,7 @@ ob_start();
 
     $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/assets/less/icons.less');
     $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/assets/less/plugins.less');
+
 }
 ?>
 <?php

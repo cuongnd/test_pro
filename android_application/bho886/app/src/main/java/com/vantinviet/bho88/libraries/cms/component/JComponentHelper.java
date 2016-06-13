@@ -14,7 +14,7 @@ import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.joomla.form.JFormField;
 import com.vantinviet.bho88.libraries.legacy.request.JRequest;
 import com.vantinviet.bho88.libraries.utilities.md5;
-import com.vantinviet.bho88.libraries.utilities.utilities;
+import com.vantinviet.bho88.libraries.utilities.JUtilities;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,7 +52,7 @@ public class JComponentHelper {
 
             content= cache.get_content_component(md5_link);
             if(content == null || content.isEmpty()){
-                content = utilities.callURL(link);
+                content =call_ajax_content_component(link);
                 cache.set_content_component(md5_link, content);
             }
             return content;
@@ -60,11 +60,30 @@ public class JComponentHelper {
         }else {
             content = content_component.get(md5_link);
             if(content == null || content.isEmpty()){
-                content = utilities.callURL(link);
+                content =call_ajax_content_component(link);
                 content_component.put(md5_link,content);
             }
         }
         return content;
+    }
+
+    private static String call_ajax_content_component(String link) {
+        String content= JUtilities.callURL(link);
+        if(content.toLowerCase().contains("link_redirect"))
+        {
+            try {
+                JSONObject json_object_content=new JSONObject(content);
+                String link_redirect=json_object_content.getString("link_redirect");
+                System.out.println(link_redirect);
+                return call_ajax_content_component(link_redirect);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return content;
+
+
+
     }
 
     public static void renderComponent(Context context, JSONObject json_element, LinearLayout linear_layout) throws JSONException {
@@ -73,7 +92,7 @@ public class JComponentHelper {
         JMenu menu=JFactory.getMenu();
         JSONObject menu_active=menu.getMenuActive();
         JRegistry menu_active_params = JRegistry.getParams(menu_active);
-        String android_render=menu_active_params.get("android_render","auto","String");
+        String android_render=menu_active_params.get("android_render", "auto", "String");
         if(android_render.equals("auto"))
         {
             auto_render_component(context,json_element,linear_layout);
@@ -104,6 +123,52 @@ public class JComponentHelper {
     }
 
     private static void auto_render_component_form_type(Context context, JSONObject json_element, View linear_layout) {
+
+        try {
+            View view_field;
+            JSONArray item_fields=json_element.has("item_fields")?json_element.getJSONArray("item_fields"):new JSONArray();
+            JSONObject item_json_object=json_element.has("item")?json_element.getJSONObject("item") : new JSONObject();
+            for(int i=0;i<item_fields.length();i++){
+                JSONObject field=item_fields.getJSONObject(i);
+                if(field.has("name")&&field.has("label"))
+                {
+                    String type =field.has("type")? field.getString("type"):"text";
+                    String name = field.getString("name");
+                    String label = field.getString("label");
+                    String group="";
+                    String value="";
+                    value= item_json_object.has(name)?item_json_object.getString(name) :"";
+                    System.out.println("value:"+value);
+                    JFormField formField=JFormField.getFormField( name,group,value);
+                    view_field= formField.renderField(field,type, name,group, label,value);
+                    ((LinearLayout) linear_layout).addView(view_field);
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            View view_field;
+            JSONArray list_control_item=json_element.has("list_control_item")?json_element.getJSONArray("list_control_item"):new JSONArray();
+            for(int i=0;i<list_control_item.length();i++){
+                JSONObject field=list_control_item.getJSONObject(i);
+                if(field.has("name")&&field.has("label"))
+                {
+                    String type =field.has("type")? field.getString("type"):"text";
+                    String name = field.getString("name");
+                    String label = field.getString("label");
+                    String group="";
+                    String value="";
+                    JFormField formField=JFormField.getFormField( name,group,value);
+                    view_field= formField.renderField(field,type, name,group, label,value);
+                    ((LinearLayout) linear_layout).addView(view_field);
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         abstract class subRenderComponent {
             public abstract void render_element(JSONObject array_element,String root_element,View linear_layout, int level, int max_level) throws JSONException;
@@ -201,15 +266,18 @@ public class JComponentHelper {
                     JSONObject field = null;
                     try {
                         field = (JSONObject)fields.getJSONObject(columnIndex);
-                        if(field.has("type")&&field.has("name")&&field.has("label"))
+                        if(field.has("name")&&field.has("label"))
                         {
-                            String type = field.getString("type");
+                            String type =field.has("type")? field.getString("type"):"text";
                             String name = field.getString("name");
                             String label = field.getString("label");
                             String group="";
-                            JSONObject value=new JSONObject();
+                            String value="";
+
+                            value=item_json_object.getString(name);
+                            System.out.println("value:"+value);
                             JFormField formField=JFormField.getFormField( name,group,value);
-                            view_field= formField.renderField(field,type, name,group, label);
+                            view_field= formField.renderField(field,type, name,group, label,value);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

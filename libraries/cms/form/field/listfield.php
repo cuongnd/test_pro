@@ -330,6 +330,12 @@ class JFormFieldlistfield extends JFormField
             case 'filter':
                 $file_xml="filter_".$view;
                 break;
+            case 'control_list':
+                $file_xml="control_list_".$view;
+                break;
+            case 'control_item':
+                $file_xml="control_item_".$view;
+                break;
             default:
                 $file_xml=$view;
                 break;

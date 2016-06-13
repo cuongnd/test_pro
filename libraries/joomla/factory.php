@@ -274,14 +274,14 @@ abstract class JFactory
 		$db=JFactory::getDbo();
 		$query=$db->getQuery(true);
 
-		$query->select('menu.id')
+		$query->select('menu.*')
 			->from('#__menu AS menu')
 			->where('menu.id IN('.implode(',',$list_menu_item_item_id).')')
 			->where('menu.page_type='.$query->q('login'))
 			;
-		$itemId=$db->setQuery($query)->loadResult();
+		$item=$db->setQuery($query)->loadObject();
         $app=JFactory::getApplication();
-		return $itemId;
+		return $item;
 
 	}
 	/**

@@ -75,44 +75,52 @@ final class JApplicationSite extends JApplicationCms
      */
     protected function authorise($itemid)
     {
+        $app=JFactory::getApplication();
         $menu_item=MenusHelperFrontEnd::get_menu_item_by_menu_item_id($itemid);
         $is_backend=$menu_item->is_backend;
+        $redirect=$app->input->getBool('redirect',false);
+        $menus = $this->getMenu();
         $user = JFactory::getUser();
         if($is_backend&&!$user->id)
         {
             $this->enqueueMessage(JText::_('JGLOBAL_YOU_MUST_LOGIN_FIRST'));
-            $login_itemId = JFactory::get_page_login();
-            if($login_itemId)
-            {
-                $this->redirect(JRoute::_('index.php?option=com_users&view=login'));
-            }else{
-                $this->redirect(JRoute::_('index.php?option=com_users&view=login&template=system'));
+            if(!$redirect) {
+                $login_item = JFactory::get_page_login();
+                if(!$login_item)
+                {
+                    $login_item=$menus->getMenuLogin();
+                }
+                $this->enqueueMessage(JText::_('JGLOBAL_YOU_MUST_LOGIN_FIRST'));
+                $this->redirect(JUri::root() . "$login_item->link&redirect=true&Itemid=$login_item->id");
+                return false;
             }
             return false;
         }
-        return true;
-        $menus = $this->getMenu();
 
-        $login_itemId = JFactory::get_page_login();
-        if($login_itemId==$itemid)
+        $login_item = JFactory::get_page_login();
+        if($login_item->id==$itemid)
         {
             return true;
         }
-        if (!$menus->authorise($itemid)) {
-            if ($user->get('id') == 0) {
-                // Set the data
+        require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
+        $isAdminSite = UtilityHelper::isAdminSite();
+        if (!$isAdminSite && !$menus->authorise($itemid)) {
+            if(!$redirect) {
                 $this->setUserState('users.login.form.data', array('return' => JUri::getInstance()->toString()));
                 //$url = JRoute::_('index.php?option=com_users&view=login', false);
-                $login_itemId = JFactory::get_page_login();
-
+                $login_item = JFactory::get_page_login();
+                if(!$login_item)
+                {
+                    $login_item=$menus->getMenuLogin();
+                }
                 $this->enqueueMessage(JText::_('JGLOBAL_YOU_MUST_LOGIN_FIRST'));
-                $this->redirect(JUri::root()."?index.php?option=com_users&view=login&itemId=$login_itemId");
+                $this->redirect(JUri::root() . "$login_item->link&redirect=true&Itemid=$login_item->id");
                 return false;
-            } else {
-                $this->enqueueMessage(JText::_('JERROR_ALERTNOAUTHOR'), 'error');
             }
         }
+        return true;
     }
+
 
     /**
      * Dispatch the application

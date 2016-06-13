@@ -435,6 +435,41 @@ class JApplicationWeb extends JApplicationBase
      */
     public function redirect($url, $moved = false)
     {
+        $app=JFactory::getApplication();
+        $http_request=array(
+
+        );
+        if($tmpl=$app->input->getString('tmpl',''))
+        {
+            $http_request["tmpl"]=$tmpl;
+        }
+
+        if($os=$app->input->getString('os',''))
+        {
+            $http_request["os"]=$os;
+        }
+
+        if($screenSize=$app->input->getString('screenSize',''))
+        {
+            $http_request["screenSize"]=$screenSize;
+        }
+
+
+        if($version=$app->input->getString('version',''))
+        {
+            $http_request["version"]=$version;
+        }
+
+        $http_request=http_build_query($http_request);
+       if($tmpl=="android" || $os=="android")
+        {
+            $json_android_return=array(
+                "link_redirect"=>$url."&$http_request",
+                "moved"=>$moved,
+            );
+            echo json_encode($json_android_return);
+            die;
+        }
         // Import library dependencies.
         jimport('phputf8.utils.ascii');
 

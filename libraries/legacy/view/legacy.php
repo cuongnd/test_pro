@@ -85,6 +85,7 @@ class JViewLegacy extends JObject
 	protected $_template = null;
 	public $show_column;
 	public $columnFields;
+	public $item_fields;
 
 
 	/**
@@ -218,12 +219,24 @@ class JViewLegacy extends JObject
 		$menu=$app->getMenu();
 		$active_menu=$menu->getActive();
 		$mobile_response_type=$active_menu->mobile_response_type;
+		$params=$active_menu->params;
+
 		$tmpl=$app->input->getString('tmpl','');
-		$this->show_column    = $this->get('ShowColumn');
-		$this->columnFields    = $this->get('ColumnFields');
 
 		if($tmpl=="android"&&$mobile_response_type=="json")
 		{
+			$android_render_form_type=$params->get('android_render_form_type','list');
+			if($android_render_form_type=="list") {
+				$this->show_column = $this->get('ShowColumn');
+				$this->columnFields = $this->get('ColumnFields');
+				$this->list_control_list = $this->get('ListControlList');
+			}else{
+				$this->item = $this->get('Item');
+				$this->item_fields = $this->get('ItemFields');
+				$this->list_control_item = $this->get('ListControlItem');
+				unset($this->show_column);
+				unset($this->columnFields);
+			}
 			$doc=JFactory::getDocument();
 			$doc->set_android_response($this);
 			return;

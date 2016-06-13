@@ -469,6 +469,21 @@ class JModelList extends JModelLegacy
 		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
 		return $fields;
 	}
+	public function getListControlList(){
+		$model_name=$this->name;
+		$component=$this->option;
+		$component_path=JPath::get_component_path($component,false);
+		$xml_show_column_path=$component_path.DS."models/forms/control_list_".$model_name.".xml";
+		$table_control=JTable::getInstance('control');
+		$table_control->load(array(
+			"element_path"=>$xml_show_column_path
+		));
+		$fields=$table_control->fields;
+		$fields=base64_decode($fields);
+		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		return $fields;
+	}
 	public function getShowColumn($data = array(), $loadData = true)
 	{
 		self::render_to_xml_show_column();

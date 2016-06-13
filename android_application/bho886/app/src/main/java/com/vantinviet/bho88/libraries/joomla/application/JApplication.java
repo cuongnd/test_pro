@@ -67,7 +67,13 @@ public class JApplication {
             // instantiate our json parser
             JSONParser jParser = new JSONParser();
             // get json string from url
+            System.out.println(link);
             JSONObject json = jParser.getJSONFromUrl(link);
+            if(json.has("link_redirect"))
+            {
+                String link_redirect=json.getString("link_redirect");
+                return call_json_get_content_website(link_redirect);
+            }
             System.out.println(json.toString());
             return_json = json.toString();
 

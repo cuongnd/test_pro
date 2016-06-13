@@ -33,7 +33,8 @@ class countdownconfig
     }
     public static function get_table_by_view($view){
         $list_table=array(
-            '#__countdown_countdown'=>'countdown,countdowns'
+            '#__countdown_countdown'=>'countdown,countdowns',
+            '#__users'=>'login',
         );
         foreach($list_table as $table=>$views)
         {

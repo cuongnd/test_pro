@@ -77,7 +77,17 @@ class JMenuSite extends JMenu
         $change_param_menu_by_fields($change_param_menu_by_fields,$list_type,$website_id,$fields[0],$params);
         return $params->toString();
     }
-
+	public function getMenuLogin()
+	{
+		foreach($this->_items as $item){
+			$link=$item->link;
+			$link=strtolower($link);
+			if (strpos($link, 'index.php?option=com_users&view=login') !== false) {
+				return $item;
+			}
+		}
+		return 0;
+	}
     /**
 	 * Loads the entire menu table into memory.
 	 *
