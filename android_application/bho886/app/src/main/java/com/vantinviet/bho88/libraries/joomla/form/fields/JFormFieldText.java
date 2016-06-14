@@ -6,8 +6,12 @@ import android.widget.LinearLayout;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.vantinviet.bho88.libraries.joomla.JFactory;
+import com.vantinviet.bho88.libraries.joomla.application.JApplication;
 import com.vantinviet.bho88.libraries.joomla.form.JFormField;
-import com.vantinviet.bho88.libraries.utilities.md5;
+import com.vantinviet.bho88.libraries.utilities.JUtilities;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,26 +21,19 @@ import java.util.Map;
  */
 public class JFormFieldText extends JFormField{
     static Map<String, JFormFieldText> map_form_field_text = new HashMap<String, JFormFieldText>();
-    public JFormFieldText(String type, String name, String group){
+    public JFormFieldText(JSONObject field,String type, String name, String group,String value){
         this.type=type;
         this.name=name;
         this.group=group;
+        this.field=field;
+        this.value=value;
     }
-    public static JFormFieldText getInstance(String type, String name, String group){
-        String key=type+name+group;
-        key= md5.encryptMD5(key);
-        JFormFieldText form_field_text = (JFormFieldText) map_form_field_text.get(key);
-        if(form_field_text!=null)
-        {
-            form_field_text=new JFormFieldText(type,name,group);
-
-        }
-        return form_field_text;
-
+    public JFormFieldText(){
     }
+
+
     @Override
-
-    protected View getInput() {
+    public View getInput() {
         LinearLayout linear_layout = new LinearLayout(context);
         BootstrapLabel label_text = new BootstrapLabel(context);
         label_text.setText(this.label);
@@ -44,12 +41,20 @@ public class JFormFieldText extends JFormField{
         edit_text.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
         edit_text.setText(this.value);
         edit_text.setWidth(200);
-        edit_text.setPadding(2,2,2,2);
+        this.key_id= JUtilities.getRandomInt(0,999999);
+        edit_text.setId(this.key_id);
+        edit_text.setPadding(2, 2, 2, 2);
         ((LinearLayout) linear_layout).addView(label_text);
         ((LinearLayout) linear_layout).addView(edit_text);
         linear_layout.setGravity(LinearLayout.TEXT_ALIGNMENT_GRAVITY);
         return (View)linear_layout;
     }
+    public String getValue(){
+        JApplication app= JFactory.getApplication();
+        BootstrapEditText output_box = (BootstrapEditText) app.activity.findViewById(this.key_id);
+        return output_box.getText().toString();
+    }
+
 
 
 }

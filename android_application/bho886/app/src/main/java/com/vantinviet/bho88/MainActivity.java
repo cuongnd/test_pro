@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         //Remove title bar
         JApplication app=JFactory.getApplication();
         app.context=context;
+        app.activity=this;
         JFactory.setContext(context);
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);

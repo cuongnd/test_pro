@@ -113,5 +113,10 @@ public class JUtilities {
         }
         return a_map;
     }
+
+    public static int getRandomInt(int min, int max) {
+        int random = (int )(Math.random() * max + min);
+        return random;
+    }
 }
 

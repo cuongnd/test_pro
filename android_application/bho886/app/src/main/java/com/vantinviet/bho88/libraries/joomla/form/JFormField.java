@@ -1,16 +1,21 @@
 package com.vantinviet.bho88.libraries.joomla.form;
 
 import android.content.Context;
+import android.text.Editable;
 import android.view.View;
 
 import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.joomla.application.JApplication;
+import com.vantinviet.bho88.libraries.utilities.md5;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -27,78 +32,16 @@ public abstract class JFormField {
     protected String group;
     private File jarFile;
     private static String p_package="com.vantinviet.bho88.libraries.joomla.form.fields";
+    static Map<String, JFormField> map_form_field = new HashMap<String, JFormField>();
     public String name;
+    public JSONObject field;
+    protected String key;
+    public int key_id;
 
     public JFormField(){
         JApplication app= JFactory.getApplication();
         this.context=app.context;
     }
-    public static JFormField getInstance(String type, String fieldName, String group) {
-        JFormField formField = null;
-        if(type.equals(""))
-        {
-            return formField;
-        }
-        String className=p_package+".JFormField"+getStanderFieldName(type);
-        System.out.println("className:"+className);
-        try {
-
-            Class<?> selected_class = Class.forName(className);
-            Constructor<?> cons = selected_class.getConstructor();
-            formField = (JFormField) cons.newInstance(type, fieldName, group);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return formField;
-    }
-    public View renderField(JSONObject option, String type, String fieldName, String group, String label,String value) {
-        JFormField formField = new JFormField() {
-            @Override
-            protected View getInput() {
-                return null;
-            }
-        };
-        if(type.equals(""))
-        {
-            return formField.getInput();
-        }
-        String className=p_package+".JFormField"+getStanderFieldName(type);
-        System.out.println("className:"+className);
-        try {
-
-            Class<?> selected_class = Class.forName(className);
-            Constructor<?> cons = selected_class.getConstructor();
-            formField = (JFormField) cons.newInstance();
-            formField.fieldName=fieldName;
-            formField.type=type;
-            formField.label=label;
-            formField.value=value;
-            formField.option=option;
-            formField.group=group;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-        View view_field=formField.getInput();
-        return view_field;
-    }
-
     private static String getStanderFieldName(String fieldName) {
         String[] listField=new String[]{
                 "text-Text",
@@ -121,21 +64,60 @@ public abstract class JFormField {
         this.fieldName=fieldName;
     }
 
-    public static JFormField getFormField(String type, String name, String group, String value) {
-        return JForm.getField(type,name,group,value);
-    }
 
-    protected abstract View getInput();
+    public abstract View getInput();
 
-    public File getJarFile() {
-        return jarFile;
-    }
 
-    public static JFormField getFormField(String type,String name, String group) {
-        return JFormField.getInstance(type,name,group);
+    public static JFormField getFormField(String type) {
+        JFormField formField = null;
+
+        String className=p_package+".JFormField"+getStanderFieldName(type);
+        System.out.println("className:"+className);
+        try {
+            Class<?> selected_class = Class.forName(className);
+            Constructor<?> cons = selected_class.getConstructor();
+            formField = (JFormField) cons.newInstance();
+
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return formField;
     }
 
     public String getValue() {
         return value;
+    }
+
+    public static JFormField getInstance(JSONObject field, String type, String name, String group, String value) {
+        String key=type+name+group;
+        key= md5.encryptMD5(key);
+        JFormField form_field = (JFormField) map_form_field.get(key);
+        if(form_field==null)
+        {
+            form_field= getFormField(type);
+            form_field.key=key;
+            form_field.field=field;
+            form_field.type=type;
+            form_field.name=name;
+            form_field.group=group;
+            form_field.value=value;
+            try {
+                form_field.label=field.has("label")?field.getString("label"):"";
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            map_form_field.put(key,form_field);
+
+        }
+        return form_field;
     }
 }

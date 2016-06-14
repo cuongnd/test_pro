@@ -14,7 +14,6 @@ import com.beardedhen.androidbootstrap.BootstrapButtonGroup;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.vantinviet.bho88.MainActivity;
 import com.vantinviet.bho88.R;
-import com.vantinviet.bho88.config;
 import com.vantinviet.bho88.libraries.android.registry.JRegistry;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
@@ -190,12 +189,11 @@ public class horizontal_menu {
         return new View.OnClickListener() {
             public void onClick(View v) {
                 try {
-                    String screenSize = Integer.toString(config.screen_size_width/config.screenDensity) + "x" + Integer.toString( config.screen_size_height);
-                    String local_version= config.get_version();
+
                     String link=menu_item.getString("link");
                     String id=menu_item.getString("id");
                     String title=menu_item.getString("title");
-                    link=link+"&Itemid="+id+"&os=android&screenSize="+ screenSize+"&version="+local_version;
+                    link=link+"&Itemid="+id;
                     JApplication app=JFactory.getApplication();
                     app.setRedirect(link);
                     MainActivity.title=title;

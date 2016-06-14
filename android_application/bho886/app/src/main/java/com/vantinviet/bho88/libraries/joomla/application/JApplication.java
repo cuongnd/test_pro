@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.vantinviet.bho88.MainActivity;
+import com.vantinviet.bho88.config;
 import com.vantinviet.bho88.configuration.configuration;
 import com.vantinviet.bho88.libraries.android.http.JSONParser;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
@@ -11,6 +12,7 @@ import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.joomla.cache.cache;
 import com.vantinviet.bho88.libraries.utilities.md5;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -24,6 +26,7 @@ public class JApplication {
     public static JApplication instance;
     public Context context;
     private String redirect;
+    public MainActivity activity;
 
     /* Static 'instance' method */
     public static JApplication getInstance( ) {
@@ -91,8 +94,23 @@ public class JApplication {
 
     }
 
-    public void setRedirect(String redirect) {
-        MainActivity.host=redirect;
+    public void setRedirect(String link) {
+
+
+        String screenSize = Integer.toString(config.screen_size_width/config.screenDensity) + "x" + Integer.toString( config.screen_size_height);
+        String local_version= config.get_version();
+        link=link+"&os=android&screenSize="+ screenSize+"&version="+local_version;
+        if(!link.equals("Itemid"))
+        {
+            JMenu menu=JFactory.getMenu();
+            JSONObject menu_active=menu.getMenuActive();
+            try {
+                link+="&Itemid="+menu_active.getString("id");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        MainActivity.host="index.php?"+link;
         Intent i = new Intent(this.context, MainActivity.class);
         this.context.startActivity(i);
     }

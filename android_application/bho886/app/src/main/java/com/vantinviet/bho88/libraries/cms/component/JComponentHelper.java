@@ -144,8 +144,8 @@ public class JComponentHelper {
                     String value="";
                     value= item_json_object.has(name)?item_json_object.getString(name) :"";
                     System.out.println("value:"+value);
-                    JFormField formField=JFormField.getFormField( name,group,value);
-                    view_field= formField.renderField(field,type, name,group, label,value);
+                    JFormField formField=JFormField.getInstance(field,type, name, group, value);
+                    view_field= formField.getInput();
                     ((LinearLayout) linear_layout).addView(view_field);
                 }
             }
@@ -165,8 +165,8 @@ public class JComponentHelper {
                     String label = field.getString("label");
                     String group="";
                     String value="";
-                    JFormField formField=JFormField.getFormField( name,group,value);
-                    view_field= formField.renderField(field,type, name,group, label,value);
+                    JFormField formField=JFormField.getInstance(field, type, name, group, value);
+                    view_field= formField.getInput();
                     ((LinearLayout) linear_layout).addView(view_field);
                 }
             }
@@ -223,7 +223,7 @@ public class JComponentHelper {
                         String name = field.getString("name");
                         String label = field.getString("label");
                         String group="";
-                        JFormField formField=JFormField.getFormField(type, name,group);
+                        JFormField formField=JFormField.getInstance(field, type, name, group, "");
                         String value=formField.getValue();
                         map_input_component.put(name, value);
                     }
@@ -317,8 +317,8 @@ public class JComponentHelper {
 
                             value=item_json_object.getString(name);
                             System.out.println("value:"+value);
-                            JFormField formField=JFormField.getFormField( name,group,value);
-                            view_field= formField.renderField(field,type, name,group, label,value);
+                            JFormField formField=JFormField.getInstance(field, type, name, group, value);
+                            view_field= formField.getInput();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

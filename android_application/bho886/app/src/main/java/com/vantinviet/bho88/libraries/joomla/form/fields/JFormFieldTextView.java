@@ -24,8 +24,9 @@ public class JFormFieldTextView extends JFormField {
     public Context context;
     public JFormFieldTextView(String type, String fieldName, String group){
     }
+
     @Override
-    protected View getInput() {
+    public View getInput() {
         JApplication app= JFactory.getApplication();
         context=app.context;
         TextView text_view = new TextView(context);
