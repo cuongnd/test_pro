@@ -1,7 +1,6 @@
 package com.vantinviet.bho88.modules.mod_menu;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,7 @@ import com.vantinviet.bho88.config;
 import com.vantinviet.bho88.libraries.android.registry.JRegistry;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
+import com.vantinviet.bho88.libraries.joomla.application.JApplication;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -196,9 +196,8 @@ public class horizontal_menu {
                     String id=menu_item.getString("id");
                     String title=menu_item.getString("title");
                     link=link+"&Itemid="+id+"&os=android&screenSize="+ screenSize+"&version="+local_version;
-                    MainActivity.host="/"+link;
-                    Intent i = new Intent(v.getContext(), MainActivity.class);
-                    v.getContext().startActivity(i);
+                    JApplication app=JFactory.getApplication();
+                    app.setRedirect(link);
                     MainActivity.title=title;
                     JMenu JMenu = JFactory.getMenu();
                     JMenu.setMenuActive(menu_item);

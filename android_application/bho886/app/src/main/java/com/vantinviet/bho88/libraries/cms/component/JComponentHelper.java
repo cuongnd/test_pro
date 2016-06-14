@@ -41,6 +41,7 @@ public class JComponentHelper {
     public static List<String> columns;
     public static View linear_layout;
 
+
     public static String getContentComponent(String link) {
         System.out.println(link);
         configuration config= JFactory.getConfig();

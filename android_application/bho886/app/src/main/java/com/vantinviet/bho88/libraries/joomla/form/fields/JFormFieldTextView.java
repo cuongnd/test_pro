@@ -1,7 +1,6 @@
 package com.vantinviet.bho88.libraries.joomla.form.fields;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -9,7 +8,6 @@ import android.widget.TextView;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
-import com.vantinviet.bho88.R;
 import com.vantinviet.bho88.libraries.android.registry.JRegistry;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
@@ -24,7 +22,8 @@ import org.json.JSONObject;
  */
 public class JFormFieldTextView extends JFormField {
     public Context context;
-
+    public JFormFieldTextView(){
+    }
     @Override
     protected View getInput() {
         JApplication app= JFactory.getApplication();
@@ -63,13 +62,7 @@ public class JFormFieldTextView extends JFormField {
         return text_view;
 
     }
-    String someVar;
-    public JFormFieldTextView(){
-        someVar="test";
-    }
-    public JFormFieldTextView(String someVar){
-        this.someVar=someVar;
-    }
+
 
 
 }

@@ -230,10 +230,12 @@ class JViewLegacy extends JObject
 				$this->show_column = $this->get('ShowColumn');
 				$this->columnFields = $this->get('ColumnFields');
 				$this->list_control_list = $this->get('ListControlList');
+				$this->list_hidden_field_list = $this->get('HiddenFieldList');
 			}else{
 				$this->item = $this->get('Item');
 				$this->item_fields = $this->get('ItemFields');
 				$this->list_control_item = $this->get('ListControlItem');
+				$this->list_hidden_field_item = $this->get('HiddenFieldItem');
 				unset($this->show_column);
 				unset($this->columnFields);
 			}

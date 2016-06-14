@@ -9,107 +9,72 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections-0.9.5/reflections-0.9.5.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/cache/jstorage/xcache.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/utilities/ClassFinder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/utilities/JUtilities.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections-0.9.5/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/Configuration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/ReflectionUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/Reflections.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/ReflectionsException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/Store.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/adapters/JavaReflectionAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/adapters/JavassistAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/adapters/MetadataAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/AbstractScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/FieldAnnotationsScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/MemberUsageScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/MethodAnnotationsScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/MethodParameterNamesScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/MethodParameterScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/ResourcesScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/Scanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/SubTypesScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/TypeAnnotationsScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/TypeElementsScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/TypesScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/serializers/JavaCodeSerializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/serializers/JsonSerializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/serializers/Serializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/serializers/XmlSerializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/util/ClasspathHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/util/ConfigurationBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/util/FilterBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/util/Utils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/CommonsVfs2UrlType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/JarInputDir.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/JarInputFile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/SystemDir.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/SystemFile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/UrlTypeVFS.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/Vfs.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/ZipDir.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/ZipFile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_countdown/com_countdown/models/login.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_countdown/com_countdown/views/login/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_countdown/com_countdown/views/login/tmpl/android.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_countdown/com_countdown/views/login/tmpl/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_countdown/com_countdown/views/login/tmpl/default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_countdown/com_countdown/views/login/tmpl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/website/website_countdown/com_countdown/views/login/view.html.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/.jscsrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/.jshintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/demo/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/demo/css/style.old.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/demo/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/demo/index.old.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/jquery.scrollTo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/jquery.scrollTo.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/tests/ElemMaxY-compat.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/tests/ElemMaxY-quirks.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/tests/WinMaxY-compat.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/tests/WinMaxY-quirks.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/tests/WinMaxY-to-iframe-compat.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/tests/WinMaxY-to-iframe-quirks.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/tests/WinMaxY-with-iframe-compat.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/tests/WinMaxY-with-iframe-quirks.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/tests/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/tests/test.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/legacy/application/application.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/utilities/utilities.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/hiddenfield.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/hiddenfield.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/cms/form/field/hiddenfield.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/utilities/ClassFinder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections-0.9.5/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections-0.9.5/reflections-0.9.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/Configuration.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/ReflectionUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/Reflections.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/ReflectionsException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/Store.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/adapters/JavaReflectionAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/adapters/JavassistAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/adapters/MetadataAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/AbstractScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/FieldAnnotationsScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/MemberUsageScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/MethodAnnotationsScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/MethodParameterNamesScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/MethodParameterScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/ResourcesScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/Scanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/SubTypesScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/TypeAnnotationsScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/TypeElementsScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/scanners/TypesScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/serializers/JavaCodeSerializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/serializers/JsonSerializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/serializers/Serializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/serializers/XmlSerializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/util/ClasspathHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/util/ConfigurationBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/util/FilterBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/util/Utils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/CommonsVfs2UrlType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/JarInputDir.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/JarInputFile.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/SystemDir.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/SystemFile.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/UrlTypeVFS.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/Vfs.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/ZipDir.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/reflections/vfs/ZipFile.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/.idea/encodings.xml" afterPath="$PROJECT_DIR$/android_application/bho886/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/.idea/misc.xml" afterPath="$PROJECT_DIR$/android_application/bho886/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/.idea/gradle.xml" afterPath="$PROJECT_DIR$/android_application/bho886/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/.idea/modules.xml" afterPath="$PROJECT_DIR$/android_application/bho886/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/app/build.gradle" afterPath="$PROJECT_DIR$/android_application/bho886/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/configuration/configuration.java" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/configuration/configuration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/cms/component/JComponentHelper.java" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/cms/component/JComponentHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/JFactory.java" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/JFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/application/JApplication.java" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/application/JApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/form/JForm.java" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/form/JForm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/form/JFormField.java" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/form/JFormField.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/form/fields/JFormFieldButton.java" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/form/fields/JFormFieldButton.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/form/fields/JFormFieldText.java" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/form/fields/JFormFieldText.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/form/fields/JFormFieldTextView.java" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/libraries/joomla/form/fields/JFormFieldTextView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/modules/mod_menu/horizontal_menu.java" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/com/vantinviet/bho88/modules/mod_menu/horizontal_menu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/settings.gradle" afterPath="$PROJECT_DIR$/android_application/bho886/settings.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_menus/models/forms/item.xml" afterPath="$PROJECT_DIR$/components/com_menus/models/forms/item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/com_website/helpers/website.php" afterPath="$PROJECT_DIR$/components/com_website/helpers/website.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/website/website_countdown/com_countdown/helpers/countdownconfig.php" afterPath="$PROJECT_DIR$/components/website/website_countdown/com_countdown/helpers/countdownconfig.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/application/site.php" afterPath="$PROJECT_DIR$/libraries/cms/application/site.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.php" afterPath="$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/form/field/listfield.php" afterPath="$PROJECT_DIR$/libraries/cms/form/field/listfield.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/cms/menu/site.php" afterPath="$PROJECT_DIR$/libraries/cms/menu/site.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/application/web.php" afterPath="$PROJECT_DIR$/libraries/joomla/application/web.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/joomla/factory.php" afterPath="$PROJECT_DIR$/libraries/joomla/factory.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/legacy/model/admin.php" afterPath="$PROJECT_DIR$/libraries/legacy/model/admin.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/legacy/model/list.php" afterPath="$PROJECT_DIR$/libraries/legacy/model/list.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries/legacy/view/legacy.php" afterPath="$PROJECT_DIR$/libraries/legacy/view/legacy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/system/js/jquery.base64.js" afterPath="$PROJECT_DIR$/media/system/js/jquery.base64.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sprflat/index.php" afterPath="$PROJECT_DIR$/templates/sprflat/index.php" />
     </list>
     <ignored path="test_pro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1767,31 +1732,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="view.html.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_countdown/com_countdown/views/login/view.html.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="countdowns.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/website/website_countdown/com_countdown/models/countdowns.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/legacy/model/list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="487" column="5" selection-start-line="487" selection-start-column="5" selection-end-line="487" selection-end-column="5" />
+            <state vertical-scroll-proportion="-12.807693">
+              <caret line="491" column="54" selection-start-line="491" selection-start-column="54" selection-end-line="491" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -1800,30 +1745,8 @@
       <file leaf-file-name="item.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/com_menus/models/forms/item.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="99" column="39" selection-start-line="99" selection-start-column="39" selection-end-line="99" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="listcontrolbutton.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="242" column="34" selection-start-line="242" selection-start-column="34" selection-end-line="242" selection-end-column="34" />
-              <folding>
-                <marker date="1465718402309" expanded="true" signature="15820:15834" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery.base64.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/media/system/js/jquery.base64.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="94" column="24" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="24" />
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="75" column="34" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -1832,8 +1755,56 @@
       <file leaf-file-name="listcontrolbutton.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="333" column="40" selection-start-line="333" selection-start-column="27" selection-end-line="333" selection-end-column="40" />
+            <state vertical-scroll-proportion="-11.769231">
+              <caret line="323" column="54" selection-start-line="323" selection-start-column="40" selection-end-line="323" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hiddenfield.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/hiddenfield.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.5964912">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+              <folding>
+                <marker date="1465874308304" expanded="true" signature="15568:15582" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hiddenfield.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/hiddenfield.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.269231">
+              <caret line="330" column="53" selection-start-line="330" selection-start-column="53" selection-end-line="330" selection-end-column="53" />
+              <folding>
+                <element signature="e#7551#7571#0#HTML" expanded="true" />
+                <element signature="e#7801#7821#0#HTML" expanded="true" />
+                <element signature="e#8054#8074#0#HTML" expanded="true" />
+                <element signature="e#8296#8316#0#HTML" expanded="true" />
+                <element signature="e#8804#8824#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="site.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/libraries/cms/application/site.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.68">
+              <caret line="93" column="32" selection-start-line="93" selection-start-column="32" selection-end-line="93" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listfield.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/listfield.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.8846154">
+              <caret line="325" column="30" selection-start-line="325" selection-start-column="30" selection-end-line="325" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -1842,18 +1813,8 @@
       <file leaf-file-name="legacy.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/legacy/view/legacy.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.153846">
-              <caret line="235" column="73" selection-start-line="235" selection-start-column="73" selection-end-line="235" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/demo/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-6.09434">
+              <caret line="232" column="78" selection-start-line="232" selection-start-column="78" selection-end-line="232" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -1862,8 +1823,18 @@
       <file leaf-file-name="admin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/legacy/model/admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="956" column="5" selection-start-line="956" selection-start-column="5" selection-end-line="956" selection-end-column="5" />
+            <state vertical-scroll-proportion="-17.653847">
+              <caret line="982" column="39" selection-start-line="982" selection-start-column="39" selection-end-line="982" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="components.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_components/models/components.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.8461537">
+              <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -1891,8 +1862,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/components/com_components/helpers/components.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/form/field/listfield.js" />
         <option value="$PROJECT_DIR$/components/com_utility/controllers/utility.php" />
         <option value="$PROJECT_DIR$/components/website/website_template5532788/com_products/views/productcategories/tmpl/default.php" />
         <option value="$PROJECT_DIR$/components/website/website_template5532788/com_products/models/productcategories.php" />
@@ -1933,15 +1902,17 @@
         <option value="$PROJECT_DIR$/components/website/website_countdown/com_countdown/helpers/countdownconfig.php" />
         <option value="&lt;ebab288d-42d3-466b-91db-96e920f3e6b9&gt;/phpmyadmin/config.inc.php" />
         <option value="$PROJECT_DIR$/libraries/joomla/application/web.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/application/site.php" />
         <option value="$PROJECT_DIR$/components/website/website_countdown/com_countdown/models/login.php" />
-        <option value="$PROJECT_DIR$/libraries/cms/form/field/listfield.php" />
-        <option value="$PROJECT_DIR$/components/com_menus/models/forms/item.xml" />
-        <option value="$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.php" />
         <option value="$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.js" />
+        <option value="$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.php" />
+        <option value="$PROJECT_DIR$/libraries/cms/form/field/hiddenfield.js" />
+        <option value="$PROJECT_DIR$/components/com_menus/models/forms/item.xml" />
+        <option value="$PROJECT_DIR$/libraries/cms/form/field/hiddenfield.php" />
         <option value="$PROJECT_DIR$/libraries/legacy/view/legacy.php" />
         <option value="$PROJECT_DIR$/libraries/legacy/model/admin.php" />
         <option value="$PROJECT_DIR$/libraries/legacy/model/list.php" />
+        <option value="$PROJECT_DIR$/libraries/cms/form/field/listfield.php" />
+        <option value="$PROJECT_DIR$/libraries/cms/application/site.php" />
       </list>
     </option>
   </component>
@@ -2041,6 +2012,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -2135,7 +2107,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2356,6 +2327,162 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="form" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="form" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="field" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_pro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -2398,19 +2525,19 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files (x86)\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\project\test_pro\media\system\js" />
-      <recent name="H:\project\test_pro\libraries\cms\form\field" />
-      <recent name="H:\project\test_pro\components\website\website_countdown\com_countdown\models" />
-      <recent name="H:\project\test_pro\components\website\website_countdown\com_countdown\views\login\tmpl" />
-      <recent name="H:\project\test_pro\components\website\website_countdown\com_countdown\views" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="H:\project\test_pro\modules\website\website_websitetemplatepro\mod_search\assets\less" />
       <recent name="H:\project\test_pro\components\website\website_supper_admin\com_supperadmin\models\fields" />
       <recent name="H:\project\test_pro\libraries\legacy\table" />
       <recent name="H:\project\test_pro\modules\website\website_banhangonline" />
       <recent name="H:\project\test_pro\components\website" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\project\test_pro\libraries\cms\form\field" />
+      <recent name="H:\project\test_pro\media\system\js" />
+      <recent name="H:\project\test_pro\components\website\website_countdown\com_countdown\models" />
+      <recent name="H:\project\test_pro\components\website\website_countdown\com_countdown\views\login\tmpl" />
+      <recent name="H:\project\test_pro\components\website\website_countdown\com_countdown\views" />
     </key>
   </component>
   <component name="RunManager">
@@ -2470,12 +2597,6 @@
       <created>1441660052781</created>
       <option name="number" value="Default" />
       <updated>1441660052781</updated>
-    </task>
-    <task id="LOCAL-00070" summary="update module supper admin">
-      <created>1460544982281</created>
-      <option name="number" value="00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1460544982281</updated>
     </task>
     <task id="LOCAL-00071" summary="update module supper admin">
       <created>1460649765824</created>
@@ -2765,7 +2886,13 @@
       <option name="project" value="LOCAL" />
       <updated>1465637411400</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="update module supper admin">
+      <created>1465792112997</created>
+      <option name="number" value="00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1465792112997</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2787,25 +2914,25 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277635" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14781491" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1992288" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2281491" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23136246" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26172465" sideWeight="0.82282794" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6922043" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15424165" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29166666" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252688" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26279864" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15424165" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32423207" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2845,27 +2972,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/libraries/legacy/table/control.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.038462">
-          <caret line="29" column="39" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/listfield.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="241" column="72" selection-start-line="241" selection-start-column="60" selection-end-line="241" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_modules/models/module.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.5">
-          <caret line="724" column="21" selection-start-line="724" selection-start-column="21" selection-end-line="724" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_countdown/com_countdown/models/forms/filter_medias.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.307692">
@@ -2891,7 +2997,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34870848">
           <caret line="297" column="23" selection-start-line="297" selection-start-column="23" selection-end-line="297" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3018,7 +3123,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.3396225">
           <caret line="281" column="49" selection-start-line="281" selection-start-column="49" selection-end-line="281" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3068,7 +3172,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.423077">
           <caret line="942" column="20" selection-start-line="942" selection-start-column="20" selection-end-line="942" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3083,7 +3186,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.923077">
           <caret line="463" column="26" selection-start-line="463" selection-start-column="16" selection-end-line="463" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3091,13 +3193,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.8846154">
           <caret line="168" column="13" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/application/site.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.923077">
-          <caret line="93" column="86" selection-start-line="93" selection-start-column="86" selection-end-line="93" selection-end-column="86" />
         </state>
       </provider>
     </entry>
@@ -3115,26 +3210,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/listfield.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769">
-          <caret line="401" column="39" selection-start-line="401" selection-start-column="39" selection-end-line="401" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_menus/models/forms/item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="99" column="39" selection-start-line="99" selection-start-column="39" selection-end-line="99" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3163,14 +3242,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/legacy/model/admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="956" column="5" selection-start-line="956" selection-start-column="5" selection-end-line="956" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_countdown/com_countdown/views/login/view.html.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3187,34 +3258,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.php">
+    <entry file="file://$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/demo/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="333" column="40" selection-start-line="333" selection-start-column="27" selection-end-line="333" selection-end-column="40" />
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="98" column="21" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/hiddenfield.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5964912">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding>
+            <marker date="1465874308304" expanded="true" signature="15568:15582" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_menus/models/forms/item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="75" column="34" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/legacy/model/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.653847">
+          <caret line="982" column="39" selection-start-line="982" selection-start-column="39" selection-end-line="982" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_components/models/components.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/legacy/model/list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="487" column="5" selection-start-line="487" selection-start-column="5" selection-end-line="487" selection-end-column="5" />
+        <state vertical-scroll-proportion="-12.807693">
+          <caret line="491" column="54" selection-start-line="491" selection-start-column="54" selection-end-line="491" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries/legacy/view/legacy.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.153846">
-          <caret line="235" column="73" selection-start-line="235" selection-start-column="73" selection-end-line="235" selection-end-column="73" />
+        <state vertical-scroll-proportion="-6.09434">
+          <caret line="232" column="78" selection-start-line="232" selection-start-column="78" selection-end-line="232" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/media/system/js/jquery.scrollTo-master/demo/css/style.css">
+    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/listcontrolbutton.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="323" column="54" selection-start-line="323" selection-start-column="40" selection-end-line="323" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/listfield.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="325" column="30" selection-start-line="325" selection-start-column="30" selection-end-line="325" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/form/field/hiddenfield.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.269231">
+          <caret line="330" column="53" selection-start-line="330" selection-start-column="53" selection-end-line="330" selection-end-column="53" />
+          <folding>
+            <element signature="e#7551#7571#0#HTML" expanded="true" />
+            <element signature="e#7801#7821#0#HTML" expanded="true" />
+            <element signature="e#8054#8074#0#HTML" expanded="true" />
+            <element signature="e#8296#8316#0#HTML" expanded="true" />
+            <element signature="e#8804#8824#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/cms/application/site.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68">
+          <caret line="93" column="32" selection-start-line="93" selection-start-column="32" selection-end-line="93" selection-end-column="46" />
           <folding />
         </state>
       </provider>

@@ -20,7 +20,7 @@ JFormHelper::loadFieldClass('textarea');
  * @see         JEditor
  * @since       1.6
  */
-class JFormFieldlistfield extends JFormField
+class JFormFieldhiddenfield extends JFormField
 {
     /**
      * The form field type.
@@ -28,7 +28,7 @@ class JFormFieldlistfield extends JFormField
      * @var    string
      * @since  1.6
      */
-    public $type = 'listfield';
+    public $type = 'hiddenfield';
 
     /**
      * The JEditor object.
@@ -247,21 +247,21 @@ class JFormFieldlistfield extends JFormField
             <div class="dd-handle">
                 <div class="dd-handle-move pull-left"><i class="fa-move"></i></div>
                 <?php echo $column->id ?>
-                <button onclick="config_update.remove_item_nestable(this)" class="dd-handle-remove pull-right"><i class="fa-remove"></i></button>
+                <button onclick="hidden_field_config.remove_item_nestable(this)" class="dd-handle-remove pull-right"><i class="fa-remove"></i></button>
             </div>
             <div>
                 <button class="add_node">add node</button>
                 <button class="add_sub_node">add sub node</button>
             </div>
-            <label>table name<input class="table_name" style="width: 200px" type="text"  onchange="config_update.update_data_column(this,'table_name')"
+            <label>table name<input class="table_name" style="width: 200px" type="text"  onchange="hidden_field_config.update_data_column(this,'table_name')"
                                      value="<?php echo $column->table_name ?>"/></label>
-            <label>Column name<input class="column_name"  style="width: 200px" type="text"  onchange="config_update.update_data_column(this,'column_name')"
+            <label>Column name<input class="column_name"  style="width: 200px" type="text"  onchange="hidden_field_config.update_data_column(this,'column_name')"
                                      value="<?php echo $column->column_name ?>"/></label>
 
-            <label>Label field<input class="label_field"  style="width: 200px" type="text"  onchange="config_update.update_data_column(this,'label_field')"
+            <label>Label field<input class="label_field"  style="width: 200px" type="text"  onchange="hidden_field_config.update_data_column(this,'label_field')"
                                      value="<?php echo $column->label_field ?>"/></label>
             <label>Type
-                <select style="width: 200px" name="data_type1" onchange="config_update.update_data_column(this,'type')"
+                <select style="width: 200px" name="data_type1" onchange="hidden_field_config.update_data_column(this,'type')"
                         class="data_type">
                     <?php foreach ($list_data_type as $type) { ?>
                 <option <?php echo $column->type == $type ? 'selected' : '' ?>
@@ -270,20 +270,20 @@ class JFormFieldlistfield extends JFormField
                 </select>
             </label>
             <label>Post name
-                <input class="post_name"  style="width: 200px" type="text"  onchange="config_update.update_data_column(this,'post_name')"
+                <input class="post_name"  style="width: 200px" type="text"  onchange="hidden_field_config.update_data_column(this,'post_name')"
                        value="<?php echo $column->post_name ?>"/>
             </label>
             <label>Editable<input <?php echo $column->editable == 1 ? 'checked' : '' ?>  type="checkbox"
-                                                                                         onchange="config_update.update_data_column(this,'editable','checkbox')"
+                                                                                         onchange="hidden_field_config.update_data_column(this,'editable','checkbox')"
                                                                                          value="1"/></label>
             <label>Primary key<input <?php echo $column->primary_key == 1 ? 'checked' : '' ?> class="primary-key" data-level="<?php echo $level ?>" name="primary_key_<?php echo $level ?>"  type="radio"
-                                                                              onchange="config_update.primary_key_update_value(this);config_update.call_on_change(this)"
+                                                                              onchange="hidden_field_config.primary_key_update_value(this);hidden_field_config.call_on_change(this)"
                                                                               value="<?php echo $column->primary_key == 1 ? 1 : 0 ?>"/></label>
             <?php
             echo ob_get_clean();
             if (count($childNodes) > 0) {
                 $level=$level+1;
-                JFormFieldlistfield::create_html_list($childNodes,$list_data_type,$level);
+                JFormFieldhiddenfield::create_html_list($childNodes,$list_data_type,$level);
             }
             echo "</li>";
         }
@@ -296,14 +296,14 @@ class JFormFieldlistfield extends JFormField
         $doc = JFactory::getDocument();
         $db = JFactory::getDbo();
         JHtml::_('jquery.framework');
-        $doc->addLessStyleSheetTest(JUri::root() . "/libraries/cms/form/field/listfield.less");
+        $doc->addLessStyleSheetTest(JUri::root() . "/libraries/cms/form/field/hiddenfield.less");
         $doc->addStyleSheet(JUri::root() . "/media/jui_front_end/css/select2.css");
         $doc->addStyleSheet(JUri::root() . "/media/system/js/jquery.appendGrid-master/jquery.appendGrid-development.css");
         $doc->addScript(JUri::root() . "/media/system/js/Nestable-master/jquery.nestable.js");
         $doc->addScript(JUri::root() . "/media/jui_front_end/js/select2.jquery.js");
         $doc->addScript(JUri::root() . "/media/system/js/cassandraMAP-cassandra/lib/cassandraMap.js");
-        $doc->addScript(JUri::root() . "/libraries/cms/form/field/listfield.js");
-        $doc->addScript(JUri::root() . "/media/system/js/base64.js");
+        $doc->addScript(JUri::root() . "/libraries/cms/form/field/hiddenfield.js");
+        $doc->addScript(JUri::root() . '/media/system/js/jquery.base64.js');
         $doc->addScript(JUri::root() . "/media/system/js/jquery.appendGrid-master/jquery.appendGrid-development.js");
         $id = $app->input->get('id', 0, 'int');
         $menu=$app->getMenu();
@@ -324,20 +324,11 @@ class JFormFieldlistfield extends JFormField
         $formatxml_file=$this->element['formatxml_file'];
         $file_xml='';
         switch($formatxml_file){
-            case 'table':
-                $file_xml="table_".$view;
+            case 'hidden_field_item':
+                $file_xml="hidden_field_item_".$view;
                 break;
-            case 'filter':
-                $file_xml="filter_".$view;
-                break;
-            case 'control_list':
-                $file_xml="control_list_".$view;
-                break;
-            case 'control_item':
-                $file_xml="control_item_".$view;
-                break;
-            default:
-                $file_xml=$view;
+            case 'hidden_field_list':
+                $file_xml="hidden_field_list_".$view;
                 break;
         }
         $element_path='components/website/website_' . $website_name . '/' . $component.'/models/forms/'.$file_xml.'.xml';
@@ -421,8 +412,8 @@ class JFormFieldlistfield extends JFormField
             ?>
             jQuery(document).ready(function ($) {
 
-                list_field_config.field_name_option.tags =<?php echo json_encode($list_field_table) ?>;
-                list_field_config.init_list_field_config();
+                list_control_button_config.field_name_option.tags =<?php echo json_encode($list_field_table) ?>;
+                list_control_button_config.init_list_control_button_config();
             });
             <?php
             $script = ob_get_clean();
@@ -486,9 +477,9 @@ class JFormFieldlistfield extends JFormField
             <div class="dd-handle">
                 <div class="dd-handle-move pull-left"><i class="fa-move"></i></div>
                 <span class="key_name"><?php echo "$item->label ( $item->name ) " ?></span>
-                <button onclick="list_field_config.remove_item_nestable(this)" class="dd-handle-remove dd-nodrag pull-right"><i
+                <button onclick="list_control_button_config.remove_item_nestable(this)" class="dd-handle-remove dd-nodrag pull-right"><i
                         class="fa-remove"></i></button>
-                <button onclick="list_field_config.expand_item_nestable(this)" class="dd-handle-expand dd-nodrag pull-right"><i
+                <button onclick="list_control_button_config.expand_item_nestable(this)" class="dd-handle-expand dd-nodrag pull-right"><i
                         class="im-plus"></i></button>
             </div>
 
@@ -500,20 +491,20 @@ class JFormFieldlistfield extends JFormField
 
 
                 <label>Name<input class="form-control select_field_name" style="width: 200px"
-                                  onchange="list_field_config.update_data_column(this,'name')"
+                                  onchange="list_control_button_config.update_data_column(this,'name')"
                                   value="<?php echo $item->name ?>" type="text"/></label>
-                <label>default<input class="form-control" onchange="list_field_config.update_data_column(this,'default')"
+                <label>default<input class="form-control" onchange="list_control_button_config.update_data_column(this,'default')"
                                      value="<?php echo $item->default ?>" type="text"/></label>
-                <label>label<input class="form-control" onchange="list_field_config.update_data_column(this,'label')"
+                <label>label<input class="form-control" onchange="list_control_button_config.update_data_column(this,'label')"
                                    value="<?php echo $item->label ?>" type="text"/></label>
                 <label>On change<input class="form-control" onchange="view_config.update_data_column(this,'onchange')"
                                        value="<?php echo $item->onchange ?>" type="text"/></label>
 
                 <label>Icon<input class="icon_menu_item" style="width: 200px" type="text"
-                                  onchange="list_field_config.update_data_column(this,'icon')"
+                                  onchange="list_control_button_config.update_data_column(this,'icon')"
                                   value="<?php echo $item->icon ?>"/></label>
                 <label>Description<textarea class="description" style="width: 200px"
-                                            onchange="list_field_config.update_data_column(this,'description')"
+                                            onchange="list_control_button_config.update_data_column(this,'description')"
                                             value="<?php echo $item->icon ?>"></textarea></label>
                 <label>
                     Access
@@ -525,7 +516,7 @@ class JFormFieldlistfield extends JFormField
                 <label>
                     type
                     <select disableChosen="true" style="width: 200px"
-                            onchange="list_field_config.update_data_column(this,'type');list_field_config.update_data_column(this,'addfieldpath');list_field_config.update_atrribute_param_config(this)"
+                            onchange="list_control_button_config.update_data_column(this,'type');list_control_button_config.update_data_column(this,'addfieldpath');list_control_button_config.update_atrribute_param_config(this)"
                             type="hidden" class="select2 field_type">
                         <?php
                         foreach ($list_field_type as $a_item) {
@@ -541,7 +532,7 @@ class JFormFieldlistfield extends JFormField
                 </label>
 
                 <label>Read
-                    only<?php echo JHtml::_('input.radioyesno', '', 'readonly', $item->readonly, array('data-onchange' => "list_field_config.update_data_column(this,'readonly','checkbox')", 'class' => 'not-bootstrap-toggle')) ?></label>
+                    only<?php echo JHtml::_('input.radioyesno', '', 'readonly', $item->readonly, array('data-onchange' => "list_control_button_config.update_data_column(this,'readonly','checkbox')", 'class' => 'not-bootstrap-toggle')) ?></label>
 
                 <div class="row">
 
@@ -574,7 +565,7 @@ class JFormFieldlistfield extends JFormField
             ?>
             <div class="row">
                 <div class="col-md-12">
-                    <label>show more option<input onchange="list_field_config.show_more_options(this);" type="checkbox" checked
+                    <label>show more option<input onchange="list_control_button_config.show_more_options(this);" type="checkbox" checked
                                                   class="show_more_options"></label>
                 </div>
             </div>
@@ -602,11 +593,11 @@ class JFormFieldlistfield extends JFormField
                    value="<?php echo $field_block_output ?>" id="field_block-output"/>
 
 
-            <button class="btn btn-danger  pull-right" onclick="list_field_config.save(self)"><i
+            <button class="btn btn-danger  pull-right" onclick="list_control_button_config.save(self)"><i
                     class="fa-save"></i>Save
             </button>
             &nbsp;&nbsp;
-            <button class="btn btn-danger cancel-block-property pull-right" onclick="list_field_config.cancel(self)"><i
+            <button class="btn btn-danger cancel-block-property pull-right" onclick="list_control_button_config.cancel(self)"><i
                     class="fa-save"></i>Cancel
             </button>
 

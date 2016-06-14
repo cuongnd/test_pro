@@ -1,2 +1,0 @@
-configurations.create("default")
-artifacts.add("default", file('reflections-0.9.5.jar'))

@@ -1,12 +1,14 @@
 package com.vantinviet.bho88.libraries.joomla.application;
 
 import android.content.Context;
+import android.content.Intent;
 
+import com.vantinviet.bho88.MainActivity;
 import com.vantinviet.bho88.configuration.configuration;
 import com.vantinviet.bho88.libraries.android.http.JSONParser;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
-import com.vantinviet.bho88.libraries.joomla.cache.cache;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
+import com.vantinviet.bho88.libraries.joomla.cache.cache;
 import com.vantinviet.bho88.libraries.utilities.md5;
 
 import org.json.JSONObject;
@@ -21,6 +23,7 @@ public class JApplication {
     public static Map<String, String> content_website =new HashMap<String, String>();
     public static JApplication instance;
     public Context context;
+    private String redirect;
 
     /* Static 'instance' method */
     public static JApplication getInstance( ) {
@@ -67,12 +70,16 @@ public class JApplication {
             // instantiate our json parser
             JSONParser jParser = new JSONParser();
             // get json string from url
+            System.out.println("------link--------");
             System.out.println(link);
+            System.out.println("------link--------");
             JSONObject json = jParser.getJSONFromUrl(link);
             if(json.has("link_redirect"))
             {
                 String link_redirect=json.getString("link_redirect");
-                return call_json_get_content_website(link_redirect);
+                JApplication app=JFactory.getApplication();
+                app.setRedirect(link_redirect);
+                return "";
             }
             System.out.println(json.toString());
             return_json = json.toString();
@@ -82,5 +89,11 @@ public class JApplication {
         }
         return return_json;
 
+    }
+
+    public void setRedirect(String redirect) {
+        MainActivity.host=redirect;
+        Intent i = new Intent(this.context, MainActivity.class);
+        this.context.startActivity(i);
     }
 }

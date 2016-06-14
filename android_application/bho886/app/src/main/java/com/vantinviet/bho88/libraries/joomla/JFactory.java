@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 
 import com.vantinviet.bho88.configuration.configuration;
 import com.vantinviet.bho88.configuration.configuration_countdown;
+import com.vantinviet.bho88.libraries.cms.application.JApplicationSite;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.application.JApplication;
 import com.vantinviet.bho88.libraries.joomla.uri.JUri;
@@ -68,5 +69,9 @@ public class JFactory {
 
     public static JApplication getApplication() {
         return JApplication.getInstance();
+    }
+
+    public static JApplicationSite getApplicationSite() {
+        return JApplicationSite.getInstance();
     }
 }

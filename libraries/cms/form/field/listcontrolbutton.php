@@ -321,9 +321,9 @@ class JFormFieldlistcontrolbutton extends JFormField
         require_once JPATH_ROOT . '/components/com_phpmyadmin/tables/updatetable.php';
         $table_control = new JTableUpdateTable($db, 'control');
         $website_name=JFactory::get_website_name();
-        $xml_file=$this->element['xml_file'];
+        $formatxml_file=$this->element['formatxml_file'];
         $file_xml='';
-        switch($xml_file){
+        switch($formatxml_file){
             case 'table':
                 $file_xml="table_".$view;
                 break;
