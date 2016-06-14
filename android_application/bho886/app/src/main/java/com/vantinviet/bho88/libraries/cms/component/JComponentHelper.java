@@ -40,6 +40,10 @@ public class JComponentHelper {
     public static Map<String, String> content_component =new HashMap<String, String>();
     public static List<String> columns;
     public static View linear_layout;
+    public static JSONArray list_hidden_field_item;
+    private static Map<String, String> mapStringInput;
+    private static String android_render_form_type;
+    private static JSONObject component_json_element;
 
 
     public static String getContentComponent(String link) {
@@ -88,7 +92,7 @@ public class JComponentHelper {
     }
 
     public static void renderComponent(Context context, JSONObject json_element, LinearLayout linear_layout) throws JSONException {
-
+        component_json_element=json_element;
         linear_layout=linear_layout;
         JMenu menu=JFactory.getMenu();
         JSONObject menu_active=menu.getMenuActive();
@@ -112,7 +116,7 @@ public class JComponentHelper {
         JMenu menu=JFactory.getMenu();
         JSONObject menu_active=menu.getMenuActive();
         JRegistry menu_active_params = JRegistry.getParams(menu_active);
-        String android_render_form_type=menu_active_params.get("android_render_form_type","list","String");
+        android_render_form_type=menu_active_params.get("android_render_form_type","list","String");
         System.out.println("android_render_form_type:" + android_render_form_type);
         if(android_render_form_type.equals("list"))
         {
@@ -170,6 +174,12 @@ public class JComponentHelper {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        try {
+            JSONArray list_hidden_field_item=json_element.has("list_hidden_field_item")?json_element.getJSONArray("list_hidden_field_item"):new JSONArray();
+            JComponentHelper.list_hidden_field_item=list_hidden_field_item;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         abstract class subRenderComponent {
             public abstract void render_element(JSONObject array_element,String root_element,View linear_layout, int level, int max_level) throws JSONException;
@@ -196,6 +206,36 @@ public class JComponentHelper {
         //subRenderComponent.render_element(json_element, root_element, linear_layout, 0, 999);
 
     }
+
+    public static Map<String, String> getMapStringInputComponent() {
+        Map<String, String> map_input_component = new HashMap<String, String>();
+        if(android_render_form_type.equals("list"))
+        {
+
+        }else{
+            try {
+                JSONArray item_fields=component_json_element.has("item_fields")?component_json_element.getJSONArray("item_fields"):new JSONArray();
+                for(int i=0;i<item_fields.length();i++){
+                    JSONObject field=item_fields.getJSONObject(i);
+                    if(field.has("name")&&field.has("label"))
+                    {
+                        String type =field.has("type")? field.getString("type"):"text";
+                        String name = field.getString("name");
+                        String label = field.getString("label");
+                        String group="";
+                        JFormField formField=JFormField.getFormField(type, name,group);
+                        String value=formField.getValue();
+                        map_input_component.put(name, value);
+                    }
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return map_input_component;
+    }
+
     private static class TableClickListener implements TableDataClickListener {
 
 

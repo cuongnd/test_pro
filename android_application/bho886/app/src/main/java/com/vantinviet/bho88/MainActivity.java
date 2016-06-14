@@ -117,11 +117,12 @@ public class MainActivity extends AppCompatActivity {
             String test_page = "&Itemid=433";
             test_page = "";
             host = config.root_url + "/index.php?os=android&screenSize=" + screenSize + "&version=" + local_version + test_page;
-        } else {
-            host = config.root_url + host;
+        } else if(!host.contains(config.root_url)) {
+            host = config.root_url + "/"+host;
         }
-
-
+        System.out.println("---------host---------");
+        System.out.println("host " + host);
+        System.out.println("---------host---------");
         //ab.setTitle(title);
 
         System.out.println(host);
@@ -177,12 +178,16 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String json_string) {
+            if(json_string.equals(""))
+            {
+                return;
+            }
             super.onPostExecute(json_string);
             dialog.dismiss();
             try {
                 JSONObject json_object = new JSONObject(json_string);
 
-                String version = json_object.getString("version");
+                String version = json_object.has("version")?json_object.getString("version"):"";
                 String local_version = config.get_version();
                 if (version != local_version) {
                     int root_id = json_object.getInt("root_id");

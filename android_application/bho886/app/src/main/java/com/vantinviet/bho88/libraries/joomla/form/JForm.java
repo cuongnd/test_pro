@@ -1,11 +1,8 @@
 package com.vantinviet.bho88.libraries.joomla.form;
 
-import android.content.Context;
 import android.view.View;
 
-import com.vantinviet.bho88.libraries.joomla.form.fields.*;
-
-import org.json.JSONObject;
+import com.vantinviet.bho88.libraries.joomla.form.fields.JFormFieldTextView;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -28,16 +25,16 @@ public class JForm {
     public String[] getErrors(){
         return this.errors;
     }
-    public static JFormField getField( String type, String group, String value){
+    public static JFormField getField( String type,String name, String group, String value){
         boolean element=findField(type, group);
         if(!element){
-            JFormFieldTextView field=new JFormFieldTextView();
+            JFormField field=JFormFieldTextView.getInstance(type, name, group);
             return field;
         }
-        return loadField(type, group, value);
+        return loadField(type,name, group, value);
     }
 
-    private static JFormField loadField( String type, String group, String value) {
+    private static JFormField loadField(String name, String type, String group, String value) {
         JFormField formField=new JFormField() {
             @Override
             protected View getInput() {

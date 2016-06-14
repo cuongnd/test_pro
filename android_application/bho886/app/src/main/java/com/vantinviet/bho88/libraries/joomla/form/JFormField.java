@@ -17,6 +17,7 @@ import java.lang.reflect.InvocationTargetException;
  * Created by cuongnd on 6/11/2016.
  */
 public abstract class JFormField {
+    private static JFormField ourInstance;
     public final Context context;
     protected String fieldName;
     protected String type;
@@ -25,13 +26,50 @@ public abstract class JFormField {
     protected String value;
     protected String group;
     private File jarFile;
+    private static String p_package="com.vantinviet.bho88.libraries.joomla.form.fields";
+    public String name;
+
     public JFormField(){
         JApplication app= JFactory.getApplication();
         this.context=app.context;
     }
-    public View renderField(JSONObject option, String type, String fieldName, String group, String label,String value) {
-        String p_package="com.vantinviet.bho88.libraries.joomla.form.fields";
+    public static JFormField getInstance(String type, String fieldName, String group) {
         JFormField formField = null;
+        if(type.equals(""))
+        {
+            return formField;
+        }
+        String className=p_package+".JFormField"+getStanderFieldName(type);
+        System.out.println("className:"+className);
+        try {
+
+            Class<?> selected_class = Class.forName(className);
+            Constructor<?> cons = selected_class.getConstructor();
+            formField = (JFormField) cons.newInstance(type, fieldName, group);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return formField;
+    }
+    public View renderField(JSONObject option, String type, String fieldName, String group, String label,String value) {
+        JFormField formField = new JFormField() {
+            @Override
+            protected View getInput() {
+                return null;
+            }
+        };
+        if(type.equals(""))
+        {
+            return formField.getInput();
+        }
         String className=p_package+".JFormField"+getStanderFieldName(type);
         System.out.println("className:"+className);
         try {
@@ -61,7 +99,7 @@ public abstract class JFormField {
         return view_field;
     }
 
-    private String getStanderFieldName(String fieldName) {
+    private static String getStanderFieldName(String fieldName) {
         String[] listField=new String[]{
                 "text-Text",
                 "textview-TextView",
@@ -83,8 +121,8 @@ public abstract class JFormField {
         this.fieldName=fieldName;
     }
 
-    public static JFormField getFormField( String name, String group, String value) {
-        return JForm.getField(name,group,value);
+    public static JFormField getFormField(String type, String name, String group, String value) {
+        return JForm.getField(type,name,group,value);
     }
 
     protected abstract View getInput();
@@ -93,4 +131,11 @@ public abstract class JFormField {
         return jarFile;
     }
 
+    public static JFormField getFormField(String type,String name, String group) {
+        return JFormField.getInstance(type,name,group);
+    }
+
+    public String getValue() {
+        return value;
+    }
 }

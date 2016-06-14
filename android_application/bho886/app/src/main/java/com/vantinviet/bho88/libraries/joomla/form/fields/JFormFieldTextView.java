@@ -22,7 +22,7 @@ import org.json.JSONObject;
  */
 public class JFormFieldTextView extends JFormField {
     public Context context;
-    public JFormFieldTextView(){
+    public JFormFieldTextView(String type, String fieldName, String group){
     }
     @Override
     protected View getInput() {

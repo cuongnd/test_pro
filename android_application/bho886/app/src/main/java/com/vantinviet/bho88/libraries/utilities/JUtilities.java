@@ -1,12 +1,20 @@
 package com.vantinviet.bho88.libraries.utilities;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -78,6 +86,32 @@ public class JUtilities {
             //LOG.warn(packageName + " does not appear to exist as a valid package on the file system.");
         }
         return classes;
+    }
+    private static String internalEncoding = "UTF-8";
+    public static String http_build_query(Map<String, String> params) throws UnsupportedEncodingException {
+        String result = "";
+        for(Map.Entry<String, String> e : params.entrySet()){
+            if(e.getKey().isEmpty()) continue;
+            if(!result.isEmpty()) result += "&";
+            result += URLEncoder.encode(e.getKey(), internalEncoding) + "=" +
+                    URLEncoder.encode(e.getValue(), internalEncoding);
+        }
+        return result;
+    }
+
+    public static Map getMapString(JSONArray item_json_array, String key, String value) {
+        Map<String, String> a_map = new HashMap<String, String>();
+        for (int i=0;i<item_json_array.length();i++){
+            try {
+                JSONObject item=item_json_array.getJSONObject(i);
+                String a_key = item.getString(key);
+                String a_value = item.getString(value);
+                a_map.put(a_key,a_value);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return a_map;
     }
 }
 
