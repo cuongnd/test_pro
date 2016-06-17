@@ -75,12 +75,14 @@ final class JApplicationSite extends JApplicationCms
      */
     protected function authorise($itemid)
     {
+
         $app=JFactory::getApplication();
         $menu_item=MenusHelperFrontEnd::get_menu_item_by_menu_item_id($itemid);
         $is_backend=$menu_item->is_backend;
         $redirect=$app->input->getBool('redirect',false);
         $menus = $this->getMenu();
         $user = JFactory::getUser();
+
         if($is_backend&&!$user->id)
         {
             $this->enqueueMessage(JText::_('JGLOBAL_YOU_MUST_LOGIN_FIRST'));
@@ -102,8 +104,10 @@ final class JApplicationSite extends JApplicationCms
         {
             return true;
         }
+
         require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
         $isAdminSite = UtilityHelper::isAdminSite();
+
         if (!$isAdminSite && !$menus->authorise($itemid)) {
             if(!$redirect) {
                 $this->setUserState('users.login.form.data', array('return' => JUri::getInstance()->toString()));
@@ -759,7 +763,6 @@ final class JApplicationSite extends JApplicationCms
         parent::route();
 
         $Itemid = $this->input->getInt('Itemid', null);
-
         $this->authorise($Itemid);
 
     }

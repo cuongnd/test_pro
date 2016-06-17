@@ -12,7 +12,6 @@ import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.joomla.cache.cache;
 import com.vantinviet.bho88.libraries.utilities.md5;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -69,28 +68,30 @@ public class JApplication {
 
     private static String call_json_get_content_website(String link) {
         String return_json="";
+        int responseCode = 0;
         try {
             // instantiate our json parser
             JSONParser jParser = new JSONParser();
-            // get json string from url
-            System.out.println("------link--------");
-            System.out.println(link);
-            System.out.println("------link--------");
-            JSONObject json = jParser.getJSONFromUrl(link);
-            if(json.has("link_redirect"))
+            JApplication app=JFactory.getApplication();
+            JSONObject json_data = jParser.getJSONFromUrl(link);
+            System.out.println("json_data:"+json_data.toString());
+            if(json_data.has("link_redirect"))
             {
-                String link_redirect=json.getString("link_redirect");
-                JApplication app=JFactory.getApplication();
+                String link_redirect=json_data.getString("link_redirect");
                 app.setRedirect(link_redirect);
                 return "";
             }
-            System.out.println(json.toString());
-            return_json = json.toString();
+            System.out.println(json_data.toString());
+            return_json = json_data.toString();
 
         } catch (Throwable t) {
             t.printStackTrace();
         }
         return return_json;
+
+    }
+
+    private static void startActivity(Intent intent) {
 
     }
 
@@ -100,17 +101,7 @@ public class JApplication {
         String screenSize = Integer.toString(config.screen_size_width/config.screenDensity) + "x" + Integer.toString( config.screen_size_height);
         String local_version= config.get_version();
         link=link+"&os=android&screenSize="+ screenSize+"&version="+local_version;
-        if(!link.equals("Itemid"))
-        {
-            JMenu menu=JFactory.getMenu();
-            JSONObject menu_active=menu.getMenuActive();
-            try {
-                link+="&Itemid="+menu_active.getString("id");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        MainActivity.host="index.php?"+link;
+        MainActivity.host=link;
         Intent i = new Intent(this.context, MainActivity.class);
         this.context.startActivity(i);
     }

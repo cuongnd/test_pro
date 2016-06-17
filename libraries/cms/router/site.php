@@ -203,7 +203,7 @@ class JRouterSite extends JRouter
         $tmpl=$this->getVar('tmpl','');
         if(!$Itemid)
         {
-            $Itemid=$this->getVar('menuItemActiveId');;
+            $Itemid=$this->getVar('menuItemActiveId');
         }
 
 
@@ -248,7 +248,43 @@ class JRouterSite extends JRouter
                 }
 
             }
-            if(!$this->getVar('Itemid'))
+			if(!$this->getVar('Itemid'))
+			{
+				$controller=$this->getVar('controller');
+				if(!$controller)
+				{
+					$task=$this->getVar('task','');
+					$task=explode('.',$task);
+
+					if(count($task)>1)
+					{
+						$controller=$task[0];
+					}
+				}
+
+				if($controller)
+				{
+					foreach($items as $item)
+					{
+						$link=$item->link;
+						$uri_link=JUri::getInstance($link);
+						$list_vars1=$uri_link->getVars();
+						$list_vars2=$this->getVars();
+
+						if(
+							$list_vars1['option']==$list_vars2['option']&&
+							$list_vars1['view']==$controller
+						){
+							$this->setVar('Itemid',$item->id);
+							break;
+						}
+					}
+				}
+
+			}
+
+
+			if(!$this->getVar('Itemid'))
             {
                 foreach($items as $item)
                 {
@@ -266,6 +302,7 @@ class JRouterSite extends JRouter
                 }
 
             }
+
 
         }
 

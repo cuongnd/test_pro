@@ -30,8 +30,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.vantinviet.bho88.libraries.cms.application.JApplicationCms;
 import com.vantinviet.bho88.libraries.cms.component.JComponentHelper;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
-import com.vantinviet.bho88.libraries.joomla.application.JApplication;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
+import com.vantinviet.bho88.libraries.joomla.application.JApplication;
+import com.vantinviet.bho88.libraries.joomla.session.JSession;
 import com.vantinviet.bho88.libraries.legacy.request.JRequest;
 import com.vantinviet.bho88.media.element.slider.banner_rotator.elementBanner_RotatorHelper;
 import com.vantinviet.bho88.media.element.ui.grid.element_grid_helper;
@@ -173,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
     }
-
     private class AsyncJsonElementViewLoader extends AsyncTask<String, Void, String> {
         private final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
 
@@ -187,7 +187,12 @@ public class MainActivity extends AppCompatActivity {
             dialog.dismiss();
             try {
                 JSONObject json_object = new JSONObject(json_string);
-
+                String session_id=json_object.has("session_id")?json_object.getString("session_id"):null;
+                if(session_id!=null)
+                {
+                    JSession $session=JFactory.getSession();
+                    $session.setId(session_id);
+                }
                 String version = json_object.has("version")?json_object.getString("version"):"";
                 String local_version = config.get_version();
                 if (version != local_version) {

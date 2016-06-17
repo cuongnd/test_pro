@@ -9,6 +9,7 @@ import com.vantinviet.bho88.configuration.configuration_countdown;
 import com.vantinviet.bho88.libraries.cms.application.JApplicationSite;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.application.JApplication;
+import com.vantinviet.bho88.libraries.joomla.session.JSession;
 import com.vantinviet.bho88.libraries.joomla.uri.JUri;
 import com.vantinviet.bho88.libraries.legacy.request.JRequest;
 
@@ -69,6 +70,9 @@ public class JFactory {
 
     public static JApplication getApplication() {
         return JApplication.getInstance();
+    }
+    public static JSession getSession() {
+        return JSession.getInstance();
     }
 
     public static JApplicationSite getApplicationSite() {

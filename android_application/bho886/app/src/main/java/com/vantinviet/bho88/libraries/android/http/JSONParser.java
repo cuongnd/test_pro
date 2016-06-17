@@ -2,11 +2,17 @@ package com.vantinviet.bho88.libraries.android.http;
 
 import android.util.Log;
 
+import com.vantinviet.bho88.libraries.joomla.JFactory;
+import com.vantinviet.bho88.libraries.joomla.session.JSession;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,6 +21,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by cuongnd on 12/17/2015.
@@ -33,10 +41,17 @@ public class JSONParser {
 
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost httpPost = new HttpPost(url);
-
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+            JSession $session= JFactory.getSession();
+            String session_id= $session.getId();
+            nameValuePairs.add(new BasicNameValuePair("session_id", session_id));
+            httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             HttpResponse httpResponse = httpClient.execute(httpPost);
+
+
             HttpEntity httpEntity = httpResponse.getEntity();
             is = httpEntity.getContent();
+
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

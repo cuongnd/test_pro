@@ -324,27 +324,34 @@ class JTableUser extends JTable
 		unset($groups);
 
 		$query = $this->_db->getQuery(true);
-
 		// Store the group data if the user data was saved.
 		if (is_array($this->groups) && count($this->groups))
 		{
 			// Delete the old user group maps.
 			$query->delete($this->_db->quoteName('#__user_usergroup_map'))
-				->where($this->_db->quoteName('user_id') . ' = ' . (int) $this->id);
+				->where('user_id = ' . (int) $this->id);
 			$this->_db->setQuery($query);
 			$this->_db->execute();
-
+			$ok=$this->_db->execute();
+			if(!$ok)
+			{
+				throw new Exception($this->_db->getErrorMsg());
+			}
 			// Set the new user group maps.
 			$query->clear()
 				->insert($this->_db->quoteName('#__user_usergroup_map'))
-				->columns(array($this->_db->quoteName('user_id'), $this->_db->quoteName('group_id')));
+				->columns('user_id,group_id');
 			// Have to break this up into individual queries for cross-database support.
 			foreach ($this->groups as $group)
 			{
 				$query->clear('values')
 					->values($this->id . ', ' . $group);
 				$this->_db->setQuery($query);
-				$this->_db->execute();
+				$ok=$this->_db->execute();
+				if(!$ok)
+				{
+					throw new Exception($this->_db->getErrorMsg());
+				}
 			}
 		}
 

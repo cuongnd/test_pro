@@ -624,7 +624,8 @@ class websiteHelperFrontEnd
                 'version' => $os_version,
                 'children' => $children,
                 'active_menu_item'=>$menu->getActive(),
-                'request'=>$app->input->getArray()
+                'request'=>$app->input->getArray(),
+                'token'=>JSession::getFormToken()
 
             );
             ob_clean();

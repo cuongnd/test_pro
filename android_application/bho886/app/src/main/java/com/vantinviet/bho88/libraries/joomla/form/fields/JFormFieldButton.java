@@ -49,7 +49,7 @@ public class JFormFieldButton extends JFormField{
                     JSONArray list_hidden_field_item= JComponentHelper.list_hidden_field_item;
                     Map<String, String>  map_str_hidden_field_item=JUtilities.getMapString(list_hidden_field_item,"name","default");
                     Map<String, String>  map_input=JComponentHelper.getMapStringInputComponent();
-                    String link = JUtilities.http_build_query(map_str_hidden_field_item)+"&"+JUtilities.http_build_query(map_input);
+                    String link ="index.php?"+ JUtilities.http_build_query(map_str_hidden_field_item)+"&"+JUtilities.http_build_query(map_input);
                     System.out.println("link:"+link);
                     JApplication app= JFactory.getApplication();
                     app.setRedirect(link);

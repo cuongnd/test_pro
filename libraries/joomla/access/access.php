@@ -398,8 +398,8 @@ class JAccess
 		// Get all groups that the user is mapped to recursively.
 		$website=JFactory::getWebsite();
 		$groups = self::getGroupsByUser($userId);
+
 		// Only load the view levels once.
-		self::$authorised = array();
 		if (empty(self::$authorised))
 		{
 			$db = JFactory::getDbo();

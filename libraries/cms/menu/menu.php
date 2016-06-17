@@ -354,7 +354,14 @@ class JMenu
 	{
 		$menu = $this->getItem($id);
 		$user = JFactory::getUser();
+		echo json_encode(json_encode($user));
+		die;
 		$authorised_view_levels= $user->getAuthorisedViewLevels();
+		if($menu->access!=0&&$user->id!=0)
+		{
+
+			return true;
+		}
 		if ($menu)
 		{
 			return in_array((int) $menu->access,$authorised_view_levels );

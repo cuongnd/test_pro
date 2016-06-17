@@ -221,7 +221,9 @@ abstract class JFactory
         return $is_website_designing;
     }
 
-    public function isSupperSite($domain='')
+
+
+	public function isSupperSite($domain='')
     {
 
     }
@@ -239,11 +241,11 @@ abstract class JFactory
 	 */
 	public static function getSession(array $options = array())
 	{
+		self::$session = self::createSession($options);
 		if (!self::$session)
 		{
 			self::$session = self::createSession($options);
 		}
-
 		return self::$session;
 	}
 

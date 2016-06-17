@@ -664,9 +664,23 @@ class JApplicationCms extends JApplicationWeb
 		$session = JFactory::getSession($options);
 		$session->initialise($this->input, $this->dispatcher);
 		$session->start();
+		$db = JFactory::getDbo();
+		$os= $this->input->get('os','','string');
+		$session_id= $this->input->get('session_id','','string');
+		if($os!=""&&$session_id!="") {
+			$query=$db->getQuery(true);
+			$query->select('userid')
+				->from('#__session')
+				->where('session_id='.$query->q($session_id))
+			;
+			$user_id=$db->setQuery($query)->loadResult();
+			$user=JFactory::getUser($user_id);
+			$session->set('user', $user);
+
+		}
+
 
 		// TODO: At some point we need to get away from having session data always in the db.
-		$db = JFactory::getDbo();
 		// Remove expired sessions from the database.
 		$time = time();
 
