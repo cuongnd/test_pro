@@ -12,7 +12,6 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,8 +42,11 @@ public class JSONParser {
             HttpPost httpPost = new HttpPost(url);
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
             JSession $session= JFactory.getSession();
-            String session_id= $session.getId();
-            nameValuePairs.add(new BasicNameValuePair("session_id", session_id));
+            String android_ses_id=$session.getId();
+            if(android_ses_id!=null)
+            {
+                //nameValuePairs.add(new BasicNameValuePair("android_ses_id", android_ses_id));
+            }
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             HttpResponse httpResponse = httpClient.execute(httpPost);
 

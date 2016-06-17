@@ -5,16 +5,20 @@ package com.vantinviet.bho88.libraries.joomla.session;
  */
 public  class JSession {
     private static JSession instance;
-    private static String session_id;
+    public String android_ses_id ="";
     public static JSession getInstance() {
+        if(instance==null)
+        {
+            instance=new JSession();
+        }
        return instance;
     }
-    public  void setId(String session_id) {
-        this.session_id = session_id;
+    public  void setId(String android_ses_id) {
+        this.android_ses_id = android_ses_id;
     }
 
-    public static String getId() {
-        return session_id;
+    public String getId() {
+        return this.android_ses_id;
     }
 
 

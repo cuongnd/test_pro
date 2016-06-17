@@ -187,11 +187,13 @@ public class MainActivity extends AppCompatActivity {
             dialog.dismiss();
             try {
                 JSONObject json_object = new JSONObject(json_string);
-                String session_id=json_object.has("session_id")?json_object.getString("session_id"):null;
-                if(session_id!=null)
+                String android_ses_id=json_object.has("android_ses_id")?json_object.getString("android_ses_id"):"";
+                System.out.println("android_ses_id:" + android_ses_id);
+                if(!android_ses_id.equals(""))
                 {
                     JSession $session=JFactory.getSession();
-                    $session.setId(session_id);
+
+                    $session.setId(android_ses_id);
                 }
                 String version = json_object.has("version")?json_object.getString("version"):"";
                 String local_version = config.get_version();

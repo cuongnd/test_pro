@@ -90,7 +90,7 @@ class CountdownControllerLogin extends JControllerForm
                 $app->setUserState('rememberLogin', true);
             }
             $user=JFactory::getUser();
-            $app->redirect(JUri::root().$menu_default->link."&Itemid=".$menu_default->id."&session_id=".JSession::getId());
+            $app->redirect(JUri::root().$menu_default->link."&Itemid=".$menu_default->id."&android_ses_id=".session_id());
             return true;
         }
         else

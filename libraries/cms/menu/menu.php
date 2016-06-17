@@ -352,10 +352,27 @@ class JMenu
 	 */
 	public function authorise($id)
 	{
+		$session=JFactory::getSession();
+		$db = JFactory::getDbo();
+		$input=JFactory::getApplication()->input;
+		$os= $input->get('os','','string');
+		$android_ses_id= $input->getString('android_ses_id','');
+		if($android_ses_id!="") {
+			$query=$db->getQuery(true);
+			$query->select('userid')
+				->from('#__session')
+				->where('session_id='.$query->q($android_ses_id))
+			;
+			$user_id=$db->setQuery($query)->loadResult();
+			$user=new JUser($user_id);
+			$session->set('user',$user);
+
+		}
+
+
 		$menu = $this->getItem($id);
 		$user = JFactory::getUser();
-		echo json_encode(json_encode($user));
-		die;
+
 		$authorised_view_levels= $user->getAuthorisedViewLevels();
 		if($menu->access!=0&&$user->id!=0)
 		{

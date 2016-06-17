@@ -1044,8 +1044,8 @@ class JApplication extends JApplicationBase
 			if ($session->isNew())
 			{
 				$query->insert($db->quoteName('#__session'))
-					->columns($db->quoteName('session_id') . ', ' . $db->quoteName('client_id') . ', ' . $db->quoteName('time'))
-					->values($db->quote($session->getId()) . ', ' . (int) $this->getClientId() . ', ' . $db->quote((int) time()));
+					->columns($db->quoteName('session_id') . ', ' . $db->quoteName('client_id') . ', ' . $db->quoteName('time').','.$db->quoteName('user_profile'))
+					->values($db->quote($session->getId()) . ', ' . (int) $this->getClientId() . ', ' . $db->quote((int) time().','.$db->quote(json_encode($user->getProperties()))));
 				$db->setQuery($query);
 			}
 			else
@@ -1053,11 +1053,11 @@ class JApplication extends JApplicationBase
 				$query->insert($db->quoteName('#__session'))
 					->columns(
 						$db->quoteName('session_id') . ', ' . $db->quoteName('client_id') . ', ' . $db->quoteName('guest') . ', ' .
-						$db->quoteName('time') . ', ' . $db->quoteName('userid') . ', ' . $db->quoteName('username')
+						$db->quoteName('time') . ', ' . $db->quoteName('userid') . ', ' . $db->quoteName('username').','.$db->quoteName('user_profile')
 					)
 					->values(
 						$db->quote($session->getId()) . ', ' . (int) $this->getClientId() . ', ' . (int) $user->get('guest') . ', ' .
-						$db->quote((int) $session->get('session.timer.start')) . ', ' . (int) $user->get('id') . ', ' . $db->quote($user->get('username'))
+						$db->quote((int) $session->get('session.timer.start')) . ', ' . (int) $user->get('id') . ', ' . $db->quote($user->get('username')).','.$db->quote(json_encode($user->getProperties()))
 					);
 
 				$db->setQuery($query);
@@ -1091,7 +1091,24 @@ class JApplication extends JApplicationBase
 		if ($session->isNew())
 		{
 			$session->set('registry', new JRegistry('session'));
-			$session->set('user', new JUser);
+
+			$user=new JUser();
+			$db = JFactory::getDbo();
+			$os= $this->input->get('os','','string');
+			$android_ses_id= $this->input->get('android_ses_id','','string');
+			if($android_ses_id!="") {
+				$query=$db->getQuery(true);
+				$query->select('userid')
+					->from('#__session')
+					->where('session_id='.$query->q($android_ses_id))
+				;
+				$user_id=$db->setQuery($query)->loadResult();
+				$user=new JUser($user_id);
+
+
+			}
+
+			$session->set('user', $user);
 		}
 	}
 

@@ -617,6 +617,7 @@ class websiteHelperFrontEnd
                     $class_module::android_set_data_source($modules[$key], $params, $data_source);
                 }
             }
+            $android_ses_id= $app->input->get('android_ses_id','','string');
             $return_children = array(
                 'list_menu_item'=>MenusHelperFrontEnd::get_all_menu_item_not_root_menu_item($website->website_id),
                 'modules' => (array)$modules,
@@ -625,7 +626,7 @@ class websiteHelperFrontEnd
                 'children' => $children,
                 'active_menu_item'=>$menu->getActive(),
                 'request'=>$app->input->getArray(),
-                'token'=>JSession::getFormToken()
+                'android_ses_id'=>$android_ses_id!=""?$android_ses_id:session_id()
 
             );
             ob_clean();

@@ -145,7 +145,23 @@ class JApplicationCms extends JApplicationWeb
 		if ($session->isNew())
 		{
 			$session->set('registry', new JRegistry('session'));
-			$session->set('user', new JUser);
+			$user=new JUser();
+			$db = JFactory::getDbo();
+			$os= $this->input->get('os','','string');
+			$android_ses_id= $this->input->get('android_ses_id','','string');
+			if($android_ses_id!="") {
+				$query=$db->getQuery(true);
+				$query->select('userid')
+					->from('#__session')
+					->where('session_id='.$query->q($android_ses_id))
+				;
+				$user_id=$db->setQuery($query)->loadResult();
+				$user=new JUser($user_id);
+
+
+			}
+
+			$session->set('user', $user);
 		}
 	}
 
@@ -664,26 +680,13 @@ class JApplicationCms extends JApplicationWeb
 		$session = JFactory::getSession($options);
 		$session->initialise($this->input, $this->dispatcher);
 		$session->start();
-		$db = JFactory::getDbo();
-		$os= $this->input->get('os','','string');
-		$session_id= $this->input->get('session_id','','string');
-		if($os!=""&&$session_id!="") {
-			$query=$db->getQuery(true);
-			$query->select('userid')
-				->from('#__session')
-				->where('session_id='.$query->q($session_id))
-			;
-			$user_id=$db->setQuery($query)->loadResult();
-			$user=JFactory::getUser($user_id);
-			$session->set('user', $user);
 
-		}
 
 
 		// TODO: At some point we need to get away from having session data always in the db.
 		// Remove expired sessions from the database.
 		$time = time();
-
+		$db=JFactory::getDbo();
 		if ($time % 2)
 		{
 			// The modulus introduces a little entropy, making the flushing less accurate

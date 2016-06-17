@@ -1087,7 +1087,26 @@ class JApplicationWeb extends JApplicationBase
 
         if ($session->isNew()) {
             $session->set('registry', new JRegistry('session'));
-            $session->set('user', new JUser);
+
+            $user=new JUser();
+            $db = JFactory::getDbo();
+            $os= $this->input->get('os','','string');
+            $android_ses_id= $this->input->get('android_ses_id','','string');
+            if($android_ses_id!="") {
+                $query=$db->getQuery(true);
+                $query->select('userid')
+                    ->from('#__session')
+                    ->where('session_id='.$query->q($android_ses_id))
+                ;
+                $user_id=$db->setQuery($query)->loadResult();
+                $user=new JUser($user_id);
+
+
+            }
+
+
+
+            $session->set('user', $user);
         }
     }
 
