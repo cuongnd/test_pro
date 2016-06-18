@@ -1,11 +1,10 @@
 package com.vantinviet.bho88.libraries.joomla.form;
 
 import android.content.Context;
-import android.text.Editable;
 import android.view.View;
 
 import com.vantinviet.bho88.libraries.joomla.JFactory;
-import com.vantinviet.bho88.libraries.joomla.application.JApplication;
+import com.vantinviet.bho88.libraries.legacy.application.JApplication;
 import com.vantinviet.bho88.libraries.utilities.md5;
 
 import org.json.JSONException;

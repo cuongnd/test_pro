@@ -28,10 +28,11 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.vantinviet.bho88.libraries.cms.application.JApplicationCms;
+import com.vantinviet.bho88.libraries.cms.application.JApplicationSite;
 import com.vantinviet.bho88.libraries.cms.component.JComponentHelper;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
-import com.vantinviet.bho88.libraries.joomla.application.JApplication;
+import com.vantinviet.bho88.libraries.legacy.application.JApplication;
 import com.vantinviet.bho88.libraries.joomla.session.JSession;
 import com.vantinviet.bho88.libraries.legacy.request.JRequest;
 import com.vantinviet.bho88.media.element.slider.banner_rotator.elementBanner_RotatorHelper;
@@ -188,6 +189,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 JSONObject json_object = new JSONObject(json_string);
                 String android_ses_id=json_object.has("android_ses_id")?json_object.getString("android_ses_id"):"";
+                JApplicationSite app=JFactory.getApplication("site");
+                app.execute();
                 System.out.println("android_ses_id:" + android_ses_id);
                 if(!android_ses_id.equals(""))
                 {

@@ -1,6 +1,6 @@
 package com.vantinviet.bho88.libraries.joomla.cache;
 
-import com.vantinviet.bho88.configuration.configuration;
+import com.vantinviet.bho88.configuration.JConfig;
 import com.vantinviet.bho88.libraries.joomla.cache.jstorage.JCacheFile;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
 
@@ -10,7 +10,7 @@ import com.vantinviet.bho88.libraries.joomla.JFactory;
 public class cache {
     public static String get_content_component(String md5_link) {
         String content_component;
-        configuration config= JFactory.getConfig();
+        JConfig config= JFactory.getConfig();
         String cache_handler=config.cache_handler;
         if(cache_handler.compareTo("file") == 0)
         {
@@ -23,7 +23,7 @@ public class cache {
     }
 
     public static void set_content_component(String md5_link, String content) {
-        configuration config= JFactory.getConfig();
+        JConfig config= JFactory.getConfig();
         String cache_handler=config.cache_handler;
         if(cache_handler.compareTo("file") == 0)
         {
@@ -34,7 +34,7 @@ public class cache {
     }
     public static String get_content_website(String md5_link) {
         String content_website;
-        configuration config= JFactory.getConfig();
+        JConfig config= JFactory.getConfig();
         String cache_handler=config.cache_handler;
         if(cache_handler.compareTo("file") == 0)
         {
@@ -47,7 +47,7 @@ public class cache {
     }
 
     public static void set_content_website(String md5_link, String content) {
-        configuration config= JFactory.getConfig();
+        JConfig config= JFactory.getConfig();
         String cache_handler=config.cache_handler;
         if(cache_handler.compareTo("file") == 0)
         {

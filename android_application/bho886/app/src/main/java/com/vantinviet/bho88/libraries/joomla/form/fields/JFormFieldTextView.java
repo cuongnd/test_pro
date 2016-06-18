@@ -11,7 +11,7 @@ import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.vantinviet.bho88.libraries.android.registry.JRegistry;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
-import com.vantinviet.bho88.libraries.joomla.application.JApplication;
+import com.vantinviet.bho88.libraries.legacy.application.JApplication;
 import com.vantinviet.bho88.libraries.joomla.form.JFormField;
 
 import org.json.JSONException;

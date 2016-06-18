@@ -6,15 +6,18 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.vantinviet.bho88.R;
-import com.vantinviet.bho88.configuration.configuration;
+import com.vantinviet.bho88.configuration.JConfig;
 import com.vantinviet.bho88.libraries.android.registry.JRegistry;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
-import com.vantinviet.bho88.libraries.joomla.cache.cache;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
+import com.vantinviet.bho88.libraries.joomla.cache.cache;
+import com.vantinviet.bho88.libraries.joomla.filesystem.JPath;
 import com.vantinviet.bho88.libraries.joomla.form.JFormField;
+import com.vantinviet.bho88.libraries.joomla.input.JInput;
+import com.vantinviet.bho88.libraries.legacy.application.JApplication;
 import com.vantinviet.bho88.libraries.legacy.request.JRequest;
-import com.vantinviet.bho88.libraries.utilities.md5;
 import com.vantinviet.bho88.libraries.utilities.JUtilities;
+import com.vantinviet.bho88.libraries.utilities.md5;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,7 +51,7 @@ public class JComponentHelper {
 
     public static String getContentComponent(String link) {
         System.out.println(link);
-        configuration config= JFactory.getConfig();
+        JConfig config= JFactory.getConfig();
         String content ="";
         String md5_link= md5.encryptMD5(link);
         int caching=config.caching;
@@ -128,7 +131,10 @@ public class JComponentHelper {
     }
 
     private static void auto_render_component_form_type(Context context, JSONObject json_element, View linear_layout) {
-
+        JApplication app=JFactory.getApplication();
+        JInput input=app.input;
+        String component=input.getString("option", "");
+        String component_path= JPath.getComponentPath(component);
         try {
             View view_field;
             JSONArray item_fields=json_element.has("item_fields")?json_element.getJSONArray("item_fields"):new JSONArray();
@@ -234,6 +240,10 @@ public class JComponentHelper {
             }
         }
         return map_input_component;
+    }
+
+    public static JSONObject getParams(String component_name) {
+        return null;
     }
 
     private static class TableClickListener implements TableDataClickListener {

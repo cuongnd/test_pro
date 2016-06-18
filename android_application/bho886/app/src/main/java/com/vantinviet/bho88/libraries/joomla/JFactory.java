@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
-import com.vantinviet.bho88.configuration.configuration;
+import com.vantinviet.bho88.configuration.JConfig;
 import com.vantinviet.bho88.configuration.configuration_countdown;
 import com.vantinviet.bho88.libraries.cms.application.JApplicationSite;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
-import com.vantinviet.bho88.libraries.joomla.application.JApplication;
 import com.vantinviet.bho88.libraries.joomla.session.JSession;
 import com.vantinviet.bho88.libraries.joomla.uri.JUri;
+import com.vantinviet.bho88.libraries.joomla.user.JUser;
+import com.vantinviet.bho88.libraries.legacy.application.JApplication;
 import com.vantinviet.bho88.libraries.legacy.request.JRequest;
 
 /**
@@ -21,6 +22,8 @@ public class JFactory {
     private static Object config;
     private static Context context;
     private static JApplication application;
+    private static JUser user;
+    public static String language;
 
     public static JMenu getMenu() {
         return JMenu.getInstance();
@@ -31,10 +34,10 @@ public class JFactory {
 
     }
 
-    public static configuration getConfig() {
+    public static JConfig getConfig() {
         Context context= JFactory.getContext();
         String app_name= JFactory.getAppLable(context);
-        configuration config;
+        JConfig config;
         switch (app_name) {
             case "countdown":
                 config= new configuration_countdown();
@@ -71,11 +74,18 @@ public class JFactory {
     public static JApplication getApplication() {
         return JApplication.getInstance();
     }
+    public static JApplicationSite getApplication(String client) {
+        return JApplicationSite.getInstance(client);
+    }
     public static JSession getSession() {
         return JSession.getInstance();
     }
 
-    public static JApplicationSite getApplicationSite() {
-        return JApplicationSite.getInstance();
+
+    public static JUser getUser() {
+        return JUser.getInstance();
+    }
+    public static JUser getUser(int id) {
+        return JUser.getInstance(id);
     }
 }

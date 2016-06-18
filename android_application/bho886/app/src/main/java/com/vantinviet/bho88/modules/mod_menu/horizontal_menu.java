@@ -12,12 +12,13 @@ import android.widget.Toast;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapButtonGroup;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.vantinviet.bho88.MainActivity;
 import com.vantinviet.bho88.R;
 import com.vantinviet.bho88.libraries.android.registry.JRegistry;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
-import com.vantinviet.bho88.libraries.joomla.application.JApplication;
+import com.vantinviet.bho88.libraries.legacy.application.JApplication;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -132,6 +133,7 @@ public class horizontal_menu {
             bootstrap_button_group.setBootstrapBrand(DefaultBootstrapBrand.SUCCESS);
             bootstrap_button_group.setOrientation(LinearLayout.HORIZONTAL);
             bootstrap_button_group.setRounded(false);
+            bootstrap_button_group.setBootstrapSize(DefaultBootstrapSize.LG);
             JSONArray list_menu_item=object.getJSONArray("list_menu_item");
 
             String params=object.getString("params");
@@ -159,6 +161,7 @@ public class horizontal_menu {
                 title = menu_item.getString("title");
                 bootstrap_button.setId(id);
                 bootstrap_button.setText(title);
+                bootstrap_button.setBootstrapSize(DefaultBootstrapSize.LG);
                 bootstrap_button.setOnClickListener(getOnClickDoSomething(bootstrap_button,menu_item));
                 Resources resource = context.getResources();
 

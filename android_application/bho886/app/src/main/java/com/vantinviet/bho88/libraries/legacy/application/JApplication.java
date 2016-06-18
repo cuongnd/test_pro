@@ -1,15 +1,17 @@
-package com.vantinviet.bho88.libraries.joomla.application;
+package com.vantinviet.bho88.libraries.legacy.application;
 
 import android.content.Context;
 import android.content.Intent;
 
 import com.vantinviet.bho88.MainActivity;
 import com.vantinviet.bho88.config;
-import com.vantinviet.bho88.configuration.configuration;
+import com.vantinviet.bho88.configuration.JConfig;
 import com.vantinviet.bho88.libraries.android.http.JSONParser;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
+import com.vantinviet.bho88.libraries.joomla.application.JApplicationBase;
 import com.vantinviet.bho88.libraries.joomla.cache.cache;
+import com.vantinviet.bho88.libraries.joomla.input.JInput;
 import com.vantinviet.bho88.libraries.joomla.session.JSession;
 import com.vantinviet.bho88.libraries.utilities.md5;
 
@@ -21,7 +23,7 @@ import java.util.Map;
 /**
  * Created by cuongnd on 6/7/2016.
  */
-public class JApplication {
+public class JApplication extends JApplicationBase {
     public static Map<String, String> content_website =new HashMap<String, String>();
     public static JApplication instance;
     public Context context;
@@ -29,7 +31,7 @@ public class JApplication {
     public MainActivity activity;
 
     /* Static 'instance' method */
-    public static JApplication getInstance( ) {
+    public static JApplication getInstance() {
 
         if (instance == null) {
             instance = new JApplication();
@@ -37,7 +39,9 @@ public class JApplication {
         return instance;
     }
 
-
+    public JApplication(){
+        this.input=new JInput();
+    }
     public JMenu getMenu() {
         JMenu menu = JMenu.getInstance();
         return menu;
@@ -45,7 +49,7 @@ public class JApplication {
 
     public static String get_content_website(String link) {
         String md5_link= md5.encryptMD5(link);
-        configuration config= JFactory.getConfig();
+        JConfig config= JFactory.getConfig();
         String content ="";
         int caching=config.caching;
         if(caching==1)

@@ -5,7 +5,7 @@ import android.view.View;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.vantinviet.bho88.libraries.cms.component.JComponentHelper;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
-import com.vantinviet.bho88.libraries.joomla.application.JApplication;
+import com.vantinviet.bho88.libraries.legacy.application.JApplication;
 import com.vantinviet.bho88.libraries.joomla.form.JFormField;
 import com.vantinviet.bho88.libraries.utilities.JUtilities;
 
