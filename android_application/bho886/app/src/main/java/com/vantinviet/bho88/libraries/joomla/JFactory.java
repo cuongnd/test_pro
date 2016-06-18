@@ -5,7 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
 import com.vantinviet.bho88.configuration.JConfig;
-import com.vantinviet.bho88.configuration.configuration_countdown;
+import com.vantinviet.bho88.configuration.JConfig_countdown;
 import com.vantinviet.bho88.libraries.cms.application.JApplicationSite;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.session.JSession;
@@ -40,10 +40,10 @@ public class JFactory {
         JConfig config;
         switch (app_name) {
             case "countdown":
-                config= new configuration_countdown();
+                config= JConfig_countdown.getInstance();
                 break;
             default:
-                config= new configuration_countdown();
+                config= JConfig.getInstance();
                 break;
         }
         return config;
