@@ -8,7 +8,6 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -73,49 +72,24 @@ public class JConfig {
                 return String.valueOf(value1);
             }
         }
-        parse_cache_vars();
-        for(Field field : fields) {
-            String name1 = field.getName();
 
-            Object value1 = null;
-            try {
-                value1 = field.get(this);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-            if(name1.equals(name)&&value1!=null)
-            {
-                return String.valueOf(value1);
-            }
+        String content_file_cache=this.get_content_file_config();
+        JSONObject json_object=new JSONObject();
+        try {
+            json_object=new JSONObject(content_file_cache);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            return json_object.has(name)?json_object.getString(name):value_default;
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
         return value_default;
 
     }
 
-    private void parse_cache_vars() {
-        String cache_content_vars=this.get_content_file_config();
-        try {
-            JSONObject json_vars=new JSONObject(cache_content_vars);
-            Iterator<String> iter = json_vars.keys();
-            while (iter.hasNext()) {
-                String key = iter.next();
-                Class<?> clz = this.getInstance().getClass();
-                Field a_field = clz.getDeclaredField(key);
-                Object value = json_vars.get(key);
-                if(a_field!=null) {
-                    a_field.set(clz, value);
-                }
-            }
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
 
     public class getInstance extends JConfig {
     }

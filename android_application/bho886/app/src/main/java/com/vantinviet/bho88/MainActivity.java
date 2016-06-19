@@ -123,12 +123,19 @@ public class MainActivity extends AppCompatActivity {
         } else if(!host.contains(config.root_url)) {
             host = config.root_url + "/"+host;
         }
+        JSession session=JFactory.getSession();
+        String ses_id=session.getId();
+        if(!host.equals("android_ses_id")&&!ses_id.equals("")){
+            host = host+"&android_ses_id="+ses_id;
+        }
+
+        System.out.println("ses_id:" + ses_id);
+
         System.out.println("---------host---------");
         System.out.println("host " + host);
         System.out.println("---------host---------");
         //ab.setTitle(title);
 
-        System.out.println(host);
         (new AsyncJsonElementViewLoader()).execute(host);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
