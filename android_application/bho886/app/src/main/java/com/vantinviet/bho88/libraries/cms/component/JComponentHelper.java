@@ -218,6 +218,7 @@ public class JComponentHelper {
         Map<String, String> map_input_component = new HashMap<String, String>();
         if (android_render_form_type.equals("list")) {
 
+
         } else {
             try {
                 JSONArray item_fields = component_json_element.has("item_fields") ? component_json_element.getJSONArray("item_fields") : new JSONArray();
@@ -297,7 +298,7 @@ public class JComponentHelper {
         ((LinearLayout) linear_layout).addView(scroll_view);
 
         try {
-            JSONArray list_hidden_field_item = json_element.has("list_hidden_field_list") ? json_element.getJSONArray("list_hidden_field_list") : new JSONArray();
+            JSONArray list_hidden_field_list = json_element.has("list_hidden_field_list") ? json_element.getJSONArray("list_hidden_field_list") : new JSONArray();
             JComponentHelper.list_hidden_field_list = list_hidden_field_list;
         } catch (JSONException e) {
             e.printStackTrace();

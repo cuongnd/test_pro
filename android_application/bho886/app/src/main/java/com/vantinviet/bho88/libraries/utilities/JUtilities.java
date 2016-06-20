@@ -100,6 +100,10 @@ public class JUtilities {
     }
 
     public static Map getMapString(JSONArray item_json_array, String key, String value) {
+        if(item_json_array==null)
+        {
+            return new HashMap<String, String>();
+        }
         Map<String, String> a_map = new HashMap<String, String>();
         for (int i=0;i<item_json_array.length();i++){
             try {

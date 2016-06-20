@@ -50,7 +50,6 @@ public class JFormFieldButton extends JFormField{
                     Map<String, String>  map_str_hidden_field_item=JUtilities.getMapString(list_hidden_field_item,"name","default");
                     Map<String, String>  map_input=JComponentHelper.getMapStringInputComponent();
                     String link ="index.php?"+ JUtilities.http_build_query(map_str_hidden_field_item)+"&"+JUtilities.http_build_query(map_input);
-
                     JApplication app= JFactory.getApplication();
                     app.setRedirect(link);
                 } catch (UnsupportedEncodingException e) {
