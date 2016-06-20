@@ -3,6 +3,7 @@ package com.vantinviet.bho88.libraries.joomla;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.webkit.WebView;
 
 import com.vantinviet.bho88.configuration.JConfig;
 import com.vantinviet.bho88.configuration.JConfig_countdown;
@@ -24,6 +25,7 @@ public class JFactory {
     private static JApplication application;
     private static JUser user;
     public static String language;
+    private static WebView webBrowser=null;
 
     public static JMenu getMenu() {
         return JMenu.getInstance();
@@ -87,5 +89,13 @@ public class JFactory {
     }
     public static JUser getUser(int id) {
         return JUser.getInstance(id);
+    }
+
+    public static WebView getWebBrowser() {
+        if(webBrowser==null)
+        {
+            webBrowser=new WebView(context);
+        }
+        return webBrowser;
     }
 }

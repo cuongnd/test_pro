@@ -467,7 +467,7 @@ class JApplicationWeb extends JApplicationBase
                 "link_redirect"=>$url."&$http_request",
                 "moved"=>$moved,
             );
-            echo json_encode($json_android_return);
+            echo "<android_response>".json_encode($json_android_return)."</android_response>";
             die;
         }
         // Import library dependencies.

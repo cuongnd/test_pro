@@ -630,9 +630,8 @@ class websiteHelperFrontEnd
 
             );
             ob_clean();
-            header('Content-Type: application/json');
             //echo json_encode($return);
-            echo json_encode($return_children);
+            echo "<android_response>".json_encode($return_children)."</android_response>";
             die;
         }
         $cache = JFactory::getCache('_system', 'callback');

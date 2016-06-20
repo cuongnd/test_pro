@@ -12,7 +12,6 @@ import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.joomla.application.JApplicationBase;
 import com.vantinviet.bho88.libraries.joomla.cache.cache;
 import com.vantinviet.bho88.libraries.joomla.input.JInput;
-import com.vantinviet.bho88.libraries.joomla.session.JSession;
 import com.vantinviet.bho88.libraries.utilities.md5;
 
 import org.json.JSONObject;
@@ -78,6 +77,8 @@ public class JApplication extends JApplicationBase {
             // instantiate our json parser
             JSONParser jParser = new JSONParser();
             JApplication app=JFactory.getApplication();
+
+
             JSONObject json_data = jParser.getJSONFromUrl(link);
             System.out.println("json_data:"+json_data.toString());
             if(json_data.has("link_redirect"))
@@ -105,13 +106,7 @@ public class JApplication extends JApplicationBase {
 
         String screenSize = Integer.toString(config.screen_size_width/config.screenDensity) + "x" + Integer.toString( config.screen_size_height);
         String local_version= config.get_version();
-        JSession session=JFactory.getSession();
-        String ses_id=session.getId();
-        System.out.println("ses_id:" + ses_id);
-        if(!ses_id.equals("") && !link.contains("android_ses_id"))
-        {
-            link=link+"&android_ses_id="+ses_id;
-        }
+
         link=link+"&os=android&screenSize="+ screenSize+"&version="+local_version;
         System.out.println("link:"+link);
         MainActivity.host=link;
