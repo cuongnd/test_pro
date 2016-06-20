@@ -618,7 +618,16 @@ class websiteHelperFrontEnd
                 }
             }
             $android_ses_id= $app->input->get('android_ses_id','','string');
+
+            $doc=JFactory::getDocument();
+            if($menuItemActive->mobile_response_type=='json'){
+                $component_content=json_encode($doc->android_response);
+            }else{
+                $component =$doc->getBuffer('component');
+                $component_content=$component;
+            }
             $return_children = array(
+                'component_content'=>$component_content,
                 'list_menu_item'=>MenusHelperFrontEnd::get_all_menu_item_not_root_menu_item($website->website_id),
                 'modules' => (array)$modules,
                 'root_id' => $rootId,
@@ -626,11 +635,15 @@ class websiteHelperFrontEnd
                 'children' => $children,
                 'active_menu_item'=>$menu->getActive(),
                 'request'=>$app->input->getArray(),
-                'android_ses_id'=>$android_ses_id!=""?$android_ses_id:session_id()
+                'android_ses_id'=>$android_ses_id!=""?$android_ses_id:session_id(),
+
+
 
             );
             ob_clean();
             //echo json_encode($return);
+            //echo json_encode($return);
+            //echo "<android_response>".json_encode($return_children, JSON_NUMERIC_CHECK)."</android_response>";
             echo "<android_response>".json_encode($return_children)."</android_response>";
             die;
         }

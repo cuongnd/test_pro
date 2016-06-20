@@ -215,15 +215,14 @@ class JViewLegacy extends JObject
 	 */
 	public function display($tpl = null)
 	{
+
 		$app=JFactory::getApplication();
 		$menu=$app->getMenu();
 		$active_menu=$menu->getActive();
 		$mobile_response_type=$active_menu->mobile_response_type;
 		$params=$active_menu->params;
 
-		$tmpl=$app->input->getString('tmpl','');
-
-		if($tmpl=="android"&&$mobile_response_type=="json")
+		if($mobile_response_type=="json")
 		{
 			$android_render_form_type=$params->get('android_render_form_type','list');
 			if($android_render_form_type=="list") {
@@ -239,6 +238,7 @@ class JViewLegacy extends JObject
 				unset($this->show_column);
 				unset($this->columnFields);
 			}
+
 			$doc=JFactory::getDocument();
 			$doc->set_android_response($this);
 			return;

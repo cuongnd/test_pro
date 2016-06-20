@@ -81,21 +81,6 @@ final class JApplicationSite extends JApplicationCms
         $is_backend=$menu_item->is_backend;
         $redirect=$app->input->getBool('redirect',false);
         $menus = $this->getMenu();
-        $session=JFactory::getSession();
-        $db = JFactory::getDbo();
-        $os= $this->input->get('os','','string');
-        $android_ses_id= $this->input->get('android_ses_id','','string');
-
-        if($android_ses_id!="") {
-            $query=$db->getQuery(true);
-            $query->select('userid')
-                ->from('#__session')
-                ->where('session_id='.$query->q($android_ses_id))
-            ;
-            $user_id=$db->setQuery($query)->loadResult();
-            $user=new JUser($user_id);
-            $session->set('user',$user);
-        }
 
         $user = JFactory::getUser();
         if($is_backend&&!$user->id)

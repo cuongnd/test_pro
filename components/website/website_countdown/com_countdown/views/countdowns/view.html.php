@@ -28,11 +28,12 @@ class countdownViewcountdowns extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-
-
 		$this->items      = $this->get('Items');
-		$this->pagination = $this->get('Pagination');
-        $this->filterForm    = $this->get('FilterForm');
+		parent::display($tpl);
+		return;
+		//$this->items      = $this->get('Items');
+		//$this->pagination = $this->get('Pagination');
+        //$this->filterForm    = $this->get('FilterForm');
 
 		$this->state      = $this->get('State');
 
