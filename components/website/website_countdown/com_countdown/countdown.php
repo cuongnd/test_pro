@@ -1,4 +1,6 @@
 <?php
+$input=JFactory::getApplication()->input;
+
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_products

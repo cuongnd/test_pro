@@ -57,12 +57,12 @@ class JRoute
 		if (!is_array($url) && (strpos($url, '&') !== 0) && (strpos($url, 'index.php') !== 0))
 		{
 
-
 			return $url;
 		}
 
 		// Build route.
 		$uri = self::$_router->build($url);
+
 		$scheme = array('path', 'query', 'fragment');
 
 		/*

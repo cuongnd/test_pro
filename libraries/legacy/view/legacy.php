@@ -221,8 +221,8 @@ class JViewLegacy extends JObject
 		$active_menu=$menu->getActive();
 		$mobile_response_type=$active_menu->mobile_response_type;
 		$params=$active_menu->params;
-
-		if($mobile_response_type=="json")
+		$os=$app->input->getString('os','');
+		if($mobile_response_type=="json" && $os!="")
 		{
 			$android_render_form_type=$params->get('android_render_form_type','list');
 			if($android_render_form_type=="list") {
@@ -243,6 +243,7 @@ class JViewLegacy extends JObject
 			$doc->set_android_response($this);
 			return;
 		}
+
 		$result = $this->loadTemplate($tpl);
 
 		if ($result instanceof Exception)

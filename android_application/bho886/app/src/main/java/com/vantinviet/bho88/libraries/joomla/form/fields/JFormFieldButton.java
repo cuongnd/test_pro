@@ -29,7 +29,7 @@ public class JFormFieldButton extends JFormField{
         this.type=type;
         this.name=name;
         this.group=group;
-        this.field=field;
+        this.option=field;
         this.value=value;
     }
     @Override
@@ -38,18 +38,20 @@ public class JFormFieldButton extends JFormField{
         button.setText(this.label);
         button.setPadding(20, 10, 20, 10);
         button.setTextSize(23);
-        button.setOnClickListener(getOnClickDoSomething(button));
+
+        button.setOnClickListener(getOnClickDoSomething(button,this));
         return button;
     }
 
-    private View.OnClickListener getOnClickDoSomething(BootstrapButton button) {
+    private View.OnClickListener getOnClickDoSomething(final BootstrapButton button, final JFormFieldButton form_field_button) {
         return new View.OnClickListener() {
             public void onClick(View v) {
                 try {
                     JSONArray list_hidden_field_item= JComponentHelper.android_render_form_type.equals(JComponentHelper.ANDROID_RENDER_FORM_TYPE_LIST)? JComponentHelper.list_hidden_field_list:JComponentHelper.list_hidden_field_item;
                     Map<String, String>  map_str_hidden_field_item=JUtilities.getMapString(list_hidden_field_item,"name","default");
-                    Map<String, String>  map_input=JComponentHelper.getMapStringInputComponent();
+                    Map<String, String>  map_input=JComponentHelper.getMapStringInputComponent(form_field_button);
                     String link ="index.php?"+ JUtilities.http_build_query(map_str_hidden_field_item)+"&"+JUtilities.http_build_query(map_input);
+                    System.out.println("link button:" + link);
                     JApplication app= JFactory.getApplication();
                     app.setRedirect(link);
                 } catch (UnsupportedEncodingException e) {

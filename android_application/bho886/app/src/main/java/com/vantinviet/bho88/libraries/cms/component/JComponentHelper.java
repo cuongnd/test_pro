@@ -18,6 +18,7 @@ import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.joomla.cache.cache;
 import com.vantinviet.bho88.libraries.joomla.filesystem.JPath;
 import com.vantinviet.bho88.libraries.joomla.form.JFormField;
+import com.vantinviet.bho88.libraries.joomla.form.fields.JFormFieldButton;
 import com.vantinviet.bho88.libraries.joomla.input.JInput;
 import com.vantinviet.bho88.libraries.legacy.application.JApplication;
 import com.vantinviet.bho88.libraries.legacy.request.JRequest;
@@ -214,10 +215,23 @@ public class JComponentHelper {
 
     }
 
-    public static Map<String, String> getMapStringInputComponent() {
+    public static Map<String, String> getMapStringInputComponent(JFormFieldButton form_field_button) {
         Map<String, String> map_input_component = new HashMap<String, String>();
         if (android_render_form_type.equals("list")) {
+            JSONObject option=form_field_button.option;
+            try {
+                String d_default= option.has("default") ?option.getString("default") : "";
+                if(d_default.contains("="))
+                {
+                    String[] parts = d_default.split("=");
+                    String part1 = parts[0];
+                    String part2 = parts[1];
+                    map_input_component.put(part1, part2);
+                }
 
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
         } else {
             try {

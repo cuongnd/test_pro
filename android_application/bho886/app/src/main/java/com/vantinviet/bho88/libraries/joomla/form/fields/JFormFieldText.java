@@ -27,7 +27,7 @@ public class JFormFieldText extends JFormField{
         this.type=type;
         this.name=name;
         this.group=group;
-        this.field=field;
+        this.option=field;
         this.value=value;
     }
     public JFormFieldText(){

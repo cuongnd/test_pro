@@ -26,14 +26,13 @@ public abstract class JFormField {
     protected String fieldName;
     protected String type;
     protected String label;
-    protected JSONObject option;
+    public JSONObject option;
     protected String value;
     protected String group;
     private File jarFile;
     private static String p_package="com.vantinviet.bho88.libraries.joomla.form.fields";
     static Map<String, JFormField> map_form_field = new HashMap<String, JFormField>();
     public String name;
-    public JSONObject field;
     protected String key;
     public int key_id;
 
@@ -104,7 +103,7 @@ public abstract class JFormField {
         {
             form_field= getFormField(type);
             form_field.key=key;
-            form_field.field=field;
+            form_field.option=field;
             form_field.type=type;
             form_field.name=name;
             form_field.group=group;

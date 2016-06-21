@@ -534,7 +534,6 @@ class JRouterSite extends JRouter
             $website=JFactory::getWebsite();
             $items=MenusHelperFrontEnd::get_all_menu_item_not_root_menu_item($website->website_id);
             $list_vars2=$this->getVars();
-
             foreach($items as $item)
             {
                 $link=$item->link;
@@ -584,7 +583,9 @@ class JRouterSite extends JRouter
                         $controller=$task[0];
                     }
                 }
-                if($controller)
+
+
+				if($controller)
                 {
                     foreach($items as $item)
                     {
@@ -592,7 +593,6 @@ class JRouterSite extends JRouter
                         $uri_link=JUri::getInstance($link);
                         $list_vars1=$uri_link->getVars();
                         $list_vars2=$this->getVars();
-
                         if(
                             $list_vars1['option']==$list_vars2['option']&&
                             $list_vars1['view']==$controller
@@ -604,7 +604,6 @@ class JRouterSite extends JRouter
                 }
 
             }
-
             if(!$this->getVar('Itemid'))
             {
                 foreach($items as $item)
