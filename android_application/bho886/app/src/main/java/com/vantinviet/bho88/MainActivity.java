@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-
+    private ProgressDialog dialog =null;
     private EditText editTextId;
     private Button buttonGet;
     private TextView textViewResult;
@@ -85,7 +85,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if(dialog==null)
+        {
+            dialog = new ProgressDialog(MainActivity.this);
+        }
+        dialog.setMessage("Downloading element...");
+        dialog.show();
         setContentView(R.layout.activity_main);
         //Remove title bar
         JApplication app=JFactory.getApplication();
@@ -229,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
         client.disconnect();
     }
     private class AsyncJsonElementViewLoader extends AsyncTask<String, Void, String> {
-        private final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+
 
         @Override
         protected void onPostExecute(String json_string) {
@@ -295,8 +300,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            dialog.setMessage("Downloading element...");
-            dialog.show();
+
         }
 
         @Override

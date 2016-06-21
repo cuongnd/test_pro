@@ -29,6 +29,7 @@ class CountdownControllerLogin extends JControllerForm
      * @since   3.2
      */
     public function login(){
+
         $app=JFactory::getApplication();
         $input=$app->input;
 /*        echo json_encode($input->getArray());
@@ -69,6 +70,7 @@ class CountdownControllerLogin extends JControllerForm
         // Store the data.
         if (!$user->save())
         {
+
             $login_item = JFactory::get_page_login();
             echo $user->getError();
             die;
@@ -89,12 +91,14 @@ class CountdownControllerLogin extends JControllerForm
             {
                 $app->setUserState('rememberLogin', true);
             }
+
             $user=JFactory::getUser();
             $app->redirect(JUri::root().$menu_default->link."&Itemid=".$menu_default->id."&android_ses_id=".session_id());
             return true;
         }
         else
         {
+
             // Login failed !
             $data['remember'] = (int) $options['remember'];
             $app->setUserState('users.login.form.data', $data);
