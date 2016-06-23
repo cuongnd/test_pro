@@ -11,6 +11,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/andEngine" />
+            <option value="$PROJECT_DIR$/andEngineExamples" />
+            <option value="$PROJECT_DIR$/android-support-v4" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/tableview" />
           </set>
@@ -19,6 +21,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/andEngine" />
+            <option value="$PROJECT_DIR$/andEngineExamples" />
+            <option value="$PROJECT_DIR$/android-support-v4" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/tableview" />
           </set>

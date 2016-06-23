@@ -33,5 +33,5 @@ dependencies {
     compile 'com.shehabic.droppy:Droppy:0.2.5.2'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'org.reflections:reflections:0.9.10'
-    compile project(':andEngine')
+    compile project(path: ':andEngine')
 }
