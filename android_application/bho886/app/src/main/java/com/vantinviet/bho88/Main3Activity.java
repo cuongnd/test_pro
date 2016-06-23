@@ -1,39 +1,37 @@
 package com.vantinviet.bho88;
 
+import org.andengine.engine.camera.Camera;
 import org.andengine.engine.options.EngineOptions;
+import org.andengine.engine.options.ScreenOrientation;
+import org.andengine.engine.options.resolutionpolicy.FillResolutionPolicy;
 import org.andengine.entity.scene.Scene;
-import org.andengine.ui.activity.LayoutGameActivity;
+import org.andengine.entity.scene.background.Background;
+import org.andengine.ui.activity.SimpleBaseGameActivity;
 
-public class Main3Activity extends LayoutGameActivity {
+public class Main3Activity extends SimpleBaseGameActivity {
 
-
+    private Camera camera;
+    private static final int CAMERA_WIDTH = 800;
+    private static final int CAMERA_HEIGHT = 480;
     @Override
-    protected int getLayoutID() {
-        return 0;
-    }
-
-    @Override
-    protected int getRenderSurfaceViewID() {
-        return 0;
-    }
-
-    @Override
-    public EngineOptions onCreateEngineOptions() {
-        return null;
-    }
-
-    @Override
-    public void onCreateResources(OnCreateResourcesCallback pOnCreateResourcesCallback) throws Exception {
+    protected void onCreateResources() {
 
     }
 
     @Override
-    public void onCreateScene(OnCreateSceneCallback pOnCreateSceneCallback) throws Exception {
-
+    protected Scene onCreateScene()
+    {
+        Scene scene = new Scene();
+        scene.setBackground(new Background(0.09804f, 0.6274f, 0.8784f));
+        return scene;
     }
 
     @Override
-    public void onPopulateScene(Scene pScene, OnPopulateSceneCallback pOnPopulateSceneCallback) throws Exception {
-
+    public EngineOptions onCreateEngineOptions()
+    {
+        camera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
+        EngineOptions engineOptions = new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED,
+                new FillResolutionPolicy(), camera);
+        return engineOptions;
     }
 }
