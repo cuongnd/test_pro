@@ -10,9 +10,16 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AndEngine-GLES2-Examples" />
             <option value="$PROJECT_DIR$/andEngine" />
-            <option value="$PROJECT_DIR$/andEngineExamples" />
-            <option value="$PROJECT_DIR$/android-support-v4" />
+            <option value="$PROJECT_DIR$/andengine-gles2" />
+            <option value="$PROJECT_DIR$/andengine-gles2-Box2d" />
+            <option value="$PROJECT_DIR$/andengine-gles2-augmented" />
+            <option value="$PROJECT_DIR$/andengine-gles2-cocosbuilder" />
+            <option value="$PROJECT_DIR$/andengine-gles2-modplayer" />
+            <option value="$PROJECT_DIR$/andengine-gles2-multiplayer" />
+            <option value="$PROJECT_DIR$/andengine-gles2-svgtexture" />
+            <option value="$PROJECT_DIR$/andengine-gles2-tmx" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/tableview" />
           </set>
@@ -20,9 +27,16 @@
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AndEngine-GLES2-Examples" />
             <option value="$PROJECT_DIR$/andEngine" />
-            <option value="$PROJECT_DIR$/andEngineExamples" />
-            <option value="$PROJECT_DIR$/android-support-v4" />
+            <option value="$PROJECT_DIR$/andengine-gles2" />
+            <option value="$PROJECT_DIR$/andengine-gles2-Box2d" />
+            <option value="$PROJECT_DIR$/andengine-gles2-augmented" />
+            <option value="$PROJECT_DIR$/andengine-gles2-cocosbuilder" />
+            <option value="$PROJECT_DIR$/andengine-gles2-modplayer" />
+            <option value="$PROJECT_DIR$/andengine-gles2-multiplayer" />
+            <option value="$PROJECT_DIR$/andengine-gles2-svgtexture" />
+            <option value="$PROJECT_DIR$/andengine-gles2-tmx" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/tableview" />
           </set>

@@ -9,7 +9,94 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533da59a-cf91-4163-98b8-61143b18cbf0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/org/andengine/examples/TextBreakExample.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/java/org/andengine/examples/benchmark/PhysicsBenchmark.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/andEngine/src/main/java/org/andengine/entity/particle/BatchedPseudoSpriteParticleSystem.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/andEngine/src/main/java/org/andengine/entity/particle/Particle.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/andEngine/src/main/java/org/andengine/entity/particle/initializer/ColorParticleInitializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/font/BitmapFont.fnt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/font/BitmapFont.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/font/BitmapFontWithKerning.fnt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/font/BitmapFontWithKerning.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/font/Droid.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/font/LCD.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/font/NeverwinterNights.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/font/Plok.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/font/UnrealTournament.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/background_grass.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/badge.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/badge.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/badge_large.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/banana_tiled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/box.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/carddeck_tiled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/chick.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/chromatic_circle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/click_to_unload.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/desert_tiled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/enemy.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/face_box.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/face_box_menu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/face_box_tiled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/face_circle_tiled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/face_hexagon_tiled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/face_triangle_tiled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/frog.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/helicopter_tiled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/i_love_8_bit.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/imageformat_bmp.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/imageformat_gif.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/imageformat_gif.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/imageformat_jpg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/imageformat_png.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/menu_back.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/menu_background.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/menu_ok.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/menu_quit.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/menu_reset.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/next.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/notes.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/onscreen_control_base.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/onscreen_control_knob.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/pacdroid_apples.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/parallax_background_layer_back.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/parallax_background_layer_front.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/parallax_background_layer_mid.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/particle_fire.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/particle_point.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/player.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/racetrack_curve.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/racetrack_straight.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/radar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/radarpoint.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/snake_background.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/snake_head.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/snake_tailpart.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/snapdragon_tiled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/spritesheets/texturepackerexample.pvr.ccz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/spritesheets/texturepackerexample.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/test.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/texturecompositing/alphamask.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/texturecompositing/balloon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/texturecompositing/zynga.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/toggle_button.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/gfx/vehicles.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/level/example.lvl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/mfx/explosion.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/mfx/game_over.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/mfx/lepeltheme.mod" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/mfx/munch.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/mfx/wagner_the_ride_of_the_valkyries.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/tmx/desert.tmx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/tmx/desert.tsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/tmx/desert_with_tsx_tileset.tmx" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/.idea/gradle.xml" afterPath="$PROJECT_DIR$/android_application/bho886/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android_application/bho886/.idea/misc.xml" afterPath="$PROJECT_DIR$/android_application/bho886/.idea/misc.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/assets/font/KingdomOfHearts.ttf" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/assets/font/KingdomOfHearts.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/assets/gfx/pacdroid.svg" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/assets/gfx/pacdroid.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/assets/gfx/paused.png" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/assets/gfx/paused.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/android_application/bho886/app/src/main/res/assets/gfx/tank.png" afterPath="$PROJECT_DIR$/android_application/bho886/app/src/main/assets/gfx/tank.png" />
     </list>
     <ignored path="test_pro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1740,7 +1827,7 @@
       <file leaf-file-name="payment.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/website/website_countdown/com_countdown/controllers/payment.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.538462">
+            <state vertical-scroll-proportion="0.0">
               <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
             </state>
@@ -1750,7 +1837,7 @@
       <file leaf-file-name="asianventure.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layouts/website/less/asianventure.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.461538">
+            <state vertical-scroll-proportion="0.0">
               <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
               <folding />
             </state>
@@ -1859,8 +1946,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="width" value="1378" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -1939,7 +2026,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -2034,6 +2120,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2528,63 +2615,63 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277635" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2506427" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19858612" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25449872" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26172465" sideWeight="0.82282794" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25872535" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.80376345" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15424165" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277635" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.8022876" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2506427" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26172465" sideWeight="0.82282794" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30510753" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2311828" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252688" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15424165" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252688" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26279864" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32423207" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30510753" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2311828" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277635" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19858612" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8039216" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25128534" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15424165" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30510753" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2311828" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26172465" sideWeight="0.82282794" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252688" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2506427" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19858612" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15424165" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277635" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2506427" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252688" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26279864" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32423207" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334471" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30510753" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8039216" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25128534" sideWeight="0.17717206" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2311828" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26172465" sideWeight="0.82282794" order="1" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
@@ -2634,7 +2721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.1153846">
           <caret line="249" column="5" selection-start-line="249" selection-start-column="5" selection-end-line="249" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2677,7 +2763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2685,7 +2770,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="90" column="56" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2875,7 +2959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614">
           <caret line="1091" column="0" selection-start-line="1091" selection-start-column="0" selection-end-line="1091" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2911,7 +2994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="227" column="30" selection-start-line="227" selection-start-column="30" selection-end-line="227" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2973,7 +3055,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/website/website_countdown/com_countdown/controllers/payment.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.538462">
+        <state vertical-scroll-proportion="0.0">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
@@ -2981,7 +3063,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/layouts/website/less/asianventure.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
+        <state vertical-scroll-proportion="0.0">
           <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
           <folding />
         </state>
