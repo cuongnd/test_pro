@@ -33,5 +33,13 @@ dependencies {
     compile 'com.shehabic.droppy:Droppy:0.2.5.2'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'org.reflections:reflections:0.9.10'
-    compile project(path: ':andEngine')
+    compile project(':andengine-gles2')
+    compile project(':andengine-gles2-augmented')
+    compile project(':andengine-gles2-Box2d')
+    compile project(':andengine-gles2-cocosbuilder')
+    compile project(':andengine-gles2-modplayer')
+    compile project(':andengine-gles2-multiplayer')
+    compile project(':andengine-gles2-svgtexture')
+    compile project(':andengine-gles2-tmx')
+    compile project(':andEngine')
 }

@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndEngine-GLES2-Examples/AndEngine-GLES2-Examples.iml" filepath="$PROJECT_DIR$/AndEngine-GLES2-Examples/AndEngine-GLES2-Examples.iml" />
       <module fileurl="file://$PROJECT_DIR$/andEngine/andEngine.iml" filepath="$PROJECT_DIR$/andEngine/andEngine.iml" />
-      <module fileurl="file://$PROJECT_DIR$/andEngineExamples/andEngineExamples.iml" filepath="$PROJECT_DIR$/andEngineExamples/andEngineExamples.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-support-v4/android-support-v4.iml" filepath="$PROJECT_DIR$/android-support-v4/android-support-v4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andengine-gles2/andengine-gles2.iml" filepath="$PROJECT_DIR$/andengine-gles2/andengine-gles2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andengine-gles2-Box2d/andengine-gles2-Box2d.iml" filepath="$PROJECT_DIR$/andengine-gles2-Box2d/andengine-gles2-Box2d.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andengine-gles2-augmented/andengine-gles2-augmented.iml" filepath="$PROJECT_DIR$/andengine-gles2-augmented/andengine-gles2-augmented.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andengine-gles2-cocosbuilder/andengine-gles2-cocosbuilder.iml" filepath="$PROJECT_DIR$/andengine-gles2-cocosbuilder/andengine-gles2-cocosbuilder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andengine-gles2-modplayer/andengine-gles2-modplayer.iml" filepath="$PROJECT_DIR$/andengine-gles2-modplayer/andengine-gles2-modplayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andengine-gles2-multiplayer/andengine-gles2-multiplayer.iml" filepath="$PROJECT_DIR$/andengine-gles2-multiplayer/andengine-gles2-multiplayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andengine-gles2-svgtexture/andengine-gles2-svgtexture.iml" filepath="$PROJECT_DIR$/andengine-gles2-svgtexture/andengine-gles2-svgtexture.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andengine-gles2-tmx/andengine-gles2-tmx.iml" filepath="$PROJECT_DIR$/andengine-gles2-tmx/andengine-gles2-tmx.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bho886.iml" filepath="$PROJECT_DIR$/bho886.iml" />
       <module fileurl="file://$PROJECT_DIR$/tableview/tableview.iml" filepath="$PROJECT_DIR$/tableview/tableview.iml" />
