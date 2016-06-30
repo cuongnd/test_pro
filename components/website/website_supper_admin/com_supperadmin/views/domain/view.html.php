@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_supperadmin
  * @since       1.5
  */
-class supperadminViewdomain extends JViewLegacy
+class supperadminViewDomain extends JViewLegacy
 {
 	protected $item;
 
@@ -32,7 +32,6 @@ class supperadminViewdomain extends JViewLegacy
 		$this->state	= $this->get('State');
 		$this->item		= $this->get('Item');
 		$this->form		= $this->get('Form');
-
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
@@ -52,15 +51,13 @@ class supperadminViewdomain extends JViewLegacy
 	protected function addToolbar()
 	{
 
-		$canDo = JHelperContent::getActions('com_supperadmin');
+		$canDo = JHelperContent::getActions('com_products');
 
-		JToolbarHelper::title(JText::sprintf('Domain', JText::_($this->item->name)), 'power-cord plugin');
-
-		// If not checked out, can save the item.
-        JToolbarHelper::apply('domain.apply');
-        JToolbarHelper::save('domain.save');
-		JToolbarHelper::cancel('domain.cancel', 'JTOOLBAR_CLOSE');
-		JToolbarHelper::divider();
+		JToolbarHelper::title(JText::sprintf('Website', JText::_($this->item->name)), 'power-cord plugin');
+		$this->list_control_item = $this->get('ListControlItem');
+		foreach($this->list_control_item as $control_item){
+			JToolbarHelper::custom($control_item->default,'','',$control_item->label,false);
+		}
 		// Get the help information for the plugin item.
 
 		$lang = JFactory::getLanguage();

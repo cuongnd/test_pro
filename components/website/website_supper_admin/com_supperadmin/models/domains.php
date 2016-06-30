@@ -104,6 +104,20 @@ class supperadminModeldomains extends JModelList
             ->group('a.id')
         ;
 
+        // Filter by search in name or id
+        $search = $this->getState('filter.search');
+        if (!empty($search))
+        {
+            if (stripos($search, 'id:') === 0)
+            {
+                $query->where('a.id = ' . (int) substr($search, 3));
+            }else{
+                $query->where('(a.domain LIKE '.$query->q("%$search%").' OR website.name LIKE '.$query->q("%$search%").' OR website.introtext LIKE '.$query->q("%$search%").' ) ');
+            }
+        }
+
+
+
         // Join over the users for the checked out user.
 
         // Add the list ordering clause.

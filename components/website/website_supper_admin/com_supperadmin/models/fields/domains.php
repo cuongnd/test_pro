@@ -41,7 +41,7 @@ class JFormFieldDomains extends JFormField
     protected function getInput()
     {
         $db=JFactory::getDbo();
-
+        JHtml::_('formbehavior.select2', 'select');
         $query=$db->getQuery(true);
         $this->value[]=0;
         JArrayHelper::toInteger($this->value);
@@ -58,10 +58,20 @@ class JFormFieldDomains extends JFormField
         $attr .= $this->required ? ' required aria-required="true"' : '';
         $attr .= $this->autofocus ? ' autofocus' : '';
         $attr.=' disableChosen="true" ';
+        $attr.=' style="width:100%" ';
         $attribute[]=$this->onchange?'onchange="'.$this->onchange.'"':'';
         $attribute=implode(' ',$attribute);
         $html = JHtml::_('select.genericlist', $list_website, $this->name,$attr, 'id', 'domain', $this->value);
 
         return $html;
     }
+    public function get_attribute_config()
+    {
+        return array(
+            multiple=>'false',
+            size=>'1',
+            "class"=>''
+        );
+    }
+
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="levels" option="levels">
+		<help
+			key = "levels"
+		/>		<message>
+			<![CDATA[COM_USER_LOGIN_VIEW_DEFAULT_DESC]]>
+		</message>
+	</layout>
+
+	<!-- Add fields to the parameters object for the layout. -->
+</metadata>

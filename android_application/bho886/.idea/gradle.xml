@@ -20,7 +20,9 @@
             <option value="$PROJECT_DIR$/andengine-gles2-multiplayer" />
             <option value="$PROJECT_DIR$/andengine-gles2-svgtexture" />
             <option value="$PROJECT_DIR$/andengine-gles2-tmx" />
+            <option value="$PROJECT_DIR$/androidGamemaster" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/scheduling" />
             <option value="$PROJECT_DIR$/tableview" />
           </set>
         </option>
@@ -37,7 +39,9 @@
             <option value="$PROJECT_DIR$/andengine-gles2-multiplayer" />
             <option value="$PROJECT_DIR$/andengine-gles2-svgtexture" />
             <option value="$PROJECT_DIR$/andengine-gles2-tmx" />
+            <option value="$PROJECT_DIR$/androidGamemaster" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/scheduling" />
             <option value="$PROJECT_DIR$/tableview" />
           </set>
         </option>

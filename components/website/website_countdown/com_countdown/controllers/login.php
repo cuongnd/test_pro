@@ -32,6 +32,7 @@ class CountdownControllerLogin extends JControllerForm
 
         $app=JFactory::getApplication();
         $input=$app->input;
+        $jform=$input->get('jform',array(),'array');
 /*        echo json_encode($input->getArray());
         die;*/
         $user=JFactory::getUser();
@@ -43,8 +44,8 @@ class CountdownControllerLogin extends JControllerForm
             $app->redirect(JUri::root().$menu_default->link."&Itemid=".$menu_default->id);
             return false;
         }
-
-        $your_phone=$input->getString('your_phone','');
+        $website=JFactory::getWebsite();
+        $your_phone=$jform['your_phone'];
         $data=array();
         require_once JPATH_ROOT.'/components/com_users/helpers/groups.php';
 
@@ -54,8 +55,10 @@ class CountdownControllerLogin extends JControllerForm
         $system = GroupsHelper::get_user_group_id_default();
 
         $data['groups'][]  = $system;
-        $data['password']  = '123456';
+        $password='123456';
+        $data['password']  = $password;
         $data['block'] = 0;
+        $data['website_id'] = $website->website_id;
 
         $user = new JUser;
         $login_item = JFactory::get_page_login();
@@ -79,11 +82,12 @@ class CountdownControllerLogin extends JControllerForm
         }
         $credentials = array();
         $credentials['username']  = $data['username'];
-        $credentials['password']  = $data['password'];
+        $credentials['password']  = $password;
         $credentials['secretkey'] = JSession::getFormToken();
         $options=array();
         $options['remember'] = true;
         // Perform the log in.
+
         if (true === $app->login($credentials, $options))
         {
             // Success
@@ -94,6 +98,8 @@ class CountdownControllerLogin extends JControllerForm
 
             $user=JFactory::getUser();
             $app->redirect(JUri::root().$menu_default->link."&Itemid=".$menu_default->id."&android_ses_id=".session_id());
+
+
             return true;
         }
         else
@@ -102,8 +108,6 @@ class CountdownControllerLogin extends JControllerForm
             // Login failed !
             $data['remember'] = (int) $options['remember'];
             $app->setUserState('users.login.form.data', $data);
-            echo json_decode("cannoylogin");
-            die;
             $app->redirect(JUri::root().$login_item->link."Itemid=".$login_item->id);
             return false;
         }

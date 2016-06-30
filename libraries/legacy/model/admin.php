@@ -75,7 +75,12 @@ abstract class JModelAdmin extends JModelForm
 	 */
 	public function __construct($config = array())
 	{
+
 		parent::__construct($config);
+		if($this->enable_render_to_xml_field_item())
+		{
+			self::render_to_xml_field_item();
+		}
 
 		if (isset($config['event_after_delete']))
 		{
@@ -140,6 +145,38 @@ abstract class JModelAdmin extends JModelForm
         }
         JTable::addIncludePath(JPATH_ROOT.DS.$table_path);
 
+	}
+	public function render_to_xml_field_item()
+	{
+		$model_name=$this->name;
+		$component=$this->option;
+		$component_path=JPath::get_component_path($component,false);
+		$xml_show_column_path=$component_path.DS."models/forms/".$model_name.".xml";
+		$table_control=JTable::getInstance('control');
+		$table_control->load(array(
+			"element_path"=>$xml_show_column_path
+		));
+		$fields=$table_control->fields;
+		$fields=base64_decode($fields);
+		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
+		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		if(!count($fields))
+			return;
+		ob_start();
+		self::render_to_xml($fields);
+		$string_xml=ob_get_clean();
+		$string_xml='<?xml version="1.0" encoding="utf-8"?><form>'.$string_xml.'</form>';
+		jimport('joomla.filesystem.file');
+		JFile::write(JPATH_ROOT.'/'.$xml_show_column_path,$string_xml);
+
+	}
+
+	private function enable_render_to_xml_field_item()
+	{
+		$list_component_disable_render_to_xml=array(
+			'com_menus'
+		);
+		return !in_array($this->option,$list_component_disable_render_to_xml);
 	}
 
 	/**

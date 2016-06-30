@@ -55,6 +55,7 @@ class PlgAuthenticationJoomla extends JPlugin
         ;
 		$db->setQuery($query);
 		$result = $db->loadObject();
+
 		if ($result)
 		{
 
@@ -69,6 +70,7 @@ class PlgAuthenticationJoomla extends JPlugin
 
 
 			//$match = $credentials['password']==$result->password;
+
 			if($credentials['login_facebook']==1)
 			{
 				$match=true;

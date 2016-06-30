@@ -13,8 +13,6 @@
     <string name="title_activity_xmllayout_example">XMLLayoutExample</string>
 
 
-
-
     <!-- Example-Groups -->
     <!-- Examples -->
     <string name="title_activity_analog_on_screen_controls_example">AnalogOnScreenControlsExample
@@ -165,4 +163,5 @@
 
     <!-- Apps -->
     <string name="example_app_cityradar">CityRadar</string>
+    <string name="title_activity_main7">Main7Activity</string>
 </resources>

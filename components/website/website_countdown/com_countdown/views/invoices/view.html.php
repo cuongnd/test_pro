@@ -124,6 +124,47 @@ class productsViewInvoices extends JViewLegacy
 		}
 
 		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');
+$bar->appendButton('Custom', $layout->render(array()), 'new');
+        JToolbarHelper::editList('extension.edit');
+        JToolbarHelper::addNew('extension.add');
+        if ($canDo->get('core.create'))
+        {
+            // Instantiate a new JLayoutFile instance and render the layout
+            $layout = new JLayoutFile('toolbar.newcomponent');
+
+            $bar->appendButton('Custom', $layout->render(array()), 'new');
+        }
+		if ($canDo->get('core.edit'))
+		{
+			JToolbarHelper::editList('extension.edit');
+		}
+        if ($canDo->get('core.create'))
+        {
+            JToolbarHelper::custom('extensions.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
+        }
+		JToolbarHelper::duplicate('extensions.duplicate');
+		if ($canDo->get('core.edit.state'))
+		{
+			JToolbarHelper::publish('extensions.publish', 'JTOOLBAR_ENABLE', true);
+			JToolbarHelper::unpublish('extensions.unpublish', 'JTOOLBAR_DISABLE', true);
+			JToolbarHelper::checkin('extensions.checkin');
+		}
+        if ($this->state->get('filter.published') == -2)
+        {
+            JToolbarHelper::deleteList('', 'extensions.delete', 'JTOOLBAR_EMPTY_TRASH');
+        }
+        elseif ($canDo->get('core.edit.state'))
+        {
+            JToolbarHelper::trash('extensions.trash');
+        }
+        JToolbarHelper::publish('extensions.issystem','Is system');
+        JToolbarHelper::unpublish('extensions.isnotsystem','Is system');
+		if ($canDo->get('core.admin'))
+		{
+			JToolbarHelper::preferences('com_products');
+		}
+
+		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');
 
 
 

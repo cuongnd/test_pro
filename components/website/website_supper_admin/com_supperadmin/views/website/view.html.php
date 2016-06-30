@@ -32,7 +32,6 @@ class supperadminViewWebsite extends JViewLegacy
 		$this->state	= $this->get('State');
 		$this->item		= $this->get('Item');
 		$this->form		= $this->get('Form');
-
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
@@ -49,33 +48,4 @@ class supperadminViewWebsite extends JViewLegacy
 	 *
 	 * @since   1.6
 	 */
-	protected function addToolbar()
-	{
-
-		$canDo = JHelperContent::getActions('com_supperadmin');
-
-		JToolbarHelper::title(JText::sprintf('Website', JText::_($this->item->name)), 'power-cord plugin');
-
-		// If not checked out, can save the item.
-        JToolbarHelper::apply('website.apply');
-        JToolbarHelper::save('website.save');
-		JToolbarHelper::cancel('website.cancel', 'JTOOLBAR_CLOSE');
-		JToolbarHelper::divider();
-		// Get the help information for the plugin item.
-
-		$lang = JFactory::getLanguage();
-
-		$help = $this->get('Help');
-		if ($lang->hasKey($help->url))
-		{
-			$debug = $lang->setDebug(false);
-			$url = JText::_($help->url);
-			$lang->setDebug($debug);
-		}
-		else
-		{
-			$url = null;
-		}
-		JToolbarHelper::help($help->key, false, $url);
-	}
 }

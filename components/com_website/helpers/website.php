@@ -141,6 +141,7 @@ class websiteHelperFrontEnd
         return $select;
     }
     public static function get_category(){
+        return array();
         $website=JFactory::getWebsite();
         $db = JFactory::getDbo();
         $query=$db->getQuery(true);

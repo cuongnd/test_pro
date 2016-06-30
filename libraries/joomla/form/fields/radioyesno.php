@@ -67,7 +67,7 @@ class JFormFieldRadioYesNo extends JFormField
 		ob_start();
 
 		?>
-		<input <?php echo $class ?>   <?php echo $this->value?'checked':'' ?> type="checkbox" id="<?php echo $this->id ?>" name="<?php echo $this->name ?>">
+		<input <?php echo $class ?>   <?php echo $this->value?'checked':'' ?> value="1" type="checkbox" id="<?php echo $this->id ?>" name="<?php echo $this->name ?>">
 
 
 

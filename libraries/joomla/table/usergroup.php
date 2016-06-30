@@ -1174,82 +1174,94 @@ class JTableUserGroup extends JTable
 	 * @since   11.1
 	 * @throws  RuntimeException on database error.
 	 */
-	public function rebuild($parentId = null, $leftId = 0, $level = 0, $path = '')
+	public function rebuild()
 	{
-		// If no parent is provided, try to find it.
-		if ($parentId === null)
-		{
-			// Get the root item.
-			$parentId = $this->getRootId();
+		$db = $this->_db;
+		$query = $db->getQuery(true);
+		$query->select('usergroups.id,usergroups.parent_id,user_group_id_website_id.website_id')
+			->from('#__usergroups AS usergroups')
+			->leftJoin('#__user_group_id_website_id AS user_group_id_website_id ON user_group_id_website_id.user_group_id=usergroups.id')
+			->leftJoin('#__user_usergroup_map AS user_usergroup_map ON user_usergroup_map.group_id=usergroups.id')
+			->select('user_usergroup_map.user_id AS user_id')
+			->group('usergroups.id')
+		;
 
-			if ($parentId === false)
-			{
-				return false;
-			}
+		$list_group_user = $db->setQuery($query)->loadObjectList();
+		$children_group_user = array();
+		foreach ($list_group_user as $v) {
+			$pt = $v->parent_id;
+			$pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+			$list = @$children_group_user[$pt] ? $children_group_user[$pt] : array();
+			array_push($list, $v);
+			$children_group_user[$pt] = $list;
 		}
+		$list_root_user_group = $children_group_user['list_root'];
+		foreach ($list_root_user_group as $root_user_group) {
+			$update_user_group = function ($function_callback, $user_group, $children_group_user, $website_id,$level=0,$max_level=999) {
+				$db = JFactory::getDbo();
+				$db->rebuild_action=1;
+				$user_id = $user_group->user_id;
+				if ($website_id&&$user_id) {
+					$query = $db->getQuery(true);
+					$query->update('#__users')
+						->set('website_id=' . (int)$website_id)
+						->where('id=' . (int)$user_id);
+					$db->setQuery($query);
+					$ok = $db->execute();
+					if (!$ok) {
+						throw new Exception($db->getErrorMsg());
+					}
+				}else if(!$website_id&&$user_id){
+					$db = JFactory::getDbo();
+					$db->rebuild_action=1;
+					$query = $db->getQuery(true);
+					$query->delete('#__users')
+						->where('id=' . (int)$user_id);
+					$db->setQuery($query);
+					$ok = $db->execute();
+					if (!$ok) {
+						throw new Exception($db->getErrorMsg());
+					}
 
-		$query = $this->_db->getQuery(true);
+				}
+				$query = $db->getQuery(true);
+				$query->update('#__usergroups')
+					->set('website_id=' . (int)$website_id)
+					->where('id=' . (int)$user_group->id);
+				$db->setQuery($query);
+				$ok = $db->execute();
+				if (!$ok) {
+					throw new Exception($db->getErrorMsg());
+				}
 
-		// Build the structure of the recursive query.
-		if (!isset($this->_cache['rebuild.sql']))
-		{
-			$query->clear()
-				->select($this->_tbl_key . ', alias')
-				->from($this->_tbl)
-				->where('parent_id = %d');
+				$list_user_group = $children_group_user[$user_group->id];
+				if ($level<=$max_level&&count($list_user_group)) {
+					$level1=$level+1;
+					foreach ($list_user_group AS $user_group1) {
+						$function_callback($function_callback, $user_group1, $children_group_user, $website_id,$level1);
+					}
+				}
 
-			// If the table has an ordering field, use that for ordering.
-			if (property_exists($this, 'ordering'))
+
+			};
+			if($root_user_group->website_id)
 			{
-				$query->order('parent_id, ordering, lft');
+				$update_user_group($update_user_group, $root_user_group, $children_group_user, $root_user_group->website_id);
+			}else{
+				$db = JFactory::getDbo();
+				$db->rebuild_action=1;
+				$query = $db->getQuery(true);
+				$query->delete('#__usergroups')
+					->where('id=' . (int)$root_user_group->id);
+				$db->setQuery($query);
+				$ok = $db->execute();
+				if (!$ok) {
+					throw new Exception($db->getErrorMsg());
+				}
 			}
-			else
-			{
-				$query->order('parent_id, lft');
-			}
-			$this->_cache['rebuild.sql'] = (string) $query;
+
 		}
-
-		// Make a shortcut to database object.
-
-		// Assemble the query to find all children of this node.
-		$this->_db->setQuery(sprintf($this->_cache['rebuild.sql'], (int) $parentId));
-
-		$children = $this->_db->loadObjectList();
-
-		// The right value of this node is the left value + 1
-		$rightId = $leftId + 1;
-
-		// Execute this function recursively over all children
-		foreach ($children as $node)
-		{
-			/*
-			 * $rightId is the current right value, which is incremented on recursion return.
-			 * Increment the level for the children.
-			 * Add this item's alias to the path (but avoid a leading /)
-			 */
-			$rightId = $this->rebuild($node->{$this->_tbl_key}, $rightId, $level + 1, $path . (empty($path) ? '' : '/') . $node->alias);
-
-			// If there is an update failure, return false to break out of the recursion.
-			if ($rightId === false)
-			{
-				return false;
-			}
-		}
-
-		// We've got the left value, and now that we've processed
-		// the children of this node we also know the right value.
-		$query->clear()
-			->update($this->_tbl)
-			->set('lft = ' . (int) $leftId)
-			->set('rgt = ' . (int) $rightId)
-			->set('level = ' . (int) $level)
-			->set('path = ' . $this->_db->quote($path))
-			->where($this->_tbl_key . ' = ' . (int) $parentId);
-		$this->_db->setQuery($query)->execute();
-
-		// Return the right value of this node + 1.
-		return $rightId + 1;
+		return true;
 	}
 
 	/**

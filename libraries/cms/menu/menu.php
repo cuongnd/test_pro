@@ -360,10 +360,12 @@ class JMenu
 		$menu = $this->getItem($id);
 		$user = JFactory::getUser();
 
+
 		$authorised_view_levels= $user->getAuthorisedViewLevels();
 		if ($menu)
 		{
-			return in_array((int) $menu->access,$authorised_view_levels );
+
+				return in_array((int) $menu->access,$authorised_view_levels );
 		}
 		else
 		{

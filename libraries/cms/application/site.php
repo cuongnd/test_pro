@@ -75,7 +75,6 @@ final class JApplicationSite extends JApplicationCms
      */
     protected function authorise($itemid)
     {
-
         $app=JFactory::getApplication();
         $menu_item=MenusHelperFrontEnd::get_menu_item_by_menu_item_id($itemid);
         $is_backend=$menu_item->is_backend;
@@ -107,7 +106,6 @@ final class JApplicationSite extends JApplicationCms
 
         require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
         $isAdminSite = UtilityHelper::isAdminSite();
-
         if (!$isAdminSite && !$menus->authorise($itemid)) {
             if(!$redirect) {
                 $this->setUserState('users.login.form.data', array('return' => JUri::getInstance()->toString()));

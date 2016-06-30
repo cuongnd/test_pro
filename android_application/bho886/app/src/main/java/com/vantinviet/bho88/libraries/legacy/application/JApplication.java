@@ -28,6 +28,8 @@ public class JApplication extends JApplicationBase {
     public Context context;
     private String redirect;
     public MainActivity activity;
+    private Map<String, String> data_post;
+    public JInput input;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
@@ -112,5 +114,19 @@ public class JApplication extends JApplicationBase {
         MainActivity.host=link;
         Intent i = new Intent(this.context, MainActivity.class);
         this.context.startActivity(i);
+    }
+
+    public void setRedirect(String link, Map<String, String> data_post) {
+        JApplication app=JFactory.getApplication();
+        app.data_post=data_post;
+        String screenSize = Integer.toString(config.screen_size_width/config.screenDensity) + "x" + Integer.toString( config.screen_size_height);
+        String local_version= config.get_version();
+
+        link=link+"&os=android&screenSize="+ screenSize+"&version="+local_version;
+        System.out.println("link:"+link);
+        MainActivity.host=link;
+        Intent i = new Intent(this.context, MainActivity.class);
+        this.context.startActivity(i);
+
     }
 }

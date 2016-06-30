@@ -625,11 +625,17 @@ if ($ajaxGetContent) {
     <div class="edit_website"><i class="im-cog"></i></div>
     <div id="sidr">
         <ul>
-            <li><a class="smooth" href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_supper_dashboard_item_id ?>">Supper admin dashboard</a></li>
-            <li><a class="smooth" href="<?php echo JUri::admin_current() ?>">Admin design</a></li>
-            <li><a class="smooth" href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_dashboard_item_id ?>">Admin dashboard</a></li>
-            <li><a class="smooth" href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_user_dashboard_item_id ?>">User dashboard</a></li>
-            <li><a class="smooth" href="<?php echo JUri::root() ?>">Site</a></li>
+            <?php if($user->id){ ?>
+                <li><a class="smooth" href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_supper_dashboard_item_id ?>">Supper admin dashboard</a></li>
+                <li><a class="smooth" href="<?php echo JUri::admin_current() ?>">Admin design</a></li>
+                <li><a class="smooth" href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_dashboard_item_id ?>">Admin dashboard</a></li>
+                <li><a class="smooth" href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_user_dashboard_item_id ?>">User dashboard</a></li>
+                <li><a class="smooth" href="<?php echo JUri::root() ?>/index.php?option=com_users&view=profile">profile</a></li>
+                <li><a class="smooth" href="<?php echo JUri::root() ?>">Site</a></li>
+            <?php }else{ ?>
+                <li><a class="smooth" href="<?php echo JUri::root() ?>/index.php?option=com_users&view=login">Login</a></li>
+            <?php } ?>
+
         </ul>
     </div>
 

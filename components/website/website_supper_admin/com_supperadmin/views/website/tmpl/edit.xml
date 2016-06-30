@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="edit" option="edit">
+		<help
+			key = "edit"
+		/>
+		<message>
+			<![CDATA[supperadmin]]>
+		</message>
+	</layout>
+
+
+	<!-- Add fields to the parameters object for the layout. -->
+</metadata>

@@ -19,6 +19,11 @@
 			label="COM_USERS_GROUP_FIELD_PARENT_LABEL"
 			required="true"
 		/>
+		<field name="website_id" type="websites"
+			description="COM_USERS_GROUP_FIELD_WEBSITE_DESC"
+			label="COM_USERS_GROUP_FIELD_WEBSITE_LABEL"
+			required="false"
+		/>
 
 		<field name="actions" type="hidden"
 			multiple="true"

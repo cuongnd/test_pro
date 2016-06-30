@@ -55,7 +55,7 @@ class JFormFieldHelpsite extends JFormFieldList
 	{
 		JHtml::script('system/helpsite.js', false, true);
 		JFactory::getDocument()->addScriptDeclaration(
-			'var helpsite_base = "' . addslashes(JUri::root()) . '";'
+			'var helpsite_base = "' . addslashes(JUri::root()) . '";','','script_helpsite'
 		);
 
 		$html = parent::getInput();

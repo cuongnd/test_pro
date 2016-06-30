@@ -50,10 +50,10 @@ public class JFormFieldButton extends JFormField{
                     JSONArray list_hidden_field_item= JComponentHelper.android_render_form_type.equals(JComponentHelper.ANDROID_RENDER_FORM_TYPE_LIST)? JComponentHelper.list_hidden_field_list:JComponentHelper.list_hidden_field_item;
                     Map<String, String>  map_str_hidden_field_item=JUtilities.getMapString(list_hidden_field_item,"name","default");
                     Map<String, String>  map_input=JComponentHelper.getMapStringInputComponent(form_field_button);
-                    String link ="index.php?"+ JUtilities.http_build_query(map_str_hidden_field_item)+"&"+JUtilities.http_build_query(map_input);
+                    String link ="index.php?"+ JUtilities.http_build_query(map_str_hidden_field_item)+"&"+JUtilities.http_build_query_form(map_input);
                     System.out.println("link button:" + link);
                     JApplication app= JFactory.getApplication();
-                    app.setRedirect(link);
+                    app.setRedirect(link,map_input);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

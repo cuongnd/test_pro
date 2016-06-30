@@ -12,8 +12,10 @@
       <module fileurl="file://$PROJECT_DIR$/andengine-gles2-multiplayer/andengine-gles2-multiplayer.iml" filepath="$PROJECT_DIR$/andengine-gles2-multiplayer/andengine-gles2-multiplayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/andengine-gles2-svgtexture/andengine-gles2-svgtexture.iml" filepath="$PROJECT_DIR$/andengine-gles2-svgtexture/andengine-gles2-svgtexture.iml" />
       <module fileurl="file://$PROJECT_DIR$/andengine-gles2-tmx/andengine-gles2-tmx.iml" filepath="$PROJECT_DIR$/andengine-gles2-tmx/andengine-gles2-tmx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidGamemaster/androidGamemaster.iml" filepath="$PROJECT_DIR$/androidGamemaster/androidGamemaster.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bho886.iml" filepath="$PROJECT_DIR$/bho886.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scheduling/scheduling.iml" filepath="$PROJECT_DIR$/scheduling/scheduling.iml" />
       <module fileurl="file://$PROJECT_DIR$/tableview/tableview.iml" filepath="$PROJECT_DIR$/tableview/tableview.iml" />
     </modules>
   </component>

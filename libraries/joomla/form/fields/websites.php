@@ -40,6 +40,7 @@ class JFormFieldWebsites extends JFormField
 	 */
 	protected function getInput()
 	{
+        JHtml::_('formbehavior.select2', 'select');
         $db=JFactory::getDbo();
         $query=$db->getQuery(true);
         $query->from('#__website');
@@ -61,4 +62,13 @@ class JFormFieldWebsites extends JFormField
 
         return $html;
 	}
+    public function get_attribute_config()
+    {
+        return array(
+            multiple=>'false',
+            size=>'1',
+            "class"=>''
+        );
+    }
+
 }

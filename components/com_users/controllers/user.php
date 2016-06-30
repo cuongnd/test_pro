@@ -84,7 +84,6 @@ class UsersControllerUser extends UsersController
 		}
 		else
 		{
-
 			// Login failed !
 			$data['remember'] = (int) $options['remember'];
 			$app->setUserState('users.login.form.data', $data);

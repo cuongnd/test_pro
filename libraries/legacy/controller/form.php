@@ -634,10 +634,8 @@ class JControllerForm extends JControllerLegacy
 		}
 
 		$recordId = $this->input->getInt($urlVar);
-
 		// Populate the row id from the session.
 		$data[$key] = $recordId;
-
 		// The save2copy task needs to be handled slightly differently.
 		if ($task == 'save2copy')
 		{
@@ -691,6 +689,7 @@ class JControllerForm extends JControllerLegacy
 		}
 
 		// Test whether the data is valid.
+
 		$validData = $model->validate($form, $data);
 
 		// Check for validation errors.

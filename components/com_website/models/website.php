@@ -256,6 +256,7 @@ class WebsiteModelWebsite extends JModelAdmin
         $table_user->issystem = 1;
         $table_user->name = 'admin';
         $table_user->username = 'admin';
+        $table_user->website_id = $website_id;
         //$password=JUserHelper::genRandomPassword(8);
         $password = '123456';
         $table_user->password = md5($password);

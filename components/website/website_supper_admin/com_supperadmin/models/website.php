@@ -177,13 +177,11 @@ class supperadminModelWebsite extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_supperadmin.edit.website.data', array());
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
 		}
-
 		$this->preprocessData('com_supperadmin.website', $data);
 
 		return $data;

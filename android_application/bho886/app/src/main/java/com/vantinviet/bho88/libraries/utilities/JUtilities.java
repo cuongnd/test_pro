@@ -98,6 +98,16 @@ public class JUtilities {
         }
         return result;
     }
+    public static String http_build_query_form(Map<String, String> params) throws UnsupportedEncodingException {
+        String result = "";
+        for(Map.Entry<String, String> e : params.entrySet()){
+            if(e.getKey().isEmpty()) continue;
+            if(!result.isEmpty()) result += "&";
+            result += "jform["+URLEncoder.encode(e.getKey(), internalEncoding) + "]=" +
+                    URLEncoder.encode(e.getValue(), internalEncoding);
+        }
+        return result;
+    }
 
     public static Map getMapString(JSONArray item_json_array, String key, String value) {
         if(item_json_array==null)
@@ -122,5 +132,6 @@ public class JUtilities {
         int random = (int )(Math.random() * max + min);
         return random;
     }
+
 }
 

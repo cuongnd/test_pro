@@ -28,6 +28,7 @@ $query->select('menu_types.id as menu_type_id,menu_types.title as title,menu_typ
 
 ;
 $is_supper_admin_site=JFactory::is_website_supper_admin();
+
 if(!$is_supper_admin_site)
 {
     $query ->where('menu_types.supper_admin_menu_type_id IS NULL');

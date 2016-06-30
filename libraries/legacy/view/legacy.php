@@ -202,6 +202,97 @@ class JViewLegacy extends JObject
 
 		$this->baseurl = JUri::base(true);
 	}
+	public function display_body_form(){
+
+		$tree_node_xml=function($function_callback,$fields, $key_path = '', $indent = '', $form,$level = 0, $maxLevel = 9999){
+			if( $level <= $maxLevel && count($fields)){
+				foreach ($fields as $field) {
+					$key_path1 = $key_path != '' ? ($key_path . '.' . $field->name) : $field->name;
+
+					if (is_array($field->children) && count($field->children) > 0) {
+						$function_callback($function_callback,$field->children,$key_path1);
+					}else {
+						$group = $key_path!=''?explode('.', $key_path):'';
+						$name = strtolower($field->name);
+						$addfieldpath=JPATH_ROOT."/".$field->addfieldpath;
+						if(file_exists($addfieldpath))
+						{
+							$addfieldpath=dirname($field->addfieldpath);
+							$form->addFieldPath(JPATH_ROOT.'/'.$addfieldpath);
+						}
+						$item_field = $form->getField($name, $group);
+						?>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="<?php echo $name ?>" class="col-sm-2 control-label"><?php echo $field->label ?></label>
+									<div class="col-sm-10">
+										<?php echo $item_field->renderField(array(), false); ?>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+						<?php
+
+					}
+				}
+			}
+		};
+		$tree_node_xml($tree_node_xml,$this->item_fields,'','',$this->form);
+	}
+	public function display_hidden_control_form(){
+		$this->list_control_item = $this->get('ListControlItem');
+		$exists_option=false;
+		foreach($this->list_hidden_field_item as $hidden_field_item){
+			if(strtolower($hidden_field_item->name)!="task") {
+				?>
+				<input type="hidden" value="<?php echo $hidden_field_item->default ?>"
+					   name="<?php echo $hidden_field_item->name ?>">
+				<?php
+				if(strtolower($hidden_field_item->name)=="option") {
+					$exists_option=true;
+				}
+			}
+
+		}
+		$model=$this->getModel();
+		?>
+		<input type="hidden" value="" name="task">
+		<?php if(!$exists_option){ ?>
+			<input type="hidden" value="<?php echo $model->get('option')  ?>" name="option">
+
+		<?php } ?>
+		<?php
+
+	}
+	protected function addToolbar()
+	{
+
+
+		JToolbarHelper::title(JText::sprintf($this->_defaultModel, JText::_($this->item->name)), 'power-cord plugin');
+		$this->list_control_item = $this->get('ListControlItem');
+		foreach($this->list_control_item as $control_item){
+			JToolbarHelper::custom($control_item->default,'','',$control_item->label,false);
+		}
+		// Get the help information for the plugin item.
+
+		$lang = JFactory::getLanguage();
+
+		$help = $this->get('Help');
+		if ($lang->hasKey($help->url))
+		{
+			$debug = $lang->setDebug(false);
+			$url = JText::_($help->url);
+			$lang->setDebug($debug);
+		}
+		else
+		{
+			$url = null;
+		}
+		JToolbarHelper::help($help->key, false, $url);
+	}
 
 	/**
 	 * Execute and display a template script.
@@ -243,7 +334,20 @@ class JViewLegacy extends JObject
 			$doc->set_android_response($this);
 			return;
 		}
-
+		$android_render_form_type=$params->get('android_render_form_type','list');
+		if($android_render_form_type=="list") {
+			$this->show_column = $this->get('ShowColumn');
+			$this->columnFields = $this->get('ColumnFields');
+			$this->list_control_list = $this->get('ListControlList');
+			$this->list_hidden_field_list = $this->get('HiddenFieldList');
+		}else{
+			$this->item = $this->get('Item');
+			$this->item_fields = $this->get('ItemFields');
+			$this->list_control_item = $this->get('ListControlItem');
+			$this->list_hidden_field_item = $this->get('HiddenFieldItem');
+			unset($this->show_column);
+			unset($this->columnFields);
+		}
 		$result = $this->loadTemplate($tpl);
 
 		if ($result instanceof Exception)

@@ -135,7 +135,7 @@ abstract class JFactory
         $query=$db->getQuery(true);
         $query->select('website.id')
             ->from('#__website AS website')
-            ->where('website.supper_admin=1')
+            ->where('website.is_template_supper_admin=1')
             ->where('website.id='.(int)$website->website_id)
         ;
         $db->setQuery($query);

@@ -53,6 +53,7 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 	 * @since  12.2
 	 */
 	protected static $dbMinimum = '5.0.4';
+	public static  $rebuild_action=0;
 
 	/**
 	 * Constructor.
@@ -570,7 +571,7 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 		}
 		if(count($this->log)>$max_qurery)
 		{
-			throw new Exception("too many query");
+			throw new Exception("too many query($max_qurery)");
 
 		}
 		// If debugging is enabled then let's log the query.

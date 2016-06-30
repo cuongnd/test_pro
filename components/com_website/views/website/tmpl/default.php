@@ -20,6 +20,7 @@ $option=array(
 array_unshift($list_websie_enable_create_sub_domain,$option);
 
 $list_category=websiteHelperFrontEnd::get_category();
+$list_category=array();
 $option=array(
     'id'=>'virtuemart_category_id',
     'tree_category'=>JText::_('please select category')

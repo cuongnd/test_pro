@@ -123,7 +123,6 @@ abstract class JHtmlFormbehavior
 
 		// Options array to json options string
 		$options_str = json_encode($options, ($debug && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : false));
-		JHtml::_('stylesheet', $jui.'/select2.css', false, true);
 		$doc=JFactory::getDocument();
         $doc->addLessStyleSheet(JUri::root().'media/system/js/select2-4.0.0/dist/css/select2.css');
         $doc->addScript(JUri::root().'/media/system/js/select2-4.0.0/dist/js/select2.full.js');

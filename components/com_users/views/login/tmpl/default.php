@@ -8,7 +8,6 @@
  */
 
 
-
 defined('_JEXEC') or die;
 
 $cookieLogin = $this->user->get('cookieLogin');

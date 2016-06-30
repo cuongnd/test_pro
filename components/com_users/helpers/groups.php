@@ -30,8 +30,25 @@ class GroupsHelper
         return $user_group->id;
     }
 
+    public static function create_root_user_group_for_all_website()
+    {
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('website.id')
+            ->from('#__website AS website')
+            ->leftJoin('#__user_group_id_website_id AS user_group_id_website_id ON user_group_id_website_id.website_id=website.id')
+            ->where('user_group_id_website_id.user_group_id IS NULL')
+            ;
+        $list_website_not_root_user_group=$db->setQuery($query)->loadColumn();
+        foreach($list_website_not_root_user_group as $website_id)
+        {
+            self::createRootGroup($website_id);
+        }
 
-    public function  createRootGroup($website_id)
+    }
+
+
+    public static function  createRootGroup($website_id)
     {
 
         $db=JFactory::getDbo();
@@ -85,6 +102,15 @@ class GroupsHelper
             }
             $rootId=$db->insertid();
         }
+        $table_user_group_website=JTable::getInstance('UserGroupWebsite','JTable');
+        $table_user_group_website->id=0;
+        $table_user_group_website->website_id=$website_id;
+        $table_user_group_website->user_group_id=$rootId;
+        $ok=$table_user_group_website->store();
+        if(!$ok)
+        {
+            throw new Exception($table_user_group_website->getError());
+        }
         return $rootId;
     }
     public function getChildrenGroupUserByParentGroupId($parent_group_id=0)
@@ -129,14 +155,6 @@ class GroupsHelper
     }
     public function  get_group_id_by_website_id($website_id)
     {
-        $db=JFactory::getDbo();
-        $query=$db->getQuery(true);
-        $sql="SELECT GROUP_CONCAT(lv SEPARATOR ',') AS list_id FROM ( SELECT @pv:=(SELECT GROUP_CONCAT(id SEPARATOR ',') FROM #__usergroups WHERE parent_id IN (@pv)) AS lv FROM #__usergroups JOIN (SELECT @pv:=(SELECT user_group_id FROM #__user_group_id_website_id AS user_group_id_website_id WHERE user_group_id_website_id.website_id=".(int)$website_id." LIMIT 0,1))tmp WHERE parent_id IN (@pv)) a;
-";
-        $query->setQuery($sql);
-        $db->setQuery($query);
-        $listGroup=$db->loadResult();
-        $listGroup=explode(',',$listGroup);
-        return $listGroup;
+       return self::getRootUserGroupByWebsiteId($website_id);
     }
 }

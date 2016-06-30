@@ -25,7 +25,11 @@ class countdownViewLogin extends JViewLegacy
 	public function display($tpl = null)
 	{
 		$app=JFactory::getApplication();
+		$this->item		= $this->get('Item');
+		$this->form		= $this->get('Form');
+		$this->addToolbar();
 		parent::display($tpl);
 	}
+
 
 }

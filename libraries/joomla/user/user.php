@@ -420,10 +420,12 @@ class JUser extends JObject
 	 */
 	public function getAuthorisedViewLevels()
 	{
+		$this->_authLevels = JAccess::getAuthorisedViewLevels($this->id);
 		if ($this->_authLevels === null)
 		{
 			$this->_authLevels = array();
 		}
+
 		if (empty($this->_authLevels))
 		{
 			$this->_authLevels = JAccess::getAuthorisedViewLevels($this->id);

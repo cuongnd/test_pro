@@ -92,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
         dialog.setMessage("Downloading element...");
         dialog.show();
         setContentView(R.layout.activity_main);
+        if(1==1)
+        {
+            return;
+        }
         //Remove title bar
         JApplication app=JFactory.getApplication();
         app.context=context;
@@ -152,11 +156,18 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+
+
+
+
         WebView web_browser = JFactory.getWebBrowser();
         web_browser.getSettings().setJavaScriptEnabled(true);
         web_browser.getSettings().setSupportZoom(true);
         web_browser.getSettings().setBuiltInZoomControls(true);
         web_browser.setWebViewClient(web_view_client);
+
+
+
 
         web_browser.clearHistory();
         web_browser.clearFormData();
@@ -251,6 +262,8 @@ public class MainActivity extends AppCompatActivity {
                 if(json_object.has("link_redirect"))
                 {
                     String link_redirect=json_object.getString("link_redirect");
+                    link_redirect.replaceAll("&amp;", "&");
+
                     app.setRedirect(link_redirect);
                     return;
                 }
