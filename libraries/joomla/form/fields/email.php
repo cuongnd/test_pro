@@ -46,7 +46,7 @@ class JFormFieldEMail extends JFormFieldText
 		// Initialize some field attributes.
 		$size         = !empty($this->size) ? ' size="' . $this->size . '"' : '';
 		$maxLength    = !empty($this->maxLength) ? ' maxlength="' . $this->maxLength . '"' : '';
-		$class        = !empty($this->class) ? ' class="validate-email ' . $this->class . '"' : ' class="validate-email"';
+		$class        = !empty($this->class) ? ' class="validate-email ' . $this->class . ' form-control "' : ' class="validate-email form-control "';
 		$readonly     = $this->readonly ? ' readonly' : '';
 		$disabled     = $this->disabled ? ' disabled' : '';
 		$required     = $this->required ? ' required aria-required="true"' : '';

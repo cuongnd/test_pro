@@ -632,7 +632,9 @@ if ($ajaxGetContent) {
                 <li><a class="smooth" href="<?php echo JUri::root() ?>/?Itemid=<?php echo $menu_user_dashboard_item_id ?>">User dashboard</a></li>
                 <li><a class="smooth" href="<?php echo JUri::root() ?>/index.php?option=com_users&view=profile">profile</a></li>
                 <li><a class="smooth" href="<?php echo JUri::root() ?>">Site</a></li>
+                <li><a class="smooth" href="<?php echo JUri::root() ?>/index.php?option=com_users&task=user.logout&1=<?php echo JSession::getFormToken() ?>">Logout</a></li>
             <?php }else{ ?>
+                <li><a class="smooth" href="<?php echo JUri::admin_current() ?>">Admin design</a></li>
                 <li><a class="smooth" href="<?php echo JUri::root() ?>/index.php?option=com_users&view=login">Login</a></li>
             <?php } ?>
 

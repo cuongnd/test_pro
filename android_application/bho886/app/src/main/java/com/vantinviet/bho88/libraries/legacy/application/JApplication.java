@@ -110,7 +110,6 @@ public class JApplication extends JApplicationBase {
         String local_version= config.get_version();
 
         link=link+"&os=android&screenSize="+ screenSize+"&version="+local_version;
-        System.out.println("link:"+link);
         MainActivity.host=link;
         Intent i = new Intent(this.context, MainActivity.class);
         this.context.startActivity(i);

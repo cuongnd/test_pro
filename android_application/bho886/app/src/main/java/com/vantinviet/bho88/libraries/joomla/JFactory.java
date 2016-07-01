@@ -13,7 +13,6 @@ import com.vantinviet.bho88.libraries.joomla.session.JSession;
 import com.vantinviet.bho88.libraries.joomla.uri.JUri;
 import com.vantinviet.bho88.libraries.joomla.user.JUser;
 import com.vantinviet.bho88.libraries.legacy.application.JApplication;
-import com.vantinviet.bho88.libraries.legacy.request.JRequest;
 
 /**
  * Created by cuongnd on 6/8/2016.
@@ -69,9 +68,6 @@ public class JFactory {
         return (String) (applicationInfo != null ? packageManager.getApplicationLabel(applicationInfo) : "Unknown");
     }
 
-    public static JRequest getRequest() {
-        return JRequest.getInstance();
-    }
 
     public static JApplication getApplication() {
         return JApplication.getInstance();

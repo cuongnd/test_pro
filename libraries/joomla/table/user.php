@@ -136,15 +136,13 @@ class JTableUser extends JTable
 
         // Reset the table.
         $this->reset();
-        $list_user_group_id = JUserHelper::get_list_user_group_id();
         // Load the user data.
         $query = $this->_db->getQuery(true)
             ->select('users.*')
             ->from($this->_db->quoteName('#__users') . ' AS users')
-            ->leftJoin('#__user_usergroup_map AS user_usergroup_map ON user_usergroup_map.user_id=users.id')
-            ->where('user_usergroup_map.group_id IN(' . implode(',', $list_user_group_id) . ')')
             ->where($this->_db->quoteName('users.id') . ' = ' . (int)$userId);
         $this->_db->setQuery($query);
+
         $data = (array)$this->_db->loadAssoc();
         if (!count($data)) {
             return false;
@@ -156,11 +154,13 @@ class JTableUser extends JTable
         // Bind the data to the table.
         $return = $this->bind($data);
 
-        if ($return !== false) {
-            // Add the groups to the user data.
-            $this->groups = JAccess::getGroupsByUser($userId, true);
-
-        }
+        $query=$this->_db->getQuery(true);
+        $query->select('user_usergroup_map.group_id')
+            ->from('#__user_usergroup_map AS user_usergroup_map')
+            ->where('user_usergroup_map.user_id='.(int)$userId)
+        ;
+        // Add the groups to the user data.
+        $this->groups =json_encode($this->_db->setQuery($query)->loadColumn() );
 
         return $return;
     }

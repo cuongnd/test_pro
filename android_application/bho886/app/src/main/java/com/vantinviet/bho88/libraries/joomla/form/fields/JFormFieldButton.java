@@ -10,6 +10,7 @@ import com.vantinviet.bho88.libraries.joomla.form.JFormField;
 import com.vantinviet.bho88.libraries.utilities.JUtilities;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -26,11 +27,17 @@ public class JFormFieldButton extends JFormField{
     }
 
     public JFormFieldButton(JSONObject field,String type, String name, String group,String value){
+
         this.type=type;
         this.name=name;
         this.group=group;
         this.option=field;
         this.value=value;
+        try {
+            this.value_default=field.has("default")?field.getString("default"):"";
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
     @Override
     public View getInput() {
@@ -50,7 +57,13 @@ public class JFormFieldButton extends JFormField{
                     JSONArray list_hidden_field_item= JComponentHelper.android_render_form_type.equals(JComponentHelper.ANDROID_RENDER_FORM_TYPE_LIST)? JComponentHelper.list_hidden_field_list:JComponentHelper.list_hidden_field_item;
                     Map<String, String>  map_str_hidden_field_item=JUtilities.getMapString(list_hidden_field_item,"name","default");
                     Map<String, String>  map_input=JComponentHelper.getMapStringInputComponent(form_field_button);
-                    String link ="index.php?"+ JUtilities.http_build_query(map_str_hidden_field_item)+"&"+JUtilities.http_build_query_form(map_input);
+                    Map<String, String>  map_control=JComponentHelper.getMapStringControl(form_field_button);
+                    String str_http_map_control=JUtilities.http_build_query(map_control);
+                    String str_http_map_input=JUtilities.http_build_query_form(map_input);
+                    String str_http_map_str_hidden_field_item=JUtilities.http_build_query(map_str_hidden_field_item);
+                    str_http_map_input=!str_http_map_input.equals("")?"&"+str_http_map_input:"";
+                    str_http_map_str_hidden_field_item=!str_http_map_str_hidden_field_item.equals("")?"&"+str_http_map_str_hidden_field_item:"";
+                    String link ="index.php?"+ str_http_map_control+str_http_map_input+str_http_map_str_hidden_field_item;
                     System.out.println("link button:" + link);
                     JApplication app= JFactory.getApplication();
                     app.setRedirect(link,map_input);

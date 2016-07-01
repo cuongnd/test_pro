@@ -395,70 +395,34 @@ class JAccess
 	 */
 	public static function getAuthorisedViewLevels($userId)
 	{
-		// Get all groups that the user is mapped to recursively.
-		$website=JFactory::getWebsite();
-		$groups = self::getGroupsByUser($userId);
-		// Only load the view levels once.
-		if (empty(self::$authorised))
-		{
-			$db = JFactory::getDbo();
-			$query = $db->getQuery(true)
-				->select('id')
-				->from($db->quoteName('#__viewlevels'))
-				->where('website_id='.(int)$website->website_id)
-				->where('is_publish=1')
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('group_id')
+			->from('#__user_usergroup_map')
+			->where('user_id='.(int)$userId)
 			;
-
-			// Set the query for execution.
-			$db->setQuery($query);
-			$id =$db->loadResult();
-			self::$authorised[]=$id;
-		}
-
-		if (empty(self::$viewLevels))
-		{
-			// Get a database object.
-			$db = JFactory::getDbo();
-
-			// Build the base query.
-			$query = $db->getQuery(true)
-				->select('id, rules')
-				->from($db->quoteName('#__viewlevels'))
-				->where('website_id='.(int)$website->website_id)
-				->where('is_publish!=1')
+		$list_group_user=$db->setQuery($query)->loadColumn();
+		$query=$db->getQuery(true);
+		$query->select('id,rules')
+			->from('#__viewlevels')
 			;
+		$list_view_level=$db->setQuery($query)->loadObjectList();
+		$list_view_level_id=array();
 
-			// Set the query for execution.
-			$db->setQuery($query);
-			$list_level =$db->loadAssocList();
-			// Build the view levels array.
-			foreach ($list_level as $level)
-			{
-				self::$viewLevels[$level['id']] = (array) json_decode($level['rules']);
-			}
-		}
-
-		// Initialise the authorised array.
-
-		// Find the authorised levels.
-		foreach (self::$viewLevels as $level => $rule)
+		foreach($list_view_level as $view_level)
 		{
-			foreach ($rule as $id)
+			$rules=$view_level->rules;
+			$rules=json_decode($rules);
+			foreach($rules AS $rule)
 			{
-				if (($id < 0) && (($id * -1) == $userId))
+				if(in_array($rule,$list_group_user))
 				{
-					self::$authorised[] = $level;
-					break;
-				}
-				// Check to see if the group is mapped to the level.
-				elseif (($id >= 0) && in_array($id, $groups))
-				{
-					self::$authorised[] = $level;
+					array_push($list_view_level_id,$view_level->id);
 					break;
 				}
 			}
 		}
-		return self::$authorised;
+		return $list_view_level_id;
 	}
 
 	/**

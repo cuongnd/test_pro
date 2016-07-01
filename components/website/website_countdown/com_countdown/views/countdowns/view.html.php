@@ -34,7 +34,6 @@ class countdownViewcountdowns extends JViewLegacy
         $this->filterForm    = $this->get('FilterForm');
 
 		$this->state      = $this->get('State');
-
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{

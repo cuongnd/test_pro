@@ -4,8 +4,10 @@ import com.vantinviet.bho88.libraries.cms.component.JComponentHelper;
 import com.vantinviet.bho88.libraries.cms.component.JPluginHelper;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.joomla.user.JUser;
+import com.vantinviet.bho88.libraries.legacy.request.JRequest;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Hashtable;
 import java.util.Map;
@@ -28,15 +30,23 @@ public class JApplicationSite extends JApplicationCms {
         this.client=client;
     }
 
-    public void execute() {
-        this.doExecute();
+    public static void execute(JSONObject json_object) {
+        doExecute(json_object);
     }
 
-    public void doExecute() {
-        this.initialiseApp();
+    public static void doExecute(JSONObject json_object) {
+        initialiseApp(json_object);
     }
 
-    public void initialiseApp() {
+    public static void initialiseApp(JSONObject json_object) {
+        try {
+            JSONObject request = null;
+            request = json_object.has("request")?json_object.getJSONObject("request"):new JSONObject();
+            JRequest.request=request;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         JUser user = JFactory.getUser();
         int guestUserGroup=1;
         if(user.guest)
@@ -50,7 +60,6 @@ public class JApplicationSite extends JApplicationCms {
         }
         JPluginHelper.importPlugin("system", "languagefilter");
         Map<String,String> option=new Hashtable<>();
-        super.initialiseApp(option);
 
     }
 

@@ -31,7 +31,7 @@ $doc->addScript(JUri::root().'/media/system/js/jquery.inputmask-3.x/js/inputmask
 <script type="text/javascript">
 
 </script>
-<div class="view-extension-default">
+<div class="view-login-default">
     <form action="<?php echo JRoute::_('index.php?option=com_countdown&view=login&id='.(int) $this->item->id); ?>" method="post"  name="adminForm" id="adminForm" class="form-validate">
         <div class="form-horizontal">
 

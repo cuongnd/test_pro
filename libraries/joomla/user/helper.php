@@ -925,7 +925,7 @@ abstract class JUserHelper
 			}
 			$children_list_user_group[$parent_id] = $list;
 		}
-		function sub_get_list_group($root_user_group_id,$children_list_user_group,&$list_user_group=array())
+		$sub_get_list_group=function ($function_callback,$root_user_group_id,$children_list_user_group,&$list_user_group=array())
 		{
 			if(count($children_list_user_group[$root_user_group_id]))
 			{
@@ -933,7 +933,7 @@ abstract class JUserHelper
 				{
 					$id=$user_group->id;
 					array_push($list_user_group,$user_group);
-					sub_get_list_group($id,$children_list_user_group,$list_user_group);
+					$function_callback($function_callback,$id,$children_list_user_group,$list_user_group);
 				}
 
 			}
@@ -942,7 +942,7 @@ abstract class JUserHelper
 		$root_user_group=self::get_root_user_group();
 		array_push(static::$list_user_group,$root_user_group);
 		$root_user_group_id=self::get_root_user_group_id();
-		sub_get_list_group($root_user_group_id,$children_list_user_group,static::$list_user_group);
+		$sub_get_list_group($sub_get_list_group,$root_user_group_id,$children_list_user_group,static::$list_user_group);
 		return static::$list_user_group;
 	}
 

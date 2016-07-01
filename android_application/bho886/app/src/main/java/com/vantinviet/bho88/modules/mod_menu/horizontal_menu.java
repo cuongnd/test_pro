@@ -140,7 +140,7 @@ public class horizontal_menu {
             JSONObject json_object_params=new JSONObject(params);
 
             JRegistry a_params = new JRegistry(json_object_params);
-            JSONObject menu_config=json_object_params.getJSONObject("menu_config");
+            JSONObject menu_config=json_object_params.has("menu_config")?json_object_params.getJSONObject("menu_config"):new JSONObject();
             if(menu_config.has("scroll")) {
                 scroll =menu_config.getString("scroll");
             }else

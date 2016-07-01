@@ -117,10 +117,8 @@ class JFormFieldusergroup extends JFormField
         $db->setQuery($query);
 
         $list_website=$db->loadObjectList();
-
-
-        $rules=$this->value;
-        $rules=json_decode($rules);
+        $group_selected=$this->value;
+        $group_selected=json_decode($group_selected);
         $element_id='field_select_user_group_'.$this->id;
 
         $script_id = "script_field_select_user_group_" . $this->id;
@@ -133,7 +131,7 @@ class JFormFieldusergroup extends JFormField
                     field:{
                         name:"<?php echo $this->name ?>"
                     },
-                    group_selected:<?php echo json_encode($rules) ?>
+                    group_selected:<?php echo json_encode($group_selected) ?>
 
                 });
 

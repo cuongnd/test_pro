@@ -11,13 +11,10 @@ import com.vantinviet.bho88.libraries.cms.component.JComponentHelper;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.joomla.language.JLanguage;
-import com.vantinviet.bho88.libraries.joomla.user.JUser;
 import com.vantinviet.bho88.libraries.legacy.exception.exception;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Map;
 
 
 /**
@@ -61,18 +58,6 @@ public class JApplicationCms {
         }
     }
 
-    public void initialiseApp(Map<String,String> option) {
-        this.config=JFactory.getConfig();
-        String language=option.get("language");
-        if(language!=null)
-        {
-            this.language=language;
-        }
-        JLanguage lang=JLanguage.getInstance(this.language,this.debug_lang);
-        this.loadLanguage(lang);
-        JUser user=JFactory.getUser();
-
-    }
 
     private void loadLanguage(JLanguage lang) {
         JFactory.language=this.getLanguage();

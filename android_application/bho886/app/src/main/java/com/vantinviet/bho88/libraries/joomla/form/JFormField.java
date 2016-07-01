@@ -35,6 +35,7 @@ public abstract class JFormField {
     public String name;
     protected String key;
     public int key_id;
+    public String value_default="";
 
     public JFormField(){
         JApplication app= JFactory.getApplication();
@@ -110,6 +111,8 @@ public abstract class JFormField {
             form_field.value=value;
             try {
                 form_field.label=field.has("label")?field.getString("label"):"";
+                System.out.println("field:" + field.toString());
+                form_field.value_default=field.has("default")?field.getString("default"):"";
             } catch (JSONException e) {
                 e.printStackTrace();
             }

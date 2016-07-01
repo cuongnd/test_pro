@@ -90,6 +90,7 @@ class CountdownControllerLogin extends JControllerForm
 
         if (true === $app->login($credentials, $options))
         {
+
             // Success
             if ($options['remember'] = true)
             {
@@ -104,7 +105,6 @@ class CountdownControllerLogin extends JControllerForm
         }
         else
         {
-
             // Login failed !
             $data['remember'] = (int) $options['remember'];
             $app->setUserState('users.login.form.data', $data);

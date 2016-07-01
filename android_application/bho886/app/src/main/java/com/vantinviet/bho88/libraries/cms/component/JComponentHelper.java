@@ -115,8 +115,6 @@ public class JComponentHelper {
     }
 
     private static void customizable_render_component(Context context, JSONObject json_element, LinearLayout linear_layout) {
-        JRequest jrequest = JFactory.getRequest();
-        JSONObject request = jrequest.getRequest();
     }
 
     private static void auto_render_component(Context context, JSONObject json_element, LinearLayout linear_layout) throws JSONException {
@@ -258,6 +256,35 @@ public class JComponentHelper {
 
     public static JSONObject getParams(String component_name) {
         return null;
+    }
+
+    public static Map<String, String> getMapStringControl(JFormFieldButton button) {
+        JSONArray list_hidden_field_item= JComponentHelper.android_render_form_type.equals(JComponentHelper.ANDROID_RENDER_FORM_TYPE_LIST)? JComponentHelper.list_hidden_field_list:JComponentHelper.list_hidden_field_item;
+        Map<String, String> map_input_control = new HashMap<String, String>();
+        boolean exists_option=false;
+        for (int i=0;i<list_hidden_field_item.length();i++){
+            try {
+                JSONObject item=list_hidden_field_item.getJSONObject(i);
+                String name = item.getString("name");
+                if(name.equals("option"))
+                {
+                    exists_option=true;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        if(!exists_option)
+        {
+            String option=JRequest.getString("option","");
+            map_input_control.put("option", option);
+        }
+        String str_value=button.getValue();
+        System.out.println("button.value_default:"+button.value_default);
+        System.out.println("str_value:"+str_value);
+        str_value=str_value.equals("")||str_value==null?button.value_default:str_value;
+        map_input_control.put(button.name,str_value );
+        return map_input_control;
     }
 
     private static class TableClickListener implements TableDataClickListener {

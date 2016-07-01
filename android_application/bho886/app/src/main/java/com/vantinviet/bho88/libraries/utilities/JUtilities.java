@@ -12,8 +12,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -89,24 +91,56 @@ public class JUtilities {
     }
     private static String internalEncoding = "UTF-8";
     public static String http_build_query(Map<String, String> params) throws UnsupportedEncodingException {
+
+        List<String> list_query = new ArrayList<String>();
         String result = "";
         for(Map.Entry<String, String> e : params.entrySet()){
             if(e.getKey().isEmpty()) continue;
-            if(!result.isEmpty()) result += "&";
-            result += URLEncoder.encode(e.getKey(), internalEncoding) + "=" +
-                    URLEncoder.encode(e.getValue(), internalEncoding);
+            list_query.add(URLEncoder.encode(e.getKey(), internalEncoding) + "=" +URLEncoder.encode(e.getValue(), internalEncoding));
         }
+        String[] array_query = new String[ list_query.size() ];
+        list_query.toArray( array_query );
+        result=  implodeArray(array_query,"&");
         return result;
     }
     public static String http_build_query_form(Map<String, String> params) throws UnsupportedEncodingException {
+
+        List<String> list_query = new ArrayList<String>();
         String result = "";
         for(Map.Entry<String, String> e : params.entrySet()){
             if(e.getKey().isEmpty()) continue;
-            if(!result.isEmpty()) result += "&";
-            result += "jform["+URLEncoder.encode(e.getKey(), internalEncoding) + "]=" +
-                    URLEncoder.encode(e.getValue(), internalEncoding);
+            list_query.add("jform["+URLEncoder.encode(e.getKey(), internalEncoding) + "]=" +URLEncoder.encode(e.getValue(), internalEncoding));
         }
+        String[] array_query = new String[ list_query.size() ];
+        list_query.toArray( array_query );
+        result=  implodeArray(array_query,"&");
         return result;
+    }
+    /**
+     * Method to join array elements of type string
+     * @author Hendrik Will, imwill.com
+     * @param inputArray Array which contains strings
+     * @param glueString String between each array element
+     * @return String containing all array elements seperated by glue string
+     */
+    public static String implodeArray(String[] inputArray, String glueString) {
+
+    /** Output variable */
+        String output = "";
+
+        if (inputArray.length > 0) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(inputArray[0]);
+
+            for (int i=1; i<inputArray.length; i++) {
+                sb.append(glueString);
+                sb.append(inputArray[i]);
+            }
+
+            output = sb.toString();
+        }
+
+        return output;
     }
 
     public static Map getMapString(JSONArray item_json_array, String key, String value) {

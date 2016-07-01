@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,14 +26,13 @@ import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.vantinviet.bho88.libraries.cms.application.JApplicationCms;
+import com.vantinviet.bho88.libraries.cms.application.JApplicationSite;
 import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.legacy.application.JApplication;
-import com.vantinviet.bho88.libraries.legacy.request.JRequest;
 import com.vantinviet.bho88.media.element.slider.banner_rotator.elementBanner_RotatorHelper;
 import com.vantinviet.bho88.media.element.ui.grid.element_grid_helper;
 import com.vantinviet.bho88.media.element.ui.link_image.element_link_image_helper;
@@ -64,11 +62,11 @@ public class MainActivity extends AppCompatActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private ProgressDialog dialog =null;
+    private ProgressDialog dialog = null;
     private EditText editTextId;
     private Button buttonGet;
     private TextView textViewResult;
-    public  Context context = this;
+    public Context context = this;
     private ProgressDialog loading;
     private int screen_size_width = 0;
     private int screen_size_height = 0;
@@ -80,26 +78,25 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-    private static String component_content="";
+    private static String component_content = "";
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(dialog==null)
-        {
+        if (dialog == null) {
             dialog = new ProgressDialog(MainActivity.this);
         }
         dialog.setMessage("Downloading element...");
         dialog.show();
         setContentView(R.layout.activity_main);
-        if(1==1)
-        {
-            return;
-        }
         //Remove title bar
-        JApplication app=JFactory.getApplication();
-        app.context=context;
-        app.activity=this;
+        JApplication app = JFactory.getApplication();
+        app.context = context;
+        app.activity = this;
         JFactory.setContext(context);
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -132,15 +129,12 @@ public class MainActivity extends AppCompatActivity {
             String test_page = "&Itemid=433";
             test_page = "";
             host = config.root_url + "/index.php?os=android&screenSize=" + screenSize + "&version=" + local_version + test_page;
-        } else if(!host.contains(config.root_url)) {
-            host = config.root_url + "/"+host;
+        } else if (!host.contains(config.root_url)) {
+            host = config.root_url + "/" + host;
         }
-
-        System.out.println("---------host---------");
-        System.out.println("host " + host);
-        System.out.println("---------host---------");
-        //ab.setTitle(title);
-
+        System.out.println("------host------------");
+        System.out.println(host);
+        System.out.println("-------host-----------");
         WebViewClient web_view_client = new WebViewClient() {
 
             @Override
@@ -157,16 +151,11 @@ public class MainActivity extends AppCompatActivity {
         };
 
 
-
-
-
         WebView web_browser = JFactory.getWebBrowser();
         web_browser.getSettings().setJavaScriptEnabled(true);
         web_browser.getSettings().setSupportZoom(true);
         web_browser.getSettings().setBuiltInZoomControls(true);
         web_browser.setWebViewClient(web_view_client);
-
-
 
 
         web_browser.clearHistory();
@@ -176,100 +165,55 @@ public class MainActivity extends AppCompatActivity {
 
         web_browser.loadUrl(host);
         web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
-
-
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Main Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.vantinviet.bho88/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
+
     private class MyJavaScriptInterfaceWebsite {
         public MyJavaScriptInterfaceWebsite() {
         }
 
         @JavascriptInterface
         public void showHTML(String html) {
-
-            System.out.println("-------html---------" );
-            System.out.println("html:" + html);
-            System.out.println("-------html---------" );
-
             final Pattern pattern = Pattern.compile("<android_response>(.+?)</android_response>");
             final Matcher matcher = pattern.matcher(html);
+
             matcher.find();
             html = matcher.group(1);
-            System.out.println("-------html---------" );
-            System.out.println("html:" + html);
-            System.out.println("-------html---------" );
             JApplication app = JFactory.getApplication();
             (new AsyncJsonElementViewLoader()).execute(html);
 
         }
     }
-    @Override
-    public void onStop() {
-        super.onStop();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Main Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.vantinviet.bho88/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
-    }
+
     private class AsyncJsonElementViewLoader extends AsyncTask<String, Void, String> {
 
 
         @Override
         protected void onPostExecute(String json_string) {
-            JApplication app=JFactory.getApplication();
-            if(json_string.equals(""))
-            {
+            JApplication app = JFactory.getApplication();
+            if (json_string.equals("")) {
                 return;
             }
             super.onPostExecute(json_string);
             dialog.dismiss();
             try {
-                System.out.println("json_string:"+json_string);
                 JSONObject json_object = new JSONObject(json_string);
-                if(json_object.has("link_redirect"))
-                {
-                    String link_redirect=json_object.getString("link_redirect");
-                    link_redirect.replaceAll("&amp;", "&");
-
+                JApplicationSite.execute(json_object);
+                if (json_object.has("link_redirect")) {
+                    String link_redirect = json_object.getString("link_redirect");
+                    link_redirect=link_redirect.replaceAll("&amp;", "&");
+                    System.out.println(link_redirect);
                     app.setRedirect(link_redirect);
                     return;
                 }
-                MainActivity.component_content=json_object.has("component_content")?json_object.getString("component_content"):"";
+                MainActivity.component_content = json_object.has("component_content") ? json_object.getString("component_content") : "";
 
-                String version = json_object.has("version")?json_object.getString("version"):"";
+                String version = json_object.has("version") ? json_object.getString("version") : "";
                 String local_version = config.get_version();
                 if (version != local_version) {
                     int root_id = json_object.getInt("root_id");
@@ -299,14 +243,11 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
-                JSONObject request = json_object.getJSONObject("request");
-                JRequest jrequest= JFactory.getRequest();
-                System.out.println(jrequest);
-                jrequest.setRequest(request);
 
             } catch (Throwable t) {
                 t.printStackTrace();
             }
+
 
         }
 
@@ -572,6 +513,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return linear_layout;
     }
+
     private static class component_params {
         String link;
         LinearLayout linear_layout;
@@ -581,12 +523,13 @@ public class MainActivity extends AppCompatActivity {
             this.linear_layout = linear_layout;
         }
     }
+
     private static class component_response {
         String link;
         LinearLayout linear_layout;
         String content;
 
-        component_response(String link, LinearLayout linear_layout,String content) {
+        component_response(String link, LinearLayout linear_layout, String content) {
             this.link = link;
             this.linear_layout = linear_layout;
             this.content = content;
