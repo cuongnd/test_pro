@@ -642,10 +642,10 @@ class websiteHelperFrontEnd
 
             );
             ob_clean();
-            echo "<pre>";
+/*            echo "<pre>";
             echo print_r(json_decode($component_content));
             echo "</pre>";
-            die;
+            die;*/
             //echo json_encode($return);
             //echo json_encode($return);
             //echo "<android_response>".json_encode($return_children, JSON_NUMERIC_CHECK)."</android_response>";

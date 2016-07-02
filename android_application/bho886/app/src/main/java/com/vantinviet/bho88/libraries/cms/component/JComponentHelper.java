@@ -160,6 +160,19 @@ public class JComponentHelper {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
+
+
+
+        BootstrapButtonGroup bootstrap_button_group = new BootstrapButtonGroup(context);
+        HorizontalScrollView scroll_view = new HorizontalScrollView(context);
+        bootstrap_button_group.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
+        bootstrap_button_group.setOrientation(LinearLayout.HORIZONTAL);
+        bootstrap_button_group.setRounded(false);
+        bootstrap_button_group.setBootstrapSize(DefaultBootstrapSize.LG);
+        scroll_view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
         try {
             View view_field;
             JSONArray list_control_item = json_element.has("list_control_item") ? json_element.getJSONArray("list_control_item") : new JSONArray();
@@ -173,15 +186,38 @@ public class JComponentHelper {
                     String value = "";
                     JFormField formField = JFormField.getInstance(field, type, name, group, value);
                     view_field = formField.getInput();
-                    ((LinearLayout) linear_layout).addView(view_field);
+
+                    LayoutParams params = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+                    params.setMargins(10, 0, 10, 0);
+
+                    view_field.setLayoutParams(params);
+
+
+
+                    bootstrap_button_group.addView(view_field);
                 }
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
+        scroll_view.addView(bootstrap_button_group);
+        LayoutParams params = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, 30, 0, 30);
+
+        scroll_view.setLayoutParams(params);
+        scroll_view.setRight(0);
+        ((LinearLayout) linear_layout).addView(scroll_view);
+
+
+
+
+
+
         try {
-            JSONArray list_hidden_field_item = json_element.has("list_hidden_field_item") ? json_element.getJSONArray("list_hidden_field_item") : new JSONArray();
+            JSONArray list_hidden_field_item = (JSONArray)(json_element.has("list_hidden_field_item") ? json_element.getJSONArray("list_hidden_field_item") : new JSONArray());
             JComponentHelper.list_hidden_field_item = list_hidden_field_item;
         } catch (JSONException e) {
             e.printStackTrace();

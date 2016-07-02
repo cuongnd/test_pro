@@ -358,6 +358,7 @@ class JMenu
 
 
 		$menu = $this->getItem($id);
+
 		$user = JFactory::getUser();
 
 

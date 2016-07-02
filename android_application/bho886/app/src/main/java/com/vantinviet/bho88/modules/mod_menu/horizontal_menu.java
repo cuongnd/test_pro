@@ -187,6 +187,11 @@ public class horizontal_menu {
         {
             ((LinearLayout) parent_object).addView(bootstrap_button_group);
         }
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, 10, 0, 10);
+        parent_object.setLayoutParams(params);
+
+
     }
     static View.OnClickListener getOnClickDoSomething(final BootstrapButton button, final JSONObject menu_item)  {
         return new View.OnClickListener() {

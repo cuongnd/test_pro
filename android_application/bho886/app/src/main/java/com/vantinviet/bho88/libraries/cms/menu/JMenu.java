@@ -33,6 +33,7 @@ public class JMenu {
         System.out.println("demoMethod for singleton");
     }
 
+
     public int geMenuActiveId() {
         return menuActiveId;
     }

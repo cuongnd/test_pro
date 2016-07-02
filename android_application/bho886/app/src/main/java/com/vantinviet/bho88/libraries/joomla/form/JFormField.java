@@ -3,6 +3,7 @@ package com.vantinviet.bho88.libraries.joomla.form;
 import android.content.Context;
 import android.view.View;
 
+import com.vantinviet.bho88.libraries.cms.menu.JMenu;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.legacy.application.JApplication;
 import com.vantinviet.bho88.libraries.utilities.md5;
@@ -67,7 +68,7 @@ public abstract class JFormField {
     public abstract View getInput();
 
 
-    public static JFormField getFormField(String type) {
+    public static JFormField getFormField(String type,String key) {
         JFormField formField = null;
 
         String className=p_package+".JFormField"+getStanderFieldName(type);
@@ -97,12 +98,23 @@ public abstract class JFormField {
     }
 
     public static JFormField getInstance(JSONObject field, String type, String name, String group, String value) {
-        String key=type+name+group;
+        String label="";
+        String value_default="";
+        try {
+
+            label = field.has("label")?field.getString("label"):"";
+            value_default = field.has("default")?field.getString("default"):"";
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JMenu menu=JFactory.getMenu();
+        int active_menu_item_id= menu.geMenuActiveId();
+        String key=type+name+String.valueOf(active_menu_item_id) +value_default+label+group;
         key= md5.encryptMD5(key);
         JFormField form_field = (JFormField) map_form_field.get(key);
         if(form_field==null)
         {
-            form_field= getFormField(type);
+            form_field= getFormField(type,key);
             form_field.key=key;
             form_field.option=field;
             form_field.type=type;
