@@ -108,8 +108,15 @@ public abstract class JFormField {
             e.printStackTrace();
         }
         JMenu menu=JFactory.getMenu();
-        int active_menu_item_id= menu.geMenuActiveId();
-        String key=type+name+String.valueOf(active_menu_item_id) +value_default+label+group;
+        JSONObject menuActive= menu.getMenuActive();
+        String active_menu_item_id="";
+        try {
+            active_menu_item_id = menuActive.getString("id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        System.out.println("active_menu_item_id:" + active_menu_item_id);
+        String key=type+name+active_menu_item_id +value_default+label+group;
         key= md5.encryptMD5(key);
         JFormField form_field = (JFormField) map_form_field.get(key);
         if(form_field==null)

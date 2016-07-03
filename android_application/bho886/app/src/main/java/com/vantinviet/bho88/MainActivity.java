@@ -132,9 +132,6 @@ public class MainActivity extends AppCompatActivity {
         } else if (!host.contains(config.root_url)) {
             host = config.root_url + "/" + host;
         }
-        System.out.println("------host------------");
-        System.out.println(host);
-        System.out.println("-------host-----------");
         WebViewClient web_view_client = new WebViewClient() {
 
             @Override
