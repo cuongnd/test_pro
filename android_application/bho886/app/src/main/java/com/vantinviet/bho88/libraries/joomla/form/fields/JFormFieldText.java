@@ -13,6 +13,7 @@ import com.vantinviet.bho88.libraries.legacy.application.JApplication;
 import com.vantinviet.bho88.libraries.joomla.form.JFormField;
 import com.vantinviet.bho88.libraries.utilities.JUtilities;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -37,9 +38,20 @@ public class JFormFieldText extends JFormField{
     @Override
     public View getInput() {
         LinearLayout linear_layout = new LinearLayout(context);
-        BootstrapLabel label_text = new BootstrapLabel(context);
-        label_text.setText(this.label);
-        label_text.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        JSONObject option=this.option;
+        boolean show_label=true;
+        try {
+            show_label = option.has("show_label")?option.getBoolean("show_label"):false;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(show_label){
+            BootstrapLabel label_text = new BootstrapLabel(context);
+            label_text.setText(this.label);
+            label_text.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            ((LinearLayout) linear_layout).addView(label_text);
+        }
         BootstrapEditText edit_text = new BootstrapEditText(context);
         edit_text.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
         edit_text.setBootstrapSize(DefaultBootstrapSize.LG);
@@ -48,11 +60,18 @@ public class JFormFieldText extends JFormField{
 
         this.key_id= JUtilities.getRandomInt(0,999999);
         edit_text.setId(this.key_id);
-        ((LinearLayout) linear_layout).addView(label_text);
+        edit_text.setOnFocusChangeListener(getOnFocusChangeListener(edit_text,this));
+
+
         ((LinearLayout) linear_layout).addView(edit_text);
         linear_layout.setGravity(LinearLayout.TEXT_ALIGNMENT_GRAVITY);
         return (View)linear_layout;
     }
+
+    private View.OnFocusChangeListener getOnFocusChangeListener(BootstrapEditText edit_text, JFormFieldText jFormFieldText) {
+        return null;
+    }
+
     public String getValue(){
         JApplication app= JFactory.getApplication();
         BootstrapEditText output_box = (BootstrapEditText) app.activity.findViewById(this.key_id);

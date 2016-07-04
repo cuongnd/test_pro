@@ -3,10 +3,11 @@ package com.vantinviet.bho88.libraries.joomla.form.fields;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.joomla.form.JFormField;
 import com.vantinviet.bho88.libraries.legacy.application.JApplication;
@@ -21,16 +22,16 @@ import java.util.Map;
 /**
  * Created by cuongnd on 6/11/2016.
  */
-public class JFormFieldTextView extends JFormField{
-    static Map<String, JFormFieldText> map_form_field_text = new HashMap<String, JFormFieldText>();
-    public JFormFieldTextView(JSONObject field,String type, String name, String group,String value){
+public class JFormFieldInputNumber extends JFormField{
+    static Map<String, JFormFieldInputNumber> map_form_field_text = new HashMap<String, JFormFieldInputNumber>();
+    public JFormFieldInputNumber(JSONObject field, String type, String name, String group, String value){
         this.type=type;
         this.name=name;
         this.group=group;
         this.option=field;
         this.value=value;
     }
-    public JFormFieldTextView(){
+    public JFormFieldInputNumber(){
     }
 
 
@@ -51,14 +52,16 @@ public class JFormFieldTextView extends JFormField{
             label_text.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             ((LinearLayout) linear_layout).addView(label_text);
         }
-        TextView text_view = new TextView(context);
-        text_view.setText(this.value);
-        text_view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        BootstrapEditText edit_text = new BootstrapEditText(context);
+        edit_text.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
+        edit_text.setBootstrapSize(DefaultBootstrapSize.LG);
+        edit_text.setText(this.value);
+        edit_text.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         this.key_id= JUtilities.getRandomInt(0,999999);
-        text_view.setId(this.key_id);
+        edit_text.setId(this.key_id);
 
-        ((LinearLayout) linear_layout).addView(text_view);
+        ((LinearLayout) linear_layout).addView(edit_text);
         linear_layout.setGravity(LinearLayout.TEXT_ALIGNMENT_GRAVITY);
         return (View)linear_layout;
     }

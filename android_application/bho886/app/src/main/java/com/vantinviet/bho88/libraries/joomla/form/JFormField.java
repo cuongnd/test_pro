@@ -32,7 +32,7 @@ public abstract class JFormField {
     protected String group;
     private File jarFile;
     private static String p_package="com.vantinviet.bho88.libraries.joomla.form.fields";
-    static Map<String, JFormField> map_form_field = new HashMap<String, JFormField>();
+    public static Map<String, JFormField> map_form_field = new HashMap<String, JFormField>();
     public String name;
     protected String key;
     public int key_id;
@@ -46,7 +46,8 @@ public abstract class JFormField {
         String[] listField=new String[]{
                 "text-Text",
                 "textview-TextView",
-                "button-Button"
+                "button-Button",
+                "rangeofintegers-RangeOfIntegers"
         };
         for (int i=0;i<listField.length;i++)
         {

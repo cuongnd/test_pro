@@ -447,9 +447,10 @@ public class JComponentHelper {
                             String label = field.getString("label");
                             String group = "";
                             String value = "";
-
                             value = item_json_object.getString(name);
+                            name=name+"_"+String.valueOf(rowIndex);
                             System.out.println("value:" + value);
+                            field.put("show_label", false);
                             JFormField formField = JFormField.getInstance(field, type, name, group, value);
                             view_field = formField.getInput();
                         }
