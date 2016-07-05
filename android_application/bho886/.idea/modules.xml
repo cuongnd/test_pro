@@ -15,6 +15,11 @@
       <module fileurl="file://$PROJECT_DIR$/androidGamemaster/androidGamemaster.iml" filepath="$PROJECT_DIR$/androidGamemaster/androidGamemaster.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bho886.iml" filepath="$PROJECT_DIR$/bho886.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easydialog/easydialog.iml" filepath="$PROJECT_DIR$/easydialog/easydialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/googlemediaframework/googlemediaframework.iml" filepath="$PROJECT_DIR$/googlemediaframework/googlemediaframework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/playbacktests/playbacktests.iml" filepath="$PROJECT_DIR$/playbacktests/playbacktests.iml" />
       <module fileurl="file://$PROJECT_DIR$/scheduling/scheduling.iml" filepath="$PROJECT_DIR$/scheduling/scheduling.iml" />
       <module fileurl="file://$PROJECT_DIR$/tableview/tableview.iml" filepath="$PROJECT_DIR$/tableview/tableview.iml" />
     </modules>

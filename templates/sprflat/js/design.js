@@ -48,6 +48,9 @@ jQuery(document).ready(function ($) {
 
 
     });
+    $('.alert_warning_website_config').bind('click',function(){
+        $.alert_warning_website_config('','',0);
+    });
     $(document).on('keydown','*[enable-double-click-edit="true"]',function(e){
         this_self=$(this);
         block_id=$(this).attr('data-block-id');

@@ -60,6 +60,7 @@ class PlgAuthenticationJoomla extends JPlugin
 		{
 
 			$match = JUserHelper::verifyPassword($credentials['password'], $result->password, $result->id);
+
 			$app=JFactory::getApplication();
 			if($credentials['login_facebook']==1)
 			{
@@ -82,6 +83,7 @@ class PlgAuthenticationJoomla extends JPlugin
 					$response->language = $user->getParam('language');
 				}
 
+
 				$response->status        = JAuthentication::STATUS_SUCCESS;
 				$response->error_message = '';
 			}
@@ -96,7 +98,7 @@ class PlgAuthenticationJoomla extends JPlugin
 		{
 			// Invalid user
 			$response->status        = JAuthentication::STATUS_FAILURE;
-			$response->error_message = JText::_('JGLOBAL_AUTH_NO_USER');
+			$response->error_message = JText::_('there are no user');
 		}
 
 		// Check the two factor authentication
@@ -163,6 +165,7 @@ class PlgAuthenticationJoomla extends JPlugin
 
 			// Try to validate the OTP
 			FOFPlatform::getInstance()->importPlugin('twofactorauth');
+
 
 			$otpAuthReplies = FOFPlatform::getInstance()->runPlugins('onUserTwofactorAuthenticate', array($credentials, $options));
 

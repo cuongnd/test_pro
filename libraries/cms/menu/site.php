@@ -18,7 +18,13 @@ defined('_JEXEC') or die(__FILE__);
  */
 class JMenuSite extends JMenu
 {
-    public static function get_active_menu_item()
+	const ALIAS = "alias";
+	const LIST_MENU_ITEM_TYPE = array(
+		alias=>"alias",
+		none=>"none"
+	);
+
+	public static function get_active_menu_item()
     {
         $app=JFactory::getApplication();
         $menu=$app->getMenu();
@@ -77,6 +83,8 @@ class JMenuSite extends JMenu
         $change_param_menu_by_fields($change_param_menu_by_fields,$list_type,$website_id,$fields[0],$params);
         return $params->toString();
     }
+
+
 	public function getMenuLogin()
 	{
 		foreach($this->_items as $item){

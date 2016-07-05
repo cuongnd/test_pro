@@ -159,7 +159,9 @@ public class MainActivity extends AppCompatActivity {
         web_browser.clearFormData();
         web_browser.clearCache(true);
 
-
+        System.out.println("-------host---------");
+        System.out.println(host);
+        System.out.println("-------host---------");
         web_browser.loadUrl(host);
         web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
         // ATTENTION: This was auto-generated to implement the App Indexing API.

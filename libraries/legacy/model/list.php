@@ -467,6 +467,11 @@ class JModelList extends JModelLegacy
 		$fields=base64_decode($fields);
 		require_once JPATH_ROOT . '/libraries/upgradephp-19/upgrade.php';
 		$fields = (array)up_json_decode($fields, false, 512, JSON_PARSE_JAVASCRIPT);
+		foreach($fields as $key=>&$field){
+			$field->config_property=base64_decode($field->config_property);
+			$field->config_property=json_decode($field->config_property);
+
+		}
 		return $fields;
 	}
 	public function getListControlList(){

@@ -21,7 +21,43 @@ jQuery(document).ready(function($){
         },
         icon_option:{
             ajax: {
-                url: this_host+"/index.php?option=com_menus&task=item.ajax_get_list_icon",
+                url: this_host+"/index.php?option=com_menus&task=item.ajax_get_list_icon&enable_load_component=1",
+                dataType: 'json',
+                delay: 250,
+                data: function (term, page) {
+                    return {
+                        keyword: term
+                    };
+                },
+
+                results: function (data) {
+                    return {results: data};
+                },
+                cache: true
+
+            },
+            initSelection: function(element, callback) {
+                item={
+                    id:element.val(),
+                    text:element.val()
+                };
+                return callback(item);
+            },
+            formatResult: function (result, container, query, escapeMarkup){
+
+                return '<span><i class="'+result.text+'"></i>'+result.text+'</span>';
+            },
+
+            formatSelection:function (data, container, escapeMarkup){
+
+                return  '<span><i class="'+data.text+'"></i>'+data.text+'</span>';
+            },
+            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+            minimumInputLength: 1
+        },
+        list_menu_item_type:{
+            ajax: {
+                url: this_host+"/index.php?option=com_menus&task=item.ajax_get_list_menu_item_type&enable_load_component=1",
                 dataType: 'json',
                 delay: 250,
                 data: function (term, page) {
@@ -903,6 +939,7 @@ jQuery(document).ready(function($){
         },
         set_auto_complete:function(){
             $(".icon_menu_item").select2(menu_ajax_loader.icon_option);
+            $(".menu_item_type").select2(menu_ajax_loader.list_menu_item_type);
             $(".column_access").select2(menu_ajax_loader.access_option);
         },
         update_nestable:function(){

@@ -75,6 +75,12 @@ final class JApplicationSite extends JApplicationCms
      */
     protected function authorise($itemid)
     {
+        require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
+        $isAdminSite = UtilityHelper::isAdminSite();
+        if($isAdminSite)
+        {
+            return true;
+        }
         $app=JFactory::getApplication();
         $menu_item=MenusHelperFrontEnd::get_menu_item_by_menu_item_id($itemid);
         $is_backend=$menu_item->is_backend;
@@ -82,6 +88,7 @@ final class JApplicationSite extends JApplicationCms
         $menus = $this->getMenu();
 
         $user = JFactory::getUser();
+
         if($is_backend&&!$user->id)
         {
             $this->enqueueMessage(JText::_('JGLOBAL_YOU_MUST_LOGIN_FIRST'));
@@ -89,7 +96,7 @@ final class JApplicationSite extends JApplicationCms
                 $login_item = JFactory::get_page_login();
                 if(!$login_item)
                 {
-                    $login_item=$menus->getMenuLogin();
+                    throw new Exception('there are no menu login');
                 }
                 $this->enqueueMessage(JText::_('JGLOBAL_YOU_MUST_LOGIN_FIRST'));
                 $this->redirect(JUri::root() . "$login_item->link&redirect=true&Itemid=$login_item->id");
@@ -99,6 +106,10 @@ final class JApplicationSite extends JApplicationCms
         }
 
         $login_item = JFactory::get_page_login();
+        if(!$login_item)
+        {
+            throw new Exception('there are no menu login');
+        }
         if($login_item->id==$itemid)
         {
             return true;
@@ -849,7 +860,7 @@ final class JApplicationSite extends JApplicationCms
             require_once JPATH_ROOT . '/components/com_website/helpers/alert_warning_website_config.php';
             /** @noinspection PhpMethodParametersCountMismatchInspection */
             alert_warning_website_config::alert($website->website_id);
-            $session->set('state_alert_warning_website_config',false);
+
         }
 
     }

@@ -390,7 +390,9 @@ abstract class JUserHelper
 		// If we have a match and rehash = true, rehash the password with the current algorithm.
 		if ((int) $user_id > 0 && $match && $rehash)
 		{
+
 			$user = new JUser($user_id);
+
 			$user->password = static::hashPassword($password);
 			$user->save();
 		}

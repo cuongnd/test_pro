@@ -79,12 +79,12 @@ class supperadminViewusers extends JViewLegacy
 		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_supperadmin/helpers/users.php';
 		$canDo = JHelperContent::getActions('com_supperadmin');
         $bar = JToolBar::getInstance('toolbar');
-		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
+		JToolbarHelper::title(JText::_('user manager'), 'power-cord component');
         $layout = new JLayoutFile('toolbar.newcomponent');
 
         $bar->appendButton('Custom', $layout->render(array()), 'new');
-        JToolbarHelper::editList('extension.edit');
-        JToolbarHelper::addNew('extension.add');
+        JToolbarHelper::editList('user.edit');
+        JToolbarHelper::addNew('user.add');
         if ($canDo->get('core.create'))
         {
             // Instantiate a new JLayoutFile instance and render the layout
@@ -94,7 +94,7 @@ class supperadminViewusers extends JViewLegacy
         }
 		if ($canDo->get('core.edit'))
 		{
-			JToolbarHelper::editList('extension.edit');
+			JToolbarHelper::editList('user.edit');
 		}
         if ($canDo->get('core.create'))
         {
@@ -124,7 +124,7 @@ class supperadminViewusers extends JViewLegacy
 			JToolbarHelper::preferences('com_supperadmin');
 		}
 
-		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');
+		JToolbarHelper::help('JHELP_userS_component_MANAGER');
 
 
 

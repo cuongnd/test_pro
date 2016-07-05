@@ -13,6 +13,7 @@ import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
+import com.michael.easydialog.EasyDialog;
 import com.vantinviet.bho88.libraries.joomla.JFactory;
 import com.vantinviet.bho88.libraries.joomla.form.JFormField;
 import com.vantinviet.bho88.libraries.legacy.application.JApplication;
@@ -92,31 +93,22 @@ public class JFormFieldRangeOfIntegers extends JFormField{
         stateTitletv.setLayoutParams(params);
         LinearLayout content_control_linear_layout=new LinearLayout(context);
         ((LinearLayout ) content_control_linear_layout).addView(stateTitletv);
-        //content_control_linear_layout.setLayoutParams(params);
 
 
-        content_control_linear_layout.setBackgroundColor(Color.parseColor("#FF0000"));
-        this.control_linear_layout.setVisibility(LinearLayout.INVISIBLE);
-        ((AbsoluteLayout) this.control_linear_layout).addView(content_control_linear_layout,params);
-        ((LinearLayout) linear_layout).addView(this.control_linear_layout);
+        EasyDialog easy_dialog= new EasyDialog(context);
+        easy_dialog.setLayout(content_control_linear_layout);
+        easy_dialog.setLocationByAttachedView(input_number);
+        easy_dialog.setGravity(EasyDialog.GRAVITY_BOTTOM)
+                .setAnimationTranslationShow(EasyDialog.DIRECTION_X, 1000, -600, 100, -50, 50, 0)
+                .setAnimationAlphaShow(1000, 0.3f, 1.0f)
+                .setAnimationTranslationDismiss(EasyDialog.DIRECTION_X, 500, -50, 800)
+                .setAnimationAlphaDismiss(500, 1.0f, 0.0f)
+                .setTouchOutsideDismiss(true)
+                .setMatchParent(true)
+                .setMarginLeftAndRight(24, 24)
+                .setOutsideColor(Color.parseColor("#FF0000"))
 
-
-        input_number.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public String tag;
-            BootstrapEditText input_number;
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                    input_number = (BootstrapEditText)v.findFocus();
-                    tag = (String)input_number.getTag();
-                    JFormFieldRangeOfIntegers FormFieldRangeOfInteger=(JFormFieldRangeOfIntegers)JFormField.map_form_field.get(tag);
-                    FormFieldRangeOfInteger.control_linear_layout.setVisibility(LinearLayout.VISIBLE);
-                }else {
-                    JFormFieldRangeOfIntegers FormFieldRangeOfInteger=(JFormFieldRangeOfIntegers)JFormField.map_form_field.get(tag);
-                    FormFieldRangeOfInteger.control_linear_layout.setVisibility(LinearLayout.INVISIBLE);
-                }
-            }
-        });
+        ;
 
 
 

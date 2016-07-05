@@ -648,19 +648,22 @@ class JTableMenu extends JTable
         if(($key = array_search($this->id, $list_all_menu_item_id_of_website)) !== false) {
             unset($list_all_menu_item_id_of_website[$key]);
         }
+        require_once JPATH_ROOT.'/libraries/cms/menu/site.php';
         $list_all_menu_item_id_of_website[]=0;
         $db=$this->_db;
+        $list_menu_type=JMenuSite::LIST_MENU_ITEM_TYPE;
         $query=$db->getQuery(true);
-        $query->select('COUNT(*)')
+        $query->select('id,title,link,type')
             ->from('#__menu')
             ->where('id!='.(int)$this->id)
+            ->where('type!='.$query->q($list_menu_type["alias"]))
             ->where('(parent_id IS NOT NULL OR id!=parent_id)')
             ->where('link='.$query->q($this->link))
             ->where('id IN('.implode(',',$list_all_menu_item_id_of_website).')')
             ;
         $db->setQuery($query);
-        $total=$db->loadResult();
-        if($total)
+        $list_menu_item_duplicate=$db->loadObjectList();
+        if($list_menu_item_duplicate->total_menu)
         {
             $this->setError('menu link exists');
             return false;

@@ -97,12 +97,35 @@ class MenusControllerItem extends JControllerForm
         $list_icon = JUtility::get_class_icon_font();
         $list_result = array();
         foreach ($list_icon as $icon) {
-            if (strpos($icon, $keyword)) {
+            if (strpos($icon, $keyword) !== false) {
                 $item = new stdClass();
                 $item->id = $icon;
                 $item->text = $icon;
                 $list_result[] = $item;
             }
+        }
+        header('Content-Type: application/json');
+        echo json_encode($list_result, JSON_NUMERIC_CHECK);
+        die;
+
+    }
+    public function ajax_get_list_menu_item_type()
+    {
+        $app = JFactory::getApplication();
+        $keyword = $app->input->get('keyword', '', 'string');
+        $db = JFactory::getDbo();
+        $list_menu_item_type = JMenuSite::LIST_MENU_ITEM_TYPE;
+        $list_result = array();
+        foreach ($list_menu_item_type as $key=>$type) {
+
+            if (strpos($type, $keyword) !== false) {
+                $item = new stdClass();
+                $item->id = $key;
+                $item->text = $type;
+                $list_result[] = $item;
+            }
+
+
         }
         header('Content-Type: application/json');
         echo json_encode($list_result, JSON_NUMERIC_CHECK);
@@ -118,6 +141,7 @@ class MenusControllerItem extends JControllerForm
         $app = JFactory::getApplication();
         $input = $app->input;
         $data = $input->get('data', array(), 'array');
+
         $menu_type_id = $data['menu_type_id'];
         $db = JFactory::getDbo();
         $list_ordering = $input->get('list_ordering', array(), 'array');
@@ -156,6 +180,8 @@ class MenusControllerItem extends JControllerForm
             die;
         }
         $ok = $table_menu_item->check();
+
+        $ok=$data['type']!=""?true:$ok;
         if (!$ok) {
             throw new Exception($table_menu_item->getError());
         }

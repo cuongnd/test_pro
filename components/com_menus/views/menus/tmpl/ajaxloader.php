@@ -36,7 +36,7 @@ if(!$is_supper_admin_site)
 $list_menu_type = $db->setQuery($query)->loadObjectList('menu_id');
 
 $query = $db->getQuery(true);
-$query->select('menu.id,menu.parent_id,menu.ordering,menu.title,menu.link,menu.alias,menu.menu_type_id,menu.published,menu.home')
+$query->select('menu.id,menu.parent_id,menu.ordering,menu.title,menu.link,menu.alias,menu.menu_type_id,menu.published,menu.home,menu.type')
     ->from('#__menu As menu ')
     ->order('menu.ordering');
 $db->setQuery($query);
@@ -228,6 +228,9 @@ function create_html_list($root_id, $children, $binding_source)
                                                                                                     onchange="menu_ajax_loader.update_data_column(this,'published','checkbox')"
                                                                                                     value="1"/></label>
                         <?php echo JHtml::row_control('', '', 'hide', 'input.radioyesno', $item->id . '-hide', $item->hidden, array("data-onchange" => "menu_ajax_loader.update_data_column(this,'hidden','checkbox')")) ?>
+                        <label>Type<input class="menu_item_type" style="width: 200px" type="text"
+                                          onchange="menu_ajax_loader.update_data_column(this,'type')"
+                                          value="<?php echo $item->type ?>"/></label>
                         <?php
                         if ($item->binding_source) {
                             $binding_source->setValue($item->binding_source);
