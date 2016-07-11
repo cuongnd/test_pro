@@ -1,0 +1,11 @@
+<form>
+					<field type="text" readonly="false" label="Your phone" default=""
+						   name="your_phone" 
+
+												>
+											</field>
+					<field type="checkbox" label="Your phone" default="0"
+						   name="enable_your_phone"  >
+
+					</field>
+					</form>

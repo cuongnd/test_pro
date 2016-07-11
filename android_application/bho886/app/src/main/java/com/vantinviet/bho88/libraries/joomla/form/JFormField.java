@@ -47,7 +47,8 @@ public abstract class JFormField {
                 "text-Text",
                 "textview-TextView",
                 "button-Button",
-                "rangeofintegers-RangeOfIntegers"
+                "rangeofintegers-RangeOfIntegers",
+                "player-Player"
         };
         for (int i=0;i<listField.length;i++)
         {

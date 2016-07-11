@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+			name="id"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			description ="JGLOBAL_FIELD_ID_DESC"
+			type="text"
+			default="0"
+			readonly="true"
+			class="readonly" />
+
+		<field
+			name="currency_name"
+			type="text"
+			label="Currency name"
+			description="Currency name" />
+		<field
+			name="currency_code"
+			type="text"
+			label="Currency code"
+			description="Currency code" />
+		<field
+			name="currency_code"
+			type="text"
+			label="Currency code"
+			description="Currency code" />
+		<field
+			name="currency_symbol"
+			type="text"
+			label="Currency symbol"
+			description="Currency symbol" />
+
+		<field
+			name="fulltext"
+			type="editor"
+			label="Description"
+			description="Description" />
+
+
+		<field
+			name="enabled"
+			type="list"
+			class="chzn-color-state"
+			label="JSTATUS"
+			description="COM_PLUGINS_FIELD_ENABLED_DESC"
+			size="1"
+			default="1">
+				<option value="1">JENABLED</option>
+				<option value="0">JDISABLED</option>
+		</field>
+
+        <fields name="params" label="COM_CONTENT_ATTRIBS_FIELDSET_LABEL">
+            <field
+                    name="default_currency"
+                    type="currency"
+                    label="Default currency"
+                    description="Default currency" />
+
+        </fields>
+
+
+	</fieldset>
+</form>
