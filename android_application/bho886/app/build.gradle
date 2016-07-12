@@ -21,22 +21,13 @@ android {
 
 }
 configurations {
-    all*.exclude module: 'andEngine'
+
 }
 
-dependencies {
+final def var = dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile project(':tableview')
-    compile project(':andengine-gles2')
-    compile project(':andengine-gles2-augmented')
-    compile project(':andengine-gles2-Box2d')
-    compile project(':andengine-gles2-cocosbuilder')
-    compile project(':andengine-gles2-modplayer')
-    compile project(':andengine-gles2-multiplayer')
-    compile project(':andengine-gles2-svgtexture')
-    compile project(':andengine-gles2-tmx')
-    compile project(':andEngine')
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:support-v4:22.2.1'
     compile 'com.android.support:design:22.2.1'
@@ -45,6 +36,11 @@ dependencies {
     compile 'com.daimajia.slider:library:1.1.5'
     compile 'com.beardedhen:androidbootstrap:2.0.1'
     compile 'com.shehabic.droppy:Droppy:0.2.5.2'
-    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'org.reflections:reflections:0.9.10'
+    compile 'com.google.android.exoplayer:exoplayer:r1.5.7'
 }
+dependencies {
+    compile project(path: ':chatting')
+}
+
+

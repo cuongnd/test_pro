@@ -5,7 +5,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="501dp"
         android:id="@+id/player_frame_layout">
 
         <SurfaceView
@@ -20,5 +20,11 @@
             android:layout_gravity="center_horizontal|bottom" />
 
     </FrameLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Back"
+        android:id="@+id/btn_back" />
 
 </LinearLayout>

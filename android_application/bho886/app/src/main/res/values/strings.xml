@@ -20,7 +20,7 @@
     <string name="title_activity_async_game_activity_example">AsyncGameActivityExample</string>
     <string name="title_activity_auto_parallax_background_example">AutoParallaxBackgroundExample
     </string>
-    <string name="app_name">AndEngineExamples</string>
+    <string name="app_name">van tin viet</string>
 
     <string name="btn_get_involved_caption">Open Source - Get involved...</string>
 
@@ -164,4 +164,10 @@
     <!-- Apps -->
     <string name="example_app_cityradar">CityRadar</string>
     <string name="title_activity_main7">Main7Activity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="type_your_message">Enter msg</string>
+    <string name="NoRecent">No recent</string>
+    <string name="title_activity_main3">Main3Activity</string>
+
 </resources>
