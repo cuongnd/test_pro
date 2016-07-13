@@ -1,0 +1,34 @@
+apply plugin: 'com.android.application'
+
+ext {
+    PUBLISH_VERSION = '0.2.9'
+    TARGET_SDK = 24
+    BUILD_TOOLS = "24.0.0"
+    GOOGLE_LIBS = "24.0.0"
+}
+
+android {
+    compileSdkVersion TARGET_SDK
+    buildToolsVersion BUILD_TOOLS
+
+    defaultConfig {
+        applicationId "com.afollestad.easyvideoplayersample"
+        minSdkVersion 14
+        targetSdkVersion TARGET_SDK
+        versionCode 11
+        versionName PUBLISH_VERSION
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile project(':video_player')
+
+    compile "com.android.support:appcompat-v7:$GOOGLE_LIBS"
+    compile 'com.afollestad.material-dialogs:core:0.8.6.0'
+}
