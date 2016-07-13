@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -67,7 +67,7 @@ class productsViewProductCategories extends JViewLegacy
 	}
     function addCommand()
     {
-        $this->command='com_products';
+        $this->command='com_phatthanhnghean';
         $this->controller_task='productcategories.ajaxSaveForm';
     }
 	/**
@@ -77,8 +77,8 @@ class productsViewProductCategories extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/website/website_template5532788/com_products/helpers/productcategories.php';
-		$canDo = JHelperContent::getActions('com_products');
+		require_once JPATH_ROOT.'/components/website/website_template5532788/com_phatthanhnghean/helpers/productcategories.php';
+		$canDo = JHelperContent::getActions('com_phatthanhnghean');
         $bar = JToolBar::getInstance('toolbar');
 		JToolbarHelper::title(JText::_('Product category manager'), 'power-cord component');
         $layout = new JLayoutFile('toolbar.newcomponent');
@@ -121,7 +121,7 @@ class productsViewProductCategories extends JViewLegacy
         JToolbarHelper::unpublish('productcategories.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
-			JToolbarHelper::preferences('com_products');
+			JToolbarHelper::preferences('com_phatthanhnghean');
 		}
 
 		JToolbarHelper::help('JHELP_productcategories_component_MANAGER');

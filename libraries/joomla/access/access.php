@@ -542,4 +542,23 @@ class JAccess
 		// Finally return the actions array
 		return $actions;
 	}
+
+	public static function get_default_access_level()
+	{
+		$website=JFactory::getWebsite();
+		$db=JFactory::getDbo();
+
+		$query=$db->getQuery(true);
+		$query->select('*')
+			->from('#__viewlevels')
+			->where('website_id='.(int)$website->website_id)
+			->where('is_publish=1')
+			;
+		$level=$db->setQuery($query)->loadObject();
+		if(!$level)
+		{
+			throw new  Exception("there are no level publish");
+		}
+		return $level;
+	}
 }

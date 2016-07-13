@@ -8,9 +8,9 @@ $db=JFactory::getDbo();
 $query = $db->getQuery(true);
 $query->from('#__products as component')
     ->select('component.*')
-    ->leftJoin('#__extensions AS extensions ON extensions.id=component.extension_id')
+    ->leftJoin('#__songs AS songs ON songs.id=component.song_id')
     ->where('component.type='.$query->q('component'))
-    ->where('extensions.website_id=' . (int)$website->website_id)
+    ->where('songs.website_id=' . (int)$website->website_id)
     ->group('component.name')
 ;
 $listComponent = $db->setQuery($query)->loadObjectList();
@@ -76,7 +76,7 @@ ob_start();
                                     data-layout="<?php echo $layout ?>" title="<?php echo JText::_($layout) ?>"
                                     class="item-element view_item">
                                     <a href="javascript:void(0)"><i
-                                            class="ec-pencil2 layout-config" data-id="<?php echo $item_layout->component_id ?>" data-element-type="extension_component" data-element_path="<?php echo $item_layout->is_private_component?"products/website/website_$website->website_id/$com/views/$view/tmpl/$layout":"products/$com/views/$view/tmpl/$layout" ?>" ></i><?php echo JString::sub_string(JText::_($layout), 7) ?>
+                                            class="ec-pencil2 layout-config" data-id="<?php echo $item_layout->component_id ?>" data-element-type="song_component" data-element_path="<?php echo $item_layout->is_private_component?"products/website/website_$website->website_id/$com/views/$view/tmpl/$layout":"products/$com/views/$view/tmpl/$layout" ?>" ></i><?php echo JString::sub_string(JText::_($layout), 7) ?>
                                     </a>
                                 </li>
                             <?php } ?>

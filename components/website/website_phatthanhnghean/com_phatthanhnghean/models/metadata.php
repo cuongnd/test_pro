@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU metadata Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * component model.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  * @since       1.6
  */
 class productsModelMetadata extends JModelAdmin
@@ -77,7 +77,7 @@ class productsModelMetadata extends JModelAdmin
 		$this->setState('item.element',	$element);
 
 		// Get the form.
-		$form = $this->loadForm('com_products.metadata', 'metadata', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_phatthanhnghean.metadata', 'metadata', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form))
 		{
 
@@ -134,14 +134,14 @@ class productsModelMetadata extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_products.edit.metadata.data', array());
+		$data = JFactory::getApplication()->getUserState('com_phatthanhnghean.edit.metadata.data', array());
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
 		}
 
-		$this->preprocessData('com_products.metadata', $data);
+		$this->preprocessData('com_phatthanhnghean.metadata', $data);
 
 		return $data;
 	}
@@ -161,7 +161,7 @@ class productsModelMetadata extends JModelAdmin
         $db		= $this->getDbo();
 
         // Access checks.
-        if (!$user->authorise('core.create', 'com_products'))
+        if (!$user->authorise('core.create', 'com_phatthanhnghean'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }
@@ -308,7 +308,7 @@ class productsModelMetadata extends JModelAdmin
         $db		= $this->getDbo();
 
         // Access checks.
-        if (!$user->authorise('core.create', 'com_products'))
+        if (!$user->authorise('core.create', 'com_phatthanhnghean'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }
@@ -465,6 +465,6 @@ class productsModelMetadata extends JModelAdmin
 	 */
 	protected function cleanCache($group = null, $client_id = 0)
 	{
-		parent::cleanCache('com_products');
+		parent::cleanCache('com_phatthanhnghean');
 	}
 }

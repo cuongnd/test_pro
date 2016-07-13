@@ -16,7 +16,7 @@ defined('_JEXEC') or die(__FILE__);
  * @since       11.1
  * @deprecated  Class will be removed upon completion of transition to UCM
  */
-class JTablephatthanhnghean extends JTable
+class JTableSong extends JTable
 {
     /**
      *
@@ -27,9 +27,10 @@ class JTablephatthanhnghean extends JTable
      * @since   11.1
      */
     public $id=0;
+    public $website_id=0;
     public function __construct(JDatabaseDriver $db)
     {
-        parent::__construct('#__phatthanhnghean_phatthanhnghean', 'id', $db);
+        parent::__construct('#__phatthanhnghean_songs', 'id', $db);
 
     }
     public function check()

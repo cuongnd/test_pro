@@ -24,6 +24,75 @@
 		}
 		return object_list;
 	};
+
+    $.alert_warning_website_config=function(reset,current_step,count_error_ajax) {
+        if(typeof reset=='undefined')
+        {
+            reset=0;
+        }
+        var data_submit = {};
+        var option_click = {
+            enable_load_component:1,
+            option: "com_website",
+            task: "utility.ajax_alert_warning_website_config",
+            reset:reset,
+            current_step:current_step
+        };
+        option_click = $.param(option_click);
+        $.ajax({
+            contentType: 'application/json',
+            type: "POST",
+            dataType: "json",
+            url: this_host + '/index.php?' + option_click,
+            data: JSON.stringify(data_submit),
+            beforeSend: function () {
+                $('.div-loading').css({
+                    display: "block"
+
+
+                });
+            },
+            success: function (response) {
+                $('.div-loading').css({
+                    display: "none"
+
+
+                });
+                if (response.e == 0) {
+                    if (response.finish == 0)
+                    {
+                        current_step=response.current_step;
+                        $.alert_warning_website_config('',current_step,count_error_ajax);
+                    }
+                } else if (response.e == 1) {
+                    var notify = $.notify(response.m, {
+                            allow_dismiss: false,
+                            type:"warning"
+                        }
+                    );
+                }
+            },
+            error: function(request, status, err) {
+                if (status == "timeout") {
+                    // timeout -> reload the page and try again
+                    console.log("timeout");
+                    $.alert_warning_website_config();
+                } else {
+                    if(count_error_ajax>10)
+                    {
+                        console.log('too many error ajax');
+                    }else {
+                        // another error occured
+                        count_error_ajax++;
+                        $.alert_warning_website_config(1, current_step, count_error_ajax);
+                    }
+                }
+            }
+        });
+
+    };
+
+
     $.random = function(min,max)
     {
         min = parseInt(min);

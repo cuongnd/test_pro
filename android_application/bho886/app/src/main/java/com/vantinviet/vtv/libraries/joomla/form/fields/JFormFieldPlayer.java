@@ -133,9 +133,9 @@ public class JFormFieldPlayer extends JFormField  {
         ((LinearLayout) linear_layout).addView(myView);
 
 
-        surfaceView = (SurfaceView) app.activity.findViewById(R.id.sv_player);
-        mediaController = (LinearLayout) app.activity.findViewById(R.id.lin_media_controller);
-        app.activity.getWindow().addFlags(500);
+        surfaceView = (SurfaceView) app.context.findViewById(R.id.sv_player);
+        mediaController = (LinearLayout) app.context.findViewById(R.id.lin_media_controller);
+        app.context.getWindow().addFlags(500);
 
         //initPlayer(0);
         initHLSPlayer(0);
@@ -153,7 +153,7 @@ public class JFormFieldPlayer extends JFormField  {
 
 
  /*
-        player = (EasyVideoPlayer) app.activity.findViewById(R.id.easy_player);
+        player = (EasyVideoPlayer) app.context.findViewById(R.id.easy_player);
 
         assert player != null;
         player.setCallback(this);
@@ -192,7 +192,7 @@ public class JFormFieldPlayer extends JFormField  {
 
     private View findViewById(int id_element) {
        JApplication app=JFactory.getApplication();
-        return app.activity.findViewById(id_element) ;
+        return app.context.findViewById(id_element) ;
     }
 
     private void initRew() {
@@ -346,7 +346,7 @@ public class JFormFieldPlayer extends JFormField  {
 
     private Window getWindow() {
         JApplication app=JFactory.getApplication();
-        return app.activity.getWindow();
+        return app.context.getWindow();
     }
 
     private void hideMediaController() {

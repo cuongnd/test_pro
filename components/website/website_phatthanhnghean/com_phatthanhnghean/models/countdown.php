@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_countdown
+ * @subpackage  com_phatthanhnghean
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,16 +13,16 @@ defined('_JEXEC') or die;
  * component model.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_countdown
+ * @subpackage  com_phatthanhnghean
  * @since       1.6
  */
-class CountdownModelCountdown extends JModelAdmin
+class phatthanhngheanModelphatthanhnghean extends JModelAdmin
 {
 	/**
 	 * @var     string  The help screen key for the module.
 	 * @since   1.6
 	 */
-	protected $helpKey = 'JHELP_countdownS_component_MANAGER_EDIT';
+	protected $helpKey = 'JHELP_phatthanhngheanS_component_MANAGER_EDIT';
 
 	/**
 	 * @var     string  The help screen base URL for the module.
@@ -40,13 +40,13 @@ class CountdownModelCountdown extends JModelAdmin
 	 * @var     string  The event to trigger after saving the data.
 	 * @since   1.6
 	 */
-	protected $event_after_save = 'oncountdownAfterSave';
+	protected $event_after_save = 'onphatthanhngheanAfterSave';
 
 	/**
 	 * @var     string  The event to trigger after before the data.
 	 * @since   1.6
 	 */
-	protected $event_before_save = 'oncountdownBeforeSave';
+	protected $event_before_save = 'onphatthanhngheanBeforeSave';
 
 	/**
 	 * Method to get the record form.
@@ -77,7 +77,7 @@ class CountdownModelCountdown extends JModelAdmin
 		$this->setState('item.element',	$element);
 
 		// Get the form.
-		$form = $this->loadForm('com_countdown.countdown', 'countdown', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_phatthanhnghean.phatthanhnghean', 'phatthanhnghean', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form))
 		{
 
@@ -138,7 +138,7 @@ class CountdownModelCountdown extends JModelAdmin
 			$data = $this->getItem();
 		}
 
-		$this->preprocessData('com_countdown.countdown', $data);
+		$this->preprocessData('com_phatthanhnghean.phatthanhnghean', $data);
 
 		return $data;
 	}
@@ -158,7 +158,7 @@ class CountdownModelCountdown extends JModelAdmin
         $db		= $this->getDbo();
 
         // Access checks.
-        if (!$user->authorise('core.create', 'com_countdown'))
+        if (!$user->authorise('core.create', 'com_phatthanhnghean'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }
@@ -232,7 +232,7 @@ class CountdownModelCountdown extends JModelAdmin
                 }
                 if($table->issystem)
                 {
-                    $this->setError('you cannot delete countdown system');
+                    $this->setError('you cannot delete phatthanhnghean system');
                     return false;
                 }
                 if (!$table->delete($pk))
@@ -260,7 +260,7 @@ class CountdownModelCountdown extends JModelAdmin
         $db		= $this->getDbo();
         $tuples=array();
 /*        // Access checks.
-        if (!$user->authorise('core.create', 'com_countdown'))
+        if (!$user->authorise('core.create', 'com_phatthanhnghean'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }*/
@@ -301,7 +301,7 @@ class CountdownModelCountdown extends JModelAdmin
         $db		= $this->getDbo();
 
         // Access checks.
-        if (!$user->authorise('core.create', 'com_countdown'))
+        if (!$user->authorise('core.create', 'com_phatthanhnghean'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }
@@ -345,7 +345,7 @@ class CountdownModelCountdown extends JModelAdmin
 	{
 
 
-		$pk = (!empty($pk)) ? $pk : (int) $this->getState('countdown.id');
+		$pk = (!empty($pk)) ? $pk : (int) $this->getState('phatthanhnghean.id');
 
 		if (!isset($this->_cache[$pk]))
 		{
@@ -372,7 +372,7 @@ class CountdownModelCountdown extends JModelAdmin
 			$registry->loadString($table->params);
 			$this->_cache[$pk]->params = $registry->toArray();
 
-			// Get the countdown XML.
+			// Get the phatthanhnghean XML.
 			$path = JPath::clean(JPATH_ROOT . '/' . $table->folder . '/' . $table->element . '/' . $table->element . '.xml');
 
 			if (file_exists($path))
@@ -397,7 +397,7 @@ class CountdownModelCountdown extends JModelAdmin
 	 * @param   array  Configuration array for model. Optional.
 	 * @return  JTable	A database object
 	*/
-	public function getTable($type = 'countdown', $prefix = 'JTable', $config = array())
+	public function getTable($type = 'phatthanhnghean', $prefix = 'JTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
@@ -420,7 +420,7 @@ class CountdownModelCountdown extends JModelAdmin
 		// Load the User state.
 		$pk = $app->input->getInt('id');
 
-		$this->setState('countdown.id', $pk);
+		$this->setState('phatthanhnghean.id', $pk);
 	}
 
 
@@ -458,6 +458,6 @@ class CountdownModelCountdown extends JModelAdmin
 	 */
 	protected function cleanCache($group = null, $client_id = 0)
 	{
-		parent::cleanCache('com_countdown');
+		parent::cleanCache('com_phatthanhnghean');
 	}
 }

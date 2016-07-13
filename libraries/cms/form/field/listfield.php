@@ -450,6 +450,10 @@ class JFormFieldlistfield extends JFormField
         if (strtolower($item_type->name) == strtolower($item->type . '.php')) {
             require_once JPATH_ROOT . '/' . $item_type->path;
             $class_item_type = 'JFormField' . $item->type;
+            if(!class_exists($class_item_type))
+            {
+                continue;
+            }
             $class_item_type = new $class_item_type;
             $list_attribute_config = $class_item_type->get_attribute_config();
             $reflector = new ReflectionClass(get_class($class_item_type));

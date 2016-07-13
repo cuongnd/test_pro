@@ -18,7 +18,7 @@ defined('_JEXEC') or die(__FILE__);
  * @link        http://www.w3.org/TR/html-markup/input.text.html#input.text
  * @since       11.1
  */
-class JFormFieldTextView extends JFormField
+class JFormFieldLink extends JFormField
 {
 	/**
 	 * The form field type.
@@ -27,7 +27,7 @@ class JFormFieldTextView extends JFormField
 	 *
 	 * @since  11.1
 	 */
-	protected $type = 'Textview';
+	protected $type = 'link';
 
 	/**
 	 * The allowable maxlength of the field.
@@ -250,4 +250,11 @@ class JFormFieldTextView extends JFormField
 	{
 		return $this->getOptions();
 	}
+	public function get_attribute_config()
+	{
+		return array(
+			link=>""
+		);
+	}
+
 }

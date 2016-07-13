@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class JConfig {
     private static JConfig instance;
-    public  String FILE_NAME_OF_FILE_CONFIG = "config.ini";
+    public  String FILE_NAME_OF_FILE_CONFIG = "VTVConfig.ini";
     public float cachetime=150000;
     public int caching=0;
     public String cache_handler="file";

@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_product
  * @since       1.6
  */
-class AbumsHelper
+class songsHelper
 {
     public static $extension = 'com_product';
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU currency Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * component model.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  * @since       1.6
  */
 class productsModelcurrency extends JModelAdmin
@@ -77,7 +77,7 @@ class productsModelcurrency extends JModelAdmin
 		$this->setState('item.element',	$element);
 
 		// Get the form.
-		$form = $this->loadForm('com_products.currency', 'currency', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_phatthanhnghean.currency', 'currency', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form))
 		{
 
@@ -134,14 +134,14 @@ class productsModelcurrency extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_products.edit.currency.data', array());
+		$data = JFactory::getApplication()->getUserState('com_phatthanhnghean.edit.currency.data', array());
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
 		}
 
-		$this->preprocessData('com_products.currency', $data);
+		$this->preprocessData('com_phatthanhnghean.currency', $data);
 
 		return $data;
 	}
@@ -298,6 +298,6 @@ class productsModelcurrency extends JModelAdmin
 	 */
 	protected function cleanCache($group = null, $client_id = 0)
 	{
-		parent::cleanCache('com_products');
+		parent::cleanCache('com_phatthanhnghean');
 	}
 }

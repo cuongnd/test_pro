@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * View class for a list of domains.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  * @since       1.5
  */
 class productsViewdomains extends JViewLegacy
@@ -57,7 +57,7 @@ class productsViewdomains extends JViewLegacy
 		if (!count($this->items))
 		{
 			JFactory::getApplication()->enqueueMessage(
-				JText::_('COM_products_MSG_MANAGE_NO_products'),
+				JText::_('com_phatthanhnghean_MSG_MANAGE_NO_products'),
 				'warning'
 			);
 		}
@@ -69,7 +69,7 @@ class productsViewdomains extends JViewLegacy
 	}
     function addCommand()
     {
-        $this->command='com_products';
+        $this->command='com_phatthanhnghean';
         $this->controller_task='domains.ajaxSaveForm';
     }
 	/**
@@ -79,8 +79,8 @@ class productsViewdomains extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/com_products/helpers/domains.php';
-		$canDo = JHelperContent::getActions('com_products');
+		require_once JPATH_ROOT.'/components/com_phatthanhnghean/helpers/domains.php';
+		$canDo = JHelperContent::getActions('com_phatthanhnghean');
         $bar = JToolBar::getInstance('toolbar');
 		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
         if ($canDo->get('core.create'))
@@ -117,12 +117,12 @@ class productsViewdomains extends JViewLegacy
         JToolbarHelper::unpublish('domains.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
-			JToolbarHelper::preferences('com_products');
+			JToolbarHelper::preferences('com_phatthanhnghean');
 		}
 
 		JToolbarHelper::help('JHELP_domains_component_MANAGER');
 
-		JHtmlSidebar::setAction('index.php?option=com_products&view=products');
+		JHtmlSidebar::setAction('index.php?option=com_phatthanhnghean&view=products');
 
         $products=JFactory::isproducts();
         if($products){

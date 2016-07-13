@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * component model.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  * @since       1.6
  */
 class productsModelGeneral extends JModelAdmin
@@ -77,7 +77,7 @@ class productsModelGeneral extends JModelAdmin
 		$this->setState('item.element',	$element);
 
 		// Get the form.
-		$form = $this->loadForm('com_products.general', 'general', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_phatthanhnghean.general', 'general', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form))
 		{
 
@@ -134,14 +134,14 @@ class productsModelGeneral extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_products.edit.general.data', array());
+		$data = JFactory::getApplication()->getUserState('com_phatthanhnghean.edit.general.data', array());
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
 		}
 
-		$this->preprocessData('com_products.general', $data);
+		$this->preprocessData('com_phatthanhnghean.general', $data);
 
 		return $data;
 	}
@@ -178,7 +178,7 @@ class productsModelGeneral extends JModelAdmin
 	 */
 	public function getItem($pk = null)
 	{
-        $config=productsconfig::get_com_products_config();
+        $config=productsconfig::get_com_phatthanhnghean_config();
         if($config)
         {
             $pk=$config->id;
@@ -262,7 +262,7 @@ class productsModelGeneral extends JModelAdmin
 	}
     public function save($data)
     {
-        $config=productsconfig::get_com_products_config();
+        $config=productsconfig::get_com_phatthanhnghean_config();
         if($config)
         {
             $data['id']=$config->id;
@@ -308,6 +308,6 @@ class productsModelGeneral extends JModelAdmin
 	 */
 	protected function cleanCache($group = null, $client_id = 0)
 	{
-		parent::cleanCache('com_products');
+		parent::cleanCache('com_phatthanhnghean');
 	}
 }

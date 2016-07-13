@@ -456,6 +456,8 @@ if ($ajaxGetContent) {
                         </li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
+                        <li><a class="alert_warning_website_config" href="javascript:void(0)" title="Validate website"><i
+                                    class="br-warning"></i></a></li>
                         <li><a class="rebuild_root_block" href="javascript:void(0)" title="rebuid block"><i
                                     class="im-spinner5"></i></a></li>
                         <li><a class="reload-website" href="javascript:void(0)"><i class=im-spinner6></i></a></li>

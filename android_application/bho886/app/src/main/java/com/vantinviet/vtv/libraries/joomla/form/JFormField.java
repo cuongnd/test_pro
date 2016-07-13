@@ -30,7 +30,7 @@ public abstract class JFormField {
     protected String value;
     protected String group;
     private File jarFile;
-    private static String p_package="com.vantinviet.bho88.libraries.joomla.form.fields";
+    private static String p_package="com.vantinviet.vtv.libraries.joomla.form.fields";
     public static Map<String, JFormField> map_form_field = new HashMap<String, JFormField>();
     public String name;
     protected String key;

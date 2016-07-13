@@ -1,10 +1,10 @@
 package com.vantinviet.vtv.libraries.legacy.application;
 
-import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 
 import com.vantinviet.vtv.MainActivity;
-import com.vantinviet.vtv.config;
+import com.vantinviet.vtv.VTVConfig;
 import com.vantinviet.vtv.configuration.JConfig;
 import com.vantinviet.vtv.libraries.android.http.JSONParser;
 import com.vantinviet.vtv.libraries.cms.application.JApplicationSite;
@@ -26,7 +26,7 @@ import java.util.Map;
 public class JApplication extends JApplicationBase {
     public static Map<String, String> content_website =new HashMap<String, String>();
     public static JApplication instance;
-    public Context context;
+    public AppCompatActivity context;
     private String redirect;
     public MainActivity activity;
     private Map<String, String> data_post;
@@ -106,25 +106,25 @@ public class JApplication extends JApplicationBase {
     public void setRedirect(String link) {
         JApplication app=JFactory.getApplication();
 
-        String screenSize = Integer.toString(config.screen_size_width/config.screenDensity) + "x" + Integer.toString( config.screen_size_height);
-        String local_version= config.get_version();
+        String screenSize = Integer.toString(VTVConfig.screen_size_width/ VTVConfig.screenDensity) + "x" + Integer.toString( VTVConfig.screen_size_height);
+        String local_version= VTVConfig.get_version();
 
         link=link+"&os=android&screenSize="+ screenSize+"&version="+local_version;
         JApplicationSite.host=link;
-        Intent i = new Intent(this.context, app.activity.getClass());
+        Intent i = new Intent(this.context, app.context.getClass());
         this.context.startActivity(i);
     }
 
     public void setRedirect(String link, Map<String, String> data_post) {
         JApplication app=JFactory.getApplication();
         app.data_post=data_post;
-        String screenSize = Integer.toString(config.screen_size_width/config.screenDensity) + "x" + Integer.toString( config.screen_size_height);
-        String local_version= config.get_version();
+        String screenSize = Integer.toString(VTVConfig.screen_size_width/ VTVConfig.screenDensity) + "x" + Integer.toString( VTVConfig.screen_size_height);
+        String local_version= VTVConfig.get_version();
 
         link=link+"&os=android&screenSize="+ screenSize+"&version="+local_version;
         System.out.println("link:"+link);
         JApplicationSite.host=link;
-        Intent i = new Intent(this.context, app.activity.getClass());
+        Intent i = new Intent(this.context, app.context.getClass());
         this.context.startActivity(i);
 
     }

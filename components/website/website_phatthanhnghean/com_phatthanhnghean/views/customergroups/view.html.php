@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
  * View class for a list of extensions.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  * @since       1.5
  */
 class productsViewCustomerGroups extends JViewLegacy
@@ -47,7 +47,7 @@ class productsViewCustomerGroups extends JViewLegacy
 		if (!count($this->items))
 		{
 			JFactory::getApplication()->enqueueMessage(
-				JText::_('com_products_MSG_MANAGE_NO_products'),
+				JText::_('com_phatthanhnghean_MSG_MANAGE_NO_products'),
 				'warning'
 			);
 		}
@@ -67,7 +67,7 @@ class productsViewCustomerGroups extends JViewLegacy
 	}
     function addCommand()
     {
-        $this->command='com_products';
+        $this->command='com_phatthanhnghean';
         $this->controller_task='extensions.ajaxSaveForm';
     }
 	/**
@@ -77,8 +77,8 @@ class productsViewCustomerGroups extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_products/helpers/extensionsproducts.php';
-		$canDo = JHelperContent::getActions('com_products');
+		require_once JPATH_ROOT.'/components/website/website_supper_admin/com_phatthanhnghean/helpers/extensionsproducts.php';
+		$canDo = JHelperContent::getActions('com_phatthanhnghean');
         $bar = JToolBar::getInstance('toolbar');
 		JToolbarHelper::title(JText::_('Extension manager'), 'power-cord component');
         $layout = new JLayoutFile('toolbar.newcomponent');
@@ -120,7 +120,7 @@ class productsViewCustomerGroups extends JViewLegacy
         JToolbarHelper::unpublish('extensions.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
-			JToolbarHelper::preferences('com_products');
+			JToolbarHelper::preferences('com_phatthanhnghean');
 		}
 
 		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');

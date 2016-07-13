@@ -96,10 +96,6 @@ class JFormFieldparentalbum extends JFormField
         }
         $list_root_album = $children_album['list_root'];
         $list_album=array();
-        $option=new stdClass();
-        $option->id='';
-        $option->text=JText::_('root');
-        $list_album[]=$option;
         unset($children_album['list_root']);
 
         $get_list_album=function($function_call_back, $album_id=0, $current_album_id, &$list_album, $children_album, $level=1, $max_level=999){

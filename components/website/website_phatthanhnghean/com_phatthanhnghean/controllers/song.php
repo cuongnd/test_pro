@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_cpanel
  * @since       1.6
  */
-class cpanelControllerDomain extends JControllerForm
+class PhatThanhNgheAnControllersong extends JControllerForm
 {
     /**
      * Method override to check if you can edit an existing record.
@@ -33,11 +33,11 @@ class cpanelControllerDomain extends JControllerForm
         parent::__construct($config);
 // An article edit form can come from the articles or featured view.
         // Adjust the redirect view on the value of 'return' in the request.
-        $this->view_list = 'domains';
-        $this->view_item = 'domain';
+        $this->view_list = 'songs';
+        $this->view_item = 'song';
     }
     
-    public function getModel($name = 'domain', $prefix = 'cpanelModel', $config = array())
+    public function getModel($name = 'song', $prefix = 'phatthanhngheanModel', $config = array())
     {
         return parent::getModel($name, $prefix, array('ignore_request' => true));
     }

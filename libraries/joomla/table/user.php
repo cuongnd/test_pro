@@ -187,23 +187,6 @@ class JTableUser extends JTable
         $return = parent::bind($array, $ignore);
 
         // Load the real group data based on the bound ids.
-        if ($return && !empty($this->groups)) {
-            // Set the group ids.
-            JArrayHelper::toInteger($this->groups);
-
-            // Get the titles for the user groups.
-            $query = $this->_db->getQuery(true)
-                ->select($this->_db->quoteName('id'))
-                ->select($this->_db->quoteName('title'))
-                ->from($this->_db->quoteName('#__usergroups'))
-                ->where($this->_db->quoteName('id') . ' = ' . implode(' OR ' . $this->_db->quoteName('id') . ' = ', $this->groups));
-            $this->_db->setQuery($query);
-
-            // Set the titles for the user groups.
-            $this->groups = $this->_db->loadAssocList('id', 'id');
-
-
-        }
 
         return $return;
     }

@@ -18,7 +18,7 @@ defined('_JEXEC') or die(__FILE__);
  * @link        http://www.w3.org/TR/html-markup/input.text.html#input.text
  * @since       11.1
  */
-class JFormFieldLink extends JFormField
+class JFormFieldvideoplayerlink extends JFormField
 {
 	/**
 	 * The form field type.
@@ -27,7 +27,7 @@ class JFormFieldLink extends JFormField
 	 *
 	 * @since  11.1
 	 */
-	protected $type = 'link';
+	protected $type = 'videoplayerlink';
 
 	/**
 	 * The allowable maxlength of the field.

@@ -5,7 +5,7 @@ package com.vantinviet.vtv.configuration;
  */
 public class JConfig_countdown extends JConfig {
     private static JConfig_countdown instance;
-    public  String FILE_NAME_OF_FILE_CONFIG = "config.ini";
+    public  String FILE_NAME_OF_FILE_CONFIG = "VTVConfig.ini";
     public float cachetime=150000;
     public int caching=0;
     public String cache_handler="file";

@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_cpanel
  * @since       1.6
  */
-class PhatThanhNgheAnModelAbums extends JModelList
+class PhatThanhNgheAnModelsongs extends JModelList
 {
     /**
      * Constructor.
@@ -25,7 +25,7 @@ class PhatThanhNgheAnModelAbums extends JModelList
      * @see     JController
      * @since   1.6
      */
-    protected $context = 'abums';
+    protected $context = 'songs';
     public function __construct($config = array())
     {
         if (empty($config['filter_fields'])) {
@@ -99,9 +99,10 @@ class PhatThanhNgheAnModelAbums extends JModelList
                 'a.*'
             )
         )
-            ->from($db->quoteName('#__domain_website') . ' AS a')
+            ->from($db->quoteName('#__phatthanhnghean_songs') . ' AS a')
             ->leftJoin('#__website AS website ON website.id=a.website_id')
-            ->where('website.created_by='.(int)$user->id)
+            ->leftJoin('#__phatthanhnghean_albums AS album ON album.id=a.album_id')
+            ->select('album.album_name AS album,album.album_name AS artist,album.album_name AS genre')
             ->select('website.name AS website_name')
             ->group('a.id')
         ;

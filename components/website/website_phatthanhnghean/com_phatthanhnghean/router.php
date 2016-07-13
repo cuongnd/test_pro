@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  com_countdown
+ * @subpackage  com_phatthanhnghean
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -10,16 +10,16 @@
 defined('_JEXEC') or die;
 
 /**
- * Routing class from com_countdown
+ * Routing class from com_phatthanhnghean
  *
  * @package     Joomla.Site
- * @subpackage  com_countdown
+ * @subpackage  com_phatthanhnghean
  * @since       3.3
  */
-class CountDownRouter extends JComponentRouterBase
+class phatthanhngheanRouter extends JComponentRouterBase
 {
 	/**
-	 * Build the route for the com_countdown component
+	 * Build the route for the com_phatthanhnghean component
 	 *
 	 * @param   array  &$query  An array of URL arguments
 	 *
@@ -34,7 +34,7 @@ class CountDownRouter extends JComponentRouterBase
 		// Get a menu item based on Itemid or currently active
 		$app = JFactory::getApplication();
 		$menu = $app->getMenu();
-		$params = JComponentHelper::getParams('com_countdown');
+		$params = JComponentHelper::getParams('com_phatthanhnghean');
 		$advanced = $params->get('sef_advanced_link', 0);
 
 		// We need a menu item.  Either the one specified in the query, or the current active one if none specified
@@ -49,7 +49,7 @@ class CountDownRouter extends JComponentRouterBase
 			$menuItemGiven = true;
 		}
 		// Check again
-		if ($menuItemGiven && isset($menuItem) && $menuItem->component != 'com_countdown')
+		if ($menuItemGiven && isset($menuItem) && $menuItem->component != 'com_phatthanhnghean')
 		{
 			$menuItemGiven = false;
 			unset($query['Itemid']);

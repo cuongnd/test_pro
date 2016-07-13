@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_phatthanhnghean
  * @since       1.5
  */
-class phatthanhngheanViewAbum extends JViewLegacy
+class phatthanhngheanViewsong extends JViewLegacy
 {
 	protected $item;
 
@@ -57,9 +57,9 @@ class phatthanhngheanViewAbum extends JViewLegacy
 		JToolbarHelper::title(JText::sprintf('Website', JText::_($this->item->name)), 'power-cord plugin');
 
 		// If not checked out, can save the item.
-        JToolbarHelper::apply('extension.apply');
-        JToolbarHelper::save('extension.save');
-		JToolbarHelper::cancel('extension.cancel', 'JTOOLBAR_CLOSE');
+        JToolbarHelper::apply('song.apply');
+        JToolbarHelper::save('song.save');
+		JToolbarHelper::cancel('song.cancel', 'JTOOLBAR_CLOSE');
 		JToolbarHelper::divider();
 		// Get the help information for the plugin item.
 

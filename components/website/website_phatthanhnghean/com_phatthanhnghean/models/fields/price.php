@@ -48,7 +48,7 @@ class JFormFieldPrice extends JFormField
         $doc->addLessStyleSheet(JUri::root().'media/system/js/select2-4.0.0/dist/css/select2.css');
         $doc->addScript(JUri::root().'/media/system/js/select2-4.0.0/dist/js/select2.full.js');
         $doc->addScript(JUri::root().'/media/system/js/BobKnothe-autoNumeric/autoNumeric.js');
-        $doc->addScript(JUri::root().'/components/website/website_template5532788/com_products/models/fields/jquery.price.js');
+        $doc->addScript(JUri::root().'/components/website/website_template5532788/com_phatthanhnghean/models/fields/jquery.price.js');
         $script_id = "script_field_parent_product_category_" . $this->id;
         ob_start();
         ?>

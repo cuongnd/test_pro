@@ -15,13 +15,13 @@
       <module fileurl="file://$PROJECT_DIR$/androidGamemaster/androidGamemaster.iml" filepath="$PROJECT_DIR$/androidGamemaster/androidGamemaster.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bho886.iml" filepath="$PROJECT_DIR$/bho886.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chatting/chatting.iml" filepath="$PROJECT_DIR$/chatting/chatting.iml" />
       <module fileurl="file://$PROJECT_DIR$/easydialog/easydialog.iml" filepath="$PROJECT_DIR$/easydialog/easydialog.iml" />
-      <module fileurl="file://$PROJECT_DIR$/googlemediaframework/googlemediaframework.iml" filepath="$PROJECT_DIR$/googlemediaframework/googlemediaframework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/playbacktests/playbacktests.iml" filepath="$PROJECT_DIR$/playbacktests/playbacktests.iml" />
-      <module fileurl="file://$PROJECT_DIR$/scheduling/scheduling.iml" filepath="$PROJECT_DIR$/scheduling/scheduling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample_video_player/sample_video_player.iml" filepath="$PROJECT_DIR$/sample_video_player/sample_video_player.iml" />
+      <module fileurl="file://$PROJECT_DIR$/soundplayer/soundplayer.iml" filepath="$PROJECT_DIR$/soundplayer/soundplayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/tableview/tableview.iml" filepath="$PROJECT_DIR$/tableview/tableview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/video_player/video_player.iml" filepath="$PROJECT_DIR$/video_player/video_player.iml" />
     </modules>
   </component>
 </project>

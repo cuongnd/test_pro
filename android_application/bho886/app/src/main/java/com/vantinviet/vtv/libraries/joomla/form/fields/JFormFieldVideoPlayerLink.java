@@ -85,10 +85,10 @@ public class JFormFieldVideoPlayerLink extends JFormField{
                         }
                     }
                     link=link.replaceAll("&amp;", "&");
-                    Intent intent = new Intent(app.activity.context,video_player.class);
+                    Intent intent = new Intent(app.context,video_player.class);
                     Bundle b = new Bundle();
                     intent.putExtra("link", link);
-                    app.activity.startActivity(intent);
+                    app.context.startActivity(intent);
                     intent.putExtra("personBdl", b);
 
                     //app.setRedirect(link);
@@ -110,7 +110,7 @@ public class JFormFieldVideoPlayerLink extends JFormField{
     }
     public String getValue(){
         JApplication app= JFactory.getApplication();
-        BootstrapEditText output_box = (BootstrapEditText) app.activity.findViewById(this.key_id);
+        BootstrapEditText output_box = (BootstrapEditText) app.context.findViewById(this.key_id);
         return output_box.getText().toString();
     }
 

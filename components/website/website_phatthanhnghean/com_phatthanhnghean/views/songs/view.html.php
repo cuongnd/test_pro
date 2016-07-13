@@ -10,13 +10,13 @@
 defined('_JEXEC') or die;
 
 /**
- * View class for a list of abums.
+ * View class for a list of songs.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_phatthanhnghean
  * @since       1.5
  */
-class phatthanhngheanViewAbums extends JViewLegacy
+class phatthanhngheanViewsongs extends JViewLegacy
 {
 	protected $items;
 
@@ -29,8 +29,6 @@ class phatthanhngheanViewAbums extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-
-
 		$this->items      = $this->get('Items');
 		$this->pagination = $this->get('Pagination');
         $this->filterForm    = $this->get('FilterForm');
@@ -52,7 +50,7 @@ class phatthanhngheanViewAbums extends JViewLegacy
 			);
 		}
 
-        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('abums.quick_assign_website');
+        $this->listWebsite=websiteHelperFrontEnd::getOptionListWebsite('songs.quick_assign_website');
 		$this->addToolbar();
 
         JHtmlSidebar::addFilter(
@@ -68,7 +66,7 @@ class phatthanhngheanViewAbums extends JViewLegacy
     function addCommand()
     {
         $this->command='com_phatthanhnghean';
-        $this->controller_task='abums.ajaxSaveForm';
+        $this->controller_task='songs.ajaxSaveForm';
     }
 	/**
 	 * Add the page title and toolbar.
@@ -77,15 +75,15 @@ class phatthanhngheanViewAbums extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		require_once JPATH_ROOT.'/components/website/website_phatthanhnghean/com_phatthanhnghean/helpers/abums.php';
+		require_once JPATH_ROOT.'/components/website/website_phatthanhnghean/com_phatthanhnghean/helpers/songs.php';
 		$canDo = JHelperContent::getActions('com_phatthanhnghean');
         $bar = JToolBar::getInstance('toolbar');
-		JToolbarHelper::title(JText::_('Abums manager'), 'power-cord component');
+		JToolbarHelper::title(JText::_('songs manager'), 'power-cord component');
         $layout = new JLayoutFile('toolbar.newcomponent');
 
         $bar->appendButton('Custom', $layout->render(array()), 'new');
-        JToolbarHelper::editList('extension.edit');
-        JToolbarHelper::addNew('extension.add');
+        JToolbarHelper::editList('song.edit');
+        JToolbarHelper::addNew('song.add');
         if ($canDo->get('core.create'))
         {
             // Instantiate a new JLayoutFile instance and render the layout
@@ -95,35 +93,35 @@ class phatthanhngheanViewAbums extends JViewLegacy
         }
 		if ($canDo->get('core.edit'))
 		{
-			JToolbarHelper::editList('extension.edit');
+			JToolbarHelper::editList('song.edit');
 		}
         if ($canDo->get('core.create'))
         {
-            JToolbarHelper::custom('abums.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
+            JToolbarHelper::custom('songs.add', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
         }
-		JToolbarHelper::duplicate('abums.duplicate');
+		JToolbarHelper::duplicate('songs.duplicate');
 		if ($canDo->get('core.edit.state'))
 		{
-			JToolbarHelper::publish('abums.publish', 'JTOOLBAR_ENABLE', true);
-			JToolbarHelper::unpublish('abums.unpublish', 'JTOOLBAR_DISABLE', true);
-			JToolbarHelper::checkin('abums.checkin');
+			JToolbarHelper::publish('songs.publish', 'JTOOLBAR_ENABLE', true);
+			JToolbarHelper::unpublish('songs.unpublish', 'JTOOLBAR_DISABLE', true);
+			JToolbarHelper::checkin('songs.checkin');
 		}
         if ($this->state->get('filter.published') == -2)
         {
-            JToolbarHelper::deleteList('', 'abums.delete', 'JTOOLBAR_EMPTY_TRASH');
+            JToolbarHelper::deleteList('', 'songs.delete', 'JTOOLBAR_EMPTY_TRASH');
         }
         elseif ($canDo->get('core.edit.state'))
         {
-            JToolbarHelper::trash('abums.trash');
+            JToolbarHelper::trash('songs.trash');
         }
-        JToolbarHelper::publish('abums.issystem','Is system');
-        JToolbarHelper::unpublish('abums.isnotsystem','Is system');
+        JToolbarHelper::publish('songs.issystem','Is system');
+        JToolbarHelper::unpublish('songs.isnotsystem','Is system');
 		if ($canDo->get('core.admin'))
 		{
 			JToolbarHelper::preferences('com_phatthanhnghean');
 		}
 
-		JToolbarHelper::help('JHELP_EXTENSIONS_component_MANAGER');
+		JToolbarHelper::help('JHELP_songS_component_MANAGER');
 
 
 

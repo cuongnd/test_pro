@@ -22,8 +22,13 @@
             <option value="$PROJECT_DIR$/andengine-gles2-tmx" />
             <option value="$PROJECT_DIR$/androidGamemaster" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/scheduling" />
+            <option value="$PROJECT_DIR$/chatting" />
+            <option value="$PROJECT_DIR$/easydialog" />
+            <option value="$PROJECT_DIR$/sample" />
+            <option value="$PROJECT_DIR$/sample_video_player" />
+            <option value="$PROJECT_DIR$/soundplayer" />
             <option value="$PROJECT_DIR$/tableview" />
+            <option value="$PROJECT_DIR$/video_player" />
           </set>
         </option>
         <option name="myModules">
@@ -41,8 +46,13 @@
             <option value="$PROJECT_DIR$/andengine-gles2-tmx" />
             <option value="$PROJECT_DIR$/androidGamemaster" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/scheduling" />
+            <option value="$PROJECT_DIR$/chatting" />
+            <option value="$PROJECT_DIR$/easydialog" />
+            <option value="$PROJECT_DIR$/sample" />
+            <option value="$PROJECT_DIR$/sample_video_player" />
+            <option value="$PROJECT_DIR$/soundplayer" />
             <option value="$PROJECT_DIR$/tableview" />
+            <option value="$PROJECT_DIR$/video_player" />
           </set>
         </option>
       </GradleProjectSettings>

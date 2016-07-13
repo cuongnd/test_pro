@@ -48,7 +48,7 @@
                 $.open_popup_window({
                     scrollbars:1,
                     windowName:'view layout config',
-                    windowURL:'index.php?enable_load_component=1&option=com_products&view=component&layout=config&id='+id+'&element_path='+element_path+'&tmpl=field&hide_panel_component=1',
+                    windowURL:'index.php?enable_load_component=1&option=com_phatthanhnghean&view=component&layout=config&id='+id+'&element_path='+element_path+'&tmpl=field&hide_panel_component=1',
                     centerBrowser:1,
                     width:'800',
                     menubar:0,
@@ -65,7 +65,7 @@
                     data: (function () {
 
                         dataPost = {
-                            option: 'com_products',
+                            option: 'com_phatthanhnghean',
                             view: 'component',
                             tmpl:'ajax_json',
                             layout:'config',

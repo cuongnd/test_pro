@@ -27,72 +27,6 @@ class alert_warning_website_config
         ?>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
-                $.alert_warning_website_config=function(reset,current_step,count_error_ajax) {
-                    if(typeof reset=='undefined')
-                    {
-                        reset=0;
-                    }
-                    var data_submit = {};
-                    var option_click = {
-                        enable_load_component:1,
-                        option: "com_website",
-                        task: "utility.ajax_alert_warning_website_config",
-                        reset:reset,
-                        current_step:current_step
-                    };
-                    option_click = $.param(option_click);
-                    $.ajax({
-                        contentType: 'application/json',
-                        type: "POST",
-                        dataType: "json",
-                        url: this_host + '/index.php?' + option_click,
-                        data: JSON.stringify(data_submit),
-                        beforeSend: function () {
-                            $('.div-loading').css({
-                                display: "block"
-
-
-                            });
-                        },
-                        success: function (response) {
-                            $('.div-loading').css({
-                                display: "none"
-
-
-                            });
-                            if (response.e == 0) {
-                                if (response.finish == 0)
-                                {
-                                    current_step=response.current_step;
-                                    $.alert_warning_website_config('',current_step,count_error_ajax);
-                                }
-                            } else if (response.e == 1) {
-                                var notify = $.notify(response.m, {
-                                    allow_dismiss: false,
-                                    type:"warning"
-                                }
-                                );
-                            }
-                        },
-                        error: function(request, status, err) {
-                            if (status == "timeout") {
-                                // timeout -> reload the page and try again
-                                console.log("timeout");
-                                $.alert_warning_website_config();
-                            } else {
-                                if(count_error_ajax>10)
-                                {
-                                    console.log('too many error ajax');
-                                }else {
-                                    // another error occured
-                                    count_error_ajax++;
-                                    $.alert_warning_website_config(1, current_step, count_error_ajax);
-                                }
-                            }
-                        }
-                    });
-
-                };
                 $.alert_warning_website_config('','',0);
             });
         </script>
@@ -185,6 +119,24 @@ class alert_warning_website_config
         }
         return true;
     }
+    private function check_exists_menu_item_login($website_id){
+        $exists_menu_login=false;
+        $list_menu_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website_id);
+        foreach($list_menu_item as $menu_item)
+        {
+            if($menu_item->page_type=="login")
+            {
+                $exists_menu_login=true;
+                break;
+            }
+        }
+        if(!$exists_menu_login)
+        {
+            self::set_error('there is not exists menu item login, please set login page');
+            return false;
+        }
+        return true;
+    }
     private function check_admin_dashboard($website_id){
         $exists_admin_dashboard=false;
         $list_menu_item=MenusHelperFrontEnd::get_list_menu_item_by_website_id($website_id);
@@ -204,12 +156,15 @@ class alert_warning_website_config
         return true;
     }
     private function finish($website_id){
+        $session=JFactory::getSession();
+        $session->set('state_alert_warning_website_config',false);
         return true;
     }
     private function getListStep()
     {
         $steps = array();
         $steps[] = 'check_exists_menu_item';
+        $steps[] = 'check_exists_menu_item_login';
         $steps[] = 'check_home_page';
         $steps[] = 'check_admin_dashboard';
         $steps[] = 'finish';

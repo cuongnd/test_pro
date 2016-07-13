@@ -67,7 +67,7 @@ class JFormFieldChildrenProduct extends JFormField
         $doc->addScript(JUri::root().'/media/system/js/select2-4.0.0/dist/js/select2.full.js');
         $doc->addScript(JUri::root().'/media/system/js/jquery.utility.js');
         $doc->addScript(JUri::root().'/media/system/js/BobKnothe-autoNumeric/autoNumeric.js');
-        $doc->addScript(JUri::root().'/components/website/website_template5532788/com_products/models/fields/jquery.childrenproduct.js');
+        $doc->addScript(JUri::root().'/components/website/website_template5532788/com_phatthanhnghean/models/fields/jquery.childrenproduct.js');
         $script_id = "script_field_children_product_" . $this->id;
         ob_start();
         ?>

@@ -48,7 +48,7 @@ import java.util.Locale;
 *
 * */
 
-public class video_player extends Activity  {
+public class video_player extends Activity {
 
     private SurfaceView surfaceView;
     private ExoPlayer exoPlayer;
@@ -130,7 +130,7 @@ public class video_player extends Activity  {
             @Override
             public void onClick(View view) {
                 JApplication app= JFactory.getApplication();
-                Intent intent = new Intent(video_player.this,app.activity.getClass());
+                Intent intent = new Intent(video_player.this,app.context.getClass());
                 startActivity(intent);
                 finish();
             }

@@ -16,13 +16,13 @@ defined('_JEXEC') or die;
  * @subpackage  com_phatthanhnghean
  * @since       1.6
  */
-class productsModelproduct extends JModelAdmin
+class phatthanhngheanModelphatthanhnghean extends JModelAdmin
 {
 	/**
 	 * @var     string  The help screen key for the module.
 	 * @since   1.6
 	 */
-	protected $helpKey = 'JHELP_productS_component_MANAGER_EDIT';
+	protected $helpKey = 'JHELP_phatthanhngheanS_component_MANAGER_EDIT';
 
 	/**
 	 * @var     string  The help screen base URL for the module.
@@ -40,13 +40,13 @@ class productsModelproduct extends JModelAdmin
 	 * @var     string  The event to trigger after saving the data.
 	 * @since   1.6
 	 */
-	protected $event_after_save = 'onproductAfterSave';
+	protected $event_after_save = 'onphatthanhngheanAfterSave';
 
 	/**
 	 * @var     string  The event to trigger after before the data.
 	 * @since   1.6
 	 */
-	protected $event_before_save = 'onproductBeforeSave';
+	protected $event_before_save = 'onphatthanhngheanBeforeSave';
 
 	/**
 	 * Method to get the record form.
@@ -77,7 +77,7 @@ class productsModelproduct extends JModelAdmin
 		$this->setState('item.element',	$element);
 
 		// Get the form.
-		$form = $this->loadForm('com_phatthanhnghean.product', 'product', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_phatthanhnghean.phatthanhnghean', 'phatthanhnghean', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form))
 		{
 
@@ -134,14 +134,14 @@ class productsModelproduct extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_phatthanhnghean.edit.product.data', array());
+		$data = JFactory::getApplication()->getUserState('com_phatthanhnghean.edit.phatthanhnghean.data', array());
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
 		}
 
-		$this->preprocessData('com_phatthanhnghean.product', $data);
+		$this->preprocessData('com_phatthanhnghean.phatthanhnghean', $data);
 
 		return $data;
 	}
@@ -239,7 +239,7 @@ class productsModelproduct extends JModelAdmin
                 }
                 if($table->issystem)
                 {
-                    $this->setError('you cannot delete product system');
+                    $this->setError('you cannot delete phatthanhnghean system');
                     return false;
                 }
                 if (!$table->delete($pk))
@@ -267,7 +267,7 @@ class productsModelproduct extends JModelAdmin
         $db		= $this->getDbo();
         $tuples=array();
 /*        // Access checks.
-        if (!$user->authorise('core.create', 'com_product'))
+        if (!$user->authorise('core.create', 'com_phatthanhnghean'))
         {
             throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
         }*/
@@ -352,7 +352,7 @@ class productsModelproduct extends JModelAdmin
 	{
 
 
-		$pk = (!empty($pk)) ? $pk : (int) $this->getState('product.id');
+		$pk = (!empty($pk)) ? $pk : (int) $this->getState('phatthanhnghean.id');
 
 		if (!isset($this->_cache[$pk]))
 		{
@@ -379,7 +379,7 @@ class productsModelproduct extends JModelAdmin
 			$registry->loadString($table->params);
 			$this->_cache[$pk]->params = $registry->toArray();
 
-			// Get the product XML.
+			// Get the phatthanhnghean XML.
 			$path = JPath::clean(JPATH_ROOT . '/' . $table->folder . '/' . $table->element . '/' . $table->element . '.xml');
 
 			if (file_exists($path))
@@ -404,7 +404,7 @@ class productsModelproduct extends JModelAdmin
 	 * @param   array  Configuration array for model. Optional.
 	 * @return  JTable	A database object
 	*/
-	public function getTable($type = 'product', $prefix = 'JTable', $config = array())
+	public function getTable($type = 'phatthanhnghean', $prefix = 'JTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
@@ -427,7 +427,7 @@ class productsModelproduct extends JModelAdmin
 		// Load the User state.
 		$pk = $app->input->getInt('id');
 
-		$this->setState('product.id', $pk);
+		$this->setState('phatthanhnghean.id', $pk);
 	}
 
 
@@ -459,7 +459,7 @@ class productsModelproduct extends JModelAdmin
 	}
 
 	/**
-	 * Custom clean cache method, products are cached in 2 places for different clients
+	 * Custom clean cache method, phatthanhngheans are cached in 2 places for different clients
 	 *
 	 * @since   1.6
 	 */

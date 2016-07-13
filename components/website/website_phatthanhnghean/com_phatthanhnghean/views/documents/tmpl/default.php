@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -19,10 +19,10 @@ JHtml::_('formbehavior.chosen', 'select');
 $user = JFactory::getUser();
 $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn = $this->escape($this->state->get('list.direction'));
-$canOrder = $user->authorise('core.edit.state', 'com_products');
+$canOrder = $user->authorise('core.edit.state', 'com_phatthanhnghean');
 $saveOrder = $listOrder == 'ordering';
 if ($saveOrder) {
-    $saveOrderingUrl = 'index.php?option=com_products&task=extensions.saveOrderAjax&tmpl=component';
+    $saveOrderingUrl = 'index.php?option=com_phatthanhnghean&task=extensions.saveOrderAjax&tmpl=component';
     JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 $sortFields = $this->getSortFields();
@@ -44,7 +44,7 @@ $sortFields = $this->getSortFields();
 
     <div class="view-extensions-default">
         <?php echo $this->render_toolbar() ?>
-        <form action="<?php echo JRoute::_('index.php?option=com_products&view=extensions'); ?>" method="post"
+        <form action="<?php echo JRoute::_('index.php?option=com_phatthanhnghean&view=extensions'); ?>" method="post"
               name="adminForm" id="adminForm">
 
             <div id="main-container">
@@ -108,9 +108,9 @@ $sortFields = $this->getSortFields();
                                     <tbody>
                                     <?php foreach ($this->items as $i => $item) :
                                         $ordering = ($listOrder == 'ordering');
-                                        $canEdit = $user->authorise('core.edit', 'com_products');
+                                        $canEdit = $user->authorise('core.edit', 'com_phatthanhnghean');
                                         $canCheckin = $user->authorise('core.manage', 'com_checkin') || $item->checked_out == $user->get('id') || $item->checked_out == 0;
-                                        $canChange = $user->authorise('core.edit.state', 'com_products') && $canCheckin;
+                                        $canChange = $user->authorise('core.edit.state', 'com_phatthanhnghean') && $canCheckin;
                                         ?>
                                         <tr class="row<?php echo $i % 2; ?>" item-id="<?php echo $item->id ?>"
                                             sortable-group-id="<?php echo $item->folder ?>">
@@ -143,7 +143,7 @@ $sortFields = $this->getSortFields();
                                                 <?php endif; ?>
                                                 <?php if ($canEdit) : ?>
                                                     <a class="quick-edit-title"
-                                                       href="<?php echo JRoute::_('index.php?option=com_products&task=extension.edit&id=' . (int)$item->id); ?>">
+                                                       href="<?php echo JRoute::_('index.php?option=com_phatthanhnghean&task=extension.edit&id=' . (int)$item->id); ?>">
                                                         <?php echo $item->name; ?></a>
                                                 <?php else : ?>
                                                     <?php echo $item->name; ?>

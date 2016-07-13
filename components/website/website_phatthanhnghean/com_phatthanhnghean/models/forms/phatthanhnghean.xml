@@ -37,12 +37,6 @@
 
 
     <field
-            name="children_product"
-            type="childrenproduct"
-            label="Children products"
-            description="Children products"
-            />
-    <field
             name="code"
             type="code"
             label="product code"
@@ -50,98 +44,7 @@
             class="input-xxlarge input-large-text"
             size="40"
             required="true"/>
-    <field
-            name="product_name"
-            type="text"
-            label="Product name"
-            description="Product name"
-            class="input-xxlarge input-large-text"
-            size="40"
 
-            required="true">
-        <data key="auto_genera_type" value="word" />
-        <data key="auto_genera_character" value="product_category" />
-    </field>
-    <field
-            name="price"
-            type="price"
-            label="Price"
-            description="Price"
-            class="input-xxlarge input-large-text"
-            size="40"
-
-            required="true">
-    </field>
-    <field
-            name="compare_at_price"
-            type="price"
-            label="Compare at price"
-            description="Compare at price"
-            class="input-xxlarge input-large-text"
-            size="40"
-
-            required="true">
-    </field>
-
-    <fieldset name="basic" label="COM_CONTENT_ATTRIBS_FIELDSET_LABEL">
-        <field
-                name="alias"
-                type="text"
-                label="JFIELD_ALIAS_LABEL"
-                description="JFIELD_ALIAS_DESC"
-                hint="JFIELD_ALIAS_PLACEHOLDER"
-                size="45"/>
-
-    </fieldset>
-
-
-    <field
-            name="introtext"
-            type="textarea"
-            label="JGLOBAL_DESCRIPTION"
-            description="COM_CATEGORIES_DESCRIPTION_DESC"
-            filter="JComponentHelper::filterText"
-            buttons="true"
-            hide="readmore,pagebreak">
-        <data key="auto_genera_type" value="paragraphs" />
-        <data key="auto_genera_character" value="doc" />
-    </field>
-
-    <field
-            name="published"
-            type="list"
-            class="chzn-color-state"
-            default="1"
-            size="1"
-            label="JSTATUS"
-            description="JFIELD_PUBLISHED_DESC">
-        <option value="1">JPUBLISHED</option>
-        <option value="0">JUNPUBLISHED</option>
-        <option value="2">JARCHIVED</option>
-        <option value="-2">JTRASHED</option>
-    </field>
-
-
-
-    <field
-            name="metadesc"
-            type="textarea"
-            label="JFIELD_META_DESCRIPTION_LABEL"
-            description="JFIELD_META_DESCRIPTION_DESC"
-            rows="3"
-            cols="40">
-        <data key="auto_genera_type" value="paragraphs" />
-        <data key="auto_genera_character" value="doc" />
-    </field>
-
-
-    <field
-            name="metakey"
-            type="textarea"
-            label="JFIELD_META_KEYWORDS_LABEL"
-            description="JFIELD_META_KEYWORDS_DESC"
-            rows="3"
-            cols="40"/>
 
 
 

@@ -43,7 +43,7 @@ import com.vantinviet.vtv.R;
  * the user's scroll progress.
  * <p>
  * To use the component, simply add it to your view hierarchy. Then in your
- * {@link android.app.Activity} or {@link android.app.Fragment}, {@link
+ * {@link android.app.context} or {@link android.app.Fragment}, {@link
  * android.support.v4.app.Fragment} call
  * {@link #setViewPager(ViewPager)} providing it the ViewPager this layout
  * is being used for.

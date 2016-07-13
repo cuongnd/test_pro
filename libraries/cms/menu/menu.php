@@ -358,7 +358,12 @@ class JMenu
 
 
 		$menu = $this->getItem($id);
-
+		require_once JPATH_ROOT.'/libraries/joomla/access/access.php';
+		$default_access_level=JAccess::get_default_access_level();
+		if($default_access_level->id==$menu->access)
+		{
+			return true;
+		}
 		$user = JFactory::getUser();
 
 

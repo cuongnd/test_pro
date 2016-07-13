@@ -1,7 +1,7 @@
 
 <?php
 $doc=JFactory::getDocument();
-$doc->addScript(JUri::root().'/products/com_products/views/products/tmpl/assets/js/loadproducts.js');
+$doc->addScript(JUri::root().'/products/com_phatthanhnghean/views/products/tmpl/assets/js/loadproducts.js');
 jimport('joomla.filesystem.folder');
 $website=JFactory::getWebsite();
 $db=JFactory::getDbo();

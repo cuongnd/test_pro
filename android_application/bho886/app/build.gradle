@@ -1,11 +1,9 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 22
     buildToolsVersion "23.0.2"
-
     defaultConfig {
-        applicationId "com.vantinviet.bho88"
         minSdkVersion 17
         targetSdkVersion 22
         versionCode 1
@@ -18,7 +16,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    productFlavors {
+    }
 }
 configurations {
 
@@ -38,9 +37,8 @@ final def var = dependencies {
     compile 'com.shehabic.droppy:Droppy:0.2.5.2'
     compile 'org.reflections:reflections:0.9.10'
     compile 'com.google.android.exoplayer:exoplayer:r1.5.7'
-}
-dependencies {
     compile project(path: ':chatting')
 }
+
 
 

@@ -49,7 +49,6 @@ class UsersControllerUser extends UsersController
 		$data['password']  = $input->$method->get('password', '', 'RAW');
 		$data['secretkey'] = $input->$method->get('secretkey', '', 'RAW');
 
-
         // Set the return URL if empty.
 		if (empty($data['return']))
 		{

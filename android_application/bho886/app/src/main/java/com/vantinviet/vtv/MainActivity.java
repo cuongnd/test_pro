@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public Context context = this;
 
-    public static String title = "BHO88";
+    public static String title = "Van tin viet";
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.

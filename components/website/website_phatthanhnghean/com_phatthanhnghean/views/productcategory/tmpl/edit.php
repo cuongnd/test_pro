@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -33,7 +33,7 @@ $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 $doc->addScript(JUri::root().'/media/system/js/jquery.inputmask-3.x/js/jquery.inputmask.js');
 $doc->addScript(JUri::root().'/media/system/js/jquery.inputmask-3.x/js/inputmask.js');
 $doc->addScript(JUri::root() . '/media/system/js/DeLorean-Ipsum-master/jquery.delorean.ipsum.js');
-$doc->addScript(JUri::root().'/components/website/website_template5532788/com_products/assets/js/view_productcategory_edit.js');
+$doc->addScript(JUri::root().'/components/website/website_template5532788/com_phatthanhnghean/assets/js/view_productcategory_edit.js');
 
 
 ?>
@@ -42,7 +42,7 @@ $doc->addScript(JUri::root().'/components/website/website_template5532788/com_pr
 </script>
 <div class="view-productcategory-edit">
     <?php echo $this->render_toolbar() ?>
-    <form action="<?php echo JRoute::_('index.php?option=com_products&view=extension&layout=edit&id=' . (int) $this->item->id); ?>" method="post"  name="adminForm" id="adminForm" class="form-validate">
+    <form action="<?php echo JRoute::_('index.php?option=com_phatthanhnghean&view=extension&layout=edit&id=' . (int) $this->item->id); ?>" method="post"  name="adminForm" id="adminForm" class="form-validate">
         <?php if($debug){ ?>
             <button type="button" class="btn btn-primary auto-genera"><?php echo JText::_('Auto genera') ?></button>
         <?php } ?>

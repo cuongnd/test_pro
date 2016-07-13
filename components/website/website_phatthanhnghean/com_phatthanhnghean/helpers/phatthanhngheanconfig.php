@@ -33,7 +33,8 @@ class phatthanhngheanconfig
     }
     public static function get_table_by_view($view){
         $list_table=array(
-            '#__phatthanhnghean_phatthanhnghean'=>'phatthanhnghean,phatthanhngheans',
+            '#__phatthanhnghean_songs'=>'phatthanhnghean,phatthanhngheans,songs,song',
+            '#__phatthanhnghean_albums'=>'albums,album',
             '#__users'=>'login',
         );
         foreach($list_table as $table=>$views)

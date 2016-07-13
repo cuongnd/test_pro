@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_products
+ * @subpackage  com_phatthanhnghean
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -31,7 +31,7 @@ $script = JUtility::remove_string_javascript($script);
 $doc->addScriptDeclaration($script, "text/javascript", $scriptId);
 $doc->addScript(JUri::root().'/media/system/js/jquery.inputmask-3.x/js/jquery.inputmask.js');
 $doc->addScript(JUri::root().'/media/system/js/jquery.inputmask-3.x/js/inputmask.js');
-$doc->addScript(JUri::root().'/components/website/website_supper_admin/com_products/assets/js/view_extension_default.js');
+$doc->addScript(JUri::root().'/components/website/website_supper_admin/com_phatthanhnghean/assets/js/view_extension_default.js');
 
 
 ?>
@@ -40,7 +40,7 @@ $doc->addScript(JUri::root().'/components/website/website_supper_admin/com_produ
 </script>
 <div class="view-extension-default">
     <?php echo $this->render_toolbar() ?>
-    <form action="<?php echo JRoute::_('index.php?option=com_products&view=extension&layout=edit&id=' . (int) $this->item->id); ?>" method="post"  name="adminForm" id="adminForm" class="form-validate">
+    <form action="<?php echo JRoute::_('index.php?option=com_phatthanhnghean&view=extension&layout=edit&id=' . (int) $this->item->id); ?>" method="post"  name="adminForm" id="adminForm" class="form-validate">
 
         <div class="form-horizontal">
             <?php foreach ($this->form->getFieldset() as $field) : ?>

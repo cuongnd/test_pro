@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -24,10 +25,9 @@ import android.widget.ScrollView;
 
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
-import com.vantinviet.vtv.MainActivity;
 import com.vantinviet.vtv.R;
+import com.vantinviet.vtv.VTVConfig;
 import com.vantinviet.vtv.chattingfrom;
-import com.vantinviet.vtv.config;
 import com.vantinviet.vtv.libraries.cms.component.JComponentHelper;
 import com.vantinviet.vtv.libraries.cms.component.JPluginHelper;
 import com.vantinviet.vtv.libraries.cms.menu.JMenu;
@@ -117,18 +117,17 @@ public class JApplicationSite extends JApplicationCms {
     }
 
 
-    public static void start(MainActivity mainActivity) {
-        dialog=new ProgressDialog(mainActivity.context);
+    public static void start(AppCompatActivity mainActivity) {
+        dialog=new ProgressDialog(mainActivity);
         if (dialog == null) {
-            dialog = new ProgressDialog(mainActivity.context);
+            dialog = new ProgressDialog(mainActivity);
         }
         dialog.setMessage("Downloading element...");
         dialog.show();
         //Remove title bar
         JApplication app = JFactory.getApplication();
-        app.context = mainActivity.context;
-        app.activity = mainActivity;
-        JFactory.setContext(mainActivity.context);
+        app.context = mainActivity;
+        JFactory.setContext(mainActivity);
         DisplayMetrics metrics = new DisplayMetrics();
         mainActivity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int screenDensity = (int) metrics.density;
@@ -151,19 +150,19 @@ public class JApplicationSite extends JApplicationCms {
         }
         String screenSize = Integer.toString(width / screenDensity) + "x" + Integer.toString(height);
         System.out.println(width / screenDensity);
-        String local_version = com.vantinviet.vtv.config.get_version();
-        initChatting();
-        config.screen_size_width = screen_size_width;
-        config.screen_size_height = screen_size_height;
+        String local_version = VTVConfig.get_version();
+        //initChatting();
+        VTVConfig.screen_size_width = screen_size_width;
+        VTVConfig.screen_size_height = screen_size_height;
 
-        config.screenDensity = screenDensity;
+        VTVConfig.screenDensity = screenDensity;
 
         if (host.equals("")) {
             String test_page = "&Itemid=433";
             test_page = "";
-            host = config.root_url + "/index.php?os=android&screenSize=" + screenSize + "&version=" + local_version + test_page;
-        } else if (!host.contains(config.root_url)) {
-            host = config.root_url + "/" + host;
+            host = VTVConfig.root_url + "/index.php?os=android&screenSize=" + screenSize + "&version=" + local_version + test_page;
+        } else if (!host.contains(VTVConfig.root_url)) {
+            host = VTVConfig.root_url + "/" + host;
         }
         WebViewClient web_view_client = new WebViewClient() {
 
@@ -238,7 +237,7 @@ public class JApplicationSite extends JApplicationCms {
                 component_content = json_object.has("component_content") ? json_object.getString("component_content") : "";
 
                 String version = json_object.has("version") ? json_object.getString("version") : "";
-                String local_version = config.get_version();
+                String local_version = VTVConfig.get_version();
 
                 if (version != local_version) {
                     int root_id = json_object.getInt("root_id");
@@ -349,7 +348,7 @@ public class JApplicationSite extends JApplicationCms {
         private void writeToFile(String data) {
             JApplication app=JFactory.getApplication();
             try {
-                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(app.context.openFileOutput("config.txt", Context.MODE_PRIVATE));
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(app.context.openFileOutput("VTVConfig.txt", Context.MODE_PRIVATE));
                 outputStreamWriter.write(data);
                 outputStreamWriter.close();
             } catch (IOException e) {
@@ -362,7 +361,7 @@ public class JApplicationSite extends JApplicationCms {
                 width = screen_size_width;
             }
             if (object_parent == null) {
-                View main_linear_layout = app.activity.findViewById(R.id.info);
+                View main_linear_layout = app.context.findViewById(R.id.info);
 
 
 /*
@@ -384,7 +383,7 @@ public class JApplicationSite extends JApplicationCms {
                 int currentStrokeColor = 0;
                 int scroll_view_id = root_id;
                 //add new  scrollview
-                ScrollView scroll_view = new ScrollView(app.activity);
+                ScrollView scroll_view = new ScrollView(app.context);
                 scroll_view.setId(scroll_view_id);
                 scroll_view.setLayoutParams(new ViewGroup.LayoutParams(screen_size_width, screen_size_height));
                 if (debug) {
@@ -396,7 +395,7 @@ public class JApplicationSite extends JApplicationCms {
                 ((LinearLayout) main_linear_layout).addView(scroll_view);
 
                 //add new row liner layout
-                LinearLayout row_linear_layout = new LinearLayout(app.activity);
+                LinearLayout row_linear_layout = new LinearLayout(app.context);
                 if (debug) {
                     currentStrokeColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
                     row_linear_layout.setBackgroundColor(currentStrokeColor);
@@ -441,7 +440,7 @@ public class JApplicationSite extends JApplicationCms {
             } else {
 
                 int a_root_id = 0;
-                LinearLayout a_object_parent = new LinearLayout(app.activity);
+                LinearLayout a_object_parent = new LinearLayout(app.context);
                 if (children.has("id")) {
                     try {
                         a_root_id = children.getInt("id");
@@ -507,7 +506,7 @@ public class JApplicationSite extends JApplicationCms {
 
         public LinearLayout render_element_row(LinearLayout parent_object, JSONObject object, int width) {
             JApplication app=JFactory.getApplication();
-            LinearLayout linear_layout = new LinearLayout(app.activity);
+            LinearLayout linear_layout = new LinearLayout(app.context);
             try {
                 int id = object.getInt("id");
                 String type = object.getString("type");
@@ -554,14 +553,14 @@ public class JApplicationSite extends JApplicationCms {
 
         public LinearLayout render_element_column(LinearLayout parent_object, JSONObject object, JSONObject prev_object, int width) {
             JApplication app=JFactory.getApplication();
-            LinearLayout linear_layout = new LinearLayout(app.activity);
+            LinearLayout linear_layout = new LinearLayout(app.context);
             try {
                 int id = object.getInt("id");
                 int object_width = object.getInt("width");
                 int a_width = width * object_width;
                 String type = object.getString("type");
                 linear_layout.setId(id);
-                Resources resource = app.activity.context.getResources();
+                Resources resource = app.context.getResources();
                 Random rnd = new Random();
 
                 if (debug) {
@@ -695,16 +694,16 @@ public class JApplicationSite extends JApplicationCms {
 
     private static void initChatting() {
         final JApplication app=JFactory.getApplication();
-        final FloatingActionButton btn_chatting=(FloatingActionButton)app.activity.findViewById(R.id.btn_chatting);
+        final FloatingActionButton btn_chatting=(FloatingActionButton)app.context.findViewById(R.id.btn_chatting);
         btn_chatting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                Intent intent = new Intent(app.activity, chattingfrom.class);
+                Intent intent = new Intent(app.context, chattingfrom.class);
                 //Bundle b = new Bundle();
                 //intent.putExtra("link", link);
-                app.activity.startActivity(intent);
+                app.context.startActivity(intent);
             }
         });
     }

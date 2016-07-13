@@ -12,7 +12,7 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapButtonGroup;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.vantinviet.vtv.MainActivity;
-import com.vantinviet.vtv.config;
+import com.vantinviet.vtv.VTVConfig;
 import com.vantinviet.vtv.libraries.cms.application.JApplicationSite;
 import com.vantinviet.vtv.libraries.joomla.JFactory;
 import com.vantinviet.vtv.libraries.legacy.application.JApplication;
@@ -94,8 +94,8 @@ public class mod_virtuemart_category_helper {
         return new View.OnClickListener() {
             public void onClick(View v) {
                 try {
-                    String screenSize = Integer.toString(config.screen_size_width/config.screenDensity) + "x" + Integer.toString( config.screen_size_height);
-                    String local_version= config.get_version();
+                    String screenSize = Integer.toString(VTVConfig.screen_size_width/ VTVConfig.screenDensity) + "x" + Integer.toString( VTVConfig.screen_size_height);
+                    String local_version= VTVConfig.get_version();
                     String link=menu_item.getString("link");
                     String id=menu_item.getString("id");
                     String title=menu_item.getString("title");

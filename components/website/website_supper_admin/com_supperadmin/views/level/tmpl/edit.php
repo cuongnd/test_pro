@@ -32,7 +32,7 @@ $doc->addScript(JUri::root().'/media/system/js/jquery.inputmask-3.x/js/inputmask
 
 </script>
 <div class="view-website-edit">
-    <form action="<?php echo JRoute::_('index.php?option=com_supperadmin&view=website&id='.(int) $this->item->id); ?>" method="post"  name="adminForm" id="adminForm" class="form-validate">
+    <form action="<?php echo JRoute::_('index.php?option=com_supperadmin&view=level&id='.(int) $this->item->id); ?>" method="post"  name="adminForm" id="adminForm" class="form-validate">
         <div class="form-horizontal">
 
             <?php echo $this->display_body_form(); ?>
