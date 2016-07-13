@@ -1,0 +1,78 @@
+<?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_phatthanhnghean
+ *
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+
+/**
+ * View to edit a plugin.
+ *
+ * @package     Joomla.Administrator
+ * @subpackage  com_phatthanhnghean
+ * @since       1.5
+ */
+class phatthanhngheanViewalbum extends JViewLegacy
+{
+	protected $item;
+
+	protected $form;
+
+	protected $state;
+
+	/**
+	 * Display the view
+	 */
+	public function display($tpl = null)
+	{
+		$this->state	= $this->get('State');
+		$this->item		= $this->get('Item');
+		$this->form		= $this->get('Form');
+		// Check for errors.
+		if (count($errors = $this->get('Errors')))
+		{
+			JError::raiseError(500, implode("\n", $errors));
+			return false;
+		}
+
+		$this->addToolbar();
+		parent::display($tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @since   1.6
+	 */
+	protected function addToolbar()
+	{
+
+		$canDo = JHelperContent::getActions('com_products');
+
+		JToolbarHelper::title(JText::sprintf('album ', JText::_($this->item->name)), 'power-cord plugin');
+		$this->list_control_item = $this->get('ListControlItem');
+		foreach($this->list_control_item as $control_item){
+			JToolbarHelper::custom($control_item->default,'','',$control_item->label,false);
+		}
+		// Get the help information for the plugin item.
+
+		$lang = JFactory::getLanguage();
+
+		$help = $this->get('Help');
+		if ($lang->hasKey($help->url))
+		{
+			$debug = $lang->setDebug(false);
+			$url = JText::_($help->url);
+			$lang->setDebug($debug);
+		}
+		else
+		{
+			$url = null;
+		}
+		JToolbarHelper::help($help->key, false, $url);
+	}
+}

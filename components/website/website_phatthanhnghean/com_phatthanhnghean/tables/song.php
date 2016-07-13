@@ -16,7 +16,7 @@ defined('_JEXEC') or die(__FILE__);
  * @since       11.1
  * @deprecated  Class will be removed upon completion of transition to UCM
  */
-class JTableCountdown extends JTable
+class JTablephatthanhnghean extends JTable
 {
     /**
      *
@@ -29,7 +29,7 @@ class JTableCountdown extends JTable
     public $id=0;
     public function __construct(JDatabaseDriver $db)
     {
-        parent::__construct('#__countdown_countdown', 'id', $db);
+        parent::__construct('#__phatthanhnghean_phatthanhnghean', 'id', $db);
 
     }
     public function check()

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="album" option="album">
+		<help
+			key = "album"
+		/>
+		<message>
+			<![CDATA[products]]>
+		</message>
+	</layout>
+
+
+	<!-- Add fields to the parameters object for the layout. -->
+</metadata>

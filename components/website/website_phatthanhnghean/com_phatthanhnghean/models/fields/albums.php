@@ -21,7 +21,7 @@ JFormHelper::loadFieldClass('text');
  * @see         JFormRuleEmail
  * @since       11.1
  */
-class JFormFieldParentProductCategory extends JFormField
+class JFormFieldalbums extends JFormField
 {
     /**
      * The form field type.
@@ -29,7 +29,7 @@ class JFormFieldParentProductCategory extends JFormField
      * @var    string
      * @since  11.1
      */
-    protected $type = 'parentproductcategory';
+    protected $type = 'albums';
 
     /**
      * Method to get the field input markup for e-mail addresses.
@@ -45,65 +45,60 @@ class JFormFieldParentProductCategory extends JFormField
         $website=JFactory::getWebsite();
         $query = $db->getQuery(true);
         $query->clear()
-            ->select('product_category.id,product_category.parent_id,product_category.product_category_name as text,product_category.website_id')
-            ->from('#__ecommerce_product_category AS product_category')
+            ->select('albums.id,albums.parent_id,albums.album_name as text,albums.website_id')
+            ->from('#__phatthanhnghean_albums AS albums')
         ;
-        $list_all_product_category=$db->setQuery($query)->loadObjectList();
-        $children_product_category = array();
-        foreach ($list_all_product_category as $v) {
+        $list_all_album=$db->setQuery($query)->loadObjectList();
+
+        $children_albums = array();
+        foreach ($list_all_album as $v) {
             $pt = $v->parent_id;
             $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
-            $list = @$children_product_category[$pt] ? $children_product_category[$pt] : array();
+            $list = @$children_albums[$pt] ? $children_albums[$pt] : array();
             array_push($list, $v);
-            $children_product_category[$pt] = $list;
+            $children_albums[$pt] = $list;
         }
-        $list_root_product_category = $children_product_category['list_root'];
-        $list_product_category=array();
+        $list_root_album = $children_albums['list_root'];
+        $list_album=array();
         $option=new stdClass();
         $option->id='';
         $option->text=JText::_('root');
         //$list_product_category[]=$option;
-        unset($children_product_category['list_root']);
+        unset($children_albums['list_root']);
 
-        $get_list_product_category=function($function_call_back, $product_category_id=0, $current_product_category_id,&$list_product_category, $children_product_category, $level=1, $max_level=999){
+        $get_list_albums=function($function_call_back, $album_id=0, &$list_album, $children_album, $level=0, $max_level=999){
             $level1=$level+1;
-            foreach($children_product_category[$product_category_id] as $product_category)
+            foreach($children_album[$album_id] as $album)
             {
 
-                $product_category_id1=$product_category->id;
-                if($product_category_id1==$current_product_category_id)
-                {
-                    continue;
-                }
-                $product_category->text=str_repeat('---',$level).$product_category->text;
-                $list_product_category[]=$product_category;
+                $album_id1=$album->id;
+                $album->text=str_repeat('---',$level).$album->text;
+                $list_album[]=$album;
 
-                $function_call_back($function_call_back,$product_category_id1, $current_product_category_id,$list_product_category,$children_product_category,$level1,$max_level);
+                $function_call_back($function_call_back,$album_id1,$list_album,$children_album,$level1,$max_level);
             }
         };
-        $current_product_category_id=$this->form->getValue('id');
-        foreach($list_root_product_category as $root_category)
+        $current_album_id=$this->form->getValue('id');
+        foreach($list_root_album as $root_album)
         {
-            if($root_category->website_id==$website->website_id)
+            if($root_album->website_id==$website->website_id)
             {
-                if($current_product_category_id!=$root_category->id) {
-                    $list_product_category[] = $root_category;
-                    $get_list_product_category($get_list_product_category, $root_category->id, $current_product_category_id, $list_product_category, $children_product_category);
-                }
+                $get_list_albums($get_list_albums, $root_album->id, $list_album, $children_albums);
+
             }
 
         }
         $doc=JFactory::getDocument();
         $doc->addLessStyleSheet(JUri::root().'media/system/js/select2-4.0.0/dist/css/select2.css');
         $doc->addScript(JUri::root().'/media/system/js/select2-4.0.0/dist/js/select2.full.js');
-        $doc->addScript(JUri::root().'/components/website/website_template5532788/com_products/models/fields/jquery.parentproductcategory.js');
+        $doc->addScript(JUri::root().'/components/website/website_phatthanhnghean/com_phatthanhnghean/models/fields/jquery.albums.js');
         $script_id = "script_field_parent_product_category_" . $this->id;
         ob_start();
         ?>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
-                $('#<?php echo $this->id; ?>').field_parentproductcategory({
-                    list_product_category:<?php echo json_encode($list_product_category)?>,
+                $('#<?php echo $this->id; ?>').field_albums({
+                    list_product_category:<?php echo json_encode($list_album)?>,
                     field:{
                         name:"<?php echo $this->name ?>"
                     }
