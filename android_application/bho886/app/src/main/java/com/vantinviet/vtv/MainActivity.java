@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.vantinviet.vtv.libraries.cms.application.JApplicationSite;
+import com.vantinviet.vtv.libraries.joomla.JFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        String vtv_root_url = getResources().getString(R.string.vtv_root_url);
+        VTVConfig vtv_config= JFactory.getVTVConfig();
+        vtv_config.set_root_url(vtv_root_url);
         setContentView(R.layout.activity_main);
         JApplicationSite.start(this);
 

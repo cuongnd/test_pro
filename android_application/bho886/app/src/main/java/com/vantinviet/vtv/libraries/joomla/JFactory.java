@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.webkit.WebView;
 
+import com.vantinviet.vtv.VTVConfig;
 import com.vantinviet.vtv.configuration.JConfig;
 import com.vantinviet.vtv.configuration.JConfig_countdown;
 import com.vantinviet.vtv.libraries.cms.application.JApplicationSite;
@@ -25,6 +26,7 @@ public class JFactory {
     private static JUser user;
     public static String language;
     private static WebView webBrowser=null;
+    private static VTVConfig vtv_config;
 
     public static JMenu getMenu() {
         return JMenu.getInstance();
@@ -93,5 +95,13 @@ public class JFactory {
             webBrowser=new WebView(context);
         }
         return webBrowser;
+    }
+
+    public static VTVConfig getVTVConfig() {
+        if(vtv_config==null)
+        {
+            vtv_config=new VTVConfig();
+        }
+        return vtv_config;
     }
 }

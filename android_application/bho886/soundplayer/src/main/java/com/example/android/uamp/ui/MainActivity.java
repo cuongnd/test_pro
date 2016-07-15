@@ -27,6 +27,7 @@ import com.example.android.uamp.R;
 import com.example.android.uamp.utils.LogHelper;
 import com.vantinviet.vtv.VTVConfig;
 import com.vantinviet.vtv.libraries.cms.application.JApplicationSite;
+import com.vantinviet.vtv.libraries.joomla.JFactory;
 
 /**
  * Main activity for the music player.
@@ -60,7 +61,8 @@ public class MainActivity extends BaseActivity
         LogHelper.d(TAG, "Activity onCreate");
 
         setContentView(R.layout.main_activity);
-        VTVConfig.root_url="http://www.phatthanhnghean.vantinviet.com";
+        VTVConfig vtv_config= JFactory.getVTVConfig();
+        vtv_config.set_root_url("http://www.phatthanhnghean.vantinviet.com");
         JApplicationSite.start(this);
         initializeToolbar();
         initializeFromParams(savedInstanceState, getIntent());

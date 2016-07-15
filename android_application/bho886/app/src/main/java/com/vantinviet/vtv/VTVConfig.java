@@ -20,7 +20,8 @@ public class VTVConfig {
     public static int screenDensity;
     //public static String root_url ="http://www.banhangonline88.com";
     //public static String root_url ="http://www.countdown.vantinviet.com";
-    public static String root_url ="http://www.phatthanhnghean.vantinviet.com";
+    //public static String root_url ="http://www.phatthanhnghean.vantinviet.com";
+    public  String root_url;
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public  static  String get_version()
@@ -65,5 +66,10 @@ public class VTVConfig {
 
         }
         return content;
+    }
+
+    public void set_root_url(String a_root_url) {
+        this.root_url=a_root_url;
+        System.out.println("this.root_url:"+this.root_url);
     }
 }

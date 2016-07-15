@@ -150,20 +150,26 @@ public class JApplicationSite extends JApplicationCms {
         }
         String screenSize = Integer.toString(width / screenDensity) + "x" + Integer.toString(height);
         System.out.println(width / screenDensity);
-        String local_version = VTVConfig.get_version();
+        VTVConfig vtv_config=JFactory.getVTVConfig();
+        System.out.println("vtv_config.root_url"+vtv_config.root_url);
+        String local_version = vtv_config.get_version();
         //initChatting();
         VTVConfig.screen_size_width = screen_size_width;
         VTVConfig.screen_size_height = screen_size_height;
 
         VTVConfig.screenDensity = screenDensity;
-
+        String root_url=vtv_config.root_url;
         if (host.equals("")) {
             String test_page = "&Itemid=433";
             test_page = "";
-            host = VTVConfig.root_url + "/index.php?os=android&screenSize=" + screenSize + "&version=" + local_version + test_page;
-        } else if (!host.contains(VTVConfig.root_url)) {
-            host = VTVConfig.root_url + "/" + host;
+            host = root_url + "/index.php?os=android&screenSize=" + screenSize + "&version=" + local_version + test_page;
+        } else if (!host.contains(root_url)) {
+            host = root_url + "/" + host;
         }
+        start_remote(host);
+
+    }
+    public static void start_remote(String host){
         WebViewClient web_view_client = new WebViewClient() {
 
             @Override
@@ -213,6 +219,7 @@ public class JApplicationSite extends JApplicationCms {
 
         }
     }
+
     private static class AsyncJsonElementViewLoader extends AsyncTask<String, Void, String> {
 
 
