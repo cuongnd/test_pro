@@ -34,7 +34,7 @@ class elementTemplateHelper extends  elementHelper
         $dirName=$pathInfo['dirname'];
         $doc=JFactory::getDocument();
         $doc->addScript(JUri::root().'/media/system/js/purl-master/purl-master/purl.js');
-        $doc->addScript(JUri::root().'/media/system/js/URI.js-gh-pages/src/URI.js');
+        $doc->addScript(JUri::root().'/media/system/js/uri/src/URI.js');
         $ajaxGetContent=$app->input->get('ajaxgetcontent',0,'int');
         if(!$ajaxGetContent) {
             $doc->addStyleSheet(JUri::root() . "/$dirName/$filename.css");

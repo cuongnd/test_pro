@@ -30,7 +30,10 @@ defined('_JEXEC') or die;
 			<p><?php echo htmlspecialchars($this->error->getMessage()); ?></p>
 			<p><a href="index.php"><?php echo JText::_('JGLOBAL_TPL_CPANEL_LINK_TEXT') ?></a></p>
 			<p>
-				<?php if ($this->debug) :
+				<?php
+
+				if ($this->debug) :
+
 					echo $this->renderBacktrace();
 				endif; ?>
 			</p>

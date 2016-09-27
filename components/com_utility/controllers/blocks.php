@@ -84,7 +84,7 @@ class UtilityControllerBlocks extends JControllerForm
         $screenSize=$app->input->get('screenSize','','string');
         $isAdminSite=UtilityHelper::isAdminSite();
         if($isAdminSite)
-            UtilityHelper::setCurrentScreenSizeEditing($screenSize);
+            UtilityHelper::set_current_screen_size_id_editing($screenSize);
         else
         {
             UtilityHelper::setScreenSize($screenSize);

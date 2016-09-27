@@ -57,7 +57,7 @@
             plugin.set_animation_block();
             plugin.reload_page_when_screen_size_null(currentScreenSize);
             plugin.set_current_screen_size();
-            this.check_is_loaded_position();
+            //this.check_is_loaded_position();
             var uri_current_link = $.url(currentLink);
             var Itemid=uri_current_link.data.param.query.Itemid;
             if(typeof Itemid!='undefined')
@@ -250,7 +250,6 @@ jQuery(document).ready(function ($) {
 
     };
     var screenX = 0;
-    var sprFlat=$('body').sprFlatFrontEnd();
 
 
     function getScreenSize() {
@@ -261,20 +260,12 @@ jQuery(document).ready(function ($) {
             x = w.innerWidth || e.clientWidth || g.clientWidth,
             y = w.innerHeight || e.clientHeight || g.clientHeight;
 
-        screenSize = new Array();
-        screenSize[0] = x;
-        screenSize[1] = y;
-        return screenSize;
+        screen_size_id = new Array();
+        screen_size_id[0] = x;
+        screen_size_id[1] = y;
+        return screen_size_id;
     }
 
-    if (currentScreenSize == '') {
-        screenSize = getScreenSize();
-        screenSizeXY = screenSize[0] + 'X' + screenSize[1];
-        screenX = screenSize[0];
-        //changeLayout(screenSizeXY);
-
-
-    }
     var jqxhrLayout;
 
     function changeLayout(screenSize) {
@@ -285,9 +276,10 @@ jQuery(document).ready(function ($) {
             data: (function () {
 
 
-                dataPost = {
+                var dataPost = {
+                    enable_load_component:1,
                     ajaxgetcontent: 1,
-                    screenSize: screenSize,
+                    screenSize: screen_size_id,
                     editingWebsiteState: 0
 
                 };
@@ -363,10 +355,10 @@ jQuery(document).ready(function ($) {
     {
         listScreenSizeX=new Array();
         $('.main-container>.row-bootstrap').each(function(){
-            data_screensize=$(this).attr('data-screensize');
-            data_screensize=data_screensize.toLowerCase();
-            array_data_screensize = data_screensize.split("x");
-            nowScreenSizeX=array_data_screensize[0];
+            data_screen_size_id=$(this).attr('data-screen_size_id');
+            data_screen_size_id=data_screen_size_id.toLowerCase();
+            array_data_screen_size_id = data_screen_size_id.split("x");
+            nowScreenSizeX=array_data_screen_size_id[0];
             var indexOf = listScreenSizeX.indexOf(nowScreenSizeX);
             if(indexOf==-1)
             {
@@ -381,17 +373,17 @@ jQuery(document).ready(function ($) {
     }
     disableResizableAndMovable();
     function disableResizableAndMovable() {
-        screenSize = getScreenSize();
-        screenSizeX=screenSize[0];
+        screen_size_id = getScreenSize();
+        screenSizeX=screen_size_id[0];
         listScreenSizeX=getCurrentListScreenSize();
         screenAvail=getAvailScreenSize(screenSizeX,listScreenSizeX);
 
 
         $('.main-container>.row-bootstrap').each(function(){
-            data_screensize = $(this).attr('data-screensize');
-            data_screensize=data_screensize.toLowerCase();
-            array_data_screensize = data_screensize.split("x");
-            nowScreenSizeX = array_data_screensize[0];
+            data_screen_size_id = $(this).attr('data-screen_size_id');
+            data_screen_size_id=data_screen_size_id.toLowerCase();
+            array_data_screen_size_id = data_screen_size_id.split("x");
+            nowScreenSizeX = array_data_screen_size_id[0];
             console.log('nowScreenSizeX:'+nowScreenSizeX+'-screenAvail:'+screenAvail);
             if (nowScreenSizeX != screenAvail) {
                 $(this).hide();
@@ -511,26 +503,44 @@ jQuery(document).ready(function ($) {
                 if (typeof jqxhrLayout !== 'undefined') {
                     jqxhrLayout.abort();
                 }
-                screenSize = getScreenSize();
-                currentScreenX = screenSize[0];
-                console.log('screenX:' + screenX + ',currentScreenX:' + currentScreenX);
-                if (screenX != currentScreenX) {
-                    if (screenX < listScreenSizeX[0])
-                        for (var i = 0; i < listScreenSizeX.length; i++) {
+                var screen_size = getScreenSize();
+                var windows_screen_x = screen_size[0];
+                console.log('screenX:' + screenX + ',currentScreenX:' + windows_screen_x);
+                console.log("current_screen_size_id:"+current_screen_size_id);
+                var screen_selected={};
+                var total_list_screen_size=listScreenSize.length;
+                var first_screen_size=listScreenSize[0];
+                var last_screen_size=listScreenSize[total_list_screen_size-1];
+                if(windows_screen_x<=first_screen_size.screen_x)
+                {
+                    screen_selected=first_screen_size;
+                }else if(windows_screen_x>=last_screen_size.screen_x){
+                    screen_selected=last_screen_size;
+                }else
+                {
+                    for(var i=0;i<total_list_screen_size;i++){
+                        var item_screen_size=listScreenSize[i];
+                        var next_item_screen_size=listScreenSize[i+1];
+                        var screen_x=item_screen_size.screen_x;
+                        var next_screen_x=next_item_screen_size.screen_x;
 
+                        if(windows_screen_x>screen_x&&windows_screen_x<=next_screen_x)
+                        {
+                            screen_selected=next_item_screen_size;
+                            break;
                         }
 
-                    screenX = currentScreenX;
-
-                    if ($.inArray(screenX, listScreenSizeX)) {
 
                     }
-                    console.log(listScreenSizeX);
-                    screenSizeXY = screenSize[0] + 'X' + screenSize[1];
-                    disableResizableAndMovable();
-                    //code to do after window is resized
-                    //changeLayout(screenSizeXY);
                 }
+                if(screen_selected.id!=current_screen_size_id)
+                {
+                    var screenSize=screen_selected.screen_x+"X"+screen_selected.screen_y;
+                    var uri_current_link =  new URI(currentLink);
+                    uri_current_link.setSearch("screenSize", screenSize);
+                    window.location.href =uri_current_link.toString() ;
+                }
+                console.log(screen_selected);
             }, 250);
         });
     });

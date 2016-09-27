@@ -60,12 +60,12 @@
         "source": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\src\\main\\res\\drawable-mdpi\\p_1_03.png"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\z_1_04.png",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\src\\main\\res\\drawable-mdpi\\z_1_04.png"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\z_1_07.png",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\src\\main\\res\\drawable-mdpi\\z_1_07.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\z_1_04.png",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\src\\main\\res\\drawable-mdpi\\z_1_04.png"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\z_1_02.png",
@@ -88,12 +88,12 @@
         "source": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\src\\main\\res\\drawable-mdpi\\p_2_01.png"
     },
     {
-        "merged": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\z_1_05.png",
-        "source": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\src\\main\\res\\drawable-mdpi\\z_1_05.png"
-    },
-    {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\bk.png",
         "source": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\src\\main\\res\\drawable-mdpi\\bk.png"
+    },
+    {
+        "merged": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\z_1_05.png",
+        "source": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\src\\main\\res\\drawable-mdpi\\z_1_05.png"
     },
     {
         "merged": "H:\\project\\test_pro\\android_application\\bho886\\androidGamemaster\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",

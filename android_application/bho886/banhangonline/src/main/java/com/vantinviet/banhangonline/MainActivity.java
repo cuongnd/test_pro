@@ -13,8 +13,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        System.out.println("hello banhangonline88");
         VTVConfig vtv_config= JFactory.getVTVConfig();
-        System.out.println("sdfsdfsdfsdfsdf");
+
         vtv_config.set_root_url("http://www.banhangonline88.com");
         JApplicationSite.start(this);
     }

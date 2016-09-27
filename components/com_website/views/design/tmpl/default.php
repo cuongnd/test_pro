@@ -7,7 +7,7 @@ JHtml::_('jquery.framework');
 JHtml::_('jquery.ui');
 require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
 $enableEditWebsite=UtilityHelper::getEnableEditWebsite();
-$listScreenSize=UtilityHelper::getListScreenSize();
+$listScreenSize=UtilityHelper::get_list_screen_size();
 
 $preview=UtilityHelper::getStatePreview();
 if($preview)
@@ -165,7 +165,7 @@ function displayLayout($this_layout,$enableEdit)
     $session=JFactory::getSession();
     if($enableEdit)
     {
-        $currentScreenSize=UtilityHelper::getCurrentScreenSizeEditing();
+        $currentScreenSize=UtilityHelper::get_current_screen_size_id_editing();
         $doc=JFactory::getDocument();
         $js='
         var currentScreenSizeEditing="'.$currentScreenSize.'";

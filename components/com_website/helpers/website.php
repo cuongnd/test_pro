@@ -115,6 +115,46 @@ class websiteHelperFrontEnd
         return $db->loadResult();
     }
 
+    public static function get_root_position($current_screen_size_id)
+    {
+        $website=JFactory::getWebsite();
+        $db=JFactory::getDbo();
+        $query=$db->getQuery(true);
+        $query->select('root_position_id_website_id.position_id')
+            ->from('#__root_position_id_website_id AS root_position_id_website_id')
+            ->where('root_position_id_website_id.screen_size_id='.(int)$current_screen_size_id)
+            ->where('root_position_id_website_id.website_id='.(int)$website->website_id)
+        ;
+        $db->setQuery($query);
+        $root_position_id= $db->loadResult();
+
+        if(!$root_position_id)
+        {
+            $root_position_id=self::create_root_position_by_screen_size_id($current_screen_size_id);
+        }
+        return $root_position_id;
+
+    }
+
+    public static function create_root_position_by_screen_size_id($screen_size_id)
+    {
+        $website=JFactory::getWebsite();
+        $tablePosition = JTable::getInstance('positionnested');
+        $position_id=$tablePosition->create_root_position_by_website_id($website->website_id);
+        $table_root_position_id_website_id = JTable::getInstance('Root_position_id_website_id');
+        $table_root_position_id_website_id->id=0;
+        $table_root_position_id_website_id->website_id = $website->website_id;
+        $table_root_position_id_website_id->screen_size_id = $screen_size_id;
+        $table_root_position_id_website_id->position_id = $position_id;
+        $ok=$table_root_position_id_website_id->store();
+        if(!$ok)
+        {
+            throw new Exception($table_root_position_id_website_id->getError());
+        }
+        return $position_id;
+
+    }
+
 
     /**
      * Configure the Linkbar.
@@ -283,7 +323,7 @@ class websiteHelperFrontEnd
                         }
                         $html .= websiteHelperFrontEnd::getHeaderHtml($v, $enableEditWebsite, $prevV);
                         $html .= '
-                        <div class="grid-stack-item   show-grid-stack-item block-item grid-stack-item_' . $v->parent_id . '" data-ordering="' . $v->ordering . ' ' . $css_class . '" '.($v->menu_item_id!=$v->active_menu_item_id?' data-gs-no-resize="true" ':'').'  data-block-parent-id="' . $v->parent_id . '" data-position="' . $v->position . '"  data-bootstrap-type="' . $v->type . '" data-screensize="' . $v->screensize . '"  data-block-id="' . $v->id . '" data-gs-x="' . $v->gs_x . '" data-gs-y="' . $v->gs_y . '" data-gs-width="' . $v->width . '" data-gs-height="' . $v->height . '" element-type="' . $v->type . '">
+                        <div class="grid-stack-item   show-grid-stack-item block-item grid-stack-item_' . $v->parent_id . '" data-ordering="' . $v->ordering . ' ' . $css_class . '" '.($v->menu_item_id!=$v->active_menu_item_id?' data-gs-no-resize="true" ':'').'  data-block-parent-id="' . $v->parent_id . '" data-position="' . $v->position . '"  data-bootstrap-type="' . $v->type . '" data-screen_size_id="' . $v->screen_size_id . '"  data-block-id="' . $v->id . '" data-gs-x="' . $v->gs_x . '" data-gs-y="' . $v->gs_y . '" data-gs-width="' . $v->width . '" data-gs-height="' . $v->height . '" element-type="' . $v->type . '">
                             <div class="grid-stack-item-content edit-style allow-edit-style" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '">
                                 <div class="item-row" data-block-parent-id="' . $v->parent_id . '" data-block-id="' . $v->id . '">col(<span class="offset-width">o:' . $offset . '-w:' . $v->width . '</span>)</div>';
                          if($v->menu_item_id==$v->active_menu_item_id){
@@ -363,7 +403,7 @@ class websiteHelperFrontEnd
                     $setClass = $v->css_class ? ' ' . $v->css_class . ' ' : '';
                     if ($v->type == 'row' || $v->type == 'column') {
                         //$html .= websiteHelperFrontEnd::getHeaderHtml($v, $enableEditWebsite, $prevV);
-                        $html .= '<div data-screensize="' . $v->screensize . '" class=" block-item block-item-' . $v->type . ' ' . ($v->type == 'row' ? $classRow : $classColumn) . $setClass . ' ' . $css_class . '" data-block-id="' . $v->id . '" data-block-parent-id="' . $v->parent_id . '" data-column-type="' . $bootstrapColumnType . '" data-block-type="' . ($v->position == 'position-component' ? 'block-component' : '') . '" >';
+                        $html .= '<div data-screen_size_id="' . $v->screen_size_id . '" class=" block-item block-item-' . $v->type . ' ' . ($v->type == 'row' ? $classRow : $classColumn) . $setClass . ' ' . $css_class . '" data-block-id="' . $v->id . '" data-block-parent-id="' . $v->parent_id . '" data-column-type="' . $bootstrapColumnType . '" data-block-type="' . ($v->position == 'position-component' ? 'block-component' : '') . '" >';
                         if ($v->position == 'position-component') {
                             $html .= $v->type == 'column' ? '<div class="error"><jdoc:include type="message" /></div><jdoc:include type="component"/>' : '';
                         } else {
@@ -509,11 +549,12 @@ class websiteHelperFrontEnd
 
         $app = JFactory::getApplication();
         if ($enableEditWebsite) {
-            $currentScreenSize = UtilityHelper::getCurrentScreenSizeEditing();
+            $current_screen_size_id = UtilityHelper::get_current_screen_size_id_editing();
         } else {
-            $currentScreenSize = UtilityHelper::getScreenSize();
+            $current_screen = UtilityHelper::getScreenSize();
+            $current_screen = UtilityHelper::getSelectScreenSize($current_screen);
+            $current_screen_size_id=$current_screen->id;
         }
-        $currentScreenSize = UtilityHelper::getSelectScreenSize($currentScreenSize);
         //$listPositionsSetting=UtilityHelper::getListPositionsSetting($currentScreenSize);
         $menu = $app->getMenu();
 
@@ -594,12 +635,13 @@ class websiteHelperFrontEnd
         $website = JFactory::getWebsite();
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables/');
         $tablePosition = JTable::getInstance('positionnested');
-        $tablePosition->screenSize = $currentScreenSize;
+        $tablePosition->screen_size_id = $current_screen_size_id;
         $tablePosition->website_id = $website->website_id;
         $menu = JMenu::getInstance('site');
         $menuItemActiveId = $menu->getActive()->id;
 
         $rootId = $tablePosition->get_root_id();
+
         if ($os == 'android') {
 
             $modules = JModuleHelper::load();
@@ -710,7 +752,7 @@ class websiteHelperFrontEnd
                         $debugScreen = $this_layout->debugScreen;
                         foreach ($listPositionsSetting as $positionItem) {
                             $position = $positionItem->position;
-                            $screensize = $positionItem->screensize;
+                            $screen_size_id = $positionItem->screen_size_id;
                             $id = $positionItem->id;
                             $gs_x = $positionItem->gs_x;
                             $gs_y = $positionItem->gs_y;

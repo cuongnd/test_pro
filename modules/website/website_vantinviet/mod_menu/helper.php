@@ -159,6 +159,7 @@ class ModMenuHelper
 
             $cache->store($items, $key);
         }
+
         return $items;
     }
 

@@ -5,9 +5,6 @@
  * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
-function test1234(){
-
-}
 if (version_compare(PHP_VERSION, '5.3.10', '<'))
 {
     die('Your host needs to use PHP 5.3.10 or higher to run this version of Joomla!');
@@ -37,6 +34,51 @@ JDEBUG ? $_PROFILER->mark('afterLoad') : null;
 
 // Instantiate the application.
 $app = JFactory::getApplication('site');
+require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
+$isAdminSite = UtilityHelper::isAdminSite();
+if(!$isAdminSite)
+{
+    $screen_size=$app->input->getString('screenSize','');
+    if($screen_size!='')
+    {
+        UtilityHelper::setScreenSize($screen_size);
+    }
+    $screen_size = UtilityHelper::getScreenSize();
 
-// Execute the application.
-$app->execute();
+    if(!$screen_size)
+    {
+        $doc=JFactory::getDocument();
+        $uri = JFactory::getURI();
+        ?>
+        <head>
+            <script src="<?php echo JUri::root() ?>jquery.min.js"></script>
+            <script src="<?php echo JUri::root() ?>media/system/js/uri/src/URI.js"></script>
+        </head>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                function getScreenSize() {
+                    var w = window,
+                        d = document,
+                        e = d.documentElement,
+                        g = d.getElementsByTagName('body')[0],
+                        x = w.innerWidth || e.clientWidth || g.clientWidth,
+                        y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+                    var currentScreenSize= x + 'X' + y;
+                    return currentScreenSize;
+                }
+                var currentScreenSize=getScreenSize();
+                var uri_current_link =  new URI("<?php echo $uri->toString() ?>");
+                uri_current_link.addQuery("screenSize", currentScreenSize);
+                window.location.href =uri_current_link ;
+            });
+        </script>
+        <?php
+
+    }else{
+        $app->execute();
+    }
+}else{
+    $app->execute();
+}

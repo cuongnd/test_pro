@@ -160,7 +160,7 @@ class ModulesControllerModule extends JControllerForm
 		$tableExtension=JTable::getInstance('Extension','JTable');
 		$tableExtension->load($module_id);
 		require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
-		$screenSize=UtilityHelper::getCurrentScreenSizeEditing();
+		$screenSize=UtilityHelper::get_current_screen_size_id_editing();
 		$tableModule=JTable::getInstance('Module','JTable');
 		$tableModule->id=0;
         require_once JPATH_ROOT.'/libraries/joomla/user/helper.php';

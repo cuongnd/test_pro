@@ -11,15 +11,16 @@ class elementHtmlHelper extends  elementHelper
         $doc=JFactory::getDocument();
         $enableEditWebsite = UtilityHelper::getEnableEditWebsite();
         if($enableEditWebsite) {
+            $doc->addScript(JUri::root() . '/media/system/js/base64.js');
             $doc->addScript(JUri::root() . '/media/system/js/jquery.base64.js');
             $doc->addScriptNotCompile(JUri::root() . '/ckfinder/ckfinder.js');
             $doc->addScriptNotCompile(JUri::root() . '/media/editors/ckeditor/ckeditor.js');
             $doc->addScriptNotCompile(JUri::root() . '/media/editors/ckeditor/adapters/jquery.js');
-            $doc->addScript(JUri::root() . "/media/system/js/CodeMirror-master/lib/codemirror.js");
-            $doc->addScript(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/show-hint.js");
-            $doc->addScript(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/html-hint.js");
-            $doc->addScript(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/xml-hint.js");
-            $doc->addStyleSheet(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/show-hint.css");
+            $doc->addScriptNotCompile(JUri::root() . "/media/system/js/CodeMirror-master/lib/codemirror.js");
+            $doc->addScriptNotCompile(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/show-hint.js");
+            $doc->addScriptNotCompile(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/html-hint.js");
+            //$doc->addScript(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/xml-hint.js");
+            //$doc->addStyleSheet(JUri::root() . "/media/editors/ckeditor/plugins/codemirror/addon/hint/show-hint.css");
         }
 
         $lessInput = JPATH_ROOT . "/$dirName/$filename.less";
@@ -87,7 +88,8 @@ class elementHtmlHelper extends  elementHelper
                 $('.block-item.block-item-html[data-block-id="<?php echo $block->id ?>"]').ui_html({
                     primary_key_of_table:"<?php echo $primary_key_of_table ?>",
                     value_primary_key_of_table:<?php echo  $app->input->get($primary_key_of_table,'0','int'); ?>,
-                    enableEditWebsite:<?php echo $enableEditWebsite ?>
+                    enableEditWebsite:<?php echo $enableEditWebsite ?>,
+                    edit_html_content_id:"edit_html_content_<?php echo $block->id ?>"
                 });
 
             });
@@ -110,7 +112,7 @@ class elementHtmlHelper extends  elementHelper
 
         <div class="html block-item block-item-html  <?php echo $css_class ?>" data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" >
             <?php if($enableEditWebsite){ ?>
-            <div class="edit_html_content">
+            <div id="edit_html_content_<?php echo $block->id ?>" class="edit_html_content">
                 <?php echo $fulltext ?>
             </div>
             <button  data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" type="button" class="btn btn-danger save-block-html pull-right"><i class="fa-save"></i>Save</button>

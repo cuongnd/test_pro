@@ -23,7 +23,8 @@ require_once realpath(JPATH_ADMINISTRATOR . '/components/com_menus/helpers/menus
  */
 class JFormFieldMenu extends JFormFieldList
 {
-	/**
+    private static $list_menu_item_id;
+    /**
 	 * The form field type.
 	 *
 	 * @var    string
@@ -64,8 +65,13 @@ class JFormFieldMenu extends JFormFieldList
                 ->from('#__menu_types')
                 ->where('copy_from=' . (int)$this->value)
                 ->where('website_id=' . (int)$website_id);
-            $db->setQuery($query);
-            $menu_type_id = $db->loadResult();
+            $query_md5=md5($query->dump());
+            $menu_type_id=static::$list_menu_item_id[$query_md5];
+            if(!$menu_type_id){
+                $db->setQuery($query);
+                $menu_type_id = $db->loadResult();
+                static::$list_menu_item_id[$query_md5]=$menu_type_id;
+            }
             return $menu_type_id;
         }else{
             return $this->value;

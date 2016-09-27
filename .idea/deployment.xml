@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="ipage.com">
+  <component name="PublishConfigData" autoUpload="Always" serverName="ipage.com" promptOnLocalOverwrite="false">
     <serverData>
       <paths name="ipage.com">
         <serverdata>
@@ -10,6 +10,7 @@
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/configuration" />
             <excludedPath local="true" path="$PROJECT_DIR$/configuration.php" />
+            <excludedPath local="true" path="$PROJECT_DIR$/other_website_banhangonline88/config/settings.inc.php" />
           </excludedPaths>
         </serverdata>
       </paths>

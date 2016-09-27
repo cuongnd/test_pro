@@ -21,7 +21,6 @@ $doc->addScript(JUri::root() . '/templates/sprflat/js/jquery.tooleditstyle.js');
                     <ul class="nav">
                     <?php foreach($listScreenSize as $item){ ?>
                         <li>
-                            <a href="javascript:void(0)" class="pointer"><i title="pointer" screen-size="<?php echo $item ?>" class="en-screen <?php echo $item==$currentScreenSize?'selected':''; ?>"></i></a>
                         </li>
                     <?php } ?>
                     </ul>

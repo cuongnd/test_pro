@@ -35,7 +35,7 @@ class elementRegistrationFacebookHelper extends  elementHelper
         $doc=JFactory::getDocument();
         $doc->addScript(JUri::root().'/media/system/js/jquery.popupWindow.js');
         $doc->addScript(JUri::root().'/media/system/js/purl-master/purl-master/purl.js');
-        $doc->addScript(JUri::root().'/media/system/js/URI.js-gh-pages/src/URI.js');
+        $doc->addScript(JUri::root().'/media/system/js/uri/src/URI.js');
         $ajaxGetContent=$app->input->get('ajaxgetcontent',0,'int');
         $doc->addLessStyleSheet(JUri::root() . "/$dirName/$filename.less");
         $doc->addScript(JUri::root() ."/$dirName/$filename.js");

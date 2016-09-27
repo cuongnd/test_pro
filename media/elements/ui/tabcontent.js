@@ -79,13 +79,13 @@ jQuery(document).ready(function($){
                     items: "> .row-content.block-item",
                     stop: function (event, ui) {
                         var screenSize = $('select[name="smart_phone"] option:selected').val();
-                        screenSize = screenSize.toLowerCase();
+                        screen_size_id = screen_size_id.toLowerCase();
                         var list_row = {};
                         $('.block-item.block-item-tabcontent[data-block-id="' + ui.item.attr('data-block-parent-id') + '"] > .row-content.show-grid-stack-item:visible').each(function (index) {
 
                             list_row[$(this).attr('data-block-id')] = {
                                 ordering: index,
-                                screenSize: screenSize
+                                screenSize: screen_size_id
                             }
 
                         });

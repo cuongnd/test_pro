@@ -1,7 +1,7 @@
 <?php
-#Vars - written at 2016-01-20
+#Vars - written at 2016-08-31
 $dbhost="localhost";
-$dbname="test_pro1";
+$dbname="etravelservice";
 $dbuser="root";
 $dbpass="123456";
 $dbport=3306;
@@ -22,10 +22,10 @@ $cronmailfrom="";
 $cron_use_sendmail=1;
 $cron_smtp="localhost";
 $cron_smtp_port="25";
-@cron_db_array=("asianventure","cdcol","etravelservice","freelancer","joom336","performance_schema","phpmyadmin","sys","test_pro","test_pro1","test_pro2","test_pro3","test_pro_b_2015_10_03","webauth","webtemppro");
-@cron_dbpraefix_array=("","","","","","","","","","","","","","","");
-@cron_command_before_dump=("","","","","","","","","","","","","","","");
-@cron_command_after_dump=("","","","","","","","","","","","","","","");
+@cron_db_array=("asianventure","banhangonline88","cdcol","etravelservice","etravelservice2","freelancer","joom336","performance_schema","phpmyadmin","prestashop","prestashop1","sys","test_pro","test_pro1","test_pro2","test_pro3","test_pro_b_2015_10_03","test_pro_bf_2016_04_19_01","webauth","webtemppro");
+@cron_dbpraefix_array=("","","","","","","","","","","","","","","","","","","","");
+@cron_command_before_dump=("","","","","","","","","","","","","","","","","","","","");
+@cron_command_after_dump=("","","","","","","","","","","","","","","","","","","","");
 @ftp_server=("","","");
 @ftp_port=(21,21,21);
 @ftp_mode=(0,0,0);

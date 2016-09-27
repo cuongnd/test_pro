@@ -17,9 +17,7 @@ if (!file_exists("./work/config/mysqldumper.php"))
 <meta name="Author" content="Daniel Schlichtholz">
 <title>MySQLDumper</title>
 </head>
-<?php
 
-?>
 <frameset border=0 cols="190,*">
 	<frame name="MySQL_Dumper_menu" src="menu.php" scrolling="no" noresize
 		frameborder="0" marginwidth="0" marginheight="0">

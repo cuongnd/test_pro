@@ -10,8 +10,8 @@ $doc->addScript(JUri::root() . '/media/system/js/bootstrap-switch-master/dist/js
 $doc->addStyleSheet(JUri::root() . '/media/system/js/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css');
 $doc->addStyleSheet(JUri::root() . '/libraries/adminfrontend/assets/admin_left.css');
 $doc->addScript(JUri::root() . '/libraries/adminfrontend/assets/admin_left.js');
-$listScreenSize = UtilityHelper::getListScreenSize();
-$currentScreenSize = UtilityHelper::getCurrentScreenSizeEditing();
+$listScreenSize = UtilityHelper::get_list_screen_size();
+$current_screen_size_id_editing = UtilityHelper::get_current_screen_size_id_editing();
 $user=JFactory::getUser();
 $full_height_state=$user->getParam('option.webdesign.full_height_state','false');
 $full_height_state=JUtility::toStrictBoolean($full_height_state);
@@ -21,7 +21,7 @@ $app = JFactory::getApplication();
 
 $doc->addScript(JUri::root().'/media/system/js/bootstrap-switch-master/docs/js/highlight.js');
 $doc->addScript(JUri::root() . "/media/system/js/jquery.popupWindow.js");
-JHtml::_('formbehavior.chosen', 'select');
+JHtml::_('formbehavior.select2', 'select');
 
 $user=JFactory::getUser();
 $show_popup_control=$user->getParam('option.webdesign.show_popup_control',false);
@@ -61,10 +61,15 @@ $db=JFactory::getDbo();
                     <label class=" control-label">Smartphone size</label>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-7">
-                    <select name="smart_phone" class="btn-primary btn-block smart-phone">
+                    <select name="screen_size_id" disableChosen="true" class="btn-primary btn-block smart-phone">
                         <?php foreach ($listScreenSize as $item) { ?>
-                            <option <?php echo $item == $currentScreenSize ? 'selected' : ''; ?>
-                                value="<?php echo $item ?>"><?php echo $item ?></option>
+                        <?php
+                            $screen_size="{$item->screen_x}X{$item->screen_y}";
+
+                            $selected=$item->id==$current_screen_size_id_editing;
+                        ?>
+                            <option <?php echo  $selected ? 'selected' : ''; ?>
+                                value="<?php echo $item->id  ?>"><?php echo $screen_size ?></option>
                         <?php } ?>
                     </select>
                 </div>

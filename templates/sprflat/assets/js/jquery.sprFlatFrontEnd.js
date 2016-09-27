@@ -157,7 +157,7 @@
             //handle accordions
             this.bsAccordion();
             //handle checkbox and radios theme
-            this.checkAndRadios(plugin.settings.forms.checkAndRadioTheme);
+            //this.checkAndRadios(plugin.settings.forms.checkAndRadioTheme);
             //toggle header area function
             //this.toggleHeaderArea();
             //chat window basic functions

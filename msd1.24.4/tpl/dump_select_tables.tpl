@@ -4,7 +4,6 @@
 <form name="frm_tbl" action="filemanagement.php" method="post"
 	onSubmit="return chkFormular()">
 
-
 <div><input type="button" class="Formbutton" onclick="Sel(true);"
 	value="{L_SELECT_ALL}"> <input type="button" onclick="Sel(false);"
 	value="{L_DESELECT_ALL}" class="Formbutton"> <input type="submit"
@@ -12,11 +11,11 @@
 	value="{L_START_BACKUP}"></div>
 <br>
 
-<table class="bdr" id="table-list" data-range="true">
+<table class="bdr">
 	<tr class="thead">
 		<th>#</th>
 		<th>{L_NAME}</th>
-		<th><!--
+		<th><!-- 
 			Aktion
 			--></th>
 		<th>{L_ROWS}</th>
@@ -30,7 +29,7 @@
 		<td style="text-align: right">{ROW.NR}.</td>
 		<td><label for="t{ROW.ID}">{ROW.TABLENAME}</label></td>
 		<td class="sm" align="left"><input type="checkbox" class="checkbox"
-			name="chk_tbl" id="t{ROW.ID}" value="{ROW.TABLENAME}"> <!--
+			name="chk_tbl" id="t{ROW.ID}" value="{ROW.TABLENAME}"> <!-- 
 			<input type="checkbox" class="checkbox" name="chk_tbl_data" id="t_data{ROW.ID}" value="{ROW.TABLENAME}">
 			 --></td>
 		<td style="text-align: right">{ROW.RECORDS}</td>

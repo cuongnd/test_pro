@@ -105,7 +105,7 @@ if (JDEBUG) {
     $_PROFILER = JProfiler::getInstance('Application');
 }
 
-declare(ticks=10);
+
 
 require_once JPATH_ROOT . '/libraries/joomla/utilities/utility.php';
 if (!function_exists('writeLog')) {
@@ -122,44 +122,4 @@ if (!function_exists('writeLog')) {
             array('com_helloworld')
         );
     }
-}
-
-function shutdown()
-{
-    $a=error_get_last();
-    if($a==null)
-        echo "No errors";
-    else
-    {
-        print_r(JUtility::printDebugBacktrace());
-    }
-
-
-}
-function process_error_backtrace($errno, $errstr, $errfile, $errline, $errcontext) {
-    switch($errno) {
-        case E_WARNING      :
-        case E_USER_WARNING :
-        case E_STRICT       :
-        case E_NOTICE       :
-        case E_USER_NOTICE  :
-            $type = 'warning';
-            $fatal = false;
-            break;
-        default             :
-            $type = 'fatal error';
-            $fatal = true;
-            break;
-    }
-    if($fatal||$errno==null){
-        echo 'Backtrace from ' . $type . ' \'' . $errstr . '\' at ' . $errfile . ' ' . $errline . ':' . "\n";
-        print_r(JUtility::printDebugBacktrace());
-        die;
-    }
-}
-
-if (JDEBUG) {
-    register_tick_function('writeLog');
-    set_error_handler('process_error_backtrace');
-    register_shutdown_function('shutdown');
 }

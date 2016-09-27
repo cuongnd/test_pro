@@ -135,28 +135,6 @@ class UtilityControllerTest extends JControllerForm
         $app->input->set('id',$getDuplicateBlockId);
         $this->display();
     }
-    public function ajax_rebuild_block(){
-        $app=JFactory::getApplication();
-        $menu_item_active_id=$app->input->get('menu_item_active_id',0,'int');
-        JTable::addIncludePath(JPATH_ROOT.'/components/com_utility/tables');
-        $tablePosition=JTable::getInstance('positionnested');
-        $website=JFactory::getWebsite();
-        $tablePosition->webisite_id=$website->website_id;
-        $parentId = $tablePosition->getRootId();
-        $db=JFactory::getDbo();
-        $query=$db->getQuery(true);
-        $query->select('position_config.id,position_config.menu_item_id')
-            ->from('#__position_config AS position_config')
-            ->where('position_config.parent_id='.(int)$parentId)
-            ->where('position_config.menu_item_id='.(int)$menu_item_active_id)
-            ;
-        $db->setQuery($query);
-        $list_position=$db->loadObjectList();
-        UtilityControllerUtility::update_menu_item_from_root_menu($list_position,$menu_item_active_id);
-        echo 1;
-        die;
-
-    }
     public function ajax_update_field_block()
     {
         $app=JFactory::getApplication();
@@ -231,20 +209,6 @@ class UtilityControllerTest extends JControllerForm
             }
         }
 
-    }
-    public function aJaxChangeScreenSize()
-    {
-        $app=JFactory::getApplication();
-        $screenSize=$app->input->get('screenSize','','string');
-        require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
-        $isAdminSite=UtilityHelper::isAdminSite();
-        if($isAdminSite)
-            UtilityHelper::setCurrentScreenSizeEditing($screenSize);
-        else
-        {
-            UtilityHelper::setScreenSize($screenSize);
-        }
-        die;
     }
     function getimages()
     {

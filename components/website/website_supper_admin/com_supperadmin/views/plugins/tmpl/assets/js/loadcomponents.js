@@ -89,8 +89,8 @@
 
                         });
                         var html='';
-                        if(!$('.extension-plugin-config').length) {
-                            html = $('<div class="panel plugin panel-primary extension-plugin-config  panelMove toggle panelRefresh panelClose"  >' +
+                        if(!$('.plugin-plugin-config').length) {
+                            html = $('<div class="panel plugin panel-primary plugin-plugin-config  panelMove toggle panelRefresh panelClose"  >' +
                                 '<div class="panel-heading plugin-handle">' +
                                 '<h4 class="panel-title">plugin manager</h4>' +
 

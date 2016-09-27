@@ -3,7 +3,6 @@ if (!@ob_start("ob_gzhandler")) @ob_start();
 session_name('MySQLDumper');
 session_start();
 $aus2=$page_parameter=$a=$out='';
-
 include_once ('./inc/functions_dump.php');
 
 // beim Erstaufruf Konfigurationsdatei auslesen und in Session speichern

@@ -32,7 +32,7 @@
                 CKEDITOR.config.list_menu=[];
                 CKEDITOR.config.list_style=[];
 
-
+                CKEDITOR.config.extraPlugins = 'filebrowser';
                 $(this).attr('contenteditable',true);
 
                 $(this).ckeditor();
@@ -50,8 +50,7 @@
             var $edit_html_content=$block_item.find('.edit_html_content');
             var ckeditorInstance=$edit_html_content.data('ckeditorInstance');
             content=ckeditorInstance.getData();
-            $.base64.utf8encode = true;
-            content= $.base64.encode(content);
+            content= $.base64Encode(content);
             block_id=self.attr('data-block-id');
             ajaxSaveBlockHtml=$.ajax({
                 type: "POST",

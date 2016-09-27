@@ -56,7 +56,7 @@ class JFormFieldScreenSize extends JFormField
 			$module = $this->form->getValue('module');
 		}
 		require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
-		$listScreenSize=UtilityHelper::getListScreenSize();
+		$listScreenSize=UtilityHelper::get_list_screen_size();
 		$option=array();
 		foreach($listScreenSize as $screenSize)
 		{

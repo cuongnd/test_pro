@@ -35,6 +35,7 @@ class JTablePositionNested extends JTable
 	 * @since  11.1
 	 */
 	public $level;
+	public $screen_size_id;
 
 	/**
 	 * Object property holding the left value of the node for managing its
@@ -111,7 +112,7 @@ class JTablePositionNested extends JTable
 
 	}
 
-    private static function create_root_position_by_website_id($website_id)
+    public static function create_root_position_by_website_id($website_id)
     {
         $db=JFactory::getDbo();
         $query = $db->getQuery(true);
@@ -134,20 +135,10 @@ class JTablePositionNested extends JTable
             ->where('id='.(int)$root_position_id)
         ;
         $db->setQuery($query);
-        if(!$db->execute())
+		$ok=$db->execute();
+        if(!$ok)
         {
             throw new Exception($db->getErrorMsg());
-        }
-        $key='#__position_config.' . $root_position_id;
-        $asset = JTable::getInstance('Asset');
-        $asset->id=0;
-        $asset->name=$key;
-        $asset->website_id=$website_id;
-        $asset->title=$key;
-
-        if(!$asset->store())
-        {
-            throw new Exception($asset->getError());
         }
         return $root_position_id;
     }
@@ -600,125 +591,6 @@ class JTablePositionNested extends JTable
 
 	}
 
-	/**
-	 * Method to delete a node and, optionally, its child nodes from the table.
-	 *
-	 * @param   integer  $pk        The primary key of the node to delete.
-	 * @param   boolean  $children  True to delete child nodes, false to move them up a level.
-	 *
-	 * @return  boolean  True on success.
-	 *
-	 * @since   11.1
-	 */
-	public function delete($pk = null, $children = true)
-	{
-		$k = $this->_tbl_key;
-		$pk = (is_null($pk)) ? $this->$k : $pk;
-
-		// Implement JObservableInterface: Pre-processing by observers
-		$this->_observers->update('onBeforeDelete', array($pk));
-
-		// Lock the table for writing.
-		if (!$this->_lock())
-		{
-			// Error message set in lock method.
-			return false;
-		}
-
-
-		// Get the node by id.
-		$node = $this->_getNode($pk);
-
-		if (empty($node))
-		{
-			// Error message set in getNode method.
-			$this->_unlock();
-
-			return false;
-		}
-
-		$query = $this->_db->getQuery(true);
-
-		// Should we delete all children along with the node?
-		if ($children)
-		{
-
-			// Delete the node and all of its children.
-			JTablePositionNested::treeRecurseDelete($pk,99,0);
-			// Compress the left values.
-			$query->clear()
-				->update($this->_tbl)
-				->set('lft = lft - ' . (int) $node->width)
-				->where('website_id='.(int)$this->website_id)
-				->where('LOWER(screensize)='.$this->_db->q($this->screensize))
-				->where('lft > ' . (int) $node->rgt);
-			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-
-			// Compress the right values.
-			$query->clear()
-				->update($this->_tbl)
-				->set('rgt = rgt - ' . (int) $node->width)
-				->where('website_id='.(int)$this->website_id)
-				->where('LOWER(screensize)='.$this->_db->q($this->screensize))
-				->where('rgt > ' . (int) $node->rgt);
-			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-		}
-		// Leave the children and move them up a level.
-		else
-		{
-			// Delete the node.
-			$query->clear()
-				->delete($this->_tbl)
-				->where('website_id='.(int)$this->website_id)
-				->where('LOWER(screensize)='.$this->_db->q($this->screensize))
-				->where('lft = ' . (int) $node->lft);
-			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-
-			// Shift all node's children up a level.
-			$query->clear()
-				->update($this->_tbl)
-				->set('lft = lft - 1')
-				->set('rgt = rgt - 1')
-				->set('level = level - 1')
-				->where('website_id='.(int)$this->website_id)
-				->where('LOWER(screensize)='.$this->_db->q($this->screensize))
-				->where('lft BETWEEN ' . (int) $node->lft . ' AND ' . (int) $node->rgt);
-			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-
-			// Adjust all the parent values for direct children of the deleted node.
-			$query->clear()
-				->update($this->_tbl)
-				->set('parent_id = ' . (int) $node->parent_id)
-				->where('website_id='.(int)$this->website_id)
-				->where('LOWER(screensize)='.$this->_db->q($this->screensize))
-				->where('parent_id = ' . (int) $node->$k);
-			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-
-			// Shift all of the left values that are right of the node.
-			$query->clear()
-				->update($this->_tbl)
-				->set('lft = lft - 2')
-				->where('website_id='.(int)$this->website_id)
-				->where('LOWER(screensize)='.$this->_db->q($this->screensize))
-				->where('lft > ' . (int) $node->rgt);
-			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-
-			// Shift all of the right values that are right of the node.
-			$query->clear()
-				->update($this->_tbl)
-				->set('rgt = rgt - 2')
-				->where('rgt > ' . (int) $node->rgt);
-			$this->_runQuery($query, 'JLIB_DATABASE_ERROR_DELETE_FAILED');
-		}
-
-		// Unlock the table for writing.
-		$this->_unlock();
-
-		// Implement JObservableInterface: Post-processing by observers
-		$this->_observers->update('onAfterDelete', array($pk));
-
-		return true;
-	}
 
 	/**
 	 * Checks that the object is valid and able to be stored.
@@ -1304,13 +1176,29 @@ class JTablePositionNested extends JTable
 		{
 			$this->website_id=JFactory::getWebsite()->website_id;
 		}
+		if(!$this->screen_size_id)
+		{
+			require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
+			$isAdminSite = UtilityHelper::isAdminSite();
+			if($isAdminSite)
+			{
+				$this->screen_size_id=UtilityHelper::get_current_screen_size_id_editing();
+			}else{
 
+				$obj_screen_size=UtilityHelper::getSelectScreenSize();
+
+
+				$this->screen_size_id=$obj_screen_size->id;
+			}
+		}
 		$query = $this->_db->getQuery(true);
 
 		$query->select('position_id')
 			->from('#__root_position_id_website_id')
 			->where('website_id = '.(int)$this->website_id)
+			->where('screen_size_id = '.(int)$this->screen_size_id)
 		;
+
 		$result = $this->_db->setQuery($query)->loadResult();
 
 		if ($result)
@@ -1320,7 +1208,7 @@ class JTablePositionNested extends JTable
 		}
         else
         {
-			self::$root_id = $this->createRoot($this->screensize);
+			self::$root_id = $this->createRoot($this->screen_size_id);
 			return self::$root_id;
 
 
@@ -1353,7 +1241,7 @@ class JTablePositionNested extends JTable
         }
 
 	}
-	public function createRoot($screenSize)
+	public function createRoot($screen_size_id)
 	{
 		if(!$this->website_id)
 		{
@@ -1361,13 +1249,11 @@ class JTablePositionNested extends JTable
 			$this->website_id=$website->website_id;
 		}
 
-
 		$query = $this->_db->getQuery(true)
-			->insert($this->_tbl)
+			->insert('#__position_config')
 			->set('website_id = '.(int)$this->website_id)
 			->set('position = '.$this->_db->q('ROOT'))
 			->set('alias = '.$this->_db->q('ROOT'))
-			->set('screenSize = '.strtolower($this->_db->q($screenSize)))
 		;
 		$this->_db->setQuery($query);
 		if(!$this->_db->execute())
@@ -1390,19 +1276,21 @@ class JTablePositionNested extends JTable
 			$this->setError($e);
 			return false;
 		}
-		$key=$this->_tbl . '.' . $insertId;
-		$asset = JTable::getInstance('Asset');
-		$asset->id=0;
-		$asset->name=$key;
-		$asset->website_id=$website->website_id;
-		$asset->title=$key;
 
-		if(!$asset->store())
+		$query = $this->_db->getQuery(true)
+			->insert('#__root_position_id_website_id')
+			->set('website_id = '.(int)$this->website_id)
+			->set('position_id = '.$insertId)
+			->set('screen_size_id = '.(int)$screen_size_id)
+		;
+		$this->_db->setQuery($query);
+		if(!$this->_db->execute())
 		{
-			$e = new UnexpectedValueException(sprintf('%s::createRoot-store asset', get_class($this)));
+			$e = new UnexpectedValueException(sprintf('%s::createRoot', get_class($this)));
 			$this->setError($e);
 			return false;
 		}
+
 		return $insertId;
 
 	}
@@ -1420,7 +1308,7 @@ class JTablePositionNested extends JTable
 	 * @since   11.1
 	 * @throws  RuntimeException on database error.
 	 */
-	public function rebuild($parent_id = null, $leftId = 0, $level = 0, $path = '', $menu_item_id=0, $screeensize='', $only_page=0)
+	public function rebuild($parent_id = null, $leftId = 0, $level = 0, $path = '', $menu_item_id=0, $screen_size_id=0, $only_page=0)
 	{
 		// If no parent is provided, try to find it.
 		if ($parent_id === null)
@@ -1439,7 +1327,7 @@ class JTablePositionNested extends JTable
 		{
 
 			$query->clear()
-				->select('id, alias')
+				->select('id, alias,screen_size_id')
 				->from('#__position_config')
                 ->where('parent_id = %d')
                 ->where('id <> parent_id')
@@ -1499,9 +1387,11 @@ class JTablePositionNested extends JTable
 		{
 			$query->set('only_page='.(int)$only_page);
 		}
-		if($screeensize!='')
+		if($screen_size_id==0)
 		{
-			$query->set('screensize='.$this->_db->quote($screeensize));
+			$current_screen_size=UtilityHelper::getSelectScreenSize();
+			$screen_size_id=$current_screen_size->id;
+			$query->set('screen_size_id='.(int)$screen_size_id);
 		}
 		$this->_db->setQuery($query)->execute();
 

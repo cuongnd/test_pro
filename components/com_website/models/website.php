@@ -901,7 +901,7 @@ class WebsiteModelWebsite extends JModelAdmin
             $a_list_older_menu_item1 = $list_older_menu_item1 + $a_list_older_menu_item1;
         }
         $query->clear()
-            ->select('position_config.id,position_config.parent_id,position_config.menu_item_id,root_position_id_website_id.website_id')
+            ->select('position_config.id,position_config.parent_id,position_config.menu_item_id,root_position_id_website_id.website_id,position_config.screen_size_id')
             ->from('#__position_config AS position_config')
             ->leftJoin('#__root_position_id_website_id AS root_position_id_website_id ON root_position_id_website_id.position_id=position_config.id')
         ;
@@ -959,6 +959,7 @@ class WebsiteModelWebsite extends JModelAdmin
                 $table_position->copy_from = $position->id;
                 $table_position->menu_item_id = $a_list_older_menu_item1[$position->menu_item_id];
                 $table_position->parent_id = null;
+                $table_position->screen_size_id = $position->screen_size_id;
                 $table_position->website_id = $website_id;
                 $table_position->getDbo()->rebuild_action = 1;
                 $ok = $table_position->parent_store();
@@ -968,6 +969,7 @@ class WebsiteModelWebsite extends JModelAdmin
                 $table_root_position_id_website_id=JTable::getInstance('root_position_id_website_id');
                 $table_root_position_id_website_id->position_id=$table_position->id;
                 $table_root_position_id_website_id->website_id=$website_id;
+                $table_root_position_id_website_id->screen_size_id=$position->screen_size_id;
                 $ok = $table_root_position_id_website_id->store();
                 if (!$ok) {
                     throw new Exception($table_root_position_id_website_id->getError());
@@ -1221,7 +1223,7 @@ class WebsiteModelWebsite extends JModelAdmin
         $menu_model = JModelLegacy::getInstance('uitem','MenusModel');
         JForm::addFormPath(JPATH_ROOT.'/components/com_menus/models/forms');
         $app=JFactory::getApplication();
-
+        $list_update_query=array();
         foreach($list_menu_item_of_website AS $menu_item)
         {
 
@@ -1247,13 +1249,20 @@ class WebsiteModelWebsite extends JModelAdmin
             $params = new JRegistry;
             $params->loadObject($item->params);
             $item->params = $params->toString();
+
             $table_menu->bind($item);
             $table_menu->id=$menu_item->id;
-            $ok = $table_menu->parent_store();
-            if (!$ok) {
-                throw new Exception($table_menu->getError());
-                return false;
-            }
+            $query=$table_menu->getQueryStore();
+            $list_update_query[]=$query;
+
+        }
+        $query=$db->getQuery(true);
+        $query->clear();
+        $query->setQuery(implode(";\r\n",$list_update_query));
+        $ok = $db->execute();
+        if (!$ok) {
+            throw new Exception($db->getErrorMsg());
+            return false;
         }
         //update param module
         $app=JFactory::getApplication();
@@ -1271,7 +1280,7 @@ class WebsiteModelWebsite extends JModelAdmin
                 "type" =>module_helper::ELEMENT_TYPE
             )
         );
-
+        $list_update_query=array();
         foreach($list_module AS $module)
         {
 
@@ -1289,10 +1298,19 @@ class WebsiteModelWebsite extends JModelAdmin
             $item->params = $params->toString();
             $table_module->bind((array)$item);
             $table_module->id=$module->id;
-            $ok=$table_module->store();
-            if (!$ok) {
-                throw new Exception($table_module->getError());
-            }
+
+            $query=$table_module->getQueryStore();
+            $list_update_query[]=$query;
+
+        }
+        $query=$db->getQuery(true);
+        $query->clear();
+        $query->setQuery(implode(";\r\n",$list_update_query));
+        $ok = $db->execute();
+        if (!$ok) {
+
+            throw new Exception($db->getErrorMsg());
+            return false;
         }
         //update params blocks
         //update params component

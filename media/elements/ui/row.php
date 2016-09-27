@@ -30,7 +30,7 @@ class elementRowHelper extends  elementHelper
         ob_start();
         if($enableEditWebsite) {
             ?>
-            <div class="row-content block-item <?php echo ($block->menu_item_id!=$block->active_menu_item_id||$block->is_main_frame&&$block->only_page==0?' main_frame ':'') ?>  show-grid-stack-item <?php echo $setClass ?> <?php echo  $css_class ?> <?php echo  $is_template==1?' is_template ':'' ?>" style="<?php echo ($block->block_level == 0 ? 'display:none;' : '') ?>" data-screensize="<?php echo $block->screensize ?>" data-ordering="<?php echo $block->ordering ?>" data-block-parent-id="<?php echo  $block->parent_id ?>" data-bootstrap-type="<?php echo  $block->type ?>" data-block-id="<?php echo  $block->id ?>" element-type="<?php echo  $block->type ?>">
+            <div class="row-content block-item <?php echo ($block->menu_item_id!=$block->active_menu_item_id||$block->is_main_frame&&$block->only_page==0?' main_frame ':'') ?>  show-grid-stack-item <?php echo $setClass ?> <?php echo  $css_class ?> <?php echo  $is_template==1?' is_template ':'' ?>"  data-screen_size_id="<?php echo $block->screen_size_id ?>" data-ordering="<?php echo $block->ordering ?>" data-block-parent-id="<?php echo  $block->parent_id ?>" data-bootstrap-type="<?php echo  $block->type ?>" data-block-id="<?php echo  $block->id ?>" element-type="<?php echo  $block->type ?>">
                             <?php if($block->menu_item_id==$block->active_menu_item_id){ ?>
                             <div data-block-parent-id="<?php echo  $block->parent_id ?>" data-block-id="<?php echo $block->id ?>" class="item-row">row</div>
                             <span class="drag label label-default <?php echo ($block->block_level == 0 ? ' move-row ' : ' move-sub-row ') ?>" data-block-parent-id="<?php echo $block->parent_id ?>" data-block-id="<?php echo $block->id ?>"><i class="glyphicon glyphicon-move"></i></span>
@@ -38,14 +38,14 @@ class elementRowHelper extends  elementHelper
                             <a href="javascript:void(0)" class="remove label label-danger remove-row" data-block-parent-id="<?php echo $block->parent_id ?>" data-block-id="<?php echo $block->id ?>"><i class="glyphicon-remove glyphicon"></i></a>
                             <a href="javascript:void(0)" class="menu label label-danger menu-list config-block" data-block-parent-id="<?php echo $block->parent_id ?>" data-block-id="<?php echo $block->id ?>"><i class="im-menu2"></i></a>
                             <?php  } ?>
-                            <div class="grid-stack <?php echo $block->menu_item_id!=$block->active_menu_item_id?' disable_grid_resize ':'' ?>  <?php echo ($enableEditWebsite ? ' control-element ' : '') ?>" data-grird-stack-item="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" data-block-id="<?php echo $block->id ?>" data-screensize="<?php echo $block->screensize ?>" cell-height="<?php echo $cell_height ?>" vertical-margin="<?php echo $vertical_margin ?>" amount-of-columns="<?php echo $amount_of_columns ?>">
+                            <div class="grid-stack <?php echo $block->menu_item_id!=$block->active_menu_item_id?' disable_grid_resize ':'' ?>  <?php echo ($enableEditWebsite ? ' control-element ' : '') ?>" data-grird-stack-item="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>" data-block-id="<?php echo $block->id ?>" data-screen_size_id="<?php echo $block->screen_size_id ?>" cell-height="<?php echo $cell_height ?>" vertical-margin="<?php echo $vertical_margin ?>" amount-of-columns="<?php echo $amount_of_columns ?>">
             <?php
 
 
         }else{
 
             ?>
-            <div data-screensize="<?php echo $block->screensize ?>" class=" block-item block-item-<?php echo $block->type ?> <?php echo $setClass ?> <?php echo $block->type ?>  row row-bootstrap form-group  " data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"  data-block-type="<?php echo ($block->position == 'position-component' ? 'block-component' : '') ?>" >
+            <div data-screen_size_id="<?php echo $block->screen_size_id ?>" class=" block-item block-item-<?php echo $block->type ?> <?php echo $setClass ?> <?php echo $block->type ?>  row row-bootstrap form-group  " data-block-id="<?php echo $block->id ?>" data-block-parent-id="<?php echo $block->parent_id ?>"  data-block-type="<?php echo ($block->position == 'position-component' ? 'block-component' : '') ?>" >
                 <?php
         }
         $html.=ob_get_clean();

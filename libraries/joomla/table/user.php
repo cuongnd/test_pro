@@ -281,7 +281,8 @@ class JTableUser extends JTable
         $xid = (int)$this->_db->loadResult();
 
         if ($xid && $xid != (int)$this->id) {
-            $this->setError(JText::_('JLIB_DATABASE_ERROR_EMAIL_INUSE'));
+
+            $this->setError($this->email.":".JText::_('JLIB_DATABASE_ERROR_EMAIL_INUSE'));
 
             return false;
         }

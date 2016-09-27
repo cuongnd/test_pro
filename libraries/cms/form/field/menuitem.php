@@ -23,6 +23,9 @@ require_once realpath(JPATH_ADMINISTRATOR . '/components/com_menus/helpers/menus
  */
 class JFormFieldMenuitem extends JFormFieldGroupedList
 {
+    private static $list_all_menu_item;
+    private static $list_menu_item_id;
+    private static $list_root_menu_item_id;
     /**
      * The form field type.
      *
@@ -212,14 +215,21 @@ class JFormFieldMenuitem extends JFormFieldGroupedList
 
     public function get_new_value_by_old_value($website_id)
     {
+
         if ($this->value) {
             $db = JFactory::getDbo();
             $query = $db->getQuery(true);
             $query->clear();
             $query->select('menu.id,menu.parent_id,menu.copy_from')
                 ->from('#__menu AS menu');
-            $db->setQuery($query);
-            $list_all_menu_item = $db->loadObjectList();
+            $md5_query=md5($query->dump());
+            $list_all_menu_item=static::$list_all_menu_item[$md5_query];
+            if(!$list_all_menu_item)
+            {
+                $db->setQuery($query);
+                $list_all_menu_item = $db->loadObjectList();
+                static::$list_all_menu_item[$md5_query]=$list_all_menu_item;
+            }
 
             $list_menu_item = array();
             // First pass - collect children
@@ -239,8 +249,16 @@ class JFormFieldMenuitem extends JFormFieldGroupedList
                 ->from('#__menu_type_id_menu_id AS menu_type_id_menu_id')
                 ->leftJoin('#__menu_types AS menu_types ON menu_types.id=menu_type_id_menu_id.menu_type_id')
                 ->where('menu_types.website_id=' . (int)$website_id);
-            $db->setQuery($query);
-            $list_root_menu_item_id = $db->loadColumn();
+
+
+            $md5_query=md5($query->dump());
+            $list_root_menu_item_id=static::$list_root_menu_item_id[$md5_query];
+            if(!$list_root_menu_item_id)
+            {
+                $db->setQuery($query);
+                $list_root_menu_item_id = $db->loadColumn();
+                static::$list_root_menu_item_id[$md5_query]=$list_root_menu_item_id;
+            }
 
             $get_menu_item_exclusion_root_of_website = function ($function_call_back, $root_menu_item_id = 0, &$list_menu_item_id_exclusion_root_of_website, $list_menu_item = array(), $level = 0, $max_level = 999) {
                 if ($list_menu_item[$root_menu_item_id]) {
@@ -264,8 +282,18 @@ class JFormFieldMenuitem extends JFormFieldGroupedList
                 ->from('#__menu')
                 ->where('copy_from=' . (int)$this->value)
                 ->where('id IN (' . implode(',', $list_menu_item_id_exclusion_root_of_website) . ')');
-            $db->setQuery($query);
-            $menu_item_id = $db->loadResult();
+
+
+            $md5_query=md5($query->dump());
+
+            $menu_item_id=static::$list_menu_item_id[$md5_query];
+            if(!$list_root_menu_item_id)
+            {
+                $db->setQuery($query);
+                $menu_item_id = $db->loadResult();
+                static::$list_menu_item_id[$md5_query]=$menu_item_id;
+            }
+
             return $menu_item_id;
         } else {
             return $this->value;

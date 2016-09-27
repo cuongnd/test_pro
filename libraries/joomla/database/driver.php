@@ -1022,6 +1022,38 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 
 		return true;
 	}
+	public function getQueryInsertObject($table, &$object, $key = null)
+	{
+		$fields = array();
+		$values = array();
+
+		// Iterate over the object variables to build the query fields and values.
+		foreach (get_object_vars($object) as $k => $v)
+		{
+			// Only process non-null scalars.
+			if (is_array($v) or is_object($v) or $v === null)
+			{
+				continue;
+			}
+
+			// Ignore any internal fields.
+			if ($k[0] == '_')
+			{
+				continue;
+			}
+
+			// Prepare and sanitize the fields and values for the database query.
+			$fields[] = $this->quoteName($k);
+			$values[] = $this->quote($v);
+		}
+
+		// Create the base insert statement.
+		$query = $this->getQuery(true)
+			->insert($this->quoteName($table))
+			->columns($fields)
+			->values(implode(',', $values));
+		return $query->dump();
+	}
 
 	/**
 	 * Method to check whether the installed database version is supported by the database driver
@@ -1867,6 +1899,72 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 		$this->setQuery(sprintf($statement, implode(",", $fields), implode(' AND ', $where)));
 
 		return $this->execute();
+	}
+	public function getQueryUpdateObject($table, &$object, $key, $nulls = false)
+	{
+		$fields = array();
+		$where = array();
+
+		if (is_string($key))
+		{
+			$key = array($key);
+		}
+
+		if (is_object($key))
+		{
+			$key = (array) $key;
+		}
+
+		// Create the base update statement.
+		$statement = 'UPDATE ' . $this->quoteName($table) . ' SET %s WHERE %s';
+
+		// Iterate over the object variables to build the query fields/value pairs.
+		foreach (get_object_vars($object) as $k => $v)
+		{
+			// Only process scalars that are not internal fields.
+			if (is_array($v) or is_object($v) or $k[0] == '_')
+			{
+				continue;
+			}
+
+			// Set the primary key to the WHERE clause instead of a field to update.
+			if (in_array($k, $key))
+			{
+				$where[] = $this->quoteName($k) . '=' . $this->quote($v);
+				continue;
+			}
+
+			// Prepare and sanitize the fields and values for the database query.
+			if ($v === null)
+			{
+				// If the value is null and we want to update nulls then set it.
+				if ($nulls)
+				{
+					$val = 'NULL';
+				}
+				// If the value is null and we do not want to update nulls then ignore this field.
+				else
+				{
+					continue;
+				}
+			}
+			// The field is not null so we prep it for update.
+			else
+			{
+				$val = $this->quote($v);
+			}
+
+			// Add the field to be updated.
+			$fields[] = $this->quoteName($k) . '=' . $val;
+		}
+
+		// We don't have any fields to update.
+		if (empty($fields))
+		{
+			return true;
+		}
+		$query=sprintf($statement, implode(",", $fields), implode(' AND ', $where));
+		return $query;
 	}
 
 	/**

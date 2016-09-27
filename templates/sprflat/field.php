@@ -42,8 +42,8 @@ if ($enableEditWebsite) {
 	$preview = $preview != '' ? $preview : 0;
 	$user = JFactory::getUser();
 	$uri = JFactory::getURI();
-	$listScreenSize1 = UtilityHelper::getListScreenSize();
-	$currentScreenSize = UtilityHelper::getCurrentScreenSizeEditing();
+	$listScreenSize1 = UtilityHelper::get_list_screen_size();
+	$currentScreenSize = UtilityHelper::get_current_screen_size_id_editing();
 	$listScreenSize = array();
 	$listScreenSizeX = array();
 	foreach ($listScreenSize1 as $screenSize) {
@@ -250,7 +250,7 @@ if ($enableEditWebsite) {
 } else {
 
 	$this->listPositions = UtilityHelper::getListPositions();
-	$listScreenSize1 = UtilityHelper::getListScreenSize();
+	$listScreenSize1 = UtilityHelper::get_list_screen_size();
 
 	$listScreenSizeX = array();
 	foreach ($listScreenSize1 as $screenSize) {

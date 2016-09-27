@@ -1130,7 +1130,38 @@ abstract class JTable extends JObject implements JObservableInterface
 
 		return true;
 	}
+    public function getQueryStore($updateNulls=false){
+		$k = $this->_tbl_keys;
 
+		// Implement JObservableInterface: Pre-processing by observers
+		$this->_observers->update('onBeforeStore', array($updateNulls, $k));
+
+		$currentAssetId = 0;
+
+		if (!empty($this->asset_id))
+		{
+			$currentAssetId = $this->asset_id;
+		}
+
+		// The asset id field is managed privately by this class.
+		if ($this->_trackAssets)
+		{
+			unset($this->asset_id);
+		}
+
+		// If a primary key exists update the object, otherwise insert it.
+		if ($this->hasPrimaryKey())
+		{
+			$query = $this->_db->getQueryUpdateObject($this->_tbl, $this, $this->_tbl_keys, $updateNulls);
+		}
+		else
+		{
+
+			$query = $this->_db->getQueryInsertObject($this->_tbl, $this, $this->_tbl_keys[0]);
+		}
+		return $query;
+
+	}
 	/**
 	 * Validate that the primary key has been set.
 	 *

@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
                 dataPost = {
                     enable_load_component:1,
                     tmpl: 'contentwebsite',
-                    screenSize: screenSize,
+                    screenSize: screen_size_id,
                     menuItemActiveId: menuItemActiveId,
                     rebuid:0
                 };
@@ -311,6 +311,7 @@ jQuery(document).ready(function ($) {
 
         },
         rebuild_root_block:function(){
+            var screen_size_id=$('select[name="screen_size_id"]').val();
             if (confirm('Are you sure you want rebuid root block?')) {
                 $.ajax({
                     type: "GET",
@@ -321,7 +322,7 @@ jQuery(document).ready(function ($) {
                             enable_load_component:1,
                             option: 'com_utility',
                             task: 'utility.ajax_rebuild_block',
-                            screenSize: screenSize,
+                            screen_size_id: screen_size_id,
                             menu_item_active_id: menuItemActiveId
                         };
                         return dataPost;
@@ -1166,19 +1167,19 @@ jQuery(document).ready(function ($) {
 
     //createGridStack();
     function createGridStack() {
-        screenSize = $('select[name="smart_phone"] option:selected').val();
-        screensize = screenSize.toLowerCase();
-        array_data_screensizeSmartPhone = screensize.split("x");
-        screenAvail = array_data_screensizeSmartPhone[0];
+        screen_size_id = $('select[name="screen_size_id"] option:selected').val();
+        screen_size_id = screen_size_id.toLowerCase();
+        array_data_screen_size_idSmartPhone = screen_size_id.split("x");
+        screenAvail = array_data_screen_size_idSmartPhone[0];
         $('.grid-stack').each(function () {
             data_grird_stack_item = 'grid-stack-item_' + $(this).attr('data-grird-stack-item');
             $(this).find('.show-grid-stack-item').removeClass(data_grird_stack_item).hide();
             $(this).find('.show-grid-stack-item').each(function () {
 
-                data_screensize = $(this).attr('data-screensize');
-                data_screensize = data_screensize.toLowerCase();
-                array_data_screensize = data_screensize.split("x");
-                nowScreenSizeX = array_data_screensize[0];
+                data_screen_size_id = $(this).attr('data-screen_size_id');
+                data_screen_size_id = data_screen_size_id.toLowerCase();
+                array_data_screen_size_id = data_screen_size_id.split("x");
+                nowScreenSizeX = array_data_screen_size_id[0];
                 if (nowScreenSizeX == screenAvail) {
                     $(this).addClass(data_grird_stack_item).show();
                     /* data_position=$(this).attr('data-position');
@@ -1196,10 +1197,10 @@ jQuery(document).ready(function ($) {
         });
         $('.row-content.show-grid-stack-item').hide();
         $('.row-content.show-grid-stack-item').each(function () {
-            data_screensize = $(this).attr('data-screensize');
-            data_screensize = data_screensize.toLowerCase();
-            array_data_screensize = data_screensize.split("x");
-            nowScreenSizeX = array_data_screensize[0];
+            data_screen_size_id = $(this).attr('data-screen_size_id');
+            data_screen_size_id = data_screen_size_id.toLowerCase();
+            array_data_screen_size_id = data_screen_size_id.split("x");
+            nowScreenSizeX = array_data_screen_size_id[0];
             if (nowScreenSizeX == screenAvail) {
                 $(this).show();
             }
@@ -1219,7 +1220,7 @@ jQuery(document).ready(function ($) {
 
          var el=$('.module-item-template .grid-stack-item').clone();
          el.attr('data-position','component-position');
-         el.attr('data-screensize',screenSize);
+         el.attr('data-screen_size_id',screenSize);
          el.addClass('show-grid-stack-item');
          el.find('.position-content').remove();
          $(".grid-stack-item-content .component-content.has-content").appendTo(el.find('.grid-stack-item-content'));
@@ -1236,22 +1237,22 @@ jQuery(document).ready(function ($) {
             return;
         }
         ;
-        imageLoading = $('<img width="100%" class="image-loading"  alt="loading" src="' + this_host + '/templates/sprflat/assets/img/svg/loading-bubbles.svg">');
-        item_row = self.closest('.row-content');
-        blockId = item_row.attr('data-block-id');
-        parentBlockId = item_row.attr('data-block-parent-id');
+        var imageLoading = $('<img width="100%" class="image-loading"  alt="loading" src="' + this_host + '/templates/sprflat/assets/img/svg/loading-bubbles.svg">');
+        var item_row = self.closest('.row-content');
+        var blockId = item_row.attr('data-block-id');
+        var parentBlockId = item_row.attr('data-block-parent-id');
         var new_column = $('<div class="grid-stack-item  show-grid-stack-item" ></div>');
         new_column.prepend(imageLoading);
         new_column.attr('data-position', 'module-position');
-        //el.attr('data-screensize',screenSize);
+        //el.attr('data-screen_size_id',screenSize);
         new_column.addClass('show-grid-stack-item');
         new_column.find('.position-content').empty();
         //thisSubGrid = item_row.find('.grid-stack:first').data('gridstack');
-        thisSubGrid = item_row.find('.grid-stack[data-block-id="' + blockId + '"]').data('gridstack');
+        var thisSubGrid = item_row.find('.grid-stack[data-block-id="' + blockId + '"]').data('gridstack');
 
         if (typeof thisSubGrid == 'undefined') {
             optionsGridIndex.item_class = 'grid-stack-item_' + blockId;
-            grid_stack = $('<div class="grid-stack" data-block-parent-id="' + parentBlockId + '"  data-block-id="' + blockId + '" data-grird-stack-item="' + blockId + '" data-screensize="' + currentScreenSizeEditing + '"></div>');
+            grid_stack = $('<div class="grid-stack" data-block-parent-id="' + parentBlockId + '"  data-block-id="' + blockId + '" data-grird-stack-item="' + blockId + '" data-screen_size_id="' + current_screen_size_id_editing + '"></div>');
             optionsGridIndex.handle = '.move-column[data-block-parent-id="' + blockId + '"]';
             grid_stack.gridstack(optionsGridIndex);
             grid_stack.appendTo(item_row);
@@ -1280,6 +1281,7 @@ jQuery(document).ready(function ($) {
         childrenColumnHeight = new_column.attr('data-gs-height');
         createDroppable(new_column.find('.grid-stack-item-content'));
         parentRowId = item_row.attr('data-block-id');
+        var screen_size_id = $('select[name="screen_size_id"] option:selected').val();
         ajaxInsertColumn = $.ajax({
             type: "GET",
             url: this_host + '/index.php',
@@ -1295,7 +1297,7 @@ jQuery(document).ready(function ($) {
                     childrenColumnY: childrenColumnY,
                     childrenColumnWidth: childrenColumnWidth,
                     childrenColumnHeight: childrenColumnHeight,
-                    screenSize: screenSize,
+                    screenSize: screen_size_id,
                     menuItemActiveId: menuItemActiveId
 
                 };
@@ -1413,7 +1415,7 @@ jQuery(document).ready(function ($) {
         handle: ".move-row",
         items: "> .row-content",
         stop: function (event, ui) {
-            screenSize = $('select[name="smart_phone"] option:selected').val();
+            var screen_size_id = $('select[name="screen_size_id"] option:selected').val();
             //screensize = screenSize.toLowerCase();
             listRow = {};
             $('.main-container .row-content.show-grid-stack-item:visible').each(function (index) {
@@ -1465,14 +1467,14 @@ jQuery(document).ready(function ($) {
             handle: '.move-sub-row[data-block-parent-id="' + blockId + '"]',
             items: '.row-content[data-block-parent-id="' + blockId + '"]',
             stop: function (event, ui) {
-                screenSize = $('select[name="smart_phone"] option:selected').val();
+                screen_size_id = $('select[name="screen_size_id"] option:selected').val();
                 //screensize = screenSize.toLowerCase();
                 listRow = {};
                 $('.position-content[data-block-id="' + ui.item.attr('data-block-parent-id') + '"] .row-content.show-grid-stack-item:visible').each(function (index) {
 
                     listRow[$(this).attr('data-block-id')] = {
                         ordering: index,
-                        screenSize: screenSize
+                        screenSize: screen_size_id
                     }
 
                 });
@@ -1522,14 +1524,14 @@ jQuery(document).ready(function ($) {
             items: '.module-content[data-block-id="' + blockId + '"]',
             stop: function (event, ui) {
                 blockColumnId = ui.item.attr("data-block-id");
-                screenSize = $('select[name="smart_phone"] option:selected').val();
+                screen_size_id = $('select[name="screen_size_id"] option:selected').val();
                 //screensize = screenSize.toLowerCase();
                 listModule = {};
                 $('.position-content[data-block-id="' + blockColumnId + '"] .module-content[data-block-id="' + blockColumnId + '"]').each(function (index) {
 
                     listModule[$(this).attr('data-module-id')] = {
                         ordering: index,
-                        screenSize: screenSize
+                        screenSize: screen_size_id
                     }
 
                 });
@@ -1630,14 +1632,14 @@ jQuery(document).ready(function ($) {
             items: '.control-element[data-block-parent-id="' + blockId + '"]',
             stop: function (event, ui) {
                 blockColumnId = ui.item.attr("data-block-parent-id");
-                screenSize = $('select[name="smart_phone"] option:selected').val();
+                screen_size_id = $('select[name="screen_size_id"] option:selected').val();
                 //screensize = screenSize.toLowerCase();
                 listElement = {};
                 $('.position-content[data-block-id="' + blockColumnId + '"] .control-element[data-block-parent-id="' + blockColumnId + '"]').each(function (index) {
 
                     listElement[$(this).attr('data-block-id')] = {
                         ordering: index,
-                        screenSize: screenSize
+                        screenSize: screen_size_id
                     }
 
                 });
@@ -1753,18 +1755,18 @@ jQuery(document).ready(function ($) {
             return;
         }
         ;
-        parentColumn = self.closest('.grid-stack-item');
+        var parentColumn = self.closest('.grid-stack-item');
 
         if (!parentColumn.hasClass('grid-stack-item')) {
             parentColumn = self.closest('.main-container');
         }
-        element_type=self.attr('element-type')
+        var element_type=self.attr('element-type')
         if(typeof element_type!=="undefined" && element_type!='')
         {
             parentColumn= self.closest('.control-element');
         }
-        blockType = parentColumn.attr('data-position');
-        parentBlockId = parentColumn.attr('data-block-id');
+        var blockType = parentColumn.attr('data-position');
+        var parentBlockId = parentColumn.attr('data-block-id');
         if (blockType == 'position-component') {
             alert('you can not add row in block main content');
             return;
@@ -1780,26 +1782,25 @@ jQuery(document).ready(function ($) {
         }
         listBlock = {};
         updateChangeSizeGridParent(self);
-        screenSize = $('select[name="smart_phone"] option:selected').val();
-        screensize = screenSize.toLowerCase();
+        var screen_size_id = $('select[name="screen_size_id"] option:selected').val();
 
-        classMove = '';
+        var classMove = '';
         if (parentColumn.hasClass('grid-stack-item')) {
             classMove = ' move-sub-row ';
         } else {
             classMove = ' move-row ';
         }
 
-        newRow = $('<div class="row-content block-item show-grid-stack-item" data-screensize="' + screensize + '" data-block-parent-id="' + parentBlockId + '" data-bootstrap-type="row">' +
+        var newRow = $('<div class="row-content block-item show-grid-stack-item" data-screen_size_id="' + screen_size_id + '" data-block-parent-id="' + parentBlockId + '" data-bootstrap-type="row">' +
         '<div class="item-row bootstrap-row" data-block-parent-id="' + parentBlockId + '">row</div>' +
         '<span class="drag label bottom-control-row  label-default ' + classMove + ' " data-block-parent-id="' + parentBlockId + '"><i class="glyphicon glyphicon-move"></i></span>' +
         '<a href="javascript:void(0)" class="add label label-danger bottom-control-row add-column-in-row" data-block-parent-id="' + parentBlockId + '"><i class="glyphicon glyphicon-plus"></i></a>' +
         '<a href="javascript:void(0)" class="remove bottom-control-row label label-danger remove-row" data-block-parent-id="' + parentBlockId + '"><i class="glyphicon-remove glyphicon"></i></a>' +
         ' <a href="javascript:void(0)" class="menu label bottom-control-row label-danger menu-list config-block" data-block-parent-id="' + parentBlockId + '"><i class="im-menu2"></i></a>' +
         '</div>');
-        imageLoading = $('<img width="100%" class="image-loading"  alt="loading" src="' + this_host + '/templates/sprflat/assets/img/svg/loading-bubbles.svg">');
+        var imageLoading = $('<img width="100%" class="image-loading"  alt="loading" src="' + this_host + '/templates/sprflat/assets/img/svg/loading-bubbles.svg">');
         newRow.prepend(imageLoading);
-        grid_stack_item_content = self.closest('.grid-stack-item-content');
+        var grid_stack_item_content = self.closest('.grid-stack-item-content');
         if (grid_stack_item_content.length > 0) {
             grid_stack_item_content.find('.position-content:first').append(newRow);
         }
@@ -1814,7 +1815,7 @@ jQuery(document).ready(function ($) {
         } else {
             parentColumn.find('.position-content[data-block-id="' + parentColumn.attr("data-block-id") + '"]').sortable('refresh');
         }
-        parentColumnId = parentColumn.attr('data-block-id');
+        var parentColumnId = parentColumn.attr('data-block-id');
         if (typeof parentColumnId == 'undefined') {
             $(".main-container").sortable('refresh');
             parentColumnId = 0;
@@ -1830,7 +1831,7 @@ jQuery(document).ready(function ($) {
                     task: 'utility.aJaxInsertRow',
                     parentColumnId: parentColumnId,
                     type: 'row',
-                    screenSize: screenSize,
+                    screen_size_id: screen_size_id,
                     listBlock: listBlock,
                     menuItemActiveId: menuItemActiveId
 
@@ -2087,13 +2088,13 @@ jQuery(document).ready(function ($) {
             type: "GET",
             url: this_host + '/index.php',
             data: (function () {
-                screenSize = $('select[name="smart_phone"] option:selected').val();
+                screen_size_id = $('select[name="screen_size_id"] option:selected').val();
                 dataPost = {
                     enable_load_component:1,
                     option: 'com_modules',
                     task: 'module.aJaxInsertModule',
                     module_id: module_id,
-                    screenSize: screenSize,
+                    screenSize: screen_size_id,
                     position: position
 
                 };
@@ -2135,13 +2136,13 @@ jQuery(document).ready(function ($) {
             type: "GET",
             url: this_host + '/index.php',
             data: (function () {
-                screenSize = $('select[name="smart_phone"] option:selected').val();
+                screen_size_id = $('select[name="screen_size_id"] option:selected').val();
                 dataPost = {
                     enable_load_component:1,
                     option: 'com_phpmyadmin',
                     task: 'datasource.aJaxInsertDataSource',
                     addOnType: addOnType,
-                    screenSize: screenSize,
+                    screenSize: screen_size_id,
                     position: position
 
                 };
@@ -2181,7 +2182,7 @@ jQuery(document).ready(function ($) {
             type: "GET",
             url: this_host + '/index.php',
             data: (function () {
-                screenSize = $('select[name="smart_phone"] option:selected').val();
+                screen_size_id = $('select[name="screen_size_id"] option:selected').val();
                 dataPost = {
                     enable_load_component:1,
                     option: 'com_menus',
@@ -2189,7 +2190,7 @@ jQuery(document).ready(function ($) {
                     item_layout: item_layout,
                     item_view: item_view,
                     item_component: item_component,
-                    screenSize: screenSize,
+                    screenSize: screen_size_id,
                     menuItemActiveId: menuItemActiveId,
                     tmpl: "contentcomponent",
                     block_id: block_id
@@ -2235,6 +2236,7 @@ jQuery(document).ready(function ($) {
             $(".main-container").sortable('refresh');
             parentColumnId = 0;
         }
+        var screen_size_id = $('select[name="screen_size_id"] option:selected').val();
         ajaxInsertElement = $.ajax({
             type: "GET",
             url: this_host + '/index.php',
@@ -2245,7 +2247,7 @@ jQuery(document).ready(function ($) {
                     option: 'com_utility',
                     task: 'utility.aJaxInsertElement',
                     parentColumnId: parentColumnId,
-                    screenSize: screenSize,
+                    screen_size_id: screen_size_id,
                     addSubRow: 0,
                     ajaxgetcontent: 1,
                     menuItemActiveId: menuItemActiveId,
@@ -2398,8 +2400,8 @@ jQuery(document).ready(function ($) {
         var el = $('.module-item-template .grid-stack-item').clone();
         position = listItemStack[0];
         el.attr('data-position', position);
-        screenSize = $('select[name="smart_phone"] option:selected').val();
-        el.attr('data-screensize', screenSize);
+        screen_size_id = $('select[name="screen_size_id"] option:selected').val();
+        el.attr('data-screen_size_id', screen_size_id);
 
         grid.add_widget(el, 0, 0, 3, 2, true);
         $('.tool-edit-style').editstyletool();
@@ -2679,11 +2681,8 @@ jQuery(document).ready(function ($) {
 
     var heightScreenSize = 0;
     $('#full_height').on('switchChange.bootstrapSwitch', function (event, state) {
-        screenSize = $('select[name="smart_phone"] option:selected').val();
-        screenSize = screenSize.toString();
-        screenSize = screenSize.toLowerCase();
-        screenSize = screenSize.split('x');
-        heightScreenSize = screenSize[1];
+        var screen_size_id = $('select[name="screen_size_id"] option:selected').val();
+        var screenSize = get_screen_size_by_screen_size_id(screen_size_id);
 
         web_design = $.ajax({
             type: "GET",
@@ -2717,11 +2716,12 @@ jQuery(document).ready(function ($) {
                 if (state) {
                     $('.screen-layout').css({
                         "height": "auto",
+                        "min-height":screen_size_id.screen_y,
                         "overflow-y": "hidden"
                     });
                 } else {
                     $('.screen-layout').css({
-                        "height": heightScreenSize,
+                        "height": screen_size_id.screen_y,
                         "overflow-y": "scroll"
                     });
                 }
@@ -2809,34 +2809,17 @@ jQuery(document).ready(function ($) {
     showRowAvaible();
     function showRowAvaible() {
 
-        screenSize = $('select[name="smart_phone"] option:selected').val();
-        currentScreenSizeEditing = screenSize;
-        screensize = screenSize.toLowerCase();
-        array_data_screensizeSmartPhone = screensize.split("x");
-        screenAvail = array_data_screensizeSmartPhone[0];
-        $('.main-container>.row-content').each(function () {
-            data_screensize = $(this).attr('data-screensize');
-            data_screensize = data_screensize.toLowerCase();
-            array_data_screensize = data_screensize.split("x");
-            nowScreenSizeX = array_data_screensize[0];
-            //console.log('nowScreenSizeX:'+nowScreenSizeX+'-screenAvail:'+screenAvail);
-            if (nowScreenSizeX != screenAvail) {
-                $(this).hide();
-            } else {
-                $(this).show();
-            }
-
-        });
-        console.log(currentScreenSizeEditing);
+        var screen_size_id = $('select[name="screen_size_id"] option:selected').val();
+        $('.main-container>.row-content[data-screen_size_id!="'+screen_size_id+'"]').hide();
         if (thisGridstackSite == undefined) {
-            makeGridStask(currentScreenSizeEditing)
+            makeGridStask(current_screen_size_id_editing)
 
         }
 
     }
 
-    function makeGridStask(currentScreenSizeEditing) {
-        thisGridstackSite = $('.main-container:eq(0) .row-content[data-screensize="' + currentScreenSizeEditing + '"]').find('.grid-stack').each(function () {
+    function makeGridStask(current_screen_size_id_editing) {
+        thisGridstackSite = $('.main-container:eq(0) .row-content[data-screen_size_id="' + current_screen_size_id_editing + '"]').find('.grid-stack').each(function () {
             blockId = $(this).attr('data-block-id');
             cell_height = $(this).attr('cell-height');
             cell_height = cell_height ? cell_height : 80;
@@ -2872,7 +2855,7 @@ jQuery(document).ready(function ($) {
                     enable_load_component:1,
                     option: 'com_utility',
                     task: 'utility.aJaxChangeScreenSize',
-                    screenSize: screenSize
+                    screen_size_id: selected
 
                 };
                 return dataPost;
@@ -2891,47 +2874,43 @@ jQuery(document).ready(function ($) {
 
 
                 });
+                location.reload();
 
 
             }
         });
     }
 
-    changeBackground(currentScreenSizeEditing);
-    function changeBackground(selected) {
-        screenSize = selected;
-        screenSize = screenSize.toString();
-        selected = selected.toLowerCase();
-        selected = selected.split('x');
+    changeBackground(current_screen_size_id_editing);
+    function get_screen_size_by_screen_size_id(screen_size_id) {
+        for(var i=0;i<list_screen_size.length;i++){
+            var screen_size=list_screen_size[i];
+            if(screen_size.id==screen_size_id)
+            {
+                return screen_size;
+            }
+        }
+    }
 
+    function changeBackground(screen_size_id) {
+        var screen_size=get_screen_size_by_screen_size_id(screen_size_id);
         if(!$('#full_height').bootstrapSwitch('state'))
         {
             $('.screen-layout').css({
-                "width": selected[0].toString() + 'px',
-                "height": selected[1].toString() + 'px',
+                "width": screen_size.screen_x + 'px',
+                "height": screen_size.screen_y+ 'px',
                 "overflow-y": "scroll",
                 "overflow-x": "hidden"
             });
 
         }
-        /*$(".screen-layout").mCustomScrollbar({
-         theme:"light",
-         set_width:false,
-         mouseWheelPixels: 100,
-         scrollinertia:"easeOutCirc"
-
-         });*/
-
-        width = parseInt(selected[0]) + parseInt(listScreenSize[screenSize].width);
-        height = parseInt(selected[1]) + parseInt(listScreenSize[screenSize].height);
+        var image_screen_size=screen_size.screen_x+"x"+screen_size.screen_y;
         $('.iframelive').removeClass(screenClass);
-        screenClass = "screen-" + screenSize.toString();
+        var screenClass = "screen-" + screen_size.screen_x+"x"+screen_size.screen_y;
         $('.iframelive').addClass(screenClass);
-
         $('.iframelive').css({
-            "background": "url(" + url_root + "/images/stories/" + screenSize + ".png) no-repeat center 0",
+            "background": "url(" + url_root + "/images/stories/" + image_screen_size + ".png) no-repeat center 0",
             "margin": "0 auto",
-            "width": width.toString() + 'px'
             //,"height":height.toString()+'px'
 
 

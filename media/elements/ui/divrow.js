@@ -842,14 +842,14 @@ jQuery(document).ready(function($){
                      //start: element_ui_div_row.on_start_moving,
                      stop:function(event, ui){
                          blockRowId=ui.item.attr("data-block-parent-id");
-                         screenSize = $('select[name="smart_phone"] option:selected').val();
+                         screen_size_id = $('select[name="smart_phone"] option:selected').val();
                          //screensize = screenSize.toLowerCase();
                          listElement={};
                          $('.div-row[data-block-id="'+blockRowId+'"]').find('>.div-row[data-block-parent-id="'+blockRowId+'"]').each(function(index){
 
                              listElement[$(this).attr('data-block-id')]={
                                  ordering:index,
-                                 screenSize:screenSize
+                                 screenSize:screen_size_id
                              }
 
                          });

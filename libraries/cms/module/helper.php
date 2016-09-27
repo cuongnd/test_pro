@@ -431,7 +431,7 @@ abstract class JModuleHelper
 			$enableEditWebsite=UtilityHelper::getEnableEditWebsite();
 			if($enableEditWebsite)
 			{
-				$screenSize=UtilityHelper::getCurrentScreenSizeEditing();
+				$screenSize=UtilityHelper::get_current_screen_size_id_editing();
 				$screenSize=UtilityHelper::getSelectScreenSize($screenSize);
 
 			}else

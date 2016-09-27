@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="usb-android-18">
-    <CLASSES>
-      <root url="jar://F:/sdk/sdk/add-ons/addon-google_apis-google-18/libs/usb.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

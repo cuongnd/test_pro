@@ -67,18 +67,10 @@ if ($enableEditWebsite) {
     $preview = $preview != '' ? $preview : 0;
     $user = JFactory::getUser();
     $uri = JFactory::getURI();
-    $listScreenSize1 = UtilityHelper::getListScreenSize();
-    $currentScreenSize = UtilityHelper::getCurrentScreenSizeEditing();
-    $listScreenSize = array();
-    $listScreenSizeX = array();
-    foreach ($listScreenSize1 as $screenSize) {
-        $screenSize1 = explode('x', strtolower($screenSize));
-        $item = new stdClass();
-        $item->width = $screenSize1[0];
-        $item->height = $screenSize1[1];
-        $listScreenSize[$screenSize] = $item;
-        $listScreenSizeX[] = $screenSize1[0];
-    }
+    $list_screen_size = UtilityHelper::get_list_screen_size($menuItemActiveId);
+    $current_screen_size_id = UtilityHelper::get_current_screen_size_id_editing();
+
+    $state_current_screen_size_menu_item = (object)UtilityHelper::get_state_current_screen_size_menu_item($current_screen_size_id,$menuItemActiveId);
     $this->listPositions = UtilityHelper::getListPositions();
     $host = $uri->toString(array('scheme', 'host', 'port'));
     $scriptId = "script_index_" . JUserHelper::genRandomPassword();
@@ -95,9 +87,8 @@ if ($enableEditWebsite) {
         jQuery.noConflict();
         var listPositions =<?php echo json_encode($this->listPositions) ?>;
         var menuItemActiveId =<?php echo $menuItemActiveId?>;
-        var currentScreenSizeEditing = "<?php echo $currentScreenSize ?>";
-        var listScreenSizeX =<?php echo json_encode($listScreenSizeX) ?>;
-        var listScreenSize =<?php echo json_encode($listScreenSize) ?>;
+        var current_screen_size_id_editing = "<?php echo $current_screen_size_id ?>";
+        var list_screen_size =<?php echo json_encode($list_screen_size) ?>;
         var currentLink = "<?php echo $uri->toString() ?>";
         var enableEditWebsite = "<?php echo ($enableEditWebsite ? $enableEditWebsite : 0) ?>";
         var optionsGridIndex = {
@@ -112,6 +103,13 @@ if ($enableEditWebsite) {
             $('body').sprFlat({
                 show_popup_control:<?php echo json_encode($show_popup_control) ?>,
                 menu_item_active:<?php echo json_encode($menuItemActive) ?>
+            });
+            jQuery(document).ready(function($){
+                $('.vtv_design').vtv_design({
+                    menu_item_active_id:<?php echo $menuItemActiveId ?>
+                });
+
+                var vtv_design=$('.vtv_design').data('vtv_design');
             });
         });
     </script>
@@ -130,6 +128,7 @@ JHtml::_('jquery.framework');
 //JHtml::_('jquery.ui', array('core','widget', 'sortable'));
 if (!$ajaxGetContent) {
     //$doc->addScript(JUri::root() . '/media/system/js/firebug-lite/build/firebug-lite-debug.js');
+    $doc->addScript(JUri::root() . '/media/system/js/jquery.base64.js');
     $doc->addScript(JUri::root() . '/media/system/js/contextmenueditwebsite.js');
     $doc->addScript(JUri::root() . '/media/system/js/jquery-cookie-master/src/jquery.cookie.js');
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/core.js');
@@ -142,6 +141,7 @@ if (!$ajaxGetContent) {
     $doc->addScript(JUri::root() . "/media/system/js/jquery.utility.js");
 
     $doc->addScript(JUri::root() . '/media/system/js/popline-master/scripts/jquery.popline.js');
+    $doc->addScript(JUri::root() . '/media/system/js/jquery.base64.js');
 
     $doc->addStyleSheet(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/themes/base/all.css');
 
@@ -235,6 +235,7 @@ if (!$ajaxGetContent) {
     $doc->addScript(JUri::root() . '/media/system/js/bootstrap-notify-master/bootstrap-notify.js');
     //$doc->addScript(JUri::root().'/media/system/js/ion.rangeSlider-1.9.1/js/ion-rangeSlider/ion.rangeSlider.js');
     $doc->addScript(JUri::root() . '/templates/sprflat/js/design.js');
+    $doc->addScript(JUri::root() . '/templates/sprflat/js/jquery.design.js');
     $doc->addScript(JUri::root() . '/media/system/js/joyride-master/jquery.joyride-2.1.js');
     $doc->addStyleSheet(JUri::root() . '/media/system/js/joyride-master/joyride-2.1.css');
     $doc->addScript(JUri::root() . '/media/Kendo_UI_Professional_Q2_2015/src/build/less-js/dist/less-1.5.0.js');
@@ -249,7 +250,7 @@ if (!$ajaxGetContent) {
     $doc->addLessStyleSheet(JUri::root() . '/media/system/js/jquery-neon-border/less/jquery.neon_border.less');
 
 
-    $doc->addLessStyleSheet(JUri::root() . "/media/system/js/gridstack/less/gridstack.less");
+    $doc->addLessStyleSheetTest(JUri::root() . "/media/system/js/gridstack/less/gridstack.less");
     //end css for gridstack
 
     $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/assets/less/main.less');
@@ -271,20 +272,11 @@ if (!$ajaxGetContent) {
 } else {
 
 $this->listPositions = UtilityHelper::getListPositions();
-$listScreenSize1 = UtilityHelper::getListScreenSize();
-
-$listScreenSizeX = array();
-foreach ($listScreenSize1 as $screenSize) {
-    $screenSize1 = explode('x', strtolower($screenSize));
-
-    $listScreenSizeX[] = $screenSize1[0];
-}
-
+$list_screen_size = UtilityHelper::get_list_screen_size_enable_by_menu_item_id($menuItemActiveId);
+$list_screen_size=array_reverse($list_screen_size);
 $uri = JFactory::getURI();
-$currentScreenSize = UtilityHelper::getScreenSize();
-$this->currentScreenSize = $currentScreenSize;
-
-
+$current_screen_size_id = UtilityHelper::getSelectScreenSize()->id;
+$this->currentScreenSize = $current_screen_size_id;
 $scriptId = "script_index_" . JUserHelper::genRandomPassword();
 ob_start();
 ?>
@@ -299,9 +291,8 @@ ob_start();
         var listPositions =<?php echo json_encode($this->listPositions) ?>;
         var menuItemActiveId =<?php echo $menuItemActiveId?>;
 
-        var currentScreenSize = "<?php echo $currentScreenSize ?>";
-        var listScreenSizeX =<?php echo json_encode($listScreenSizeX) ?>;
-        var listScreenSize =<?php echo json_encode($listScreenSize) ?>;
+        var current_screen_size_id = "<?php echo $current_screen_size_id ?>";
+        var listScreenSize =<?php echo json_encode($list_screen_size) ?>;
         var currentLink = "<?php echo $uri->toString() ?>";
         var enableEditWebsite = "<?php echo ($enableEditWebsite ? $enableEditWebsite : 0) ?>";
         var optionsGridIndex = {
@@ -312,6 +303,11 @@ ob_start();
 
         };
         var source_less = "<?php echo str_replace('.less','.css',$websiteTable->source_less) ?>";
+
+
+
+
+
     </script>
     <?php
     $script = ob_get_clean();
@@ -325,7 +321,6 @@ ob_start();
 
     JHtml::_('jquery.framework');
     JHtml::_('bootstrap.framework');
-    JHtml::_('formbehavior.chosen', 'select');
     //$doc->addScript(JUri::root() . '/media/system/js/firebug-lite/build/firebug-lite-debug.js');
     $doc->addScript(JUri::root() . '/media/system/js/jquery-cookie-master/src/jquery.cookie.js');
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/core.js');
@@ -334,7 +329,7 @@ ob_start();
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/position.js');
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/button.js');
     $doc->addScript(JUri::root() . '/media/system/js/bootstrap-notify-master/bootstrap-notify.js');
-
+    $doc->addScript(JUri::root() . '/media/system/js/jquery.base64.js');
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/draggable.js');
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/resizable.js');
     $doc->addScript(JUri::root() . '/media/jui_front_end/jquery-ui-1.11.1/ui/dialog.js');
@@ -344,7 +339,6 @@ ob_start();
     $doc->addStyleSheet(JUri::root().'/media/jui_front_end/css/jquery.searchtools.css');
     $doc->addStyleSheet(JUri::root() . '/media/system/js/animate.css-master/animate.css');
     require_once JPATH_ROOT . '/components/com_website/helpers/website.php';
-
     JHtml::_('jquery.framework');
     JHtml::_('jquery.ui', array('core', 'sortable'));
     $doc->addLessStyleSheet(JUri::root() . "/templates/$this->template/less/custom.less");
@@ -356,15 +350,10 @@ ob_start();
     $doc->addScript(JUri::root() . '/media/system/js/jquery.utility.js');
     $doc->addScript(JUri::root() . '/media/system/js/jquery.appear-master/jquery.appear.js');
     $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jRespond.min.js');
-    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/quicksearch/jquery.quicksearch.js');
-    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/misc/countTo/jquery.countTo.js');
-    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/forms/icheck/jquery.icheck.js');
-    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.min.js');
-    $doc->addScript(JUri::root() . '/templates/sprflat/assets/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js');
 
-    $doc->addScript(JUri::root() . '/templates/sprflat/assets/js/jquery.sprFlatFrontEnd.js');
     $doc->addScript(JUri::root() . '/media/system/js/purl-master/purl-master/purl.js');
-    $doc->addScript(JUri::root() . '/media/system/js/URI.js-gh-pages/src/URI.js');
+    $doc->addScript(JUri::root() . '/media/system/js/uri/src/URI.js');
+    $doc->addScript(JUri::root() . '/media/system/js/uri/src/jquery.URI.js');
     $doc->addScriptNotCompile(JUri::root() . '/templates/sprflat/js/javascriptdisableedit.js');
 
     $doc->addLessStyleSheet(JUri::root() . '/templates/sprflat/less/disableedit.less');
@@ -398,7 +387,7 @@ if ($ajaxGetContent) {
     <META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
     <jdoc:include type="head"/>
 </head>
-<body class="">
+<body class="vtv_design">
 
 <?php if ($enableEditWebsite) {
 
@@ -545,6 +534,7 @@ if ($ajaxGetContent) {
                                                                                         href="javascript:void(0)"><?php echo $menuItemActive->title ?>(<?php echo $menuItemActive->menu_type_title ?>)</a>(<a
                                     class="page-properties" target="_blank"
                                     href="<?php echo str_replace('admin.', '', JUri::root()) ?>?Itemid=<?php echo $menuItemActive->id ?>"><?php echo $menuItemActive->title ?></a>)
+                                <input type="checkbox" <?php echo $state_current_screen_size_menu_item->publish==1?"checked":"" ?>   class="screen_size_publish">
                             </h4>
                         </div>
                         <div class="scroll-div-screen-size">
@@ -671,7 +661,7 @@ ob_start();
             console.log('javascriptdisableedit');
             $('body').javascriptdisableedit({
                 menuItemActiveId:<?php echo $menuItemActiveId?>,
-                currentScreenSize: "<?php echo $currentScreenSize ?>",
+                currentScreenSize: "<?php echo $current_screen_size_id ?>",
                 currentLink: "<?php echo $uri->toString() ?>",
                 listPositionsSetting:<?php echo json_encode($listPositionsSetting) ?>
 
@@ -695,7 +685,7 @@ ob_start();
 if (JDEBUG) {
     $doc = JFactory::getDocument();
     $doc->addScript(JUri::root() . '/media/system/js/jumper-master/js/jumper.js');
-    $scriptId = "plugin_debug";
+    $scriptId = "script_plugin_debug";
     ob_start();
     ?>
     <script type="text/javascript">

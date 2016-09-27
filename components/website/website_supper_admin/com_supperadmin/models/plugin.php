@@ -404,7 +404,7 @@ class supperadminModelplugin extends JModelAdmin
 	 * @param   array  Configuration array for model. Optional.
 	 * @return  JTable	A database object
 	*/
-	public function getTable($type = 'plugin', $prefix = 'JTable', $config = array())
+	public function getTable($type = 'supperadminplugin', $prefix = 'JTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}

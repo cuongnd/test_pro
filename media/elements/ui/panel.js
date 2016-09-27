@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
                         parentColumnId:object_id,
                         menuItemActiveId:menuItemActiveId,
                         ajaxgetcontent:1,
-                        screenSize:screenSize
+                        screenSize:screen_size_id
 
                     };
                     return dataPost;

@@ -132,14 +132,17 @@ class UtilityControllerUtility extends UtilityController
         MenusHelperFrontEnd::remove_all_menu_type_not_exists_menu_item();
         MenusHelperFrontEnd::remove_all_menu_not_exists_menu_type();
         block_helper::remove_all_block_not_exists_menu_item();
+        $screen_size_id=$app->input->getString('screen_size_id','');
+        UtilityHelper::set_current_screen_size_id_editing($screen_size_id);
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
         $tablePosition = JTable::getInstance('positionnested');
         $website = JFactory::getWebsite();
         $tablePosition->webisite_id = $website->website_id;
+        $tablePosition->screen_size_id = $screen_size_id;
         $root_position_id = $tablePosition->get_root_id();
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('position_config.id,position_config.menu_item_id')
+        $query->select('position_config.id,position_config.parent_id,position_config.screen_size_id,position_config.menu_item_id')
             ->from('#__position_config AS position_config')
             ->where('position_config.parent_id=' . (int)$root_position_id)
             ->where('position_config.parent_id!=position_config.id')
@@ -147,12 +150,39 @@ class UtilityControllerUtility extends UtilityController
         ;
         $db->setQuery($query);
         $list_position = $db->loadObjectList();
+
         $db->rebuild_action=1;
         UtilityControllerUtility::update_menu_item_from_root_menu($list_position, $menu_item_active_id);
         $tablePosition->rebuild();
         require_once JPATH_ROOT.'/components/com_utility/controllers/block.php';
         UtilityControllerBlock::fix_screen_size();
         echo 1;
+        die;
+
+    }
+    public function publish_screen_size(){
+        $website=JFactory::getWebsite();
+        $app = JFactory::getApplication();
+        $state=$app->input->getBool('state',false);
+        $screen_size_id=$app->input->getInt('screen_size_id',0);
+        $menu_item_id=$app->input->getInt('menu_item_active_id',0);
+        $table_active_screen_size_id_menu_item_id=JTable::getInstance('Active_screen_size_id_menu_item_id','JTable');
+        $table_active_screen_size_id_menu_item_id->load(array(
+            screen_size_id=>$screen_size_id,
+            menu_item_id=>$menu_item_id,
+            website_id=>$website->website_id
+            ));
+
+        $table_active_screen_size_id_menu_item_id->website_id=$website->website_id;
+        $table_active_screen_size_id_menu_item_id->menu_item_id=$menu_item_id;
+        $table_active_screen_size_id_menu_item_id->screen_size_id=$screen_size_id;
+        $table_active_screen_size_id_menu_item_id->publish=(int)$state;
+        $ok=$table_active_screen_size_id_menu_item_id->store();
+        if(!$ok)
+        {
+            throw new Exception($table_active_screen_size_id_menu_item_id->getError());
+        }
+
         die;
 
     }
@@ -186,14 +216,17 @@ class UtilityControllerUtility extends UtilityController
     public function aJaxChangeScreenSize()
     {
         $app = JFactory::getApplication();
-        $screenSize = $app->input->get('screenSize', '', 'string');
+
         require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
         $isAdminSite = UtilityHelper::isAdminSite();
         if ($isAdminSite)
         {
-            UtilityHelper::setCurrentScreenSizeEditing($screenSize);
+            $screen_size_id = $app->input->getInt('screen_size_id', 0);
+
+            UtilityHelper::set_current_screen_size_id_editing($screen_size_id);
         }
         else {
+            $screenSize = $app->input->getString('screenSize', "");
             UtilityHelper::setScreenSize($screenSize);
         }
         die;
@@ -832,10 +865,10 @@ class UtilityControllerUtility extends UtilityController
         $childrenColumnY = $post['childrenColumnY'];
         $childrenColumnWidth = $post['childrenColumnWidth'];
         $childrenColumnHeight = $post['childrenColumnHeight'];
-        $screenSize = $post['screenSize'];
+        $screen_size_id = $post['screen_size_id'];
         $menu_item_id = $post['menuItemActiveId'];
         require_once JPATH_ROOT . '/components/com_utility/helper/utility.php';
-        $newColumnId = UtilityHelper::InsertColumnInScreen($screenSize, $parentRowId, $childrenColumnX, $childrenColumnWidth, $childrenColumnY, $childrenColumnHeight, $menu_item_id);
+        $newColumnId = UtilityHelper::InsertColumnInScreen($screen_size_id, $parentRowId, $childrenColumnX, $childrenColumnWidth, $childrenColumnY, $childrenColumnHeight, $menu_item_id);
         echo $newColumnId;
         die;
 

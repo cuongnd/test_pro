@@ -212,7 +212,6 @@
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/CodeMirror-master" />
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/Francium-voice-master" />
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/Ladda-master" />
-      <excludeFolder url="file://$MODULE_DIR$/media/system/js/URI.js-gh-pages" />
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/Zozo_Tabs_v.6.5" />
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/bgrins-spectrum" />
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/bootstrap-contenteditable-autocomplete-gh-pages" />
@@ -279,6 +278,7 @@
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/slider-master" />
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/sticky-master" />
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/twitter-typeahead.js" />
+      <excludeFolder url="file://$MODULE_DIR$/media/system/js/uri" />
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/validatei18n" />
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/x-editable-master" />
       <excludeFolder url="file://$MODULE_DIR$/media/system/js/ydn-db-master" />
@@ -357,6 +357,10 @@
       <excludeFolder url="file://$MODULE_DIR$/modules/website/website_5" />
       <excludeFolder url="file://$MODULE_DIR$/modules/website/website_6" />
       <excludeFolder url="file://$MODULE_DIR$/msd1.24.4" />
+      <excludeFolder url="file://$MODULE_DIR$/other_website_banhangonline88" />
+      <excludeFolder url="file://$MODULE_DIR$/other_website_banhangonline883" />
+      <excludeFolder url="file://$MODULE_DIR$/other_website_banhangonline88_1" />
+      <excludeFolder url="file://$MODULE_DIR$/other_website_banhangonline88_cs_cart" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/acymailing" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/captcha" />
       <excludeFolder url="file://$MODULE_DIR$/plugins/content" />

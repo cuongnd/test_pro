@@ -7,7 +7,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
-    config.extraPlugins = 'filebrowser,codemirror';
+    config.extraPlugins = 'filebrowser';
 /*
     config.filebrowserBrowseUrl = '/admin/content/filemanager.aspx?path=Userfiles/File&editor=FCK';
     config.filebrowserImageBrowseUrl = '/admin/content/filemanager.aspx?type=Image&path=Userfiles/Image&editor=FCK';

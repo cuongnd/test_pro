@@ -40,7 +40,7 @@ jQuery(document).ready(function($){
                         parentColumnId:object_id,
                         menuItemActiveId:menuItemActiveId,
                         ajaxgetcontent:1,
-                        screenSize:screenSize
+                        screenSize:screen_size_id
 
                     };
                     return dataPost;
@@ -70,7 +70,7 @@ jQuery(document).ready(function($){
                         option: 'com_utility',
                         task: 'utility.aJaxInsertElement',
                         parentColumnId: parentColumnId,
-                        screenSize: screenSize,
+                        screenSize: screen_size_id,
                         addSubRow: 0,
                         ajaxgetcontent: 1,
                         menuItemActiveId: menuItemActiveId,

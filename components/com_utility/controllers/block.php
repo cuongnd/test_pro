@@ -26,40 +26,59 @@ class UtilityControllerBlock extends JControllerForm
     {
         $app = JFactory::getApplication();
         $db=JFactory::getDbo();
-        $enableEditWebsite = UtilityHelper::getEnableEditWebsite();
-        require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
-        if ($enableEditWebsite) {
-            $currentScreenSize = UtilityHelper::getCurrentScreenSizeEditing();
-        } else {
-            $currentScreenSize = UtilityHelper::getScreenSize();
-        }
         $menu_item_active_id = $app->input->get('menu_item_active_id', 0, 'int');
         JTable::addIncludePath(JPATH_ROOT . '/components/com_utility/tables');
         $tablePosition = JTable::getInstance('positionnested');
         $website = JFactory::getWebsite();
-        $tablePosition->webisite_id = $website->website_id;
+        $tablePosition->website_id = $website->website_id;
         $parentId = $tablePosition->get_root_id();
-
-        $query = $db->getQuery(true);
-        $query->select('position_config.id,position_config.menu_item_id,position_config.screensize,position_config.lft,position_config.rgt')
-            ->from('#__position_config AS position_config')
-            ->where('position_config.parent_id=' . (int)$parentId)
-            ->where('position_config.menu_item_id=' . (int)$menu_item_active_id)
-            ->where('position_config.screensize=' . $query->q($currentScreenSize))
-        ;
-        $db->setQuery($query);
-        $list_position = $db->loadObjectList();
-        foreach($list_position as $position)
+        $tablePosition->load($parentId);
+        $screen_size_id=UtilityHelper::get_current_screen_size_id_editing();
+        $tablePosition->screen_size_id=$screen_size_id;
+        $ok=$tablePosition->parent_store();
+        if(!$ok)
         {
-            $query=$db->getQuery(true)
-                ->update('#__position_config')
-                ->set('screensize='.$query->q($position->screensize))
-                ->where('lft>'.(int)$position->lft)
-                ->where('rgt>='.(int)$position->rgt)
-                ->where('menu_item_id='.(int)$menu_item_active_id)
-                ;
-            $db->setQuery($query)->execute();
+            throw new Exception($tablePosition->getError());
         }
+        $query=$db->getQuery(true);
+        $query->clear()
+            ->select('position_config.id,position_config.parent_id')
+            ->from('#__position_config AS position_config')
+        ;
+        $list_position_config=$db->setQuery($query)->loadObjectList();
+
+        $children_position_config = array();
+        foreach ($list_position_config as $v) {
+            $pt = $v->parent_id;
+            $pt = ($pt == '' || $pt == $v->id) ? 'list_root' : $pt;
+            $list = @$children_position_config[$pt] ? $children_position_config[$pt] : array();
+            array_push($list, $v);
+            $children_position_config[$pt] = $list;
+        }
+        $list_root_position_config = $children_position_config['list_root'];
+        unset($children_position_config['list_root']);
+
+
+
+
+        $update_screen_size=function($function_call_back, $position_config_id=0,$screen_size_id, $children_position_config, $level=0, $max_level=999){
+            if(count($children_position_config[$position_config_id])) {
+                foreach($children_position_config[$position_config_id] as $position_config)
+                {
+                    $table_position_config = JTable::getInstance('PositionNested');
+                    $table_position_config->load($position_config->id);
+                    $table_position_config->screen_size_id = $screen_size_id;
+                    $ok = $table_position_config->store();
+                    if (!$ok) {
+                        throw new Exception($table_position_config->getError());
+                    }
+                    $position_config_1 = $position_config->id;
+                    $function_call_back($function_call_back,$position_config_1, $screen_size_id,$children_position_config);
+                }
+            }
+        };
+
+        $update_screen_size($update_screen_size,$parentId,$screen_size_id,$children_position_config);
     }
     public static function fix_screen_size_by_website_id($website_id=0)
     {
@@ -416,20 +435,6 @@ class UtilityControllerBlock extends JControllerForm
         }
 
     }
-    public function aJaxChangeScreenSize()
-    {
-        $app=JFactory::getApplication();
-        $screenSize=$app->input->get('screenSize','','string');
-        require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
-        $isAdminSite=UtilityHelper::isAdminSite();
-        if($isAdminSite)
-            UtilityHelper::setCurrentScreenSizeEditing($screenSize);
-        else
-        {
-            UtilityHelper::setScreenSize($screenSize);
-        }
-        die;
-    }
     function getimages()
     {
         echo "hello image";
@@ -536,9 +541,9 @@ class UtilityControllerBlock extends JControllerForm
         $listBlock=$app->input->get('listBlock',array(),'array');
         $parentColumnId=$post['parentColumnId'];
         $menu_item_id=$post['menuItemActiveId'];
-        $screenSize=$post['screenSize'];
+        $screen_size_id=$post['screen_size_id'];
         require_once JPATH_ROOT.'/components/com_utility/helper/utility.php';
-        $newRowId=UtilityHelper::InsertRowInScreen($screenSize,$parentColumnId,$menu_item_id);
+        $newRowId=UtilityHelper::InsertRowInScreen($screen_size_id,$parentColumnId,$menu_item_id);
         UtilityHelper::updateListBlock($listBlock);
 
         echo $newRowId;
